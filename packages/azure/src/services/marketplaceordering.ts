@@ -215,7 +215,10 @@ export type OldAgreementTermsListValueList = Array<OldAgreementTerms>;
 export interface OldAgreementTermsList {
   value?: OldAgreementTermsListValueList;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.MarketplaceOrdering */
@@ -239,7 +242,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list MarketplaceOrdering operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Microsoft.MarketplaceOrdering operations supported by the Microsoft.MarketplaceOrdering resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -340,18 +343,25 @@ export const ListMarketplaceAgreements: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Microsoft.MarketplaceOrdering REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(60, __c7, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type SignMarketplaceAgreementError = AzureOpError;
 /** Sign marketplace terms. */
@@ -544,12 +554,15 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.MarketplaceOrdering/operations",
             code: 200,
             apiVersion: "2021-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -574,7 +587,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(59, __c7, 3)),
+          value: __S(59, __c7, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });

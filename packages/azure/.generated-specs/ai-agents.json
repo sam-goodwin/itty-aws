@@ -15,131 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.ai_agents#VectorStoreFilesDeleteVectorStoreFile": "com.azure.ai_agents#DeleteVectorStoreFileVectorStoreFile",
-      "com.azure.ai_agents#VectorStoreFilesDeleteVectorStoreFileRequest": "com.azure.ai_agents#DeleteVectorStoreFileVectorStoreFileRequest",
-      "com.azure.ai_agents#VectorStoreFilesGetVectorStoreFile": "com.azure.ai_agents#GetVectorStoreFileVectorStoreFile",
-      "com.azure.ai_agents#VectorStoreFilesGetVectorStoreFileRequest": "com.azure.ai_agents#GetVectorStoreFileVectorStoreFileRequest",
-      "com.azure.ai_agents#VectorStoreFilesCreateVectorStoreFile": "com.azure.ai_agents#CreateVectorStoreFileVectorStoreFile",
-      "com.azure.ai_agents#VectorStoreFilesCreateVectorStoreFileRequest": "com.azure.ai_agents#CreateVectorStoreFileVectorStoreFileRequest",
-      "com.azure.ai_agents#VectorStoreFilesListVectorStoreFiles": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFiles",
-      "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesResponse": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesResponse",
-      "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesResponseDataList": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesResponseDataList",
-      "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequest": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequest",
-      "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequestOrder": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequestOrder",
-      "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequestFilter": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequestFilter",
-      "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFiles": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFiles",
-      "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesResponse": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesResponse",
-      "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesResponseDataList": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesResponseDataList",
-      "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequest": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequest",
-      "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequestOrder": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequestOrder",
-      "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequestFilter": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequestFilter",
-      "com.azure.ai_agents#VectorStoreFileBatchesCancelVectorStoreFileBatch": "com.azure.ai_agents#CancelVectorStoreFileBatchVectorStoreFileBatch",
-      "com.azure.ai_agents#VectorStoreFileBatchesCancelVectorStoreFileBatchRequest": "com.azure.ai_agents#CancelVectorStoreFileBatchVectorStoreFileBatchRequest",
-      "com.azure.ai_agents#VectorStoreFileBatchesGetVectorStoreFileBatch": "com.azure.ai_agents#GetVectorStoreFileBatchVectorStoreFileBatch",
-      "com.azure.ai_agents#VectorStoreFileBatchesGetVectorStoreFileBatchRequest": "com.azure.ai_agents#GetVectorStoreFileBatchVectorStoreFileBatchRequest",
-      "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatch": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatch",
-      "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequest": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequest",
-      "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequestDataSourcesList": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequestDataSourcesList",
-      "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequestFileIdsList": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequestFileIdsList",
-      "com.azure.ai_agents#VectorStoresDeleteVectorStore": "com.azure.ai_agents#DeleteVectorStoreVectorStore",
-      "com.azure.ai_agents#VectorStoresDeleteVectorStoreRequest": "com.azure.ai_agents#DeleteVectorStoreVectorStoreRequest",
-      "com.azure.ai_agents#VectorStoresModifyVectorStore": "com.azure.ai_agents#ModifyVectorStoreVectorStore",
-      "com.azure.ai_agents#VectorStoresModifyVectorStoreRequest": "com.azure.ai_agents#ModifyVectorStoreVectorStoreRequest",
-      "com.azure.ai_agents#VectorStoresModifyVectorStoreRequestMetadataMap": "com.azure.ai_agents#ModifyVectorStoreVectorStoreRequestMetadataMap",
-      "com.azure.ai_agents#VectorStoresGetVectorStore": "com.azure.ai_agents#GetVectorStoreVectorStore",
-      "com.azure.ai_agents#VectorStoresGetVectorStoreRequest": "com.azure.ai_agents#GetVectorStoreVectorStoreRequest",
-      "com.azure.ai_agents#VectorStoresCreateVectorStore": "com.azure.ai_agents#CreateVectorStoreVectorStore",
-      "com.azure.ai_agents#VectorStoresCreateVectorStoreRequest": "com.azure.ai_agents#CreateVectorStoreVectorStoreRequest",
-      "com.azure.ai_agents#VectorStoresCreateVectorStoreRequestMetadataMap": "com.azure.ai_agents#CreateVectorStoreVectorStoreRequestMetadataMap",
-      "com.azure.ai_agents#VectorStoresCreateVectorStoreRequestFileIdsList": "com.azure.ai_agents#CreateVectorStoreVectorStoreRequestFileIdsList",
-      "com.azure.ai_agents#VectorStoresListVectorStores": "com.azure.ai_agents#ListVectorStoreVectorStores",
-      "com.azure.ai_agents#VectorStoresListVectorStoresResponse": "com.azure.ai_agents#ListVectorStoreVectorStoresResponse",
-      "com.azure.ai_agents#VectorStoresListVectorStoresResponseDataList": "com.azure.ai_agents#ListVectorStoreVectorStoresResponseDataList",
-      "com.azure.ai_agents#VectorStoresListVectorStoresRequest": "com.azure.ai_agents#ListVectorStoreVectorStoresRequest",
-      "com.azure.ai_agents#VectorStoresListVectorStoresRequestOrder": "com.azure.ai_agents#ListVectorStoreVectorStoresRequestOrder",
-      "com.azure.ai_agents#RunsSubmitToolOutputsToRun": "com.azure.ai_agents#SubmitRunToolOutputsToRun",
-      "com.azure.ai_agents#RunsSubmitToolOutputsToRunRequest": "com.azure.ai_agents#SubmitRunToolOutputsToRunRequest",
-      "com.azure.ai_agents#RunsSubmitToolOutputsToRunRequestToolOutputsList": "com.azure.ai_agents#SubmitRunToolOutputsToRunRequestToolOutputsList",
-      "com.azure.ai_agents#RunStepsGetRunStep": "com.azure.ai_agents#GetRunStepRunStep",
-      "com.azure.ai_agents#RunStepsGetRunStepRequest": "com.azure.ai_agents#GetRunStepRunStepRequest",
-      "com.azure.ai_agents#RunStepsGetRunStepRequestIncludeList": "com.azure.ai_agents#GetRunStepRunStepRequestIncludeList",
-      "com.azure.ai_agents#RunStepsGetRunStepRequestIncludeItem": "com.azure.ai_agents#GetRunStepRunStepRequestIncludeItem",
-      "com.azure.ai_agents#RunStepsListRunSteps": "com.azure.ai_agents#ListRunStepRunSteps",
-      "com.azure.ai_agents#RunStepsListRunStepsResponse": "com.azure.ai_agents#ListRunStepRunStepsResponse",
-      "com.azure.ai_agents#RunStepsListRunStepsResponseDataList": "com.azure.ai_agents#ListRunStepRunStepsResponseDataList",
-      "com.azure.ai_agents#RunStepsListRunStepsRequest": "com.azure.ai_agents#ListRunStepRunStepsRequest",
-      "com.azure.ai_agents#RunStepsListRunStepsRequestOrder": "com.azure.ai_agents#ListRunStepRunStepsRequestOrder",
-      "com.azure.ai_agents#RunStepsListRunStepsRequestIncludeList": "com.azure.ai_agents#ListRunStepRunStepsRequestIncludeList",
-      "com.azure.ai_agents#RunStepsListRunStepsRequestIncludeItem": "com.azure.ai_agents#ListRunStepRunStepsRequestIncludeItem",
-      "com.azure.ai_agents#RunsCancelRun": "com.azure.ai_agents#CancelRunRun",
-      "com.azure.ai_agents#RunsCancelRunRequest": "com.azure.ai_agents#CancelRunRunRequest",
-      "com.azure.ai_agents#RunsUpdateRun": "com.azure.ai_agents#UpdateRunRun",
-      "com.azure.ai_agents#RunsUpdateRunRequest": "com.azure.ai_agents#UpdateRunRunRequest",
-      "com.azure.ai_agents#RunsUpdateRunRequestMetadataMap": "com.azure.ai_agents#UpdateRunRunRequestMetadataMap",
-      "com.azure.ai_agents#RunsGetRun": "com.azure.ai_agents#GetRunRun",
-      "com.azure.ai_agents#RunsGetRunRequest": "com.azure.ai_agents#GetRunRunRequest",
-      "com.azure.ai_agents#RunsCreateRun": "com.azure.ai_agents#CreateRunRun",
-      "com.azure.ai_agents#RunsCreateRunRequest": "com.azure.ai_agents#CreateRunRunRequest",
-      "com.azure.ai_agents#RunsCreateRunRequestMetadataMap": "com.azure.ai_agents#CreateRunRunRequestMetadataMap",
-      "com.azure.ai_agents#RunsCreateRunRequestToolsList": "com.azure.ai_agents#CreateRunRunRequestToolsList",
-      "com.azure.ai_agents#RunsCreateRunRequestAdditionalMessagesList": "com.azure.ai_agents#CreateRunRunRequestAdditionalMessagesList",
-      "com.azure.ai_agents#RunsCreateRunRequestIncludeList": "com.azure.ai_agents#CreateRunRunRequestIncludeList",
-      "com.azure.ai_agents#RunsCreateRunRequestIncludeItem": "com.azure.ai_agents#CreateRunRunRequestIncludeItem",
-      "com.azure.ai_agents#RunsListRuns": "com.azure.ai_agents#ListRunRuns",
-      "com.azure.ai_agents#RunsListRunsResponse": "com.azure.ai_agents#ListRunRunsResponse",
-      "com.azure.ai_agents#RunsListRunsResponseDataList": "com.azure.ai_agents#ListRunRunsResponseDataList",
-      "com.azure.ai_agents#RunsListRunsRequest": "com.azure.ai_agents#ListRunRunsRequest",
-      "com.azure.ai_agents#RunsListRunsRequestOrder": "com.azure.ai_agents#ListRunRunsRequestOrder",
-      "com.azure.ai_agents#MessagesUpdateMessage": "com.azure.ai_agents#UpdateMessageMessage",
-      "com.azure.ai_agents#MessagesUpdateMessageRequest": "com.azure.ai_agents#UpdateMessageMessageRequest",
-      "com.azure.ai_agents#MessagesUpdateMessageRequestMetadataMap": "com.azure.ai_agents#UpdateMessageMessageRequestMetadataMap",
-      "com.azure.ai_agents#MessagesGetMessage": "com.azure.ai_agents#GetMessageMessage",
-      "com.azure.ai_agents#MessagesGetMessageRequest": "com.azure.ai_agents#GetMessageMessageRequest",
-      "com.azure.ai_agents#MessagesCreateMessage": "com.azure.ai_agents#CreateMessageMessage",
-      "com.azure.ai_agents#MessagesCreateMessageRequest": "com.azure.ai_agents#CreateMessageMessageRequest",
-      "com.azure.ai_agents#MessagesCreateMessageRequestMetadataMap": "com.azure.ai_agents#CreateMessageMessageRequestMetadataMap",
-      "com.azure.ai_agents#MessagesCreateMessageRequestAttachmentsList": "com.azure.ai_agents#CreateMessageMessageRequestAttachmentsList",
-      "com.azure.ai_agents#MessagesListMessages": "com.azure.ai_agents#ListMessageMessages",
-      "com.azure.ai_agents#MessagesListMessagesResponse": "com.azure.ai_agents#ListMessageMessagesResponse",
-      "com.azure.ai_agents#MessagesListMessagesResponseDataList": "com.azure.ai_agents#ListMessageMessagesResponseDataList",
-      "com.azure.ai_agents#MessagesListMessagesRequest": "com.azure.ai_agents#ListMessageMessagesRequest",
-      "com.azure.ai_agents#MessagesListMessagesRequestOrder": "com.azure.ai_agents#ListMessageMessagesRequestOrder",
-      "com.azure.ai_agents#ThreadsDeleteThread": "com.azure.ai_agents#DeleteThreadThread",
-      "com.azure.ai_agents#ThreadsDeleteThreadRequest": "com.azure.ai_agents#DeleteThreadThreadRequest",
-      "com.azure.ai_agents#ThreadsUpdateThread": "com.azure.ai_agents#UpdateThreadThread",
-      "com.azure.ai_agents#ThreadsUpdateThreadRequest": "com.azure.ai_agents#UpdateThreadThreadRequest",
-      "com.azure.ai_agents#ThreadsUpdateThreadRequestMetadataMap": "com.azure.ai_agents#UpdateThreadThreadRequestMetadataMap",
-      "com.azure.ai_agents#ThreadsGetThread": "com.azure.ai_agents#GetThreadThread",
-      "com.azure.ai_agents#ThreadsGetThreadRequest": "com.azure.ai_agents#GetThreadThreadRequest",
-      "com.azure.ai_agents#ThreadsCreateThread": "com.azure.ai_agents#CreateThreadThread",
-      "com.azure.ai_agents#ThreadsCreateThreadRequest": "com.azure.ai_agents#CreateThreadThreadRequest",
-      "com.azure.ai_agents#ThreadsCreateThreadRequestMetadataMap": "com.azure.ai_agents#CreateThreadThreadRequestMetadataMap",
-      "com.azure.ai_agents#ThreadsCreateThreadRequestMessagesList": "com.azure.ai_agents#CreateThreadThreadRequestMessagesList",
-      "com.azure.ai_agents#ThreadsListThreads": "com.azure.ai_agents#ListThreadThreads",
-      "com.azure.ai_agents#ThreadsListThreadsResponse": "com.azure.ai_agents#ListThreadThreadsResponse",
-      "com.azure.ai_agents#ThreadsListThreadsResponseDataList": "com.azure.ai_agents#ListThreadThreadsResponseDataList",
-      "com.azure.ai_agents#ThreadsListThreadsRequest": "com.azure.ai_agents#ListThreadThreadsRequest",
-      "com.azure.ai_agents#ThreadsListThreadsRequestOrder": "com.azure.ai_agents#ListThreadThreadsRequestOrder",
-      "com.azure.ai_agents#FilesGetFileContent": "com.azure.ai_agents#GetFileFileContent",
-      "com.azure.ai_agents#FilesGetFileContentResponse": "com.azure.ai_agents#GetFileFileContentResponse",
-      "com.azure.ai_agents#FilesGetFileContentRequest": "com.azure.ai_agents#GetFileFileContentRequest",
-      "com.azure.ai_agents#FilesDeleteFile": "com.azure.ai_agents#DeleteFileFile",
-      "com.azure.ai_agents#FilesDeleteFileRequest": "com.azure.ai_agents#DeleteFileFileRequest",
-      "com.azure.ai_agents#FilesGetFile": "com.azure.ai_agents#GetFileFile",
-      "com.azure.ai_agents#FilesGetFileRequest": "com.azure.ai_agents#GetFileFileRequest",
-      "com.azure.ai_agents#FilesUploadFile": "com.azure.ai_agents#UploadFileFile",
-      "com.azure.ai_agents#FilesUploadFileRequest": "com.azure.ai_agents#UploadFileFileRequest",
-      "com.azure.ai_agents#FilesListFiles": "com.azure.ai_agents#ListFileFiles",
-      "com.azure.ai_agents#FilesListFilesRequest": "com.azure.ai_agents#ListFileFilesRequest",
-      "com.azure.ai_agents#FilesListFilesRequestPurpose": "com.azure.ai_agents#ListFileFilesRequestPurpose"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.ai_agents#VectorStoreFilesDeleteVectorStoreFile": {
+    "com.azure.ai_agents#DeleteVectorStoreFileVectorStoreFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFilesDeleteVectorStoreFileRequest"
+        "target": "com.azure.ai_agents#DeleteVectorStoreFileVectorStoreFileRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreFileDeletionStatus"
@@ -201,7 +83,7 @@
         "smithy.api#documentation": "The object type, which is always 'vector_store.deleted'."
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesDeleteVectorStoreFileRequest": {
+    "com.azure.ai_agents#DeleteVectorStoreFileVectorStoreFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -233,10 +115,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesGetVectorStoreFile": {
+    "com.azure.ai_agents#GetVectorStoreFileVectorStoreFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFilesGetVectorStoreFileRequest"
+        "target": "com.azure.ai_agents#GetVectorStoreFileVectorStoreFileRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreFile"
@@ -449,7 +331,7 @@
         "smithy.api#documentation": "The object type, which is always `vector_store.file`."
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesGetVectorStoreFileRequest": {
+    "com.azure.ai_agents#GetVectorStoreFileVectorStoreFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -481,10 +363,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesCreateVectorStoreFile": {
+    "com.azure.ai_agents#CreateVectorStoreFileVectorStoreFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFilesCreateVectorStoreFileRequest"
+        "target": "com.azure.ai_agents#CreateVectorStoreFileVectorStoreFileRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreFile"
@@ -503,7 +385,7 @@
         "smithy.api#documentation": "Create a vector store file by attaching a file to a vector store."
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesCreateVectorStoreFileRequest": {
+    "com.azure.ai_agents#CreateVectorStoreFileVectorStoreFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -622,13 +504,13 @@
         "smithy.api#documentation": "Type of vector storage asset. Asset type may be a uri_asset, in this case it should contain asset URI ID,\nin the case of id_asset it should contain the data ID."
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesListVectorStoreFiles": {
+    "com.azure.ai_agents#ListVectorStoreFileVectorStoreFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequest"
+        "target": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesResponse"
+        "target": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -644,11 +526,11 @@
         "smithy.api#documentation": "Returns a list of vector store files."
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesResponse": {
+    "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesResponseDataList",
+          "target": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -672,7 +554,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesResponseDataList": {
+    "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#VectorStoreFile"
@@ -681,7 +563,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequest": {
+    "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -701,7 +583,7 @@
           }
         },
         "filter": {
-          "target": "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequestFilter",
+          "target": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequestFilter",
           "traits": {
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter by file status."
@@ -715,7 +597,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequestOrder",
+          "target": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -740,7 +622,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequestOrder": {
+    "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -758,7 +640,7 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#VectorStoreFilesListVectorStoreFilesRequestFilter": {
+    "com.azure.ai_agents#ListVectorStoreFileVectorStoreFilesRequestFilter": {
       "type": "enum",
       "members": {
         "IN_PROGRESS": {
@@ -788,13 +670,13 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFiles": {
+    "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequest"
+        "target": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesResponse"
+        "target": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -810,11 +692,11 @@
         "smithy.api#documentation": "Returns a list of vector store files in a batch."
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesResponse": {
+    "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesResponseDataList",
+          "target": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -838,7 +720,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesResponseDataList": {
+    "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#VectorStoreFile"
@@ -847,7 +729,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequest": {
+    "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -875,7 +757,7 @@
           }
         },
         "filter": {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequestFilter",
+          "target": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequestFilter",
           "traits": {
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter by file status."
@@ -889,7 +771,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequestOrder",
+          "target": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -914,7 +796,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequestOrder": {
+    "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -932,7 +814,7 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFilesRequestFilter": {
+    "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFilesRequestFilter": {
       "type": "enum",
       "members": {
         "IN_PROGRESS": {
@@ -962,10 +844,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesCancelVectorStoreFileBatch": {
+    "com.azure.ai_agents#CancelVectorStoreFileBatchVectorStoreFileBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFileBatchesCancelVectorStoreFileBatchRequest"
+        "target": "com.azure.ai_agents#CancelVectorStoreFileBatchVectorStoreFileBatchRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreFileBatch"
@@ -1123,7 +1005,7 @@
         "smithy.api#documentation": "The object type, which is always `vector_store.file_batch`."
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesCancelVectorStoreFileBatchRequest": {
+    "com.azure.ai_agents#CancelVectorStoreFileBatchVectorStoreFileBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1155,10 +1037,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesGetVectorStoreFileBatch": {
+    "com.azure.ai_agents#GetVectorStoreFileBatchVectorStoreFileBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFileBatchesGetVectorStoreFileBatchRequest"
+        "target": "com.azure.ai_agents#GetVectorStoreFileBatchVectorStoreFileBatchRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreFileBatch"
@@ -1177,7 +1059,7 @@
         "smithy.api#documentation": "Retrieve a vector store file batch."
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesGetVectorStoreFileBatchRequest": {
+    "com.azure.ai_agents#GetVectorStoreFileBatchVectorStoreFileBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1209,10 +1091,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatch": {
+    "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequest"
+        "target": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreFileBatch"
@@ -1231,7 +1113,7 @@
         "smithy.api#documentation": "Create a vector store file batch."
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequest": {
+    "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1251,13 +1133,13 @@
           }
         },
         "file_ids": {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequestFileIdsList",
+          "target": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequestFileIdsList",
           "traits": {
             "smithy.api#documentation": "List of file identifiers."
           }
         },
         "data_sources": {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequestDataSourcesList",
+          "target": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequestDataSourcesList",
           "traits": {
             "smithy.api#documentation": "List of Azure assets."
           }
@@ -1273,7 +1155,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequestDataSourcesList": {
+    "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequestDataSourcesList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#VectorStoreDataSource"
@@ -1282,7 +1164,7 @@
         "smithy.api#documentation": "List of Azure assets."
       }
     },
-    "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatchRequestFileIdsList": {
+    "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatchRequestFileIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -1291,10 +1173,10 @@
         "smithy.api#documentation": "List of file identifiers."
       }
     },
-    "com.azure.ai_agents#VectorStoresDeleteVectorStore": {
+    "com.azure.ai_agents#DeleteVectorStoreVectorStore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoresDeleteVectorStoreRequest"
+        "target": "com.azure.ai_agents#DeleteVectorStoreVectorStoreRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStoreDeletionStatus"
@@ -1356,7 +1238,7 @@
         "smithy.api#documentation": "The object type, which is always 'vector_store.deleted'."
       }
     },
-    "com.azure.ai_agents#VectorStoresDeleteVectorStoreRequest": {
+    "com.azure.ai_agents#DeleteVectorStoreVectorStoreRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1380,10 +1262,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoresModifyVectorStore": {
+    "com.azure.ai_agents#ModifyVectorStoreVectorStore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoresModifyVectorStoreRequest"
+        "target": "com.azure.ai_agents#ModifyVectorStoreVectorStoreRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStore"
@@ -1576,7 +1458,7 @@
         "smithy.api#documentation": "The object type, which is always `vector_store`"
       }
     },
-    "com.azure.ai_agents#VectorStoresModifyVectorStoreRequest": {
+    "com.azure.ai_agents#ModifyVectorStoreVectorStoreRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1610,7 +1492,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#VectorStoresModifyVectorStoreRequestMetadataMap",
+          "target": "com.azure.ai_agents#ModifyVectorStoreVectorStoreRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -1621,7 +1503,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoresModifyVectorStoreRequestMetadataMap": {
+    "com.azure.ai_agents#ModifyVectorStoreVectorStoreRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1633,10 +1515,10 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#VectorStoresGetVectorStore": {
+    "com.azure.ai_agents#GetVectorStoreVectorStore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoresGetVectorStoreRequest"
+        "target": "com.azure.ai_agents#GetVectorStoreVectorStoreRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStore"
@@ -1655,7 +1537,7 @@
         "smithy.api#documentation": "Returns the vector store object matching the specified ID."
       }
     },
-    "com.azure.ai_agents#VectorStoresGetVectorStoreRequest": {
+    "com.azure.ai_agents#GetVectorStoreVectorStoreRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1679,10 +1561,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoresCreateVectorStore": {
+    "com.azure.ai_agents#CreateVectorStoreVectorStore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoresCreateVectorStoreRequest"
+        "target": "com.azure.ai_agents#CreateVectorStoreVectorStoreRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#VectorStore"
@@ -1701,7 +1583,7 @@
         "smithy.api#documentation": "Creates a vector store."
       }
     },
-    "com.azure.ai_agents#VectorStoresCreateVectorStoreRequest": {
+    "com.azure.ai_agents#CreateVectorStoreVectorStoreRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1713,7 +1595,7 @@
           }
         },
         "file_ids": {
-          "target": "com.azure.ai_agents#VectorStoresCreateVectorStoreRequestFileIdsList",
+          "target": "com.azure.ai_agents#CreateVectorStoreVectorStoreRequestFileIdsList",
           "traits": {
             "smithy.api#documentation": "A list of file IDs that the vector store should use. Useful for tools like `file_search` that can access files."
           }
@@ -1743,7 +1625,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#VectorStoresCreateVectorStoreRequestMetadataMap",
+          "target": "com.azure.ai_agents#CreateVectorStoreVectorStoreRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -1754,7 +1636,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoresCreateVectorStoreRequestMetadataMap": {
+    "com.azure.ai_agents#CreateVectorStoreVectorStoreRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1790,7 +1672,7 @@
         "smithy.api#documentation": "Data sources"
       }
     },
-    "com.azure.ai_agents#VectorStoresCreateVectorStoreRequestFileIdsList": {
+    "com.azure.ai_agents#CreateVectorStoreVectorStoreRequestFileIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -1799,13 +1681,13 @@
         "smithy.api#documentation": "A list of file IDs that the vector store should use. Useful for tools like `file_search` that can access files."
       }
     },
-    "com.azure.ai_agents#VectorStoresListVectorStores": {
+    "com.azure.ai_agents#ListVectorStoreVectorStores": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#VectorStoresListVectorStoresRequest"
+        "target": "com.azure.ai_agents#ListVectorStoreVectorStoresRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#VectorStoresListVectorStoresResponse"
+        "target": "com.azure.ai_agents#ListVectorStoreVectorStoresResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1821,11 +1703,11 @@
         "smithy.api#documentation": "Returns a list of vector stores."
       }
     },
-    "com.azure.ai_agents#VectorStoresListVectorStoresResponse": {
+    "com.azure.ai_agents#ListVectorStoreVectorStoresResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#VectorStoresListVectorStoresResponseDataList",
+          "target": "com.azure.ai_agents#ListVectorStoreVectorStoresResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -1849,7 +1731,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#VectorStoresListVectorStoresResponseDataList": {
+    "com.azure.ai_agents#ListVectorStoreVectorStoresResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#VectorStore"
@@ -1858,7 +1740,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#VectorStoresListVectorStoresRequest": {
+    "com.azure.ai_agents#ListVectorStoreVectorStoresRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1877,7 +1759,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#VectorStoresListVectorStoresRequestOrder",
+          "target": "com.azure.ai_agents#ListVectorStoreVectorStoresRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -1902,7 +1784,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#VectorStoresListVectorStoresRequestOrder": {
+    "com.azure.ai_agents#ListVectorStoreVectorStoresRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -2946,10 +2828,10 @@
         "smithy.api#documentation": "The possible values for roles attributed to messages in a thread."
       }
     },
-    "com.azure.ai_agents#RunsSubmitToolOutputsToRun": {
+    "com.azure.ai_agents#SubmitRunToolOutputsToRun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunsSubmitToolOutputsToRunRequest"
+        "target": "com.azure.ai_agents#SubmitRunToolOutputsToRunRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadRun"
@@ -2968,7 +2850,7 @@
         "smithy.api#documentation": "Submits outputs from tools as requested by tool calls in a run."
       }
     },
-    "com.azure.ai_agents#RunsSubmitToolOutputsToRunRequest": {
+    "com.azure.ai_agents#SubmitRunToolOutputsToRunRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2996,7 +2878,7 @@
           }
         },
         "tool_outputs": {
-          "target": "com.azure.ai_agents#RunsSubmitToolOutputsToRunRequestToolOutputsList",
+          "target": "com.azure.ai_agents#SubmitRunToolOutputsToRunRequestToolOutputsList",
           "traits": {
             "smithy.api#documentation": "A list of tools for which the outputs are being submitted",
             "smithy.api#required": {}
@@ -3014,7 +2896,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunsSubmitToolOutputsToRunRequestToolOutputsList": {
+    "com.azure.ai_agents#SubmitRunToolOutputsToRunRequestToolOutputsList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#StructuredToolOutput"
@@ -3044,10 +2926,10 @@
         "smithy.api#documentation": "The data provided during a tool outputs submission to resolve pending tool calls and allow the model to continue."
       }
     },
-    "com.azure.ai_agents#RunStepsGetRunStep": {
+    "com.azure.ai_agents#GetRunStepRunStep": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunStepsGetRunStepRequest"
+        "target": "com.azure.ai_agents#GetRunStepRunStepRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#RunStep"
@@ -3362,7 +3244,7 @@
         "smithy.api#documentation": "The object type, which is always 'thread.run.step'."
       }
     },
-    "com.azure.ai_agents#RunStepsGetRunStepRequest": {
+    "com.azure.ai_agents#GetRunStepRunStepRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3398,7 +3280,7 @@
           }
         },
         "include__": {
-          "target": "com.azure.ai_agents#RunStepsGetRunStepRequestIncludeList",
+          "target": "com.azure.ai_agents#GetRunStepRunStepRequestIncludeList",
           "traits": {
             "smithy.api#httpQuery": "include[]",
             "smithy.api#documentation": "A list of additional fields to include in the response.\nCurrently the only supported value is `step_details.tool_calls[*].file_search.results[*].content` to fetch the file search result content."
@@ -3409,14 +3291,14 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunStepsGetRunStepRequestIncludeList": {
+    "com.azure.ai_agents#GetRunStepRunStepRequestIncludeList": {
       "type": "list",
       "member": {
-        "target": "com.azure.ai_agents#RunStepsGetRunStepRequestIncludeItem"
+        "target": "com.azure.ai_agents#GetRunStepRunStepRequestIncludeItem"
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunStepsGetRunStepRequestIncludeItem": {
+    "com.azure.ai_agents#GetRunStepRunStepRequestIncludeItem": {
       "type": "enum",
       "members": {
         "STEP_DETAILS_TOOL_CALLS_FILE_SEARCH_RESULTS_CONTENT": {
@@ -3428,13 +3310,13 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunStepsListRunSteps": {
+    "com.azure.ai_agents#ListRunStepRunSteps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunStepsListRunStepsRequest"
+        "target": "com.azure.ai_agents#ListRunStepRunStepsRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#RunStepsListRunStepsResponse"
+        "target": "com.azure.ai_agents#ListRunStepRunStepsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3450,11 +3332,11 @@
         "smithy.api#documentation": "Gets a list of run steps from a thread run."
       }
     },
-    "com.azure.ai_agents#RunStepsListRunStepsResponse": {
+    "com.azure.ai_agents#ListRunStepRunStepsResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#RunStepsListRunStepsResponseDataList",
+          "target": "com.azure.ai_agents#ListRunStepRunStepsResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -3478,7 +3360,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#RunStepsListRunStepsResponseDataList": {
+    "com.azure.ai_agents#ListRunStepRunStepsResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#RunStep"
@@ -3487,7 +3369,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#RunStepsListRunStepsRequest": {
+    "com.azure.ai_agents#ListRunStepRunStepsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3515,7 +3397,7 @@
           }
         },
         "include__": {
-          "target": "com.azure.ai_agents#RunStepsListRunStepsRequestIncludeList",
+          "target": "com.azure.ai_agents#ListRunStepRunStepsRequestIncludeList",
           "traits": {
             "smithy.api#httpQuery": "include[]",
             "smithy.api#documentation": "A list of additional fields to include in the response.\nCurrently the only supported value is `step_details.tool_calls[*].file_search.results[*].content` to fetch the file search result content."
@@ -3529,7 +3411,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#RunStepsListRunStepsRequestOrder",
+          "target": "com.azure.ai_agents#ListRunStepRunStepsRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -3554,7 +3436,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunStepsListRunStepsRequestOrder": {
+    "com.azure.ai_agents#ListRunStepRunStepsRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -3572,14 +3454,14 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunStepsListRunStepsRequestIncludeList": {
+    "com.azure.ai_agents#ListRunStepRunStepsRequestIncludeList": {
       "type": "list",
       "member": {
-        "target": "com.azure.ai_agents#RunStepsListRunStepsRequestIncludeItem"
+        "target": "com.azure.ai_agents#ListRunStepRunStepsRequestIncludeItem"
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunStepsListRunStepsRequestIncludeItem": {
+    "com.azure.ai_agents#ListRunStepRunStepsRequestIncludeItem": {
       "type": "enum",
       "members": {
         "STEP_DETAILS_TOOL_CALLS_FILE_SEARCH_RESULTS_CONTENT": {
@@ -3591,10 +3473,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunsCancelRun": {
+    "com.azure.ai_agents#CancelRunRun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunsCancelRunRequest"
+        "target": "com.azure.ai_agents#CancelRunRunRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadRun"
@@ -3613,7 +3495,7 @@
         "smithy.api#documentation": "Cancels a run of an in‐progress thread."
       }
     },
-    "com.azure.ai_agents#RunsCancelRunRequest": {
+    "com.azure.ai_agents#CancelRunRunRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3645,10 +3527,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunsUpdateRun": {
+    "com.azure.ai_agents#UpdateRunRun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunsUpdateRunRequest"
+        "target": "com.azure.ai_agents#UpdateRunRunRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadRun"
@@ -3667,7 +3549,7 @@
         "smithy.api#documentation": "Modifies an existing thread run."
       }
     },
-    "com.azure.ai_agents#RunsUpdateRunRequest": {
+    "com.azure.ai_agents#UpdateRunRunRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3695,7 +3577,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#RunsUpdateRunRequestMetadataMap",
+          "target": "com.azure.ai_agents#UpdateRunRunRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -3706,7 +3588,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunsUpdateRunRequestMetadataMap": {
+    "com.azure.ai_agents#UpdateRunRunRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3718,10 +3600,10 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#RunsGetRun": {
+    "com.azure.ai_agents#GetRunRun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunsGetRunRequest"
+        "target": "com.azure.ai_agents#GetRunRunRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadRun"
@@ -3740,7 +3622,7 @@
         "smithy.api#documentation": "Gets an existing run from an existing thread."
       }
     },
-    "com.azure.ai_agents#RunsGetRunRequest": {
+    "com.azure.ai_agents#GetRunRunRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3772,10 +3654,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunsCreateRun": {
+    "com.azure.ai_agents#CreateRunRun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunsCreateRunRequest"
+        "target": "com.azure.ai_agents#CreateRunRunRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadRun"
@@ -3794,7 +3676,7 @@
         "smithy.api#documentation": "Creates a new run for an agent thread."
       }
     },
-    "com.azure.ai_agents#RunsCreateRunRequest": {
+    "com.azure.ai_agents#CreateRunRunRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3814,7 +3696,7 @@
           }
         },
         "include__": {
-          "target": "com.azure.ai_agents#RunsCreateRunRequestIncludeList",
+          "target": "com.azure.ai_agents#CreateRunRunRequestIncludeList",
           "traits": {
             "smithy.api#httpQuery": "include[]",
             "smithy.api#documentation": "A list of additional fields to include in the response.\nCurrently the only supported value is `step_details.tool_calls[*].file_search.results[*].content`\nto fetch the file search result content."
@@ -3849,14 +3731,14 @@
           }
         },
         "additional_messages": {
-          "target": "com.azure.ai_agents#RunsCreateRunRequestAdditionalMessagesList",
+          "target": "com.azure.ai_agents#CreateRunRunRequestAdditionalMessagesList",
           "traits": {
             "smithy.api#documentation": "Adds additional messages to the thread before creating the run.",
             "com.distilled.openapi#nullable": {}
           }
         },
         "tools": {
-          "target": "com.azure.ai_agents#RunsCreateRunRequestToolsList",
+          "target": "com.azure.ai_agents#CreateRunRunRequestToolsList",
           "traits": {
             "smithy.api#documentation": "The overridden list of enabled tools that the agent should use to run the thread.",
             "com.distilled.openapi#nullable": {}
@@ -3931,7 +3813,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#RunsCreateRunRequestMetadataMap",
+          "target": "com.azure.ai_agents#CreateRunRunRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -3942,7 +3824,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunsCreateRunRequestMetadataMap": {
+    "com.azure.ai_agents#CreateRunRunRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3954,7 +3836,7 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#RunsCreateRunRequestToolsList": {
+    "com.azure.ai_agents#CreateRunRunRequestToolsList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#ToolDefinition"
@@ -3963,7 +3845,7 @@
         "smithy.api#documentation": "The overridden list of enabled tools that the agent should use to run the thread."
       }
     },
-    "com.azure.ai_agents#RunsCreateRunRequestAdditionalMessagesList": {
+    "com.azure.ai_agents#CreateRunRunRequestAdditionalMessagesList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#ThreadMessageOptions"
@@ -3972,14 +3854,14 @@
         "smithy.api#documentation": "Adds additional messages to the thread before creating the run."
       }
     },
-    "com.azure.ai_agents#RunsCreateRunRequestIncludeList": {
+    "com.azure.ai_agents#CreateRunRunRequestIncludeList": {
       "type": "list",
       "member": {
-        "target": "com.azure.ai_agents#RunsCreateRunRequestIncludeItem"
+        "target": "com.azure.ai_agents#CreateRunRunRequestIncludeItem"
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunsCreateRunRequestIncludeItem": {
+    "com.azure.ai_agents#CreateRunRunRequestIncludeItem": {
       "type": "enum",
       "members": {
         "STEP_DETAILS_TOOL_CALLS_FILE_SEARCH_RESULTS_CONTENT": {
@@ -3991,13 +3873,13 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#RunsListRuns": {
+    "com.azure.ai_agents#ListRunRuns": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#RunsListRunsRequest"
+        "target": "com.azure.ai_agents#ListRunRunsRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#RunsListRunsResponse"
+        "target": "com.azure.ai_agents#ListRunRunsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4013,11 +3895,11 @@
         "smithy.api#documentation": "Gets a list of runs for a specified thread."
       }
     },
-    "com.azure.ai_agents#RunsListRunsResponse": {
+    "com.azure.ai_agents#ListRunRunsResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#RunsListRunsResponseDataList",
+          "target": "com.azure.ai_agents#ListRunRunsResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -4041,7 +3923,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#RunsListRunsResponseDataList": {
+    "com.azure.ai_agents#ListRunRunsResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#ThreadRun"
@@ -4050,7 +3932,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#RunsListRunsRequest": {
+    "com.azure.ai_agents#ListRunRunsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4077,7 +3959,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#RunsListRunsRequestOrder",
+          "target": "com.azure.ai_agents#ListRunRunsRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -4102,7 +3984,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#RunsListRunsRequestOrder": {
+    "com.azure.ai_agents#ListRunRunsRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -4120,10 +4002,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#MessagesUpdateMessage": {
+    "com.azure.ai_agents#UpdateMessageMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#MessagesUpdateMessageRequest"
+        "target": "com.azure.ai_agents#UpdateMessageMessageRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadMessage"
@@ -4393,7 +4275,7 @@
         "smithy.api#documentation": "The object type, which is always 'thread.message'."
       }
     },
-    "com.azure.ai_agents#MessagesUpdateMessageRequest": {
+    "com.azure.ai_agents#UpdateMessageMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4421,7 +4303,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#MessagesUpdateMessageRequestMetadataMap",
+          "target": "com.azure.ai_agents#UpdateMessageMessageRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -4432,7 +4314,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#MessagesUpdateMessageRequestMetadataMap": {
+    "com.azure.ai_agents#UpdateMessageMessageRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4444,10 +4326,10 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#MessagesGetMessage": {
+    "com.azure.ai_agents#GetMessageMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#MessagesGetMessageRequest"
+        "target": "com.azure.ai_agents#GetMessageMessageRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadMessage"
@@ -4466,7 +4348,7 @@
         "smithy.api#documentation": "Retrieves an existing message."
       }
     },
-    "com.azure.ai_agents#MessagesGetMessageRequest": {
+    "com.azure.ai_agents#GetMessageMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4498,10 +4380,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#MessagesCreateMessage": {
+    "com.azure.ai_agents#CreateMessageMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#MessagesCreateMessageRequest"
+        "target": "com.azure.ai_agents#CreateMessageMessageRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadMessage"
@@ -4520,7 +4402,7 @@
         "smithy.api#documentation": "Creates a new message on a specified thread."
       }
     },
-    "com.azure.ai_agents#MessagesCreateMessageRequest": {
+    "com.azure.ai_agents#CreateMessageMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4554,14 +4436,14 @@
           }
         },
         "attachments": {
-          "target": "com.azure.ai_agents#MessagesCreateMessageRequestAttachmentsList",
+          "target": "com.azure.ai_agents#CreateMessageMessageRequestAttachmentsList",
           "traits": {
             "smithy.api#documentation": "A list of files attached to the message, and the tools they should be added to.",
             "com.distilled.openapi#nullable": {}
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#MessagesCreateMessageRequestMetadataMap",
+          "target": "com.azure.ai_agents#CreateMessageMessageRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -4572,7 +4454,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#MessagesCreateMessageRequestMetadataMap": {
+    "com.azure.ai_agents#CreateMessageMessageRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4584,7 +4466,7 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#MessagesCreateMessageRequestAttachmentsList": {
+    "com.azure.ai_agents#CreateMessageMessageRequestAttachmentsList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#MessageAttachment"
@@ -4593,13 +4475,13 @@
         "smithy.api#documentation": "A list of files attached to the message, and the tools they should be added to."
       }
     },
-    "com.azure.ai_agents#MessagesListMessages": {
+    "com.azure.ai_agents#ListMessageMessages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#MessagesListMessagesRequest"
+        "target": "com.azure.ai_agents#ListMessageMessagesRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#MessagesListMessagesResponse"
+        "target": "com.azure.ai_agents#ListMessageMessagesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4615,11 +4497,11 @@
         "smithy.api#documentation": "Gets a list of messages that exist on a thread."
       }
     },
-    "com.azure.ai_agents#MessagesListMessagesResponse": {
+    "com.azure.ai_agents#ListMessageMessagesResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#MessagesListMessagesResponseDataList",
+          "target": "com.azure.ai_agents#ListMessageMessagesResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -4643,7 +4525,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#MessagesListMessagesResponseDataList": {
+    "com.azure.ai_agents#ListMessageMessagesResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#ThreadMessage"
@@ -4652,7 +4534,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#MessagesListMessagesRequest": {
+    "com.azure.ai_agents#ListMessageMessagesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4686,7 +4568,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#MessagesListMessagesRequestOrder",
+          "target": "com.azure.ai_agents#ListMessageMessagesRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -4711,7 +4593,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#MessagesListMessagesRequestOrder": {
+    "com.azure.ai_agents#ListMessageMessagesRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -4729,10 +4611,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#ThreadsDeleteThread": {
+    "com.azure.ai_agents#DeleteThreadThread": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#ThreadsDeleteThreadRequest"
+        "target": "com.azure.ai_agents#DeleteThreadThreadRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#ThreadDeletionStatus"
@@ -4794,7 +4676,7 @@
         "smithy.api#documentation": "The object type, which is always 'thread.deleted'."
       }
     },
-    "com.azure.ai_agents#ThreadsDeleteThreadRequest": {
+    "com.azure.ai_agents#DeleteThreadThreadRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4818,10 +4700,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#ThreadsUpdateThread": {
+    "com.azure.ai_agents#UpdateThreadThread": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#ThreadsUpdateThreadRequest"
+        "target": "com.azure.ai_agents#UpdateThreadThreadRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#AgentThread"
@@ -4911,7 +4793,7 @@
         "smithy.api#documentation": "The object type, which is always 'thread'."
       }
     },
-    "com.azure.ai_agents#ThreadsUpdateThreadRequest": {
+    "com.azure.ai_agents#UpdateThreadThreadRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4938,7 +4820,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#ThreadsUpdateThreadRequestMetadataMap",
+          "target": "com.azure.ai_agents#UpdateThreadThreadRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -4949,7 +4831,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#ThreadsUpdateThreadRequestMetadataMap": {
+    "com.azure.ai_agents#UpdateThreadThreadRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4961,10 +4843,10 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#ThreadsGetThread": {
+    "com.azure.ai_agents#GetThreadThread": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#ThreadsGetThreadRequest"
+        "target": "com.azure.ai_agents#GetThreadThreadRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#AgentThread"
@@ -4983,7 +4865,7 @@
         "smithy.api#documentation": "Gets information about an existing thread."
       }
     },
-    "com.azure.ai_agents#ThreadsGetThreadRequest": {
+    "com.azure.ai_agents#GetThreadThreadRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5007,10 +4889,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#ThreadsCreateThread": {
+    "com.azure.ai_agents#CreateThreadThread": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#ThreadsCreateThreadRequest"
+        "target": "com.azure.ai_agents#CreateThreadThreadRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#AgentThread"
@@ -5029,7 +4911,7 @@
         "smithy.api#documentation": "Creates a new thread. Threads contain messages and can be run by agents."
       }
     },
-    "com.azure.ai_agents#ThreadsCreateThreadRequest": {
+    "com.azure.ai_agents#CreateThreadThreadRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5041,7 +4923,7 @@
           }
         },
         "messages": {
-          "target": "com.azure.ai_agents#ThreadsCreateThreadRequestMessagesList",
+          "target": "com.azure.ai_agents#CreateThreadThreadRequestMessagesList",
           "traits": {
             "smithy.api#documentation": "The initial messages to associate with the new thread."
           }
@@ -5054,7 +4936,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.ai_agents#ThreadsCreateThreadRequestMetadataMap",
+          "target": "com.azure.ai_agents#CreateThreadThreadRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length.",
             "com.distilled.openapi#nullable": {}
@@ -5065,7 +4947,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#ThreadsCreateThreadRequestMetadataMap": {
+    "com.azure.ai_agents#CreateThreadThreadRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5077,7 +4959,7 @@
         "smithy.api#documentation": "A set of up to 16 key/value pairs that can be attached to an object, used for storing additional information about that object in a structured format. Keys may be up to 64 characters in length and values may be up to 512 characters in length."
       }
     },
-    "com.azure.ai_agents#ThreadsCreateThreadRequestMessagesList": {
+    "com.azure.ai_agents#CreateThreadThreadRequestMessagesList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#ThreadMessageOptions"
@@ -5086,13 +4968,13 @@
         "smithy.api#documentation": "The initial messages to associate with the new thread."
       }
     },
-    "com.azure.ai_agents#ThreadsListThreads": {
+    "com.azure.ai_agents#ListThreadThreads": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#ThreadsListThreadsRequest"
+        "target": "com.azure.ai_agents#ListThreadThreadsRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#ThreadsListThreadsResponse"
+        "target": "com.azure.ai_agents#ListThreadThreadsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5108,11 +4990,11 @@
         "smithy.api#documentation": "Gets a list of threads that were previously created."
       }
     },
-    "com.azure.ai_agents#ThreadsListThreadsResponse": {
+    "com.azure.ai_agents#ListThreadThreadsResponse": {
       "type": "structure",
       "members": {
         "data": {
-          "target": "com.azure.ai_agents#ThreadsListThreadsResponseDataList",
+          "target": "com.azure.ai_agents#ListThreadThreadsResponseDataList",
           "traits": {
             "smithy.api#documentation": "The requested list of items.",
             "smithy.api#required": {}
@@ -5136,7 +5018,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#ThreadsListThreadsResponseDataList": {
+    "com.azure.ai_agents#ListThreadThreadsResponseDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_agents#AgentThread"
@@ -5145,7 +5027,7 @@
         "smithy.api#documentation": "The requested list of items."
       }
     },
-    "com.azure.ai_agents#ThreadsListThreadsRequest": {
+    "com.azure.ai_agents#ListThreadThreadsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5164,7 +5046,7 @@
           }
         },
         "order": {
-          "target": "com.azure.ai_agents#ThreadsListThreadsRequestOrder",
+          "target": "com.azure.ai_agents#ListThreadThreadsRequestOrder",
           "traits": {
             "smithy.api#httpQuery": "order",
             "smithy.api#documentation": "Sort order by the created_at timestamp of the objects. asc for ascending order and desc for descending order."
@@ -5189,7 +5071,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#ThreadsListThreadsRequestOrder": {
+    "com.azure.ai_agents#ListThreadThreadsRequestOrder": {
       "type": "enum",
       "members": {
         "ASC": {
@@ -5207,13 +5089,13 @@
       },
       "traits": {}
     },
-    "com.azure.ai_agents#FilesGetFileContent": {
+    "com.azure.ai_agents#GetFileFileContent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#FilesGetFileContentRequest"
+        "target": "com.azure.ai_agents#GetFileFileContentRequest"
       },
       "output": {
-        "target": "com.azure.ai_agents#FilesGetFileContentResponse"
+        "target": "com.azure.ai_agents#GetFileFileContentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5229,7 +5111,7 @@
         "smithy.api#documentation": "Retrieves the raw content of a specific file."
       }
     },
-    "com.azure.ai_agents#FilesGetFileContentResponse": {
+    "com.azure.ai_agents#GetFileFileContentResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -5244,7 +5126,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_agents#FilesGetFileContentRequest": {
+    "com.azure.ai_agents#GetFileFileContentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5268,10 +5150,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#FilesDeleteFile": {
+    "com.azure.ai_agents#DeleteFileFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#FilesDeleteFileRequest"
+        "target": "com.azure.ai_agents#DeleteFileFileRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#FileDeletionStatus"
@@ -5333,7 +5215,7 @@
         "smithy.api#documentation": "The object type, which is always 'file'."
       }
     },
-    "com.azure.ai_agents#FilesDeleteFileRequest": {
+    "com.azure.ai_agents#DeleteFileFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5357,10 +5239,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#FilesGetFile": {
+    "com.azure.ai_agents#GetFileFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#FilesGetFileRequest"
+        "target": "com.azure.ai_agents#GetFileFileRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#FileInfo"
@@ -5531,7 +5413,7 @@
         "smithy.api#documentation": "The object type, which is always 'file'."
       }
     },
-    "com.azure.ai_agents#FilesGetFileRequest": {
+    "com.azure.ai_agents#GetFileFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5555,10 +5437,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#FilesUploadFile": {
+    "com.azure.ai_agents#UploadFileFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#FilesUploadFileRequest"
+        "target": "com.azure.ai_agents#UploadFileFileRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#FileInfo"
@@ -5577,7 +5459,7 @@
         "smithy.api#documentation": "Uploads a file for use by other operations."
       }
     },
-    "com.azure.ai_agents#FilesUploadFileRequest": {
+    "com.azure.ai_agents#UploadFileFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5593,10 +5475,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#FilesListFiles": {
+    "com.azure.ai_agents#ListFileFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_agents#FilesListFilesRequest"
+        "target": "com.azure.ai_agents#ListFileFilesRequest"
       },
       "output": {
         "target": "com.azure.ai_agents#FileListResponse"
@@ -5660,7 +5542,7 @@
         "smithy.api#documentation": "The object type, which is always 'list'."
       }
     },
-    "com.azure.ai_agents#FilesListFilesRequest": {
+    "com.azure.ai_agents#ListFileFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5672,7 +5554,7 @@
           }
         },
         "purpose": {
-          "target": "com.azure.ai_agents#FilesListFilesRequestPurpose",
+          "target": "com.azure.ai_agents#ListFileFilesRequestPurpose",
           "traits": {
             "smithy.api#httpQuery": "purpose",
             "smithy.api#documentation": "The purpose of the file."
@@ -5683,7 +5565,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_agents#FilesListFilesRequestPurpose": {
+    "com.azure.ai_agents#ListFileFilesRequestPurpose": {
       "type": "enum",
       "members": {
         "ASSISTANTS": {
@@ -6371,112 +6253,112 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.ai_agents#VectorStoreFilesDeleteVectorStoreFile"
+          "target": "com.azure.ai_agents#DeleteVectorStoreFileVectorStoreFile"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFilesGetVectorStoreFile"
+          "target": "com.azure.ai_agents#GetVectorStoreFileVectorStoreFile"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFilesCreateVectorStoreFile"
+          "target": "com.azure.ai_agents#CreateVectorStoreFileVectorStoreFile"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFilesListVectorStoreFiles"
+          "target": "com.azure.ai_agents#ListVectorStoreFileVectorStoreFiles"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesListVectorStoreFileBatchFiles"
+          "target": "com.azure.ai_agents#ListVectorStoreFileBatchVectorStoreFileBatchFiles"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesCancelVectorStoreFileBatch"
+          "target": "com.azure.ai_agents#CancelVectorStoreFileBatchVectorStoreFileBatch"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesGetVectorStoreFileBatch"
+          "target": "com.azure.ai_agents#GetVectorStoreFileBatchVectorStoreFileBatch"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoreFileBatchesCreateVectorStoreFileBatch"
+          "target": "com.azure.ai_agents#CreateVectorStoreFileBatchVectorStoreFileBatch"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoresDeleteVectorStore"
+          "target": "com.azure.ai_agents#DeleteVectorStoreVectorStore"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoresModifyVectorStore"
+          "target": "com.azure.ai_agents#ModifyVectorStoreVectorStore"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoresGetVectorStore"
+          "target": "com.azure.ai_agents#GetVectorStoreVectorStore"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoresCreateVectorStore"
+          "target": "com.azure.ai_agents#CreateVectorStoreVectorStore"
         },
         {
-          "target": "com.azure.ai_agents#VectorStoresListVectorStores"
+          "target": "com.azure.ai_agents#ListVectorStoreVectorStores"
         },
         {
           "target": "com.azure.ai_agents#CreateThreadAndRun"
         },
         {
-          "target": "com.azure.ai_agents#RunsSubmitToolOutputsToRun"
+          "target": "com.azure.ai_agents#SubmitRunToolOutputsToRun"
         },
         {
-          "target": "com.azure.ai_agents#RunStepsGetRunStep"
+          "target": "com.azure.ai_agents#GetRunStepRunStep"
         },
         {
-          "target": "com.azure.ai_agents#RunStepsListRunSteps"
+          "target": "com.azure.ai_agents#ListRunStepRunSteps"
         },
         {
-          "target": "com.azure.ai_agents#RunsCancelRun"
+          "target": "com.azure.ai_agents#CancelRunRun"
         },
         {
-          "target": "com.azure.ai_agents#RunsUpdateRun"
+          "target": "com.azure.ai_agents#UpdateRunRun"
         },
         {
-          "target": "com.azure.ai_agents#RunsGetRun"
+          "target": "com.azure.ai_agents#GetRunRun"
         },
         {
-          "target": "com.azure.ai_agents#RunsCreateRun"
+          "target": "com.azure.ai_agents#CreateRunRun"
         },
         {
-          "target": "com.azure.ai_agents#RunsListRuns"
+          "target": "com.azure.ai_agents#ListRunRuns"
         },
         {
-          "target": "com.azure.ai_agents#MessagesUpdateMessage"
+          "target": "com.azure.ai_agents#UpdateMessageMessage"
         },
         {
-          "target": "com.azure.ai_agents#MessagesGetMessage"
+          "target": "com.azure.ai_agents#GetMessageMessage"
         },
         {
-          "target": "com.azure.ai_agents#MessagesCreateMessage"
+          "target": "com.azure.ai_agents#CreateMessageMessage"
         },
         {
-          "target": "com.azure.ai_agents#MessagesListMessages"
+          "target": "com.azure.ai_agents#ListMessageMessages"
         },
         {
-          "target": "com.azure.ai_agents#ThreadsDeleteThread"
+          "target": "com.azure.ai_agents#DeleteThreadThread"
         },
         {
-          "target": "com.azure.ai_agents#ThreadsUpdateThread"
+          "target": "com.azure.ai_agents#UpdateThreadThread"
         },
         {
-          "target": "com.azure.ai_agents#ThreadsGetThread"
+          "target": "com.azure.ai_agents#GetThreadThread"
         },
         {
-          "target": "com.azure.ai_agents#ThreadsCreateThread"
+          "target": "com.azure.ai_agents#CreateThreadThread"
         },
         {
-          "target": "com.azure.ai_agents#ThreadsListThreads"
+          "target": "com.azure.ai_agents#ListThreadThreads"
         },
         {
-          "target": "com.azure.ai_agents#FilesGetFileContent"
+          "target": "com.azure.ai_agents#GetFileFileContent"
         },
         {
-          "target": "com.azure.ai_agents#FilesDeleteFile"
+          "target": "com.azure.ai_agents#DeleteFileFile"
         },
         {
-          "target": "com.azure.ai_agents#FilesGetFile"
+          "target": "com.azure.ai_agents#GetFileFile"
         },
         {
-          "target": "com.azure.ai_agents#FilesUploadFile"
+          "target": "com.azure.ai_agents#UploadFileFile"
         },
         {
-          "target": "com.azure.ai_agents#FilesListFiles"
+          "target": "com.azure.ai_agents#ListFileFiles"
         },
         {
           "target": "com.azure.ai_agents#DeleteAgent"

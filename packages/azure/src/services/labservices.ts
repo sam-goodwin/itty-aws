@@ -1253,6 +1253,8 @@ export interface ListImageByLabPlanRequest {
   labPlanName: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ImageSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -1291,7 +1293,7 @@ export type PagedImagesValueList = Array<Image>;
 /** Paged list of Lab services virtual machine images. */
 export interface PagedImages {
   /** The array page of virtual machine images. */
-  value?: PagedImagesValueList;
+  value: PagedImagesValueList;
   /** The link to get the next page of image results. */
   nextLink?: string;
 }
@@ -1300,6 +1302,8 @@ export interface ListLabByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LabTagsMap = { [key: string]: string | undefined };
@@ -1344,7 +1348,7 @@ export type PagedLabsValueList = Array<Lab>;
 /** Paged list of labs. */
 export interface PagedLabs {
   /** The array page of lab results. */
-  value?: PagedLabsValueList;
+  value: PagedLabsValueList;
   /** The link to get the next page of image results. */
   nextLink?: string;
 }
@@ -1353,12 +1357,16 @@ export interface ListLabBySubscriptionRequest {
   subscriptionId: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLabPlanByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LabPlanTagsMap = { [key: string]: string | undefined };
@@ -1420,7 +1428,7 @@ export type PagedLabPlansValueList = Array<LabPlan>;
 /** Paged list of lab plans. */
 export interface PagedLabPlans {
   /** The array page of lab plans. */
-  value?: PagedLabPlansValueList;
+  value: PagedLabPlansValueList;
   /** The link to get the next page of lab plan results. */
   nextLink?: string;
 }
@@ -1429,8 +1437,13 @@ export interface ListLabPlanBySubscriptionRequest {
   subscriptionId: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1463,7 +1476,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -1476,6 +1489,8 @@ export interface ListScheduleByLabRequest {
   labName: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ScheduleSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -1518,7 +1533,7 @@ export type PagedSchedulesValueList = Array<Schedule>;
 /** Paged list of schedules. */
 export interface PagedSchedules {
   /** The array page of schedule results. */
-  value?: PagedSchedulesValueList;
+  value: PagedSchedulesValueList;
   /** The link to get the next page of schedule results. */
   nextLink?: string;
 }
@@ -1527,6 +1542,8 @@ export interface ListSkusRequest {
   subscriptionId: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tier of the SKU. */
 export type LabServicesSkuTier = "Standard" | "Premium";
@@ -1609,7 +1626,7 @@ export type PagedLabServicesSkusValueList = Array<LabServicesSku>;
 /** Paged list of lab services skus. */
 export interface PagedLabServicesSkus {
   /** The array page of sku results. */
-  value?: PagedLabServicesSkusValueList;
+  value: PagedLabServicesSkusValueList;
   /** The link to get the next page of sku results. */
   nextLink?: string;
 }
@@ -1620,6 +1637,8 @@ export interface ListUsageByLocationRequest {
   location: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The unit details. */
 export type UsageUnit = "Count";
@@ -1652,7 +1671,7 @@ export type ListUsagesResultValueList = Array<Usage>;
 /** List of Core Usages. */
 export interface ListUsagesResult {
   /** The array page of Usages. */
-  value?: ListUsagesResultValueList;
+  value: ListUsagesResultValueList;
   /** The link to get the next page of Usage result. */
   nextLink?: string;
 }
@@ -1665,6 +1684,8 @@ export interface ListUserByLabRequest {
   labName: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type UserSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -1703,7 +1724,7 @@ export type PagedUsersValueList = Array<User>;
 /** Paged list of users. */
 export interface PagedUsers {
   /** The array page of user results. */
-  value?: PagedUsersValueList;
+  value: PagedUsersValueList;
   /** The link to get the next page of image results. */
   nextLink?: string;
 }
@@ -1716,6 +1737,8 @@ export interface ListVirtualMachineByLabRequest {
   labName: string;
   /** The filter to apply to the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type VirtualMachineSystemDataCreatedByType =
@@ -1762,7 +1785,7 @@ export type PagedVirtualMachinesValueList = Array<VirtualMachine>;
 /** Paged list of lab services virtual machines. */
 export interface PagedVirtualMachines {
   /** The array page of virtual machine results. */
-  value?: PagedVirtualMachinesValueList;
+  value: PagedVirtualMachinesValueList;
   /** The link to get the next page of virtual machine results. */
   nextLink?: string;
 }
@@ -2575,168 +2598,245 @@ export const LabsCreateOrUpdate: API.OperationMethod<
 
 export type ListImageByLabPlanError = AzureOpError;
 /** Gets all images. Gets all images from galleries attached to a lab plan. */
-export const ListImageByLabPlan: API.OperationMethod<
+export const ListImageByLabPlan: API.PaginatedOperationMethod<
   ListImageByLabPlanRequest,
   PagedImages,
   ListImageByLabPlanError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Image
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListImageByLabPlanRequest>,
   output: __S(194, __c12, 2) as any as S.Schema<PagedImages>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabByResourceGroupError = AzureOpError;
 /** Get all labs for a subscription and resource group. Returns a list of all labs in a resource group. */
-export const ListLabByResourceGroup: API.OperationMethod<
+export const ListLabByResourceGroup: API.PaginatedOperationMethod<
   ListLabByResourceGroupRequest,
   PagedLabs,
   ListLabByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Lab
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListLabByResourceGroupRequest>,
   output: __S(225, __c14, 1) as any as S.Schema<PagedLabs>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabBySubscriptionError = AzureOpError;
 /** Get all labs for a subscription. Returns a list of all labs for a subscription. */
-export const ListLabBySubscription: API.OperationMethod<
+export const ListLabBySubscription: API.PaginatedOperationMethod<
   ListLabBySubscriptionRequest,
   PagedLabs,
   ListLabBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Lab
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<ListLabBySubscriptionRequest>,
   output: __S(225, __c14, 1) as any as S.Schema<PagedLabs>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabPlanByResourceGroupError = AzureOpError;
 /** Get all lab plans for a subscription and resource group. Returns a list of all lab plans for a subscription and resource group. */
-export const ListLabPlanByResourceGroup: API.OperationMethod<
+export const ListLabPlanByResourceGroup: API.PaginatedOperationMethod<
   ListLabPlanByResourceGroupRequest,
   PagedLabPlans,
   ListLabPlanByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LabPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListLabPlanByResourceGroupRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<PagedLabPlans>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabPlanBySubscriptionError = AzureOpError;
 /** Get all lab plans for a subscription. Returns a list of all lab plans within a subscription */
-export const ListLabPlanBySubscription: API.OperationMethod<
+export const ListLabPlanBySubscription: API.PaginatedOperationMethod<
   ListLabPlanBySubscriptionRequest,
   PagedLabPlans,
   ListLabPlanBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LabPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<ListLabPlanBySubscriptionRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<PagedLabPlans>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Get all operations Returns a list of all operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(324, __c20, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduleByLabError = AzureOpError;
 /** Get all schedules for a lab. Returns a list of all schedules for a lab. */
-export const ListScheduleByLab: API.OperationMethod<
+export const ListScheduleByLab: API.PaginatedOperationMethod<
   ListScheduleByLabRequest,
   PagedSchedules,
   ListScheduleByLabError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListScheduleByLabRequest>,
   output: __S(338, __c21, 2) as any as S.Schema<PagedSchedules>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusError = AzureOpError;
 /** Gets the Azure Lab Services resource SKUs. Returns a list of Azure Lab Services resource SKUs. */
-export const ListSkus: API.OperationMethod<
+export const ListSkus: API.PaginatedOperationMethod<
   ListSkusRequest,
   PagedLabServicesSkus,
   ListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LabServicesSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListSkusRequest>,
   output: __S(362, __c22, 10) as any as S.Schema<PagedLabServicesSkus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsageByLocationError = AzureOpError;
 /** Gets the list of usages. Returns list of usage per SKU family for the specified subscription in the specified region. */
-export const ListUsageByLocation: API.OperationMethod<
+export const ListUsageByLocation: API.PaginatedOperationMethod<
   ListUsageByLocationRequest,
   ListUsagesResult,
   ListUsageByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListUsageByLocationRequest>,
   output: __S(372, __c23, 4) as any as S.Schema<ListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUserByLabError = AzureOpError;
 /** Get all users for a lab. Returns a list of all users for a lab. */
-export const ListUserByLab: API.OperationMethod<
+export const ListUserByLab: API.PaginatedOperationMethod<
   ListUserByLabRequest,
   PagedUsers,
   ListUserByLabError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ListUserByLabRequest>,
   output: __S(386, __c24, 2) as any as S.Schema<PagedUsers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineByLabError = AzureOpError;
 /** Get all virtual machines for a lab. Returns a list of all virtual machines for a lab. */
-export const ListVirtualMachineByLab: API.OperationMethod<
+export const ListVirtualMachineByLab: API.PaginatedOperationMethod<
   ListVirtualMachineByLabRequest,
   PagedVirtualMachines,
   ListVirtualMachineByLabError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListVirtualMachineByLabRequest>,
   output: __S(402, __c25, 2) as any as S.Schema<PagedVirtualMachines>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PublishLabError = AzureOpError;
 /** Publish or re-publish a lab. Publish or re-publish a lab. This will create or update all lab resources, such as virtual machines. */
@@ -3239,12 +3339,14 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labPlanName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans/{labPlanName}/images",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImageByLabPlanRequest" });
@@ -3253,7 +3355,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(193, __c12, 1)),
+          value: __S(193, __c12, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedImages" });
@@ -3266,12 +3368,14 @@ function __c13(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabByResourceGroupRequest" });
@@ -3284,7 +3388,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(224, __c14, 0)),
+          value: __S(224, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedLabs" });
@@ -3297,12 +3401,14 @@ function __c15(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labs",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabBySubscriptionRequest" });
@@ -3315,12 +3421,14 @@ function __c16(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labPlans",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabPlanByResourceGroupRequest" });
@@ -3333,7 +3441,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(272, __c17, 0)),
+          value: __S(272, __c17, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedLabPlans" });
@@ -3366,12 +3474,14 @@ function __c19(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/labPlans",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabPlanBySubscriptionRequest" });
@@ -3381,12 +3491,15 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.LabServices/operations",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -3414,7 +3527,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(323, __c20, 3)),
+          value: __S(323, __c20, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3429,12 +3542,14 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScheduleByLabRequest" });
@@ -3443,7 +3558,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(337, __c21, 1)),
+          value: __S(337, __c21, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedSchedules" });
@@ -3456,12 +3571,14 @@ function __c22(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/skus",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
@@ -3523,7 +3640,7 @@ function __c22(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(361, __c22, 9)),
+          value: __S(361, __c22, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedLabServicesSkus" });
@@ -3537,12 +3654,14 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LabServices/locations/{location}/usages",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsageByLocationRequest" });
@@ -3569,7 +3688,7 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(371, __c23, 3)),
+          value: __S(371, __c23, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsagesResult" });
@@ -3584,12 +3703,14 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/users",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUserByLabRequest" });
@@ -3598,7 +3719,7 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(385, __c24, 1)),
+          value: __S(385, __c24, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedUsers" });
@@ -3613,12 +3734,14 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/virtualMachines",
             code: 200,
             apiVersion: "2023-06-07",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineByLabRequest" });
@@ -3627,7 +3750,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(401, __c25, 1)),
+          value: __S(401, __c25, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedVirtualMachines" });

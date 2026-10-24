@@ -882,10 +882,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the replicas for a given configuration store.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#ReplicaListResult": {
@@ -949,6 +956,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1256,10 +1269,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/deletedConfigurationStores",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets information about the deleted configuration stores in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#DeletedConfigurationStoreListResult": {
@@ -1300,6 +1320,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Microsoft Azure subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1776,10 +1802,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the private link resources that need to be created for a configuration store.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#PrivateLinkResourceListResult": {
@@ -1836,6 +1869,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the configuration store."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2307,10 +2346,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all private endpoint connections for a configuration store.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#PrivateEndpointConnectionListResult": {
@@ -2368,6 +2414,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the configuration store."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2387,10 +2439,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppConfiguration/operations",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the operations available from this provider.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#OperationDefinitionListResult": {
@@ -2670,6 +2729,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2791,10 +2856,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/listKeys",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the access key for the specified configuration store.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#ApiKeyListResult": {
@@ -2858,6 +2930,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4447,10 +4525,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the configuration stores for a given resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#ConfigurationStoreListResult": {
@@ -4691,6 +4776,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4710,10 +4801,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the configuration stores for a given subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appconfiguration#ListConfigurationStoresRequest": {
@@ -4732,6 +4830,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

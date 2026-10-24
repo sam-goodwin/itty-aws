@@ -1401,10 +1401,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows",
           "code": 200,
-          "apiVersion": "2023-08-01"
+          "apiVersion": "2023-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of workflows within a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-08-01"
+        "com.distilled.openapi#apiVersion": "2023-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.developerhub#WorkflowListResult": {
@@ -1524,6 +1531,12 @@
             "smithy.api#httpQuery": "managedClusterResource",
             "smithy.api#documentation": "The ManagedCluster resource associated with the workflows."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1543,10 +1556,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/workflows",
           "code": 200,
-          "apiVersion": "2023-08-01"
+          "apiVersion": "2023-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of workflows associated with the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2023-08-01"
+        "com.distilled.openapi#apiVersion": "2023-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.developerhub#ListWorkflowRequest": {
@@ -1558,6 +1578,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

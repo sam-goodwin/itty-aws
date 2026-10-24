@@ -415,6 +415,8 @@ export interface GetCertificateIssuersRequest {
   vaultBaseUrl: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The certificate issuer item containing certificate issuer metadata. */
 export interface CertificateIssuerItem {
@@ -428,7 +430,7 @@ export type CertificateIssuerListResultValueList = Array<CertificateIssuerItem>;
 /** The certificate issuer list result. */
 export interface CertificateIssuerListResult {
   /** A response message containing a list of certificate issuers in the key vault along with a link to the next page of certificate issuers. */
-  value?: CertificateIssuerListResultValueList;
+  value: CertificateIssuerListResultValueList;
   /** The URL to get the next set of certificate issuers. */
   nextLink?: string;
 }
@@ -448,6 +450,8 @@ export interface GetCertificatesRequest {
   maxresults?: number;
   /** Specifies whether to include certificates which are not completely provisioned. */
   includePending?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Application specific metadata in the form of key-value pairs. */
 export type CertificateItemTagsMap = { [key: string]: string | undefined };
@@ -467,7 +471,7 @@ export type CertificateListResultValueList = Array<CertificateItem>;
 /** The certificate list result. */
 export interface CertificateListResult {
   /** A response message containing a list of certificates in the key vault along with a link to the next page of certificates. */
-  value?: CertificateListResultValueList;
+  value: CertificateListResultValueList;
   /** The URL to get the next set of certificates. */
   nextLink?: string;
 }
@@ -477,6 +481,8 @@ export interface GetCertificateVersionsRequest {
   certificateName: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface GetDeletedCertificateRequest {
   vaultBaseUrl: string;
@@ -489,6 +495,8 @@ export interface GetDeletedCertificatesRequest {
   maxresults?: number;
   /** Specifies whether to include certificates which are not completely provisioned. */
   includePending?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Application specific metadata in the form of key-value pairs. */
 export type DeletedCertificateItemTagsMap = { [key: string]: string | undefined };
@@ -514,7 +522,7 @@ export type DeletedCertificateListResultValueList = Array<DeletedCertificateItem
 /** A list of certificates that have been deleted in this vault. */
 export interface DeletedCertificateListResult {
   /** A response message containing a list of deleted certificates in the vault along with a link to the next page of deleted certificates. */
-  value?: DeletedCertificateListResultValueList;
+  value: DeletedCertificateListResultValueList;
   /** The URL to get the next set of deleted certificates. */
   nextLink?: string;
 }
@@ -786,18 +794,25 @@ export const GetCertificateIssuer: API.OperationMethod<
 
 export type GetCertificateIssuersError = AzureOpError;
 /** List certificate issuers for a specified key vault. The GetCertificateIssuers operation returns the set of certificate issuer resources in the specified key vault. This operation requires the certificates/manageissuers/getissuers permission. */
-export const GetCertificateIssuers: API.OperationMethod<
+export const GetCertificateIssuers: API.PaginatedOperationMethod<
   GetCertificateIssuersRequest,
   CertificateIssuerListResult,
   GetCertificateIssuersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CertificateIssuerItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<GetCertificateIssuersRequest>,
   output: __S(659, __c41, 3) as any as S.Schema<CertificateIssuerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetCertificateOperationError = AzureOpError;
 /** Gets the creation operation of a certificate. Gets the creation operation associated with a specified certificate. This operation requires the certificates/get permission. */
@@ -831,33 +846,47 @@ export const GetCertificatePolicy: API.OperationMethod<
 
 export type GetCertificatesError = AzureOpError;
 /** List certificates in a specified key vault The GetCertificates operation returns the set of certificates resources in the specified key vault. This operation requires the certificates/list permission. */
-export const GetCertificates: API.OperationMethod<
+export const GetCertificates: API.PaginatedOperationMethod<
   GetCertificatesRequest,
   CertificateListResult,
   GetCertificatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CertificateItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<GetCertificatesRequest>,
   output: __S(178, __c11, 2) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetCertificateVersionsError = AzureOpError;
 /** List the versions of a certificate. The GetCertificateVersions operation returns the versions of a certificate in the specified key vault. This operation requires the certificates/list permission. */
-export const GetCertificateVersions: API.OperationMethod<
+export const GetCertificateVersions: API.PaginatedOperationMethod<
   GetCertificateVersionsRequest,
   CertificateListResult,
   GetCertificateVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CertificateItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<GetCertificateVersionsRequest>,
   output: __S(178, __c11, 2) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDeletedCertificateError = AzureOpError;
 /** Retrieves information about the specified deleted certificate. The GetDeletedCertificate operation retrieves the deleted certificate information plus its attributes, such as retention interval, scheduled permanent deletion and the current deletion recovery level. This operation requires the certificates/get permission. */
@@ -876,18 +905,25 @@ export const GetDeletedCertificate: API.OperationMethod<
 
 export type GetDeletedCertificatesError = AzureOpError;
 /** Lists the deleted certificates in the specified vault currently available for recovery. The GetDeletedCertificates operation retrieves the certificates in the current vault which are in a deleted state and ready for recovery or purging. This operation includes deletion-specific information. This operation requires the certificates/get/list permission. This operation can only be enabled on soft-delete enabled vaults. */
-export const GetDeletedCertificates: API.OperationMethod<
+export const GetDeletedCertificates: API.PaginatedOperationMethod<
   GetDeletedCertificatesRequest,
   DeletedCertificateListResult,
   GetDeletedCertificatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeletedCertificateItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<GetDeletedCertificatesRequest>,
   output: __S(227, __c14, 3) as any as S.Schema<DeletedCertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ImportCertificateError = AzureOpError;
 /** Imports a certificate into a specified key vault. Imports an existing valid certificate, containing a private key, into Azure Key Vault. This operation requires the certificates/import permission. The certificate to be imported can be in either PFX or PEM format. If the certificate is in PEM format the PEM file must contain the key as well as x509 certificates. Key Vault will only accept a key in PKCS#8 format. */
@@ -1284,6 +1320,7 @@ function __c10(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
           includePending: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1292,6 +1329,7 @@ function __c10(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1314,7 +1352,7 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(177, __c11, 1)),
+          value: __S(177, __c11, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateListResult" });
@@ -1328,6 +1366,7 @@ function __c12(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           certificateName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1336,6 +1375,7 @@ function __c12(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1371,6 +1411,7 @@ function __c14(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
           includePending: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1379,6 +1420,7 @@ function __c14(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1400,7 +1442,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(226, __c14, 2)),
+          value: __S(226, __c14, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedCertificateListResult" });
@@ -1998,6 +2040,7 @@ function __c41(j: number): any {
         S.Struct({
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2006,6 +2049,7 @@ function __c41(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -2022,7 +2066,7 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(658, __c41, 2)),
+          value: __S(658, __c41, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateIssuerListResult" });

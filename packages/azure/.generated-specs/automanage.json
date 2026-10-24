@@ -34,7 +34,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of reports within a given configuration profile assignment",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ReportList": {
@@ -778,7 +782,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Get list of configuration profile assignments",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ConfigurationProfileAssignmentList": {
@@ -1531,7 +1539,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of reports within a given configuration profile assignment",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListHCRPReportByConfigurationProfileAssignmentsRequest": {
@@ -1803,7 +1815,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Get list of configuration profile assignments",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListConfigurationProfileAssignmentByMachineNameRequest": {
@@ -2542,7 +2558,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Get the Automanage AAD first party Application Service Principal details for the subscription id.",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ServicePrincipalListResult": {
@@ -2746,7 +2766,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of reports within a given configuration profile assignment",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListReportByConfigurationProfileAssignmentsRequest": {
@@ -3005,7 +3029,7 @@
     "com.azure.automanage#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.automanage#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.automanage#ListOperationsResponse"
@@ -3018,7 +3042,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Lists all of the available Automanage REST API operations.",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListOperationsResponse": {
@@ -3160,6 +3188,13 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.automanage#ListOperationsRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.automanage#ListConfigurationProfileAssignmentBySubscription": {
       "type": "operation",
       "input": {
@@ -3176,7 +3211,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Get list of configuration profile assignments under a given subscription",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListConfigurationProfileAssignmentBySubscriptionRequest": {
@@ -3211,7 +3250,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Get list of configuration profile assignments",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListConfigurationProfileAssignmentsRequest": {
@@ -3254,7 +3297,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Get list of configuration profile assignments",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListConfigurationProfileAssignmentByVirtualMachinesRequest": {
@@ -3792,7 +3839,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of configuration profile version for a configuration profile",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ConfigurationProfileList": {
@@ -4601,7 +4652,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of configuration profile within a subscription",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListConfigurationProfileBySubscriptionRequest": {
@@ -4636,7 +4691,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of configuration profile within a given resource group",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#ListConfigurationProfileByResourceGroupRequest": {
@@ -5451,7 +5510,11 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of Automanage best practices versions",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.automanage#BestPracticeList": {
@@ -5685,7 +5748,7 @@
     "com.azure.automanage#ListBestPracticeByTenant": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.automanage#ListBestPracticeByTenantRequest"
       },
       "output": {
         "target": "com.azure.automanage#BestPracticeList"
@@ -5698,7 +5761,18 @@
           "apiVersion": "2022-05-04"
         },
         "smithy.api#documentation": "Retrieve a list of Automanage best practices",
-        "com.distilled.openapi#apiVersion": "2022-05-04"
+        "com.distilled.openapi#apiVersion": "2022-05-04",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
+      }
+    },
+    "com.azure.automanage#ListBestPracticeByTenantRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.automanage#GetBestPractice": {

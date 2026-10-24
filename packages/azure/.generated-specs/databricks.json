@@ -495,10 +495,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the workspace vNet Peerings.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#VirtualNetworkPeeringList": {
@@ -589,6 +596,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -745,10 +758,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private link resources\n\nList private link resources for a given workspace",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#PrivateLinkResourcesList": {
@@ -839,6 +859,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1341,10 +1367,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections\n\nList private endpoint connections of the workspace",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#PrivateEndpointConnectionsList": {
@@ -1435,6 +1468,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3170,10 +3209,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the workspaces within a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#WorkspaceListResult": {
@@ -3287,6 +3333,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4053,10 +4105,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Azure Databricks Access Connectors within a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#AccessConnectorListResult": {
@@ -4199,6 +4258,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4218,10 +4283,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/workspaces",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the workspaces within a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#ListWorkspaceBySubscriptionRequest": {
@@ -4233,6 +4305,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4253,10 +4331,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Azure Databricks Access Connectors within a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#ListAccessConnectorBySubscriptionRequest": {
@@ -4269,6 +4354,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4278,7 +4369,7 @@
     "com.azure.databricks#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.databricks#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.databricks#OperationListResult"
@@ -4288,10 +4379,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Databricks/operations",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databricks#OperationListResult": {
@@ -4373,6 +4471,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.databricks#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.databricks#Databricks": {

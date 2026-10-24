@@ -454,6 +454,8 @@ export interface ListAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
@@ -483,15 +485,20 @@ export type AccountListValueList = Array<Account>;
 /** The list operation response, that contains the data pools and their properties. */
 export interface AccountList {
   /** List of accounts and their properties. */
-  value?: AccountListValueList;
+  value: AccountListValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
 export interface ListAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource provider of the operation */
@@ -521,7 +528,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Available operations of the service. */
 export interface OperationListResult {
   /** List of operations supported by the Resource Provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -532,6 +539,8 @@ export interface ListPrivateEndpointConnectionByAccountRequest {
   resourceGroupName: string;
   /** The name of the Azure Video Indexer account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnection =
@@ -541,7 +550,7 @@ export type ListPrivateEndpointConnectionByAccountResponseValueList =
   Array<AccountPropertiesForPutRequestPrivateEndpointConnectionsItem>;
 export interface ListPrivateEndpointConnectionByAccountResponse {
   /** Array of private endpoint connections. */
-  value?: ListPrivateEndpointConnectionByAccountResponseValueList;
+  value: ListPrivateEndpointConnectionByAccountResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -552,6 +561,8 @@ export interface ListPrivateLinkResourceByAccountRequest {
   resourceGroupName: string;
   /** The name of the Azure Video Indexer account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private link resource. */
 export interface PrivateLinkResource {
@@ -570,7 +581,7 @@ export interface PrivateLinkResource {
 export type ListPrivateLinkResourceByAccountResponseValueList = Array<PrivateLinkResource>;
 export interface ListPrivateLinkResourceByAccountResponse {
   /** Array of private link resources */
-  value?: ListPrivateLinkResourceByAccountResponseValueList;
+  value: ListPrivateLinkResourceByAccountResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -831,78 +842,113 @@ export const GetPrivateLinkResource: API.OperationMethod<
 
 export type ListAccountByResourceGroupError = AzureOpError;
 /** List all Azure Video Indexer accounts available under the resource group */
-export const ListAccountByResourceGroup: API.OperationMethod<
+export const ListAccountByResourceGroup: API.PaginatedOperationMethod<
   ListAccountByResourceGroupRequest,
   AccountList,
   ListAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
   output: __S(97, __c12, 1) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountsError = AzureOpError;
 /** List all Azure Video Indexer accounts available under the subscription */
-export const ListAccounts: API.OperationMethod<
+export const ListAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   AccountList,
   ListAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<ListAccountsRequest>,
   output: __S(97, __c12, 1) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Azure Video Indexer provider operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(116, __c14, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByAccountError = AzureOpError;
 /** List all private endpoint connections in a Video Indexer account. */
-export const ListPrivateEndpointConnectionByAccount: API.OperationMethod<
+export const ListPrivateEndpointConnectionByAccount: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByAccountRequest,
   ListPrivateEndpointConnectionByAccountResponse,
   ListPrivateEndpointConnectionByAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccountPropertiesForPutRequestPrivateEndpointConnectionsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(120, __c15, 0) as any as S.Schema<ListPrivateEndpointConnectionByAccountRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<ListPrivateEndpointConnectionByAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByAccountError = AzureOpError;
 /** List all private link resources in a Video Indexer account. */
-export const ListPrivateLinkResourceByAccount: API.OperationMethod<
+export const ListPrivateLinkResourceByAccount: API.PaginatedOperationMethod<
   ListPrivateLinkResourceByAccountRequest,
   ListPrivateLinkResourceByAccountResponse,
   ListPrivateLinkResourceByAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListPrivateLinkResourceByAccountRequest>,
   output: __S(130, __c16, 2) as any as S.Schema<ListPrivateLinkResourceByAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PrivateEndpointConnectionsCreateOrUpdateError = AzureOpError;
 /** Update the state of specified private endpoint connection associated with the Video Indexer account. */
@@ -1203,12 +1249,14 @@ function __c11(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts",
             code: 200,
             apiVersion: "2025-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountByResourceGroupRequest" });
@@ -1221,7 +1269,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(96, __c12, 0)),
+          value: __S(96, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountList" });
@@ -1233,12 +1281,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VideoIndexer/accounts",
             code: 200,
             apiVersion: "2025-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
@@ -1248,12 +1298,15 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.VideoIndexer/operations",
             code: 200,
             apiVersion: "2025-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1281,7 +1334,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115, __c14, 3)),
+          value: __S(115, __c14, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1295,19 +1348,21 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(32, __c4, 0)),
+          value: __S(32, __c4, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByAccountResponse" });
@@ -1321,12 +1376,14 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateLinkResources",
             code: 200,
             apiVersion: "2025-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByAccountRequest" });
@@ -1335,7 +1392,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c16, 1)),
+          value: __S(129, __c16, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrivateLinkResourceByAccountResponse" });

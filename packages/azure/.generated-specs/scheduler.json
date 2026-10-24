@@ -15,13 +15,41 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.scheduler#JobsListJobHistory": "com.azure.scheduler#ListJobJobHistory",
+      "com.azure.scheduler#JobsListJobHistoryRequest": "com.azure.scheduler#ListJobJobHistoryRequest",
+      "com.azure.scheduler#JobsList": "com.azure.scheduler#ListJobs",
+      "com.azure.scheduler#JobsListRequest": "com.azure.scheduler#ListJobsRequest",
+      "com.azure.scheduler#JobsRun": "com.azure.scheduler#RunJob",
+      "com.azure.scheduler#JobsRunRequest": "com.azure.scheduler#RunJobRequest",
+      "com.azure.scheduler#JobsDelete": "com.azure.scheduler#DeleteJob",
+      "com.azure.scheduler#JobsDeleteRequest": "com.azure.scheduler#DeleteJobRequest",
+      "com.azure.scheduler#JobsPatch": "com.azure.scheduler#PatchJob",
+      "com.azure.scheduler#JobsPatchRequest": "com.azure.scheduler#PatchJobRequest",
+      "com.azure.scheduler#JobsGet": "com.azure.scheduler#GetJob",
+      "com.azure.scheduler#JobsGetRequest": "com.azure.scheduler#GetJobRequest",
+      "com.azure.scheduler#JobCollectionsDisable": "com.azure.scheduler#DisableJobCollection",
+      "com.azure.scheduler#JobCollectionsDisableRequest": "com.azure.scheduler#DisableJobCollectionRequest",
+      "com.azure.scheduler#JobCollectionsEnable": "com.azure.scheduler#EnableJobCollection",
+      "com.azure.scheduler#JobCollectionsEnableRequest": "com.azure.scheduler#EnableJobCollectionRequest",
+      "com.azure.scheduler#JobCollectionsDelete": "com.azure.scheduler#DeleteJobCollection",
+      "com.azure.scheduler#JobCollectionsDeleteRequest": "com.azure.scheduler#DeleteJobCollectionRequest",
+      "com.azure.scheduler#JobCollectionsPatch": "com.azure.scheduler#PatchJobCollection",
+      "com.azure.scheduler#JobCollectionsPatchRequest": "com.azure.scheduler#PatchJobCollectionRequest",
+      "com.azure.scheduler#JobCollectionsPatchRequestTagsMap": "com.azure.scheduler#PatchJobCollectionRequestTagsMap",
+      "com.azure.scheduler#JobCollectionsGet": "com.azure.scheduler#GetJobCollection",
+      "com.azure.scheduler#JobCollectionsGetRequest": "com.azure.scheduler#GetJobCollectionRequest",
+      "com.azure.scheduler#JobCollectionsListByResourceGroup": "com.azure.scheduler#ListJobCollectionByResourceGroup",
+      "com.azure.scheduler#JobCollectionsListByResourceGroupRequest": "com.azure.scheduler#ListJobCollectionByResourceGroupRequest",
+      "com.azure.scheduler#JobCollectionsListBySubscription": "com.azure.scheduler#ListJobCollectionBySubscription",
+      "com.azure.scheduler#JobCollectionsListBySubscriptionRequest": "com.azure.scheduler#ListJobCollectionBySubscriptionRequest"
+    }
   },
   "shapes": {
-    "com.azure.scheduler#ListJobJobHistory": {
+    "com.azure.scheduler#JobsListJobHistory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#ListJobJobHistoryRequest"
+        "target": "com.azure.scheduler#JobsListJobHistoryRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobHistoryListResult"
@@ -31,10 +59,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history",
           "code": 200,
-          "apiVersion": "2016-03-01"
+          "apiVersion": "2016-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists job history.",
-        "com.distilled.openapi#apiVersion": "2016-03-01"
+        "com.distilled.openapi#apiVersion": "2016-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scheduler#JobHistoryListResult": {
@@ -194,7 +229,7 @@
         "smithy.api#documentation": "Gets the job history action name."
       }
     },
-    "com.azure.scheduler#ListJobJobHistoryRequest": {
+    "com.azure.scheduler#JobsListJobHistoryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -249,16 +284,22 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the job state."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#ListJobs": {
+    "com.azure.scheduler#JobsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#ListJobsRequest"
+        "target": "com.azure.scheduler#JobsListRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobListResult"
@@ -268,10 +309,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs",
           "code": 200,
-          "apiVersion": "2016-03-01"
+          "apiVersion": "2016-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all jobs under the specified job collection.",
-        "com.distilled.openapi#apiVersion": "2016-03-01"
+        "com.distilled.openapi#apiVersion": "2016-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scheduler#JobListResult": {
@@ -1336,7 +1384,7 @@
         "smithy.api#documentation": "Gets or sets the job action type."
       }
     },
-    "com.azure.scheduler#ListJobsRequest": {
+    "com.azure.scheduler#JobsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1383,16 +1431,22 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the job state."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#RunJob": {
+    "com.azure.scheduler#JobsRun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#RunJobRequest"
+        "target": "com.azure.scheduler#JobsRunRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1408,7 +1462,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#RunJobRequest": {
+    "com.azure.scheduler#JobsRunRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1448,10 +1502,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#DeleteJob": {
+    "com.azure.scheduler#JobsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#DeleteJobRequest"
+        "target": "com.azure.scheduler#JobsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1467,7 +1521,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#DeleteJobRequest": {
+    "com.azure.scheduler#JobsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1507,10 +1561,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#PatchJob": {
+    "com.azure.scheduler#JobsPatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#PatchJobRequest"
+        "target": "com.azure.scheduler#JobsPatchRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobDefinition"
@@ -1526,7 +1580,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#PatchJobRequest": {
+    "com.azure.scheduler#JobsPatchRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1667,10 +1721,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#GetJob": {
+    "com.azure.scheduler#JobsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#GetJobRequest"
+        "target": "com.azure.scheduler#JobsGetRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobDefinition"
@@ -1686,7 +1740,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#GetJobRequest": {
+    "com.azure.scheduler#JobsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1726,10 +1780,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#DisableJobCollection": {
+    "com.azure.scheduler#JobCollectionsDisable": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#DisableJobCollectionRequest"
+        "target": "com.azure.scheduler#JobCollectionsDisableRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1745,7 +1799,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#DisableJobCollectionRequest": {
+    "com.azure.scheduler#JobCollectionsDisableRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1777,10 +1831,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#EnableJobCollection": {
+    "com.azure.scheduler#JobCollectionsEnable": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#EnableJobCollectionRequest"
+        "target": "com.azure.scheduler#JobCollectionsEnableRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1796,7 +1850,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#EnableJobCollectionRequest": {
+    "com.azure.scheduler#JobCollectionsEnableRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1828,10 +1882,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#DeleteJobCollection": {
+    "com.azure.scheduler#JobCollectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#DeleteJobCollectionRequest"
+        "target": "com.azure.scheduler#JobCollectionsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1847,7 +1901,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#DeleteJobCollectionRequest": {
+    "com.azure.scheduler#JobCollectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1879,10 +1933,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#PatchJobCollection": {
+    "com.azure.scheduler#JobCollectionsPatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#PatchJobCollectionRequest"
+        "target": "com.azure.scheduler#JobCollectionsPatchRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobCollectionDefinition"
@@ -2132,7 +2186,7 @@
         "smithy.api#documentation": "Gets or sets the tags."
       }
     },
-    "com.azure.scheduler#PatchJobCollectionRequest": {
+    "com.azure.scheduler#JobCollectionsPatchRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2172,7 +2226,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scheduler#PatchJobCollectionRequestTagsMap",
+          "target": "com.azure.scheduler#JobCollectionsPatchRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Gets or sets the tags."
           }
@@ -2188,7 +2242,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#PatchJobCollectionRequestTagsMap": {
+    "com.azure.scheduler#JobCollectionsPatchRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2287,10 +2341,10 @@
         "smithy.api#documentation": "Gets or sets the tags."
       }
     },
-    "com.azure.scheduler#GetJobCollection": {
+    "com.azure.scheduler#JobCollectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#GetJobCollectionRequest"
+        "target": "com.azure.scheduler#JobCollectionsGetRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobCollectionDefinition"
@@ -2306,7 +2360,7 @@
         "com.distilled.openapi#apiVersion": "2016-03-01"
       }
     },
-    "com.azure.scheduler#GetJobCollectionRequest": {
+    "com.azure.scheduler#JobCollectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2338,10 +2392,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#ListJobCollectionByResourceGroup": {
+    "com.azure.scheduler#JobCollectionsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#ListJobCollectionByResourceGroupRequest"
+        "target": "com.azure.scheduler#JobCollectionsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobCollectionListResult"
@@ -2351,10 +2405,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections",
           "code": 200,
-          "apiVersion": "2016-03-01"
+          "apiVersion": "2016-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all job collections under specified resource group.",
-        "com.distilled.openapi#apiVersion": "2016-03-01"
+        "com.distilled.openapi#apiVersion": "2016-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scheduler#JobCollectionListResult": {
@@ -2384,7 +2445,7 @@
         "smithy.api#documentation": "Gets the job collections."
       }
     },
-    "com.azure.scheduler#ListJobCollectionByResourceGroupRequest": {
+    "com.azure.scheduler#JobCollectionsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2402,16 +2463,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The resource group name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scheduler#ListJobCollectionBySubscription": {
+    "com.azure.scheduler#JobCollectionsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scheduler#ListJobCollectionBySubscriptionRequest"
+        "target": "com.azure.scheduler#JobCollectionsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.scheduler#JobCollectionListResult"
@@ -2421,13 +2488,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections",
           "code": 200,
-          "apiVersion": "2016-03-01"
+          "apiVersion": "2016-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all job collections under specified subscription.",
-        "com.distilled.openapi#apiVersion": "2016-03-01"
+        "com.distilled.openapi#apiVersion": "2016-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scheduler#ListJobCollectionBySubscriptionRequest": {
+    "com.azure.scheduler#JobCollectionsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2436,6 +2510,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The subscription id."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2448,49 +2528,49 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.scheduler#ListJobJobHistory"
+          "target": "com.azure.scheduler#JobsListJobHistory"
         },
         {
-          "target": "com.azure.scheduler#ListJobs"
+          "target": "com.azure.scheduler#JobsList"
         },
         {
-          "target": "com.azure.scheduler#RunJob"
+          "target": "com.azure.scheduler#JobsRun"
         },
         {
-          "target": "com.azure.scheduler#DeleteJob"
+          "target": "com.azure.scheduler#JobsDelete"
         },
         {
-          "target": "com.azure.scheduler#PatchJob"
+          "target": "com.azure.scheduler#JobsPatch"
         },
         {
           "target": "com.azure.scheduler#JobsCreateOrUpdate"
         },
         {
-          "target": "com.azure.scheduler#GetJob"
+          "target": "com.azure.scheduler#JobsGet"
         },
         {
-          "target": "com.azure.scheduler#DisableJobCollection"
+          "target": "com.azure.scheduler#JobCollectionsDisable"
         },
         {
-          "target": "com.azure.scheduler#EnableJobCollection"
+          "target": "com.azure.scheduler#JobCollectionsEnable"
         },
         {
-          "target": "com.azure.scheduler#DeleteJobCollection"
+          "target": "com.azure.scheduler#JobCollectionsDelete"
         },
         {
-          "target": "com.azure.scheduler#PatchJobCollection"
+          "target": "com.azure.scheduler#JobCollectionsPatch"
         },
         {
           "target": "com.azure.scheduler#JobCollectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.scheduler#GetJobCollection"
+          "target": "com.azure.scheduler#JobCollectionsGet"
         },
         {
-          "target": "com.azure.scheduler#ListJobCollectionByResourceGroup"
+          "target": "com.azure.scheduler#JobCollectionsListByResourceGroup"
         },
         {
-          "target": "com.azure.scheduler#ListJobCollectionBySubscription"
+          "target": "com.azure.scheduler#JobCollectionsListBySubscription"
         }
       ],
       "traits": {

@@ -695,6 +695,8 @@ export interface GetTrainingSetRequest {
 export interface ListBaseModelsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com). */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Model capability */
 export type ModelCapability = "PersonalVoice";
@@ -731,6 +733,8 @@ export interface ListConsentsRequest {
   maxpagesize?: number;
   /** Filter condition. - **Supported properties:** projectId, createdDateTime, locale, kind - **Operators:** - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - **Example:** - ```filter=projectId eq 'Jessica'``` (filter by project ID) - ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind) - ```filter=locale eq 'en-US'``` (filter training set and model by locale) - ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource created time after 2023-11-01) */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Consent items on this page */
 export type PagedConsentValueList = Array<Consent>;
@@ -750,6 +754,8 @@ export interface ListEndpointsRequest {
   maxpagesize?: number;
   /** Filter condition. - **Supported properties:** projectId, createdDateTime, locale, kind - **Operators:** - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - **Example:** - ```filter=projectId eq 'Jessica'``` (filter by project ID) - ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind) - ```filter=locale eq 'en-US'``` (filter training set and model by locale) - ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource created time after 2023-11-01) */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Endpoint items on this page */
 export type PagedEndpointValueList = Array<Endpoint>;
@@ -763,6 +769,8 @@ export interface PagedEndpoint {
 export interface ListModelRecipesRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://eastus.api.cognitive.microsoft.com). */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Recipe items on this page */
 export type PagedRecipeValueList = Array<Recipe>;
@@ -782,6 +790,8 @@ export interface ListModelsRequest {
   maxpagesize?: number;
   /** Filter condition. - **Supported properties:** projectId, createdDateTime, locale, kind - **Operators:** - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - **Example:** - ```filter=projectId eq 'Jessica'``` (filter by project ID) - ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind) - ```filter=locale eq 'en-US'``` (filter training set and model by locale) - ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource created time after 2023-11-01) */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Model items on this page */
 export type PagedModelValueList = Array<Model>;
@@ -801,6 +811,8 @@ export interface ListPersonalVoicesRequest {
   maxpagesize?: number;
   /** Filter condition. - **Supported properties:** projectId, createdDateTime, locale, kind - **Operators:** - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - **Example:** - ```filter=projectId eq 'Jessica'``` (filter by project ID) - ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind) - ```filter=locale eq 'en-US'``` (filter training set and model by locale) - ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource created time after 2023-11-01) */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PersonalVoice items on this page */
 export type PagedPersonalVoiceValueList = Array<PersonalVoice>;
@@ -820,6 +832,8 @@ export interface ListProjectsRequest {
   maxpagesize?: number;
   /** Filter condition. - **Supported properties:** projectId, createdDateTime, locale, kind - **Operators:** - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - **Example:** - ```filter=projectId eq 'Jessica'``` (filter by project ID) - ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind) - ```filter=locale eq 'en-US'``` (filter training set and model by locale) - ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource created time after 2023-11-01) */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Project items on this page */
 export type PagedProjectValueList = Array<Project>;
@@ -839,6 +853,8 @@ export interface ListTrainingSetsRequest {
   maxpagesize?: number;
   /** Filter condition. - **Supported properties:** projectId, createdDateTime, locale, kind - **Operators:** - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - **Example:** - ```filter=projectId eq 'Jessica'``` (filter by project ID) - ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind) - ```filter=locale eq 'en-US'``` (filter training set and model by locale) - ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource created time after 2023-11-01) */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TrainingSet items on this page */
 export type PagedTrainingSetValueList = Array<TrainingSet>;
@@ -1211,123 +1227,179 @@ export const GetTrainingSet: API.OperationMethod<
 
 export type ListBaseModelsError = AzureOpError;
 /** Gets a list of base models. */
-export const ListBaseModels: API.OperationMethod<
+export const ListBaseModels: API.PaginatedOperationMethod<
   ListBaseModelsRequest,
   PagedBaseModel,
   ListBaseModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BaseModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(168, __c21, 0) as any as S.Schema<ListBaseModelsRequest>,
   output: __S(172, __c21, 4) as any as S.Schema<PagedBaseModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConsentsError = AzureOpError;
 /** Gets a list of consents for the authenticated Speech service resource. */
-export const ListConsents: API.OperationMethod<
+export const ListConsents: API.PaginatedOperationMethod<
   ListConsentsRequest,
   PagedConsent,
   ListConsentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Consent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<ListConsentsRequest>,
   output: __S(178, __c22, 2) as any as S.Schema<PagedConsent>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEndpointsError = AzureOpError;
 /** Gets a list of endpoints for the authenticated Speech service resource. */
-export const ListEndpoints: API.OperationMethod<
+export const ListEndpoints: API.PaginatedOperationMethod<
   ListEndpointsRequest,
   PagedEndpoint,
   ListEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(184, __c23, 0) as any as S.Schema<ListEndpointsRequest>,
   output: __S(186, __c23, 2) as any as S.Schema<PagedEndpoint>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListModelRecipesError = AzureOpError;
 /** Get a list of supported recipes for model building. Different recipes have different capabilities such as support for multi-style voice models. */
-export const ListModelRecipes: API.OperationMethod<
+export const ListModelRecipes: API.PaginatedOperationMethod<
   ListModelRecipesRequest,
   PagedRecipe,
   ListModelRecipesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Recipe
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c24, 0) as any as S.Schema<ListModelRecipesRequest>,
   output: __S(194, __c24, 2) as any as S.Schema<PagedRecipe>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListModelsError = AzureOpError;
 /** Gets the list of models for the authenticated Speech service resource. */
-export const ListModels: API.OperationMethod<
+export const ListModels: API.PaginatedOperationMethod<
   ListModelsRequest,
   PagedModel,
   ListModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Model
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<ListModelsRequest>,
   output: __S(202, __c25, 2) as any as S.Schema<PagedModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPersonalVoicesError = AzureOpError;
 /** Gets a list of personal voices for the authenticated Speech service resource. */
-export const ListPersonalVoices: API.OperationMethod<
+export const ListPersonalVoices: API.PaginatedOperationMethod<
   ListPersonalVoicesRequest,
   PagedPersonalVoice,
   ListPersonalVoicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PersonalVoice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<ListPersonalVoicesRequest>,
   output: __S(210, __c26, 2) as any as S.Schema<PagedPersonalVoice>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProjectsError = AzureOpError;
 /** Gets a list of projects for the authenticated Speech service resource. */
-export const ListProjects: API.OperationMethod<
+export const ListProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   PagedProject,
   ListProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Project
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<ListProjectsRequest>,
   output: __S(218, __c27, 2) as any as S.Schema<PagedProject>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTrainingSetsError = AzureOpError;
 /** Gets a list of training sets for the authenticated Speech service resource. */
-export const ListTrainingSets: API.OperationMethod<
+export const ListTrainingSets: API.PaginatedOperationMethod<
   ListTrainingSetsRequest,
   PagedTrainingSet,
   ListTrainingSetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TrainingSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<ListTrainingSetsRequest>,
   output: __S(226, __c28, 2) as any as S.Schema<PagedTrainingSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ResumeEndpointError = AzureOpError;
 /** Resumes the endpoint identified by the given ID. */
@@ -1839,6 +1911,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1847,6 +1920,7 @@ function __c21(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1883,6 +1957,7 @@ function __c22(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1891,6 +1966,7 @@ function __c22(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1915,6 +1991,7 @@ function __c23(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1923,6 +2000,7 @@ function __c23(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1944,6 +2022,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1952,6 +2031,7 @@ function __c24(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1976,6 +2056,7 @@ function __c25(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1984,6 +2065,7 @@ function __c25(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -2008,6 +2090,7 @@ function __c26(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2016,6 +2099,7 @@ function __c26(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -2040,6 +2124,7 @@ function __c27(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2048,6 +2133,7 @@ function __c27(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -2072,6 +2158,7 @@ function __c28(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2080,6 +2167,7 @@ function __c28(j: number): any {
             host: "{endpoint}/customvoice",
             hostRaw: ["endpoint"],
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

@@ -1367,6 +1367,8 @@ export interface ListDicomServiceByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of workspace resource. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DicomServiceTagsMap = { [key: string]: string | undefined };
@@ -1414,7 +1416,7 @@ export interface DicomServiceCollection {
   /** The link used to get the next page of Dicom Services. */
   nextLink?: string;
   /** The list of Dicom Services. */
-  value?: DicomServiceCollectionValueList;
+  value: DicomServiceCollectionValueList;
 }
 export interface ListFhirDestinationByIotConnectorRequest {
   /** The ID of the target subscription. */
@@ -1425,6 +1427,8 @@ export interface ListFhirDestinationByIotConnectorRequest {
   workspaceName: string;
   /** The name of IoT Connector resource. */
   iotConnectorName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** IoT Connector FHIR destination definition. */
 export interface IotFhirDestination {
@@ -1450,7 +1454,7 @@ export interface IotFhirDestinationCollection {
   /** The link used to get the next page of IoT FHIR destinations. */
   nextLink?: string;
   /** The list of IoT Connector FHIR destinations. */
-  value?: IotFhirDestinationCollectionValueList;
+  value: IotFhirDestinationCollectionValueList;
 }
 export interface ListFhirServiceByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -1459,6 +1463,8 @@ export interface ListFhirServiceByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of workspace resource. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FhirServiceTagsMap = { [key: string]: string | undefined };
@@ -1510,7 +1516,7 @@ export interface FhirServiceCollection {
   /** The link used to get the next page of Fhir Services. */
   nextLink?: string;
   /** The list of Fhir Services. */
-  value?: FhirServiceCollectionValueList;
+  value: FhirServiceCollectionValueList;
 }
 export interface ListIotConnectorByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -1519,6 +1525,8 @@ export interface ListIotConnectorByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of workspace resource. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type IotConnectorTagsMap = { [key: string]: string | undefined };
@@ -1566,9 +1574,12 @@ export interface IotConnectorCollection {
   /** The link used to get the next page of IoT Connectors. */
   nextLink?: string;
   /** The list of IoT Connectors. */
-  value?: IotConnectorCollectionValueList;
+  value: IotConnectorCollectionValueList;
 }
-export interface ListOperations2Request {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.HealthcareApis */
@@ -1677,7 +1688,7 @@ export type ListOperationsValueList = Array<OperationDetail>;
 /** Available operations of the service */
 export interface ListOperations {
   /** Collection of available operation details */
-  value?: ListOperationsValueList;
+  value: ListOperationsValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -1735,7 +1746,7 @@ export type PrivateEndpointConnectionListResultDescriptionValueList =
 /** List of private endpoint connection associated with the specified storage account */
 export interface PrivateEndpointConnectionListResultDescription {
   /** Array of private endpoint connections */
-  value?: PrivateEndpointConnectionListResultDescriptionValueList;
+  value: PrivateEndpointConnectionListResultDescriptionValueList;
 }
 export interface ListPrivateLinkResourceByServiceRequest {
   /** The ID of the target subscription. */
@@ -1791,13 +1802,15 @@ export type PrivateLinkResourceListResultDescriptionValueList =
 /** A list of private link resources */
 export interface PrivateLinkResourceListResultDescription {
   /** Array of private link resources */
-  value?: PrivateLinkResourceListResultDescriptionValueList;
+  value: PrivateLinkResourceListResultDescriptionValueList;
 }
 export interface ListServiceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The kind of the service. */
 export type ServicesDescriptionKind = "fhir" | "fhir-Stu3" | "fhir-R4";
@@ -1844,17 +1857,21 @@ export interface ServicesDescriptionListResult {
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: ServicesDescriptionListResultValueList;
+  value: ServicesDescriptionListResultValueList;
 }
 export interface ListServicesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
@@ -1899,11 +1916,13 @@ export interface WorkspaceList {
   /** The link used to get the next page. */
   nextLink?: string;
   /** Collection of resources. */
-  value?: WorkspaceListValueList;
+  value: WorkspaceListValueList;
 }
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWorkspacePrivateEndpointConnectionByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -2855,93 +2874,130 @@ export const IotConnectorsCreateOrUpdate: API.OperationMethod<
 
 export type ListDicomServiceByWorkspaceError = AzureOpError;
 /** Lists all DICOM Services for the given workspace */
-export const ListDicomServiceByWorkspace: API.OperationMethod<
+export const ListDicomServiceByWorkspace: API.PaginatedOperationMethod<
   ListDicomServiceByWorkspaceRequest,
   DicomServiceCollection,
   ListDicomServiceByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DicomService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListDicomServiceByWorkspaceRequest>,
   output: __S(434, __c27, 2) as any as S.Schema<DicomServiceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFhirDestinationByIotConnectorError = AzureOpError;
 /** Lists all FHIR destinations for the given IoT Connector */
-export const ListFhirDestinationByIotConnector: API.OperationMethod<
+export const ListFhirDestinationByIotConnector: API.PaginatedOperationMethod<
   ListFhirDestinationByIotConnectorRequest,
   IotFhirDestinationCollection,
   ListFhirDestinationByIotConnectorError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IotFhirDestination
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListFhirDestinationByIotConnectorRequest>,
   output: __S(450, __c28, 2) as any as S.Schema<IotFhirDestinationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFhirServiceByWorkspaceError = AzureOpError;
 /** Lists all FHIR Services for the given workspace */
-export const ListFhirServiceByWorkspace: API.OperationMethod<
+export const ListFhirServiceByWorkspace: API.PaginatedOperationMethod<
   ListFhirServiceByWorkspaceRequest,
   FhirServiceCollection,
   ListFhirServiceByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FhirService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListFhirServiceByWorkspaceRequest>,
   output: __S(466, __c29, 2) as any as S.Schema<FhirServiceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIotConnectorByWorkspaceError = AzureOpError;
 /** Lists all IoT Connectors for the given workspace */
-export const ListIotConnectorByWorkspace: API.OperationMethod<
+export const ListIotConnectorByWorkspace: API.PaginatedOperationMethod<
   ListIotConnectorByWorkspaceRequest,
   IotConnectorCollection,
   ListIotConnectorByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IotConnector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<ListIotConnectorByWorkspaceRequest>,
   output: __S(482, __c30, 2) as any as S.Schema<IotConnectorCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperations2Error = AzureOpError;
 /** Lists all of the available operations supported by Microsoft Healthcare resource provider. */
-export const ListOperations2: API.OperationMethod<
-  ListOperations2Request,
+export const ListOperations2: API.PaginatedOperationMethod<
+  ListOperationsRequest,
   ListOperations,
   ListOperations2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListOperations2Request>,
+  AzureOpContext,
+  OperationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(496, __c31, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(508, __c31, 12) as any as S.Schema<ListOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByServiceRequest,
   PrivateEndpointConnectionListResultDescription,
   ListPrivateEndpointConnectionByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnectionDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c32, 0) as any as S.Schema<ListPrivateEndpointConnectionByServiceRequest>,
   output: __S(529, __c33, 1) as any as S.Schema<PrivateEndpointConnectionListResultDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByServiceError = AzureOpError;
 /** Gets the private link resources that need to be created for a service. */
@@ -2960,72 +3016,101 @@ export const ListPrivateLinkResourceByService: API.OperationMethod<
 
 export type ListServiceByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListServiceByResourceGroup: API.OperationMethod<
+export const ListServiceByResourceGroup: API.PaginatedOperationMethod<
   ListServiceByResourceGroupRequest,
   ServicesDescriptionListResult,
   ListServiceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServicesDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(592, __c37, 0) as any as S.Schema<ListServiceByResourceGroupRequest>,
   output: __S(609, __c38, 1) as any as S.Schema<ServicesDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServicesError = AzureOpError;
 /** Get all the service instances in a subscription. */
-export const ListServices: API.OperationMethod<
+export const ListServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ServicesDescriptionListResult,
   ListServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServicesDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<ListServicesRequest>,
   output: __S(609, __c38, 1) as any as S.Schema<ServicesDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceByResourceGroupError = AzureOpError;
 /** Lists all the available workspaces under the specified resource group. */
-export const ListWorkspaceByResourceGroup: API.OperationMethod<
+export const ListWorkspaceByResourceGroup: API.PaginatedOperationMethod<
   ListWorkspaceByResourceGroupRequest,
   WorkspaceList,
   ListWorkspaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
   output: __S(657, __c41, 1) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceBySubscriptionError = AzureOpError;
 /** Lists all the available workspaces under the specified subscription. */
-export const ListWorkspaceBySubscription: API.OperationMethod<
+export const ListWorkspaceBySubscription: API.PaginatedOperationMethod<
   ListWorkspaceBySubscriptionRequest,
   WorkspaceList,
   ListWorkspaceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c42, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
   output: __S(657, __c41, 1) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspacePrivateEndpointConnectionByWorkspaceError = AzureOpError;
 /** Lists all private endpoint connections for a workspace. */
-export const ListWorkspacePrivateEndpointConnectionByWorkspace: API.OperationMethod<
+export const ListWorkspacePrivateEndpointConnectionByWorkspace: API.PaginatedOperationMethod<
   ListWorkspacePrivateEndpointConnectionByWorkspaceRequest,
   PrivateEndpointConnectionListResultDescription,
   ListWorkspacePrivateEndpointConnectionByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnectionDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     688,
     __c43,
@@ -3035,22 +3120,25 @@ export const ListWorkspacePrivateEndpointConnectionByWorkspace: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListWorkspacePrivateLinkResourceByWorkspaceError = AzureOpError;
 /** Gets the private link resources that need to be created for a workspace. */
-export const ListWorkspacePrivateLinkResourceByWorkspace: API.OperationMethod<
+export const ListWorkspacePrivateLinkResourceByWorkspace: API.PaginatedOperationMethod<
   ListWorkspacePrivateLinkResourceByWorkspaceRequest,
   PrivateLinkResourceListResultDescription,
   ListWorkspacePrivateLinkResourceByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResourceDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c44, 0) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>,
   output: __S(577, __c36, 1) as any as S.Schema<PrivateLinkResourceListResultDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type PrivateEndpointConnectionsCreateOrUpdateError = AzureOpError;
 /** Update the state of the specified private endpoint connection associated with the service. */
@@ -3921,12 +4009,14 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDicomServiceByWorkspaceRequest" });
@@ -3936,7 +4026,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(433, __c27, 1)),
+          value: __S(433, __c27, 1),
         }),
       ).annotate({ identifier: "DicomServiceCollection" });
   }
@@ -3950,12 +4040,14 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           iotConnectorName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFhirDestinationByIotConnectorRequest" });
@@ -3965,7 +4057,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(449, __c28, 1)),
+          value: __S(449, __c28, 1),
         }),
       ).annotate({ identifier: "IotFhirDestinationCollection" });
   }
@@ -3978,12 +4070,14 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFhirServiceByWorkspaceRequest" });
@@ -3993,7 +4087,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(465, __c29, 1)),
+          value: __S(465, __c29, 1),
         }),
       ).annotate({ identifier: "FhirServiceCollection" });
   }
@@ -4006,12 +4100,14 @@ function __c30(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIotConnectorByWorkspaceRequest" });
@@ -4021,7 +4117,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(481, __c30, 1)),
+          value: __S(481, __c30, 1),
         }),
       ).annotate({ identifier: "IotConnectorCollection" });
   }
@@ -4030,15 +4126,18 @@ function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.HealthcareApis/operations",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListOperations2Request" });
+      ).annotate({ identifier: "ListOperationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4120,7 +4219,7 @@ function __c31(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(507, __c31, 11)),
+          value: __S(507, __c31, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperations" });
@@ -4152,7 +4251,7 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(528, __c33, 0)),
+          value: __S(528, __c33, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResultDescription" });
   }
@@ -4203,7 +4302,7 @@ function __c36(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(576, __c36, 0)),
+          value: __S(576, __c36, 0),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResultDescription" });
   }
@@ -4215,12 +4314,14 @@ function __c37(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceByResourceGroupRequest" });
@@ -4234,7 +4335,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(608, __c38, 0)),
+          value: __S(608, __c38, 0),
         }),
       ).annotate({ identifier: "ServicesDescriptionListResult" });
   }
@@ -4245,12 +4346,14 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/services",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
@@ -4263,12 +4366,14 @@ function __c40(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceByResourceGroupRequest" });
@@ -4282,7 +4387,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(656, __c41, 0)),
+          value: __S(656, __c41, 0),
         }),
       ).annotate({ identifier: "WorkspaceList" });
   }
@@ -4293,12 +4398,14 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthcareApis/workspaces",
             code: 200,
             apiVersion: "2024-03-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceBySubscriptionRequest" });

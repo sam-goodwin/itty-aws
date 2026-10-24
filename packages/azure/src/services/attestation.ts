@@ -477,6 +477,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** Name of the attestation provider. */
   providerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Private Endpoint Connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
@@ -748,18 +750,25 @@ export const ListOperations: API.OperationMethod<
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List all the private endpoint connections associated with the attestation provider. */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StatusResultPrivateEndpointConnectionsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(129, __c8, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByProviderError = AzureOpError;
 /** Gets the private link resources supported for the attestation provider. */
@@ -1043,12 +1052,14 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           providerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });

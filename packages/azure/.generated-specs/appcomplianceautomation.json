@@ -1066,10 +1066,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/webhooks",
           "code": 200,
-          "apiVersion": "2024-06-27"
+          "apiVersion": "2024-06-27",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the AppComplianceAutomation webhook list.",
-        "com.distilled.openapi#apiVersion": "2024-06-27"
+        "com.distilled.openapi#apiVersion": "2024-06-27",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appcomplianceautomation#WebhookResourceListResult": {
@@ -1199,6 +1206,12 @@
           "traits": {
             "smithy.api#httpQuery": "reportCreatorTenantId",
             "smithy.api#documentation": "The tenant id of the report creator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         },
         "userToken": {
@@ -2960,10 +2973,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots",
           "code": 200,
-          "apiVersion": "2024-06-27"
+          "apiVersion": "2024-06-27",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the AppComplianceAutomation snapshot list.",
-        "com.distilled.openapi#apiVersion": "2024-06-27"
+        "com.distilled.openapi#apiVersion": "2024-06-27",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appcomplianceautomation#SnapshotResourceListResult": {
@@ -3092,6 +3112,12 @@
           "traits": {
             "smithy.api#httpQuery": "reportCreatorTenantId",
             "smithy.api#documentation": "The tenant id of the report creator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         },
         "userToken": {
@@ -3441,10 +3467,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations",
           "code": 200,
-          "apiVersion": "2024-06-27"
+          "apiVersion": "2024-06-27",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list format of the singleton scopingConfiguration for a specified report.",
-        "com.distilled.openapi#apiVersion": "2024-06-27"
+        "com.distilled.openapi#apiVersion": "2024-06-27",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appcomplianceautomation#ScopingConfigurationResourceListResult": {
@@ -3525,6 +3558,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Report Name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         },
         "userToken": {
@@ -4423,10 +4462,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/evidences",
           "code": 200,
-          "apiVersion": "2024-06-27"
+          "apiVersion": "2024-06-27",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a paginated list of evidences for a specified report.",
-        "com.distilled.openapi#apiVersion": "2024-06-27"
+        "com.distilled.openapi#apiVersion": "2024-06-27",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appcomplianceautomation#EvidenceResourceListResult": {
@@ -4556,6 +4602,12 @@
           "traits": {
             "smithy.api#httpQuery": "reportCreatorTenantId",
             "smithy.api#documentation": "The tenant id of the report creator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         },
         "userToken": {
@@ -5127,10 +5179,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppComplianceAutomation/reports",
           "code": 200,
-          "apiVersion": "2024-06-27"
+          "apiVersion": "2024-06-27",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the AppComplianceAutomation report list for the tenant.",
-        "com.distilled.openapi#apiVersion": "2024-06-27"
+        "com.distilled.openapi#apiVersion": "2024-06-27",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appcomplianceautomation#ReportResourceListResult": {
@@ -5254,6 +5313,12 @@
             "smithy.api#documentation": "The tenant id of the report creator."
           }
         },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        },
         "userToken": {
           "target": "smithy.api#String",
           "traits": {
@@ -5270,7 +5335,7 @@
     "com.azure.appcomplianceautomation#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.appcomplianceautomation#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.appcomplianceautomation#ListOperationsResponse"
@@ -5280,10 +5345,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppComplianceAutomation/operations",
           "code": 200,
-          "apiVersion": "2024-06-27"
+          "apiVersion": "2024-06-27",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-06-27"
+        "com.distilled.openapi#apiVersion": "2024-06-27",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appcomplianceautomation#ListOperationsResponse": {
@@ -5423,6 +5495,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.appcomplianceautomation#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.appcomplianceautomation#ProviderActionsOnboard": {

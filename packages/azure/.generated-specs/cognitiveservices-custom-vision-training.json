@@ -15,179 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsImport": "com.azure.cognitiveservices_custom_vision_training#ImportProject",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsImportRequest": "com.azure.cognitiveservices_custom_vision_training#ImportProjectRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteTag": "com.azure.cognitiveservices_custom_vision_training#DeleteProjectTag",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteTagRequest": "com.azure.cognitiveservices_custom_vision_training#DeleteProjectTagRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTag": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTag",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTagRequest": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTagRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTagRequestType": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTagRequestType",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGetTag": "com.azure.cognitiveservices_custom_vision_training#GetProjectTag",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGetTagRequest": "com.azure.cognitiveservices_custom_vision_training#GetProjectTagRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTag": "com.azure.cognitiveservices_custom_vision_training#CreateProjectTag",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTagRequest": "com.azure.cognitiveservices_custom_vision_training#CreateProjectTagRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTagRequestType": "com.azure.cognitiveservices_custom_vision_training#CreateProjectTagRequestType",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListTags": "com.azure.cognitiveservices_custom_vision_training#ListProjectTags",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsResponse": "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsRequest": "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#PredictionsDelete": "com.azure.cognitiveservices_custom_vision_training#DeletePrediction",
-      "com.azure.cognitiveservices_custom_vision_training#PredictionsDeleteRequest": "com.azure.cognitiveservices_custom_vision_training#DeletePredictionRequest",
-      "com.azure.cognitiveservices_custom_vision_training#PredictionsDeleteRequestIdsList": "com.azure.cognitiveservices_custom_vision_training#DeletePredictionRequestIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsUnpublish": "com.azure.cognitiveservices_custom_vision_training#UnpublishIteration",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsUnpublishRequest": "com.azure.cognitiveservices_custom_vision_training#UnpublishIterationRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsPublish": "com.azure.cognitiveservices_custom_vision_training#PublishIteration",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsPublishResponse": "com.azure.cognitiveservices_custom_vision_training#PublishIterationResponse",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsPublishRequest": "com.azure.cognitiveservices_custom_vision_training#PublishIterationRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCount": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCount",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountResponse": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountResponse",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountRequest": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImages": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImages",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesResponse": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesResponse",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequest": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequestOrderBy": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequestOrderBy",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformance": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformance",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceRequest": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsExport": "com.azure.cognitiveservices_custom_vision_training#ExportIteration",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequest": "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequestFlavor": "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequestFlavor",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequestPlatform": "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequestPlatform",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListExports": "com.azure.cognitiveservices_custom_vision_training#ListIterationExports",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsResponse": "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsResponse",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsRequest": "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsDelete": "com.azure.cognitiveservices_custom_vision_training#DeleteIteration",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsDeleteRequest": "com.azure.cognitiveservices_custom_vision_training#DeleteIterationRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsUpdate": "com.azure.cognitiveservices_custom_vision_training#UpdateIteration",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsUpdateRequest": "com.azure.cognitiveservices_custom_vision_training#UpdateIterationRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGet": "com.azure.cognitiveservices_custom_vision_training#GetIteration",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsGetRequest": "com.azure.cognitiveservices_custom_vision_training#GetIterationRequest",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsList": "com.azure.cognitiveservices_custom_vision_training#ListIterations",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListResponse": "com.azure.cognitiveservices_custom_vision_training#ListIterationsResponse",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListIterationsResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#IterationsListRequest": "com.azure.cognitiveservices_custom_vision_training#ListIterationsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrls": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrls",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequest": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestMetadataMap": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestMetadataMap",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestImagesList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestImagesList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCount": "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCount",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCountResponse": "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCountResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCountRequest": "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCountRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListUntagged": "com.azure.cognitiveservices_custom_vision_training#ListImageUntagged",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedResponse": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedRequest": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedRequestOrderBy": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedRequestOrderBy",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTags": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTags",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequest": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequestImageIdsList": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequestImageIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTags": "com.azure.cognitiveservices_custom_vision_training#CreateImageTags",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTagsRequest": "com.azure.cognitiveservices_custom_vision_training#CreateImageTagsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTagsRequestTagsList": "com.azure.cognitiveservices_custom_vision_training#CreateImageTagsRequestTagsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCount": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCount",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountResponse": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountRequest": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListTagged": "com.azure.cognitiveservices_custom_vision_training#ListImageTagged",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedResponse": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequest": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequestOrderBy": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequestOrderBy",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCount": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCount",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountResponse": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountResponseBodyMap": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountResponseBodyMap",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountRequest": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggested": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggested",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequest": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequestSortBy": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequestSortBy",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegions": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegions",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegionsRequest": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegionsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegionsRequestRegionIdsList": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegionsRequestRegionIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegions": "com.azure.cognitiveservices_custom_vision_training#CreateImageRegions",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegionsRequest": "com.azure.cognitiveservices_custom_vision_training#CreateImageRegionsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegionsRequestRegionsList": "com.azure.cognitiveservices_custom_vision_training#CreateImageRegionsRequestRegionsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictions": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictions",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequest": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestMetadataMap": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestMetadataMap",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestImagesList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestImagesList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadata": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadata",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequest": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequestBodyMap": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequestBodyMap",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequestImageIdsList": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequestImageIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListByIds": "com.azure.cognitiveservices_custom_vision_training#ListImageByIds",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsResponse": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsRequest": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsRequestImageIdsList": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsRequestImageIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFiles": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFiles",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequest": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestMetadataMap": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestMetadataMap",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestImagesList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestImagesList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetCount": "com.azure.cognitiveservices_custom_vision_training#GetImageCount",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountResponse": "com.azure.cognitiveservices_custom_vision_training#GetImageCountResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequest": "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequestTaggingStatus": "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequestTaggingStatus",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetRegionProposals": "com.azure.cognitiveservices_custom_vision_training#GetImageRegionProposals",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesGetRegionProposalsRequest": "com.azure.cognitiveservices_custom_vision_training#GetImageRegionProposalsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDelete": "com.azure.cognitiveservices_custom_vision_training#DeleteImage",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRequest": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRequestImageIdsList": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRequestImageIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromData": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromData",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromDataRequest": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromDataRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromDataRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromDataRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesList": "com.azure.cognitiveservices_custom_vision_training#ListImages",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListResponse": "com.azure.cognitiveservices_custom_vision_training#ListImagesResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListImagesResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListRequest": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestOrderBy": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestOrderBy",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestTaggingStatus": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestTaggingStatus",
-      "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestTagIdsList": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestTagIdsList",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsExport": "com.azure.cognitiveservices_custom_vision_training#ExportProject",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsExportRequest": "com.azure.cognitiveservices_custom_vision_training#ExportProjectRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifact": "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifact",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifactResponse": "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifactResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifactRequest": "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifactRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsDelete": "com.azure.cognitiveservices_custom_vision_training#DeleteProject",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteRequest": "com.azure.cognitiveservices_custom_vision_training#DeleteProjectRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdate": "com.azure.cognitiveservices_custom_vision_training#UpdateProject",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateRequest": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateRequestStatus": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectRequestStatus",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGet": "com.azure.cognitiveservices_custom_vision_training#GetProject",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsGetRequest": "com.azure.cognitiveservices_custom_vision_training#GetProjectRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreate": "com.azure.cognitiveservices_custom_vision_training#CreateProject",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequest": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequest",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestTargetExportPlatformsList": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestTargetExportPlatformsList",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestTargetExportPlatformsItem": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestTargetExportPlatformsItem",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestClassificationType": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestClassificationType",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsList": "com.azure.cognitiveservices_custom_vision_training#ListProjects",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListResponse": "com.azure.cognitiveservices_custom_vision_training#ListProjectsResponse",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListProjectsResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#ProjectsListRequest": "com.azure.cognitiveservices_custom_vision_training#ListProjectsRequest",
-      "com.azure.cognitiveservices_custom_vision_training#DomainsGet": "com.azure.cognitiveservices_custom_vision_training#GetDomain",
-      "com.azure.cognitiveservices_custom_vision_training#DomainsGetRequest": "com.azure.cognitiveservices_custom_vision_training#GetDomainRequest",
-      "com.azure.cognitiveservices_custom_vision_training#DomainsList": "com.azure.cognitiveservices_custom_vision_training#ListDomains",
-      "com.azure.cognitiveservices_custom_vision_training#DomainsListResponse": "com.azure.cognitiveservices_custom_vision_training#ListDomainsResponse",
-      "com.azure.cognitiveservices_custom_vision_training#DomainsListResponseBodyList": "com.azure.cognitiveservices_custom_vision_training#ListDomainsResponseBodyList",
-      "com.azure.cognitiveservices_custom_vision_training#DomainsListRequest": "com.azure.cognitiveservices_custom_vision_training#ListDomainsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsImport": {
+    "com.azure.cognitiveservices_custom_vision_training#ImportProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsImportRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ImportProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Project"
@@ -436,7 +270,7 @@
         "smithy.api#documentation": "Gets or sets the classification type of the project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsImportRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ImportProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1012,10 +846,10 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteTag": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteProjectTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteTagRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeleteProjectTagRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1033,7 +867,7 @@
         "smithy.api#documentation": "Delete a tag from the project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteTagRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteProjectTagRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1065,10 +899,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTag": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTagRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTagRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Tag"
@@ -1154,7 +988,7 @@
         "smithy.api#documentation": "Gets or sets the type of the tag."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTagRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTagRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1197,7 +1031,7 @@
           }
         },
         "type": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTagRequestType",
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTagRequestType",
           "traits": {
             "smithy.api#documentation": "Gets or sets the type of the tag.",
             "smithy.api#required": {}
@@ -1208,7 +1042,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTagRequestType": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTagRequestType": {
       "type": "enum",
       "members": {
         "REGULAR": {
@@ -1234,10 +1068,10 @@
         "smithy.api#documentation": "Gets or sets the type of the tag."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGetTag": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProjectTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGetTagRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetProjectTagRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Tag"
@@ -1255,7 +1089,7 @@
         "smithy.api#documentation": "Get information about a specific tag."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGetTagRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProjectTagRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1294,10 +1128,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTag": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTagRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectTagRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Tag"
@@ -1315,7 +1149,7 @@
         "smithy.api#documentation": "Create a tag for the project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTagRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectTagRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1350,7 +1184,7 @@
           }
         },
         "type": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTagRequestType",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectTagRequestType",
           "traits": {
             "smithy.api#httpQuery": "type",
             "smithy.api#documentation": "Optional type for the tag."
@@ -1361,7 +1195,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTagRequestType": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectTagRequestType": {
       "type": "enum",
       "members": {
         "REGULAR": {
@@ -1385,13 +1219,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListTags": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectTags": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1406,11 +1240,11 @@
         "smithy.api#documentation": "Get the tags for a given project and iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -1421,14 +1255,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Tag"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListTagsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectTagsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1931,10 +1765,10 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#PredictionsDelete": {
+    "com.azure.cognitiveservices_custom_vision_training#DeletePrediction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#PredictionsDeleteRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeletePredictionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1952,7 +1786,7 @@
         "smithy.api#documentation": "Delete a set of predicted images and their associated prediction results."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#PredictionsDeleteRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeletePredictionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1972,7 +1806,7 @@
           }
         },
         "ids": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#PredictionsDeleteRequestIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeletePredictionRequestIdsList",
           "traits": {
             "smithy.api#httpQuery": "ids",
             "smithy.api#required": {},
@@ -1984,17 +1818,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#PredictionsDeleteRequestIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#DeletePredictionRequestIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsUnpublish": {
+    "com.azure.cognitiveservices_custom_vision_training#UnpublishIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsUnpublishRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#UnpublishIterationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2012,7 +1846,7 @@
         "smithy.api#documentation": "Unpublish a specific iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsUnpublishRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#UnpublishIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2044,13 +1878,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsPublish": {
+    "com.azure.cognitiveservices_custom_vision_training#PublishIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsPublishRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#PublishIterationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsPublishResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#PublishIterationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2065,7 +1899,7 @@
         "smithy.api#documentation": "Publish a specific iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsPublishResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#PublishIterationResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2080,7 +1914,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsPublishRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#PublishIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2135,13 +1969,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCount": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2156,7 +1990,7 @@
         "smithy.api#documentation": "Gets the number of images tagged with the provided {tagIds} that have prediction results from\ntraining for the provided iteration {iterationId}. The filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned"
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2171,7 +2005,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2199,7 +2033,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "A list of tags ids to filter the images to count. Defaults to all tags when null."
@@ -2210,20 +2044,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCountRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCountRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImages": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2238,11 +2072,11 @@
         "smithy.api#documentation": "Get image with its prediction for a given project iteration. This API supports batching and range selection. By default it will only return first 50 images matching images.\nUse the {take} and {skip} parameters to control how many images to return in a given batch.\nThe filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned"
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -2253,7 +2087,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImagePerformance"
@@ -2390,7 +2224,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2418,14 +2252,14 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "A list of tags ids to filter the images. Defaults to all tagged images when null. Limited to 20."
           }
         },
         "orderBy": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequestOrderBy",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequestOrderBy",
           "traits": {
             "smithy.api#httpQuery": "orderBy",
             "smithy.api#documentation": "The ordering. Defaults to newest."
@@ -2450,7 +2284,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequestOrderBy": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequestOrderBy": {
       "type": "enum",
       "members": {
         "NEWEST": {
@@ -2468,17 +2302,17 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImagesRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImagesRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformance": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#IterationPerformance"
@@ -2595,7 +2429,7 @@
         "smithy.api#documentation": "Represents performance data for a particular tag in a trained iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2641,10 +2475,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsExport": {
+    "com.azure.cognitiveservices_custom_vision_training#ExportIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Export"
@@ -2813,7 +2647,7 @@
         "smithy.api#documentation": "Platform of the export."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2841,7 +2675,7 @@
           }
         },
         "platform": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequestPlatform",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequestPlatform",
           "traits": {
             "smithy.api#httpQuery": "platform",
             "smithy.api#required": {},
@@ -2849,7 +2683,7 @@
           }
         },
         "flavor": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequestFlavor",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequestFlavor",
           "traits": {
             "smithy.api#httpQuery": "flavor",
             "smithy.api#documentation": "The flavor of the target platform."
@@ -2860,7 +2694,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequestFlavor": {
+    "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequestFlavor": {
       "type": "enum",
       "members": {
         "LINUX": {
@@ -2908,7 +2742,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsExportRequestPlatform": {
+    "com.azure.cognitiveservices_custom_vision_training#ExportIterationRequestPlatform": {
       "type": "enum",
       "members": {
         "COREML": {
@@ -2944,13 +2778,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListExports": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationExports": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2965,11 +2799,11 @@
         "smithy.api#documentation": "Get the list of exports for a specific iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -2980,14 +2814,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Export"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListExportsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationExportsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3019,10 +2853,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsDelete": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsDeleteRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeleteIterationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3040,7 +2874,7 @@
         "smithy.api#documentation": "Delete a specific iteration of a project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsDeleteRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3072,10 +2906,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsUpdate": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsUpdateRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#UpdateIterationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Iteration"
@@ -3093,7 +2927,7 @@
         "smithy.api#documentation": "Update a specific iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsUpdateRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3132,10 +2966,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGet": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Iteration"
@@ -3153,7 +2987,7 @@
         "smithy.api#documentation": "Get a specific iteration."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsGetRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3185,13 +3019,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationsRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3206,11 +3040,11 @@
         "smithy.api#documentation": "Get iterations for the project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -3221,14 +3055,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Iteration"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#IterationsListRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListIterationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3252,10 +3086,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrls": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrls": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageCreateSummary"
@@ -3499,7 +3333,7 @@
         "smithy.api#documentation": "Status of the image creation."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3519,13 +3353,13 @@
           }
         },
         "images": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestImagesList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestImagesList"
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestTagIdsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestTagIdsList"
         },
         "metadata": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestMetadataMap",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "The metadata of image. Limited to 50 key-value pairs per image. The length of key is limited to 256. The length of value is limited to 512.",
             "com.distilled.openapi#nullable": {}
@@ -3536,7 +3370,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestMetadataMap": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3548,14 +3382,14 @@
         "smithy.api#documentation": "The metadata of image. Limited to 50 key-value pairs per image. The length of key is limited to 256. The length of value is limited to 512."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrlsRequestImagesList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrlsRequestImagesList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageUrlCreateEntry"
@@ -3636,13 +3470,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCount": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCountRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCountRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCountResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3657,7 +3491,7 @@
         "smithy.api#documentation": "Gets the number of untagged images. This API returns the images which have no tags for a given project and optionally an iteration. If no iteration is specified the\ncurrent workspace is used."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCountResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCountResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -3672,7 +3506,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCountRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCountRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3703,13 +3537,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListUntagged": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageUntagged": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3724,11 +3558,11 @@
         "smithy.api#documentation": "Get untagged images for a given project iteration. This API supports batching and range selection. By default it will only return first 50 images matching images.\nUse the {take} and {skip} parameters to control how many images to return in a given batch."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -3739,14 +3573,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Image"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3773,7 +3607,7 @@
           }
         },
         "orderBy": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedRequestOrderBy",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedRequestOrderBy",
           "traits": {
             "smithy.api#httpQuery": "orderBy",
             "smithy.api#documentation": "The ordering. Defaults to newest."
@@ -3798,7 +3632,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListUntaggedRequestOrderBy": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageUntaggedRequestOrderBy": {
       "type": "enum",
       "members": {
         "NEWEST": {
@@ -3816,10 +3650,10 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTags": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageTags": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3837,7 +3671,7 @@
         "smithy.api#documentation": "Remove a set of tags from a set of images."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3857,7 +3691,7 @@
           }
         },
         "imageIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequestImageIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequestImageIdsList",
           "traits": {
             "smithy.api#httpQuery": "imageIds",
             "smithy.api#required": {},
@@ -3865,7 +3699,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#required": {},
@@ -3877,24 +3711,24 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTagsRequestImageIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageTagsRequestImageIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTags": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageTags": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTagsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageTagsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageTagCreateSummary"
@@ -3977,7 +3811,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTagsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageTagsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3997,7 +3831,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTagsRequestTagsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageTagsRequestTagsList",
           "traits": {
             "smithy.api#documentation": "Image Tag entries to include in this batch."
           }
@@ -4007,7 +3841,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTagsRequestTagsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageTagsRequestTagsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageTagCreateEntry"
@@ -4016,13 +3850,13 @@
         "smithy.api#documentation": "Image Tag entries to include in this batch."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCount": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4037,7 +3871,7 @@
         "smithy.api#documentation": "Gets the number of images tagged with the provided {tagIds}. The filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned"
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -4052,7 +3886,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4079,7 +3913,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "A list of tags ids to filter the images to count. Defaults to all tags when null."
@@ -4090,20 +3924,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCountRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCountRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListTagged": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageTagged": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4118,11 +3952,11 @@
         "smithy.api#documentation": "Get tagged images for a given project iteration. This API supports batching and range selection. By default it will only return first 50 images matching images.\nUse the {take} and {skip} parameters to control how many images to return in a given batch.\nThe filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned"
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4133,14 +3967,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Image"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4167,14 +4001,14 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "A list of tags ids to filter the images. Defaults to all tagged images when null. Limited to 20."
           }
         },
         "orderBy": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequestOrderBy",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequestOrderBy",
           "traits": {
             "smithy.api#httpQuery": "orderBy",
             "smithy.api#documentation": "The ordering. Defaults to newest."
@@ -4199,7 +4033,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequestOrderBy": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequestOrderBy": {
       "type": "enum",
       "members": {
         "NEWEST": {
@@ -4217,20 +4051,20 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListTaggedRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageTaggedRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCount": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4245,11 +4079,11 @@
         "smithy.api#documentation": "This API takes in tagIds to get count of untagged images per suggested tags for a given threshold. Images whose suggested tags match given tags and their probabilities are greater than or equal to the given threshold will be returned. It returns count as 0 if none found."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountResponseBodyMap",
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4260,7 +4094,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountResponseBodyMap": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountResponseBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4270,7 +4104,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4298,7 +4132,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountRequestTagIdsList",
           "traits": {
             "smithy.api#documentation": "Existing TagIds in project to get suggested tags count for."
           }
@@ -4314,7 +4148,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCountRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCountRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -4323,10 +4157,10 @@
         "smithy.api#documentation": "Existing TagIds in project to get suggested tags count for."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggested": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageSuggested": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#SuggestedTagAndRegionQuery"
@@ -4535,7 +4369,7 @@
         "smithy.api#documentation": "Existing TagIds in project to filter suggested tags on."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4563,7 +4397,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequestTagIdsList",
           "traits": {
             "smithy.api#documentation": "Existing TagIds in project to filter suggested tags on."
           }
@@ -4593,7 +4427,7 @@
           }
         },
         "sortBy": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequestSortBy",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequestSortBy",
           "traits": {
             "smithy.api#documentation": "OrderBy. Ordering mechanism for your results."
           }
@@ -4603,7 +4437,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequestSortBy": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequestSortBy": {
       "type": "enum",
       "members": {
         "UNCERTAINTYASCENDING": {
@@ -4623,7 +4457,7 @@
         "smithy.api#documentation": "OrderBy. Ordering mechanism for your results."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggestedRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageSuggestedRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -4632,10 +4466,10 @@
         "smithy.api#documentation": "Existing TagIds in project to filter suggested tags on."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegions": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegionsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegionsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4653,7 +4487,7 @@
         "smithy.api#documentation": "Delete a set of image regions."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegionsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4673,7 +4507,7 @@
           }
         },
         "regionIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegionsRequestRegionIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegionsRequestRegionIdsList",
           "traits": {
             "smithy.api#httpQuery": "regionIds",
             "smithy.api#required": {},
@@ -4685,17 +4519,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegionsRequestRegionIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegionsRequestRegionIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegions": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageRegions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegionsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageRegionsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageRegionCreateSummary"
@@ -4861,7 +4695,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegionsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageRegionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4881,24 +4715,24 @@
           }
         },
         "regions": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegionsRequestRegionsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageRegionsRequestRegionsList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegionsRequestRegionsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageRegionsRequestRegionsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageRegionCreateEntry"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictions": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageCreateSummary"
@@ -4916,7 +4750,7 @@
         "smithy.api#documentation": "This API creates a batch of training images from predicted images specified. There is a limit of 64 images and 20 tags.\nIf all images are successful created, 200(OK) status code will be returned.\nOtherwise, 207 (Multi-Status) status code will be returned and detail status for each image will be listed in the response payload."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4936,13 +4770,13 @@
           }
         },
         "images": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestImagesList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestImagesList"
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestTagIdsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestTagIdsList"
         },
         "metadata": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestMetadataMap",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "The metadata of image. Limited to 50 key-value pairs per image. The length of key is limited to 256. The length of value is limited to 512.",
             "com.distilled.openapi#nullable": {}
@@ -4953,7 +4787,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestMetadataMap": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4965,14 +4799,14 @@
         "smithy.api#documentation": "The metadata of image. Limited to 50 key-value pairs per image. The length of key is limited to 256. The length of value is limited to 512."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictionsRequestImagesList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictionsRequestImagesList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageIdCreateEntry"
@@ -5011,10 +4845,10 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadata": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageMetadataUpdateSummary"
@@ -5122,7 +4956,7 @@
         "smithy.api#documentation": "Status of the metadata update."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5142,7 +4976,7 @@
           }
         },
         "imageIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequestImageIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequestImageIdsList",
           "traits": {
             "smithy.api#httpQuery": "imageIds",
             "smithy.api#required": {},
@@ -5150,7 +4984,7 @@
           }
         },
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequestBodyMap",
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequestBodyMap",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -5161,7 +4995,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequestBodyMap": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequestBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5171,20 +5005,20 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadataRequestImageIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadataRequestImageIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListByIds": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageByIds": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5199,11 +5033,11 @@
         "smithy.api#documentation": "This API will return a set of Images for the specified tags and optionally iteration. If no iteration is specified the\ncurrent workspace is used."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5214,14 +5048,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Image"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5241,7 +5075,7 @@
           }
         },
         "imageIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsRequestImageIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsRequestImageIdsList",
           "traits": {
             "smithy.api#httpQuery": "imageIds",
             "smithy.api#documentation": "The list of image ids to retrieve. Limited to 256."
@@ -5259,17 +5093,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListByIdsRequestImageIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImageByIdsRequestImageIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFiles": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageCreateSummary"
@@ -5287,7 +5121,7 @@
         "smithy.api#documentation": "This API accepts a batch of files, and optionally tags, to create training images. There is a limit of 64 images and 20 tags.\nIf all images are successful created, 200(OK) status code will be returned.\nOtherwise, 207 (Multi-Status) status code will be returned and detail status for each image will be listed in the response payload."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5307,13 +5141,13 @@
           }
         },
         "images": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestImagesList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestImagesList"
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestTagIdsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestTagIdsList"
         },
         "metadata": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestMetadataMap",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "The metadata of image. Limited to 50 key-value pairs per image. The length of key is limited to 256. The length of value is limited to 512.",
             "com.distilled.openapi#nullable": {}
@@ -5324,7 +5158,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestMetadataMap": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5336,14 +5170,14 @@
         "smithy.api#documentation": "The metadata of image. Limited to 50 key-value pairs per image. The length of key is limited to 256. The length of value is limited to 512."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFilesRequestImagesList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFilesRequestImagesList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageFileCreateEntry"
@@ -5382,13 +5216,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetCount": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageCount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageCountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5403,7 +5237,7 @@
         "smithy.api#documentation": "Get the number of images. The filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned"
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageCountResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -5418,7 +5252,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5445,7 +5279,7 @@
           }
         },
         "taggingStatus": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequestTaggingStatus",
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequestTaggingStatus",
           "traits": {
             "smithy.api#httpQuery": "taggingStatus",
             "smithy.api#documentation": "The tagging status filter. It can be 'All', 'Tagged', or 'Untagged'. Defaults to 'All'."
@@ -5459,7 +5293,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "A list of tags ids to filter the images to count. Defaults to all tags when null."
@@ -5470,14 +5304,14 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetCountRequestTaggingStatus": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageCountRequestTaggingStatus": {
       "type": "enum",
       "members": {
         "ALL": {
@@ -5501,10 +5335,10 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetRegionProposals": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageRegionProposals": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetRegionProposalsRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetImageRegionProposalsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageRegionProposal"
@@ -5556,7 +5390,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesGetRegionProposalsRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetImageRegionProposalsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5588,10 +5422,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDelete": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5609,7 +5443,7 @@
         "smithy.api#documentation": "Delete images from the set of training images."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5629,7 +5463,7 @@
           }
         },
         "imageIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRequestImageIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRequestImageIdsList",
           "traits": {
             "smithy.api#httpQuery": "imageIds",
             "smithy.api#documentation": "Ids of the images to be deleted. Limited to 256 images per batch."
@@ -5654,17 +5488,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRequestImageIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteImageRequestImageIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromData": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromData": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromDataRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromDataRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ImageCreateSummary"
@@ -5682,7 +5516,7 @@
         "smithy.api#documentation": "This API accepts body content as multipart/form-data and application/octet-stream. When using multipart\nmultiple image files can be sent at once, with a maximum of 64 files.\nIf all images are successful created, 200(OK) status code will be returned.\nOtherwise, 207 (Multi-Status) status code will be returned and detail status for each image will be listed in the response payload."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromDataRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromDataRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5702,7 +5536,7 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromDataRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromDataRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "The tags ids with which to tag each image. Limited to 20."
@@ -5713,20 +5547,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromDataRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateImageFromDataRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListImagesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5741,11 +5575,11 @@
         "smithy.api#documentation": "This API supports batching and range selection. By default it will only return first 50 images matching images.\nUse the {take} and {skip} parameters to control how many images to return in a given batch.\nThe filtering is on an and/or relationship. For example, if the provided tag ids are for the \"Dog\" and\n\"Cat\" tags, then only images tagged with Dog and/or Cat will be returned"
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImagesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImagesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5756,14 +5590,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImagesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Image"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImagesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5790,14 +5624,14 @@
           }
         },
         "tagIds": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestTagIdsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestTagIdsList",
           "traits": {
             "smithy.api#httpQuery": "tagIds",
             "smithy.api#documentation": "A list of tags ids to filter the images. Defaults to all tagged images when null. Limited to 20."
           }
         },
         "taggingStatus": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestTaggingStatus",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestTaggingStatus",
           "traits": {
             "smithy.api#httpQuery": "taggingStatus",
             "smithy.api#documentation": "The tagging status filter. It can be 'All', 'Tagged', or 'Untagged'. Defaults to 'All'."
@@ -5811,7 +5645,7 @@
           }
         },
         "orderBy": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestOrderBy",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestOrderBy",
           "traits": {
             "smithy.api#httpQuery": "orderBy",
             "smithy.api#documentation": "The ordering. Defaults to newest."
@@ -5836,7 +5670,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestOrderBy": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestOrderBy": {
       "type": "enum",
       "members": {
         "NEWEST": {
@@ -5854,7 +5688,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestTaggingStatus": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestTaggingStatus": {
       "type": "enum",
       "members": {
         "ALL": {
@@ -5878,17 +5712,17 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ImagesListRequestTagIdsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListImagesRequestTagIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsExport": {
+    "com.azure.cognitiveservices_custom_vision_training#ExportProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsExportRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ExportProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#ProjectExport"
@@ -5950,7 +5784,7 @@
         "smithy.api#documentation": "Represents information about a project export."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsExportRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ExportProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5974,13 +5808,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifact": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifact": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifactRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifactRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifactResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifactResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5995,7 +5829,7 @@
         "smithy.api#documentation": "Get artifact content from blob storage, based on artifact relative path in the blob."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifactResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifactResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -6010,7 +5844,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifactRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifactRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6042,10 +5876,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsDelete": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#DeleteProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6063,7 +5897,7 @@
         "smithy.api#documentation": "Delete a specific project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#DeleteProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6087,10 +5921,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdate": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Project"
@@ -6108,7 +5942,7 @@
         "smithy.api#documentation": "Update a specific project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6150,7 +5984,7 @@
           }
         },
         "status": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateRequestStatus",
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectRequestStatus",
           "traits": {
             "smithy.api#documentation": "Gets the status of the project."
           }
@@ -6160,7 +5994,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateRequestStatus": {
+    "com.azure.cognitiveservices_custom_vision_training#UpdateProjectRequestStatus": {
       "type": "enum",
       "members": {
         "SUCCEEDED": {
@@ -6284,10 +6118,10 @@
         "smithy.api#documentation": "Gets or sets the classification type of the project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGet": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGetRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Project"
@@ -6305,7 +6139,7 @@
         "smithy.api#documentation": "Get a specific project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsGetRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6329,10 +6163,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreate": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Project"
@@ -6350,7 +6184,7 @@
         "smithy.api#documentation": "Create a project."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6384,14 +6218,14 @@
           }
         },
         "classificationType": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestClassificationType",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestClassificationType",
           "traits": {
             "smithy.api#httpQuery": "classificationType",
             "smithy.api#documentation": "The type of classifier to create for this project."
           }
         },
         "targetExportPlatforms": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestTargetExportPlatformsList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestTargetExportPlatformsList",
           "traits": {
             "smithy.api#httpQuery": "targetExportPlatforms",
             "smithy.api#documentation": "List of platforms the trained model is intending exporting to."
@@ -6402,14 +6236,14 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestTargetExportPlatformsList": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestTargetExportPlatformsList": {
       "type": "list",
       "member": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestTargetExportPlatformsItem"
+        "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestTargetExportPlatformsItem"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestTargetExportPlatformsItem": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestTargetExportPlatformsItem": {
       "type": "enum",
       "members": {
         "COREML": {
@@ -6445,7 +6279,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateRequestClassificationType": {
+    "com.azure.cognitiveservices_custom_vision_training#CreateProjectRequestClassificationType": {
       "type": "enum",
       "members": {
         "MULTICLASS": {
@@ -6463,13 +6297,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectsRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6484,11 +6318,11 @@
         "smithy.api#documentation": "Get your projects."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6499,14 +6333,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Project"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#ProjectsListRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListProjectsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6522,10 +6356,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#DomainsGet": {
+    "com.azure.cognitiveservices_custom_vision_training#GetDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#DomainsGetRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#GetDomainRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Domain"
@@ -6582,7 +6416,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#DomainsGetRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#GetDomainRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6606,13 +6440,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#DomainsList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListDomains": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#DomainsListRequest"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListDomainsRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_custom_vision_training#DomainsListResponse"
+        "target": "com.azure.cognitiveservices_custom_vision_training#ListDomainsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6627,11 +6461,11 @@
         "smithy.api#documentation": "Get a list of the available domains."
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#DomainsListResponse": {
+    "com.azure.cognitiveservices_custom_vision_training#ListDomainsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_custom_vision_training#DomainsListResponseBodyList",
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListDomainsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6642,14 +6476,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_custom_vision_training#DomainsListResponseBodyList": {
+    "com.azure.cognitiveservices_custom_vision_training#ListDomainsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_custom_vision_training#Domain"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_custom_vision_training#DomainsListRequest": {
+    "com.azure.cognitiveservices_custom_vision_training#ListDomainsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6670,7 +6504,7 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsImport"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ImportProject"
         },
         {
           "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsTrain"
@@ -6679,19 +6513,19 @@
           "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsSuggestTagsAndRegions"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsDeleteTag"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteProjectTag"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdateTag"
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateProjectTag"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGetTag"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetProjectTag"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreateTag"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateProjectTag"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsListTags"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListProjectTags"
         },
         {
           "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsQuickTestImageUrl"
@@ -6703,127 +6537,127 @@
           "target": "com.azure.cognitiveservices_custom_vision_training#PredictionsQuery"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#PredictionsDelete"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeletePrediction"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsUnpublish"
+          "target": "com.azure.cognitiveservices_custom_vision_training#UnpublishIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsPublish"
+          "target": "com.azure.cognitiveservices_custom_vision_training#PublishIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformanceImageCount"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformanceImageCount"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListPerformanceImages"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationPerformanceImages"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGetPerformance"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetIterationPerformance"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsExport"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ExportIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsListExports"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterationExports"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsDelete"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsUpdate"
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsGet"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#IterationsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListIterations"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromUrls"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromUrls"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetUntaggedCount"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageUntaggedCount"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListUntagged"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageUntagged"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteTags"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageTags"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateTags"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageTags"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetTaggedCount"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageTaggedCount"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListTagged"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageTagged"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetSuggestedCount"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageSuggestedCount"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListSuggested"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageSuggested"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDeleteRegions"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImageRegions"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateRegions"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageRegions"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromPredictions"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromPredictions"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesUpdateMetadata"
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateImageMetadata"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesListByIds"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImageByIds"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromFiles"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromFiles"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetCount"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageCount"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesGetRegionProposals"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetImageRegionProposals"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesDelete"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteImage"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesCreateFromData"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateImageFromData"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ImagesList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListImages"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsExport"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ExportProject"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGetArtifact"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetProjectArtifact"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsDelete"
+          "target": "com.azure.cognitiveservices_custom_vision_training#DeleteProject"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsUpdate"
+          "target": "com.azure.cognitiveservices_custom_vision_training#UpdateProject"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsGet"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetProject"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsCreate"
+          "target": "com.azure.cognitiveservices_custom_vision_training#CreateProject"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#ProjectsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListProjects"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#DomainsGet"
+          "target": "com.azure.cognitiveservices_custom_vision_training#GetDomain"
         },
         {
-          "target": "com.azure.cognitiveservices_custom_vision_training#DomainsList"
+          "target": "com.azure.cognitiveservices_custom_vision_training#ListDomains"
         }
       ],
       "traits": {

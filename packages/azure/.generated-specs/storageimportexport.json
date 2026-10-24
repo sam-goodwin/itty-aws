@@ -17,6 +17,7 @@
     ],
     "distilled.rename": {
       "com.azure.storageimportexport#OperationsList": "com.azure.storageimportexport#ListOperations",
+      "com.azure.storageimportexport#OperationsListRequest": "com.azure.storageimportexport#ListOperationsRequest",
       "com.azure.storageimportexport#BitLockerKeysList": "com.azure.storageimportexport#ListBitLockerKeys",
       "com.azure.storageimportexport#BitLockerKeysListRequest": "com.azure.storageimportexport#ListBitLockerKeysRequest",
       "com.azure.storageimportexport#JobsDelete": "com.azure.storageimportexport#DeleteJob",
@@ -35,14 +36,15 @@
       "com.azure.storageimportexport#JobsListBySubscriptionRequest": "com.azure.storageimportexport#ListJobBySubscriptionRequest",
       "com.azure.storageimportexport#LocationsGet": "com.azure.storageimportexport#GetLocation",
       "com.azure.storageimportexport#LocationsGetRequest": "com.azure.storageimportexport#GetLocationRequest",
-      "com.azure.storageimportexport#LocationsList": "com.azure.storageimportexport#ListLocations"
+      "com.azure.storageimportexport#LocationsList": "com.azure.storageimportexport#ListLocations",
+      "com.azure.storageimportexport#LocationsListRequest": "com.azure.storageimportexport#ListLocationsRequest"
     }
   },
   "shapes": {
     "com.azure.storageimportexport#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storageimportexport#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#ListOperationsResponse"
@@ -55,7 +57,11 @@
           "apiVersion": "2020-08-01"
         },
         "smithy.api#documentation": "Returns the list of operations supported by the import/export resource provider.",
-        "com.distilled.openapi#apiVersion": "2020-08-01"
+        "com.distilled.openapi#apiVersion": "2020-08-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.storageimportexport#ListOperationsResponse": {
@@ -135,6 +141,13 @@
         "smithy.api#documentation": "operation display properties"
       }
     },
+    "com.azure.storageimportexport#OperationsListRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.storageimportexport#BitLockerKeysList": {
       "type": "operation",
       "input": {
@@ -151,7 +164,11 @@
           "apiVersion": "2020-08-01"
         },
         "smithy.api#documentation": "Returns the BitLocker Keys for all drives in the specified job.",
-        "com.distilled.openapi#apiVersion": "2020-08-01"
+        "com.distilled.openapi#apiVersion": "2020-08-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.storageimportexport#GetBitLockerKeysResponse": {
@@ -1520,10 +1537,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs",
           "code": 200,
-          "apiVersion": "2020-08-01"
+          "apiVersion": "2020-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all active and completed jobs in a resource group.",
-        "com.distilled.openapi#apiVersion": "2020-08-01"
+        "com.distilled.openapi#apiVersion": "2020-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storageimportexport#ListJobsResponse": {
@@ -1587,6 +1611,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Can be used to restrict the results to certain conditions."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1606,10 +1636,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ImportExport/jobs",
           "code": 200,
-          "apiVersion": "2020-08-01"
+          "apiVersion": "2020-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all active and completed jobs in a subscription.",
-        "com.distilled.openapi#apiVersion": "2020-08-01"
+        "com.distilled.openapi#apiVersion": "2020-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storageimportexport#JobsListBySubscriptionRequest": {
@@ -1635,6 +1672,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Can be used to restrict the results to certain conditions."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1804,7 +1847,7 @@
     "com.azure.storageimportexport#LocationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storageimportexport#LocationsListRequest"
       },
       "output": {
         "target": "com.azure.storageimportexport#LocationsResponse"
@@ -1817,7 +1860,11 @@
           "apiVersion": "2020-08-01"
         },
         "smithy.api#documentation": "Returns a list of locations to which you can ship the disks associated with an import or export job. A location is a Microsoft data center region.",
-        "com.distilled.openapi#apiVersion": "2020-08-01"
+        "com.distilled.openapi#apiVersion": "2020-08-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.storageimportexport#LocationsResponse": {
@@ -1841,6 +1888,13 @@
       },
       "traits": {
         "smithy.api#documentation": "locations"
+      }
+    },
+    "com.azure.storageimportexport#LocationsListRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storageimportexport#Storageimportexport": {

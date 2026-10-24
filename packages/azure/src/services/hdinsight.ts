@@ -1767,6 +1767,8 @@ export interface ListApplicationByClusterRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags for the application. */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
@@ -1815,7 +1817,7 @@ export type ApplicationListResultValueList = Array<Application>;
 /** Result of the request to list cluster Applications. It contains a list of operations and a URL link to get the next set of results. */
 export interface ApplicationListResult {
   /** The list of HDInsight applications installed on HDInsight cluster. */
-  value?: ApplicationListResultValueList;
+  value: ApplicationListResultValueList;
   /** The URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -1824,6 +1826,8 @@ export interface ListClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
@@ -1880,13 +1884,15 @@ export type ClusterListResultValueList = Array<Cluster>;
 /** The List Cluster operation response. */
 export interface ClusterListResult {
   /** The list of Clusters. */
-  value?: ClusterListResultValueList;
+  value: ClusterListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
 export interface ListClustersRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListConfigurationsRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2057,7 +2063,10 @@ export interface UsagesListResult {
   /** The list of usages. */
   value?: UsagesListResultValueList;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** The service provider: Microsoft.HDInsight */
@@ -2149,7 +2158,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list HDInsight operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** The list of HDInsight operations supported by the HDInsight resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** The URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -2160,6 +2169,8 @@ export interface ListPrivateEndpointConnectionByClusterRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateEndpointConnectionSystemDataCreatedByType =
@@ -2206,7 +2217,7 @@ export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpoint
 /** The list private endpoint connections response. */
 export interface PrivateEndpointConnectionListResult {
   /** The list of private endpoint connections. */
-  value?: PrivateEndpointConnectionListResultValueList;
+  value: PrivateEndpointConnectionListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -2285,6 +2296,8 @@ export interface ListScriptActionByClusterRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of roles where script will be executed. */
 export type ScriptActionsListValueItemRolesList = Array<string>;
@@ -2322,7 +2335,7 @@ export type ScriptActionsListValueList = Array<ScriptActionsListValueItem>;
 /** The persisted script action for the cluster. */
 export interface ScriptActionsList {
   /** The list of persisted script action details for the cluster. */
-  value?: ScriptActionsListValueList;
+  value: ScriptActionsListValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -2333,6 +2346,8 @@ export interface ListScriptExecutionHistoryByClusterRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of roles where script will be executed. */
 export type ScriptActionExecutionHistoryListValueItemRolesList = Array<string>;
@@ -2372,7 +2387,7 @@ export type ScriptActionExecutionHistoryListValueList =
 /** The list script execution history response. */
 export interface ScriptActionExecutionHistoryList {
   /** The list of persisted script action details for the cluster. */
-  value?: ScriptActionExecutionHistoryListValueList;
+  value: ScriptActionExecutionHistoryListValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -3159,48 +3174,69 @@ export const GetVirtualMachineAsyncOperationStatus: API.OperationMethod<
 
 export type ListApplicationByClusterError = AzureOpError;
 /** Lists all of the applications for the HDInsight cluster. */
-export const ListApplicationByCluster: API.OperationMethod<
+export const ListApplicationByCluster: API.PaginatedOperationMethod<
   ListApplicationByClusterRequest,
   ApplicationListResult,
   ListApplicationByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<ListApplicationByClusterRequest>,
   output: __S(770, __c48, 2) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClusterByResourceGroupError = AzureOpError;
 /** Lists the HDInsight clusters in a resource group. */
-export const ListClusterByResourceGroup: API.OperationMethod<
+export const ListClusterByResourceGroup: API.PaginatedOperationMethod<
   ListClusterByResourceGroupRequest,
   ClusterListResult,
   ListClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(784, __c49, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
   output: __S(801, __c50, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClustersError = AzureOpError;
 /** Lists all the HDInsight clusters under the subscription. */
-export const ListClusters: API.OperationMethod<
+export const ListClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ClusterListResult,
   ListClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(816, __c51, 0) as any as S.Schema<ListClustersRequest>,
   output: __S(801, __c50, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConfigurationsError = AzureOpError;
 /** Gets all configuration information for an HDI cluster. */
@@ -3249,33 +3285,47 @@ export const ListLocationUsages: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available HDInsight REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(880, __c55, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(890, __c55, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByClusterError = AzureOpError;
 /** Lists the private endpoint connections for a HDInsight cluster. */
-export const ListPrivateEndpointConnectionByCluster: API.OperationMethod<
+export const ListPrivateEndpointConnectionByCluster: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByClusterRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(896, __c56, 0) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
   output: __S(897, __c56, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByClusterError = AzureOpError;
 /** Lists the private link resources in a HDInsight cluster. */
@@ -3294,33 +3344,47 @@ export const ListPrivateLinkResourceByCluster: API.OperationMethod<
 
 export type ListScriptActionByClusterError = AzureOpError;
 /** Lists all the persisted script actions for the specified cluster. */
-export const ListScriptActionByCluster: API.OperationMethod<
+export const ListScriptActionByCluster: API.PaginatedOperationMethod<
   ListScriptActionByClusterRequest,
   ScriptActionsList,
   ListScriptActionByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScriptActionsListValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(944, __c59, 0) as any as S.Schema<ListScriptActionByClusterRequest>,
   output: __S(961, __c60, 1) as any as S.Schema<ScriptActionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScriptExecutionHistoryByClusterError = AzureOpError;
 /** Lists all scripts' execution history for the specified cluster. */
-export const ListScriptExecutionHistoryByCluster: API.OperationMethod<
+export const ListScriptExecutionHistoryByCluster: API.PaginatedOperationMethod<
   ListScriptExecutionHistoryByClusterRequest,
   ScriptActionExecutionHistoryList,
   ListScriptExecutionHistoryByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScriptActionExecutionHistoryListValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(976, __c61, 0) as any as S.Schema<ListScriptExecutionHistoryByClusterRequest>,
   output: __S(961, __c60, 1) as any as S.Schema<ScriptActionExecutionHistoryList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineHostsError = AzureOpError;
 /** Lists the HDInsight clusters hosts */
@@ -4863,12 +4927,14 @@ function __c48(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationByClusterRequest" });
@@ -4877,7 +4943,7 @@ function __c48(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(769, __c48, 1)),
+          value: __S(769, __c48, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationListResult" });
@@ -4890,12 +4956,14 @@ function __c49(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterByResourceGroupRequest" });
@@ -4908,7 +4976,7 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(800, __c50, 0)),
+          value: __S(800, __c50, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
@@ -4920,12 +4988,14 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/clusters",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
@@ -5095,12 +5165,15 @@ function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.HDInsight/operations",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -5173,7 +5246,7 @@ function __c55(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(889, __c55, 9)),
+          value: __S(889, __c55, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -5187,19 +5260,21 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByClusterRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(448, __c28, 0)),
+          value: __S(448, __c28, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -5260,12 +5335,14 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScriptActionByClusterRequest" });
@@ -5278,7 +5355,7 @@ function __c60(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(960, __c60, 0)),
+          value: __S(960, __c60, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptActionsList" });
@@ -5292,12 +5369,14 @@ function __c61(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScriptExecutionHistoryByClusterRequest" });

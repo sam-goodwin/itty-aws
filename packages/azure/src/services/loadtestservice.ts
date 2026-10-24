@@ -397,6 +397,8 @@ export interface ListLoadTestByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LoadTestResourceTagsMap = { [key: string]: string | undefined };
@@ -433,6 +435,8 @@ export interface LoadTestResourceListResult {
 export interface ListLoadTestBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLoadTestOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -441,6 +445,8 @@ export interface ListLoadTestOutboundNetworkDependenciesEndpointsRequest {
   resourceGroupName: string;
   /** Load Test name */
   loadTestName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Details about the connection between the Batch service and the endpoint. */
 export interface EndpointDetail {
@@ -476,7 +482,10 @@ export interface PagedOutboundEnvironmentEndpoint {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -509,7 +518,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -518,6 +527,8 @@ export interface ListPlaywrightQuotasBySubscriptionRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Subscription-level location-based Playwright quota resource. */
 export interface PlaywrightQuota {
@@ -546,6 +557,8 @@ export interface ListPlaywrightWorkspaceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type PlaywrightWorkspaceTagsMap = { [key: string]: string | undefined };
@@ -578,6 +591,8 @@ export interface PlaywrightWorkspaceListResult {
 export interface ListPlaywrightWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -586,6 +601,8 @@ export interface ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Playwright workspace quota resource. */
 export interface PlaywrightWorkspaceQuota {
@@ -614,6 +631,8 @@ export interface ListQuotasRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Quota bucket details object. */
 export interface QuotaResource {
@@ -978,42 +997,57 @@ export const GetQuotas: API.OperationMethod<
 
 export type ListLoadTestByResourceGroupError = AzureOpError;
 /** List LoadTestResource resources by resource group */
-export const ListLoadTestByResourceGroup: API.OperationMethod<
+export const ListLoadTestByResourceGroup: API.PaginatedOperationMethod<
   ListLoadTestByResourceGroupRequest,
   LoadTestResourceListResult,
   ListLoadTestByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LoadTestResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<ListLoadTestByResourceGroupRequest>,
   output: __S(281, __c35, 1) as any as S.Schema<LoadTestResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadTestBySubscriptionError = AzureOpError;
 /** List LoadTestResource resources by subscription ID */
-export const ListLoadTestBySubscription: API.OperationMethod<
+export const ListLoadTestBySubscription: API.PaginatedOperationMethod<
   ListLoadTestBySubscriptionRequest,
   LoadTestResourceListResult,
   ListLoadTestBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LoadTestResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<ListLoadTestBySubscriptionRequest>,
   output: __S(281, __c35, 1) as any as S.Schema<LoadTestResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadTestOutboundNetworkDependenciesEndpointsError = AzureOpError;
 /** Lists the endpoints that agents may call as part of load testing. */
-export const ListLoadTestOutboundNetworkDependenciesEndpoints: API.OperationMethod<
+export const ListLoadTestOutboundNetworkDependenciesEndpoints: API.PaginatedOperationMethod<
   ListLoadTestOutboundNetworkDependenciesEndpointsRequest,
   PagedOutboundEnvironmentEndpoint,
   ListLoadTestOutboundNetworkDependenciesEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundEnvironmentEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     32,
     __c4,
@@ -1023,76 +1057,111 @@ export const ListLoadTestOutboundNetworkDependenciesEndpoints: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(44, __c5, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPlaywrightQuotasBySubscriptionError = AzureOpError;
 /** Lists Playwright quota resources for a given subscription ID. */
-export const ListPlaywrightQuotasBySubscription: API.OperationMethod<
+export const ListPlaywrightQuotasBySubscription: API.PaginatedOperationMethod<
   ListPlaywrightQuotasBySubscriptionRequest,
   PlaywrightQuotaListResult,
   ListPlaywrightQuotasBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PlaywrightQuota
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<ListPlaywrightQuotasBySubscriptionRequest>,
   output: __S(50, __c6, 2) as any as S.Schema<PlaywrightQuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPlaywrightWorkspaceByResourceGroupError = AzureOpError;
 /** List PlaywrightWorkspace resources by resource group */
-export const ListPlaywrightWorkspaceByResourceGroup: API.OperationMethod<
+export const ListPlaywrightWorkspaceByResourceGroup: API.PaginatedOperationMethod<
   ListPlaywrightWorkspaceByResourceGroupRequest,
   PlaywrightWorkspaceListResult,
   ListPlaywrightWorkspaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PlaywrightWorkspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListPlaywrightWorkspaceByResourceGroupRequest>,
   output: __S(65, __c8, 1) as any as S.Schema<PlaywrightWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPlaywrightWorkspaceBySubscriptionError = AzureOpError;
 /** List PlaywrightWorkspace resources by subscription ID */
-export const ListPlaywrightWorkspaceBySubscription: API.OperationMethod<
+export const ListPlaywrightWorkspaceBySubscription: API.PaginatedOperationMethod<
   ListPlaywrightWorkspaceBySubscriptionRequest,
   PlaywrightWorkspaceListResult,
   ListPlaywrightWorkspaceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PlaywrightWorkspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListPlaywrightWorkspaceBySubscriptionRequest>,
   output: __S(65, __c8, 1) as any as S.Schema<PlaywrightWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceError = AzureOpError;
 /** Lists quota resources for a given Playwright workspace. */
-export const ListPlaywrightWorkspaceQuotasByPlaywrightWorkspace: API.OperationMethod<
+export const ListPlaywrightWorkspaceQuotasByPlaywrightWorkspace: API.PaginatedOperationMethod<
   ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest,
   PlaywrightWorkspaceQuotaListResult,
   ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PlaywrightWorkspaceQuota
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     80,
     __c10,
@@ -1102,22 +1171,35 @@ export const ListPlaywrightWorkspaceQuotasByPlaywrightWorkspace: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQuotasError = AzureOpError;
 /** List quotas for a given subscription Id. */
-export const ListQuotas: API.OperationMethod<
+export const ListQuotas: API.PaginatedOperationMethod<
   ListQuotasRequest,
   QuotaResourceListResult,
   ListQuotasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  QuotaResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<ListQuotasRequest>,
   output: __S(90, __c11, 2) as any as S.Schema<QuotaResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type LoadTestsCreateOrUpdateError = AzureOpError;
 /** Create a LoadTestResource */
@@ -1281,12 +1363,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/loadTests",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadTestBySubscriptionRequest" });
@@ -1300,12 +1384,14 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadTestName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}/outboundNetworkDependenciesEndpoints",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadTestOutboundNetworkDependenciesEndpointsRequest" });
@@ -1349,12 +1435,15 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.LoadTestService/operations",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1382,7 +1471,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: __S(43, __c5, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1395,12 +1484,14 @@ function __c6(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/playwrightQuotas",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPlaywrightQuotasBySubscriptionRequest" });
@@ -1422,12 +1513,14 @@ function __c7(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPlaywrightWorkspaceByResourceGroupRequest" });
@@ -1452,12 +1545,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/playwrightWorkspaces",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPlaywrightWorkspaceBySubscriptionRequest" });
@@ -1471,12 +1566,14 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           playwrightWorkspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}/quotas",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest" });
@@ -1498,12 +1595,14 @@ function __c11(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.LoadTestService/locations/{location}/quotas",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQuotasRequest" });
@@ -2015,12 +2114,14 @@ function __c34(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadTestByResourceGroupRequest" });

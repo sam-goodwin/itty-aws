@@ -524,10 +524,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists/{suppressionListName}/suppressionListAddresses",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get\n\nGet all the addresses in a suppression list.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#SuppressionListAddressResourceCollection": {
@@ -639,6 +646,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the suppression list."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -988,10 +1001,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/suppressionLists",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List\n\nList all suppression lists for a domains resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#SuppressionListResourceCollection": {
@@ -1095,6 +1115,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Domains resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1514,10 +1540,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "ListBy_Domains\n\nList all valid sender usernames for a domains resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#SenderUsernameResourceCollection": {
@@ -1621,6 +1654,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Domains resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2757,10 +2796,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List by EmailService\n\nHandles requests to list all Domains resources under the parent EmailServices resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#DomainResourceList": {
@@ -2881,6 +2927,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the EmailService resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3476,10 +3528,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List By Resource Group\n\nHandles requests to list all resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#EmailServiceResourceList": {
@@ -3592,6 +3651,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3900,10 +3965,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices/{communicationServiceName}/smtpUsernames",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get\n\nGet all SmtpUsernameResources for a Communication resource.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#SmtpUsernameResourceCollection": {
@@ -3999,6 +4071,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the CommunicationService resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5314,10 +5392,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/communicationServices",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List By Resource Group\n\nHandles requests to list all resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#CommunicationServiceResourceList": {
@@ -5484,6 +5569,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5562,10 +5653,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/emailServices",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List By Subscription\n\nHandles requests to list all resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#ListEmailServiceBySubscriptionRequest": {
@@ -5577,6 +5675,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5597,10 +5701,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Communication/communicationServices",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List By Subscription\n\nHandles requests to list all resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#ListCommunicationServiceBySubscriptionRequest": {
@@ -5612,6 +5723,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5715,7 +5832,7 @@
     "com.azure.communication#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.communication#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.communication#ListOperationsResponse"
@@ -5725,10 +5842,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Communication/operations",
           "code": 200,
-          "apiVersion": "2026-03-18"
+          "apiVersion": "2026-03-18",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Operations\n\nLists all of the available REST API operations of the Microsoft.Communication provider.",
-        "com.distilled.openapi#apiVersion": "2026-03-18"
+        "com.distilled.openapi#apiVersion": "2026-03-18",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication#ListOperationsResponse": {
@@ -5868,6 +5992,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.communication#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.communication#Communication": {

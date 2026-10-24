@@ -357,6 +357,8 @@ export interface DevBoxesDelayActionsRequest {
   devBoxName: string;
   /** The time to delay the Dev Box action or actions until, in RFC3339 format. */
   until: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The result of the delay operation on this action. */
 export type DevBoxActionDelayResultStatus = "Succeeded" | "Failed";
@@ -1215,6 +1217,8 @@ export interface ListDevBoxActionsRequest {
   userId: string;
   /** Display name for the Dev Box. */
   devBoxName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DevBoxAction items on this page */
 export type PagedDevBoxActionValueList = Array<DevBoxAction>;
@@ -1228,6 +1232,8 @@ export interface PagedDevBoxAction {
 export interface ListDevBoxAllDevBoxesRequest {
   /** The DevCenter-specific URI to operate on. */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DevBox items on this page */
 export type PagedDevBoxValueList = Array<DevBox>;
@@ -1243,6 +1249,8 @@ export interface ListDevBoxAllDevBoxesByUserRequest {
   endpoint: string;
   /** The AAD object id of the user. If value is 'me', the identity is taken from the authentication context. */
   userId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListDevBoxCustomizationGroupsRequestInclude = "tasks";
 export interface ListDevBoxCustomizationGroupsRequest {
@@ -1256,6 +1264,8 @@ export interface ListDevBoxCustomizationGroupsRequest {
   devBoxName: string;
   /** Optional query parameter to specify what properties should be included in the response. */
   include?: ListDevBoxCustomizationGroupsRequestInclude | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The CustomizationGroup items on this page */
 export type PagedCustomizationGroupValueList = Array<CustomizationGroup>;
@@ -1271,6 +1281,8 @@ export interface ListDevBoxCustomizationTaskDefinitionsByProjectRequest {
   endpoint: string;
   /** The DevCenter Project upon which to execute operations. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The CustomizationTaskDefinition items on this page */
 export type PagedCustomizationTaskDefinitionValueList = Array<CustomizationTaskDefinition>;
@@ -1288,6 +1300,8 @@ export interface ListDevBoxDevBoxesByUserRequest {
   projectName: string;
   /** The AAD object id of the user. If value is 'me', the identity is taken from the authentication context. */
   userId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDevBoxOperationsRequest {
   /** The DevCenter-specific URI to operate on. */
@@ -1298,6 +1312,8 @@ export interface ListDevBoxOperationsRequest {
   userId: string;
   /** Display name for the Dev Box. */
   devBoxName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DevBoxOperation items on this page */
 export type PagedDevBoxOperationValueList = Array<DevBoxOperation>;
@@ -1313,6 +1329,8 @@ export interface ListDevBoxPoolsRequest {
   endpoint: string;
   /** Name of the project. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Pool items on this page */
 export type PagedPoolValueList = Array<Pool>;
@@ -1330,6 +1348,8 @@ export interface ListDevBoxSchedulesByPoolRequest {
   projectName: string;
   /** The name of a pool of Dev Boxes. */
   poolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Schedule items on this page */
 export type PagedScheduleValueList = Array<Schedule>;
@@ -1345,6 +1365,8 @@ export interface ListDevBoxSchedulesByProjectRequest {
   endpoint: string;
   /** The DevCenter Project upon which to execute operations. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDevBoxSnapshotsRequest {
   /** The DevCenter-specific URI to operate on. */
@@ -1355,6 +1377,8 @@ export interface ListDevBoxSnapshotsRequest {
   userId: string;
   /** Display name for the Dev Box. */
   devBoxName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DevBoxSnapshot items on this page */
 export type PagedDevBoxSnapshotValueList = Array<DevBoxSnapshot>;
@@ -1368,6 +1392,8 @@ export interface PagedDevBoxSnapshot {
 export interface ListDevCenterProjectsRequest {
   /** The DevCenter-specific URI to operate on. */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Project items on this page */
 export type PagedProjectValueList = Array<Project>;
@@ -1387,6 +1413,8 @@ export interface ListEnvironmentActionsRequest {
   userId: string;
   /** Environment name. */
   environmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The EnvironmentAction items on this page */
 export type PagedEnvironmentActionValueList = Array<EnvironmentAction>;
@@ -1402,6 +1430,8 @@ export interface ListEnvironmentCatalogsByProjectRequest {
   endpoint: string;
   /** Name of the project. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Catalog items on this page */
 export type PagedCatalogValueList = Array<Catalog>;
@@ -1419,6 +1449,8 @@ export interface ListEnvironmentEnvironmentDefinitionsByCatalogRequest {
   projectName: string;
   /** The name of the catalog */
   catalogName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The EnvironmentDefinition items on this page */
 export type PagedEnvironmentDefinitionValueList = Array<EnvironmentDefinition>;
@@ -1434,12 +1466,16 @@ export interface ListEnvironmentEnvironmentDefinitionsByProjectRequest {
   endpoint: string;
   /** The DevCenter Project upon which to execute operations. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListEnvironmentEnvironmentsRequest {
   /** The DevCenter-specific URI to operate on. */
   endpoint: string;
   /** The DevCenter Project upon which to execute operations. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Environment items on this page */
 export type PagedEnvironmentValueList = Array<Environment>;
@@ -1457,12 +1493,16 @@ export interface ListEnvironmentEnvironmentsByUserRequest {
   projectName: string;
   /** The AAD object id of the user. If value is 'me', the identity is taken from the authentication context. */
   userId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListEnvironmentEnvironmentTypesRequest {
   /** The DevCenter-specific URI to operate on. */
   endpoint: string;
   /** Name of the project. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The EnvironmentType items on this page */
 export type PagedEnvironmentTypeValueList = Array<EnvironmentType>;
@@ -1482,6 +1522,8 @@ export interface ListEnvironmentOperationsRequest {
   userId: string;
   /** Environment name. */
   environmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The EnvironmentOperation items on this page */
 export type PagedEnvironmentOperationValueList = Array<EnvironmentOperation>;
@@ -1670,18 +1712,25 @@ export const DevBoxesDelayAction: API.OperationMethod<
 
 export type DevBoxesDelayActionsError = AzureOpError;
 /** Delays all actions. */
-export const DevBoxesDelayActions: API.OperationMethod<
+export const DevBoxesDelayActions: API.PaginatedOperationMethod<
   DevBoxesDelayActionsRequest,
   PagedDevBoxActionDelayResult,
   DevBoxesDelayActionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBoxActionDelayResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c84, 0) as any as S.Schema<DevBoxesDelayActionsRequest>,
   output: __S(339, __c84, 3) as any as S.Schema<PagedDevBoxActionDelayResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type DevBoxesRepairDevBoxError = AzureOpError;
 /** Attempts automated repair steps to resolve common problems on a Dev Box. The Dev Box may restart during this operation. */
@@ -2105,72 +2154,101 @@ export const GetOperationStatus: API.OperationMethod<
 
 export type ListDevBoxActionsError = AzureOpError;
 /** Lists actions on a Dev Box. */
-export const ListDevBoxActions: API.OperationMethod<
+export const ListDevBoxActions: API.PaginatedOperationMethod<
   ListDevBoxActionsRequest,
   PagedDevBoxAction,
   ListDevBoxActionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBoxAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c52, 0) as any as S.Schema<ListDevBoxActionsRequest>,
   output: __S(210, __c52, 2) as any as S.Schema<PagedDevBoxAction>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxAllDevBoxesError = AzureOpError;
 /** Lists Dev Boxes that the caller has access to in the DevCenter. */
-export const ListDevBoxAllDevBoxes: API.OperationMethod<
+export const ListDevBoxAllDevBoxes: API.PaginatedOperationMethod<
   ListDevBoxAllDevBoxesRequest,
   PagedDevBox,
   ListDevBoxAllDevBoxesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBox
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(212, __c53, 0) as any as S.Schema<ListDevBoxAllDevBoxesRequest>,
   output: __S(217, __c54, 1) as any as S.Schema<PagedDevBox>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxAllDevBoxesByUserError = AzureOpError;
 /** Lists Dev Boxes in the Dev Center for a particular user. */
-export const ListDevBoxAllDevBoxesByUser: API.OperationMethod<
+export const ListDevBoxAllDevBoxesByUser: API.PaginatedOperationMethod<
   ListDevBoxAllDevBoxesByUserRequest,
   PagedDevBox,
   ListDevBoxAllDevBoxesByUserError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBox
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(220, __c55, 0) as any as S.Schema<ListDevBoxAllDevBoxesByUserRequest>,
   output: __S(217, __c54, 1) as any as S.Schema<PagedDevBox>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxCustomizationGroupsError = AzureOpError;
 /** Lists customization groups on the Dev Box. Listed customization groups exclude task information unless specified via the include parameter. */
-export const ListDevBoxCustomizationGroups: API.OperationMethod<
+export const ListDevBoxCustomizationGroups: API.PaginatedOperationMethod<
   ListDevBoxCustomizationGroupsRequest,
   PagedCustomizationGroup,
   ListDevBoxCustomizationGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomizationGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c56, 0) as any as S.Schema<ListDevBoxCustomizationGroupsRequest>,
   output: __S(226, __c56, 2) as any as S.Schema<PagedCustomizationGroup>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxCustomizationTaskDefinitionsByProjectError = AzureOpError;
 /** Lists all customization tasks available to the project. */
-export const ListDevBoxCustomizationTaskDefinitionsByProject: API.OperationMethod<
+export const ListDevBoxCustomizationTaskDefinitionsByProject: API.PaginatedOperationMethod<
   ListDevBoxCustomizationTaskDefinitionsByProjectRequest,
   PagedCustomizationTaskDefinition,
   ListDevBoxCustomizationTaskDefinitionsByProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomizationTaskDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     228,
     __c57,
@@ -2180,151 +2258,221 @@ export const ListDevBoxCustomizationTaskDefinitionsByProject: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxDevBoxesByUserError = AzureOpError;
 /** Lists Dev Boxes in the project for a particular user. */
-export const ListDevBoxDevBoxesByUser: API.OperationMethod<
+export const ListDevBoxDevBoxesByUser: API.PaginatedOperationMethod<
   ListDevBoxDevBoxesByUserRequest,
   PagedDevBox,
   ListDevBoxDevBoxesByUserError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBox
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(236, __c59, 0) as any as S.Schema<ListDevBoxDevBoxesByUserRequest>,
   output: __S(217, __c54, 1) as any as S.Schema<PagedDevBox>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxOperationsError = AzureOpError;
 /** Lists operations on the Dev Box which have occurred within the past 90 days. */
-export const ListDevBoxOperations: API.OperationMethod<
+export const ListDevBoxOperations: API.PaginatedOperationMethod<
   ListDevBoxOperationsRequest,
   PagedDevBoxOperation,
   ListDevBoxOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBoxOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c60, 0) as any as S.Schema<ListDevBoxOperationsRequest>,
   output: __S(242, __c60, 2) as any as S.Schema<PagedDevBoxOperation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxPoolsError = AzureOpError;
 /** Lists available pools. */
-export const ListDevBoxPools: API.OperationMethod<
+export const ListDevBoxPools: API.PaginatedOperationMethod<
   ListDevBoxPoolsRequest,
   PagedPool,
   ListDevBoxPoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Pool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(244, __c61, 0) as any as S.Schema<ListDevBoxPoolsRequest>,
   output: __S(246, __c61, 2) as any as S.Schema<PagedPool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxSchedulesByPoolError = AzureOpError;
 /** Lists all schedules within a pool that are configured by your project administrator. */
-export const ListDevBoxSchedulesByPool: API.OperationMethod<
+export const ListDevBoxSchedulesByPool: API.PaginatedOperationMethod<
   ListDevBoxSchedulesByPoolRequest,
   PagedSchedule,
   ListDevBoxSchedulesByPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(248, __c62, 0) as any as S.Schema<ListDevBoxSchedulesByPoolRequest>,
   output: __S(253, __c63, 1) as any as S.Schema<PagedSchedule>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxSchedulesByProjectError = AzureOpError;
 /** Lists all schedules within a project that are configured by your project administrator. */
-export const ListDevBoxSchedulesByProject: API.OperationMethod<
+export const ListDevBoxSchedulesByProject: API.PaginatedOperationMethod<
   ListDevBoxSchedulesByProjectRequest,
   PagedSchedule,
   ListDevBoxSchedulesByProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c64, 0) as any as S.Schema<ListDevBoxSchedulesByProjectRequest>,
   output: __S(253, __c63, 1) as any as S.Schema<PagedSchedule>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevBoxSnapshotsError = AzureOpError;
 /** Lists snapshots for this Dev Box. */
-export const ListDevBoxSnapshots: API.OperationMethod<
+export const ListDevBoxSnapshots: API.PaginatedOperationMethod<
   ListDevBoxSnapshotsRequest,
   PagedDevBoxSnapshot,
   ListDevBoxSnapshotsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DevBoxSnapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(260, __c65, 0) as any as S.Schema<ListDevBoxSnapshotsRequest>,
   output: __S(262, __c65, 2) as any as S.Schema<PagedDevBoxSnapshot>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevCenterProjectsError = AzureOpError;
 /** Lists all projects. */
-export const ListDevCenterProjects: API.OperationMethod<
+export const ListDevCenterProjects: API.PaginatedOperationMethod<
   ListDevCenterProjectsRequest,
   PagedProject,
   ListDevCenterProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Project
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(264, __c66, 0) as any as S.Schema<ListDevCenterProjectsRequest>,
   output: __S(266, __c66, 2) as any as S.Schema<PagedProject>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentActionsError = AzureOpError;
 /** Get all scheduled actions for a user within an environment. */
-export const ListEnvironmentActions: API.OperationMethod<
+export const ListEnvironmentActions: API.PaginatedOperationMethod<
   ListEnvironmentActionsRequest,
   PagedEnvironmentAction,
   ListEnvironmentActionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnvironmentAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(268, __c67, 0) as any as S.Schema<ListEnvironmentActionsRequest>,
   output: __S(270, __c67, 2) as any as S.Schema<PagedEnvironmentAction>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentCatalogsByProjectError = AzureOpError;
 /** Lists all of the catalogs available for a project. */
-export const ListEnvironmentCatalogsByProject: API.OperationMethod<
+export const ListEnvironmentCatalogsByProject: API.PaginatedOperationMethod<
   ListEnvironmentCatalogsByProjectRequest,
   PagedCatalog,
   ListEnvironmentCatalogsByProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Catalog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c68, 0) as any as S.Schema<ListEnvironmentCatalogsByProjectRequest>,
   output: __S(274, __c68, 2) as any as S.Schema<PagedCatalog>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentEnvironmentDefinitionsByCatalogError = AzureOpError;
 /** Lists all environment definitions available within a catalog. */
-export const ListEnvironmentEnvironmentDefinitionsByCatalog: API.OperationMethod<
+export const ListEnvironmentEnvironmentDefinitionsByCatalog: API.PaginatedOperationMethod<
   ListEnvironmentEnvironmentDefinitionsByCatalogRequest,
   PagedEnvironmentDefinition,
   ListEnvironmentEnvironmentDefinitionsByCatalogError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnvironmentDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     276,
     __c69,
@@ -2334,16 +2482,23 @@ export const ListEnvironmentEnvironmentDefinitionsByCatalog: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentEnvironmentDefinitionsByProjectError = AzureOpError;
 /** Lists all environment definitions available for a project. */
-export const ListEnvironmentEnvironmentDefinitionsByProject: API.OperationMethod<
+export const ListEnvironmentEnvironmentDefinitionsByProject: API.PaginatedOperationMethod<
   ListEnvironmentEnvironmentDefinitionsByProjectRequest,
   PagedEnvironmentDefinition,
   ListEnvironmentEnvironmentDefinitionsByProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnvironmentDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     292,
     __c73,
@@ -2353,67 +2508,101 @@ export const ListEnvironmentEnvironmentDefinitionsByProject: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentEnvironmentsError = AzureOpError;
 /** Lists the environments for a project. */
-export const ListEnvironmentEnvironments: API.OperationMethod<
+export const ListEnvironmentEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentEnvironmentsRequest,
   PagedEnvironment,
   ListEnvironmentEnvironmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Environment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(296, __c74, 0) as any as S.Schema<ListEnvironmentEnvironmentsRequest>,
   output: __S(301, __c75, 1) as any as S.Schema<PagedEnvironment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentEnvironmentsByUserError = AzureOpError;
 /** Lists the environments for a project and user. */
-export const ListEnvironmentEnvironmentsByUser: API.OperationMethod<
+export const ListEnvironmentEnvironmentsByUser: API.PaginatedOperationMethod<
   ListEnvironmentEnvironmentsByUserRequest,
   PagedEnvironment,
   ListEnvironmentEnvironmentsByUserError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Environment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c76, 0) as any as S.Schema<ListEnvironmentEnvironmentsByUserRequest>,
   output: __S(301, __c75, 1) as any as S.Schema<PagedEnvironment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentEnvironmentTypesError = AzureOpError;
 /** Lists all environment types configured for a project. */
-export const ListEnvironmentEnvironmentTypes: API.OperationMethod<
+export const ListEnvironmentEnvironmentTypes: API.PaginatedOperationMethod<
   ListEnvironmentEnvironmentTypesRequest,
   PagedEnvironmentType,
   ListEnvironmentEnvironmentTypesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnvironmentType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(308, __c77, 0) as any as S.Schema<ListEnvironmentEnvironmentTypesRequest>,
   output: __S(310, __c77, 2) as any as S.Schema<PagedEnvironmentType>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentOperationsError = AzureOpError;
 /** Lists operations on the environment which have occurred within the past 90 days */
-export const ListEnvironmentOperations: API.OperationMethod<
+export const ListEnvironmentOperations: API.PaginatedOperationMethod<
   ListEnvironmentOperationsRequest,
   PagedEnvironmentOperation,
   ListEnvironmentOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnvironmentOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(312, __c78, 0) as any as S.Schema<ListEnvironmentOperationsRequest>,
   output: __S(314, __c78, 2) as any as S.Schema<PagedEnvironmentOperation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PatchEnvironmentEnvironmentError = AzureOpError;
 /** Partially updates an environment. */
@@ -3673,6 +3862,7 @@ function __c52(j: number): any {
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           devBoxName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3681,6 +3871,7 @@ function __c52(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3702,6 +3893,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3710,6 +3902,7 @@ function __c53(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3736,6 +3929,7 @@ function __c55(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           userId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3744,6 +3938,7 @@ function __c55(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3760,6 +3955,7 @@ function __c56(j: number): any {
           userId: S.String.pipe(T.Label()),
           devBoxName: S.String.pipe(T.Label()),
           include: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3768,6 +3964,7 @@ function __c56(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3790,6 +3987,7 @@ function __c57(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3798,6 +3996,7 @@ function __c57(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3845,6 +4044,7 @@ function __c59(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3853,6 +4053,7 @@ function __c59(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3868,6 +4069,7 @@ function __c60(j: number): any {
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           devBoxName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3876,6 +4078,7 @@ function __c60(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3898,6 +4101,7 @@ function __c61(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3906,6 +4110,7 @@ function __c61(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3929,6 +4134,7 @@ function __c62(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3937,6 +4143,7 @@ function __c62(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3963,6 +4170,7 @@ function __c64(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3971,6 +4179,7 @@ function __c64(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -3986,6 +4195,7 @@ function __c65(j: number): any {
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           devBoxName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3994,6 +4204,7 @@ function __c65(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4015,6 +4226,7 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4023,6 +4235,7 @@ function __c66(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4047,6 +4260,7 @@ function __c67(j: number): any {
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4055,6 +4269,7 @@ function __c67(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4077,6 +4292,7 @@ function __c68(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4085,6 +4301,7 @@ function __c68(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4108,6 +4325,7 @@ function __c69(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4116,6 +4334,7 @@ function __c69(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4190,6 +4409,7 @@ function __c73(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4198,6 +4418,7 @@ function __c73(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4211,6 +4432,7 @@ function __c74(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4219,6 +4441,7 @@ function __c74(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4246,6 +4469,7 @@ function __c76(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4254,6 +4478,7 @@ function __c76(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4267,6 +4492,7 @@ function __c77(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4275,6 +4501,7 @@ function __c77(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4299,6 +4526,7 @@ function __c78(j: number): any {
           projectName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4307,6 +4535,7 @@ function __c78(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),
@@ -4450,6 +4679,7 @@ function __c84(j: number): any {
           userId: S.String.pipe(T.Label()),
           devBoxName: S.String.pipe(T.Label()),
           until: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4458,6 +4688,7 @@ function __c84(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-02-01",
+            nextLink: "nextLink",
             audience: "https://devcenter.azure.com/.default",
           }),
         ),

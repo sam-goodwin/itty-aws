@@ -626,6 +626,8 @@ export interface DataFlowDebugSessionQueryByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Data flow debug session info. */
 export interface DataFlowDebugSessionInfo {
@@ -2197,6 +2199,8 @@ export interface ListChangeDataCaptureByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Change data capture resource type. */
 export interface ChangeDataCaptureResource {
@@ -2230,6 +2234,8 @@ export interface ListCredentialOperationByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Credential resource type. */
 export interface CredentialResource {
@@ -2262,6 +2268,8 @@ export interface ListDataFlowByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Data flow resource type. */
 export interface DataFlowResource {
@@ -2294,6 +2302,8 @@ export interface ListDatasetByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dataset resource type. */
 export interface DatasetResource {
@@ -2322,6 +2332,8 @@ export interface DatasetListResponse {
 export interface ListFactoriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type FactoryTagsMap = { [key: string]: string | undefined };
@@ -2361,6 +2373,8 @@ export interface ListFactoryByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListGlobalParameterByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2369,6 +2383,8 @@ export interface ListGlobalParameterByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of the global parameter. */
 export type GlobalParameterResourcePropertiesMap = {
@@ -2422,6 +2438,8 @@ export interface ListIntegrationRuntimeByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Integration runtime resource type. */
 export interface IntegrationRuntimeResource {
@@ -2497,6 +2515,8 @@ export interface ListLinkedServiceByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Linked service resource type. */
 export interface LinkedServiceResource {
@@ -2531,6 +2551,8 @@ export interface ListManagedPrivateEndpointByFactoryRequest {
   factoryName: string;
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Managed private endpoint resource type. */
 export interface ManagedPrivateEndpointResource {
@@ -2563,6 +2585,8 @@ export interface ListManagedVirtualNetworkByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Managed Virtual Network resource type. */
 export interface ManagedVirtualNetworkResource {
@@ -2588,7 +2612,10 @@ export interface ManagedVirtualNetworkListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Metadata associated with the operation. */
 export interface OperationDisplay {
   /** The description of the operation. */
@@ -2685,7 +2712,7 @@ export type OperationListResponseValueList = Array<Operation>;
 /** A list of operations that can be performed by the Data Factory service. */
 export interface OperationListResponse {
   /** List of Data Factory operations supported by the Data Factory resource provider. */
-  value?: OperationListResponseValueList;
+  value: OperationListResponseValueList;
   /** The link to the next page of results, if any remaining results exist. */
   nextLink?: string;
 }
@@ -2696,6 +2723,8 @@ export interface ListPipelineByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Pipeline resource type. */
 export interface PipelineResource {
@@ -2729,6 +2758,8 @@ export interface ListPrivateEndPointConnectionByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Private Endpoint Connection ARM resource. */
 export interface PrivateEndpointConnectionResource {
@@ -2762,6 +2793,8 @@ export interface ListTriggerByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Trigger resource type. */
 export interface TriggerResource {
@@ -3604,18 +3637,25 @@ export const CredentialOperationsCreateOrUpdate: API.OperationMethod<
 
 export type DataFlowDebugSessionQueryByFactoryError = AzureOpError;
 /** Query all active data flow debug sessions. */
-export const DataFlowDebugSessionQueryByFactory: API.OperationMethod<
+export const DataFlowDebugSessionQueryByFactory: API.PaginatedOperationMethod<
   DataFlowDebugSessionQueryByFactoryRequest,
   QueryDataFlowDebugSessionsResponse,
   DataFlowDebugSessionQueryByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataFlowDebugSessionInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4256, __c133, 0) as any as S.Schema<DataFlowDebugSessionQueryByFactoryRequest>,
   output: __S(4259, __c133, 3) as any as S.Schema<QueryDataFlowDebugSessionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type DataFlowsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a data flow. */
@@ -4399,108 +4439,157 @@ export const LinkedServicesCreateOrUpdate: API.OperationMethod<
 
 export type ListChangeDataCaptureByFactoryError = AzureOpError;
 /** Lists all resources of type change data capture. */
-export const ListChangeDataCaptureByFactory: API.OperationMethod<
+export const ListChangeDataCaptureByFactory: API.PaginatedOperationMethod<
   ListChangeDataCaptureByFactoryRequest,
   ChangeDataCaptureListResponse,
   ListChangeDataCaptureByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChangeDataCaptureResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3136, __c98, 0) as any as S.Schema<ListChangeDataCaptureByFactoryRequest>,
   output: __S(3139, __c98, 3) as any as S.Schema<ChangeDataCaptureListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCredentialOperationByFactoryError = AzureOpError;
 /** List credentials. */
-export const ListCredentialOperationByFactory: API.OperationMethod<
+export const ListCredentialOperationByFactory: API.PaginatedOperationMethod<
   ListCredentialOperationByFactoryRequest,
   CredentialListResponse,
   ListCredentialOperationByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CredentialResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3168, __c99, 0) as any as S.Schema<ListCredentialOperationByFactoryRequest>,
   output: __S(3170, __c99, 2) as any as S.Schema<CredentialListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataFlowByFactoryError = AzureOpError;
 /** Lists data flows. */
-export const ListDataFlowByFactory: API.OperationMethod<
+export const ListDataFlowByFactory: API.PaginatedOperationMethod<
   ListDataFlowByFactoryRequest,
   DataFlowListResponse,
   ListDataFlowByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataFlowResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3200, __c100, 0) as any as S.Schema<ListDataFlowByFactoryRequest>,
   output: __S(3202, __c100, 2) as any as S.Schema<DataFlowListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatasetByFactoryError = AzureOpError;
 /** Lists datasets. */
-export const ListDatasetByFactory: API.OperationMethod<
+export const ListDatasetByFactory: API.PaginatedOperationMethod<
   ListDatasetByFactoryRequest,
   DatasetListResponse,
   ListDatasetByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatasetResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3232, __c101, 0) as any as S.Schema<ListDatasetByFactoryRequest>,
   output: __S(3234, __c101, 2) as any as S.Schema<DatasetListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFactoriesError = AzureOpError;
 /** Lists factories under the specified subscription. */
-export const ListFactories: API.OperationMethod<
+export const ListFactories: API.PaginatedOperationMethod<
   ListFactoriesRequest,
   FactoryListResponse,
   ListFactoriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Factory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3264, __c102, 0) as any as S.Schema<ListFactoriesRequest>,
   output: __S(3298, __c103, 2) as any as S.Schema<FactoryListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFactoryByResourceGroupError = AzureOpError;
 /** Lists factories. */
-export const ListFactoryByResourceGroup: API.OperationMethod<
+export const ListFactoryByResourceGroup: API.PaginatedOperationMethod<
   ListFactoryByResourceGroupRequest,
   FactoryListResponse,
   ListFactoryByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Factory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3328, __c104, 0) as any as S.Schema<ListFactoryByResourceGroupRequest>,
   output: __S(3298, __c103, 2) as any as S.Schema<FactoryListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGlobalParameterByFactoryError = AzureOpError;
 /** Lists Global parameters */
-export const ListGlobalParameterByFactory: API.OperationMethod<
+export const ListGlobalParameterByFactory: API.PaginatedOperationMethod<
   ListGlobalParameterByFactoryRequest,
   GlobalParameterListResponse,
   ListGlobalParameterByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GlobalParameterResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3360, __c105, 0) as any as S.Schema<ListGlobalParameterByFactoryRequest>,
   output: __S(3362, __c105, 2) as any as S.Schema<GlobalParameterListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationRuntimeAuthKeysError = AzureOpError;
 /** Retrieves the authentication keys for an integration runtime. */
@@ -4519,18 +4608,25 @@ export const ListIntegrationRuntimeAuthKeys: API.OperationMethod<
 
 export type ListIntegrationRuntimeByFactoryError = AzureOpError;
 /** Lists integration runtimes. */
-export const ListIntegrationRuntimeByFactory: API.OperationMethod<
+export const ListIntegrationRuntimeByFactory: API.PaginatedOperationMethod<
   ListIntegrationRuntimeByFactoryRequest,
   IntegrationRuntimeListResponse,
   ListIntegrationRuntimeByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationRuntimeResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3488, __c109, 0) as any as S.Schema<ListIntegrationRuntimeByFactoryRequest>,
   output: __S(3490, __c109, 2) as any as S.Schema<IntegrationRuntimeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsError = AzureOpError;
 /** Gets the list of outbound network dependencies for a given Azure-SSIS integration runtime. */
@@ -4557,108 +4653,157 @@ export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpoints: API.Ope
 
 export type ListLinkedServiceByFactoryError = AzureOpError;
 /** Lists linked services. */
-export const ListLinkedServiceByFactory: API.OperationMethod<
+export const ListLinkedServiceByFactory: API.PaginatedOperationMethod<
   ListLinkedServiceByFactoryRequest,
   LinkedServiceListResponse,
   ListLinkedServiceByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LinkedServiceResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3552, __c111, 0) as any as S.Schema<ListLinkedServiceByFactoryRequest>,
   output: __S(3554, __c111, 2) as any as S.Schema<LinkedServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedPrivateEndpointByFactoryError = AzureOpError;
 /** Lists managed private endpoints. */
-export const ListManagedPrivateEndpointByFactory: API.OperationMethod<
+export const ListManagedPrivateEndpointByFactory: API.PaginatedOperationMethod<
   ListManagedPrivateEndpointByFactoryRequest,
   ManagedPrivateEndpointListResponse,
   ListManagedPrivateEndpointByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedPrivateEndpointResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3584, __c112, 0) as any as S.Schema<ListManagedPrivateEndpointByFactoryRequest>,
   output: __S(3586, __c112, 2) as any as S.Schema<ManagedPrivateEndpointListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedVirtualNetworkByFactoryError = AzureOpError;
 /** Lists managed Virtual Networks. */
-export const ListManagedVirtualNetworkByFactory: API.OperationMethod<
+export const ListManagedVirtualNetworkByFactory: API.PaginatedOperationMethod<
   ListManagedVirtualNetworkByFactoryRequest,
   ManagedVirtualNetworkListResponse,
   ListManagedVirtualNetworkByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedVirtualNetworkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3616, __c113, 0) as any as S.Schema<ListManagedVirtualNetworkByFactoryRequest>,
   output: __S(3618, __c113, 2) as any as S.Schema<ManagedVirtualNetworkListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists the available Azure Data Factory API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3648, __c114, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(3662, __c114, 14) as any as S.Schema<OperationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPipelineByFactoryError = AzureOpError;
 /** Lists pipelines. */
-export const ListPipelineByFactory: API.OperationMethod<
+export const ListPipelineByFactory: API.PaginatedOperationMethod<
   ListPipelineByFactoryRequest,
   PipelineListResponse,
   ListPipelineByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PipelineResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3680, __c115, 0) as any as S.Schema<ListPipelineByFactoryRequest>,
   output: __S(3683, __c115, 3) as any as S.Schema<PipelineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndPointConnectionByFactoryError = AzureOpError;
 /** Lists Private endpoint connections */
-export const ListPrivateEndPointConnectionByFactory: API.OperationMethod<
+export const ListPrivateEndPointConnectionByFactory: API.PaginatedOperationMethod<
   ListPrivateEndPointConnectionByFactoryRequest,
   PrivateEndpointConnectionListResponse,
   ListPrivateEndPointConnectionByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnectionResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3712, __c116, 0) as any as S.Schema<ListPrivateEndPointConnectionByFactoryRequest>,
   output: __S(3714, __c116, 2) as any as S.Schema<PrivateEndpointConnectionListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTriggerByFactoryError = AzureOpError;
 /** Lists triggers. */
-export const ListTriggerByFactory: API.OperationMethod<
+export const ListTriggerByFactory: API.PaginatedOperationMethod<
   ListTriggerByFactoryRequest,
   TriggerListResponse,
   ListTriggerByFactoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TriggerResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3744, __c117, 0) as any as S.Schema<ListTriggerByFactoryRequest>,
   output: __S(3745, __c117, 1) as any as S.Schema<TriggerListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ManagedPrivateEndpointsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a managed private endpoint. */
@@ -7419,12 +7564,14 @@ function __c98(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListChangeDataCaptureByFactoryRequest" });
@@ -7461,12 +7608,14 @@ function __c99(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCredentialOperationByFactoryRequest" });
@@ -7489,12 +7638,14 @@ function __c100(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataFlowByFactoryRequest" });
@@ -7517,12 +7668,14 @@ function __c101(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatasetByFactoryRequest" });
@@ -7543,12 +7696,14 @@ function __c102(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/factories",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFactoriesRequest" });
@@ -7591,12 +7746,14 @@ function __c104(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFactoryByResourceGroupRequest" });
@@ -7610,12 +7767,14 @@ function __c105(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGlobalParameterByFactoryRequest" });
@@ -7700,12 +7859,14 @@ function __c109(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationRuntimeByFactoryRequest" });
@@ -7782,12 +7943,14 @@ function __c111(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLinkedServiceByFactoryRequest" });
@@ -7811,12 +7974,14 @@ function __c112(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
           managedVirtualNetworkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedPrivateEndpointByFactoryRequest" });
@@ -7839,12 +8004,14 @@ function __c113(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedVirtualNetworkByFactoryRequest" });
@@ -7863,12 +8030,15 @@ function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DataFactory/operations",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -7954,7 +8124,7 @@ function __c114(j: number): any {
     case 14:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3661, __c114, 13)),
+          value: __S(3661, __c114, 13),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResponse" });
@@ -7968,12 +8138,14 @@ function __c115(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPipelineByFactoryRequest" });
@@ -8010,12 +8182,14 @@ function __c116(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndPointConnectionByFactoryRequest" });
@@ -8038,12 +8212,14 @@ function __c117(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTriggerByFactoryRequest" });
@@ -8458,12 +8634,14 @@ function __c133(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           factoryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryDataFlowDebugSessions",
             code: 200,
             apiVersion: "2018-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "DataFlowDebugSessionQueryByFactoryRequest" });

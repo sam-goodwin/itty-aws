@@ -294,7 +294,7 @@
     "com.azure.azurestack#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurestack#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.azurestack#OperationList"
@@ -304,10 +304,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AzureStack/operations",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of supported REST operations.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestack#OperationList": {
@@ -395,6 +402,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Contains the localized display information for this particular operation or action."
+      }
+    },
+    "com.azure.azurestack#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.azurestack#DeleteCustomerSubscription": {
@@ -689,10 +710,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of products.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestack#CustomerSubscriptionList": {
@@ -787,6 +815,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Stack registration."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1887,10 +1921,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/products",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of products.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestack#ListProductsRequest": {
@@ -1918,6 +1959,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Stack registration."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2586,10 +2633,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStack/registrations",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of all registrations under current subscription.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestack#RegistrationList": {
@@ -2708,6 +2762,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2727,10 +2787,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of all registrations.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestack#ListRegistrationsRequest": {
@@ -2750,6 +2817,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

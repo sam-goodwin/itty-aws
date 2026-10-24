@@ -31,10 +31,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolvers",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver resource IDs linked to a virtual network.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#SubResourceListResult": {
@@ -115,6 +122,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -134,10 +147,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolverPolicies",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver policy resource IDs linked to a virtual network.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#ListDnsResolverPolicyByVirtualNetworkRequest": {
@@ -166,6 +186,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the VirtualNetwork"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -185,10 +211,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsForwardingRulesets",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS forwarding ruleset resource IDs attached to a virtual network.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#VirtualNetworkDnsForwardingRulesetListResult": {
@@ -287,6 +320,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1047,10 +1086,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists outbound endpoints for a DNS resolver.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#OutboundEndpointListResult": {
@@ -1185,6 +1231,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1858,10 +1910,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists inbound endpoints for a DNS resolver.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#InboundEndpointListResult": {
@@ -1996,6 +2055,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2598,10 +2663,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolvers within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#DnsResolverListResult": {
@@ -2728,6 +2800,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3315,10 +3393,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver policy virtual network links.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#DnsResolverPolicyVirtualNetworkLinkListResult": {
@@ -3453,6 +3538,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4176,10 +4267,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS security rules for a DNS resolver policy.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#DnsSecurityRuleListResult": {
@@ -4314,6 +4412,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4871,10 +4975,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver policies within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#DnsResolverPolicyListResult": {
@@ -5000,6 +5111,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5806,10 +5923,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver domain lists within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#DnsResolverDomainListListResult": {
@@ -5935,6 +6059,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6454,10 +6584,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists virtual network links to a DNS forwarding ruleset.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#VirtualNetworkLinkListResult": {
@@ -6567,6 +6704,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7140,10 +7283,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists forwarding rules in a DNS forwarding ruleset.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#ForwardingRuleListResult": {
@@ -7253,6 +7403,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7862,10 +8018,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS forwarding rulesets within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#DnsForwardingRulesetListResult": {
@@ -7993,6 +8156,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8012,10 +8181,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolvers",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolvers in all resource groups of a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#ListDnsResolversRequest": {
@@ -8034,6 +8210,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8054,10 +8236,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverPolicies",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver policies in all resource groups of a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#ListDnsResolverPoliciesRequest": {
@@ -8076,6 +8265,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8096,10 +8291,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsResolverDomainLists",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS resolver domain lists in all resource groups of a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#ListDnsResolverDomainListsRequest": {
@@ -8118,6 +8320,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8138,10 +8346,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsForwardingRulesets",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists DNS forwarding rulesets in all resource groups of a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnsresolver#ListDnsForwardingRulesetsRequest": {
@@ -8160,6 +8375,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of results to return. If not specified, returns up to 100 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -15,90 +15,16 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadData": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetData",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataResponse": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataResponse",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataRequest": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataRequest",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSet",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSetRequest",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreate": "com.azure.cognitiveservices_text_to_speech#CreateTrainingSet",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateTrainingSetRequest",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsGet": "com.azure.cognitiveservices_text_to_speech#GetTrainingSet",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetTrainingSetRequest",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsList": "com.azure.cognitiveservices_text_to_speech#ListTrainingSets",
-      "com.azure.cognitiveservices_text_to_speech#TrainingSetsListRequest": "com.azure.cognitiveservices_text_to_speech#ListTrainingSetsRequest",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteProject",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteProjectRequest",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsCreate": "com.azure.cognitiveservices_text_to_speech#CreateProject",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateProjectRequest",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsGet": "com.azure.cognitiveservices_text_to_speech#GetProject",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetProjectRequest",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsList": "com.azure.cognitiveservices_text_to_speech#ListProjects",
-      "com.azure.cognitiveservices_text_to_speech#ProjectsListRequest": "com.azure.cognitiveservices_text_to_speech#ListProjectsRequest",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDelete": "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoice",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoiceRequest",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFile": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFile",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileResponse": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileResponse",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileRequest": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileRequest",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreate": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoice",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceResponse",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceRequest",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGet": "com.azure.cognitiveservices_text_to_speech#GetPersonalVoice",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGetRequest": "com.azure.cognitiveservices_text_to_speech#GetPersonalVoiceRequest",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesList": "com.azure.cognitiveservices_text_to_speech#ListPersonalVoices",
-      "com.azure.cognitiveservices_text_to_speech#PersonalVoicesListRequest": "com.azure.cognitiveservices_text_to_speech#ListPersonalVoicesRequest",
-      "com.azure.cognitiveservices_text_to_speech#OperationsGet": "com.azure.cognitiveservices_text_to_speech#GetOperation",
-      "com.azure.cognitiveservices_text_to_speech#OperationsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetOperationRequest",
-      "com.azure.cognitiveservices_text_to_speech#ModelsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteModel",
-      "com.azure.cognitiveservices_text_to_speech#ModelsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteModelRequest",
-      "com.azure.cognitiveservices_text_to_speech#ModelsCreate": "com.azure.cognitiveservices_text_to_speech#CreateModel",
-      "com.azure.cognitiveservices_text_to_speech#ModelsCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreateModelResponse",
-      "com.azure.cognitiveservices_text_to_speech#ModelsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateModelRequest",
-      "com.azure.cognitiveservices_text_to_speech#ModelsGet": "com.azure.cognitiveservices_text_to_speech#GetModel",
-      "com.azure.cognitiveservices_text_to_speech#ModelsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetModelRequest",
-      "com.azure.cognitiveservices_text_to_speech#ModelsList": "com.azure.cognitiveservices_text_to_speech#ListModels",
-      "com.azure.cognitiveservices_text_to_speech#ModelsListRequest": "com.azure.cognitiveservices_text_to_speech#ListModelsRequest",
-      "com.azure.cognitiveservices_text_to_speech#ModelsListRecipes": "com.azure.cognitiveservices_text_to_speech#ListModelRecipes",
-      "com.azure.cognitiveservices_text_to_speech#ModelsListRecipesRequest": "com.azure.cognitiveservices_text_to_speech#ListModelRecipesRequest",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsSuspend": "com.azure.cognitiveservices_text_to_speech#SuspendEndpoint",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendResponse": "com.azure.cognitiveservices_text_to_speech#SuspendEndpointResponse",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendRequest": "com.azure.cognitiveservices_text_to_speech#SuspendEndpointRequest",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsResume": "com.azure.cognitiveservices_text_to_speech#ResumeEndpoint",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsResumeResponse": "com.azure.cognitiveservices_text_to_speech#ResumeEndpointResponse",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsResumeRequest": "com.azure.cognitiveservices_text_to_speech#ResumeEndpointRequest",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteEndpoint",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteEndpointRequest",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsCreate": "com.azure.cognitiveservices_text_to_speech#CreateEndpoint",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreateEndpointResponse",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateEndpointRequest",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsGet": "com.azure.cognitiveservices_text_to_speech#GetEndpoint",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetEndpointRequest",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsList": "com.azure.cognitiveservices_text_to_speech#ListEndpoints",
-      "com.azure.cognitiveservices_text_to_speech#EndpointsListRequest": "com.azure.cognitiveservices_text_to_speech#ListEndpointsRequest",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsDelete": "com.azure.cognitiveservices_text_to_speech#DeleteConsent",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsDeleteRequest": "com.azure.cognitiveservices_text_to_speech#DeleteConsentRequest",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFile": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFile",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileResponse": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileResponse",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileRequest": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileRequest",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsCreate": "com.azure.cognitiveservices_text_to_speech#CreateConsent",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateResponse": "com.azure.cognitiveservices_text_to_speech#CreateConsentResponse",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsCreateRequest": "com.azure.cognitiveservices_text_to_speech#CreateConsentRequest",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsGet": "com.azure.cognitiveservices_text_to_speech#GetConsent",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsGetRequest": "com.azure.cognitiveservices_text_to_speech#GetConsentRequest",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsList": "com.azure.cognitiveservices_text_to_speech#ListConsents",
-      "com.azure.cognitiveservices_text_to_speech#ConsentsListRequest": "com.azure.cognitiveservices_text_to_speech#ListConsentsRequest",
-      "com.azure.cognitiveservices_text_to_speech#BaseModelsList": "com.azure.cognitiveservices_text_to_speech#ListBaseModels",
-      "com.azure.cognitiveservices_text_to_speech#BaseModelsListRequest": "com.azure.cognitiveservices_text_to_speech#ListBaseModelsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadData": {
+    "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetData": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -114,7 +40,7 @@
         "smithy.api#documentation": "Uploads data to the specified training set."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataResponse": {
+    "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -128,7 +54,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadDataRequest": {
+    "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetDataRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -280,10 +206,10 @@
         "smithy.api#documentation": "Dataset kind"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsDelete": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsDeleteRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -302,7 +228,7 @@
         "smithy.api#documentation": "Deletes the training set identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsDeleteRequest": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -326,10 +252,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreate": {
+    "com.azure.cognitiveservices_text_to_speech#CreateTrainingSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreateRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateTrainingSetRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#TrainingSet"
@@ -509,7 +435,7 @@
         "smithy.api#documentation": "Voice kind"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreateRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreateTrainingSetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -577,10 +503,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetTrainingSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetTrainingSetRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#TrainingSet"
@@ -599,7 +525,7 @@
         "smithy.api#documentation": "Gets the training set identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetTrainingSetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -623,10 +549,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsList": {
+    "com.azure.cognitiveservices_text_to_speech#ListTrainingSets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListTrainingSetsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedTrainingSet"
@@ -640,9 +566,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of training sets for the authenticated Speech service resource."
+        "smithy.api#documentation": "Gets a list of training sets for the authenticated Speech service resource.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedTrainingSet": {
@@ -675,7 +608,7 @@
         "smithy.api#documentation": "The TrainingSet items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#TrainingSetsListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListTrainingSetsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -706,16 +639,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsDelete": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsDeleteRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#DeleteProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -734,7 +673,7 @@
         "smithy.api#documentation": "Deletes the project identified by the given ID. All data (like consent,\ntraining set) in this project will be deleted automatically."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsDeleteRequest": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -765,10 +704,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsCreate": {
+    "com.azure.cognitiveservices_text_to_speech#CreateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsCreateRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#Project"
@@ -853,7 +792,7 @@
         "smithy.api#documentation": "Project kind"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsCreateRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreateProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -902,10 +841,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#Project"
@@ -924,7 +863,7 @@
         "smithy.api#documentation": "Gets the project identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -948,10 +887,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsList": {
+    "com.azure.cognitiveservices_text_to_speech#ListProjects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ProjectsListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListProjectsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedProject"
@@ -965,9 +904,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of projects for the authenticated Speech service resource."
+        "smithy.api#documentation": "Gets a list of projects for the authenticated Speech service resource.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedProject": {
@@ -1000,7 +946,7 @@
         "smithy.api#documentation": "The Project items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ProjectsListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListProjectsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1031,16 +977,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDelete": {
+    "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDeleteRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1059,7 +1011,7 @@
         "smithy.api#documentation": "Deletes the personal voice identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDeleteRequest": {
+    "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoiceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1083,13 +1035,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFile": {
+    "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1105,7 +1057,7 @@
         "smithy.api#documentation": "Creates a new personal voice with audio files in the client."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileResponse": {
+    "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1247,7 +1199,7 @@
         "smithy.api#documentation": "Model training failure reason"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFileRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1278,13 +1230,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreate": {
+    "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1300,7 +1252,7 @@
         "smithy.api#documentation": "Creates a new personal voice with audio files in Azure Blob Storage."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateResponse": {
+    "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1385,7 +1337,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1460,10 +1412,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetPersonalVoice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetPersonalVoiceRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoice"
@@ -1559,7 +1511,7 @@
         "smithy.api#documentation": "Personal voice object"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetPersonalVoiceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1583,10 +1535,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesList": {
+    "com.azure.cognitiveservices_text_to_speech#ListPersonalVoices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListPersonalVoicesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedPersonalVoice"
@@ -1600,9 +1552,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of personal voices for the authenticated Speech service resource."
+        "smithy.api#documentation": "Gets a list of personal voices for the authenticated Speech service resource.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedPersonalVoice": {
@@ -1635,7 +1594,7 @@
         "smithy.api#documentation": "The PersonalVoice items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#PersonalVoicesListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListPersonalVoicesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1666,16 +1625,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#OperationsGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#OperationsGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetOperationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#Operation"
@@ -1747,7 +1712,7 @@
         "smithy.api#documentation": "Status of an operation."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#OperationsGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1771,10 +1736,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsDelete": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ModelsDeleteRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#DeleteModelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1793,7 +1758,7 @@
         "smithy.api#documentation": "Deletes the model identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsDeleteRequest": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1817,13 +1782,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsCreate": {
+    "com.azure.cognitiveservices_text_to_speech#CreateModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ModelsCreateRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateModelRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ModelsCreateResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1839,7 +1804,7 @@
         "smithy.api#documentation": "Creates a new voice model."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsCreateResponse": {
+    "com.azure.cognitiveservices_text_to_speech#CreateModelResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2166,7 +2131,7 @@
         "smithy.api#documentation": "The locale of the training dataset. Locale code follows BCP-47. You can find\nthe text to speech locale list here\nhttps://learn.microsoft.com/azure/ai-services/speech-service/language-support?tabs=tts."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsCreateRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreateModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2322,10 +2287,10 @@
         "smithy.api#documentation": "Recipe for model building. Different recipes have different capability."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ModelsGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetModelRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#Model"
@@ -2435,7 +2400,7 @@
         "smithy.api#documentation": "Model object"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2459,10 +2424,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsList": {
+    "com.azure.cognitiveservices_text_to_speech#ListModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ModelsListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListModelsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedModel"
@@ -2476,9 +2441,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of models for the authenticated Speech service resource."
+        "smithy.api#documentation": "Gets the list of models for the authenticated Speech service resource.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedModel": {
@@ -2511,7 +2483,7 @@
         "smithy.api#documentation": "The Model items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2542,16 +2514,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsListRecipes": {
+    "com.azure.cognitiveservices_text_to_speech#ListModelRecipes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ModelsListRecipesRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListModelRecipesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedRecipe"
@@ -2565,9 +2543,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of supported recipes for model building. Different recipes have\ndifferent capabilities such as support for multi-style voice models."
+        "smithy.api#documentation": "Get a list of supported recipes for model building. Different recipes have\ndifferent capabilities such as support for multi-style voice models.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedRecipe": {
@@ -2600,7 +2585,7 @@
         "smithy.api#documentation": "The Recipe items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ModelsListRecipesRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListModelRecipesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2610,19 +2595,25 @@
             "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsSuspend": {
+    "com.azure.cognitiveservices_text_to_speech#SuspendEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#SuspendEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#SuspendEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2638,7 +2629,7 @@
         "smithy.api#documentation": "Suspends the endpoint identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendResponse": {
+    "com.azure.cognitiveservices_text_to_speech#SuspendEndpointResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -2652,7 +2643,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsSuspendRequest": {
+    "com.azure.cognitiveservices_text_to_speech#SuspendEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2683,13 +2674,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsResume": {
+    "com.azure.cognitiveservices_text_to_speech#ResumeEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsResumeRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ResumeEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsResumeResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#ResumeEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2705,7 +2696,7 @@
         "smithy.api#documentation": "Resumes the endpoint identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsResumeResponse": {
+    "com.azure.cognitiveservices_text_to_speech#ResumeEndpointResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -2719,7 +2710,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsResumeRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ResumeEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2750,10 +2741,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsDelete": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsDeleteRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#DeleteEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2772,7 +2763,7 @@
         "smithy.api#documentation": "Deletes the endpoint identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsDeleteRequest": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2796,13 +2787,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsCreate": {
+    "com.azure.cognitiveservices_text_to_speech#CreateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsCreateRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsCreateResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2818,7 +2809,7 @@
         "smithy.api#documentation": "Creates a new endpoint."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsCreateResponse": {
+    "com.azure.cognitiveservices_text_to_speech#CreateEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2925,7 +2916,7 @@
         "smithy.api#documentation": "Endpoint kind"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsCreateRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreateEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2994,10 +2985,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetEndpointRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#Endpoint"
@@ -3081,7 +3072,7 @@
         "smithy.api#documentation": "Endpoint object"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3105,10 +3096,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsList": {
+    "com.azure.cognitiveservices_text_to_speech#ListEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#EndpointsListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListEndpointsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedEndpoint"
@@ -3122,9 +3113,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of endpoints for the authenticated Speech service resource."
+        "smithy.api#documentation": "Gets a list of endpoints for the authenticated Speech service resource.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedEndpoint": {
@@ -3157,7 +3155,7 @@
         "smithy.api#documentation": "The Endpoint items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#EndpointsListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListEndpointsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3188,16 +3186,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsDelete": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteConsent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsDeleteRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#DeleteConsentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3216,7 +3220,7 @@
         "smithy.api#documentation": "Deletes the consent identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsDeleteRequest": {
+    "com.azure.cognitiveservices_text_to_speech#DeleteConsentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3240,13 +3244,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFile": {
+    "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3262,7 +3266,7 @@
         "smithy.api#documentation": "Creates a new voice talent consent with the provided audio file."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileResponse": {
+    "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3388,7 +3392,7 @@
         "smithy.api#documentation": "Consent creation failure reason"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFileRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3419,13 +3423,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsCreate": {
+    "com.azure.cognitiveservices_text_to_speech#CreateConsent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateConsentRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateResponse"
+        "target": "com.azure.cognitiveservices_text_to_speech#CreateConsentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3441,7 +3445,7 @@
         "smithy.api#documentation": "Creates a new voice talent consent with the provided audio URL."
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateResponse": {
+    "com.azure.cognitiveservices_text_to_speech#CreateConsentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3534,7 +3538,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsCreateRequest": {
+    "com.azure.cognitiveservices_text_to_speech#CreateConsentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3623,10 +3627,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsGet": {
+    "com.azure.cognitiveservices_text_to_speech#GetConsent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsGetRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#GetConsentRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#Consent"
@@ -3730,7 +3734,7 @@
         "smithy.api#documentation": "Consent object"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsGetRequest": {
+    "com.azure.cognitiveservices_text_to_speech#GetConsentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3754,10 +3758,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsList": {
+    "com.azure.cognitiveservices_text_to_speech#ListConsents": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#ConsentsListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListConsentsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedConsent"
@@ -3771,9 +3775,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of consents for the authenticated Speech service resource."
+        "smithy.api#documentation": "Gets a list of consents for the authenticated Speech service resource.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedConsent": {
@@ -3806,7 +3817,7 @@
         "smithy.api#documentation": "The Consent items on this page"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#ConsentsListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListConsentsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3837,16 +3848,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Filter condition.\n- **Supported properties:** projectId, createdDateTime, locale, kind\n- **Operators:**\n- eq, ne are supported for all properties.\n- gt, ge, lt, le are supported for createdDateTime.\n- **Example:**\n- ```filter=projectId eq 'Jessica'``` (filter by project ID)\n- ```filter=kind eq 'ProfessionalVoice'``` (filter project by kind)\n- ```filter=locale eq 'en-US'``` (filter training set and model by locale)\n- ```filter=createdDateTime gt 2022-12-30T23:59:59.99Z``` (filter resource\ncreated time after 2023-11-01)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#BaseModelsList": {
+    "com.azure.cognitiveservices_text_to_speech#ListBaseModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_text_to_speech#BaseModelsListRequest"
+        "target": "com.azure.cognitiveservices_text_to_speech#ListBaseModelsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_text_to_speech#PagedBaseModel"
@@ -3860,9 +3877,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of base models."
+        "smithy.api#documentation": "Gets a list of base models.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_text_to_speech#PagedBaseModel": {
@@ -3958,7 +3982,7 @@
         "smithy.api#documentation": "Model capability"
       }
     },
-    "com.azure.cognitiveservices_text_to_speech#BaseModelsListRequest": {
+    "com.azure.cognitiveservices_text_to_speech#ListBaseModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3967,6 +3991,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://eastus.api.cognitive.microsoft.com).",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3979,100 +4009,100 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsUploadData"
+          "target": "com.azure.cognitiveservices_text_to_speech#UploadTrainingSetData"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsDelete"
+          "target": "com.azure.cognitiveservices_text_to_speech#DeleteTrainingSet"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsCreate"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreateTrainingSet"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetTrainingSet"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#TrainingSetsList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListTrainingSets"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsDelete"
+          "target": "com.azure.cognitiveservices_text_to_speech#DeleteProject"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsCreate"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreateProject"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetProject"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ProjectsList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListProjects"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesDelete"
+          "target": "com.azure.cognitiveservices_text_to_speech#DeletePersonalVoice"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreateFromAudioFile"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoiceFromAudioFile"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesCreate"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreatePersonalVoice"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetPersonalVoice"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#PersonalVoicesList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListPersonalVoices"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#OperationsGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetOperation"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ModelsDelete"
+          "target": "com.azure.cognitiveservices_text_to_speech#DeleteModel"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ModelsCreate"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreateModel"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ModelsGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetModel"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ModelsList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListModels"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ModelsListRecipes"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListModelRecipes"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsSuspend"
+          "target": "com.azure.cognitiveservices_text_to_speech#SuspendEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsResume"
+          "target": "com.azure.cognitiveservices_text_to_speech#ResumeEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsDelete"
+          "target": "com.azure.cognitiveservices_text_to_speech#DeleteEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsCreate"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreateEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#EndpointsList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListEndpoints"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsDelete"
+          "target": "com.azure.cognitiveservices_text_to_speech#DeleteConsent"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreateFromAudioFile"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreateConsentFromAudioFile"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsCreate"
+          "target": "com.azure.cognitiveservices_text_to_speech#CreateConsent"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsGet"
+          "target": "com.azure.cognitiveservices_text_to_speech#GetConsent"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#ConsentsList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListConsents"
         },
         {
-          "target": "com.azure.cognitiveservices_text_to_speech#BaseModelsList"
+          "target": "com.azure.cognitiveservices_text_to_speech#ListBaseModels"
         }
       ],
       "traits": {

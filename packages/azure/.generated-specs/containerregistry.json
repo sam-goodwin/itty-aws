@@ -104,10 +104,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/listEvents",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists recent events for the specified webhook.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#EventListResult": {
@@ -482,6 +489,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the webhook."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1494,10 +1507,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the webhooks for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#WebhookListResult": {
@@ -1617,6 +1637,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2340,10 +2366,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the tokens for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#TokenListResult": {
@@ -2438,6 +2471,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2977,10 +3016,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the scope maps for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#ScopeMapListResult": {
@@ -3075,6 +3121,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3755,10 +3807,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the replications for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#ReplicationListResult": {
@@ -3878,6 +3937,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4166,10 +4231,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the private link resources for a container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#PrivateLinkResourceListResult": {
@@ -4264,6 +4336,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4697,10 +4775,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private endpoint connections in a container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#PrivateEndpointConnectionListResult": {
@@ -4795,6 +4880,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6050,10 +6141,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all credential set resources for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#CredentialSetListResult": {
@@ -6154,6 +6252,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7391,10 +7495,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all connected registries for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#ConnectedRegistryListResult": {
@@ -7496,6 +7607,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that describes a subset of connectedRegistries to return. The parameters that can be filtered are parent.id (the resource id of the connectedRegistry parent), mode, and connectionState. The supported operator is eq."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8006,10 +8123,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all cache rule resources for the specified container registry.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#CacheRulesListResult": {
@@ -8104,6 +8228,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9774,10 +9904,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the container registries under the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#RegistryListResult": {
@@ -9903,6 +10040,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9922,10 +10065,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/registries",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the container registries under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#ListRegistriesRequest": {
@@ -9937,6 +10087,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10036,7 +10192,7 @@
     "com.azure.containerregistry#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.containerregistry#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.containerregistry#OperationListResult"
@@ -10046,10 +10202,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ContainerRegistry/operations",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#OperationListResult": {
@@ -10271,6 +10434,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The display information for a container registry operation."
+      }
+    },
+    "com.azure.containerregistry#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.containerregistry#GetTaskDetails": {
@@ -12725,10 +12902,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the tasks for a specified container registry.",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#TaskListResult": {
@@ -12848,6 +13032,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the container registry."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13595,10 +13785,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the runs for a registry.",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.containerregistry#RunListResult": {
@@ -13701,6 +13898,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "$top is supported for get list of runs, which limits the maximum number of runs to return."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

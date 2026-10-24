@@ -376,7 +376,8 @@
       "com.azure.storage#StorageAccountsCheckNameAvailability": "com.azure.storage#CheckStorageAccountNameAvailability",
       "com.azure.storage#StorageAccountsCheckNameAvailabilityRequest": "com.azure.storage#CheckStorageAccountNameAvailabilityRequest",
       "com.azure.storage#StorageAccountsCheckNameAvailabilityRequestType": "com.azure.storage#CheckStorageAccountNameAvailabilityRequestType",
-      "com.azure.storage#OperationsList": "com.azure.storage#ListOperations"
+      "com.azure.storage#OperationsList": "com.azure.storage#ListOperations",
+      "com.azure.storage#OperationsListRequest": "com.azure.storage#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -1131,10 +1132,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all the tables under the specified storage account",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ListTableResource": {
@@ -1230,6 +1238,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1814,10 +1828,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Fetch the report summary of a single storage task assignment's instances",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#StorageTaskReportSummary": {
@@ -2067,6 +2088,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2991,10 +3018,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the storage task assignments in an account",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#StorageTaskAssignmentsList": {
@@ -3097,6 +3131,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "Optional, specifies the maximum number of storage task assignment Ids to be included in the list response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3555,10 +3595,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Fetch the report summary of all the storage task assignments and instances in an account",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#StorageTaskAssignmentsInstancesReportListRequest": {
@@ -3600,6 +3647,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4169,10 +4222,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all the queues under the specified storage account",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ListQueueResource": {
@@ -4304,6 +4364,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Optional, When specified, only the queues with a name starting with the given filter will be listed."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5200,10 +5266,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the private endpoint connections associated with the storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#PrivateEndpointConnectionListResult": {
@@ -5295,6 +5368,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5801,10 +5880,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the object replication policies associated with the storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ObjectReplicationPolicies": {
@@ -5896,6 +5982,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6536,10 +6628,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets list of effective NetworkSecurityPerimeterConfiguration for storage account",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#NetworkSecurityPerimeterConfigurationList": {
@@ -6635,6 +6734,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8030,10 +8135,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the local users associated with the storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#LocalUsers": {
@@ -8150,6 +8262,12 @@
           "traits": {
             "smithy.api#httpQuery": "$include",
             "smithy.api#documentation": "Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9374,10 +9492,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the blob inventory policy associated with the specified storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ListBlobInventoryPolicy": {
@@ -9469,6 +9594,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9895,10 +10026,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the usages of file service in storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#FileServiceUsages": {
@@ -10001,6 +10139,12 @@
           "traits": {
             "smithy.api#httpQuery": "$maxpagesize",
             "smithy.api#documentation": "Optional, specifies the maximum number of file service usages to be included in the list response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11135,10 +11279,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all shares.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#FileShareItems": {
@@ -11261,6 +11412,12 @@
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Optional, used to expand the properties within share's properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter ','"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12343,10 +12500,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the encryption scopes available under the specified storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#EncryptionScopeListResult": {
@@ -12463,6 +12627,12 @@
           "traits": {
             "smithy.api#httpQuery": "$include",
             "smithy.api#documentation": "Optional, when specified, will list encryption scopes with the specific state. Defaults to All"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13310,10 +13480,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Storage DataShares in a Storage Account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#DataShareListResult": {
@@ -13435,6 +13612,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14345,10 +14528,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Storage Connectors in a Storage Account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ConnectorListResult": {
@@ -14470,6 +14660,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16407,10 +16603,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ListContainerItems": {
@@ -16533,6 +16736,12 @@
           "traits": {
             "smithy.api#httpQuery": "$include",
             "smithy.api#documentation": "Optional, used to include the properties for soft deleted blob containers."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17060,10 +17269,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List blob services of storage account. It returns a collection of one object named default.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#BlobServiceItems": {
@@ -17159,6 +17375,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17984,10 +18206,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Blob Access Point configurations in a Storage Account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#BlobAccessPointConfigurationListResult": {
@@ -18109,6 +18338,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18614,10 +18849,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the advanced platform metrics rules associated with the storage account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#AdvancedPlatformMetricsRuleListResult": {
@@ -18713,6 +18955,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22567,10 +22815,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the storage accounts available under the given resource group. Note that storage keys are not returned; use the ListKeys operation for this.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#StorageAccountListResult": {
@@ -22728,6 +22983,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23322,10 +23583,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all containers in a Context Cache.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ContextCacheContainerListResult": {
@@ -23422,6 +23690,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the context cache"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24381,10 +24655,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Context Caches by resource group.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ContextCacheListResult": {
@@ -24534,6 +24815,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24553,10 +24840,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the storage accounts available under the subscription. Note that storage keys are not returned; use the ListKeys operation for this.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#StorageAccountsListRequest": {
@@ -24568,6 +24862,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24588,10 +24888,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available SKUs supported by Microsoft.Storage for given subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#StorageSkuListResult": {
@@ -24820,6 +25127,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24839,10 +25152,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the current usage count and the limit for the resources of the location under the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#UsageListResult": {
@@ -24984,6 +25304,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25131,10 +25457,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists deleted accounts under the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#DeletedAccountListResult": {
@@ -25215,6 +25548,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25234,10 +25573,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/contextCaches",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Context Caches by subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#ContextCachesListBySubscriptionRequest": {
@@ -25249,6 +25595,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25478,7 +25830,7 @@
     "com.azure.storage#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storage#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storage#OperationListResult"
@@ -25488,10 +25840,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Storage/operations",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Storage Rest API operations.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storage#OperationListResult": {
@@ -25710,6 +26069,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Display metadata associated with the operation."
+      }
+    },
+    "com.azure.storage#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storage#Storage": {

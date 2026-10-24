@@ -893,7 +893,7 @@ export type GuestConfigurationAssignmentReportListValueList =
 /** List of guest configuration assignment reports. */
 export interface GuestConfigurationAssignmentReportList {
   /** List of reports for the guest configuration. Report contains information such as compliance status, reason and more. */
-  value?: GuestConfigurationAssignmentReportListValueList;
+  value: GuestConfigurationAssignmentReportListValueList;
   nextLink?: string;
 }
 export interface ListGuestConfigurationAssignmentReportsVMSSRequest {
@@ -905,6 +905,8 @@ export interface ListGuestConfigurationAssignmentReportsVMSSRequest {
   vmssName: string;
   /** The guest configuration assignment name. */
   name: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListGuestConfigurationAssignmentsRequest {
   /** The ID of the target subscription. */
@@ -913,6 +915,8 @@ export interface ListGuestConfigurationAssignmentsRequest {
   resourceGroupName: string;
   /** The name of the virtual machine. */
   vmName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type GuestConfigurationAssignmentSystemDataCreatedByType =
@@ -961,7 +965,7 @@ export type GuestConfigurationAssignmentListValueList = Array<GuestConfiguration
 /** The response of the list guest configuration assignment operation. */
 export interface GuestConfigurationAssignmentList {
   /** Result of the list guest configuration assignment operation. */
-  value?: GuestConfigurationAssignmentListValueList;
+  value: GuestConfigurationAssignmentListValueList;
   nextLink?: string;
 }
 export interface ListGuestConfigurationAssignmentsRGRequest {
@@ -969,10 +973,14 @@ export interface ListGuestConfigurationAssignmentsRGRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListGuestConfigurationAssignmentsSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListGuestConfigurationAssignmentsVMSSRequest {
   /** The ID of the target subscription. */
@@ -981,6 +989,8 @@ export interface ListGuestConfigurationAssignmentsVMSSRequest {
   resourceGroupName: string;
   /** The name of the virtual machine scale set. */
   vmssName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest {
   /** The ID of the target subscription. */
@@ -989,6 +999,8 @@ export interface ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest 
   resourceGroupName: string;
   /** The name of the virtual machine. */
   vmName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest {
   /** The ID of the target subscription. */
@@ -1017,8 +1029,13 @@ export interface ListGuestConfigurationHCRPAssignmentsRequest {
   resourceGroupName: string;
   /** The name of the ARC machine. */
   machineName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Provider, Resource, Operation, and description values. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.GuestConfiguration. */
@@ -1353,57 +1370,79 @@ export const ListGuestConfigurationAssignmentReports: API.OperationMethod<
 
 export type ListGuestConfigurationAssignmentReportsVMSSError = AzureOpError;
 /** List all reports for the VMSS guest configuration assignment, latest report first. */
-export const ListGuestConfigurationAssignmentReportsVMSS: API.OperationMethod<
+export const ListGuestConfigurationAssignmentReportsVMSS: API.PaginatedOperationMethod<
   ListGuestConfigurationAssignmentReportsVMSSRequest,
   GuestConfigurationAssignmentReportList,
   ListGuestConfigurationAssignmentReportsVMSSError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignmentReport
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<ListGuestConfigurationAssignmentReportsVMSSRequest>,
   output: __S(225, __c14, 1) as any as S.Schema<GuestConfigurationAssignmentReportList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestConfigurationAssignmentsError = AzureOpError;
 /** List all guest configuration assignments for a virtual machine. */
-export const ListGuestConfigurationAssignments: API.OperationMethod<
+export const ListGuestConfigurationAssignments: API.PaginatedOperationMethod<
   ListGuestConfigurationAssignmentsRequest,
   GuestConfigurationAssignmentList,
   ListGuestConfigurationAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListGuestConfigurationAssignmentsRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestConfigurationAssignmentsRGError = AzureOpError;
 /** List all guest configuration assignments for a resource group. */
-export const ListGuestConfigurationAssignmentsRG: API.OperationMethod<
+export const ListGuestConfigurationAssignmentsRG: API.PaginatedOperationMethod<
   ListGuestConfigurationAssignmentsRGRequest,
   GuestConfigurationAssignmentList,
   ListGuestConfigurationAssignmentsRGError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListGuestConfigurationAssignmentsRGRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestConfigurationAssignmentsSubscriptionError = AzureOpError;
 /** List all guest configuration assignments for a subscription. */
-export const ListGuestConfigurationAssignmentsSubscription: API.OperationMethod<
+export const ListGuestConfigurationAssignmentsSubscription: API.PaginatedOperationMethod<
   ListGuestConfigurationAssignmentsSubscriptionRequest,
   GuestConfigurationAssignmentList,
   ListGuestConfigurationAssignmentsSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     320,
     __c20,
@@ -1413,31 +1452,45 @@ export const ListGuestConfigurationAssignmentsSubscription: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestConfigurationAssignmentsVMSSError = AzureOpError;
 /** List all guest configuration assignments for VMSS. */
-export const ListGuestConfigurationAssignmentsVMSS: API.OperationMethod<
+export const ListGuestConfigurationAssignmentsVMSS: API.PaginatedOperationMethod<
   ListGuestConfigurationAssignmentsVMSSRequest,
   GuestConfigurationAssignmentList,
   ListGuestConfigurationAssignmentsVMSSError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListGuestConfigurationAssignmentsVMSSRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestConfigurationConnectedVMwarevSphereAssignmentsError = AzureOpError;
 /** List all guest configuration assignments for an ARC machine. */
-export const ListGuestConfigurationConnectedVMwarevSphereAssignments: API.OperationMethod<
+export const ListGuestConfigurationConnectedVMwarevSphereAssignments: API.PaginatedOperationMethod<
   ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest,
   GuestConfigurationAssignmentList,
   ListGuestConfigurationConnectedVMwarevSphereAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     352,
     __c22,
@@ -1447,7 +1500,13 @@ export const ListGuestConfigurationConnectedVMwarevSphereAssignments: API.Operat
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsError = AzureOpError;
 /** List all reports for the guest configuration assignment, latest report first. */
@@ -1485,33 +1544,47 @@ export const ListGuestConfigurationHCRPAssignmentReports: API.OperationMethod<
 
 export type ListGuestConfigurationHCRPAssignmentsError = AzureOpError;
 /** List all guest configuration assignments for an ARC machine. */
-export const ListGuestConfigurationHCRPAssignments: API.OperationMethod<
+export const ListGuestConfigurationHCRPAssignments: API.PaginatedOperationMethod<
   ListGuestConfigurationHCRPAssignmentsRequest,
   GuestConfigurationAssignmentList,
   ListGuestConfigurationHCRPAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListGuestConfigurationHCRPAssignmentsRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(421, __c26, 5) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -1929,7 +2002,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(224, __c14, 0)),
+          value: __S(224, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestConfigurationAssignmentReportList" });
@@ -1944,12 +2017,14 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vmssName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationAssignmentReportsVMSSRequest" });
@@ -1963,12 +2038,14 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationAssignmentsRequest" });
@@ -1981,7 +2058,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(272, __c17, 0)),
+          value: __S(272, __c17, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestConfigurationAssignmentList" });
@@ -1994,12 +2071,14 @@ function __c18(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationAssignmentsRGRequest" });
@@ -2031,12 +2110,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationAssignmentsSubscriptionRequest" });
@@ -2050,12 +2131,14 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmssName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationAssignmentsVMSSRequest" });
@@ -2069,12 +2152,14 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest" });
@@ -2130,12 +2215,14 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestConfigurationHCRPAssignmentsRequest" });
@@ -2145,12 +2232,15 @@ function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.GuestConfiguration/operations",
             code: 200,
             apiVersion: "2024-04-05",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });

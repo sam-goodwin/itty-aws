@@ -2949,10 +2949,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/ispCustomers/{customerResourceName}/ispCacheNodes",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This api retrieves information about all ispCacheNode resources under the given subscription and resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#IspCacheNodeResourceListResult": {
@@ -3073,6 +3080,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Customer resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4218,10 +4231,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/ispCustomers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This api gets the information about all ispCustomer resources under the given subscription and resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#IspCustomerResourceListResult": {
@@ -4334,6 +4354,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5387,10 +5413,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers/{customerResourceName}/enterpriseMccCacheNodes",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This api retrieves information about all ispCacheNode resources under the given subscription and resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#EnterpriseMccCacheNodeResourceListResult": {
@@ -5511,6 +5544,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Customer resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6009,10 +6048,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This api gets the information about all enterprise mcc customer resources under the given subscription and resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#EnterpriseMccCustomerResourceListResult": {
@@ -6126,6 +6172,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6145,10 +6197,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedCache/ispCustomers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This api gets information about all ispCustomer resources under the given subscription",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#ListIspCustomerBySubscriptionRequest": {
@@ -6160,6 +6219,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6180,10 +6245,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedCache/enterpriseMccCustomers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This api gets information about all enterpriseMccCustomer resources under the given subscription",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#ListEnterpriseMccCustomerBySubscriptionRequest": {
@@ -6196,6 +6268,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6205,7 +6283,7 @@
     "com.azure.connectedcache#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.connectedcache#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#ListOperationsResponse"
@@ -6215,10 +6293,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ConnectedCache/operations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedcache#ListOperationsResponse": {
@@ -6358,6 +6443,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.connectedcache#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.connectedcache#Connectedcache": {

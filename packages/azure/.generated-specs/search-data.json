@@ -591,9 +591,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all indexes available for a search service."
+        "smithy.api#documentation": "Lists all indexes available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListIndexesSelectedResult": {
@@ -2725,6 +2732,12 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3157,9 +3170,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all synonym maps available for a search service."
+        "smithy.api#documentation": "Lists all synonym maps available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListSynonymMapsResult": {
@@ -3237,6 +3257,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4167,9 +4193,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all skillsets in a search service."
+        "smithy.api#documentation": "List all skillsets in a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListSkillsetsResult": {
@@ -4247,6 +4280,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5199,9 +5238,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all files in a File knowledge source."
+        "smithy.api#documentation": "Lists all files in a File knowledge source.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListKnowledgeSourceFilesResult": {
@@ -5287,6 +5333,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5668,9 +5720,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all knowledge sources available for a search service."
+        "smithy.api#documentation": "Lists all knowledge sources available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListKnowledgeSourcesResult": {
@@ -5741,6 +5800,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6839,9 +6904,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all knowledge bases available for a search service."
+        "smithy.api#documentation": "Lists all knowledge bases available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListKnowledgeBasesResult": {
@@ -6913,6 +6985,12 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6948,9 +7026,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves a summary of statistics for all indexes in the search service."
+        "smithy.api#documentation": "Retrieves a summary of statistics for all indexes in the search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListIndexStatsSummary": {
@@ -7057,6 +7142,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11122,9 +11213,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all indexes available for a search service."
+        "smithy.api#documentation": "Lists all indexes available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListIndexesResult": {
@@ -11195,6 +11293,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12813,9 +12917,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all indexers available for a search service."
+        "smithy.api#documentation": "Lists all indexers available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListIndexersResult": {
@@ -12893,6 +13004,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13584,9 +13701,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all datasources available for a search service."
+        "smithy.api#documentation": "Lists all datasources available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListDataSourcesResult": {
@@ -13664,6 +13788,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14040,9 +14170,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all aliases available for a search service."
+        "smithy.api#documentation": "Lists all aliases available for a search service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search_data#ListAliasesResult": {
@@ -14113,6 +14250,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

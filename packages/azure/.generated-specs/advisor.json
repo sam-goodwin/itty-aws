@@ -699,10 +699,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/suppressions",
           "code": 200,
-          "apiVersion": "2025-01-01"
+          "apiVersion": "2025-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of snoozed or dismissed suppressions for a subscription. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.",
-        "com.distilled.openapi#apiVersion": "2025-01-01"
+        "com.distilled.openapi#apiVersion": "2025-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.advisor#SuppressionContractListResult": {
@@ -792,6 +799,12 @@
           "traits": {
             "smithy.api#documentation": "Gets or sets the expiration time stamp."
           }
+        },
+        "expirationTimestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiration time stamp, as GetSuppression and ListSuppressions return it."
+          }
         }
       },
       "traits": {
@@ -821,6 +834,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "The page-continuation token to use with a paged version of this API."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1573,7 +1592,7 @@
     "com.azure.advisor#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.advisor#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.advisor#OperationEntityListResult"
@@ -1583,10 +1602,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Advisor/operations",
           "code": 200,
-          "apiVersion": "2025-01-01"
+          "apiVersion": "2025-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available Advisor REST API operations.",
-        "com.distilled.openapi#apiVersion": "2025-01-01"
+        "com.distilled.openapi#apiVersion": "2025-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.advisor#OperationEntityListResult": {
@@ -1670,6 +1696,20 @@
         "smithy.api#documentation": "The operation supported by Advisor."
       }
     },
+    "com.azure.advisor#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.advisor#ListRecommendations": {
       "type": "operation",
       "input": {
@@ -1683,10 +1723,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/recommendations",
           "code": 200,
-          "apiVersion": "2025-01-01"
+          "apiVersion": "2025-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Obtains cached recommendations for a subscription. The recommendations are generated or computed by invoking generateRecommendations.",
-        "com.distilled.openapi#apiVersion": "2025-01-01"
+        "com.distilled.openapi#apiVersion": "2025-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.advisor#ResourceRecommendationBaseListResult": {
@@ -1786,6 +1833,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "The page-continuation token to use with a paged version of this API."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2242,7 +2295,11 @@
           "apiVersion": "2025-01-01"
         },
         "smithy.api#documentation": "Retrieve Azure Advisor configurations.",
-        "com.distilled.openapi#apiVersion": "2025-01-01"
+        "com.distilled.openapi#apiVersion": "2025-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.advisor#ConfigurationListResult": {
@@ -2448,10 +2505,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations",
           "code": 200,
-          "apiVersion": "2025-01-01"
+          "apiVersion": "2025-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve Azure Advisor configurations.\n\nRetrieve Azure Advisor configurations and also retrieve configurations of contained resource groups.",
-        "com.distilled.openapi#apiVersion": "2025-01-01"
+        "com.distilled.openapi#apiVersion": "2025-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.advisor#ListConfigurationBySubscriptionRequest": {
@@ -2463,6 +2527,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Azure subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2483,10 +2553,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Advisor/metadata",
           "code": 200,
-          "apiVersion": "2025-01-01"
+          "apiVersion": "2025-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of metadata entities.",
-        "com.distilled.openapi#apiVersion": "2025-01-01"
+        "com.distilled.openapi#apiVersion": "2025-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.advisor#MetadataEntityListResult": {
@@ -2649,6 +2726,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply to the recommendation metadata.<br>Filter can be applied to properties ['[recommendationCategory](#category)', '[recommendationSubCategory](#recommendationSubCategory)', 'RetirementDate'] with operators ['eq', 'and', 'le', 'ge']<br>The filter can also be applied to property ['[TrackingIds]']<br><br>⚠ **Note:** `recommendationControl` is a legacy filter property and will be deprecated in the future. Please use `recommendationSubCategory` for filtering recommendation subcategory.<br><br>Valid options for recommendationSubCategory: ['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=recommendationCategory eq 'HighAvailability' and recommendationSubCategory eq 'ServiceUpgradeAndRetirement' and retirementDate ge '2024-01-01' and retirementDate le '2028-01-01'. Filter can be applied on trackingIds as well.<br>- $filter=trackingIds/any(t: t eq 'some-guid')<br><br>⚠ **Note:** `trackingIDs` filter can be used for filtering one value at a time. The support to filter multiple values is not currently available. Also the support to add other filters along with `trackingIDs` is not available."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -836,10 +836,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/actionRules",
           "code": 200,
-          "apiVersion": "2021-08-08"
+          "apiVersion": "2021-08-08",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all alert processing rules in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-08-08"
+        "com.distilled.openapi#apiVersion": "2021-08-08",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#AlertProcessingRulesList": {
@@ -947,6 +954,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -966,10 +979,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/actionRules",
           "code": 200,
-          "apiVersion": "2021-08-08"
+          "apiVersion": "2021-08-08",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all alert processing rules in a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-08-08"
+        "com.distilled.openapi#apiVersion": "2021-08-08",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#ListAlertProcessingRuleBySubscriptionRequest": {
@@ -981,6 +1001,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2192,10 +2218,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.AlertsManagement/alerts",
           "code": 200,
-          "apiVersion": "2019-03-01"
+          "apiVersion": "2019-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all existing alerts, where the results can be filtered on the basis of multiple parameters (e.g. time range). The results can then be sorted on the basis specific fields, with the default being lastModifiedDateTime.",
-        "com.distilled.openapi#apiVersion": "2019-03-01"
+        "com.distilled.openapi#apiVersion": "2019-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#AlertsList": {
@@ -2384,6 +2417,12 @@
           "traits": {
             "smithy.api#httpQuery": "customTimeRange",
             "smithy.api#documentation": "Filter by custom time range in the format <start-time>/<end-time>  where time is in (ISO-8601 format)'. Permissible values is within 30 days from  query time. Either timeRange or customTimeRange could be used but not both. Default is none."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2769,7 +2808,7 @@
     "com.azure.alertsmanagement#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.alertsmanagement#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.alertsmanagement#OperationsList"
@@ -2779,10 +2818,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AlertsManagement/operations",
           "code": 200,
-          "apiVersion": "2019-03-01"
+          "apiVersion": "2019-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all operations available through Azure Alerts Management Resource Provider.",
-        "com.distilled.openapi#apiVersion": "2019-03-01"
+        "com.distilled.openapi#apiVersion": "2019-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#OperationsList": {
@@ -2865,6 +2911,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties of the operation"
+      }
+    },
+    "com.azure.alertsmanagement#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.alertsmanagement#DeleteSmartDetectorAlertRule": {
@@ -3937,10 +3997,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
           "code": 200,
-          "apiVersion": "2021-04-01"
+          "apiVersion": "2021-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the existing Smart Detector alert rules within the subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#AlertRulesList": {
@@ -4053,6 +4120,12 @@
             "smithy.api#httpQuery": "expandDetector",
             "smithy.api#documentation": "Indicates if Smart Detector should be expanded."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4072,10 +4145,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/microsoft.alertsManagement/smartDetectorAlertRules",
           "code": 200,
-          "apiVersion": "2021-04-01"
+          "apiVersion": "2021-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the existing Smart Detector alert rules within the subscription.",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#ListSmartDetectorAlertRulesRequest": {
@@ -4094,6 +4174,12 @@
           "traits": {
             "smithy.api#httpQuery": "expandDetector",
             "smithy.api#documentation": "Indicates if Smart Detector should be expanded."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4901,10 +4987,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
           "code": 200,
-          "apiVersion": "2023-03-01"
+          "apiVersion": "2023-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve Prometheus rule group definitions in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-03-01"
+        "com.distilled.openapi#apiVersion": "2023-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#PrometheusRuleGroupResourceCollection": {
@@ -5015,6 +5108,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5034,10 +5133,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AlertsManagement/prometheusRuleGroups",
           "code": 200,
-          "apiVersion": "2023-03-01"
+          "apiVersion": "2023-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve Prometheus all rule group definitions in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-03-01"
+        "com.distilled.openapi#apiVersion": "2023-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.alertsmanagement#ListPrometheusRuleGroupBySubscriptionRequest": {
@@ -5049,6 +5155,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

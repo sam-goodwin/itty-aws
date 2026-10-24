@@ -2094,6 +2094,8 @@ export interface ListCacheRulesRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An object that represents a cache rule for a container registry. */
 export interface CacheRule {
@@ -2113,7 +2115,7 @@ export type CacheRulesListResultValueList = Array<CacheRule>;
 /** The result of a request to list cache rules for a container registry. */
 export interface CacheRulesListResult {
   /** The list of cache rules. Since this list may be incomplete, the nextLink field should be used to request the next list of cache rules. */
-  value?: CacheRulesListResultValueList;
+  value: CacheRulesListResultValueList;
   /** The URI that can be used to request the next list of cache rules. */
   nextLink?: string;
 }
@@ -2126,6 +2128,8 @@ export interface ListConnectedRegistriesRequest {
   registryName: string;
   /** An OData filter expression that describes a subset of connectedRegistries to return. The parameters that can be filtered are parent.id (the resource id of the connectedRegistry parent), mode, and connectionState. The supported operator is eq. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An object that represents a connected registry for a container registry. */
 export interface ConnectedRegistry {
@@ -2145,7 +2149,7 @@ export type ConnectedRegistryListResultValueList = Array<ConnectedRegistry>;
 /** The result of a request to list connected registries for a container registry. */
 export interface ConnectedRegistryListResult {
   /** The list of connected registries. Since this list may be incomplete, the nextLink field should be used to request the next list of connected registries. */
-  value?: ConnectedRegistryListResultValueList;
+  value: ConnectedRegistryListResultValueList;
   /** The URI that can be used to request the next list of connected registries. */
   nextLink?: string;
 }
@@ -2156,6 +2160,8 @@ export interface ListCredentialSetsRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An object that represents a credential set resource for a container registry. */
 export interface CredentialSet {
@@ -2177,11 +2183,14 @@ export type CredentialSetListResultValueList = Array<CredentialSet>;
 /** The result of a request to list credential sets for a container registry. */
 export interface CredentialSetListResult {
   /** The list of credential sets. Since this list may be incomplete, the nextLink field should be used to request the next list of credential sets. */
-  value?: CredentialSetListResultValueList;
+  value: CredentialSetListResultValueList;
   /** The URI that can be used to request the next list of credential sets. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The display information for a container registry operation. */
 export interface OperationDisplayDefinition {
   /** The resource provider name: Microsoft.ContainerRegistry. */
@@ -2253,7 +2262,7 @@ export type OperationListResultValueList = Array<OperationDefinition>;
 /** The result of a request to list container registry operations. */
 export interface OperationListResult {
   /** The list of container registry operations. Since this list may be incomplete, the nextLink field should be used to request the next list of operations. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** The URI that can be used to request the next list of container registry operations. */
   nextLink?: string;
 }
@@ -2264,19 +2273,23 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of private endpoint connections. Since this list may be incomplete, the nextLink field should be used to request the next list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
 /** The result of a request to list private endpoint connections for a container registry. */
 export interface PrivateEndpointConnectionListResult {
   /** The list of private endpoint connections. Since this list may be incomplete, the nextLink field should be used to request the next list of private endpoint connections. */
-  value?: PrivateEndpointConnectionListResultValueList;
+  value: PrivateEndpointConnectionListResultValueList;
   /** The URI that can be used to request the next list of private endpoint connections. */
   nextLink?: string;
 }
 export interface ListRegistriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RegistryTagsMap = { [key: string]: string | undefined };
@@ -2306,7 +2319,7 @@ export type RegistryListResultValueList = Array<Registry>;
 /** The result of a request to list container registries. */
 export interface RegistryListResult {
   /** The list of container registries. Since this list may be incomplete, the nextLink field should be used to request the next list of container registries. */
-  value?: RegistryListResultValueList;
+  value: RegistryListResultValueList;
   /** The URI that can be used to request the next list of container registries. */
   nextLink?: string;
 }
@@ -2315,6 +2328,8 @@ export interface ListRegistryByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRegistryCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2349,6 +2364,8 @@ export interface ListRegistryPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private link resource. */
 export interface PrivateLinkResourceListResultValueItem {
@@ -2368,7 +2385,7 @@ export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceLi
 /** The result of a request to list private link resources for a container registry. */
 export interface PrivateLinkResourceListResult {
   /** The list of private link resources. Since this list may be incomplete, the nextLink field should be used to request the next list of private link resources. */
-  value?: PrivateLinkResourceListResultValueList;
+  value: PrivateLinkResourceListResultValueList;
   /** The URI that can be used to request the next list of private link resources. */
   nextLink?: string;
 }
@@ -2407,6 +2424,8 @@ export interface ListReplicationsRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ReplicationTagsMap = { [key: string]: string | undefined };
@@ -2432,7 +2451,7 @@ export type ReplicationListResultValueList = Array<Replication>;
 /** The result of a request to list replications for a container registry. */
 export interface ReplicationListResult {
   /** The list of replications. Since this list may be incomplete, the nextLink field should be used to request the next list of replications. */
-  value?: ReplicationListResultValueList;
+  value: ReplicationListResultValueList;
   /** The URI that can be used to request the next list of replications. */
   nextLink?: string;
 }
@@ -2447,6 +2466,8 @@ export interface ListRunsRequest {
   _filter?: string;
   /** $top is supported for get list of runs, which limits the maximum number of runs to return. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Run resource properties */
 export interface Run {
@@ -2464,7 +2485,7 @@ export type RunListResultValueList = Array<Run>;
 /** Collection of runs. */
 export interface RunListResult {
   /** The collection value. */
-  value?: RunListResultValueList;
+  value: RunListResultValueList;
   /** The URI that can be used to request the next set of paged results. */
   nextLink?: string;
 }
@@ -2475,6 +2496,8 @@ export interface ListScopeMapsRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An object that represents a scope map for a container registry. */
 export interface ScopeMap {
@@ -2494,7 +2517,7 @@ export type ScopeMapListResultValueList = Array<ScopeMap>;
 /** The result of a request to list scope maps for a container registry. */
 export interface ScopeMapListResult {
   /** The list of scope maps. Since this list may be incomplete, the nextLink field should be used to request the next list of scope maps. */
-  value?: ScopeMapListResultValueList;
+  value: ScopeMapListResultValueList;
   /** The URI that can be used to request the next list of scope maps. */
   nextLink?: string;
 }
@@ -2505,6 +2528,8 @@ export interface ListTasksRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type TaskTagsMap = { [key: string]: string | undefined };
@@ -2530,7 +2555,7 @@ export type TaskListResultValueList = Array<Task>;
 /** The collection of tasks. */
 export interface TaskListResult {
   /** The collection value. */
-  value?: TaskListResultValueList;
+  value: TaskListResultValueList;
   /** The URI that can be used to request the next set of paged results. */
   nextLink?: string;
 }
@@ -2541,6 +2566,8 @@ export interface ListTokensRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An object that represents a token for a container registry. */
 export interface Token {
@@ -2560,7 +2587,7 @@ export type TokenListResultValueList = Array<Token>;
 /** The result of a request to list tokens for a container registry. */
 export interface TokenListResult {
   /** The list of tokens. Since this list may be incomplete, the nextLink field should be used to request the next list of tokens. */
-  value?: TokenListResultValueList;
+  value: TokenListResultValueList;
   /** The URI that can be used to request the next list of tokens. */
   nextLink?: string;
 }
@@ -2573,6 +2600,8 @@ export interface ListWebhookEventsRequest {
   registryName: string;
   /** The name of the webhook. */
   webhookName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The target of the event. */
 export interface Target {
@@ -2681,7 +2710,7 @@ export type EventListResultValueList = Array<Event>;
 /** The result of a request to list events for a webhook. */
 export interface EventListResult {
   /** The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events. */
-  value?: EventListResultValueList;
+  value: EventListResultValueList;
   /** The URI that can be used to request the next list of events. */
   nextLink?: string;
 }
@@ -2692,6 +2721,8 @@ export interface ListWebhooksRequest {
   resourceGroupName: string;
   /** The name of the container registry. */
   registryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WebhookTagsMap = { [key: string]: string | undefined };
@@ -2717,7 +2748,7 @@ export type WebhookListResultValueList = Array<Webhook>;
 /** The result of a request to list webhooks for a container registry. */
 export interface WebhookListResult {
   /** The list of webhooks. Since this list may be incomplete, the nextLink field should be used to request the next list of webhooks. */
-  value?: WebhookListResultValueList;
+  value: WebhookListResultValueList;
   /** The URI that can be used to request the next list of webhooks. */
   nextLink?: string;
 }
@@ -3982,108 +4013,157 @@ export const ImportRegistryImage: API.OperationMethod<
 
 export type ListCacheRulesError = AzureOpError;
 /** Lists all cache rule resources for the specified container registry. */
-export const ListCacheRules: API.OperationMethod<
+export const ListCacheRules: API.PaginatedOperationMethod<
   ListCacheRulesRequest,
   CacheRulesListResult,
   ListCacheRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CacheRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1728, __c54, 0) as any as S.Schema<ListCacheRulesRequest>,
   output: __S(1730, __c54, 2) as any as S.Schema<CacheRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectedRegistriesError = AzureOpError;
 /** Lists all connected registries for the specified container registry. */
-export const ListConnectedRegistries: API.OperationMethod<
+export const ListConnectedRegistries: API.PaginatedOperationMethod<
   ListConnectedRegistriesRequest,
   ConnectedRegistryListResult,
   ListConnectedRegistriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectedRegistry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1920, __c60, 0) as any as S.Schema<ListConnectedRegistriesRequest>,
   output: __S(1922, __c60, 2) as any as S.Schema<ConnectedRegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCredentialSetsError = AzureOpError;
 /** Lists all credential set resources for the specified container registry. */
-export const ListCredentialSets: API.OperationMethod<
+export const ListCredentialSets: API.PaginatedOperationMethod<
   ListCredentialSetsRequest,
   CredentialSetListResult,
   ListCredentialSetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CredentialSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1952, __c61, 0) as any as S.Schema<ListCredentialSetsRequest>,
   output: __S(1954, __c61, 2) as any as S.Schema<CredentialSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1984, __c62, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1994, __c62, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List all private endpoint connections in a container registry. */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2016, __c63, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(2017, __c63, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRegistriesError = AzureOpError;
 /** Lists all the container registries under the specified subscription. */
-export const ListRegistries: API.OperationMethod<
+export const ListRegistries: API.PaginatedOperationMethod<
   ListRegistriesRequest,
   RegistryListResult,
   ListRegistriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Registry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2048, __c64, 0) as any as S.Schema<ListRegistriesRequest>,
   output: __S(2081, __c65, 1) as any as S.Schema<RegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRegistryByResourceGroupError = AzureOpError;
 /** Lists all the container registries under the specified resource group. */
-export const ListRegistryByResourceGroup: API.OperationMethod<
+export const ListRegistryByResourceGroup: API.PaginatedOperationMethod<
   ListRegistryByResourceGroupRequest,
   RegistryListResult,
   ListRegistryByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Registry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2112, __c66, 0) as any as S.Schema<ListRegistryByResourceGroupRequest>,
   output: __S(2081, __c65, 1) as any as S.Schema<RegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRegistryCredentialsError = AzureOpError;
 /** Lists the login credentials for the specified container registry. */
@@ -4102,18 +4182,25 @@ export const ListRegistryCredentials: API.OperationMethod<
 
 export type ListRegistryPrivateLinkResourcesError = AzureOpError;
 /** Lists the private link resources for a container registry. */
-export const ListRegistryPrivateLinkResources: API.OperationMethod<
+export const ListRegistryPrivateLinkResources: API.PaginatedOperationMethod<
   ListRegistryPrivateLinkResourcesRequest,
   PrivateLinkResourceListResult,
   ListRegistryPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResourceListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2208, __c69, 0) as any as S.Schema<ListRegistryPrivateLinkResourcesRequest>,
   output: __S(2210, __c69, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRegistryUsagesError = AzureOpError;
 /** Gets the quota usages for the specified container registry. */
@@ -4132,108 +4219,157 @@ export const ListRegistryUsages: API.OperationMethod<
 
 export type ListReplicationsError = AzureOpError;
 /** Lists all the replications for the specified container registry. */
-export const ListReplications: API.OperationMethod<
+export const ListReplications: API.PaginatedOperationMethod<
   ListReplicationsRequest,
   ReplicationListResult,
   ListReplicationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Replication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2272, __c71, 0) as any as S.Schema<ListReplicationsRequest>,
   output: __S(2274, __c71, 2) as any as S.Schema<ReplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRunsError = AzureOpError;
 /** Gets all the runs for a registry. */
-export const ListRuns: API.OperationMethod<
+export const ListRuns: API.PaginatedOperationMethod<
   ListRunsRequest,
   RunListResult,
   ListRunsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Run
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2592, __c81, 0) as any as S.Schema<ListRunsRequest>,
   output: __S(2594, __c81, 2) as any as S.Schema<RunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScopeMapsError = AzureOpError;
 /** Lists all the scope maps for the specified container registry. */
-export const ListScopeMaps: API.OperationMethod<
+export const ListScopeMaps: API.PaginatedOperationMethod<
   ListScopeMapsRequest,
   ScopeMapListResult,
   ListScopeMapsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScopeMap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2624, __c82, 0) as any as S.Schema<ListScopeMapsRequest>,
   output: __S(2626, __c82, 2) as any as S.Schema<ScopeMapListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTasksError = AzureOpError;
 /** Lists all the tasks for a specified container registry. */
-export const ListTasks: API.OperationMethod<
+export const ListTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   TaskListResult,
   ListTasksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Task
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2656, __c83, 0) as any as S.Schema<ListTasksRequest>,
   output: __S(2658, __c83, 2) as any as S.Schema<TaskListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTokensError = AzureOpError;
 /** Lists all the tokens for the specified container registry. */
-export const ListTokens: API.OperationMethod<
+export const ListTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   TokenListResult,
   ListTokensError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Token
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2688, __c84, 0) as any as S.Schema<ListTokensRequest>,
   output: __S(2690, __c84, 2) as any as S.Schema<TokenListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebhookEventsError = AzureOpError;
 /** Lists recent events for the specified webhook. */
-export const ListWebhookEvents: API.OperationMethod<
+export const ListWebhookEvents: API.PaginatedOperationMethod<
   ListWebhookEventsRequest,
   EventListResult,
   ListWebhookEventsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2720, __c85, 0) as any as S.Schema<ListWebhookEventsRequest>,
   output: __S(2730, __c85, 10) as any as S.Schema<EventListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebhooksError = AzureOpError;
 /** Lists all the webhooks for the specified container registry. */
-export const ListWebhooks: API.OperationMethod<
+export const ListWebhooks: API.PaginatedOperationMethod<
   ListWebhooksRequest,
   WebhookListResult,
   ListWebhooksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Webhook
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2752, __c86, 0) as any as S.Schema<ListWebhooksRequest>,
   output: __S(2754, __c86, 2) as any as S.Schema<WebhookListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PingWebhookError = AzureOpError;
 /** Triggers a ping event to be sent to the webhook. */
@@ -5658,12 +5794,14 @@ function __c54(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/cacheRules",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCacheRulesRequest" });
@@ -5672,7 +5810,7 @@ function __c54(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1729, __c54, 1)),
+          value: __S(1729, __c54, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheRulesListResult" });
@@ -5800,12 +5938,14 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/connectedRegistries",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectedRegistriesRequest" });
@@ -5814,7 +5954,7 @@ function __c60(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1921, __c60, 1)),
+          value: __S(1921, __c60, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectedRegistryListResult" });
@@ -5828,12 +5968,14 @@ function __c61(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/credentialSets",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCredentialSetsRequest" });
@@ -5842,7 +5984,7 @@ function __c61(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1953, __c61, 1)),
+          value: __S(1953, __c61, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CredentialSetListResult" });
@@ -5852,12 +5994,15 @@ function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ContainerRegistry/operations",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -5921,7 +6066,7 @@ function __c62(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1993, __c62, 9)),
+          value: __S(1993, __c62, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -5935,19 +6080,21 @@ function __c63(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2432, __c76, 0)),
+          value: __S(2432, __c76, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -5959,12 +6106,14 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerRegistry/registries",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRegistriesRequest" });
@@ -5977,7 +6126,7 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2080, __c65, 0)),
+          value: __S(2080, __c65, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryListResult" });
@@ -5990,12 +6139,14 @@ function __c66(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRegistryByResourceGroupRequest" });
@@ -6048,12 +6199,14 @@ function __c69(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/privateLinkResources",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRegistryPrivateLinkResourcesRequest" });
@@ -6062,7 +6215,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2209, __c69, 1)),
+          value: __S(2209, __c69, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
@@ -6112,12 +6265,14 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationsRequest" });
@@ -6126,7 +6281,7 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2273, __c71, 1)),
+          value: __S(2273, __c71, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationListResult" });
@@ -6392,12 +6547,14 @@ function __c81(j: number): any {
           registryName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/runs",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRunsRequest" });
@@ -6406,7 +6563,7 @@ function __c81(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2593, __c81, 1)),
+          value: __S(2593, __c81, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunListResult" });
@@ -6420,12 +6577,14 @@ function __c82(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/scopeMaps",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScopeMapsRequest" });
@@ -6434,7 +6593,7 @@ function __c82(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2625, __c82, 1)),
+          value: __S(2625, __c82, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScopeMapListResult" });
@@ -6448,12 +6607,14 @@ function __c83(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tasks",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTasksRequest" });
@@ -6462,7 +6623,7 @@ function __c83(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2657, __c83, 1)),
+          value: __S(2657, __c83, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskListResult" });
@@ -6476,12 +6637,14 @@ function __c84(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/tokens",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTokensRequest" });
@@ -6490,7 +6653,7 @@ function __c84(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2689, __c84, 1)),
+          value: __S(2689, __c84, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenListResult" });
@@ -6505,12 +6668,14 @@ function __c85(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks/{webhookName}/listEvents",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebhookEventsRequest" });
@@ -6596,7 +6761,7 @@ function __c85(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2729, __c85, 9)),
+          value: __S(2729, __c85, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventListResult" });
@@ -6610,12 +6775,14 @@ function __c86(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/webhooks",
             code: 200,
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebhooksRequest" });
@@ -6624,7 +6791,7 @@ function __c86(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2753, __c86, 1)),
+          value: __S(2753, __c86, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookListResult" });

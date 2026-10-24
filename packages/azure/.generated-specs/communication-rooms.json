@@ -15,34 +15,16 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_rooms#ParticipantsUpdate": "com.azure.communication_rooms#UpdateParticipant",
-      "com.azure.communication_rooms#ParticipantsUpdateResponse": "com.azure.communication_rooms#UpdateParticipantResponse",
-      "com.azure.communication_rooms#ParticipantsUpdateRequest": "com.azure.communication_rooms#UpdateParticipantRequest",
-      "com.azure.communication_rooms#ParticipantsUpdateRequestParticipantsMap": "com.azure.communication_rooms#UpdateParticipantRequestParticipantsMap",
-      "com.azure.communication_rooms#ParticipantsList": "com.azure.communication_rooms#ListParticipants",
-      "com.azure.communication_rooms#ParticipantsListRequest": "com.azure.communication_rooms#ListParticipantsRequest",
-      "com.azure.communication_rooms#RoomsDelete": "com.azure.communication_rooms#DeleteRoom",
-      "com.azure.communication_rooms#RoomsDeleteRequest": "com.azure.communication_rooms#DeleteRoomRequest",
-      "com.azure.communication_rooms#RoomsUpdate": "com.azure.communication_rooms#UpdateRoom",
-      "com.azure.communication_rooms#RoomsUpdateRequest": "com.azure.communication_rooms#UpdateRoomRequest",
-      "com.azure.communication_rooms#RoomsGet": "com.azure.communication_rooms#GetRoom",
-      "com.azure.communication_rooms#RoomsGetRequest": "com.azure.communication_rooms#GetRoomRequest",
-      "com.azure.communication_rooms#RoomsCreate": "com.azure.communication_rooms#CreateRoom",
-      "com.azure.communication_rooms#RoomsCreateRequest": "com.azure.communication_rooms#CreateRoomRequest",
-      "com.azure.communication_rooms#RoomsCreateRequestParticipantsMap": "com.azure.communication_rooms#CreateRoomRequestParticipantsMap",
-      "com.azure.communication_rooms#RoomsList": "com.azure.communication_rooms#ListRooms",
-      "com.azure.communication_rooms#RoomsListRequest": "com.azure.communication_rooms#ListRoomsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_rooms#ParticipantsUpdate": {
+    "com.azure.communication_rooms#UpdateParticipant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#ParticipantsUpdateRequest"
+        "target": "com.azure.communication_rooms#UpdateParticipantRequest"
       },
       "output": {
-        "target": "com.azure.communication_rooms#ParticipantsUpdateResponse"
+        "target": "com.azure.communication_rooms#UpdateParticipantResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -58,7 +40,7 @@
         "smithy.api#documentation": "Update participants in a room."
       }
     },
-    "com.azure.communication_rooms#ParticipantsUpdateResponse": {
+    "com.azure.communication_rooms#UpdateParticipantResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -73,7 +55,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_rooms#ParticipantsUpdateRequest": {
+    "com.azure.communication_rooms#UpdateParticipantRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -93,7 +75,7 @@
           }
         },
         "participants": {
-          "target": "com.azure.communication_rooms#ParticipantsUpdateRequestParticipantsMap",
+          "target": "com.azure.communication_rooms#UpdateParticipantRequestParticipantsMap",
           "traits": {
             "smithy.api#documentation": "Participants to be updated."
           }
@@ -103,7 +85,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_rooms#ParticipantsUpdateRequestParticipantsMap": {
+    "com.azure.communication_rooms#UpdateParticipantRequestParticipantsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -159,10 +141,10 @@
         "smithy.api#documentation": "The role of a room participant. The default value is Attendee."
       }
     },
-    "com.azure.communication_rooms#ParticipantsList": {
+    "com.azure.communication_rooms#ListParticipants": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#ParticipantsListRequest"
+        "target": "com.azure.communication_rooms#ListParticipantsRequest"
       },
       "output": {
         "target": "com.azure.communication_rooms#ParticipantsCollection"
@@ -176,9 +158,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-03-13"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get participants in a room."
+        "smithy.api#documentation": "Get participants in a room.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_rooms#ParticipantsCollection": {
@@ -232,7 +221,7 @@
         "smithy.api#documentation": "A participant of the room."
       }
     },
-    "com.azure.communication_rooms#ParticipantsListRequest": {
+    "com.azure.communication_rooms#ListParticipantsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -250,16 +239,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the room to get participants from."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_rooms#RoomsDelete": {
+    "com.azure.communication_rooms#DeleteRoom": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#RoomsDeleteRequest"
+        "target": "com.azure.communication_rooms#DeleteRoomRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -278,7 +273,7 @@
         "smithy.api#documentation": "Delete a room."
       }
     },
-    "com.azure.communication_rooms#RoomsDeleteRequest": {
+    "com.azure.communication_rooms#DeleteRoomRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -302,10 +297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_rooms#RoomsUpdate": {
+    "com.azure.communication_rooms#UpdateRoom": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#RoomsUpdateRequest"
+        "target": "com.azure.communication_rooms#UpdateRoomRequest"
       },
       "output": {
         "target": "com.azure.communication_rooms#RoomModel"
@@ -367,7 +362,7 @@
         "smithy.api#documentation": "The meeting room."
       }
     },
-    "com.azure.communication_rooms#RoomsUpdateRequest": {
+    "com.azure.communication_rooms#UpdateRoomRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -409,10 +404,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_rooms#RoomsGet": {
+    "com.azure.communication_rooms#GetRoom": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#RoomsGetRequest"
+        "target": "com.azure.communication_rooms#GetRoomRequest"
       },
       "output": {
         "target": "com.azure.communication_rooms#RoomModel"
@@ -431,7 +426,7 @@
         "smithy.api#documentation": "Retrieves an existing room by id."
       }
     },
-    "com.azure.communication_rooms#RoomsGetRequest": {
+    "com.azure.communication_rooms#GetRoomRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -455,10 +450,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_rooms#RoomsCreate": {
+    "com.azure.communication_rooms#CreateRoom": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#RoomsCreateRequest"
+        "target": "com.azure.communication_rooms#CreateRoomRequest"
       },
       "output": {
         "target": "com.azure.communication_rooms#RoomModel"
@@ -477,7 +472,7 @@
         "smithy.api#documentation": "Creates a new room."
       }
     },
-    "com.azure.communication_rooms#RoomsCreateRequest": {
+    "com.azure.communication_rooms#CreateRoomRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -521,7 +516,7 @@
           }
         },
         "participants": {
-          "target": "com.azure.communication_rooms#RoomsCreateRequestParticipantsMap",
+          "target": "com.azure.communication_rooms#CreateRoomRequestParticipantsMap",
           "traits": {
             "smithy.api#documentation": "(Optional) Participants to be invited to the room."
           }
@@ -531,7 +526,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_rooms#RoomsCreateRequestParticipantsMap": {
+    "com.azure.communication_rooms#CreateRoomRequestParticipantsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -543,10 +538,10 @@
         "smithy.api#documentation": "(Optional) Participants to be invited to the room."
       }
     },
-    "com.azure.communication_rooms#RoomsList": {
+    "com.azure.communication_rooms#ListRooms": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_rooms#RoomsListRequest"
+        "target": "com.azure.communication_rooms#ListRoomsRequest"
       },
       "output": {
         "target": "com.azure.communication_rooms#RoomsCollection"
@@ -560,9 +555,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-03-13"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves all created rooms."
+        "smithy.api#documentation": "Retrieves all created rooms.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_rooms#RoomsCollection": {
@@ -595,7 +597,7 @@
         "smithy.api#documentation": "A collection of rooms."
       }
     },
-    "com.azure.communication_rooms#RoomsListRequest": {
+    "com.azure.communication_rooms#ListRoomsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -604,6 +606,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The endpoint of the Azure Communication resource.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -616,25 +624,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_rooms#ParticipantsUpdate"
+          "target": "com.azure.communication_rooms#UpdateParticipant"
         },
         {
-          "target": "com.azure.communication_rooms#ParticipantsList"
+          "target": "com.azure.communication_rooms#ListParticipants"
         },
         {
-          "target": "com.azure.communication_rooms#RoomsDelete"
+          "target": "com.azure.communication_rooms#DeleteRoom"
         },
         {
-          "target": "com.azure.communication_rooms#RoomsUpdate"
+          "target": "com.azure.communication_rooms#UpdateRoom"
         },
         {
-          "target": "com.azure.communication_rooms#RoomsGet"
+          "target": "com.azure.communication_rooms#GetRoom"
         },
         {
-          "target": "com.azure.communication_rooms#RoomsCreate"
+          "target": "com.azure.communication_rooms#CreateRoom"
         },
         {
-          "target": "com.azure.communication_rooms#RoomsList"
+          "target": "com.azure.communication_rooms#ListRooms"
         }
       ],
       "traits": {

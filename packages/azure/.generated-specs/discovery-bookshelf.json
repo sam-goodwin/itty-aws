@@ -15,32 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatus": "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatus",
-      "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatusRequest": "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatusRequest",
-      "com.azure.discovery_bookshelf#KnowledgeBasesSearch": "com.azure.discovery_bookshelf#SearchKnowledgeBase",
-      "com.azure.discovery_bookshelf#KnowledgeBasesSearchResponse": "com.azure.discovery_bookshelf#SearchKnowledgeBaseResponse",
-      "com.azure.discovery_bookshelf#KnowledgeBasesSearchRequest": "com.azure.discovery_bookshelf#SearchKnowledgeBaseRequest",
-      "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexing": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexing",
-      "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingResponse": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingResponse",
-      "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingRequest": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingRequest",
-      "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexing": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexing",
-      "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingResponse": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingResponse",
-      "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingRequest": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingRequest",
-      "com.azure.discovery_bookshelf#KnowledgeBasesDelete": "com.azure.discovery_bookshelf#DeleteKnowledgeBase",
-      "com.azure.discovery_bookshelf#KnowledgeBasesDeleteResponse": "com.azure.discovery_bookshelf#DeleteKnowledgeBaseResponse",
-      "com.azure.discovery_bookshelf#KnowledgeBasesDeleteRequest": "com.azure.discovery_bookshelf#DeleteKnowledgeBaseRequest",
-      "com.azure.discovery_bookshelf#KnowledgeBasesGet": "com.azure.discovery_bookshelf#GetKnowledgeBase",
-      "com.azure.discovery_bookshelf#KnowledgeBasesGetRequest": "com.azure.discovery_bookshelf#GetKnowledgeBaseRequest",
-      "com.azure.discovery_bookshelf#KnowledgeBasesList": "com.azure.discovery_bookshelf#ListKnowledgeBases",
-      "com.azure.discovery_bookshelf#KnowledgeBasesListRequest": "com.azure.discovery_bookshelf#ListKnowledgeBasesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatus": {
+    "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatusRequest"
+        "target": "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.discovery_bookshelf#KnowledgeBaseOperationResponse"
@@ -233,7 +214,7 @@
         "smithy.api#documentation": "Enum describing allowed operation states."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatusRequest": {
+    "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -265,13 +246,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesSearch": {
+    "com.azure.discovery_bookshelf#SearchKnowledgeBase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesSearchRequest"
+        "target": "com.azure.discovery_bookshelf#SearchKnowledgeBaseRequest"
       },
       "output": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesSearchResponse"
+        "target": "com.azure.discovery_bookshelf#SearchKnowledgeBaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -287,7 +268,7 @@
         "smithy.api#documentation": "Search the knowledge base."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesSearchResponse": {
+    "com.azure.discovery_bookshelf#SearchKnowledgeBaseResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -302,7 +283,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesSearchRequest": {
+    "com.azure.discovery_bookshelf#SearchKnowledgeBaseRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -354,13 +335,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexing": {
+    "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexing": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingRequest"
+        "target": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingRequest"
       },
       "output": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingResponse"
+        "target": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -376,7 +357,7 @@
         "smithy.api#documentation": "Cancel indexing."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingResponse": {
+    "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -391,7 +372,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexingRequest": {
+    "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -436,13 +417,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexing": {
+    "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexing": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingRequest"
+        "target": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingRequest"
       },
       "output": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingResponse"
+        "target": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -458,7 +439,7 @@
         "smithy.api#documentation": "Start indexing."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingResponse": {
+    "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -473,7 +454,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexingRequest": {
+    "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -530,13 +511,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesDelete": {
+    "com.azure.discovery_bookshelf#DeleteKnowledgeBase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesDeleteRequest"
+        "target": "com.azure.discovery_bookshelf#DeleteKnowledgeBaseRequest"
       },
       "output": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesDeleteResponse"
+        "target": "com.azure.discovery_bookshelf#DeleteKnowledgeBaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -552,7 +533,7 @@
         "smithy.api#documentation": "Delete a KnowledgeBase."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesDeleteResponse": {
+    "com.azure.discovery_bookshelf#DeleteKnowledgeBaseResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -567,7 +548,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesDeleteRequest": {
+    "com.azure.discovery_bookshelf#DeleteKnowledgeBaseRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1078,10 +1059,10 @@
         "smithy.api#documentation": "Storage asset references to index."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesGet": {
+    "com.azure.discovery_bookshelf#GetKnowledgeBase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesGetRequest"
+        "target": "com.azure.discovery_bookshelf#GetKnowledgeBaseRequest"
       },
       "output": {
         "target": "com.azure.discovery_bookshelf#KnowledgeBase"
@@ -1226,7 +1207,7 @@
         "smithy.api#documentation": "A knowledgeBase."
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesGetRequest": {
+    "com.azure.discovery_bookshelf#GetKnowledgeBaseRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1250,10 +1231,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesList": {
+    "com.azure.discovery_bookshelf#ListKnowledgeBases": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_bookshelf#KnowledgeBasesListRequest"
+        "target": "com.azure.discovery_bookshelf#ListKnowledgeBasesRequest"
       },
       "output": {
         "target": "com.azure.discovery_bookshelf#PagedKnowledgeBase"
@@ -1267,9 +1248,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List KnowledgeBase resources"
+        "smithy.api#documentation": "List KnowledgeBase resources",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery_bookshelf#PagedKnowledgeBase": {
@@ -1302,7 +1290,7 @@
         "smithy.api#documentation": "The KnowledgeBase items on this page"
       }
     },
-    "com.azure.discovery_bookshelf#KnowledgeBasesListRequest": {
+    "com.azure.discovery_bookshelf#ListKnowledgeBasesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1311,6 +1299,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com).",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1323,28 +1317,28 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesGetOperationStatus"
+          "target": "com.azure.discovery_bookshelf#GetKnowledgeBaseOperationStatus"
         },
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesSearch"
+          "target": "com.azure.discovery_bookshelf#SearchKnowledgeBase"
         },
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesCancelIndexing"
+          "target": "com.azure.discovery_bookshelf#CancelKnowledgeBaseIndexing"
         },
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesStartIndexing"
+          "target": "com.azure.discovery_bookshelf#StartKnowledgeBaseIndexing"
         },
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesDelete"
+          "target": "com.azure.discovery_bookshelf#DeleteKnowledgeBase"
         },
         {
           "target": "com.azure.discovery_bookshelf#KnowledgeBasesCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesGet"
+          "target": "com.azure.discovery_bookshelf#GetKnowledgeBase"
         },
         {
-          "target": "com.azure.discovery_bookshelf#KnowledgeBasesList"
+          "target": "com.azure.discovery_bookshelf#ListKnowledgeBases"
         }
       ],
       "traits": {

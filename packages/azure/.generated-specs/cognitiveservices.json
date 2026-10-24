@@ -514,10 +514,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the associations of the Cognitive Services commitment plan.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#CommitmentPlanAccountAssociationListResult": {
@@ -636,6 +643,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the commitmentPlan associated with the Cognitive Services Account"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1568,10 +1581,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a resource group",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#CommitmentPlanListResult": {
@@ -1700,6 +1720,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2839,10 +2865,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the custom topics associated with the Azure OpenAI account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiTopicResult": {
@@ -2961,6 +2994,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3422,10 +3461,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all RAI Tool Labels associated with the Azure OpenAI account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiToolLabelResult": {
@@ -3544,6 +3590,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4643,10 +4695,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the content filters associated with the Azure OpenAI account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiPolicyListResult": {
@@ -4765,6 +4824,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5176,10 +5241,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the blocklist items associated with the custom blocklist.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiBlockListItemsResult": {
@@ -5306,6 +5378,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the RaiBlocklist associated with the Cognitive Services Account"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5916,10 +5994,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the custom blocklists associated with the Azure OpenAI account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiBlockListResult": {
@@ -6038,6 +6123,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7586,10 +7677,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available Cognitive Services project connections under the specified project.\n\nLists all the available Cognitive Services project connections under the specified project.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ConnectionPropertiesV2BasicResourceArmPaginatedResult": {
@@ -7704,6 +7802,12 @@
           "traits": {
             "smithy.api#httpQuery": "includeAll",
             "smithy.api#documentation": "query parameter that indicates if get connection call should return both connections and datastores"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8222,10 +8326,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List capabilityHost.\n\nList capabilityHost.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ProjectCapabilityHostResourceArmPaginatedResult": {
@@ -8330,6 +8441,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account's project."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9535,10 +9652,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
           "code": 200,
-          "apiVersion": "2026-07-15-preview"
+          "apiVersion": "2026-07-15-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists Agent Deployments in the application.\n\nLists Agent Deployments in the application.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#AgentDeploymentResourceArmPaginatedResult": {
@@ -9686,6 +9810,12 @@
           "traits": {
             "smithy.api#httpQuery": "orderByAsc",
             "smithy.api#documentation": "Whether to order in ascending order."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10615,10 +10745,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
           "code": 200,
-          "apiVersion": "2026-07-15-preview"
+          "apiVersion": "2026-07-15-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists Agent Applications in the project.\n\nLists Agent Applications in the project.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#AgentApplicationResourceArmPaginatedResult": {
@@ -10772,6 +10909,12 @@
           "traits": {
             "smithy.api#httpQuery": "orderByAsc",
             "smithy.api#documentation": "Whether to order in ascending order."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11633,10 +11776,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the projects in a Cognitive Services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ProjectListResult": {
@@ -11767,6 +11917,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13161,10 +13317,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of NSP configurations for an account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#NetworkSecurityPerimeterConfigurationList": {
@@ -13260,6 +13423,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13279,10 +13448,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List available Models for the requested Cognitive Services account",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#AccountModelListResult": {
@@ -13960,6 +14136,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14587,10 +14769,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
           "code": 200,
-          "apiVersion": "2026-07-15-preview"
+          "apiVersion": "2026-07-15-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The GET API for retrieving the list of outbound rules of the managed network associated with the cognitive services account.\n\nThe GET API for retrieving the list of outbound rules of the managed network associated with the cognitive services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#OutboundRuleListResult": {
@@ -14695,6 +14884,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14714,10 +14909,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
           "code": 200,
-          "apiVersion": "2026-07-15-preview"
+          "apiVersion": "2026-07-15-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The POST API for updating the outbound rules of the managed network associated with the cognitive services account.\n\nThe POST API for updating the outbound rules of the managed network associated with the cognitive services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#PostOutboundRuleResponse": {
@@ -14794,6 +14996,12 @@
           "target": "com.azure.cognitiveservices#ManagedNetworkSettingsInput",
           "traits": {
             "smithy.api#documentation": "Managed Network settings for a cognitive services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15557,10 +15765,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
           "code": 200,
-          "apiVersion": "2026-07-15-preview"
+          "apiVersion": "2026-07-15-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List API for managed network settings of a cognitive services account.\n\nList API for managed network settings of a cognitive services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ManagedNetworkListResult": {
@@ -15655,6 +15870,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16270,10 +16491,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the content filters associated with the Azure OpenAI account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#EncryptionScopeListResult": {
@@ -16393,6 +16621,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -16412,10 +16646,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the specified deployments skus associated with the Cognitive Services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#DeploymentSkuListResult": {
@@ -16506,6 +16747,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the deployment associated with the Cognitive Services Account"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17797,10 +18044,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the deployments associated with the Cognitive Services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#DeploymentListResult": {
@@ -17925,6 +18179,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18390,10 +18650,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Defender for AI settings.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#DefenderForAISettingResult": {
@@ -18512,6 +18779,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18898,10 +19171,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available  Cognitive Services account connections under the specified account.\n\nLists all the available  Cognitive Services account connections under the specified account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListAccountConnectionsRequest": {
@@ -18950,6 +19230,12 @@
           "traits": {
             "smithy.api#httpQuery": "includeAll",
             "smithy.api#documentation": "query parameter that indicates if get connection call should return both connections and datastores"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19371,10 +19657,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the commitmentPlans associated with the Cognitive Services account.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListCommitmentPlansRequest": {
@@ -19402,6 +19695,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19954,10 +20253,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List capabilityHost.\n\nList capabilityHost.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#CapabilityHostResourceArmPaginatedResult": {
@@ -20054,6 +20360,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Cognitive Services account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21684,10 +21996,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a resource group",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#AccountListResult": {
@@ -21823,6 +22142,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -21842,10 +22167,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/skus",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ResourceSkuListResult": {
@@ -22066,6 +22398,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22666,10 +23004,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders",
           "code": 200,
-          "apiVersion": "2026-07-15-preview"
+          "apiVersion": "2026-07-15-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the safety providers associated with the subscription",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiExternalSafetyProviderResult": {
@@ -22772,6 +23117,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23169,10 +23520,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#QuotaTierListResult": {
@@ -23252,6 +23610,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -23271,10 +23635,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ModelCapacities.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ModelCapacityListResult": {
@@ -23425,6 +23796,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The version of the Model"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -23444,10 +23821,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get usages for the requested subscription",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListUsagesRequest": {
@@ -23474,6 +23858,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names)."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23835,10 +24225,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Content Filters types.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#RaiContentFilterListResult": {
@@ -23926,6 +24323,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -23945,10 +24348,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Models.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ModelListResult": {
@@ -24030,6 +24440,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24049,10 +24465,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Location Based ModelCapacities.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListLocationBasedModelCapacitiesRequest": {
@@ -24097,6 +24520,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The version of the Model"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24116,10 +24545,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Commitment Tiers.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#CommitmentTierListResult": {
@@ -24244,6 +24680,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24404,10 +24846,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListDeletedAccountsRequest": {
@@ -24419,6 +24868,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24439,10 +24894,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListCommitmentPlanPlansBySubscriptionRequest": {
@@ -24454,6 +24916,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24706,10 +25174,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListAccountsRequest": {
@@ -24722,6 +25197,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24731,7 +25212,7 @@
     "com.azure.cognitiveservices#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cognitiveservices#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices#ListOperationsResponse"
@@ -24741,10 +25222,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CognitiveServices/operations",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available Cognitive Services account operations.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices#ListOperationsResponse": {
@@ -24884,6 +25372,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.cognitiveservices#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cognitiveservices#Cognitiveservices": {

@@ -15,137 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.devcenter_data#DevBoxesListAllDevBoxesByUser": "com.azure.devcenter_data#ListDevBoxAllDevBoxesByUser",
-      "com.azure.devcenter_data#DevBoxesListAllDevBoxesByUserRequest": "com.azure.devcenter_data#ListDevBoxAllDevBoxesByUserRequest",
-      "com.azure.devcenter_data#EnvironmentsGetOutputs": "com.azure.devcenter_data#GetEnvironmentOutputs",
-      "com.azure.devcenter_data#EnvironmentsGetOutputsRequest": "com.azure.devcenter_data#GetEnvironmentOutputsRequest",
-      "com.azure.devcenter_data#EnvironmentsGetLogsByOperation": "com.azure.devcenter_data#GetEnvironmentLogsByOperation",
-      "com.azure.devcenter_data#EnvironmentsGetLogsByOperationResponse": "com.azure.devcenter_data#GetEnvironmentLogsByOperationResponse",
-      "com.azure.devcenter_data#EnvironmentsGetLogsByOperationRequest": "com.azure.devcenter_data#GetEnvironmentLogsByOperationRequest",
-      "com.azure.devcenter_data#EnvironmentsGetOperation": "com.azure.devcenter_data#GetEnvironmentOperation",
-      "com.azure.devcenter_data#EnvironmentsGetOperationRequest": "com.azure.devcenter_data#GetEnvironmentOperationRequest",
-      "com.azure.devcenter_data#EnvironmentsListOperations": "com.azure.devcenter_data#ListEnvironmentOperations",
-      "com.azure.devcenter_data#EnvironmentsListOperationsRequest": "com.azure.devcenter_data#ListEnvironmentOperationsRequest",
-      "com.azure.devcenter_data#EnvironmentsGetAction": "com.azure.devcenter_data#GetEnvironmentAction",
-      "com.azure.devcenter_data#EnvironmentsGetActionRequest": "com.azure.devcenter_data#GetEnvironmentActionRequest",
-      "com.azure.devcenter_data#EnvironmentsListActions": "com.azure.devcenter_data#ListEnvironmentActions",
-      "com.azure.devcenter_data#EnvironmentsListActionsRequest": "com.azure.devcenter_data#ListEnvironmentActionsRequest",
-      "com.azure.devcenter_data#EnvironmentsDeleteEnvironment": "com.azure.devcenter_data#DeleteEnvironmentEnvironment",
-      "com.azure.devcenter_data#EnvironmentsDeleteEnvironmentResponse": "com.azure.devcenter_data#DeleteEnvironmentEnvironmentResponse",
-      "com.azure.devcenter_data#EnvironmentsDeleteEnvironmentRequest": "com.azure.devcenter_data#DeleteEnvironmentEnvironmentRequest",
-      "com.azure.devcenter_data#EnvironmentsPatchEnvironment": "com.azure.devcenter_data#PatchEnvironmentEnvironment",
-      "com.azure.devcenter_data#EnvironmentsPatchEnvironmentRequest": "com.azure.devcenter_data#PatchEnvironmentEnvironmentRequest",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentByUser": "com.azure.devcenter_data#GetEnvironmentEnvironmentByUser",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentByUserRequest": "com.azure.devcenter_data#GetEnvironmentEnvironmentByUserRequest",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentsByUser": "com.azure.devcenter_data#ListEnvironmentEnvironmentsByUser",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentsByUserRequest": "com.azure.devcenter_data#ListEnvironmentEnvironmentsByUserRequest",
-      "com.azure.devcenter_data#DevBoxesGetSnapshot": "com.azure.devcenter_data#GetDevBoxSnapshot",
-      "com.azure.devcenter_data#DevBoxesGetSnapshotRequest": "com.azure.devcenter_data#GetDevBoxSnapshotRequest",
-      "com.azure.devcenter_data#DevBoxesListSnapshots": "com.azure.devcenter_data#ListDevBoxSnapshots",
-      "com.azure.devcenter_data#DevBoxesListSnapshotsRequest": "com.azure.devcenter_data#ListDevBoxSnapshotsRequest",
-      "com.azure.devcenter_data#DevBoxesGetRemoteConnection": "com.azure.devcenter_data#GetDevBoxRemoteConnection",
-      "com.azure.devcenter_data#DevBoxesGetRemoteConnectionRequest": "com.azure.devcenter_data#GetDevBoxRemoteConnectionRequest",
-      "com.azure.devcenter_data#DevBoxesGetOperation": "com.azure.devcenter_data#GetDevBoxOperation",
-      "com.azure.devcenter_data#DevBoxesGetOperationRequest": "com.azure.devcenter_data#GetDevBoxOperationRequest",
-      "com.azure.devcenter_data#DevBoxesListOperations": "com.azure.devcenter_data#ListDevBoxOperations",
-      "com.azure.devcenter_data#DevBoxesListOperationsRequest": "com.azure.devcenter_data#ListDevBoxOperationsRequest",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLog": "com.azure.devcenter_data#GetDevBoxCustomizationTaskLog",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLogResponse": "com.azure.devcenter_data#GetDevBoxCustomizationTaskLogResponse",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLogRequest": "com.azure.devcenter_data#GetDevBoxCustomizationTaskLogRequest",
-      "com.azure.devcenter_data#DevBoxesCreateCustomizationGroup": "com.azure.devcenter_data#CreateDevBoxCustomizationGroup",
-      "com.azure.devcenter_data#DevBoxesCreateCustomizationGroupRequest": "com.azure.devcenter_data#CreateDevBoxCustomizationGroupRequest",
-      "com.azure.devcenter_data#DevBoxesCreateCustomizationGroupRequestTasksList": "com.azure.devcenter_data#CreateDevBoxCustomizationGroupRequestTasksList",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationGroup": "com.azure.devcenter_data#GetDevBoxCustomizationGroup",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationGroupRequest": "com.azure.devcenter_data#GetDevBoxCustomizationGroupRequest",
-      "com.azure.devcenter_data#DevBoxesListCustomizationGroups": "com.azure.devcenter_data#ListDevBoxCustomizationGroups",
-      "com.azure.devcenter_data#DevBoxesListCustomizationGroupsRequest": "com.azure.devcenter_data#ListDevBoxCustomizationGroupsRequest",
-      "com.azure.devcenter_data#DevBoxesListCustomizationGroupsRequestInclude": "com.azure.devcenter_data#ListDevBoxCustomizationGroupsRequestInclude",
-      "com.azure.devcenter_data#DevBoxesGetAction": "com.azure.devcenter_data#GetDevBoxAction",
-      "com.azure.devcenter_data#DevBoxesGetActionRequest": "com.azure.devcenter_data#GetDevBoxActionRequest",
-      "com.azure.devcenter_data#DevBoxesListActions": "com.azure.devcenter_data#ListDevBoxActions",
-      "com.azure.devcenter_data#DevBoxesListActionsRequest": "com.azure.devcenter_data#ListDevBoxActionsRequest",
-      "com.azure.devcenter_data#DevBoxesCaptureSnapshot": "com.azure.devcenter_data#CaptureDevBoxSnapshot",
-      "com.azure.devcenter_data#DevBoxesCaptureSnapshotResponse": "com.azure.devcenter_data#CaptureDevBoxSnapshotResponse",
-      "com.azure.devcenter_data#DevBoxesCaptureSnapshotRequest": "com.azure.devcenter_data#CaptureDevBoxSnapshotRequest",
-      "com.azure.devcenter_data#DevBoxesRestoreSnapshot": "com.azure.devcenter_data#RestoreDevBoxSnapshot",
-      "com.azure.devcenter_data#DevBoxesRestoreSnapshotResponse": "com.azure.devcenter_data#RestoreDevBoxSnapshotResponse",
-      "com.azure.devcenter_data#DevBoxesRestoreSnapshotRequest": "com.azure.devcenter_data#RestoreDevBoxSnapshotRequest",
-      "com.azure.devcenter_data#DevBoxesRestartDevBox": "com.azure.devcenter_data#RestartDevBoxDevBox",
-      "com.azure.devcenter_data#DevBoxesRestartDevBoxResponse": "com.azure.devcenter_data#RestartDevBoxDevBoxResponse",
-      "com.azure.devcenter_data#DevBoxesRestartDevBoxRequest": "com.azure.devcenter_data#RestartDevBoxDevBoxRequest",
-      "com.azure.devcenter_data#DevBoxesStopDevBox": "com.azure.devcenter_data#StopDevBoxDevBox",
-      "com.azure.devcenter_data#DevBoxesStopDevBoxResponse": "com.azure.devcenter_data#StopDevBoxDevBoxResponse",
-      "com.azure.devcenter_data#DevBoxesStopDevBoxRequest": "com.azure.devcenter_data#StopDevBoxDevBoxRequest",
-      "com.azure.devcenter_data#DevBoxesStartDevBox": "com.azure.devcenter_data#StartDevBoxDevBox",
-      "com.azure.devcenter_data#DevBoxesStartDevBoxResponse": "com.azure.devcenter_data#StartDevBoxDevBoxResponse",
-      "com.azure.devcenter_data#DevBoxesStartDevBoxRequest": "com.azure.devcenter_data#StartDevBoxDevBoxRequest",
-      "com.azure.devcenter_data#DevBoxesDeleteDevBox": "com.azure.devcenter_data#DeleteDevBoxDevBox",
-      "com.azure.devcenter_data#DevBoxesDeleteDevBoxResponse": "com.azure.devcenter_data#DeleteDevBoxDevBoxResponse",
-      "com.azure.devcenter_data#DevBoxesDeleteDevBoxRequest": "com.azure.devcenter_data#DeleteDevBoxDevBoxRequest",
-      "com.azure.devcenter_data#DevBoxesCreateDevBox": "com.azure.devcenter_data#CreateDevBoxDevBox",
-      "com.azure.devcenter_data#DevBoxesCreateDevBoxResponse": "com.azure.devcenter_data#CreateDevBoxDevBoxResponse",
-      "com.azure.devcenter_data#DevBoxesCreateDevBoxRequest": "com.azure.devcenter_data#CreateDevBoxDevBoxRequest",
-      "com.azure.devcenter_data#DevBoxesGetDevBoxByUser": "com.azure.devcenter_data#GetDevBoxDevBoxByUser",
-      "com.azure.devcenter_data#DevBoxesGetDevBoxByUserRequest": "com.azure.devcenter_data#GetDevBoxDevBoxByUserRequest",
-      "com.azure.devcenter_data#DevBoxesListDevBoxesByUser": "com.azure.devcenter_data#ListDevBoxDevBoxesByUser",
-      "com.azure.devcenter_data#DevBoxesListDevBoxesByUserRequest": "com.azure.devcenter_data#ListDevBoxDevBoxesByUserRequest",
-      "com.azure.devcenter_data#DevCenterGetProjectAbilities": "com.azure.devcenter_data#GetDevCenterProjectAbilities",
-      "com.azure.devcenter_data#DevCenterGetProjectAbilitiesRequest": "com.azure.devcenter_data#GetDevCenterProjectAbilitiesRequest",
-      "com.azure.devcenter_data#DevBoxesListSchedulesByProject": "com.azure.devcenter_data#ListDevBoxSchedulesByProject",
-      "com.azure.devcenter_data#DevBoxesListSchedulesByProjectRequest": "com.azure.devcenter_data#ListDevBoxSchedulesByProjectRequest",
-      "com.azure.devcenter_data#DevBoxesGetScheduleByPool": "com.azure.devcenter_data#GetDevBoxScheduleByPool",
-      "com.azure.devcenter_data#DevBoxesGetScheduleByPoolRequest": "com.azure.devcenter_data#GetDevBoxScheduleByPoolRequest",
-      "com.azure.devcenter_data#DevBoxesListSchedulesByPool": "com.azure.devcenter_data#ListDevBoxSchedulesByPool",
-      "com.azure.devcenter_data#DevBoxesListSchedulesByPoolRequest": "com.azure.devcenter_data#ListDevBoxSchedulesByPoolRequest",
-      "com.azure.devcenter_data#DevBoxesGetPool": "com.azure.devcenter_data#GetDevBoxPool",
-      "com.azure.devcenter_data#DevBoxesGetPoolRequest": "com.azure.devcenter_data#GetDevBoxPoolRequest",
-      "com.azure.devcenter_data#DevBoxesListPools": "com.azure.devcenter_data#ListDevBoxPools",
-      "com.azure.devcenter_data#DevBoxesListPoolsRequest": "com.azure.devcenter_data#ListDevBoxPoolsRequest",
-      "com.azure.devcenter_data#OperationStatusesGet": "com.azure.devcenter_data#GetOperationStatus",
-      "com.azure.devcenter_data#OperationStatusesGetRequest": "com.azure.devcenter_data#GetOperationStatusRequest",
-      "com.azure.devcenter_data#DevBoxesGetImagingTaskLog": "com.azure.devcenter_data#GetDevBoxImagingTaskLog",
-      "com.azure.devcenter_data#DevBoxesGetImagingTaskLogResponse": "com.azure.devcenter_data#GetDevBoxImagingTaskLogResponse",
-      "com.azure.devcenter_data#DevBoxesGetImagingTaskLogRequest": "com.azure.devcenter_data#GetDevBoxImagingTaskLogRequest",
-      "com.azure.devcenter_data#EnvironmentsListEnvironments": "com.azure.devcenter_data#ListEnvironmentEnvironments",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentsRequest": "com.azure.devcenter_data#ListEnvironmentEnvironmentsRequest",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypeAbilities": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypeAbilities",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypeAbilitiesRequest": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypeAbilitiesRequest",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypes": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypes",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypesRequest": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypesRequest",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentTypes": "com.azure.devcenter_data#ListEnvironmentEnvironmentTypes",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentTypesRequest": "com.azure.devcenter_data#ListEnvironmentEnvironmentTypesRequest",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByProject": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByProject",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByProjectRequest": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByProjectRequest",
-      "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksAction": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksAction",
-      "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionResponse": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionResponse",
-      "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionRequest": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionRequest",
-      "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionRequestTasksList": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionRequestTasksList",
-      "com.azure.devcenter_data#DevBoxesListCustomizationTaskDefinitionsByProject": "com.azure.devcenter_data#ListDevBoxCustomizationTaskDefinitionsByProject",
-      "com.azure.devcenter_data#DevBoxesListCustomizationTaskDefinitionsByProjectRequest": "com.azure.devcenter_data#ListDevBoxCustomizationTaskDefinitionsByProjectRequest",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentDefinition": "com.azure.devcenter_data#GetEnvironmentEnvironmentDefinition",
-      "com.azure.devcenter_data#EnvironmentsGetEnvironmentDefinitionRequest": "com.azure.devcenter_data#GetEnvironmentEnvironmentDefinitionRequest",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByCatalog": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByCatalog",
-      "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByCatalogRequest": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByCatalogRequest",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationTaskDefinitions": "com.azure.devcenter_data#GetDevBoxCustomizationTaskDefinitions",
-      "com.azure.devcenter_data#DevBoxesGetCustomizationTaskDefinitionsRequest": "com.azure.devcenter_data#GetDevBoxCustomizationTaskDefinitionsRequest",
-      "com.azure.devcenter_data#EnvironmentsGetCatalog": "com.azure.devcenter_data#GetEnvironmentCatalog",
-      "com.azure.devcenter_data#EnvironmentsGetCatalogRequest": "com.azure.devcenter_data#GetEnvironmentCatalogRequest",
-      "com.azure.devcenter_data#EnvironmentsListCatalogsByProject": "com.azure.devcenter_data#ListEnvironmentCatalogsByProject",
-      "com.azure.devcenter_data#EnvironmentsListCatalogsByProjectRequest": "com.azure.devcenter_data#ListEnvironmentCatalogsByProjectRequest",
-      "com.azure.devcenter_data#DevCenterGetProject": "com.azure.devcenter_data#GetDevCenterProject",
-      "com.azure.devcenter_data#DevCenterGetProjectRequest": "com.azure.devcenter_data#GetDevCenterProjectRequest",
-      "com.azure.devcenter_data#DevCenterListProjects": "com.azure.devcenter_data#ListDevCenterProjects",
-      "com.azure.devcenter_data#DevCenterListProjectsRequest": "com.azure.devcenter_data#ListDevCenterProjectsRequest",
-      "com.azure.devcenter_data#DevBoxesListAllDevBoxes": "com.azure.devcenter_data#ListDevBoxAllDevBoxes",
-      "com.azure.devcenter_data#DevBoxesListAllDevBoxesRequest": "com.azure.devcenter_data#ListDevBoxAllDevBoxesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.devcenter_data#DevBoxesListAllDevBoxesByUser": {
+    "com.azure.devcenter_data#ListDevBoxAllDevBoxesByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListAllDevBoxesByUserRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxAllDevBoxesByUserRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedDevBox"
@@ -159,9 +35,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists Dev Boxes in the Dev Center for a particular user."
+        "smithy.api#documentation": "Lists Dev Boxes in the Dev Center for a particular user.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedDevBox": {
@@ -798,7 +681,7 @@
         "smithy.api#documentation": "Indicates whether hibernate is supported and enabled, disabled, or unsupported by the operating system. Unknown hibernate support is represented as null."
       }
     },
-    "com.azure.devcenter_data#DevBoxesListAllDevBoxesByUserRequest": {
+    "com.azure.devcenter_data#ListDevBoxAllDevBoxesByUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -816,16 +699,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The AAD object id of the user. If value is 'me', the identity is taken from the authentication context."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetOutputs": {
+    "com.azure.devcenter_data#GetEnvironmentOutputs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetOutputsRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentOutputsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#EnvironmentOutputs"
@@ -934,7 +823,7 @@
         "smithy.api#documentation": "Type of the output value."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetOutputsRequest": {
+    "com.azure.devcenter_data#GetEnvironmentOutputsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -974,13 +863,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetLogsByOperation": {
+    "com.azure.devcenter_data#GetEnvironmentLogsByOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetLogsByOperationRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentLogsByOperationRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetLogsByOperationResponse"
+        "target": "com.azure.devcenter_data#GetEnvironmentLogsByOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -996,7 +885,7 @@
         "smithy.api#documentation": "Gets the logs for an operation on an environment."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetLogsByOperationResponse": {
+    "com.azure.devcenter_data#GetEnvironmentLogsByOperationResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1011,7 +900,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetLogsByOperationRequest": {
+    "com.azure.devcenter_data#GetEnvironmentLogsByOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1059,10 +948,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetOperation": {
+    "com.azure.devcenter_data#GetEnvironmentOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetOperationRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentOperationRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#EnvironmentOperation"
@@ -1217,7 +1106,7 @@
         "smithy.api#documentation": "The type of environment operation."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetOperationRequest": {
+    "com.azure.devcenter_data#GetEnvironmentOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1265,10 +1154,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListOperations": {
+    "com.azure.devcenter_data#ListEnvironmentOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListOperationsRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentOperationsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironmentOperation"
@@ -1282,9 +1171,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists operations on the environment which have occurred within the past 90 days"
+        "smithy.api#documentation": "Lists operations on the environment which have occurred within the past 90 days",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedEnvironmentOperation": {
@@ -1317,7 +1213,7 @@
         "smithy.api#documentation": "The EnvironmentOperation items on this page"
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListOperationsRequest": {
+    "com.azure.devcenter_data#ListEnvironmentOperationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1350,6 +1246,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Environment name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1580,10 +1482,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetAction": {
+    "com.azure.devcenter_data#GetEnvironmentAction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetActionRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentActionRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#EnvironmentAction"
@@ -1602,7 +1504,7 @@
         "smithy.api#documentation": "Retrieve a specific environment action."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetActionRequest": {
+    "com.azure.devcenter_data#GetEnvironmentActionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1650,10 +1552,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListActions": {
+    "com.azure.devcenter_data#ListEnvironmentActions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListActionsRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentActionsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironmentAction"
@@ -1667,9 +1569,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all scheduled actions for a user within an environment."
+        "smithy.api#documentation": "Get all scheduled actions for a user within an environment.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedEnvironmentAction": {
@@ -1702,7 +1611,7 @@
         "smithy.api#documentation": "The EnvironmentAction items on this page"
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListActionsRequest": {
+    "com.azure.devcenter_data#ListEnvironmentActionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1736,19 +1645,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Environment name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsDeleteEnvironment": {
+    "com.azure.devcenter_data#DeleteEnvironmentEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsDeleteEnvironmentRequest"
+        "target": "com.azure.devcenter_data#DeleteEnvironmentEnvironmentRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#EnvironmentsDeleteEnvironmentResponse"
+        "target": "com.azure.devcenter_data#DeleteEnvironmentEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1764,7 +1679,7 @@
         "smithy.api#documentation": "Deletes an environment and all its associated resources"
       }
     },
-    "com.azure.devcenter_data#EnvironmentsDeleteEnvironmentResponse": {
+    "com.azure.devcenter_data#DeleteEnvironmentEnvironmentResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1784,7 +1699,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsDeleteEnvironmentRequest": {
+    "com.azure.devcenter_data#DeleteEnvironmentEnvironmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1831,10 +1746,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsPatchEnvironment": {
+    "com.azure.devcenter_data#PatchEnvironmentEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsPatchEnvironmentRequest"
+        "target": "com.azure.devcenter_data#PatchEnvironmentEnvironmentRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#Environment"
@@ -2030,7 +1945,7 @@
         "smithy.api#documentation": "Parameters object for the environment."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsPatchEnvironmentRequest": {
+    "com.azure.devcenter_data#PatchEnvironmentEnvironmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2269,10 +2184,10 @@
         "smithy.api#documentation": "Parameters object for the environment."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentByUser": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentByUserRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentByUserRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#Environment"
@@ -2291,7 +2206,7 @@
         "smithy.api#documentation": "Gets an environment."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentByUserRequest": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentByUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2331,10 +2246,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentsByUser": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentsByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentsByUserRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentsByUserRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironment"
@@ -2348,9 +2263,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the environments for a project and user."
+        "smithy.api#documentation": "Lists the environments for a project and user.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedEnvironment": {
@@ -2383,7 +2305,7 @@
         "smithy.api#documentation": "The Environment items on this page"
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentsByUserRequest": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentsByUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2409,16 +2331,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The AAD object id of the user. If value is 'me', the identity is taken from the authentication context."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetSnapshot": {
+    "com.azure.devcenter_data#GetDevBoxSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetSnapshotRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxSnapshotRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#DevBoxSnapshot"
@@ -2492,7 +2420,7 @@
         "smithy.api#documentation": "The type of snapshot."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetSnapshotRequest": {
+    "com.azure.devcenter_data#GetDevBoxSnapshotRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2540,10 +2468,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListSnapshots": {
+    "com.azure.devcenter_data#ListDevBoxSnapshots": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListSnapshotsRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxSnapshotsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedDevBoxSnapshot"
@@ -2557,9 +2485,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists snapshots for this Dev Box."
+        "smithy.api#documentation": "Lists snapshots for this Dev Box.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedDevBoxSnapshot": {
@@ -2592,7 +2527,7 @@
         "smithy.api#documentation": "The DevBoxSnapshot items on this page"
       }
     },
-    "com.azure.devcenter_data#DevBoxesListSnapshotsRequest": {
+    "com.azure.devcenter_data#ListDevBoxSnapshotsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2626,16 +2561,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Display name for the Dev Box."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetRemoteConnection": {
+    "com.azure.devcenter_data#GetDevBoxRemoteConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetRemoteConnectionRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxRemoteConnectionRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#RemoteConnection"
@@ -2680,7 +2621,7 @@
         "smithy.api#documentation": "Provides remote connection information for a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetRemoteConnectionRequest": {
+    "com.azure.devcenter_data#GetDevBoxRemoteConnectionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2720,10 +2661,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetOperation": {
+    "com.azure.devcenter_data#GetDevBoxOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetOperationRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxOperationRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#DevBoxOperation"
@@ -2846,7 +2787,7 @@
         "smithy.api#documentation": "The type of Dev Box operation."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetOperationRequest": {
+    "com.azure.devcenter_data#GetDevBoxOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2894,10 +2835,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListOperations": {
+    "com.azure.devcenter_data#ListDevBoxOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListOperationsRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxOperationsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedDevBoxOperation"
@@ -2911,9 +2852,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists operations on the Dev Box which have occurred within the past 90 days."
+        "smithy.api#documentation": "Lists operations on the Dev Box which have occurred within the past 90 days.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedDevBoxOperation": {
@@ -2946,7 +2894,7 @@
         "smithy.api#documentation": "The DevBoxOperation items on this page"
       }
     },
-    "com.azure.devcenter_data#DevBoxesListOperationsRequest": {
+    "com.azure.devcenter_data#ListDevBoxOperationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2980,19 +2928,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Display name for the Dev Box."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLog": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationTaskLog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLogRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxCustomizationTaskLogRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLogResponse"
+        "target": "com.azure.devcenter_data#GetDevBoxCustomizationTaskLogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3008,7 +2962,7 @@
         "smithy.api#documentation": "Gets the log for a customization task."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLogResponse": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationTaskLogResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -3023,7 +2977,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLogRequest": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationTaskLogRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3079,10 +3033,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesCreateCustomizationGroup": {
+    "com.azure.devcenter_data#CreateDevBoxCustomizationGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesCreateCustomizationGroupRequest"
+        "target": "com.azure.devcenter_data#CreateDevBoxCustomizationGroupRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#CustomizationGroup"
@@ -3356,7 +3310,7 @@
         "smithy.api#documentation": "Parameters for the task."
       }
     },
-    "com.azure.devcenter_data#DevBoxesCreateCustomizationGroupRequest": {
+    "com.azure.devcenter_data#CreateDevBoxCustomizationGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3400,7 +3354,7 @@
           }
         },
         "tasks": {
-          "target": "com.azure.devcenter_data#DevBoxesCreateCustomizationGroupRequestTasksList",
+          "target": "com.azure.devcenter_data#CreateDevBoxCustomizationGroupRequestTasksList",
           "traits": {
             "smithy.api#documentation": "Tasks to apply. Note by default tasks are excluded from the response when\nlisting customization groups. To include them, use the `include=tasks` query\nparameter."
           }
@@ -3410,7 +3364,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesCreateCustomizationGroupRequestTasksList": {
+    "com.azure.devcenter_data#CreateDevBoxCustomizationGroupRequestTasksList": {
       "type": "list",
       "member": {
         "target": "com.azure.devcenter_data#CustomizationTaskInput"
@@ -3470,10 +3424,10 @@
         "smithy.api#documentation": "Parameters for the task."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationGroup": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetCustomizationGroupRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxCustomizationGroupRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#CustomizationGroup"
@@ -3492,7 +3446,7 @@
         "smithy.api#documentation": "Gets a customization group."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationGroupRequest": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3540,10 +3494,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListCustomizationGroups": {
+    "com.azure.devcenter_data#ListDevBoxCustomizationGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListCustomizationGroupsRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxCustomizationGroupsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedCustomizationGroup"
@@ -3557,9 +3511,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists customization groups on the Dev Box. Listed customization groups exclude\n  task information unless specified via the include parameter."
+        "smithy.api#documentation": "Lists customization groups on the Dev Box. Listed customization groups exclude\n  task information unless specified via the include parameter.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedCustomizationGroup": {
@@ -3592,7 +3553,7 @@
         "smithy.api#documentation": "The CustomizationGroup items on this page"
       }
     },
-    "com.azure.devcenter_data#DevBoxesListCustomizationGroupsRequest": {
+    "com.azure.devcenter_data#ListDevBoxCustomizationGroupsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3628,10 +3589,16 @@
           }
         },
         "include": {
-          "target": "com.azure.devcenter_data#DevBoxesListCustomizationGroupsRequestInclude",
+          "target": "com.azure.devcenter_data#ListDevBoxCustomizationGroupsRequestInclude",
           "traits": {
             "smithy.api#httpQuery": "include",
             "smithy.api#documentation": "Optional query parameter to specify what properties should be included in the response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3639,7 +3606,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListCustomizationGroupsRequestInclude": {
+    "com.azure.devcenter_data#ListDevBoxCustomizationGroupsRequestInclude": {
       "type": "enum",
       "members": {
         "TASKS": {
@@ -3668,9 +3635,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Delays all actions."
+        "smithy.api#documentation": "Delays all actions.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedDevBoxActionDelayResult": {
@@ -3917,6 +3891,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The time to delay the Dev Box action or actions until, in RFC3339 format."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4071,10 +4051,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetAction": {
+    "com.azure.devcenter_data#GetDevBoxAction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetActionRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxActionRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#DevBoxAction"
@@ -4093,7 +4073,7 @@
         "smithy.api#documentation": "Gets an action."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetActionRequest": {
+    "com.azure.devcenter_data#GetDevBoxActionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4141,10 +4121,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListActions": {
+    "com.azure.devcenter_data#ListDevBoxActions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListActionsRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxActionsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedDevBoxAction"
@@ -4158,9 +4138,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists actions on a Dev Box."
+        "smithy.api#documentation": "Lists actions on a Dev Box.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedDevBoxAction": {
@@ -4193,7 +4180,7 @@
         "smithy.api#documentation": "The DevBoxAction items on this page"
       }
     },
-    "com.azure.devcenter_data#DevBoxesListActionsRequest": {
+    "com.azure.devcenter_data#ListDevBoxActionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4227,19 +4214,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Display name for the Dev Box."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesCaptureSnapshot": {
+    "com.azure.devcenter_data#CaptureDevBoxSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesCaptureSnapshotRequest"
+        "target": "com.azure.devcenter_data#CaptureDevBoxSnapshotRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesCaptureSnapshotResponse"
+        "target": "com.azure.devcenter_data#CaptureDevBoxSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4255,7 +4248,7 @@
         "smithy.api#documentation": "Captures a manual snapshot of the Dev Box.\nUpon completion, a snapshotId will be generated.\nTo retrieve all snapshots and their corresponding IDs, use the list snapshots endpoint."
       }
     },
-    "com.azure.devcenter_data#DevBoxesCaptureSnapshotResponse": {
+    "com.azure.devcenter_data#CaptureDevBoxSnapshotResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -4270,7 +4263,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesCaptureSnapshotRequest": {
+    "com.azure.devcenter_data#CaptureDevBoxSnapshotRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4310,13 +4303,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesRestoreSnapshot": {
+    "com.azure.devcenter_data#RestoreDevBoxSnapshot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesRestoreSnapshotRequest"
+        "target": "com.azure.devcenter_data#RestoreDevBoxSnapshotRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesRestoreSnapshotResponse"
+        "target": "com.azure.devcenter_data#RestoreDevBoxSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4332,7 +4325,7 @@
         "smithy.api#documentation": "Restores a Dev Box to a specified snapshot."
       }
     },
-    "com.azure.devcenter_data#DevBoxesRestoreSnapshotResponse": {
+    "com.azure.devcenter_data#RestoreDevBoxSnapshotResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -4347,7 +4340,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesRestoreSnapshotRequest": {
+    "com.azure.devcenter_data#RestoreDevBoxSnapshotRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4472,13 +4465,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesRestartDevBox": {
+    "com.azure.devcenter_data#RestartDevBoxDevBox": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesRestartDevBoxRequest"
+        "target": "com.azure.devcenter_data#RestartDevBoxDevBoxRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesRestartDevBoxResponse"
+        "target": "com.azure.devcenter_data#RestartDevBoxDevBoxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4494,7 +4487,7 @@
         "smithy.api#documentation": "Restarts a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesRestartDevBoxResponse": {
+    "com.azure.devcenter_data#RestartDevBoxDevBoxResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -4509,7 +4502,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesRestartDevBoxRequest": {
+    "com.azure.devcenter_data#RestartDevBoxDevBoxRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4549,13 +4542,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesStopDevBox": {
+    "com.azure.devcenter_data#StopDevBoxDevBox": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesStopDevBoxRequest"
+        "target": "com.azure.devcenter_data#StopDevBoxDevBoxRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesStopDevBoxResponse"
+        "target": "com.azure.devcenter_data#StopDevBoxDevBoxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4571,7 +4564,7 @@
         "smithy.api#documentation": "Stops a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesStopDevBoxResponse": {
+    "com.azure.devcenter_data#StopDevBoxDevBoxResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -4586,7 +4579,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesStopDevBoxRequest": {
+    "com.azure.devcenter_data#StopDevBoxDevBoxRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4633,13 +4626,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesStartDevBox": {
+    "com.azure.devcenter_data#StartDevBoxDevBox": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesStartDevBoxRequest"
+        "target": "com.azure.devcenter_data#StartDevBoxDevBoxRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesStartDevBoxResponse"
+        "target": "com.azure.devcenter_data#StartDevBoxDevBoxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4655,7 +4648,7 @@
         "smithy.api#documentation": "Starts a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesStartDevBoxResponse": {
+    "com.azure.devcenter_data#StartDevBoxDevBoxResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -4670,7 +4663,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesStartDevBoxRequest": {
+    "com.azure.devcenter_data#StartDevBoxDevBoxRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4710,13 +4703,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesDeleteDevBox": {
+    "com.azure.devcenter_data#DeleteDevBoxDevBox": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesDeleteDevBoxRequest"
+        "target": "com.azure.devcenter_data#DeleteDevBoxDevBoxRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesDeleteDevBoxResponse"
+        "target": "com.azure.devcenter_data#DeleteDevBoxDevBoxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4732,7 +4725,7 @@
         "smithy.api#documentation": "Deletes a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesDeleteDevBoxResponse": {
+    "com.azure.devcenter_data#DeleteDevBoxDevBoxResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -4752,7 +4745,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesDeleteDevBoxRequest": {
+    "com.azure.devcenter_data#DeleteDevBoxDevBoxRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4792,13 +4785,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesCreateDevBox": {
+    "com.azure.devcenter_data#CreateDevBoxDevBox": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesCreateDevBoxRequest"
+        "target": "com.azure.devcenter_data#CreateDevBoxDevBoxRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesCreateDevBoxResponse"
+        "target": "com.azure.devcenter_data#CreateDevBoxDevBoxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4814,7 +4807,7 @@
         "smithy.api#documentation": "Creates or replaces a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesCreateDevBoxResponse": {
+    "com.azure.devcenter_data#CreateDevBoxDevBoxResponse": {
       "type": "structure",
       "members": {
         "uri": {
@@ -4953,7 +4946,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesCreateDevBoxRequest": {
+    "com.azure.devcenter_data#CreateDevBoxDevBoxRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5000,10 +4993,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetDevBoxByUser": {
+    "com.azure.devcenter_data#GetDevBoxDevBoxByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetDevBoxByUserRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxDevBoxByUserRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#DevBox"
@@ -5022,7 +5015,7 @@
         "smithy.api#documentation": "Gets a Dev Box."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetDevBoxByUserRequest": {
+    "com.azure.devcenter_data#GetDevBoxDevBoxByUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5062,10 +5055,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListDevBoxesByUser": {
+    "com.azure.devcenter_data#ListDevBoxDevBoxesByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListDevBoxesByUserRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxDevBoxesByUserRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedDevBox"
@@ -5079,12 +5072,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists Dev Boxes in the project for a particular user."
+        "smithy.api#documentation": "Lists Dev Boxes in the project for a particular user.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.devcenter_data#DevBoxesListDevBoxesByUserRequest": {
+    "com.azure.devcenter_data#ListDevBoxDevBoxesByUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5110,16 +5110,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The AAD object id of the user. If value is 'me', the identity is taken from the authentication context."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevCenterGetProjectAbilities": {
+    "com.azure.devcenter_data#GetDevCenterProjectAbilities": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevCenterGetProjectAbilitiesRequest"
+        "target": "com.azure.devcenter_data#GetDevCenterProjectAbilitiesRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#ProjectAbilities"
@@ -5350,7 +5356,7 @@
         "smithy.api#documentation": "An ability the user has to perform an action on the project as an admin."
       }
     },
-    "com.azure.devcenter_data#DevCenterGetProjectAbilitiesRequest": {
+    "com.azure.devcenter_data#GetDevCenterProjectAbilitiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5382,10 +5388,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListSchedulesByProject": {
+    "com.azure.devcenter_data#ListDevBoxSchedulesByProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListSchedulesByProjectRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxSchedulesByProjectRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedSchedule"
@@ -5399,9 +5405,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all schedules within a project that are configured by your project administrator."
+        "smithy.api#documentation": "Lists all schedules within a project that are configured by your project administrator.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedSchedule": {
@@ -5540,7 +5553,7 @@
         "smithy.api#documentation": "The type of the resource that this schedule belongs to."
       }
     },
-    "com.azure.devcenter_data#DevBoxesListSchedulesByProjectRequest": {
+    "com.azure.devcenter_data#ListDevBoxSchedulesByProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5558,16 +5571,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The DevCenter Project upon which to execute operations."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetScheduleByPool": {
+    "com.azure.devcenter_data#GetDevBoxScheduleByPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetScheduleByPoolRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxScheduleByPoolRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#Schedule"
@@ -5586,7 +5605,7 @@
         "smithy.api#documentation": "Gets a schedule."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetScheduleByPoolRequest": {
+    "com.azure.devcenter_data#GetDevBoxScheduleByPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5626,10 +5645,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListSchedulesByPool": {
+    "com.azure.devcenter_data#ListDevBoxSchedulesByPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListSchedulesByPoolRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxSchedulesByPoolRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedSchedule"
@@ -5643,12 +5662,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all schedules within a pool that are configured by your project administrator."
+        "smithy.api#documentation": "Lists all schedules within a pool that are configured by your project administrator.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.devcenter_data#DevBoxesListSchedulesByPoolRequest": {
+    "com.azure.devcenter_data#ListDevBoxSchedulesByPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5674,16 +5700,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of a pool of Dev Boxes."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetPool": {
+    "com.azure.devcenter_data#GetDevBoxPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetPoolRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxPoolRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#Pool"
@@ -5912,7 +5944,7 @@
         "smithy.api#documentation": "Indicates whether the feature to stop the devbox on disconnect once the grace period has lapsed is enabled."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetPoolRequest": {
+    "com.azure.devcenter_data#GetDevBoxPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5944,10 +5976,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListPools": {
+    "com.azure.devcenter_data#ListDevBoxPools": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListPoolsRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxPoolsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedPool"
@@ -5961,9 +5993,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists available pools."
+        "smithy.api#documentation": "Lists available pools.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedPool": {
@@ -5996,7 +6035,7 @@
         "smithy.api#documentation": "The Pool items on this page"
       }
     },
-    "com.azure.devcenter_data#DevBoxesListPoolsRequest": {
+    "com.azure.devcenter_data#ListDevBoxPoolsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6014,16 +6053,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the project."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#OperationStatusesGet": {
+    "com.azure.devcenter_data#GetOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#OperationStatusesGetRequest"
+        "target": "com.azure.devcenter_data#GetOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#OperationStatus"
@@ -6119,7 +6164,7 @@
         "smithy.api#documentation": "Custom operation properties, populated only for a successful operation."
       }
     },
-    "com.azure.devcenter_data#OperationStatusesGetRequest": {
+    "com.azure.devcenter_data#GetOperationStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6151,13 +6196,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetImagingTaskLog": {
+    "com.azure.devcenter_data#GetDevBoxImagingTaskLog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetImagingTaskLogRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxImagingTaskLogRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesGetImagingTaskLogResponse"
+        "target": "com.azure.devcenter_data#GetDevBoxImagingTaskLogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6173,7 +6218,7 @@
         "smithy.api#documentation": "Gets the log for an imaging build task."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetImagingTaskLogResponse": {
+    "com.azure.devcenter_data#GetDevBoxImagingTaskLogResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -6188,7 +6233,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetImagingTaskLogRequest": {
+    "com.azure.devcenter_data#GetDevBoxImagingTaskLogRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6220,10 +6265,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironments": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentsRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironment"
@@ -6237,12 +6282,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the environments for a project."
+        "smithy.api#documentation": "Lists the environments for a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentsRequest": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6260,16 +6312,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The DevCenter Project upon which to execute operations."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypeAbilities": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentTypeAbilities": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypeAbilitiesRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypeAbilitiesRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#EnvironmentTypeAbilities"
@@ -6416,7 +6474,7 @@
         "smithy.api#documentation": "An ability the user has to perform an action on the environment type as an admin."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypeAbilitiesRequest": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentTypeAbilitiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6463,10 +6521,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypes": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentTypes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypesRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypesRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#EnvironmentType"
@@ -6547,7 +6605,7 @@
         "smithy.api#documentation": "Indicates whether an environment type is enabled for use in a project."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypesRequest": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentTypesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6579,10 +6637,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentTypes": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentTypes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentTypesRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentTypesRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironmentType"
@@ -6596,9 +6654,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all environment types configured for a project."
+        "smithy.api#documentation": "Lists all environment types configured for a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedEnvironmentType": {
@@ -6631,7 +6696,7 @@
         "smithy.api#documentation": "The EnvironmentType items on this page"
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentTypesRequest": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentTypesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6649,16 +6714,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the project."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByProject": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByProjectRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByProjectRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironmentDefinition"
@@ -6672,9 +6743,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all environment definitions available for a project."
+        "smithy.api#documentation": "Lists all environment definitions available for a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedEnvironmentDefinition": {
@@ -6888,7 +6966,7 @@
         "smithy.api#documentation": "The type of data a parameter accepts."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByProjectRequest": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6906,19 +6984,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The DevCenter Project upon which to execute operations."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksAction": {
+    "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksAction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionRequest"
+        "target": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionRequest"
       },
       "output": {
-        "target": "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionResponse"
+        "target": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6934,7 +7018,7 @@
         "smithy.api#documentation": "Validates a list of customization tasks."
       }
     },
-    "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionResponse": {
+    "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -6954,7 +7038,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionRequest": {
+    "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6974,7 +7058,7 @@
           }
         },
         "tasks": {
-          "target": "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionRequestTasksList",
+          "target": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionRequestTasksList",
           "traits": {
             "smithy.api#documentation": "Tasks to apply."
           }
@@ -6984,7 +7068,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksActionRequestTasksList": {
+    "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksActionRequestTasksList": {
       "type": "list",
       "member": {
         "target": "com.azure.devcenter_data#CustomizationTaskInput"
@@ -6993,10 +7077,10 @@
         "smithy.api#documentation": "Tasks to apply."
       }
     },
-    "com.azure.devcenter_data#DevBoxesListCustomizationTaskDefinitionsByProject": {
+    "com.azure.devcenter_data#ListDevBoxCustomizationTaskDefinitionsByProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListCustomizationTaskDefinitionsByProjectRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxCustomizationTaskDefinitionsByProjectRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedCustomizationTaskDefinition"
@@ -7010,9 +7094,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all customization tasks available to the project."
+        "smithy.api#documentation": "Lists all customization tasks available to the project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedCustomizationTaskDefinition": {
@@ -7171,7 +7262,7 @@
         "smithy.api#documentation": "Type of the parameter."
       }
     },
-    "com.azure.devcenter_data#DevBoxesListCustomizationTaskDefinitionsByProjectRequest": {
+    "com.azure.devcenter_data#ListDevBoxCustomizationTaskDefinitionsByProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7189,16 +7280,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The DevCenter Project upon which to execute operations."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentDefinition": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentDefinitionRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentDefinitionRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#EnvironmentDefinition"
@@ -7217,7 +7314,7 @@
         "smithy.api#documentation": "Get an environment definition from a catalog."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetEnvironmentDefinitionRequest": {
+    "com.azure.devcenter_data#GetEnvironmentEnvironmentDefinitionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7257,10 +7354,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByCatalog": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByCatalogRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByCatalogRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedEnvironmentDefinition"
@@ -7274,12 +7371,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all environment definitions available within a catalog."
+        "smithy.api#documentation": "Lists all environment definitions available within a catalog.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByCatalogRequest": {
+    "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByCatalogRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7305,16 +7409,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the catalog"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationTaskDefinitions": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationTaskDefinitions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesGetCustomizationTaskDefinitionsRequest"
+        "target": "com.azure.devcenter_data#GetDevBoxCustomizationTaskDefinitionsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#CustomizationTaskDefinition"
@@ -7333,7 +7443,7 @@
         "smithy.api#documentation": "Gets a customization task."
       }
     },
-    "com.azure.devcenter_data#DevBoxesGetCustomizationTaskDefinitionsRequest": {
+    "com.azure.devcenter_data#GetDevBoxCustomizationTaskDefinitionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7373,10 +7483,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetCatalog": {
+    "com.azure.devcenter_data#GetEnvironmentCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsGetCatalogRequest"
+        "target": "com.azure.devcenter_data#GetEnvironmentCatalogRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#Catalog"
@@ -7417,7 +7527,7 @@
         "smithy.api#documentation": "A catalog."
       }
     },
-    "com.azure.devcenter_data#EnvironmentsGetCatalogRequest": {
+    "com.azure.devcenter_data#GetEnvironmentCatalogRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7449,10 +7559,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListCatalogsByProject": {
+    "com.azure.devcenter_data#ListEnvironmentCatalogsByProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#EnvironmentsListCatalogsByProjectRequest"
+        "target": "com.azure.devcenter_data#ListEnvironmentCatalogsByProjectRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedCatalog"
@@ -7466,9 +7576,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the catalogs available for a project."
+        "smithy.api#documentation": "Lists all of the catalogs available for a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedCatalog": {
@@ -7501,7 +7618,7 @@
         "smithy.api#documentation": "The Catalog items on this page"
       }
     },
-    "com.azure.devcenter_data#EnvironmentsListCatalogsByProjectRequest": {
+    "com.azure.devcenter_data#ListEnvironmentCatalogsByProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7519,16 +7636,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the project."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevCenterGetProject": {
+    "com.azure.devcenter_data#GetDevCenterProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevCenterGetProjectRequest"
+        "target": "com.azure.devcenter_data#GetDevCenterProjectRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#Project"
@@ -7587,7 +7710,7 @@
         "smithy.api#documentation": "Project details."
       }
     },
-    "com.azure.devcenter_data#DevCenterGetProjectRequest": {
+    "com.azure.devcenter_data#GetDevCenterProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7611,10 +7734,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevCenterListProjects": {
+    "com.azure.devcenter_data#ListDevCenterProjects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevCenterListProjectsRequest"
+        "target": "com.azure.devcenter_data#ListDevCenterProjectsRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedProject"
@@ -7628,9 +7751,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all projects."
+        "smithy.api#documentation": "Lists all projects.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter_data#PagedProject": {
@@ -7663,7 +7793,7 @@
         "smithy.api#documentation": "The Project items on this page"
       }
     },
-    "com.azure.devcenter_data#DevCenterListProjectsRequest": {
+    "com.azure.devcenter_data#ListDevCenterProjectsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7673,16 +7803,22 @@
             "smithy.api#documentation": "The DevCenter-specific URI to operate on.",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.devcenter_data#DevBoxesListAllDevBoxes": {
+    "com.azure.devcenter_data#ListDevBoxAllDevBoxes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.devcenter_data#DevBoxesListAllDevBoxesRequest"
+        "target": "com.azure.devcenter_data#ListDevBoxAllDevBoxesRequest"
       },
       "output": {
         "target": "com.azure.devcenter_data#PagedDevBox"
@@ -7696,12 +7832,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists Dev Boxes that the caller has access to in the DevCenter."
+        "smithy.api#documentation": "Lists Dev Boxes that the caller has access to in the DevCenter.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.devcenter_data#DevBoxesListAllDevBoxesRequest": {
+    "com.azure.devcenter_data#ListDevBoxAllDevBoxesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7710,6 +7853,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The DevCenter-specific URI to operate on.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7722,19 +7871,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.devcenter_data#DevBoxesListAllDevBoxesByUser"
+          "target": "com.azure.devcenter_data#ListDevBoxAllDevBoxesByUser"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetOutputs"
+          "target": "com.azure.devcenter_data#GetEnvironmentOutputs"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetLogsByOperation"
+          "target": "com.azure.devcenter_data#GetEnvironmentLogsByOperation"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetOperation"
+          "target": "com.azure.devcenter_data#GetEnvironmentOperation"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListOperations"
+          "target": "com.azure.devcenter_data#ListEnvironmentOperations"
         },
         {
           "target": "com.azure.devcenter_data#EnvironmentsDelayAction"
@@ -7743,52 +7892,52 @@
           "target": "com.azure.devcenter_data#EnvironmentsSkipAction"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetAction"
+          "target": "com.azure.devcenter_data#GetEnvironmentAction"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListActions"
+          "target": "com.azure.devcenter_data#ListEnvironmentActions"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsDeleteEnvironment"
+          "target": "com.azure.devcenter_data#DeleteEnvironmentEnvironment"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsPatchEnvironment"
+          "target": "com.azure.devcenter_data#PatchEnvironmentEnvironment"
         },
         {
           "target": "com.azure.devcenter_data#EnvironmentsCreateOrReplaceEnvironment"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentByUser"
+          "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentByUser"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentsByUser"
+          "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentsByUser"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetSnapshot"
+          "target": "com.azure.devcenter_data#GetDevBoxSnapshot"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListSnapshots"
+          "target": "com.azure.devcenter_data#ListDevBoxSnapshots"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetRemoteConnection"
+          "target": "com.azure.devcenter_data#GetDevBoxRemoteConnection"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetOperation"
+          "target": "com.azure.devcenter_data#GetDevBoxOperation"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListOperations"
+          "target": "com.azure.devcenter_data#ListDevBoxOperations"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetCustomizationTaskLog"
+          "target": "com.azure.devcenter_data#GetDevBoxCustomizationTaskLog"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesCreateCustomizationGroup"
+          "target": "com.azure.devcenter_data#CreateDevBoxCustomizationGroup"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetCustomizationGroup"
+          "target": "com.azure.devcenter_data#GetDevBoxCustomizationGroup"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListCustomizationGroups"
+          "target": "com.azure.devcenter_data#ListDevBoxCustomizationGroups"
         },
         {
           "target": "com.azure.devcenter_data#DevBoxesDelayActions"
@@ -7800,109 +7949,109 @@
           "target": "com.azure.devcenter_data#DevBoxesSkipAction"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetAction"
+          "target": "com.azure.devcenter_data#GetDevBoxAction"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListActions"
+          "target": "com.azure.devcenter_data#ListDevBoxActions"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesCaptureSnapshot"
+          "target": "com.azure.devcenter_data#CaptureDevBoxSnapshot"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesRestoreSnapshot"
+          "target": "com.azure.devcenter_data#RestoreDevBoxSnapshot"
         },
         {
           "target": "com.azure.devcenter_data#DevBoxesRepairDevBox"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesRestartDevBox"
+          "target": "com.azure.devcenter_data#RestartDevBoxDevBox"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesStopDevBox"
+          "target": "com.azure.devcenter_data#StopDevBoxDevBox"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesStartDevBox"
+          "target": "com.azure.devcenter_data#StartDevBoxDevBox"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesDeleteDevBox"
+          "target": "com.azure.devcenter_data#DeleteDevBoxDevBox"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesCreateDevBox"
+          "target": "com.azure.devcenter_data#CreateDevBoxDevBox"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetDevBoxByUser"
+          "target": "com.azure.devcenter_data#GetDevBoxDevBoxByUser"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListDevBoxesByUser"
+          "target": "com.azure.devcenter_data#ListDevBoxDevBoxesByUser"
         },
         {
-          "target": "com.azure.devcenter_data#DevCenterGetProjectAbilities"
+          "target": "com.azure.devcenter_data#GetDevCenterProjectAbilities"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListSchedulesByProject"
+          "target": "com.azure.devcenter_data#ListDevBoxSchedulesByProject"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetScheduleByPool"
+          "target": "com.azure.devcenter_data#GetDevBoxScheduleByPool"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListSchedulesByPool"
+          "target": "com.azure.devcenter_data#ListDevBoxSchedulesByPool"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetPool"
+          "target": "com.azure.devcenter_data#GetDevBoxPool"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListPools"
+          "target": "com.azure.devcenter_data#ListDevBoxPools"
         },
         {
-          "target": "com.azure.devcenter_data#OperationStatusesGet"
+          "target": "com.azure.devcenter_data#GetOperationStatus"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetImagingTaskLog"
+          "target": "com.azure.devcenter_data#GetDevBoxImagingTaskLog"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListEnvironments"
+          "target": "com.azure.devcenter_data#ListEnvironmentEnvironments"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypeAbilities"
+          "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypeAbilities"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentTypes"
+          "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentTypes"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentTypes"
+          "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentTypes"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByProject"
+          "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByProject"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesValidateCustomizationTasksAction"
+          "target": "com.azure.devcenter_data#ValidateDevBoxCustomizationTasksAction"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListCustomizationTaskDefinitionsByProject"
+          "target": "com.azure.devcenter_data#ListDevBoxCustomizationTaskDefinitionsByProject"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetEnvironmentDefinition"
+          "target": "com.azure.devcenter_data#GetEnvironmentEnvironmentDefinition"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListEnvironmentDefinitionsByCatalog"
+          "target": "com.azure.devcenter_data#ListEnvironmentEnvironmentDefinitionsByCatalog"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesGetCustomizationTaskDefinitions"
+          "target": "com.azure.devcenter_data#GetDevBoxCustomizationTaskDefinitions"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsGetCatalog"
+          "target": "com.azure.devcenter_data#GetEnvironmentCatalog"
         },
         {
-          "target": "com.azure.devcenter_data#EnvironmentsListCatalogsByProject"
+          "target": "com.azure.devcenter_data#ListEnvironmentCatalogsByProject"
         },
         {
-          "target": "com.azure.devcenter_data#DevCenterGetProject"
+          "target": "com.azure.devcenter_data#GetDevCenterProject"
         },
         {
-          "target": "com.azure.devcenter_data#DevCenterListProjects"
+          "target": "com.azure.devcenter_data#ListDevCenterProjects"
         },
         {
-          "target": "com.azure.devcenter_data#DevBoxesListAllDevBoxes"
+          "target": "com.azure.devcenter_data#ListDevBoxAllDevBoxes"
         }
       ],
       "traits": {

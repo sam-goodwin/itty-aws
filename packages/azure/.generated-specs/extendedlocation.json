@@ -15,13 +15,39 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.extendedlocation#CustomLocationsListEnabledResourceTypes": "com.azure.extendedlocation#ListCustomLocationEnabledResourceTypes",
+      "com.azure.extendedlocation#CustomLocationsListEnabledResourceTypesRequest": "com.azure.extendedlocation#ListCustomLocationEnabledResourceTypesRequest",
+      "com.azure.extendedlocation#CustomLocationsDelete": "com.azure.extendedlocation#DeleteCustomLocation",
+      "com.azure.extendedlocation#CustomLocationsDeleteRequest": "com.azure.extendedlocation#DeleteCustomLocationRequest",
+      "com.azure.extendedlocation#CustomLocationsUpdate": "com.azure.extendedlocation#UpdateCustomLocation",
+      "com.azure.extendedlocation#CustomLocationsUpdateResponse": "com.azure.extendedlocation#UpdateCustomLocationResponse",
+      "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemData": "com.azure.extendedlocation#UpdateCustomLocationResponseSystemData",
+      "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemDataLastModifiedByType": "com.azure.extendedlocation#UpdateCustomLocationResponseSystemDataLastModifiedByType",
+      "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemDataCreatedByType": "com.azure.extendedlocation#UpdateCustomLocationResponseSystemDataCreatedByType",
+      "com.azure.extendedlocation#CustomLocationsUpdateResponseTagsMap": "com.azure.extendedlocation#UpdateCustomLocationResponseTagsMap",
+      "com.azure.extendedlocation#CustomLocationsUpdateRequest": "com.azure.extendedlocation#UpdateCustomLocationRequest",
+      "com.azure.extendedlocation#CustomLocationsUpdateRequestTagsMap": "com.azure.extendedlocation#UpdateCustomLocationRequestTagsMap",
+      "com.azure.extendedlocation#CustomLocationsGet": "com.azure.extendedlocation#GetCustomLocation",
+      "com.azure.extendedlocation#CustomLocationsGetResponse": "com.azure.extendedlocation#GetCustomLocationResponse",
+      "com.azure.extendedlocation#CustomLocationsGetResponseSystemData": "com.azure.extendedlocation#GetCustomLocationResponseSystemData",
+      "com.azure.extendedlocation#CustomLocationsGetResponseSystemDataLastModifiedByType": "com.azure.extendedlocation#GetCustomLocationResponseSystemDataLastModifiedByType",
+      "com.azure.extendedlocation#CustomLocationsGetResponseSystemDataCreatedByType": "com.azure.extendedlocation#GetCustomLocationResponseSystemDataCreatedByType",
+      "com.azure.extendedlocation#CustomLocationsGetResponseTagsMap": "com.azure.extendedlocation#GetCustomLocationResponseTagsMap",
+      "com.azure.extendedlocation#CustomLocationsGetRequest": "com.azure.extendedlocation#GetCustomLocationRequest",
+      "com.azure.extendedlocation#CustomLocationsListByResourceGroup": "com.azure.extendedlocation#ListCustomLocationByResourceGroup",
+      "com.azure.extendedlocation#CustomLocationsListByResourceGroupRequest": "com.azure.extendedlocation#ListCustomLocationByResourceGroupRequest",
+      "com.azure.extendedlocation#CustomLocationsListBySubscription": "com.azure.extendedlocation#ListCustomLocationBySubscription",
+      "com.azure.extendedlocation#CustomLocationsListBySubscriptionRequest": "com.azure.extendedlocation#ListCustomLocationBySubscriptionRequest",
+      "com.azure.extendedlocation#CustomLocationsListOperations": "com.azure.extendedlocation#ListCustomLocationOperations",
+      "com.azure.extendedlocation#CustomLocationsListOperationsRequest": "com.azure.extendedlocation#ListCustomLocationOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.extendedlocation#ListCustomLocationEnabledResourceTypes": {
+    "com.azure.extendedlocation#CustomLocationsListEnabledResourceTypes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.extendedlocation#ListCustomLocationEnabledResourceTypesRequest"
+        "target": "com.azure.extendedlocation#CustomLocationsListEnabledResourceTypesRequest"
       },
       "output": {
         "target": "com.azure.extendedlocation#EnabledResourceTypesListResult"
@@ -31,10 +57,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}/enabledResourceTypes",
           "code": 200,
-          "apiVersion": "2021-08-15"
+          "apiVersion": "2021-08-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of Enabled Resource Types.\n\nGets the list of the Enabled Resource Types.",
-        "com.distilled.openapi#apiVersion": "2021-08-15"
+        "com.distilled.openapi#apiVersion": "2021-08-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.extendedlocation#EnabledResourceTypesListResult": {
@@ -273,7 +306,7 @@
         "smithy.api#documentation": "Metadata of the Resource Type."
       }
     },
-    "com.azure.extendedlocation#ListCustomLocationEnabledResourceTypesRequest": {
+    "com.azure.extendedlocation#CustomLocationsListEnabledResourceTypesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -299,16 +332,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Custom Locations name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.extendedlocation#DeleteCustomLocation": {
+    "com.azure.extendedlocation#CustomLocationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.extendedlocation#DeleteCustomLocationRequest"
+        "target": "com.azure.extendedlocation#CustomLocationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -324,7 +363,7 @@
         "com.distilled.openapi#apiVersion": "2021-08-15"
       }
     },
-    "com.azure.extendedlocation#DeleteCustomLocationRequest": {
+    "com.azure.extendedlocation#CustomLocationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -356,13 +395,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocation": {
+    "com.azure.extendedlocation#CustomLocationsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.extendedlocation#UpdateCustomLocationRequest"
+        "target": "com.azure.extendedlocation#CustomLocationsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.extendedlocation#UpdateCustomLocationResponse"
+        "target": "com.azure.extendedlocation#CustomLocationsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -375,7 +414,7 @@
         "com.distilled.openapi#apiVersion": "2021-08-15"
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationResponse": {
+    "com.azure.extendedlocation#CustomLocationsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -397,7 +436,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.extendedlocation#UpdateCustomLocationResponseTagsMap",
+          "target": "com.azure.extendedlocation#CustomLocationsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -422,7 +461,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.extendedlocation#UpdateCustomLocationResponseSystemData",
+          "target": "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -432,7 +471,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationResponseSystemData": {
+    "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -442,7 +481,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.extendedlocation#UpdateCustomLocationResponseSystemDataCreatedByType",
+          "target": "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -460,7 +499,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.extendedlocation#UpdateCustomLocationResponseSystemDataLastModifiedByType",
+          "target": "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -476,7 +515,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationResponseSystemDataLastModifiedByType": {
+    "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -508,7 +547,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationResponseSystemDataCreatedByType": {
+    "com.azure.extendedlocation#CustomLocationsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -679,7 +718,7 @@
         "smithy.api#documentation": "The identity type."
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationResponseTagsMap": {
+    "com.azure.extendedlocation#CustomLocationsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -691,7 +730,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationRequest": {
+    "com.azure.extendedlocation#CustomLocationsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -731,7 +770,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.extendedlocation#UpdateCustomLocationRequestTagsMap",
+          "target": "com.azure.extendedlocation#CustomLocationsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -741,7 +780,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.extendedlocation#UpdateCustomLocationRequestTagsMap": {
+    "com.azure.extendedlocation#CustomLocationsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1052,13 +1091,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.extendedlocation#GetCustomLocation": {
+    "com.azure.extendedlocation#CustomLocationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.extendedlocation#GetCustomLocationRequest"
+        "target": "com.azure.extendedlocation#CustomLocationsGetRequest"
       },
       "output": {
-        "target": "com.azure.extendedlocation#GetCustomLocationResponse"
+        "target": "com.azure.extendedlocation#CustomLocationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1071,7 +1110,7 @@
         "com.distilled.openapi#apiVersion": "2021-08-15"
       }
     },
-    "com.azure.extendedlocation#GetCustomLocationResponse": {
+    "com.azure.extendedlocation#CustomLocationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1093,7 +1132,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.extendedlocation#GetCustomLocationResponseTagsMap",
+          "target": "com.azure.extendedlocation#CustomLocationsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1118,7 +1157,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.extendedlocation#GetCustomLocationResponseSystemData",
+          "target": "com.azure.extendedlocation#CustomLocationsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1128,7 +1167,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.extendedlocation#GetCustomLocationResponseSystemData": {
+    "com.azure.extendedlocation#CustomLocationsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1138,7 +1177,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.extendedlocation#GetCustomLocationResponseSystemDataCreatedByType",
+          "target": "com.azure.extendedlocation#CustomLocationsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1156,7 +1195,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.extendedlocation#GetCustomLocationResponseSystemDataLastModifiedByType",
+          "target": "com.azure.extendedlocation#CustomLocationsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1172,7 +1211,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.extendedlocation#GetCustomLocationResponseSystemDataLastModifiedByType": {
+    "com.azure.extendedlocation#CustomLocationsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1204,7 +1243,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.extendedlocation#GetCustomLocationResponseSystemDataCreatedByType": {
+    "com.azure.extendedlocation#CustomLocationsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1236,7 +1275,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.extendedlocation#GetCustomLocationResponseTagsMap": {
+    "com.azure.extendedlocation#CustomLocationsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1248,7 +1287,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.extendedlocation#GetCustomLocationRequest": {
+    "com.azure.extendedlocation#CustomLocationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1280,10 +1319,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.extendedlocation#ListCustomLocationByResourceGroup": {
+    "com.azure.extendedlocation#CustomLocationsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.extendedlocation#ListCustomLocationByResourceGroupRequest"
+        "target": "com.azure.extendedlocation#CustomLocationsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.extendedlocation#CustomLocationListResult"
@@ -1293,10 +1332,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations",
           "code": 200,
-          "apiVersion": "2021-08-15"
+          "apiVersion": "2021-08-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Custom Locations in the specified subscription and resource group.\n\nGets a list of Custom Locations in the specified subscription and resource group. The operation returns properties of each Custom Location.",
-        "com.distilled.openapi#apiVersion": "2021-08-15"
+        "com.distilled.openapi#apiVersion": "2021-08-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.extendedlocation#CustomLocationListResult": {
@@ -1505,7 +1551,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.extendedlocation#ListCustomLocationByResourceGroupRequest": {
+    "com.azure.extendedlocation#CustomLocationsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1523,16 +1569,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.extendedlocation#ListCustomLocationBySubscription": {
+    "com.azure.extendedlocation#CustomLocationsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.extendedlocation#ListCustomLocationBySubscriptionRequest"
+        "target": "com.azure.extendedlocation#CustomLocationsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.extendedlocation#CustomLocationListResult"
@@ -1542,13 +1594,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ExtendedLocation/customLocations",
           "code": 200,
-          "apiVersion": "2021-08-15"
+          "apiVersion": "2021-08-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Custom Locations in a subscription.\n\nGets a list of Custom Locations in the specified subscription. The operation returns properties of each Custom Location",
-        "com.distilled.openapi#apiVersion": "2021-08-15"
+        "com.distilled.openapi#apiVersion": "2021-08-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.extendedlocation#ListCustomLocationBySubscriptionRequest": {
+    "com.azure.extendedlocation#CustomLocationsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1558,16 +1617,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.extendedlocation#ListCustomLocationOperations": {
+    "com.azure.extendedlocation#CustomLocationsListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.extendedlocation#CustomLocationsListOperationsRequest"
       },
       "output": {
         "target": "com.azure.extendedlocation#CustomLocationOperationsList"
@@ -1577,10 +1642,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ExtendedLocation/operations",
           "code": 200,
-          "apiVersion": "2021-08-15"
+          "apiVersion": "2021-08-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all available Custom Locations operations.",
-        "com.distilled.openapi#apiVersion": "2021-08-15"
+        "com.distilled.openapi#apiVersion": "2021-08-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.extendedlocation#CustomLocationOperationsList": {
@@ -1677,33 +1749,47 @@
         "smithy.api#documentation": "Describes the properties of a Custom Locations Operation Value Display."
       }
     },
+    "com.azure.extendedlocation#CustomLocationsListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.extendedlocation#Extendedlocation": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.extendedlocation#ListCustomLocationEnabledResourceTypes"
+          "target": "com.azure.extendedlocation#CustomLocationsListEnabledResourceTypes"
         },
         {
-          "target": "com.azure.extendedlocation#DeleteCustomLocation"
+          "target": "com.azure.extendedlocation#CustomLocationsDelete"
         },
         {
-          "target": "com.azure.extendedlocation#UpdateCustomLocation"
+          "target": "com.azure.extendedlocation#CustomLocationsUpdate"
         },
         {
           "target": "com.azure.extendedlocation#CustomLocationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.extendedlocation#GetCustomLocation"
+          "target": "com.azure.extendedlocation#CustomLocationsGet"
         },
         {
-          "target": "com.azure.extendedlocation#ListCustomLocationByResourceGroup"
+          "target": "com.azure.extendedlocation#CustomLocationsListByResourceGroup"
         },
         {
-          "target": "com.azure.extendedlocation#ListCustomLocationBySubscription"
+          "target": "com.azure.extendedlocation#CustomLocationsListBySubscription"
         },
         {
-          "target": "com.azure.extendedlocation#ListCustomLocationOperations"
+          "target": "com.azure.extendedlocation#CustomLocationsListOperations"
         }
       ],
       "traits": {

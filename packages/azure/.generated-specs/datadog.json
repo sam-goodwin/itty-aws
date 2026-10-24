@@ -617,10 +617,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the tag rules for a given monitor resource.\n\nList the tag rules for a given monitor resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#MonitoringTagRulesListResponse": {
@@ -716,6 +723,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1018,10 +1031,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/singleSignOnConfigurations",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the single sign-on configurations for a given monitor resource.\n\nList the single sign-on configurations for a given monitor resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#DatadogSingleSignOnResourceListResponse": {
@@ -1114,6 +1134,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2292,10 +2318,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/monitoredSubscriptions",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the subscriptions currently being monitored by the Datadog monitor resource.\n\nList the subscriptions currently being monitored by the Datadog monitor resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#MonitoredSubscriptionPropertiesList": {
@@ -2392,6 +2425,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2411,10 +2450,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listMonitoredResources",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the resources currently being monitored by the Datadog monitor resource.\n\nList the resources currently being monitored by the Datadog monitor resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#MonitoredResourceListResponse": {
@@ -2511,6 +2557,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2530,10 +2582,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listLinkedResources",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Azure resources associated to the same Datadog organization as the target resource.\n\nList all Azure resources associated to the same Datadog organization as the target resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#LinkedResourceListResponse": {
@@ -2612,6 +2671,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2631,10 +2696,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listHosts",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the hosts for a given monitor resource.\n\nList the hosts for a given monitor resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#DatadogHostListResponse": {
@@ -2792,6 +2864,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2811,10 +2889,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/listApiKeys",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the api keys for a given monitor resource.\n\nList the api keys for a given monitor resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#DatadogApiKeyListResponse": {
@@ -2903,6 +2988,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Monitor resource name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3738,10 +3829,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all monitors under the specified resource group.\n\nList all monitors under the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#DatadogMonitorResourceListResponse": {
@@ -3861,6 +3959,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3957,10 +4061,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/subscriptionStatuses",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Informs if the current subscription is being already monitored for selected Datadog organization.\n\nInforms if the current subscription is being already monitored for selected Datadog organization.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#CreateResourceSupportedResponseList": {
@@ -4011,6 +4122,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Datadog Organization Id"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4030,10 +4147,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/monitors",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all monitors under the specified subscription.\n\nList all monitors under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#ListMonitorsRequest": {
@@ -4045,6 +4169,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4306,10 +4436,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Datadog marketplace agreements in the subscription.\n\nList Datadog marketplace agreements in the subscription.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#DatadogAgreementResourceListResponse": {
@@ -4352,6 +4489,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4361,7 +4504,7 @@
     "com.azure.datadog#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datadog#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.datadog#OperationListResult"
@@ -4371,10 +4514,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Datadog/operations",
           "code": 200,
-          "apiVersion": "2025-06-11"
+          "apiVersion": "2025-06-11",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all operations provided by Microsoft.Datadog for the 2025-06-11 api version.\n\nList all operations provided by Microsoft.Datadog for the 2025-06-11 api version.",
-        "com.distilled.openapi#apiVersion": "2025-06-11"
+        "com.distilled.openapi#apiVersion": "2025-06-11",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datadog#OperationListResult": {
@@ -4463,6 +4613,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.datadog#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.datadog#Datadog": {

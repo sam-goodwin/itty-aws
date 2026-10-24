@@ -1522,6 +1522,8 @@ export interface ListCGProfileAllRevisionsRequest {
   resourceGroupName: string;
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ContainerGroupProfileTagsMap = { [key: string]: string | undefined };
@@ -1560,16 +1562,22 @@ export interface ListCGProfileByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCGProfileBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListContainerGroupByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type ListResultContainerGroupTagsMap = { [key: string]: string | undefined };
@@ -1685,6 +1693,8 @@ export interface ContainerGroupListResult {
 export interface ListContainerGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListContainerLogsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1710,6 +1720,8 @@ export interface ListLocationCachedImagesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The cached image and OS type. */
 export interface CachedImages {
@@ -1723,7 +1735,7 @@ export type CachedImagesListResultValueList = Array<CachedImages>;
 /** The response containing cached images. */
 export interface CachedImagesListResult {
   /** The cached images. */
-  value?: CachedImagesListResultValueList;
+  value: CachedImagesListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1732,6 +1744,8 @@ export interface ListLocationCapabilitiesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The supported capabilities. */
 export interface CapabilitiesCapabilities {
@@ -1762,7 +1776,7 @@ export type CapabilitiesListResultValueList = Array<Capabilities>;
 /** The response containing list of capabilities. */
 export interface CapabilitiesListResult {
   /** The list of capabilities. */
-  value?: CapabilitiesListResultValueList;
+  value: CapabilitiesListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1771,6 +1785,8 @@ export interface ListLocationUsageRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The name object of the resource */
 export interface UsageName {
@@ -1797,7 +1813,7 @@ export type UsageListResultValueList = Array<Usage>;
 /** The response containing the usage data */
 export interface UsageListResult {
   /** The usage data. */
-  value?: UsageListResultValueList;
+  value: UsageListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1806,6 +1822,8 @@ export interface ListNGroupByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NGroupTagsMap = { [key: string]: string | undefined };
@@ -1844,8 +1862,13 @@ export interface NGroupsListResult {
 export interface ListNGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The display information of the operation. */
 export interface OperationDisplay {
   /** The name of the provider of the operation. */
@@ -1884,6 +1907,8 @@ export interface ListSandboxGroupByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SandboxGroupTagsMap = { [key: string]: string | undefined };
@@ -1920,6 +1945,8 @@ export interface SandboxGroupListResult {
 export interface ListSandboxGroupBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -2527,78 +2554,113 @@ export const GetSandboxGroup: API.OperationMethod<
 
 export type ListCGProfileAllRevisionsError = AzureOpError;
 /** Get a list of all the revisions of the specified container group profile in the given subscription and resource group. Get a list of all the revisions of the specified container group profile in the given subscription and resource group. This operation returns properties of each revision of the specified container group profile including containers, image registry credentials, restart policy, IP address type, OS type volumes, revision number, etc. */
-export const ListCGProfileAllRevisions: API.OperationMethod<
+export const ListCGProfileAllRevisions: API.PaginatedOperationMethod<
   ListCGProfileAllRevisionsRequest,
   ContainerGroupProfileListResult,
   ListCGProfileAllRevisionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContainerGroupProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<ListCGProfileAllRevisionsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCGProfileByResourceGroupError = AzureOpError;
 /** List container group profiles in a resource group. Gets a list of all container group profiles under a resource group. */
-export const ListCGProfileByResourceGroup: API.OperationMethod<
+export const ListCGProfileByResourceGroup: API.PaginatedOperationMethod<
   ListCGProfileByResourceGroupRequest,
   ContainerGroupProfileListResult,
   ListCGProfileByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContainerGroupProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c24, 0) as any as S.Schema<ListCGProfileByResourceGroupRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCGProfileBySubscriptionError = AzureOpError;
 /** List container group profiles in a subscription. Gets a list of all container group profiles under a subscription. */
-export const ListCGProfileBySubscription: API.OperationMethod<
+export const ListCGProfileBySubscription: API.PaginatedOperationMethod<
   ListCGProfileBySubscriptionRequest,
   ContainerGroupProfileListResult,
   ListCGProfileBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContainerGroupProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(800, __c25, 0) as any as S.Schema<ListCGProfileBySubscriptionRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContainerGroupByResourceGroupError = AzureOpError;
 /** Get a list of container groups in the specified subscription and resource group. Get a list of container groups in a specified subscription and resource group. This operation returns properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes. */
-export const ListContainerGroupByResourceGroup: API.OperationMethod<
+export const ListContainerGroupByResourceGroup: API.PaginatedOperationMethod<
   ListContainerGroupByResourceGroupRequest,
   ContainerGroupListResult,
   ListContainerGroupByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ListResultContainerGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(832, __c26, 0) as any as S.Schema<ListContainerGroupByResourceGroupRequest>,
   output: __S(867, __c27, 3) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContainerGroupsError = AzureOpError;
 /** Get a list of container groups in the specified subscription. Get a list of container groups in the specified subscription. This operation returns properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes. */
-export const ListContainerGroups: API.OperationMethod<
+export const ListContainerGroups: API.PaginatedOperationMethod<
   ListContainerGroupsRequest,
   ContainerGroupListResult,
   ListContainerGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ListResultContainerGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c29, 0) as any as S.Schema<ListContainerGroupsRequest>,
   output: __S(867, __c27, 3) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContainerLogsError = AzureOpError;
 /** Get the logs for a specified container instance. Get the logs for a specified container instance in a specified resource group and container group. */
@@ -2617,123 +2679,179 @@ export const ListContainerLogs: API.OperationMethod<
 
 export type ListLocationCachedImagesError = AzureOpError;
 /** Get the list of cached images. Get the list of cached images on specific OS type for a subscription in a region. */
-export const ListLocationCachedImages: API.OperationMethod<
+export const ListLocationCachedImages: API.PaginatedOperationMethod<
   ListLocationCachedImagesRequest,
   CachedImagesListResult,
   ListLocationCachedImagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CachedImages
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(992, __c31, 0) as any as S.Schema<ListLocationCachedImagesRequest>,
   output: __S(995, __c31, 3) as any as S.Schema<CachedImagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocationCapabilitiesError = AzureOpError;
 /** Get the list of capabilities of the location. Get the list of CPU/memory/GPU capabilities of a region. */
-export const ListLocationCapabilities: API.OperationMethod<
+export const ListLocationCapabilities: API.PaginatedOperationMethod<
   ListLocationCapabilitiesRequest,
   CapabilitiesListResult,
   ListLocationCapabilitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Capabilities
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c32, 0) as any as S.Schema<ListLocationCapabilitiesRequest>,
   output: __S(1028, __c32, 4) as any as S.Schema<CapabilitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocationUsageError = AzureOpError;
 /** Get the usage for a subscription */
-export const ListLocationUsage: API.OperationMethod<
+export const ListLocationUsage: API.PaginatedOperationMethod<
   ListLocationUsageRequest,
   UsageListResult,
   ListLocationUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<ListLocationUsageRequest>,
   output: __S(1060, __c33, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNGroupByResourceGroupError = AzureOpError;
 /** GET NGroups under a resource group REST API. Gets a list of all NGroups resources under a resource group. */
-export const ListNGroupByResourceGroup: API.OperationMethod<
+export const ListNGroupByResourceGroup: API.PaginatedOperationMethod<
   ListNGroupByResourceGroupRequest,
   NGroupsListResult,
   ListNGroupByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c34, 0) as any as S.Schema<ListNGroupByResourceGroupRequest>,
   output: __S(1121, __c35, 1) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNGroupsError = AzureOpError;
 /** List NGroups in a subscription. Gets a list of all NGroups resources under a subscription. */
-export const ListNGroups: API.OperationMethod<
+export const ListNGroups: API.PaginatedOperationMethod<
   ListNGroupsRequest,
   NGroupsListResult,
   ListNGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1152, __c36, 0) as any as S.Schema<ListNGroupsRequest>,
   output: __S(1121, __c35, 1) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1188, __c37, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSandboxGroupByResourceGroupError = AzureOpError;
 /** List SandboxGroup resources by resource group List SandboxGroup resources by resource group */
-export const ListSandboxGroupByResourceGroup: API.OperationMethod<
+export const ListSandboxGroupByResourceGroup: API.PaginatedOperationMethod<
   ListSandboxGroupByResourceGroupRequest,
   SandboxGroupListResult,
   ListSandboxGroupByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SandboxGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c38, 0) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
   output: __S(1249, __c39, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSandboxGroupBySubscriptionError = AzureOpError;
 /** List SandboxGroup resources by subscription ID List SandboxGroup resources by subscription ID */
-export const ListSandboxGroupBySubscription: API.OperationMethod<
+export const ListSandboxGroupBySubscription: API.PaginatedOperationMethod<
   ListSandboxGroupBySubscriptionRequest,
   SandboxGroupListResult,
   ListSandboxGroupBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SandboxGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
   output: __S(1249, __c39, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type NGroupsCreateOrUpdateError = AzureOpError;
 /** NGroup PUT REST API Create or update a NGroups resource. */
@@ -3806,12 +3924,14 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupProfileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}/revisions",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCGProfileAllRevisionsRequest" });
@@ -3837,12 +3957,14 @@ function __c24(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCGProfileByResourceGroupRequest" });
@@ -3854,12 +3976,14 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroupProfiles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCGProfileBySubscriptionRequest" });
@@ -3872,12 +3996,14 @@ function __c26(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContainerGroupByResourceGroupRequest" });
@@ -3968,12 +4094,14 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroups",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContainerGroupsRequest" });
@@ -4014,12 +4142,14 @@ function __c31(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/cachedImages",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocationCachedImagesRequest" });
@@ -4035,7 +4165,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(994, __c31, 2)),
+          value: __S(994, __c31, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CachedImagesListResult" });
@@ -4048,12 +4178,14 @@ function __c32(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/capabilities",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocationCapabilitiesRequest" });
@@ -4081,7 +4213,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1027, __c32, 3)),
+          value: __S(1027, __c32, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilitiesListResult" });
@@ -4094,12 +4226,14 @@ function __c33(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/locations/{location}/usages",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocationUsageRequest" });
@@ -4125,7 +4259,7 @@ function __c33(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1059, __c33, 3)),
+          value: __S(1059, __c33, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
@@ -4138,12 +4272,14 @@ function __c34(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups",
             code: 200,
             apiVersion: "2024-11-01-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNGroupByResourceGroupRequest" });
@@ -4168,12 +4304,14 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/ngroups",
             code: 200,
             apiVersion: "2024-11-01-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNGroupsRequest" });
@@ -4183,12 +4321,15 @@ function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ContainerInstance/operations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -4228,12 +4369,14 @@ function __c38(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSandboxGroupByResourceGroupRequest" });
@@ -4258,12 +4401,14 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/sandboxGroups",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSandboxGroupBySubscriptionRequest" });

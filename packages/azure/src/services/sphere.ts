@@ -522,6 +522,8 @@ export interface GenerateProductDefaultDeviceGroupsRequest {
   catalogName: string;
   /** Name of product. */
   productName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An device group resource belonging to a product resource. */
 export interface DeviceGroup {
@@ -813,6 +815,8 @@ export interface ListCatalogByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CatalogTagsMap = { [key: string]: string | undefined };
@@ -845,6 +849,8 @@ export interface CatalogListResult {
 export interface ListCatalogBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCatalogDeploymentsRequest {
   /** The ID of the target subscription. */
@@ -861,6 +867,8 @@ export interface ListCatalogDeploymentsRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An deployment resource belonging to a device group resource. */
 export interface Deployment {
@@ -901,6 +909,8 @@ export interface ListCatalogDeviceGroupsRequest {
   _maxpagesize?: number;
   /** Device Group name. */
   deviceGroupName?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCatalogDeviceInsightsRequest {
   /** The ID of the target subscription. */
@@ -917,6 +927,8 @@ export interface ListCatalogDeviceInsightsRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Device insight report. */
 export interface DeviceInsight {
@@ -961,6 +973,8 @@ export interface ListCatalogDevicesRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An device resource belonging to a device group resource. */
 export interface Device {
@@ -999,6 +1013,8 @@ export interface ListCertificateByCatalogRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An certificate resource belonging to a catalog resource. */
 export interface Certificate {
@@ -1041,6 +1057,8 @@ export interface ListDeploymentByDeviceGroupRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDeviceByDeviceGroupRequest {
   /** The ID of the target subscription. */
@@ -1053,6 +1071,8 @@ export interface ListDeviceByDeviceGroupRequest {
   productName: string;
   /** Name of device group. */
   deviceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDeviceGroupByProductRequest {
   /** The ID of the target subscription. */
@@ -1071,6 +1091,8 @@ export interface ListDeviceGroupByProductRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListImageByCatalogRequest {
   /** The ID of the target subscription. */
@@ -1087,6 +1109,8 @@ export interface ListImageByCatalogRequest {
   _skip?: number;
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Image items on this page */
 export type ImageListResultValueList = Array<Image>;
@@ -1097,7 +1121,10 @@ export interface ImageListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1130,7 +1157,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -1141,6 +1168,8 @@ export interface ListProductByCatalogRequest {
   resourceGroupName: string;
   /** Name of catalog */
   catalogName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An product resource belonging to a catalog resource. */
 export interface Product {
@@ -1564,18 +1593,25 @@ export const GenerateDeviceCapabilityImage: API.OperationMethod<
 
 export type GenerateProductDefaultDeviceGroupsError = AzureOpError;
 /** Generates default device groups for the product. '.default' and '.unassigned' are system defined values and cannot be used for product name. */
-export const GenerateProductDefaultDeviceGroups: API.OperationMethod<
+export const GenerateProductDefaultDeviceGroups: API.PaginatedOperationMethod<
   GenerateProductDefaultDeviceGroupsRequest,
   DeviceGroupListResult,
   GenerateProductDefaultDeviceGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetCatalogError = AzureOpError;
 /** Get a Catalog */
@@ -1729,198 +1765,289 @@ export const ImagesCreateOrUpdate: API.OperationMethod<
 
 export type ListCatalogByResourceGroupError = AzureOpError;
 /** List Catalog resources by resource group */
-export const ListCatalogByResourceGroup: API.OperationMethod<
+export const ListCatalogByResourceGroup: API.PaginatedOperationMethod<
   ListCatalogByResourceGroupRequest,
   CatalogListResult,
   ListCatalogByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Catalog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<ListCatalogByResourceGroupRequest>,
   output: __S(281, __c35, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCatalogBySubscriptionError = AzureOpError;
 /** List Catalog resources by subscription ID */
-export const ListCatalogBySubscription: API.OperationMethod<
+export const ListCatalogBySubscription: API.PaginatedOperationMethod<
   ListCatalogBySubscriptionRequest,
   CatalogListResult,
   ListCatalogBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Catalog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c36, 0) as any as S.Schema<ListCatalogBySubscriptionRequest>,
   output: __S(281, __c35, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCatalogDeploymentsError = AzureOpError;
 /** Lists deployments for catalog. */
-export const ListCatalogDeployments: API.OperationMethod<
+export const ListCatalogDeployments: API.PaginatedOperationMethod<
   ListCatalogDeploymentsRequest,
   DeploymentListResult,
   ListCatalogDeploymentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(296, __c37, 0) as any as S.Schema<ListCatalogDeploymentsRequest>,
   output: __S(305, __c38, 1) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCatalogDeviceGroupsError = AzureOpError;
 /** List the device groups for the catalog. */
-export const ListCatalogDeviceGroups: API.OperationMethod<
+export const ListCatalogDeviceGroups: API.PaginatedOperationMethod<
   ListCatalogDeviceGroupsRequest,
   DeviceGroupListResult,
   ListCatalogDeviceGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(312, __c39, 0) as any as S.Schema<ListCatalogDeviceGroupsRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCatalogDeviceInsightsError = AzureOpError;
 /** Lists device insights for catalog. */
-export const ListCatalogDeviceInsights: API.OperationMethod<
+export const ListCatalogDeviceInsights: API.PaginatedOperationMethod<
   ListCatalogDeviceInsightsRequest,
   PagedDeviceInsight,
   ListCatalogDeviceInsightsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceInsight
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c40, 0) as any as S.Schema<ListCatalogDeviceInsightsRequest>,
   output: __S(323, __c40, 3) as any as S.Schema<PagedDeviceInsight>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCatalogDevicesError = AzureOpError;
 /** Lists devices for catalog. */
-export const ListCatalogDevices: API.OperationMethod<
+export const ListCatalogDevices: API.PaginatedOperationMethod<
   ListCatalogDevicesRequest,
   DeviceListResult,
   ListCatalogDevicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Device
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c42, 0) as any as S.Schema<ListCatalogDevicesRequest>,
   output: __S(345, __c43, 1) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCertificateByCatalogError = AzureOpError;
 /** List Certificate resources by Catalog */
-export const ListCertificateByCatalog: API.OperationMethod<
+export const ListCertificateByCatalog: API.PaginatedOperationMethod<
   ListCertificateByCatalogRequest,
   CertificateListResult,
   ListCertificateByCatalogError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Certificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c44, 0) as any as S.Schema<ListCertificateByCatalogRequest>,
   output: __S(354, __c44, 2) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeploymentByDeviceGroupError = AzureOpError;
 /** List Deployment resources by DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name. */
-export const ListDeploymentByDeviceGroup: API.OperationMethod<
+export const ListDeploymentByDeviceGroup: API.PaginatedOperationMethod<
   ListDeploymentByDeviceGroupRequest,
   DeploymentListResult,
   ListDeploymentByDeviceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(360, __c45, 0) as any as S.Schema<ListDeploymentByDeviceGroupRequest>,
   output: __S(305, __c38, 1) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceByDeviceGroupError = AzureOpError;
 /** List Device resources by DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name. */
-export const ListDeviceByDeviceGroup: API.OperationMethod<
+export const ListDeviceByDeviceGroup: API.PaginatedOperationMethod<
   ListDeviceByDeviceGroupRequest,
   DeviceListResult,
   ListDeviceByDeviceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Device
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c46, 0) as any as S.Schema<ListDeviceByDeviceGroupRequest>,
   output: __S(345, __c43, 1) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceGroupByProductError = AzureOpError;
 /** List DeviceGroup resources by Product. '.default' and '.unassigned' are system defined values and cannot be used for product name. */
-export const ListDeviceGroupByProduct: API.OperationMethod<
+export const ListDeviceGroupByProduct: API.PaginatedOperationMethod<
   ListDeviceGroupByProductRequest,
   DeviceGroupListResult,
   ListDeviceGroupByProductError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(376, __c47, 0) as any as S.Schema<ListDeviceGroupByProductRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImageByCatalogError = AzureOpError;
 /** List Image resources by Catalog */
-export const ListImageByCatalog: API.OperationMethod<
+export const ListImageByCatalog: API.PaginatedOperationMethod<
   ListImageByCatalogRequest,
   ImageListResult,
   ListImageByCatalogError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Image
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c48, 0) as any as S.Schema<ListImageByCatalogRequest>,
   output: __S(385, __c48, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(392, __c49, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(396, __c49, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductByCatalogError = AzureOpError;
 /** List Product resources by Catalog */
-export const ListProductByCatalog: API.OperationMethod<
+export const ListProductByCatalog: API.PaginatedOperationMethod<
   ListProductByCatalogRequest,
   ProductListResult,
   ListProductByCatalogError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Product
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c50, 0) as any as S.Schema<ListProductByCatalogRequest>,
   output: __S(402, __c50, 2) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ProductsCountDevicesError = AzureOpError;
 /** Counts devices in product. '.default' and '.unassigned' are system defined values and cannot be used for product name. */
@@ -2304,12 +2431,14 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/generateDefaultDeviceGroups",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GenerateProductDefaultDeviceGroupsRequest" });
@@ -2706,12 +2835,14 @@ function __c34(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCatalogByResourceGroupRequest" });
@@ -2736,12 +2867,14 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureSphere/catalogs",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCatalogBySubscriptionRequest" });
@@ -2759,12 +2892,14 @@ function __c37(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeployments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCatalogDeploymentsRequest" });
@@ -2796,12 +2931,14 @@ function __c39(j: number): any {
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           deviceGroupName: S.optional(S.String),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeviceGroups",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCatalogDeviceGroupsRequest" });
@@ -2819,12 +2956,14 @@ function __c40(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDeviceInsights",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCatalogDeviceInsightsRequest" });
@@ -2883,12 +3022,14 @@ function __c42(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/listDevices",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCatalogDevicesRequest" });
@@ -2919,12 +3060,14 @@ function __c44(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/certificates",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCertificateByCatalogRequest" });
@@ -2953,12 +3096,14 @@ function __c45(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeploymentByDeviceGroupRequest" });
@@ -2974,12 +3119,14 @@ function __c46(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeviceByDeviceGroupRequest" });
@@ -2998,12 +3145,14 @@ function __c47(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeviceGroupByProductRequest" });
@@ -3021,12 +3170,14 @@ function __c48(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImageByCatalogRequest" });
@@ -3043,12 +3194,15 @@ function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.AzureSphere/operations",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -3076,7 +3230,7 @@ function __c49(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(395, __c49, 3)),
+          value: __S(395, __c49, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3090,12 +3244,14 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductByCatalogRequest" });

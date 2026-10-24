@@ -185,6 +185,8 @@ export interface ListConnectionsInGroupRequest {
   top?: number;
   /** A token that allows the client to retrieve the next page of results. This parameter is provided by the service in the response of a previous request when there are additional results to be fetched. Clients should include the continuationToken in the next request to receive the subsequent page of data. If this parameter is omitted, the server will return the first page of results. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Group member */
 export interface GroupMember {
@@ -533,18 +535,25 @@ export const GroupExists: API.OperationMethod<
 
 export type ListConnectionsInGroupError = AzureOpError;
 /** List connections in a group. List connections in a group. */
-export const ListConnectionsInGroup: API.OperationMethod<
+export const ListConnectionsInGroup: API.PaginatedOperationMethod<
   ListConnectionsInGroupRequest,
   GroupMemberPagedValues,
   ListConnectionsInGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GroupMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28, __c7, 0) as any as S.Schema<ListConnectionsInGroupRequest>,
   output: __S(31, __c7, 3) as any as S.Schema<GroupMemberPagedValues>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RemoveConnectionFromAllGroupsError = AzureOpError;
 /** Remove a connection from all groups. Remove a connection from all groups. */
@@ -849,6 +858,7 @@ function __c7(j: number): any {
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -857,6 +867,7 @@ function __c7(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
             audience: "https://webpubsub.azure.com/.default",
           }),
         ),

@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Triggers in a share subscription.\n\nList Triggers in a share subscription",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#TriggerList": {
@@ -268,6 +275,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "Continuation token"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -753,10 +766,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List synchronizationSettings in a share.\n\nList synchronizationSettings in a share",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#SynchronizationSettingList": {
@@ -882,6 +902,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "continuation token"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1248,10 +1274,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of available share subscriptions under an account.\n\nList share subscriptions in an account",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ShareSubscriptionList": {
@@ -1559,6 +1592,12 @@
           "traits": {
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2025,10 +2064,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSynchronizations",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Synchronizations in a share subscription.\n\nList synchronizations of a share subscription",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ShareSubscriptionSynchronizationList": {
@@ -2116,6 +2162,12 @@
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2135,10 +2187,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSynchronizationDetails",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List data set level details for a share subscription synchronization\n\nList synchronization details",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#SynchronizationDetailsList": {
@@ -2423,6 +2482,12 @@
             "smithy.api#documentation": "Synchronization id",
             "smithy.api#required": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2442,10 +2507,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/listSourceShareSynchronizationSettings",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get source share synchronization settings for a shareSubscription.\n\nGet synchronization settings set on a share",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#SourceShareSynchronizationSettingList": {
@@ -2548,6 +2620,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "Continuation token"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2567,10 +2645,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/consumerSourceDataSets",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get source dataSets of a shareSubscription.\n\nGet source dataSets of a shareSubscription",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ConsumerSourceDataSetList": {
@@ -2812,6 +2897,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "Continuation token"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2897,10 +2988,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of available shares under an account.\n\nList shares in an account",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ShareList": {
@@ -3125,6 +3223,12 @@
           "traits": {
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3450,10 +3554,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of available share subscriptions to a provider share.\n\nList share subscriptions in a provider share",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ProviderShareSubscriptionList": {
@@ -3664,6 +3775,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "Continuation Token"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4130,10 +4247,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizations",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Synchronizations in a share\n\nList synchronizations of a share",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ShareSynchronizationList": {
@@ -4309,6 +4433,12 @@
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4328,10 +4458,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/listSynchronizationDetails",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List data set level details for a share synchronization\n\nList synchronization details",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ListShareSynchronizationDetailsRequest": {
@@ -4443,6 +4580,12 @@
           "traits": {
             "smithy.api#documentation": "Synchronization id"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4452,7 +4595,7 @@
     "com.azure.datashare#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datashare#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.datashare#OperationList"
@@ -4462,10 +4605,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataShare/operations",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available operations\n\nList of available operations",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#OperationList": {
@@ -4767,6 +4917,20 @@
         "smithy.api#documentation": "Properties on operations"
       }
     },
+    "com.azure.datashare#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.datashare#ListInvitationByShare": {
       "type": "operation",
       "input": {
@@ -4780,10 +4944,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/invitations",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Invitations in a share.\n\nList invitations in a share",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#InvitationList": {
@@ -5008,6 +5179,12 @@
           "traits": {
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5483,10 +5660,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/dataSetMappings",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DataSetMappings in a share subscription.\n\nList DataSetMappings in a share subscription",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#DataSetMappingList": {
@@ -5692,6 +5876,12 @@
           "traits": {
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6256,10 +6446,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DataSets in a share.\n\nList DataSets in a share",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#DataSetList": {
@@ -6477,6 +6674,12 @@
           "traits": {
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "Sorts the results using OData syntax."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7386,10 +7589,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataShare/listInvitations",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the invitations\n\nLists invitations",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ConsumerInvitationList": {
@@ -7470,6 +7680,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "The continuation token"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7489,10 +7705,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Accounts in a resource group\n\nList Accounts in ResourceGroup",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#AccountList": {
@@ -7728,6 +7951,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "Continuation token"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8249,10 +8478,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataShare/accounts",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Accounts in a subscription\n\nList Accounts in Subscription",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datashare#ListAccountBySubscriptionRequest": {
@@ -8271,6 +8507,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "Continuation token"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones",
           "code": 200,
-          "apiVersion": "2018-05-01"
+          "apiVersion": "2018-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the DNS zones in all resource groups in a subscription.",
-        "com.distilled.openapi#apiVersion": "2018-05-01"
+        "com.distilled.openapi#apiVersion": "2018-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dns#ZoneListResult": {
@@ -257,6 +264,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of DNS zones to return. If not specified, returns up to 100 zones."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -406,10 +419,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones",
           "code": 200,
-          "apiVersion": "2018-05-01"
+          "apiVersion": "2018-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the DNS zones within a resource group.",
-        "com.distilled.openapi#apiVersion": "2018-05-01"
+        "com.distilled.openapi#apiVersion": "2018-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dns#ListZoneByResourceGroupRequest": {
@@ -436,6 +456,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of record sets to return. If not specified, returns up to 100 record sets."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -968,10 +994,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/all",
           "code": 200,
-          "apiVersion": "2018-05-01"
+          "apiVersion": "2018-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all record sets in a DNS zone.",
-        "com.distilled.openapi#apiVersion": "2018-05-01"
+        "com.distilled.openapi#apiVersion": "2018-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dns#RecordSetListResult": {
@@ -1484,6 +1517,12 @@
             "smithy.api#httpQuery": "$recordsetnamesuffix",
             "smithy.api#documentation": "The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1503,10 +1542,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets",
           "code": 200,
-          "apiVersion": "2018-05-01"
+          "apiVersion": "2018-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all record sets in a DNS zone.",
-        "com.distilled.openapi#apiVersion": "2018-05-01"
+        "com.distilled.openapi#apiVersion": "2018-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dns#ListRecordSetByDnsZoneRequest": {
@@ -1549,6 +1595,12 @@
             "smithy.api#httpQuery": "$recordsetnamesuffix",
             "smithy.api#documentation": "The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1568,10 +1620,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}",
           "code": 200,
-          "apiVersion": "2018-05-01"
+          "apiVersion": "2018-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the record sets of a specified type in a DNS zone.",
-        "com.distilled.openapi#apiVersion": "2018-05-01"
+        "com.distilled.openapi#apiVersion": "2018-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dns#ListRecordSetByTypeRequest": {
@@ -1621,6 +1680,12 @@
           "traits": {
             "smithy.api#httpQuery": "$recordsetnamesuffix",
             "smithy.api#documentation": "The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

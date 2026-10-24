@@ -165,6 +165,8 @@ export interface ListAppByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group that contains the IoT Central application. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type AppTagsMap = { [key: string]: string | undefined };
@@ -196,15 +198,19 @@ export interface AppListResult {
   /** The link used to get the next page of IoT Central Applications. */
   nextLink?: string;
   /** A list of IoT Central Applications. */
-  value?: AppListResultValueList;
+  value: AppListResultValueList;
 }
 export interface ListAppBySubscriptionRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAppTemplatesRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** IoT Central Application Template Locations. */
 export interface AppTemplateLocations {
@@ -241,9 +247,12 @@ export interface AppTemplatesResult {
   /** The link used to get the next page of IoT Central application templates. */
   nextLink?: string;
   /** A list of IoT Central Application Templates. */
-  value?: AppTemplatesResultValueList;
+  value: AppTemplatesResultValueList;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft IoT Central */
@@ -273,7 +282,7 @@ export interface OperationListResult {
   /** The link used to get the next page of IoT Central description objects. */
   nextLink?: string;
   /** A list of operations supported by the Microsoft.IoTCentral resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
 }
 /** Instance tags */
 export type UpdateAppRequestTagsMap = { [key: string]: string | undefined };
@@ -394,63 +403,91 @@ export const GetApp: API.OperationMethod<
 
 export type ListAppByResourceGroupError = AzureOpError;
 /** Get all the IoT Central Applications in a resource group. */
-export const ListAppByResourceGroup: API.OperationMethod<
+export const ListAppByResourceGroup: API.PaginatedOperationMethod<
   ListAppByResourceGroupRequest,
   AppListResult,
   ListAppByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  App
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListAppByResourceGroupRequest>,
   output: __S(73, __c9, 1) as any as S.Schema<AppListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAppBySubscriptionError = AzureOpError;
 /** Get all IoT Central Applications in a subscription. */
-export const ListAppBySubscription: API.OperationMethod<
+export const ListAppBySubscription: API.PaginatedOperationMethod<
   ListAppBySubscriptionRequest,
   AppListResult,
   ListAppBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  App
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListAppBySubscriptionRequest>,
   output: __S(73, __c9, 1) as any as S.Schema<AppListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAppTemplatesError = AzureOpError;
 /** Get all available application templates. */
-export const ListAppTemplates: API.OperationMethod<
+export const ListAppTemplates: API.PaginatedOperationMethod<
   ListAppTemplatesRequest,
   AppTemplatesResult,
   ListAppTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AppTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<ListAppTemplatesRequest>,
   output: __S(93, __c11, 5) as any as S.Schema<AppTemplatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available IoT Central Resource Provider operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(100, __c12, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateAppError = AzureOpError;
 /** Update the metadata of an IoT Central application. */
@@ -650,12 +687,14 @@ function __c8(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAppByResourceGroupRequest" });
@@ -669,7 +708,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(72, __c9, 0)),
+          value: __S(72, __c9, 0),
         }),
       ).annotate({ identifier: "AppListResult" });
   }
@@ -680,12 +719,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/iotApps",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAppBySubscriptionRequest" });
@@ -697,12 +738,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.IoTCentral/appTemplates",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAppTemplatesRequest" });
@@ -734,7 +777,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(92, __c11, 4)),
+          value: __S(92, __c11, 4),
         }),
       ).annotate({ identifier: "AppTemplatesResult" });
   }
@@ -743,12 +786,15 @@ function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.IoTCentral/operations",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -776,7 +822,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(99, __c12, 3)),
+          value: __S(99, __c12, 3),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }

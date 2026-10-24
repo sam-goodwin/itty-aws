@@ -15,16 +15,95 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceDelete": "com.azure.servicenetworking#DeleteSecurityPoliciesInterface",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceDeleteResponse": "com.azure.servicenetworking#DeleteSecurityPoliciesInterfaceResponse",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceDeleteRequest": "com.azure.servicenetworking#DeleteSecurityPoliciesInterfaceRequest",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdate": "com.azure.servicenetworking#UpdateSecurityPoliciesInterface",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateResponse": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceResponse",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateResponseTagsMap": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequest": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceRequest",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequestTagsMap": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceRequestTagsMap",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceGet": "com.azure.servicenetworking#GetSecurityPoliciesInterface",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceGetResponse": "com.azure.servicenetworking#GetSecurityPoliciesInterfaceResponse",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceGetResponseTagsMap": "com.azure.servicenetworking#GetSecurityPoliciesInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceGetRequest": "com.azure.servicenetworking#GetSecurityPoliciesInterfaceRequest",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceListByTrafficController": "com.azure.servicenetworking#ListSecurityPoliciesInterfaceByTrafficController",
+      "com.azure.servicenetworking#SecurityPoliciesInterfaceListByTrafficControllerRequest": "com.azure.servicenetworking#ListSecurityPoliciesInterfaceByTrafficControllerRequest",
+      "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGet": "com.azure.servicenetworking#GetPrivateLinkResourcesInterface",
+      "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGetResponse": "com.azure.servicenetworking#GetPrivateLinkResourcesInterfaceResponse",
+      "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGetRequest": "com.azure.servicenetworking#GetPrivateLinkResourcesInterfaceRequest",
+      "com.azure.servicenetworking#PrivateLinkResourcesInterfaceListByTrafficController": "com.azure.servicenetworking#ListPrivateLinkResourcesInterfaceByTrafficController",
+      "com.azure.servicenetworking#PrivateLinkResourcesInterfaceListByTrafficControllerRequest": "com.azure.servicenetworking#ListPrivateLinkResourcesInterfaceByTrafficControllerRequest",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDelete": "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterface",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDeleteResponse": "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterfaceResponse",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDeleteRequest": "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterfaceRequest",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdate": "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterface",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdateResponse": "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterfaceResponse",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdateRequest": "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterfaceRequest",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGet": "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterface",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGetResponse": "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterfaceResponse",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGetRequest": "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterfaceRequest",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceListByTrafficController": "com.azure.servicenetworking#ListPrivateEndpointConnectionsInterfaceByTrafficController",
+      "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest": "com.azure.servicenetworking#ListPrivateEndpointConnectionsInterfaceByTrafficControllerRequest",
+      "com.azure.servicenetworking#FrontendsInterfaceDelete": "com.azure.servicenetworking#DeleteFrontendsInterface",
+      "com.azure.servicenetworking#FrontendsInterfaceDeleteResponse": "com.azure.servicenetworking#DeleteFrontendsInterfaceResponse",
+      "com.azure.servicenetworking#FrontendsInterfaceDeleteRequest": "com.azure.servicenetworking#DeleteFrontendsInterfaceRequest",
+      "com.azure.servicenetworking#FrontendsInterfaceUpdate": "com.azure.servicenetworking#UpdateFrontendsInterface",
+      "com.azure.servicenetworking#FrontendsInterfaceUpdateResponse": "com.azure.servicenetworking#UpdateFrontendsInterfaceResponse",
+      "com.azure.servicenetworking#FrontendsInterfaceUpdateResponseTagsMap": "com.azure.servicenetworking#UpdateFrontendsInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#FrontendsInterfaceUpdateRequest": "com.azure.servicenetworking#UpdateFrontendsInterfaceRequest",
+      "com.azure.servicenetworking#FrontendsInterfaceUpdateRequestTagsMap": "com.azure.servicenetworking#UpdateFrontendsInterfaceRequestTagsMap",
+      "com.azure.servicenetworking#FrontendsInterfaceGet": "com.azure.servicenetworking#GetFrontendsInterface",
+      "com.azure.servicenetworking#FrontendsInterfaceGetResponse": "com.azure.servicenetworking#GetFrontendsInterfaceResponse",
+      "com.azure.servicenetworking#FrontendsInterfaceGetResponseTagsMap": "com.azure.servicenetworking#GetFrontendsInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#FrontendsInterfaceGetRequest": "com.azure.servicenetworking#GetFrontendsInterfaceRequest",
+      "com.azure.servicenetworking#FrontendsInterfaceListByTrafficController": "com.azure.servicenetworking#ListFrontendsInterfaceByTrafficController",
+      "com.azure.servicenetworking#FrontendsInterfaceListByTrafficControllerRequest": "com.azure.servicenetworking#ListFrontendsInterfaceByTrafficControllerRequest",
+      "com.azure.servicenetworking#AssociationsInterfaceDelete": "com.azure.servicenetworking#DeleteAssociationsInterface",
+      "com.azure.servicenetworking#AssociationsInterfaceDeleteResponse": "com.azure.servicenetworking#DeleteAssociationsInterfaceResponse",
+      "com.azure.servicenetworking#AssociationsInterfaceDeleteRequest": "com.azure.servicenetworking#DeleteAssociationsInterfaceRequest",
+      "com.azure.servicenetworking#AssociationsInterfaceUpdate": "com.azure.servicenetworking#UpdateAssociationsInterface",
+      "com.azure.servicenetworking#AssociationsInterfaceUpdateResponse": "com.azure.servicenetworking#UpdateAssociationsInterfaceResponse",
+      "com.azure.servicenetworking#AssociationsInterfaceUpdateResponseTagsMap": "com.azure.servicenetworking#UpdateAssociationsInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#AssociationsInterfaceUpdateRequest": "com.azure.servicenetworking#UpdateAssociationsInterfaceRequest",
+      "com.azure.servicenetworking#AssociationsInterfaceUpdateRequestTagsMap": "com.azure.servicenetworking#UpdateAssociationsInterfaceRequestTagsMap",
+      "com.azure.servicenetworking#AssociationsInterfaceGet": "com.azure.servicenetworking#GetAssociationsInterface",
+      "com.azure.servicenetworking#AssociationsInterfaceGetResponse": "com.azure.servicenetworking#GetAssociationsInterfaceResponse",
+      "com.azure.servicenetworking#AssociationsInterfaceGetResponseTagsMap": "com.azure.servicenetworking#GetAssociationsInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#AssociationsInterfaceGetRequest": "com.azure.servicenetworking#GetAssociationsInterfaceRequest",
+      "com.azure.servicenetworking#AssociationsInterfaceListByTrafficController": "com.azure.servicenetworking#ListAssociationsInterfaceByTrafficController",
+      "com.azure.servicenetworking#AssociationsInterfaceListByTrafficControllerRequest": "com.azure.servicenetworking#ListAssociationsInterfaceByTrafficControllerRequest",
+      "com.azure.servicenetworking#TrafficControllerInterfaceDelete": "com.azure.servicenetworking#DeleteTrafficControllerInterface",
+      "com.azure.servicenetworking#TrafficControllerInterfaceDeleteResponse": "com.azure.servicenetworking#DeleteTrafficControllerInterfaceResponse",
+      "com.azure.servicenetworking#TrafficControllerInterfaceDeleteRequest": "com.azure.servicenetworking#DeleteTrafficControllerInterfaceRequest",
+      "com.azure.servicenetworking#TrafficControllerInterfaceUpdate": "com.azure.servicenetworking#UpdateTrafficControllerInterface",
+      "com.azure.servicenetworking#TrafficControllerInterfaceUpdateResponse": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceResponse",
+      "com.azure.servicenetworking#TrafficControllerInterfaceUpdateResponseTagsMap": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequest": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceRequest",
+      "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequestTagsMap": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceRequestTagsMap",
+      "com.azure.servicenetworking#TrafficControllerInterfaceGet": "com.azure.servicenetworking#GetTrafficControllerInterface",
+      "com.azure.servicenetworking#TrafficControllerInterfaceGetResponse": "com.azure.servicenetworking#GetTrafficControllerInterfaceResponse",
+      "com.azure.servicenetworking#TrafficControllerInterfaceGetResponseTagsMap": "com.azure.servicenetworking#GetTrafficControllerInterfaceResponseTagsMap",
+      "com.azure.servicenetworking#TrafficControllerInterfaceGetRequest": "com.azure.servicenetworking#GetTrafficControllerInterfaceRequest",
+      "com.azure.servicenetworking#TrafficControllerInterfaceListByResourceGroup": "com.azure.servicenetworking#ListTrafficControllerInterfaceByResourceGroup",
+      "com.azure.servicenetworking#TrafficControllerInterfaceListByResourceGroupRequest": "com.azure.servicenetworking#ListTrafficControllerInterfaceByResourceGroupRequest",
+      "com.azure.servicenetworking#TrafficControllerInterfaceListBySubscription": "com.azure.servicenetworking#ListTrafficControllerInterfaceBySubscription",
+      "com.azure.servicenetworking#TrafficControllerInterfaceListBySubscriptionRequest": "com.azure.servicenetworking#ListTrafficControllerInterfaceBySubscriptionRequest",
+      "com.azure.servicenetworking#OperationsList": "com.azure.servicenetworking#ListOperations",
+      "com.azure.servicenetworking#OperationsListResponse": "com.azure.servicenetworking#ListOperationsResponse",
+      "com.azure.servicenetworking#OperationsListResponseValueList": "com.azure.servicenetworking#ListOperationsResponseValueList",
+      "com.azure.servicenetworking#OperationsListRequest": "com.azure.servicenetworking#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.servicenetworking#DeleteSecurityPoliciesInterface": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#DeleteSecurityPoliciesInterfaceRequest"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceDeleteRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#DeleteSecurityPoliciesInterfaceResponse"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +116,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#DeleteSecurityPoliciesInterfaceResponse": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -59,7 +138,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#DeleteSecurityPoliciesInterfaceRequest": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -99,13 +178,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#UpdateSecurityPoliciesInterface": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceRequest"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceResponse"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -118,7 +197,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceResponse": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -146,7 +225,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -374,7 +453,7 @@
         "smithy.api#documentation": "Policy Type of the Security Policy"
       }
     },
-    "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -494,7 +573,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceRequest": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -530,7 +609,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceRequestTagsMap",
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -580,7 +659,7 @@
         "smithy.api#documentation": "Web Application Firewall Policy"
       }
     },
-    "com.azure.servicenetworking#UpdateSecurityPoliciesInterfaceRequestTagsMap": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -772,13 +851,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetSecurityPoliciesInterface": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#GetSecurityPoliciesInterfaceRequest"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceGetRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#GetSecurityPoliciesInterfaceResponse"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -791,7 +870,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#GetSecurityPoliciesInterfaceResponse": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -819,7 +898,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#GetSecurityPoliciesInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -842,7 +921,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#GetSecurityPoliciesInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -854,7 +933,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetSecurityPoliciesInterfaceRequest": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -894,10 +973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListSecurityPoliciesInterfaceByTrafficController": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceListByTrafficController": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListSecurityPoliciesInterfaceByTrafficControllerRequest"
+        "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceListByTrafficControllerRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#SecurityPolicyListResult"
@@ -907,10 +986,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/securityPolicies",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List SecurityPolicy resources by TrafficController",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicenetworking#SecurityPolicyListResult": {
@@ -1006,7 +1092,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#ListSecurityPoliciesInterfaceByTrafficControllerRequest": {
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceListByTrafficControllerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1032,19 +1118,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "traffic controller name for path"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#GetPrivateLinkResourcesInterface": {
+    "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#GetPrivateLinkResourcesInterfaceRequest"
+        "target": "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGetRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#GetPrivateLinkResourcesInterfaceResponse"
+        "target": "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1057,7 +1149,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#GetPrivateLinkResourcesInterfaceResponse": {
+    "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1145,7 +1237,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.servicenetworking#GetPrivateLinkResourcesInterfaceRequest": {
+    "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1185,10 +1277,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListPrivateLinkResourcesInterfaceByTrafficController": {
+    "com.azure.servicenetworking#PrivateLinkResourcesInterfaceListByTrafficController": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListPrivateLinkResourcesInterfaceByTrafficControllerRequest"
+        "target": "com.azure.servicenetworking#PrivateLinkResourcesInterfaceListByTrafficControllerRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#PrivateLinkResourceListResult"
@@ -1198,10 +1290,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List PrivateLinkResource resources by TrafficController",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicenetworking#PrivateLinkResourceListResult": {
@@ -1272,7 +1371,7 @@
         "smithy.api#documentation": "A private link resource."
       }
     },
-    "com.azure.servicenetworking#ListPrivateLinkResourcesInterfaceByTrafficControllerRequest": {
+    "com.azure.servicenetworking#PrivateLinkResourcesInterfaceListByTrafficControllerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1298,19 +1397,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "traffic controller name for path"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterface": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterfaceRequest"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDeleteRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterfaceResponse"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1323,7 +1428,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterfaceResponse": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1345,7 +1450,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterfaceRequest": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1385,13 +1490,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterface": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterfaceRequest"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterfaceResponse"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1404,7 +1509,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterfaceResponse": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1555,7 +1660,7 @@
         "smithy.api#documentation": "Reference to a private endpoint resource."
       }
     },
-    "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterfaceRequest": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1616,13 +1721,13 @@
         "smithy.api#documentation": "Properties of a Private Endpoint Connection."
       }
     },
-    "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterface": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterfaceRequest"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGetRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterfaceResponse"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1635,7 +1740,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterfaceResponse": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1673,7 +1778,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterfaceRequest": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1713,10 +1818,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListPrivateEndpointConnectionsInterfaceByTrafficController": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceListByTrafficController": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListPrivateEndpointConnectionsInterfaceByTrafficControllerRequest"
+        "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#PrivateEndpointConnectionListResult"
@@ -1726,10 +1831,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List PrivateEndpointConnection resources by TrafficController",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicenetworking#PrivateEndpointConnectionListResult": {
@@ -1800,7 +1912,7 @@
         "smithy.api#documentation": "Private Endpoint Connection resource of Traffic Controller."
       }
     },
-    "com.azure.servicenetworking#ListPrivateEndpointConnectionsInterfaceByTrafficControllerRequest": {
+    "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceListByTrafficControllerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1826,19 +1938,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "traffic controller name for path"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#DeleteFrontendsInterface": {
+    "com.azure.servicenetworking#FrontendsInterfaceDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#DeleteFrontendsInterfaceRequest"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceDeleteRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#DeleteFrontendsInterfaceResponse"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1851,7 +1969,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#DeleteFrontendsInterfaceResponse": {
+    "com.azure.servicenetworking#FrontendsInterfaceDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1873,7 +1991,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#DeleteFrontendsInterfaceRequest": {
+    "com.azure.servicenetworking#FrontendsInterfaceDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1913,13 +2031,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#UpdateFrontendsInterface": {
+    "com.azure.servicenetworking#FrontendsInterfaceUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#UpdateFrontendsInterfaceRequest"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#UpdateFrontendsInterfaceResponse"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1932,7 +2050,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#UpdateFrontendsInterfaceResponse": {
+    "com.azure.servicenetworking#FrontendsInterfaceUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1960,7 +2078,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateFrontendsInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#FrontendsInterfaceUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2106,7 +2224,7 @@
         "smithy.api#documentation": "Whether public network access is allowed for the frontend."
       }
     },
-    "com.azure.servicenetworking#UpdateFrontendsInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#FrontendsInterfaceUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2118,7 +2236,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#UpdateFrontendsInterfaceRequest": {
+    "com.azure.servicenetworking#FrontendsInterfaceUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2154,7 +2272,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateFrontendsInterfaceRequestTagsMap",
+          "target": "com.azure.servicenetworking#FrontendsInterfaceUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2258,7 +2376,7 @@
         "smithy.api#documentation": "Reference to an Association resource."
       }
     },
-    "com.azure.servicenetworking#UpdateFrontendsInterfaceRequestTagsMap": {
+    "com.azure.servicenetworking#FrontendsInterfaceUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2456,13 +2574,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetFrontendsInterface": {
+    "com.azure.servicenetworking#FrontendsInterfaceGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#GetFrontendsInterfaceRequest"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceGetRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#GetFrontendsInterfaceResponse"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2475,7 +2593,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#GetFrontendsInterfaceResponse": {
+    "com.azure.servicenetworking#FrontendsInterfaceGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2503,7 +2621,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#GetFrontendsInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#FrontendsInterfaceGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2526,7 +2644,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#GetFrontendsInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#FrontendsInterfaceGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2538,7 +2656,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetFrontendsInterfaceRequest": {
+    "com.azure.servicenetworking#FrontendsInterfaceGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2578,10 +2696,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListFrontendsInterfaceByTrafficController": {
+    "com.azure.servicenetworking#FrontendsInterfaceListByTrafficController": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListFrontendsInterfaceByTrafficControllerRequest"
+        "target": "com.azure.servicenetworking#FrontendsInterfaceListByTrafficControllerRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#FrontendListResult"
@@ -2591,10 +2709,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Frontend resources by TrafficController",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicenetworking#FrontendListResult": {
@@ -2690,7 +2815,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#ListFrontendsInterfaceByTrafficControllerRequest": {
+    "com.azure.servicenetworking#FrontendsInterfaceListByTrafficControllerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2716,19 +2841,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "traffic controller name for path"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#DeleteAssociationsInterface": {
+    "com.azure.servicenetworking#AssociationsInterfaceDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#DeleteAssociationsInterfaceRequest"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceDeleteRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#DeleteAssociationsInterfaceResponse"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2741,7 +2872,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#DeleteAssociationsInterfaceResponse": {
+    "com.azure.servicenetworking#AssociationsInterfaceDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2763,7 +2894,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#DeleteAssociationsInterfaceRequest": {
+    "com.azure.servicenetworking#AssociationsInterfaceDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2803,13 +2934,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#UpdateAssociationsInterface": {
+    "com.azure.servicenetworking#AssociationsInterfaceUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#UpdateAssociationsInterfaceRequest"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#UpdateAssociationsInterfaceResponse"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2822,7 +2953,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#UpdateAssociationsInterfaceResponse": {
+    "com.azure.servicenetworking#AssociationsInterfaceUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2850,7 +2981,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateAssociationsInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#AssociationsInterfaceUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2929,7 +3060,7 @@
         "smithy.api#documentation": "Association Type Enum"
       }
     },
-    "com.azure.servicenetworking#UpdateAssociationsInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#AssociationsInterfaceUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2941,7 +3072,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#UpdateAssociationsInterfaceRequest": {
+    "com.azure.servicenetworking#AssociationsInterfaceUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2977,7 +3108,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateAssociationsInterfaceRequestTagsMap",
+          "target": "com.azure.servicenetworking#AssociationsInterfaceUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3027,7 +3158,7 @@
         "smithy.api#documentation": "Association Subnet."
       }
     },
-    "com.azure.servicenetworking#UpdateAssociationsInterfaceRequestTagsMap": {
+    "com.azure.servicenetworking#AssociationsInterfaceUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3220,13 +3351,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetAssociationsInterface": {
+    "com.azure.servicenetworking#AssociationsInterfaceGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#GetAssociationsInterfaceRequest"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceGetRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#GetAssociationsInterfaceResponse"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3239,7 +3370,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#GetAssociationsInterfaceResponse": {
+    "com.azure.servicenetworking#AssociationsInterfaceGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3267,7 +3398,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#GetAssociationsInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#AssociationsInterfaceGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3290,7 +3421,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#GetAssociationsInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#AssociationsInterfaceGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3302,7 +3433,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetAssociationsInterfaceRequest": {
+    "com.azure.servicenetworking#AssociationsInterfaceGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3342,10 +3473,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListAssociationsInterfaceByTrafficController": {
+    "com.azure.servicenetworking#AssociationsInterfaceListByTrafficController": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListAssociationsInterfaceByTrafficControllerRequest"
+        "target": "com.azure.servicenetworking#AssociationsInterfaceListByTrafficControllerRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#AssociationListResult"
@@ -3355,10 +3486,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Association resources by TrafficController",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicenetworking#AssociationListResult": {
@@ -3454,7 +3592,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#ListAssociationsInterfaceByTrafficControllerRequest": {
+    "com.azure.servicenetworking#AssociationsInterfaceListByTrafficControllerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3480,19 +3618,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "traffic controller name for path"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#DeleteTrafficControllerInterface": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#DeleteTrafficControllerInterfaceRequest"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceDeleteRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#DeleteTrafficControllerInterfaceResponse"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3505,7 +3649,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#DeleteTrafficControllerInterfaceResponse": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -3527,7 +3671,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#DeleteTrafficControllerInterfaceRequest": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3559,13 +3703,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#UpdateTrafficControllerInterface": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceRequest"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceResponse"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3578,7 +3722,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#UpdateTrafficControllerInterfaceResponse": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3606,7 +3750,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3739,7 +3883,7 @@
         "smithy.api#documentation": "Configuration Endpoints."
       }
     },
-    "com.azure.servicenetworking#UpdateTrafficControllerInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3751,7 +3895,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#UpdateTrafficControllerInterfaceRequest": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3779,7 +3923,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#UpdateTrafficControllerInterfaceRequestTagsMap",
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3809,7 +3953,7 @@
         "smithy.api#documentation": "The updatable properties of the TrafficController."
       }
     },
-    "com.azure.servicenetworking#UpdateTrafficControllerInterfaceRequestTagsMap": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3987,13 +4131,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetTrafficControllerInterface": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#GetTrafficControllerInterfaceRequest"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceGetRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#GetTrafficControllerInterfaceResponse"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4006,7 +4150,7 @@
         "com.distilled.openapi#apiVersion": "2026-03-01"
       }
     },
-    "com.azure.servicenetworking#GetTrafficControllerInterfaceResponse": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4034,7 +4178,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.servicenetworking#GetTrafficControllerInterfaceResponseTagsMap",
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4057,7 +4201,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#GetTrafficControllerInterfaceResponseTagsMap": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4069,7 +4213,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#GetTrafficControllerInterfaceRequest": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4101,10 +4245,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListTrafficControllerInterfaceByResourceGroup": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListTrafficControllerInterfaceByResourceGroupRequest"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#TrafficControllerListResult"
@@ -4114,10 +4258,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List TrafficController resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicenetworking#TrafficControllerListResult": {
@@ -4213,7 +4364,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.servicenetworking#ListTrafficControllerInterfaceByResourceGroupRequest": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4231,16 +4382,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListTrafficControllerInterfaceBySubscription": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicenetworking#ListTrafficControllerInterfaceBySubscriptionRequest"
+        "target": "com.azure.servicenetworking#TrafficControllerInterfaceListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.servicenetworking#TrafficControllerListResult"
@@ -4250,13 +4407,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List TrafficController resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.servicenetworking#ListTrafficControllerInterfaceBySubscriptionRequest": {
+    "com.azure.servicenetworking#TrafficControllerInterfaceListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4266,36 +4430,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicenetworking#ListOperations": {
+    "com.azure.servicenetworking#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.servicenetworking#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.servicenetworking#ListOperationsResponse"
+        "target": "com.azure.servicenetworking#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.ServiceNetworking/operations",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.servicenetworking#ListOperationsResponse": {
+    "com.azure.servicenetworking#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.servicenetworking#ListOperationsResponseValueList",
+          "target": "com.azure.servicenetworking#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -4311,7 +4488,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicenetworking#ListOperationsResponseValueList": {
+    "com.azure.servicenetworking#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.servicenetworking#Operation"
@@ -4430,93 +4607,107 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.servicenetworking#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.servicenetworking#Servicenetworking": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.servicenetworking#DeleteSecurityPoliciesInterface"
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceDelete"
         },
         {
-          "target": "com.azure.servicenetworking#UpdateSecurityPoliciesInterface"
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdate"
         },
         {
           "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceCreateOrUpdate"
         },
         {
-          "target": "com.azure.servicenetworking#GetSecurityPoliciesInterface"
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceGet"
         },
         {
-          "target": "com.azure.servicenetworking#ListSecurityPoliciesInterfaceByTrafficController"
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceListByTrafficController"
         },
         {
-          "target": "com.azure.servicenetworking#GetPrivateLinkResourcesInterface"
+          "target": "com.azure.servicenetworking#PrivateLinkResourcesInterfaceGet"
         },
         {
-          "target": "com.azure.servicenetworking#ListPrivateLinkResourcesInterfaceByTrafficController"
+          "target": "com.azure.servicenetworking#PrivateLinkResourcesInterfaceListByTrafficController"
         },
         {
-          "target": "com.azure.servicenetworking#DeletePrivateEndpointConnectionsInterface"
+          "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceDelete"
         },
         {
-          "target": "com.azure.servicenetworking#UpdatePrivateEndpointConnectionsInterface"
+          "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceUpdate"
         },
         {
-          "target": "com.azure.servicenetworking#GetPrivateEndpointConnectionsInterface"
+          "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceGet"
         },
         {
-          "target": "com.azure.servicenetworking#ListPrivateEndpointConnectionsInterfaceByTrafficController"
+          "target": "com.azure.servicenetworking#PrivateEndpointConnectionsInterfaceListByTrafficController"
         },
         {
-          "target": "com.azure.servicenetworking#DeleteFrontendsInterface"
+          "target": "com.azure.servicenetworking#FrontendsInterfaceDelete"
         },
         {
-          "target": "com.azure.servicenetworking#UpdateFrontendsInterface"
+          "target": "com.azure.servicenetworking#FrontendsInterfaceUpdate"
         },
         {
           "target": "com.azure.servicenetworking#FrontendsInterfaceCreateOrUpdate"
         },
         {
-          "target": "com.azure.servicenetworking#GetFrontendsInterface"
+          "target": "com.azure.servicenetworking#FrontendsInterfaceGet"
         },
         {
-          "target": "com.azure.servicenetworking#ListFrontendsInterfaceByTrafficController"
+          "target": "com.azure.servicenetworking#FrontendsInterfaceListByTrafficController"
         },
         {
-          "target": "com.azure.servicenetworking#DeleteAssociationsInterface"
+          "target": "com.azure.servicenetworking#AssociationsInterfaceDelete"
         },
         {
-          "target": "com.azure.servicenetworking#UpdateAssociationsInterface"
+          "target": "com.azure.servicenetworking#AssociationsInterfaceUpdate"
         },
         {
           "target": "com.azure.servicenetworking#AssociationsInterfaceCreateOrUpdate"
         },
         {
-          "target": "com.azure.servicenetworking#GetAssociationsInterface"
+          "target": "com.azure.servicenetworking#AssociationsInterfaceGet"
         },
         {
-          "target": "com.azure.servicenetworking#ListAssociationsInterfaceByTrafficController"
+          "target": "com.azure.servicenetworking#AssociationsInterfaceListByTrafficController"
         },
         {
-          "target": "com.azure.servicenetworking#DeleteTrafficControllerInterface"
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceDelete"
         },
         {
-          "target": "com.azure.servicenetworking#UpdateTrafficControllerInterface"
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceUpdate"
         },
         {
           "target": "com.azure.servicenetworking#TrafficControllerInterfaceCreateOrUpdate"
         },
         {
-          "target": "com.azure.servicenetworking#GetTrafficControllerInterface"
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceGet"
         },
         {
-          "target": "com.azure.servicenetworking#ListTrafficControllerInterfaceByResourceGroup"
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceListByResourceGroup"
         },
         {
-          "target": "com.azure.servicenetworking#ListTrafficControllerInterfaceBySubscription"
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceListBySubscription"
         },
         {
-          "target": "com.azure.servicenetworking#ListOperations"
+          "target": "com.azure.servicenetworking#OperationsList"
         }
       ],
       "traits": {

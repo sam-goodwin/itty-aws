@@ -15,13 +15,26 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.serialconsole#SerialPortsConnect": "com.azure.serialconsole#ConnectSerialPort",
+      "com.azure.serialconsole#SerialPortsConnectRequest": "com.azure.serialconsole#ConnectSerialPortRequest",
+      "com.azure.serialconsole#SerialPortsCreate": "com.azure.serialconsole#CreateSerialPort",
+      "com.azure.serialconsole#SerialPortsCreateResponse": "com.azure.serialconsole#CreateSerialPortResponse",
+      "com.azure.serialconsole#SerialPortsCreateRequest": "com.azure.serialconsole#CreateSerialPortRequest",
+      "com.azure.serialconsole#SerialPortsGet": "com.azure.serialconsole#GetSerialPort",
+      "com.azure.serialconsole#SerialPortsGetResponse": "com.azure.serialconsole#GetSerialPortResponse",
+      "com.azure.serialconsole#SerialPortsGetRequest": "com.azure.serialconsole#GetSerialPortRequest",
+      "com.azure.serialconsole#SerialPortsList": "com.azure.serialconsole#ListSerialPorts",
+      "com.azure.serialconsole#SerialPortsListRequest": "com.azure.serialconsole#ListSerialPortsRequest",
+      "com.azure.serialconsole#SerialPortsListBySubscriptions": "com.azure.serialconsole#ListSerialPortBySubscriptions",
+      "com.azure.serialconsole#SerialPortsListBySubscriptionsRequest": "com.azure.serialconsole#ListSerialPortBySubscriptionsRequest"
+    }
   },
   "shapes": {
-    "com.azure.serialconsole#ConnectSerialPort": {
+    "com.azure.serialconsole#SerialPortsConnect": {
       "type": "operation",
       "input": {
-        "target": "com.azure.serialconsole#ConnectSerialPortRequest"
+        "target": "com.azure.serialconsole#SerialPortsConnectRequest"
       },
       "output": {
         "target": "com.azure.serialconsole#SerialPortConnectResult"
@@ -52,7 +65,7 @@
         "smithy.api#documentation": "Returns a connection string to the serial port of the resource."
       }
     },
-    "com.azure.serialconsole#ConnectSerialPortRequest": {
+    "com.azure.serialconsole#SerialPortsConnectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -108,13 +121,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.serialconsole#CreateSerialPort": {
+    "com.azure.serialconsole#SerialPortsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.serialconsole#CreateSerialPortRequest"
+        "target": "com.azure.serialconsole#SerialPortsCreateRequest"
       },
       "output": {
-        "target": "com.azure.serialconsole#CreateSerialPortResponse"
+        "target": "com.azure.serialconsole#SerialPortsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -127,7 +140,7 @@
         "com.distilled.openapi#apiVersion": "2024-07-01"
       }
     },
-    "com.azure.serialconsole#CreateSerialPortResponse": {
+    "com.azure.serialconsole#SerialPortsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -333,7 +346,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.serialconsole#CreateSerialPortRequest": {
+    "com.azure.serialconsole#SerialPortsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -395,13 +408,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.serialconsole#GetSerialPort": {
+    "com.azure.serialconsole#SerialPortsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.serialconsole#GetSerialPortRequest"
+        "target": "com.azure.serialconsole#SerialPortsGetRequest"
       },
       "output": {
-        "target": "com.azure.serialconsole#GetSerialPortResponse"
+        "target": "com.azure.serialconsole#SerialPortsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -414,7 +427,7 @@
         "com.distilled.openapi#apiVersion": "2024-07-01"
       }
     },
-    "com.azure.serialconsole#GetSerialPortResponse": {
+    "com.azure.serialconsole#SerialPortsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -452,7 +465,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.serialconsole#GetSerialPortRequest": {
+    "com.azure.serialconsole#SerialPortsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -508,10 +521,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.serialconsole#ListSerialPorts": {
+    "com.azure.serialconsole#SerialPortsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.serialconsole#ListSerialPortsRequest"
+        "target": "com.azure.serialconsole#SerialPortsListRequest"
       },
       "output": {
         "target": "com.azure.serialconsole#SerialPortListResult"
@@ -588,7 +601,7 @@
         "smithy.api#documentation": "Represents the serial port of the parent resource."
       }
     },
-    "com.azure.serialconsole#ListSerialPortsRequest": {
+    "com.azure.serialconsole#SerialPortsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -636,10 +649,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.serialconsole#ListSerialPortBySubscriptions": {
+    "com.azure.serialconsole#SerialPortsListBySubscriptions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.serialconsole#ListSerialPortBySubscriptionsRequest"
+        "target": "com.azure.serialconsole#SerialPortsListBySubscriptionsRequest"
       },
       "output": {
         "target": "com.azure.serialconsole#SerialPortListResult"
@@ -655,7 +668,7 @@
         "com.distilled.openapi#apiVersion": "2024-07-01"
       }
     },
-    "com.azure.serialconsole#ListSerialPortBySubscriptionsRequest": {
+    "com.azure.serialconsole#SerialPortsListBySubscriptionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -949,19 +962,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.serialconsole#ConnectSerialPort"
+          "target": "com.azure.serialconsole#SerialPortsConnect"
         },
         {
-          "target": "com.azure.serialconsole#CreateSerialPort"
+          "target": "com.azure.serialconsole#SerialPortsCreate"
         },
         {
-          "target": "com.azure.serialconsole#GetSerialPort"
+          "target": "com.azure.serialconsole#SerialPortsGet"
         },
         {
-          "target": "com.azure.serialconsole#ListSerialPorts"
+          "target": "com.azure.serialconsole#SerialPortsList"
         },
         {
-          "target": "com.azure.serialconsole#ListSerialPortBySubscriptions"
+          "target": "com.azure.serialconsole#SerialPortsListBySubscriptions"
         },
         {
           "target": "com.azure.serialconsole#EnableConsole"
@@ -974,89 +987,11 @@
         },
         {
           "target": "com.azure.serialconsole#ListOperations"
-        },
-        {
-          "target": "com.azure.serialconsole#DeleteSerialPort"
         }
       ],
       "traits": {
         "smithy.api#title": "Azure Serialconsole",
         "smithy.api#documentation": "Azure Serialconsole API — merged from the serialconsole resource-manager specs (latest stable api-version per resource provider)."
-      }
-    },
-    "com.azure.serialconsole#DeleteSerialPortRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
-          }
-        },
-        "resourceGroupName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the resource group."
-          }
-        },
-        "resourceProviderNamespace": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The resource provider namespace of the parent resource."
-          }
-        },
-        "parentResourceType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The resource type of the parent resource. For example: 'virtualMachines' or 'virtualMachineScaleSets'"
-          }
-        },
-        "parentResource": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the parent resource."
-          }
-        },
-        "serialPort": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the serial port to delete."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.serialconsole#DeleteSerialPort": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.serialconsole#DeleteSerialPortRequest"
-      },
-      "output": {
-        "target": "smithy.api#Unit"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourceType}/{parentResource}/providers/Microsoft.SerialConsole/serialPorts/{serialPort}",
-          "code": 200,
-          "apiVersion": "2024-07-01"
-        },
-        "smithy.api#documentation": "Deletes a serial port",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
       }
     }
   }

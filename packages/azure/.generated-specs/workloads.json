@@ -137,6 +137,7 @@
       "com.azure.workloads#OperationsList": "com.azure.workloads#ListOperations",
       "com.azure.workloads#OperationsListResponse": "com.azure.workloads#ListOperationsResponse",
       "com.azure.workloads#OperationsListResponseValueList": "com.azure.workloads#ListOperationsResponseValueList",
+      "com.azure.workloads#OperationsListRequest": "com.azure.workloads#ListOperationsRequest",
       "com.azure.workloads#SAPDatabaseInstancesStopInstance": "com.azure.workloads#StopSAPDatabaseInstanceInstance",
       "com.azure.workloads#SAPDatabaseInstancesStopInstanceResponse": "com.azure.workloads#StopSAPDatabaseInstanceInstanceResponse",
       "com.azure.workloads#SAPDatabaseInstancesStopInstanceResponseOperationsList": "com.azure.workloads#StopSAPDatabaseInstanceInstanceResponseOperationsList",
@@ -1990,10 +1991,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Database resources associated with a Virtual Instance for SAP solutions resource.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2024-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPDatabaseInstanceListResult": {
@@ -2114,6 +2122,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3402,10 +3416,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SAP Central Services Instance resource for the given Virtual Instance for SAP solutions resource.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2024-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPCentralServerInstanceListResult": {
@@ -3526,6 +3547,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4545,10 +4572,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SAP Application Server Instance resources for a given Virtual Instance for SAP solutions resource.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2024-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPApplicationServerInstanceListResult": {
@@ -4669,6 +4703,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5663,10 +5703,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all Virtual Instances for SAP solutions resources in a Resource Group.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2024-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPVirtualInstanceListResult": {
@@ -5786,6 +5833,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5805,10 +5858,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/sapVirtualInstances",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all Virtual Instances for SAP solutions resources in a Subscription.",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2024-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SapVirtualInstancesListBySubscriptionRequest": {
@@ -5820,6 +5880,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6543,7 +6609,7 @@
     "com.azure.workloads#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.workloads#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.workloads#OperationsListResponse"
@@ -6553,10 +6619,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Workloads/operations",
           "code": 200,
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-09-01"
+        "com.distilled.openapi#apiVersion": "2024-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#OperationsListResponse": {
@@ -6696,6 +6769,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.workloads#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.workloads#SAPDatabaseInstancesStopInstance": {
@@ -7785,10 +7872,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SAP Application Server Instance resources for a given Virtual Instance for SAP solutions resource.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPApplicationServerInstanceList": {
@@ -8115,6 +8209,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8663,10 +8763,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Database resources associated with a Virtual Instance for SAP solutions resource.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPDatabaseInstanceList": {
@@ -8865,6 +8972,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9413,10 +9526,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SAP Central Services Instance resource for the given Virtual Instance for SAP solutions resource.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPCentralInstanceList": {
@@ -9775,6 +9895,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10350,10 +10476,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/sapVirtualInstances",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all Virtual Instances for SAP solutions resources in a Subscription.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPVirtualInstanceList": {
@@ -10717,6 +10850,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -10736,10 +10875,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all Virtual Instances for SAP solutions resources in a Resource Group.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#SAPVirtualInstancesListByResourceGroupRequest": {
@@ -10759,6 +10905,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13425,10 +13577,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of provider instances in the specified SAP monitor.\n\nGets a list of provider instances in the specified SAP monitor. The operations returns various properties of each provider instances.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#ProviderInstanceListResult": {
@@ -13563,6 +13722,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the SAP monitor resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14493,10 +14658,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of SAP monitors\n\nGets a list of SAP monitors in the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#MonitorListResult": {
@@ -14649,6 +14821,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14668,10 +14846,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/monitors",
           "code": 200,
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of SAP monitors in the specified subscription.\n\nGets a list of SAP monitors in the specified subscription. The operations returns various properties of each SAP monitor.",
-        "com.distilled.openapi#apiVersion": "2023-04-01"
+        "com.distilled.openapi#apiVersion": "2023-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.workloads#MonitorsListRequest": {
@@ -14683,6 +14868,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

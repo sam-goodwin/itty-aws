@@ -622,10 +622,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the users registered on a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#UserList": {
@@ -729,6 +736,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Specify $filter='Type eq <type>' to filter on user type property"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2174,10 +2187,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the triggers configured in the device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#TriggerList": {
@@ -2281,6 +2301,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Specify $filter='CustomContextTag eq <tag>' to filter on custom context tag property"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2962,10 +2988,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the containers of a storage Account in a Data Box Edge/Data Box Gateway device.\n\nLists all the containers of a storage Account in a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#ContainerList": {
@@ -3070,6 +3103,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The storage account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3524,10 +3563,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the StorageAccounts in a Data Box Edge/Data Box Gateway device.\n\nLists all the StorageAccounts in a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#StorageAccountList": {
@@ -3624,6 +3670,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4042,10 +4094,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the storage account credentials in a Data Box Edge/Data Box Gateway device.\n\nGets all the storage account credentials in a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#StorageAccountCredentialList": {
@@ -4142,6 +4201,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5006,10 +5071,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the shares in a Data Box Edge/Data Box Gateway device.\n\nLists all the shares in a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#ShareList": {
@@ -5106,6 +5178,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5756,10 +5834,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists metric configurations in a role.\n\nLists metric configurations in a role.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#MonitoringMetricConfigurationList": {
@@ -5864,6 +5949,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the role."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6226,10 +6317,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the addons configured in the role.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#AddonList": {
@@ -6334,6 +6432,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the role."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6652,10 +6756,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the roles configured in a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#RoleList": {
@@ -6752,6 +6863,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7564,10 +7681,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the orders related to a Data Box Edge/Data Box Gateway device.\n\nLists all the orders related to a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#OrderList": {
@@ -7669,6 +7793,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8216,10 +8346,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/nodes",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the nodes currently configured under this Data Box Edge device",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#NodeList": {
@@ -8397,6 +8534,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10910,10 +11053,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the bandwidth schedules for a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#BandwidthSchedulesList": {
@@ -11010,6 +11160,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11241,10 +11397,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/alerts",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the alerts for a Data Box Edge/Data Box Gateway device.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#AlertList": {
@@ -11340,6 +11503,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The device name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12801,10 +12970,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Data Box Edge/Data Box Gateway devices in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#DataBoxEdgeDeviceList": {
@@ -12949,6 +13125,12 @@
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12968,10 +13150,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Data Box Edge/Data Box Gateway devices in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#ListDeviceBySubscriptionRequest": {
@@ -12990,6 +13179,12 @@
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13010,10 +13205,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/availableSkus",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the available Skus and information related to them.\n\nList all the available Skus and information related to them.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#DataBoxEdgeSkuList": {
@@ -13358,6 +13560,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13367,7 +13575,7 @@
     "com.azure.databoxedge#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.databoxedge#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.databoxedge#OperationsList"
@@ -13377,10 +13585,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataBoxEdge/operations",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the supported operations.\n\nList the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databoxedge#OperationsList": {
@@ -13820,6 +14035,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Operation display properties."
+      }
+    },
+    "com.azure.databoxedge#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.databoxedge#Databoxedge": {

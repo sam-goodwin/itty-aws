@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the predictions in the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#PredictionListResult": {
@@ -452,6 +459,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2510,10 +2523,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the role assignments for the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#RoleAssignmentListResult": {
@@ -2600,6 +2620,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2619,10 +2645,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roles",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the roles for the hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#RoleListResult": {
@@ -2729,6 +2762,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2748,10 +2787,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the links in the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#LinkListResult": {
@@ -3124,6 +3170,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3937,10 +3989,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all available views for given user in the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#ViewListResult": {
@@ -4034,6 +4093,12 @@
             "smithy.api#httpQuery": "userId",
             "smithy.api#required": {},
             "smithy.api#documentation": "The user ID. Use * to retrieve hub level views."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4217,10 +4282,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all available widget types in the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#WidgetTypeListResult": {
@@ -4307,6 +4379,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4326,10 +4404,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the KPIs in the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#KpiListResult": {
@@ -4863,6 +4948,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5454,10 +5545,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the connector mappings in the specified connector.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#ConnectorMappingListResult": {
@@ -6094,6 +6192,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the connector."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6454,10 +6558,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the connectors in the specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#ConnectorListResult": {
@@ -6675,6 +6786,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7177,10 +7294,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the authorization policies in a specified hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#AuthorizationPolicyListResult": {
@@ -7266,6 +7390,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7501,10 +7631,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all relationship links in the hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#RelationshipLinkListResult": {
@@ -7789,6 +7926,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8152,10 +8295,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all relationships in the hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#RelationshipListResult": {
@@ -8700,6 +8850,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the hub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9337,10 +9493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all interactions in the hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#InteractionListResult": {
@@ -9792,6 +9955,12 @@
           "traits": {
             "smithy.api#httpQuery": "locale-code",
             "smithy.api#documentation": "Locale of interaction to retrieve, default is en-us."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10332,10 +10501,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all profile in the hub.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#ProfileListResult": {
@@ -10726,6 +10902,12 @@
           "traits": {
             "smithy.api#httpQuery": "locale-code",
             "smithy.api#documentation": "Locale of profile to retrieve, default is en-us."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11211,10 +11393,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CustomerInsights/hubs",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all hubs in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#HubListResult": {
@@ -11373,6 +11562,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11392,10 +11587,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the hubs in a resource group.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#ListHubByResourceGroupRequest": {
@@ -11415,6 +11617,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11862,7 +12070,7 @@
     "com.azure.customer_insights#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.customer_insights#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.customer_insights#OperationListResult"
@@ -11872,10 +12080,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CustomerInsights/operations",
           "code": 200,
-          "apiVersion": "2017-04-26"
+          "apiVersion": "2017-04-26",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Customer Insights REST API operations.",
-        "com.distilled.openapi#apiVersion": "2017-04-26"
+        "com.distilled.openapi#apiVersion": "2017-04-26",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.customer_insights#OperationListResult": {
@@ -11951,6 +12166,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.customer_insights#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.customer_insights#CustomerInsights": {

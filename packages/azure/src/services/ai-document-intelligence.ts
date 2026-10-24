@@ -1463,6 +1463,8 @@ export interface ListDocumentClassifierClassifiersRequest {
   endpoint: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DocumentClassifierDetails items on this page */
 export type PagedDocumentClassifierDetailsValueList = Array<DocumentClassifierDetails>;
@@ -1478,6 +1480,8 @@ export interface ListDocumentModelAnalyzeBatchResultsRequest {
   endpoint: string;
   /** Unique document model name. */
   modelId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The AnalyzeBatchOperation items on this page */
 export type PagedAnalyzeBatchOperationValueList = Array<AnalyzeBatchOperation>;
@@ -1493,6 +1497,8 @@ export interface ListDocumentModelModelsRequest {
   endpoint: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DocumentModelDetails items on this page */
 export type PagedDocumentModelDetailsValueList = Array<DocumentModelDetails>;
@@ -1508,6 +1514,8 @@ export interface ListMiscellaneousOperationOperationsRequest {
   endpoint: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DocumentIntelligenceOperationDetails items on this page */
 export type PagedDocumentIntelligenceOperationDetailsValueList =
@@ -2045,63 +2053,91 @@ export const GetMiscellaneousOperationResourceDetails: API.OperationMethod<
 
 export type ListDocumentClassifierClassifiersError = AzureOpError;
 /** List all document classifiers. */
-export const ListDocumentClassifierClassifiers: API.OperationMethod<
+export const ListDocumentClassifierClassifiers: API.PaginatedOperationMethod<
   ListDocumentClassifierClassifiersRequest,
   PagedDocumentClassifierDetails,
   ListDocumentClassifierClassifiersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DocumentClassifierDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<ListDocumentClassifierClassifiersRequest>,
   output: __S(1186, __c37, 2) as any as S.Schema<PagedDocumentClassifierDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDocumentModelAnalyzeBatchResultsError = AzureOpError;
 /** List batch document analysis results. */
-export const ListDocumentModelAnalyzeBatchResults: API.OperationMethod<
+export const ListDocumentModelAnalyzeBatchResults: API.PaginatedOperationMethod<
   ListDocumentModelAnalyzeBatchResultsRequest,
   PagedAnalyzeBatchOperation,
   ListDocumentModelAnalyzeBatchResultsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AnalyzeBatchOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c38, 0) as any as S.Schema<ListDocumentModelAnalyzeBatchResultsRequest>,
   output: __S(1218, __c38, 2) as any as S.Schema<PagedAnalyzeBatchOperation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDocumentModelModelsError = AzureOpError;
 /** List all document models */
-export const ListDocumentModelModels: API.OperationMethod<
+export const ListDocumentModelModels: API.PaginatedOperationMethod<
   ListDocumentModelModelsRequest,
   PagedDocumentModelDetails,
   ListDocumentModelModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DocumentModelDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<ListDocumentModelModelsRequest>,
   output: __S(1282, __c40, 2) as any as S.Schema<PagedDocumentModelDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMiscellaneousOperationOperationsError = AzureOpError;
 /** Lists all operations. */
-export const ListMiscellaneousOperationOperations: API.OperationMethod<
+export const ListMiscellaneousOperationOperations: API.PaginatedOperationMethod<
   ListMiscellaneousOperationOperationsRequest,
   PagedDocumentIntelligenceOperationDetails,
   ListMiscellaneousOperationOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DocumentIntelligenceOperationDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c41, 0) as any as S.Schema<ListMiscellaneousOperationOperationsRequest>,
   output: __S(1314, __c41, 2) as any as S.Schema<PagedDocumentIntelligenceOperationDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MiscellaneousOperationsGetDocumentClassifierCopyToOperationError = AzureOpError;
 /** Gets operation info. */
@@ -3256,6 +3292,7 @@ function __c37(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3264,6 +3301,7 @@ function __c37(j: number): any {
             host: "{endpoint}/documentintelligence",
             hostRaw: ["endpoint"],
             apiVersion: "2024-11-30",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -3286,6 +3324,7 @@ function __c38(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           modelId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3294,6 +3333,7 @@ function __c38(j: number): any {
             host: "{endpoint}/documentintelligence",
             hostRaw: ["endpoint"],
             apiVersion: "2024-11-30",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -3338,6 +3378,7 @@ function __c40(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3346,6 +3387,7 @@ function __c40(j: number): any {
             host: "{endpoint}/documentintelligence",
             hostRaw: ["endpoint"],
             apiVersion: "2024-11-30",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -3368,6 +3410,7 @@ function __c41(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3376,6 +3419,7 @@ function __c41(j: number): any {
             host: "{endpoint}/documentintelligence",
             hostRaw: ["endpoint"],
             apiVersion: "2024-11-30",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

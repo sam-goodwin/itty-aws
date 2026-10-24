@@ -1132,10 +1132,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Community/communityTrainings",
           "code": 200,
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CommunityTraining resources by resource group",
-        "com.distilled.openapi#apiVersion": "2023-11-01"
+        "com.distilled.openapi#apiVersion": "2023-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communitytraining#CommunityTrainingListResult": {
@@ -1291,6 +1298,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1310,10 +1323,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Community/communityTrainings",
           "code": 200,
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CommunityTraining resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2023-11-01"
+        "com.distilled.openapi#apiVersion": "2023-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communitytraining#ListCommunityTrainingBySubscriptionRequest": {
@@ -1326,6 +1346,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1335,7 +1361,7 @@
     "com.azure.communitytraining#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.communitytraining#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.communitytraining#ListOperationsResponse"
@@ -1345,10 +1371,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Community/operations",
           "code": 200,
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2023-11-01"
+        "com.distilled.openapi#apiVersion": "2023-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communitytraining#ListOperationsResponse": {
@@ -1488,6 +1521,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.communitytraining#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.communitytraining#Communitytraining": {

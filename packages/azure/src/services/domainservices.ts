@@ -613,6 +613,8 @@ export interface ListDomainServiceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags */
 export type DomainServiceTagsMap = { [key: string]: string | undefined };
@@ -667,11 +669,14 @@ export type DomainServiceListResultValueList = Array<DomainService>;
 /** The response from the List Domain Services operation. */
 export interface DomainServiceListResult {
   /** the list of domain services. */
-  value?: DomainServiceListResultValueList;
+  value: DomainServiceListResultValueList;
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export interface ListDomainServiceOperationsRequest {}
+export interface ListDomainServiceOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The operation supported by Domain Services. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -697,13 +702,15 @@ export type OperationEntityListResultValueList = Array<OperationEntity>;
 /** The list of domain service operation response. */
 export interface OperationEntityListResult {
   /** The list of operations. */
-  value?: OperationEntityListResultValueList;
+  value: OperationEntityListResultValueList;
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
 export interface ListDomainServicesRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListOuContainerRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -712,6 +719,8 @@ export interface ListOuContainerRequest {
   resourceGroupName: string;
   /** The name of the domain service. */
   domainServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags */
 export type OuContainerTagsMap = { [key: string]: string | undefined };
@@ -762,11 +771,14 @@ export type OuContainerListResultValueList = Array<OuContainer>;
 /** The response from the List OuContainer operation. */
 export interface OuContainerListResult {
   /** The list of OuContainer. */
-  value?: OuContainerListResultValueList;
+  value: OuContainerListResultValueList;
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export interface ListOuContainerOperationsRequest {}
+export interface ListOuContainerOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Resource tags */
 export type UpdateDomainServiceRequestTagsMap = { [key: string]: string | undefined };
 export interface UpdateDomainServiceRequest {
@@ -987,78 +999,113 @@ export const GetOuContainer: API.OperationMethod<
 
 export type ListDomainServiceByResourceGroupError = AzureOpError;
 /** List Domain Services in Resource Group The List Domain Services in Resource Group operation lists all the domain services available under the given resource group. */
-export const ListDomainServiceByResourceGroup: API.OperationMethod<
+export const ListDomainServiceByResourceGroup: API.PaginatedOperationMethod<
   ListDomainServiceByResourceGroupRequest,
   DomainServiceListResult,
   ListDomainServiceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DomainService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ListDomainServiceByResourceGroupRequest>,
   output: __S(481, __c15, 1) as any as S.Schema<DomainServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDomainServiceOperationsError = AzureOpError;
 /** Lists all the available Domain Services operations. */
-export const ListDomainServiceOperations: API.OperationMethod<
+export const ListDomainServiceOperations: API.PaginatedOperationMethod<
   ListDomainServiceOperationsRequest,
   OperationEntityListResult,
   ListDomainServiceOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<ListDomainServiceOperationsRequest>,
   output: __S(547, __c17, 3) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDomainServicesError = AzureOpError;
 /** List Domain Services in Subscription The List Domain Services in Subscription operation lists all the domain services available under the given subscription (and across all resource groups within that subscription). */
-export const ListDomainServices: API.OperationMethod<
+export const ListDomainServices: API.PaginatedOperationMethod<
   ListDomainServicesRequest,
   DomainServiceListResult,
   ListDomainServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DomainService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListDomainServicesRequest>,
   output: __S(481, __c15, 1) as any as S.Schema<DomainServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOuContainerError = AzureOpError;
 /** List of OuContainers in DomainService instance The List of OuContainers in DomainService instance. */
-export const ListOuContainer: API.OperationMethod<
+export const ListOuContainer: API.PaginatedOperationMethod<
   ListOuContainerRequest,
   OuContainerListResult,
   ListOuContainerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OuContainer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListOuContainerRequest>,
   output: __S(610, __c19, 2) as any as S.Schema<OuContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOuContainerOperationsError = AzureOpError;
 /** Lists all the available OuContainer operations. */
-export const ListOuContainerOperations: API.OperationMethod<
+export const ListOuContainerOperations: API.PaginatedOperationMethod<
   ListOuContainerOperationsRequest,
   OperationEntityListResult,
   ListOuContainerOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<ListOuContainerOperationsRequest>,
   output: __S(547, __c17, 3) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateDomainServiceError = AzureOpError;
 /** Update Domain Service (PATCH Resource) The Update Domain Service operation can be used to update the existing deployment. The update call only supports the properties listed in the PATCH body. */
@@ -1200,12 +1247,15 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Aad/operations",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOuContainerOperationsRequest" });
@@ -1562,12 +1612,14 @@ function __c14(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDomainServiceByResourceGroupRequest" });
@@ -1580,7 +1632,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(480, __c15, 0)),
+          value: __S(480, __c15, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainServiceListResult" });
@@ -1590,12 +1642,15 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.AAD/operations",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDomainServiceOperationsRequest" });
@@ -1625,7 +1680,7 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(546, __c17, 2)),
+          value: __S(546, __c17, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationEntityListResult" });
@@ -1637,12 +1692,14 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDomainServicesRequest" });
@@ -1656,12 +1713,14 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           domainServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer",
             code: 200,
             apiVersion: "2022-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOuContainerRequest" });
@@ -1670,7 +1729,7 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(609, __c19, 1)),
+          value: __S(609, __c19, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OuContainerListResult" });

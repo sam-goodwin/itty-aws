@@ -14,7 +14,8 @@
         "id": "UnreferencedShape",
         "namespace": "*"
       }
-    ]
+    ],
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.cognitiveservices_translator_text#TranslatorTransliterate": {
@@ -911,13 +912,13 @@
         "smithy.api#documentation": "Text needed for a dictionary example request "
       }
     },
-    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookup": {
+    "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionary": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequest"
+        "target": "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionaryRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupResponse"
+        "target": "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionaryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -933,7 +934,7 @@
         "smithy.api#documentation": "Provides alternative translations for a word and a small number of idiomatic phrases. Each translation has a `part-of-speech` and a list of `back-translations`. The back-translations enable a user to understand the translation in context. The Dictionary Example operation allows further drill down to see example uses of each translation pair."
       }
     },
-    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupResponse": {
+    "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionaryResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1028,7 +1029,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequest": {
+    "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionaryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1063,7 +1064,7 @@
           }
         },
         "body": {
-          "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequestBodyList",
+          "target": "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionaryRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -1074,7 +1075,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookupRequestBodyList": {
+    "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionaryRequestBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_translator_text#DictionaryLookupTextInput"
@@ -1336,7 +1337,7 @@
           "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryExamples"
         },
         {
-          "target": "com.azure.cognitiveservices_translator_text#TranslatorDictionaryLookup"
+          "target": "com.azure.cognitiveservices_translator_text#LookupTranslatorDictionary"
         },
         {
           "target": "com.azure.cognitiveservices_translator_text#TranslatorDetect"

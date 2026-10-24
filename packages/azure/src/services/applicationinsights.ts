@@ -179,6 +179,8 @@ export interface ListWorkbookByResourceGroupRequest {
   sourceId?: string;
   /** Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks. */
   canFetchContent?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WorkbookTagsMap = { [key: string]: string | undefined };
@@ -210,7 +212,7 @@ export type WorkbooksListResultValueList = Array<Workbook>;
 /** Workbook list result. */
 export interface WorkbooksListResult {
   /** An array of workbooks. */
-  value?: WorkbooksListResultValueList;
+  value: WorkbooksListResultValueList;
   /** The link to the next page of results. */
   nextLink?: string;
 }
@@ -229,6 +231,8 @@ export interface ListWorkbookBySubscriptionRequest {
   tags?: ListWorkbookBySubscriptionRequestTagsList;
   /** Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks. */
   canFetchContent?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWorkbooksRevisionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -237,6 +241,8 @@ export interface ListWorkbooksRevisionsRequest {
   resourceGroupName: string;
   /** The name of the workbook resource. The value must be an UUID. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The kind of workbook. Only valid value is shared. */
 export type WorkbookUpdateSharedTypeKind = "shared";
@@ -426,48 +432,69 @@ export const GetWorkbooksRevision: API.OperationMethod<
 
 export type ListWorkbookByResourceGroupError = AzureOpError;
 /** Get all Workbooks defined within a specified resource group and category. */
-export const ListWorkbookByResourceGroup: API.OperationMethod<
+export const ListWorkbookByResourceGroup: API.PaginatedOperationMethod<
   ListWorkbookByResourceGroupRequest,
   WorkbooksListResult,
   ListWorkbookByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workbook
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListWorkbookByResourceGroupRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkbookBySubscriptionError = AzureOpError;
 /** Get all Workbooks defined within a specified subscription and category. */
-export const ListWorkbookBySubscription: API.OperationMethod<
+export const ListWorkbookBySubscription: API.PaginatedOperationMethod<
   ListWorkbookBySubscriptionRequest,
   WorkbooksListResult,
   ListWorkbookBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workbook
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListWorkbookBySubscriptionRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkbooksRevisionsError = AzureOpError;
 /** Get the revisions for the workbook defined by its resourceName. */
-export const ListWorkbooksRevisions: API.OperationMethod<
+export const ListWorkbooksRevisions: API.PaginatedOperationMethod<
   ListWorkbooksRevisionsRequest,
   WorkbooksListResult,
   ListWorkbooksRevisionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workbook
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListWorkbooksRevisionsRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateWorkbookError = AzureOpError;
 /** Updates a workbook that has already been added. */
@@ -644,12 +671,14 @@ function __c5(j: number): any {
           tags: S.optional(__S(26, __c3, 2).pipe(T.Query())),
           sourceId: S.optional(S.String.pipe(T.Query())),
           canFetchContent: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkbookByResourceGroupRequest" });
@@ -662,7 +691,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(48, __c6, 0)),
+          value: __S(48, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkbooksListResult" });
@@ -677,12 +706,14 @@ function __c7(j: number): any {
           category: S.String.pipe(T.Query()),
           tags: S.optional(__S(26, __c3, 2).pipe(T.Query())),
           canFetchContent: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/workbooks",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkbookBySubscriptionRequest" });
@@ -696,12 +727,14 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkbooksRevisionsRequest" });

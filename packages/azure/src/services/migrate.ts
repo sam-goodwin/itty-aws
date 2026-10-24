@@ -8501,13 +8501,15 @@ export interface GetPrivateEndpointConnectionsControllerPrivateEndpointConnectio
   resourceGroupName: string;
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the list of machines. */
 export type PrivateEndpointConnectionCollectionValueList = Array<PrivateEndpointConnection_2>;
 /** Collection of PrivateLink resources. */
 export interface PrivateEndpointConnectionCollection {
   /** Gets the list of machines. */
-  value?: PrivateEndpointConnectionCollectionValueList;
+  value: PrivateEndpointConnectionCollectionValueList;
   /** Gets the value of next link. */
   nextLink?: string;
 }
@@ -8552,13 +8554,15 @@ export interface GetPrivateLinkResourceControllerPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of private links. */
 export type PrivateLinkResourceCollectionValueList = Array<PrivateLinkResource_2>;
 /** Collection of private link resources. */
 export interface PrivateLinkResourceCollection {
   /** List of private links. */
-  value?: PrivateLinkResourceCollectionValueList;
+  value: PrivateLinkResourceCollectionValueList;
   /** Value of next link. */
   nextLink?: string;
 }
@@ -10818,6 +10822,8 @@ export interface ImportJobsControllerListByImportSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A host resource belonging to a site resource. */
 export interface ImportJob {
@@ -10856,6 +10862,8 @@ export interface ImportMachinesControllerListByImportSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An machine resource belonging to a site resource. */
 export interface ImportMachine {
@@ -10894,6 +10902,8 @@ export interface ListAksAssessmentOperationByAssessmentProjectRequest {
   _filter?: string;
   /** Total Record Count Query Parameter. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM model of AKS Assessment. */
 export interface AKSAssessment {
@@ -10930,6 +10940,8 @@ export interface ListAksClusterOperationByAksAssessmentRequest {
   assessmentName: string;
   /** Filter Query Parameter. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM model of AKS Cluster. */
 export interface AKSCluster {
@@ -10966,6 +10978,8 @@ export interface ListAksCostDetailOperationByAksAssessmentRequest {
   assessmentName: string;
   /** Filter Query Parameter. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM model of AKS Cost Detail. */
 export interface AKSCostDetail {
@@ -10998,6 +11012,8 @@ export interface ListAksOptionsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM model of AKS Assessment Options. */
 export interface AKSAssessmentOptions {
@@ -11032,6 +11048,8 @@ export interface ListAksSummaryOperationByAksAssessmentRequest {
   projectName: string;
   /** AKS Assessment Name. */
   assessmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM model of AKS Summary. */
 export interface AKSSummary {
@@ -11076,6 +11094,8 @@ export interface ListAssessedMachinesOperationByAssessmentRequest {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Machine assessment Assessed Machine resource. */
 export interface AssessedMachine {
@@ -11118,6 +11138,8 @@ export interface ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Assessed SQL database web model class. */
 export interface AssessedSqlDatabaseV2 {
@@ -11160,6 +11182,8 @@ export interface ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Assessed SQL instance web model class. */
 export interface AssessedSqlInstanceV2 {
@@ -11202,6 +11226,8 @@ export interface ListAssessedSqlMachinesOperationBySqlAssessmentV2Request {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL Assessment REST resource. */
 export interface AssessedSqlMachine {
@@ -11244,6 +11270,8 @@ export interface ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Reque
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL Assessment REST resource. */
 export interface AssessedSqlRecommendedEntity {
@@ -11284,6 +11312,8 @@ export interface ListAssessedWebApplicationOperationByAksAssessmentRequest {
   _filter?: string;
   /** Total Record Count Query Parameter. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM model of Assessed Web Application. */
 export interface AssessedWebApplication {
@@ -11328,6 +11358,8 @@ export interface ListAssessedWebAppV2OperationByWebAppAssessmentV2Request {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Assessed Web app web model class. */
 export interface AssessedWebAppV2 {
@@ -11358,6 +11390,8 @@ export interface ListAssessmentOptionsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Assessment options resource. */
 export interface AssessmentOptions {
@@ -11386,6 +11420,8 @@ export interface ListAssessmentProjectsOperationByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AssessmentProjectTagsMap = { [key: string]: string | undefined };
@@ -11418,6 +11454,8 @@ export interface AssessmentProjectListResult {
 export interface ListAssessmentProjectsOperationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAssessmentProjectSummaryOperationByAssessmentProjectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11426,6 +11464,8 @@ export interface ListAssessmentProjectSummaryOperationByAssessmentProjectRequest
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Assessment project summary resource. */
 export interface AssessmentProjectSummary {
@@ -11458,6 +11498,8 @@ export interface ListAssessmentsOperationByGroupRequest {
   projectName: string;
   /** Group ARM name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Machine assessment resource. */
 export interface Assessment {
@@ -11500,6 +11542,8 @@ export interface ListAvsAssessedMachinesOperationByAvsAssessmentRequest {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** AVS assessment Assessed Machine resource. */
 export interface AvsAssessedMachine {
@@ -11530,6 +11574,8 @@ export interface ListAvsAssessmentOptionsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** AVS Assessment options resource. */
 export interface AvsAssessmentOptions {
@@ -11562,6 +11608,8 @@ export interface ListAvsAssessmentsOperationByGroupRequest {
   projectName: string;
   /** Group ARM name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** AVS assessment resource. */
 export interface AvsAssessment {
@@ -11596,13 +11644,15 @@ export interface ListDatabaseInstancesControllerDatabaseInstancesRequest {
   continuationToken?: string;
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets or sets the database instances. */
 export type DatabaseInstanceCollectionValueList = Array<DatabaseInstance>;
 /** Collection of database instances. */
 export interface DatabaseInstanceCollection {
   /** Gets or sets the database instances. */
-  value?: DatabaseInstanceCollectionValueList;
+  value: DatabaseInstanceCollectionValueList;
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
@@ -11617,13 +11667,15 @@ export interface ListDatabasesControllerDatabasesRequest {
   continuationToken?: string;
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets or sets the databases. */
 export type DatabaseCollectionValueList = Array<Database>;
 /** Collection of databases. */
 export interface DatabaseCollection {
   /** Gets or sets the databases. */
-  value?: DatabaseCollectionValueList;
+  value: DatabaseCollectionValueList;
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
@@ -11636,13 +11688,15 @@ export interface ListEventsControllerEventsRequest {
   migrateProjectName: string;
   /** The continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets or sets the machines. */
 export type EventCollectionValueList = Array<MigrateEvent>;
 /** Collection of events. */
 export interface EventCollection {
   /** Gets or sets the machines. */
-  value?: EventCollectionValueList;
+  value: EventCollectionValueList;
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
@@ -11653,6 +11707,8 @@ export interface ListGroupsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Group resource. */
 export interface Group {
@@ -11685,6 +11741,8 @@ export interface ListHypervClusterControllerByHypervSiteRequest {
   siteName: string;
   /** filter query */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A cluster resource belonging to a site resource. */
 export interface HypervCluster {
@@ -11715,6 +11773,8 @@ export interface ListHypervCollectorsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Hyper-V collector resource. */
 export interface HypervCollector {
@@ -11747,6 +11807,8 @@ export interface ListHypervHostControllerByHypervSiteRequest {
   siteName: string;
   /** filter query */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A host resource belonging to a site resource. */
 export interface HypervHost {
@@ -11777,6 +11839,8 @@ export interface ListHypervJobByHypervSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A job resource belonging to a site resource. */
 export type HypervJob = ImportJob;
@@ -11796,6 +11860,8 @@ export interface ListHypervJobsControllerByVmwareSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A host resource belonging to a site resource. */
 export type VmwareJob = ImportJob;
@@ -11823,6 +11889,8 @@ export interface ListHypervMachinesControllerByHypervSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A machine resource belonging to a site resource. */
 export interface HypervMachine {
@@ -11853,6 +11921,8 @@ export interface ListHypervRunAsAccountsControllerByHypervSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A machine resource belonging to a site resource. */
 export interface HypervRunAsAccountResource {
@@ -11881,6 +11951,8 @@ export interface ListHypervSiteByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type HypervSiteTagsMap = { [key: string]: string | undefined };
@@ -11913,6 +11985,8 @@ export interface HypervSiteListResult {
 export interface ListHypervSiteBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListHypervSitesControllerHealthSummaryRequest {
   /** The ID of the target subscription. */
@@ -11977,6 +12051,8 @@ export interface ListHypervSoftwareInventoriesControllerByHypervMachineRequest {
   siteName: string;
   /** HypervMachine name */
   machineName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** HyperV VM software inventory REST resource. */
 export interface HypervVmSoftwareInventory {
@@ -12017,6 +12093,8 @@ export interface ListIisWebApplicationsControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web application REST Resource. */
 export interface IisWebApplications {
@@ -12057,6 +12135,8 @@ export interface ListIisWebServersControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web server REST Resource. */
 export interface IisWebServers {
@@ -12087,6 +12167,8 @@ export interface ListImportCollectorsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Import collector resource. */
 export interface ImportCollector {
@@ -12117,6 +12199,8 @@ export interface ListImportJobsControllerDeletejobsRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A host resource belonging to a site resource. */
 export interface DeleteImportMachinesJob {
@@ -12136,7 +12220,7 @@ export type PagedDeleteImportMachinesJobValueList = Array<DeleteImportMachinesJo
 /** Paged collection of DeleteImportMachinesJob items */
 export interface PagedDeleteImportMachinesJob {
   /** The DeleteImportMachinesJob items on this page */
-  value?: PagedDeleteImportMachinesJobValueList;
+  value: PagedDeleteImportMachinesJobValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
@@ -12147,13 +12231,15 @@ export interface ListImportJobsControllerExportjobsRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExportImportedMachinesJob items on this page */
 export type PagedExportImportedMachinesJobValueList = Array<ExportImportedMachinesJob>;
 /** Paged collection of ExportImportedMachinesJob items */
 export interface PagedExportImportedMachinesJob {
   /** The ExportImportedMachinesJob items on this page */
-  value?: PagedExportImportedMachinesJobValueList;
+  value: PagedExportImportedMachinesJobValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
@@ -12164,13 +12250,15 @@ export interface ListImportJobsControllerImportjobsRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ImportMachinesJob items on this page */
 export type PagedImportMachinesJobValueList = Array<ImportMachinesJob>;
 /** Paged collection of ImportMachinesJob items */
 export interface PagedImportMachinesJob {
   /** The ImportMachinesJob items on this page */
-  value?: PagedImportMachinesJobValueList;
+  value: PagedImportMachinesJobValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
@@ -12179,6 +12267,8 @@ export interface ListImportSitesControllerByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ImportSiteTagsMap = { [key: string]: string | undefined };
@@ -12211,6 +12301,8 @@ export interface ImportSiteListResult {
 export interface ListImportSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListMachinesControllerByVmwareSiteRequest {
   /** The ID of the target subscription. */
@@ -12227,6 +12319,8 @@ export interface ListMachinesControllerByVmwareSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An machine resource belonging to a site resource. */
 export interface MachineResource {
@@ -12261,13 +12355,15 @@ export interface ListMachinesControllerMachinesRequest {
   continuationToken?: string;
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets or sets the machines. */
 export type MachineCollectionValueList = Array<Machine_2>;
 /** Collection of machines. */
 export interface MachineCollection {
   /** Gets or sets the machines. */
-  value?: MachineCollectionValueList;
+  value: MachineCollectionValueList;
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
@@ -12286,6 +12382,8 @@ export interface ListMachinesOperationByAssessmentProjectRequest {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Machine resource. */
 export interface Machine {
@@ -12314,6 +12412,8 @@ export interface ListMasterSitesControllerByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type MasterSiteTagsMap = { [key: string]: string | undefined };
@@ -12346,8 +12446,13 @@ export interface MasterSiteListResult {
 export interface ListMasterSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -12380,7 +12485,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -12391,6 +12496,8 @@ export interface ListPrivateEndpointConnectionControllerByMasterSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList_2 = Array<PrivateEndpointConnection_3>;
@@ -12408,6 +12515,8 @@ export interface ListPrivateEndpointConnectionOperationByAssessmentProjectReques
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
@@ -12425,6 +12534,8 @@ export interface ListPrivateEndpointConnectionProxyControllerPrivateEndpointConn
   resourceGroupName: string;
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the list of PrivateLink proxy resources. */
 export type PrivateEndpointConnectionProxyCollectionValueList =
@@ -12432,7 +12543,7 @@ export type PrivateEndpointConnectionProxyCollectionValueList =
 /** Collection of PrivateLink proxy resources. */
 export interface PrivateEndpointConnectionProxyCollection {
   /** Gets the list of PrivateLink proxy resources. */
-  value?: PrivateEndpointConnectionProxyCollectionValueList;
+  value: PrivateEndpointConnectionProxyCollectionValueList;
   /** Gets the value of next link. */
   nextLink?: string;
 }
@@ -12443,6 +12554,8 @@ export interface ListPrivateLinkResourceOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
@@ -12486,6 +12599,8 @@ export interface ListPrivateLinkResourcesControllerByMasterSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** REST model used to encapsulate Private Link properties for tracked resources. */
 export interface PrivateLinkResource_3 {
@@ -12512,6 +12627,8 @@ export interface PrivateLinkResourceListResult_2 {
 export interface ListProjectBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type MigrateProjectPropertiesRegisteredToolsItem =
   | "ServerDiscovery"
@@ -12639,7 +12756,7 @@ export type ProjectResultListValueList = Array<MigrateProject>;
 /** List of projects. */
 export interface ProjectResultList {
   /** List of projects. */
-  value?: ProjectResultListValueList;
+  value: ProjectResultListValueList;
   nextLink?: string;
 }
 export interface ListProjectsRequest {
@@ -12647,6 +12764,8 @@ export interface ListProjectsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRunAsAccountsControllerByVmwareSiteRequest {
   /** The ID of the target subscription. */
@@ -12655,6 +12774,8 @@ export interface ListRunAsAccountsControllerByVmwareSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A runasaccount resource belonging to a site resource. */
 export type VmwareRunAsAccountResource = HypervRunAsAccountResource;
@@ -12674,6 +12795,8 @@ export interface ListServerCollectorsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Physical server collector resource. */
 export type ServerCollector = HypervCollector;
@@ -12693,6 +12816,8 @@ export interface ListServerJobsControllerByServerSiteResourceRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A host resource belonging to a site resource. */
 export type ServerJob = ImportJob;
@@ -12712,6 +12837,8 @@ export interface ListServerRunAsAccountsControllerByServerSiteResourceRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A run as account resource belonging to a site resource. */
 export type ServerRunAsAccount = HypervRunAsAccountResource;
@@ -12739,6 +12866,8 @@ export interface ListServersControllerByServerSiteResourceRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A machine resource belonging to a site resource. */
 export interface Server {
@@ -12767,6 +12896,8 @@ export interface ListServerSitesControllerByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ServerSiteResourceTagsMap = { [key: string]: string | undefined };
@@ -12799,6 +12930,8 @@ export interface ServerSiteResourceListResult {
 export interface ListServerSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServerSitesControllerHealthSummaryRequest {
   /** The ID of the target subscription. */
@@ -12817,6 +12950,8 @@ export interface ListServerSoftwareInventoriesControllerByServerRequest {
   siteName: string;
   /** A server machine name */
   machineName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An software inventory resource belonging to a server resource. */
 export type ServerSoftwareInventory = HypervVmSoftwareInventory;
@@ -12834,6 +12969,8 @@ export interface ListSitesControllerByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VmwareSiteTagsMap = { [key: string]: string | undefined };
@@ -12868,6 +13005,8 @@ export interface VmwareSiteListResult {
 export interface ListSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSitesControllerHealthSummaryRequest {
   /** The ID of the target subscription. */
@@ -12884,13 +13023,15 @@ export interface ListSolutionsControllerSolutionsRequest {
   resourceGroupName: string;
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets or sets the list of solutions. */
 export type SolutionsCollectionValueList = Array<Solution>;
 /** Collection of solutions. */
 export interface SolutionsCollection {
   /** Gets or sets the list of solutions. */
-  value?: SolutionsCollectionValueList;
+  value: SolutionsCollectionValueList;
   /** Gets or sets the value of next link. */
   nextLink?: string;
 }
@@ -12901,6 +13042,8 @@ export interface ListSqlAssessmentOptionsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL Assessment options web model object. */
 export interface SqlAssessmentOptions {
@@ -12933,6 +13076,8 @@ export interface ListSqlAssessmentV2OperationByGroupRequest {
   projectName: string;
   /** Group ARM name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL Assessment REST resource. */
 export interface SqlAssessmentV2 {
@@ -12967,6 +13112,8 @@ export interface ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request {
   groupName: string;
   /** SQL Assessment arm name. */
   assessmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL Assessment REST resource. */
 export interface SqlAssessmentV2Summary {
@@ -13007,6 +13154,8 @@ export interface ListSqlAvailabilityGroupsControllerBySqlSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Class representing the web model of SQL Availability Group. */
 export interface SqlAvailabilityGroup {
@@ -13037,6 +13186,8 @@ export interface ListSqlCollectorOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SQL collector REST object. */
 export type SqlCollector = HypervCollector;
@@ -13066,6 +13217,8 @@ export interface ListSqlDatabasesControllerBySqlSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Class representing the web model of SQL Database. */
 export interface SqlDatabaseV2 {
@@ -13098,6 +13251,8 @@ export interface ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest {
   siteName: string;
   /** SQL site name. */
   sqlSiteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A SQL discovery site data source resource. */
 export interface SqlDiscoverySiteDataSource {
@@ -13130,6 +13285,8 @@ export interface ListSqlJobsControllerBySqlSiteRequest {
   siteName: string;
   /** SQL site name. */
   sqlSiteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Class representing the web model of SQL Database. */
 export type SqlJob = ImportJob;
@@ -13151,6 +13308,8 @@ export interface ListSqlRunAsAccountsControllerBySqlSiteRequest {
   siteName: string;
   /** SQL site name. */
   sqlSiteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A runasaccount resource belonging to a site resource. */
 export type SqlRunAsAccount = HypervRunAsAccountResource;
@@ -13180,6 +13339,8 @@ export interface ListSqlServersControllerBySqlSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Class representing the web model of SQL Server. */
 export interface SqlServerV2 {
@@ -13210,6 +13371,8 @@ export interface ListSqlSitesControllerByMasterSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL site web model. */
 export interface SqlSite {
@@ -13250,6 +13413,8 @@ export interface ListTomcatWebApplicationsControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web application REST Resource. */
 export interface TomcatWebApplications {
@@ -13290,6 +13455,8 @@ export interface ListTomcatWebServersControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web server REST Resource. */
 export interface TomcatWebServers {
@@ -13322,6 +13489,8 @@ export interface ListVcenterControllerByVmwareSiteRequest {
   siteName: string;
   /** filter query */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A vcenter resource belonging to a site resource. */
 export interface Vcenter {
@@ -13356,11 +13525,13 @@ export interface ListVirtualDesktopUserControllerVirtualDesktopUsersRequest {
   continuationToken?: string;
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type VirtualDesktopUserCollectionValueList = Array<VirtualDesktopUser>;
 /** Collection of virtual desktop users. */
 export interface VirtualDesktopUserCollection {
-  value?: VirtualDesktopUserCollectionValueList;
+  value: VirtualDesktopUserCollectionValueList;
   nextLink?: string;
 }
 export interface ListVmwareCollectorsOperationByAssessmentProjectRequest {
@@ -13370,6 +13541,8 @@ export interface ListVmwareCollectorsOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** VMware collector resource. */
 export type VmwareCollector = HypervCollector;
@@ -13389,6 +13562,8 @@ export interface ListVmwareHostControllerByVmwareSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A host resource belonging to a site resource. */
 export interface VmwareHost {
@@ -13421,6 +13596,8 @@ export interface ListVmwareSoftwareInventoriesControllerByMachineResourceRequest
   siteName: string;
   /** Machine name */
   machineName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An software inventory resource belonging to a machine resource. */
 export type VmwareMachineSoftwareInventory = HypervVmSoftwareInventory;
@@ -13440,6 +13617,8 @@ export interface ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest 
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web app Assessment options web model object. */
 export interface WebAppAssessmentOptions {
@@ -13472,6 +13651,8 @@ export interface ListWebAppAssessmentV2OperationByGroupRequest {
   projectName: string;
   /** Group ARM name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web app Assessment REST resource. */
 export interface WebAppAssessmentV2 {
@@ -13506,6 +13687,8 @@ export interface ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Reque
   groupName: string;
   /** Web app Assessment arm name. */
   assessmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web app Assessment REST resource. */
 export interface WebAppAssessmentV2Summary {
@@ -13536,6 +13719,8 @@ export interface ListWebAppCollectorOperationByAssessmentProjectRequest {
   resourceGroupName: string;
   /** Assessment Project Name */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The web app collector REST object. */
 export interface WebAppCollector {
@@ -13568,6 +13753,8 @@ export interface ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest
   siteName: string;
   /** Web app site name. */
   webAppSiteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web app data source web model. */
 export type DiscoverySiteDataSource = SqlDiscoverySiteDataSource;
@@ -13597,6 +13784,8 @@ export interface ListWebAppExtendedMachinesControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Web app extended machine REST Resource. */
 export interface WebAppExtendedMachine {
@@ -13637,6 +13826,8 @@ export interface ListWebApplicationsControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
 export type WebApplicationPropertiesMachineArmIdsList = Array<string>;
@@ -13732,6 +13923,8 @@ export interface ListWebAppRunAsAccountsControllerByWebAppSiteRequest {
   siteName: string;
   /** Web app site name. */
   webAppSiteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Run as account REST Resource. */
 export type WebAppRunAsAccount = HypervRunAsAccountResource;
@@ -13763,6 +13956,8 @@ export interface ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request {
   continuationToken?: string;
   /** Total record count. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Assessed Web app web model class. */
 export interface WebAppServicePlanV2 {
@@ -13793,6 +13988,8 @@ export interface ListWebAppSitesControllerByMasterSiteRequest {
   resourceGroupName: string;
   /** Site name */
   siteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** WebApp site web model. */
 export interface WebAppSite {
@@ -13833,6 +14030,8 @@ export interface ListWebServersControllerByWebAppSiteRequest {
   continuationToken?: string;
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the list of machines. */
 export type WebServerPropertiesMachineIdsList = Array<string>;
@@ -13908,11 +14107,13 @@ export interface ListWebServersControllerWebServersRequest {
   continuationToken?: string;
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type WebServerCollectionValueList = Array<WebServer>;
 /** Collection of web servers. */
 export interface WebServerCollection {
-  value?: WebServerCollectionValueList;
+  value: WebServerCollectionValueList;
   nextLink?: string;
 }
 export interface ListWebSitesControllerWebSitesRequest {
@@ -13926,11 +14127,13 @@ export interface ListWebSitesControllerWebSitesRequest {
   continuationToken?: string;
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type WebSiteCollectionValueList = Array<WebSite>;
 /** Collection of web sites. */
 export interface WebSiteCollection {
-  value?: WebSiteCollectionValueList;
+  value: WebSiteCollectionValueList;
   nextLink?: string;
 }
 export interface MasterSitesControllerErrorSummaryRequest {
@@ -17526,12 +17729,13 @@ export const GetPrivateEndpointConnectionProxyController: API.OperationMethod<
 
 export type GetPrivateEndpointConnectionsControllerPrivateEndpointConnectionsError = AzureOpError;
 /** Get the private endpoint connections. Get all the private endpoint connections under a migrate project. */
-export const GetPrivateEndpointConnectionsControllerPrivateEndpointConnections: API.OperationMethod<
+export const GetPrivateEndpointConnectionsControllerPrivateEndpointConnections: API.PaginatedOperationMethod<
   GetPrivateEndpointConnectionsControllerPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionCollection,
   GetPrivateEndpointConnectionsControllerPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection_2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3456,
     __c108,
@@ -17541,7 +17745,13 @@ export const GetPrivateEndpointConnectionsControllerPrivateEndpointConnections: 
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetPrivateLinkResourceControllerPrivateLinkResourceError = AzureOpError;
 /** Get the private link resource. Get the private link resource with the specified name. */
@@ -17564,12 +17774,13 @@ export const GetPrivateLinkResourceControllerPrivateLinkResource: API.OperationM
 
 export type GetPrivateLinkResourceControllerPrivateLinkResourcesError = AzureOpError;
 /** Get the list of private link resources. Get the list of private link resources under a resource group and migrate project. */
-export const GetPrivateLinkResourceControllerPrivateLinkResources: API.OperationMethod<
+export const GetPrivateLinkResourceControllerPrivateLinkResources: API.PaginatedOperationMethod<
   GetPrivateLinkResourceControllerPrivateLinkResourcesRequest,
   PrivateLinkResourceCollection,
   GetPrivateLinkResourceControllerPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource_2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3584,
     __c112,
@@ -17579,7 +17790,13 @@ export const GetPrivateLinkResourceControllerPrivateLinkResources: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetPrivateLinkResourceOperationError = AzureOpError;
 /** Get a PrivateLinkResource */
@@ -18389,42 +18606,57 @@ export const ImportImportSitesControllerUri: API.OperationMethod<
 
 export type ImportJobsControllerListByImportSiteError = AzureOpError;
 /** List ImportJob resources by ImportSite */
-export const ImportJobsControllerListByImportSite: API.OperationMethod<
+export const ImportJobsControllerListByImportSite: API.PaginatedOperationMethod<
   ImportJobsControllerListByImportSiteRequest,
   ImportJobListResult,
   ImportJobsControllerListByImportSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6432, __c201, 0) as any as S.Schema<ImportJobsControllerListByImportSiteRequest>,
   output: __S(6465, __c202, 1) as any as S.Schema<ImportJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ImportMachinesControllerListByImportSiteError = AzureOpError;
 /** List ImportMachine resources by ImportSite */
-export const ImportMachinesControllerListByImportSite: API.OperationMethod<
+export const ImportMachinesControllerListByImportSite: API.PaginatedOperationMethod<
   ImportMachinesControllerListByImportSiteRequest,
   ImportMachineListResult,
   ImportMachinesControllerListByImportSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6496, __c203, 0) as any as S.Schema<ImportMachinesControllerListByImportSiteRequest>,
   output: __S(6498, __c203, 2) as any as S.Schema<ImportMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAksAssessmentOperationByAssessmentProjectError = AzureOpError;
 /** List AKSAssessment resources by AssessmentProject */
-export const ListAksAssessmentOperationByAssessmentProject: API.OperationMethod<
+export const ListAksAssessmentOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListAksAssessmentOperationByAssessmentProjectRequest,
   AKSAssessmentListResult,
   ListAksAssessmentOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AKSAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     6528,
     __c204,
@@ -18434,91 +18666,133 @@ export const ListAksAssessmentOperationByAssessmentProject: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAksClusterOperationByAksAssessmentError = AzureOpError;
 /** List AKSCluster resources by AKSAssessment */
-export const ListAksClusterOperationByAksAssessment: API.OperationMethod<
+export const ListAksClusterOperationByAksAssessment: API.PaginatedOperationMethod<
   ListAksClusterOperationByAksAssessmentRequest,
   AKSClusterListResult,
   ListAksClusterOperationByAksAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AKSCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6560, __c205, 0) as any as S.Schema<ListAksClusterOperationByAksAssessmentRequest>,
   output: __S(6562, __c205, 2) as any as S.Schema<AKSClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAksCostDetailOperationByAksAssessmentError = AzureOpError;
 /** List AKSCostDetail resources by AKSAssessment */
-export const ListAksCostDetailOperationByAksAssessment: API.OperationMethod<
+export const ListAksCostDetailOperationByAksAssessment: API.PaginatedOperationMethod<
   ListAksCostDetailOperationByAksAssessmentRequest,
   AKSCostDetailListResult,
   ListAksCostDetailOperationByAksAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AKSCostDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6592, __c206, 0) as any as S.Schema<ListAksCostDetailOperationByAksAssessmentRequest>,
   output: __S(6595, __c206, 3) as any as S.Schema<AKSCostDetailListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAksOptionsOperationByAssessmentProjectError = AzureOpError;
 /** List AKSAssessmentOptions resources by AssessmentProject */
-export const ListAksOptionsOperationByAssessmentProject: API.OperationMethod<
+export const ListAksOptionsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListAksOptionsOperationByAssessmentProjectRequest,
   AKSAssessmentOptionsListResult,
   ListAksOptionsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AKSAssessmentOptions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6624, __c207, 0) as any as S.Schema<ListAksOptionsOperationByAssessmentProjectRequest>,
   output: __S(6626, __c207, 2) as any as S.Schema<AKSAssessmentOptionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAksSummaryOperationByAksAssessmentError = AzureOpError;
 /** List AKSSummary resources by AKSAssessment */
-export const ListAksSummaryOperationByAksAssessment: API.OperationMethod<
+export const ListAksSummaryOperationByAksAssessment: API.PaginatedOperationMethod<
   ListAksSummaryOperationByAksAssessmentRequest,
   AKSSummaryListResult,
   ListAksSummaryOperationByAksAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AKSSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6656, __c208, 0) as any as S.Schema<ListAksSummaryOperationByAksAssessmentRequest>,
   output: __S(6658, __c208, 2) as any as S.Schema<AKSSummaryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedMachinesOperationByAssessmentError = AzureOpError;
 /** List AssessedMachine resources by Assessment */
-export const ListAssessedMachinesOperationByAssessment: API.OperationMethod<
+export const ListAssessedMachinesOperationByAssessment: API.PaginatedOperationMethod<
   ListAssessedMachinesOperationByAssessmentRequest,
   AssessedMachineListResult,
   ListAssessedMachinesOperationByAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6976, __c218, 0) as any as S.Schema<ListAssessedMachinesOperationByAssessmentRequest>,
   output: __S(6978, __c218, 2) as any as S.Schema<AssessedMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Error = AzureOpError;
 /** List AssessedSqlDatabaseV2 resources by SqlAssessmentV2 */
-export const ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2: API.OperationMethod<
+export const ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2: API.PaginatedOperationMethod<
   ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request,
   AssessedSqlDatabaseV2ListResult,
   ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedSqlDatabaseV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7008,
     __c219,
@@ -18528,16 +18802,23 @@ export const ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Error = AzureOpError;
 /** List AssessedSqlInstanceV2 resources by SqlAssessmentV2 */
-export const ListAssessedSqlInstanceV2OperationBySqlAssessmentV2: API.OperationMethod<
+export const ListAssessedSqlInstanceV2OperationBySqlAssessmentV2: API.PaginatedOperationMethod<
   ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request,
   AssessedSqlInstanceV2ListResult,
   ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedSqlInstanceV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7040,
     __c220,
@@ -18547,16 +18828,23 @@ export const ListAssessedSqlInstanceV2OperationBySqlAssessmentV2: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedSqlMachinesOperationBySqlAssessmentV2Error = AzureOpError;
 /** List AssessedSqlMachine resources by SqlAssessmentV2 */
-export const ListAssessedSqlMachinesOperationBySqlAssessmentV2: API.OperationMethod<
+export const ListAssessedSqlMachinesOperationBySqlAssessmentV2: API.PaginatedOperationMethod<
   ListAssessedSqlMachinesOperationBySqlAssessmentV2Request,
   AssessedSqlMachineListResult,
   ListAssessedSqlMachinesOperationBySqlAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedSqlMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7072,
     __c221,
@@ -18566,16 +18854,23 @@ export const ListAssessedSqlMachinesOperationBySqlAssessmentV2: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Error = AzureOpError;
 /** List AssessedSqlRecommendedEntity resources by SqlAssessmentV2 */
-export const ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2: API.OperationMethod<
+export const ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2: API.PaginatedOperationMethod<
   ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request,
   AssessedSqlRecommendedEntityListResult,
   ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedSqlRecommendedEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7104,
     __c222,
@@ -18585,16 +18880,23 @@ export const ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2: API.Ope
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedWebApplicationOperationByAksAssessmentError = AzureOpError;
 /** List AssessedWebApplication resources by AKSAssessment */
-export const ListAssessedWebApplicationOperationByAksAssessment: API.OperationMethod<
+export const ListAssessedWebApplicationOperationByAksAssessment: API.PaginatedOperationMethod<
   ListAssessedWebApplicationOperationByAksAssessmentRequest,
   AssessedWebApplicationListResult,
   ListAssessedWebApplicationOperationByAksAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedWebApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7136,
     __c223,
@@ -18604,16 +18906,23 @@ export const ListAssessedWebApplicationOperationByAksAssessment: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessedWebAppV2OperationByWebAppAssessmentV2Error = AzureOpError;
 /** List AssessedWebAppV2 resources by WebAppAssessmentV2 */
-export const ListAssessedWebAppV2OperationByWebAppAssessmentV2: API.OperationMethod<
+export const ListAssessedWebAppV2OperationByWebAppAssessmentV2: API.PaginatedOperationMethod<
   ListAssessedWebAppV2OperationByWebAppAssessmentV2Request,
   AssessedWebAppV2ListResult,
   ListAssessedWebAppV2OperationByWebAppAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessedWebAppV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7168,
     __c224,
@@ -18623,16 +18932,23 @@ export const ListAssessedWebAppV2OperationByWebAppAssessmentV2: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessmentOptionsOperationByAssessmentProjectError = AzureOpError;
 /** List AssessmentOptions resources by AssessmentProject */
-export const ListAssessmentOptionsOperationByAssessmentProject: API.OperationMethod<
+export const ListAssessmentOptionsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListAssessmentOptionsOperationByAssessmentProjectRequest,
   AssessmentOptionsListResult,
   ListAssessmentOptionsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessmentOptions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7200,
     __c225,
@@ -18642,16 +18958,23 @@ export const ListAssessmentOptionsOperationByAssessmentProject: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessmentProjectsOperationByResourceGroupError = AzureOpError;
 /** List AssessmentProject resources by resource group */
-export const ListAssessmentProjectsOperationByResourceGroup: API.OperationMethod<
+export const ListAssessmentProjectsOperationByResourceGroup: API.PaginatedOperationMethod<
   ListAssessmentProjectsOperationByResourceGroupRequest,
   AssessmentProjectListResult,
   ListAssessmentProjectsOperationByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessmentProject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7232,
     __c226,
@@ -18661,16 +18984,23 @@ export const ListAssessmentProjectsOperationByResourceGroup: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessmentProjectsOperationBySubscriptionError = AzureOpError;
 /** List AssessmentProject resources by subscription ID */
-export const ListAssessmentProjectsOperationBySubscription: API.OperationMethod<
+export const ListAssessmentProjectsOperationBySubscription: API.PaginatedOperationMethod<
   ListAssessmentProjectsOperationBySubscriptionRequest,
   AssessmentProjectListResult,
   ListAssessmentProjectsOperationBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessmentProject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7296,
     __c228,
@@ -18680,16 +19010,23 @@ export const ListAssessmentProjectsOperationBySubscription: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessmentProjectSummaryOperationByAssessmentProjectError = AzureOpError;
 /** List AssessmentProjectSummary resources by AssessmentProject */
-export const ListAssessmentProjectSummaryOperationByAssessmentProject: API.OperationMethod<
+export const ListAssessmentProjectSummaryOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListAssessmentProjectSummaryOperationByAssessmentProjectRequest,
   AssessmentProjectSummaryListResult,
   ListAssessmentProjectSummaryOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssessmentProjectSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7456,
     __c233,
@@ -18699,31 +19036,45 @@ export const ListAssessmentProjectSummaryOperationByAssessmentProject: API.Opera
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssessmentsOperationByGroupError = AzureOpError;
 /** List Assessment resources by Group */
-export const ListAssessmentsOperationByGroup: API.OperationMethod<
+export const ListAssessmentsOperationByGroup: API.PaginatedOperationMethod<
   ListAssessmentsOperationByGroupRequest,
   AssessmentListResult,
   ListAssessmentsOperationByGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Assessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7488, __c234, 0) as any as S.Schema<ListAssessmentsOperationByGroupRequest>,
   output: __S(7490, __c234, 2) as any as S.Schema<AssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvsAssessedMachinesOperationByAvsAssessmentError = AzureOpError;
 /** List AvsAssessedMachine resources by AvsAssessment */
-export const ListAvsAssessedMachinesOperationByAvsAssessment: API.OperationMethod<
+export const ListAvsAssessedMachinesOperationByAvsAssessment: API.PaginatedOperationMethod<
   ListAvsAssessedMachinesOperationByAvsAssessmentRequest,
   AvsAssessedMachineListResult,
   ListAvsAssessedMachinesOperationByAvsAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvsAssessedMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7520,
     __c235,
@@ -18733,16 +19084,23 @@ export const ListAvsAssessedMachinesOperationByAvsAssessment: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvsAssessmentOptionsOperationByAssessmentProjectError = AzureOpError;
 /** List AvsAssessmentOptions resources by AssessmentProject */
-export const ListAvsAssessmentOptionsOperationByAssessmentProject: API.OperationMethod<
+export const ListAvsAssessmentOptionsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListAvsAssessmentOptionsOperationByAssessmentProjectRequest,
   AvsAssessmentOptionsListResult,
   ListAvsAssessmentOptionsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvsAssessmentOptions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7552,
     __c236,
@@ -18752,31 +19110,45 @@ export const ListAvsAssessmentOptionsOperationByAssessmentProject: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvsAssessmentsOperationByGroupError = AzureOpError;
 /** List AvsAssessment resources by Group */
-export const ListAvsAssessmentsOperationByGroup: API.OperationMethod<
+export const ListAvsAssessmentsOperationByGroup: API.PaginatedOperationMethod<
   ListAvsAssessmentsOperationByGroupRequest,
   AvsAssessmentListResult,
   ListAvsAssessmentsOperationByGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvsAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7584, __c237, 0) as any as S.Schema<ListAvsAssessmentsOperationByGroupRequest>,
   output: __S(7586, __c237, 2) as any as S.Schema<AvsAssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseInstancesControllerDatabaseInstancesError = AzureOpError;
 /** Gets a list of database instances in the migrate project. */
-export const ListDatabaseInstancesControllerDatabaseInstances: API.OperationMethod<
+export const ListDatabaseInstancesControllerDatabaseInstances: API.PaginatedOperationMethod<
   ListDatabaseInstancesControllerDatabaseInstancesRequest,
   DatabaseInstanceCollection,
   ListDatabaseInstancesControllerDatabaseInstancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7616,
     __c238,
@@ -18786,76 +19158,111 @@ export const ListDatabaseInstancesControllerDatabaseInstances: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabasesControllerDatabasesError = AzureOpError;
 /** Gets a list of databases in the migrate project. */
-export const ListDatabasesControllerDatabases: API.OperationMethod<
+export const ListDatabasesControllerDatabases: API.PaginatedOperationMethod<
   ListDatabasesControllerDatabasesRequest,
   DatabaseCollection,
   ListDatabasesControllerDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Database
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7648, __c239, 0) as any as S.Schema<ListDatabasesControllerDatabasesRequest>,
   output: __S(7650, __c239, 2) as any as S.Schema<DatabaseCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEventsControllerEventsError = AzureOpError;
 /** Gets a list of events in the migrate project. */
-export const ListEventsControllerEvents: API.OperationMethod<
+export const ListEventsControllerEvents: API.PaginatedOperationMethod<
   ListEventsControllerEventsRequest,
   EventCollection,
   ListEventsControllerEventsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MigrateEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7680, __c240, 0) as any as S.Schema<ListEventsControllerEventsRequest>,
   output: __S(7682, __c240, 2) as any as S.Schema<EventCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGroupsOperationByAssessmentProjectError = AzureOpError;
 /** List Group resources by AssessmentProject */
-export const ListGroupsOperationByAssessmentProject: API.OperationMethod<
+export const ListGroupsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListGroupsOperationByAssessmentProjectRequest,
   GroupListResult,
   ListGroupsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Group
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7712, __c241, 0) as any as S.Schema<ListGroupsOperationByAssessmentProjectRequest>,
   output: __S(7714, __c241, 2) as any as S.Schema<GroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervClusterControllerByHypervSiteError = AzureOpError;
 /** List HypervCluster resources by HypervSite */
-export const ListHypervClusterControllerByHypervSite: API.OperationMethod<
+export const ListHypervClusterControllerByHypervSite: API.PaginatedOperationMethod<
   ListHypervClusterControllerByHypervSiteRequest,
   HypervClusterListResult,
   ListHypervClusterControllerByHypervSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7744, __c242, 0) as any as S.Schema<ListHypervClusterControllerByHypervSiteRequest>,
   output: __S(7746, __c242, 2) as any as S.Schema<HypervClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervCollectorsOperationByAssessmentProjectError = AzureOpError;
 /** List HypervCollector resources by AssessmentProject */
-export const ListHypervCollectorsOperationByAssessmentProject: API.OperationMethod<
+export const ListHypervCollectorsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListHypervCollectorsOperationByAssessmentProjectRequest,
   HypervCollectorListResult,
   ListHypervCollectorsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervCollector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     7840,
     __c245,
@@ -18865,76 +19272,111 @@ export const ListHypervCollectorsOperationByAssessmentProject: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervHostControllerByHypervSiteError = AzureOpError;
 /** List HypervHost resources by HypervSite */
-export const ListHypervHostControllerByHypervSite: API.OperationMethod<
+export const ListHypervHostControllerByHypervSite: API.PaginatedOperationMethod<
   ListHypervHostControllerByHypervSiteRequest,
   HypervHostListResult,
   ListHypervHostControllerByHypervSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7904, __c247, 0) as any as S.Schema<ListHypervHostControllerByHypervSiteRequest>,
   output: __S(7906, __c247, 2) as any as S.Schema<HypervHostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervJobByHypervSiteError = AzureOpError;
 /** List HypervJob resources by HypervSite */
-export const ListHypervJobByHypervSite: API.OperationMethod<
+export const ListHypervJobByHypervSite: API.PaginatedOperationMethod<
   ListHypervJobByHypervSiteRequest,
   HypervJobListResult,
   ListHypervJobByHypervSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7936, __c248, 0) as any as S.Schema<ListHypervJobByHypervSiteRequest>,
   output: __S(6465, __c202, 1) as any as S.Schema<HypervJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervJobsControllerByVmwareSiteError = AzureOpError;
 /** List VmwareJob resources by VmwareSite */
-export const ListHypervJobsControllerByVmwareSite: API.OperationMethod<
+export const ListHypervJobsControllerByVmwareSite: API.PaginatedOperationMethod<
   ListHypervJobsControllerByVmwareSiteRequest,
   VmwareJobListResult,
   ListHypervJobsControllerByVmwareSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7968, __c249, 0) as any as S.Schema<ListHypervJobsControllerByVmwareSiteRequest>,
   output: __S(6465, __c202, 1) as any as S.Schema<VmwareJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervMachinesControllerByHypervSiteError = AzureOpError;
 /** List HypervMachine resources by HypervSite */
-export const ListHypervMachinesControllerByHypervSite: API.OperationMethod<
+export const ListHypervMachinesControllerByHypervSite: API.PaginatedOperationMethod<
   ListHypervMachinesControllerByHypervSiteRequest,
   HypervMachineListResult,
   ListHypervMachinesControllerByHypervSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8000, __c250, 0) as any as S.Schema<ListHypervMachinesControllerByHypervSiteRequest>,
   output: __S(8002, __c250, 2) as any as S.Schema<HypervMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervRunAsAccountsControllerByHypervSiteError = AzureOpError;
 /** List HypervRunAsAccountResource resources by HypervSite */
-export const ListHypervRunAsAccountsControllerByHypervSite: API.OperationMethod<
+export const ListHypervRunAsAccountsControllerByHypervSite: API.PaginatedOperationMethod<
   ListHypervRunAsAccountsControllerByHypervSiteRequest,
   HypervRunAsAccountResourceListResult,
   ListHypervRunAsAccountsControllerByHypervSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervRunAsAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     8032,
     __c251,
@@ -18944,37 +19386,57 @@ export const ListHypervRunAsAccountsControllerByHypervSite: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervSiteByResourceGroupError = AzureOpError;
 /** Get all hyperv sites. Get all the hyperv sites in the subscription. */
-export const ListHypervSiteByResourceGroup: API.OperationMethod<
+export const ListHypervSiteByResourceGroup: API.PaginatedOperationMethod<
   ListHypervSiteByResourceGroupRequest,
   HypervSiteListResult,
   ListHypervSiteByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8096, __c253, 0) as any as S.Schema<ListHypervSiteByResourceGroupRequest>,
   output: __S(8129, __c254, 1) as any as S.Schema<HypervSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervSiteBySubscriptionError = AzureOpError;
 /** Get all hyperv sites. Get all the hyperv sites in the subscription. */
-export const ListHypervSiteBySubscription: API.OperationMethod<
+export const ListHypervSiteBySubscription: API.PaginatedOperationMethod<
   ListHypervSiteBySubscriptionRequest,
   HypervSiteListResult,
   ListHypervSiteBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8160, __c255, 0) as any as S.Schema<ListHypervSiteBySubscriptionRequest>,
   output: __S(8129, __c254, 1) as any as S.Schema<HypervSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHypervSitesControllerHealthSummaryError = AzureOpError;
 /** Method to get site health summary. */
@@ -18993,12 +19455,13 @@ export const ListHypervSitesControllerHealthSummary: API.OperationMethod<
 
 export type ListHypervSoftwareInventoriesControllerByHypervMachineError = AzureOpError;
 /** List HypervVmSoftwareInventory resources by HypervMachine */
-export const ListHypervSoftwareInventoriesControllerByHypervMachine: API.OperationMethod<
+export const ListHypervSoftwareInventoriesControllerByHypervMachine: API.PaginatedOperationMethod<
   ListHypervSoftwareInventoriesControllerByHypervMachineRequest,
   HypervVmSoftwareInventoryListResult,
   ListHypervSoftwareInventoriesControllerByHypervMachineError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervVmSoftwareInventory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     8256,
     __c258,
@@ -19008,16 +19471,23 @@ export const ListHypervSoftwareInventoriesControllerByHypervMachine: API.Operati
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIisWebApplicationsControllerByWebAppSiteError = AzureOpError;
 /** Method to get all IIS web application. */
-export const ListIisWebApplicationsControllerByWebAppSite: API.OperationMethod<
+export const ListIisWebApplicationsControllerByWebAppSite: API.PaginatedOperationMethod<
   ListIisWebApplicationsControllerByWebAppSiteRequest,
   IisWebApplicationsListResult,
   ListIisWebApplicationsControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IisWebApplications
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     8352,
     __c261,
@@ -19027,31 +19497,45 @@ export const ListIisWebApplicationsControllerByWebAppSite: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIisWebServersControllerByWebAppSiteError = AzureOpError;
 /** Method to get all IIS web servers. */
-export const ListIisWebServersControllerByWebAppSite: API.OperationMethod<
+export const ListIisWebServersControllerByWebAppSite: API.PaginatedOperationMethod<
   ListIisWebServersControllerByWebAppSiteRequest,
   IisWebServersListResult,
   ListIisWebServersControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IisWebServers
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8384, __c262, 0) as any as S.Schema<ListIisWebServersControllerByWebAppSiteRequest>,
   output: __S(8417, __c263, 1) as any as S.Schema<IisWebServersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportCollectorsOperationByAssessmentProjectError = AzureOpError;
 /** List ImportCollector resources by AssessmentProject */
-export const ListImportCollectorsOperationByAssessmentProject: API.OperationMethod<
+export const ListImportCollectorsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListImportCollectorsOperationByAssessmentProjectRequest,
   ImportCollectorListResult,
   ListImportCollectorsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportCollector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     8448,
     __c264,
@@ -19061,181 +19545,265 @@ export const ListImportCollectorsOperationByAssessmentProject: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportJobsControllerDeletejobsError = AzureOpError;
 /** Method to get all delete import machines job for the given site. */
-export const ListImportJobsControllerDeletejobs: API.OperationMethod<
+export const ListImportJobsControllerDeletejobs: API.PaginatedOperationMethod<
   ListImportJobsControllerDeletejobsRequest,
   PagedDeleteImportMachinesJob,
   ListImportJobsControllerDeletejobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeleteImportMachinesJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8480, __c265, 0) as any as S.Schema<ListImportJobsControllerDeletejobsRequest>,
   output: __S(8482, __c265, 2) as any as S.Schema<PagedDeleteImportMachinesJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportJobsControllerExportjobsError = AzureOpError;
 /** Method to get all export import machines job for the given site. */
-export const ListImportJobsControllerExportjobs: API.OperationMethod<
+export const ListImportJobsControllerExportjobs: API.PaginatedOperationMethod<
   ListImportJobsControllerExportjobsRequest,
   PagedExportImportedMachinesJob,
   ListImportJobsControllerExportjobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExportImportedMachinesJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8512, __c266, 0) as any as S.Schema<ListImportJobsControllerExportjobsRequest>,
   output: __S(8514, __c266, 2) as any as S.Schema<PagedExportImportedMachinesJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportJobsControllerImportjobsError = AzureOpError;
 /** Method to get all import machines job for the given site. */
-export const ListImportJobsControllerImportjobs: API.OperationMethod<
+export const ListImportJobsControllerImportjobs: API.PaginatedOperationMethod<
   ListImportJobsControllerImportjobsRequest,
   PagedImportMachinesJob,
   ListImportJobsControllerImportjobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportMachinesJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8544, __c267, 0) as any as S.Schema<ListImportJobsControllerImportjobsRequest>,
   output: __S(8546, __c267, 2) as any as S.Schema<PagedImportMachinesJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportSitesControllerByResourceGroupError = AzureOpError;
 /** Get all import sites. */
-export const ListImportSitesControllerByResourceGroup: API.OperationMethod<
+export const ListImportSitesControllerByResourceGroup: API.PaginatedOperationMethod<
   ListImportSitesControllerByResourceGroupRequest,
   ImportSiteListResult,
   ListImportSitesControllerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8576, __c268, 0) as any as S.Schema<ListImportSitesControllerByResourceGroupRequest>,
   output: __S(8609, __c269, 1) as any as S.Schema<ImportSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportSitesControllerBySubscriptionError = AzureOpError;
 /** List ImportSite resources by subscription ID */
-export const ListImportSitesControllerBySubscription: API.OperationMethod<
+export const ListImportSitesControllerBySubscription: API.PaginatedOperationMethod<
   ListImportSitesControllerBySubscriptionRequest,
   ImportSiteListResult,
   ListImportSitesControllerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8640, __c270, 0) as any as S.Schema<ListImportSitesControllerBySubscriptionRequest>,
   output: __S(8609, __c269, 1) as any as S.Schema<ImportSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMachinesControllerByVmwareSiteError = AzureOpError;
 /** List MachineResource resources by VmwareSite */
-export const ListMachinesControllerByVmwareSite: API.OperationMethod<
+export const ListMachinesControllerByVmwareSite: API.PaginatedOperationMethod<
   ListMachinesControllerByVmwareSiteRequest,
   MachineResourceListResult,
   ListMachinesControllerByVmwareSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MachineResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8672, __c271, 0) as any as S.Schema<ListMachinesControllerByVmwareSiteRequest>,
   output: __S(8674, __c271, 2) as any as S.Schema<MachineResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMachinesControllerMachinesError = AzureOpError;
 /** Gets a list of machines in the migrate project. */
-export const ListMachinesControllerMachines: API.OperationMethod<
+export const ListMachinesControllerMachines: API.PaginatedOperationMethod<
   ListMachinesControllerMachinesRequest,
   MachineCollection,
   ListMachinesControllerMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Machine_2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8704, __c272, 0) as any as S.Schema<ListMachinesControllerMachinesRequest>,
   output: __S(8706, __c272, 2) as any as S.Schema<MachineCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMachinesOperationByAssessmentProjectError = AzureOpError;
 /** List Machine resources by AssessmentProject */
-export const ListMachinesOperationByAssessmentProject: API.OperationMethod<
+export const ListMachinesOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListMachinesOperationByAssessmentProjectRequest,
   MachineListResult,
   ListMachinesOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Machine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8800, __c275, 0) as any as S.Schema<ListMachinesOperationByAssessmentProjectRequest>,
   output: __S(8802, __c275, 2) as any as S.Schema<MachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMasterSitesControllerByResourceGroupError = AzureOpError;
 /** Get all sites. Get all the sites in the resource group. */
-export const ListMasterSitesControllerByResourceGroup: API.OperationMethod<
+export const ListMasterSitesControllerByResourceGroup: API.PaginatedOperationMethod<
   ListMasterSitesControllerByResourceGroupRequest,
   MasterSiteListResult,
   ListMasterSitesControllerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MasterSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8832, __c276, 0) as any as S.Schema<ListMasterSitesControllerByResourceGroupRequest>,
   output: __S(8865, __c277, 1) as any as S.Schema<MasterSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMasterSitesControllerBySubscriptionError = AzureOpError;
 /** Get all the sites in the subscription. List MasterSite resources by subscription ID */
-export const ListMasterSitesControllerBySubscription: API.OperationMethod<
+export const ListMasterSitesControllerBySubscription: API.PaginatedOperationMethod<
   ListMasterSitesControllerBySubscriptionRequest,
   MasterSiteListResult,
   ListMasterSitesControllerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MasterSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8896, __c278, 0) as any as S.Schema<ListMasterSitesControllerBySubscriptionRequest>,
   output: __S(8865, __c277, 1) as any as S.Schema<MasterSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(8928, __c279, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(8932, __c279, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionControllerByMasterSiteError = AzureOpError;
 /** Gets the private link resource. */
-export const ListPrivateEndpointConnectionControllerByMasterSite: API.OperationMethod<
+export const ListPrivateEndpointConnectionControllerByMasterSite: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionControllerByMasterSiteRequest,
   PrivateEndpointConnectionListResult_2,
   ListPrivateEndpointConnectionControllerByMasterSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection_3
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     8960,
     __c280,
@@ -19245,16 +19813,23 @@ export const ListPrivateEndpointConnectionControllerByMasterSite: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionOperationByAssessmentProjectError = AzureOpError;
 /** List PrivateEndpointConnection resources by AssessmentProject */
-export const ListPrivateEndpointConnectionOperationByAssessmentProject: API.OperationMethod<
+export const ListPrivateEndpointConnectionOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionOperationByAssessmentProjectRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     8992,
     __c281,
@@ -19264,17 +19839,24 @@ export const ListPrivateEndpointConnectionOperationByAssessmentProject: API.Oper
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxiesError =
   AzureOpError;
 /** Get the private endpoint connection proxies. Get all the private endpoint connections proxies under a migrate project. */
-export const ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxies: API.OperationMethod<
+export const ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxies: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxiesRequest,
   PrivateEndpointConnectionProxyCollection,
   ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnectionProxy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9024,
     __c282,
@@ -19284,16 +19866,23 @@ export const ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnecti
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceOperationByAssessmentProjectError = AzureOpError;
 /** List PrivateLinkResource resources by AssessmentProject */
-export const ListPrivateLinkResourceOperationByAssessmentProject: API.OperationMethod<
+export const ListPrivateLinkResourceOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListPrivateLinkResourceOperationByAssessmentProjectRequest,
   PrivateLinkResourceListResult,
   ListPrivateLinkResourceOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9056,
     __c283,
@@ -19303,16 +19892,23 @@ export const ListPrivateLinkResourceOperationByAssessmentProject: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourcesControllerByMasterSiteError = AzureOpError;
 /** Gets the private link resource. */
-export const ListPrivateLinkResourcesControllerByMasterSite: API.OperationMethod<
+export const ListPrivateLinkResourcesControllerByMasterSite: API.PaginatedOperationMethod<
   ListPrivateLinkResourcesControllerByMasterSiteRequest,
   PrivateLinkResourceListResult_2,
   ListPrivateLinkResourcesControllerByMasterSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource_3
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9088,
     __c284,
@@ -19322,61 +19918,89 @@ export const ListPrivateLinkResourcesControllerByMasterSite: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProjectBySubscriptionError = AzureOpError;
 /** Get all migrate projects. Get all the migrate projects in the subscription. */
-export const ListProjectBySubscription: API.OperationMethod<
+export const ListProjectBySubscription: API.PaginatedOperationMethod<
   ListProjectBySubscriptionRequest,
   ProjectResultList,
   ListProjectBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MigrateProject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9120, __c285, 0) as any as S.Schema<ListProjectBySubscriptionRequest>,
   output: __S(9153, __c286, 1) as any as S.Schema<ProjectResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProjectsError = AzureOpError;
 /** Get all migrate projects. Get all the migrate projects in the resource group. */
-export const ListProjects: API.OperationMethod<
+export const ListProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ProjectResultList,
   ListProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MigrateProject
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9280, __c290, 0) as any as S.Schema<ListProjectsRequest>,
   output: __S(9153, __c286, 1) as any as S.Schema<ProjectResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRunAsAccountsControllerByVmwareSiteError = AzureOpError;
 /** List VmwareRunAsAccountResource resources by VmwareSite */
-export const ListRunAsAccountsControllerByVmwareSite: API.OperationMethod<
+export const ListRunAsAccountsControllerByVmwareSite: API.PaginatedOperationMethod<
   ListRunAsAccountsControllerByVmwareSiteRequest,
   VmwareRunAsAccountResourceListResult,
   ListRunAsAccountsControllerByVmwareSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervRunAsAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9312, __c291, 0) as any as S.Schema<ListRunAsAccountsControllerByVmwareSiteRequest>,
   output: __S(8065, __c252, 1) as any as S.Schema<VmwareRunAsAccountResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerCollectorsOperationByAssessmentProjectError = AzureOpError;
 /** List ServerCollector resources by AssessmentProject */
-export const ListServerCollectorsOperationByAssessmentProject: API.OperationMethod<
+export const ListServerCollectorsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListServerCollectorsOperationByAssessmentProjectRequest,
   ServerCollectorListResult,
   ListServerCollectorsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervCollector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9344,
     __c292,
@@ -19386,16 +20010,23 @@ export const ListServerCollectorsOperationByAssessmentProject: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerJobsControllerByServerSiteResourceError = AzureOpError;
 /** List ServerJob resources by ServerSiteResource */
-export const ListServerJobsControllerByServerSiteResource: API.OperationMethod<
+export const ListServerJobsControllerByServerSiteResource: API.PaginatedOperationMethod<
   ListServerJobsControllerByServerSiteResourceRequest,
   ServerJobListResult,
   ListServerJobsControllerByServerSiteResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9376,
     __c293,
@@ -19405,16 +20036,23 @@ export const ListServerJobsControllerByServerSiteResource: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerRunAsAccountsControllerByServerSiteResourceError = AzureOpError;
 /** List ServerRunAsAccount resources by ServerSiteResource */
-export const ListServerRunAsAccountsControllerByServerSiteResource: API.OperationMethod<
+export const ListServerRunAsAccountsControllerByServerSiteResource: API.PaginatedOperationMethod<
   ListServerRunAsAccountsControllerByServerSiteResourceRequest,
   ServerRunAsAccountListResult,
   ListServerRunAsAccountsControllerByServerSiteResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervRunAsAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9408,
     __c294,
@@ -19424,52 +20062,79 @@ export const ListServerRunAsAccountsControllerByServerSiteResource: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServersControllerByServerSiteResourceError = AzureOpError;
 /** Get all machines in a site. */
-export const ListServersControllerByServerSiteResource: API.OperationMethod<
+export const ListServersControllerByServerSiteResource: API.PaginatedOperationMethod<
   ListServersControllerByServerSiteResourceRequest,
   ServerListResult,
   ListServersControllerByServerSiteResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Server
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9440, __c295, 0) as any as S.Schema<ListServersControllerByServerSiteResourceRequest>,
   output: __S(9442, __c295, 2) as any as S.Schema<ServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerSitesControllerByResourceGroupError = AzureOpError;
 /** List ServerSiteResource resources by resource group */
-export const ListServerSitesControllerByResourceGroup: API.OperationMethod<
+export const ListServerSitesControllerByResourceGroup: API.PaginatedOperationMethod<
   ListServerSitesControllerByResourceGroupRequest,
   ServerSiteResourceListResult,
   ListServerSitesControllerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerSiteResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9472, __c296, 0) as any as S.Schema<ListServerSitesControllerByResourceGroupRequest>,
   output: __S(8129, __c254, 1) as any as S.Schema<ServerSiteResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerSitesControllerBySubscriptionError = AzureOpError;
 /** List ServerSiteResource resources by subscription ID */
-export const ListServerSitesControllerBySubscription: API.OperationMethod<
+export const ListServerSitesControllerBySubscription: API.PaginatedOperationMethod<
   ListServerSitesControllerBySubscriptionRequest,
   ServerSiteResourceListResult,
   ListServerSitesControllerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerSiteResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9504, __c297, 0) as any as S.Schema<ListServerSitesControllerBySubscriptionRequest>,
   output: __S(8129, __c254, 1) as any as S.Schema<ServerSiteResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerSitesControllerHealthSummaryError = AzureOpError;
 /** Method to get site health summary. */
@@ -19488,12 +20153,13 @@ export const ListServerSitesControllerHealthSummary: API.OperationMethod<
 
 export type ListServerSoftwareInventoriesControllerByServerError = AzureOpError;
 /** List ServerSoftwareInventory resources by Server */
-export const ListServerSoftwareInventoriesControllerByServer: API.OperationMethod<
+export const ListServerSoftwareInventoriesControllerByServer: API.PaginatedOperationMethod<
   ListServerSoftwareInventoriesControllerByServerRequest,
   ServerSoftwareInventoryListResult,
   ListServerSoftwareInventoriesControllerByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervVmSoftwareInventory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9568,
     __c299,
@@ -19503,37 +20169,57 @@ export const ListServerSoftwareInventoriesControllerByServer: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSitesControllerByResourceGroupError = AzureOpError;
 /** Get all vmware sites. Get all the vmware sites in the resource group. */
-export const ListSitesControllerByResourceGroup: API.OperationMethod<
+export const ListSitesControllerByResourceGroup: API.PaginatedOperationMethod<
   ListSitesControllerByResourceGroupRequest,
   VmwareSiteListResult,
   ListSitesControllerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VmwareSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9632, __c301, 0) as any as S.Schema<ListSitesControllerByResourceGroupRequest>,
   output: __S(9665, __c302, 1) as any as S.Schema<VmwareSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSitesControllerBySubscriptionError = AzureOpError;
 /** Get all vmware sites. Get all the vmware sites in the subscription. */
-export const ListSitesControllerBySubscription: API.OperationMethod<
+export const ListSitesControllerBySubscription: API.PaginatedOperationMethod<
   ListSitesControllerBySubscriptionRequest,
   VmwareSiteListResult,
   ListSitesControllerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VmwareSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9696, __c303, 0) as any as S.Schema<ListSitesControllerBySubscriptionRequest>,
   output: __S(9665, __c302, 1) as any as S.Schema<VmwareSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSitesControllerHealthSummaryError = AzureOpError;
 /** Method to get site health summary. */
@@ -19552,27 +20238,35 @@ export const ListSitesControllerHealthSummary: API.OperationMethod<
 
 export type ListSolutionsControllerSolutionsError = AzureOpError;
 /** Gets the list of solutions in the migrate project. */
-export const ListSolutionsControllerSolutions: API.OperationMethod<
+export const ListSolutionsControllerSolutions: API.PaginatedOperationMethod<
   ListSolutionsControllerSolutionsRequest,
   SolutionsCollection,
   ListSolutionsControllerSolutionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Solution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9760, __c305, 0) as any as S.Schema<ListSolutionsControllerSolutionsRequest>,
   output: __S(9762, __c305, 2) as any as S.Schema<SolutionsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlAssessmentOptionsOperationByAssessmentProjectError = AzureOpError;
 /** List SqlAssessmentOptions resources by AssessmentProject */
-export const ListSqlAssessmentOptionsOperationByAssessmentProject: API.OperationMethod<
+export const ListSqlAssessmentOptionsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListSqlAssessmentOptionsOperationByAssessmentProjectRequest,
   SqlAssessmentOptionsListResult,
   ListSqlAssessmentOptionsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlAssessmentOptions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9792,
     __c306,
@@ -19582,31 +20276,45 @@ export const ListSqlAssessmentOptionsOperationByAssessmentProject: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlAssessmentV2OperationByGroupError = AzureOpError;
 /** List SqlAssessmentV2 resources by Group */
-export const ListSqlAssessmentV2OperationByGroup: API.OperationMethod<
+export const ListSqlAssessmentV2OperationByGroup: API.PaginatedOperationMethod<
   ListSqlAssessmentV2OperationByGroupRequest,
   SqlAssessmentV2ListResult,
   ListSqlAssessmentV2OperationByGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlAssessmentV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9824, __c307, 0) as any as S.Schema<ListSqlAssessmentV2OperationByGroupRequest>,
   output: __S(9826, __c307, 2) as any as S.Schema<SqlAssessmentV2ListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Error = AzureOpError;
 /** List SqlAssessmentV2Summary resources by SqlAssessmentV2 */
-export const ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2: API.OperationMethod<
+export const ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2: API.PaginatedOperationMethod<
   ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request,
   SqlAssessmentV2SummaryListResult,
   ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlAssessmentV2Summary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9856,
     __c308,
@@ -19616,16 +20324,23 @@ export const ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlAvailabilityGroupsControllerBySqlSiteError = AzureOpError;
 /** Gets the sql availability groups. */
-export const ListSqlAvailabilityGroupsControllerBySqlSite: API.OperationMethod<
+export const ListSqlAvailabilityGroupsControllerBySqlSite: API.PaginatedOperationMethod<
   ListSqlAvailabilityGroupsControllerBySqlSiteRequest,
   SqlAvailabilityGroupListResult,
   ListSqlAvailabilityGroupsControllerBySqlSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlAvailabilityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9888,
     __c309,
@@ -19635,16 +20350,23 @@ export const ListSqlAvailabilityGroupsControllerBySqlSite: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlCollectorOperationByAssessmentProjectError = AzureOpError;
 /** List SqlCollector resources by AssessmentProject */
-export const ListSqlCollectorOperationByAssessmentProject: API.OperationMethod<
+export const ListSqlCollectorOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListSqlCollectorOperationByAssessmentProjectRequest,
   SqlCollectorListResult,
   ListSqlCollectorOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervCollector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     9920,
     __c310,
@@ -19654,31 +20376,45 @@ export const ListSqlCollectorOperationByAssessmentProject: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlDatabasesControllerBySqlSiteError = AzureOpError;
 /** Gets the sql Databases. */
-export const ListSqlDatabasesControllerBySqlSite: API.OperationMethod<
+export const ListSqlDatabasesControllerBySqlSite: API.PaginatedOperationMethod<
   ListSqlDatabasesControllerBySqlSiteRequest,
   SqlDatabaseV2ListResult,
   ListSqlDatabasesControllerBySqlSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlDatabaseV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(9952, __c311, 0) as any as S.Schema<ListSqlDatabasesControllerBySqlSiteRequest>,
   output: __S(9954, __c311, 2) as any as S.Schema<SqlDatabaseV2ListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlDiscoverySiteDataSourceControllerBySqlSiteError = AzureOpError;
 /** List SqlDiscoverySiteDataSource resources by SqlSite */
-export const ListSqlDiscoverySiteDataSourceControllerBySqlSite: API.OperationMethod<
+export const ListSqlDiscoverySiteDataSourceControllerBySqlSite: API.PaginatedOperationMethod<
   ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest,
   SqlDiscoverySiteDataSourceListResult,
   ListSqlDiscoverySiteDataSourceControllerBySqlSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlDiscoverySiteDataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10016,
     __c313,
@@ -19688,76 +20424,111 @@ export const ListSqlDiscoverySiteDataSourceControllerBySqlSite: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlJobsControllerBySqlSiteError = AzureOpError;
 /** Gets the sql Jobs. List SqlJob resources by SqlSite */
-export const ListSqlJobsControllerBySqlSite: API.OperationMethod<
+export const ListSqlJobsControllerBySqlSite: API.PaginatedOperationMethod<
   ListSqlJobsControllerBySqlSiteRequest,
   SqlJobListResult,
   ListSqlJobsControllerBySqlSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10080, __c315, 0) as any as S.Schema<ListSqlJobsControllerBySqlSiteRequest>,
   output: __S(6465, __c202, 1) as any as S.Schema<SqlJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlRunAsAccountsControllerBySqlSiteError = AzureOpError;
 /** List SqlRunAsAccount resources by SqlSite */
-export const ListSqlRunAsAccountsControllerBySqlSite: API.OperationMethod<
+export const ListSqlRunAsAccountsControllerBySqlSite: API.PaginatedOperationMethod<
   ListSqlRunAsAccountsControllerBySqlSiteRequest,
   SqlRunAsAccountListResult,
   ListSqlRunAsAccountsControllerBySqlSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervRunAsAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10112, __c316, 0) as any as S.Schema<ListSqlRunAsAccountsControllerBySqlSiteRequest>,
   output: __S(8065, __c252, 1) as any as S.Schema<SqlRunAsAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServersControllerBySqlSiteError = AzureOpError;
 /** Gets the sql servers. */
-export const ListSqlServersControllerBySqlSite: API.OperationMethod<
+export const ListSqlServersControllerBySqlSite: API.PaginatedOperationMethod<
   ListSqlServersControllerBySqlSiteRequest,
   SqlServerV2ListResult,
   ListSqlServersControllerBySqlSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10144, __c317, 0) as any as S.Schema<ListSqlServersControllerBySqlSiteRequest>,
   output: __S(10146, __c317, 2) as any as S.Schema<SqlServerV2ListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlSitesControllerByMasterSiteError = AzureOpError;
 /** Method to get all sites. */
-export const ListSqlSitesControllerByMasterSite: API.OperationMethod<
+export const ListSqlSitesControllerByMasterSite: API.PaginatedOperationMethod<
   ListSqlSitesControllerByMasterSiteRequest,
   SqlSiteListResult,
   ListSqlSitesControllerByMasterSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10176, __c318, 0) as any as S.Schema<ListSqlSitesControllerByMasterSiteRequest>,
   output: __S(10209, __c319, 1) as any as S.Schema<SqlSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTomcatWebApplicationsControllerByWebAppSiteError = AzureOpError;
 /** Method to get all Tomcat web application. */
-export const ListTomcatWebApplicationsControllerByWebAppSite: API.OperationMethod<
+export const ListTomcatWebApplicationsControllerByWebAppSite: API.PaginatedOperationMethod<
   ListTomcatWebApplicationsControllerByWebAppSiteRequest,
   TomcatWebApplicationsListResult,
   ListTomcatWebApplicationsControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TomcatWebApplications
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10240,
     __c320,
@@ -19767,16 +20538,23 @@ export const ListTomcatWebApplicationsControllerByWebAppSite: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTomcatWebServersControllerByWebAppSiteError = AzureOpError;
 /** Method to get all Tomcat web servers. */
-export const ListTomcatWebServersControllerByWebAppSite: API.OperationMethod<
+export const ListTomcatWebServersControllerByWebAppSite: API.PaginatedOperationMethod<
   ListTomcatWebServersControllerByWebAppSiteRequest,
   TomcatWebServersListResult,
   ListTomcatWebServersControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TomcatWebServers
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10272,
     __c321,
@@ -19786,31 +20564,45 @@ export const ListTomcatWebServersControllerByWebAppSite: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVcenterControllerByVmwareSiteError = AzureOpError;
 /** List Vcenter resources by VmwareSite */
-export const ListVcenterControllerByVmwareSite: API.OperationMethod<
+export const ListVcenterControllerByVmwareSite: API.PaginatedOperationMethod<
   ListVcenterControllerByVmwareSiteRequest,
   VcenterListResult,
   ListVcenterControllerByVmwareSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Vcenter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10304, __c322, 0) as any as S.Schema<ListVcenterControllerByVmwareSiteRequest>,
   output: __S(10306, __c322, 2) as any as S.Schema<VcenterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualDesktopUserControllerVirtualDesktopUsersError = AzureOpError;
 /** Gets a list of virtual desktop users in the migrate project. */
-export const ListVirtualDesktopUserControllerVirtualDesktopUsers: API.OperationMethod<
+export const ListVirtualDesktopUserControllerVirtualDesktopUsers: API.PaginatedOperationMethod<
   ListVirtualDesktopUserControllerVirtualDesktopUsersRequest,
   VirtualDesktopUserCollection,
   ListVirtualDesktopUserControllerVirtualDesktopUsersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualDesktopUser
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10336,
     __c323,
@@ -19820,16 +20612,23 @@ export const ListVirtualDesktopUserControllerVirtualDesktopUsers: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVmwareCollectorsOperationByAssessmentProjectError = AzureOpError;
 /** List VmwareCollector resources by AssessmentProject */
-export const ListVmwareCollectorsOperationByAssessmentProject: API.OperationMethod<
+export const ListVmwareCollectorsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListVmwareCollectorsOperationByAssessmentProjectRequest,
   VmwareCollectorListResult,
   ListVmwareCollectorsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervCollector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10368,
     __c324,
@@ -19839,31 +20638,45 @@ export const ListVmwareCollectorsOperationByAssessmentProject: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVmwareHostControllerByVmwareSiteError = AzureOpError;
 /** List VmwareHost resources by VmwareSite */
-export const ListVmwareHostControllerByVmwareSite: API.OperationMethod<
+export const ListVmwareHostControllerByVmwareSite: API.PaginatedOperationMethod<
   ListVmwareHostControllerByVmwareSiteRequest,
   VmwareHostListResult,
   ListVmwareHostControllerByVmwareSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VmwareHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10432, __c326, 0) as any as S.Schema<ListVmwareHostControllerByVmwareSiteRequest>,
   output: __S(10434, __c326, 2) as any as S.Schema<VmwareHostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVmwareSoftwareInventoriesControllerByMachineResourceError = AzureOpError;
 /** List VmwareMachineSoftwareInventory resources by MachineResource */
-export const ListVmwareSoftwareInventoriesControllerByMachineResource: API.OperationMethod<
+export const ListVmwareSoftwareInventoriesControllerByMachineResource: API.PaginatedOperationMethod<
   ListVmwareSoftwareInventoriesControllerByMachineResourceRequest,
   VmwareMachineSoftwareInventoryListResult,
   ListVmwareSoftwareInventoriesControllerByMachineResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervVmSoftwareInventory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10464,
     __c327,
@@ -19873,16 +20686,23 @@ export const ListVmwareSoftwareInventoriesControllerByMachineResource: API.Opera
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppAssessmentOptionsOperationByAssessmentProjectError = AzureOpError;
 /** List WebAppAssessmentOptions resources by AssessmentProject */
-export const ListWebAppAssessmentOptionsOperationByAssessmentProject: API.OperationMethod<
+export const ListWebAppAssessmentOptionsOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest,
   WebAppAssessmentOptionsListResult,
   ListWebAppAssessmentOptionsOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppAssessmentOptions
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10496,
     __c328,
@@ -19892,31 +20712,45 @@ export const ListWebAppAssessmentOptionsOperationByAssessmentProject: API.Operat
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppAssessmentV2OperationByGroupError = AzureOpError;
 /** List WebAppAssessmentV2 resources by Group */
-export const ListWebAppAssessmentV2OperationByGroup: API.OperationMethod<
+export const ListWebAppAssessmentV2OperationByGroup: API.PaginatedOperationMethod<
   ListWebAppAssessmentV2OperationByGroupRequest,
   WebAppAssessmentV2ListResult,
   ListWebAppAssessmentV2OperationByGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppAssessmentV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10528, __c329, 0) as any as S.Schema<ListWebAppAssessmentV2OperationByGroupRequest>,
   output: __S(10530, __c329, 2) as any as S.Schema<WebAppAssessmentV2ListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Error = AzureOpError;
 /** List WebAppAssessmentV2Summary resources by WebAppAssessmentV2 */
-export const ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2: API.OperationMethod<
+export const ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2: API.PaginatedOperationMethod<
   ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request,
   WebAppAssessmentV2SummaryListResult,
   ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppAssessmentV2Summary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10560,
     __c330,
@@ -19926,16 +20760,23 @@ export const ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2: API.Ope
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppCollectorOperationByAssessmentProjectError = AzureOpError;
 /** List WebAppCollector resources by AssessmentProject */
-export const ListWebAppCollectorOperationByAssessmentProject: API.OperationMethod<
+export const ListWebAppCollectorOperationByAssessmentProject: API.PaginatedOperationMethod<
   ListWebAppCollectorOperationByAssessmentProjectRequest,
   WebAppCollectorListResult,
   ListWebAppCollectorOperationByAssessmentProjectError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppCollector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10592,
     __c331,
@@ -19945,16 +20786,23 @@ export const ListWebAppCollectorOperationByAssessmentProject: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteError = AzureOpError;
 /** Method to get all Web app data sources in site. */
-export const ListWebAppDiscoverySiteDataSourcesControllerByWebAppSite: API.OperationMethod<
+export const ListWebAppDiscoverySiteDataSourcesControllerByWebAppSite: API.PaginatedOperationMethod<
   ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest,
   DiscoverySiteDataSourceListResult,
   ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlDiscoverySiteDataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10624,
     __c332,
@@ -19964,16 +20812,23 @@ export const ListWebAppDiscoverySiteDataSourcesControllerByWebAppSite: API.Opera
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppExtendedMachinesControllerByWebAppSiteError = AzureOpError;
 /** Method to get all extended machines. */
-export const ListWebAppExtendedMachinesControllerByWebAppSite: API.OperationMethod<
+export const ListWebAppExtendedMachinesControllerByWebAppSite: API.PaginatedOperationMethod<
   ListWebAppExtendedMachinesControllerByWebAppSiteRequest,
   WebAppExtendedMachineListResult,
   ListWebAppExtendedMachinesControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppExtendedMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10656,
     __c333,
@@ -19983,31 +20838,45 @@ export const ListWebAppExtendedMachinesControllerByWebAppSite: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebApplicationsControllerByWebAppSiteError = AzureOpError;
 /** Method to get all IIS web applications. */
-export const ListWebApplicationsControllerByWebAppSite: API.OperationMethod<
+export const ListWebApplicationsControllerByWebAppSite: API.PaginatedOperationMethod<
   ListWebApplicationsControllerByWebAppSiteRequest,
   WebApplicationListResult,
   ListWebApplicationsControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10688, __c334, 0) as any as S.Schema<ListWebApplicationsControllerByWebAppSiteRequest>,
   output: __S(10692, __c334, 4) as any as S.Schema<WebApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppRunAsAccountsControllerByWebAppSiteError = AzureOpError;
 /** Method to get all run as accounts. */
-export const ListWebAppRunAsAccountsControllerByWebAppSite: API.OperationMethod<
+export const ListWebAppRunAsAccountsControllerByWebAppSite: API.PaginatedOperationMethod<
   ListWebAppRunAsAccountsControllerByWebAppSiteRequest,
   WebAppRunAsAccountListResult,
   ListWebAppRunAsAccountsControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HypervRunAsAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10720,
     __c335,
@@ -20017,16 +20886,23 @@ export const ListWebAppRunAsAccountsControllerByWebAppSite: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppServicePlanV2OperationByWebAppAssessmentV2Error = AzureOpError;
 /** List WebAppServicePlanV2 resources by WebAppAssessmentV2 */
-export const ListWebAppServicePlanV2OperationByWebAppAssessmentV2: API.OperationMethod<
+export const ListWebAppServicePlanV2OperationByWebAppAssessmentV2: API.PaginatedOperationMethod<
   ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request,
   WebAppServicePlanV2ListResult,
   ListWebAppServicePlanV2OperationByWebAppAssessmentV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppServicePlanV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     10784,
     __c337,
@@ -20036,67 +20912,101 @@ export const ListWebAppServicePlanV2OperationByWebAppAssessmentV2: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebAppSitesControllerByMasterSiteError = AzureOpError;
 /** Method to get all sites. */
-export const ListWebAppSitesControllerByMasterSite: API.OperationMethod<
+export const ListWebAppSitesControllerByMasterSite: API.PaginatedOperationMethod<
   ListWebAppSitesControllerByMasterSiteRequest,
   WebAppSiteListResult,
   ListWebAppSitesControllerByMasterSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebAppSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10816, __c338, 0) as any as S.Schema<ListWebAppSitesControllerByMasterSiteRequest>,
   output: __S(10209, __c319, 1) as any as S.Schema<WebAppSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebServersControllerByWebAppSiteError = AzureOpError;
 /** Method to get all web servers. */
-export const ListWebServersControllerByWebAppSite: API.OperationMethod<
+export const ListWebServersControllerByWebAppSite: API.PaginatedOperationMethod<
   ListWebServersControllerByWebAppSiteRequest,
   WebServerListResult,
   ListWebServersControllerByWebAppSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebServer_2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10848, __c339, 0) as any as S.Schema<ListWebServersControllerByWebAppSiteRequest>,
   output: __S(8417, __c263, 1) as any as S.Schema<WebServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebServersControllerWebServersError = AzureOpError;
 /** Gets a list of WebServers in the migrate project. */
-export const ListWebServersControllerWebServers: API.OperationMethod<
+export const ListWebServersControllerWebServers: API.PaginatedOperationMethod<
   ListWebServersControllerWebServersRequest,
   WebServerCollection,
   ListWebServersControllerWebServersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10880, __c340, 0) as any as S.Schema<ListWebServersControllerWebServersRequest>,
   output: __S(10882, __c340, 2) as any as S.Schema<WebServerCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebSitesControllerWebSitesError = AzureOpError;
 /** Gets a list of websites in the migrate project. */
-export const ListWebSitesControllerWebSites: API.OperationMethod<
+export const ListWebSitesControllerWebSites: API.PaginatedOperationMethod<
   ListWebSitesControllerWebSitesRequest,
   WebSiteCollection,
   ListWebSitesControllerWebSitesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(10912, __c341, 0) as any as S.Schema<ListWebSitesControllerWebSitesRequest>,
   output: __S(10914, __c341, 2) as any as S.Schema<WebSiteCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MasterSitesControllerErrorSummaryError = AzureOpError;
 /** Method to get error summary from master site for an appliance. */
@@ -23964,12 +24874,14 @@ function __c108(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           migrateProjectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -23978,7 +24890,7 @@ function __c108(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3488, __c109, 0)),
+          value: __S(3488, __c109, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionCollection" });
@@ -24039,12 +24951,14 @@ function __c112(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           migrateProjectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetPrivateLinkResourceControllerPrivateLinkResourcesRequest" });
@@ -24053,7 +24967,7 @@ function __c112(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3585, __c112, 1)),
+          value: __S(3585, __c112, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceCollection" });
@@ -26470,12 +27384,14 @@ function __c201(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/jobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ImportJobsControllerListByImportSiteRequest" });
@@ -26506,12 +27422,14 @@ function __c203(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/machines",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ImportMachinesControllerListByImportSiteRequest" });
@@ -26538,12 +27456,14 @@ function __c204(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments",
             code: 200,
             apiVersion: "2024-03-03-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAksAssessmentOperationByAssessmentProjectRequest" });
@@ -26568,12 +27488,14 @@ function __c205(j: number): any {
           projectName: S.String.pipe(T.Label()),
           assessmentName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/clusters",
             code: 200,
             apiVersion: "2024-03-03-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAksClusterOperationByAksAssessmentRequest" });
@@ -26598,12 +27520,14 @@ function __c206(j: number): any {
           projectName: S.String.pipe(T.Label()),
           assessmentName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/costDetails",
             code: 200,
             apiVersion: "2024-03-03-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAksCostDetailOperationByAksAssessmentRequest" });
@@ -26637,12 +27561,14 @@ function __c207(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessmentOptions",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAksOptionsOperationByAssessmentProjectRequest" });
@@ -26666,12 +27592,14 @@ function __c208(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           assessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/summaries",
             code: 200,
             apiVersion: "2024-03-03-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAksSummaryOperationByAksAssessmentRequest" });
@@ -26894,12 +27822,14 @@ function __c218(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/assessedMachines",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessedMachinesOperationByAssessmentRequest" });
@@ -26928,12 +27858,14 @@ function __c219(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request" });
@@ -26962,12 +27894,14 @@ function __c220(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request" });
@@ -26996,12 +27930,14 @@ function __c221(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessedSqlMachinesOperationBySqlAssessmentV2Request" });
@@ -27030,12 +27966,14 @@ function __c222(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/recommendedAssessedEntities",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -27065,12 +28003,14 @@ function __c223(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps",
             code: 200,
             apiVersion: "2024-03-03-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessedWebApplicationOperationByAksAssessmentRequest" });
@@ -27099,12 +28039,14 @@ function __c224(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessedWebAppV2OperationByWebAppAssessmentV2Request" });
@@ -27127,12 +28069,14 @@ function __c225(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessmentOptionsOperationByAssessmentProjectRequest" });
@@ -27154,12 +28098,14 @@ function __c226(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessmentProjectsOperationByResourceGroupRequest" });
@@ -27184,12 +28130,14 @@ function __c228(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/assessmentProjects",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessmentProjectsOperationBySubscriptionRequest" });
@@ -27283,12 +28231,14 @@ function __c233(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/projectSummary",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessmentProjectSummaryOperationByAssessmentProjectRequest" });
@@ -27312,12 +28262,14 @@ function __c234(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssessmentsOperationByGroupRequest" });
@@ -27346,12 +28298,14 @@ function __c235(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/avsAssessedMachines",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvsAssessedMachinesOperationByAvsAssessmentRequest" });
@@ -27374,12 +28328,14 @@ function __c236(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvsAssessmentOptionsOperationByAssessmentProjectRequest" });
@@ -27403,12 +28359,14 @@ function __c237(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvsAssessmentsOperationByGroupRequest" });
@@ -27433,12 +28391,14 @@ function __c238(j: number): any {
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseInstancesControllerDatabaseInstancesRequest" });
@@ -27447,7 +28407,7 @@ function __c238(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(7617, __c238, 1)),
+          value: __S(7617, __c238, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseInstanceCollection" });
@@ -27463,12 +28423,14 @@ function __c239(j: number): any {
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabasesControllerDatabasesRequest" });
@@ -27477,7 +28439,7 @@ function __c239(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(7649, __c239, 1)),
+          value: __S(7649, __c239, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseCollection" });
@@ -27492,12 +28454,14 @@ function __c240(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEventsControllerEventsRequest" });
@@ -27506,7 +28470,7 @@ function __c240(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(7681, __c240, 1)),
+          value: __S(7681, __c240, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventCollection" });
@@ -27520,12 +28484,14 @@ function __c241(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGroupsOperationByAssessmentProjectRequest" });
@@ -27549,12 +28515,14 @@ function __c242(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervClusterControllerByHypervSiteRequest" });
@@ -27639,12 +28607,14 @@ function __c245(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervCollectorsOperationByAssessmentProjectRequest" });
@@ -27672,12 +28642,14 @@ function __c247(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervHostControllerByHypervSiteRequest" });
@@ -27700,12 +28672,14 @@ function __c248(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/jobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervJobByHypervSiteRequest" });
@@ -27719,12 +28693,14 @@ function __c249(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/jobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervJobsControllerByVmwareSiteRequest" });
@@ -27742,12 +28718,14 @@ function __c250(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervMachinesControllerByHypervSiteRequest" });
@@ -27770,12 +28748,14 @@ function __c251(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/runAsAccounts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervRunAsAccountsControllerByHypervSiteRequest" });
@@ -27801,12 +28781,14 @@ function __c253(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervSiteByResourceGroupRequest" });
@@ -27831,12 +28813,14 @@ function __c255(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/hypervSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervSiteBySubscriptionRequest" });
@@ -27900,12 +28884,14 @@ function __c258(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareinventories",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHypervSoftwareInventoriesControllerByHypervMachineRequest" });
@@ -27958,12 +28944,14 @@ function __c261(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebApplications",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIisWebApplicationsControllerByWebAppSiteRequest" });
@@ -27991,12 +28979,14 @@ function __c262(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/iisWebServers",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIisWebServersControllerByWebAppSiteRequest" });
@@ -28023,12 +29013,14 @@ function __c264(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImportCollectorsOperationByAssessmentProjectRequest" });
@@ -28051,12 +29043,14 @@ function __c265(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/deleteJobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImportJobsControllerDeletejobsRequest" });
@@ -28065,7 +29059,7 @@ function __c265(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8481, __c265, 1)),
+          value: __S(8481, __c265, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedDeleteImportMachinesJob" });
@@ -28079,12 +29073,14 @@ function __c266(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/exportJobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImportJobsControllerExportjobsRequest" });
@@ -28093,7 +29089,7 @@ function __c266(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8513, __c266, 1)),
+          value: __S(8513, __c266, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedExportImportedMachinesJob" });
@@ -28107,12 +29103,14 @@ function __c267(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites/{siteName}/importJobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImportJobsControllerImportjobsRequest" });
@@ -28121,7 +29119,7 @@ function __c267(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8545, __c267, 1)),
+          value: __S(8545, __c267, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedImportMachinesJob" });
@@ -28134,12 +29132,14 @@ function __c268(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/importSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImportSitesControllerByResourceGroupRequest" });
@@ -28164,12 +29164,14 @@ function __c270(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/importSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListImportSitesControllerBySubscriptionRequest" });
@@ -28187,12 +29189,14 @@ function __c271(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMachinesControllerByVmwareSiteRequest" });
@@ -28217,12 +29221,14 @@ function __c272(j: number): any {
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMachinesControllerMachinesRequest" });
@@ -28231,7 +29237,7 @@ function __c272(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8705, __c272, 1)),
+          value: __S(8705, __c272, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineCollection" });
@@ -28359,12 +29365,14 @@ function __c275(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/machines",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMachinesOperationByAssessmentProjectRequest" });
@@ -28386,12 +29394,14 @@ function __c276(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMasterSitesControllerByResourceGroupRequest" });
@@ -28416,12 +29426,14 @@ function __c278(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/masterSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMasterSitesControllerBySubscriptionRequest" });
@@ -28431,12 +29443,15 @@ function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Migrate/operations",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -28464,7 +29479,7 @@ function __c279(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8931, __c279, 3)),
+          value: __S(8931, __c279, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -28478,12 +29493,14 @@ function __c280(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionControllerByMasterSiteRequest" });
@@ -28504,12 +29521,14 @@ function __c281(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -28532,12 +29551,14 @@ function __c282(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           migrateProjectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateEndpointConnectionProxies",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -28549,7 +29570,7 @@ function __c282(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(9025, __c282, 1)),
+          value: __S(9025, __c282, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProxyCollection" });
@@ -28563,12 +29584,14 @@ function __c283(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceOperationByAssessmentProjectRequest" });
@@ -28591,12 +29614,14 @@ function __c284(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateLinkResources",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourcesControllerByMasterSiteRequest" });
@@ -28617,12 +29642,14 @@ function __c285(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/migrateProjects",
             code: 200,
             apiVersion: "2020-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProjectBySubscriptionRequest" });
@@ -28635,7 +29662,7 @@ function __c286(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(9152, __c286, 0)),
+          value: __S(9152, __c286, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectResultList" });
@@ -28721,12 +29748,14 @@ function __c290(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects",
             code: 200,
             apiVersion: "2020-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
@@ -28740,12 +29769,14 @@ function __c291(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/runAsAccounts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRunAsAccountsControllerByVmwareSiteRequest" });
@@ -28759,12 +29790,14 @@ function __c292(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerCollectorsOperationByAssessmentProjectRequest" });
@@ -28778,12 +29811,14 @@ function __c293(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/jobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerJobsControllerByServerSiteResourceRequest" });
@@ -28797,12 +29832,14 @@ function __c294(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerRunAsAccountsControllerByServerSiteResourceRequest" });
@@ -28820,12 +29857,14 @@ function __c295(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServersControllerByServerSiteResourceRequest" });
@@ -28847,12 +29886,14 @@ function __c296(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerSitesControllerByResourceGroupRequest" });
@@ -28864,12 +29905,14 @@ function __c297(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/serverSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerSitesControllerBySubscriptionRequest" });
@@ -28903,12 +29946,14 @@ function __c299(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/machines/{machineName}/softwareinventories",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerSoftwareInventoriesControllerByServerRequest" });
@@ -28943,12 +29988,14 @@ function __c301(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSitesControllerByResourceGroupRequest" });
@@ -28973,12 +30020,14 @@ function __c303(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OffAzure/vmwareSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSitesControllerBySubscriptionRequest" });
@@ -29011,12 +30060,14 @@ function __c305(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           migrateProjectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions",
             code: 200,
             apiVersion: "2020-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSolutionsControllerSolutionsRequest" });
@@ -29025,7 +30076,7 @@ function __c305(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(9761, __c305, 1)),
+          value: __S(9761, __c305, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionsCollection" });
@@ -29039,12 +30090,14 @@ function __c306(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlAssessmentOptionsOperationByAssessmentProjectRequest" });
@@ -29068,12 +30121,14 @@ function __c307(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlAssessmentV2OperationByGroupRequest" });
@@ -29098,12 +30153,14 @@ function __c308(j: number): any {
           projectName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           assessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request" });
@@ -29131,12 +30188,14 @@ function __c309(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlAvailabilityGroups",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlAvailabilityGroupsControllerBySqlSiteRequest" });
@@ -29159,12 +30218,14 @@ function __c310(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlCollectorOperationByAssessmentProjectRequest" });
@@ -29183,12 +30244,14 @@ function __c311(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlDatabases",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlDatabasesControllerBySqlSiteRequest" });
@@ -29233,12 +30296,14 @@ function __c313(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           sqlSiteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest" });
@@ -29266,12 +30331,14 @@ function __c315(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           sqlSiteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/jobs",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlJobsControllerBySqlSiteRequest" });
@@ -29286,12 +30353,14 @@ function __c316(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           sqlSiteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/runAsAccounts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlRunAsAccountsControllerBySqlSiteRequest" });
@@ -29310,12 +30379,14 @@ function __c317(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/sqlServers",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServersControllerBySqlSiteRequest" });
@@ -29338,12 +30409,14 @@ function __c318(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlSitesControllerByMasterSiteRequest" });
@@ -29375,12 +30448,14 @@ function __c320(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebApplications",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTomcatWebApplicationsControllerByWebAppSiteRequest" });
@@ -29408,12 +30483,14 @@ function __c321(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/tomcatWebServers",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTomcatWebServersControllerByWebAppSiteRequest" });
@@ -29437,12 +30514,14 @@ function __c322(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVcenterControllerByVmwareSiteRequest" });
@@ -29467,12 +30546,14 @@ function __c323(j: number): any {
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualDesktopUserControllerVirtualDesktopUsersRequest" });
@@ -29481,7 +30562,7 @@ function __c323(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10337, __c323, 1)),
+          value: __S(10337, __c323, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualDesktopUserCollection" });
@@ -29495,12 +30576,14 @@ function __c324(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVmwareCollectorsOperationByAssessmentProjectRequest" });
@@ -29534,12 +30617,14 @@ function __c326(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/hosts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVmwareHostControllerByVmwareSiteRequest" });
@@ -29563,12 +30648,14 @@ function __c327(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/softwareinventories",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVmwareSoftwareInventoriesControllerByMachineResourceRequest" });
@@ -29582,12 +30669,14 @@ function __c328(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest" });
@@ -29611,12 +30700,14 @@ function __c329(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppAssessmentV2OperationByGroupRequest" });
@@ -29641,12 +30732,14 @@ function __c330(j: number): any {
           projectName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           assessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/summaries",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -29671,12 +30764,14 @@ function __c331(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppCollectorOperationByAssessmentProjectRequest" });
@@ -29691,12 +30786,14 @@ function __c332(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           webAppSiteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest" });
@@ -29715,12 +30812,14 @@ function __c333(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/extendedMachines",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppExtendedMachinesControllerByWebAppSiteRequest" });
@@ -29748,12 +30847,14 @@ function __c334(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/webApplications",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebApplicationsControllerByWebAppSiteRequest" });
@@ -29813,12 +30914,14 @@ function __c335(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
           webAppSiteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/runasaccounts",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppRunAsAccountsControllerByWebAppSiteRequest" });
@@ -29857,12 +30960,14 @@ function __c337(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans",
             code: 200,
             apiVersion: "2024-01-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request" });
@@ -29885,12 +30990,14 @@ function __c338(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebAppSitesControllerByMasterSiteRequest" });
@@ -29909,12 +31016,14 @@ function __c339(j: number): any {
           top: S.optional(S.String.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/webServers",
             code: 200,
             apiVersion: "2023-06-06",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebServersControllerByWebAppSiteRequest" });
@@ -29930,12 +31039,14 @@ function __c340(j: number): any {
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webServers",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebServersControllerWebServersRequest" });
@@ -29944,7 +31055,7 @@ function __c340(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10881, __c340, 1)),
+          value: __S(10881, __c340, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebServerCollection" });
@@ -29960,12 +31071,14 @@ function __c341(j: number): any {
           migrateProjectName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/webSites",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebSitesControllerWebSitesRequest" });
@@ -29974,7 +31087,7 @@ function __c341(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10913, __c341, 1)),
+          value: __S(10913, __c341, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebSiteCollection" });

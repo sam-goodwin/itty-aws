@@ -260,6 +260,8 @@ export interface KnowledgeBasesCreateOrUpdateResponse {
 export interface ListKnowledgeBasesRequest {
   /** Supported Microsoft Bookshelf Services endpoints (protocol and hostname, for example: https://{bookshelfName}.discovery.azure.com). */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The KnowledgeBase items on this page */
 export type PagedKnowledgeBaseValueList = Array<KnowledgeBase>;
@@ -385,18 +387,25 @@ export const KnowledgeBasesCreateOrUpdate: API.OperationMethod<
 
 export type ListKnowledgeBasesError = AzureOpError;
 /** List KnowledgeBase resources */
-export const ListKnowledgeBases: API.OperationMethod<
+export const ListKnowledgeBases: API.PaginatedOperationMethod<
   ListKnowledgeBasesRequest,
   PagedKnowledgeBase,
   ListKnowledgeBasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KnowledgeBase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListKnowledgeBasesRequest>,
   output: __S(74, __c9, 2) as any as S.Schema<PagedKnowledgeBase>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type SearchKnowledgeBaseError = AzureOpError;
 /** Search the knowledge base. */
@@ -687,6 +696,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -695,6 +705,7 @@ function __c9(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://discovery.azure.com/.default",
           }),
         ),

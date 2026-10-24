@@ -309,7 +309,7 @@ export interface ListServiceQueuesSegmentResponse {
   Prefix: string;
   Marker?: string;
   MaxResults: number;
-  QueueItems?: ListQueuesSegmentResponseQueueItemsList;
+  QueueItems: ListQueuesSegmentResponseQueueItemsList;
   NextMarker: string;
   /** This header uniquely identifies the request that was made and can be used for troubleshooting the request. */
   xMsRequestId?: string;
@@ -642,18 +642,25 @@ export const GetServiceUserDelegationKey: API.OperationMethod<
 
 export type ListServiceQueuesSegmentError = AzureOpError;
 /** The List Queues Segment operation returns a list of the queues under the specified account */
-export const ListServiceQueuesSegment: API.OperationMethod<
+export const ListServiceQueuesSegment: API.PaginatedOperationMethod<
   ListServiceQueuesSegmentRequest,
   ListServiceQueuesSegmentResponse,
   ListServiceQueuesSegmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  QueueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(161, __c20, 1) as any as S.Schema<ListServiceQueuesSegmentRequest>,
   output: __S(164, __c20, 4) as any as S.Schema<ListServiceQueuesSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "QueueItems",
+  } as const,
+})) as any;
 
 export type MessagesDequeueError = AzureOpError;
 /** The Dequeue operation retrieves one or more messages from the front of the queue. */
@@ -1448,9 +1455,7 @@ function __c20(j: number): any {
           Prefix: S.String,
           Marker: S.optional(S.String),
           MaxResults: S.Number,
-          QueueItems: S.optional(
-            __S(163, __c20, 3).pipe(T.XmlName("Queues"), T.XmlItemName("Queue")),
-          ),
+          QueueItems: __S(163, __c20, 3).pipe(T.XmlName("Queues"), T.XmlItemName("Queue")),
           NextMarker: S.String,
           xMsRequestId: S.optional(S.String.pipe(T.Header("x-ms-request-id"))),
           xMsVersion: S.optional(S.String.pipe(T.Header("x-ms-version"))),

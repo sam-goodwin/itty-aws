@@ -15,16 +15,169 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.mission#WorkloadDelete": "com.azure.mission#DeleteWorkload",
+      "com.azure.mission#WorkloadDeleteResponse": "com.azure.mission#DeleteWorkloadResponse",
+      "com.azure.mission#WorkloadDeleteRequest": "com.azure.mission#DeleteWorkloadRequest",
+      "com.azure.mission#WorkloadUpdate": "com.azure.mission#UpdateWorkload",
+      "com.azure.mission#WorkloadUpdateResponse": "com.azure.mission#UpdateWorkloadResponse",
+      "com.azure.mission#WorkloadUpdateResponseTagsMap": "com.azure.mission#UpdateWorkloadResponseTagsMap",
+      "com.azure.mission#WorkloadUpdateRequest": "com.azure.mission#UpdateWorkloadRequest",
+      "com.azure.mission#WorkloadUpdateRequestTagsMap": "com.azure.mission#UpdateWorkloadRequestTagsMap",
+      "com.azure.mission#WorkloadGet": "com.azure.mission#GetWorkload",
+      "com.azure.mission#WorkloadGetResponse": "com.azure.mission#GetWorkloadResponse",
+      "com.azure.mission#WorkloadGetResponseTagsMap": "com.azure.mission#GetWorkloadResponseTagsMap",
+      "com.azure.mission#WorkloadGetRequest": "com.azure.mission#GetWorkloadRequest",
+      "com.azure.mission#WorkloadListByEnclaveResource": "com.azure.mission#ListWorkloadByEnclaveResource",
+      "com.azure.mission#WorkloadListByEnclaveResourceRequest": "com.azure.mission#ListWorkloadByEnclaveResourceRequest",
+      "com.azure.mission#EnclaveEndpointsDelete": "com.azure.mission#DeleteEnclaveEndpoint",
+      "com.azure.mission#EnclaveEndpointsDeleteResponse": "com.azure.mission#DeleteEnclaveEndpointResponse",
+      "com.azure.mission#EnclaveEndpointsDeleteRequest": "com.azure.mission#DeleteEnclaveEndpointRequest",
+      "com.azure.mission#EnclaveEndpointsUpdate": "com.azure.mission#UpdateEnclaveEndpoint",
+      "com.azure.mission#EnclaveEndpointsUpdateResponse": "com.azure.mission#UpdateEnclaveEndpointResponse",
+      "com.azure.mission#EnclaveEndpointsUpdateResponseTagsMap": "com.azure.mission#UpdateEnclaveEndpointResponseTagsMap",
+      "com.azure.mission#EnclaveEndpointsUpdateRequest": "com.azure.mission#UpdateEnclaveEndpointRequest",
+      "com.azure.mission#EnclaveEndpointsUpdateRequestTagsMap": "com.azure.mission#UpdateEnclaveEndpointRequestTagsMap",
+      "com.azure.mission#EnclaveEndpointsGet": "com.azure.mission#GetEnclaveEndpoint",
+      "com.azure.mission#EnclaveEndpointsGetResponse": "com.azure.mission#GetEnclaveEndpointResponse",
+      "com.azure.mission#EnclaveEndpointsGetResponseTagsMap": "com.azure.mission#GetEnclaveEndpointResponseTagsMap",
+      "com.azure.mission#EnclaveEndpointsGetRequest": "com.azure.mission#GetEnclaveEndpointRequest",
+      "com.azure.mission#EnclaveEndpointsListByEnclaveResource": "com.azure.mission#ListEnclaveEndpointByEnclaveResource",
+      "com.azure.mission#EnclaveEndpointsListByEnclaveResourceRequest": "com.azure.mission#ListEnclaveEndpointByEnclaveResourceRequest",
+      "com.azure.mission#VirtualEnclaveDelete": "com.azure.mission#DeleteVirtualEnclave",
+      "com.azure.mission#VirtualEnclaveDeleteResponse": "com.azure.mission#DeleteVirtualEnclaveResponse",
+      "com.azure.mission#VirtualEnclaveDeleteRequest": "com.azure.mission#DeleteVirtualEnclaveRequest",
+      "com.azure.mission#VirtualEnclaveUpdate": "com.azure.mission#UpdateVirtualEnclave",
+      "com.azure.mission#VirtualEnclaveUpdateResponse": "com.azure.mission#UpdateVirtualEnclaveResponse",
+      "com.azure.mission#VirtualEnclaveUpdateResponseIdentity": "com.azure.mission#UpdateVirtualEnclaveResponseIdentity",
+      "com.azure.mission#VirtualEnclaveUpdateResponseTagsMap": "com.azure.mission#UpdateVirtualEnclaveResponseTagsMap",
+      "com.azure.mission#VirtualEnclaveUpdateRequest": "com.azure.mission#UpdateVirtualEnclaveRequest",
+      "com.azure.mission#VirtualEnclaveUpdateRequestTagsMap": "com.azure.mission#UpdateVirtualEnclaveRequestTagsMap",
+      "com.azure.mission#VirtualEnclaveGet": "com.azure.mission#GetVirtualEnclave",
+      "com.azure.mission#VirtualEnclaveGetResponse": "com.azure.mission#GetVirtualEnclaveResponse",
+      "com.azure.mission#VirtualEnclaveGetResponseIdentity": "com.azure.mission#GetVirtualEnclaveResponseIdentity",
+      "com.azure.mission#VirtualEnclaveGetResponseTagsMap": "com.azure.mission#GetVirtualEnclaveResponseTagsMap",
+      "com.azure.mission#VirtualEnclaveGetRequest": "com.azure.mission#GetVirtualEnclaveRequest",
+      "com.azure.mission#VirtualEnclaveListByResourceGroup": "com.azure.mission#ListVirtualEnclaveByResourceGroup",
+      "com.azure.mission#VirtualEnclaveListByResourceGroupRequest": "com.azure.mission#ListVirtualEnclaveByResourceGroupRequest",
+      "com.azure.mission#EnclaveConnectionDelete": "com.azure.mission#DeleteEnclaveConnection",
+      "com.azure.mission#EnclaveConnectionDeleteResponse": "com.azure.mission#DeleteEnclaveConnectionResponse",
+      "com.azure.mission#EnclaveConnectionDeleteRequest": "com.azure.mission#DeleteEnclaveConnectionRequest",
+      "com.azure.mission#EnclaveConnectionUpdate": "com.azure.mission#UpdateEnclaveConnection",
+      "com.azure.mission#EnclaveConnectionUpdateResponse": "com.azure.mission#UpdateEnclaveConnectionResponse",
+      "com.azure.mission#EnclaveConnectionUpdateResponseTagsMap": "com.azure.mission#UpdateEnclaveConnectionResponseTagsMap",
+      "com.azure.mission#EnclaveConnectionUpdateRequest": "com.azure.mission#UpdateEnclaveConnectionRequest",
+      "com.azure.mission#EnclaveConnectionUpdateRequestTagsMap": "com.azure.mission#UpdateEnclaveConnectionRequestTagsMap",
+      "com.azure.mission#EnclaveConnectionGet": "com.azure.mission#GetEnclaveConnection",
+      "com.azure.mission#EnclaveConnectionGetResponse": "com.azure.mission#GetEnclaveConnectionResponse",
+      "com.azure.mission#EnclaveConnectionGetResponseTagsMap": "com.azure.mission#GetEnclaveConnectionResponseTagsMap",
+      "com.azure.mission#EnclaveConnectionGetRequest": "com.azure.mission#GetEnclaveConnectionRequest",
+      "com.azure.mission#EnclaveConnectionListByResourceGroup": "com.azure.mission#ListEnclaveConnectionByResourceGroup",
+      "com.azure.mission#EnclaveConnectionListByResourceGroupRequest": "com.azure.mission#ListEnclaveConnectionByResourceGroupRequest",
+      "com.azure.mission#TransitHubDelete": "com.azure.mission#DeleteTransitHub",
+      "com.azure.mission#TransitHubDeleteResponse": "com.azure.mission#DeleteTransitHubResponse",
+      "com.azure.mission#TransitHubDeleteRequest": "com.azure.mission#DeleteTransitHubRequest",
+      "com.azure.mission#TransitHubUpdate": "com.azure.mission#UpdateTransitHub",
+      "com.azure.mission#TransitHubUpdateResponse": "com.azure.mission#UpdateTransitHubResponse",
+      "com.azure.mission#TransitHubUpdateResponseTagsMap": "com.azure.mission#UpdateTransitHubResponseTagsMap",
+      "com.azure.mission#TransitHubUpdateRequest": "com.azure.mission#UpdateTransitHubRequest",
+      "com.azure.mission#TransitHubUpdateRequestTagsMap": "com.azure.mission#UpdateTransitHubRequestTagsMap",
+      "com.azure.mission#TransitHubGet": "com.azure.mission#GetTransitHub",
+      "com.azure.mission#TransitHubGetResponse": "com.azure.mission#GetTransitHubResponse",
+      "com.azure.mission#TransitHubGetResponseTagsMap": "com.azure.mission#GetTransitHubResponseTagsMap",
+      "com.azure.mission#TransitHubGetRequest": "com.azure.mission#GetTransitHubRequest",
+      "com.azure.mission#TransitHubListByCommunityResource": "com.azure.mission#ListTransitHubByCommunityResource",
+      "com.azure.mission#TransitHubListByCommunityResourceRequest": "com.azure.mission#ListTransitHubByCommunityResourceRequest",
+      "com.azure.mission#DedicatedHubDelete": "com.azure.mission#DeleteDedicatedHub",
+      "com.azure.mission#DedicatedHubDeleteResponse": "com.azure.mission#DeleteDedicatedHubResponse",
+      "com.azure.mission#DedicatedHubDeleteRequest": "com.azure.mission#DeleteDedicatedHubRequest",
+      "com.azure.mission#DedicatedHubUpdate": "com.azure.mission#UpdateDedicatedHub",
+      "com.azure.mission#DedicatedHubUpdateResponse": "com.azure.mission#UpdateDedicatedHubResponse",
+      "com.azure.mission#DedicatedHubUpdateResponseTagsMap": "com.azure.mission#UpdateDedicatedHubResponseTagsMap",
+      "com.azure.mission#DedicatedHubUpdateRequest": "com.azure.mission#UpdateDedicatedHubRequest",
+      "com.azure.mission#DedicatedHubUpdateRequestTagsMap": "com.azure.mission#UpdateDedicatedHubRequestTagsMap",
+      "com.azure.mission#DedicatedHubGet": "com.azure.mission#GetDedicatedHub",
+      "com.azure.mission#DedicatedHubGetResponse": "com.azure.mission#GetDedicatedHubResponse",
+      "com.azure.mission#DedicatedHubGetResponseTagsMap": "com.azure.mission#GetDedicatedHubResponseTagsMap",
+      "com.azure.mission#DedicatedHubGetRequest": "com.azure.mission#GetDedicatedHubRequest",
+      "com.azure.mission#DedicatedHubListByCommunityResource": "com.azure.mission#ListDedicatedHubByCommunityResource",
+      "com.azure.mission#DedicatedHubListByCommunityResourceRequest": "com.azure.mission#ListDedicatedHubByCommunityResourceRequest",
+      "com.azure.mission#CommunityEndpointsDelete": "com.azure.mission#DeleteCommunityEndpoint",
+      "com.azure.mission#CommunityEndpointsDeleteResponse": "com.azure.mission#DeleteCommunityEndpointResponse",
+      "com.azure.mission#CommunityEndpointsDeleteRequest": "com.azure.mission#DeleteCommunityEndpointRequest",
+      "com.azure.mission#CommunityEndpointsUpdate": "com.azure.mission#UpdateCommunityEndpoint",
+      "com.azure.mission#CommunityEndpointsUpdateResponse": "com.azure.mission#UpdateCommunityEndpointResponse",
+      "com.azure.mission#CommunityEndpointsUpdateResponseTagsMap": "com.azure.mission#UpdateCommunityEndpointResponseTagsMap",
+      "com.azure.mission#CommunityEndpointsUpdateRequest": "com.azure.mission#UpdateCommunityEndpointRequest",
+      "com.azure.mission#CommunityEndpointsUpdateRequestTagsMap": "com.azure.mission#UpdateCommunityEndpointRequestTagsMap",
+      "com.azure.mission#CommunityEndpointsGet": "com.azure.mission#GetCommunityEndpoint",
+      "com.azure.mission#CommunityEndpointsGetResponse": "com.azure.mission#GetCommunityEndpointResponse",
+      "com.azure.mission#CommunityEndpointsGetResponseTagsMap": "com.azure.mission#GetCommunityEndpointResponseTagsMap",
+      "com.azure.mission#CommunityEndpointsGetRequest": "com.azure.mission#GetCommunityEndpointRequest",
+      "com.azure.mission#CommunityEndpointsListByCommunityResource": "com.azure.mission#ListCommunityEndpointByCommunityResource",
+      "com.azure.mission#CommunityEndpointsListByCommunityResourceRequest": "com.azure.mission#ListCommunityEndpointByCommunityResourceRequest",
+      "com.azure.mission#CommunityCheckAddressSpaceAvailability": "com.azure.mission#CheckCommunityAddressSpaceAvailability",
+      "com.azure.mission#CommunityCheckAddressSpaceAvailabilityRequest": "com.azure.mission#CheckCommunityAddressSpaceAvailabilityRequest",
+      "com.azure.mission#CommunityDelete": "com.azure.mission#DeleteCommunity",
+      "com.azure.mission#CommunityDeleteResponse": "com.azure.mission#DeleteCommunityResponse",
+      "com.azure.mission#CommunityDeleteRequest": "com.azure.mission#DeleteCommunityRequest",
+      "com.azure.mission#CommunityUpdate": "com.azure.mission#UpdateCommunity",
+      "com.azure.mission#CommunityUpdateResponse": "com.azure.mission#UpdateCommunityResponse",
+      "com.azure.mission#CommunityUpdateResponseIdentity": "com.azure.mission#UpdateCommunityResponseIdentity",
+      "com.azure.mission#CommunityUpdateResponseTagsMap": "com.azure.mission#UpdateCommunityResponseTagsMap",
+      "com.azure.mission#CommunityUpdateRequest": "com.azure.mission#UpdateCommunityRequest",
+      "com.azure.mission#CommunityUpdateRequestTagsMap": "com.azure.mission#UpdateCommunityRequestTagsMap",
+      "com.azure.mission#CommunityGet": "com.azure.mission#GetCommunity",
+      "com.azure.mission#CommunityGetResponse": "com.azure.mission#GetCommunityResponse",
+      "com.azure.mission#CommunityGetResponseIdentity": "com.azure.mission#GetCommunityResponseIdentity",
+      "com.azure.mission#CommunityGetResponseTagsMap": "com.azure.mission#GetCommunityResponseTagsMap",
+      "com.azure.mission#CommunityGetRequest": "com.azure.mission#GetCommunityRequest",
+      "com.azure.mission#CommunityListByResourceGroup": "com.azure.mission#ListCommunityByResourceGroup",
+      "com.azure.mission#CommunityListByResourceGroupRequest": "com.azure.mission#ListCommunityByResourceGroupRequest",
+      "com.azure.mission#WorkloadListBySubscription": "com.azure.mission#ListWorkloadBySubscription",
+      "com.azure.mission#WorkloadListBySubscriptionRequest": "com.azure.mission#ListWorkloadBySubscriptionRequest",
+      "com.azure.mission#EnclaveEndpointsListBySubscription": "com.azure.mission#ListEnclaveEndpointBySubscription",
+      "com.azure.mission#EnclaveEndpointsListBySubscriptionRequest": "com.azure.mission#ListEnclaveEndpointBySubscriptionRequest",
+      "com.azure.mission#VirtualEnclaveListBySubscription": "com.azure.mission#ListVirtualEnclaveBySubscription",
+      "com.azure.mission#VirtualEnclaveListBySubscriptionRequest": "com.azure.mission#ListVirtualEnclaveBySubscriptionRequest",
+      "com.azure.mission#EnclaveConnectionListBySubscription": "com.azure.mission#ListEnclaveConnectionBySubscription",
+      "com.azure.mission#EnclaveConnectionListBySubscriptionRequest": "com.azure.mission#ListEnclaveConnectionBySubscriptionRequest",
+      "com.azure.mission#TransitHubListBySubscription": "com.azure.mission#ListTransitHubBySubscription",
+      "com.azure.mission#TransitHubListBySubscriptionRequest": "com.azure.mission#ListTransitHubBySubscriptionRequest",
+      "com.azure.mission#DedicatedHubListBySubscription": "com.azure.mission#ListDedicatedHubBySubscription",
+      "com.azure.mission#DedicatedHubListBySubscriptionRequest": "com.azure.mission#ListDedicatedHubBySubscriptionRequest",
+      "com.azure.mission#CommunityEndpointsListBySubscription": "com.azure.mission#ListCommunityEndpointBySubscription",
+      "com.azure.mission#CommunityEndpointsListBySubscriptionRequest": "com.azure.mission#ListCommunityEndpointBySubscriptionRequest",
+      "com.azure.mission#CommunityListBySubscription": "com.azure.mission#ListCommunityBySubscription",
+      "com.azure.mission#CommunityListBySubscriptionRequest": "com.azure.mission#ListCommunityBySubscriptionRequest",
+      "com.azure.mission#OperationsList": "com.azure.mission#ListOperations",
+      "com.azure.mission#OperationsListResponse": "com.azure.mission#ListOperationsResponse",
+      "com.azure.mission#OperationsListResponseValueList": "com.azure.mission#ListOperationsResponseValueList",
+      "com.azure.mission#OperationsListRequest": "com.azure.mission#ListOperationsRequest",
+      "com.azure.mission#ApprovalNotifyInitiator": "com.azure.mission#NotifyApprovalInitiator",
+      "com.azure.mission#ApprovalNotifyInitiatorRequest": "com.azure.mission#NotifyApprovalInitiatorRequest",
+      "com.azure.mission#ApprovalNotifyInitiatorRequestApprovalStatus": "com.azure.mission#NotifyApprovalInitiatorRequestApprovalStatus",
+      "com.azure.mission#ApprovalDelete": "com.azure.mission#DeleteApproval",
+      "com.azure.mission#ApprovalDeleteResponse": "com.azure.mission#DeleteApprovalResponse",
+      "com.azure.mission#ApprovalDeleteRequest": "com.azure.mission#DeleteApprovalRequest",
+      "com.azure.mission#ApprovalUpdate": "com.azure.mission#UpdateApproval",
+      "com.azure.mission#ApprovalUpdateResponse": "com.azure.mission#UpdateApprovalResponse",
+      "com.azure.mission#ApprovalUpdateRequest": "com.azure.mission#UpdateApprovalRequest",
+      "com.azure.mission#ApprovalGet": "com.azure.mission#GetApproval",
+      "com.azure.mission#ApprovalGetResponse": "com.azure.mission#GetApprovalResponse",
+      "com.azure.mission#ApprovalGetRequest": "com.azure.mission#GetApprovalRequest",
+      "com.azure.mission#ApprovalListByParent": "com.azure.mission#ListApprovalByParent",
+      "com.azure.mission#ApprovalListByParentRequest": "com.azure.mission#ListApprovalByParentRequest"
+    }
   },
   "shapes": {
-    "com.azure.mission#DeleteWorkload": {
+    "com.azure.mission#WorkloadDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteWorkloadRequest"
+        "target": "com.azure.mission#WorkloadDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteWorkloadResponse"
+        "target": "com.azure.mission#WorkloadDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +190,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteWorkloadResponse": {
+    "com.azure.mission#WorkloadDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -59,7 +212,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteWorkloadRequest": {
+    "com.azure.mission#WorkloadDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -99,13 +252,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateWorkload": {
+    "com.azure.mission#WorkloadUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateWorkloadRequest"
+        "target": "com.azure.mission#WorkloadUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateWorkloadResponse"
+        "target": "com.azure.mission#WorkloadUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -118,7 +271,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateWorkloadResponse": {
+    "com.azure.mission#WorkloadUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -146,7 +299,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateWorkloadResponseTagsMap",
+          "target": "com.azure.mission#WorkloadUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -317,7 +470,7 @@
         "smithy.api#documentation": "The provisioning status of the resource."
       }
     },
-    "com.azure.mission#UpdateWorkloadResponseTagsMap": {
+    "com.azure.mission#WorkloadUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -437,7 +590,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.mission#UpdateWorkloadRequest": {
+    "com.azure.mission#WorkloadUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -479,7 +632,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateWorkloadRequestTagsMap",
+          "target": "com.azure.mission#WorkloadUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -489,7 +642,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateWorkloadRequestTagsMap": {
+    "com.azure.mission#WorkloadUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -714,13 +867,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetWorkload": {
+    "com.azure.mission#WorkloadGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetWorkloadRequest"
+        "target": "com.azure.mission#WorkloadGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetWorkloadResponse"
+        "target": "com.azure.mission#WorkloadGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -733,7 +886,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetWorkloadResponse": {
+    "com.azure.mission#WorkloadGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -761,7 +914,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetWorkloadResponseTagsMap",
+          "target": "com.azure.mission#WorkloadGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -784,7 +937,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetWorkloadResponseTagsMap": {
+    "com.azure.mission#WorkloadGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -796,7 +949,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetWorkloadRequest": {
+    "com.azure.mission#WorkloadGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -836,10 +989,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListWorkloadByEnclaveResource": {
+    "com.azure.mission#WorkloadListByEnclaveResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListWorkloadByEnclaveResourceRequest"
+        "target": "com.azure.mission#WorkloadListByEnclaveResourceRequest"
       },
       "output": {
         "target": "com.azure.mission#WorkloadResourceListResult"
@@ -849,10 +1002,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadResource resources by EnclaveResource",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#WorkloadResourceListResult": {
@@ -948,7 +1108,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListWorkloadByEnclaveResourceRequest": {
+    "com.azure.mission#WorkloadListByEnclaveResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -973,6 +1133,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enclaveResource Resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1439,13 +1605,13 @@
         "smithy.api#documentation": "Resource request action indicating action which needed to be performed upon calling approval-callback post action"
       }
     },
-    "com.azure.mission#DeleteEnclaveEndpoint": {
+    "com.azure.mission#EnclaveEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteEnclaveEndpointRequest"
+        "target": "com.azure.mission#EnclaveEndpointsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteEnclaveEndpointResponse"
+        "target": "com.azure.mission#EnclaveEndpointsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1458,7 +1624,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteEnclaveEndpointResponse": {
+    "com.azure.mission#EnclaveEndpointsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1480,7 +1646,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteEnclaveEndpointRequest": {
+    "com.azure.mission#EnclaveEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1520,13 +1686,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateEnclaveEndpoint": {
+    "com.azure.mission#EnclaveEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateEnclaveEndpointRequest"
+        "target": "com.azure.mission#EnclaveEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateEnclaveEndpointResponse"
+        "target": "com.azure.mission#EnclaveEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1539,7 +1705,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateEnclaveEndpointResponse": {
+    "com.azure.mission#EnclaveEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1567,7 +1733,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateEnclaveEndpointResponseTagsMap",
+          "target": "com.azure.mission#EnclaveEndpointsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1760,7 +1926,7 @@
         "smithy.api#documentation": "Enclave Endpoint Protocol Enum"
       }
     },
-    "com.azure.mission#UpdateEnclaveEndpointResponseTagsMap": {
+    "com.azure.mission#EnclaveEndpointsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1772,7 +1938,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateEnclaveEndpointRequest": {
+    "com.azure.mission#EnclaveEndpointsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1814,7 +1980,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateEnclaveEndpointRequestTagsMap",
+          "target": "com.azure.mission#EnclaveEndpointsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1824,7 +1990,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateEnclaveEndpointRequestTagsMap": {
+    "com.azure.mission#EnclaveEndpointsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2062,13 +2228,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetEnclaveEndpoint": {
+    "com.azure.mission#EnclaveEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetEnclaveEndpointRequest"
+        "target": "com.azure.mission#EnclaveEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetEnclaveEndpointResponse"
+        "target": "com.azure.mission#EnclaveEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2081,7 +2247,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetEnclaveEndpointResponse": {
+    "com.azure.mission#EnclaveEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2109,7 +2275,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetEnclaveEndpointResponseTagsMap",
+          "target": "com.azure.mission#EnclaveEndpointsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2132,7 +2298,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetEnclaveEndpointResponseTagsMap": {
+    "com.azure.mission#EnclaveEndpointsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2144,7 +2310,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetEnclaveEndpointRequest": {
+    "com.azure.mission#EnclaveEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2184,10 +2350,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListEnclaveEndpointByEnclaveResource": {
+    "com.azure.mission#EnclaveEndpointsListByEnclaveResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListEnclaveEndpointByEnclaveResourceRequest"
+        "target": "com.azure.mission#EnclaveEndpointsListByEnclaveResourceRequest"
       },
       "output": {
         "target": "com.azure.mission#EnclaveEndpointResourceListResult"
@@ -2197,10 +2363,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EnclaveEndpointResource resources by EnclaveResource",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#EnclaveEndpointResourceListResult": {
@@ -2296,7 +2469,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListEnclaveEndpointByEnclaveResourceRequest": {
+    "com.azure.mission#EnclaveEndpointsListByEnclaveResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2322,19 +2495,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enclaveResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#DeleteVirtualEnclave": {
+    "com.azure.mission#VirtualEnclaveDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteVirtualEnclaveRequest"
+        "target": "com.azure.mission#VirtualEnclaveDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteVirtualEnclaveResponse"
+        "target": "com.azure.mission#VirtualEnclaveDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2347,7 +2526,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteVirtualEnclaveResponse": {
+    "com.azure.mission#VirtualEnclaveDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2369,7 +2548,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteVirtualEnclaveRequest": {
+    "com.azure.mission#VirtualEnclaveDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2401,13 +2580,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateVirtualEnclave": {
+    "com.azure.mission#VirtualEnclaveUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateVirtualEnclaveRequest"
+        "target": "com.azure.mission#VirtualEnclaveUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateVirtualEnclaveResponse"
+        "target": "com.azure.mission#VirtualEnclaveUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2420,7 +2599,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateVirtualEnclaveResponse": {
+    "com.azure.mission#VirtualEnclaveUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2448,7 +2627,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateVirtualEnclaveResponseTagsMap",
+          "target": "com.azure.mission#VirtualEnclaveUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2467,7 +2646,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.mission#UpdateVirtualEnclaveResponseIdentity",
+          "target": "com.azure.mission#VirtualEnclaveUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -2491,7 +2670,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#UpdateVirtualEnclaveResponseIdentity": {
+    "com.azure.mission#VirtualEnclaveUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -3582,7 +3761,7 @@
         "smithy.api#documentation": "Subnet Configuration"
       }
     },
-    "com.azure.mission#UpdateVirtualEnclaveResponseTagsMap": {
+    "com.azure.mission#VirtualEnclaveUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3594,7 +3773,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateVirtualEnclaveRequest": {
+    "com.azure.mission#VirtualEnclaveUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3634,7 +3813,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateVirtualEnclaveRequestTagsMap",
+          "target": "com.azure.mission#VirtualEnclaveUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3644,7 +3823,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateVirtualEnclaveRequestTagsMap": {
+    "com.azure.mission#VirtualEnclaveUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4773,13 +4952,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetVirtualEnclave": {
+    "com.azure.mission#VirtualEnclaveGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetVirtualEnclaveRequest"
+        "target": "com.azure.mission#VirtualEnclaveGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetVirtualEnclaveResponse"
+        "target": "com.azure.mission#VirtualEnclaveGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4792,7 +4971,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetVirtualEnclaveResponse": {
+    "com.azure.mission#VirtualEnclaveGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4820,7 +4999,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetVirtualEnclaveResponseTagsMap",
+          "target": "com.azure.mission#VirtualEnclaveGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4839,7 +5018,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.mission#GetVirtualEnclaveResponseIdentity",
+          "target": "com.azure.mission#VirtualEnclaveGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -4849,7 +5028,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetVirtualEnclaveResponseIdentity": {
+    "com.azure.mission#VirtualEnclaveGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -4878,7 +5057,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.mission#GetVirtualEnclaveResponseTagsMap": {
+    "com.azure.mission#VirtualEnclaveGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4890,7 +5069,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetVirtualEnclaveRequest": {
+    "com.azure.mission#VirtualEnclaveGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4922,10 +5101,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListVirtualEnclaveByResourceGroup": {
+    "com.azure.mission#VirtualEnclaveListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListVirtualEnclaveByResourceGroupRequest"
+        "target": "com.azure.mission#VirtualEnclaveListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.mission#EnclaveResourceListResult"
@@ -4935,10 +5114,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/virtualEnclaves",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EnclaveResource resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#EnclaveResourceListResult": {
@@ -5069,7 +5255,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListVirtualEnclaveByResourceGroupRequest": {
+    "com.azure.mission#VirtualEnclaveListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5086,6 +5272,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5300,13 +5492,13 @@
         "smithy.api#documentation": "Resource request action indicating action which needed to be performed upon calling approval-callback post action"
       }
     },
-    "com.azure.mission#DeleteEnclaveConnection": {
+    "com.azure.mission#EnclaveConnectionDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteEnclaveConnectionRequest"
+        "target": "com.azure.mission#EnclaveConnectionDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteEnclaveConnectionResponse"
+        "target": "com.azure.mission#EnclaveConnectionDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5319,7 +5511,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteEnclaveConnectionResponse": {
+    "com.azure.mission#EnclaveConnectionDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5341,7 +5533,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteEnclaveConnectionRequest": {
+    "com.azure.mission#EnclaveConnectionDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5373,13 +5565,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateEnclaveConnection": {
+    "com.azure.mission#EnclaveConnectionUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateEnclaveConnectionRequest"
+        "target": "com.azure.mission#EnclaveConnectionUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateEnclaveConnectionResponse"
+        "target": "com.azure.mission#EnclaveConnectionUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5392,7 +5584,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateEnclaveConnectionResponse": {
+    "com.azure.mission#EnclaveConnectionUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5420,7 +5612,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateEnclaveConnectionResponseTagsMap",
+          "target": "com.azure.mission#EnclaveConnectionUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5575,7 +5767,7 @@
         "smithy.api#documentation": "Specifies the state of the enclave connection."
       }
     },
-    "com.azure.mission#UpdateEnclaveConnectionResponseTagsMap": {
+    "com.azure.mission#EnclaveConnectionUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5587,7 +5779,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateEnclaveConnectionRequest": {
+    "com.azure.mission#EnclaveConnectionUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5621,7 +5813,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateEnclaveConnectionRequestTagsMap",
+          "target": "com.azure.mission#EnclaveConnectionUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5631,7 +5823,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateEnclaveConnectionRequestTagsMap": {
+    "com.azure.mission#EnclaveConnectionUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5851,13 +6043,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetEnclaveConnection": {
+    "com.azure.mission#EnclaveConnectionGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetEnclaveConnectionRequest"
+        "target": "com.azure.mission#EnclaveConnectionGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetEnclaveConnectionResponse"
+        "target": "com.azure.mission#EnclaveConnectionGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5870,7 +6062,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetEnclaveConnectionResponse": {
+    "com.azure.mission#EnclaveConnectionGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5898,7 +6090,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetEnclaveConnectionResponseTagsMap",
+          "target": "com.azure.mission#EnclaveConnectionGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5921,7 +6113,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetEnclaveConnectionResponseTagsMap": {
+    "com.azure.mission#EnclaveConnectionGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5933,7 +6125,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetEnclaveConnectionRequest": {
+    "com.azure.mission#EnclaveConnectionGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5965,10 +6157,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListEnclaveConnectionByResourceGroup": {
+    "com.azure.mission#EnclaveConnectionListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListEnclaveConnectionByResourceGroupRequest"
+        "target": "com.azure.mission#EnclaveConnectionListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.mission#EnclaveConnectionResourceListResult"
@@ -5978,10 +6170,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/enclaveConnections",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EnclaveConnectionResource resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#EnclaveConnectionResourceListResult": {
@@ -6077,7 +6276,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListEnclaveConnectionByResourceGroupRequest": {
+    "com.azure.mission#EnclaveConnectionListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6095,19 +6294,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#DeleteTransitHub": {
+    "com.azure.mission#TransitHubDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteTransitHubRequest"
+        "target": "com.azure.mission#TransitHubDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteTransitHubResponse"
+        "target": "com.azure.mission#TransitHubDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6120,7 +6325,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteTransitHubResponse": {
+    "com.azure.mission#TransitHubDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -6142,7 +6347,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteTransitHubRequest": {
+    "com.azure.mission#TransitHubDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6182,13 +6387,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateTransitHub": {
+    "com.azure.mission#TransitHubUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateTransitHubRequest"
+        "target": "com.azure.mission#TransitHubUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateTransitHubResponse"
+        "target": "com.azure.mission#TransitHubUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6201,7 +6406,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateTransitHubResponse": {
+    "com.azure.mission#TransitHubUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6229,7 +6434,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateTransitHubResponseTagsMap",
+          "target": "com.azure.mission#TransitHubUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6437,7 +6642,7 @@
         "smithy.api#documentation": "Specifies the state of the transitHub."
       }
     },
-    "com.azure.mission#UpdateTransitHubResponseTagsMap": {
+    "com.azure.mission#TransitHubUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6449,7 +6654,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateTransitHubRequest": {
+    "com.azure.mission#TransitHubUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6491,7 +6696,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateTransitHubRequestTagsMap",
+          "target": "com.azure.mission#TransitHubUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6501,7 +6706,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateTransitHubRequestTagsMap": {
+    "com.azure.mission#TransitHubUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6732,13 +6937,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetTransitHub": {
+    "com.azure.mission#TransitHubGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetTransitHubRequest"
+        "target": "com.azure.mission#TransitHubGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetTransitHubResponse"
+        "target": "com.azure.mission#TransitHubGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6751,7 +6956,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetTransitHubResponse": {
+    "com.azure.mission#TransitHubGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6779,7 +6984,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetTransitHubResponseTagsMap",
+          "target": "com.azure.mission#TransitHubGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6802,7 +7007,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetTransitHubResponseTagsMap": {
+    "com.azure.mission#TransitHubGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6814,7 +7019,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetTransitHubRequest": {
+    "com.azure.mission#TransitHubGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6854,10 +7059,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListTransitHubByCommunityResource": {
+    "com.azure.mission#TransitHubListByCommunityResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListTransitHubByCommunityResourceRequest"
+        "target": "com.azure.mission#TransitHubListByCommunityResourceRequest"
       },
       "output": {
         "target": "com.azure.mission#TransitHubResourceListResult"
@@ -6867,10 +7072,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/transitHubs",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List TransitHubResource resources by CommunityResource",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#TransitHubResourceListResult": {
@@ -6966,7 +7178,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListTransitHubByCommunityResourceRequest": {
+    "com.azure.mission#TransitHubListByCommunityResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6992,19 +7204,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the communityResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#DeleteDedicatedHub": {
+    "com.azure.mission#DedicatedHubDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteDedicatedHubRequest"
+        "target": "com.azure.mission#DedicatedHubDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteDedicatedHubResponse"
+        "target": "com.azure.mission#DedicatedHubDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7017,7 +7235,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteDedicatedHubResponse": {
+    "com.azure.mission#DedicatedHubDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -7039,7 +7257,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteDedicatedHubRequest": {
+    "com.azure.mission#DedicatedHubDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7079,13 +7297,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateDedicatedHub": {
+    "com.azure.mission#DedicatedHubUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateDedicatedHubRequest"
+        "target": "com.azure.mission#DedicatedHubUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateDedicatedHubResponse"
+        "target": "com.azure.mission#DedicatedHubUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7098,7 +7316,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateDedicatedHubResponse": {
+    "com.azure.mission#DedicatedHubUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7126,7 +7344,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateDedicatedHubResponseTagsMap",
+          "target": "com.azure.mission#DedicatedHubUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7221,7 +7439,7 @@
         "smithy.api#documentation": "Specifies the designation of the dedicated hub."
       }
     },
-    "com.azure.mission#UpdateDedicatedHubResponseTagsMap": {
+    "com.azure.mission#DedicatedHubUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7233,7 +7451,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateDedicatedHubRequest": {
+    "com.azure.mission#DedicatedHubUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7275,7 +7493,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateDedicatedHubRequestTagsMap",
+          "target": "com.azure.mission#DedicatedHubUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7285,7 +7503,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateDedicatedHubRequestTagsMap": {
+    "com.azure.mission#DedicatedHubUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7492,13 +7710,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetDedicatedHub": {
+    "com.azure.mission#DedicatedHubGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetDedicatedHubRequest"
+        "target": "com.azure.mission#DedicatedHubGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetDedicatedHubResponse"
+        "target": "com.azure.mission#DedicatedHubGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7511,7 +7729,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetDedicatedHubResponse": {
+    "com.azure.mission#DedicatedHubGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7539,7 +7757,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetDedicatedHubResponseTagsMap",
+          "target": "com.azure.mission#DedicatedHubGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7562,7 +7780,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetDedicatedHubResponseTagsMap": {
+    "com.azure.mission#DedicatedHubGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7574,7 +7792,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetDedicatedHubRequest": {
+    "com.azure.mission#DedicatedHubGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7614,10 +7832,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListDedicatedHubByCommunityResource": {
+    "com.azure.mission#DedicatedHubListByCommunityResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListDedicatedHubByCommunityResourceRequest"
+        "target": "com.azure.mission#DedicatedHubListByCommunityResourceRequest"
       },
       "output": {
         "target": "com.azure.mission#DedicatedHubResourceListResult"
@@ -7627,10 +7845,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DedicatedHubResource resources by CommunityResource",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#DedicatedHubResourceListResult": {
@@ -7726,7 +7951,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListDedicatedHubByCommunityResourceRequest": {
+    "com.azure.mission#DedicatedHubListByCommunityResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7751,6 +7976,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the communityResource Resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7981,13 +8212,13 @@
         "smithy.api#documentation": "Resource request action indicating action which needed to be performed upon calling approval-callback post action"
       }
     },
-    "com.azure.mission#DeleteCommunityEndpoint": {
+    "com.azure.mission#CommunityEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteCommunityEndpointRequest"
+        "target": "com.azure.mission#CommunityEndpointsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteCommunityEndpointResponse"
+        "target": "com.azure.mission#CommunityEndpointsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8000,7 +8231,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteCommunityEndpointResponse": {
+    "com.azure.mission#CommunityEndpointsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -8022,7 +8253,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteCommunityEndpointRequest": {
+    "com.azure.mission#CommunityEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8062,13 +8293,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateCommunityEndpoint": {
+    "com.azure.mission#CommunityEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateCommunityEndpointRequest"
+        "target": "com.azure.mission#CommunityEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateCommunityEndpointResponse"
+        "target": "com.azure.mission#CommunityEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8081,7 +8312,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateCommunityEndpointResponse": {
+    "com.azure.mission#CommunityEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8109,7 +8340,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateCommunityEndpointResponseTagsMap",
+          "target": "com.azure.mission#CommunityEndpointsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -8344,7 +8575,7 @@
         "smithy.api#documentation": "Destination Type Enum"
       }
     },
-    "com.azure.mission#UpdateCommunityEndpointResponseTagsMap": {
+    "com.azure.mission#CommunityEndpointsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8356,7 +8587,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateCommunityEndpointRequest": {
+    "com.azure.mission#CommunityEndpointsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8398,7 +8629,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateCommunityEndpointRequestTagsMap",
+          "target": "com.azure.mission#CommunityEndpointsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -8408,7 +8639,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateCommunityEndpointRequestTagsMap": {
+    "com.azure.mission#CommunityEndpointsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8646,13 +8877,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetCommunityEndpoint": {
+    "com.azure.mission#CommunityEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetCommunityEndpointRequest"
+        "target": "com.azure.mission#CommunityEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetCommunityEndpointResponse"
+        "target": "com.azure.mission#CommunityEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8665,7 +8896,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetCommunityEndpointResponse": {
+    "com.azure.mission#CommunityEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8693,7 +8924,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetCommunityEndpointResponseTagsMap",
+          "target": "com.azure.mission#CommunityEndpointsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -8716,7 +8947,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetCommunityEndpointResponseTagsMap": {
+    "com.azure.mission#CommunityEndpointsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8728,7 +8959,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetCommunityEndpointRequest": {
+    "com.azure.mission#CommunityEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8768,10 +8999,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListCommunityEndpointByCommunityResource": {
+    "com.azure.mission#CommunityEndpointsListByCommunityResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListCommunityEndpointByCommunityResourceRequest"
+        "target": "com.azure.mission#CommunityEndpointsListByCommunityResourceRequest"
       },
       "output": {
         "target": "com.azure.mission#CommunityEndpointResourceListResult"
@@ -8781,10 +9012,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CommunityEndpointResource resources by CommunityResource",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#CommunityEndpointResourceListResult": {
@@ -8880,7 +9118,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListCommunityEndpointByCommunityResourceRequest": {
+    "com.azure.mission#CommunityEndpointsListByCommunityResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8906,16 +9144,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the communityResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#CheckCommunityAddressSpaceAvailability": {
+    "com.azure.mission#CommunityCheckAddressSpaceAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#CheckCommunityAddressSpaceAvailabilityRequest"
+        "target": "com.azure.mission#CommunityCheckAddressSpaceAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.mission#CheckAddressSpaceAvailabilityResponse"
@@ -8946,7 +9190,7 @@
         "smithy.api#documentation": "Response of availability of the requested address space."
       }
     },
-    "com.azure.mission#CheckCommunityAddressSpaceAvailabilityRequest": {
+    "com.azure.mission#CommunityCheckAddressSpaceAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8992,13 +9236,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#DeleteCommunity": {
+    "com.azure.mission#CommunityDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteCommunityRequest"
+        "target": "com.azure.mission#CommunityDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteCommunityResponse"
+        "target": "com.azure.mission#CommunityDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9011,7 +9255,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteCommunityResponse": {
+    "com.azure.mission#CommunityDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -9033,7 +9277,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteCommunityRequest": {
+    "com.azure.mission#CommunityDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9065,13 +9309,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateCommunity": {
+    "com.azure.mission#CommunityUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateCommunityRequest"
+        "target": "com.azure.mission#CommunityUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateCommunityResponse"
+        "target": "com.azure.mission#CommunityUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9084,7 +9328,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateCommunityResponse": {
+    "com.azure.mission#CommunityUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9112,7 +9356,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateCommunityResponseTagsMap",
+          "target": "com.azure.mission#CommunityUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -9131,7 +9375,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.mission#UpdateCommunityResponseIdentity",
+          "target": "com.azure.mission#CommunityUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -9155,7 +9399,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#UpdateCommunityResponseIdentity": {
+    "com.azure.mission#CommunityUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -9455,7 +9699,7 @@
         "smithy.api#documentation": "DNS Servers."
       }
     },
-    "com.azure.mission#UpdateCommunityResponseTagsMap": {
+    "com.azure.mission#CommunityUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -9467,7 +9711,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#UpdateCommunityRequest": {
+    "com.azure.mission#CommunityUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9501,7 +9745,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#UpdateCommunityRequestTagsMap",
+          "target": "com.azure.mission#CommunityUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -9517,7 +9761,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateCommunityRequestTagsMap": {
+    "com.azure.mission#CommunityUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -10090,13 +10334,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetCommunity": {
+    "com.azure.mission#CommunityGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetCommunityRequest"
+        "target": "com.azure.mission#CommunityGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetCommunityResponse"
+        "target": "com.azure.mission#CommunityGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10109,7 +10353,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetCommunityResponse": {
+    "com.azure.mission#CommunityGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10137,7 +10381,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.mission#GetCommunityResponseTagsMap",
+          "target": "com.azure.mission#CommunityGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -10156,7 +10400,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.mission#GetCommunityResponseIdentity",
+          "target": "com.azure.mission#CommunityGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -10166,7 +10410,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetCommunityResponseIdentity": {
+    "com.azure.mission#CommunityGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -10195,7 +10439,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.mission#GetCommunityResponseTagsMap": {
+    "com.azure.mission#CommunityGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -10207,7 +10451,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#GetCommunityRequest": {
+    "com.azure.mission#CommunityGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10239,10 +10483,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListCommunityByResourceGroup": {
+    "com.azure.mission#CommunityListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListCommunityByResourceGroupRequest"
+        "target": "com.azure.mission#CommunityListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.mission#CommunityResourceListResult"
@@ -10252,10 +10496,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Mission/communities",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CommunityResource resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#CommunityResourceListResult": {
@@ -10386,7 +10637,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.mission#ListCommunityByResourceGroupRequest": {
+    "com.azure.mission#CommunityListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10404,16 +10655,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListWorkloadBySubscription": {
+    "com.azure.mission#WorkloadListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListWorkloadBySubscriptionRequest"
+        "target": "com.azure.mission#WorkloadListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#WorkloadResourceListResult"
@@ -10423,13 +10680,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/workloads",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListWorkloadBySubscriptionRequest": {
+    "com.azure.mission#WorkloadListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10447,16 +10711,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enclaveResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListEnclaveEndpointBySubscription": {
+    "com.azure.mission#EnclaveEndpointsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListEnclaveEndpointBySubscriptionRequest"
+        "target": "com.azure.mission#EnclaveEndpointsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#EnclaveEndpointResourceListResult"
@@ -10466,13 +10736,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves/{virtualEnclaveName}/enclaveEndpoints",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EnclaveEndpointResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListEnclaveEndpointBySubscriptionRequest": {
+    "com.azure.mission#EnclaveEndpointsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10490,16 +10767,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enclaveResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListVirtualEnclaveBySubscription": {
+    "com.azure.mission#VirtualEnclaveListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListVirtualEnclaveBySubscriptionRequest"
+        "target": "com.azure.mission#VirtualEnclaveListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#EnclaveResourceListResult"
@@ -10509,13 +10792,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/virtualEnclaves",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EnclaveResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListVirtualEnclaveBySubscriptionRequest": {
+    "com.azure.mission#VirtualEnclaveListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10525,16 +10815,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListEnclaveConnectionBySubscription": {
+    "com.azure.mission#EnclaveConnectionListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListEnclaveConnectionBySubscriptionRequest"
+        "target": "com.azure.mission#EnclaveConnectionListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#EnclaveConnectionResourceListResult"
@@ -10544,13 +10840,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/enclaveConnections",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EnclaveConnectionResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListEnclaveConnectionBySubscriptionRequest": {
+    "com.azure.mission#EnclaveConnectionListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10560,16 +10863,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListTransitHubBySubscription": {
+    "com.azure.mission#TransitHubListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListTransitHubBySubscriptionRequest"
+        "target": "com.azure.mission#TransitHubListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#TransitHubResourceListResult"
@@ -10579,13 +10888,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/transitHubs",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List TransitHubResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListTransitHubBySubscriptionRequest": {
+    "com.azure.mission#TransitHubListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10603,16 +10919,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the communityResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListDedicatedHubBySubscription": {
+    "com.azure.mission#DedicatedHubListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListDedicatedHubBySubscriptionRequest"
+        "target": "com.azure.mission#DedicatedHubListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#DedicatedHubResourceListResult"
@@ -10622,13 +10944,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/dedicatedHubs",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DedicatedHubResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListDedicatedHubBySubscriptionRequest": {
+    "com.azure.mission#DedicatedHubListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10646,16 +10975,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the communityResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListCommunityEndpointBySubscription": {
+    "com.azure.mission#CommunityEndpointsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListCommunityEndpointBySubscriptionRequest"
+        "target": "com.azure.mission#CommunityEndpointsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#CommunityEndpointResourceListResult"
@@ -10665,13 +11000,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities/{communityName}/communityEndpoints",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CommunityEndpointResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListCommunityEndpointBySubscriptionRequest": {
+    "com.azure.mission#CommunityEndpointsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10689,16 +11031,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the communityResource Resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListCommunityBySubscription": {
+    "com.azure.mission#CommunityListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListCommunityBySubscriptionRequest"
+        "target": "com.azure.mission#CommunityListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.mission#CommunityResourceListResult"
@@ -10708,13 +11056,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Mission/communities",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CommunityResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListCommunityBySubscriptionRequest": {
+    "com.azure.mission#CommunityListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10724,36 +11079,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListOperations": {
+    "com.azure.mission#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.mission#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.mission#ListOperationsResponse"
+        "target": "com.azure.mission#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.Mission/operations",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.mission#ListOperationsResponse": {
+    "com.azure.mission#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.mission#ListOperationsResponseValueList",
+          "target": "com.azure.mission#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -10769,7 +11137,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#ListOperationsResponseValueList": {
+    "com.azure.mission#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.mission#Operation"
@@ -10888,10 +11256,24 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.mission#NotifyApprovalInitiator": {
+    "com.azure.mission#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.mission#ApprovalNotifyInitiator": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#NotifyApprovalInitiatorRequest"
+        "target": "com.azure.mission#ApprovalNotifyInitiatorRequest"
       },
       "output": {
         "target": "com.azure.mission#ApprovalActionResponse"
@@ -10907,7 +11289,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#NotifyApprovalInitiatorRequest": {
+    "com.azure.mission#ApprovalNotifyInitiatorRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -10927,7 +11309,7 @@
           }
         },
         "approvalStatus": {
-          "target": "com.azure.mission#NotifyApprovalInitiatorRequestApprovalStatus",
+          "target": "com.azure.mission#ApprovalNotifyInitiatorRequestApprovalStatus",
           "traits": {
             "smithy.api#documentation": "Approval status indicating 'Approved' or 'Rejected'",
             "smithy.api#required": {}
@@ -10938,7 +11320,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#NotifyApprovalInitiatorRequestApprovalStatus": {
+    "com.azure.mission#ApprovalNotifyInitiatorRequestApprovalStatus": {
       "type": "enum",
       "members": {
         "APPROVED": {
@@ -10958,13 +11340,13 @@
         "smithy.api#documentation": "Approval status indicating 'Approved' or 'Rejected'"
       }
     },
-    "com.azure.mission#DeleteApproval": {
+    "com.azure.mission#ApprovalDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#DeleteApprovalRequest"
+        "target": "com.azure.mission#ApprovalDeleteRequest"
       },
       "output": {
-        "target": "com.azure.mission#DeleteApprovalResponse"
+        "target": "com.azure.mission#ApprovalDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10977,7 +11359,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#DeleteApprovalResponse": {
+    "com.azure.mission#ApprovalDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -10999,7 +11381,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#DeleteApprovalRequest": {
+    "com.azure.mission#ApprovalDeleteRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -11023,13 +11405,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#UpdateApproval": {
+    "com.azure.mission#ApprovalUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#UpdateApprovalRequest"
+        "target": "com.azure.mission#ApprovalUpdateRequest"
       },
       "output": {
-        "target": "com.azure.mission#UpdateApprovalResponse"
+        "target": "com.azure.mission#ApprovalUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11042,7 +11424,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#UpdateApprovalResponse": {
+    "com.azure.mission#ApprovalUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11342,7 +11724,7 @@
         "smithy.api#documentation": "Specifies the action performed by the approver"
       }
     },
-    "com.azure.mission#UpdateApprovalRequest": {
+    "com.azure.mission#ApprovalUpdateRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -11690,13 +12072,13 @@
         "smithy.api#documentation": "List of approvers for the approval request"
       }
     },
-    "com.azure.mission#GetApproval": {
+    "com.azure.mission#ApprovalGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#GetApprovalRequest"
+        "target": "com.azure.mission#ApprovalGetRequest"
       },
       "output": {
-        "target": "com.azure.mission#GetApprovalResponse"
+        "target": "com.azure.mission#ApprovalGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11709,7 +12091,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.mission#GetApprovalResponse": {
+    "com.azure.mission#ApprovalGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11747,7 +12129,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.mission#GetApprovalRequest": {
+    "com.azure.mission#ApprovalGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -11771,10 +12153,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.mission#ListApprovalByParent": {
+    "com.azure.mission#ApprovalListByParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.mission#ListApprovalByParentRequest"
+        "target": "com.azure.mission#ApprovalListByParentRequest"
       },
       "output": {
         "target": "com.azure.mission#ApprovalResourceListResult"
@@ -11784,10 +12166,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.Mission/approvals",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ApprovalResource resources by parent",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.mission#ApprovalResourceListResult": {
@@ -11858,7 +12247,7 @@
         "smithy.api#documentation": "Approval Model Resource"
       }
     },
-    "com.azure.mission#ListApprovalByParentRequest": {
+    "com.azure.mission#ApprovalListByParentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -11867,6 +12256,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11879,19 +12274,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.mission#DeleteWorkload"
+          "target": "com.azure.mission#WorkloadDelete"
         },
         {
-          "target": "com.azure.mission#UpdateWorkload"
+          "target": "com.azure.mission#WorkloadUpdate"
         },
         {
           "target": "com.azure.mission#WorkloadCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetWorkload"
+          "target": "com.azure.mission#WorkloadGet"
         },
         {
-          "target": "com.azure.mission#ListWorkloadByEnclaveResource"
+          "target": "com.azure.mission#WorkloadListByEnclaveResource"
         },
         {
           "target": "com.azure.mission#VirtualEnclaveHandleApprovalDeletion"
@@ -11906,34 +12301,34 @@
           "target": "com.azure.mission#EnclaveEndpointsHandleApprovalCreation"
         },
         {
-          "target": "com.azure.mission#DeleteEnclaveEndpoint"
+          "target": "com.azure.mission#EnclaveEndpointsDelete"
         },
         {
-          "target": "com.azure.mission#UpdateEnclaveEndpoint"
+          "target": "com.azure.mission#EnclaveEndpointsUpdate"
         },
         {
           "target": "com.azure.mission#EnclaveEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetEnclaveEndpoint"
+          "target": "com.azure.mission#EnclaveEndpointsGet"
         },
         {
-          "target": "com.azure.mission#ListEnclaveEndpointByEnclaveResource"
+          "target": "com.azure.mission#EnclaveEndpointsListByEnclaveResource"
         },
         {
-          "target": "com.azure.mission#DeleteVirtualEnclave"
+          "target": "com.azure.mission#VirtualEnclaveDelete"
         },
         {
-          "target": "com.azure.mission#UpdateVirtualEnclave"
+          "target": "com.azure.mission#VirtualEnclaveUpdate"
         },
         {
           "target": "com.azure.mission#VirtualEnclaveCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetVirtualEnclave"
+          "target": "com.azure.mission#VirtualEnclaveGet"
         },
         {
-          "target": "com.azure.mission#ListVirtualEnclaveByResourceGroup"
+          "target": "com.azure.mission#VirtualEnclaveListByResourceGroup"
         },
         {
           "target": "com.azure.mission#EnclaveConnectionHandleApprovalDeletion"
@@ -11942,49 +12337,49 @@
           "target": "com.azure.mission#EnclaveConnectionHandleApprovalCreation"
         },
         {
-          "target": "com.azure.mission#DeleteEnclaveConnection"
+          "target": "com.azure.mission#EnclaveConnectionDelete"
         },
         {
-          "target": "com.azure.mission#UpdateEnclaveConnection"
+          "target": "com.azure.mission#EnclaveConnectionUpdate"
         },
         {
           "target": "com.azure.mission#EnclaveConnectionCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetEnclaveConnection"
+          "target": "com.azure.mission#EnclaveConnectionGet"
         },
         {
-          "target": "com.azure.mission#ListEnclaveConnectionByResourceGroup"
+          "target": "com.azure.mission#EnclaveConnectionListByResourceGroup"
         },
         {
-          "target": "com.azure.mission#DeleteTransitHub"
+          "target": "com.azure.mission#TransitHubDelete"
         },
         {
-          "target": "com.azure.mission#UpdateTransitHub"
+          "target": "com.azure.mission#TransitHubUpdate"
         },
         {
           "target": "com.azure.mission#TransitHubCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetTransitHub"
+          "target": "com.azure.mission#TransitHubGet"
         },
         {
-          "target": "com.azure.mission#ListTransitHubByCommunityResource"
+          "target": "com.azure.mission#TransitHubListByCommunityResource"
         },
         {
-          "target": "com.azure.mission#DeleteDedicatedHub"
+          "target": "com.azure.mission#DedicatedHubDelete"
         },
         {
-          "target": "com.azure.mission#UpdateDedicatedHub"
+          "target": "com.azure.mission#DedicatedHubUpdate"
         },
         {
           "target": "com.azure.mission#DedicatedHubCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetDedicatedHub"
+          "target": "com.azure.mission#DedicatedHubGet"
         },
         {
-          "target": "com.azure.mission#ListDedicatedHubByCommunityResource"
+          "target": "com.azure.mission#DedicatedHubListByCommunityResource"
         },
         {
           "target": "com.azure.mission#CommunityEndpointsHandleApprovalDeletion"
@@ -11993,82 +12388,82 @@
           "target": "com.azure.mission#CommunityEndpointsHandleApprovalCreation"
         },
         {
-          "target": "com.azure.mission#DeleteCommunityEndpoint"
+          "target": "com.azure.mission#CommunityEndpointsDelete"
         },
         {
-          "target": "com.azure.mission#UpdateCommunityEndpoint"
+          "target": "com.azure.mission#CommunityEndpointsUpdate"
         },
         {
           "target": "com.azure.mission#CommunityEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetCommunityEndpoint"
+          "target": "com.azure.mission#CommunityEndpointsGet"
         },
         {
-          "target": "com.azure.mission#ListCommunityEndpointByCommunityResource"
+          "target": "com.azure.mission#CommunityEndpointsListByCommunityResource"
         },
         {
-          "target": "com.azure.mission#CheckCommunityAddressSpaceAvailability"
+          "target": "com.azure.mission#CommunityCheckAddressSpaceAvailability"
         },
         {
-          "target": "com.azure.mission#DeleteCommunity"
+          "target": "com.azure.mission#CommunityDelete"
         },
         {
-          "target": "com.azure.mission#UpdateCommunity"
+          "target": "com.azure.mission#CommunityUpdate"
         },
         {
           "target": "com.azure.mission#CommunityCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetCommunity"
+          "target": "com.azure.mission#CommunityGet"
         },
         {
-          "target": "com.azure.mission#ListCommunityByResourceGroup"
+          "target": "com.azure.mission#CommunityListByResourceGroup"
         },
         {
-          "target": "com.azure.mission#ListWorkloadBySubscription"
+          "target": "com.azure.mission#WorkloadListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListEnclaveEndpointBySubscription"
+          "target": "com.azure.mission#EnclaveEndpointsListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListVirtualEnclaveBySubscription"
+          "target": "com.azure.mission#VirtualEnclaveListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListEnclaveConnectionBySubscription"
+          "target": "com.azure.mission#EnclaveConnectionListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListTransitHubBySubscription"
+          "target": "com.azure.mission#TransitHubListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListDedicatedHubBySubscription"
+          "target": "com.azure.mission#DedicatedHubListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListCommunityEndpointBySubscription"
+          "target": "com.azure.mission#CommunityEndpointsListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListCommunityBySubscription"
+          "target": "com.azure.mission#CommunityListBySubscription"
         },
         {
-          "target": "com.azure.mission#ListOperations"
+          "target": "com.azure.mission#OperationsList"
         },
         {
-          "target": "com.azure.mission#NotifyApprovalInitiator"
+          "target": "com.azure.mission#ApprovalNotifyInitiator"
         },
         {
-          "target": "com.azure.mission#DeleteApproval"
+          "target": "com.azure.mission#ApprovalDelete"
         },
         {
-          "target": "com.azure.mission#UpdateApproval"
+          "target": "com.azure.mission#ApprovalUpdate"
         },
         {
           "target": "com.azure.mission#ApprovalCreateOrUpdate"
         },
         {
-          "target": "com.azure.mission#GetApproval"
+          "target": "com.azure.mission#ApprovalGet"
         },
         {
-          "target": "com.azure.mission#ListApprovalByParent"
+          "target": "com.azure.mission#ApprovalListByParent"
         }
       ],
       "traits": {

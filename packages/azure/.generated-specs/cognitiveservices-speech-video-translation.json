@@ -15,41 +15,16 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIteration": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIteration",
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationResponse": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationResponse",
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationRequest": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIteration": "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIteration",
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIterationRequest": "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIterationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIteration": "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIteration",
-      "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIterationRequest": "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIterationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslation": "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslation",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslation": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslation",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationResponse": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationResponse",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslation": "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslation",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslation": "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslation",
-      "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslationRequest": "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperation": "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperation",
-      "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperationRequest": "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHub": "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHub",
-      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHubRequest": "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHubRequest",
-      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfiguration": "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfiguration",
-      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfigurationRequest": "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfigurationRequest",
-      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfiguration": "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfiguration",
-      "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfigurationRequest": "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfigurationRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIteration": {
+    "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationResponse"
+        "target": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -62,7 +37,7 @@
         "smithy.api#documentation": "Creates an iteration."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationResponse": {
+    "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -418,7 +393,7 @@
         "smithy.api#documentation": "Webvtt file kind."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIterationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -471,10 +446,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIteration": {
+    "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIterationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIterationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_video_translation#Iteration"
@@ -548,7 +523,7 @@
         "smithy.api#documentation": "Do one iteration to translate one video file from source locale to target locale, webvtt for content editing is optional for requesting parameter."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIterationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -580,10 +555,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIteration": {
+    "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIteration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIterationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIterationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_video_translation#PagedIteration"
@@ -594,9 +569,16 @@
           "uri": "/translations/{translationId}/iterations",
           "code": 200,
           "host": "{endpoint}/videotranslation",
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List Iteration resources."
+        "smithy.api#documentation": "List Iteration resources.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_video_translation#PagedIteration": {
@@ -629,7 +611,7 @@
         "smithy.api#documentation": "The Iteration items on this page"
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIterationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIterationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -668,16 +650,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of result items per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslation": {
+    "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -693,7 +681,7 @@
         "smithy.api#documentation": "Delete a translation."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -717,13 +705,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslation": {
+    "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationResponse"
+        "target": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -736,7 +724,7 @@
         "smithy.api#documentation": "Creates a translation."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationResponse": {
+    "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -930,7 +918,7 @@
         "smithy.api#documentation": "TTS voice kind."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -987,10 +975,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslation": {
+    "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_video_translation#Translation"
@@ -1076,7 +1064,7 @@
         "smithy.api#documentation": "Create translation resource for hosting iterations of translating one video file from source locale to target locale."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1100,10 +1088,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslation": {
+    "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_video_translation#PagedTranslation"
@@ -1114,9 +1102,16 @@
           "uri": "/translations",
           "code": 200,
           "host": "{endpoint}/videotranslation",
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List translation resources."
+        "smithy.api#documentation": "List translation resources.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_video_translation#PagedTranslation": {
@@ -1149,7 +1144,7 @@
         "smithy.api#documentation": "The Translation items on this page"
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1180,16 +1175,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of result items per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperation": {
+    "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_video_translation#Operation"
@@ -1226,7 +1227,7 @@
         "smithy.api#documentation": "Operation."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1250,10 +1251,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHub": {
+    "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHub": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHubRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHubRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1269,7 +1270,7 @@
         "smithy.api#documentation": "Send ping to EventHub to verify configuration."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHubRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHubRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1285,10 +1286,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfiguration": {
+    "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfigurationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfigurationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1304,7 +1305,7 @@
         "smithy.api#documentation": "Delete EventHub configuration."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfigurationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfigurationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1475,10 +1476,10 @@
         "smithy.api#documentation": "Enabled event kinds for notification."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfiguration": {
+    "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfigurationRequest"
+        "target": "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfigurationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfiguration"
@@ -1494,7 +1495,7 @@
         "smithy.api#documentation": "Get EventHub configuration."
       }
     },
-    "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfigurationRequest": {
+    "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfigurationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1515,40 +1516,40 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsCreateIteration"
+          "target": "com.azure.cognitiveservices_speech_video_translation#CreateIterationOperationIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsGetIteration"
+          "target": "com.azure.cognitiveservices_speech_video_translation#GetIterationOperationIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#IterationOperationsListIteration"
+          "target": "com.azure.cognitiveservices_speech_video_translation#ListIterationOperationIteration"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsDeleteTranslation"
+          "target": "com.azure.cognitiveservices_speech_video_translation#DeleteTranslationOperationTranslation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsCreateTranslation"
+          "target": "com.azure.cognitiveservices_speech_video_translation#CreateTranslationOperationTranslation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsGetTranslation"
+          "target": "com.azure.cognitiveservices_speech_video_translation#GetTranslationOperationTranslation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#TranslationOperationsListTranslation"
+          "target": "com.azure.cognitiveservices_speech_video_translation#ListTranslationOperationTranslation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#OperationOperationsGetOperation"
+          "target": "com.azure.cognitiveservices_speech_video_translation#GetOperationOperationOperation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsPingEventHub"
+          "target": "com.azure.cognitiveservices_speech_video_translation#PingEventHubConfigurationOperationEventHub"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsDeleteEventHubConfiguration"
+          "target": "com.azure.cognitiveservices_speech_video_translation#DeleteEventHubConfigurationOperationEventHubConfiguration"
         },
         {
           "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsCreateOrReplaceEventHubConfiguration"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_video_translation#EventHubConfigurationOperationsGetEventHubConfiguration"
+          "target": "com.azure.cognitiveservices_speech_video_translation#GetEventHubConfigurationOperationEventHubConfiguration"
         }
       ],
       "traits": {

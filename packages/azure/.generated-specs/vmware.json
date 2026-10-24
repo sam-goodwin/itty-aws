@@ -325,7 +325,8 @@
       "com.azure.vmware#LocationsCheckQuotaAvailabilityRequest": "com.azure.vmware#CheckLocationQuotaAvailabilityRequest",
       "com.azure.vmware#OperationsList": "com.azure.vmware#ListOperations",
       "com.azure.vmware#OperationsListResponse": "com.azure.vmware#ListOperationsResponse",
-      "com.azure.vmware#OperationsListResponseValueList": "com.azure.vmware#ListOperationsResponseValueList"
+      "com.azure.vmware#OperationsListResponseValueList": "com.azure.vmware#ListOperationsResponseValueList",
+      "com.azure.vmware#OperationsListRequest": "com.azure.vmware#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -1001,10 +1002,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkVMGroup resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkVMGroupsList": {
@@ -1100,6 +1108,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1313,10 +1327,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkVirtualMachine resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkVirtualMachinesList": {
@@ -1412,6 +1433,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2035,10 +2062,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkSegment resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkSegmentsList": {
@@ -2134,6 +2168,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2538,10 +2578,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkPublicIP resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkPublicIPsList": {
@@ -2637,6 +2684,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3240,10 +3293,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkPortMirroring resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkPortMirroringList": {
@@ -3339,6 +3399,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3482,10 +3548,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkGateway resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkGatewayList": {
@@ -3581,6 +3654,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4180,10 +4259,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkDnsZone resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkDnsZonesList": {
@@ -4279,6 +4365,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4924,10 +5016,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkDnsService resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkDnsServicesList": {
@@ -5023,6 +5122,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5587,10 +5692,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetworkDhcp resources by WorkloadNetwork",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkDhcpList": {
@@ -5686,6 +5798,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5809,10 +5927,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List WorkloadNetwork resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#WorkloadNetworkList": {
@@ -5908,6 +6033,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6248,10 +6379,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ScriptCmdlet resources by ScriptPackage",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#ScriptCmdletsList": {
@@ -6355,6 +6493,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the script package."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6536,10 +6680,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ScriptPackage resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#ScriptPackagesList": {
@@ -6635,6 +6786,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7450,10 +7607,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ScriptExecution resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#ScriptExecutionsList": {
@@ -7549,6 +7713,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8098,10 +8268,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List PureStoragePolicy resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#PureStoragePolicyListResult": {
@@ -8197,6 +8374,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8416,10 +8599,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ProvisionedNetwork resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#ProvisionedNetworkListResult": {
@@ -8515,6 +8705,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9604,10 +9800,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Maintenance resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#MaintenanceListResult": {
@@ -9731,6 +9934,12 @@
           "traits": {
             "smithy.api#httpQuery": "to",
             "smithy.api#documentation": "date till which result should be returned. i.e. scheduledStartTime <= to"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10374,10 +10583,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List License resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#LicenseListResult": {
@@ -10473,6 +10689,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10843,10 +11065,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List IscsiPath resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#IscsiPathListResult": {
@@ -10942,6 +11171,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11312,10 +11547,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List HcxEnterpriseSite resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#HcxEnterpriseSiteList": {
@@ -11411,6 +11653,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11847,10 +12095,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List GlobalReachConnection resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#GlobalReachConnectionList": {
@@ -11946,6 +12201,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12336,10 +12597,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List VirtualMachine resources by Cluster",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#VirtualMachinesList": {
@@ -12443,6 +12711,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the cluster"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13140,10 +13414,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List PlacementPolicy resources by Cluster",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#PlacementPoliciesList": {
@@ -13247,6 +13528,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the cluster"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13921,10 +14208,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Host resources by Cluster",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#HostListResult": {
@@ -14085,6 +14379,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the cluster"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14753,10 +15053,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Datastore resources by Cluster",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#DatastoreList": {
@@ -14860,6 +15167,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the cluster"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15654,10 +15967,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Cluster resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#ClusterList": {
@@ -15796,6 +16116,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16208,10 +16534,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List CloudLink resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#CloudLinkList": {
@@ -16307,6 +16640,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16693,10 +17032,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ExpressRouteAuthorization resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#ExpressRouteAuthorizationList": {
@@ -16792,6 +17138,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17218,10 +17570,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Addon resources by PrivateCloud",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#AddonList": {
@@ -17317,6 +17676,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the private cloud"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19258,10 +19623,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List PrivateCloud resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#PrivateCloudList": {
@@ -19465,6 +19837,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -19484,10 +19862,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/skus",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "A list of SKUs.",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#PagedResourceSku": {
@@ -19883,6 +20268,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -19902,10 +20293,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List PrivateCloud resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#PrivateCloudsListInSubscriptionRequest": {
@@ -19917,6 +20315,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20212,7 +20616,7 @@
     "com.azure.vmware#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.vmware#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.vmware#OperationsListResponse"
@@ -20222,10 +20626,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AVS/operations",
           "code": 200,
-          "apiVersion": "2026-03-01"
+          "apiVersion": "2026-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-03-01"
+        "com.distilled.openapi#apiVersion": "2026-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmware#OperationsListResponse": {
@@ -20365,6 +20776,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.vmware#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.vmware#Vmware": {

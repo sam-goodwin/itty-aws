@@ -131,7 +131,11 @@
           "apiVersion": "2016-11-01"
         },
         "smithy.api#documentation": "Gets the current usage count and the limit for the resources of the location under the subscription.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_store#UsageListResult": {
@@ -935,10 +939,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Store trusted identity providers within the specified Data Lake Store account.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_store#TrustedIdProviderListResult": {
@@ -1027,6 +1038,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Data Lake Store account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1435,10 +1452,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Store virtual network rules within the specified Data Lake Store account.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_store#VirtualNetworkRuleListResult": {
@@ -1527,6 +1551,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Data Lake Store account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1954,10 +1984,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Store firewall rules within the specified Data Lake Store account.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_store#FirewallRuleListResult": {
@@ -2046,6 +2083,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Data Lake Store account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3724,10 +3767,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Store accounts within a specific resource group. The response includes a link to the next page of results, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_store#DataLakeStoreAccountListResult": {
@@ -4013,6 +4063,12 @@
             "smithy.api#httpQuery": "$count",
             "smithy.api#documentation": "A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4032,10 +4088,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Store accounts within the subscription. The response includes a link to the next page of results, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_store#ListAccountsRequest": {
@@ -4089,6 +4152,12 @@
           "traits": {
             "smithy.api#httpQuery": "$count",
             "smithy.api#documentation": "The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

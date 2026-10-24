@@ -752,6 +752,8 @@ export interface ListChatTranscriptsRequest {
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Object that represents a Chat Transcript resource. */
 export interface ChatTranscriptDetails {
@@ -773,11 +775,13 @@ export interface ChatTranscriptsListResult {
   /** [Placeholder] Description for nextLink property */
   nextLink?: string;
   /** [Placeholder] Description for value property */
-  value?: ChatTranscriptsListResultValueList;
+  value: ChatTranscriptsListResultValueList;
 }
 export interface ListChatTranscriptsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCommunicationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -788,6 +792,8 @@ export interface ListCommunicationsRequest {
   _top?: number;
   /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Object that represents a Communication resource. */
 export interface CommunicationDetails {
@@ -809,7 +815,7 @@ export interface CommunicationsListResult {
   /** [Placeholder] Description for nextLink property */
   nextLink?: string;
   /** [Placeholder] Description for value property */
-  value?: CommunicationsListResultValueList;
+  value: CommunicationsListResultValueList;
 }
 export interface ListCommunicationsNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
@@ -818,12 +824,16 @@ export interface ListCommunicationsNoSubscriptionRequest {
   _top?: number;
   /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListFilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Object that represents File Details resource */
 export interface FileDetails {
@@ -845,13 +855,18 @@ export interface FilesListResult {
   /** [Placeholder] Description for nextLink property */
   nextLink?: string;
   /** [Placeholder] Description for value property */
-  value?: FilesListResultValueList;
+  value: FilesListResultValueList;
 }
 export interface ListFilesNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -884,13 +899,15 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
 export interface ListProblemClassificationsRequest {
   /** Name of the Azure service. */
   serviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ProblemClassification resource object. */
 export interface ProblemClassification {
@@ -912,9 +929,12 @@ export interface ProblemClassificationsListResult {
   /** The link to the next page of items */
   nextLink?: string;
   /** List of ProblemClassification resources. */
-  value?: ProblemClassificationsListResultValueList;
+  value: ProblemClassificationsListResultValueList;
 }
-export interface ListServicesRequest {}
+export interface ListServicesRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Object that represents a Service resource. */
 export interface Service {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -935,7 +955,7 @@ export interface ServicesListResult {
   /** The link to the next page of items */
   nextLink?: string;
   /** List of Service resources. */
-  value?: ServicesListResultValueList;
+  value: ServicesListResultValueList;
 }
 export interface ListSupportTicketsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -944,6 +964,8 @@ export interface ListSupportTicketsRequest {
   _top?: number;
   /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Object that represents SupportTicketDetails resource. */
 export interface SupportTicketDetails {
@@ -965,13 +987,15 @@ export interface SupportTicketsListResult {
   /** [Placeholder] Description for nextLink property */
   nextLink?: string;
   /** [Placeholder] Description for value property */
-  value?: SupportTicketsListResultValueList;
+  value: SupportTicketsListResultValueList;
 }
 export interface ListSupportTicketsNoSubscriptionRequest {
   /** The number of values to return in the collection. Default is 25 and max is 100. */
   _top?: number;
   /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Status to be updated on the ticket. */
 export type Status = "open" | "closed";
@@ -1450,168 +1474,245 @@ export const GetSupportTicketsNoSubscription: API.OperationMethod<
 
 export type ListChatTranscriptsError = AzureOpError;
 /** Lists all chat transcripts for a support ticket under subscription */
-export const ListChatTranscripts: API.OperationMethod<
+export const ListChatTranscripts: API.PaginatedOperationMethod<
   ListChatTranscriptsRequest,
   ChatTranscriptsListResult,
   ListChatTranscriptsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChatTranscriptDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListChatTranscriptsRequest>,
   output: __S(449, __c28, 1) as any as S.Schema<ChatTranscriptsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListChatTranscriptsNoSubscriptionError = AzureOpError;
 /** Lists all chat transcripts for a support ticket */
-export const ListChatTranscriptsNoSubscription: API.OperationMethod<
+export const ListChatTranscriptsNoSubscription: API.PaginatedOperationMethod<
   ListChatTranscriptsNoSubscriptionRequest,
   ChatTranscriptsListResult,
   ListChatTranscriptsNoSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChatTranscriptDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListChatTranscriptsNoSubscriptionRequest>,
   output: __S(449, __c28, 1) as any as S.Schema<ChatTranscriptsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommunicationsError = AzureOpError;
 /** Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const ListCommunications: API.OperationMethod<
+export const ListCommunications: API.PaginatedOperationMethod<
   ListCommunicationsRequest,
   CommunicationsListResult,
   ListCommunicationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommunicationDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<ListCommunicationsRequest>,
   output: __S(497, __c31, 1) as any as S.Schema<CommunicationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommunicationsNoSubscriptionError = AzureOpError;
 /** Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const ListCommunicationsNoSubscription: API.OperationMethod<
+export const ListCommunicationsNoSubscription: API.PaginatedOperationMethod<
   ListCommunicationsNoSubscriptionRequest,
   CommunicationsListResult,
   ListCommunicationsNoSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommunicationDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c32, 0) as any as S.Schema<ListCommunicationsNoSubscriptionRequest>,
   output: __S(497, __c31, 1) as any as S.Schema<CommunicationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFilesError = AzureOpError;
 /** Lists all the Files information under a workspace for an Azure subscription. */
-export const ListFiles: API.OperationMethod<
+export const ListFiles: API.PaginatedOperationMethod<
   ListFilesRequest,
   FilesListResult,
   ListFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FileDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(528, __c33, 0) as any as S.Schema<ListFilesRequest>,
   output: __S(545, __c34, 1) as any as S.Schema<FilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFilesNoSubscriptionError = AzureOpError;
 /** Lists all the Files information under a workspace for an Azure subscription. */
-export const ListFilesNoSubscription: API.OperationMethod<
+export const ListFilesNoSubscription: API.PaginatedOperationMethod<
   ListFilesNoSubscriptionRequest,
   FilesListResult,
   ListFilesNoSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FileDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<ListFilesNoSubscriptionRequest>,
   output: __S(545, __c34, 1) as any as S.Schema<FilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(592, __c37, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(596, __c37, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProblemClassificationsError = AzureOpError;
 /** Lists all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids. */
-export const ListProblemClassifications: API.OperationMethod<
+export const ListProblemClassifications: API.PaginatedOperationMethod<
   ListProblemClassificationsRequest,
   ProblemClassificationsListResult,
   ListProblemClassificationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProblemClassification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<ListProblemClassificationsRequest>,
   output: __S(610, __c38, 2) as any as S.Schema<ProblemClassificationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServicesError = AzureOpError;
 /** Lists all the Azure services available for support ticket creation. For **Technical** issues, select the Service Id that maps to the Azure service/product as displayed in the **Services** drop-down list on the Azure portal's [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) page. Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation. This practice ensures that you always have the most recent set of service and problem classification Ids. */
-export const ListServices: API.OperationMethod<
+export const ListServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   ServicesListResult,
   ListServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Service
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<ListServicesRequest>,
   output: __S(626, __c39, 2) as any as S.Schema<ServicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSupportTicketsError = AzureOpError;
 /** Lists all the support tickets for an Azure subscription. You can also filter the support tickets by _Status_, _CreatedDate_, _ServiceId_, and _ProblemClassificationId_ using the $filter parameter. Output will be a paged result with _nextLink_, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const ListSupportTickets: API.OperationMethod<
+export const ListSupportTickets: API.PaginatedOperationMethod<
   ListSupportTicketsRequest,
   SupportTicketsListResult,
   ListSupportTicketsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SupportTicketDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<ListSupportTicketsRequest>,
   output: __S(657, __c41, 1) as any as S.Schema<SupportTicketsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSupportTicketsNoSubscriptionError = AzureOpError;
 /** Lists all the support tickets. <br/><br/>You can also filter the support tickets by <i>Status</i>, <i>CreatedDate</i>, , <i>ServiceId</i>, and <i>ProblemClassificationId</i> using the $filter parameter. Output will be a paged result with <i>nextLink</i>, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const ListSupportTicketsNoSubscription: API.OperationMethod<
+export const ListSupportTicketsNoSubscription: API.PaginatedOperationMethod<
   ListSupportTicketsNoSubscriptionRequest,
   SupportTicketsListResult,
   ListSupportTicketsNoSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SupportTicketDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c42, 0) as any as S.Schema<ListSupportTicketsNoSubscriptionRequest>,
   output: __S(657, __c41, 1) as any as S.Schema<SupportTicketsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateSupportTicketError = AzureOpError;
 /** This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.<br/><br/>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer. In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API. */
@@ -2264,12 +2365,14 @@ function __c27(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListChatTranscriptsRequest" });
@@ -2283,7 +2386,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(448, __c28, 0)),
+          value: __S(448, __c28, 0),
         }),
       ).annotate({ identifier: "ChatTranscriptsListResult" });
   }
@@ -2294,12 +2397,14 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListChatTranscriptsNoSubscriptionRequest" });
@@ -2314,12 +2419,14 @@ function __c30(j: number): any {
           supportTicketName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommunicationsRequest" });
@@ -2333,7 +2440,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(496, __c31, 0)),
+          value: __S(496, __c31, 0),
         }),
       ).annotate({ identifier: "CommunicationsListResult" });
   }
@@ -2346,12 +2453,14 @@ function __c32(j: number): any {
           supportTicketName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommunicationsNoSubscriptionRequest" });
@@ -2364,12 +2473,14 @@ function __c33(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           fileWorkspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFilesRequest" });
@@ -2383,7 +2494,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(544, __c34, 0)),
+          value: __S(544, __c34, 0),
         }),
       ).annotate({ identifier: "FilesListResult" });
   }
@@ -2394,12 +2505,14 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileWorkspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFilesNoSubscriptionRequest" });
@@ -2427,12 +2540,15 @@ function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/operations",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2460,7 +2576,7 @@ function __c37(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(595, __c37, 3)),
+          value: __S(595, __c37, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2472,12 +2588,14 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProblemClassificationsRequest" });
@@ -2487,7 +2605,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(609, __c38, 1)),
+          value: __S(609, __c38, 1),
         }),
       ).annotate({ identifier: "ProblemClassificationsListResult" });
   }
@@ -2496,12 +2614,15 @@ function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/services",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
@@ -2511,7 +2632,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(625, __c39, 1)),
+          value: __S(625, __c39, 1),
         }),
       ).annotate({ identifier: "ServicesListResult" });
   }
@@ -2524,12 +2645,14 @@ function __c40(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSupportTicketsRequest" });
@@ -2543,7 +2666,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(656, __c41, 0)),
+          value: __S(656, __c41, 0),
         }),
       ).annotate({ identifier: "SupportTicketsListResult" });
   }
@@ -2555,12 +2678,14 @@ function __c42(j: number): any {
         S.Struct({
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Support/supportTickets",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSupportTicketsNoSubscriptionRequest" });

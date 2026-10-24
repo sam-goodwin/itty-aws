@@ -766,6 +766,8 @@ export interface ListElasticSanByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ElasticSanTagsMap = { [key: string]: string | undefined };
@@ -798,8 +800,13 @@ export interface ElasticSanList {
 export interface ListElasticSanBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -832,7 +839,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -843,6 +850,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the ElasticSan. */
   elasticSanName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
@@ -901,6 +910,8 @@ export interface ListSkusRequest {
   subscriptionId: string;
   /** Specify $filter='location eq <location>' to filter on location. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
 export type SkuInformationLocationsList = Array<string>;
@@ -957,6 +968,8 @@ export interface ListVolumeByVolumeGroupRequest {
   elasticSanName: string;
   /** The name of the VolumeGroup. */
   volumeGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Response for Volume request. */
 export interface Volume {
@@ -987,6 +1000,8 @@ export interface ListVolumeGroupByElasticSanRequest {
   resourceGroupName: string;
   /** The name of the ElasticSan. */
   elasticSanName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Response for Volume Group request. */
 export interface VolumeGroup {
@@ -1023,6 +1038,8 @@ export interface ListVolumeSnapshotByVolumeGroupRequest {
   volumeGroupName: string;
   /** Specify $filter='volumeName eq <volume name>' to filter on volume. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Response for Volume Snapshot request. */
 export interface Snapshot {
@@ -1428,63 +1445,91 @@ export const GetVolumeSnapshot: API.OperationMethod<
 
 export type ListElasticSanByResourceGroupError = AzureOpError;
 /** Gets a list of ElasticSan in a resource group. */
-export const ListElasticSanByResourceGroup: API.OperationMethod<
+export const ListElasticSanByResourceGroup: API.PaginatedOperationMethod<
   ListElasticSanByResourceGroupRequest,
   ElasticSanList,
   ListElasticSanByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ElasticSan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<ListElasticSanByResourceGroupRequest>,
   output: __S(321, __c20, 1) as any as S.Schema<ElasticSanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListElasticSanBySubscriptionError = AzureOpError;
 /** Gets a list of ElasticSans in a subscription */
-export const ListElasticSanBySubscription: API.OperationMethod<
+export const ListElasticSanBySubscription: API.PaginatedOperationMethod<
   ListElasticSanBySubscriptionRequest,
   ElasticSanList,
   ListElasticSanBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ElasticSan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListElasticSanBySubscriptionRequest>,
   output: __S(321, __c20, 1) as any as S.Schema<ElasticSanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(356, __c22, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List all Private Endpoint Connections associated with the Elastic San. */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(369, __c23, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByElasticSanError = AzureOpError;
 /** Gets the private link resources that need to be created for a elastic San. */
@@ -1503,63 +1548,91 @@ export const ListPrivateLinkResourceByElasticSan: API.OperationMethod<
 
 export type ListSkusError = AzureOpError;
 /** List all the available Skus in the region and information related to them List all the available Skus in the region and information related to them */
-export const ListSkus: API.OperationMethod<
+export const ListSkus: API.PaginatedOperationMethod<
   ListSkusRequest,
   SkuInformationList,
   ListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListSkusRequest>,
   output: __S(455, __c28, 7) as any as S.Schema<SkuInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVolumeByVolumeGroupError = AzureOpError;
 /** List Volumes in a VolumeGroup. */
-export const ListVolumeByVolumeGroup: API.OperationMethod<
+export const ListVolumeByVolumeGroup: API.PaginatedOperationMethod<
   ListVolumeByVolumeGroupRequest,
   VolumeList,
   ListVolumeByVolumeGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Volume
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListVolumeByVolumeGroupRequest>,
   output: __S(466, __c29, 2) as any as S.Schema<VolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVolumeGroupByElasticSanError = AzureOpError;
 /** List VolumeGroups. */
-export const ListVolumeGroupByElasticSan: API.OperationMethod<
+export const ListVolumeGroupByElasticSan: API.PaginatedOperationMethod<
   ListVolumeGroupByElasticSanRequest,
   VolumeGroupList,
   ListVolumeGroupByElasticSanError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VolumeGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<ListVolumeGroupByElasticSanRequest>,
   output: __S(482, __c30, 2) as any as S.Schema<VolumeGroupList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVolumeSnapshotByVolumeGroupError = AzureOpError;
 /** List Snapshots in a VolumeGroup or List Snapshots by Volume (name) in a VolumeGroup using filter */
-export const ListVolumeSnapshotByVolumeGroup: API.OperationMethod<
+export const ListVolumeSnapshotByVolumeGroup: API.PaginatedOperationMethod<
   ListVolumeSnapshotByVolumeGroupRequest,
   SnapshotList,
   ListVolumeSnapshotByVolumeGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<ListVolumeSnapshotByVolumeGroupRequest>,
   output: __S(498, __c31, 2) as any as S.Schema<SnapshotList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RestoreVolumesPreError = AzureOpError;
 /** Validate whether a list of backed up disk snapshots can be restored into ElasticSan volumes. */
@@ -2016,12 +2089,14 @@ function __c19(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListElasticSanByResourceGroupRequest" });
@@ -2046,12 +2121,14 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ElasticSan/elasticSans",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListElasticSanBySubscriptionRequest" });
@@ -2061,12 +2138,15 @@ function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ElasticSan/operations",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2094,7 +2174,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(355, __c22, 3)),
+          value: __S(355, __c22, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2108,12 +2188,14 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
@@ -2263,12 +2345,14 @@ function __c28(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ElasticSan/skus",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
@@ -2321,12 +2405,14 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVolumeByVolumeGroupRequest" });
@@ -2349,12 +2435,14 @@ function __c30(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVolumeGroupByElasticSanRequest" });
@@ -2379,12 +2467,14 @@ function __c31(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVolumeSnapshotByVolumeGroupRequest" });

@@ -15,225 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.batch_data#PoolsListSupportedImages": "com.azure.batch_data#ListPoolSupportedImages",
-      "com.azure.batch_data#PoolsListSupportedImagesRequest": "com.azure.batch_data#ListPoolSupportedImagesRequest",
-      "com.azure.batch_data#PoolsListPoolUsageMetrics": "com.azure.batch_data#ListPoolPoolUsageMetrics",
-      "com.azure.batch_data#PoolsListPoolUsageMetricsRequest": "com.azure.batch_data#ListPoolPoolUsageMetricsRequest",
-      "com.azure.batch_data#PoolsReplacePoolProperties": "com.azure.batch_data#ReplacePoolPoolProperties",
-      "com.azure.batch_data#PoolsReplacePoolPropertiesResponse": "com.azure.batch_data#ReplacePoolPoolPropertiesResponse",
-      "com.azure.batch_data#PoolsReplacePoolPropertiesRequest": "com.azure.batch_data#ReplacePoolPoolPropertiesRequest",
-      "com.azure.batch_data#PoolsReplacePoolPropertiesRequestMetadataList": "com.azure.batch_data#ReplacePoolPoolPropertiesRequestMetadataList",
-      "com.azure.batch_data#PoolsReplacePoolPropertiesRequestApplicationPackageReferencesList": "com.azure.batch_data#ReplacePoolPoolPropertiesRequestApplicationPackageReferencesList",
-      "com.azure.batch_data#PoolsResizePool": "com.azure.batch_data#ResizePoolPool",
-      "com.azure.batch_data#PoolsResizePoolResponse": "com.azure.batch_data#ResizePoolPoolResponse",
-      "com.azure.batch_data#PoolsResizePoolRequest": "com.azure.batch_data#ResizePoolPoolRequest",
-      "com.azure.batch_data#PoolsRemoveNodes": "com.azure.batch_data#RemovePoolNodes",
-      "com.azure.batch_data#PoolsRemoveNodesResponse": "com.azure.batch_data#RemovePoolNodesResponse",
-      "com.azure.batch_data#PoolsRemoveNodesRequest": "com.azure.batch_data#RemovePoolNodesRequest",
-      "com.azure.batch_data#PoolsRemoveNodesRequestNodeListList": "com.azure.batch_data#RemovePoolNodesRequestNodeListList",
-      "com.azure.batch_data#NodesDeleteNodeUser": "com.azure.batch_data#DeleteNodeNodeUser",
-      "com.azure.batch_data#NodesDeleteNodeUserRequest": "com.azure.batch_data#DeleteNodeNodeUserRequest",
-      "com.azure.batch_data#NodesReplaceNodeUser": "com.azure.batch_data#ReplaceNodeNodeUser",
-      "com.azure.batch_data#NodesReplaceNodeUserResponse": "com.azure.batch_data#ReplaceNodeNodeUserResponse",
-      "com.azure.batch_data#NodesReplaceNodeUserRequest": "com.azure.batch_data#ReplaceNodeNodeUserRequest",
-      "com.azure.batch_data#NodesCreateNodeUser": "com.azure.batch_data#CreateNodeNodeUser",
-      "com.azure.batch_data#NodesCreateNodeUserResponse": "com.azure.batch_data#CreateNodeNodeUserResponse",
-      "com.azure.batch_data#NodesCreateNodeUserRequest": "com.azure.batch_data#CreateNodeNodeUserRequest",
-      "com.azure.batch_data#NodesUploadNodeLogs": "com.azure.batch_data#UploadNodeNodeLogs",
-      "com.azure.batch_data#NodesUploadNodeLogsRequest": "com.azure.batch_data#UploadNodeNodeLogsRequest",
-      "com.azure.batch_data#NodesStartNode": "com.azure.batch_data#StartNodeNode",
-      "com.azure.batch_data#NodesStartNodeResponse": "com.azure.batch_data#StartNodeNodeResponse",
-      "com.azure.batch_data#NodesStartNodeRequest": "com.azure.batch_data#StartNodeNodeRequest",
-      "com.azure.batch_data#NodesGetNodeRemoteLoginSettings": "com.azure.batch_data#GetNodeNodeRemoteLoginSettings",
-      "com.azure.batch_data#NodesGetNodeRemoteLoginSettingsRequest": "com.azure.batch_data#GetNodeNodeRemoteLoginSettingsRequest",
-      "com.azure.batch_data#NodesRebootNode": "com.azure.batch_data#RebootNodeNode",
-      "com.azure.batch_data#NodesRebootNodeResponse": "com.azure.batch_data#RebootNodeNodeResponse",
-      "com.azure.batch_data#NodesRebootNodeRequest": "com.azure.batch_data#RebootNodeNodeRequest",
-      "com.azure.batch_data#NodesGetNodeFileProperties": "com.azure.batch_data#GetNodeNodeFileProperties",
-      "com.azure.batch_data#NodesGetNodeFilePropertiesRequest": "com.azure.batch_data#GetNodeNodeFilePropertiesRequest",
-      "com.azure.batch_data#NodesDeleteNodeFile": "com.azure.batch_data#DeleteNodeNodeFile",
-      "com.azure.batch_data#NodesDeleteNodeFileRequest": "com.azure.batch_data#DeleteNodeNodeFileRequest",
-      "com.azure.batch_data#NodesGetNodeFile": "com.azure.batch_data#GetNodeNodeFile",
-      "com.azure.batch_data#NodesGetNodeFileResponse": "com.azure.batch_data#GetNodeNodeFileResponse",
-      "com.azure.batch_data#NodesGetNodeFileRequest": "com.azure.batch_data#GetNodeNodeFileRequest",
-      "com.azure.batch_data#NodesListNodeFiles": "com.azure.batch_data#ListNodeNodeFiles",
-      "com.azure.batch_data#NodesListNodeFilesRequest": "com.azure.batch_data#ListNodeNodeFilesRequest",
-      "com.azure.batch_data#NodesGetNodeExtension": "com.azure.batch_data#GetNodeNodeExtension",
-      "com.azure.batch_data#NodesGetNodeExtensionResponse": "com.azure.batch_data#GetNodeNodeExtensionResponse",
-      "com.azure.batch_data#NodesGetNodeExtensionRequest": "com.azure.batch_data#GetNodeNodeExtensionRequest",
-      "com.azure.batch_data#NodesGetNodeExtensionRequestSelectList": "com.azure.batch_data#GetNodeNodeExtensionRequestSelectList",
-      "com.azure.batch_data#NodesListNodeExtensions": "com.azure.batch_data#ListNodeNodeExtensions",
-      "com.azure.batch_data#NodesListNodeExtensionsRequest": "com.azure.batch_data#ListNodeNodeExtensionsRequest",
-      "com.azure.batch_data#NodesListNodeExtensionsRequestSelectList": "com.azure.batch_data#ListNodeNodeExtensionsRequestSelectList",
-      "com.azure.batch_data#NodesEnableNodeScheduling": "com.azure.batch_data#EnableNodeNodeScheduling",
-      "com.azure.batch_data#NodesEnableNodeSchedulingResponse": "com.azure.batch_data#EnableNodeNodeSchedulingResponse",
-      "com.azure.batch_data#NodesEnableNodeSchedulingRequest": "com.azure.batch_data#EnableNodeNodeSchedulingRequest",
-      "com.azure.batch_data#NodesDisableNodeScheduling": "com.azure.batch_data#DisableNodeNodeScheduling",
-      "com.azure.batch_data#NodesDisableNodeSchedulingResponse": "com.azure.batch_data#DisableNodeNodeSchedulingResponse",
-      "com.azure.batch_data#NodesDisableNodeSchedulingRequest": "com.azure.batch_data#DisableNodeNodeSchedulingRequest",
-      "com.azure.batch_data#NodesGetNode": "com.azure.batch_data#GetNodeNode",
-      "com.azure.batch_data#NodesGetNodeResponse": "com.azure.batch_data#GetNodeNodeResponse",
-      "com.azure.batch_data#NodesGetNodeRequest": "com.azure.batch_data#GetNodeNodeRequest",
-      "com.azure.batch_data#NodesGetNodeRequestSelectList": "com.azure.batch_data#GetNodeNodeRequestSelectList",
-      "com.azure.batch_data#NodesListNodes": "com.azure.batch_data#ListNodeNodes",
-      "com.azure.batch_data#NodesListNodesRequest": "com.azure.batch_data#ListNodeNodesRequest",
-      "com.azure.batch_data#NodesListNodesRequestSelectList": "com.azure.batch_data#ListNodeNodesRequestSelectList",
-      "com.azure.batch_data#PoolsEnablePoolAutoScale": "com.azure.batch_data#EnablePoolPoolAutoScale",
-      "com.azure.batch_data#PoolsEnablePoolAutoScaleResponse": "com.azure.batch_data#EnablePoolPoolAutoScaleResponse",
-      "com.azure.batch_data#PoolsEnablePoolAutoScaleRequest": "com.azure.batch_data#EnablePoolPoolAutoScaleRequest",
-      "com.azure.batch_data#PoolsDisablePoolAutoScale": "com.azure.batch_data#DisablePoolPoolAutoScale",
-      "com.azure.batch_data#PoolsDisablePoolAutoScaleResponse": "com.azure.batch_data#DisablePoolPoolAutoScaleResponse",
-      "com.azure.batch_data#PoolsDisablePoolAutoScaleRequest": "com.azure.batch_data#DisablePoolPoolAutoScaleRequest",
-      "com.azure.batch_data#PoolsDeletePool": "com.azure.batch_data#DeletePoolPool",
-      "com.azure.batch_data#PoolsDeletePoolRequest": "com.azure.batch_data#DeletePoolPoolRequest",
-      "com.azure.batch_data#PoolsUpdatePool": "com.azure.batch_data#UpdatePoolPool",
-      "com.azure.batch_data#PoolsUpdatePoolResponse": "com.azure.batch_data#UpdatePoolPoolResponse",
-      "com.azure.batch_data#PoolsUpdatePoolRequest": "com.azure.batch_data#UpdatePoolPoolRequest",
-      "com.azure.batch_data#PoolsUpdatePoolRequestMountConfigurationList": "com.azure.batch_data#UpdatePoolPoolRequestMountConfigurationList",
-      "com.azure.batch_data#PoolsUpdatePoolRequestUserAccountsList": "com.azure.batch_data#UpdatePoolPoolRequestUserAccountsList",
-      "com.azure.batch_data#PoolsUpdatePoolRequestMetadataList": "com.azure.batch_data#UpdatePoolPoolRequestMetadataList",
-      "com.azure.batch_data#PoolsUpdatePoolRequestApplicationPackageReferencesList": "com.azure.batch_data#UpdatePoolPoolRequestApplicationPackageReferencesList",
-      "com.azure.batch_data#PoolsGetPool": "com.azure.batch_data#GetPoolPool",
-      "com.azure.batch_data#PoolsGetPoolResponse": "com.azure.batch_data#GetPoolPoolResponse",
-      "com.azure.batch_data#PoolsGetPoolRequest": "com.azure.batch_data#GetPoolPoolRequest",
-      "com.azure.batch_data#PoolsGetPoolRequestExpandList": "com.azure.batch_data#GetPoolPoolRequestExpandList",
-      "com.azure.batch_data#PoolsGetPoolRequestSelectList": "com.azure.batch_data#GetPoolPoolRequestSelectList",
-      "com.azure.batch_data#PoolsCreatePool": "com.azure.batch_data#CreatePoolPool",
-      "com.azure.batch_data#PoolsCreatePoolResponse": "com.azure.batch_data#CreatePoolPoolResponse",
-      "com.azure.batch_data#PoolsCreatePoolRequest": "com.azure.batch_data#CreatePoolPoolRequest",
-      "com.azure.batch_data#PoolsCreatePoolRequestMountConfigurationList": "com.azure.batch_data#CreatePoolPoolRequestMountConfigurationList",
-      "com.azure.batch_data#PoolsCreatePoolRequestMetadataList": "com.azure.batch_data#CreatePoolPoolRequestMetadataList",
-      "com.azure.batch_data#PoolsCreatePoolRequestUserAccountsList": "com.azure.batch_data#CreatePoolPoolRequestUserAccountsList",
-      "com.azure.batch_data#PoolsCreatePoolRequestApplicationPackageReferencesList": "com.azure.batch_data#CreatePoolPoolRequestApplicationPackageReferencesList",
-      "com.azure.batch_data#PoolsListPools": "com.azure.batch_data#ListPoolPools",
-      "com.azure.batch_data#PoolsListPoolsRequest": "com.azure.batch_data#ListPoolPoolsRequest",
-      "com.azure.batch_data#PoolsListPoolsRequestExpandList": "com.azure.batch_data#ListPoolPoolsRequestExpandList",
-      "com.azure.batch_data#PoolsListPoolsRequestSelectList": "com.azure.batch_data#ListPoolPoolsRequestSelectList",
-      "com.azure.batch_data#PoolsListPoolNodeCounts": "com.azure.batch_data#ListPoolPoolNodeCounts",
-      "com.azure.batch_data#PoolsListPoolNodeCountsRequest": "com.azure.batch_data#ListPoolPoolNodeCountsRequest",
-      "com.azure.batch_data#JobSchedulesTerminateJobSchedule": "com.azure.batch_data#TerminateJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesTerminateJobScheduleResponse": "com.azure.batch_data#TerminateJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesTerminateJobScheduleRequest": "com.azure.batch_data#TerminateJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobsListJobsFromSchedule": "com.azure.batch_data#ListJobJobsFromSchedule",
-      "com.azure.batch_data#JobsListJobsFromScheduleRequest": "com.azure.batch_data#ListJobJobsFromScheduleRequest",
-      "com.azure.batch_data#JobsListJobsFromScheduleRequestExpandList": "com.azure.batch_data#ListJobJobsFromScheduleRequestExpandList",
-      "com.azure.batch_data#JobsListJobsFromScheduleRequestSelectList": "com.azure.batch_data#ListJobJobsFromScheduleRequestSelectList",
-      "com.azure.batch_data#JobSchedulesEnableJobSchedule": "com.azure.batch_data#EnableJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesEnableJobScheduleResponse": "com.azure.batch_data#EnableJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesEnableJobScheduleRequest": "com.azure.batch_data#EnableJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesDisableJobSchedule": "com.azure.batch_data#DisableJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesDisableJobScheduleResponse": "com.azure.batch_data#DisableJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesDisableJobScheduleRequest": "com.azure.batch_data#DisableJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesDeleteJobSchedule": "com.azure.batch_data#DeleteJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesDeleteJobScheduleRequest": "com.azure.batch_data#DeleteJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesUpdateJobSchedule": "com.azure.batch_data#UpdateJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesUpdateJobScheduleResponse": "com.azure.batch_data#UpdateJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesUpdateJobScheduleRequest": "com.azure.batch_data#UpdateJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesUpdateJobScheduleRequestMetadataList": "com.azure.batch_data#UpdateJobScheduleJobScheduleRequestMetadataList",
-      "com.azure.batch_data#JobSchedulesReplaceJobSchedule": "com.azure.batch_data#ReplaceJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesReplaceJobScheduleResponse": "com.azure.batch_data#ReplaceJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesReplaceJobScheduleRequest": "com.azure.batch_data#ReplaceJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesReplaceJobScheduleRequestMetadataList": "com.azure.batch_data#ReplaceJobScheduleJobScheduleRequestMetadataList",
-      "com.azure.batch_data#JobSchedulesGetJobSchedule": "com.azure.batch_data#GetJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesGetJobScheduleResponse": "com.azure.batch_data#GetJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesGetJobScheduleRequest": "com.azure.batch_data#GetJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesGetJobScheduleRequestExpandList": "com.azure.batch_data#GetJobScheduleJobScheduleRequestExpandList",
-      "com.azure.batch_data#JobSchedulesGetJobScheduleRequestSelectList": "com.azure.batch_data#GetJobScheduleJobScheduleRequestSelectList",
-      "com.azure.batch_data#JobSchedulesCreateJobSchedule": "com.azure.batch_data#CreateJobScheduleJobSchedule",
-      "com.azure.batch_data#JobSchedulesCreateJobScheduleResponse": "com.azure.batch_data#CreateJobScheduleJobScheduleResponse",
-      "com.azure.batch_data#JobSchedulesCreateJobScheduleRequest": "com.azure.batch_data#CreateJobScheduleJobScheduleRequest",
-      "com.azure.batch_data#JobSchedulesCreateJobScheduleRequestMetadataList": "com.azure.batch_data#CreateJobScheduleJobScheduleRequestMetadataList",
-      "com.azure.batch_data#JobSchedulesListJobSchedules": "com.azure.batch_data#ListJobScheduleJobSchedules",
-      "com.azure.batch_data#JobSchedulesListJobSchedulesRequest": "com.azure.batch_data#ListJobScheduleJobSchedulesRequest",
-      "com.azure.batch_data#JobSchedulesListJobSchedulesRequestExpandList": "com.azure.batch_data#ListJobScheduleJobSchedulesRequestExpandList",
-      "com.azure.batch_data#JobSchedulesListJobSchedulesRequestSelectList": "com.azure.batch_data#ListJobScheduleJobSchedulesRequestSelectList",
-      "com.azure.batch_data#JobsTerminateJob": "com.azure.batch_data#TerminateJobJob",
-      "com.azure.batch_data#JobsTerminateJobResponse": "com.azure.batch_data#TerminateJobJobResponse",
-      "com.azure.batch_data#JobsTerminateJobRequest": "com.azure.batch_data#TerminateJobJobRequest",
-      "com.azure.batch_data#TasksTerminateTask": "com.azure.batch_data#TerminateTaskTask",
-      "com.azure.batch_data#TasksTerminateTaskResponse": "com.azure.batch_data#TerminateTaskTaskResponse",
-      "com.azure.batch_data#TasksTerminateTaskRequest": "com.azure.batch_data#TerminateTaskTaskRequest",
-      "com.azure.batch_data#TasksListSubTasks": "com.azure.batch_data#ListTaskSubTasks",
-      "com.azure.batch_data#TasksListSubTasksRequest": "com.azure.batch_data#ListTaskSubTasksRequest",
-      "com.azure.batch_data#TasksListSubTasksRequestSelectList": "com.azure.batch_data#ListTaskSubTasksRequestSelectList",
-      "com.azure.batch_data#TasksGetTaskFileProperties": "com.azure.batch_data#GetTaskTaskFileProperties",
-      "com.azure.batch_data#TasksGetTaskFilePropertiesRequest": "com.azure.batch_data#GetTaskTaskFilePropertiesRequest",
-      "com.azure.batch_data#TasksDeleteTaskFile": "com.azure.batch_data#DeleteTaskTaskFile",
-      "com.azure.batch_data#TasksDeleteTaskFileRequest": "com.azure.batch_data#DeleteTaskTaskFileRequest",
-      "com.azure.batch_data#TasksGetTaskFile": "com.azure.batch_data#GetTaskTaskFile",
-      "com.azure.batch_data#TasksGetTaskFileResponse": "com.azure.batch_data#GetTaskTaskFileResponse",
-      "com.azure.batch_data#TasksGetTaskFileRequest": "com.azure.batch_data#GetTaskTaskFileRequest",
-      "com.azure.batch_data#TasksListTaskFiles": "com.azure.batch_data#ListTaskTaskFiles",
-      "com.azure.batch_data#TasksListTaskFilesRequest": "com.azure.batch_data#ListTaskTaskFilesRequest",
-      "com.azure.batch_data#TasksDeleteTask": "com.azure.batch_data#DeleteTaskTask",
-      "com.azure.batch_data#TasksDeleteTaskRequest": "com.azure.batch_data#DeleteTaskTaskRequest",
-      "com.azure.batch_data#TasksReplaceTask": "com.azure.batch_data#ReplaceTaskTask",
-      "com.azure.batch_data#TasksReplaceTaskResponse": "com.azure.batch_data#ReplaceTaskTaskResponse",
-      "com.azure.batch_data#TasksReplaceTaskRequest": "com.azure.batch_data#ReplaceTaskTaskRequest",
-      "com.azure.batch_data#TasksGetTask": "com.azure.batch_data#GetTaskTask",
-      "com.azure.batch_data#TasksGetTaskResponse": "com.azure.batch_data#GetTaskTaskResponse",
-      "com.azure.batch_data#TasksGetTaskRequest": "com.azure.batch_data#GetTaskTaskRequest",
-      "com.azure.batch_data#TasksGetTaskRequestExpandList": "com.azure.batch_data#GetTaskTaskRequestExpandList",
-      "com.azure.batch_data#TasksGetTaskRequestSelectList": "com.azure.batch_data#GetTaskTaskRequestSelectList",
-      "com.azure.batch_data#TasksCreateTask": "com.azure.batch_data#CreateTaskTask",
-      "com.azure.batch_data#TasksCreateTaskResponse": "com.azure.batch_data#CreateTaskTaskResponse",
-      "com.azure.batch_data#TasksCreateTaskRequest": "com.azure.batch_data#CreateTaskTaskRequest",
-      "com.azure.batch_data#TasksCreateTaskRequestApplicationPackageReferencesList": "com.azure.batch_data#CreateTaskTaskRequestApplicationPackageReferencesList",
-      "com.azure.batch_data#TasksCreateTaskRequestEnvironmentSettingsList": "com.azure.batch_data#CreateTaskTaskRequestEnvironmentSettingsList",
-      "com.azure.batch_data#TasksCreateTaskRequestOutputFilesList": "com.azure.batch_data#CreateTaskTaskRequestOutputFilesList",
-      "com.azure.batch_data#TasksCreateTaskRequestResourceFilesList": "com.azure.batch_data#CreateTaskTaskRequestResourceFilesList",
-      "com.azure.batch_data#TasksListTasks": "com.azure.batch_data#ListTaskTasks",
-      "com.azure.batch_data#TasksListTasksRequest": "com.azure.batch_data#ListTaskTasksRequest",
-      "com.azure.batch_data#TasksListTasksRequestExpandList": "com.azure.batch_data#ListTaskTasksRequestExpandList",
-      "com.azure.batch_data#TasksListTasksRequestSelectList": "com.azure.batch_data#ListTaskTasksRequestSelectList",
-      "com.azure.batch_data#JobsGetJobTaskCounts": "com.azure.batch_data#GetJobJobTaskCounts",
-      "com.azure.batch_data#JobsGetJobTaskCountsRequest": "com.azure.batch_data#GetJobJobTaskCountsRequest",
-      "com.azure.batch_data#JobsEnableJob": "com.azure.batch_data#EnableJobJob",
-      "com.azure.batch_data#JobsEnableJobResponse": "com.azure.batch_data#EnableJobJobResponse",
-      "com.azure.batch_data#JobsEnableJobRequest": "com.azure.batch_data#EnableJobJobRequest",
-      "com.azure.batch_data#JobsDisableJob": "com.azure.batch_data#DisableJobJob",
-      "com.azure.batch_data#JobsDisableJobResponse": "com.azure.batch_data#DisableJobJobResponse",
-      "com.azure.batch_data#JobsDisableJobRequest": "com.azure.batch_data#DisableJobJobRequest",
-      "com.azure.batch_data#TasksCreateTaskCollection": "com.azure.batch_data#CreateTaskTaskCollection",
-      "com.azure.batch_data#TasksCreateTaskCollectionRequest": "com.azure.batch_data#CreateTaskTaskCollectionRequest",
-      "com.azure.batch_data#TasksCreateTaskCollectionRequestValueList": "com.azure.batch_data#CreateTaskTaskCollectionRequestValueList",
-      "com.azure.batch_data#JobsDeleteJob": "com.azure.batch_data#DeleteJobJob",
-      "com.azure.batch_data#JobsDeleteJobRequest": "com.azure.batch_data#DeleteJobJobRequest",
-      "com.azure.batch_data#JobsUpdateJob": "com.azure.batch_data#UpdateJobJob",
-      "com.azure.batch_data#JobsUpdateJobResponse": "com.azure.batch_data#UpdateJobJobResponse",
-      "com.azure.batch_data#JobsUpdateJobRequest": "com.azure.batch_data#UpdateJobJobRequest",
-      "com.azure.batch_data#JobsUpdateJobRequestMetadataList": "com.azure.batch_data#UpdateJobJobRequestMetadataList",
-      "com.azure.batch_data#JobsReplaceJob": "com.azure.batch_data#ReplaceJobJob",
-      "com.azure.batch_data#JobsReplaceJobResponse": "com.azure.batch_data#ReplaceJobJobResponse",
-      "com.azure.batch_data#JobsReplaceJobRequest": "com.azure.batch_data#ReplaceJobJobRequest",
-      "com.azure.batch_data#JobsReplaceJobRequestMetadataList": "com.azure.batch_data#ReplaceJobJobRequestMetadataList",
-      "com.azure.batch_data#JobsGetJob": "com.azure.batch_data#GetJobJob",
-      "com.azure.batch_data#JobsGetJobResponse": "com.azure.batch_data#GetJobJobResponse",
-      "com.azure.batch_data#JobsGetJobRequest": "com.azure.batch_data#GetJobJobRequest",
-      "com.azure.batch_data#JobsGetJobRequestExpandList": "com.azure.batch_data#GetJobJobRequestExpandList",
-      "com.azure.batch_data#JobsGetJobRequestSelectList": "com.azure.batch_data#GetJobJobRequestSelectList",
-      "com.azure.batch_data#JobsCreateJob": "com.azure.batch_data#CreateJobJob",
-      "com.azure.batch_data#JobsCreateJobResponse": "com.azure.batch_data#CreateJobJobResponse",
-      "com.azure.batch_data#JobsCreateJobRequest": "com.azure.batch_data#CreateJobJobRequest",
-      "com.azure.batch_data#JobsCreateJobRequestMetadataList": "com.azure.batch_data#CreateJobJobRequestMetadataList",
-      "com.azure.batch_data#JobsCreateJobRequestCommonEnvironmentSettingsList": "com.azure.batch_data#CreateJobJobRequestCommonEnvironmentSettingsList",
-      "com.azure.batch_data#JobsListJobs": "com.azure.batch_data#ListJobJobs",
-      "com.azure.batch_data#JobsListJobsRequest": "com.azure.batch_data#ListJobJobsRequest",
-      "com.azure.batch_data#JobsListJobsRequestExpandList": "com.azure.batch_data#ListJobJobsRequestExpandList",
-      "com.azure.batch_data#JobsListJobsRequestSelectList": "com.azure.batch_data#ListJobJobsRequestSelectList",
-      "com.azure.batch_data#ApplicationsGetApplication": "com.azure.batch_data#GetApplicationApplication",
-      "com.azure.batch_data#ApplicationsGetApplicationResponse": "com.azure.batch_data#GetApplicationApplicationResponse",
-      "com.azure.batch_data#ApplicationsGetApplicationRequest": "com.azure.batch_data#GetApplicationApplicationRequest",
-      "com.azure.batch_data#ApplicationsListApplications": "com.azure.batch_data#ListApplicationApplications",
-      "com.azure.batch_data#ApplicationsListApplicationsRequest": "com.azure.batch_data#ListApplicationApplicationsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.batch_data#PoolsListSupportedImages": {
+    "com.azure.batch_data#ListPoolSupportedImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsListSupportedImagesRequest"
+        "target": "com.azure.batch_data#ListPoolSupportedImagesRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchAccountListSupportedImagesResult"
@@ -247,9 +35,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all Virtual Machine Images supported by the Azure Batch service.\n\nLists all Virtual Machine Images supported by the Azure Batch service."
+        "smithy.api#documentation": "Lists all Virtual Machine Images supported by the Azure Batch service.\n\nLists all Virtual Machine Images supported by the Azure Batch service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchAccountListSupportedImagesResult": {
@@ -442,7 +237,7 @@
         "smithy.api#documentation": "A reference to an Azure Virtual Machines Marketplace Image or a Azure Compute Gallery Image.\nTo get the list of all Azure Marketplace Image references verified by Azure Batch, see the\n' List Supported Images ' operation."
       }
     },
-    "com.azure.batch_data#PoolsListSupportedImagesRequest": {
+    "com.azure.batch_data#ListPoolSupportedImagesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -494,16 +289,22 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsListPoolUsageMetrics": {
+    "com.azure.batch_data#ListPoolPoolUsageMetrics": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsListPoolUsageMetricsRequest"
+        "target": "com.azure.batch_data#ListPoolPoolUsageMetricsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchPoolListUsageMetricsResult"
@@ -517,9 +318,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the usage metrics, aggregated by Pool across individual time intervals,\nfor the specified Account.\n\nIf you do not specify a $filter clause including a poolId, the response\nincludes all Pools that existed in the Account in the time range of the\nreturned aggregation intervals. If you do not specify a $filter clause\nincluding a startTime or endTime these filters default to the start and end\ntimes of the last aggregation interval currently available; that is, only the\nlast aggregation interval is returned."
+        "smithy.api#documentation": "Lists the usage metrics, aggregated by Pool across individual time intervals,\nfor the specified Account.\n\nIf you do not specify a $filter clause including a poolId, the response\nincludes all Pools that existed in the Account in the time range of the\nreturned aggregation intervals. If you do not specify a $filter clause\nincluding a startTime or endTime these filters default to the start and end\ntimes of the last aggregation interval currently available; that is, only the\nlast aggregation interval is returned.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchPoolListUsageMetricsResult": {
@@ -602,7 +410,7 @@
         "smithy.api#documentation": "Usage metrics for a Pool across an aggregation interval."
       }
     },
-    "com.azure.batch_data#PoolsListPoolUsageMetricsRequest": {
+    "com.azure.batch_data#ListPoolPoolUsageMetricsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -668,19 +476,25 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsReplacePoolProperties": {
+    "com.azure.batch_data#ReplacePoolPoolProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsReplacePoolPropertiesRequest"
+        "target": "com.azure.batch_data#ReplacePoolPoolPropertiesRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsReplacePoolPropertiesResponse"
+        "target": "com.azure.batch_data#ReplacePoolPoolPropertiesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -696,7 +510,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Pool.\n\nThis fully replaces all the updatable properties of the Pool. For example, if\nthe Pool has a StartTask associated with it and if StartTask is not specified\nwith this request, then the Batch service will remove the existing StartTask."
       }
     },
-    "com.azure.batch_data#PoolsReplacePoolPropertiesResponse": {
+    "com.azure.batch_data#ReplacePoolPoolPropertiesResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -711,7 +525,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsReplacePoolPropertiesRequest": {
+    "com.azure.batch_data#ReplacePoolPoolPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -765,14 +579,14 @@
           }
         },
         "applicationPackageReferences": {
-          "target": "com.azure.batch_data#PoolsReplacePoolPropertiesRequestApplicationPackageReferencesList",
+          "target": "com.azure.batch_data#ReplacePoolPoolPropertiesRequestApplicationPackageReferencesList",
           "traits": {
             "smithy.api#documentation": "The list of Application Packages to be installed on each Compute Node in the Pool. The list replaces any existing Application Package references on the Pool. Changes to Application Package references affect all new Compute Nodes joining the Pool, but do not affect Compute Nodes that are already in the Pool until they are rebooted or reimaged. There is a maximum of 10 Application Package references on any given Pool. If omitted, or if you specify an empty collection, any existing Application Packages references are removed from the Pool. A maximum of 10 references may be specified on a given Pool.",
             "smithy.api#required": {}
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#PoolsReplacePoolPropertiesRequestMetadataList",
+          "target": "com.azure.batch_data#ReplacePoolPoolPropertiesRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Pool as metadata. This list replaces any existing metadata configured on the Pool. If omitted, or if you specify an empty collection, any existing metadata is removed from the Pool.",
             "smithy.api#required": {}
@@ -783,7 +597,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsReplacePoolPropertiesRequestMetadataList": {
+    "com.azure.batch_data#ReplacePoolPoolPropertiesRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -814,7 +628,7 @@
         "smithy.api#documentation": "The Batch service does not assign any meaning to this metadata; it is solely\nfor the use of user code."
       }
     },
-    "com.azure.batch_data#PoolsReplacePoolPropertiesRequestApplicationPackageReferencesList": {
+    "com.azure.batch_data#ReplacePoolPoolPropertiesRequestApplicationPackageReferencesList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchApplicationPackageReference"
@@ -1360,13 +1174,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsResizePool": {
+    "com.azure.batch_data#ResizePoolPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsResizePoolRequest"
+        "target": "com.azure.batch_data#ResizePoolPoolRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsResizePoolResponse"
+        "target": "com.azure.batch_data#ResizePoolPoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1382,7 +1196,7 @@
         "smithy.api#documentation": "Changes the number of Compute Nodes that are assigned to a Pool.\n\nYou can only resize a Pool when its allocation state is steady. If the Pool is\nalready resizing, the request fails with status code 409. When you resize a\nPool, the Pool's allocation state changes from steady to resizing. You cannot\nresize Pools which are configured for automatic scaling. If you try to do this,\nthe Batch service returns an error 409. If you resize a Pool downwards, the\nBatch service chooses which Compute Nodes to remove. To remove specific Compute\nNodes, use the Pool remove Compute Nodes API instead."
       }
     },
-    "com.azure.batch_data#PoolsResizePoolResponse": {
+    "com.azure.batch_data#ResizePoolPoolResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1397,7 +1211,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsResizePoolRequest": {
+    "com.azure.batch_data#ResizePoolPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1533,13 +1347,13 @@
         "smithy.api#documentation": "BatchNodeDeallocationOption enums"
       }
     },
-    "com.azure.batch_data#PoolsRemoveNodes": {
+    "com.azure.batch_data#RemovePoolNodes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsRemoveNodesRequest"
+        "target": "com.azure.batch_data#RemovePoolNodesRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsRemoveNodesResponse"
+        "target": "com.azure.batch_data#RemovePoolNodesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1555,7 +1369,7 @@
         "smithy.api#documentation": "Removes Compute Nodes from the specified Pool.\n\nThis operation can only run when the allocation state of the Pool is steady.\nWhen this operation runs, the allocation state changes from steady to resizing.\nEach request may remove up to 100 nodes."
       }
     },
-    "com.azure.batch_data#PoolsRemoveNodesResponse": {
+    "com.azure.batch_data#RemovePoolNodesResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1570,7 +1384,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsRemoveNodesRequest": {
+    "com.azure.batch_data#RemovePoolNodesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1646,7 +1460,7 @@
           }
         },
         "nodeList": {
-          "target": "com.azure.batch_data#PoolsRemoveNodesRequestNodeListList",
+          "target": "com.azure.batch_data#RemovePoolNodesRequestNodeListList",
           "traits": {
             "smithy.api#documentation": "A list containing the IDs of the Compute Nodes to be removed from the specified Pool. A maximum of 100 nodes may be removed per request.",
             "smithy.api#required": {}
@@ -1669,7 +1483,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsRemoveNodesRequestNodeListList": {
+    "com.azure.batch_data#RemovePoolNodesRequestNodeListList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -1678,10 +1492,10 @@
         "smithy.api#documentation": "A list containing the IDs of the Compute Nodes to be removed from the specified Pool. A maximum of 100 nodes may be removed per request."
       }
     },
-    "com.azure.batch_data#NodesDeleteNodeUser": {
+    "com.azure.batch_data#DeleteNodeNodeUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesDeleteNodeUserRequest"
+        "target": "com.azure.batch_data#DeleteNodeNodeUserRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1700,7 +1514,7 @@
         "smithy.api#documentation": "Deletes a user Account from the specified Compute Node.\n\nYou can delete a user Account to a Compute Node only when it is in the idle or\nrunning state. Before you can remotely login to a Compute Node you must configure \naccess ports for SSH and RDP. For more information, see https://learn.microsoft.com/azure/batch/pool-endpoint-configuration"
       }
     },
-    "com.azure.batch_data#NodesDeleteNodeUserRequest": {
+    "com.azure.batch_data#DeleteNodeNodeUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1768,13 +1582,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesReplaceNodeUser": {
+    "com.azure.batch_data#ReplaceNodeNodeUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesReplaceNodeUserRequest"
+        "target": "com.azure.batch_data#ReplaceNodeNodeUserRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesReplaceNodeUserResponse"
+        "target": "com.azure.batch_data#ReplaceNodeNodeUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1790,7 +1604,7 @@
         "smithy.api#documentation": "Updates the password and expiration time of a user Account on the specified Compute Node.\n\nThis operation replaces of all the updatable properties of the Account. For\nexample, if the expiryTime element is not specified, the current value is\nreplaced with the default value, not left unmodified. You can update a user\nAccount on a Compute Node only when it is in the idle or running state."
       }
     },
-    "com.azure.batch_data#NodesReplaceNodeUserResponse": {
+    "com.azure.batch_data#ReplaceNodeNodeUserResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1805,7 +1619,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesReplaceNodeUserRequest": {
+    "com.azure.batch_data#ReplaceNodeNodeUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1892,13 +1706,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesCreateNodeUser": {
+    "com.azure.batch_data#CreateNodeNodeUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesCreateNodeUserRequest"
+        "target": "com.azure.batch_data#CreateNodeNodeUserRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesCreateNodeUserResponse"
+        "target": "com.azure.batch_data#CreateNodeNodeUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1914,7 +1728,7 @@
         "smithy.api#documentation": "Adds a user Account to the specified Compute Node.\n\nYou can add a user Account to a Compute Node only when it is in the idle or \nrunning state. Before you can remotely login to a Compute Node you must configure access ports for SSH and RDP. For more information, see https://learn.microsoft.com/azure/batch/pool-endpoint-configuration"
       }
     },
-    "com.azure.batch_data#NodesCreateNodeUserResponse": {
+    "com.azure.batch_data#CreateNodeNodeUserResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1929,7 +1743,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesCreateNodeUserRequest": {
+    "com.azure.batch_data#CreateNodeNodeUserRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2021,10 +1835,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesUploadNodeLogs": {
+    "com.azure.batch_data#UploadNodeNodeLogs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesUploadNodeLogsRequest"
+        "target": "com.azure.batch_data#UploadNodeNodeLogsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#UploadBatchServiceLogsResult"
@@ -2072,7 +1886,7 @@
         "smithy.api#documentation": "The result of uploading Batch service log files from a specific Compute Node."
       }
     },
-    "com.azure.batch_data#NodesUploadNodeLogsRequest": {
+    "com.azure.batch_data#UploadNodeNodeLogsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2158,13 +1972,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesStartNode": {
+    "com.azure.batch_data#StartNodeNode": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesStartNodeRequest"
+        "target": "com.azure.batch_data#StartNodeNodeRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesStartNodeResponse"
+        "target": "com.azure.batch_data#StartNodeNodeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2180,7 +1994,7 @@
         "smithy.api#documentation": "Starts the specified Compute Node.\n\nYou can start a Compute Node only if it has been deallocated."
       }
     },
-    "com.azure.batch_data#NodesStartNodeResponse": {
+    "com.azure.batch_data#StartNodeNodeResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -2195,7 +2009,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesStartNodeRequest": {
+    "com.azure.batch_data#StartNodeNodeRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2255,10 +2069,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesGetNodeRemoteLoginSettings": {
+    "com.azure.batch_data#GetNodeNodeRemoteLoginSettings": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesGetNodeRemoteLoginSettingsRequest"
+        "target": "com.azure.batch_data#GetNodeNodeRemoteLoginSettingsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchNodeRemoteLoginSettings"
@@ -2318,7 +2132,7 @@
         "smithy.api#documentation": "The remote login settings for a Compute Node."
       }
     },
-    "com.azure.batch_data#NodesGetNodeRemoteLoginSettingsRequest": {
+    "com.azure.batch_data#GetNodeNodeRemoteLoginSettingsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2513,13 +2327,13 @@
         "smithy.api#documentation": "BatchNodeReimageOption enums"
       }
     },
-    "com.azure.batch_data#NodesRebootNode": {
+    "com.azure.batch_data#RebootNodeNode": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesRebootNodeRequest"
+        "target": "com.azure.batch_data#RebootNodeNodeRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesRebootNodeResponse"
+        "target": "com.azure.batch_data#RebootNodeNodeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2535,7 +2349,7 @@
         "smithy.api#documentation": "Restarts the specified Compute Node.\n\nYou can restart a Compute Node only if it is in an idle or running state."
       }
     },
-    "com.azure.batch_data#NodesRebootNodeResponse": {
+    "com.azure.batch_data#RebootNodeNodeResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -2550,7 +2364,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesRebootNodeRequest": {
+    "com.azure.batch_data#RebootNodeNodeRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2648,10 +2462,10 @@
         "smithy.api#documentation": "BatchNodeRebootKind enums"
       }
     },
-    "com.azure.batch_data#NodesGetNodeFileProperties": {
+    "com.azure.batch_data#GetNodeNodeFileProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesGetNodeFilePropertiesRequest"
+        "target": "com.azure.batch_data#GetNodeNodeFilePropertiesRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2670,7 +2484,7 @@
         "smithy.api#documentation": "Gets the properties of the specified Compute Node file."
       }
     },
-    "com.azure.batch_data#NodesGetNodeFilePropertiesRequest": {
+    "com.azure.batch_data#GetNodeNodeFilePropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2752,10 +2566,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesDeleteNodeFile": {
+    "com.azure.batch_data#DeleteNodeNodeFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesDeleteNodeFileRequest"
+        "target": "com.azure.batch_data#DeleteNodeNodeFileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2774,7 +2588,7 @@
         "smithy.api#documentation": "Deletes the specified file from the Compute Node.\n\nDeletes the specified file from the Compute Node."
       }
     },
-    "com.azure.batch_data#NodesDeleteNodeFileRequest": {
+    "com.azure.batch_data#DeleteNodeNodeFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2849,13 +2663,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesGetNodeFile": {
+    "com.azure.batch_data#GetNodeNodeFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesGetNodeFileRequest"
+        "target": "com.azure.batch_data#GetNodeNodeFileRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesGetNodeFileResponse"
+        "target": "com.azure.batch_data#GetNodeNodeFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2871,7 +2685,7 @@
         "smithy.api#documentation": "Returns the content of the specified Compute Node file."
       }
     },
-    "com.azure.batch_data#NodesGetNodeFileResponse": {
+    "com.azure.batch_data#GetNodeNodeFileResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2886,7 +2700,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesGetNodeFileRequest": {
+    "com.azure.batch_data#GetNodeNodeFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2975,10 +2789,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesListNodeFiles": {
+    "com.azure.batch_data#ListNodeNodeFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesListNodeFilesRequest"
+        "target": "com.azure.batch_data#ListNodeNodeFilesRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchNodeFileListResult"
@@ -2992,9 +2806,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the files in Task directories on the specified Compute Node.\n\nLists all of the files in Task directories on the specified Compute Node."
+        "smithy.api#documentation": "Lists all of the files in Task directories on the specified Compute Node.\n\nLists all of the files in Task directories on the specified Compute Node.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchNodeFileListResult": {
@@ -3106,7 +2927,7 @@
         "smithy.api#documentation": "The properties of a file on a Compute Node."
       }
     },
-    "com.azure.batch_data#NodesListNodeFilesRequest": {
+    "com.azure.batch_data#ListNodeNodeFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3181,19 +3002,25 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesGetNodeExtension": {
+    "com.azure.batch_data#GetNodeNodeExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesGetNodeExtensionRequest"
+        "target": "com.azure.batch_data#GetNodeNodeExtensionRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesGetNodeExtensionResponse"
+        "target": "com.azure.batch_data#GetNodeNodeExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3209,7 +3036,7 @@
         "smithy.api#documentation": "Gets information about the specified Compute Node Extension.\n\nGets information about the specified Compute Node Extension."
       }
     },
-    "com.azure.batch_data#NodesGetNodeExtensionResponse": {
+    "com.azure.batch_data#GetNodeNodeExtensionResponse": {
       "type": "structure",
       "members": {
         "provisioningState": {
@@ -3449,7 +3276,7 @@
         "smithy.api#documentation": "JSON formatted public settings for the extension."
       }
     },
-    "com.azure.batch_data#NodesGetNodeExtensionRequest": {
+    "com.azure.batch_data#GetNodeNodeExtensionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3492,7 +3319,7 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#NodesGetNodeExtensionRequestSelectList",
+          "target": "com.azure.batch_data#GetNodeNodeExtensionRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
@@ -3524,17 +3351,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesGetNodeExtensionRequestSelectList": {
+    "com.azure.batch_data#GetNodeNodeExtensionRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#NodesListNodeExtensions": {
+    "com.azure.batch_data#ListNodeNodeExtensions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesListNodeExtensionsRequest"
+        "target": "com.azure.batch_data#ListNodeNodeExtensionsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchNodeVMExtensionListResult"
@@ -3548,9 +3375,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the Compute Nodes Extensions in the specified Pool.\n\nLists the Compute Nodes Extensions in the specified Pool."
+        "smithy.api#documentation": "Lists the Compute Nodes Extensions in the specified Pool.\n\nLists the Compute Nodes Extensions in the specified Pool.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchNodeVMExtensionListResult": {
@@ -3616,7 +3450,7 @@
         "smithy.api#documentation": "The configuration for virtual machine extension instance view."
       }
     },
-    "com.azure.batch_data#NodesListNodeExtensionsRequest": {
+    "com.azure.batch_data#ListNodeNodeExtensionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3658,7 +3492,7 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#NodesListNodeExtensionsRequestSelectList",
+          "target": "com.azure.batch_data#ListNodeNodeExtensionsRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
@@ -3684,26 +3518,32 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesListNodeExtensionsRequestSelectList": {
+    "com.azure.batch_data#ListNodeNodeExtensionsRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#NodesEnableNodeScheduling": {
+    "com.azure.batch_data#EnableNodeNodeScheduling": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesEnableNodeSchedulingRequest"
+        "target": "com.azure.batch_data#EnableNodeNodeSchedulingRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesEnableNodeSchedulingResponse"
+        "target": "com.azure.batch_data#EnableNodeNodeSchedulingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3719,7 +3559,7 @@
         "smithy.api#documentation": "Enables Task scheduling on the specified Compute Node.\n\nYou can enable Task scheduling on a Compute Node only if its current scheduling\nstate is disabled"
       }
     },
-    "com.azure.batch_data#NodesEnableNodeSchedulingResponse": {
+    "com.azure.batch_data#EnableNodeNodeSchedulingResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -3734,7 +3574,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesEnableNodeSchedulingRequest": {
+    "com.azure.batch_data#EnableNodeNodeSchedulingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3794,13 +3634,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesDisableNodeScheduling": {
+    "com.azure.batch_data#DisableNodeNodeScheduling": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesDisableNodeSchedulingRequest"
+        "target": "com.azure.batch_data#DisableNodeNodeSchedulingRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesDisableNodeSchedulingResponse"
+        "target": "com.azure.batch_data#DisableNodeNodeSchedulingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3816,7 +3656,7 @@
         "smithy.api#documentation": "Disables Task scheduling on the specified Compute Node.\n\nYou can disable Task scheduling on a Compute Node only if its current\nscheduling state is enabled."
       }
     },
-    "com.azure.batch_data#NodesDisableNodeSchedulingResponse": {
+    "com.azure.batch_data#DisableNodeNodeSchedulingResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -3831,7 +3671,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#NodesDisableNodeSchedulingRequest": {
+    "com.azure.batch_data#DisableNodeNodeSchedulingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4058,13 +3898,13 @@
         "smithy.api#documentation": "BatchNodeDeallocateOption enums"
       }
     },
-    "com.azure.batch_data#NodesGetNode": {
+    "com.azure.batch_data#GetNodeNode": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesGetNodeRequest"
+        "target": "com.azure.batch_data#GetNodeNodeRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#NodesGetNodeResponse"
+        "target": "com.azure.batch_data#GetNodeNodeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4080,7 +3920,7 @@
         "smithy.api#documentation": "Gets information about the specified Compute Node.\n\nGets information about the specified Compute Node."
       }
     },
-    "com.azure.batch_data#NodesGetNodeResponse": {
+    "com.azure.batch_data#GetNodeNodeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4919,7 +4759,7 @@
         "smithy.api#documentation": "BatchNodeState enums"
       }
     },
-    "com.azure.batch_data#NodesGetNodeRequest": {
+    "com.azure.batch_data#GetNodeNodeRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4954,7 +4794,7 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#NodesGetNodeRequestSelectList",
+          "target": "com.azure.batch_data#GetNodeNodeRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
@@ -4986,17 +4826,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesGetNodeRequestSelectList": {
+    "com.azure.batch_data#GetNodeNodeRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#NodesListNodes": {
+    "com.azure.batch_data#ListNodeNodes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#NodesListNodesRequest"
+        "target": "com.azure.batch_data#ListNodeNodesRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchNodeListResult"
@@ -5010,9 +4850,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the Compute Nodes in the specified Pool.\n\nLists the Compute Nodes in the specified Pool."
+        "smithy.api#documentation": "Lists the Compute Nodes in the specified Pool.\n\nLists the Compute Nodes in the specified Pool.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchNodeListResult": {
@@ -5210,7 +5057,7 @@
         "smithy.api#documentation": "A Compute Node in the Batch service."
       }
     },
-    "com.azure.batch_data#NodesListNodesRequest": {
+    "com.azure.batch_data#ListNodeNodesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5251,7 +5098,7 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#NodesListNodesRequestSelectList",
+          "target": "com.azure.batch_data#ListNodeNodesRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
@@ -5277,26 +5124,32 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#NodesListNodesRequestSelectList": {
+    "com.azure.batch_data#ListNodeNodesRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#PoolsEvaluatePoolAutoScale": {
+    "com.azure.batch_data#ScalePoolsEvaluatePoolAuto": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsEvaluatePoolAutoScaleRequest"
+        "target": "com.azure.batch_data#ScalePoolsEvaluatePoolAutoRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsEvaluatePoolAutoScaleResponse"
+        "target": "com.azure.batch_data#ScalePoolsEvaluatePoolAutoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5312,7 +5165,7 @@
         "smithy.api#documentation": "Gets the result of evaluating an automatic scaling formula on the Pool.\n\nThis API is primarily for validating an autoscale formula, as it simply returns\nthe result without applying the formula to the Pool. The Pool must have auto\nscaling enabled in order to evaluate a formula."
       }
     },
-    "com.azure.batch_data#PoolsEvaluatePoolAutoScaleResponse": {
+    "com.azure.batch_data#ScalePoolsEvaluatePoolAutoResponse": {
       "type": "structure",
       "members": {
         "timestamp": {
@@ -5382,7 +5235,7 @@
         "smithy.api#documentation": "A list of additional error details related to the autoscale error."
       }
     },
-    "com.azure.batch_data#PoolsEvaluatePoolAutoScaleRequest": {
+    "com.azure.batch_data#ScalePoolsEvaluatePoolAutoRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5441,13 +5294,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsEnablePoolAutoScale": {
+    "com.azure.batch_data#EnablePoolPoolAutoScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsEnablePoolAutoScaleRequest"
+        "target": "com.azure.batch_data#EnablePoolPoolAutoScaleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsEnablePoolAutoScaleResponse"
+        "target": "com.azure.batch_data#EnablePoolPoolAutoScaleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5463,7 +5316,7 @@
         "smithy.api#documentation": "Enables automatic scaling for a Pool.\n\nYou cannot enable automatic scaling on a Pool if a resize operation is in\nprogress on the Pool. If automatic scaling of the Pool is currently disabled,\nyou must specify a valid autoscale formula as part of the request. If automatic\nscaling of the Pool is already enabled, you may specify a new autoscale formula\nand/or a new evaluation interval. You cannot call this API for the same Pool\nmore than once every 30 seconds."
       }
     },
-    "com.azure.batch_data#PoolsEnablePoolAutoScaleResponse": {
+    "com.azure.batch_data#EnablePoolPoolAutoScaleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -5478,7 +5331,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsEnablePoolAutoScaleRequest": {
+    "com.azure.batch_data#EnablePoolPoolAutoScaleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5570,13 +5423,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsDisablePoolAutoScale": {
+    "com.azure.batch_data#DisablePoolPoolAutoScale": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsDisablePoolAutoScaleRequest"
+        "target": "com.azure.batch_data#DisablePoolPoolAutoScaleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsDisablePoolAutoScaleResponse"
+        "target": "com.azure.batch_data#DisablePoolPoolAutoScaleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5592,7 +5445,7 @@
         "smithy.api#documentation": "Disables automatic scaling for a Pool.\n\nDisables automatic scaling for a Pool."
       }
     },
-    "com.azure.batch_data#PoolsDisablePoolAutoScaleResponse": {
+    "com.azure.batch_data#DisablePoolPoolAutoScaleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -5607,7 +5460,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsDisablePoolAutoScaleRequest": {
+    "com.azure.batch_data#DisablePoolPoolAutoScaleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5761,10 +5614,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsDeletePool": {
+    "com.azure.batch_data#DeletePoolPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsDeletePoolRequest"
+        "target": "com.azure.batch_data#DeletePoolPoolRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5783,7 +5636,7 @@
         "smithy.api#documentation": "Deletes a Pool from the specified Account.\n\nWhen you request that a Pool be deleted, the following actions occur: the Pool\nstate is set to deleting; any ongoing resize operation on the Pool are stopped;\nthe Batch service starts resizing the Pool to zero Compute Nodes; any Tasks\nrunning on existing Compute Nodes are terminated and requeued (as if a resize\nPool operation had been requested with the default requeue option); finally,\nthe Pool is removed from the system. Because running Tasks are requeued, the\nuser can rerun these Tasks by updating their Job to target a different Pool.\nThe Tasks can then run on the new Pool. If you want to override the requeue\nbehavior, then you should call resize Pool explicitly to shrink the Pool to\nzero size before deleting the Pool. If you call an Update, Patch or Delete API\non a Pool in the deleting state, it will fail with HTTP status code 409 with\nerror code PoolBeingDeleted."
       }
     },
-    "com.azure.batch_data#PoolsDeletePoolRequest": {
+    "com.azure.batch_data#DeletePoolPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5863,13 +5716,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsUpdatePool": {
+    "com.azure.batch_data#UpdatePoolPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsUpdatePoolRequest"
+        "target": "com.azure.batch_data#UpdatePoolPoolRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsUpdatePoolResponse"
+        "target": "com.azure.batch_data#UpdatePoolPoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5885,7 +5738,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Pool.\n\nThis only replaces the Pool properties specified in the request. For example,\nif the Pool has a StartTask associated with it, and a request does not specify\na StartTask element, then the Pool keeps the existing StartTask."
       }
     },
-    "com.azure.batch_data#PoolsUpdatePoolResponse": {
+    "com.azure.batch_data#UpdatePoolPoolResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -5900,7 +5753,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsUpdatePoolRequest": {
+    "com.azure.batch_data#UpdatePoolPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6000,13 +5853,13 @@
           }
         },
         "applicationPackageReferences": {
-          "target": "com.azure.batch_data#PoolsUpdatePoolRequestApplicationPackageReferencesList",
+          "target": "com.azure.batch_data#UpdatePoolPoolRequestApplicationPackageReferencesList",
           "traits": {
             "smithy.api#documentation": "A list of Packages to be installed on each Compute Node in the Pool. Changes to Package references affect all new Nodes joining the Pool, but do not affect Compute Nodes that are already in the Pool until they are rebooted or reimaged. If this element is present, it replaces any existing Package references. If you specify an empty collection, then all Package references are removed from the Pool. If omitted, any existing Package references are left unchanged."
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#PoolsUpdatePoolRequestMetadataList",
+          "target": "com.azure.batch_data#UpdatePoolPoolRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Pool as metadata. If this element is present, it replaces any existing metadata configured on the Pool. If you specify an empty collection, any metadata is removed from the Pool. If omitted, any existing metadata is left unchanged."
           }
@@ -6036,13 +5889,13 @@
           }
         },
         "userAccounts": {
-          "target": "com.azure.batch_data#PoolsUpdatePoolRequestUserAccountsList",
+          "target": "com.azure.batch_data#UpdatePoolPoolRequestUserAccountsList",
           "traits": {
             "smithy.api#documentation": "The list of user Accounts to be created on each Compute Node in the Pool. This field can be updated only when the pool is empty."
           }
         },
         "mountConfiguration": {
-          "target": "com.azure.batch_data#PoolsUpdatePoolRequestMountConfigurationList",
+          "target": "com.azure.batch_data#UpdatePoolPoolRequestMountConfigurationList",
           "traits": {
             "smithy.api#documentation": "Mount storage using specified file system for the entire lifetime of the pool. Mount the storage using Azure fileshare, NFS, CIFS or Blobfuse based file system.<br /><br />This field can be updated only when the pool is empty."
           }
@@ -6192,7 +6045,7 @@
         "smithy.api#documentation": "UpgradeMode enums"
       }
     },
-    "com.azure.batch_data#PoolsUpdatePoolRequestMountConfigurationList": {
+    "com.azure.batch_data#UpdatePoolPoolRequestMountConfigurationList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#MountConfiguration"
@@ -6399,7 +6252,7 @@
         "smithy.api#documentation": "Information used to connect to an Azure Storage Container using Blobfuse."
       }
     },
-    "com.azure.batch_data#PoolsUpdatePoolRequestUserAccountsList": {
+    "com.azure.batch_data#UpdatePoolPoolRequestUserAccountsList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#UserAccount"
@@ -7630,7 +7483,7 @@
         "smithy.api#documentation": "A reference to an Azure Virtual Machines Marketplace Image or a Azure Compute Gallery Image.\nTo get the list of all Azure Marketplace Image references verified by Azure Batch, see the\n' List Supported Images ' operation."
       }
     },
-    "com.azure.batch_data#PoolsUpdatePoolRequestMetadataList": {
+    "com.azure.batch_data#UpdatePoolPoolRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -7639,7 +7492,7 @@
         "smithy.api#documentation": "A list of name-value pairs associated with the Pool as metadata. If this element is present, it replaces any existing metadata configured on the Pool. If you specify an empty collection, any metadata is removed from the Pool. If omitted, any existing metadata is left unchanged."
       }
     },
-    "com.azure.batch_data#PoolsUpdatePoolRequestApplicationPackageReferencesList": {
+    "com.azure.batch_data#UpdatePoolPoolRequestApplicationPackageReferencesList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchApplicationPackageReference"
@@ -7763,13 +7616,13 @@
         "smithy.api#documentation": "The paths you want to mounted to container task. If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty."
       }
     },
-    "com.azure.batch_data#PoolsGetPool": {
+    "com.azure.batch_data#GetPoolPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsGetPoolRequest"
+        "target": "com.azure.batch_data#GetPoolPoolRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsGetPoolResponse"
+        "target": "com.azure.batch_data#GetPoolPoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7785,7 +7638,7 @@
         "smithy.api#documentation": "Gets information about the specified Pool."
       }
     },
-    "com.azure.batch_data#PoolsGetPoolResponse": {
+    "com.azure.batch_data#GetPoolPoolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8704,7 +8557,7 @@
         "smithy.api#documentation": "BatchPoolState enums"
       }
     },
-    "com.azure.batch_data#PoolsGetPoolRequest": {
+    "com.azure.batch_data#GetPoolPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8731,14 +8584,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#PoolsGetPoolRequestSelectList",
+          "target": "com.azure.batch_data#GetPoolPoolRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#PoolsGetPoolRequestExpandList",
+          "target": "com.azure.batch_data#GetPoolPoolRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -8798,27 +8651,27 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsGetPoolRequestExpandList": {
+    "com.azure.batch_data#GetPoolPoolRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#PoolsGetPoolRequestSelectList": {
+    "com.azure.batch_data#GetPoolPoolRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#PoolsCreatePool": {
+    "com.azure.batch_data#CreatePoolPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsCreatePoolRequest"
+        "target": "com.azure.batch_data#CreatePoolPoolRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#PoolsCreatePoolResponse"
+        "target": "com.azure.batch_data#CreatePoolPoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8834,7 +8687,7 @@
         "smithy.api#documentation": "Creates a Pool to the specified Account.\n\nWhen naming Pools, avoid including sensitive information such as user names or\nsecret project names. This information may appear in telemetry logs accessible\nto Microsoft Support engineers."
       }
     },
-    "com.azure.batch_data#PoolsCreatePoolResponse": {
+    "com.azure.batch_data#CreatePoolPoolResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -8849,7 +8702,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#PoolsCreatePoolRequest": {
+    "com.azure.batch_data#CreatePoolPoolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8969,7 +8822,7 @@
           }
         },
         "applicationPackageReferences": {
-          "target": "com.azure.batch_data#PoolsCreatePoolRequestApplicationPackageReferencesList",
+          "target": "com.azure.batch_data#CreatePoolPoolRequestApplicationPackageReferencesList",
           "traits": {
             "smithy.api#documentation": "The list of Packages to be installed on each Compute Node in the Pool. When creating a pool, the package's application ID must be fully qualified (/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}). Changes to Package references affect all new Nodes joining the Pool, but do not affect Compute Nodes that are already in the Pool until they are rebooted or reimaged. There is a maximum of 10 Package references on any given Pool."
           }
@@ -8987,19 +8840,19 @@
           }
         },
         "userAccounts": {
-          "target": "com.azure.batch_data#PoolsCreatePoolRequestUserAccountsList",
+          "target": "com.azure.batch_data#CreatePoolPoolRequestUserAccountsList",
           "traits": {
             "smithy.api#documentation": "The list of user Accounts to be created on each Compute Node in the Pool."
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#PoolsCreatePoolRequestMetadataList",
+          "target": "com.azure.batch_data#CreatePoolPoolRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Pool as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
           }
         },
         "mountConfiguration": {
-          "target": "com.azure.batch_data#PoolsCreatePoolRequestMountConfigurationList",
+          "target": "com.azure.batch_data#CreatePoolPoolRequestMountConfigurationList",
           "traits": {
             "smithy.api#documentation": "Mount storage using specified file system for the entire lifetime of the pool. Mount the storage using Azure fileshare, NFS, CIFS or Blobfuse based file system."
           }
@@ -9015,7 +8868,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsCreatePoolRequestMountConfigurationList": {
+    "com.azure.batch_data#CreatePoolPoolRequestMountConfigurationList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#MountConfiguration"
@@ -9024,7 +8877,7 @@
         "smithy.api#documentation": "Mount storage using specified file system for the entire lifetime of the pool. Mount the storage using Azure fileshare, NFS, CIFS or Blobfuse based file system."
       }
     },
-    "com.azure.batch_data#PoolsCreatePoolRequestMetadataList": {
+    "com.azure.batch_data#CreatePoolPoolRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -9033,7 +8886,7 @@
         "smithy.api#documentation": "A list of name-value pairs associated with the Pool as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
       }
     },
-    "com.azure.batch_data#PoolsCreatePoolRequestUserAccountsList": {
+    "com.azure.batch_data#CreatePoolPoolRequestUserAccountsList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#UserAccount"
@@ -9042,7 +8895,7 @@
         "smithy.api#documentation": "The list of user Accounts to be created on each Compute Node in the Pool."
       }
     },
-    "com.azure.batch_data#PoolsCreatePoolRequestApplicationPackageReferencesList": {
+    "com.azure.batch_data#CreatePoolPoolRequestApplicationPackageReferencesList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchApplicationPackageReference"
@@ -9151,10 +9004,10 @@
         "smithy.api#documentation": "The configuration for data disks attached to the Compute Nodes in the Pool. This property must be specified if the Compute Nodes in the Pool need to have empty data disks attached to them. This cannot be updated. Each Compute Node gets its own disk (the disk is not a file share). Existing disks cannot be attached, each attached disk is empty. When the Compute Node is removed from the Pool, the disk and all data associated with it is also deleted. The disk is not formatted after being attached, it must be formatted before use - for more information see https://learn.microsoft.com/azure/virtual-machines/linux/classic/attach-disk#initialize-a-new-data-disk-in-linux and https://learn.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#add-an-empty-data-disk-to-a-virtual-machine."
       }
     },
-    "com.azure.batch_data#PoolsListPools": {
+    "com.azure.batch_data#ListPoolPools": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsListPoolsRequest"
+        "target": "com.azure.batch_data#ListPoolPoolsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchPoolListResult"
@@ -9168,9 +9021,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the Pools in the specified Account.\n\nLists all of the Pools in the specified Account."
+        "smithy.api#documentation": "Lists all of the Pools in the specified Account.\n\nLists all of the Pools in the specified Account.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchPoolListResult": {
@@ -9432,7 +9292,7 @@
         "smithy.api#documentation": "A Pool in the Azure Batch service."
       }
     },
-    "com.azure.batch_data#PoolsListPoolsRequest": {
+    "com.azure.batch_data#ListPoolPoolsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -9465,14 +9325,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#PoolsListPoolsRequestSelectList",
+          "target": "com.azure.batch_data#ListPoolPoolsRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#PoolsListPoolsRequestExpandList",
+          "target": "com.azure.batch_data#ListPoolPoolsRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -9498,30 +9358,36 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#PoolsListPoolsRequestExpandList": {
+    "com.azure.batch_data#ListPoolPoolsRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#PoolsListPoolsRequestSelectList": {
+    "com.azure.batch_data#ListPoolPoolsRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#PoolsListPoolNodeCounts": {
+    "com.azure.batch_data#ListPoolPoolNodeCounts": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#PoolsListPoolNodeCountsRequest"
+        "target": "com.azure.batch_data#ListPoolPoolNodeCountsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchPoolNodeCountsListResult"
@@ -9535,9 +9401,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the number of Compute Nodes in each state, grouped by Pool. Note that the\nnumbers returned may not always be up to date. If you need exact node counts,\nuse a list query."
+        "smithy.api#documentation": "Gets the number of Compute Nodes in each state, grouped by Pool. Note that the\nnumbers returned may not always be up to date. If you need exact node counts,\nuse a list query.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchPoolNodeCountsListResult": {
@@ -9731,7 +9604,7 @@
         "smithy.api#documentation": "The number of Compute Nodes in each Compute Node state."
       }
     },
-    "com.azure.batch_data#PoolsListPoolNodeCountsRequest": {
+    "com.azure.batch_data#ListPoolPoolNodeCountsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -9783,19 +9656,25 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesTerminateJobSchedule": {
+    "com.azure.batch_data#TerminateJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesTerminateJobScheduleRequest"
+        "target": "com.azure.batch_data#TerminateJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesTerminateJobScheduleResponse"
+        "target": "com.azure.batch_data#TerminateJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9811,7 +9690,7 @@
         "smithy.api#documentation": "Terminates a Job Schedule.\n\nTerminates a Job Schedule."
       }
     },
-    "com.azure.batch_data#JobSchedulesTerminateJobScheduleResponse": {
+    "com.azure.batch_data#TerminateJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -9826,7 +9705,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesTerminateJobScheduleRequest": {
+    "com.azure.batch_data#TerminateJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -9913,10 +9792,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsListJobsFromSchedule": {
+    "com.azure.batch_data#ListJobJobsFromSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsListJobsFromScheduleRequest"
+        "target": "com.azure.batch_data#ListJobJobsFromScheduleRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchJobListResult"
@@ -9930,9 +9809,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the Jobs that have been created under the specified Job Schedule.\n\nLists the Jobs that have been created under the specified Job Schedule."
+        "smithy.api#documentation": "Lists the Jobs that have been created under the specified Job Schedule.\n\nLists the Jobs that have been created under the specified Job Schedule.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchJobListResult": {
@@ -11171,7 +11057,7 @@
         "smithy.api#documentation": "BatchJobState enums"
       }
     },
-    "com.azure.batch_data#JobsListJobsFromScheduleRequest": {
+    "com.azure.batch_data#ListJobJobsFromScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -11212,14 +11098,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#JobsListJobsFromScheduleRequestSelectList",
+          "target": "com.azure.batch_data#ListJobJobsFromScheduleRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#JobsListJobsFromScheduleRequestExpandList",
+          "target": "com.azure.batch_data#ListJobJobsFromScheduleRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -11245,33 +11131,39 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsListJobsFromScheduleRequestExpandList": {
+    "com.azure.batch_data#ListJobJobsFromScheduleRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsListJobsFromScheduleRequestSelectList": {
+    "com.azure.batch_data#ListJobJobsFromScheduleRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobSchedulesEnableJobSchedule": {
+    "com.azure.batch_data#EnableJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesEnableJobScheduleRequest"
+        "target": "com.azure.batch_data#EnableJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesEnableJobScheduleResponse"
+        "target": "com.azure.batch_data#EnableJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11287,7 +11179,7 @@
         "smithy.api#documentation": "Enables a Job Schedule.\n\nEnables a Job Schedule."
       }
     },
-    "com.azure.batch_data#JobSchedulesEnableJobScheduleResponse": {
+    "com.azure.batch_data#EnableJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -11302,7 +11194,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesEnableJobScheduleRequest": {
+    "com.azure.batch_data#EnableJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -11382,13 +11274,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesDisableJobSchedule": {
+    "com.azure.batch_data#DisableJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesDisableJobScheduleRequest"
+        "target": "com.azure.batch_data#DisableJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesDisableJobScheduleResponse"
+        "target": "com.azure.batch_data#DisableJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11404,7 +11296,7 @@
         "smithy.api#documentation": "Disables a Job Schedule.\n\nNo new Jobs will be created until the Job Schedule is enabled again."
       }
     },
-    "com.azure.batch_data#JobSchedulesDisableJobScheduleResponse": {
+    "com.azure.batch_data#DisableJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -11419,7 +11311,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesDisableJobScheduleRequest": {
+    "com.azure.batch_data#DisableJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -11601,10 +11493,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesDeleteJobSchedule": {
+    "com.azure.batch_data#DeleteJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesDeleteJobScheduleRequest"
+        "target": "com.azure.batch_data#DeleteJobScheduleJobScheduleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11623,7 +11515,7 @@
         "smithy.api#documentation": "Deletes a Job Schedule from the specified Account.\n\nWhen you delete a Job Schedule, this also deletes all Jobs and Tasks under that\nschedule. When Tasks are deleted, all the files in their working directories on\nthe Compute Nodes are also deleted (the retention period is ignored). The Job\nSchedule statistics are no longer accessible once the Job Schedule is deleted,\nthough they are still counted towards Account lifetime statistics."
       }
     },
-    "com.azure.batch_data#JobSchedulesDeleteJobScheduleRequest": {
+    "com.azure.batch_data#DeleteJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -11710,13 +11602,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesUpdateJobSchedule": {
+    "com.azure.batch_data#UpdateJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesUpdateJobScheduleRequest"
+        "target": "com.azure.batch_data#UpdateJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesUpdateJobScheduleResponse"
+        "target": "com.azure.batch_data#UpdateJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11732,7 +11624,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Job Schedule.\n\nThis replaces only the Job Schedule properties specified in the request. For\nexample, if the schedule property is not specified with this request, then the\nBatch service will keep the existing schedule. Changes to a Job Schedule only\nimpact Jobs created by the schedule after the update has taken place; currently\nrunning Jobs are unaffected."
       }
     },
-    "com.azure.batch_data#JobSchedulesUpdateJobScheduleResponse": {
+    "com.azure.batch_data#UpdateJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -11747,7 +11639,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesUpdateJobScheduleRequest": {
+    "com.azure.batch_data#UpdateJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -11835,7 +11727,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#JobSchedulesUpdateJobScheduleRequestMetadataList",
+          "target": "com.azure.batch_data#UpdateJobScheduleJobScheduleRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Job Schedule as metadata. If you do not specify this element, existing metadata is left unchanged."
           }
@@ -11845,7 +11737,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesUpdateJobScheduleRequestMetadataList": {
+    "com.azure.batch_data#UpdateJobScheduleJobScheduleRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -12514,13 +12406,13 @@
         "smithy.api#documentation": "The schedule according to which Jobs will be created. All times are fixed\nrespective to UTC and are not impacted by daylight saving time."
       }
     },
-    "com.azure.batch_data#JobSchedulesReplaceJobSchedule": {
+    "com.azure.batch_data#ReplaceJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesReplaceJobScheduleRequest"
+        "target": "com.azure.batch_data#ReplaceJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesReplaceJobScheduleResponse"
+        "target": "com.azure.batch_data#ReplaceJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12536,7 +12428,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Job Schedule.\n\nThis fully replaces all the updatable properties of the Job Schedule. For\nexample, if the schedule property is not specified with this request, then the\nBatch service will remove the existing schedule. Changes to a Job Schedule only\nimpact Jobs created by the schedule after the update has taken place; currently\nrunning Jobs are unaffected."
       }
     },
-    "com.azure.batch_data#JobSchedulesReplaceJobScheduleResponse": {
+    "com.azure.batch_data#ReplaceJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -12551,7 +12443,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesReplaceJobScheduleRequest": {
+    "com.azure.batch_data#ReplaceJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -12640,7 +12532,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#JobSchedulesReplaceJobScheduleRequestMetadataList",
+          "target": "com.azure.batch_data#ReplaceJobScheduleJobScheduleRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the schedule as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
           }
@@ -12650,7 +12542,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesReplaceJobScheduleRequestMetadataList": {
+    "com.azure.batch_data#ReplaceJobScheduleJobScheduleRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -12988,13 +12880,13 @@
         "smithy.api#documentation": "A list of common environment variable settings. These environment variables are set for all Tasks in Jobs created under this schedule (including the Job Manager, Job Preparation and Job Release Tasks). Individual Tasks can override an environment setting specified here by specifying the same setting name with a different value."
       }
     },
-    "com.azure.batch_data#JobSchedulesGetJobSchedule": {
+    "com.azure.batch_data#GetJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesGetJobScheduleRequest"
+        "target": "com.azure.batch_data#GetJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesGetJobScheduleResponse"
+        "target": "com.azure.batch_data#GetJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13010,7 +12902,7 @@
         "smithy.api#documentation": "Gets information about the specified Job Schedule."
       }
     },
-    "com.azure.batch_data#JobSchedulesGetJobScheduleResponse": {
+    "com.azure.batch_data#GetJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13441,7 +13333,7 @@
         "smithy.api#documentation": "BatchJobScheduleState enums"
       }
     },
-    "com.azure.batch_data#JobSchedulesGetJobScheduleRequest": {
+    "com.azure.batch_data#GetJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -13468,14 +13360,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#JobSchedulesGetJobScheduleRequestSelectList",
+          "target": "com.azure.batch_data#GetJobScheduleJobScheduleRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#JobSchedulesGetJobScheduleRequestExpandList",
+          "target": "com.azure.batch_data#GetJobScheduleJobScheduleRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -13535,27 +13427,27 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesGetJobScheduleRequestExpandList": {
+    "com.azure.batch_data#GetJobScheduleJobScheduleRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobSchedulesGetJobScheduleRequestSelectList": {
+    "com.azure.batch_data#GetJobScheduleJobScheduleRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobSchedulesCreateJobSchedule": {
+    "com.azure.batch_data#CreateJobScheduleJobSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesCreateJobScheduleRequest"
+        "target": "com.azure.batch_data#CreateJobScheduleJobScheduleRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobSchedulesCreateJobScheduleResponse"
+        "target": "com.azure.batch_data#CreateJobScheduleJobScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13571,7 +13463,7 @@
         "smithy.api#documentation": "Creates a Job Schedule to the specified Account.\n\nCreates a Job Schedule to the specified Account."
       }
     },
-    "com.azure.batch_data#JobSchedulesCreateJobScheduleResponse": {
+    "com.azure.batch_data#CreateJobScheduleJobScheduleResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -13586,7 +13478,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesCreateJobScheduleRequest": {
+    "com.azure.batch_data#CreateJobScheduleJobScheduleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -13653,7 +13545,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#JobSchedulesCreateJobScheduleRequestMetadataList",
+          "target": "com.azure.batch_data#CreateJobScheduleJobScheduleRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the schedule as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
           }
@@ -13663,7 +13555,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesCreateJobScheduleRequestMetadataList": {
+    "com.azure.batch_data#CreateJobScheduleJobScheduleRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -13672,10 +13564,10 @@
         "smithy.api#documentation": "A list of name-value pairs associated with the schedule as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
       }
     },
-    "com.azure.batch_data#JobSchedulesListJobSchedules": {
+    "com.azure.batch_data#ListJobScheduleJobSchedules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobSchedulesListJobSchedulesRequest"
+        "target": "com.azure.batch_data#ListJobScheduleJobSchedulesRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchJobScheduleListResult"
@@ -13689,9 +13581,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the Job Schedules in the specified Account.\n\nLists all of the Job Schedules in the specified Account."
+        "smithy.api#documentation": "Lists all of the Job Schedules in the specified Account.\n\nLists all of the Job Schedules in the specified Account.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchJobScheduleListResult": {
@@ -13838,7 +13737,7 @@
         "smithy.api#documentation": "A Job Schedule that allows recurring Jobs by specifying when to run Jobs and a\nspecification used to create each Job."
       }
     },
-    "com.azure.batch_data#JobSchedulesListJobSchedulesRequest": {
+    "com.azure.batch_data#ListJobScheduleJobSchedulesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -13871,14 +13770,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#JobSchedulesListJobSchedulesRequestSelectList",
+          "target": "com.azure.batch_data#ListJobScheduleJobSchedulesRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#JobSchedulesListJobSchedulesRequestExpandList",
+          "target": "com.azure.batch_data#ListJobScheduleJobSchedulesRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -13904,33 +13803,39 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobSchedulesListJobSchedulesRequestExpandList": {
+    "com.azure.batch_data#ListJobScheduleJobSchedulesRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobSchedulesListJobSchedulesRequestSelectList": {
+    "com.azure.batch_data#ListJobScheduleJobSchedulesRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsTerminateJob": {
+    "com.azure.batch_data#TerminateJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsTerminateJobRequest"
+        "target": "com.azure.batch_data#TerminateJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsTerminateJobResponse"
+        "target": "com.azure.batch_data#TerminateJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13946,7 +13851,7 @@
         "smithy.api#documentation": "Terminates the specified Job, marking it as completed.\n\nWhen a Terminate Job request is received, the Batch service sets the Job to the\nterminating state. The Batch service then terminates any running Tasks\nassociated with the Job and runs any required Job release Tasks. Then the Job\nmoves into the completed state. If there are any Tasks in the Job in the active\nstate, they will remain in the active state. Once a Job is terminated, new\nTasks cannot be added and any remaining active Tasks will not be scheduled."
       }
     },
-    "com.azure.batch_data#JobsTerminateJobResponse": {
+    "com.azure.batch_data#TerminateJobJobResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -13961,7 +13866,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsTerminateJobRequest": {
+    "com.azure.batch_data#TerminateJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -14054,13 +13959,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksTerminateTask": {
+    "com.azure.batch_data#TerminateTaskTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksTerminateTaskRequest"
+        "target": "com.azure.batch_data#TerminateTaskTaskRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#TasksTerminateTaskResponse"
+        "target": "com.azure.batch_data#TerminateTaskTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14076,7 +13981,7 @@
         "smithy.api#documentation": "Terminates the specified Task.\n\nWhen the Task has been terminated, it moves to the completed state. For\nmulti-instance Tasks, the terminate Task operation applies synchronously to the\nprimary task; subtasks are then terminated asynchronously in the background."
       }
     },
-    "com.azure.batch_data#TasksTerminateTaskResponse": {
+    "com.azure.batch_data#TerminateTaskTaskResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -14091,7 +13996,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#TasksTerminateTaskRequest": {
+    "com.azure.batch_data#TerminateTaskTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -14179,10 +14084,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksListSubTasks": {
+    "com.azure.batch_data#ListTaskSubTasks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksListSubTasksRequest"
+        "target": "com.azure.batch_data#ListTaskSubTasksRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchTaskListSubtasksResult"
@@ -14196,9 +14101,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the subtasks that are associated with the specified multi-instance\nTask.\n\nIf the Task is not a multi-instance Task then this returns an empty collection."
+        "smithy.api#documentation": "Lists all of the subtasks that are associated with the specified multi-instance\nTask.\n\nIf the Task is not a multi-instance Task then this returns an empty collection.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchTaskListSubtasksResult": {
@@ -14388,7 +14300,7 @@
         "smithy.api#documentation": "Information about the Compute Node on which a Task ran."
       }
     },
-    "com.azure.batch_data#TasksListSubTasksRequest": {
+    "com.azure.batch_data#ListTaskSubTasksRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -14423,7 +14335,7 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#TasksListSubTasksRequestSelectList",
+          "target": "com.azure.batch_data#ListTaskSubTasksRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
@@ -14449,13 +14361,19 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksListSubTasksRequestSelectList": {
+    "com.azure.batch_data#ListTaskSubTasksRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -14587,10 +14505,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksGetTaskFileProperties": {
+    "com.azure.batch_data#GetTaskTaskFileProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksGetTaskFilePropertiesRequest"
+        "target": "com.azure.batch_data#GetTaskTaskFilePropertiesRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14609,7 +14527,7 @@
         "smithy.api#documentation": "Gets the properties of the specified Task file."
       }
     },
-    "com.azure.batch_data#TasksGetTaskFilePropertiesRequest": {
+    "com.azure.batch_data#GetTaskTaskFilePropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -14691,10 +14609,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksDeleteTaskFile": {
+    "com.azure.batch_data#DeleteTaskTaskFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksDeleteTaskFileRequest"
+        "target": "com.azure.batch_data#DeleteTaskTaskFileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14713,7 +14631,7 @@
         "smithy.api#documentation": "Deletes the specified Task file from the Compute Node where the Task ran.\n\nDeletes the specified Task file from the Compute Node where the Task ran."
       }
     },
-    "com.azure.batch_data#TasksDeleteTaskFileRequest": {
+    "com.azure.batch_data#DeleteTaskTaskFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -14788,13 +14706,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksGetTaskFile": {
+    "com.azure.batch_data#GetTaskTaskFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksGetTaskFileRequest"
+        "target": "com.azure.batch_data#GetTaskTaskFileRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#TasksGetTaskFileResponse"
+        "target": "com.azure.batch_data#GetTaskTaskFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14810,7 +14728,7 @@
         "smithy.api#documentation": "Returns the content of the specified Task file."
       }
     },
-    "com.azure.batch_data#TasksGetTaskFileResponse": {
+    "com.azure.batch_data#GetTaskTaskFileResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -14825,7 +14743,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#TasksGetTaskFileRequest": {
+    "com.azure.batch_data#GetTaskTaskFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -14914,10 +14832,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksListTaskFiles": {
+    "com.azure.batch_data#ListTaskTaskFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksListTaskFilesRequest"
+        "target": "com.azure.batch_data#ListTaskTaskFilesRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchNodeFileListResult"
@@ -14931,12 +14849,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the files in a Task's directory on its Compute Node.\n\nLists the files in a Task's directory on its Compute Node."
+        "smithy.api#documentation": "Lists the files in a Task's directory on its Compute Node.\n\nLists the files in a Task's directory on its Compute Node.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.batch_data#TasksListTaskFilesRequest": {
+    "com.azure.batch_data#ListTaskTaskFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -15011,16 +14936,22 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksDeleteTask": {
+    "com.azure.batch_data#DeleteTaskTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksDeleteTaskRequest"
+        "target": "com.azure.batch_data#DeleteTaskTaskRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15039,7 +14970,7 @@
         "smithy.api#documentation": "Deletes a Task from the specified Job.\n\nWhen a Task is deleted, all of the files in its directory on the Compute Node\nwhere it ran are also deleted (regardless of the retention time). For\nmulti-instance Tasks, the delete Task operation applies synchronously to the\nprimary task; subtasks and their files are then deleted asynchronously in the\nbackground."
       }
     },
-    "com.azure.batch_data#TasksDeleteTaskRequest": {
+    "com.azure.batch_data#DeleteTaskTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -15127,13 +15058,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksReplaceTask": {
+    "com.azure.batch_data#ReplaceTaskTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksReplaceTaskRequest"
+        "target": "com.azure.batch_data#ReplaceTaskTaskRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#TasksReplaceTaskResponse"
+        "target": "com.azure.batch_data#ReplaceTaskTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15149,7 +15080,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Task."
       }
     },
-    "com.azure.batch_data#TasksReplaceTaskResponse": {
+    "com.azure.batch_data#ReplaceTaskTaskResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -15164,7 +15095,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#TasksReplaceTaskRequest": {
+    "com.azure.batch_data#ReplaceTaskTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -15258,13 +15189,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksGetTask": {
+    "com.azure.batch_data#GetTaskTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksGetTaskRequest"
+        "target": "com.azure.batch_data#GetTaskTaskRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#TasksGetTaskResponse"
+        "target": "com.azure.batch_data#GetTaskTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15280,7 +15211,7 @@
         "smithy.api#documentation": "Gets information about the specified Task.\n\nFor multi-instance Tasks, information such as affinityId, executionInfo and\nnodeInfo refer to the primary Task. Use the list subtasks API to retrieve\ninformation about subtasks."
       }
     },
-    "com.azure.batch_data#TasksGetTaskResponse": {
+    "com.azure.batch_data#GetTaskTaskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15865,7 +15796,7 @@
         "smithy.api#documentation": "How the Batch service should respond if a Task exits with a particular exit\ncode."
       }
     },
-    "com.azure.batch_data#TasksGetTaskRequest": {
+    "com.azure.batch_data#GetTaskTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -15900,14 +15831,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#TasksGetTaskRequestSelectList",
+          "target": "com.azure.batch_data#GetTaskTaskRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#TasksGetTaskRequestExpandList",
+          "target": "com.azure.batch_data#GetTaskTaskRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -15967,27 +15898,27 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksGetTaskRequestExpandList": {
+    "com.azure.batch_data#GetTaskTaskRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#TasksGetTaskRequestSelectList": {
+    "com.azure.batch_data#GetTaskTaskRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#TasksCreateTask": {
+    "com.azure.batch_data#CreateTaskTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksCreateTaskRequest"
+        "target": "com.azure.batch_data#CreateTaskTaskRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#TasksCreateTaskResponse"
+        "target": "com.azure.batch_data#CreateTaskTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16003,7 +15934,7 @@
         "smithy.api#documentation": "Creates a Task to the specified Job.\n\nThe maximum lifetime of a Task from addition to completion is 180 days. If a\nTask has not completed within 180 days of being added it will be terminated by\nthe Batch service and left in whatever state it was in at that time."
       }
     },
-    "com.azure.batch_data#TasksCreateTaskResponse": {
+    "com.azure.batch_data#CreateTaskTaskResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -16018,7 +15949,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#TasksCreateTaskRequest": {
+    "com.azure.batch_data#CreateTaskTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -16098,19 +16029,19 @@
           }
         },
         "resourceFiles": {
-          "target": "com.azure.batch_data#TasksCreateTaskRequestResourceFilesList",
+          "target": "com.azure.batch_data#CreateTaskTaskRequestResourceFilesList",
           "traits": {
             "smithy.api#documentation": "A list of files that the Batch service will download to the Compute Node before running the command line. For multi-instance Tasks, the resource files will only be downloaded to the Compute Node on which the primary Task is executed. There is a maximum size for the list of resource files.  When the max size is exceeded, the request will fail and the response error code will be RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must be reduced in size. This can be achieved using .zip files, Application Packages, or Docker Containers."
           }
         },
         "outputFiles": {
-          "target": "com.azure.batch_data#TasksCreateTaskRequestOutputFilesList",
+          "target": "com.azure.batch_data#CreateTaskTaskRequestOutputFilesList",
           "traits": {
             "smithy.api#documentation": "A list of files that the Batch service will upload from the Compute Node after running the command line. For multi-instance Tasks, the files will only be uploaded from the Compute Node on which the primary Task is executed."
           }
         },
         "environmentSettings": {
-          "target": "com.azure.batch_data#TasksCreateTaskRequestEnvironmentSettingsList",
+          "target": "com.azure.batch_data#CreateTaskTaskRequestEnvironmentSettingsList",
           "traits": {
             "smithy.api#documentation": "A list of environment variable settings for the Task."
           }
@@ -16152,7 +16083,7 @@
           }
         },
         "applicationPackageReferences": {
-          "target": "com.azure.batch_data#TasksCreateTaskRequestApplicationPackageReferencesList",
+          "target": "com.azure.batch_data#CreateTaskTaskRequestApplicationPackageReferencesList",
           "traits": {
             "smithy.api#documentation": "A list of Packages that the Batch service will deploy to the Compute Node before running the command line. Application packages are downloaded and deployed to a shared directory, not the Task working directory. Therefore, if a referenced package is already on the Node, and is up to date, then it is not re-downloaded; the existing copy on the Compute Node is used. If a referenced Package cannot be installed, for example because the package has been deleted or because download failed, the Task fails."
           }
@@ -16162,7 +16093,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksCreateTaskRequestApplicationPackageReferencesList": {
+    "com.azure.batch_data#CreateTaskTaskRequestApplicationPackageReferencesList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchApplicationPackageReference"
@@ -16171,7 +16102,7 @@
         "smithy.api#documentation": "A list of Packages that the Batch service will deploy to the Compute Node before running the command line. Application packages are downloaded and deployed to a shared directory, not the Task working directory. Therefore, if a referenced package is already on the Node, and is up to date, then it is not re-downloaded; the existing copy on the Compute Node is used. If a referenced Package cannot be installed, for example because the package has been deleted or because download failed, the Task fails."
       }
     },
-    "com.azure.batch_data#TasksCreateTaskRequestEnvironmentSettingsList": {
+    "com.azure.batch_data#CreateTaskTaskRequestEnvironmentSettingsList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#EnvironmentSetting"
@@ -16180,7 +16111,7 @@
         "smithy.api#documentation": "A list of environment variable settings for the Task."
       }
     },
-    "com.azure.batch_data#TasksCreateTaskRequestOutputFilesList": {
+    "com.azure.batch_data#CreateTaskTaskRequestOutputFilesList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#OutputFile"
@@ -16189,7 +16120,7 @@
         "smithy.api#documentation": "A list of files that the Batch service will upload from the Compute Node after running the command line. For multi-instance Tasks, the files will only be uploaded from the Compute Node on which the primary Task is executed."
       }
     },
-    "com.azure.batch_data#TasksCreateTaskRequestResourceFilesList": {
+    "com.azure.batch_data#CreateTaskTaskRequestResourceFilesList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#ResourceFile"
@@ -16198,10 +16129,10 @@
         "smithy.api#documentation": "A list of files that the Batch service will download to the Compute Node before running the command line. For multi-instance Tasks, the resource files will only be downloaded to the Compute Node on which the primary Task is executed. There is a maximum size for the list of resource files.  When the max size is exceeded, the request will fail and the response error code will be RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must be reduced in size. This can be achieved using .zip files, Application Packages, or Docker Containers."
       }
     },
-    "com.azure.batch_data#TasksListTasks": {
+    "com.azure.batch_data#ListTaskTasks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksListTasksRequest"
+        "target": "com.azure.batch_data#ListTaskTasksRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchTaskListResult"
@@ -16215,9 +16146,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the Tasks that are associated with the specified Job.\n\nFor multi-instance Tasks, information such as affinityId, executionInfo and\nnodeInfo refer to the primary Task. Use the list subtasks API to retrieve\ninformation about subtasks."
+        "smithy.api#documentation": "Lists all of the Tasks that are associated with the specified Job.\n\nFor multi-instance Tasks, information such as affinityId, executionInfo and\nnodeInfo refer to the primary Task. Use the list subtasks API to retrieve\ninformation about subtasks.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchTaskListResult": {
@@ -16429,7 +16367,7 @@
         "smithy.api#documentation": "Batch will retry Tasks when a recovery operation is triggered on a Node.\nExamples of recovery operations include (but are not limited to) when an\nunhealthy Node is rebooted or a Compute Node disappeared due to host failure.\nRetries due to recovery operations are independent of and are not counted\nagainst the maxTaskRetryCount. Even if the maxTaskRetryCount is 0, an internal\nretry due to a recovery operation may occur. Because of this, all Tasks should\nbe idempotent. This means Tasks need to tolerate being interrupted and\nrestarted without causing any corruption or duplicate data. The best practice\nfor long running Tasks is to use some form of checkpointing."
       }
     },
-    "com.azure.batch_data#TasksListTasksRequest": {
+    "com.azure.batch_data#ListTaskTasksRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -16470,14 +16408,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#TasksListTasksRequestSelectList",
+          "target": "com.azure.batch_data#ListTaskTasksRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#TasksListTasksRequestExpandList",
+          "target": "com.azure.batch_data#ListTaskTasksRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -16503,30 +16441,36 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksListTasksRequestExpandList": {
+    "com.azure.batch_data#ListTaskTasksRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#TasksListTasksRequestSelectList": {
+    "com.azure.batch_data#ListTaskTasksRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsGetJobTaskCounts": {
+    "com.azure.batch_data#GetJobJobTaskCounts": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsGetJobTaskCountsRequest"
+        "target": "com.azure.batch_data#GetJobJobTaskCountsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchTaskCountsResult"
@@ -16660,7 +16604,7 @@
         "smithy.api#documentation": "The Task counts for a Job."
       }
     },
-    "com.azure.batch_data#JobsGetJobTaskCountsRequest": {
+    "com.azure.batch_data#GetJobJobTaskCountsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -16729,9 +16673,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the execution status of the Job Preparation and Job Release Task for the\nspecified Job across the Compute Nodes where the Job has run.\n\nThis API returns the Job Preparation and Job Release Task status on all Compute\nNodes that have run the Job Preparation or Job Release Task. This includes\nCompute Nodes which have since been removed from the Pool. If this API is\ninvoked on a Job which has no Job Preparation or Job Release Task, the Batch\nservice returns HTTP status code 409 (Conflict) with an error code of\nJobPreparationTaskNotSpecified."
+        "smithy.api#documentation": "Lists the execution status of the Job Preparation and Job Release Task for the\nspecified Job across the Compute Nodes where the Job has run.\n\nThis API returns the Job Preparation and Job Release Task status on all Compute\nNodes that have run the Job Preparation or Job Release Task. This includes\nCompute Nodes which have since been removed from the Pool. If this API is\ninvoked on a Job which has no Job Preparation or Job Release Task, the Batch\nservice returns HTTP status code 409 (Conflict) with an error code of\nJobPreparationTaskNotSpecified.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchJobPreparationAndReleaseTaskStatusListResult": {
@@ -17057,6 +17008,12 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -17070,13 +17027,13 @@
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsEnableJob": {
+    "com.azure.batch_data#EnableJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsEnableJobRequest"
+        "target": "com.azure.batch_data#EnableJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsEnableJobResponse"
+        "target": "com.azure.batch_data#EnableJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17092,7 +17049,7 @@
         "smithy.api#documentation": "Enables the specified Job, allowing new Tasks to run.\n\nWhen you call this API, the Batch service sets a disabled Job to the enabling\nstate. After the this operation is completed, the Job moves to the active\nstate, and scheduling of new Tasks under the Job resumes. The Batch service\ndoes not allow a Task to remain in the active state for more than 180 days.\nTherefore, if you enable a Job containing active Tasks which were added more\nthan 180 days ago, those Tasks will not run."
       }
     },
-    "com.azure.batch_data#JobsEnableJobResponse": {
+    "com.azure.batch_data#EnableJobJobResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -17107,7 +17064,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsEnableJobRequest": {
+    "com.azure.batch_data#EnableJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -17187,13 +17144,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsDisableJob": {
+    "com.azure.batch_data#DisableJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsDisableJobRequest"
+        "target": "com.azure.batch_data#DisableJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsDisableJobResponse"
+        "target": "com.azure.batch_data#DisableJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17209,7 +17166,7 @@
         "smithy.api#documentation": "Disables the specified Job, preventing new Tasks from running.\n\nThe Batch Service immediately moves the Job to the disabling state. Batch then\nuses the disableTasks parameter to determine what to do with the currently\nrunning Tasks of the Job. The Job remains in the disabling state until the\ndisable operation is completed and all Tasks have been dealt with according to\nthe disableTasks option; the Job then moves to the disabled state. No new Tasks\nare started under the Job until it moves back to active state. If you try to\ndisable a Job that is in any state other than active, disabling, or disabled,\nthe request fails with status code 409."
       }
     },
-    "com.azure.batch_data#JobsDisableJobResponse": {
+    "com.azure.batch_data#DisableJobJobResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -17224,7 +17181,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsDisableJobRequest": {
+    "com.azure.batch_data#DisableJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -17337,10 +17294,10 @@
         "smithy.api#documentation": "DisableBatchJobOption enums"
       }
     },
-    "com.azure.batch_data#TasksCreateTaskCollection": {
+    "com.azure.batch_data#CreateTaskTaskCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#TasksCreateTaskCollectionRequest"
+        "target": "com.azure.batch_data#CreateTaskTaskCollectionRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchCreateTaskCollectionResult"
@@ -17536,7 +17493,7 @@
         "smithy.api#documentation": "BatchTaskAddStatus enums"
       }
     },
-    "com.azure.batch_data#TasksCreateTaskCollectionRequest": {
+    "com.azure.batch_data#CreateTaskTaskCollectionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -17584,7 +17541,7 @@
           }
         },
         "value": {
-          "target": "com.azure.batch_data#TasksCreateTaskCollectionRequestValueList",
+          "target": "com.azure.batch_data#CreateTaskTaskCollectionRequestValueList",
           "traits": {
             "smithy.api#documentation": "The collection of Tasks to add. The maximum count of Tasks is 100. The total serialized size of this collection must be less than 1MB. If it is greater than 1MB (for example if each Task has 100's of resource files or environment variables), the request will fail with code 'RequestBodyTooLarge' and should be retried again with fewer Tasks.",
             "smithy.api#required": {}
@@ -17595,7 +17552,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#TasksCreateTaskCollectionRequestValueList": {
+    "com.azure.batch_data#CreateTaskTaskCollectionRequestValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchTaskCreateOptions"
@@ -17740,10 +17697,10 @@
         "smithy.api#documentation": "A list of files that the Batch service will download to the Compute Node before running the command line. For multi-instance Tasks, the resource files will only be downloaded to the Compute Node on which the primary Task is executed. There is a maximum size for the list of resource files.  When the max size is exceeded, the request will fail and the response error code will be RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must be reduced in size. This can be achieved using .zip files, Application Packages, or Docker Containers."
       }
     },
-    "com.azure.batch_data#JobsDeleteJob": {
+    "com.azure.batch_data#DeleteJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsDeleteJobRequest"
+        "target": "com.azure.batch_data#DeleteJobJobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17762,7 +17719,7 @@
         "smithy.api#documentation": "Deletes a Job.\n\nDeleting a Job also deletes all Tasks that are part of that Job, and all Job\nstatistics. This also overrides the retention period for Task data; that is, if\nthe Job contains Tasks which are still retained on Compute Nodes, the Batch\nservices deletes those Tasks' working directories and all their contents.  When\na Delete Job request is received, the Batch service sets the Job to the\ndeleting state. All update operations on a Job that is in deleting state will\nfail with status code 409 (Conflict), with additional information indicating\nthat the Job is being deleted."
       }
     },
-    "com.azure.batch_data#JobsDeleteJobRequest": {
+    "com.azure.batch_data#DeleteJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -17849,13 +17806,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsUpdateJob": {
+    "com.azure.batch_data#UpdateJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsUpdateJobRequest"
+        "target": "com.azure.batch_data#UpdateJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsUpdateJobResponse"
+        "target": "com.azure.batch_data#UpdateJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17871,7 +17828,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Job.\n\nThis replaces only the Job properties specified in the request. For example, if\nthe Job has constraints, and a request does not specify the constraints\nelement, then the Job keeps the existing constraints."
       }
     },
-    "com.azure.batch_data#JobsUpdateJobResponse": {
+    "com.azure.batch_data#UpdateJobJobResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -17886,7 +17843,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsUpdateJobRequest": {
+    "com.azure.batch_data#UpdateJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -17998,7 +17955,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#JobsUpdateJobRequestMetadataList",
+          "target": "com.azure.batch_data#UpdateJobJobRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Job as metadata. If omitted, the existing Job metadata is left unchanged."
           }
@@ -18014,7 +17971,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsUpdateJobRequestMetadataList": {
+    "com.azure.batch_data#UpdateJobJobRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -18023,13 +17980,13 @@
         "smithy.api#documentation": "A list of name-value pairs associated with the Job as metadata. If omitted, the existing Job metadata is left unchanged."
       }
     },
-    "com.azure.batch_data#JobsReplaceJob": {
+    "com.azure.batch_data#ReplaceJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsReplaceJobRequest"
+        "target": "com.azure.batch_data#ReplaceJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsReplaceJobResponse"
+        "target": "com.azure.batch_data#ReplaceJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18045,7 +18002,7 @@
         "smithy.api#documentation": "Updates the properties of the specified Job.\n\nThis fully replaces all the updatable properties of the Job. For example, if\nthe Job has constraints associated with it and if constraints is not specified\nwith this request, then the Batch service will remove the existing constraints."
       }
     },
-    "com.azure.batch_data#JobsReplaceJobResponse": {
+    "com.azure.batch_data#ReplaceJobJobResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -18060,7 +18017,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsReplaceJobRequest": {
+    "com.azure.batch_data#ReplaceJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -18173,7 +18130,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#JobsReplaceJobRequestMetadataList",
+          "target": "com.azure.batch_data#ReplaceJobJobRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Job as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
           }
@@ -18183,7 +18140,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsReplaceJobRequestMetadataList": {
+    "com.azure.batch_data#ReplaceJobJobRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -18192,13 +18149,13 @@
         "smithy.api#documentation": "A list of name-value pairs associated with the Job as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
       }
     },
-    "com.azure.batch_data#JobsGetJob": {
+    "com.azure.batch_data#GetJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsGetJobRequest"
+        "target": "com.azure.batch_data#GetJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsGetJobResponse"
+        "target": "com.azure.batch_data#GetJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18214,7 +18171,7 @@
         "smithy.api#documentation": "Gets information about the specified Job.\n\nGets information about the specified Job."
       }
     },
-    "com.azure.batch_data#JobsGetJobResponse": {
+    "com.azure.batch_data#GetJobJobResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18394,7 +18351,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsGetJobRequest": {
+    "com.azure.batch_data#GetJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -18421,14 +18378,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#JobsGetJobRequestSelectList",
+          "target": "com.azure.batch_data#GetJobJobRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#JobsGetJobRequestExpandList",
+          "target": "com.azure.batch_data#GetJobJobRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -18488,27 +18445,27 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsGetJobRequestExpandList": {
+    "com.azure.batch_data#GetJobJobRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsGetJobRequestSelectList": {
+    "com.azure.batch_data#GetJobJobRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsCreateJob": {
+    "com.azure.batch_data#CreateJobJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsCreateJobRequest"
+        "target": "com.azure.batch_data#CreateJobJobRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#JobsCreateJobResponse"
+        "target": "com.azure.batch_data#CreateJobJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18524,7 +18481,7 @@
         "smithy.api#documentation": "Creates a Job to the specified Account.\n\nThe Batch service supports two ways to control the work done as part of a Job.\nIn the first approach, the user specifies a Job Manager Task. The Batch service\nlaunches this Task when it is ready to start the Job. The Job Manager Task\ncontrols all other Tasks that run under this Job, by using the Task APIs. In\nthe second approach, the user directly controls the execution of Tasks under an\nactive Job, by using the Task APIs. Also note: when naming Jobs, avoid\nincluding sensitive information such as user names or secret project names.\nThis information may appear in telemetry logs accessible to Microsoft Support\nengineers."
       }
     },
-    "com.azure.batch_data#JobsCreateJobResponse": {
+    "com.azure.batch_data#CreateJobJobResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -18539,7 +18496,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.batch_data#JobsCreateJobRequest": {
+    "com.azure.batch_data#CreateJobJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -18640,7 +18597,7 @@
           }
         },
         "commonEnvironmentSettings": {
-          "target": "com.azure.batch_data#JobsCreateJobRequestCommonEnvironmentSettingsList",
+          "target": "com.azure.batch_data#CreateJobJobRequestCommonEnvironmentSettingsList",
           "traits": {
             "smithy.api#documentation": "The list of common environment variable settings. These environment variables are set for all Tasks in the Job (including the Job Manager, Job Preparation and Job Release Tasks). Individual Tasks can override an environment setting specified here by specifying the same setting name with a different value."
           }
@@ -18671,7 +18628,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.batch_data#JobsCreateJobRequestMetadataList",
+          "target": "com.azure.batch_data#CreateJobJobRequestMetadataList",
           "traits": {
             "smithy.api#documentation": "A list of name-value pairs associated with the Job as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
           }
@@ -18681,7 +18638,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsCreateJobRequestMetadataList": {
+    "com.azure.batch_data#CreateJobJobRequestMetadataList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#BatchMetadataItem"
@@ -18690,7 +18647,7 @@
         "smithy.api#documentation": "A list of name-value pairs associated with the Job as metadata. The Batch service does not assign any meaning to metadata; it is solely for the use of user code."
       }
     },
-    "com.azure.batch_data#JobsCreateJobRequestCommonEnvironmentSettingsList": {
+    "com.azure.batch_data#CreateJobJobRequestCommonEnvironmentSettingsList": {
       "type": "list",
       "member": {
         "target": "com.azure.batch_data#EnvironmentSetting"
@@ -18699,10 +18656,10 @@
         "smithy.api#documentation": "The list of common environment variable settings. These environment variables are set for all Tasks in the Job (including the Job Manager, Job Preparation and Job Release Tasks). Individual Tasks can override an environment setting specified here by specifying the same setting name with a different value."
       }
     },
-    "com.azure.batch_data#JobsListJobs": {
+    "com.azure.batch_data#ListJobJobs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#JobsListJobsRequest"
+        "target": "com.azure.batch_data#ListJobJobsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchJobListResult"
@@ -18716,12 +18673,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the Jobs in the specified Account.\n\nLists all of the Jobs in the specified Account."
+        "smithy.api#documentation": "Lists all of the Jobs in the specified Account.\n\nLists all of the Jobs in the specified Account.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.batch_data#JobsListJobsRequest": {
+    "com.azure.batch_data#ListJobJobsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -18754,14 +18718,14 @@
           }
         },
         "_select": {
-          "target": "com.azure.batch_data#JobsListJobsRequestSelectList",
+          "target": "com.azure.batch_data#ListJobJobsRequestSelectList",
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "An OData $select clause."
           }
         },
         "_expand": {
-          "target": "com.azure.batch_data#JobsListJobsRequestExpandList",
+          "target": "com.azure.batch_data#ListJobJobsRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "An OData $expand clause."
@@ -18787,33 +18751,39 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#JobsListJobsRequestExpandList": {
+    "com.azure.batch_data#ListJobJobsRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#JobsListJobsRequestSelectList": {
+    "com.azure.batch_data#ListJobJobsRequestSelectList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.batch_data#ApplicationsGetApplication": {
+    "com.azure.batch_data#GetApplicationApplication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#ApplicationsGetApplicationRequest"
+        "target": "com.azure.batch_data#GetApplicationApplicationRequest"
       },
       "output": {
-        "target": "com.azure.batch_data#ApplicationsGetApplicationResponse"
+        "target": "com.azure.batch_data#GetApplicationApplicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18829,7 +18799,7 @@
         "smithy.api#documentation": "Gets information about the specified Application.\n\nThis operation returns only Applications and versions that are available for\nuse on Compute Nodes; that is, that can be used in an Package reference. For\nadministrator information about Applications and versions that are not yet\navailable to Compute Nodes, use the Azure portal or the Azure Resource Manager\nAPI."
       }
     },
-    "com.azure.batch_data#ApplicationsGetApplicationResponse": {
+    "com.azure.batch_data#GetApplicationApplicationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18875,7 +18845,7 @@
         "smithy.api#documentation": "The list of available versions of the application."
       }
     },
-    "com.azure.batch_data#ApplicationsGetApplicationRequest": {
+    "com.azure.batch_data#GetApplicationApplicationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -18927,10 +18897,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.batch_data#ApplicationsListApplications": {
+    "com.azure.batch_data#ListApplicationApplications": {
       "type": "operation",
       "input": {
-        "target": "com.azure.batch_data#ApplicationsListApplicationsRequest"
+        "target": "com.azure.batch_data#ListApplicationApplicationsRequest"
       },
       "output": {
         "target": "com.azure.batch_data#BatchApplicationListResult"
@@ -18944,9 +18914,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all of the applications available in the specified Account.\n\nThis operation returns only Applications and versions that are available for\nuse on Compute Nodes; that is, that can be used in an Package reference. For\nadministrator information about applications and versions that are not yet\navailable to Compute Nodes, use the Azure portal or the Azure Resource Manager\nAPI."
+        "smithy.api#documentation": "Lists all of the applications available in the specified Account.\n\nThis operation returns only Applications and versions that are available for\nuse on Compute Nodes; that is, that can be used in an Package reference. For\nadministrator information about applications and versions that are not yet\navailable to Compute Nodes, use the Azure portal or the Azure Resource Manager\nAPI.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "odata_nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.batch_data#BatchApplicationListResult": {
@@ -19015,7 +18992,7 @@
         "smithy.api#documentation": "Contains information about an application in an Azure Batch Account."
       }
     },
-    "com.azure.batch_data#ApplicationsListApplicationsRequest": {
+    "com.azure.batch_data#ListApplicationApplicationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -19060,6 +19037,12 @@
             "smithy.api#httpHeader": "ocp-date",
             "smithy.api#documentation": "The time the request was issued. Client libraries typically set this to the\ncurrent system clock time; set it explicitly if you are calling the REST API\ndirectly."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -19071,220 +19054,220 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.batch_data#PoolsListSupportedImages"
+          "target": "com.azure.batch_data#ListPoolSupportedImages"
         },
         {
-          "target": "com.azure.batch_data#PoolsListPoolUsageMetrics"
+          "target": "com.azure.batch_data#ListPoolPoolUsageMetrics"
         },
         {
-          "target": "com.azure.batch_data#PoolsReplacePoolProperties"
+          "target": "com.azure.batch_data#ReplacePoolPoolProperties"
         },
         {
           "target": "com.azure.batch_data#PoolsStopPoolResize"
         },
         {
-          "target": "com.azure.batch_data#PoolsResizePool"
+          "target": "com.azure.batch_data#ResizePoolPool"
         },
         {
-          "target": "com.azure.batch_data#PoolsRemoveNodes"
+          "target": "com.azure.batch_data#RemovePoolNodes"
         },
         {
-          "target": "com.azure.batch_data#NodesDeleteNodeUser"
+          "target": "com.azure.batch_data#DeleteNodeNodeUser"
         },
         {
-          "target": "com.azure.batch_data#NodesReplaceNodeUser"
+          "target": "com.azure.batch_data#ReplaceNodeNodeUser"
         },
         {
-          "target": "com.azure.batch_data#NodesCreateNodeUser"
+          "target": "com.azure.batch_data#CreateNodeNodeUser"
         },
         {
-          "target": "com.azure.batch_data#NodesUploadNodeLogs"
+          "target": "com.azure.batch_data#UploadNodeNodeLogs"
         },
         {
-          "target": "com.azure.batch_data#NodesStartNode"
+          "target": "com.azure.batch_data#StartNodeNode"
         },
         {
-          "target": "com.azure.batch_data#NodesGetNodeRemoteLoginSettings"
+          "target": "com.azure.batch_data#GetNodeNodeRemoteLoginSettings"
         },
         {
           "target": "com.azure.batch_data#NodesReimageNode"
         },
         {
-          "target": "com.azure.batch_data#NodesRebootNode"
+          "target": "com.azure.batch_data#RebootNodeNode"
         },
         {
-          "target": "com.azure.batch_data#NodesGetNodeFileProperties"
+          "target": "com.azure.batch_data#GetNodeNodeFileProperties"
         },
         {
-          "target": "com.azure.batch_data#NodesDeleteNodeFile"
+          "target": "com.azure.batch_data#DeleteNodeNodeFile"
         },
         {
-          "target": "com.azure.batch_data#NodesGetNodeFile"
+          "target": "com.azure.batch_data#GetNodeNodeFile"
         },
         {
-          "target": "com.azure.batch_data#NodesListNodeFiles"
+          "target": "com.azure.batch_data#ListNodeNodeFiles"
         },
         {
-          "target": "com.azure.batch_data#NodesGetNodeExtension"
+          "target": "com.azure.batch_data#GetNodeNodeExtension"
         },
         {
-          "target": "com.azure.batch_data#NodesListNodeExtensions"
+          "target": "com.azure.batch_data#ListNodeNodeExtensions"
         },
         {
-          "target": "com.azure.batch_data#NodesEnableNodeScheduling"
+          "target": "com.azure.batch_data#EnableNodeNodeScheduling"
         },
         {
-          "target": "com.azure.batch_data#NodesDisableNodeScheduling"
+          "target": "com.azure.batch_data#DisableNodeNodeScheduling"
         },
         {
           "target": "com.azure.batch_data#NodesDeallocateNode"
         },
         {
-          "target": "com.azure.batch_data#NodesGetNode"
+          "target": "com.azure.batch_data#GetNodeNode"
         },
         {
-          "target": "com.azure.batch_data#NodesListNodes"
+          "target": "com.azure.batch_data#ListNodeNodes"
         },
         {
-          "target": "com.azure.batch_data#PoolsEvaluatePoolAutoScale"
+          "target": "com.azure.batch_data#ScalePoolsEvaluatePoolAuto"
         },
         {
-          "target": "com.azure.batch_data#PoolsEnablePoolAutoScale"
+          "target": "com.azure.batch_data#EnablePoolPoolAutoScale"
         },
         {
-          "target": "com.azure.batch_data#PoolsDisablePoolAutoScale"
+          "target": "com.azure.batch_data#DisablePoolPoolAutoScale"
         },
         {
           "target": "com.azure.batch_data#PoolsPoolExists"
         },
         {
-          "target": "com.azure.batch_data#PoolsDeletePool"
+          "target": "com.azure.batch_data#DeletePoolPool"
         },
         {
-          "target": "com.azure.batch_data#PoolsUpdatePool"
+          "target": "com.azure.batch_data#UpdatePoolPool"
         },
         {
-          "target": "com.azure.batch_data#PoolsGetPool"
+          "target": "com.azure.batch_data#GetPoolPool"
         },
         {
-          "target": "com.azure.batch_data#PoolsCreatePool"
+          "target": "com.azure.batch_data#CreatePoolPool"
         },
         {
-          "target": "com.azure.batch_data#PoolsListPools"
+          "target": "com.azure.batch_data#ListPoolPools"
         },
         {
-          "target": "com.azure.batch_data#PoolsListPoolNodeCounts"
+          "target": "com.azure.batch_data#ListPoolPoolNodeCounts"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesTerminateJobSchedule"
+          "target": "com.azure.batch_data#TerminateJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobsListJobsFromSchedule"
+          "target": "com.azure.batch_data#ListJobJobsFromSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesEnableJobSchedule"
+          "target": "com.azure.batch_data#EnableJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesDisableJobSchedule"
+          "target": "com.azure.batch_data#DisableJobScheduleJobSchedule"
         },
         {
           "target": "com.azure.batch_data#JobSchedulesJobScheduleExists"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesDeleteJobSchedule"
+          "target": "com.azure.batch_data#DeleteJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesUpdateJobSchedule"
+          "target": "com.azure.batch_data#UpdateJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesReplaceJobSchedule"
+          "target": "com.azure.batch_data#ReplaceJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesGetJobSchedule"
+          "target": "com.azure.batch_data#GetJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesCreateJobSchedule"
+          "target": "com.azure.batch_data#CreateJobScheduleJobSchedule"
         },
         {
-          "target": "com.azure.batch_data#JobSchedulesListJobSchedules"
+          "target": "com.azure.batch_data#ListJobScheduleJobSchedules"
         },
         {
-          "target": "com.azure.batch_data#JobsTerminateJob"
+          "target": "com.azure.batch_data#TerminateJobJob"
         },
         {
-          "target": "com.azure.batch_data#TasksTerminateTask"
+          "target": "com.azure.batch_data#TerminateTaskTask"
         },
         {
-          "target": "com.azure.batch_data#TasksListSubTasks"
+          "target": "com.azure.batch_data#ListTaskSubTasks"
         },
         {
           "target": "com.azure.batch_data#TasksReactivateTask"
         },
         {
-          "target": "com.azure.batch_data#TasksGetTaskFileProperties"
+          "target": "com.azure.batch_data#GetTaskTaskFileProperties"
         },
         {
-          "target": "com.azure.batch_data#TasksDeleteTaskFile"
+          "target": "com.azure.batch_data#DeleteTaskTaskFile"
         },
         {
-          "target": "com.azure.batch_data#TasksGetTaskFile"
+          "target": "com.azure.batch_data#GetTaskTaskFile"
         },
         {
-          "target": "com.azure.batch_data#TasksListTaskFiles"
+          "target": "com.azure.batch_data#ListTaskTaskFiles"
         },
         {
-          "target": "com.azure.batch_data#TasksDeleteTask"
+          "target": "com.azure.batch_data#DeleteTaskTask"
         },
         {
-          "target": "com.azure.batch_data#TasksReplaceTask"
+          "target": "com.azure.batch_data#ReplaceTaskTask"
         },
         {
-          "target": "com.azure.batch_data#TasksGetTask"
+          "target": "com.azure.batch_data#GetTaskTask"
         },
         {
-          "target": "com.azure.batch_data#TasksCreateTask"
+          "target": "com.azure.batch_data#CreateTaskTask"
         },
         {
-          "target": "com.azure.batch_data#TasksListTasks"
+          "target": "com.azure.batch_data#ListTaskTasks"
         },
         {
-          "target": "com.azure.batch_data#JobsGetJobTaskCounts"
+          "target": "com.azure.batch_data#GetJobJobTaskCounts"
         },
         {
           "target": "com.azure.batch_data#JobsListJobPreparationAndReleaseTaskStatus"
         },
         {
-          "target": "com.azure.batch_data#JobsEnableJob"
+          "target": "com.azure.batch_data#EnableJobJob"
         },
         {
-          "target": "com.azure.batch_data#JobsDisableJob"
+          "target": "com.azure.batch_data#DisableJobJob"
         },
         {
-          "target": "com.azure.batch_data#TasksCreateTaskCollection"
+          "target": "com.azure.batch_data#CreateTaskTaskCollection"
         },
         {
-          "target": "com.azure.batch_data#JobsDeleteJob"
+          "target": "com.azure.batch_data#DeleteJobJob"
         },
         {
-          "target": "com.azure.batch_data#JobsUpdateJob"
+          "target": "com.azure.batch_data#UpdateJobJob"
         },
         {
-          "target": "com.azure.batch_data#JobsReplaceJob"
+          "target": "com.azure.batch_data#ReplaceJobJob"
         },
         {
-          "target": "com.azure.batch_data#JobsGetJob"
+          "target": "com.azure.batch_data#GetJobJob"
         },
         {
-          "target": "com.azure.batch_data#JobsCreateJob"
+          "target": "com.azure.batch_data#CreateJobJob"
         },
         {
-          "target": "com.azure.batch_data#JobsListJobs"
+          "target": "com.azure.batch_data#ListJobJobs"
         },
         {
-          "target": "com.azure.batch_data#ApplicationsGetApplication"
+          "target": "com.azure.batch_data#GetApplicationApplication"
         },
         {
-          "target": "com.azure.batch_data#ApplicationsListApplications"
+          "target": "com.azure.batch_data#ListApplicationApplications"
         }
       ],
       "traits": {

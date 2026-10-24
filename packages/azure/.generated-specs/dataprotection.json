@@ -230,10 +230,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#DppBaseResourceList": {
@@ -323,6 +330,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ResourceGuardResource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -434,10 +447,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest": {
@@ -465,6 +485,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ResourceGuardResource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -576,10 +602,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#GetResourceGuardBackupSecurityPINRequestsObjectsRequest": {
@@ -607,6 +640,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ResourceGuardResource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -718,10 +757,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest": {
@@ -749,6 +795,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ResourceGuardResource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -860,10 +912,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteResourceGuardProxyRequests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest": {
@@ -891,6 +950,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ResourceGuardResource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1002,10 +1067,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns collection of operation request objects for a critical operation protected by the given ResourceGuard resource.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest": {
@@ -1033,6 +1105,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ResourceGuardResource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1652,10 +1730,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns ResourceGuards collection belonging to a ResourceGroup.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#GetResourceGuardResourcesInResourceGroupResponse": {
@@ -1773,6 +1858,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2248,10 +2339,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchSecondaryRecoveryPoints",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of Secondary Recovery Points for a DataSource in a vault, that can be used for Cross Region Restore.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListFetchSecondaryRecoveryPointsResponse": {
@@ -2387,6 +2485,12 @@
           "traits": {
             "smithy.api#documentation": "ARM Path of BackupInstance"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2406,10 +2510,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/fetchCrossRegionRestoreJobs",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Fetches list of Cross Region Restore job belonging to the vault",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListFetchCrossRegionRestoreJobsResponse": {
@@ -3042,6 +3153,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5489,10 +5606,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets deleted backup instances belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListDeletedBackupInstancesResponse": {
@@ -5587,6 +5711,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the backup vault."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5998,10 +6128,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of ResourceGuardProxies associated with the vault",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListDppResourceGuardProxyResponse": {
@@ -6096,6 +6233,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the backup vault."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6408,10 +6551,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupPolicies",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of backup policies belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListBackupPoliciesResponse": {
@@ -6506,6 +6656,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the backup vault."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6714,10 +6870,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupJobs",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of jobs belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListJobsResponse": {
@@ -6774,6 +6937,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the backup vault."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7816,10 +7985,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of Recovery Points for a DataSource in a vault.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListRecoveryPointsResponse": {
@@ -7898,6 +8074,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "skipToken Filter."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8925,10 +9107,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a backup instances belonging to a backup vault",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListBackupInstancesResponse": {
@@ -9041,6 +9230,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the backup vault."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9780,10 +9975,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns resource collection belonging to a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#GetBackupVaultInResourceGroupResponse": {
@@ -9909,6 +10111,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9928,10 +10136,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/resourceGuards",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns ResourceGuards collection belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#GetResourceGuardResourcesInSubscriptionResponse": {
@@ -9972,6 +10187,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10387,10 +10608,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists deleted backup vaults by location",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#DeletedBackupVaultResourceListResult": {
@@ -10479,6 +10707,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -10563,10 +10797,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/backupVaults",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns resource collection belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#GetBackupVaultInSubscriptionResponse": {
@@ -10608,6 +10849,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -10617,7 +10864,7 @@
     "com.azure.dataprotection#ListDataProtectionOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.dataprotection#ListDataProtectionOperationsRequest"
       },
       "output": {
         "target": "com.azure.dataprotection#ListDataProtectionOperationsResponse"
@@ -10627,10 +10874,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataProtection/operations",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListDataProtectionOperationsResponse": {
@@ -10772,6 +11026,20 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.dataprotection#ListDataProtectionOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.dataprotection#ListBackupInstancesExtensionRouting": {
       "type": "operation",
       "input": {
@@ -10785,10 +11053,17 @@
           "method": "GET",
           "uri": "/{resourceId}/providers/Microsoft.DataProtection/backupInstances",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of backup instances associated with a tracked resource",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dataprotection#ListBackupInstancesExtensionRoutingResponse": {
@@ -10829,6 +11104,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "ARM path of the resource to be protected using Microsoft.DataProtection"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

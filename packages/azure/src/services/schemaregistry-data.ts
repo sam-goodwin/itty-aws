@@ -45,6 +45,8 @@ export interface GetSchemaPropertiesByContentResponse {
 export interface ListSchemaGroupsRequest {
   /** The Schema Registry service endpoint, for example 'my-namespace.servicebus.windows.net'. */
   fullyQualifiedNamespace: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of pageable schema group name items. */
 export type SchemaGroupsValueList = Array<string>;
@@ -62,6 +64,8 @@ export interface ListSchemaVersionsRequest {
   groupName: string;
   /** Name of schema. */
   schemaName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of schema version pageable items. */
 export type SchemaVersionsValueList = Array<number>;
@@ -132,33 +136,47 @@ export const GetSchemaPropertiesByContent: API.OperationMethod<
 
 export type ListSchemaGroupsError = AzureOpError;
 /** Get list of schema groups. Gets the list of schema groups user is authorized to access. */
-export const ListSchemaGroups: API.OperationMethod<
+export const ListSchemaGroups: API.PaginatedOperationMethod<
   ListSchemaGroupsRequest,
   SchemaGroups,
   ListSchemaGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(20, __c5, 0) as any as S.Schema<ListSchemaGroupsRequest>,
   output: __S(22, __c5, 2) as any as S.Schema<SchemaGroups>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "NextLink",
+    items: "Value",
+  } as const,
+})) as any;
 
 export type ListSchemaVersionsError = AzureOpError;
 /** List schema versions. Gets the list of all versions of one schema. */
-export const ListSchemaVersions: API.OperationMethod<
+export const ListSchemaVersions: API.PaginatedOperationMethod<
   ListSchemaVersionsRequest,
   SchemaVersions,
   ListSchemaVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  number
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c6, 0) as any as S.Schema<ListSchemaVersionsRequest>,
   output: __S(26, __c6, 2) as any as S.Schema<SchemaVersions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "NextLink",
+    items: "Value",
+  } as const,
+})) as any;
 
 export type RegisterSchemaError = AzureOpError;
 /** Register new schema Register new schema. If schema of specified name does not exist in specified group, schema is created at version 1. If schema of specified name exists already in specified group, schema is created at latest version + 1. */
@@ -264,6 +282,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedNamespace: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -271,6 +290,7 @@ function __c5(j: number): any {
             code: 200,
             host: "https://{fullyQualifiedNamespace}",
             apiVersion: "2023-07-01",
+            nextLink: "nextLink",
             audience: "https://eventhubs.azure.net/.default",
           }),
         ),
@@ -294,6 +314,7 @@ function __c6(j: number): any {
           fullyQualifiedNamespace: S.String.pipe(T.HostLabel()),
           groupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -301,6 +322,7 @@ function __c6(j: number): any {
             code: 200,
             host: "https://{fullyQualifiedNamespace}",
             apiVersion: "2023-07-01",
+            nextLink: "nextLink",
             audience: "https://eventhubs.azure.net/.default",
           }),
         ),

@@ -733,6 +733,8 @@ export interface ListCapabilitiesRequest {
   targetName: string;
   /** String that sets the continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Model that represents a Capability resource. */
 export interface Capability {
@@ -765,6 +767,8 @@ export interface ListCapabilityTypesRequest {
   targetTypeName: string;
   /** String that sets the continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Model that represents a Capability Type resource. */
 export interface CapabilityType {
@@ -795,6 +799,8 @@ export interface ListExperimentAllRequest {
   running?: boolean;
   /** String that sets the continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExperimentTagsMap = { [key: string]: string | undefined };
@@ -835,6 +841,8 @@ export interface ListExperimentAllExecutionsRequest {
   resourceGroupName: string;
   /** String that represents a Experiment resource name. */
   experimentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Model that represents the execution of a Experiment. */
 export interface ExperimentExecution {
@@ -867,8 +875,13 @@ export interface ListExperimentsRequest {
   running?: boolean;
   /** String that sets the continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationAllRequest {}
+export interface ListOperationAllRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -901,7 +914,7 @@ export interface Operation {
 export type ListOperationAllResponseValueList = Array<Operation>;
 export interface ListOperationAllResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationAllResponseValueList;
+  value: ListOperationAllResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -918,6 +931,8 @@ export interface ListTargetsRequest {
   parentResourceName: string;
   /** String that sets the continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of the target resource. */
 export type TargetPropertiesMap = { [key: string]: unknown | undefined };
@@ -952,6 +967,8 @@ export interface ListTargetTypesRequest {
   location: string;
   /** String that sets the continuation token. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Model that represents a Target Type resource. */
 export interface TargetType {
@@ -1279,123 +1296,179 @@ export const GetTargetType: API.OperationMethod<
 
 export type ListCapabilitiesError = AzureOpError;
 /** Get a list of Capability resources that extend a Target resource. */
-export const ListCapabilities: API.OperationMethod<
+export const ListCapabilities: API.PaginatedOperationMethod<
   ListCapabilitiesRequest,
   CapabilityListResult,
   ListCapabilitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Capability
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListCapabilitiesRequest>,
   output: __S(418, __c13, 2) as any as S.Schema<CapabilityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCapabilityTypesError = AzureOpError;
 /** Get a list of Capability Type resources for given Target Type and location. */
-export const ListCapabilityTypes: API.OperationMethod<
+export const ListCapabilityTypes: API.PaginatedOperationMethod<
   ListCapabilityTypesRequest,
   CapabilityTypeListResult,
   ListCapabilityTypesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CapabilityType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ListCapabilityTypesRequest>,
   output: __S(450, __c14, 2) as any as S.Schema<CapabilityTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExperimentAllError = AzureOpError;
 /** Get a list of Experiment resources in a subscription. */
-export const ListExperimentAll: API.OperationMethod<
+export const ListExperimentAll: API.PaginatedOperationMethod<
   ListExperimentAllRequest,
   ExperimentListResult,
   ListExperimentAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Experiment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<ListExperimentAllRequest>,
   output: __S(513, __c16, 1) as any as S.Schema<ExperimentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExperimentAllExecutionsError = AzureOpError;
 /** Get a list of executions of an Experiment resource. */
-export const ListExperimentAllExecutions: API.OperationMethod<
+export const ListExperimentAllExecutions: API.PaginatedOperationMethod<
   ListExperimentAllExecutionsRequest,
   ExperimentExecutionListResult,
   ListExperimentAllExecutionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExperimentExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ListExperimentAllExecutionsRequest>,
   output: __S(546, __c17, 2) as any as S.Schema<ExperimentExecutionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExperimentsError = AzureOpError;
 /** Get a list of Experiment resources in a resource group. */
-export const ListExperiments: API.OperationMethod<
+export const ListExperiments: API.PaginatedOperationMethod<
   ListExperimentsRequest,
   ExperimentListResult,
   ListExperimentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Experiment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListExperimentsRequest>,
   output: __S(513, __c16, 1) as any as S.Schema<ExperimentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationAllError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperationAll: API.OperationMethod<
+export const ListOperationAll: API.PaginatedOperationMethod<
   ListOperationAllRequest,
   ListOperationAllResponse,
   ListOperationAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListOperationAllRequest>,
   output: __S(612, __c19, 4) as any as S.Schema<ListOperationAllResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTargetsError = AzureOpError;
 /** Get a list of Target resources that extend a tracked regional resource. */
-export const ListTargets: API.OperationMethod<
+export const ListTargets: API.PaginatedOperationMethod<
   ListTargetsRequest,
   TargetListResult,
   ListTargetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Target
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<ListTargetsRequest>,
   output: __S(674, __c21, 2) as any as S.Schema<TargetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTargetTypesError = AzureOpError;
 /** Get a list of Target Type resources for given location. */
-export const ListTargetTypes: API.OperationMethod<
+export const ListTargetTypes: API.PaginatedOperationMethod<
   ListTargetTypesRequest,
   TargetTypeListResult,
   ListTargetTypesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TargetType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<ListTargetTypesRequest>,
   output: __S(706, __c22, 2) as any as S.Schema<TargetTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type StartExperimentError = AzureOpError;
 /** Start a Experiment resource. */
@@ -1749,12 +1822,14 @@ function __c13(j: number): any {
           parentResourceName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets/{targetName}/capabilities",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCapabilitiesRequest" });
@@ -1778,12 +1853,14 @@ function __c14(j: number): any {
           location: S.String.pipe(T.Label()),
           targetTypeName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes/{targetTypeName}/capabilityTypes",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCapabilityTypesRequest" });
@@ -1806,12 +1883,14 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           running: S.optional(S.Boolean.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/experiments",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExperimentAllRequest" });
@@ -1838,12 +1917,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/executions",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExperimentAllExecutionsRequest" });
@@ -1867,12 +1948,14 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           running: S.optional(S.Boolean.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExperimentsRequest" });
@@ -1882,12 +1965,15 @@ function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Chaos/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationAllRequest" });
@@ -1915,7 +2001,7 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(611, __c19, 3)),
+          value: __S(611, __c19, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationAllResponse" });
@@ -1955,12 +2041,14 @@ function __c21(j: number): any {
           parentResourceType: S.String.pipe(T.Label()),
           parentResourceName: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{parentProviderNamespace}/{parentResourceType}/{parentResourceName}/providers/Microsoft.Chaos/targets",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTargetsRequest" });
@@ -1983,12 +2071,14 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/targetTypes",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTargetTypesRequest" });

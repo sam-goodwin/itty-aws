@@ -771,10 +771,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists builds for a specified image definition.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ImageDefinitionBuildListResult": {
@@ -885,6 +892,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Image Definition."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1445,10 +1458,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Image Definitions in the catalog.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ImageDefinitionListResult": {
@@ -1558,6 +1578,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1934,10 +1960,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/environmentDefinitions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List environment definitions in the catalog.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#EnvironmentDefinitionListResult": {
@@ -2047,6 +2080,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2384,10 +2423,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/tasks",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Tasks in the catalog.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#CustomizationTaskListResult": {
@@ -2497,6 +2543,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2709,10 +2761,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the current usages and limits in this location for the provided subscription.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListUsagesResult": {
@@ -2833,6 +2892,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Azure region"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3126,7 +3191,7 @@
     "com.azure.devcenter#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.devcenter#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.devcenter#ListOperationsResponse"
@@ -3136,10 +3201,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DevCenter/operations",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available resource provider operations.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListOperationsResponse": {
@@ -3279,6 +3351,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.devcenter#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.devcenter#GetDevBoxDefinitionByProject": {
@@ -3802,10 +3888,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/devboxdefinitions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Dev Box definitions configured for a project.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#DevBoxDefinitionListResult": {
@@ -3932,6 +4025,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4752,10 +4851,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Dev Box definitions for a devcenter.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListDevBoxDefinitionByDevCenterRequest": {
@@ -4790,6 +4896,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5963,10 +6075,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/environmentTypes",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists environment types for a project.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ProjectEnvironmentTypeListResult": {
@@ -6127,6 +6246,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6368,10 +6493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/allowedEnvironmentTypes",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists allowed environment types for a project.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#AllowedEnvironmentTypeListResult": {
@@ -6473,6 +6605,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7097,10 +7235,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/environmentTypes",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists environment types for the devcenter.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#EnvironmentTypeListResult": {
@@ -7220,6 +7365,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8455,10 +8606,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists catalogs for a devcenter.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#CatalogListResult": {
@@ -8560,6 +8718,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9175,10 +9339,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the attached NetworkConnections for a DevCenter.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#AttachedNetworkListResult": {
@@ -9281,6 +9452,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9300,10 +9477,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/listSkus",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists SKUs available to the project",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListSkusByProjectResponse": {
@@ -9452,6 +9636,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the project."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9719,10 +9909,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images/{imageName}/versions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists versions for an image.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ImageVersionListResult": {
@@ -9825,6 +10022,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the image."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10136,10 +10339,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists images for a project.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ImageListResult": {
@@ -10234,6 +10444,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the project."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10367,10 +10583,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}/versions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists versions for an image.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListImageVersionByImageRequest": {
@@ -10414,6 +10637,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the image."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10539,10 +10768,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists images for a gallery.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListImageByGalleryRequest": {
@@ -10586,6 +10822,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -10605,10 +10847,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/images",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists images for a devcenter.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListImageByDevCenterRequest": {
@@ -10643,6 +10892,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11076,10 +11331,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists galleries for a devcenter.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#GalleryListResult": {
@@ -11181,6 +11443,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11601,10 +11869,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/environmentDefinitions",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the environment definitions in this project catalog.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListEnvironmentDefinitionByProjectCatalogRequest": {
@@ -11640,6 +11915,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Catalog."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12042,10 +12323,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the catalogs associated with a project.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListProjectCatalogsRequest": {
@@ -12080,6 +12368,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12197,10 +12491,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/attachednetworks",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the attached NetworkConnections for a Project.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListAttachedNetworkByProjectRequest": {
@@ -12235,6 +12536,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13257,10 +13564,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all projects in the resource group.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ProjectListResult": {
@@ -13415,6 +13729,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13434,10 +13754,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/projects",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all projects in the subscription.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListProjectBySubscriptionRequest": {
@@ -13456,6 +13783,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14160,10 +14493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all project policies in the dev center",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ProjectPolicyListResult": {
@@ -14265,6 +14605,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15257,10 +15603,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all devcenters in a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#DevCenterListResult": {
@@ -15415,6 +15768,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15434,10 +15793,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/devcenters",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all devcenters in a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListDevCenterBySubscriptionRequest": {
@@ -15456,6 +15822,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15476,10 +15848,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/outboundNetworkDependenciesEndpoints",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the endpoints that agents may call as part of Dev Box service administration. These FQDNs should be allowed for outbound access in order for the Dev Box service to function.",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#OutboundEnvironmentEndpointCollection": {
@@ -15621,6 +16000,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15933,7 +16318,11 @@
           "apiVersion": "2025-02-01"
         },
         "smithy.api#documentation": "Lists health check status details",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#HealthCheckStatusDetailsListResult": {
@@ -16936,10 +17325,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists network connections in a resource group",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#NetworkConnectionListResult": {
@@ -17059,6 +17455,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -17078,10 +17480,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/networkConnections",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists network connections in a subscription",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ListNetworkConnectionBySubscriptionRequest": {
@@ -17100,6 +17509,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17878,10 +18293,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists schedules for a pool",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#ScheduleListResult": {
@@ -17991,6 +18413,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19414,10 +19842,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists pools for a project",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#PoolListResult": {
@@ -19545,6 +19980,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -19564,10 +20005,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/skus",
           "code": 200,
-          "apiVersion": "2025-02-01"
+          "apiVersion": "2025-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Microsoft.DevCenter SKUs available in a subscription",
-        "com.distilled.openapi#apiVersion": "2025-02-01"
+        "com.distilled.openapi#apiVersion": "2025-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devcenter#SkuListResult": {
@@ -19687,6 +20135,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

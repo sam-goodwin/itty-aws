@@ -15,63 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.containerregistry_data#ContainerRegistryBlobGetChunk": "com.azure.containerregistry_data#GetContainerRegistryBlobChunk",
-      "com.azure.containerregistry_data#ContainerRegistryBlobGetChunkRequest": "com.azure.containerregistry_data#GetContainerRegistryBlobChunkRequest",
-      "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExists": "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExists",
-      "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExistsRequest": "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExistsRequest",
-      "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2Support": "com.azure.containerregistry_data#CheckContainerRegistryDockerV2Support",
-      "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2SupportRequest": "com.azure.containerregistry_data#CheckContainerRegistryDockerV2SupportRequest",
-      "com.azure.containerregistry_data#ContainerRegistryDeleteManifest": "com.azure.containerregistry_data#DeleteContainerRegistryManifest",
-      "com.azure.containerregistry_data#ContainerRegistryDeleteManifestRequest": "com.azure.containerregistry_data#DeleteContainerRegistryManifestRequest",
-      "com.azure.containerregistry_data#ContainerRegistryCreateManifest": "com.azure.containerregistry_data#CreateContainerRegistryManifest",
-      "com.azure.containerregistry_data#ContainerRegistryCreateManifestResponse": "com.azure.containerregistry_data#CreateContainerRegistryManifestResponse",
-      "com.azure.containerregistry_data#ContainerRegistryCreateManifestRequest": "com.azure.containerregistry_data#CreateContainerRegistryManifestRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifest": "com.azure.containerregistry_data#GetContainerRegistryManifest",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponse": "com.azure.containerregistry_data#GetContainerRegistryManifestResponse",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseSignaturesList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseSignaturesList",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseHistoryList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseHistoryList",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseFsLayersList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseFsLayersList",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseLayersList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseLayersList",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseManifestsList": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseManifestsList",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestRequest": "com.azure.containerregistry_data#GetContainerRegistryManifestRequest",
-      "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExists": "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExists",
-      "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExistsRequest": "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExistsRequest",
-      "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlob": "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlob",
-      "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlobRequest": "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlobRequest",
-      "com.azure.containerregistry_data#ContainerRegistryBlobGetBlob": "com.azure.containerregistry_data#GetContainerRegistryBlobBlob",
-      "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobResponse": "com.azure.containerregistry_data#GetContainerRegistryBlobBlobResponse",
-      "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobRequest": "com.azure.containerregistry_data#GetContainerRegistryBlobBlobRequest",
-      "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLogin": "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLogin",
-      "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLoginRequest": "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLoginRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetRepositories": "com.azure.containerregistry_data#GetContainerRegistryRepositories",
-      "com.azure.containerregistry_data#ContainerRegistryGetRepositoriesRequest": "com.azure.containerregistry_data#GetContainerRegistryRepositoriesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryDeleteTag": "com.azure.containerregistry_data#DeleteContainerRegistryTag",
-      "com.azure.containerregistry_data#ContainerRegistryDeleteTagRequest": "com.azure.containerregistry_data#DeleteContainerRegistryTagRequest",
-      "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributes": "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributes",
-      "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributesRequest": "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetTagProperties": "com.azure.containerregistry_data#GetContainerRegistryTagProperties",
-      "com.azure.containerregistry_data#ContainerRegistryGetTagPropertiesRequest": "com.azure.containerregistry_data#GetContainerRegistryTagPropertiesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetTags": "com.azure.containerregistry_data#GetContainerRegistryTags",
-      "com.azure.containerregistry_data#ContainerRegistryGetTagsRequest": "com.azure.containerregistry_data#GetContainerRegistryTagsRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetTagsRequestOrderby": "com.azure.containerregistry_data#GetContainerRegistryTagsRequestOrderby",
-      "com.azure.containerregistry_data#ContainerRegistryUpdateManifestProperties": "com.azure.containerregistry_data#UpdateContainerRegistryManifestProperties",
-      "com.azure.containerregistry_data#ContainerRegistryUpdateManifestPropertiesRequest": "com.azure.containerregistry_data#UpdateContainerRegistryManifestPropertiesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestProperties": "com.azure.containerregistry_data#GetContainerRegistryManifestProperties",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestPropertiesRequest": "com.azure.containerregistry_data#GetContainerRegistryManifestPropertiesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifests": "com.azure.containerregistry_data#GetContainerRegistryManifests",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequest": "com.azure.containerregistry_data#GetContainerRegistryManifestsRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequestOrderby": "com.azure.containerregistry_data#GetContainerRegistryManifestsRequestOrderby",
-      "com.azure.containerregistry_data#ContainerRegistryDeleteRepository": "com.azure.containerregistry_data#DeleteContainerRegistryRepository",
-      "com.azure.containerregistry_data#ContainerRegistryDeleteRepositoryRequest": "com.azure.containerregistry_data#DeleteContainerRegistryRepositoryRequest",
-      "com.azure.containerregistry_data#ContainerRegistryUpdateProperties": "com.azure.containerregistry_data#UpdateContainerRegistryProperties",
-      "com.azure.containerregistry_data#ContainerRegistryUpdatePropertiesRequest": "com.azure.containerregistry_data#UpdateContainerRegistryPropertiesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryGetProperties": "com.azure.containerregistry_data#GetContainerRegistryProperties",
-      "com.azure.containerregistry_data#ContainerRegistryGetPropertiesRequest": "com.azure.containerregistry_data#GetContainerRegistryPropertiesRequest",
-      "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunk": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunk",
-      "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkResponse": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkResponse",
-      "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkRequest": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.containerregistry_data#ContainerRegistryBlobStartUpload": {
@@ -134,10 +78,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobGetChunk": {
+    "com.azure.containerregistry_data#GetContainerRegistryBlobChunk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetChunkRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryBlobChunkRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -156,7 +100,7 @@
         "smithy.api#documentation": "Retrieve the blob from the registry identified by `digest`. This endpoint may\nalso support RFC7233 compliant range requests. Support can be detected by\nissuing a HEAD request. If the header `Accept-Range: bytes` is returned, range\nrequests can be used to fetch partial content."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobGetChunkRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryBlobChunkRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -195,10 +139,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExists": {
+    "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExists": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExistsRequest"
+        "target": "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExistsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -217,7 +161,7 @@
         "smithy.api#documentation": "Same as GET, except only the headers are returned."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExistsRequest": {
+    "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExistsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -256,10 +200,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2Support": {
+    "com.azure.containerregistry_data#CheckContainerRegistryDockerV2Support": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2SupportRequest"
+        "target": "com.azure.containerregistry_data#CheckContainerRegistryDockerV2SupportRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -278,7 +222,7 @@
         "smithy.api#documentation": "Tells whether this Docker Registry instance supports Docker Registry HTTP API v2"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2SupportRequest": {
+    "com.azure.containerregistry_data#CheckContainerRegistryDockerV2SupportRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -293,10 +237,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryDeleteManifest": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryManifest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryDeleteManifestRequest"
+        "target": "com.azure.containerregistry_data#DeleteContainerRegistryManifestRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -315,7 +259,7 @@
         "smithy.api#documentation": "Delete the manifest identified by `name` and `reference`. Note that a manifest\ncan _only_ be deleted by `digest`."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryDeleteManifestRequest": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryManifestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -346,13 +290,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryCreateManifest": {
+    "com.azure.containerregistry_data#CreateContainerRegistryManifest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryCreateManifestRequest"
+        "target": "com.azure.containerregistry_data#CreateContainerRegistryManifestRequest"
       },
       "output": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryCreateManifestResponse"
+        "target": "com.azure.containerregistry_data#CreateContainerRegistryManifestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -368,7 +312,7 @@
         "smithy.api#documentation": "Put the manifest identified by `name` and `reference` where `reference` can be\na tag or digest."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryCreateManifestResponse": {
+    "com.azure.containerregistry_data#CreateContainerRegistryManifestResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -382,7 +326,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryCreateManifestRequest": {
+    "com.azure.containerregistry_data#CreateContainerRegistryManifestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -419,13 +363,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifest": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryManifestRequest"
       },
       "output": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponse"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryManifestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -441,7 +385,7 @@
         "smithy.api#documentation": "Get the manifest identified by `name` and `reference` where `reference` can be\na tag or digest."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponse": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestResponse": {
       "type": "structure",
       "members": {
         "schemaVersion": {
@@ -457,7 +401,7 @@
           }
         },
         "manifests": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseManifestsList",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseManifestsList",
           "traits": {
             "smithy.api#documentation": "(ManifestList, OCIIndex) List of V2 image layer information"
           }
@@ -469,7 +413,7 @@
           }
         },
         "layers": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseLayersList",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseLayersList",
           "traits": {
             "smithy.api#documentation": "(V2, OCI) List of V2 image layer information"
           }
@@ -499,19 +443,19 @@
           }
         },
         "fsLayers": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseFsLayersList",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseFsLayersList",
           "traits": {
             "smithy.api#documentation": "(V1) List of layer information"
           }
         },
         "history": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseHistoryList",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseHistoryList",
           "traits": {
             "smithy.api#documentation": "(V1) Image history"
           }
         },
         "signatures": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseSignaturesList",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestResponseSignaturesList",
           "traits": {
             "smithy.api#documentation": "(V1) Image signature"
           }
@@ -521,7 +465,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseSignaturesList": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestResponseSignaturesList": {
       "type": "list",
       "member": {
         "target": "com.azure.containerregistry_data#ImageSignature"
@@ -614,7 +558,7 @@
         "smithy.api#documentation": "JSON web key parameter"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseHistoryList": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestResponseHistoryList": {
       "type": "list",
       "member": {
         "target": "com.azure.containerregistry_data#History"
@@ -637,7 +581,7 @@
         "smithy.api#documentation": "A list of unstructured historical data for v1 compatibility"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseFsLayersList": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestResponseFsLayersList": {
       "type": "list",
       "member": {
         "target": "com.azure.containerregistry_data#FsLayer"
@@ -753,7 +697,7 @@
         "com.distilled.openapi#additionalProperties": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseLayersList": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestResponseLayersList": {
       "type": "list",
       "member": {
         "target": "com.azure.containerregistry_data#Descriptor"
@@ -809,7 +753,7 @@
         "smithy.api#documentation": "Specifies a list of URIs from which this object may be downloaded."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestResponseManifestsList": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestResponseManifestsList": {
       "type": "list",
       "member": {
         "target": "com.azure.containerregistry_data#ManifestListAttributes"
@@ -914,7 +858,7 @@
         "smithy.api#documentation": "The optional os.features field specifies an array of strings, each listing a\nrequired OS feature (for example on Windows win32k"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1021,10 +965,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExists": {
+    "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExists": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExistsRequest"
+        "target": "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExistsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1043,7 +987,7 @@
         "smithy.api#documentation": "Same as GET, except only the headers are returned."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExistsRequest": {
+    "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExistsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1074,10 +1018,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlob": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlobRequest"
+        "target": "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1096,7 +1040,7 @@
         "smithy.api#documentation": "Removes an already uploaded blob."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlobRequest": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1127,13 +1071,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobGetBlob": {
+    "com.azure.containerregistry_data#GetContainerRegistryBlobBlob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryBlobBlobRequest"
       },
       "output": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobResponse"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryBlobBlobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1149,7 +1093,7 @@
         "smithy.api#documentation": "Retrieve the blob from the registry identified by digest."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobResponse": {
+    "com.azure.containerregistry_data#GetContainerRegistryBlobBlobResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1164,7 +1108,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobGetBlobRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryBlobBlobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1246,10 +1190,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLogin": {
+    "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLogin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLoginRequest"
+        "target": "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLoginRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#AcrAccessToken"
@@ -1268,7 +1212,7 @@
         "smithy.api#documentation": "Exchange Username, Password and Scope for an ACR Access Token"
       }
     },
-    "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLoginRequest": {
+    "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLoginRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1350,10 +1294,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetRepositories": {
+    "com.azure.containerregistry_data#GetContainerRegistryRepositories": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetRepositoriesRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryRepositoriesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#Repositories"
@@ -1367,9 +1311,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2021-07-01"
+          "apiVersion": "2021-07-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List repositories"
+        "smithy.api#documentation": "List repositories",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "link",
+          "items": "repositories"
+        }
       }
     },
     "com.azure.containerregistry_data#Repositories": {
@@ -1401,7 +1352,7 @@
         "smithy.api#documentation": "Repository names"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetRepositoriesRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryRepositoriesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1424,16 +1375,22 @@
             "smithy.api#httpQuery": "n",
             "smithy.api#documentation": "Query parameter for max number of items"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryDeleteTag": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryTag": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryDeleteTagRequest"
+        "target": "com.azure.containerregistry_data#DeleteContainerRegistryTagRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1452,7 +1409,7 @@
         "smithy.api#documentation": "Delete tag"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryDeleteTagRequest": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryTagRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1483,10 +1440,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributes": {
+    "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributesRequest"
+        "target": "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#ArtifactTagProperties"
@@ -1615,7 +1572,7 @@
         "smithy.api#documentation": "Changeable attributes"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributesRequest": {
+    "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1670,10 +1627,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetTagProperties": {
+    "com.azure.containerregistry_data#GetContainerRegistryTagProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetTagPropertiesRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryTagPropertiesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#ArtifactTagProperties"
@@ -1692,7 +1649,7 @@
         "smithy.api#documentation": "Get tag attributes by tag"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetTagPropertiesRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryTagPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1723,10 +1680,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetTags": {
+    "com.azure.containerregistry_data#GetContainerRegistryTags": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetTagsRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryTagsRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#TagList"
@@ -1789,7 +1746,7 @@
         "smithy.api#documentation": "List of tag attribute details"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetTagsRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryTagsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1822,7 +1779,7 @@
           }
         },
         "orderby": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetTagsRequestOrderby",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryTagsRequestOrderby",
           "traits": {
             "smithy.api#httpQuery": "orderby",
             "smithy.api#documentation": "orderby query parameter"
@@ -1840,7 +1797,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetTagsRequestOrderby": {
+    "com.azure.containerregistry_data#GetContainerRegistryTagsRequestOrderby": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -1864,10 +1821,10 @@
       },
       "traits": {}
     },
-    "com.azure.containerregistry_data#ContainerRegistryUpdateManifestProperties": {
+    "com.azure.containerregistry_data#UpdateContainerRegistryManifestProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryUpdateManifestPropertiesRequest"
+        "target": "com.azure.containerregistry_data#UpdateContainerRegistryManifestPropertiesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#ArtifactManifestProperties"
@@ -2239,7 +2196,7 @@
         "smithy.api#documentation": "The artifact platform's architecture."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryUpdateManifestPropertiesRequest": {
+    "com.azure.containerregistry_data#UpdateContainerRegistryManifestPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2294,10 +2251,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestProperties": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestPropertiesRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryManifestPropertiesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#ArtifactManifestProperties"
@@ -2316,7 +2273,7 @@
         "smithy.api#documentation": "Get manifest attributes"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestPropertiesRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2347,10 +2304,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifests": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifests": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryManifestsRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#AcrManifests"
@@ -2410,7 +2367,7 @@
         "smithy.api#documentation": "List of manifests"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2443,7 +2400,7 @@
           }
         },
         "orderby": {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequestOrderby",
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestsRequestOrderby",
           "traits": {
             "smithy.api#httpQuery": "orderby",
             "smithy.api#documentation": "orderby query parameter"
@@ -2454,7 +2411,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetManifestsRequestOrderby": {
+    "com.azure.containerregistry_data#GetContainerRegistryManifestsRequestOrderby": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -2478,10 +2435,10 @@
       },
       "traits": {}
     },
-    "com.azure.containerregistry_data#ContainerRegistryDeleteRepository": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryRepository": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryDeleteRepositoryRequest"
+        "target": "com.azure.containerregistry_data#DeleteContainerRegistryRepositoryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2500,7 +2457,7 @@
         "smithy.api#documentation": "Delete the repository identified by `name`"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryDeleteRepositoryRequest": {
+    "com.azure.containerregistry_data#DeleteContainerRegistryRepositoryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2523,10 +2480,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryUpdateProperties": {
+    "com.azure.containerregistry_data#UpdateContainerRegistryProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryUpdatePropertiesRequest"
+        "target": "com.azure.containerregistry_data#UpdateContainerRegistryPropertiesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#ContainerRepositoryProperties"
@@ -2634,7 +2591,7 @@
         "smithy.api#documentation": "Changeable attributes for Repository"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryUpdatePropertiesRequest": {
+    "com.azure.containerregistry_data#UpdateContainerRegistryPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2681,10 +2638,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetProperties": {
+    "com.azure.containerregistry_data#GetContainerRegistryProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryGetPropertiesRequest"
+        "target": "com.azure.containerregistry_data#GetContainerRegistryPropertiesRequest"
       },
       "output": {
         "target": "com.azure.containerregistry_data#ContainerRepositoryProperties"
@@ -2703,7 +2660,7 @@
         "smithy.api#documentation": "Get repository attributes"
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryGetPropertiesRequest": {
+    "com.azure.containerregistry_data#GetContainerRegistryPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2771,13 +2728,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunk": {
+    "com.azure.containerregistry_data#UploadContainerRegistryBlobChunk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkRequest"
+        "target": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkRequest"
       },
       "output": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkResponse"
+        "target": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2793,7 +2750,7 @@
         "smithy.api#documentation": "Upload a stream of data without completing the upload."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkResponse": {
+    "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2808,7 +2765,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunkRequest": {
+    "com.azure.containerregistry_data#UploadContainerRegistryBlobChunkRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2838,13 +2795,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUpload": {
+    "com.azure.containerregistry_data#UploadContainerRegistryBlobComplete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadRequest"
+        "target": "com.azure.containerregistry_data#UploadContainerRegistryBlobCompleteRequest"
       },
       "output": {
-        "target": "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadResponse"
+        "target": "com.azure.containerregistry_data#UploadContainerRegistryBlobCompleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2860,7 +2817,7 @@
         "smithy.api#documentation": "Complete the upload, providing all the data in the body, if necessary. A\nrequest without a body will just complete the upload with previously uploaded\ncontent."
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadResponse": {
+    "com.azure.containerregistry_data#UploadContainerRegistryBlobCompleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2875,7 +2832,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUploadRequest": {
+    "com.azure.containerregistry_data#UploadContainerRegistryBlobCompleteRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2965,85 +2922,85 @@
           "target": "com.azure.containerregistry_data#ContainerRegistryBlobStartUpload"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetChunk"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryBlobChunk"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckChunkExists"
+          "target": "com.azure.containerregistry_data#CheckContainerRegistryBlobChunkExists"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryCheckDockerV2Support"
+          "target": "com.azure.containerregistry_data#CheckContainerRegistryDockerV2Support"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryDeleteManifest"
+          "target": "com.azure.containerregistry_data#DeleteContainerRegistryManifest"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryCreateManifest"
+          "target": "com.azure.containerregistry_data#CreateContainerRegistryManifest"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifest"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifest"
         },
         {
           "target": "com.azure.containerregistry_data#ContainerRegistryBlobMountBlob"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCheckBlobExists"
+          "target": "com.azure.containerregistry_data#CheckContainerRegistryBlobBlobExists"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobDeleteBlob"
+          "target": "com.azure.containerregistry_data#DeleteContainerRegistryBlobBlob"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetBlob"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryBlobBlob"
         },
         {
           "target": "com.azure.containerregistry_data#AuthenticationExchangeAcrRefreshTokenForAcrAccessToken"
         },
         {
-          "target": "com.azure.containerregistry_data#AuthenticationGetAcrAccessTokenFromLogin"
+          "target": "com.azure.containerregistry_data#GetAuthenticationAcrAccessTokenFromLogin"
         },
         {
           "target": "com.azure.containerregistry_data#AuthenticationExchangeAadAccessTokenForAcrRefreshToken"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetRepositories"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryRepositories"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryDeleteTag"
+          "target": "com.azure.containerregistry_data#DeleteContainerRegistryTag"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryUpdateTagAttributes"
+          "target": "com.azure.containerregistry_data#UpdateContainerRegistryTagAttributes"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetTagProperties"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryTagProperties"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetTags"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryTags"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryUpdateManifestProperties"
+          "target": "com.azure.containerregistry_data#UpdateContainerRegistryManifestProperties"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifestProperties"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifestProperties"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetManifests"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryManifests"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryDeleteRepository"
+          "target": "com.azure.containerregistry_data#DeleteContainerRegistryRepository"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryUpdateProperties"
+          "target": "com.azure.containerregistry_data#UpdateContainerRegistryProperties"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryGetProperties"
+          "target": "com.azure.containerregistry_data#GetContainerRegistryProperties"
         },
         {
           "target": "com.azure.containerregistry_data#ContainerRegistryBlobCancelUpload"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobUploadChunk"
+          "target": "com.azure.containerregistry_data#UploadContainerRegistryBlobChunk"
         },
         {
-          "target": "com.azure.containerregistry_data#ContainerRegistryBlobCompleteUpload"
+          "target": "com.azure.containerregistry_data#UploadContainerRegistryBlobComplete"
         },
         {
           "target": "com.azure.containerregistry_data#ContainerRegistryBlobGetUploadStatus"

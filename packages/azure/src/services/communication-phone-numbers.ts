@@ -220,6 +220,8 @@ export interface ListPhoneNumberAreaCodesRequest {
   administrativeDivision?: string;
   /** The locale to display in the localized fields in the response. e.g. 'en-US' */
   acceptLanguage?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents an Area Code. */
 export interface PhoneNumberAreaCode {
@@ -244,6 +246,8 @@ export interface ListPhoneNumberAvailableCountriesRequest {
   maxPageSize?: number;
   /** The locale to display in the localized fields in the response. e.g. 'en-US' */
   acceptLanguage?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a country. */
 export interface PhoneNumberCountry {
@@ -257,7 +261,7 @@ export type PhoneNumberCountriesCountriesList = Array<PhoneNumberCountry>;
 /** Represents a wrapper around a list of countries. */
 export interface PhoneNumberCountries {
   /** Represents the underlying list of countries. */
-  countries?: PhoneNumberCountriesCountriesList;
+  countries: PhoneNumberCountriesCountriesList;
   /** Represents the URL link to the next page */
   nextLink?: string;
 }
@@ -280,6 +284,8 @@ export interface ListPhoneNumberAvailableLocalitiesRequest {
   phoneNumberType?: ListPhoneNumberAvailableLocalitiesRequestPhoneNumberType | (string & {});
   /** The locale to display in the localized fields in the response. e.g. 'en-US' */
   acceptLanguage?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents an administrative division. e.g. state or province. */
 export interface PhoneNumberAdministrativeDivision {
@@ -299,7 +305,7 @@ export type PhoneNumberLocalitiesPhoneNumberLocalitiesList = Array<PhoneNumberLo
 /** Represents a wrapper around a list of cities or towns. */
 export interface PhoneNumberLocalities {
   /** Represents the underlying list of localities, e.g. cities or town. */
-  phoneNumberLocalities?: PhoneNumberLocalitiesPhoneNumberLocalitiesList;
+  phoneNumberLocalities: PhoneNumberLocalitiesPhoneNumberLocalitiesList;
   /** Represents the URL link to the next page. */
   nextLink?: string;
 }
@@ -320,6 +326,8 @@ export interface ListPhoneNumberOfferingsRequest {
   assignmentType?: ListPhoneNumberOfferingsRequestAssignmentType | (string & {});
   /** The locale to display in the localized fields in the response. e.g. 'en-US' */
   acceptLanguage?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents the number type of the offering. */
 export type PhoneNumberOfferingPhoneNumberType = "geographic" | "tollFree" | "mobile";
@@ -339,7 +347,7 @@ export type OfferingsResponsePhoneNumberOfferingsList = Array<PhoneNumberOfferin
 /** Represents a wrapper around a list of offerings. */
 export interface OfferingsResponse {
   /** Represents the underlying list of offerings. */
-  phoneNumberOfferings?: OfferingsResponsePhoneNumberOfferingsList;
+  phoneNumberOfferings: OfferingsResponsePhoneNumberOfferingsList;
   /** Represents the URL link to the next page. */
   nextLink?: string;
 }
@@ -350,6 +358,8 @@ export interface ListPhoneNumberPhoneNumbersRequest {
   skip?: number;
   /** An optional parameter for how many entries to return, for pagination purposes. The default value is 100. */
   top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a list of phone numbers. */
 export type PurchasedPhoneNumbersPhoneNumbersList = Array<PurchasedPhoneNumber>;
@@ -365,6 +375,8 @@ export interface ListPhoneNumberReservationsRequest {
   endpoint: string;
   /** An optional parameter for how many entries to return, for pagination purposes. The default value is 100. */
   maxPageSize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a list of phone numbers reservations. Note that the phone numbers from each reservation are not included. */
 export type PhoneNumbersReservationsReservationsList = Array<PhoneNumbersReservation>;
@@ -714,93 +726,135 @@ export const GetPhoneNumberReservation: API.OperationMethod<
 
 export type ListPhoneNumberAreaCodesError = AzureOpError;
 /** Gets the list of available area codes. */
-export const ListPhoneNumberAreaCodes: API.OperationMethod<
+export const ListPhoneNumberAreaCodes: API.PaginatedOperationMethod<
   ListPhoneNumberAreaCodesRequest,
   PhoneNumberAreaCodes,
   ListPhoneNumberAreaCodesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PhoneNumberAreaCode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c24, 0) as any as S.Schema<ListPhoneNumberAreaCodesRequest>,
   output: __S(195, __c24, 3) as any as S.Schema<PhoneNumberAreaCodes>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "areaCodes",
+  } as const,
+})) as any;
 
 export type ListPhoneNumberAvailableCountriesError = AzureOpError;
 /** Gets the list of supported countries. */
-export const ListPhoneNumberAvailableCountries: API.OperationMethod<
+export const ListPhoneNumberAvailableCountries: API.PaginatedOperationMethod<
   ListPhoneNumberAvailableCountriesRequest,
   PhoneNumberCountries,
   ListPhoneNumberAvailableCountriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PhoneNumberCountry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<ListPhoneNumberAvailableCountriesRequest>,
   output: __S(203, __c25, 3) as any as S.Schema<PhoneNumberCountries>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "countries",
+  } as const,
+})) as any;
 
 export type ListPhoneNumberAvailableLocalitiesError = AzureOpError;
 /** Gets the list of cities or towns with available phone numbers. */
-export const ListPhoneNumberAvailableLocalities: API.OperationMethod<
+export const ListPhoneNumberAvailableLocalities: API.PaginatedOperationMethod<
   ListPhoneNumberAvailableLocalitiesRequest,
   PhoneNumberLocalities,
   ListPhoneNumberAvailableLocalitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PhoneNumberLocality
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<ListPhoneNumberAvailableLocalitiesRequest>,
   output: __S(212, __c26, 4) as any as S.Schema<PhoneNumberLocalities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "phoneNumberLocalities",
+  } as const,
+})) as any;
 
 export type ListPhoneNumberOfferingsError = AzureOpError;
 /** List available offerings of capabilities with rates for the given country. */
-export const ListPhoneNumberOfferings: API.OperationMethod<
+export const ListPhoneNumberOfferings: API.PaginatedOperationMethod<
   ListPhoneNumberOfferingsRequest,
   OfferingsResponse,
   ListPhoneNumberOfferingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PhoneNumberOffering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<ListPhoneNumberOfferingsRequest>,
   output: __S(219, __c27, 3) as any as S.Schema<OfferingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "phoneNumberOfferings",
+  } as const,
+})) as any;
 
 export type ListPhoneNumberPhoneNumbersError = AzureOpError;
 /** Gets the list of all purchased phone numbers. */
-export const ListPhoneNumberPhoneNumbers: API.OperationMethod<
+export const ListPhoneNumberPhoneNumbers: API.PaginatedOperationMethod<
   ListPhoneNumberPhoneNumbersRequest,
   PurchasedPhoneNumbers,
   ListPhoneNumberPhoneNumbersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PurchasedPhoneNumber
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<ListPhoneNumberPhoneNumbersRequest>,
   output: __S(226, __c28, 2) as any as S.Schema<PurchasedPhoneNumbers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "phoneNumbers",
+  } as const,
+})) as any;
 
 export type ListPhoneNumberReservationsError = AzureOpError;
 /** Lists all reservations. Retrieves a paginated list of all phone number reservations. Note that the reservations will not be populated with the phone numbers associated with them. */
-export const ListPhoneNumberReservations: API.OperationMethod<
+export const ListPhoneNumberReservations: API.PaginatedOperationMethod<
   ListPhoneNumberReservationsRequest,
   PhoneNumbersReservations,
   ListPhoneNumberReservationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PhoneNumbersReservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<ListPhoneNumberReservationsRequest>,
   output: __S(26, __c3, 2) as any as S.Schema<PhoneNumbersReservations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "reservations",
+  } as const,
+})) as any;
 
 export type PhoneNumbersBrowseAvailableNumbersError = AzureOpError;
 /** Browses for available phone numbers to purchase. Browses for available phone numbers to purchase. The response will be a randomized list of phone numbers available to purchase matching the browsing criteria. This operation is not paginated. Since the results are randomized, repeating the same request will not guarantee the same results. */
@@ -995,6 +1049,7 @@ function __c3(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxPageSize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1003,6 +1058,7 @@ function __c3(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1518,6 +1574,7 @@ function __c24(j: number): any {
           locality: S.optional(S.String.pipe(T.Query())),
           administrativeDivision: S.optional(S.String.pipe(T.Query())),
           acceptLanguage: S.optional(S.String.pipe(T.Header("accept-language"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1526,6 +1583,7 @@ function __c24(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1556,6 +1614,7 @@ function __c25(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxPageSize: S.optional(S.Number.pipe(T.Query())),
           acceptLanguage: S.optional(S.String.pipe(T.Header("accept-language"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1564,6 +1623,7 @@ function __c25(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1580,7 +1640,7 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          countries: S.optional(__S(202, __c25, 2)),
+          countries: __S(202, __c25, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneNumberCountries" });
@@ -1598,6 +1658,7 @@ function __c26(j: number): any {
           administrativeDivision: S.optional(S.String.pipe(T.Query())),
           phoneNumberType: S.optional(S.String.pipe(T.Query())),
           acceptLanguage: S.optional(S.String.pipe(T.Header("accept-language"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1606,6 +1667,7 @@ function __c26(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1629,7 +1691,7 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          phoneNumberLocalities: S.optional(__S(211, __c26, 3)),
+          phoneNumberLocalities: __S(211, __c26, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneNumberLocalities" });
@@ -1647,6 +1709,7 @@ function __c27(j: number): any {
           phoneNumberType: S.optional(S.String.pipe(T.Query())),
           assignmentType: S.optional(S.String.pipe(T.Query())),
           acceptLanguage: S.optional(S.String.pipe(T.Header("accept-language"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1655,6 +1718,7 @@ function __c27(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1673,7 +1737,7 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          phoneNumberOfferings: S.optional(__S(218, __c27, 2)),
+          phoneNumberOfferings: __S(218, __c27, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferingsResponse" });
@@ -1687,6 +1751,7 @@ function __c28(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1695,6 +1760,7 @@ function __c28(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),

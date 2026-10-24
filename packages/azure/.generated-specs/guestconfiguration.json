@@ -15,13 +15,76 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGet": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentReport",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentReportRequest",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsList": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentReports",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsListRequest": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentReportsRequest",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDelete": "com.azure.guestconfiguration#DeleteGuestConfigurationHCRPAssignment",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDeleteRequest": "com.azure.guestconfiguration#DeleteGuestConfigurationHCRPAssignmentRequest",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGet": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignment",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponse": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponse",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemData": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemData",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemDataLastModifiedByType": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemDataLastModifiedByType",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemDataCreatedByType": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemDataCreatedByType",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentRequest",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsList": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignments",
+      "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsListRequest": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentsRequest",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentsReport",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentsReportRequest",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsReports",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListRequest": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDelete": "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignment",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteRequest": "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGet": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignment",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponse": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemData": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataLastModifiedByType": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemDataLastModifiedByType",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataCreatedByType": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemDataCreatedByType",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsList": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignments",
+      "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsListRequest": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGet": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReport",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsList": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReports",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsListRequest": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsDelete": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignment",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsDeleteRequest": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsGet": "com.azure.guestconfiguration#GetGuestConfigurationAssignment",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponse": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponse",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemData": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemData",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemDataLastModifiedByType": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemDataLastModifiedByType",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemDataCreatedByType": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemDataCreatedByType",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsList": "com.azure.guestconfiguration#ListGuestConfigurationAssignments",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsListRequest": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGet": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportsVMSS",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportsVMSSRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSList": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsVMSS",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSListRequest": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsVMSSRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDelete": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSS",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponse": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponse",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemData": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemData",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataLastModifiedByType": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataCreatedByType": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteRequest": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGet": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSS",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponse": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponse",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemData": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemData",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemDataLastModifiedByType": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemDataCreatedByType": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetRequest": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSRequest",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSList": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsVMSS",
+      "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSListRequest": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsVMSSRequest",
+      "com.azure.guestconfiguration#OperationsList": "com.azure.guestconfiguration#ListOperations",
+      "com.azure.guestconfiguration#OperationsListRequest": "com.azure.guestconfiguration#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentReport": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentReportRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGetRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -340,7 +403,7 @@
         "smithy.api#documentation": "Information about the configuration."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentReportRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -388,10 +451,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentReports": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentReportsRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -433,7 +496,7 @@
         "smithy.api#documentation": "List of reports for the guest configuration. Report contains information such as compliance status, reason and more."
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentReportsRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -473,10 +536,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationHCRPAssignment": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationHCRPAssignmentRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -492,7 +555,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationHCRPAssignmentRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1475,13 +1538,13 @@
         "smithy.api#documentation": "The configuration parameters for the guest configuration."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignment": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponse"
+        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1494,7 +1557,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponse": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1529,7 +1592,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemData",
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1539,7 +1602,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemData": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1549,7 +1612,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemDataCreatedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1567,7 +1630,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemDataLastModifiedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1583,7 +1646,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemDataLastModifiedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1615,7 +1678,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentResponseSystemDataCreatedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1647,7 +1710,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1687,10 +1750,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignments": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentsRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -1700,10 +1763,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all guest configuration assignments for an ARC machine.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.guestconfiguration#GuestConfigurationAssignmentList": {
@@ -1885,7 +1955,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentsRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1911,16 +1981,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the ARC machine."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRG": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRGRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -1930,13 +2006,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all guest configuration assignments for a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRGRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1954,16 +2037,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentsReport": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentsReportRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -1979,7 +2068,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentsReportRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2027,10 +2116,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsReports": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -2046,7 +2135,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2086,10 +2175,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignment": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2105,7 +2194,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2376,13 +2465,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignment": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse"
+        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2395,7 +2484,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2430,7 +2519,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData",
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -2440,7 +2529,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -2450,7 +2539,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemDataCreatedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -2468,7 +2557,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemDataLastModifiedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -2484,7 +2573,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemDataLastModifiedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2516,7 +2605,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemDataCreatedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2548,7 +2637,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2588,10 +2677,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignments": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -2601,13 +2690,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all guest configuration assignments for an ARC machine.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2633,16 +2729,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the virtual machine."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReport": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGetRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -2658,7 +2760,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2706,10 +2808,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReports": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -2725,7 +2827,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2765,10 +2867,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignment": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2784,7 +2886,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3055,13 +3157,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignment": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponse"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3074,7 +3176,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponse": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3109,7 +3211,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemData",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -3119,7 +3221,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemData": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -3129,7 +3231,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemDataCreatedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -3147,7 +3249,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemDataLastModifiedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -3163,7 +3265,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemDataLastModifiedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3195,7 +3297,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponseSystemDataCreatedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3227,7 +3329,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3267,10 +3369,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignments": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -3280,13 +3382,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all guest configuration assignments for a virtual machine.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3312,16 +3421,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the virtual machine."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportsVMSS": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportsVMSSRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGetRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -3337,7 +3452,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportsVMSSRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3385,10 +3500,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsVMSS": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsVMSSRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -3398,13 +3513,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all reports for the VMSS guest configuration assignment, latest report first.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsVMSSRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3438,19 +3560,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The guest configuration assignment name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSS": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponse"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3463,7 +3591,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponse": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3498,7 +3626,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemData",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -3508,7 +3636,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemData": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -3518,7 +3646,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -3536,7 +3664,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -3552,7 +3680,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3584,7 +3712,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3616,7 +3744,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSSRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3687,7 +3815,8 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The guest configuration assignment name."
+            "smithy.api#documentation": "The guest configuration assignment name.",
+            "smithy.api#required": {}
           }
         },
         "location": {
@@ -3712,12 +3841,6 @@
           "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSCreateOrUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
-          }
-        },
-        "error": {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentResponseError",
-          "traits": {
-            "smithy.api#documentation": "Error the service embeds in a 200 response, e.g. `VMSSNotSupported`."
           }
         }
       },
@@ -3885,13 +4008,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSS": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponse"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3904,7 +4027,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponse": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3916,7 +4039,8 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The guest configuration assignment name."
+            "smithy.api#documentation": "The guest configuration assignment name.",
+            "smithy.api#required": {}
           }
         },
         "location": {
@@ -3938,15 +4062,9 @@
           }
         },
         "systemData": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemData",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
-          }
-        },
-        "error": {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentResponseError",
-          "traits": {
-            "smithy.api#documentation": "Error the service embeds in a 200 response, e.g. `VMSSNotSupported`."
           }
         }
       },
@@ -3954,7 +4072,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemData": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -3964,7 +4082,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -3982,7 +4100,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType",
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -3998,7 +4116,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemDataLastModifiedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -4030,7 +4148,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSResponseSystemDataCreatedByType": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -4062,7 +4180,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSSRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4102,10 +4220,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsVMSS": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsVMSSRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -4115,13 +4233,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all guest configuration assignments for VMSS.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsVMSSRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4147,16 +4272,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the virtual machine scale set."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsSubscription": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsSubscriptionRequest"
+        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -4166,13 +4297,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all guest configuration assignments for a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsSubscriptionRequest": {
+    "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4182,16 +4320,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#ListOperations": {
+    "com.azure.guestconfiguration#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.guestconfiguration#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#OperationList"
@@ -4201,10 +4345,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.GuestConfiguration/operations",
           "code": 200,
-          "apiVersion": "2024-04-05"
+          "apiVersion": "2024-04-05",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-04-05"
+        "com.distilled.openapi#apiVersion": "2024-04-05",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.guestconfiguration#OperationList": {
@@ -4306,115 +4457,109 @@
         "smithy.api#documentation": "Provider, Resource, Operation, and description values."
       }
     },
+    "com.azure.guestconfiguration#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.guestconfiguration#Guestconfiguration": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignmentReport"
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignmentReports"
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsList"
         },
         {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationHCRPAssignment"
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDelete"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationHCRPAssignment"
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationHCRPAssignments"
+          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsList"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRG"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGList"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentsReport"
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsReports"
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList"
         },
         {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignment"
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDelete"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignment"
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignments"
+          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsList"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReport"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReports"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsList"
         },
         {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignment"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsDelete"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignment"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignments"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsList"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportsVMSS"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsVMSS"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSList"
         },
         {
-          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentsVMSS"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDelete"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentsVMSS"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGet"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsVMSS"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSList"
         },
         {
-          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsSubscription"
+          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionList"
         },
         {
-          "target": "com.azure.guestconfiguration#ListOperations"
+          "target": "com.azure.guestconfiguration#OperationsList"
         }
       ],
       "traits": {
         "smithy.api#title": "Azure Guestconfiguration",
         "smithy.api#documentation": "Azure Guestconfiguration API — merged from the guestconfiguration resource-manager specs (latest stable api-version per resource provider)."
-      }
-    },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentResponseError": {
-      "type": "structure",
-      "members": {
-        "code": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error code, e.g. `VMSSNotSupported`."
-          }
-        },
-        "message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Error the service embeds in a 200 response it could not fulfil."
       }
     }
   }

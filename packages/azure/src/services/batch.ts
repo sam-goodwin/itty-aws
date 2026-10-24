@@ -1827,6 +1827,8 @@ export interface ListApplicationRequest {
   accountName: string;
   /** The maximum number of items to return in the response. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
@@ -1867,6 +1869,8 @@ export interface ListApplicationPackageRequest {
   applicationName: string;
   /** The maximum number of items to return in the response. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type ApplicationPackageTagsMap = { [key: string]: string | undefined };
@@ -1899,6 +1903,8 @@ export interface ListApplicationPackagesResult {
 export interface ListBatchAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BatchAccountTagsMap = { [key: string]: string | undefined };
@@ -1935,6 +1941,8 @@ export interface ListBatchAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBatchAccountDetectorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1943,6 +1951,8 @@ export interface ListBatchAccountDetectorsRequest {
   resourceGroupName: string;
   /** A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type DetectorResponseTagsMap = { [key: string]: string | undefined };
@@ -1979,6 +1989,8 @@ export interface ListBatchAccountOutboundNetworkDependenciesEndpointsRequest {
   resourceGroupName: string;
   /** A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Details about the connection between the Batch service and the endpoint. */
 export interface EndpointDetail {
@@ -2023,6 +2035,8 @@ export interface ListLocationSupportedVirtualMachineSkusRequest {
   maxresults?: number;
   /** OData filter expression. Valid properties for filtering are "familyName". */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A SKU capability, such as the number of cores. */
 export interface SkuCapability {
@@ -2060,6 +2074,8 @@ export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   resourceGroupName: string;
   /** A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Network security perimeter (NSP) configuration resource */
 export interface NetworkSecurityPerimeterConfigurationListResultValueItem {
@@ -2083,7 +2099,10 @@ export interface NetworkSecurityPerimeterConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that describes the operation. */
 export interface OperationDisplay {
   /** Friendly name of the resource provider. */
@@ -2130,6 +2149,8 @@ export interface ListPoolByBatchAccountRequest {
   _select?: string;
   /** OData filter expression. Valid properties for filtering are: name properties/allocationState properties/allocationStateTransitionTime properties/creationTime properties/provisioningState properties/provisioningStateTransitionTime properties/lastModified properties/vmSize properties/interNodeCommunication properties/scaleSettings/autoScale properties/scaleSettings/fixedScale */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type PoolTagsMap = { [key: string]: string | undefined };
@@ -2170,6 +2191,8 @@ export interface ListPrivateEndpointConnectionByBatchAccountRequest {
   accountName: string;
   /** The maximum number of items to return in the response. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type ListPrivateEndpointConnectionsResultValueList = Array<PrivateEndpointConnection>;
@@ -2189,6 +2212,8 @@ export interface ListPrivateLinkResourceByBatchAccountRequest {
   accountName: string;
   /** The maximum number of items to return in the response. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type PrivateLinkResourceTagsMap = { [key: string]: string | undefined };
@@ -2805,87 +2830,123 @@ export const GetPrivateLinkResource: API.OperationMethod<
 
 export type ListApplicationError = AzureOpError;
 /** Lists all of the applications in the specified account. */
-export const ListApplication: API.OperationMethod<
+export const ListApplication: API.PaginatedOperationMethod<
   ListApplicationRequest,
   ListApplicationsResult,
   ListApplicationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(800, __c25, 0) as any as S.Schema<ListApplicationRequest>,
   output: __S(802, __c25, 2) as any as S.Schema<ListApplicationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationPackageError = AzureOpError;
 /** Lists all of the application packages in the specified application. */
-export const ListApplicationPackage: API.OperationMethod<
+export const ListApplicationPackage: API.PaginatedOperationMethod<
   ListApplicationPackageRequest,
   ListApplicationPackagesResult,
   ListApplicationPackageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationPackage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(832, __c26, 0) as any as S.Schema<ListApplicationPackageRequest>,
   output: __S(834, __c26, 2) as any as S.Schema<ListApplicationPackagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBatchAccountError = AzureOpError;
 /** Gets information about the Batch accounts associated with the subscription. */
-export const ListBatchAccount: API.OperationMethod<
+export const ListBatchAccount: API.PaginatedOperationMethod<
   ListBatchAccountRequest,
   BatchAccountListResult,
   ListBatchAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(864, __c27, 0) as any as S.Schema<ListBatchAccountRequest>,
   output: __S(897, __c28, 1) as any as S.Schema<BatchAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBatchAccountByResourceGroupError = AzureOpError;
 /** Gets information about the Batch accounts associated with the specified resource group. */
-export const ListBatchAccountByResourceGroup: API.OperationMethod<
+export const ListBatchAccountByResourceGroup: API.PaginatedOperationMethod<
   ListBatchAccountByResourceGroupRequest,
   BatchAccountListResult,
   ListBatchAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c29, 0) as any as S.Schema<ListBatchAccountByResourceGroupRequest>,
   output: __S(897, __c28, 1) as any as S.Schema<BatchAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBatchAccountDetectorsError = AzureOpError;
 /** Gets information about the detectors available for a given Batch account. */
-export const ListBatchAccountDetectors: API.OperationMethod<
+export const ListBatchAccountDetectors: API.PaginatedOperationMethod<
   ListBatchAccountDetectorsRequest,
   DetectorListResult,
   ListBatchAccountDetectorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DetectorResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(960, __c30, 0) as any as S.Schema<ListBatchAccountDetectorsRequest>,
   output: __S(962, __c30, 2) as any as S.Schema<DetectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBatchAccountOutboundNetworkDependenciesEndpointsError = AzureOpError;
 /** Lists the endpoints that a Batch Compute Node under this Batch Account may call as part of Batch service administration. If you are deploying a Pool inside of a virtual network that you specify, you must make sure your network allows outbound access to these endpoints. Failure to allow access to these endpoints may cause Batch to mark the affected nodes as unusable. For more information about creating a pool inside of a virtual network, see https://learn.microsoft.com/azure/batch/batch-virtual-network. */
-export const ListBatchAccountOutboundNetworkDependenciesEndpoints: API.OperationMethod<
+export const ListBatchAccountOutboundNetworkDependenciesEndpoints: API.PaginatedOperationMethod<
   ListBatchAccountOutboundNetworkDependenciesEndpointsRequest,
   OutboundEnvironmentEndpointCollection,
   ListBatchAccountOutboundNetworkDependenciesEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundEnvironmentEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     992,
     __c31,
@@ -2895,97 +2956,145 @@ export const ListBatchAccountOutboundNetworkDependenciesEndpoints: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocationSupportedVirtualMachineSkusError = AzureOpError;
 /** Gets the list of Batch supported Virtual Machine VM sizes available at the given location. */
-export const ListLocationSupportedVirtualMachineSkus: API.OperationMethod<
+export const ListLocationSupportedVirtualMachineSkus: API.PaginatedOperationMethod<
   ListLocationSupportedVirtualMachineSkusRequest,
   SupportedSkusResult,
   ListLocationSupportedVirtualMachineSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SupportedSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c32, 0) as any as S.Schema<ListLocationSupportedVirtualMachineSkusRequest>,
   output: __S(1029, __c32, 5) as any as S.Schema<SupportedSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterConfigurationsError = AzureOpError;
 /** Lists all of the NSP configurations in the specified account. */
-export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
+export const ListNetworkSecurityPerimeterConfigurations: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterConfigurationsRequest,
   NetworkSecurityPerimeterConfigurationListResult,
   ListNetworkSecurityPerimeterConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeterConfigurationListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1120, __c35, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
   output: __S(1122, __c35, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists available operations for the Microsoft.Batch provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1152, __c36, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1156, __c36, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoolByBatchAccountError = AzureOpError;
 /** Lists all of the pools in the specified account. */
-export const ListPoolByBatchAccount: API.OperationMethod<
+export const ListPoolByBatchAccount: API.PaginatedOperationMethod<
   ListPoolByBatchAccountRequest,
   ListPoolsResult,
   ListPoolByBatchAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Pool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<ListPoolByBatchAccountRequest>,
   output: __S(1186, __c37, 2) as any as S.Schema<ListPoolsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByBatchAccountError = AzureOpError;
 /** Lists all of the private endpoint connections in the specified account. */
-export const ListPrivateEndpointConnectionByBatchAccount: API.OperationMethod<
+export const ListPrivateEndpointConnectionByBatchAccount: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByBatchAccountRequest,
   ListPrivateEndpointConnectionsResult,
   ListPrivateEndpointConnectionByBatchAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c38, 0) as any as S.Schema<ListPrivateEndpointConnectionByBatchAccountRequest>,
   output: __S(1217, __c38, 1) as any as S.Schema<ListPrivateEndpointConnectionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByBatchAccountError = AzureOpError;
 /** Lists all of the private link resources in the specified account. */
-export const ListPrivateLinkResourceByBatchAccount: API.OperationMethod<
+export const ListPrivateLinkResourceByBatchAccount: API.PaginatedOperationMethod<
   ListPrivateLinkResourceByBatchAccountRequest,
   ListPrivateLinkResourcesResult,
   ListPrivateLinkResourceByBatchAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1248, __c39, 0) as any as S.Schema<ListPrivateLinkResourceByBatchAccountRequest>,
   output: __S(1250, __c39, 2) as any as S.Schema<ListPrivateLinkResourcesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type NetworkSecurityPerimeterReconcileConfigurationError = AzureOpError;
 /** Reconciles the specified NSP configuration. */
@@ -3673,12 +3782,14 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationRequest" });
@@ -3703,12 +3814,14 @@ function __c26(j: number): any {
           accountName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationName}/versions",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationPackageRequest" });
@@ -3729,12 +3842,14 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/batchAccounts",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBatchAccountRequest" });
@@ -3760,12 +3875,14 @@ function __c29(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBatchAccountByResourceGroupRequest" });
@@ -3779,12 +3896,14 @@ function __c30(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/detectors",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBatchAccountDetectorsRequest" });
@@ -3807,12 +3926,14 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/outboundNetworkDependenciesEndpoints",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBatchAccountOutboundNetworkDependenciesEndpointsRequest" });
@@ -3861,12 +3982,14 @@ function __c32(j: number): any {
           locationName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/virtualMachineSkus",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocationSupportedVirtualMachineSkusRequest" });
@@ -3953,12 +4076,14 @@ function __c35(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/networkSecurityPerimeterConfigurations",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterConfigurationsRequest" });
@@ -3977,12 +4102,15 @@ function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Batch/operations",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -4027,12 +4155,14 @@ function __c37(j: number): any {
           maxresults: S.optional(S.Number.pipe(T.Query())),
           _select: S.optional(S.String.pipe(T.Query("$select"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/pools",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPoolByBatchAccountRequest" });
@@ -4056,12 +4186,14 @@ function __c38(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByBatchAccountRequest" });
@@ -4083,12 +4215,14 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/privateLinkResources",
             code: 200,
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByBatchAccountRequest" });

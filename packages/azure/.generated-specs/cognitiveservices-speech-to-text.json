@@ -15,190 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_speech_to_text#WebHooksTest": "com.azure.cognitiveservices_speech_to_text#TestWebHook",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksTestResponse": "com.azure.cognitiveservices_speech_to_text#TestWebHookResponse",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksTestRequest": "com.azure.cognitiveservices_speech_to_text#TestWebHookRequest",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksPing": "com.azure.cognitiveservices_speech_to_text#PingWebHook",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksPingResponse": "com.azure.cognitiveservices_speech_to_text#PingWebHookResponse",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksPingRequest": "com.azure.cognitiveservices_speech_to_text#PingWebHookRequest",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksDelete": "com.azure.cognitiveservices_speech_to_text#DeleteWebHook",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteWebHookRequest",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateWebHook",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateResponse": "com.azure.cognitiveservices_speech_to_text#UpdateWebHookResponse",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateWebHookRequest",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateWebHookRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksGet": "com.azure.cognitiveservices_speech_to_text#GetWebHook",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksGetResponse": "com.azure.cognitiveservices_speech_to_text#GetWebHookResponse",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksGetRequest": "com.azure.cognitiveservices_speech_to_text#GetWebHookRequest",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksCreate": "com.azure.cognitiveservices_speech_to_text#CreateWebHook",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksCreateResponse": "com.azure.cognitiveservices_speech_to_text#CreateWebHookResponse",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksCreateRequest": "com.azure.cognitiveservices_speech_to_text#CreateWebHookRequest",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksCreateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateWebHookRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksList": "com.azure.cognitiveservices_speech_to_text#ListWebHooks",
-      "com.azure.cognitiveservices_speech_to_text#WebHooksListRequest": "com.azure.cognitiveservices_speech_to_text#ListWebHooksRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetFile": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionFile",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetFileRequest": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionFileRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsListFiles": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionFiles",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsListFilesRequest": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionFilesRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmit": "com.azure.cognitiveservices_speech_to_text#SubmitTranscription",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitResponse": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionResponse",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequest": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequestContentUrlsList": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequestContentUrlsList",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsDelete": "com.azure.cognitiveservices_speech_to_text#DeleteTranscription",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteTranscriptionRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateTranscription",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateResponse": "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionResponse",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsGet": "com.azure.cognitiveservices_speech_to_text#GetTranscription",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetResponse": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionResponse",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetRequest": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsList": "com.azure.cognitiveservices_speech_to_text#ListTranscriptions",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsListRequest": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionsRequest",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsListSupportedLocales": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionSupportedLocales",
-      "com.azure.cognitiveservices_speech_to_text#TranscriptionsListSupportedLocalesRequest": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionSupportedLocalesRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListTranscriptions": "com.azure.cognitiveservices_speech_to_text#ListProjectTranscriptions",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListTranscriptionsRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectTranscriptionsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListModels": "com.azure.cognitiveservices_speech_to_text#ListProjectModels",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListModelsRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectModelsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListEndpoints": "com.azure.cognitiveservices_speech_to_text#ListProjectEndpoints",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListEndpointsRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectEndpointsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListDatasets": "com.azure.cognitiveservices_speech_to_text#ListProjectDatasets",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListDatasetsRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectDatasetsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListEvaluations": "com.azure.cognitiveservices_speech_to_text#ListProjectEvaluations",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListEvaluationsRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectEvaluationsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsDelete": "com.azure.cognitiveservices_speech_to_text#DeleteProject",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteProjectRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateProject",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateProjectRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateProjectRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsGet": "com.azure.cognitiveservices_speech_to_text#GetProject",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsGetRequest": "com.azure.cognitiveservices_speech_to_text#GetProjectRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsCreate": "com.azure.cognitiveservices_speech_to_text#CreateProject",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsCreateResponse": "com.azure.cognitiveservices_speech_to_text#CreateProjectResponse",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsCreateRequest": "com.azure.cognitiveservices_speech_to_text#CreateProjectRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsCreateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateProjectRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsList": "com.azure.cognitiveservices_speech_to_text#ListProjects",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocales": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocales",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesResponse": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesResponse",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesResponseBodyList": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesResponseBodyList",
-      "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesRequest": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetFile": "com.azure.cognitiveservices_speech_to_text#GetModelFile",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetFileRequest": "com.azure.cognitiveservices_speech_to_text#GetModelFileRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListFiles": "com.azure.cognitiveservices_speech_to_text#ListModelFiles",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListFilesRequest": "com.azure.cognitiveservices_speech_to_text#ListModelFilesRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelManifest": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelManifest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelManifestRequest": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelManifestRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelManifest": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelManifest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelManifestRequest": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelManifestRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCopy": "com.azure.cognitiveservices_speech_to_text#CopyModel",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCopyResponse": "com.azure.cognitiveservices_speech_to_text#CopyModelResponse",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCopyRequest": "com.azure.cognitiveservices_speech_to_text#CopyModelRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModel": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModel",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelResponse": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelResponse",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelRequest": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsDelete": "com.azure.cognitiveservices_speech_to_text#DeleteModel",
-      "com.azure.cognitiveservices_speech_to_text#ModelsDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteModelRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateModel",
-      "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponse": "com.azure.cognitiveservices_speech_to_text#UpdateModelResponse",
-      "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponseDatasetsList": "com.azure.cognitiveservices_speech_to_text#UpdateModelResponseDatasetsList",
-      "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponseCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateModelResponseCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ModelsUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateModelRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateModelRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModel": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModel",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponse": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponse",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponseDatasetsList": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponseDatasetsList",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponseCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponseCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelRequest": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListBaseModels": "com.azure.cognitiveservices_speech_to_text#ListModelBaseModels",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListBaseModelsRequest": "com.azure.cognitiveservices_speech_to_text#ListModelBaseModelsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreate": "com.azure.cognitiveservices_speech_to_text#CreateModel",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponse": "com.azure.cognitiveservices_speech_to_text#CreateModelResponse",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponseDatasetsList": "com.azure.cognitiveservices_speech_to_text#CreateModelResponseDatasetsList",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponseCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateModelResponseCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequest": "com.azure.cognitiveservices_speech_to_text#CreateModelRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequestDatasetsList": "com.azure.cognitiveservices_speech_to_text#CreateModelRequestDatasetsList",
-      "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateModelRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListCustomModels": "com.azure.cognitiveservices_speech_to_text#ListModelCustomModels",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListCustomModelsRequest": "com.azure.cognitiveservices_speech_to_text#ListModelCustomModelsRequest",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocales": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocales",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesResponse": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesResponse",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesResponseBodyList": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesResponseBodyList",
-      "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesRequest": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsDelete": "com.azure.cognitiveservices_speech_to_text#DeleteEvaluation",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteEvaluationRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluation",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateResponse": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationResponse",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsGet": "com.azure.cognitiveservices_speech_to_text#GetEvaluation",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsGetResponse": "com.azure.cognitiveservices_speech_to_text#GetEvaluationResponse",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsGetRequest": "com.azure.cognitiveservices_speech_to_text#GetEvaluationRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsGetFile": "com.azure.cognitiveservices_speech_to_text#GetEvaluationFile",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsGetFileRequest": "com.azure.cognitiveservices_speech_to_text#GetEvaluationFileRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListFiles": "com.azure.cognitiveservices_speech_to_text#ListEvaluationFiles",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListFilesRequest": "com.azure.cognitiveservices_speech_to_text#ListEvaluationFilesRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsCreate": "com.azure.cognitiveservices_speech_to_text#CreateEvaluation",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateResponse": "com.azure.cognitiveservices_speech_to_text#CreateEvaluationResponse",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateRequest": "com.azure.cognitiveservices_speech_to_text#CreateEvaluationRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateEvaluationRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsList": "com.azure.cognitiveservices_speech_to_text#ListEvaluations",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListRequest": "com.azure.cognitiveservices_speech_to_text#ListEvaluationsRequest",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocales": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocales",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesResponse": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesResponse",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesResponseBodyList": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesResponseBodyList",
-      "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesRequest": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesRequest",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsDelete": "com.azure.cognitiveservices_speech_to_text#DeleteEndpoint",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteEndpointRequest",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateEndpoint",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateResponse": "com.azure.cognitiveservices_speech_to_text#UpdateEndpointResponse",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateEndpointRequest",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateEndpointRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsGet": "com.azure.cognitiveservices_speech_to_text#GetEndpoint",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsGetResponse": "com.azure.cognitiveservices_speech_to_text#GetEndpointResponse",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsGetRequest": "com.azure.cognitiveservices_speech_to_text#GetEndpointRequest",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsCreate": "com.azure.cognitiveservices_speech_to_text#CreateEndpoint",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsCreateResponse": "com.azure.cognitiveservices_speech_to_text#CreateEndpointResponse",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsCreateRequest": "com.azure.cognitiveservices_speech_to_text#CreateEndpointRequest",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsCreateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateEndpointRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsList": "com.azure.cognitiveservices_speech_to_text#ListEndpoints",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsListRequest": "com.azure.cognitiveservices_speech_to_text#ListEndpointsRequest",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocales": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocales",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesResponse": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesResponse",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesResponseBodyList": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesResponseBodyList",
-      "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesRequest": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGetFile": "com.azure.cognitiveservices_speech_to_text#GetDatasetFile",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGetFileRequest": "com.azure.cognitiveservices_speech_to_text#GetDatasetFileRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsListFiles": "com.azure.cognitiveservices_speech_to_text#ListDatasetFiles",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsListFilesRequest": "com.azure.cognitiveservices_speech_to_text#ListDatasetFilesRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocks": "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocks",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocksRequest": "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocksRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocksRequestBodyList": "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocksRequestBodyList",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsUploadBlock": "com.azure.cognitiveservices_speech_to_text#UploadDatasetBlock",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsUploadBlockRequest": "com.azure.cognitiveservices_speech_to_text#UploadDatasetBlockRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGetBlocks": "com.azure.cognitiveservices_speech_to_text#GetDatasetBlocks",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGetBlocksRequest": "com.azure.cognitiveservices_speech_to_text#GetDatasetBlocksRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsDelete": "com.azure.cognitiveservices_speech_to_text#DeleteDataset",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsDeleteRequest": "com.azure.cognitiveservices_speech_to_text#DeleteDatasetRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsUpdate": "com.azure.cognitiveservices_speech_to_text#UpdateDataset",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateResponse": "com.azure.cognitiveservices_speech_to_text#UpdateDatasetResponse",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateRequest": "com.azure.cognitiveservices_speech_to_text#UpdateDatasetRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#UpdateDatasetRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGet": "com.azure.cognitiveservices_speech_to_text#GetDataset",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGetResponse": "com.azure.cognitiveservices_speech_to_text#GetDatasetResponse",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsGetRequest": "com.azure.cognitiveservices_speech_to_text#GetDatasetRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCreate": "com.azure.cognitiveservices_speech_to_text#CreateDataset",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCreateResponse": "com.azure.cognitiveservices_speech_to_text#CreateDatasetResponse",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCreateRequest": "com.azure.cognitiveservices_speech_to_text#CreateDatasetRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsCreateRequestCustomPropertiesMap": "com.azure.cognitiveservices_speech_to_text#CreateDatasetRequestCustomPropertiesMap",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsList": "com.azure.cognitiveservices_speech_to_text#ListDatasets",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsListRequest": "com.azure.cognitiveservices_speech_to_text#ListDatasetsRequest",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsListSupportedLocales": "com.azure.cognitiveservices_speech_to_text#ListDatasetSupportedLocales",
-      "com.azure.cognitiveservices_speech_to_text#DatasetsListSupportedLocalesRequest": "com.azure.cognitiveservices_speech_to_text#ListDatasetSupportedLocalesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.cognitiveservices_speech_to_text#TranscriptionsTranscribe": {
@@ -405,13 +222,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksTest": {
+    "com.azure.cognitiveservices_speech_to_text#TestWebHook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksTestRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#TestWebHookRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksTestResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#TestWebHookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -427,7 +244,7 @@
         "smithy.api#documentation": "Sends a request for each registered event type to the registered URL.\n\nThe payload will be generated from the last entity that would have invoked the web hook. If no entity is present for none of the registered event types,\nthe POST will respond with 204. If a test request can be made, it will respond with 200.\nThe request will contain a X-MicrosoftSpeechServices-Event header with the respective registered event type.\nIf the web hook was registered with a secret it will contain a X-MicrosoftSpeechServices-Signature header with an SHA256 hash of the payload with\nthe secret as HMAC key. The hash is base64 encoded."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksTestResponse": {
+    "com.azure.cognitiveservices_speech_to_text#TestWebHookResponse": {
       "type": "structure",
       "members": {
         "retryAfter": {
@@ -442,7 +259,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksTestRequest": {
+    "com.azure.cognitiveservices_speech_to_text#TestWebHookRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -466,13 +283,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksPing": {
+    "com.azure.cognitiveservices_speech_to_text#PingWebHook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksPingRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#PingWebHookRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksPingResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#PingWebHookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -488,7 +305,7 @@
         "smithy.api#documentation": "Sends a ping event to the registered URL.\n\nThe request body of the POST request sent to the registered web hook URL is of the same shape as in the GET request for a specific hook.\nThe Swagger Schema ID of the model is WebHookV3.\n            \nThe request will contain a X-MicrosoftSpeechServices-Event header with the value ping. If the web hook was registered with\na secret it will contain a X-MicrosoftSpeechServices-Signature header with an SHA256 hash of the payload with\nthe secret as HMAC key. The hash is base64 encoded."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksPingResponse": {
+    "com.azure.cognitiveservices_speech_to_text#PingWebHookResponse": {
       "type": "structure",
       "members": {
         "retryAfter": {
@@ -503,7 +320,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksPingRequest": {
+    "com.azure.cognitiveservices_speech_to_text#PingWebHookRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -527,10 +344,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteWebHook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteWebHookRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -549,7 +366,7 @@
         "smithy.api#documentation": "Deletes the web hook identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteWebHookRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -573,13 +390,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateWebHook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateWebHookRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateWebHookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -595,7 +412,7 @@
         "smithy.api#documentation": "Updates the web hook identified by the given ID.\n\nIf the property secret in the configuration is omitted or contains an empty string, future callbacks won't contain X-MicrosoftSpeechServices-Signature\nheaders. If the property contains a non-empty string, it will be used to create a SHA256 hash of the payload with the secret as HMAC key. This hash\nwill be set as X-MicrosoftSpeechServices-Signature header when calling back into the registered URL.\n            \nIf the URL changes,  the web hook will stop receiving events until a\nchallenge/response is completed. To do this, a request with the event type challenge will be made with a query parameter called validationToken.\nRespond to the challenge with a 200 OK containing the value of the validationToken query parameter as the response body. When the challenge/response\nis successfully completed, the web hook will begin receiving events."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateWebHookResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -843,7 +660,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateWebHookRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -881,7 +698,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateWebHookRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -910,7 +727,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateWebHookRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -922,13 +739,13 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksGet": {
+    "com.azure.cognitiveservices_speech_to_text#GetWebHook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksGetRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetWebHookRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksGetResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetWebHookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -944,7 +761,7 @@
         "smithy.api#documentation": "Gets the web hook identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksGetResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetWebHookResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -1018,7 +835,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksGetRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetWebHookRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1042,13 +859,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksCreate": {
+    "com.azure.cognitiveservices_speech_to_text#CreateWebHook": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateWebHookRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateWebHookResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1064,7 +881,7 @@
         "smithy.api#documentation": "Creates a new web hook.\n\nIf the property secret in the configuration is present and contains a non-empty string, it will be used to create a SHA256 hash of the payload with\nthe secret as HMAC key. This hash will be set as X-MicrosoftSpeechServices-Signature header when calling back into the registered URL.\n            \nWhen calling back into the registered URL, the request will contain a X-MicrosoftSpeechServices-Event header containing one of the registered event\ntypes. There will be one request per registered event type.\n            \nAfter successfully registering the web hook, it will not be usable until a challenge/response is completed. To do this, a request with the event type\nchallenge will be made with a query parameter called validationToken. Respond to the challenge with a 200 OK containing the value of the validationToken\nquery parameter as the response body. When the challenge/response is successfully completed, the web hook will begin receiving events."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksCreateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CreateWebHookResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -1138,7 +955,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksCreateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CreateWebHookRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1163,7 +980,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksCreateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateWebHookRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -1202,7 +1019,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksCreateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateWebHookRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1214,10 +1031,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksList": {
+    "com.azure.cognitiveservices_speech_to_text#ListWebHooks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#WebHooksListRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListWebHooksRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedWebHooks"
@@ -1231,9 +1048,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of web hooks for the authenticated subscription."
+        "smithy.api#documentation": "Gets the list of web hooks for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedWebHooks": {
@@ -1336,7 +1160,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#WebHooksListRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListWebHooksRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1367,16 +1191,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available hooks.\r\n            Supported properties: displayName, description, createdDateTime, lastActionDateTime, status and webUrl.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=displayName eq 'test'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetFile": {
+    "com.azure.cognitiveservices_speech_to_text#GetTranscriptionFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetFileRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#File"
@@ -1532,7 +1362,7 @@
         "smithy.api#documentation": "Type of data."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetFileRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetTranscriptionFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1571,10 +1401,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsListFiles": {
+    "com.azure.cognitiveservices_speech_to_text#ListTranscriptionFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsListFilesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionFilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedFiles"
@@ -1588,9 +1418,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the files of the transcription identified by the given ID."
+        "smithy.api#documentation": "Gets the files of the transcription identified by the given ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedFiles": {
@@ -1628,7 +1465,7 @@
         "smithy.api#documentation": "A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values.\n            \nWhen iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results.\nIt's recommended to build a list on the client and delete after the fetching of the complete list."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsListFilesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListTranscriptionFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1674,19 +1511,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available files.\r\n            - Supported properties: name, createdDateTime, kind.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=name eq 'myaudio.wav.json' and kind eq 'Transcription'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmit": {
+    "com.azure.cognitiveservices_speech_to_text#SubmitTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1702,7 +1545,7 @@
         "smithy.api#documentation": "Submits a new transcription job."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitResponse": {
+    "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -2052,7 +1895,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequest": {
+    "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2077,7 +1920,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -2090,7 +1933,7 @@
           }
         },
         "contentUrls": {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequestContentUrlsList",
+          "target": "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequestContentUrlsList",
           "traits": {
             "smithy.api#documentation": "A list of content urls to get audio files to transcribe. Up to 1000 urls are allowed.\nThis property will not be returned in a response."
           }
@@ -2179,7 +2022,7 @@
         "smithy.api#documentation": "A collection of the requested channel numbers.\nIn the default case, the channels 0 and 1 are considered."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequestContentUrlsList": {
+    "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequestContentUrlsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2188,7 +2031,7 @@
         "smithy.api#documentation": "A list of content urls to get audio files to transcribe. Up to 1000 urls are allowed.\nThis property will not be returned in a response."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmitRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#SubmitTranscriptionRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2200,10 +2043,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteTranscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2222,7 +2065,7 @@
         "smithy.api#documentation": "Deletes the specified transcription task."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2246,13 +2089,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2268,7 +2111,7 @@
         "smithy.api#documentation": "Updates the mutable details of the transcription identified by its ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -2360,7 +2203,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2395,7 +2238,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -2405,7 +2248,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateTranscriptionRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2417,13 +2260,13 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsGet": {
+    "com.azure.cognitiveservices_speech_to_text#GetTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2439,7 +2282,7 @@
         "smithy.api#documentation": "Gets the transcription identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetTranscriptionResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -2531,7 +2374,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2555,10 +2398,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsList": {
+    "com.azure.cognitiveservices_speech_to_text#ListTranscriptions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsListRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedTranscriptions"
@@ -2572,9 +2415,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of transcriptions for the authenticated subscription."
+        "smithy.api#documentation": "Gets a list of transcriptions for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedTranscriptions": {
@@ -2695,7 +2545,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsListRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListTranscriptionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2726,16 +2576,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available transcriptions.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=createdDateTime gt 2022-02-01T11:00:00Z"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsListSupportedLocales": {
+    "com.azure.cognitiveservices_speech_to_text#ListTranscriptionSupportedLocales": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsListSupportedLocalesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionSupportedLocalesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionLocales"
@@ -2780,7 +2636,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#TranscriptionsListSupportedLocalesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListTranscriptionSupportedLocalesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2796,10 +2652,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListTranscriptions": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectTranscriptions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListTranscriptionsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectTranscriptionsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedTranscriptions"
@@ -2813,12 +2669,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of transcriptions for specified project."
+        "smithy.api#documentation": "Gets the list of transcriptions for specified project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListTranscriptionsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectTranscriptionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2857,16 +2720,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available transcriptions.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=createdDateTime gt 2022-02-01T11:00:00Z"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListModels": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListModelsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectModelsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedCustomModels"
@@ -2880,9 +2749,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of models for specified project."
+        "smithy.api#documentation": "Gets the list of models for specified project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedCustomModels": {
@@ -3136,7 +3012,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListModelsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3175,16 +3051,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available models.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n              - Operators:\r\n                - eq, ne are supported for all properties.\r\n                - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n                - and, or, not are supported.\r\n            - Example:\r\n              filter=status eq 'NotStarted' or status eq 'Running'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListEndpoints": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListEndpointsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectEndpointsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedEndpoints"
@@ -3198,9 +3080,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of endpoints for specified project."
+        "smithy.api#documentation": "Gets the list of endpoints for specified project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedEndpoints": {
@@ -3342,7 +3231,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListEndpointsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectEndpointsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3381,16 +3270,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available endpoints.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=locale eq 'en-US'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListDatasets": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectDatasets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListDatasetsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectDatasetsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedDatasets"
@@ -3404,9 +3299,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of datasets for specified project."
+        "smithy.api#documentation": "Gets the list of datasets for specified project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedDatasets": {
@@ -3654,7 +3556,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListDatasetsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectDatasetsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3693,16 +3595,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available datasets.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale, kind.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=createdDateTime gt 2022-02-01T11:00:00Z"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListEvaluations": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectEvaluations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListEvaluationsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectEvaluationsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedEvaluations"
@@ -3716,9 +3624,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of evaluations for specified project."
+        "smithy.api#documentation": "Gets the list of evaluations for specified project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedEvaluations": {
@@ -4088,7 +4003,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListEvaluationsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectEvaluationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4127,16 +4042,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available evaluations.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status and locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example\r\n              filter=displayName eq 'My evaluation'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4155,7 +4076,7 @@
         "smithy.api#documentation": "Deletes the project identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4179,10 +4100,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#Project"
@@ -4302,7 +4223,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4334,7 +4255,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateProjectRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -4350,7 +4271,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateProjectRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4362,10 +4283,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsGet": {
+    "com.azure.cognitiveservices_speech_to_text#GetProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsGetRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#Project"
@@ -4384,7 +4305,7 @@
         "smithy.api#documentation": "Gets the project identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsGetRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4408,13 +4329,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsCreate": {
+    "com.azure.cognitiveservices_speech_to_text#CreateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateProjectRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4430,7 +4351,7 @@
         "smithy.api#documentation": "Creates a new project."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsCreateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CreateProjectResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -4492,7 +4413,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsCreateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CreateProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4517,7 +4438,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsCreateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateProjectRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -4540,7 +4461,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsCreateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateProjectRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4552,10 +4473,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsList": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedProjects"
@@ -4569,9 +4490,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of projects for the authenticated subscription."
+        "smithy.api#documentation": "Gets the list of projects for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedProjects": {
@@ -4602,7 +4530,7 @@
         "smithy.api#documentation": "A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values.\n            \nWhen iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results.\nIt's recommended to build a list on the client and delete after the fetching of the complete list."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4633,19 +4561,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available projects.\r\n            - Supported properties: displayName, description, createdDateTime, locale, foundryProjectName.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=displayName eq 'My test'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocales": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocales": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4661,11 +4595,11 @@
         "smithy.api#documentation": "Gets the list of supported locales."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesResponse": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesResponseBodyList",
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4676,14 +4610,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesResponseBodyList": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocalesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocalesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4804,10 +4738,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetFile": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetFileRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#File"
@@ -4826,7 +4760,7 @@
         "smithy.api#documentation": "Gets one specific file (identified with fileId) from a model (identified with id)."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetFileRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4865,10 +4799,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListFiles": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsListFilesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListModelFilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedFiles"
@@ -4882,12 +4816,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the files of the model identified by the given ID."
+        "smithy.api#documentation": "Gets the files of the model identified by the given ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListFilesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4933,16 +4874,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available files.\r\n            - Supported properties: name, createdDateTime, kind.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=name eq 'myaudio.wav' and kind eq 'Audio'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelManifest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelManifest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelManifestRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelManifestRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#ModelManifest"
@@ -5026,7 +4973,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelManifestRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelManifestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5058,10 +5005,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelManifest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelManifest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelManifestRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelManifestRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#ModelManifest"
@@ -5080,7 +5027,7 @@
         "smithy.api#documentation": "Returns an manifest for this model which can be used in an on-premise container."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelManifestRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelManifestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5205,13 +5152,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCopy": {
+    "com.azure.cognitiveservices_speech_to_text#CopyModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsCopyRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CopyModelRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsCopyResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CopyModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5227,7 +5174,7 @@
         "smithy.api#documentation": "Copies a model from one subscription to another.\n\nThis method can be used to copy a model from this speech resource to a target one.\nThe authorization is obtained on the target speech resource.\nOnly custom models can be copied to another speech resource."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCopyResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CopyModelResponse": {
       "type": "structure",
       "members": {
         "retryAfter": {
@@ -5249,7 +5196,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCopyRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CopyModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5308,13 +5255,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModel": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelBaseModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5330,7 +5277,7 @@
         "smithy.api#documentation": "Gets the base model identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -5495,7 +5442,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5519,10 +5466,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteModelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5541,7 +5488,7 @@
         "smithy.api#documentation": "Deletes the model identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5565,13 +5512,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateModelRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5587,7 +5534,7 @@
         "smithy.api#documentation": "Updates the metadata of the model identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateModelResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -5632,7 +5579,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#Status"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponseCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateModelResponseCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -5641,7 +5588,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "datasets": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponseDatasetsList",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateModelResponseDatasetsList",
           "traits": {
             "smithy.api#documentation": "Datasets used for adaptation."
           }
@@ -5667,7 +5614,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponseDatasetsList": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateModelResponseDatasetsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
@@ -5676,7 +5623,7 @@
         "smithy.api#documentation": "Datasets used for adaptation."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsUpdateResponseCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateModelResponseCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5688,7 +5635,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5723,7 +5670,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateModelRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -5733,7 +5680,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateModelRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5745,13 +5692,13 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModel": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5767,7 +5714,7 @@
         "smithy.api#documentation": "Gets the model identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -5812,7 +5759,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#Status"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponseCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponseCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -5821,7 +5768,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "datasets": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponseDatasetsList",
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponseDatasetsList",
           "traits": {
             "smithy.api#documentation": "Datasets used for adaptation."
           }
@@ -5847,7 +5794,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponseDatasetsList": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponseDatasetsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
@@ -5856,7 +5803,7 @@
         "smithy.api#documentation": "Datasets used for adaptation."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelResponseCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelResponseCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5868,7 +5815,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5892,10 +5839,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListBaseModels": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelBaseModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsListBaseModelsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListModelBaseModelsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedBaseModels"
@@ -5909,9 +5856,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of base models for the authenticated subscription."
+        "smithy.api#documentation": "Gets the list of base models for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_to_text#PaginatedBaseModels": {
@@ -5995,7 +5949,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListBaseModelsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelBaseModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6026,19 +5980,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available base models.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=status eq 'NotStarted' or status eq 'Running'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreate": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateModelRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6054,7 +6014,7 @@
         "smithy.api#documentation": "Creates a new model."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModelResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -6099,7 +6059,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#Status"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponseCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateModelResponseCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -6108,7 +6068,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "datasets": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponseDatasetsList",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateModelResponseDatasetsList",
           "traits": {
             "smithy.api#documentation": "Datasets used for adaptation."
           }
@@ -6134,7 +6094,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponseDatasetsList": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModelResponseDatasetsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
@@ -6143,7 +6103,7 @@
         "smithy.api#documentation": "Datasets used for adaptation."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreateResponseCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModelResponseCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6155,7 +6115,7 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6187,7 +6147,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateModelRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -6196,7 +6156,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "datasets": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequestDatasetsList",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateModelRequestDatasetsList",
           "traits": {
             "smithy.api#documentation": "Datasets used for adaptation."
           }
@@ -6224,7 +6184,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequestDatasetsList": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModelRequestDatasetsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
@@ -6233,7 +6193,7 @@
         "smithy.api#documentation": "Datasets used for adaptation."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsCreateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateModelRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6245,10 +6205,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListCustomModels": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelCustomModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsListCustomModelsRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListModelCustomModelsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedCustomModels"
@@ -6262,12 +6222,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of custom models for the authenticated subscription."
+        "smithy.api#documentation": "Gets the list of custom models for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListCustomModelsRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelCustomModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6298,19 +6265,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available models.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=status eq 'NotStarted' or status eq 'Running'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocales": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocales": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6326,11 +6299,11 @@
         "smithy.api#documentation": "Gets a list of supported locales for model adaptation."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesResponse": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesResponseBodyList",
+          "target": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6341,14 +6314,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesResponseBodyList": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocalesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocalesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6364,10 +6337,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteEvaluationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6386,7 +6359,7 @@
         "smithy.api#documentation": "Deletes the evaluation identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteEvaluationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6410,13 +6383,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6432,7 +6405,7 @@
         "smithy.api#documentation": "Updates the mutable details of the evaluation identified by its id."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationResponse": {
       "type": "structure",
       "members": {
         "displayName": {
@@ -6527,7 +6500,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6562,7 +6535,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -6572,7 +6545,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEvaluationRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6584,13 +6557,13 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsGet": {
+    "com.azure.cognitiveservices_speech_to_text#GetEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsGetRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetEvaluationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsGetResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetEvaluationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6606,7 +6579,7 @@
         "smithy.api#documentation": "Gets the evaluation identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsGetResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetEvaluationResponse": {
       "type": "structure",
       "members": {
         "displayName": {
@@ -6701,7 +6674,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsGetRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetEvaluationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6725,10 +6698,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsGetFile": {
+    "com.azure.cognitiveservices_speech_to_text#GetEvaluationFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsGetFileRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetEvaluationFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#File"
@@ -6747,7 +6720,7 @@
         "smithy.api#documentation": "Gets one specific file (identified with fileId) from an evaluation (identified with id)."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsGetFileRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetEvaluationFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6786,10 +6759,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListFiles": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListFilesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationFilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedFiles"
@@ -6803,12 +6776,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the files of the evaluation identified by the given ID."
+        "smithy.api#documentation": "Gets the files of the evaluation identified by the given ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListFilesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6854,19 +6834,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available files.\r\n            - Supported properties: name, createdDateTime, kind.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=name eq 'myaudio.wav' and kind eq 'Audio'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsCreate": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEvaluation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateEvaluationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateEvaluationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6882,7 +6868,7 @@
         "smithy.api#documentation": "Creates a new evaluation."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEvaluationResponse": {
       "type": "structure",
       "members": {
         "displayName": {
@@ -6977,7 +6963,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEvaluationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7002,7 +6988,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateEvaluationRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -7046,7 +7032,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsCreateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEvaluationRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7058,10 +7044,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsList": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedEvaluations"
@@ -7075,12 +7061,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of evaluations for the authenticated subscription."
+        "smithy.api#documentation": "Gets the list of evaluations for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7111,19 +7104,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available evaluations.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status and locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=displayName eq 'My evaluation'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocales": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocales": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7139,11 +7138,11 @@
         "smithy.api#documentation": "Gets a list of supported locales for evaluations."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesResponse": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesResponseBodyList",
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -7154,14 +7153,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesResponseBodyList": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocalesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocalesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7177,10 +7176,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7199,7 +7198,7 @@
         "smithy.api#documentation": "Deletes the endpoint identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7223,13 +7222,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7245,7 +7244,7 @@
         "smithy.api#documentation": "Updates the metadata of the endpoint identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEndpointResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -7319,7 +7318,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7360,7 +7359,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateEndpointRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -7370,7 +7369,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateEndpointRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7394,13 +7393,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsGet": {
+    "com.azure.cognitiveservices_speech_to_text#GetEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsGetRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsGetResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7416,7 +7415,7 @@
         "smithy.api#documentation": "Gets the endpoint identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsGetResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetEndpointResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -7490,7 +7489,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsGetRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7514,13 +7513,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsCreate": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7536,7 +7535,7 @@
         "smithy.api#documentation": "Creates a new endpoint."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsCreateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEndpointResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -7610,7 +7609,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsCreateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEndpointRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7641,7 +7640,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsCreateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateEndpointRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -7673,7 +7672,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsCreateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateEndpointRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7685,10 +7684,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsList": {
+    "com.azure.cognitiveservices_speech_to_text#ListEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsListRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEndpointsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedEndpoints"
@@ -7702,12 +7701,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of endpoints for the authenticated subscription."
+        "smithy.api#documentation": "Gets the list of endpoints for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsListRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListEndpointsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7738,19 +7744,25 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available endpoints.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=locale eq 'en-US'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocales": {
+    "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocales": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7766,11 +7778,11 @@
         "smithy.api#documentation": "Gets a list of supported locales for endpoint creations."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesResponse": {
+    "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesResponseBodyList",
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -7781,14 +7793,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesResponseBodyList": {
+    "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocalesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocalesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7804,10 +7816,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGetFile": {
+    "com.azure.cognitiveservices_speech_to_text#GetDatasetFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGetFileRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetDatasetFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#File"
@@ -7826,7 +7838,7 @@
         "smithy.api#documentation": "Gets one specific file (identified with fileId) from a dataset (identified with id)."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGetFileRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetDatasetFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7865,10 +7877,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsListFiles": {
+    "com.azure.cognitiveservices_speech_to_text#ListDatasetFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsListFilesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListDatasetFilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedFiles"
@@ -7882,12 +7894,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the files of the dataset identified by the given ID."
+        "smithy.api#documentation": "Gets the files of the dataset identified by the given ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsListFilesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListDatasetFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7933,16 +7952,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available files.\r\n            - Supported properties: name, createdDateTime, kind.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime.\r\n              - and, or, not are supported.\r\n            - Example:\r\n              filter=name eq 'myaudio.wav' and kind eq 'Audio'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocks": {
+    "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocksRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocksRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7961,7 +7986,7 @@
         "smithy.api#documentation": "Commit block list to complete the upload of the dataset."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocksRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocksRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7981,7 +8006,7 @@
           }
         },
         "body": {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocksRequestBodyList",
+          "target": "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocksRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -7992,7 +8017,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocksRequestBodyList": {
+    "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocksRequestBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_speech_to_text#CommitBlocksEntry"
@@ -8039,10 +8064,10 @@
         "smithy.api#documentation": "Type of data block."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsUploadBlock": {
+    "com.azure.cognitiveservices_speech_to_text#UploadDatasetBlock": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsUploadBlockRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UploadDatasetBlockRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8061,7 +8086,7 @@
         "smithy.api#documentation": "Upload a block of data for the dataset. The maximum size of the block is 8MiB."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsUploadBlockRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UploadDatasetBlockRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8100,10 +8125,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGetBlocks": {
+    "com.azure.cognitiveservices_speech_to_text#GetDatasetBlocks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGetBlocksRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetDatasetBlocksRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#UploadedBlocks"
@@ -8187,7 +8212,7 @@
         "smithy.api#documentation": "The block description of blocks already committed."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGetBlocksRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetDatasetBlocksRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8211,10 +8236,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsDelete": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteDataset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#DeleteDatasetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8233,7 +8258,7 @@
         "smithy.api#documentation": "Deletes the specified dataset."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsDeleteRequest": {
+    "com.azure.cognitiveservices_speech_to_text#DeleteDatasetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8257,13 +8282,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsUpdate": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateDataset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateDatasetRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#UpdateDatasetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8279,7 +8304,7 @@
         "smithy.api#documentation": "Updates the mutable details of the dataset identified by its ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateDatasetResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -8362,7 +8387,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateDatasetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8397,7 +8422,7 @@
           "target": "com.azure.cognitiveservices_speech_to_text#EntityReference"
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateDatasetRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -8407,7 +8432,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsUpdateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#UpdateDatasetRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8419,13 +8444,13 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGet": {
+    "com.azure.cognitiveservices_speech_to_text#GetDataset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGetRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetDatasetRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGetResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#GetDatasetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8441,7 +8466,7 @@
         "smithy.api#documentation": "Gets the dataset identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGetResponse": {
+    "com.azure.cognitiveservices_speech_to_text#GetDatasetResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -8524,7 +8549,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsGetRequest": {
+    "com.azure.cognitiveservices_speech_to_text#GetDatasetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8548,13 +8573,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCreate": {
+    "com.azure.cognitiveservices_speech_to_text#CreateDataset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateDatasetRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_to_text#CreateDatasetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8570,7 +8595,7 @@
         "smithy.api#documentation": "Uploads and creates a new dataset by getting the data from a specified URL or starts waiting for data blocks to be uploaded."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCreateResponse": {
+    "com.azure.cognitiveservices_speech_to_text#CreateDatasetResponse": {
       "type": "structure",
       "members": {
         "self": {
@@ -8653,7 +8678,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCreateRequest": {
+    "com.azure.cognitiveservices_speech_to_text#CreateDatasetRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8678,7 +8703,7 @@
           }
         },
         "customProperties": {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCreateRequestCustomPropertiesMap",
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateDatasetRequestCustomPropertiesMap",
           "traits": {
             "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
           }
@@ -8722,7 +8747,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsCreateRequestCustomPropertiesMap": {
+    "com.azure.cognitiveservices_speech_to_text#CreateDatasetRequestCustomPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8734,10 +8759,10 @@
         "smithy.api#documentation": "The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum\nallowed value length is 256 characters and the count of allowed entries is 10."
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsList": {
+    "com.azure.cognitiveservices_speech_to_text#ListDatasets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsListRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListDatasetsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#PaginatedDatasets"
@@ -8751,12 +8776,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-10-15"
+          "apiVersion": "2025-10-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of datasets for the authenticated subscription."
+        "smithy.api#documentation": "Gets a list of datasets for the authenticated subscription.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "values"
+        }
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsListRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListDatasetsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8787,16 +8819,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "A filtering expression for selecting a subset of the available datasets.\r\n            - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale, kind.\r\n            - Operators:\r\n              - eq, ne are supported for all properties.\r\n              - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime.\r\n              - and, or, not are supported.\r\n            -Example:\r\n             filter=createdDateTime gt 2022-02-01T11:00:00Z and displayName eq 'My dataset'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsListSupportedLocales": {
+    "com.azure.cognitiveservices_speech_to_text#ListDatasetSupportedLocales": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_to_text#DatasetsListSupportedLocalesRequest"
+        "target": "com.azure.cognitiveservices_speech_to_text#ListDatasetSupportedLocalesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_to_text#DatasetLocales"
@@ -8881,7 +8919,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speech_to_text#DatasetsListSupportedLocalesRequest": {
+    "com.azure.cognitiveservices_speech_to_text#ListDatasetSupportedLocalesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8905,202 +8943,202 @@
           "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsTranscribe"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksTest"
+          "target": "com.azure.cognitiveservices_speech_to_text#TestWebHook"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksPing"
+          "target": "com.azure.cognitiveservices_speech_to_text#PingWebHook"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteWebHook"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateWebHook"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksGet"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetWebHook"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksCreate"
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateWebHook"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#WebHooksList"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListWebHooks"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsGetFile"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetTranscriptionFile"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsListFiles"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionFiles"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsSubmit"
+          "target": "com.azure.cognitiveservices_speech_to_text#SubmitTranscription"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteTranscription"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateTranscription"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsGet"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetTranscription"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsList"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListTranscriptions"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#TranscriptionsListSupportedLocales"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListTranscriptionSupportedLocales"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListTranscriptions"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectTranscriptions"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListModels"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectModels"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListEndpoints"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectEndpoints"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListDatasets"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectDatasets"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListEvaluations"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectEvaluations"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteProject"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateProject"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsGet"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetProject"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsCreate"
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateProject"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsList"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjects"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ProjectsListSupportedLocales"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListProjectSupportedLocales"
         },
         {
           "target": "com.azure.cognitiveservices_speech_to_text#OperationsGetModelCopy"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetFile"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelFile"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsListFiles"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListModelFiles"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModelManifest"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModelManifest"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModelManifest"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModelManifest"
         },
         {
           "target": "com.azure.cognitiveservices_speech_to_text#ModelsAuthorizeCopy"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsCopy"
+          "target": "com.azure.cognitiveservices_speech_to_text#CopyModel"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetBaseModel"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelBaseModel"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteModel"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateModel"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsGetCustomModel"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetModelCustomModel"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsListBaseModels"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListModelBaseModels"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsCreate"
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateModel"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsListCustomModels"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListModelCustomModels"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#ModelsListSupportedLocales"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListModelSupportedLocales"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteEvaluation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateEvaluation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsGet"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetEvaluation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsGetFile"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetEvaluationFile"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListFiles"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationFiles"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsCreate"
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateEvaluation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsList"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluations"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EvaluationsListSupportedLocales"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEvaluationSupportedLocales"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsGet"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsCreate"
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateEndpoint"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsList"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEndpoints"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#EndpointsListSupportedLocales"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListEndpointSupportedLocales"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGetFile"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetDatasetFile"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsListFiles"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListDatasetFiles"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCommitBlocks"
+          "target": "com.azure.cognitiveservices_speech_to_text#CommitDatasetBlocks"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsUploadBlock"
+          "target": "com.azure.cognitiveservices_speech_to_text#UploadDatasetBlock"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGetBlocks"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetDatasetBlocks"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsDelete"
+          "target": "com.azure.cognitiveservices_speech_to_text#DeleteDataset"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsUpdate"
+          "target": "com.azure.cognitiveservices_speech_to_text#UpdateDataset"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsGet"
+          "target": "com.azure.cognitiveservices_speech_to_text#GetDataset"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsCreate"
+          "target": "com.azure.cognitiveservices_speech_to_text#CreateDataset"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsList"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListDatasets"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_to_text#DatasetsListSupportedLocales"
+          "target": "com.azure.cognitiveservices_speech_to_text#ListDatasetSupportedLocales"
         }
       ],
       "traits": {

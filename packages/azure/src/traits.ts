@@ -124,6 +124,12 @@ export interface HttpTrait extends CoreHttpTrait {
    * the request has `Content-Length: 0` (Service Bus answers 411 without it).
    */
   readonly emptyBody?: boolean;
+  /**
+   * Pageable operations: the input member holding a page's absolute
+   * `nextLink`. When set, the request is a GET of that URL as-is (it already
+   * carries `api-version` and skip tokens) and every other member is ignored.
+   */
+  readonly nextLink?: string;
 }
 
 /**

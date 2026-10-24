@@ -1620,7 +1620,7 @@
     "com.azure.computeschedule#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.computeschedule#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.computeschedule#ListOperationsResponse"
@@ -1630,10 +1630,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ComputeSchedule/operations",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computeschedule#ListOperationsResponse": {
@@ -1773,6 +1780,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.computeschedule#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.computeschedule#Computeschedule": {

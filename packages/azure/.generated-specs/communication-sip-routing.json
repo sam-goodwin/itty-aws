@@ -15,20 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_sip_routing#SipRoutingUpdate": "com.azure.communication_sip_routing#UpdateSipRouting",
-      "com.azure.communication_sip_routing#SipRoutingUpdateRequest": "com.azure.communication_sip_routing#UpdateSipRoutingRequest",
-      "com.azure.communication_sip_routing#SipRoutingUpdateRequestRoutesList": "com.azure.communication_sip_routing#UpdateSipRoutingRequestRoutesList",
-      "com.azure.communication_sip_routing#SipRoutingUpdateRequestTrunksMap": "com.azure.communication_sip_routing#UpdateSipRoutingRequestTrunksMap",
-      "com.azure.communication_sip_routing#SipRoutingGet": "com.azure.communication_sip_routing#GetSipRouting",
-      "com.azure.communication_sip_routing#SipRoutingGetRequest": "com.azure.communication_sip_routing#GetSipRoutingRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_sip_routing#SipRoutingUpdate": {
+    "com.azure.communication_sip_routing#UpdateSipRouting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sip_routing#SipRoutingUpdateRequest"
+        "target": "com.azure.communication_sip_routing#UpdateSipRoutingRequest"
       },
       "output": {
         "target": "com.azure.communication_sip_routing#SipConfiguration"
@@ -146,7 +139,7 @@
         "smithy.api#documentation": "Represents a SIP trunk for routing calls. See RFC 4904."
       }
     },
-    "com.azure.communication_sip_routing#SipRoutingUpdateRequest": {
+    "com.azure.communication_sip_routing#UpdateSipRoutingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -158,13 +151,13 @@
           }
         },
         "trunks": {
-          "target": "com.azure.communication_sip_routing#SipRoutingUpdateRequestTrunksMap",
+          "target": "com.azure.communication_sip_routing#UpdateSipRoutingRequestTrunksMap",
           "traits": {
             "smithy.api#documentation": "SIP trunks for routing calls.\r\nMap key is trunk's FQDN (1-249 characters)."
           }
         },
         "routes": {
-          "target": "com.azure.communication_sip_routing#SipRoutingUpdateRequestRoutesList",
+          "target": "com.azure.communication_sip_routing#UpdateSipRoutingRequestRoutesList",
           "traits": {
             "smithy.api#documentation": "Trunk routes for routing calls."
           }
@@ -174,7 +167,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_sip_routing#SipRoutingUpdateRequestRoutesList": {
+    "com.azure.communication_sip_routing#UpdateSipRoutingRequestRoutesList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_sip_routing#TrunkRoute"
@@ -183,7 +176,7 @@
         "smithy.api#documentation": "Trunk routes for routing calls."
       }
     },
-    "com.azure.communication_sip_routing#SipRoutingUpdateRequestTrunksMap": {
+    "com.azure.communication_sip_routing#UpdateSipRoutingRequestTrunksMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -209,10 +202,10 @@
         "smithy.api#documentation": "Represents a SIP trunk update."
       }
     },
-    "com.azure.communication_sip_routing#SipRoutingGet": {
+    "com.azure.communication_sip_routing#GetSipRouting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sip_routing#SipRoutingGetRequest"
+        "target": "com.azure.communication_sip_routing#GetSipRoutingRequest"
       },
       "output": {
         "target": "com.azure.communication_sip_routing#SipConfiguration"
@@ -231,7 +224,7 @@
         "smithy.api#documentation": "Gets SIP configuration for resource."
       }
     },
-    "com.azure.communication_sip_routing#SipRoutingGetRequest": {
+    "com.azure.communication_sip_routing#GetSipRoutingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -252,10 +245,10 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_sip_routing#SipRoutingUpdate"
+          "target": "com.azure.communication_sip_routing#UpdateSipRouting"
         },
         {
-          "target": "com.azure.communication_sip_routing#SipRoutingGet"
+          "target": "com.azure.communication_sip_routing#GetSipRouting"
         }
       ],
       "traits": {

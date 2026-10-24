@@ -337,6 +337,8 @@ export interface ListOperationsResponse {
 export interface ListWorkflowRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WorkflowTagsMap = { [key: string]: string | undefined };
@@ -362,7 +364,7 @@ export type WorkflowListResultValueList = Array<Workflow>;
 /** The response from List Workflows operation. */
 export interface WorkflowListResult {
   /** The list of workflows. */
-  value?: WorkflowListResultValueList;
+  value: WorkflowListResultValueList;
   /** The URL to the next set of workflow results. */
   nextLink?: string;
 }
@@ -373,6 +375,8 @@ export interface ListWorkflowByResourceGroupRequest {
   resourceGroupName: string;
   /** The ManagedCluster resource associated with the workflows. */
   managedClusterResource?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type UpdateWorkflowTagsRequestTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkflowTagsRequest {
@@ -577,33 +581,47 @@ export const ListOperations: API.OperationMethod<
 
 export type ListWorkflowError = AzureOpError;
 /** Gets a list of workflows associated with the specified subscription. */
-export const ListWorkflow: API.OperationMethod<
+export const ListWorkflow: API.PaginatedOperationMethod<
   ListWorkflowRequest,
   WorkflowListResult,
   ListWorkflowError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workflow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListWorkflowRequest>,
   output: __S(209, __c13, 1) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowByResourceGroupError = AzureOpError;
 /** Gets a list of workflows within a resource group. */
-export const ListWorkflowByResourceGroup: API.OperationMethod<
+export const ListWorkflowByResourceGroup: API.PaginatedOperationMethod<
   ListWorkflowByResourceGroupRequest,
   WorkflowListResult,
   ListWorkflowByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workflow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<ListWorkflowByResourceGroupRequest>,
   output: __S(209, __c13, 1) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateWorkflowTagsError = AzureOpError;
 /** Updates tags on a workflow. */
@@ -1026,12 +1044,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevHub/workflows",
             code: 200,
             apiVersion: "2023-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowRequest" });
@@ -1044,7 +1064,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(208, __c13, 0)),
+          value: __S(208, __c13, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowListResult" });
@@ -1058,12 +1078,14 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedClusterResource: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows",
             code: 200,
             apiVersion: "2023-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowByResourceGroupRequest" });

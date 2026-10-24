@@ -1027,10 +1027,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/volumes",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all volumes on an Edge Machine.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineVolumeListResult": {
@@ -1126,6 +1133,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1645,10 +1658,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/securitySettings",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EdgeMachineSecuritySettings by EdgeMachine",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineSecuritySettingsListResult": {
@@ -1744,6 +1764,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2637,10 +2663,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/networkAdapters/{networkAdapterName}/jobs",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all jobs for a network adapter.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineNetworkAdapterJobListResult": {
@@ -2744,6 +2777,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the EdgeMachineNetworkAdapter"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3519,10 +3558,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/networkAdapters",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all network adapters on an Edge Machine.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineNetworkAdapterListResult": {
@@ -3618,6 +3664,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4112,10 +4164,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/jobs",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EdgeMachineJob resources by EdgeMachines",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineJobListResult": {
@@ -4211,6 +4270,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4846,10 +4911,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/disks/{diskName}/privilegedJobs",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all privileged jobs for a disk.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineDiskPrivilegedJobListResult": {
@@ -4953,6 +5025,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the EdgeMachineDisk"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5465,10 +5543,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/disks/{diskName}/jobs",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all jobs for a disk.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineDiskJobListResult": {
@@ -5572,6 +5657,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the EdgeMachineDisk"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6305,10 +6396,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/disks",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all disks on an Edge Machine.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineDiskListResult": {
@@ -6404,6 +6502,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7363,10 +7467,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines/{edgeMachineName}/deploymentSettings",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Edge Machine Deployment Setting resources by Edge Machine.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineDeploymentSettingListResult": {
@@ -7462,6 +7573,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10583,10 +10700,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/edgeMachines",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all edge machines in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeMachineListResult": {
@@ -10752,6 +10876,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11373,10 +11503,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Update runs for a specified update",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#UpdateRunList": {
@@ -11486,6 +11623,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Update"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12820,10 +12963,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Updates",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#UpdateList": {
@@ -12925,6 +13075,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13630,10 +13786,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Update summaries under the HCI cluster",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#UpdateSummariesList": {
@@ -13735,6 +13898,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16011,10 +16180,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List SecuritySetting resources by Clusters",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#SecuritySettingListResult": {
@@ -16110,6 +16286,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16338,10 +16520,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers/{offerName}/skus",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Skus available for a offer within the HCI Cluster.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#SkuList": {
@@ -16460,6 +16649,12 @@
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16639,10 +16834,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/publishers/{publisherName}/offers",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Offers available for a publisher within the HCI Cluster.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#OfferList": {
@@ -16754,6 +16956,12 @@
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -16773,10 +16981,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/offers",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Offers available across publishers for the HCI Cluster.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListOfferByClusterRequest": {
@@ -16811,6 +17026,12 @@
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Specify $expand=content,contentVersion to populate additional fields related to the marketplace offer."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17296,10 +17517,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/jobs",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ClusterJob resources by Clusters",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ClusterJobListResult": {
@@ -17395,6 +17623,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19582,10 +19816,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DeploymentSetting resources by Clusters",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#DeploymentSettingListResult": {
@@ -19681,6 +19922,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21829,10 +22076,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Extensions under ArcSetting resource.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ExtensionList": {
@@ -21936,6 +22190,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the proxy resource holding details of HCI ArcSetting information."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22625,10 +22885,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get ArcSetting resources of HCI Cluster.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ArcSettingList": {
@@ -22724,6 +22991,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23631,10 +23904,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all HCI clusters in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ClusterList": {
@@ -23806,6 +24086,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24231,10 +24517,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/locations/{location}/validatedSolutionRecipes",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all validated solution recipes.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ValidatedSolutionRecipeListResult": {
@@ -24322,6 +24615,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24495,10 +24794,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/locations/{location}/osImages",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all os images.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#OsImageListResult": {
@@ -24587,6 +24893,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24606,10 +24918,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/edgeMachines",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all edge machines in a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListEdgeMachineBySubscriptionRequest": {
@@ -24621,6 +24940,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24641,10 +24966,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/clusters",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all HCI clusters in a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListClusterBySubscriptionRequest": {
@@ -24657,6 +24989,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24666,7 +25004,7 @@
     "com.azure.azurestackhci#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurestackhci#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ListOperationsResponse"
@@ -24676,10 +25014,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AzureStackHCI/operations",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListOperationsResponse": {
@@ -24819,6 +25164,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.azurestackhci#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.azurestackhci#ValidateEdgeDevice": {
@@ -25215,10 +25574,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EdgeDeviceJob resources by EdgeDevice",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeDeviceJobListResult": {
@@ -25307,6 +25673,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Device"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25609,10 +25981,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List EdgeDevice resources by parent",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#EdgeDeviceListResult": {
@@ -25700,6 +26079,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25719,10 +26104,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/galleryImages",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the gallery images in the specified subscription. Use the nextLink property in the response to get the next page of gallery images.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#GalleryImagesListResult": {
@@ -26195,6 +26587,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -26214,10 +26612,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the gallery images in the specified resource group. Use the nextLink property in the response to get the next page of gallery images.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListGalleryImagesRequest": {
@@ -26237,6 +26642,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26965,10 +27376,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/logicalNetworks",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the logical networks in the specified subscription. Use the nextLink property in the response to get the next page of logical networks.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#LogicalNetworksListResult": {
@@ -27556,6 +27974,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -27575,10 +27999,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the logical networks in the specified resource group. Use the nextLink property in the response to get the next page of logical networks.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListLogicalNetworksRequest": {
@@ -27598,6 +28029,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28427,10 +28864,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the marketplace gallery images in the specified subscription. Use the nextLink property in the response to get the next page of marketplace gallery images.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#MarketplaceGalleryImagesListResult": {
@@ -28793,6 +29237,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -28812,10 +29262,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the marketplace gallery images in the specified resource group. Use the nextLink property in the response to get the next page of marketplace gallery images.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListMarketplaceGalleryImagesRequest": {
@@ -28835,6 +29292,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29508,10 +29971,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/networkInterfaces",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the network interfaces in the specified subscription. Use the nextLink property in the response to get the next page of network interfaces.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#NetworkInterfacesListResult": {
@@ -29871,6 +30341,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -29890,10 +30366,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the network interfaces in the specified resource group. Use the nextLink property in the response to get the next page of network interfaces.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListNetworkInterfacesRequest": {
@@ -29913,6 +30396,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -30576,10 +31065,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/storageContainers",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the storage containers in the specified subscription. Use the nextLink property in the response to get the next page of storage containers.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#StorageContainersListResult": {
@@ -30844,6 +31340,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -30863,10 +31365,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the storage containers in the specified resource group. Use the nextLink property in the response to get the next page of storage containers.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListStorageContainersRequest": {
@@ -30886,6 +31395,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -31475,10 +31990,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/virtualHardDisks",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the virtual hard disks in the specified subscription. Use the nextLink property in the response to get the next page of virtual hard disks.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#VirtualHardDisksListResult": {
@@ -31803,6 +32325,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -31822,10 +32350,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the virtual hard disks in the specified resource group. Use the nextLink property in the response to get the next page of virtual hard disks.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#ListVirtualHardDisksRequest": {
@@ -31845,6 +32380,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -32506,10 +33047,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET GuestAgent in a vm.\n\nReturns the list of GuestAgent of the given vm.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#GuestAgentList": {
@@ -32669,6 +33217,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -32913,10 +33467,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/hybridIdentityMetadata",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET HybridIdentityMetadata in a vm.\n\nReturns the list of HybridIdentityMetadata of the given vm.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#HybridIdentityMetadataList": {
@@ -33070,6 +33631,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -33163,10 +33730,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances",
           "code": 200,
-          "apiVersion": "2024-01-01"
+          "apiVersion": "2024-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the virtual machine instances within the specified parent resource.",
-        "com.distilled.openapi#apiVersion": "2024-01-01"
+        "com.distilled.openapi#apiVersion": "2024-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurestackhci#VirtualMachineInstanceListResult": {
@@ -34359,6 +34933,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

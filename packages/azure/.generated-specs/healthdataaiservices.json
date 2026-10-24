@@ -15,13 +15,61 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.healthdataaiservices#PrivateLinksListByDeidService": "com.azure.healthdataaiservices#ListPrivateLinkByDeidService",
+      "com.azure.healthdataaiservices#PrivateLinksListByDeidServiceRequest": "com.azure.healthdataaiservices#ListPrivateLinkByDeidServiceRequest",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsDelete": "com.azure.healthdataaiservices#DeletePrivateEndpointConnection",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsDeleteResponse": "com.azure.healthdataaiservices#DeletePrivateEndpointConnectionResponse",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsDeleteRequest": "com.azure.healthdataaiservices#DeletePrivateEndpointConnectionRequest",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreate": "com.azure.healthdataaiservices#CreatePrivateEndpointConnection",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponse": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponse",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponseProperties": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponseProperties",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequest": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionRequest",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequestProperties": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionRequestProperties",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsGet": "com.azure.healthdataaiservices#GetPrivateEndpointConnection",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponse": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponse",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponseProperties": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponseProperties",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponsePropertiesGroupIdsList",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetRequest": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionRequest",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsListByDeidService": "com.azure.healthdataaiservices#ListPrivateEndpointConnectionByDeidService",
+      "com.azure.healthdataaiservices#PrivateEndpointConnectionsListByDeidServiceRequest": "com.azure.healthdataaiservices#ListPrivateEndpointConnectionByDeidServiceRequest",
+      "com.azure.healthdataaiservices#DeidServicesDelete": "com.azure.healthdataaiservices#DeleteDeidService",
+      "com.azure.healthdataaiservices#DeidServicesDeleteResponse": "com.azure.healthdataaiservices#DeleteDeidServiceResponse",
+      "com.azure.healthdataaiservices#DeidServicesDeleteRequest": "com.azure.healthdataaiservices#DeleteDeidServiceRequest",
+      "com.azure.healthdataaiservices#DeidServicesUpdate": "com.azure.healthdataaiservices#UpdateDeidService",
+      "com.azure.healthdataaiservices#DeidServicesUpdateResponse": "com.azure.healthdataaiservices#UpdateDeidServiceResponse",
+      "com.azure.healthdataaiservices#DeidServicesUpdateResponseIdentity": "com.azure.healthdataaiservices#UpdateDeidServiceResponseIdentity",
+      "com.azure.healthdataaiservices#DeidServicesUpdateResponseTagsMap": "com.azure.healthdataaiservices#UpdateDeidServiceResponseTagsMap",
+      "com.azure.healthdataaiservices#DeidServicesUpdateRequest": "com.azure.healthdataaiservices#UpdateDeidServiceRequest",
+      "com.azure.healthdataaiservices#DeidServicesUpdateRequestTagsMap": "com.azure.healthdataaiservices#UpdateDeidServiceRequestTagsMap",
+      "com.azure.healthdataaiservices#DeidServicesCreate": "com.azure.healthdataaiservices#CreateDeidService",
+      "com.azure.healthdataaiservices#DeidServicesCreateResponse": "com.azure.healthdataaiservices#CreateDeidServiceResponse",
+      "com.azure.healthdataaiservices#DeidServicesCreateResponseIdentity": "com.azure.healthdataaiservices#CreateDeidServiceResponseIdentity",
+      "com.azure.healthdataaiservices#DeidServicesCreateResponseTagsMap": "com.azure.healthdataaiservices#CreateDeidServiceResponseTagsMap",
+      "com.azure.healthdataaiservices#DeidServicesCreateRequest": "com.azure.healthdataaiservices#CreateDeidServiceRequest",
+      "com.azure.healthdataaiservices#DeidServicesCreateRequestIdentity": "com.azure.healthdataaiservices#CreateDeidServiceRequestIdentity",
+      "com.azure.healthdataaiservices#DeidServicesCreateRequestTagsMap": "com.azure.healthdataaiservices#CreateDeidServiceRequestTagsMap",
+      "com.azure.healthdataaiservices#DeidServicesGet": "com.azure.healthdataaiservices#GetDeidService",
+      "com.azure.healthdataaiservices#DeidServicesGetResponse": "com.azure.healthdataaiservices#GetDeidServiceResponse",
+      "com.azure.healthdataaiservices#DeidServicesGetResponseIdentity": "com.azure.healthdataaiservices#GetDeidServiceResponseIdentity",
+      "com.azure.healthdataaiservices#DeidServicesGetResponseTagsMap": "com.azure.healthdataaiservices#GetDeidServiceResponseTagsMap",
+      "com.azure.healthdataaiservices#DeidServicesGetRequest": "com.azure.healthdataaiservices#GetDeidServiceRequest",
+      "com.azure.healthdataaiservices#DeidServicesListByResourceGroup": "com.azure.healthdataaiservices#ListDeidServiceByResourceGroup",
+      "com.azure.healthdataaiservices#DeidServicesListByResourceGroupRequest": "com.azure.healthdataaiservices#ListDeidServiceByResourceGroupRequest",
+      "com.azure.healthdataaiservices#DeidServicesListBySubscription": "com.azure.healthdataaiservices#ListDeidServiceBySubscription",
+      "com.azure.healthdataaiservices#DeidServicesListBySubscriptionRequest": "com.azure.healthdataaiservices#ListDeidServiceBySubscriptionRequest",
+      "com.azure.healthdataaiservices#OperationsList": "com.azure.healthdataaiservices#ListOperations",
+      "com.azure.healthdataaiservices#OperationsListResponse": "com.azure.healthdataaiservices#ListOperationsResponse",
+      "com.azure.healthdataaiservices#OperationsListResponseValueList": "com.azure.healthdataaiservices#ListOperationsResponseValueList",
+      "com.azure.healthdataaiservices#OperationsListRequest": "com.azure.healthdataaiservices#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.healthdataaiservices#ListPrivateLinkByDeidService": {
+    "com.azure.healthdataaiservices#PrivateLinksListByDeidService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#ListPrivateLinkByDeidServiceRequest"
+        "target": "com.azure.healthdataaiservices#PrivateLinksListByDeidServiceRequest"
       },
       "output": {
         "target": "com.azure.healthdataaiservices#PrivateLinkResourceListResult"
@@ -31,10 +79,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2024-09-20"
+          "apiVersion": "2024-09-20",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private links on the given resource",
-        "com.distilled.openapi#apiVersion": "2024-09-20"
+        "com.distilled.openapi#apiVersion": "2024-09-20",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.healthdataaiservices#PrivateLinkResourceListResult": {
@@ -257,7 +312,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthdataaiservices#ListPrivateLinkByDeidServiceRequest": {
+    "com.azure.healthdataaiservices#PrivateLinksListByDeidServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -283,19 +338,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the deid service"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#DeletePrivateEndpointConnection": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -308,7 +369,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -330,7 +391,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -370,13 +431,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#CreatePrivateEndpointConnection": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionRequest"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponse"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -389,7 +450,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponse": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -417,7 +478,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponseProperties",
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponseProperties",
           "traits": {
             "smithy.api#documentation": "Properties of the private endpoint connection."
           }
@@ -441,11 +502,11 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponseProperties": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponseProperties": {
       "type": "structure",
       "members": {
         "groupIds": {
-          "target": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList",
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList",
           "traits": {
             "smithy.api#documentation": "The group ids for the private endpoint resource."
           }
@@ -572,7 +633,7 @@
         "smithy.api#documentation": "The private endpoint resource."
       }
     },
-    "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateResponsePropertiesGroupIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -581,7 +642,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionRequest": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -617,7 +678,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionRequestProperties",
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequestProperties",
           "traits": {
             "smithy.api#documentation": "Properties of the private endpoint connection."
           }
@@ -627,7 +688,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#CreatePrivateEndpointConnectionRequestProperties": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequestProperties": {
       "type": "structure",
       "members": {
         "privateEndpoint": {
@@ -655,13 +716,13 @@
         "smithy.api#documentation": "The private endpoint resource."
       }
     },
-    "com.azure.healthdataaiservices#GetPrivateEndpointConnection": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -674,7 +735,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponse": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -702,7 +763,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponseProperties",
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponseProperties",
           "traits": {
             "smithy.api#documentation": "Properties of the private endpoint connection."
           }
@@ -712,11 +773,11 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponseProperties": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponseProperties": {
       "type": "structure",
       "members": {
         "groupIds": {
-          "target": "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponsePropertiesGroupIdsList",
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList",
           "traits": {
             "smithy.api#documentation": "The group ids for the private endpoint resource."
           }
@@ -745,7 +806,7 @@
         "smithy.api#documentation": "Properties of the private endpoint connection."
       }
     },
-    "com.azure.healthdataaiservices#GetPrivateEndpointConnectionResponsePropertiesGroupIdsList": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -754,7 +815,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.healthdataaiservices#GetPrivateEndpointConnectionRequest": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -794,10 +855,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#ListPrivateEndpointConnectionByDeidService": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsListByDeidService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#ListPrivateEndpointConnectionByDeidServiceRequest"
+        "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsListByDeidServiceRequest"
       },
       "output": {
         "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionResourceListResult"
@@ -807,10 +868,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2024-09-20"
+          "apiVersion": "2024-09-20",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections on the given resource",
-        "com.distilled.openapi#apiVersion": "2024-09-20"
+        "com.distilled.openapi#apiVersion": "2024-09-20",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.healthdataaiservices#PrivateEndpointConnectionResourceListResult": {
@@ -923,7 +991,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.healthdataaiservices#ListPrivateEndpointConnectionByDeidServiceRequest": {
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsListByDeidServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -949,19 +1017,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the deid service"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#DeleteDeidService": {
+    "com.azure.healthdataaiservices#DeidServicesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#DeleteDeidServiceRequest"
+        "target": "com.azure.healthdataaiservices#DeidServicesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#DeleteDeidServiceResponse"
+        "target": "com.azure.healthdataaiservices#DeidServicesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -974,7 +1048,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#DeleteDeidServiceResponse": {
+    "com.azure.healthdataaiservices#DeidServicesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -996,7 +1070,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#DeleteDeidServiceRequest": {
+    "com.azure.healthdataaiservices#DeidServicesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1028,13 +1102,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#UpdateDeidService": {
+    "com.azure.healthdataaiservices#DeidServicesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#UpdateDeidServiceRequest"
+        "target": "com.azure.healthdataaiservices#DeidServicesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#UpdateDeidServiceResponse"
+        "target": "com.azure.healthdataaiservices#DeidServicesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1047,7 +1121,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#UpdateDeidServiceResponse": {
+    "com.azure.healthdataaiservices#DeidServicesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1075,7 +1149,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthdataaiservices#UpdateDeidServiceResponseTagsMap",
+          "target": "com.azure.healthdataaiservices#DeidServicesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1094,7 +1168,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.healthdataaiservices#UpdateDeidServiceResponseIdentity",
+          "target": "com.azure.healthdataaiservices#DeidServicesUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -1118,7 +1192,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#UpdateDeidServiceResponseIdentity": {
+    "com.azure.healthdataaiservices#DeidServicesUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1405,7 +1479,7 @@
         "smithy.api#documentation": "The status of the current operation."
       }
     },
-    "com.azure.healthdataaiservices#UpdateDeidServiceResponseTagsMap": {
+    "com.azure.healthdataaiservices#DeidServicesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1417,7 +1491,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthdataaiservices#UpdateDeidServiceRequest": {
+    "com.azure.healthdataaiservices#DeidServicesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1445,7 +1519,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthdataaiservices#UpdateDeidServiceRequestTagsMap",
+          "target": "com.azure.healthdataaiservices#DeidServicesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1552,7 +1626,7 @@
         "smithy.api#documentation": "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed)."
       }
     },
-    "com.azure.healthdataaiservices#UpdateDeidServiceRequestTagsMap": {
+    "com.azure.healthdataaiservices#DeidServicesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1564,13 +1638,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidService": {
+    "com.azure.healthdataaiservices#DeidServicesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#CreateDeidServiceRequest"
+        "target": "com.azure.healthdataaiservices#DeidServicesCreateRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#CreateDeidServiceResponse"
+        "target": "com.azure.healthdataaiservices#DeidServicesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1583,7 +1657,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidServiceResponse": {
+    "com.azure.healthdataaiservices#DeidServicesCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1611,7 +1685,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthdataaiservices#CreateDeidServiceResponseTagsMap",
+          "target": "com.azure.healthdataaiservices#DeidServicesCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1630,7 +1704,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.healthdataaiservices#CreateDeidServiceResponseIdentity",
+          "target": "com.azure.healthdataaiservices#DeidServicesCreateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -1654,7 +1728,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidServiceResponseIdentity": {
+    "com.azure.healthdataaiservices#DeidServicesCreateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1683,7 +1757,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidServiceResponseTagsMap": {
+    "com.azure.healthdataaiservices#DeidServicesCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1695,7 +1769,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidServiceRequest": {
+    "com.azure.healthdataaiservices#DeidServicesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1723,7 +1797,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthdataaiservices#CreateDeidServiceRequestTagsMap",
+          "target": "com.azure.healthdataaiservices#DeidServicesCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1742,7 +1816,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.healthdataaiservices#CreateDeidServiceRequestIdentity",
+          "target": "com.azure.healthdataaiservices#DeidServicesCreateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -1752,7 +1826,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidServiceRequestIdentity": {
+    "com.azure.healthdataaiservices#DeidServicesCreateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -1805,7 +1879,7 @@
         "smithy.api#documentation": "Details of the HealthDataAIServices DeidService."
       }
     },
-    "com.azure.healthdataaiservices#CreateDeidServiceRequestTagsMap": {
+    "com.azure.healthdataaiservices#DeidServicesCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1817,13 +1891,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthdataaiservices#GetDeidService": {
+    "com.azure.healthdataaiservices#DeidServicesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#GetDeidServiceRequest"
+        "target": "com.azure.healthdataaiservices#DeidServicesGetRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#GetDeidServiceResponse"
+        "target": "com.azure.healthdataaiservices#DeidServicesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1836,7 +1910,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-20"
       }
     },
-    "com.azure.healthdataaiservices#GetDeidServiceResponse": {
+    "com.azure.healthdataaiservices#DeidServicesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1864,7 +1938,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthdataaiservices#GetDeidServiceResponseTagsMap",
+          "target": "com.azure.healthdataaiservices#DeidServicesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1883,7 +1957,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.healthdataaiservices#GetDeidServiceResponseIdentity",
+          "target": "com.azure.healthdataaiservices#DeidServicesGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -1893,7 +1967,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#GetDeidServiceResponseIdentity": {
+    "com.azure.healthdataaiservices#DeidServicesGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1922,7 +1996,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.healthdataaiservices#GetDeidServiceResponseTagsMap": {
+    "com.azure.healthdataaiservices#DeidServicesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1934,7 +2008,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthdataaiservices#GetDeidServiceRequest": {
+    "com.azure.healthdataaiservices#DeidServicesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1966,10 +2040,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#ListDeidServiceByResourceGroup": {
+    "com.azure.healthdataaiservices#DeidServicesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#ListDeidServiceByResourceGroupRequest"
+        "target": "com.azure.healthdataaiservices#DeidServicesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.healthdataaiservices#DeidServiceListResult"
@@ -1979,10 +2053,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices",
           "code": 200,
-          "apiVersion": "2024-09-20"
+          "apiVersion": "2024-09-20",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DeidService resources by resource group",
-        "com.distilled.openapi#apiVersion": "2024-09-20"
+        "com.distilled.openapi#apiVersion": "2024-09-20",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.healthdataaiservices#DeidServiceListResult": {
@@ -2113,7 +2194,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthdataaiservices#ListDeidServiceByResourceGroupRequest": {
+    "com.azure.healthdataaiservices#DeidServicesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2131,16 +2212,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#ListDeidServiceBySubscription": {
+    "com.azure.healthdataaiservices#DeidServicesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthdataaiservices#ListDeidServiceBySubscriptionRequest"
+        "target": "com.azure.healthdataaiservices#DeidServicesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.healthdataaiservices#DeidServiceListResult"
@@ -2150,13 +2237,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.HealthDataAIServices/deidServices",
           "code": 200,
-          "apiVersion": "2024-09-20"
+          "apiVersion": "2024-09-20",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DeidService resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2024-09-20"
+        "com.distilled.openapi#apiVersion": "2024-09-20",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.healthdataaiservices#ListDeidServiceBySubscriptionRequest": {
+    "com.azure.healthdataaiservices#DeidServicesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2166,36 +2260,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthdataaiservices#ListOperations": {
+    "com.azure.healthdataaiservices#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.healthdataaiservices#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.healthdataaiservices#ListOperationsResponse"
+        "target": "com.azure.healthdataaiservices#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.HealthDataAIServices/operations",
           "code": 200,
-          "apiVersion": "2024-09-20"
+          "apiVersion": "2024-09-20",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-09-20"
+        "com.distilled.openapi#apiVersion": "2024-09-20",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.healthdataaiservices#ListOperationsResponse": {
+    "com.azure.healthdataaiservices#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.healthdataaiservices#ListOperationsResponseValueList",
+          "target": "com.azure.healthdataaiservices#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -2211,7 +2318,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthdataaiservices#ListOperationsResponseValueList": {
+    "com.azure.healthdataaiservices#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.healthdataaiservices#Operation"
@@ -2330,45 +2437,59 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.healthdataaiservices#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.healthdataaiservices#Healthdataaiservices": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.healthdataaiservices#ListPrivateLinkByDeidService"
+          "target": "com.azure.healthdataaiservices#PrivateLinksListByDeidService"
         },
         {
-          "target": "com.azure.healthdataaiservices#DeletePrivateEndpointConnection"
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsDelete"
         },
         {
-          "target": "com.azure.healthdataaiservices#CreatePrivateEndpointConnection"
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreate"
         },
         {
-          "target": "com.azure.healthdataaiservices#GetPrivateEndpointConnection"
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.healthdataaiservices#ListPrivateEndpointConnectionByDeidService"
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsListByDeidService"
         },
         {
-          "target": "com.azure.healthdataaiservices#DeleteDeidService"
+          "target": "com.azure.healthdataaiservices#DeidServicesDelete"
         },
         {
-          "target": "com.azure.healthdataaiservices#UpdateDeidService"
+          "target": "com.azure.healthdataaiservices#DeidServicesUpdate"
         },
         {
-          "target": "com.azure.healthdataaiservices#CreateDeidService"
+          "target": "com.azure.healthdataaiservices#DeidServicesCreate"
         },
         {
-          "target": "com.azure.healthdataaiservices#GetDeidService"
+          "target": "com.azure.healthdataaiservices#DeidServicesGet"
         },
         {
-          "target": "com.azure.healthdataaiservices#ListDeidServiceByResourceGroup"
+          "target": "com.azure.healthdataaiservices#DeidServicesListByResourceGroup"
         },
         {
-          "target": "com.azure.healthdataaiservices#ListDeidServiceBySubscription"
+          "target": "com.azure.healthdataaiservices#DeidServicesListBySubscription"
         },
         {
-          "target": "com.azure.healthdataaiservices#ListOperations"
+          "target": "com.azure.healthdataaiservices#OperationsList"
         }
       ],
       "traits": {

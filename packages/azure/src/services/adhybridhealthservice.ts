@@ -798,6 +798,8 @@ export interface ListAdDomainServiceMembersRequest {
   nextRowKey: ListAdDomainServiceMembersRequestNextRowKey | (string & {});
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of ADDS roles. */
 export type AddsServiceMemberAddsRolesList = Array<string>;
@@ -911,7 +913,7 @@ export interface AddsServiceMembers {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: AddsServiceMembersValueList;
+  value: AddsServiceMembersValueList;
   /** The total count of service members. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -941,13 +943,15 @@ export type CredentialsValueList = Array<Credential>;
 /** The list of agent credentials. */
 export interface Credentials {
   /** The value returned by the operation. */
-  value?: CredentialsValueList;
+  value: CredentialsValueList;
 }
 export interface ListAddsServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server property filter to apply. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAddsServiceMetricMetadataRequest {
   /** The name of the service. */
@@ -956,6 +960,8 @@ export interface ListAddsServiceMetricMetadataRequest {
   _filter?: string;
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The value returned by the operation. */
 export type MetricMetadataListValueList = Array<MetricMetadata>;
@@ -964,7 +970,7 @@ export interface MetricMetadataList {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: MetricMetadataListValueList;
+  value: MetricMetadataListValueList;
   /** The total count of service elements. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -977,6 +983,8 @@ export interface ListAddsServiceMetricsAverageRequest {
   metricName: string;
   /** The group name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The value returned by the operation. */
 export type MetricsValueList = Array<Item>;
@@ -985,7 +993,7 @@ export interface Metrics {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: MetricsValueList;
+  value: MetricsValueList;
   /** The total count of metrics. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -998,6 +1006,8 @@ export interface ListAddsServiceMetricsSumRequest {
   metricName: string;
   /** The group name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAddsServicePremiumServicesRequest {
   /** The service property filter to apply. */
@@ -1008,6 +1018,8 @@ export interface ListAddsServicePremiumServicesRequest {
   skipCount?: number;
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The value returned by the operation. */
 export type ServicesValueList = Array<ServiceProperties>;
@@ -1016,7 +1028,7 @@ export interface Services {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: ServicesValueList;
+  value: ServicesValueList;
   /** The total count of service elements. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -1083,7 +1095,7 @@ export type ReplicationDetailsListValueList = Array<ReplicationSummary>;
 /** The list of replication details. */
 export interface ReplicationDetailsList {
   /** The value returned by the operation. */
-  value?: ReplicationDetailsListValueList;
+  value: ReplicationDetailsListValueList;
   /** The total count of replication detail elements. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -1114,7 +1126,7 @@ export type ReplicationSummaryListValueList = Array<ReplicationSummary>;
 /** The list of replication summary details. */
 export interface ReplicationSummaryList {
   /** The value returned by the operation. */
-  value?: ReplicationSummaryListValueList;
+  value: ReplicationSummaryListValueList;
 }
 export interface ListAddsServicesRequest {
   /** The service property filter to apply. */
@@ -1125,6 +1137,8 @@ export interface ListAddsServicesRequest {
   skipCount?: number;
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAddsServiceServerAlertsRequest {
   /** The name of the service. */
@@ -1139,6 +1153,8 @@ export interface ListAddsServiceServerAlertsRequest {
   from?: string;
   /** The end date till when to query for. */
   to?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The alert level which indicates the severity of the alert. */
 export type AlertLevel = "Warning" | "Error" | "PreWarning";
@@ -1221,7 +1237,7 @@ export type AlertsValueList = Array<Alert>;
 /** The list of alerts for a service. */
 export interface Alerts {
   /** The value returned by the operation. */
-  value?: AlertsValueList;
+  value: AlertsValueList;
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The total count of alert elements. */
@@ -1238,6 +1254,8 @@ export interface ListAddsServicesServiceMembersRequest {
   dimensionType?: string;
   /** The value of the dimension. */
   dimensionSignature?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The value returned by the operation. */
 export type ServiceMembersValueList = Array<ServiceMember>;
@@ -1246,7 +1264,7 @@ export interface ServiceMembers {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: ServiceMembersValueList;
+  value: ServiceMembersValueList;
   /** The total count of service elements. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -1263,12 +1281,16 @@ export interface ListAlertAddsAlertsRequest {
   from?: string;
   /** The end date till when to query for. */
   to?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListConfigurationAddsConfigurationsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The grouping for configurations. */
   grouping?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The value returned by the operation. */
 export type AddsConfigurationValueList = Array<Item>;
@@ -1277,7 +1299,7 @@ export interface AddsConfiguration {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: AddsConfigurationValueList;
+  value: AddsConfigurationValueList;
   /** The total count of configuration. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -1288,6 +1310,8 @@ export interface ListDimensionAddsDimensionsRequest {
   serviceName: string;
   /** The dimension type. */
   dimension: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The health status for the domain controller. */
 export type DimensionHealth = "Healthy" | "Warning" | "Error" | "NotMonitored" | "Missing";
@@ -1319,7 +1343,7 @@ export interface Dimensions {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: DimensionsValueList;
+  value: DimensionsValueList;
   /** The total count of dimensions. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -1330,6 +1354,8 @@ export interface ListIPAddressAggregatesByServiceRequest {
   serviceName: string;
   /** A continuationtoken value returned in paginated result to load different pages. */
   skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The key value pair for properties. */
 export interface IPAddressAggregate {
@@ -1373,7 +1399,7 @@ export type IPAddressAggregatesValueList = Array<IPAddressAggregate>;
 /** IP address aggregates. */
 export interface IPAddressAggregates {
   /** The value returned by the operation. */
-  value?: IPAddressAggregatesValueList;
+  value: IPAddressAggregatesValueList;
   /** URL to get the next set of IP Aggregate list results if there are any. */
   nextLink?: string;
   /** The number of results. */
@@ -1400,7 +1426,10 @@ export interface IPAddressAggregateSetting {
   /** A value indicating whether email notification has been enabled. */
   emailNotificationEnabled?: boolean;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The details of the operation. */
 export interface Operation {
   /** The name of the operation. */
@@ -1415,7 +1444,7 @@ export interface OperationListResponse {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
   /** List of operations supported by the Microsoft.ADHybridHealthService resource provider. */
-  value?: OperationListResponseValueList;
+  value: OperationListResponseValueList;
   /** The total count of operations. */
   totalCount?: number;
   /** The continuation token to get next set of operations. */
@@ -1432,7 +1461,7 @@ export type AlertFeedbacksValueList = Array<AlertFeedback>;
 /** The list of alert feedback. */
 export interface AlertFeedbacks {
   /** The value returned by the operation. */
-  value?: AlertFeedbacksValueList;
+  value: AlertFeedbacksValueList;
 }
 export interface ListServiceAlertsRequest {
   /** The name of the service. */
@@ -1445,6 +1474,8 @@ export interface ListServiceAlertsRequest {
   from?: string;
   /** The end date till when to query for. */
   to?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceMemberAlertsRequest {
   /** The name of the service. */
@@ -1459,6 +1490,8 @@ export interface ListServiceMemberAlertsRequest {
   from?: string;
   /** The end date till when to query for. */
   to?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceMemberConnectorsRequest {
   /** The name of the service. */
@@ -1578,7 +1611,7 @@ export type ConnectorsValueList = Array<Connector>;
 /** The list of connects for a service. */
 export interface Connectors {
   /** The value returned by the operation. */
-  value?: ConnectorsValueList;
+  value: ConnectorsValueList;
 }
 export interface ListServiceMemberCredentialsRequest {
   /** The name of the service. */
@@ -1599,7 +1632,7 @@ export type DataFreshnessDetailsValueList = Array<Item>;
 /** The data freshness details for the server. */
 export interface DataFreshnessDetails {
   /** The value returned by the operation. */
-  value?: DataFreshnessDetailsValueList;
+  value: DataFreshnessDetailsValueList;
 }
 export interface ListServiceMemberGlobalConfigurationRequest {
   /** The name of the service. */
@@ -1627,7 +1660,7 @@ export type GlobalConfigurationsValueList = Array<GlobalConfiguration>;
 /** The list of global configurations. */
 export interface GlobalConfigurations {
   /** The value returned by the operation. */
-  value?: GlobalConfigurationsValueList;
+  value: GlobalConfigurationsValueList;
 }
 export interface ListServiceMembersRequest {
   /** The name of the service. */
@@ -1638,6 +1671,8 @@ export interface ListServiceMembersRequest {
   dimensionType?: string;
   /** The value of the dimension. */
   dimensionSignature?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceMetricMetadataRequest {
   /** The name of the service. */
@@ -1646,6 +1681,8 @@ export interface ListServiceMetricMetadataRequest {
   _filter?: string;
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceMetricsAverageRequest {
   /** The name of the service. */
@@ -1654,6 +1691,8 @@ export interface ListServiceMetricsAverageRequest {
   metricName: string;
   /** The group name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceMetricsSumRequest {
   /** The name of the service. */
@@ -1662,6 +1701,8 @@ export interface ListServiceMetricsSumRequest {
   metricName: string;
   /** The group name */
   groupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceMonitoringConfigurationsRequest {
   /** The name of the service. */
@@ -1672,7 +1713,7 @@ export type ItemsValueList = Array<Item>;
 /** The list of key value properties. */
 export interface Items {
   /** The value returned by the operation. */
-  value?: ItemsValueList;
+  value: ItemsValueList;
 }
 export interface ListServicePremiumRequest {
   /** The service property filter to apply. */
@@ -1683,6 +1724,8 @@ export interface ListServicePremiumRequest {
   skipCount?: number;
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServicesRequest {
   /** The service property filter to apply. */
@@ -1693,6 +1736,8 @@ export interface ListServicesRequest {
   skipCount?: number;
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceUserBadPasswordReportRequest {
   /** The name of the service. */
@@ -1718,13 +1763,15 @@ export type ErrorReportUsersEntriesValueList = Array<ErrorReportUsersEntry>;
 /** The list of bad password log in attempt entries. */
 export interface ErrorReportUsersEntries {
   /** The value returned by the operation. */
-  value?: ErrorReportUsersEntriesValueList;
+  value: ErrorReportUsersEntriesValueList;
 }
 export interface ServiceMembersListExportStatusRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The details of the export status. */
 export interface ExportStatus {
@@ -1744,7 +1791,7 @@ export interface ExportStatuses {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: ExportStatusesValueList;
+  value: ExportStatusesValueList;
   /** The total count of service elements. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
@@ -1774,7 +1821,7 @@ export type RiskyIPBlobUrisValueList = Array<RiskyIPBlobUri>;
 /** The list containing blob uris. */
 export interface RiskyIPBlobUris {
   /** The list of blob uris. */
-  value?: RiskyIPBlobUrisValueList;
+  value: RiskyIPBlobUrisValueList;
 }
 export interface ServicesListCurrentRiskyIpDownloadReportRequest {
   /** The name of the service. */
@@ -1798,7 +1845,7 @@ export type ErrorCountsValueList = Array<ErrorCount>;
 /** The list of error counts. */
 export interface ErrorCounts {
   /** The value returned by the operation. */
-  value?: ErrorCountsValueList;
+  value: ErrorCountsValueList;
 }
 export interface ServicesListExportErrorsV2Request {
   /** The name of the service. */
@@ -1885,11 +1932,13 @@ export type MergedExportErrorsValueList = Array<MergedExportError>;
 /** The list of export errors. */
 export interface MergedExportErrors {
   /** The value returned by the operation. */
-  value?: MergedExportErrorsValueList;
+  value: MergedExportErrorsValueList;
 }
 export interface ServicesListExportStatusRequest {
   /** The name of the service. */
   serviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type UpdateAddsServiceRequestCustomNotificationEmailsList = Array<string>;
@@ -2567,243 +2616,340 @@ export const GetServiceTenantWhitelisting: API.OperationMethod<
 
 export type ListAdDomainServiceMembersError = AzureOpError;
 /** Gets the details of the servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health. */
-export const ListAdDomainServiceMembers: API.OperationMethod<
+export const ListAdDomainServiceMembers: API.PaginatedOperationMethod<
   ListAdDomainServiceMembersRequest,
   AddsServiceMembers,
   ListAdDomainServiceMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AddsServiceMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<ListAdDomainServiceMembersRequest>,
   output: __S(580, __c36, 4) as any as S.Schema<AddsServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServiceMemberCredentialsError = AzureOpError;
 /** Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service. */
-export const ListAddsServiceMemberCredentials: API.OperationMethod<
+export const ListAddsServiceMemberCredentials: API.PaginatedOperationMethod<
   ListAddsServiceMemberCredentialsRequest,
   Credentials,
   ListAddsServiceMemberCredentialsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Credential
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<ListAddsServiceMemberCredentialsRequest>,
   output: __S(626, __c39, 2) as any as S.Schema<Credentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListAddsServiceMembersError = AzureOpError;
 /** Gets the details of the Active Directory Domain servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health. */
-export const ListAddsServiceMembers: API.OperationMethod<
+export const ListAddsServiceMembers: API.PaginatedOperationMethod<
   ListAddsServiceMembersRequest,
   AddsServiceMembers,
   ListAddsServiceMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AddsServiceMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<ListAddsServiceMembersRequest>,
   output: __S(580, __c36, 4) as any as S.Schema<AddsServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServiceMetricMetadataError = AzureOpError;
 /** Gets the service related metrics information. */
-export const ListAddsServiceMetricMetadata: API.OperationMethod<
+export const ListAddsServiceMetricMetadata: API.PaginatedOperationMethod<
   ListAddsServiceMetricMetadataRequest,
   MetricMetadataList,
   ListAddsServiceMetricMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetricMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<ListAddsServiceMetricMetadataRequest>,
   output: __S(673, __c42, 1) as any as S.Schema<MetricMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServiceMetricsAverageError = AzureOpError;
 /** Gets the average of the metric values for a given metric and group combination. */
-export const ListAddsServiceMetricsAverage: API.OperationMethod<
+export const ListAddsServiceMetricsAverage: API.PaginatedOperationMethod<
   ListAddsServiceMetricsAverageRequest,
   Metrics,
   ListAddsServiceMetricsAverageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(688, __c43, 0) as any as S.Schema<ListAddsServiceMetricsAverageRequest>,
   output: __S(704, __c44, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServiceMetricsSumError = AzureOpError;
 /** Gets the sum of the metric values for a given metric and group combination. */
-export const ListAddsServiceMetricsSum: API.OperationMethod<
+export const ListAddsServiceMetricsSum: API.PaginatedOperationMethod<
   ListAddsServiceMetricsSumRequest,
   Metrics,
   ListAddsServiceMetricsSumError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(720, __c45, 0) as any as S.Schema<ListAddsServiceMetricsSumRequest>,
   output: __S(704, __c44, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServicePremiumServicesError = AzureOpError;
 /** Gets the details of Active Directory Domain Services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
-export const ListAddsServicePremiumServices: API.OperationMethod<
+export const ListAddsServicePremiumServices: API.PaginatedOperationMethod<
   ListAddsServicePremiumServicesRequest,
   Services,
   ListAddsServicePremiumServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(736, __c46, 0) as any as S.Schema<ListAddsServicePremiumServicesRequest>,
   output: __S(753, __c47, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServiceReplicationDetailsError = AzureOpError;
 /** Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
-export const ListAddsServiceReplicationDetails: API.OperationMethod<
+export const ListAddsServiceReplicationDetails: API.PaginatedOperationMethod<
   ListAddsServiceReplicationDetailsRequest,
   ReplicationDetailsList,
   ListAddsServiceReplicationDetailsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(784, __c49, 0) as any as S.Schema<ListAddsServiceReplicationDetailsRequest>,
   output: __S(785, __c49, 1) as any as S.Schema<ReplicationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListAddsServiceReplicationSummaryError = AzureOpError;
 /** Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
-export const ListAddsServiceReplicationSummary: API.OperationMethod<
+export const ListAddsServiceReplicationSummary: API.PaginatedOperationMethod<
   ListAddsServiceReplicationSummaryRequest,
   ReplicationSummaryList,
   ListAddsServiceReplicationSummaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(816, __c51, 0) as any as S.Schema<ListAddsServiceReplicationSummaryRequest>,
   output: __S(817, __c51, 1) as any as S.Schema<ReplicationSummaryList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListAddsServicesError = AzureOpError;
 /** Gets the details of Active Directory Domain Service, for a tenant, that are onboarded to Azure Active Directory Connect Health. */
-export const ListAddsServices: API.OperationMethod<
+export const ListAddsServices: API.PaginatedOperationMethod<
   ListAddsServicesRequest,
   Services,
   ListAddsServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(832, __c52, 0) as any as S.Schema<ListAddsServicesRequest>,
   output: __S(753, __c47, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServiceServerAlertsError = AzureOpError;
 /** Gets the details of an alert for a given Active Directory Domain Controller service and server combination. */
-export const ListAddsServiceServerAlerts: API.OperationMethod<
+export const ListAddsServiceServerAlerts: API.PaginatedOperationMethod<
   ListAddsServiceServerAlertsRequest,
   Alerts,
   ListAddsServiceServerAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(848, __c53, 0) as any as S.Schema<ListAddsServiceServerAlertsRequest>,
   output: __S(870, __c54, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddsServicesServiceMembersError = AzureOpError;
 /** Gets the details of the servers, for a given Active Directory Domain Controller service, that are onboarded to Azure Active Directory Connect Health Service. */
-export const ListAddsServicesServiceMembers: API.OperationMethod<
+export const ListAddsServicesServiceMembers: API.PaginatedOperationMethod<
   ListAddsServicesServiceMembersRequest,
   ServiceMembers,
   ListAddsServicesServiceMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(880, __c55, 0) as any as S.Schema<ListAddsServicesServiceMembersRequest>,
   output: __S(897, __c56, 1) as any as S.Schema<ServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAlertAddsAlertsError = AzureOpError;
 /** Gets the alerts for a given Active Directory Domain Service. */
-export const ListAlertAddsAlerts: API.OperationMethod<
+export const ListAlertAddsAlerts: API.PaginatedOperationMethod<
   ListAlertAddsAlertsRequest,
   Alerts,
   ListAlertAddsAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(912, __c57, 0) as any as S.Schema<ListAlertAddsAlertsRequest>,
   output: __S(870, __c54, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConfigurationAddsConfigurationsError = AzureOpError;
 /** Gets the service configurations. */
-export const ListConfigurationAddsConfigurations: API.OperationMethod<
+export const ListConfigurationAddsConfigurations: API.PaginatedOperationMethod<
   ListConfigurationAddsConfigurationsRequest,
   AddsConfiguration,
   ListConfigurationAddsConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c58, 0) as any as S.Schema<ListConfigurationAddsConfigurationsRequest>,
   output: __S(704, __c44, 0) as any as S.Schema<AddsConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDimensionAddsDimensionsError = AzureOpError;
 /** Gets the dimensions for a given dimension type in a server. */
-export const ListDimensionAddsDimensions: API.OperationMethod<
+export const ListDimensionAddsDimensions: API.PaginatedOperationMethod<
   ListDimensionAddsDimensionsRequest,
   Dimensions,
   ListDimensionAddsDimensionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dimension
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(944, __c59, 0) as any as S.Schema<ListDimensionAddsDimensionsRequest>,
   output: __S(947, __c59, 3) as any as S.Schema<Dimensions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIPAddressAggregatesByServiceError = AzureOpError;
 /** Gets the IP address aggregates for a given service. */
-export const ListIPAddressAggregatesByService: API.OperationMethod<
+export const ListIPAddressAggregatesByService: API.PaginatedOperationMethod<
   ListIPAddressAggregatesByServiceRequest,
   IPAddressAggregates,
   ListIPAddressAggregatesByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IPAddressAggregate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(960, __c60, 0) as any as S.Schema<ListIPAddressAggregatesByServiceRequest>,
   output: __S(963, __c60, 3) as any as S.Schema<IPAddressAggregates>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIPAddressAggregateSettingsError = AzureOpError;
 /** Gets the IP address aggregate settings. */
@@ -2822,333 +2968,432 @@ export const ListIPAddressAggregateSettings: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists the available Azure Data Factory API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1040, __c65, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1043, __c65, 3) as any as S.Schema<OperationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceAlertFeedbackError = AzureOpError;
 /** Gets a list of all alert feedback for a given tenant and alert type. */
-export const ListServiceAlertFeedback: API.OperationMethod<
+export const ListServiceAlertFeedback: API.PaginatedOperationMethod<
   ListServiceAlertFeedbackRequest,
   AlertFeedbacks,
   ListServiceAlertFeedbackError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AlertFeedback
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<ListServiceAlertFeedbackRequest>,
   output: __S(1058, __c66, 2) as any as S.Schema<AlertFeedbacks>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServiceAlertsError = AzureOpError;
 /** Gets the alerts for a given service. */
-export const ListServiceAlerts: API.OperationMethod<
+export const ListServiceAlerts: API.PaginatedOperationMethod<
   ListServiceAlertsRequest,
   Alerts,
   ListServiceAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1072, __c67, 0) as any as S.Schema<ListServiceAlertsRequest>,
   output: __S(870, __c54, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceMemberAlertsError = AzureOpError;
 /** Gets the details of an alert for a given service and server combination. */
-export const ListServiceMemberAlerts: API.OperationMethod<
+export const ListServiceMemberAlerts: API.PaginatedOperationMethod<
   ListServiceMemberAlertsRequest,
   Alerts,
   ListServiceMemberAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c68, 0) as any as S.Schema<ListServiceMemberAlertsRequest>,
   output: __S(870, __c54, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceMemberConnectorsError = AzureOpError;
 /** Gets the connector details for a service. */
-export const ListServiceMemberConnectors: API.OperationMethod<
+export const ListServiceMemberConnectors: API.PaginatedOperationMethod<
   ListServiceMemberConnectorsRequest,
   Connectors,
   ListServiceMemberConnectorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Connector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1104, __c69, 0) as any as S.Schema<ListServiceMemberConnectorsRequest>,
   output: __S(1114, __c69, 10) as any as S.Schema<Connectors>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServiceMemberCredentialsError = AzureOpError;
 /** Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service. */
-export const ListServiceMemberCredentials: API.OperationMethod<
+export const ListServiceMemberCredentials: API.PaginatedOperationMethod<
   ListServiceMemberCredentialsRequest,
   Credentials,
   ListServiceMemberCredentialsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Credential
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1120, __c70, 0) as any as S.Schema<ListServiceMemberCredentialsRequest>,
   output: __S(626, __c39, 2) as any as S.Schema<Credentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServiceMemberDataFreshnessError = AzureOpError;
 /** Gets the last time when the server uploaded data to Azure Active Directory Connect Health Service. */
-export const ListServiceMemberDataFreshness: API.OperationMethod<
+export const ListServiceMemberDataFreshness: API.PaginatedOperationMethod<
   ListServiceMemberDataFreshnessRequest,
   DataFreshnessDetails,
   ListServiceMemberDataFreshnessError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1136, __c71, 0) as any as S.Schema<ListServiceMemberDataFreshnessRequest>,
   output: __S(1152, __c72, 0) as any as S.Schema<DataFreshnessDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServiceMemberGlobalConfigurationError = AzureOpError;
 /** Gets the global configuration. */
-export const ListServiceMemberGlobalConfiguration: API.OperationMethod<
+export const ListServiceMemberGlobalConfiguration: API.PaginatedOperationMethod<
   ListServiceMemberGlobalConfigurationRequest,
   GlobalConfigurations,
   ListServiceMemberGlobalConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GlobalConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1168, __c73, 0) as any as S.Schema<ListServiceMemberGlobalConfigurationRequest>,
   output: __S(1171, __c73, 3) as any as S.Schema<GlobalConfigurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServiceMembersError = AzureOpError;
 /** Gets the details of the servers, for a given service, that are onboarded to Azure Active Directory Connect Health Service. */
-export const ListServiceMembers: API.OperationMethod<
+export const ListServiceMembers: API.PaginatedOperationMethod<
   ListServiceMembersRequest,
   ServiceMembers,
   ListServiceMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c74, 0) as any as S.Schema<ListServiceMembersRequest>,
   output: __S(897, __c56, 1) as any as S.Schema<ServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceMetricMetadataError = AzureOpError;
 /** Gets the service related metrics information. */
-export const ListServiceMetricMetadata: API.OperationMethod<
+export const ListServiceMetricMetadata: API.PaginatedOperationMethod<
   ListServiceMetricMetadataRequest,
   MetricMetadataList,
   ListServiceMetricMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetricMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1200, __c75, 0) as any as S.Schema<ListServiceMetricMetadataRequest>,
   output: __S(673, __c42, 1) as any as S.Schema<MetricMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceMetricsAverageError = AzureOpError;
 /** Gets the average of the metric values for a given metric and group combination. */
-export const ListServiceMetricsAverage: API.OperationMethod<
+export const ListServiceMetricsAverage: API.PaginatedOperationMethod<
   ListServiceMetricsAverageRequest,
   Metrics,
   ListServiceMetricsAverageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1232, __c77, 0) as any as S.Schema<ListServiceMetricsAverageRequest>,
   output: __S(704, __c44, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceMetricsSumError = AzureOpError;
 /** Gets the sum of the metric values for a given metric and group combination. */
-export const ListServiceMetricsSum: API.OperationMethod<
+export const ListServiceMetricsSum: API.PaginatedOperationMethod<
   ListServiceMetricsSumRequest,
   Metrics,
   ListServiceMetricsSumError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1248, __c78, 0) as any as S.Schema<ListServiceMetricsSumRequest>,
   output: __S(704, __c44, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceMonitoringConfigurationsError = AzureOpError;
 /** Gets the service level monitoring configurations. */
-export const ListServiceMonitoringConfigurations: API.OperationMethod<
+export const ListServiceMonitoringConfigurations: API.PaginatedOperationMethod<
   ListServiceMonitoringConfigurationsRequest,
   Items,
   ListServiceMonitoringConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Item
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1264, __c79, 0) as any as S.Schema<ListServiceMonitoringConfigurationsRequest>,
   output: __S(1152, __c72, 0) as any as S.Schema<Items>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServicePremiumError = AzureOpError;
 /** Gets the details of services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
-export const ListServicePremium: API.OperationMethod<
+export const ListServicePremium: API.PaginatedOperationMethod<
   ListServicePremiumRequest,
   Services,
   ListServicePremiumError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c80, 0) as any as S.Schema<ListServicePremiumRequest>,
   output: __S(753, __c47, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServicesError = AzureOpError;
 /** Gets the details of services, for a tenant, that are onboarded to Azure Active Directory Connect Health. */
-export const ListServices: API.OperationMethod<
+export const ListServices: API.PaginatedOperationMethod<
   ListServicesRequest,
   Services,
   ListServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1296, __c81, 0) as any as S.Schema<ListServicesRequest>,
   output: __S(753, __c47, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceUserBadPasswordReportError = AzureOpError;
 /** Gets the bad password login attempt report for an user */
-export const ListServiceUserBadPasswordReport: API.OperationMethod<
+export const ListServiceUserBadPasswordReport: API.PaginatedOperationMethod<
   ListServiceUserBadPasswordReportRequest,
   ErrorReportUsersEntries,
   ListServiceUserBadPasswordReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ErrorReportUsersEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c82, 0) as any as S.Schema<ListServiceUserBadPasswordReportRequest>,
   output: __S(1315, __c82, 3) as any as S.Schema<ErrorReportUsersEntries>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ServiceMembersListExportStatusError = AzureOpError;
 /** Gets the export status. */
-export const ServiceMembersListExportStatus: API.OperationMethod<
+export const ServiceMembersListExportStatus: API.PaginatedOperationMethod<
   ServiceMembersListExportStatusRequest,
   ExportStatuses,
   ServiceMembersListExportStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExportStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1328, __c83, 0) as any as S.Schema<ServiceMembersListExportStatusRequest>,
   output: __S(1346, __c84, 2) as any as S.Schema<ExportStatuses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ServicesListAllRiskyIpDownloadReportError = AzureOpError;
 /** Gets all Risky IP report URIs for the last 7 days. */
-export const ServicesListAllRiskyIpDownloadReport: API.OperationMethod<
+export const ServicesListAllRiskyIpDownloadReport: API.PaginatedOperationMethod<
   ServicesListAllRiskyIpDownloadReportRequest,
   RiskyIPBlobUris,
   ServicesListAllRiskyIpDownloadReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RiskyIPBlobUri
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1360, __c85, 0) as any as S.Schema<ServicesListAllRiskyIpDownloadReportRequest>,
   output: __S(1378, __c86, 2) as any as S.Schema<RiskyIPBlobUris>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ServicesListCurrentRiskyIpDownloadReportError = AzureOpError;
 /** Initiate the generation of a new Risky IP report. Returns the URI for the new one. */
-export const ServicesListCurrentRiskyIpDownloadReport: API.OperationMethod<
+export const ServicesListCurrentRiskyIpDownloadReport: API.PaginatedOperationMethod<
   ServicesListCurrentRiskyIpDownloadReportRequest,
   RiskyIPBlobUris,
   ServicesListCurrentRiskyIpDownloadReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RiskyIPBlobUri
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1392, __c87, 0) as any as S.Schema<ServicesListCurrentRiskyIpDownloadReportRequest>,
   output: __S(1378, __c86, 2) as any as S.Schema<RiskyIPBlobUris>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ServicesListExportErrorsError = AzureOpError;
 /** Gets the count of latest AAD export errors. */
-export const ServicesListExportErrors: API.OperationMethod<
+export const ServicesListExportErrors: API.PaginatedOperationMethod<
   ServicesListExportErrorsRequest,
   ErrorCounts,
   ServicesListExportErrorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ErrorCount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1408, __c88, 0) as any as S.Schema<ServicesListExportErrorsRequest>,
   output: __S(1411, __c88, 3) as any as S.Schema<ErrorCounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ServicesListExportErrorsV2Error = AzureOpError;
 /** Gets the categorized export errors. */
-export const ServicesListExportErrorsV2: API.OperationMethod<
+export const ServicesListExportErrorsV2: API.PaginatedOperationMethod<
   ServicesListExportErrorsV2Request,
   MergedExportErrors,
   ServicesListExportErrorsV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MergedExportError
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1440, __c90, 0) as any as S.Schema<ServicesListExportErrorsV2Request>,
   output: __S(1444, __c90, 4) as any as S.Schema<MergedExportErrors>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ServicesListExportStatusError = AzureOpError;
 /** Gets the export status. */
-export const ServicesListExportStatus: API.OperationMethod<
+export const ServicesListExportStatus: API.PaginatedOperationMethod<
   ServicesListExportStatusRequest,
   ExportStatuses,
   ServicesListExportStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExportStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1456, __c91, 0) as any as S.Schema<ServicesListExportStatusRequest>,
   output: __S(1346, __c84, 2) as any as S.Schema<ExportStatuses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateAddsServiceError = AzureOpError;
 /** Updates an Active Directory Domain Service properties of an onboarded service. */
@@ -4012,12 +4257,14 @@ function __c35(j: number): any {
           nextPartitionKey: S.String.pipe(T.Query()),
           nextRowKey: S.String.pipe(T.Query()),
           takeCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addomainservicemembers",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAdDomainServiceMembersRequest" });
@@ -4080,7 +4327,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(579, __c36, 3)),
+          value: __S(579, __c36, 3),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4134,7 +4381,7 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(625, __c39, 1)),
+          value: __S(625, __c39, 1),
         }),
       ).annotate({ identifier: "Credentials" });
   }
@@ -4146,12 +4393,14 @@ function __c40(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServiceMembersRequest" });
@@ -4165,12 +4414,14 @@ function __c41(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           perfCounter: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServiceMetricMetadataRequest" });
@@ -4184,7 +4435,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(672, __c42, 0)),
+          value: __S(672, __c42, 0),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4199,12 +4450,14 @@ function __c43(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           metricName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServiceMetricsAverageRequest" });
@@ -4216,7 +4469,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(593, __c37, 1)),
+          value: __S(593, __c37, 1),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4231,12 +4484,14 @@ function __c45(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           metricName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServiceMetricsSumRequest" });
@@ -4251,12 +4506,14 @@ function __c46(j: number): any {
           serviceType: S.optional(S.String.pipe(T.Query())),
           skipCount: S.optional(S.Number.pipe(T.Query())),
           takeCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/premiumCheck",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServicePremiumServicesRequest" });
@@ -4270,7 +4527,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(752, __c47, 0)),
+          value: __S(752, __c47, 0),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4337,7 +4594,7 @@ function __c49(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(803, __c50, 3)),
+          value: __S(803, __c50, 3),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
           nextLink: S.optional(S.String),
@@ -4407,7 +4664,7 @@ function __c51(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(803, __c50, 3)),
+          value: __S(803, __c50, 3),
         }),
       ).annotate({ identifier: "ReplicationSummaryList" });
   }
@@ -4421,12 +4678,14 @@ function __c52(j: number): any {
           serviceType: S.optional(S.String.pipe(T.Query())),
           skipCount: S.optional(S.Number.pipe(T.Query())),
           takeCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServicesRequest" });
@@ -4443,12 +4702,14 @@ function __c53(j: number): any {
           state: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/alerts",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServiceServerAlertsRequest" });
@@ -4505,7 +4766,7 @@ function __c54(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(869, __c54, 5)),
+          value: __S(869, __c54, 5),
           nextLink: S.optional(S.String),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
@@ -4522,12 +4783,14 @@ function __c55(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           dimensionType: S.optional(S.String.pipe(T.Query())),
           dimensionSignature: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddsServicesServiceMembersRequest" });
@@ -4541,7 +4804,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(896, __c56, 0)),
+          value: __S(896, __c56, 0),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4558,12 +4821,14 @@ function __c57(j: number): any {
           state: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/alerts",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAlertAddsAlertsRequest" });
@@ -4576,12 +4841,14 @@ function __c58(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           grouping: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConfigurationAddsConfigurationsRequest" });
@@ -4594,12 +4861,14 @@ function __c59(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           dimension: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/dimensions/{dimension}",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDimensionAddsDimensionsRequest" });
@@ -4623,7 +4892,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(946, __c59, 2)),
+          value: __S(946, __c59, 2),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4637,12 +4906,14 @@ function __c60(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           skiptoken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIPAddressAggregatesByServiceRequest" });
@@ -4673,7 +4944,7 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(962, __c60, 2)),
+          value: __S(962, __c60, 2),
           nextLink: S.optional(S.String),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
@@ -4759,12 +5030,15 @@ function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/operations",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -4781,7 +5055,7 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1042, __c65, 2)),
+          value: __S(1042, __c65, 2),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -4809,7 +5083,7 @@ function __c66(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1057, __c66, 1)),
+          value: __S(1057, __c66, 1),
         }),
       ).annotate({ identifier: "AlertFeedbacks" });
   }
@@ -4824,12 +5098,14 @@ function __c67(j: number): any {
           state: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceAlertsRequest" });
@@ -4846,12 +5122,14 @@ function __c68(j: number): any {
           state: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/alerts",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceMemberAlertsRequest" });
@@ -4947,7 +5225,7 @@ function __c69(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1113, __c69, 9)),
+          value: __S(1113, __c69, 9),
         }),
       ).annotate({ identifier: "Connectors" });
   }
@@ -4994,7 +5272,7 @@ function __c72(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(593, __c37, 1)),
+          value: __S(593, __c37, 1),
         }),
       ).annotate({ identifier: "DataFreshnessDetails" });
   }
@@ -5030,7 +5308,7 @@ function __c73(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1170, __c73, 2)),
+          value: __S(1170, __c73, 2),
         }),
       ).annotate({ identifier: "GlobalConfigurations" });
   }
@@ -5044,12 +5322,14 @@ function __c74(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           dimensionType: S.optional(S.String.pipe(T.Query())),
           dimensionSignature: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceMembersRequest" });
@@ -5063,12 +5343,14 @@ function __c75(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           perfCounter: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceMetricMetadataRequest" });
@@ -5125,12 +5407,14 @@ function __c77(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           metricName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceMetricsAverageRequest" });
@@ -5144,12 +5428,14 @@ function __c78(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           metricName: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceMetricsSumRequest" });
@@ -5181,12 +5467,14 @@ function __c80(j: number): any {
           serviceType: S.optional(S.String.pipe(T.Query())),
           skipCount: S.optional(S.Number.pipe(T.Query())),
           takeCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/premiumCheck",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServicePremiumRequest" });
@@ -5201,12 +5489,14 @@ function __c81(j: number): any {
           serviceType: S.optional(S.String.pipe(T.Query())),
           skipCount: S.optional(S.Number.pipe(T.Query())),
           takeCount: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
@@ -5243,7 +5533,7 @@ function __c82(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1314, __c82, 2)),
+          value: __S(1314, __c82, 2),
         }),
       ).annotate({ identifier: "ErrorReportUsersEntries" });
   }
@@ -5255,12 +5545,14 @@ function __c83(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           serviceMemberId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/exportstatus",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ServiceMembersListExportStatusRequest" });
@@ -5283,7 +5575,7 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1345, __c84, 1)),
+          value: __S(1345, __c84, 1),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
@@ -5325,7 +5617,7 @@ function __c86(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1377, __c86, 1)),
+          value: __S(1377, __c86, 1),
         }),
       ).annotate({ identifier: "RiskyIPBlobUris" });
   }
@@ -5375,7 +5667,7 @@ function __c88(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1410, __c88, 2)),
+          value: __S(1410, __c88, 2),
         }),
       ).annotate({ identifier: "ErrorCounts" });
   }
@@ -5463,7 +5755,7 @@ function __c90(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1443, __c90, 3)),
+          value: __S(1443, __c90, 3),
         }),
       ).annotate({ identifier: "MergedExportErrors" });
   }
@@ -5474,12 +5766,14 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exportstatus",
             code: 200,
             apiVersion: "2014-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ServicesListExportStatusRequest" });

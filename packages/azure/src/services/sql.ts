@@ -10289,6 +10289,8 @@ export interface ListBackupShortTermRetentionPolicyByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A short term retention policy. */
 export interface BackupShortTermRetentionPolicy {
@@ -11028,6 +11030,8 @@ export interface ListDatabaseAdvancedThreatProtectionSettingsByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of an Advanced Threat Protection state. */
 export type DatabaseAdvancedThreatProtectionProperties =
@@ -11096,6 +11100,8 @@ export interface ListDatabaseBlobAuditingPolicyByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database blob auditing policy. */
 export interface DatabaseBlobAuditingPolicy {
@@ -11130,6 +11136,8 @@ export interface ListDatabaseByElasticPoolRequest {
   serverName: string;
   /** The name of the elastic pool. */
   elasticPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DatabaseTagsMap = { [key: string]: string | undefined };
@@ -11177,6 +11185,8 @@ export interface ListDatabaseByServerRequest {
   /** The name of the server. */
   serverName: string;
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListDatabaseColumnByDatabaseRequestSchemaList = Array<string>;
 export type ListDatabaseColumnByDatabaseRequestTableList = Array<string>;
@@ -11197,6 +11207,8 @@ export interface ListDatabaseColumnByDatabaseRequest {
   orderBy?: ListDatabaseColumnByDatabaseRequestOrderByList;
   /** An opaque token that identifies a starting point in the collection. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database column resource. */
 export interface DatabaseColumn {
@@ -11234,6 +11246,8 @@ export interface ListDatabaseColumnByTableRequest {
   tableName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseColumn items on this page */
 export type ListDatabaseColumnByTableResponseValueList = Array<DatabaseColumn>;
@@ -11252,6 +11266,8 @@ export interface ListDatabaseExtensionByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Extension operation result resource. */
 export interface ImportExportExtensionsOperationResult {
@@ -11272,7 +11288,7 @@ export type ImportExportExtensionsOperationListResultValueList =
 /** Import export operation extensions list. */
 export interface ImportExportExtensionsOperationListResult {
   /** Array of results. */
-  value?: ImportExportExtensionsOperationListResultValueList;
+  value: ImportExportExtensionsOperationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -11283,6 +11299,8 @@ export interface ListDatabaseInaccessibleByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseOperationByDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11293,6 +11311,8 @@ export interface ListDatabaseOperationByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The operation state. */
 export type DatabaseOperationPropertiesState =
@@ -11403,6 +11423,8 @@ export interface ListDatabaseSchemaByDatabaseRequest {
   databaseName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Common fields that are returned in the response for all Azure Resource Manager resources */
 export interface Resource {
@@ -11432,6 +11454,8 @@ export interface ListDatabaseSecurityAlertPolicyByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type DatabaseSecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
@@ -11474,7 +11498,7 @@ export type DatabaseSecurityAlertListResultValueList = Array<DatabaseSecurityAle
 /** A list of the database's security alert policies. */
 export interface DatabaseSecurityAlertListResult {
   /** Array of results. */
-  value?: DatabaseSecurityAlertListResultValueList;
+  value: DatabaseSecurityAlertListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -11493,6 +11517,8 @@ export interface ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilit
   vulnerabilityAssessmentName:
     | ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequestVulnerabilityAssessmentName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database sql vulnerability assessment baseline set. */
 export interface DatabaseSqlVulnerabilityAssessmentBaselineSet {
@@ -11536,6 +11562,8 @@ export interface ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineReq
   baselineName:
     | ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineRequestBaselineName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database sql vulnerability assessment rule baseline. */
 export interface DatabaseSqlVulnerabilityAssessmentRuleBaseline {
@@ -11574,6 +11602,8 @@ export interface ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAss
   vulnerabilityAssessmentName:
     | ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequestVulnerabilityAssessmentName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A vulnerability assessment scan record. */
 export interface SqlVulnerabilityAssessmentScanRecord {
@@ -11614,6 +11644,8 @@ export interface ListDatabaseSqlVulnerabilityAssessmentScanResultByScanRequest {
     | (string & {});
   /** The scan id of the SQL Vulnerability Assessment scan to retrieve result from. */
   scanId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface SqlVulnerabilityAssessmentScanResults {
@@ -11633,7 +11665,7 @@ export type ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponseValueL
   Array<SqlVulnerabilityAssessmentScanResults>;
 export interface ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponse {
   /** Array of results. */
-  value?: ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponseValueList;
+  value: ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -11646,6 +11678,8 @@ export interface ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseReques
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A SQL Vulnerability Assessment. */
 export interface SqlVulnerabilityAssessment {
@@ -11682,6 +11716,8 @@ export interface ListDatabaseTableBySchemaRequest {
   schemaName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database table resource. */
 export interface DatabaseTable {
@@ -11713,6 +11749,8 @@ export interface ListDatabaseUsageByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of a database usage. */
 export type DatabaseUsageProperties = SubscriptionUsageProperties;
@@ -11747,6 +11785,8 @@ export interface ListDatabaseVulnerabilityAssessmentByDatabaseRequest {
   serverName: string;
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database vulnerability assessment. */
 export interface DatabaseVulnerabilityAssessment {
@@ -11785,6 +11825,8 @@ export interface ListDatabaseVulnerabilityAssessmentScanByDatabaseRequest {
   vulnerabilityAssessmentName:
     | ListDatabaseVulnerabilityAssessmentScanByDatabaseRequestVulnerabilityAssessmentName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A vulnerability assessment scan record. */
 export interface VulnerabilityAssessmentScanRecord {
@@ -11820,6 +11862,8 @@ export interface ListDataMaskingRuleByDatabaseRequest {
   databaseName: string;
   /** The name of the database for which the data masking policy applies. */
   dataMaskingPolicyName: ListDataMaskingRuleByDatabaseRequestDataMaskingPolicyName | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A database data masking rule. */
 export interface DataMaskingRule {
@@ -11856,6 +11900,8 @@ export interface ListDataWarehouseUserActivityByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** User activities of a data warehouse */
 export interface DataWarehouseUserActivities {
@@ -11884,6 +11930,8 @@ export interface ListDeletedServerByLocationRequest {
   subscriptionId: string;
   /** The name of the region where the resource is located. */
   locationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A deleted server. */
 export interface DeletedServer {
@@ -11910,6 +11958,8 @@ export interface DeletedServerListResult {
 export interface ListDeletedServersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDistributedAvailabilityGroupByInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -11918,6 +11968,8 @@ export interface ListDistributedAvailabilityGroupByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Distributed availability group between box and Sql Managed Instance. */
 export interface DistributedAvailabilityGroup {
@@ -11937,7 +11989,7 @@ export type DistributedAvailabilityGroupsListResultValueList = Array<Distributed
 /** A list of distributed availability groups in instance. */
 export interface DistributedAvailabilityGroupsListResult {
   /** Array of results. */
-  value?: DistributedAvailabilityGroupsListResultValueList;
+  value: DistributedAvailabilityGroupsListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -12023,6 +12075,8 @@ export interface ListElasticPoolByServerRequest {
   serverName: string;
   /** The number of elements in the collection to skip. */
   _skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ElasticPoolTagsMap = { [key: string]: string | undefined };
@@ -12130,6 +12184,8 @@ export interface ListElasticPoolOperationByElasticPoolRequest {
   serverName: string;
   /** The name of the elastic pool. */
   elasticPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of a elastic pool operation. */
 export interface ElasticPoolOperationProperties {
@@ -12191,6 +12247,8 @@ export interface ListEncryptionProtectorByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The server encryption protector. */
 export interface EncryptionProtector {
@@ -12225,6 +12283,8 @@ export interface ListEndpointCertificateByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Certificate used on an endpoint on the Managed Instance. */
 export interface EndpointCertificate {
@@ -12257,6 +12317,8 @@ export interface ListExtendedDatabaseBlobAuditingPolicyByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An extended database blob auditing policy. */
 export interface ExtendedDatabaseBlobAuditingPolicy {
@@ -12288,6 +12350,8 @@ export interface ListExtendedServerBlobAuditingPolicyByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An extended server blob auditing policy. */
 export interface ExtendedServerBlobAuditingPolicy {
@@ -12319,6 +12383,8 @@ export interface ListFailoverGroupByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FailoverGroupTagsMap = { [key: string]: string | undefined };
@@ -12355,6 +12421,8 @@ export interface ListFirewallRuleByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server firewall rule. */
 export interface FirewallRule {
@@ -12385,6 +12453,8 @@ export interface ListGeoBackupPoliciesRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Geo backup policy. */
 export interface GeoBackupPolicy {
@@ -12419,6 +12489,8 @@ export interface ListInstanceFailoverGroupByLocationRequest {
   resourceGroupName: string;
   /** The name of the region where the resource is located. */
   locationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An instance failover group. */
 export interface InstanceFailoverGroup {
@@ -12447,6 +12519,8 @@ export interface ListInstancePoolByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type InstancePoolTagsMap = { [key: string]: string | undefined };
@@ -12487,6 +12561,8 @@ export interface ListInstancePoolOperationByInstancePoolRequest {
   resourceGroupName: string;
   /** The name of the instance pool to be retrieved. */
   instancePoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A instance pool operation. */
 export interface InstancePoolOperation {
@@ -12513,6 +12589,8 @@ export interface InstancePoolOperationListResult {
 export interface ListInstancePoolsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIPv6FirewallRuleByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12521,6 +12599,8 @@ export interface ListIPv6FirewallRuleByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An IPv6 server firewall rule. */
 export interface IPv6FirewallRule {
@@ -12549,6 +12629,8 @@ export interface ListJobAgentByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type JobAgentTagsMap = { [key: string]: string | undefined };
@@ -12593,6 +12675,8 @@ export interface ListJobByAgentRequest {
   serverName: string;
   /** The name of the job agent to be retrieved. */
   jobAgentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A job. */
 export interface Job {
@@ -12625,6 +12709,8 @@ export interface ListJobCredentialsByAgentRequest {
   serverName: string;
   /** The name of the job agent to be retrieved. */
   jobAgentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A stored credential that can be used by a job to connect to target databases. */
 export interface JobCredential {
@@ -12671,6 +12757,8 @@ export interface ListJobExecutionByAgentRequest {
   _skip?: number;
   /** The number of elements to return from the collection. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An execution of a job */
 export interface JobExecution {
@@ -12718,6 +12806,8 @@ export interface ListJobExecutionByJobRequest {
   _skip?: number;
   /** The number of elements to return from the collection. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The JobExecution items on this page */
 export type ListJobExecutionByJobResponseValueList = Array<JobExecution>;
@@ -12736,6 +12826,8 @@ export interface ListJobPrivateEndpointByAgentRequest {
   serverName: string;
   /** The name of the job agent to be retrieved. */
   jobAgentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A job agent private endpoint. */
 export interface JobPrivateEndpoint {
@@ -12770,6 +12862,8 @@ export interface ListJobStepByJobRequest {
   jobAgentName: string;
   /** The name of the job. */
   jobName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A job step. */
 export interface JobStep {
@@ -12806,6 +12900,8 @@ export interface ListJobStepByVersionRequest {
   jobName: string;
   /** The version of the job to get. */
   jobVersion: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListJobStepExecutionByJobExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12834,6 +12930,8 @@ export interface ListJobStepExecutionByJobExecutionRequest {
   _skip?: number;
   /** The number of elements to return from the collection. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The JobExecution items on this page */
 export type ListJobStepExecutionByJobExecutionResponseValueList = Array<JobExecution>;
@@ -12870,6 +12968,8 @@ export interface ListJobTargetExecutionByJobExecutionRequest {
   _skip?: number;
   /** The number of elements to return from the collection. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The JobExecution items on this page */
 export type ListJobTargetExecutionByJobExecutionResponseValueList = Array<JobExecution>;
@@ -12908,6 +13008,8 @@ export interface ListJobTargetExecutionByStepRequest {
   _skip?: number;
   /** The number of elements to return from the collection. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The JobExecution items on this page */
 export type ListJobTargetExecutionByStepResponseValueList = Array<JobExecution>;
@@ -12926,6 +13028,8 @@ export interface ListJobTargetGroupByAgentRequest {
   serverName: string;
   /** The name of the job agent to be retrieved. */
   jobAgentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A group of job targets. */
 export interface JobTargetGroup {
@@ -12960,6 +13064,8 @@ export interface ListJobVersionByJobRequest {
   jobAgentName: string;
   /** The name of the job to get. */
   jobName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The JobVersion items on this page */
 export type JobVersionListResultValueList = Array<Resource>;
@@ -12979,6 +13085,8 @@ export interface ListLedgerDigestUploadByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure SQL Database ledger digest upload settings. */
 export interface LedgerDigestUploads {
@@ -13016,6 +13124,8 @@ export interface ListLongTermRetentionBackupByDatabaseRequest {
   onlyLatestPerDatabase?: boolean;
   /** Whether to query against just live databases, just deleted databases, or all databases. */
   databaseState?: ListLongTermRetentionBackupByDatabaseRequestDatabaseState | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A long term retention backup. */
 export interface LongTermRetentionBackup {
@@ -13035,7 +13145,7 @@ export type LongTermRetentionBackupListResultValueList = Array<LongTermRetention
 /** A list of long term retention backups. */
 export interface LongTermRetentionBackupListResult {
   /** Array of results. */
-  value?: LongTermRetentionBackupListResultValueList;
+  value: LongTermRetentionBackupListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -13049,6 +13159,8 @@ export interface ListLongTermRetentionBackupByLocationRequest {
   onlyLatestPerDatabase?: boolean;
   /** Whether to query against just live databases, just deleted databases, or all databases. */
   databaseState?: ListLongTermRetentionBackupByLocationRequestDatabaseState | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionBackupByResourceGroupDatabaseRequestDatabaseState =
   | "All"
@@ -13071,6 +13183,8 @@ export interface ListLongTermRetentionBackupByResourceGroupDatabaseRequest {
   databaseState?:
     | ListLongTermRetentionBackupByResourceGroupDatabaseRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionBackupByResourceGroupLocationRequestDatabaseState =
   | "All"
@@ -13089,6 +13203,8 @@ export interface ListLongTermRetentionBackupByResourceGroupLocationRequest {
   databaseState?:
     | ListLongTermRetentionBackupByResourceGroupLocationRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionBackupByResourceGroupServerRequestDatabaseState =
   | "All"
@@ -13109,6 +13225,8 @@ export interface ListLongTermRetentionBackupByResourceGroupServerRequest {
   databaseState?:
     | ListLongTermRetentionBackupByResourceGroupServerRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionBackupByServerRequestDatabaseState = "All" | "Live" | "Deleted";
 export interface ListLongTermRetentionBackupByServerRequest {
@@ -13122,6 +13240,8 @@ export interface ListLongTermRetentionBackupByServerRequest {
   onlyLatestPerDatabase?: boolean;
   /** Whether to query against just live databases, just deleted databases, or all databases. */
   databaseState?: ListLongTermRetentionBackupByServerRequestDatabaseState | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionManagedInstanceBackupByDatabaseRequestDatabaseState =
   | "All"
@@ -13142,6 +13262,8 @@ export interface ListLongTermRetentionManagedInstanceBackupByDatabaseRequest {
   databaseState?:
     | ListLongTermRetentionManagedInstanceBackupByDatabaseRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A long term retention backup for a managed database. */
 export interface ManagedInstanceLongTermRetentionBackup {
@@ -13183,6 +13305,8 @@ export interface ListLongTermRetentionManagedInstanceBackupByInstanceRequest {
   databaseState?:
     | ListLongTermRetentionManagedInstanceBackupByInstanceRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionManagedInstanceBackupByLocationRequestDatabaseState =
   | "All"
@@ -13205,6 +13329,8 @@ export interface ListLongTermRetentionManagedInstanceBackupByLocationRequest {
   _top?: number;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequestDatabaseState =
   | "All"
@@ -13227,6 +13353,8 @@ export interface ListLongTermRetentionManagedInstanceBackupByResourceGroupDataba
   databaseState?:
     | ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequestDatabaseState =
   | "All"
@@ -13247,6 +13375,8 @@ export interface ListLongTermRetentionManagedInstanceBackupByResourceGroupInstan
   databaseState?:
     | ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequestDatabaseState
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequestDatabaseState =
   | "All"
@@ -13271,6 +13401,8 @@ export interface ListLongTermRetentionManagedInstanceBackupByResourceGroupLocati
   _top?: number;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLongTermRetentionPolicyByDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13281,6 +13413,8 @@ export interface ListLongTermRetentionPolicyByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A long term retention policy. */
 export interface LongTermRetentionPolicy {
@@ -13313,6 +13447,8 @@ export interface ListManagedBackupShortTermRetentionPolicyByDatabaseRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A short term retention policy. */
 export interface ManagedBackupShortTermRetentionPolicy {
@@ -13345,6 +13481,8 @@ export interface ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabaseRe
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of an Advanced Threat Protection state. */
 export type ManagedDatabaseAdvancedThreatProtectionProperties =
@@ -13368,6 +13506,8 @@ export interface ListManagedDatabaseByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ManagedDatabaseTagsMap = { [key: string]: string | undefined };
@@ -13416,6 +13556,8 @@ export interface ListManagedDatabaseColumnByDatabaseRequest {
   orderBy?: ListManagedDatabaseColumnByDatabaseRequestOrderByList;
   /** An opaque token that identifies a starting point in the collection. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseColumn items on this page */
 export type ListManagedDatabaseColumnByDatabaseResponseValueList = Array<DatabaseColumn>;
@@ -13440,6 +13582,8 @@ export interface ListManagedDatabaseColumnByTableRequest {
   tableName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseColumn items on this page */
 export type ListManagedDatabaseColumnByTableResponseValueList = Array<DatabaseColumn>;
@@ -13456,6 +13600,8 @@ export interface ListManagedDatabaseInaccessibleByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListManagedDatabaseMoveOperationByLocationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13468,6 +13614,8 @@ export interface ListManagedDatabaseMoveOperationByLocationRequest {
   onlyLatestPerDatabase?: boolean;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed database move operation. */
 export interface ManagedDatabaseMoveOperationResult {
@@ -13488,7 +13636,7 @@ export type ManagedDatabaseMoveOperationListResultValueList =
 /** List of managed database move operations. */
 export interface ManagedDatabaseMoveOperationListResult {
   /** Array of results. */
-  value?: ManagedDatabaseMoveOperationListResultValueList;
+  value: ManagedDatabaseMoveOperationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -13509,6 +13657,8 @@ export interface ListManagedDatabaseQueryByQueryRequest {
   endTime?: string;
   /** The time step to be used to summarize the metric values. */
   interval?: ListManagedDatabaseQueryByQueryRequestInterval | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Interval type (length). */
 export type QueryTimeGrainType = "PT1H" | "P1D";
@@ -13595,6 +13745,8 @@ export interface ListManagedDatabaseSchemaByDatabaseRequest {
   databaseName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseSchema items on this page */
 export type ListManagedDatabaseSchemaByDatabaseResponseValueList = Array<Resource>;
@@ -13613,6 +13765,8 @@ export interface ListManagedDatabaseSecurityAlertPolicyByDatabaseRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed database security alert policy. */
 export interface ManagedDatabaseSecurityAlertPolicy {
@@ -13654,6 +13808,8 @@ export interface ListManagedDatabaseSecurityEventByDatabaseRequest {
   _top?: number;
   /** An opaque token that identifies a starting point in the collection. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of the security event. */
 export type SecurityEventPropertiesSecurityEventType =
@@ -13731,6 +13887,8 @@ export interface ListManagedDatabaseSensitivityLabelByDatabaseRequest {
   databaseName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A sensitivity label. */
 export interface SensitivityLabel {
@@ -13769,6 +13927,8 @@ export interface ListManagedDatabaseSensitivityLabelCurrentByDatabaseRequest {
   _count?: boolean;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SensitivityLabel items on this page */
 export type ListManagedDatabaseSensitivityLabelCurrentByDatabaseResponseValueList =
@@ -13793,6 +13953,8 @@ export interface ListManagedDatabaseSensitivityLabelRecommendedByDatabaseRequest
   includeDisabledRecommendations?: boolean;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SensitivityLabel items on this page */
 export type ListManagedDatabaseSensitivityLabelRecommendedByDatabaseResponseValueList =
@@ -13816,6 +13978,8 @@ export interface ListManagedDatabaseTableBySchemaRequest {
   schemaName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseTable items on this page */
 export type ListManagedDatabaseTableBySchemaResponseValueList = Array<DatabaseTable>;
@@ -13834,6 +13998,8 @@ export interface ListManagedDatabaseTransparentDataEncryptionByDatabaseRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed database transparent data encryption state. */
 export interface ManagedTransparentDataEncryption {
@@ -13867,6 +14033,8 @@ export interface ListManagedDatabaseVulnerabilityAssessmentByDatabaseRequest {
   managedInstanceName: string;
   /** The name of the database for which the vulnerability assessment is defined. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseVulnerabilityAssessment items on this page */
 export type ListManagedDatabaseVulnerabilityAssessmentByDatabaseResponseValueList =
@@ -13892,6 +14060,8 @@ export interface ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseRequest
   vulnerabilityAssessmentName:
     | ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseRequestVulnerabilityAssessmentName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VulnerabilityAssessmentScanRecord items on this page */
 export type ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseResponseValueList =
@@ -13909,6 +14079,8 @@ export interface ListManagedInstanceAdministratorByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure SQL managed instance administrator. */
 export interface ManagedInstanceAdministrator {
@@ -13939,6 +14111,8 @@ export interface ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceRe
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of an Advanced Threat Protection state. */
 export type ManagedInstanceAdvancedThreatProtectionProperties =
@@ -13962,6 +14136,8 @@ export interface ListManagedInstanceAzureADOnlyAuthenticationByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Active Directory only authentication. */
 export interface ManagedInstanceAzureADOnlyAuthentication {
@@ -13982,7 +14158,7 @@ export type ManagedInstanceAzureADOnlyAuthListResultValueList =
 /** List of managed database move operations. */
 export interface ManagedInstanceAzureADOnlyAuthListResult {
   /** Array of results. */
-  value?: ManagedInstanceAzureADOnlyAuthListResultValueList;
+  value: ManagedInstanceAzureADOnlyAuthListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -13995,6 +14171,8 @@ export interface ListManagedInstanceByInstancePoolRequest {
   instancePoolName: string;
   /** The child resources to include in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ManagedInstanceTagsMap = { [key: string]: string | undefined };
@@ -14081,6 +14259,8 @@ export interface ListManagedInstanceByManagedInstanceRequest {
     | (string & {});
   /** Metric to be used for ranking top queries. Default is 'cpu' */
   observationMetric?: ListManagedInstanceByManagedInstanceRequestObservationMetric | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Interval type (length). */
 export type TopQueriesIntervalType = "PT1H" | "P1D";
@@ -14133,6 +14313,8 @@ export interface ListManagedInstanceByResourceGroupRequest {
   resourceGroupName: string;
   /** The child resources to include in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListManagedInstanceDtcByManagedInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14141,6 +14323,8 @@ export interface ListManagedInstanceDtcByManagedInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SQL Managed Instance DTC */
 export interface ManagedInstanceDtc {
@@ -14171,6 +14355,8 @@ export interface ListManagedInstanceEncryptionProtectorByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The managed instance encryption protector. */
 export interface ManagedInstanceEncryptionProtector {
@@ -14206,6 +14392,8 @@ export interface ListManagedInstanceKeyByInstanceRequest {
   managedInstanceName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed instance key. */
 export interface ManagedInstanceKey {
@@ -14240,6 +14428,8 @@ export interface ListManagedInstanceLongTermRetentionPolicyByDatabaseRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A long term retention policy. */
 export interface ManagedInstanceLongTermRetentionPolicy {
@@ -14271,6 +14461,8 @@ export interface ListManagedInstanceOperationByManagedInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed instance operation. */
 export interface ManagedInstanceOperation {
@@ -14301,6 +14493,8 @@ export interface ListManagedInstanceOutboundNetworkDependenciesByManagedInstance
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A domain name that the managed instance service needs to communicate with, along with additional details. */
 export interface EndpointDetail {
@@ -14341,6 +14535,8 @@ export interface ListManagedInstancePrivateEndpointConnectionByManagedInstanceRe
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of a private endpoint connection. */
 export type ManagedInstancePrivateEndpointConnectionProperties =
@@ -14375,6 +14571,8 @@ export interface ListManagedInstancePrivateLinkResourceByManagedInstanceRequest 
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private link resource */
 export interface ManagedInstancePrivateLink {
@@ -14403,6 +14601,8 @@ export interface ListManagedInstancesRequest {
   subscriptionId: string;
   /** The child resources to include in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListManagedInstanceVulnerabilityAssessmentByInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14411,6 +14611,8 @@ export interface ListManagedInstanceVulnerabilityAssessmentByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed instance vulnerability assessment. */
 export interface ManagedInstanceVulnerabilityAssessment {
@@ -14444,6 +14646,8 @@ export interface ListManagedLedgerDigestUploadByDatabaseRequest {
   managedInstanceName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure SQL Database ledger digest upload settings. */
 export interface ManagedLedgerDigestUploads {
@@ -14475,6 +14679,8 @@ export interface ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPol
   /** The name of the managed instance. */
   managedInstanceName: string;
   restorableDroppedDatabaseId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ManagedBackupShortTermRetentionPolicy items on this page */
 export type ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseResponseValueList =
@@ -14492,6 +14698,8 @@ export interface ListManagedServerDnsAliasByManagedInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed server DNS alias. */
 export interface ManagedServerDnsAlias {
@@ -14522,6 +14730,8 @@ export interface ListManagedServerSecurityAlertPolicyByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ManagedServerSecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
@@ -14576,6 +14786,8 @@ export interface ListNetworkSecurityPerimeterConfigurationByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSP Configuration for a server. */
 export interface NetworkSecurityPerimeterConfiguration {
@@ -14600,7 +14812,10 @@ export interface NetworkSecurityPerimeterConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name. */
@@ -14632,7 +14847,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list SQL operations. */
 export interface OperationListResult {
   /** Array of results. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -14643,6 +14858,8 @@ export interface ListOutboundFirewallRuleByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure SQL DB Server Outbound Firewall Rule. */
 export interface OutboundFirewallRule {
@@ -14673,6 +14890,8 @@ export interface ListPrivateEndpointConnectionByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Group IDs. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
@@ -14716,6 +14935,8 @@ export interface ListPrivateLinkResourceByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private link resource */
 export interface PrivateLinkResource {
@@ -14772,6 +14993,8 @@ export interface ListRecoverableManagedDatabaseByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A recoverable managed database resource. */
 export interface RecoverableManagedDatabase {
@@ -14804,6 +15027,8 @@ export interface ListReplicationLinkByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A replication link. */
 export interface ReplicationLink {
@@ -14834,6 +15059,8 @@ export interface ListReplicationLinkByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRestorableDroppedDatabaseByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14842,6 +15069,8 @@ export interface ListRestorableDroppedDatabaseByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An ARM Resource SKU. */
 export type RestorableDroppedDatabaseSku = DatabasePropertiesInputCurrentSku;
@@ -14882,6 +15111,8 @@ export interface ListRestorableDroppedManagedDatabaseByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RestorableDroppedManagedDatabaseTagsMap = { [key: string]: string | undefined };
@@ -14921,6 +15152,8 @@ export interface ListRestorePointByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Database restore points. */
 export interface RestorePoint {
@@ -14957,6 +15190,8 @@ export interface ListSensitivityLabelByDatabaseRequest {
   databaseName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SensitivityLabel items on this page */
 export type ListSensitivityLabelByDatabaseResponseValueList = Array<SensitivityLabel>;
@@ -14979,6 +15214,8 @@ export interface ListSensitivityLabelCurrentByDatabaseRequest {
   _count?: boolean;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SensitivityLabel items on this page */
 export type ListSensitivityLabelCurrentByDatabaseResponseValueList = Array<SensitivityLabel>;
@@ -15002,6 +15239,8 @@ export interface ListSensitivityLabelRecommendedByDatabaseRequest {
   includeDisabledRecommendations?: boolean;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SensitivityLabel items on this page */
 export type ListSensitivityLabelRecommendedByDatabaseResponseValueList = Array<SensitivityLabel>;
@@ -15018,6 +15257,8 @@ export interface ListServerAdvancedThreatProtectionSettingsByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of an Advanced Threat Protection state. */
 export type ServerAdvancedThreatProtectionProperties =
@@ -15030,7 +15271,7 @@ export type LogicalServerAdvancedThreatProtectionListResultValueList =
 /** A list of the server's Advanced Threat Protection configurations. */
 export interface LogicalServerAdvancedThreatProtectionListResult {
   /** Array of results. */
-  value?: LogicalServerAdvancedThreatProtectionListResultValueList;
+  value: LogicalServerAdvancedThreatProtectionListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15057,6 +15298,8 @@ export interface ListServerAzureADAdministratorByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Active Directory administrator. */
 export interface ServerAzureADAdministrator {
@@ -15076,7 +15319,7 @@ export type AdministratorListResultValueList = Array<ServerAzureADAdministrator>
 /** A list of active directory administrators. */
 export interface AdministratorListResult {
   /** Array of results. */
-  value?: AdministratorListResultValueList;
+  value: AdministratorListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15087,6 +15330,8 @@ export interface ListServerAzureADOnlyAuthenticationByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Active Directory only authentication. */
 export type ServerAzureADOnlyAuthentication = ManagedInstanceAzureADOnlyAuthentication;
@@ -15095,7 +15340,7 @@ export type AzureADOnlyAuthListResultValueList = Array<ManagedInstanceAzureADOnl
 /** A list of active directory only authentications. */
 export interface AzureADOnlyAuthListResult {
   /** Array of results. */
-  value?: AzureADOnlyAuthListResultValueList;
+  value: AzureADOnlyAuthListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15106,6 +15351,8 @@ export interface ListServerBlobAuditingPolicyByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server blob auditing policy. */
 export interface ServerBlobAuditingPolicy {
@@ -15136,6 +15383,8 @@ export interface ListServerByResourceGroupRequest {
   resourceGroupName: string;
   /** The child resources to include in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ServerTagsMap = { [key: string]: string | undefined };
@@ -15189,6 +15438,8 @@ export interface ListServerConfigurationOptionByManagedInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server configuration option */
 export interface ServerConfigurationOption {
@@ -15219,6 +15470,8 @@ export interface ListServerConnectionPolicyByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server connection policy */
 export interface ServerConnectionPolicy {
@@ -15253,6 +15506,8 @@ export interface ListServerDevOpsAuditSettingsByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server DevOps auditing settings. */
 export interface ServerDevOpsAuditingSettings {
@@ -15272,7 +15527,7 @@ export type ServerDevOpsAuditSettingsListResultValueList = Array<ServerDevOpsAud
 /** A list of server DevOps audit settings. */
 export interface ServerDevOpsAuditSettingsListResult {
   /** Array of results. */
-  value?: ServerDevOpsAuditSettingsListResultValueList;
+  value: ServerDevOpsAuditSettingsListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15283,6 +15538,8 @@ export interface ListServerDnsAliasByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server DNS alias. */
 export interface ServerDnsAlias {
@@ -15313,6 +15570,8 @@ export interface ListServerKeyByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server key. */
 export interface ServerKey {
@@ -15347,6 +15606,8 @@ export interface ListServerOperationByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The operation state. */
 export type ServerOperationPropertiesState =
@@ -15412,6 +15673,8 @@ export interface ListServersRequest {
   subscriptionId: string;
   /** The child resources to include in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServerSecurityAlertPolicyByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15420,6 +15683,8 @@ export interface ListServerSecurityAlertPolicyByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force */
 export type ServerSecurityAlertPolicyPropertiesDisabledAlertsList = Array<string>;
@@ -15462,7 +15727,7 @@ export type LogicalServerSecurityAlertPolicyListResultValueList = Array<ServerSe
 /** A list of the server's security alert policies. */
 export interface LogicalServerSecurityAlertPolicyListResult {
   /** Array of results. */
-  value?: LogicalServerSecurityAlertPolicyListResultValueList;
+  value: LogicalServerSecurityAlertPolicyListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15473,6 +15738,8 @@ export interface ListServerTrustCertificateByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Server trust certificate imported from box to enable connection between box and Sql Managed Instance. */
 export interface ServerTrustCertificate {
@@ -15492,7 +15759,7 @@ export type ServerTrustCertificatesListResultValueList = Array<ServerTrustCertif
 /** A list of server trust certificates in instance. */
 export interface ServerTrustCertificatesListResult {
   /** Array of results. */
-  value?: ServerTrustCertificatesListResultValueList;
+  value: ServerTrustCertificatesListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15503,6 +15770,8 @@ export interface ListServerTrustGroupByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server trust group. */
 export interface ServerTrustGroup {
@@ -15533,6 +15802,8 @@ export interface ListServerTrustGroupByLocationRequest {
   resourceGroupName: string;
   /** The name of the region where the resource is located. */
   locationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServerUsageByServerRequest {
   /** The subscription ID that identifies an Azure subscription. */
@@ -15573,6 +15844,8 @@ export interface ListServerVulnerabilityAssessmentByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server vulnerability assessment. */
 export interface ServerVulnerabilityAssessment {
@@ -15615,6 +15888,8 @@ export interface ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessm
   systemDatabaseName:
     | ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequestSystemDatabaseName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseSqlVulnerabilityAssessmentBaselineSet items on this page */
 export type ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponseValueList =
@@ -15648,6 +15923,8 @@ export interface ListSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest {
   systemDatabaseName:
     | ListSqlVulnerabilityAssessmentRuleBaselineByBaselineRequestSystemDatabaseName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatabaseSqlVulnerabilityAssessmentRuleBaseline items on this page */
 export type ListSqlVulnerabilityAssessmentRuleBaselineByBaselineResponseValueList =
@@ -15677,6 +15954,8 @@ export interface ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessments
   systemDatabaseName:
     | ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequestSystemDatabaseName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SqlVulnerabilityAssessmentScanRecord items on this page */
 export type ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponseValueList =
@@ -15707,13 +15986,15 @@ export interface ListSqlVulnerabilityAssessmentScanResultByScanRequest {
   systemDatabaseName:
     | ListSqlVulnerabilityAssessmentScanResultByScanRequestSystemDatabaseName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type ListSqlVulnerabilityAssessmentScanResultByScanResponseValueList =
   Array<SqlVulnerabilityAssessmentScanResults>;
 export interface ListSqlVulnerabilityAssessmentScanResultByScanResponse {
   /** Array of results. */
-  value?: ListSqlVulnerabilityAssessmentScanResultByScanResponseValueList;
+  value: ListSqlVulnerabilityAssessmentScanResultByScanResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -15724,6 +16005,8 @@ export interface ListSqlVulnerabilityAssessmentsSettingsByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SqlVulnerabilityAssessment items on this page */
 export type ListSqlVulnerabilityAssessmentsSettingsByServerResponseValueList =
@@ -15741,6 +16024,8 @@ export interface ListStartStopManagedInstanceScheduleByInstanceRequest {
   resourceGroupName: string;
   /** The name of the managed instance. */
   managedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Managed instance's Start/Stop schedule. */
 export interface StartStopManagedInstanceSchedule {
@@ -15770,6 +16055,8 @@ export interface ListSubscriptionUsageByLocationRequest {
   subscriptionId: string;
   /** The name of the region where the resource is located. */
   locationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Usage Metric of a Subscription in a Location. */
 export type SubscriptionUsage = DatabaseUsage;
@@ -15791,6 +16078,8 @@ export interface ListSynapseLinkWorkspaceByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of a Synapse link workspaces */
 export interface SynapseLinkWorkspaceInfoProperties {
@@ -15836,6 +16125,8 @@ export interface ListSyncAgentByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure SQL Database sync agent. */
 export interface SyncAgent {
@@ -15868,6 +16159,8 @@ export interface ListSyncAgentLinkedDatabasesRequest {
   serverName: string;
   /** The name of the sync agent. */
   syncAgentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of the sync agent linked database. */
 export type SyncAgentLinkedDatabasePropertiesDatabaseType =
@@ -15919,6 +16212,8 @@ export interface ListSyncGroupByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An ARM Resource SKU. */
 export type SyncGroupSku = DatabasePropertiesInputCurrentSku;
@@ -15957,6 +16252,8 @@ export interface ListSyncGroupHubSchemasRequest {
   databaseName: string;
   /** The name of the sync group. */
   syncGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of the column in the table of database full schema. */
 export interface SyncFullSchemaTableColumn {
@@ -16027,6 +16324,8 @@ export interface ListSyncGroupLogsRequest {
   type: ListSyncGroupLogsRequestType | (string & {});
   /** The continuation token for this operation. */
   continuationToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of the sync group log. */
 export type SyncGroupLogPropertiesType = "All" | "Error" | "Warning" | "Success";
@@ -16059,6 +16358,8 @@ export interface ListSyncGroupSyncDatabaseIdsRequest {
   subscriptionId: string;
   /** The name of the region where the resource is located. */
   locationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of the sync database id. */
 export interface SyncDatabaseIdProperties {
@@ -16085,6 +16386,8 @@ export interface ListSyncMemberBySyncGroupRequest {
   databaseName: string;
   /** The name of the sync group. */
   syncGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure SQL Database sync member. */
 export interface SyncMember {
@@ -16121,6 +16424,8 @@ export interface ListSyncMemberMemberSchemasRequest {
   syncGroupName: string;
   /** The name of the sync member. */
   syncMemberName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SyncFullSchemaProperties items on this page */
 export type ListSyncMemberMemberSchemasResponseValueList = Array<SyncFullSchemaProperties>;
@@ -16135,6 +16440,8 @@ export interface ListTimeZoneByLocationRequest {
   subscriptionId: string;
   /** The location of the database. */
   locationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Time Zone property. */
 export interface TimeZone {
@@ -16167,6 +16474,8 @@ export interface ListTransparentDataEncryptionByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A logical database transparent data encryption scan state. */
 export interface LogicalDatabaseTransparentDataEncryption {
@@ -16200,6 +16509,8 @@ export interface ListUsageByInstancePoolRequest {
   instancePoolName: string;
   /** Optional request parameter to include managed instance usages within the instance pool. */
   expandChildren?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ARM Usage Name */
 export interface Name {
@@ -16239,6 +16550,8 @@ export interface ListVirtualClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualClusterTagsMap = { [key: string]: string | undefined };
@@ -16271,6 +16584,8 @@ export interface VirtualClusterListResult {
 export interface ListVirtualClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualNetworkRuleByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16279,6 +16594,8 @@ export interface ListVirtualNetworkRuleByServerRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A virtual network rule. */
 export interface VirtualNetworkRule {
@@ -16313,6 +16630,8 @@ export interface ListWorkloadClassifierByWorkloadGroupRequest {
   databaseName: string;
   /** The name of the workload group. */
   workloadGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workload classifier operations for a data warehouse */
 export interface WorkloadClassifier {
@@ -16345,6 +16664,8 @@ export interface ListWorkloadGroupByDatabaseRequest {
   serverName: string;
   /** The name of the database. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workload group operations for a data warehouse */
 export interface WorkloadGroup {
@@ -21240,7 +21561,7 @@ export const CancelJobExecution: API.OperationMethod<
   CancelJobExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13344, __c417, 0) as any as S.Schema<CancelJobExecutionRequest>,
+  input: __S(13280, __c415, 0) as any as S.Schema<CancelJobExecutionRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<CancelJobExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21255,7 +21576,7 @@ export const CancelManagedInstanceOperation: API.OperationMethod<
   CancelManagedInstanceOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17440, __c545, 0) as any as S.Schema<CancelManagedInstanceOperationRequest>,
+  input: __S(17344, __c542, 0) as any as S.Schema<CancelManagedInstanceOperationRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<CancelManagedInstanceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21270,7 +21591,7 @@ export const CancelSyncGroupSync: API.OperationMethod<
   CancelSyncGroupSyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21632, __c676, 0) as any as S.Schema<CancelSyncGroupSyncRequest>,
+  input: __S(21536, __c673, 0) as any as S.Schema<CancelSyncGroupSyncRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<CancelSyncGroupSyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21285,8 +21606,8 @@ export const CheckServerNameAvailability: API.OperationMethod<
   CheckServerNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23808, __c744, 0) as any as S.Schema<CheckServerNameAvailabilityRequest>,
-  output: __S(23809, __c744, 1) as any as S.Schema<CheckNameAvailabilityResponse>,
+  input: __S(23712, __c741, 0) as any as S.Schema<CheckServerNameAvailabilityRequest>,
+  output: __S(23713, __c741, 1) as any as S.Schema<CheckNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -21300,8 +21621,8 @@ export const CopyLongTermRetentionBackup: API.OperationMethod<
   CopyLongTermRetentionBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24160, __c755, 0) as any as S.Schema<CopyLongTermRetentionBackupRequest>,
-  output: __S(24225, __c757, 1) as any as S.Schema<CopyLongTermRetentionBackupResponse>,
+  input: __S(24064, __c752, 0) as any as S.Schema<CopyLongTermRetentionBackupRequest>,
+  output: __S(24129, __c754, 1) as any as S.Schema<CopyLongTermRetentionBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -21316,13 +21637,13 @@ export const CopyLongTermRetentionBackupByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24576,
-    __c768,
+    24480,
+    __c765,
     0,
   ) as any as S.Schema<CopyLongTermRetentionBackupByResourceGroupRequest>,
   output: __S(
-    24225,
-    __c757,
+    24129,
+    __c754,
     1,
   ) as any as S.Schema<CopyLongTermRetentionBackupByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -21338,8 +21659,8 @@ export const CreateJobExecution: API.OperationMethod<
   CreateJobExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25088, __c784, 0) as any as S.Schema<CreateJobExecutionRequest>,
-  output: __S(25152, __c786, 0) as any as S.Schema<CreateJobExecutionResponse>,
+  input: __S(24992, __c781, 0) as any as S.Schema<CreateJobExecutionRequest>,
+  output: __S(25056, __c783, 0) as any as S.Schema<CreateJobExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -21646,13 +21967,13 @@ export const DatabaseVulnerabilityAssessmentsCreateOrUpdate: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11296,
-    __c353,
+    11264,
+    __c352,
     0,
   ) as any as S.Schema<DatabaseVulnerabilityAssessmentsCreateOrUpdateRequest>,
   output: __S(
-    11361,
-    __c355,
+    11329,
+    __c354,
     1,
   ) as any as S.Schema<DatabaseVulnerabilityAssessmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -21668,8 +21989,8 @@ export const DataMaskingPoliciesCreateOrUpdate: API.OperationMethod<
   DataMaskingPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11809, __c369, 1) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateRequest>,
-  output: __S(11841, __c370, 1) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>,
+  input: __S(11777, __c368, 1) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateRequest>,
+  output: __S(11809, __c369, 1) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -21683,8 +22004,8 @@ export const DataMaskingRulesCreateOrUpdate: API.OperationMethod<
   DataMaskingRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12545, __c392, 1) as any as S.Schema<DataMaskingRulesCreateOrUpdateRequest>,
-  output: __S(12577, __c393, 1) as any as S.Schema<DataMaskingRulesCreateOrUpdateResponse>,
+  input: __S(12481, __c390, 1) as any as S.Schema<DataMaskingRulesCreateOrUpdateRequest>,
+  output: __S(12513, __c391, 1) as any as S.Schema<DataMaskingRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -21698,7 +22019,7 @@ export const DeleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12960, __c405, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  input: __S(12896, __c403, 0) as any as S.Schema<DeleteDatabaseRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21714,8 +22035,8 @@ export const DeleteDatabaseSqlVulnerabilityAssessmentRuleBaseline: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    13376,
-    __c418,
+    13312,
+    __c416,
     0,
   ) as any as S.Schema<DeleteDatabaseSqlVulnerabilityAssessmentRuleBaselineRequest>,
   output: __S(
@@ -21736,7 +22057,7 @@ export const DeleteDatabaseVulnerabilityAssessment: API.OperationMethod<
   DeleteDatabaseVulnerabilityAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13792, __c431, 0) as any as S.Schema<DeleteDatabaseVulnerabilityAssessmentRequest>,
+  input: __S(13728, __c429, 0) as any as S.Schema<DeleteDatabaseVulnerabilityAssessmentRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteDatabaseVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21752,8 +22073,8 @@ export const DeleteDatabaseVulnerabilityAssessmentRuleBaseline: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    14208,
-    __c444,
+    14144,
+    __c442,
     0,
   ) as any as S.Schema<DeleteDatabaseVulnerabilityAssessmentRuleBaselineRequest>,
   output: __S(
@@ -21774,7 +22095,7 @@ export const DeleteDistributedAvailabilityGroup: API.OperationMethod<
   DeleteDistributedAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14624, __c457, 0) as any as S.Schema<DeleteDistributedAvailabilityGroupRequest>,
+  input: __S(14560, __c455, 0) as any as S.Schema<DeleteDistributedAvailabilityGroupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteDistributedAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21789,7 +22110,7 @@ export const DeleteElasticPool: API.OperationMethod<
   DeleteElasticPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15104, __c472, 0) as any as S.Schema<DeleteElasticPoolRequest>,
+  input: __S(15008, __c469, 0) as any as S.Schema<DeleteElasticPoolRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteElasticPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21804,7 +22125,7 @@ export const DeleteFailoverGroup: API.OperationMethod<
   DeleteFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15520, __c485, 0) as any as S.Schema<DeleteFailoverGroupRequest>,
+  input: __S(15424, __c482, 0) as any as S.Schema<DeleteFailoverGroupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21819,7 +22140,7 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15904, __c497, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  input: __S(15808, __c494, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21834,7 +22155,7 @@ export const DeleteInstanceFailoverGroup: API.OperationMethod<
   DeleteInstanceFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16288, __c509, 0) as any as S.Schema<DeleteInstanceFailoverGroupRequest>,
+  input: __S(16192, __c506, 0) as any as S.Schema<DeleteInstanceFailoverGroupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteInstanceFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21849,7 +22170,7 @@ export const DeleteInstancePool: API.OperationMethod<
   DeleteInstancePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16672, __c521, 0) as any as S.Schema<DeleteInstancePoolRequest>,
+  input: __S(16576, __c518, 0) as any as S.Schema<DeleteInstancePoolRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteInstancePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21864,7 +22185,7 @@ export const DeleteIPv6FirewallRule: API.OperationMethod<
   DeleteIPv6FirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17056, __c533, 0) as any as S.Schema<DeleteIPv6FirewallRuleRequest>,
+  input: __S(16960, __c530, 0) as any as S.Schema<DeleteIPv6FirewallRuleRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteIPv6FirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21879,7 +22200,7 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17472, __c546, 0) as any as S.Schema<DeleteJobRequest>,
+  input: __S(17376, __c543, 0) as any as S.Schema<DeleteJobRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21894,7 +22215,7 @@ export const DeleteJobAgent: API.OperationMethod<
   DeleteJobAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17824, __c557, 0) as any as S.Schema<DeleteJobAgentRequest>,
+  input: __S(17728, __c554, 0) as any as S.Schema<DeleteJobAgentRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteJobAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21909,7 +22230,7 @@ export const DeleteJobCredentials: API.OperationMethod<
   DeleteJobCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18240, __c570, 0) as any as S.Schema<DeleteJobCredentialsRequest>,
+  input: __S(18144, __c567, 0) as any as S.Schema<DeleteJobCredentialsRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteJobCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21924,7 +22245,7 @@ export const DeleteJobPrivateEndpoint: API.OperationMethod<
   DeleteJobPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18624, __c582, 0) as any as S.Schema<DeleteJobPrivateEndpointRequest>,
+  input: __S(18528, __c579, 0) as any as S.Schema<DeleteJobPrivateEndpointRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteJobPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21939,7 +22260,7 @@ export const DeleteJobStep: API.OperationMethod<
   DeleteJobStepError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19104, __c597, 0) as any as S.Schema<DeleteJobStepRequest>,
+  input: __S(19008, __c594, 0) as any as S.Schema<DeleteJobStepRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteJobStepResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21954,7 +22275,7 @@ export const DeleteJobTargetGroup: API.OperationMethod<
   DeleteJobTargetGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19552, __c611, 0) as any as S.Schema<DeleteJobTargetGroupRequest>,
+  input: __S(19456, __c608, 0) as any as S.Schema<DeleteJobTargetGroupRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteJobTargetGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21969,7 +22290,7 @@ export const DeleteLongTermRetentionBackup: API.OperationMethod<
   DeleteLongTermRetentionBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20064, __c627, 0) as any as S.Schema<DeleteLongTermRetentionBackupRequest>,
+  input: __S(19968, __c624, 0) as any as S.Schema<DeleteLongTermRetentionBackupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteLongTermRetentionBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -21985,8 +22306,8 @@ export const DeleteLongTermRetentionBackupByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20448,
-    __c639,
+    20352,
+    __c636,
     0,
   ) as any as S.Schema<DeleteLongTermRetentionBackupByResourceGroupRequest>,
   output: __S(
@@ -22008,8 +22329,8 @@ export const DeleteLongTermRetentionManagedInstanceBackup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20832,
-    __c651,
+    20736,
+    __c648,
     0,
   ) as any as S.Schema<DeleteLongTermRetentionManagedInstanceBackupRequest>,
   output: __S(
@@ -22031,8 +22352,8 @@ export const DeleteLongTermRetentionManagedInstanceBackupByResourceGroup: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21216,
-    __c663,
+    21120,
+    __c660,
     0,
   ) as any as S.Schema<DeleteLongTermRetentionManagedInstanceBackupByResourceGroupRequest>,
   output: __S(
@@ -22053,7 +22374,7 @@ export const DeleteManagedDatabase: API.OperationMethod<
   DeleteManagedDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21664, __c677, 0) as any as S.Schema<DeleteManagedDatabaseRequest>,
+  input: __S(21568, __c674, 0) as any as S.Schema<DeleteManagedDatabaseRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteManagedDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22068,7 +22389,7 @@ export const DeleteManagedDatabaseSensitivityLabel: API.OperationMethod<
   DeleteManagedDatabaseSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22016, __c688, 0) as any as S.Schema<DeleteManagedDatabaseSensitivityLabelRequest>,
+  input: __S(21920, __c685, 0) as any as S.Schema<DeleteManagedDatabaseSensitivityLabelRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteManagedDatabaseSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22084,8 +22405,8 @@ export const DeleteManagedDatabaseVulnerabilityAssessment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22496,
-    __c703,
+    22400,
+    __c700,
     0,
   ) as any as S.Schema<DeleteManagedDatabaseVulnerabilityAssessmentRequest>,
   output: __S(
@@ -22107,8 +22428,8 @@ export const DeleteManagedDatabaseVulnerabilityAssessmentRuleBaseline: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22912,
-    __c716,
+    22816,
+    __c713,
     0,
   ) as any as S.Schema<DeleteManagedDatabaseVulnerabilityAssessmentRuleBaselineRequest>,
   output: __S(
@@ -22129,7 +22450,7 @@ export const DeleteManagedInstance: API.OperationMethod<
   DeleteManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23296, __c728, 0) as any as S.Schema<DeleteManagedInstanceRequest>,
+  input: __S(23200, __c725, 0) as any as S.Schema<DeleteManagedInstanceRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22144,7 +22465,7 @@ export const DeleteManagedInstanceAdministrator: API.OperationMethod<
   DeleteManagedInstanceAdministratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23616, __c738, 0) as any as S.Schema<DeleteManagedInstanceAdministratorRequest>,
+  input: __S(23520, __c735, 0) as any as S.Schema<DeleteManagedInstanceAdministratorRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteManagedInstanceAdministratorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22160,8 +22481,8 @@ export const DeleteManagedInstanceAzureADOnlyAuthentication: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23648,
-    __c739,
+    23552,
+    __c736,
     0,
   ) as any as S.Schema<DeleteManagedInstanceAzureADOnlyAuthenticationRequest>,
   output: __S(
@@ -22182,7 +22503,7 @@ export const DeleteManagedInstanceKey: API.OperationMethod<
   DeleteManagedInstanceKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23680, __c740, 0) as any as S.Schema<DeleteManagedInstanceKeyRequest>,
+  input: __S(23584, __c737, 0) as any as S.Schema<DeleteManagedInstanceKeyRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteManagedInstanceKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22198,13 +22519,13 @@ export const DeleteManagedInstanceLongTermRetentionPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23712,
-    __c741,
+    23616,
+    __c738,
     0,
   ) as any as S.Schema<DeleteManagedInstanceLongTermRetentionPolicyRequest>,
   output: __S(
-    23713,
-    __c741,
+    23617,
+    __c738,
     1,
   ) as any as S.Schema<DeleteManagedInstanceLongTermRetentionPolicyResponse>,
   errors: [UnknownAzureError],
@@ -22221,8 +22542,8 @@ export const DeleteManagedInstancePrivateEndpointConnection: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23776,
-    __c743,
+    23680,
+    __c740,
     0,
   ) as any as S.Schema<DeleteManagedInstancePrivateEndpointConnectionRequest>,
   output: __S(
@@ -22244,8 +22565,8 @@ export const DeleteManagedInstanceVulnerabilityAssessment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23840,
-    __c745,
+    23744,
+    __c742,
     0,
   ) as any as S.Schema<DeleteManagedInstanceVulnerabilityAssessmentRequest>,
   output: __S(
@@ -22266,7 +22587,7 @@ export const DeleteManagedServerDnsAlias: API.OperationMethod<
   DeleteManagedServerDnsAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23872, __c746, 0) as any as S.Schema<DeleteManagedServerDnsAliasRequest>,
+  input: __S(23776, __c743, 0) as any as S.Schema<DeleteManagedServerDnsAliasRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteManagedServerDnsAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22281,7 +22602,7 @@ export const DeleteOutboundFirewallRule: API.OperationMethod<
   DeleteOutboundFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23904, __c747, 0) as any as S.Schema<DeleteOutboundFirewallRuleRequest>,
+  input: __S(23808, __c744, 0) as any as S.Schema<DeleteOutboundFirewallRuleRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteOutboundFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22296,7 +22617,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23936, __c748, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  input: __S(23840, __c745, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22311,7 +22632,7 @@ export const DeleteReplicationLink: API.OperationMethod<
   DeleteReplicationLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23968, __c749, 0) as any as S.Schema<DeleteReplicationLinkRequest>,
+  input: __S(23872, __c746, 0) as any as S.Schema<DeleteReplicationLinkRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteReplicationLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22326,7 +22647,7 @@ export const DeleteRestorePoint: API.OperationMethod<
   DeleteRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24000, __c750, 0) as any as S.Schema<DeleteRestorePointRequest>,
+  input: __S(23904, __c747, 0) as any as S.Schema<DeleteRestorePointRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22341,7 +22662,7 @@ export const DeleteSensitivityLabel: API.OperationMethod<
   DeleteSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24032, __c751, 0) as any as S.Schema<DeleteSensitivityLabelRequest>,
+  input: __S(23936, __c748, 0) as any as S.Schema<DeleteSensitivityLabelRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22356,7 +22677,7 @@ export const DeleteServer: API.OperationMethod<
   DeleteServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24064, __c752, 0) as any as S.Schema<DeleteServerRequest>,
+  input: __S(23968, __c749, 0) as any as S.Schema<DeleteServerRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22371,7 +22692,7 @@ export const DeleteServerAzureADAdministrator: API.OperationMethod<
   DeleteServerAzureADAdministratorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24096, __c753, 0) as any as S.Schema<DeleteServerAzureADAdministratorRequest>,
+  input: __S(24000, __c750, 0) as any as S.Schema<DeleteServerAzureADAdministratorRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerAzureADAdministratorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22386,7 +22707,7 @@ export const DeleteServerAzureADOnlyAuthentication: API.OperationMethod<
   DeleteServerAzureADOnlyAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24128, __c754, 0) as any as S.Schema<DeleteServerAzureADOnlyAuthenticationRequest>,
+  input: __S(24032, __c751, 0) as any as S.Schema<DeleteServerAzureADOnlyAuthenticationRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerAzureADOnlyAuthenticationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22401,7 +22722,7 @@ export const DeleteServerDnsAlias: API.OperationMethod<
   DeleteServerDnsAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24256, __c758, 0) as any as S.Schema<DeleteServerDnsAliasRequest>,
+  input: __S(24160, __c755, 0) as any as S.Schema<DeleteServerDnsAliasRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerDnsAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22416,7 +22737,7 @@ export const DeleteServerKey: API.OperationMethod<
   DeleteServerKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24288, __c759, 0) as any as S.Schema<DeleteServerKeyRequest>,
+  input: __S(24192, __c756, 0) as any as S.Schema<DeleteServerKeyRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22431,7 +22752,7 @@ export const DeleteServerTrustCertificate: API.OperationMethod<
   DeleteServerTrustCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24320, __c760, 0) as any as S.Schema<DeleteServerTrustCertificateRequest>,
+  input: __S(24224, __c757, 0) as any as S.Schema<DeleteServerTrustCertificateRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerTrustCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22446,7 +22767,7 @@ export const DeleteServerTrustGroup: API.OperationMethod<
   DeleteServerTrustGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24352, __c761, 0) as any as S.Schema<DeleteServerTrustGroupRequest>,
+  input: __S(24256, __c758, 0) as any as S.Schema<DeleteServerTrustGroupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteServerTrustGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22461,7 +22782,7 @@ export const DeleteServerVulnerabilityAssessment: API.OperationMethod<
   DeleteServerVulnerabilityAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24384, __c762, 0) as any as S.Schema<DeleteServerVulnerabilityAssessmentRequest>,
+  input: __S(24288, __c759, 0) as any as S.Schema<DeleteServerVulnerabilityAssessmentRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteServerVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22476,7 +22797,7 @@ export const DeleteSqlVulnerabilityAssessment: API.OperationMethod<
   DeleteSqlVulnerabilityAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24416, __c763, 0) as any as S.Schema<DeleteSqlVulnerabilityAssessmentRequest>,
+  input: __S(24320, __c760, 0) as any as S.Schema<DeleteSqlVulnerabilityAssessmentRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteSqlVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22492,8 +22813,8 @@ export const DeleteSqlVulnerabilityAssessmentRuleBaseline: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24448,
-    __c764,
+    24352,
+    __c761,
     0,
   ) as any as S.Schema<DeleteSqlVulnerabilityAssessmentRuleBaselineRequest>,
   output: __S(
@@ -22514,7 +22835,7 @@ export const DeleteStartStopManagedInstanceSchedule: API.OperationMethod<
   DeleteStartStopManagedInstanceScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24480, __c765, 0) as any as S.Schema<DeleteStartStopManagedInstanceScheduleRequest>,
+  input: __S(24384, __c762, 0) as any as S.Schema<DeleteStartStopManagedInstanceScheduleRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DeleteStartStopManagedInstanceScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22529,7 +22850,7 @@ export const DeleteSyncAgent: API.OperationMethod<
   DeleteSyncAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24512, __c766, 0) as any as S.Schema<DeleteSyncAgentRequest>,
+  input: __S(24416, __c763, 0) as any as S.Schema<DeleteSyncAgentRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteSyncAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22544,7 +22865,7 @@ export const DeleteSyncGroup: API.OperationMethod<
   DeleteSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24544, __c767, 0) as any as S.Schema<DeleteSyncGroupRequest>,
+  input: __S(24448, __c764, 0) as any as S.Schema<DeleteSyncGroupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22559,7 +22880,7 @@ export const DeleteSyncMember: API.OperationMethod<
   DeleteSyncMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24608, __c769, 0) as any as S.Schema<DeleteSyncMemberRequest>,
+  input: __S(24512, __c766, 0) as any as S.Schema<DeleteSyncMemberRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteSyncMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22574,7 +22895,7 @@ export const DeleteVirtualCluster: API.OperationMethod<
   DeleteVirtualClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24640, __c770, 0) as any as S.Schema<DeleteVirtualClusterRequest>,
+  input: __S(24544, __c767, 0) as any as S.Schema<DeleteVirtualClusterRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteVirtualClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22589,7 +22910,7 @@ export const DeleteVirtualNetworkRule: API.OperationMethod<
   DeleteVirtualNetworkRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24672, __c771, 0) as any as S.Schema<DeleteVirtualNetworkRuleRequest>,
+  input: __S(24576, __c768, 0) as any as S.Schema<DeleteVirtualNetworkRuleRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteVirtualNetworkRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22604,7 +22925,7 @@ export const DeleteWorkloadClassifier: API.OperationMethod<
   DeleteWorkloadClassifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24704, __c772, 0) as any as S.Schema<DeleteWorkloadClassifierRequest>,
+  input: __S(24608, __c769, 0) as any as S.Schema<DeleteWorkloadClassifierRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteWorkloadClassifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22619,7 +22940,7 @@ export const DeleteWorkloadGroup: API.OperationMethod<
   DeleteWorkloadGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24736, __c773, 0) as any as S.Schema<DeleteWorkloadGroupRequest>,
+  input: __S(24640, __c770, 0) as any as S.Schema<DeleteWorkloadGroupRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<DeleteWorkloadGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22634,8 +22955,8 @@ export const DisableLedgerDigestUpload: API.OperationMethod<
   DisableLedgerDigestUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24768, __c774, 0) as any as S.Schema<DisableLedgerDigestUploadRequest>,
-  output: __S(24832, __c776, 0) as any as S.Schema<DisableLedgerDigestUploadResponse>,
+  input: __S(24672, __c771, 0) as any as S.Schema<DisableLedgerDigestUploadRequest>,
+  output: __S(24736, __c773, 0) as any as S.Schema<DisableLedgerDigestUploadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -22650,8 +22971,8 @@ export const DisableManagedDatabaseSensitivityLabelRecommendation: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24864,
-    __c777,
+    24768,
+    __c774,
     0,
   ) as any as S.Schema<DisableManagedDatabaseSensitivityLabelRecommendationRequest>,
   output: __S(
@@ -22672,8 +22993,8 @@ export const DisableManagedLedgerDigestUpload: API.OperationMethod<
   DisableManagedLedgerDigestUploadError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24896, __c778, 0) as any as S.Schema<DisableManagedLedgerDigestUploadRequest>,
-  output: __S(24832, __c776, 0) as any as S.Schema<DisableManagedLedgerDigestUploadResponse>,
+  input: __S(24800, __c775, 0) as any as S.Schema<DisableManagedLedgerDigestUploadRequest>,
+  output: __S(24736, __c773, 0) as any as S.Schema<DisableManagedLedgerDigestUploadResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -22687,7 +23008,7 @@ export const DisableSensitivityLabelRecommendation: API.OperationMethod<
   DisableSensitivityLabelRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24928, __c779, 0) as any as S.Schema<DisableSensitivityLabelRecommendationRequest>,
+  input: __S(24832, __c776, 0) as any as S.Schema<DisableSensitivityLabelRecommendationRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<DisableSensitivityLabelRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22703,13 +23024,13 @@ export const DistributedAvailabilityGroupsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24960,
-    __c780,
+    24864,
+    __c777,
     0,
   ) as any as S.Schema<DistributedAvailabilityGroupsCreateOrUpdateRequest>,
   output: __S(
-    25056,
-    __c783,
+    24960,
+    __c780,
     0,
   ) as any as S.Schema<DistributedAvailabilityGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -22725,8 +23046,8 @@ export const DistributedAvailabilityGroupsFailover: API.OperationMethod<
   DistributedAvailabilityGroupsFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25184, __c787, 0) as any as S.Schema<DistributedAvailabilityGroupsFailoverRequest>,
-  output: __S(25056, __c783, 0) as any as S.Schema<DistributedAvailabilityGroupsFailoverResponse>,
+  input: __S(25088, __c784, 0) as any as S.Schema<DistributedAvailabilityGroupsFailoverRequest>,
+  output: __S(24960, __c780, 0) as any as S.Schema<DistributedAvailabilityGroupsFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -22740,8 +23061,8 @@ export const ElasticPoolsCreateOrUpdate: API.OperationMethod<
   ElasticPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25217, __c788, 1) as any as S.Schema<ElasticPoolsCreateOrUpdateRequest>,
-  output: __S(25218, __c788, 2) as any as S.Schema<ElasticPoolsCreateOrUpdateResponse>,
+  input: __S(25121, __c785, 1) as any as S.Schema<ElasticPoolsCreateOrUpdateRequest>,
+  output: __S(25122, __c785, 2) as any as S.Schema<ElasticPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -22755,7 +23076,7 @@ export const ElasticPoolsFailover: API.OperationMethod<
   ElasticPoolsFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25280, __c790, 0) as any as S.Schema<ElasticPoolsFailoverRequest>,
+  input: __S(25184, __c787, 0) as any as S.Schema<ElasticPoolsFailoverRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<ElasticPoolsFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22771,8 +23092,8 @@ export const EnableManagedDatabaseSensitivityLabelRecommendation: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25312,
-    __c791,
+    25216,
+    __c788,
     0,
   ) as any as S.Schema<EnableManagedDatabaseSensitivityLabelRecommendationRequest>,
   output: __S(
@@ -22793,7 +23114,7 @@ export const EnableSensitivityLabelRecommendation: API.OperationMethod<
   EnableSensitivityLabelRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25344, __c792, 0) as any as S.Schema<EnableSensitivityLabelRecommendationRequest>,
+  input: __S(25248, __c789, 0) as any as S.Schema<EnableSensitivityLabelRecommendationRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<EnableSensitivityLabelRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22808,8 +23129,8 @@ export const EncryptionProtectorsCreateOrUpdate: API.OperationMethod<
   EncryptionProtectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25376, __c793, 0) as any as S.Schema<EncryptionProtectorsCreateOrUpdateRequest>,
-  output: __S(25377, __c793, 1) as any as S.Schema<EncryptionProtectorsCreateOrUpdateResponse>,
+  input: __S(25280, __c790, 0) as any as S.Schema<EncryptionProtectorsCreateOrUpdateRequest>,
+  output: __S(25281, __c790, 1) as any as S.Schema<EncryptionProtectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -22823,7 +23144,7 @@ export const EncryptionProtectorsRevalidate: API.OperationMethod<
   EncryptionProtectorsRevalidateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25472, __c796, 0) as any as S.Schema<EncryptionProtectorsRevalidateRequest>,
+  input: __S(25376, __c793, 0) as any as S.Schema<EncryptionProtectorsRevalidateRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<EncryptionProtectorsRevalidateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -22839,8 +23160,8 @@ export const ExecuteDatabaseSqlVulnerabilityAssessmentExecuteScan: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25504,
-    __c797,
+    25408,
+    __c794,
     0,
   ) as any as S.Schema<ExecuteDatabaseSqlVulnerabilityAssessmentExecuteScanRequest>,
   output: __S(
@@ -22862,8 +23183,8 @@ export const ExecuteSqlVulnerabilityAssessmentExecuteScan: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    25536,
-    __c798,
+    25440,
+    __c795,
     0,
   ) as any as S.Schema<ExecuteSqlVulnerabilityAssessmentExecuteScanRequest>,
   output: __S(
@@ -22884,8 +23205,8 @@ export const ExportDatabase: API.OperationMethod<
   ExportDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25568, __c799, 0) as any as S.Schema<ExportDatabaseRequest>,
-  output: __S(25601, __c800, 1) as any as S.Schema<ExportDatabaseResponse>,
+  input: __S(25472, __c796, 0) as any as S.Schema<ExportDatabaseRequest>,
+  output: __S(25505, __c797, 1) as any as S.Schema<ExportDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -23384,7 +23705,7 @@ export const GetDatabaseVulnerabilityAssessment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1984, __c62, 0) as any as S.Schema<GetDatabaseVulnerabilityAssessmentRequest>,
-  output: __S(11361, __c355, 1) as any as S.Schema<GetDatabaseVulnerabilityAssessmentResponse>,
+  output: __S(11329, __c354, 1) as any as S.Schema<GetDatabaseVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -23437,7 +23758,7 @@ export const GetDataMaskingPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2240, __c70, 0) as any as S.Schema<GetDataMaskingPolicyRequest>,
-  output: __S(11841, __c370, 1) as any as S.Schema<GetDataMaskingPolicyResponse>,
+  output: __S(11809, __c369, 1) as any as S.Schema<GetDataMaskingPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -24175,8 +24496,8 @@ export const GetManagedDatabaseVulnerabilityAssessment: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(5312, __c166, 0) as any as S.Schema<GetManagedDatabaseVulnerabilityAssessmentRequest>,
   output: __S(
-    11361,
-    __c355,
+    11329,
+    __c354,
     1,
   ) as any as S.Schema<GetManagedDatabaseVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
@@ -25183,7 +25504,7 @@ export const ImportDatabase: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(10432, __c326, 0) as any as S.Schema<ImportDatabaseRequest>,
-  output: __S(25601, __c800, 1) as any as S.Schema<ImportDatabaseResponse>,
+  output: __S(25505, __c797, 1) as any as S.Schema<ImportDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -25198,7 +25519,7 @@ export const ImportServerDatabase: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(10464, __c327, 0) as any as S.Schema<ImportServerDatabaseRequest>,
-  output: __S(25601, __c800, 1) as any as S.Schema<ImportServerDatabaseResponse>,
+  output: __S(25505, __c797, 1) as any as S.Schema<ImportServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -25326,7 +25647,7 @@ export const JobExecutionsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(10848, __c339, 0) as any as S.Schema<JobExecutionsCreateOrUpdateRequest>,
-  output: __S(25152, __c786, 0) as any as S.Schema<JobExecutionsCreateOrUpdateResponse>,
+  output: __S(25056, __c783, 0) as any as S.Schema<JobExecutionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -25401,7 +25722,7 @@ export const LedgerDigestUploadsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(11008, __c344, 0) as any as S.Schema<LedgerDigestUploadsCreateOrUpdateRequest>,
-  output: __S(24832, __c776, 0) as any as S.Schema<LedgerDigestUploadsCreateOrUpdateResponse>,
+  output: __S(24736, __c773, 0) as any as S.Schema<LedgerDigestUploadsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -25409,12 +25730,13 @@ export const LedgerDigestUploadsCreateOrUpdate: API.OperationMethod<
 
 export type ListBackupShortTermRetentionPolicyByDatabaseError = AzureOpError;
 /** Gets a database's short term retention policy. */
-export const ListBackupShortTermRetentionPolicyByDatabase: API.OperationMethod<
+export const ListBackupShortTermRetentionPolicyByDatabase: API.PaginatedOperationMethod<
   ListBackupShortTermRetentionPolicyByDatabaseRequest,
   BackupShortTermRetentionPolicyListResult,
   ListBackupShortTermRetentionPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BackupShortTermRetentionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     11040,
     __c345,
@@ -25424,7 +25746,13 @@ export const ListBackupShortTermRetentionPolicyByDatabase: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCapabilityByLocationError = AzureOpError;
 /** Gets the subscription capabilities available for the specified location. */
@@ -25443,22 +25771,29 @@ export const ListCapabilityByLocation: API.OperationMethod<
 
 export type ListDatabaseAdvancedThreatProtectionSettingsByDatabaseError = AzureOpError;
 /** Gets a list of database's Advanced Threat Protection states. */
-export const ListDatabaseAdvancedThreatProtectionSettingsByDatabase: API.OperationMethod<
+export const ListDatabaseAdvancedThreatProtectionSettingsByDatabase: API.PaginatedOperationMethod<
   ListDatabaseAdvancedThreatProtectionSettingsByDatabaseRequest,
   DatabaseAdvancedThreatProtectionListResult,
   ListDatabaseAdvancedThreatProtectionSettingsByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseAdvancedThreatProtection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     11136,
     __c348,
     0,
   ) as any as S.Schema<ListDatabaseAdvancedThreatProtectionSettingsByDatabaseRequest>,
-  output: __S(11168, __c349, 0) as any as S.Schema<DatabaseAdvancedThreatProtectionListResult>,
+  output: __S(11169, __c349, 1) as any as S.Schema<DatabaseAdvancedThreatProtectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAdvisorByDatabaseError = AzureOpError;
 /** Gets a list of database advisors. */
@@ -25468,8 +25803,8 @@ export const ListDatabaseAdvisorByDatabase: API.OperationMethod<
   ListDatabaseAdvisorByDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11232, __c351, 0) as any as S.Schema<ListDatabaseAdvisorByDatabaseRequest>,
-  output: __S(11265, __c352, 1) as any as S.Schema<ListDatabaseAdvisorByDatabaseResponse>,
+  input: __S(11200, __c350, 0) as any as S.Schema<ListDatabaseAdvisorByDatabaseRequest>,
+  output: __S(11233, __c351, 1) as any as S.Schema<ListDatabaseAdvisorByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -25477,123 +25812,179 @@ export const ListDatabaseAdvisorByDatabase: API.OperationMethod<
 
 export type ListDatabaseBlobAuditingPolicyByDatabaseError = AzureOpError;
 /** Lists auditing settings of a database. */
-export const ListDatabaseBlobAuditingPolicyByDatabase: API.OperationMethod<
+export const ListDatabaseBlobAuditingPolicyByDatabase: API.PaginatedOperationMethod<
   ListDatabaseBlobAuditingPolicyByDatabaseRequest,
   DatabaseBlobAuditingPolicyListResult,
   ListDatabaseBlobAuditingPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11392, __c356, 0) as any as S.Schema<ListDatabaseBlobAuditingPolicyByDatabaseRequest>,
-  output: __S(11394, __c356, 2) as any as S.Schema<DatabaseBlobAuditingPolicyListResult>,
+  AzureOpContext,
+  DatabaseBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11360, __c355, 0) as any as S.Schema<ListDatabaseBlobAuditingPolicyByDatabaseRequest>,
+  output: __S(11362, __c355, 2) as any as S.Schema<DatabaseBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseByElasticPoolError = AzureOpError;
 /** Gets a list of databases in an elastic pool. */
-export const ListDatabaseByElasticPool: API.OperationMethod<
+export const ListDatabaseByElasticPool: API.PaginatedOperationMethod<
   ListDatabaseByElasticPoolRequest,
   DatabaseListResult,
   ListDatabaseByElasticPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11424, __c357, 0) as any as S.Schema<ListDatabaseByElasticPoolRequest>,
-  output: __S(11457, __c358, 1) as any as S.Schema<DatabaseListResult>,
+  AzureOpContext,
+  Database
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11392, __c356, 0) as any as S.Schema<ListDatabaseByElasticPoolRequest>,
+  output: __S(11425, __c357, 1) as any as S.Schema<DatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseByServerError = AzureOpError;
 /** Gets a list of databases. */
-export const ListDatabaseByServer: API.OperationMethod<
+export const ListDatabaseByServer: API.PaginatedOperationMethod<
   ListDatabaseByServerRequest,
   DatabaseListResult,
   ListDatabaseByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11488, __c359, 0) as any as S.Schema<ListDatabaseByServerRequest>,
-  output: __S(11457, __c358, 1) as any as S.Schema<DatabaseListResult>,
+  AzureOpContext,
+  Database
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11456, __c358, 0) as any as S.Schema<ListDatabaseByServerRequest>,
+  output: __S(11425, __c357, 1) as any as S.Schema<DatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseColumnByDatabaseError = AzureOpError;
 /** List database columns */
-export const ListDatabaseColumnByDatabase: API.OperationMethod<
+export const ListDatabaseColumnByDatabase: API.PaginatedOperationMethod<
   ListDatabaseColumnByDatabaseRequest,
   ListDatabaseColumnByDatabaseResponse,
   ListDatabaseColumnByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11520, __c360, 0) as any as S.Schema<ListDatabaseColumnByDatabaseRequest>,
-  output: __S(11553, __c361, 1) as any as S.Schema<ListDatabaseColumnByDatabaseResponse>,
+  AzureOpContext,
+  DatabaseColumn
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11488, __c359, 0) as any as S.Schema<ListDatabaseColumnByDatabaseRequest>,
+  output: __S(11521, __c360, 1) as any as S.Schema<ListDatabaseColumnByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseColumnByTableError = AzureOpError;
 /** List database columns */
-export const ListDatabaseColumnByTable: API.OperationMethod<
+export const ListDatabaseColumnByTable: API.PaginatedOperationMethod<
   ListDatabaseColumnByTableRequest,
   ListDatabaseColumnByTableResponse,
   ListDatabaseColumnByTableError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11584, __c362, 0) as any as S.Schema<ListDatabaseColumnByTableRequest>,
-  output: __S(11553, __c361, 1) as any as S.Schema<ListDatabaseColumnByTableResponse>,
+  AzureOpContext,
+  DatabaseColumn
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11552, __c361, 0) as any as S.Schema<ListDatabaseColumnByTableRequest>,
+  output: __S(11521, __c360, 1) as any as S.Schema<ListDatabaseColumnByTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseExtensionByDatabaseError = AzureOpError;
 /** List database extension. This will return an empty list as it is not supported. */
-export const ListDatabaseExtensionByDatabase: API.OperationMethod<
+export const ListDatabaseExtensionByDatabase: API.PaginatedOperationMethod<
   ListDatabaseExtensionByDatabaseRequest,
   ImportExportExtensionsOperationListResult,
   ListDatabaseExtensionByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11616, __c363, 0) as any as S.Schema<ListDatabaseExtensionByDatabaseRequest>,
-  output: __S(11619, __c363, 3) as any as S.Schema<ImportExportExtensionsOperationListResult>,
+  AzureOpContext,
+  ImportExportExtensionsOperationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11584, __c362, 0) as any as S.Schema<ListDatabaseExtensionByDatabaseRequest>,
+  output: __S(11587, __c362, 3) as any as S.Schema<ImportExportExtensionsOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseInaccessibleByServerError = AzureOpError;
 /** Gets a list of inaccessible databases in a logical server */
-export const ListDatabaseInaccessibleByServer: API.OperationMethod<
+export const ListDatabaseInaccessibleByServer: API.PaginatedOperationMethod<
   ListDatabaseInaccessibleByServerRequest,
   DatabaseListResult,
   ListDatabaseInaccessibleByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11648, __c364, 0) as any as S.Schema<ListDatabaseInaccessibleByServerRequest>,
-  output: __S(11457, __c358, 1) as any as S.Schema<DatabaseListResult>,
+  AzureOpContext,
+  Database
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11616, __c363, 0) as any as S.Schema<ListDatabaseInaccessibleByServerRequest>,
+  output: __S(11425, __c357, 1) as any as S.Schema<DatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseOperationByDatabaseError = AzureOpError;
 /** Gets a list of operations performed on the database. */
-export const ListDatabaseOperationByDatabase: API.OperationMethod<
+export const ListDatabaseOperationByDatabase: API.PaginatedOperationMethod<
   ListDatabaseOperationByDatabaseRequest,
   DatabaseOperationListResult,
   ListDatabaseOperationByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11680, __c365, 0) as any as S.Schema<ListDatabaseOperationByDatabaseRequest>,
-  output: __S(11685, __c365, 5) as any as S.Schema<DatabaseOperationListResult>,
+  AzureOpContext,
+  DatabaseOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11648, __c364, 0) as any as S.Schema<ListDatabaseOperationByDatabaseRequest>,
+  output: __S(11653, __c364, 5) as any as S.Schema<DatabaseOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseRecommendedActionByDatabaseAdvisorError = AzureOpError;
 /** Gets list of Database Recommended Actions. */
@@ -25604,13 +25995,13 @@ export const ListDatabaseRecommendedActionByDatabaseAdvisor: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11712,
-    __c366,
+    11680,
+    __c365,
     0,
   ) as any as S.Schema<ListDatabaseRecommendedActionByDatabaseAdvisorRequest>,
   output: __S(
-    11713,
-    __c366,
+    11681,
+    __c365,
     1,
   ) as any as S.Schema<ListDatabaseRecommendedActionByDatabaseAdvisorResponse>,
   errors: [UnknownAzureError],
@@ -25620,1993 +26011,2769 @@ export const ListDatabaseRecommendedActionByDatabaseAdvisor: API.OperationMethod
 
 export type ListDatabaseSchemaByDatabaseError = AzureOpError;
 /** List database schemas */
-export const ListDatabaseSchemaByDatabase: API.OperationMethod<
+export const ListDatabaseSchemaByDatabase: API.PaginatedOperationMethod<
   ListDatabaseSchemaByDatabaseRequest,
   ListDatabaseSchemaByDatabaseResponse,
   ListDatabaseSchemaByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11744, __c367, 0) as any as S.Schema<ListDatabaseSchemaByDatabaseRequest>,
-  output: __S(11777, __c368, 1) as any as S.Schema<ListDatabaseSchemaByDatabaseResponse>,
+  AzureOpContext,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11712, __c366, 0) as any as S.Schema<ListDatabaseSchemaByDatabaseRequest>,
+  output: __S(11745, __c367, 1) as any as S.Schema<ListDatabaseSchemaByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseSecurityAlertPolicyByDatabaseError = AzureOpError;
 /** Gets a list of database's security alert policies. */
-export const ListDatabaseSecurityAlertPolicyByDatabase: API.OperationMethod<
+export const ListDatabaseSecurityAlertPolicyByDatabase: API.PaginatedOperationMethod<
   ListDatabaseSecurityAlertPolicyByDatabaseRequest,
   DatabaseSecurityAlertListResult,
   ListDatabaseSecurityAlertPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(11872, __c371, 0) as any as S.Schema<ListDatabaseSecurityAlertPolicyByDatabaseRequest>,
-  output: __S(11936, __c373, 0) as any as S.Schema<DatabaseSecurityAlertListResult>,
+  AzureOpContext,
+  DatabaseSecurityAlertPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(11840, __c370, 0) as any as S.Schema<ListDatabaseSecurityAlertPolicyByDatabaseRequest>,
+  output: __S(11873, __c371, 1) as any as S.Schema<DatabaseSecurityAlertListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentError =
   AzureOpError;
 /** Gets a list of database's sql vulnerability assessment rule baselines. */
-export const ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessment: API.OperationMethod<
+export const ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessment: API.PaginatedOperationMethod<
   ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequest,
   ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponse,
   ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseSqlVulnerabilityAssessmentBaselineSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    11968,
-    __c374,
+    11904,
+    __c372,
     0,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequest>,
   output: __S(
-    12001,
-    __c375,
+    11937,
+    __c373,
     1,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineError = AzureOpError;
 /** Gets a list of database's sql vulnerability assessment rule baselines. */
-export const ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaseline: API.OperationMethod<
+export const ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaseline: API.PaginatedOperationMethod<
   ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest,
   ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineResponse,
   ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseSqlVulnerabilityAssessmentRuleBaseline
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12032,
-    __c376,
+    11968,
+    __c374,
     0,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest>,
   output: __S(
-    12065,
-    __c377,
+    12001,
+    __c375,
     1,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsError =
   AzureOpError;
 /** Lists the vulnerability assessment scans of a database. */
-export const ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessments: API.OperationMethod<
+export const ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessments: API.PaginatedOperationMethod<
   ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequest,
   ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponse,
   ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVulnerabilityAssessmentScanRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12096,
-    __c378,
+    12032,
+    __c376,
     0,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequest>,
   output: __S(
-    12129,
-    __c379,
+    12065,
+    __c377,
     1,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseSqlVulnerabilityAssessmentScanResultByScanError = AzureOpError;
 /** Gets a vulnerability assessment scan record of a database. */
-export const ListDatabaseSqlVulnerabilityAssessmentScanResultByScan: API.OperationMethod<
+export const ListDatabaseSqlVulnerabilityAssessmentScanResultByScan: API.PaginatedOperationMethod<
   ListDatabaseSqlVulnerabilityAssessmentScanResultByScanRequest,
   ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponse,
   ListDatabaseSqlVulnerabilityAssessmentScanResultByScanError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVulnerabilityAssessmentScanResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12160,
-    __c380,
+    12096,
+    __c378,
     0,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentScanResultByScanRequest>,
   output: __S(
-    12193,
-    __c381,
+    12129,
+    __c379,
     1,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseError = AzureOpError;
 /** Lists SQL Vulnerability Assessment policies associated with a database. */
-export const ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabase: API.OperationMethod<
+export const ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabase: API.PaginatedOperationMethod<
   ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseRequest,
   ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseResponse,
   ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12224,
-    __c382,
+    12160,
+    __c380,
     0,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseRequest>,
   output: __S(
-    12257,
-    __c383,
+    12193,
+    __c381,
     1,
   ) as any as S.Schema<ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseTableBySchemaError = AzureOpError;
 /** List database tables */
-export const ListDatabaseTableBySchema: API.OperationMethod<
+export const ListDatabaseTableBySchema: API.PaginatedOperationMethod<
   ListDatabaseTableBySchemaRequest,
   ListDatabaseTableBySchemaResponse,
   ListDatabaseTableBySchemaError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12288, __c384, 0) as any as S.Schema<ListDatabaseTableBySchemaRequest>,
-  output: __S(12321, __c385, 1) as any as S.Schema<ListDatabaseTableBySchemaResponse>,
+  AzureOpContext,
+  DatabaseTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12224, __c382, 0) as any as S.Schema<ListDatabaseTableBySchemaRequest>,
+  output: __S(12257, __c383, 1) as any as S.Schema<ListDatabaseTableBySchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseUsageByDatabaseError = AzureOpError;
 /** Gets database usages. */
-export const ListDatabaseUsageByDatabase: API.OperationMethod<
+export const ListDatabaseUsageByDatabase: API.PaginatedOperationMethod<
   ListDatabaseUsageByDatabaseRequest,
   DatabaseUsageListResult,
   ListDatabaseUsageByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12352, __c386, 0) as any as S.Schema<ListDatabaseUsageByDatabaseRequest>,
-  output: __S(12385, __c387, 1) as any as S.Schema<DatabaseUsageListResult>,
+  AzureOpContext,
+  DatabaseUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12288, __c384, 0) as any as S.Schema<ListDatabaseUsageByDatabaseRequest>,
+  output: __S(12321, __c385, 1) as any as S.Schema<DatabaseUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseVulnerabilityAssessmentByDatabaseError = AzureOpError;
 /** Lists the vulnerability assessment policies associated with a database. */
-export const ListDatabaseVulnerabilityAssessmentByDatabase: API.OperationMethod<
+export const ListDatabaseVulnerabilityAssessmentByDatabase: API.PaginatedOperationMethod<
   ListDatabaseVulnerabilityAssessmentByDatabaseRequest,
   ListDatabaseVulnerabilityAssessmentByDatabaseResponse,
   ListDatabaseVulnerabilityAssessmentByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12416,
-    __c388,
+    12352,
+    __c386,
     0,
   ) as any as S.Schema<ListDatabaseVulnerabilityAssessmentByDatabaseRequest>,
   output: __S(
-    12449,
-    __c389,
+    12385,
+    __c387,
     1,
   ) as any as S.Schema<ListDatabaseVulnerabilityAssessmentByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseVulnerabilityAssessmentScanByDatabaseError = AzureOpError;
 /** Lists the vulnerability assessment scans of a database. */
-export const ListDatabaseVulnerabilityAssessmentScanByDatabase: API.OperationMethod<
+export const ListDatabaseVulnerabilityAssessmentScanByDatabase: API.PaginatedOperationMethod<
   ListDatabaseVulnerabilityAssessmentScanByDatabaseRequest,
   ListDatabaseVulnerabilityAssessmentScanByDatabaseResponse,
   ListDatabaseVulnerabilityAssessmentScanByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VulnerabilityAssessmentScanRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12480,
-    __c390,
+    12416,
+    __c388,
     0,
   ) as any as S.Schema<ListDatabaseVulnerabilityAssessmentScanByDatabaseRequest>,
   output: __S(
-    12513,
-    __c391,
+    12449,
+    __c389,
     1,
   ) as any as S.Schema<ListDatabaseVulnerabilityAssessmentScanByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataMaskingRuleByDatabaseError = AzureOpError;
 /** Gets a list of database data masking rules. */
-export const ListDataMaskingRuleByDatabase: API.OperationMethod<
+export const ListDataMaskingRuleByDatabase: API.PaginatedOperationMethod<
   ListDataMaskingRuleByDatabaseRequest,
   DataMaskingRuleListResult,
   ListDataMaskingRuleByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12608, __c394, 0) as any as S.Schema<ListDataMaskingRuleByDatabaseRequest>,
-  output: __S(12610, __c394, 2) as any as S.Schema<DataMaskingRuleListResult>,
+  AzureOpContext,
+  DataMaskingRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12544, __c392, 0) as any as S.Schema<ListDataMaskingRuleByDatabaseRequest>,
+  output: __S(12546, __c392, 2) as any as S.Schema<DataMaskingRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataWarehouseUserActivityByDatabaseError = AzureOpError;
 /** List the user activities of a data warehouse which includes running and suspended queries */
-export const ListDataWarehouseUserActivityByDatabase: API.OperationMethod<
+export const ListDataWarehouseUserActivityByDatabase: API.PaginatedOperationMethod<
   ListDataWarehouseUserActivityByDatabaseRequest,
   DataWarehouseUserActivitiesListResult,
   ListDataWarehouseUserActivityByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12640, __c395, 0) as any as S.Schema<ListDataWarehouseUserActivityByDatabaseRequest>,
-  output: __S(12642, __c395, 2) as any as S.Schema<DataWarehouseUserActivitiesListResult>,
+  AzureOpContext,
+  DataWarehouseUserActivities
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12576, __c393, 0) as any as S.Schema<ListDataWarehouseUserActivityByDatabaseRequest>,
+  output: __S(12578, __c393, 2) as any as S.Schema<DataWarehouseUserActivitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeletedServerByLocationError = AzureOpError;
 /** Gets a list of deleted servers for a location. */
-export const ListDeletedServerByLocation: API.OperationMethod<
+export const ListDeletedServerByLocation: API.PaginatedOperationMethod<
   ListDeletedServerByLocationRequest,
   DeletedServerListResult,
   ListDeletedServerByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12672, __c396, 0) as any as S.Schema<ListDeletedServerByLocationRequest>,
-  output: __S(12705, __c397, 1) as any as S.Schema<DeletedServerListResult>,
+  AzureOpContext,
+  DeletedServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12608, __c394, 0) as any as S.Schema<ListDeletedServerByLocationRequest>,
+  output: __S(12641, __c395, 1) as any as S.Schema<DeletedServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeletedServersError = AzureOpError;
 /** Gets a list of all deleted servers in a subscription. */
-export const ListDeletedServers: API.OperationMethod<
+export const ListDeletedServers: API.PaginatedOperationMethod<
   ListDeletedServersRequest,
   DeletedServerListResult,
   ListDeletedServersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12736, __c398, 0) as any as S.Schema<ListDeletedServersRequest>,
-  output: __S(12705, __c397, 1) as any as S.Schema<DeletedServerListResult>,
+  AzureOpContext,
+  DeletedServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12672, __c396, 0) as any as S.Schema<ListDeletedServersRequest>,
+  output: __S(12641, __c395, 1) as any as S.Schema<DeletedServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDistributedAvailabilityGroupByInstanceError = AzureOpError;
 /** Gets a list of a distributed availability groups in instance. */
-export const ListDistributedAvailabilityGroupByInstance: API.OperationMethod<
+export const ListDistributedAvailabilityGroupByInstance: API.PaginatedOperationMethod<
   ListDistributedAvailabilityGroupByInstanceRequest,
   DistributedAvailabilityGroupsListResult,
   ListDistributedAvailabilityGroupByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DistributedAvailabilityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12768,
-    __c399,
+    12704,
+    __c397,
     0,
   ) as any as S.Schema<ListDistributedAvailabilityGroupByInstanceRequest>,
-  output: __S(12770, __c399, 2) as any as S.Schema<DistributedAvailabilityGroupsListResult>,
+  output: __S(12706, __c397, 2) as any as S.Schema<DistributedAvailabilityGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListElasticPoolActivityByElasticPoolError = AzureOpError;
 /** Returns elastic pool activities. */
-export const ListElasticPoolActivityByElasticPool: API.OperationMethod<
+export const ListElasticPoolActivityByElasticPool: API.PaginatedOperationMethod<
   ListElasticPoolActivityByElasticPoolRequest,
   ElasticPoolActivityListResult,
   ListElasticPoolActivityByElasticPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12800, __c400, 0) as any as S.Schema<ListElasticPoolActivityByElasticPoolRequest>,
-  output: __S(12804, __c400, 4) as any as S.Schema<ElasticPoolActivityListResult>,
+  AzureOpContext,
+  ElasticPoolActivity
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12736, __c398, 0) as any as S.Schema<ListElasticPoolActivityByElasticPoolRequest>,
+  output: __S(12740, __c398, 4) as any as S.Schema<ElasticPoolActivityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListElasticPoolByServerError = AzureOpError;
 /** Gets all elastic pools in a server. */
-export const ListElasticPoolByServer: API.OperationMethod<
+export const ListElasticPoolByServer: API.PaginatedOperationMethod<
   ListElasticPoolByServerRequest,
   ElasticPoolListResult,
   ListElasticPoolByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12832, __c401, 0) as any as S.Schema<ListElasticPoolByServerRequest>,
-  output: __S(12834, __c401, 2) as any as S.Schema<ElasticPoolListResult>,
+  AzureOpContext,
+  ElasticPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12768, __c399, 0) as any as S.Schema<ListElasticPoolByServerRequest>,
+  output: __S(12770, __c399, 2) as any as S.Schema<ElasticPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListElasticPoolDatabaseActivityByElasticPoolError = AzureOpError;
 /** Returns activity on databases inside of an elastic pool. */
-export const ListElasticPoolDatabaseActivityByElasticPool: API.OperationMethod<
+export const ListElasticPoolDatabaseActivityByElasticPool: API.PaginatedOperationMethod<
   ListElasticPoolDatabaseActivityByElasticPoolRequest,
   ElasticPoolDatabaseActivityListResult,
   ListElasticPoolDatabaseActivityByElasticPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ElasticPoolDatabaseActivity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    12864,
-    __c402,
+    12800,
+    __c400,
     0,
   ) as any as S.Schema<ListElasticPoolDatabaseActivityByElasticPoolRequest>,
-  output: __S(12868, __c402, 4) as any as S.Schema<ElasticPoolDatabaseActivityListResult>,
+  output: __S(12804, __c400, 4) as any as S.Schema<ElasticPoolDatabaseActivityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListElasticPoolOperationByElasticPoolError = AzureOpError;
 /** Gets a list of operations performed on the elastic pool. */
-export const ListElasticPoolOperationByElasticPool: API.OperationMethod<
+export const ListElasticPoolOperationByElasticPool: API.PaginatedOperationMethod<
   ListElasticPoolOperationByElasticPoolRequest,
   ElasticPoolOperationListResult,
   ListElasticPoolOperationByElasticPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12896, __c403, 0) as any as S.Schema<ListElasticPoolOperationByElasticPoolRequest>,
-  output: __S(12900, __c403, 4) as any as S.Schema<ElasticPoolOperationListResult>,
+  AzureOpContext,
+  ElasticPoolOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12832, __c401, 0) as any as S.Schema<ListElasticPoolOperationByElasticPoolRequest>,
+  output: __S(12836, __c401, 4) as any as S.Schema<ElasticPoolOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEncryptionProtectorByServerError = AzureOpError;
 /** Gets a list of server encryption protectors */
-export const ListEncryptionProtectorByServer: API.OperationMethod<
+export const ListEncryptionProtectorByServer: API.PaginatedOperationMethod<
   ListEncryptionProtectorByServerRequest,
   EncryptionProtectorListResult,
   ListEncryptionProtectorByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12928, __c404, 0) as any as S.Schema<ListEncryptionProtectorByServerRequest>,
-  output: __S(12930, __c404, 2) as any as S.Schema<EncryptionProtectorListResult>,
+  AzureOpContext,
+  EncryptionProtector
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12864, __c402, 0) as any as S.Schema<ListEncryptionProtectorByServerRequest>,
+  output: __S(12866, __c402, 2) as any as S.Schema<EncryptionProtectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEndpointCertificateByInstanceError = AzureOpError;
 /** List certificates used on endpoints on the target instance. */
-export const ListEndpointCertificateByInstance: API.OperationMethod<
+export const ListEndpointCertificateByInstance: API.PaginatedOperationMethod<
   ListEndpointCertificateByInstanceRequest,
   EndpointCertificateListResult,
   ListEndpointCertificateByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(12992, __c406, 0) as any as S.Schema<ListEndpointCertificateByInstanceRequest>,
-  output: __S(12994, __c406, 2) as any as S.Schema<EndpointCertificateListResult>,
+  AzureOpContext,
+  EndpointCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(12928, __c404, 0) as any as S.Schema<ListEndpointCertificateByInstanceRequest>,
+  output: __S(12930, __c404, 2) as any as S.Schema<EndpointCertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExtendedDatabaseBlobAuditingPolicyByDatabaseError = AzureOpError;
 /** Lists extended auditing settings of a database. */
-export const ListExtendedDatabaseBlobAuditingPolicyByDatabase: API.OperationMethod<
+export const ListExtendedDatabaseBlobAuditingPolicyByDatabase: API.PaginatedOperationMethod<
   ListExtendedDatabaseBlobAuditingPolicyByDatabaseRequest,
   ExtendedDatabaseBlobAuditingPolicyListResult,
   ListExtendedDatabaseBlobAuditingPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExtendedDatabaseBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    13024,
-    __c407,
+    12960,
+    __c405,
     0,
   ) as any as S.Schema<ListExtendedDatabaseBlobAuditingPolicyByDatabaseRequest>,
-  output: __S(13026, __c407, 2) as any as S.Schema<ExtendedDatabaseBlobAuditingPolicyListResult>,
+  output: __S(12962, __c405, 2) as any as S.Schema<ExtendedDatabaseBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExtendedServerBlobAuditingPolicyByServerError = AzureOpError;
 /** Lists extended auditing settings of a server. */
-export const ListExtendedServerBlobAuditingPolicyByServer: API.OperationMethod<
+export const ListExtendedServerBlobAuditingPolicyByServer: API.PaginatedOperationMethod<
   ListExtendedServerBlobAuditingPolicyByServerRequest,
   ExtendedServerBlobAuditingPolicyListResult,
   ListExtendedServerBlobAuditingPolicyByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExtendedServerBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    13056,
-    __c408,
+    12992,
+    __c406,
     0,
   ) as any as S.Schema<ListExtendedServerBlobAuditingPolicyByServerRequest>,
-  output: __S(13058, __c408, 2) as any as S.Schema<ExtendedServerBlobAuditingPolicyListResult>,
+  output: __S(12994, __c406, 2) as any as S.Schema<ExtendedServerBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFailoverGroupByServerError = AzureOpError;
 /** Lists the failover groups in a server. */
-export const ListFailoverGroupByServer: API.OperationMethod<
+export const ListFailoverGroupByServer: API.PaginatedOperationMethod<
   ListFailoverGroupByServerRequest,
   FailoverGroupListResult,
   ListFailoverGroupByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13088, __c409, 0) as any as S.Schema<ListFailoverGroupByServerRequest>,
-  output: __S(13090, __c409, 2) as any as S.Schema<FailoverGroupListResult>,
+  AzureOpContext,
+  FailoverGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13024, __c407, 0) as any as S.Schema<ListFailoverGroupByServerRequest>,
+  output: __S(13026, __c407, 2) as any as S.Schema<FailoverGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirewallRuleByServerError = AzureOpError;
 /** Gets a list of firewall rules. */
-export const ListFirewallRuleByServer: API.OperationMethod<
+export const ListFirewallRuleByServer: API.PaginatedOperationMethod<
   ListFirewallRuleByServerRequest,
   FirewallRuleListResult,
   ListFirewallRuleByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13120, __c410, 0) as any as S.Schema<ListFirewallRuleByServerRequest>,
-  output: __S(13122, __c410, 2) as any as S.Schema<FirewallRuleListResult>,
+  AzureOpContext,
+  FirewallRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13056, __c408, 0) as any as S.Schema<ListFirewallRuleByServerRequest>,
+  output: __S(13058, __c408, 2) as any as S.Schema<FirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGeoBackupPoliciesError = AzureOpError;
 /** Gets a list of Geo backup policies for the given database resource. */
-export const ListGeoBackupPolicies: API.OperationMethod<
+export const ListGeoBackupPolicies: API.PaginatedOperationMethod<
   ListGeoBackupPoliciesRequest,
   GeoBackupPolicyListResult,
   ListGeoBackupPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13152, __c411, 0) as any as S.Schema<ListGeoBackupPoliciesRequest>,
-  output: __S(13154, __c411, 2) as any as S.Schema<GeoBackupPolicyListResult>,
+  AzureOpContext,
+  GeoBackupPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13088, __c409, 0) as any as S.Schema<ListGeoBackupPoliciesRequest>,
+  output: __S(13090, __c409, 2) as any as S.Schema<GeoBackupPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInstanceFailoverGroupByLocationError = AzureOpError;
 /** Lists the failover groups in a location. */
-export const ListInstanceFailoverGroupByLocation: API.OperationMethod<
+export const ListInstanceFailoverGroupByLocation: API.PaginatedOperationMethod<
   ListInstanceFailoverGroupByLocationRequest,
   InstanceFailoverGroupListResult,
   ListInstanceFailoverGroupByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13184, __c412, 0) as any as S.Schema<ListInstanceFailoverGroupByLocationRequest>,
-  output: __S(13186, __c412, 2) as any as S.Schema<InstanceFailoverGroupListResult>,
+  AzureOpContext,
+  InstanceFailoverGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13120, __c410, 0) as any as S.Schema<ListInstanceFailoverGroupByLocationRequest>,
+  output: __S(13122, __c410, 2) as any as S.Schema<InstanceFailoverGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInstancePoolByResourceGroupError = AzureOpError;
 /** Gets a list of instance pools in the resource group */
-export const ListInstancePoolByResourceGroup: API.OperationMethod<
+export const ListInstancePoolByResourceGroup: API.PaginatedOperationMethod<
   ListInstancePoolByResourceGroupRequest,
   InstancePoolListResult,
   ListInstancePoolByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13216, __c413, 0) as any as S.Schema<ListInstancePoolByResourceGroupRequest>,
-  output: __S(13249, __c414, 1) as any as S.Schema<InstancePoolListResult>,
+  AzureOpContext,
+  InstancePool
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13152, __c411, 0) as any as S.Schema<ListInstancePoolByResourceGroupRequest>,
+  output: __S(13185, __c412, 1) as any as S.Schema<InstancePoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInstancePoolOperationByInstancePoolError = AzureOpError;
 /** Gets a list of operations performed on the instance pool. */
-export const ListInstancePoolOperationByInstancePool: API.OperationMethod<
+export const ListInstancePoolOperationByInstancePool: API.PaginatedOperationMethod<
   ListInstancePoolOperationByInstancePoolRequest,
   InstancePoolOperationListResult,
   ListInstancePoolOperationByInstancePoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13280, __c415, 0) as any as S.Schema<ListInstancePoolOperationByInstancePoolRequest>,
-  output: __S(13282, __c415, 2) as any as S.Schema<InstancePoolOperationListResult>,
+  AzureOpContext,
+  InstancePoolOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13216, __c413, 0) as any as S.Schema<ListInstancePoolOperationByInstancePoolRequest>,
+  output: __S(13218, __c413, 2) as any as S.Schema<InstancePoolOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInstancePoolsError = AzureOpError;
 /** Gets a list of all instance pools in the subscription. */
-export const ListInstancePools: API.OperationMethod<
+export const ListInstancePools: API.PaginatedOperationMethod<
   ListInstancePoolsRequest,
   InstancePoolListResult,
   ListInstancePoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13312, __c416, 0) as any as S.Schema<ListInstancePoolsRequest>,
-  output: __S(13249, __c414, 1) as any as S.Schema<InstancePoolListResult>,
+  AzureOpContext,
+  InstancePool
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13248, __c414, 0) as any as S.Schema<ListInstancePoolsRequest>,
+  output: __S(13185, __c412, 1) as any as S.Schema<InstancePoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIPv6FirewallRuleByServerError = AzureOpError;
 /** Gets a list of IPv6 firewall rules. */
-export const ListIPv6FirewallRuleByServer: API.OperationMethod<
+export const ListIPv6FirewallRuleByServer: API.PaginatedOperationMethod<
   ListIPv6FirewallRuleByServerRequest,
   IPv6FirewallRuleListResult,
   ListIPv6FirewallRuleByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13408, __c419, 0) as any as S.Schema<ListIPv6FirewallRuleByServerRequest>,
-  output: __S(13410, __c419, 2) as any as S.Schema<IPv6FirewallRuleListResult>,
+  AzureOpContext,
+  IPv6FirewallRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13344, __c417, 0) as any as S.Schema<ListIPv6FirewallRuleByServerRequest>,
+  output: __S(13346, __c417, 2) as any as S.Schema<IPv6FirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobAgentByServerError = AzureOpError;
 /** Gets a list of job agents in a server. */
-export const ListJobAgentByServer: API.OperationMethod<
+export const ListJobAgentByServer: API.PaginatedOperationMethod<
   ListJobAgentByServerRequest,
   JobAgentListResult,
   ListJobAgentByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13440, __c420, 0) as any as S.Schema<ListJobAgentByServerRequest>,
-  output: __S(13442, __c420, 2) as any as S.Schema<JobAgentListResult>,
+  AzureOpContext,
+  JobAgent
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13376, __c418, 0) as any as S.Schema<ListJobAgentByServerRequest>,
+  output: __S(13378, __c418, 2) as any as S.Schema<JobAgentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobByAgentError = AzureOpError;
 /** Gets a list of jobs. */
-export const ListJobByAgent: API.OperationMethod<
+export const ListJobByAgent: API.PaginatedOperationMethod<
   ListJobByAgentRequest,
   JobListResult,
   ListJobByAgentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13472, __c421, 0) as any as S.Schema<ListJobByAgentRequest>,
-  output: __S(13474, __c421, 2) as any as S.Schema<JobListResult>,
+  AzureOpContext,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13408, __c419, 0) as any as S.Schema<ListJobByAgentRequest>,
+  output: __S(13410, __c419, 2) as any as S.Schema<JobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobCredentialsByAgentError = AzureOpError;
 /** Gets a list of jobs credentials. */
-export const ListJobCredentialsByAgent: API.OperationMethod<
+export const ListJobCredentialsByAgent: API.PaginatedOperationMethod<
   ListJobCredentialsByAgentRequest,
   JobCredentialListResult,
   ListJobCredentialsByAgentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13504, __c422, 0) as any as S.Schema<ListJobCredentialsByAgentRequest>,
-  output: __S(13506, __c422, 2) as any as S.Schema<JobCredentialListResult>,
+  AzureOpContext,
+  JobCredential
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13440, __c420, 0) as any as S.Schema<ListJobCredentialsByAgentRequest>,
+  output: __S(13442, __c420, 2) as any as S.Schema<JobCredentialListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobExecutionByAgentError = AzureOpError;
 /** Lists all executions in a job agent. */
-export const ListJobExecutionByAgent: API.OperationMethod<
+export const ListJobExecutionByAgent: API.PaginatedOperationMethod<
   ListJobExecutionByAgentRequest,
   ListJobExecutionByAgentResponse,
   ListJobExecutionByAgentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13536, __c423, 0) as any as S.Schema<ListJobExecutionByAgentRequest>,
-  output: __S(13569, __c424, 1) as any as S.Schema<ListJobExecutionByAgentResponse>,
+  AzureOpContext,
+  JobExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13472, __c421, 0) as any as S.Schema<ListJobExecutionByAgentRequest>,
+  output: __S(13505, __c422, 1) as any as S.Schema<ListJobExecutionByAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobExecutionByJobError = AzureOpError;
 /** Lists a job's executions. */
-export const ListJobExecutionByJob: API.OperationMethod<
+export const ListJobExecutionByJob: API.PaginatedOperationMethod<
   ListJobExecutionByJobRequest,
   ListJobExecutionByJobResponse,
   ListJobExecutionByJobError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13600, __c425, 0) as any as S.Schema<ListJobExecutionByJobRequest>,
-  output: __S(13569, __c424, 1) as any as S.Schema<ListJobExecutionByJobResponse>,
+  AzureOpContext,
+  JobExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13536, __c423, 0) as any as S.Schema<ListJobExecutionByJobRequest>,
+  output: __S(13505, __c422, 1) as any as S.Schema<ListJobExecutionByJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobPrivateEndpointByAgentError = AzureOpError;
 /** Gets a list of job agent private endpoints. */
-export const ListJobPrivateEndpointByAgent: API.OperationMethod<
+export const ListJobPrivateEndpointByAgent: API.PaginatedOperationMethod<
   ListJobPrivateEndpointByAgentRequest,
   JobPrivateEndpointListResult,
   ListJobPrivateEndpointByAgentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13632, __c426, 0) as any as S.Schema<ListJobPrivateEndpointByAgentRequest>,
-  output: __S(13634, __c426, 2) as any as S.Schema<JobPrivateEndpointListResult>,
+  AzureOpContext,
+  JobPrivateEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13568, __c424, 0) as any as S.Schema<ListJobPrivateEndpointByAgentRequest>,
+  output: __S(13570, __c424, 2) as any as S.Schema<JobPrivateEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobStepByJobError = AzureOpError;
 /** Gets all job steps for a job's current version. */
-export const ListJobStepByJob: API.OperationMethod<
+export const ListJobStepByJob: API.PaginatedOperationMethod<
   ListJobStepByJobRequest,
   JobStepListResult,
   ListJobStepByJobError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13664, __c427, 0) as any as S.Schema<ListJobStepByJobRequest>,
-  output: __S(13697, __c428, 1) as any as S.Schema<JobStepListResult>,
+  AzureOpContext,
+  JobStep
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13600, __c425, 0) as any as S.Schema<ListJobStepByJobRequest>,
+  output: __S(13633, __c426, 1) as any as S.Schema<JobStepListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobStepByVersionError = AzureOpError;
 /** Gets all job steps in the specified job version. */
-export const ListJobStepByVersion: API.OperationMethod<
+export const ListJobStepByVersion: API.PaginatedOperationMethod<
   ListJobStepByVersionRequest,
   JobStepListResult,
   ListJobStepByVersionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13728, __c429, 0) as any as S.Schema<ListJobStepByVersionRequest>,
-  output: __S(13697, __c428, 1) as any as S.Schema<JobStepListResult>,
+  AzureOpContext,
+  JobStep
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13664, __c427, 0) as any as S.Schema<ListJobStepByVersionRequest>,
+  output: __S(13633, __c426, 1) as any as S.Schema<JobStepListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobStepExecutionByJobExecutionError = AzureOpError;
 /** Lists the step executions of a job execution. */
-export const ListJobStepExecutionByJobExecution: API.OperationMethod<
+export const ListJobStepExecutionByJobExecution: API.PaginatedOperationMethod<
   ListJobStepExecutionByJobExecutionRequest,
   ListJobStepExecutionByJobExecutionResponse,
   ListJobStepExecutionByJobExecutionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13760, __c430, 0) as any as S.Schema<ListJobStepExecutionByJobExecutionRequest>,
-  output: __S(13569, __c424, 1) as any as S.Schema<ListJobStepExecutionByJobExecutionResponse>,
+  AzureOpContext,
+  JobExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13696, __c428, 0) as any as S.Schema<ListJobStepExecutionByJobExecutionRequest>,
+  output: __S(13505, __c422, 1) as any as S.Schema<ListJobStepExecutionByJobExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobTargetExecutionByJobExecutionError = AzureOpError;
 /** Lists target executions for all steps of a job execution. */
-export const ListJobTargetExecutionByJobExecution: API.OperationMethod<
+export const ListJobTargetExecutionByJobExecution: API.PaginatedOperationMethod<
   ListJobTargetExecutionByJobExecutionRequest,
   ListJobTargetExecutionByJobExecutionResponse,
   ListJobTargetExecutionByJobExecutionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13824, __c432, 0) as any as S.Schema<ListJobTargetExecutionByJobExecutionRequest>,
-  output: __S(13569, __c424, 1) as any as S.Schema<ListJobTargetExecutionByJobExecutionResponse>,
+  AzureOpContext,
+  JobExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13760, __c430, 0) as any as S.Schema<ListJobTargetExecutionByJobExecutionRequest>,
+  output: __S(13505, __c422, 1) as any as S.Schema<ListJobTargetExecutionByJobExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobTargetExecutionByStepError = AzureOpError;
 /** Lists the target executions of a job step execution. */
-export const ListJobTargetExecutionByStep: API.OperationMethod<
+export const ListJobTargetExecutionByStep: API.PaginatedOperationMethod<
   ListJobTargetExecutionByStepRequest,
   ListJobTargetExecutionByStepResponse,
   ListJobTargetExecutionByStepError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13856, __c433, 0) as any as S.Schema<ListJobTargetExecutionByStepRequest>,
-  output: __S(13569, __c424, 1) as any as S.Schema<ListJobTargetExecutionByStepResponse>,
+  AzureOpContext,
+  JobExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13792, __c431, 0) as any as S.Schema<ListJobTargetExecutionByStepRequest>,
+  output: __S(13505, __c422, 1) as any as S.Schema<ListJobTargetExecutionByStepResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobTargetGroupByAgentError = AzureOpError;
 /** Gets all target groups in an agent. */
-export const ListJobTargetGroupByAgent: API.OperationMethod<
+export const ListJobTargetGroupByAgent: API.PaginatedOperationMethod<
   ListJobTargetGroupByAgentRequest,
   JobTargetGroupListResult,
   ListJobTargetGroupByAgentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13888, __c434, 0) as any as S.Schema<ListJobTargetGroupByAgentRequest>,
-  output: __S(13890, __c434, 2) as any as S.Schema<JobTargetGroupListResult>,
+  AzureOpContext,
+  JobTargetGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13824, __c432, 0) as any as S.Schema<ListJobTargetGroupByAgentRequest>,
+  output: __S(13826, __c432, 2) as any as S.Schema<JobTargetGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobVersionByJobError = AzureOpError;
 /** Gets all versions of a job. */
-export const ListJobVersionByJob: API.OperationMethod<
+export const ListJobVersionByJob: API.PaginatedOperationMethod<
   ListJobVersionByJobRequest,
   JobVersionListResult,
   ListJobVersionByJobError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13920, __c435, 0) as any as S.Schema<ListJobVersionByJobRequest>,
-  output: __S(11777, __c368, 1) as any as S.Schema<JobVersionListResult>,
+  AzureOpContext,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13856, __c433, 0) as any as S.Schema<ListJobVersionByJobRequest>,
+  output: __S(11745, __c367, 1) as any as S.Schema<JobVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLedgerDigestUploadByDatabaseError = AzureOpError;
 /** Gets all ledger digest upload settings on a database. */
-export const ListLedgerDigestUploadByDatabase: API.OperationMethod<
+export const ListLedgerDigestUploadByDatabase: API.PaginatedOperationMethod<
   ListLedgerDigestUploadByDatabaseRequest,
   LedgerDigestUploadsListResult,
   ListLedgerDigestUploadByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(13952, __c436, 0) as any as S.Schema<ListLedgerDigestUploadByDatabaseRequest>,
-  output: __S(13985, __c437, 1) as any as S.Schema<LedgerDigestUploadsListResult>,
+  AzureOpContext,
+  LedgerDigestUploads
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13888, __c434, 0) as any as S.Schema<ListLedgerDigestUploadByDatabaseRequest>,
+  output: __S(13921, __c435, 1) as any as S.Schema<LedgerDigestUploadsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLongTermRetentionBackupByDatabaseError = AzureOpError;
 /** Lists all long term retention backups for a database. */
-export const ListLongTermRetentionBackupByDatabase: API.OperationMethod<
+export const ListLongTermRetentionBackupByDatabase: API.PaginatedOperationMethod<
   ListLongTermRetentionBackupByDatabaseRequest,
   LongTermRetentionBackupListResult,
   ListLongTermRetentionBackupByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14016, __c438, 0) as any as S.Schema<ListLongTermRetentionBackupByDatabaseRequest>,
-  output: __S(14049, __c439, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
+  AzureOpContext,
+  LongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(13952, __c436, 0) as any as S.Schema<ListLongTermRetentionBackupByDatabaseRequest>,
+  output: __S(13985, __c437, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLongTermRetentionBackupByLocationError = AzureOpError;
 /** Lists the long term retention backups for a given location. */
-export const ListLongTermRetentionBackupByLocation: API.OperationMethod<
+export const ListLongTermRetentionBackupByLocation: API.PaginatedOperationMethod<
   ListLongTermRetentionBackupByLocationRequest,
   LongTermRetentionBackupListResult,
   ListLongTermRetentionBackupByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14080, __c440, 0) as any as S.Schema<ListLongTermRetentionBackupByLocationRequest>,
-  output: __S(14049, __c439, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
+  AzureOpContext,
+  LongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14016, __c438, 0) as any as S.Schema<ListLongTermRetentionBackupByLocationRequest>,
+  output: __S(13985, __c437, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLongTermRetentionBackupByResourceGroupDatabaseError = AzureOpError;
 /** Lists all long term retention backups for a database based on a particular resource group. */
-export const ListLongTermRetentionBackupByResourceGroupDatabase: API.OperationMethod<
+export const ListLongTermRetentionBackupByResourceGroupDatabase: API.PaginatedOperationMethod<
   ListLongTermRetentionBackupByResourceGroupDatabaseRequest,
   LongTermRetentionBackupListResult,
   ListLongTermRetentionBackupByResourceGroupDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(
+    14048,
+    __c439,
+    0,
+  ) as any as S.Schema<ListLongTermRetentionBackupByResourceGroupDatabaseRequest>,
+  output: __S(13985, __c437, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
+
+export type ListLongTermRetentionBackupByResourceGroupLocationError = AzureOpError;
+/** Lists the long term retention backups for a given location based on resource group. */
+export const ListLongTermRetentionBackupByResourceGroupLocation: API.PaginatedOperationMethod<
+  ListLongTermRetentionBackupByResourceGroupLocationRequest,
+  LongTermRetentionBackupListResult,
+  ListLongTermRetentionBackupByResourceGroupLocationError,
+  AzureOpContext,
+  LongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(
+    14080,
+    __c440,
+    0,
+  ) as any as S.Schema<ListLongTermRetentionBackupByResourceGroupLocationRequest>,
+  output: __S(13985, __c437, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
+
+export type ListLongTermRetentionBackupByResourceGroupServerError = AzureOpError;
+/** Lists the long term retention backups for a given server based on resource groups. */
+export const ListLongTermRetentionBackupByResourceGroupServer: API.PaginatedOperationMethod<
+  ListLongTermRetentionBackupByResourceGroupServerRequest,
+  LongTermRetentionBackupListResult,
+  ListLongTermRetentionBackupByResourceGroupServerError,
+  AzureOpContext,
+  LongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14112,
     __c441,
     0,
-  ) as any as S.Schema<ListLongTermRetentionBackupByResourceGroupDatabaseRequest>,
-  output: __S(14049, __c439, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListLongTermRetentionBackupByResourceGroupLocationError = AzureOpError;
-/** Lists the long term retention backups for a given location based on resource group. */
-export const ListLongTermRetentionBackupByResourceGroupLocation: API.OperationMethod<
-  ListLongTermRetentionBackupByResourceGroupLocationRequest,
-  LongTermRetentionBackupListResult,
-  ListLongTermRetentionBackupByResourceGroupLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    14144,
-    __c442,
-    0,
-  ) as any as S.Schema<ListLongTermRetentionBackupByResourceGroupLocationRequest>,
-  output: __S(14049, __c439, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListLongTermRetentionBackupByResourceGroupServerError = AzureOpError;
-/** Lists the long term retention backups for a given server based on resource groups. */
-export const ListLongTermRetentionBackupByResourceGroupServer: API.OperationMethod<
-  ListLongTermRetentionBackupByResourceGroupServerRequest,
-  LongTermRetentionBackupListResult,
-  ListLongTermRetentionBackupByResourceGroupServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    14176,
-    __c443,
-    0,
   ) as any as S.Schema<ListLongTermRetentionBackupByResourceGroupServerRequest>,
-  output: __S(14049, __c439, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
+  output: __S(13985, __c437, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLongTermRetentionBackupByServerError = AzureOpError;
 /** Lists the long term retention backups for a given server. */
-export const ListLongTermRetentionBackupByServer: API.OperationMethod<
+export const ListLongTermRetentionBackupByServer: API.PaginatedOperationMethod<
   ListLongTermRetentionBackupByServerRequest,
   LongTermRetentionBackupListResult,
   ListLongTermRetentionBackupByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14240, __c445, 0) as any as S.Schema<ListLongTermRetentionBackupByServerRequest>,
-  output: __S(14049, __c439, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
+  AzureOpContext,
+  LongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14176, __c443, 0) as any as S.Schema<ListLongTermRetentionBackupByServerRequest>,
+  output: __S(13985, __c437, 1) as any as S.Schema<LongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLongTermRetentionManagedInstanceBackupByDatabaseError = AzureOpError;
 /** Lists all long term retention backups for a managed database. */
-export const ListLongTermRetentionManagedInstanceBackupByDatabase: API.OperationMethod<
+export const ListLongTermRetentionManagedInstanceBackupByDatabase: API.PaginatedOperationMethod<
   ListLongTermRetentionManagedInstanceBackupByDatabaseRequest,
   ManagedInstanceLongTermRetentionBackupListResult,
   ListLongTermRetentionManagedInstanceBackupByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(
+    14208,
+    __c444,
+    0,
+  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByDatabaseRequest>,
+  output: __S(
+    14241,
+    __c445,
+    1,
+  ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
+
+export type ListLongTermRetentionManagedInstanceBackupByInstanceError = AzureOpError;
+/** Lists the long term retention backups for a given managed instance. */
+export const ListLongTermRetentionManagedInstanceBackupByInstance: API.PaginatedOperationMethod<
+  ListLongTermRetentionManagedInstanceBackupByInstanceRequest,
+  ManagedInstanceLongTermRetentionBackupListResult,
+  ListLongTermRetentionManagedInstanceBackupByInstanceError,
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14272,
     __c446,
     0,
-  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByDatabaseRequest>,
+  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByInstanceRequest>,
   output: __S(
-    14305,
-    __c447,
+    14241,
+    __c445,
     1,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
-export type ListLongTermRetentionManagedInstanceBackupByInstanceError = AzureOpError;
-/** Lists the long term retention backups for a given managed instance. */
-export const ListLongTermRetentionManagedInstanceBackupByInstance: API.OperationMethod<
-  ListLongTermRetentionManagedInstanceBackupByInstanceRequest,
+export type ListLongTermRetentionManagedInstanceBackupByLocationError = AzureOpError;
+/** Lists the long term retention backups for managed databases in a given location. */
+export const ListLongTermRetentionManagedInstanceBackupByLocation: API.PaginatedOperationMethod<
+  ListLongTermRetentionManagedInstanceBackupByLocationRequest,
   ManagedInstanceLongTermRetentionBackupListResult,
-  ListLongTermRetentionManagedInstanceBackupByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  ListLongTermRetentionManagedInstanceBackupByLocationError,
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(
+    14304,
+    __c447,
+    0,
+  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByLocationRequest>,
+  output: __S(
+    14241,
+    __c445,
+    1,
+  ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
+
+export type ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseError = AzureOpError;
+/** Lists all long term retention backups for a managed database. */
+export const ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabase: API.PaginatedOperationMethod<
+  ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequest,
+  ManagedInstanceLongTermRetentionBackupListResult,
+  ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseError,
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14336,
     __c448,
     0,
-  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByInstanceRequest>,
+  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequest>,
   output: __S(
-    14305,
-    __c447,
+    14241,
+    __c445,
     1,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
-export type ListLongTermRetentionManagedInstanceBackupByLocationError = AzureOpError;
-/** Lists the long term retention backups for managed databases in a given location. */
-export const ListLongTermRetentionManagedInstanceBackupByLocation: API.OperationMethod<
-  ListLongTermRetentionManagedInstanceBackupByLocationRequest,
+export type ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceError = AzureOpError;
+/** Lists the long term retention backups for a given managed instance. */
+export const ListLongTermRetentionManagedInstanceBackupByResourceGroupInstance: API.PaginatedOperationMethod<
+  ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequest,
   ManagedInstanceLongTermRetentionBackupListResult,
-  ListLongTermRetentionManagedInstanceBackupByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceError,
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14368,
     __c449,
     0,
-  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByLocationRequest>,
+  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequest>,
   output: __S(
-    14305,
-    __c447,
+    14241,
+    __c445,
     1,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
-export type ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseError = AzureOpError;
-/** Lists all long term retention backups for a managed database. */
-export const ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabase: API.OperationMethod<
-  ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequest,
+export type ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationError = AzureOpError;
+/** Lists the long term retention backups for managed databases in a given location. */
+export const ListLongTermRetentionManagedInstanceBackupByResourceGroupLocation: API.PaginatedOperationMethod<
+  ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequest,
   ManagedInstanceLongTermRetentionBackupListResult,
-  ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationError,
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionBackup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14400,
     __c450,
     0,
-  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequest>,
+  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequest>,
   output: __S(
-    14305,
-    __c447,
+    14241,
+    __c445,
     1,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
-export type ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceError = AzureOpError;
-/** Lists the long term retention backups for a given managed instance. */
-export const ListLongTermRetentionManagedInstanceBackupByResourceGroupInstance: API.OperationMethod<
-  ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequest,
-  ManagedInstanceLongTermRetentionBackupListResult,
-  ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    14432,
-    __c451,
-    0,
-  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequest>,
-  output: __S(
-    14305,
-    __c447,
-    1,
-  ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
+export type ListLongTermRetentionPolicyByDatabaseError = AzureOpError;
+/** Gets a database's long term retention policy. */
+export const ListLongTermRetentionPolicyByDatabase: API.PaginatedOperationMethod<
+  ListLongTermRetentionPolicyByDatabaseRequest,
+  LongTermRetentionPolicyListResult,
+  ListLongTermRetentionPolicyByDatabaseError,
+  AzureOpContext,
+  LongTermRetentionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14432, __c451, 0) as any as S.Schema<ListLongTermRetentionPolicyByDatabaseRequest>,
+  output: __S(14434, __c451, 2) as any as S.Schema<LongTermRetentionPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
-export type ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationError = AzureOpError;
-/** Lists the long term retention backups for managed databases in a given location. */
-export const ListLongTermRetentionManagedInstanceBackupByResourceGroupLocation: API.OperationMethod<
-  ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequest,
-  ManagedInstanceLongTermRetentionBackupListResult,
-  ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+export type ListManagedBackupShortTermRetentionPolicyByDatabaseError = AzureOpError;
+/** Gets a managed database's short term retention policy list. */
+export const ListManagedBackupShortTermRetentionPolicyByDatabase: API.PaginatedOperationMethod<
+  ListManagedBackupShortTermRetentionPolicyByDatabaseRequest,
+  ListManagedBackupShortTermRetentionPolicyByDatabaseResponse,
+  ListManagedBackupShortTermRetentionPolicyByDatabaseError,
+  AzureOpContext,
+  ManagedBackupShortTermRetentionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14464,
     __c452,
     0,
-  ) as any as S.Schema<ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequest>,
-  output: __S(
-    14305,
-    __c447,
-    1,
-  ) as any as S.Schema<ManagedInstanceLongTermRetentionBackupListResult>,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListLongTermRetentionPolicyByDatabaseError = AzureOpError;
-/** Gets a database's long term retention policy. */
-export const ListLongTermRetentionPolicyByDatabase: API.OperationMethod<
-  ListLongTermRetentionPolicyByDatabaseRequest,
-  LongTermRetentionPolicyListResult,
-  ListLongTermRetentionPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14496, __c453, 0) as any as S.Schema<ListLongTermRetentionPolicyByDatabaseRequest>,
-  output: __S(14498, __c453, 2) as any as S.Schema<LongTermRetentionPolicyListResult>,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListManagedBackupShortTermRetentionPolicyByDatabaseError = AzureOpError;
-/** Gets a managed database's short term retention policy list. */
-export const ListManagedBackupShortTermRetentionPolicyByDatabase: API.OperationMethod<
-  ListManagedBackupShortTermRetentionPolicyByDatabaseRequest,
-  ListManagedBackupShortTermRetentionPolicyByDatabaseResponse,
-  ListManagedBackupShortTermRetentionPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    14528,
-    __c454,
-    0,
   ) as any as S.Schema<ListManagedBackupShortTermRetentionPolicyByDatabaseRequest>,
   output: __S(
-    14561,
-    __c455,
+    14497,
+    __c453,
     1,
   ) as any as S.Schema<ListManagedBackupShortTermRetentionPolicyByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabaseError = AzureOpError;
 /** Gets a list of managed database's Advanced Threat Protection states. */
-export const ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabase: API.OperationMethod<
+export const ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabaseRequest,
   ManagedDatabaseAdvancedThreatProtectionListResult,
   ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseAdvancedThreatProtection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    14592,
-    __c456,
+    14528,
+    __c454,
     0,
   ) as any as S.Schema<ListManagedDatabaseAdvancedThreatProtectionSettingsByDatabaseRequest>,
   output: __S(
-    11168,
+    11169,
     __c349,
-    0,
+    1,
   ) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseByInstanceError = AzureOpError;
 /** Gets a list of managed databases. */
-export const ListManagedDatabaseByInstance: API.OperationMethod<
+export const ListManagedDatabaseByInstance: API.PaginatedOperationMethod<
   ListManagedDatabaseByInstanceRequest,
   ManagedDatabaseListResult,
   ListManagedDatabaseByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14656, __c458, 0) as any as S.Schema<ListManagedDatabaseByInstanceRequest>,
-  output: __S(14689, __c459, 1) as any as S.Schema<ManagedDatabaseListResult>,
+  AzureOpContext,
+  ManagedDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14592, __c456, 0) as any as S.Schema<ListManagedDatabaseByInstanceRequest>,
+  output: __S(14625, __c457, 1) as any as S.Schema<ManagedDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseColumnByDatabaseError = AzureOpError;
 /** List managed database columns */
-export const ListManagedDatabaseColumnByDatabase: API.OperationMethod<
+export const ListManagedDatabaseColumnByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseColumnByDatabaseRequest,
   ListManagedDatabaseColumnByDatabaseResponse,
   ListManagedDatabaseColumnByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14720, __c460, 0) as any as S.Schema<ListManagedDatabaseColumnByDatabaseRequest>,
-  output: __S(11553, __c361, 1) as any as S.Schema<ListManagedDatabaseColumnByDatabaseResponse>,
+  AzureOpContext,
+  DatabaseColumn
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14656, __c458, 0) as any as S.Schema<ListManagedDatabaseColumnByDatabaseRequest>,
+  output: __S(11521, __c360, 1) as any as S.Schema<ListManagedDatabaseColumnByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseColumnByTableError = AzureOpError;
 /** List managed database columns */
-export const ListManagedDatabaseColumnByTable: API.OperationMethod<
+export const ListManagedDatabaseColumnByTable: API.PaginatedOperationMethod<
   ListManagedDatabaseColumnByTableRequest,
   ListManagedDatabaseColumnByTableResponse,
   ListManagedDatabaseColumnByTableError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14752, __c461, 0) as any as S.Schema<ListManagedDatabaseColumnByTableRequest>,
-  output: __S(11553, __c361, 1) as any as S.Schema<ListManagedDatabaseColumnByTableResponse>,
+  AzureOpContext,
+  DatabaseColumn
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14688, __c459, 0) as any as S.Schema<ListManagedDatabaseColumnByTableRequest>,
+  output: __S(11521, __c360, 1) as any as S.Schema<ListManagedDatabaseColumnByTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseInaccessibleByInstanceError = AzureOpError;
 /** Gets a list of inaccessible managed databases in a managed instance */
-export const ListManagedDatabaseInaccessibleByInstance: API.OperationMethod<
+export const ListManagedDatabaseInaccessibleByInstance: API.PaginatedOperationMethod<
   ListManagedDatabaseInaccessibleByInstanceRequest,
   ManagedDatabaseListResult,
   ListManagedDatabaseInaccessibleByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14784, __c462, 0) as any as S.Schema<ListManagedDatabaseInaccessibleByInstanceRequest>,
-  output: __S(14689, __c459, 1) as any as S.Schema<ManagedDatabaseListResult>,
+  AzureOpContext,
+  ManagedDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14720, __c460, 0) as any as S.Schema<ListManagedDatabaseInaccessibleByInstanceRequest>,
+  output: __S(14625, __c457, 1) as any as S.Schema<ManagedDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseMoveOperationByLocationError = AzureOpError;
 /** Lists managed database move operations. */
-export const ListManagedDatabaseMoveOperationByLocation: API.OperationMethod<
+export const ListManagedDatabaseMoveOperationByLocation: API.PaginatedOperationMethod<
   ListManagedDatabaseMoveOperationByLocationRequest,
   ManagedDatabaseMoveOperationListResult,
   ListManagedDatabaseMoveOperationByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedDatabaseMoveOperationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    14816,
-    __c463,
+    14752,
+    __c461,
     0,
   ) as any as S.Schema<ListManagedDatabaseMoveOperationByLocationRequest>,
-  output: __S(14818, __c463, 2) as any as S.Schema<ManagedDatabaseMoveOperationListResult>,
+  output: __S(14754, __c461, 2) as any as S.Schema<ManagedDatabaseMoveOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseQueryByQueryError = AzureOpError;
 /** Get query execution statistics by query id. */
-export const ListManagedDatabaseQueryByQuery: API.OperationMethod<
+export const ListManagedDatabaseQueryByQuery: API.PaginatedOperationMethod<
   ListManagedDatabaseQueryByQueryRequest,
   ManagedInstanceQueryStatistics,
   ListManagedDatabaseQueryByQueryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14848, __c464, 0) as any as S.Schema<ListManagedDatabaseQueryByQueryRequest>,
-  output: __S(14851, __c464, 3) as any as S.Schema<ManagedInstanceQueryStatistics>,
+  AzureOpContext,
+  QueryStatistics
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14784, __c462, 0) as any as S.Schema<ListManagedDatabaseQueryByQueryRequest>,
+  output: __S(14787, __c462, 3) as any as S.Schema<ManagedInstanceQueryStatistics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseSchemaByDatabaseError = AzureOpError;
 /** List managed database schemas */
-export const ListManagedDatabaseSchemaByDatabase: API.OperationMethod<
+export const ListManagedDatabaseSchemaByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseSchemaByDatabaseRequest,
   ListManagedDatabaseSchemaByDatabaseResponse,
   ListManagedDatabaseSchemaByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(14912, __c466, 0) as any as S.Schema<ListManagedDatabaseSchemaByDatabaseRequest>,
-  output: __S(11777, __c368, 1) as any as S.Schema<ListManagedDatabaseSchemaByDatabaseResponse>,
+  AzureOpContext,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(14848, __c464, 0) as any as S.Schema<ListManagedDatabaseSchemaByDatabaseRequest>,
+  output: __S(11745, __c367, 1) as any as S.Schema<ListManagedDatabaseSchemaByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseSecurityAlertPolicyByDatabaseError = AzureOpError;
 /** Gets a list of managed database's security alert policies. */
-export const ListManagedDatabaseSecurityAlertPolicyByDatabase: API.OperationMethod<
+export const ListManagedDatabaseSecurityAlertPolicyByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseSecurityAlertPolicyByDatabaseRequest,
   ManagedDatabaseSecurityAlertPolicyListResult,
   ListManagedDatabaseSecurityAlertPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedDatabaseSecurityAlertPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(
+    14880,
+    __c465,
+    0,
+  ) as any as S.Schema<ListManagedDatabaseSecurityAlertPolicyByDatabaseRequest>,
+  output: __S(11873, __c371, 1) as any as S.Schema<ManagedDatabaseSecurityAlertPolicyListResult>,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
+
+export type ListManagedDatabaseSecurityEventByDatabaseError = AzureOpError;
+/** Gets a list of security events. */
+export const ListManagedDatabaseSecurityEventByDatabase: API.PaginatedOperationMethod<
+  ListManagedDatabaseSecurityEventByDatabaseRequest,
+  SecurityEventCollection,
+  ListManagedDatabaseSecurityEventByDatabaseError,
+  AzureOpContext,
+  SecurityEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(
+    14912,
+    __c466,
+    0,
+  ) as any as S.Schema<ListManagedDatabaseSecurityEventByDatabaseRequest>,
+  output: __S(14917, __c466, 5) as any as S.Schema<SecurityEventCollection>,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
+
+export type ListManagedDatabaseSensitivityLabelByDatabaseError = AzureOpError;
+/** Gets the sensitivity labels of a given database */
+export const ListManagedDatabaseSensitivityLabelByDatabase: API.PaginatedOperationMethod<
+  ListManagedDatabaseSensitivityLabelByDatabaseRequest,
+  ListManagedDatabaseSensitivityLabelByDatabaseResponse,
+  ListManagedDatabaseSensitivityLabelByDatabaseError,
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     14944,
     __c467,
     0,
-  ) as any as S.Schema<ListManagedDatabaseSecurityAlertPolicyByDatabaseRequest>,
-  output: __S(14976, __c468, 0) as any as S.Schema<ManagedDatabaseSecurityAlertPolicyListResult>,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListManagedDatabaseSecurityEventByDatabaseError = AzureOpError;
-/** Gets a list of security events. */
-export const ListManagedDatabaseSecurityEventByDatabase: API.OperationMethod<
-  ListManagedDatabaseSecurityEventByDatabaseRequest,
-  SecurityEventCollection,
-  ListManagedDatabaseSecurityEventByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    15008,
-    __c469,
-    0,
-  ) as any as S.Schema<ListManagedDatabaseSecurityEventByDatabaseRequest>,
-  output: __S(15013, __c469, 5) as any as S.Schema<SecurityEventCollection>,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListManagedDatabaseSensitivityLabelByDatabaseError = AzureOpError;
-/** Gets the sensitivity labels of a given database */
-export const ListManagedDatabaseSensitivityLabelByDatabase: API.OperationMethod<
-  ListManagedDatabaseSensitivityLabelByDatabaseRequest,
-  ListManagedDatabaseSensitivityLabelByDatabaseResponse,
-  ListManagedDatabaseSensitivityLabelByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    15040,
-    __c470,
-    0,
   ) as any as S.Schema<ListManagedDatabaseSensitivityLabelByDatabaseRequest>,
   output: __S(
-    15073,
-    __c471,
+    14977,
+    __c468,
     1,
   ) as any as S.Schema<ListManagedDatabaseSensitivityLabelByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseSensitivityLabelCurrentByDatabaseError = AzureOpError;
 /** Gets the sensitivity labels of a given database */
-export const ListManagedDatabaseSensitivityLabelCurrentByDatabase: API.OperationMethod<
+export const ListManagedDatabaseSensitivityLabelCurrentByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseSensitivityLabelCurrentByDatabaseRequest,
   ListManagedDatabaseSensitivityLabelCurrentByDatabaseResponse,
   ListManagedDatabaseSensitivityLabelCurrentByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15136,
-    __c473,
+    15040,
+    __c470,
     0,
   ) as any as S.Schema<ListManagedDatabaseSensitivityLabelCurrentByDatabaseRequest>,
   output: __S(
-    15073,
-    __c471,
+    14977,
+    __c468,
     1,
   ) as any as S.Schema<ListManagedDatabaseSensitivityLabelCurrentByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseSensitivityLabelRecommendedByDatabaseError = AzureOpError;
 /** Gets the sensitivity labels of a given database */
-export const ListManagedDatabaseSensitivityLabelRecommendedByDatabase: API.OperationMethod<
+export const ListManagedDatabaseSensitivityLabelRecommendedByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseSensitivityLabelRecommendedByDatabaseRequest,
   ListManagedDatabaseSensitivityLabelRecommendedByDatabaseResponse,
   ListManagedDatabaseSensitivityLabelRecommendedByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15168,
-    __c474,
+    15072,
+    __c471,
     0,
   ) as any as S.Schema<ListManagedDatabaseSensitivityLabelRecommendedByDatabaseRequest>,
   output: __S(
-    15073,
-    __c471,
+    14977,
+    __c468,
     1,
   ) as any as S.Schema<ListManagedDatabaseSensitivityLabelRecommendedByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseTableBySchemaError = AzureOpError;
 /** List managed database tables */
-export const ListManagedDatabaseTableBySchema: API.OperationMethod<
+export const ListManagedDatabaseTableBySchema: API.PaginatedOperationMethod<
   ListManagedDatabaseTableBySchemaRequest,
   ListManagedDatabaseTableBySchemaResponse,
   ListManagedDatabaseTableBySchemaError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15200, __c475, 0) as any as S.Schema<ListManagedDatabaseTableBySchemaRequest>,
-  output: __S(12321, __c385, 1) as any as S.Schema<ListManagedDatabaseTableBySchemaResponse>,
+  AzureOpContext,
+  DatabaseTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15104, __c472, 0) as any as S.Schema<ListManagedDatabaseTableBySchemaRequest>,
+  output: __S(12257, __c383, 1) as any as S.Schema<ListManagedDatabaseTableBySchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseTransparentDataEncryptionByDatabaseError = AzureOpError;
 /** Gets a list of managed database's transparent data encryptions. */
-export const ListManagedDatabaseTransparentDataEncryptionByDatabase: API.OperationMethod<
+export const ListManagedDatabaseTransparentDataEncryptionByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseTransparentDataEncryptionByDatabaseRequest,
   ManagedTransparentDataEncryptionListResult,
   ListManagedDatabaseTransparentDataEncryptionByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedTransparentDataEncryption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15232,
-    __c476,
+    15136,
+    __c473,
     0,
   ) as any as S.Schema<ListManagedDatabaseTransparentDataEncryptionByDatabaseRequest>,
-  output: __S(15234, __c476, 2) as any as S.Schema<ManagedTransparentDataEncryptionListResult>,
+  output: __S(15138, __c473, 2) as any as S.Schema<ManagedTransparentDataEncryptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseVulnerabilityAssessmentByDatabaseError = AzureOpError;
 /** Lists the vulnerability assessments of a managed database. */
-export const ListManagedDatabaseVulnerabilityAssessmentByDatabase: API.OperationMethod<
+export const ListManagedDatabaseVulnerabilityAssessmentByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseVulnerabilityAssessmentByDatabaseRequest,
   ListManagedDatabaseVulnerabilityAssessmentByDatabaseResponse,
   ListManagedDatabaseVulnerabilityAssessmentByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15264,
-    __c477,
+    15168,
+    __c474,
     0,
   ) as any as S.Schema<ListManagedDatabaseVulnerabilityAssessmentByDatabaseRequest>,
   output: __S(
-    12449,
-    __c389,
+    12385,
+    __c387,
     1,
   ) as any as S.Schema<ListManagedDatabaseVulnerabilityAssessmentByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseError = AzureOpError;
 /** Lists the vulnerability assessment scans of a database. */
-export const ListManagedDatabaseVulnerabilityAssessmentScanByDatabase: API.OperationMethod<
+export const ListManagedDatabaseVulnerabilityAssessmentScanByDatabase: API.PaginatedOperationMethod<
   ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseRequest,
   ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseResponse,
   ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VulnerabilityAssessmentScanRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15296,
-    __c478,
+    15200,
+    __c475,
     0,
   ) as any as S.Schema<ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseRequest>,
   output: __S(
-    12513,
-    __c391,
+    12449,
+    __c389,
     1,
   ) as any as S.Schema<ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceAdministratorByInstanceError = AzureOpError;
 /** Gets a list of managed instance administrators. */
-export const ListManagedInstanceAdministratorByInstance: API.OperationMethod<
+export const ListManagedInstanceAdministratorByInstance: API.PaginatedOperationMethod<
   ListManagedInstanceAdministratorByInstanceRequest,
   ManagedInstanceAdministratorListResult,
   ListManagedInstanceAdministratorByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceAdministrator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15328,
-    __c479,
+    15232,
+    __c476,
     0,
   ) as any as S.Schema<ListManagedInstanceAdministratorByInstanceRequest>,
-  output: __S(15330, __c479, 2) as any as S.Schema<ManagedInstanceAdministratorListResult>,
+  output: __S(15234, __c476, 2) as any as S.Schema<ManagedInstanceAdministratorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceError = AzureOpError;
 /** Get the managed instance's Advanced Threat Protection settings. */
-export const ListManagedInstanceAdvancedThreatProtectionSettingsByInstance: API.OperationMethod<
+export const ListManagedInstanceAdvancedThreatProtectionSettingsByInstance: API.PaginatedOperationMethod<
   ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceRequest,
   ManagedInstanceAdvancedThreatProtectionListResult,
   ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseAdvancedThreatProtection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15360,
-    __c480,
+    15264,
+    __c477,
     0,
   ) as any as S.Schema<ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceRequest>,
   output: __S(
-    11168,
+    11169,
     __c349,
-    0,
+    1,
   ) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceAzureADOnlyAuthenticationByInstanceError = AzureOpError;
 /** Gets a list of server Azure Active Directory only authentications. */
-export const ListManagedInstanceAzureADOnlyAuthenticationByInstance: API.OperationMethod<
+export const ListManagedInstanceAzureADOnlyAuthenticationByInstance: API.PaginatedOperationMethod<
   ListManagedInstanceAzureADOnlyAuthenticationByInstanceRequest,
   ManagedInstanceAzureADOnlyAuthListResult,
   ListManagedInstanceAzureADOnlyAuthenticationByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceAzureADOnlyAuthentication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15392,
-    __c481,
+    15296,
+    __c478,
     0,
   ) as any as S.Schema<ListManagedInstanceAzureADOnlyAuthenticationByInstanceRequest>,
-  output: __S(15425, __c482, 1) as any as S.Schema<ManagedInstanceAzureADOnlyAuthListResult>,
+  output: __S(15329, __c479, 1) as any as S.Schema<ManagedInstanceAzureADOnlyAuthListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceByInstancePoolError = AzureOpError;
 /** Gets a list of all managed instances in an instance pool. */
-export const ListManagedInstanceByInstancePool: API.OperationMethod<
+export const ListManagedInstanceByInstancePool: API.PaginatedOperationMethod<
   ListManagedInstanceByInstancePoolRequest,
   ManagedInstanceListResult,
   ListManagedInstanceByInstancePoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15456, __c483, 0) as any as S.Schema<ListManagedInstanceByInstancePoolRequest>,
-  output: __S(15489, __c484, 1) as any as S.Schema<ManagedInstanceListResult>,
+  AzureOpContext,
+  ManagedInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15360, __c480, 0) as any as S.Schema<ListManagedInstanceByInstancePoolRequest>,
+  output: __S(15393, __c481, 1) as any as S.Schema<ManagedInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceByManagedInstanceError = AzureOpError;
 /** Get top resource consuming queries of a managed instance. */
-export const ListManagedInstanceByManagedInstance: API.OperationMethod<
+export const ListManagedInstanceByManagedInstance: API.PaginatedOperationMethod<
   ListManagedInstanceByManagedInstanceRequest,
   TopQueriesListResult,
   ListManagedInstanceByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15552, __c486, 0) as any as S.Schema<ListManagedInstanceByManagedInstanceRequest>,
-  output: __S(15556, __c486, 4) as any as S.Schema<TopQueriesListResult>,
+  AzureOpContext,
+  TopQueries
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15456, __c483, 0) as any as S.Schema<ListManagedInstanceByManagedInstanceRequest>,
+  output: __S(15460, __c483, 4) as any as S.Schema<TopQueriesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceByResourceGroupError = AzureOpError;
 /** Gets a list of managed instances in a resource group. */
-export const ListManagedInstanceByResourceGroup: API.OperationMethod<
+export const ListManagedInstanceByResourceGroup: API.PaginatedOperationMethod<
   ListManagedInstanceByResourceGroupRequest,
   ManagedInstanceListResult,
   ListManagedInstanceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15584, __c487, 0) as any as S.Schema<ListManagedInstanceByResourceGroupRequest>,
-  output: __S(15489, __c484, 1) as any as S.Schema<ManagedInstanceListResult>,
+  AzureOpContext,
+  ManagedInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15488, __c484, 0) as any as S.Schema<ListManagedInstanceByResourceGroupRequest>,
+  output: __S(15393, __c481, 1) as any as S.Schema<ManagedInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceDtcByManagedInstanceError = AzureOpError;
 /** Gets a list of managed instance DTC settings. */
-export const ListManagedInstanceDtcByManagedInstance: API.OperationMethod<
+export const ListManagedInstanceDtcByManagedInstance: API.PaginatedOperationMethod<
   ListManagedInstanceDtcByManagedInstanceRequest,
   ManagedInstanceDtcListResult,
   ListManagedInstanceDtcByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15616, __c488, 0) as any as S.Schema<ListManagedInstanceDtcByManagedInstanceRequest>,
-  output: __S(15618, __c488, 2) as any as S.Schema<ManagedInstanceDtcListResult>,
+  AzureOpContext,
+  ManagedInstanceDtc
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15520, __c485, 0) as any as S.Schema<ListManagedInstanceDtcByManagedInstanceRequest>,
+  output: __S(15522, __c485, 2) as any as S.Schema<ManagedInstanceDtcListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceEncryptionProtectorByInstanceError = AzureOpError;
 /** Gets a list of managed instance encryption protectors */
-export const ListManagedInstanceEncryptionProtectorByInstance: API.OperationMethod<
+export const ListManagedInstanceEncryptionProtectorByInstance: API.PaginatedOperationMethod<
   ListManagedInstanceEncryptionProtectorByInstanceRequest,
   ManagedInstanceEncryptionProtectorListResult,
   ListManagedInstanceEncryptionProtectorByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceEncryptionProtector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15648,
-    __c489,
+    15552,
+    __c486,
     0,
   ) as any as S.Schema<ListManagedInstanceEncryptionProtectorByInstanceRequest>,
-  output: __S(15650, __c489, 2) as any as S.Schema<ManagedInstanceEncryptionProtectorListResult>,
+  output: __S(15554, __c486, 2) as any as S.Schema<ManagedInstanceEncryptionProtectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceKeyByInstanceError = AzureOpError;
 /** Gets a list of managed instance keys. */
-export const ListManagedInstanceKeyByInstance: API.OperationMethod<
+export const ListManagedInstanceKeyByInstance: API.PaginatedOperationMethod<
   ListManagedInstanceKeyByInstanceRequest,
   ManagedInstanceKeyListResult,
   ListManagedInstanceKeyByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15680, __c490, 0) as any as S.Schema<ListManagedInstanceKeyByInstanceRequest>,
-  output: __S(15682, __c490, 2) as any as S.Schema<ManagedInstanceKeyListResult>,
+  AzureOpContext,
+  ManagedInstanceKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15584, __c487, 0) as any as S.Schema<ListManagedInstanceKeyByInstanceRequest>,
+  output: __S(15586, __c487, 2) as any as S.Schema<ManagedInstanceKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceLongTermRetentionPolicyByDatabaseError = AzureOpError;
 /** Gets a database's long term retention policy. */
-export const ListManagedInstanceLongTermRetentionPolicyByDatabase: API.OperationMethod<
+export const ListManagedInstanceLongTermRetentionPolicyByDatabase: API.PaginatedOperationMethod<
   ListManagedInstanceLongTermRetentionPolicyByDatabaseRequest,
   ManagedInstanceLongTermRetentionPolicyListResult,
   ListManagedInstanceLongTermRetentionPolicyByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceLongTermRetentionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15712,
-    __c491,
+    15616,
+    __c488,
     0,
   ) as any as S.Schema<ListManagedInstanceLongTermRetentionPolicyByDatabaseRequest>,
   output: __S(
-    15714,
-    __c491,
+    15618,
+    __c488,
     2,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceOperationByManagedInstanceError = AzureOpError;
 /** Gets a list of operations performed on the managed instance. */
-export const ListManagedInstanceOperationByManagedInstance: API.OperationMethod<
+export const ListManagedInstanceOperationByManagedInstance: API.PaginatedOperationMethod<
   ListManagedInstanceOperationByManagedInstanceRequest,
   ManagedInstanceOperationListResult,
   ListManagedInstanceOperationByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15744,
-    __c492,
+    15648,
+    __c489,
     0,
   ) as any as S.Schema<ListManagedInstanceOperationByManagedInstanceRequest>,
-  output: __S(15746, __c492, 2) as any as S.Schema<ManagedInstanceOperationListResult>,
+  output: __S(15650, __c489, 2) as any as S.Schema<ManagedInstanceOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceOutboundNetworkDependenciesByManagedInstanceError = AzureOpError;
 /** Gets the collection of outbound network dependencies for the given managed instance. */
-export const ListManagedInstanceOutboundNetworkDependenciesByManagedInstance: API.OperationMethod<
+export const ListManagedInstanceOutboundNetworkDependenciesByManagedInstance: API.PaginatedOperationMethod<
   ListManagedInstanceOutboundNetworkDependenciesByManagedInstanceRequest,
   OutboundEnvironmentEndpointCollection,
   ListManagedInstanceOutboundNetworkDependenciesByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundEnvironmentEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15776,
-    __c493,
+    15680,
+    __c490,
     0,
   ) as any as S.Schema<ListManagedInstanceOutboundNetworkDependenciesByManagedInstanceRequest>,
-  output: __S(15783, __c493, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
+  output: __S(15687, __c490, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstancePrivateEndpointConnectionByManagedInstanceError = AzureOpError;
 /** Gets all private endpoint connections on a server. */
-export const ListManagedInstancePrivateEndpointConnectionByManagedInstance: API.OperationMethod<
+export const ListManagedInstancePrivateEndpointConnectionByManagedInstance: API.PaginatedOperationMethod<
   ListManagedInstancePrivateEndpointConnectionByManagedInstanceRequest,
   ManagedInstancePrivateEndpointConnectionListResult,
   ListManagedInstancePrivateEndpointConnectionByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstancePrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15808,
-    __c494,
+    15712,
+    __c491,
     0,
   ) as any as S.Schema<ListManagedInstancePrivateEndpointConnectionByManagedInstanceRequest>,
   output: __S(
-    15810,
-    __c494,
+    15714,
+    __c491,
     2,
   ) as any as S.Schema<ManagedInstancePrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstancePrivateLinkResourceByManagedInstanceError = AzureOpError;
 /** Gets the private link resources for SQL server. */
-export const ListManagedInstancePrivateLinkResourceByManagedInstance: API.OperationMethod<
+export const ListManagedInstancePrivateLinkResourceByManagedInstance: API.PaginatedOperationMethod<
   ListManagedInstancePrivateLinkResourceByManagedInstanceRequest,
   ManagedInstancePrivateLinkListResult,
   ListManagedInstancePrivateLinkResourceByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstancePrivateLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15840,
-    __c495,
+    15744,
+    __c492,
     0,
   ) as any as S.Schema<ListManagedInstancePrivateLinkResourceByManagedInstanceRequest>,
-  output: __S(15873, __c496, 1) as any as S.Schema<ManagedInstancePrivateLinkListResult>,
+  output: __S(15777, __c493, 1) as any as S.Schema<ManagedInstancePrivateLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstancesError = AzureOpError;
 /** Gets a list of all managed instances in the subscription. */
-export const ListManagedInstances: API.OperationMethod<
+export const ListManagedInstances: API.PaginatedOperationMethod<
   ListManagedInstancesRequest,
   ManagedInstanceListResult,
   ListManagedInstancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(15936, __c498, 0) as any as S.Schema<ListManagedInstancesRequest>,
-  output: __S(15489, __c484, 1) as any as S.Schema<ManagedInstanceListResult>,
+  AzureOpContext,
+  ManagedInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15840, __c495, 0) as any as S.Schema<ListManagedInstancesRequest>,
+  output: __S(15393, __c481, 1) as any as S.Schema<ManagedInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedInstanceVulnerabilityAssessmentByInstanceError = AzureOpError;
 /** Gets the managed instance's vulnerability assessment policies. */
-export const ListManagedInstanceVulnerabilityAssessmentByInstance: API.OperationMethod<
+export const ListManagedInstanceVulnerabilityAssessmentByInstance: API.PaginatedOperationMethod<
   ListManagedInstanceVulnerabilityAssessmentByInstanceRequest,
   ManagedInstanceVulnerabilityAssessmentListResult,
   ListManagedInstanceVulnerabilityAssessmentByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    15968,
-    __c499,
+    15872,
+    __c496,
     0,
   ) as any as S.Schema<ListManagedInstanceVulnerabilityAssessmentByInstanceRequest>,
   output: __S(
-    16001,
-    __c500,
+    15905,
+    __c497,
     1,
   ) as any as S.Schema<ManagedInstanceVulnerabilityAssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedLedgerDigestUploadByDatabaseError = AzureOpError;
 /** Gets all ledger digest upload settings on a database. */
-export const ListManagedLedgerDigestUploadByDatabase: API.OperationMethod<
+export const ListManagedLedgerDigestUploadByDatabase: API.PaginatedOperationMethod<
   ListManagedLedgerDigestUploadByDatabaseRequest,
   ManagedLedgerDigestUploadsListResult,
   ListManagedLedgerDigestUploadByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16032, __c501, 0) as any as S.Schema<ListManagedLedgerDigestUploadByDatabaseRequest>,
-  output: __S(13985, __c437, 1) as any as S.Schema<ManagedLedgerDigestUploadsListResult>,
+  AzureOpContext,
+  ManagedLedgerDigestUploads
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(15936, __c498, 0) as any as S.Schema<ListManagedLedgerDigestUploadByDatabaseRequest>,
+  output: __S(13921, __c435, 1) as any as S.Schema<ManagedLedgerDigestUploadsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseError =
   AzureOpError;
 /** Gets a dropped database's short term retention policy list. */
-export const ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabase: API.OperationMethod<
+export const ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabase: API.PaginatedOperationMethod<
   ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseRequest,
   ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseResponse,
   ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedBackupShortTermRetentionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16064,
-    __c502,
+    15968,
+    __c499,
     0,
   ) as any as S.Schema<ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseRequest>,
   output: __S(
-    14561,
-    __c455,
+    14497,
+    __c453,
     1,
   ) as any as S.Schema<ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedServerDnsAliasByManagedInstanceError = AzureOpError;
 /** Gets a list of managed server DNS aliases for a managed server. */
-export const ListManagedServerDnsAliasByManagedInstance: API.OperationMethod<
+export const ListManagedServerDnsAliasByManagedInstance: API.PaginatedOperationMethod<
   ListManagedServerDnsAliasByManagedInstanceRequest,
   ManagedServerDnsAliasListResult,
   ListManagedServerDnsAliasByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedServerDnsAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16096,
-    __c503,
+    16000,
+    __c500,
     0,
   ) as any as S.Schema<ListManagedServerDnsAliasByManagedInstanceRequest>,
-  output: __S(16098, __c503, 2) as any as S.Schema<ManagedServerDnsAliasListResult>,
+  output: __S(16002, __c500, 2) as any as S.Schema<ManagedServerDnsAliasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedServerSecurityAlertPolicyByInstanceError = AzureOpError;
 /** Get the managed server's threat detection policies. */
-export const ListManagedServerSecurityAlertPolicyByInstance: API.OperationMethod<
+export const ListManagedServerSecurityAlertPolicyByInstance: API.PaginatedOperationMethod<
   ListManagedServerSecurityAlertPolicyByInstanceRequest,
   ManagedServerSecurityAlertPolicyListResult,
   ListManagedServerSecurityAlertPolicyByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedServerSecurityAlertPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16128,
-    __c504,
+    16032,
+    __c501,
     0,
   ) as any as S.Schema<ListManagedServerSecurityAlertPolicyByInstanceRequest>,
-  output: __S(14976, __c468, 0) as any as S.Schema<ManagedServerSecurityAlertPolicyListResult>,
+  output: __S(11873, __c371, 1) as any as S.Schema<ManagedServerSecurityAlertPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterConfigurationByServerError = AzureOpError;
 /** Gets a list of NSP configurations for a server. */
-export const ListNetworkSecurityPerimeterConfigurationByServer: API.OperationMethod<
+export const ListNetworkSecurityPerimeterConfigurationByServer: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterConfigurationByServerRequest,
   NetworkSecurityPerimeterConfigurationListResult,
   ListNetworkSecurityPerimeterConfigurationByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeterConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16160,
-    __c505,
+    16064,
+    __c502,
     0,
   ) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationByServerRequest>,
-  output: __S(16162, __c505, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
+  output: __S(16066, __c502, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available SQL Rest API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16192, __c506, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(16197, __c506, 5) as any as S.Schema<OperationListResult>,
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16096, __c503, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(16101, __c503, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOutboundFirewallRuleByServerError = AzureOpError;
 /** Gets all outbound firewall rules on a server. */
-export const ListOutboundFirewallRuleByServer: API.OperationMethod<
+export const ListOutboundFirewallRuleByServer: API.PaginatedOperationMethod<
   ListOutboundFirewallRuleByServerRequest,
   OutboundFirewallRuleListResult,
   ListOutboundFirewallRuleByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16224, __c507, 0) as any as S.Schema<ListOutboundFirewallRuleByServerRequest>,
-  output: __S(16226, __c507, 2) as any as S.Schema<OutboundFirewallRuleListResult>,
+  AzureOpContext,
+  OutboundFirewallRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16128, __c504, 0) as any as S.Schema<ListOutboundFirewallRuleByServerRequest>,
+  output: __S(16130, __c504, 2) as any as S.Schema<OutboundFirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByServerError = AzureOpError;
 /** Gets all private endpoint connections on a server. */
-export const ListPrivateEndpointConnectionByServer: API.OperationMethod<
+export const ListPrivateEndpointConnectionByServer: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByServerRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16256, __c508, 0) as any as S.Schema<ListPrivateEndpointConnectionByServerRequest>,
-  output: __S(16258, __c508, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16160, __c505, 0) as any as S.Schema<ListPrivateEndpointConnectionByServerRequest>,
+  output: __S(16162, __c505, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByServerError = AzureOpError;
 /** Gets the private link resources for SQL server. */
-export const ListPrivateLinkResourceByServer: API.OperationMethod<
+export const ListPrivateLinkResourceByServer: API.PaginatedOperationMethod<
   ListPrivateLinkResourceByServerRequest,
   PrivateLinkResourceListResult,
   ListPrivateLinkResourceByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16320, __c510, 0) as any as S.Schema<ListPrivateLinkResourceByServerRequest>,
-  output: __S(15873, __c496, 1) as any as S.Schema<PrivateLinkResourceListResult>,
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16224, __c507, 0) as any as S.Schema<ListPrivateLinkResourceByServerRequest>,
+  output: __S(15777, __c493, 1) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecoverableDatabaseByServerError = AzureOpError;
 /** Gets a list of recoverable databases */
-export const ListRecoverableDatabaseByServer: API.OperationMethod<
+export const ListRecoverableDatabaseByServer: API.PaginatedOperationMethod<
   ListRecoverableDatabaseByServerRequest,
   RecoverableDatabaseListResult,
   ListRecoverableDatabaseByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16352, __c511, 0) as any as S.Schema<ListRecoverableDatabaseByServerRequest>,
-  output: __S(16354, __c511, 2) as any as S.Schema<RecoverableDatabaseListResult>,
+  AzureOpContext,
+  RecoverableDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16256, __c508, 0) as any as S.Schema<ListRecoverableDatabaseByServerRequest>,
+  output: __S(16258, __c508, 2) as any as S.Schema<RecoverableDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListRecoverableManagedDatabaseByInstanceError = AzureOpError;
 /** Gets a list of recoverable managed databases. */
-export const ListRecoverableManagedDatabaseByInstance: API.OperationMethod<
+export const ListRecoverableManagedDatabaseByInstance: API.PaginatedOperationMethod<
   ListRecoverableManagedDatabaseByInstanceRequest,
   RecoverableManagedDatabaseListResult,
   ListRecoverableManagedDatabaseByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16384, __c512, 0) as any as S.Schema<ListRecoverableManagedDatabaseByInstanceRequest>,
-  output: __S(16386, __c512, 2) as any as S.Schema<RecoverableManagedDatabaseListResult>,
+  AzureOpContext,
+  RecoverableManagedDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16288, __c509, 0) as any as S.Schema<ListRecoverableManagedDatabaseByInstanceRequest>,
+  output: __S(16290, __c509, 2) as any as S.Schema<RecoverableManagedDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationLinkByDatabaseError = AzureOpError;
 /** Gets a list of replication links on database. */
-export const ListReplicationLinkByDatabase: API.OperationMethod<
+export const ListReplicationLinkByDatabase: API.PaginatedOperationMethod<
   ListReplicationLinkByDatabaseRequest,
   ReplicationLinkListResult,
   ListReplicationLinkByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16416, __c513, 0) as any as S.Schema<ListReplicationLinkByDatabaseRequest>,
-  output: __S(16449, __c514, 1) as any as S.Schema<ReplicationLinkListResult>,
+  AzureOpContext,
+  ReplicationLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16320, __c510, 0) as any as S.Schema<ListReplicationLinkByDatabaseRequest>,
+  output: __S(16353, __c511, 1) as any as S.Schema<ReplicationLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationLinkByServerError = AzureOpError;
 /** Gets a list of replication links. */
-export const ListReplicationLinkByServer: API.OperationMethod<
+export const ListReplicationLinkByServer: API.PaginatedOperationMethod<
   ListReplicationLinkByServerRequest,
   ReplicationLinkListResult,
   ListReplicationLinkByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16480, __c515, 0) as any as S.Schema<ListReplicationLinkByServerRequest>,
-  output: __S(16449, __c514, 1) as any as S.Schema<ReplicationLinkListResult>,
+  AzureOpContext,
+  ReplicationLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16384, __c512, 0) as any as S.Schema<ListReplicationLinkByServerRequest>,
+  output: __S(16353, __c511, 1) as any as S.Schema<ReplicationLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableDroppedDatabaseByServerError = AzureOpError;
 /** Gets a list of restorable dropped databases. */
-export const ListRestorableDroppedDatabaseByServer: API.OperationMethod<
+export const ListRestorableDroppedDatabaseByServer: API.PaginatedOperationMethod<
   ListRestorableDroppedDatabaseByServerRequest,
   RestorableDroppedDatabaseListResult,
   ListRestorableDroppedDatabaseByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16512, __c516, 0) as any as S.Schema<ListRestorableDroppedDatabaseByServerRequest>,
-  output: __S(16514, __c516, 2) as any as S.Schema<RestorableDroppedDatabaseListResult>,
+  AzureOpContext,
+  RestorableDroppedDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16416, __c513, 0) as any as S.Schema<ListRestorableDroppedDatabaseByServerRequest>,
+  output: __S(16418, __c513, 2) as any as S.Schema<RestorableDroppedDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableDroppedManagedDatabaseByInstanceError = AzureOpError;
 /** Gets a list of restorable dropped managed databases. */
-export const ListRestorableDroppedManagedDatabaseByInstance: API.OperationMethod<
+export const ListRestorableDroppedManagedDatabaseByInstance: API.PaginatedOperationMethod<
   ListRestorableDroppedManagedDatabaseByInstanceRequest,
   RestorableDroppedManagedDatabaseListResult,
   ListRestorableDroppedManagedDatabaseByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableDroppedManagedDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16544,
-    __c517,
+    16448,
+    __c514,
     0,
   ) as any as S.Schema<ListRestorableDroppedManagedDatabaseByInstanceRequest>,
-  output: __S(16546, __c517, 2) as any as S.Schema<RestorableDroppedManagedDatabaseListResult>,
+  output: __S(16450, __c514, 2) as any as S.Schema<RestorableDroppedManagedDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorePointByDatabaseError = AzureOpError;
 /** Gets a list of database restore points. */
-export const ListRestorePointByDatabase: API.OperationMethod<
+export const ListRestorePointByDatabase: API.PaginatedOperationMethod<
   ListRestorePointByDatabaseRequest,
   RestorePointListResult,
   ListRestorePointByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16576, __c518, 0) as any as S.Schema<ListRestorePointByDatabaseRequest>,
-  output: __S(16578, __c518, 2) as any as S.Schema<RestorePointListResult>,
+  AzureOpContext,
+  RestorePoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16480, __c515, 0) as any as S.Schema<ListRestorePointByDatabaseRequest>,
+  output: __S(16482, __c515, 2) as any as S.Schema<RestorePointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSensitivityLabelByDatabaseError = AzureOpError;
 /** Gets the sensitivity labels of a given database */
-export const ListSensitivityLabelByDatabase: API.OperationMethod<
+export const ListSensitivityLabelByDatabase: API.PaginatedOperationMethod<
   ListSensitivityLabelByDatabaseRequest,
   ListSensitivityLabelByDatabaseResponse,
   ListSensitivityLabelByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16608, __c519, 0) as any as S.Schema<ListSensitivityLabelByDatabaseRequest>,
-  output: __S(15073, __c471, 1) as any as S.Schema<ListSensitivityLabelByDatabaseResponse>,
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16512, __c516, 0) as any as S.Schema<ListSensitivityLabelByDatabaseRequest>,
+  output: __S(14977, __c468, 1) as any as S.Schema<ListSensitivityLabelByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSensitivityLabelCurrentByDatabaseError = AzureOpError;
 /** Gets the sensitivity labels of a given database */
-export const ListSensitivityLabelCurrentByDatabase: API.OperationMethod<
+export const ListSensitivityLabelCurrentByDatabase: API.PaginatedOperationMethod<
   ListSensitivityLabelCurrentByDatabaseRequest,
   ListSensitivityLabelCurrentByDatabaseResponse,
   ListSensitivityLabelCurrentByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16640, __c520, 0) as any as S.Schema<ListSensitivityLabelCurrentByDatabaseRequest>,
-  output: __S(15073, __c471, 1) as any as S.Schema<ListSensitivityLabelCurrentByDatabaseResponse>,
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16544, __c517, 0) as any as S.Schema<ListSensitivityLabelCurrentByDatabaseRequest>,
+  output: __S(14977, __c468, 1) as any as S.Schema<ListSensitivityLabelCurrentByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSensitivityLabelRecommendedByDatabaseError = AzureOpError;
 /** Gets the sensitivity labels of a given database */
-export const ListSensitivityLabelRecommendedByDatabase: API.OperationMethod<
+export const ListSensitivityLabelRecommendedByDatabase: API.PaginatedOperationMethod<
   ListSensitivityLabelRecommendedByDatabaseRequest,
   ListSensitivityLabelRecommendedByDatabaseResponse,
   ListSensitivityLabelRecommendedByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16704, __c522, 0) as any as S.Schema<ListSensitivityLabelRecommendedByDatabaseRequest>,
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16608, __c519, 0) as any as S.Schema<ListSensitivityLabelRecommendedByDatabaseRequest>,
   output: __S(
-    15073,
-    __c471,
+    14977,
+    __c468,
     1,
   ) as any as S.Schema<ListSensitivityLabelRecommendedByDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerAdvancedThreatProtectionSettingsByServerError = AzureOpError;
 /** Get a list of the server's Advanced Threat Protection states. */
-export const ListServerAdvancedThreatProtectionSettingsByServer: API.OperationMethod<
+export const ListServerAdvancedThreatProtectionSettingsByServer: API.PaginatedOperationMethod<
   ListServerAdvancedThreatProtectionSettingsByServerRequest,
   LogicalServerAdvancedThreatProtectionListResult,
   ListServerAdvancedThreatProtectionSettingsByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseAdvancedThreatProtection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16736,
-    __c523,
+    16640,
+    __c520,
     0,
   ) as any as S.Schema<ListServerAdvancedThreatProtectionSettingsByServerRequest>,
-  output: __S(16737, __c523, 1) as any as S.Schema<LogicalServerAdvancedThreatProtectionListResult>,
+  output: __S(11169, __c349, 1) as any as S.Schema<LogicalServerAdvancedThreatProtectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerAdvisorByServerError = AzureOpError;
 /** Gets a list of server advisors. */
@@ -27616,8 +28783,8 @@ export const ListServerAdvisorByServer: API.OperationMethod<
   ListServerAdvisorByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16768, __c524, 0) as any as S.Schema<ListServerAdvisorByServerRequest>,
-  output: __S(11265, __c352, 1) as any as S.Schema<ListServerAdvisorByServerResponse>,
+  input: __S(16672, __c521, 0) as any as S.Schema<ListServerAdvisorByServerRequest>,
+  output: __S(11233, __c351, 1) as any as S.Schema<ListServerAdvisorByServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -27625,674 +28792,956 @@ export const ListServerAdvisorByServer: API.OperationMethod<
 
 export type ListServerAzureADAdministratorByServerError = AzureOpError;
 /** Gets a list of Azure Active Directory administrators in a server. */
-export const ListServerAzureADAdministratorByServer: API.OperationMethod<
+export const ListServerAzureADAdministratorByServer: API.PaginatedOperationMethod<
   ListServerAzureADAdministratorByServerRequest,
   AdministratorListResult,
   ListServerAzureADAdministratorByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16800, __c525, 0) as any as S.Schema<ListServerAzureADAdministratorByServerRequest>,
-  output: __S(16802, __c525, 2) as any as S.Schema<AdministratorListResult>,
+  AzureOpContext,
+  ServerAzureADAdministrator
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16704, __c522, 0) as any as S.Schema<ListServerAzureADAdministratorByServerRequest>,
+  output: __S(16706, __c522, 2) as any as S.Schema<AdministratorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerAzureADOnlyAuthenticationByServerError = AzureOpError;
 /** Gets a list of server Azure Active Directory only authentications. */
-export const ListServerAzureADOnlyAuthenticationByServer: API.OperationMethod<
+export const ListServerAzureADOnlyAuthenticationByServer: API.PaginatedOperationMethod<
   ListServerAzureADOnlyAuthenticationByServerRequest,
   AzureADOnlyAuthListResult,
   ListServerAzureADOnlyAuthenticationByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedInstanceAzureADOnlyAuthentication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16832,
-    __c526,
+    16736,
+    __c523,
     0,
   ) as any as S.Schema<ListServerAzureADOnlyAuthenticationByServerRequest>,
-  output: __S(15425, __c482, 1) as any as S.Schema<AzureADOnlyAuthListResult>,
+  output: __S(15329, __c479, 1) as any as S.Schema<AzureADOnlyAuthListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerBlobAuditingPolicyByServerError = AzureOpError;
 /** Lists auditing settings of a server. */
-export const ListServerBlobAuditingPolicyByServer: API.OperationMethod<
+export const ListServerBlobAuditingPolicyByServer: API.PaginatedOperationMethod<
   ListServerBlobAuditingPolicyByServerRequest,
   ServerBlobAuditingPolicyListResult,
   ListServerBlobAuditingPolicyByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16864, __c527, 0) as any as S.Schema<ListServerBlobAuditingPolicyByServerRequest>,
-  output: __S(16866, __c527, 2) as any as S.Schema<ServerBlobAuditingPolicyListResult>,
+  AzureOpContext,
+  ServerBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16768, __c524, 0) as any as S.Schema<ListServerBlobAuditingPolicyByServerRequest>,
+  output: __S(16770, __c524, 2) as any as S.Schema<ServerBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerByResourceGroupError = AzureOpError;
 /** Gets a list of servers in a resource groups. */
-export const ListServerByResourceGroup: API.OperationMethod<
+export const ListServerByResourceGroup: API.PaginatedOperationMethod<
   ListServerByResourceGroupRequest,
   ServerListResult,
   ListServerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16896, __c528, 0) as any as S.Schema<ListServerByResourceGroupRequest>,
-  output: __S(16929, __c529, 1) as any as S.Schema<ServerListResult>,
+  AzureOpContext,
+  Server
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16800, __c525, 0) as any as S.Schema<ListServerByResourceGroupRequest>,
+  output: __S(16833, __c526, 1) as any as S.Schema<ServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerConfigurationOptionByManagedInstanceError = AzureOpError;
 /** Gets a list of managed instance server configuration options. */
-export const ListServerConfigurationOptionByManagedInstance: API.OperationMethod<
+export const ListServerConfigurationOptionByManagedInstance: API.PaginatedOperationMethod<
   ListServerConfigurationOptionByManagedInstanceRequest,
   ServerConfigurationOptionListResult,
   ListServerConfigurationOptionByManagedInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerConfigurationOption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    16960,
-    __c530,
+    16864,
+    __c527,
     0,
   ) as any as S.Schema<ListServerConfigurationOptionByManagedInstanceRequest>,
-  output: __S(16962, __c530, 2) as any as S.Schema<ServerConfigurationOptionListResult>,
+  output: __S(16866, __c527, 2) as any as S.Schema<ServerConfigurationOptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerConnectionPolicyByServerError = AzureOpError;
 /** Lists connection policy */
-export const ListServerConnectionPolicyByServer: API.OperationMethod<
+export const ListServerConnectionPolicyByServer: API.PaginatedOperationMethod<
   ListServerConnectionPolicyByServerRequest,
   ServerConnectionPolicyListResult,
   ListServerConnectionPolicyByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(16992, __c531, 0) as any as S.Schema<ListServerConnectionPolicyByServerRequest>,
-  output: __S(16994, __c531, 2) as any as S.Schema<ServerConnectionPolicyListResult>,
+  AzureOpContext,
+  ServerConnectionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16896, __c528, 0) as any as S.Schema<ListServerConnectionPolicyByServerRequest>,
+  output: __S(16898, __c528, 2) as any as S.Schema<ServerConnectionPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerDevOpsAuditSettingsByServerError = AzureOpError;
 /** Lists DevOps audit settings of a server. */
-export const ListServerDevOpsAuditSettingsByServer: API.OperationMethod<
+export const ListServerDevOpsAuditSettingsByServer: API.PaginatedOperationMethod<
   ListServerDevOpsAuditSettingsByServerRequest,
   ServerDevOpsAuditSettingsListResult,
   ListServerDevOpsAuditSettingsByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17024, __c532, 0) as any as S.Schema<ListServerDevOpsAuditSettingsByServerRequest>,
-  output: __S(17026, __c532, 2) as any as S.Schema<ServerDevOpsAuditSettingsListResult>,
+  AzureOpContext,
+  ServerDevOpsAuditingSettings
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16928, __c529, 0) as any as S.Schema<ListServerDevOpsAuditSettingsByServerRequest>,
+  output: __S(16930, __c529, 2) as any as S.Schema<ServerDevOpsAuditSettingsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerDnsAliasByServerError = AzureOpError;
 /** Gets a list of server DNS aliases for a server. */
-export const ListServerDnsAliasByServer: API.OperationMethod<
+export const ListServerDnsAliasByServer: API.PaginatedOperationMethod<
   ListServerDnsAliasByServerRequest,
   ServerDnsAliasListResult,
   ListServerDnsAliasByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17088, __c534, 0) as any as S.Schema<ListServerDnsAliasByServerRequest>,
-  output: __S(17090, __c534, 2) as any as S.Schema<ServerDnsAliasListResult>,
+  AzureOpContext,
+  ServerDnsAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(16992, __c531, 0) as any as S.Schema<ListServerDnsAliasByServerRequest>,
+  output: __S(16994, __c531, 2) as any as S.Schema<ServerDnsAliasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerKeyByServerError = AzureOpError;
 /** Gets a list of server keys. */
-export const ListServerKeyByServer: API.OperationMethod<
+export const ListServerKeyByServer: API.PaginatedOperationMethod<
   ListServerKeyByServerRequest,
   ServerKeyListResult,
   ListServerKeyByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17120, __c535, 0) as any as S.Schema<ListServerKeyByServerRequest>,
-  output: __S(17122, __c535, 2) as any as S.Schema<ServerKeyListResult>,
+  AzureOpContext,
+  ServerKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17024, __c532, 0) as any as S.Schema<ListServerKeyByServerRequest>,
+  output: __S(17026, __c532, 2) as any as S.Schema<ServerKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerOperationByServerError = AzureOpError;
 /** Gets a list of operations performed on the server. */
-export const ListServerOperationByServer: API.OperationMethod<
+export const ListServerOperationByServer: API.PaginatedOperationMethod<
   ListServerOperationByServerRequest,
   ServerOperationListResult,
   ListServerOperationByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17152, __c536, 0) as any as S.Schema<ListServerOperationByServerRequest>,
-  output: __S(17156, __c536, 4) as any as S.Schema<ServerOperationListResult>,
+  AzureOpContext,
+  ServerOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17056, __c533, 0) as any as S.Schema<ListServerOperationByServerRequest>,
+  output: __S(17060, __c533, 4) as any as S.Schema<ServerOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServersError = AzureOpError;
 /** Gets a list of all servers in the subscription. */
-export const ListServers: API.OperationMethod<
+export const ListServers: API.PaginatedOperationMethod<
   ListServersRequest,
   ServerListResult,
   ListServersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17184, __c537, 0) as any as S.Schema<ListServersRequest>,
-  output: __S(16929, __c529, 1) as any as S.Schema<ServerListResult>,
+  AzureOpContext,
+  Server
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17088, __c534, 0) as any as S.Schema<ListServersRequest>,
+  output: __S(16833, __c526, 1) as any as S.Schema<ServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerSecurityAlertPolicyByServerError = AzureOpError;
 /** Get the server's threat detection policies. */
-export const ListServerSecurityAlertPolicyByServer: API.OperationMethod<
+export const ListServerSecurityAlertPolicyByServer: API.PaginatedOperationMethod<
   ListServerSecurityAlertPolicyByServerRequest,
   LogicalServerSecurityAlertPolicyListResult,
   ListServerSecurityAlertPolicyByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17216, __c538, 0) as any as S.Schema<ListServerSecurityAlertPolicyByServerRequest>,
-  output: __S(11936, __c373, 0) as any as S.Schema<LogicalServerSecurityAlertPolicyListResult>,
+  AzureOpContext,
+  ServerSecurityAlertPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17120, __c535, 0) as any as S.Schema<ListServerSecurityAlertPolicyByServerRequest>,
+  output: __S(11873, __c371, 1) as any as S.Schema<LogicalServerSecurityAlertPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerTrustCertificateByInstanceError = AzureOpError;
 /** Gets a list of the server trust certificates used to secure communication between SQL Server and the specified SQL Managed Instance */
-export const ListServerTrustCertificateByInstance: API.OperationMethod<
+export const ListServerTrustCertificateByInstance: API.PaginatedOperationMethod<
   ListServerTrustCertificateByInstanceRequest,
   ServerTrustCertificatesListResult,
   ListServerTrustCertificateByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17248, __c539, 0) as any as S.Schema<ListServerTrustCertificateByInstanceRequest>,
-  output: __S(17250, __c539, 2) as any as S.Schema<ServerTrustCertificatesListResult>,
+  AzureOpContext,
+  ServerTrustCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17152, __c536, 0) as any as S.Schema<ListServerTrustCertificateByInstanceRequest>,
+  output: __S(17154, __c536, 2) as any as S.Schema<ServerTrustCertificatesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerTrustGroupByInstanceError = AzureOpError;
 /** Gets a server trust groups by instance name. */
-export const ListServerTrustGroupByInstance: API.OperationMethod<
+export const ListServerTrustGroupByInstance: API.PaginatedOperationMethod<
   ListServerTrustGroupByInstanceRequest,
   ServerTrustGroupListResult,
   ListServerTrustGroupByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17280, __c540, 0) as any as S.Schema<ListServerTrustGroupByInstanceRequest>,
-  output: __S(17313, __c541, 1) as any as S.Schema<ServerTrustGroupListResult>,
+  AzureOpContext,
+  ServerTrustGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17184, __c537, 0) as any as S.Schema<ListServerTrustGroupByInstanceRequest>,
+  output: __S(17217, __c538, 1) as any as S.Schema<ServerTrustGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerTrustGroupByLocationError = AzureOpError;
 /** Lists a server trust group. */
-export const ListServerTrustGroupByLocation: API.OperationMethod<
+export const ListServerTrustGroupByLocation: API.PaginatedOperationMethod<
   ListServerTrustGroupByLocationRequest,
   ServerTrustGroupListResult,
   ListServerTrustGroupByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17344, __c542, 0) as any as S.Schema<ListServerTrustGroupByLocationRequest>,
-  output: __S(17313, __c541, 1) as any as S.Schema<ServerTrustGroupListResult>,
+  AzureOpContext,
+  ServerTrustGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17248, __c539, 0) as any as S.Schema<ListServerTrustGroupByLocationRequest>,
+  output: __S(17217, __c538, 1) as any as S.Schema<ServerTrustGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerUsageByServerError = AzureOpError;
 /** Returns server usages. */
-export const ListServerUsageByServer: API.OperationMethod<
+export const ListServerUsageByServer: API.PaginatedOperationMethod<
   ListServerUsageByServerRequest,
   ServerUsageListResult,
   ListServerUsageByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17376, __c543, 0) as any as S.Schema<ListServerUsageByServerRequest>,
-  output: __S(17379, __c543, 3) as any as S.Schema<ServerUsageListResult>,
+  AzureOpContext,
+  ServerUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17280, __c540, 0) as any as S.Schema<ListServerUsageByServerRequest>,
+  output: __S(17283, __c540, 3) as any as S.Schema<ServerUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServerVulnerabilityAssessmentByServerError = AzureOpError;
 /** Lists the vulnerability assessment policies associated with a server. */
-export const ListServerVulnerabilityAssessmentByServer: API.OperationMethod<
+export const ListServerVulnerabilityAssessmentByServer: API.PaginatedOperationMethod<
   ListServerVulnerabilityAssessmentByServerRequest,
   ServerVulnerabilityAssessmentListResult,
   ListServerVulnerabilityAssessmentByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17408, __c544, 0) as any as S.Schema<ListServerVulnerabilityAssessmentByServerRequest>,
-  output: __S(16001, __c500, 1) as any as S.Schema<ServerVulnerabilityAssessmentListResult>,
+  AzureOpContext,
+  ServerVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17312, __c541, 0) as any as S.Schema<ListServerVulnerabilityAssessmentByServerRequest>,
+  output: __S(15905, __c497, 1) as any as S.Schema<ServerVulnerabilityAssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentError = AzureOpError;
 /** Gets a list of database's sql vulnerability assessment rule baselines. */
-export const ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessment: API.OperationMethod<
+export const ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessment: API.PaginatedOperationMethod<
   ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequest,
   ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponse,
   ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseSqlVulnerabilityAssessmentBaselineSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    17504,
-    __c547,
+    17408,
+    __c544,
     0,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequest>,
   output: __S(
-    12001,
-    __c375,
+    11937,
+    __c373,
     1,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVulnerabilityAssessmentRuleBaselineByBaselineError = AzureOpError;
 /** Gets a system database's sql vulnerability assessment rule baseline. */
-export const ListSqlVulnerabilityAssessmentRuleBaselineByBaseline: API.OperationMethod<
+export const ListSqlVulnerabilityAssessmentRuleBaselineByBaseline: API.PaginatedOperationMethod<
   ListSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest,
   ListSqlVulnerabilityAssessmentRuleBaselineByBaselineResponse,
   ListSqlVulnerabilityAssessmentRuleBaselineByBaselineError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseSqlVulnerabilityAssessmentRuleBaseline
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    17536,
-    __c548,
+    17440,
+    __c545,
     0,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest>,
   output: __S(
-    12065,
-    __c377,
+    12001,
+    __c375,
     1,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentRuleBaselineByBaselineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsError = AzureOpError;
 /** Lists the vulnerability assessment scans of a database. */
-export const ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessments: API.OperationMethod<
+export const ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessments: API.PaginatedOperationMethod<
   ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequest,
   ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponse,
   ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVulnerabilityAssessmentScanRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    17568,
-    __c549,
+    17472,
+    __c546,
     0,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequest>,
   output: __S(
-    12129,
-    __c379,
+    12065,
+    __c377,
     1,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVulnerabilityAssessmentScanResultByScanError = AzureOpError;
 /** Gets a vulnerability assessment scan record of a database. */
-export const ListSqlVulnerabilityAssessmentScanResultByScan: API.OperationMethod<
+export const ListSqlVulnerabilityAssessmentScanResultByScan: API.PaginatedOperationMethod<
   ListSqlVulnerabilityAssessmentScanResultByScanRequest,
   ListSqlVulnerabilityAssessmentScanResultByScanResponse,
   ListSqlVulnerabilityAssessmentScanResultByScanError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVulnerabilityAssessmentScanResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    17600,
-    __c550,
+    17504,
+    __c547,
     0,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentScanResultByScanRequest>,
   output: __S(
-    12193,
-    __c381,
+    12129,
+    __c379,
     1,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentScanResultByScanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVulnerabilityAssessmentsSettingsByServerError = AzureOpError;
 /** Lists SQL Vulnerability Assessment policies associated with a server. */
-export const ListSqlVulnerabilityAssessmentsSettingsByServer: API.OperationMethod<
+export const ListSqlVulnerabilityAssessmentsSettingsByServer: API.PaginatedOperationMethod<
   ListSqlVulnerabilityAssessmentsSettingsByServerRequest,
   ListSqlVulnerabilityAssessmentsSettingsByServerResponse,
   ListSqlVulnerabilityAssessmentsSettingsByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    17632,
-    __c551,
+    17536,
+    __c548,
     0,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentsSettingsByServerRequest>,
   output: __S(
-    12257,
-    __c383,
+    12193,
+    __c381,
     1,
   ) as any as S.Schema<ListSqlVulnerabilityAssessmentsSettingsByServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStartStopManagedInstanceScheduleByInstanceError = AzureOpError;
 /** Lists the managed instance's Start/Stop schedules. */
-export const ListStartStopManagedInstanceScheduleByInstance: API.OperationMethod<
+export const ListStartStopManagedInstanceScheduleByInstance: API.PaginatedOperationMethod<
   ListStartStopManagedInstanceScheduleByInstanceRequest,
   StartStopManagedInstanceScheduleListResult,
   ListStartStopManagedInstanceScheduleByInstanceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StartStopManagedInstanceSchedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    17664,
-    __c552,
+    17568,
+    __c549,
     0,
   ) as any as S.Schema<ListStartStopManagedInstanceScheduleByInstanceRequest>,
-  output: __S(17666, __c552, 2) as any as S.Schema<StartStopManagedInstanceScheduleListResult>,
+  output: __S(17570, __c549, 2) as any as S.Schema<StartStopManagedInstanceScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSubscriptionUsageByLocationError = AzureOpError;
 /** Gets all subscription usage metrics in a given location. */
-export const ListSubscriptionUsageByLocation: API.OperationMethod<
+export const ListSubscriptionUsageByLocation: API.PaginatedOperationMethod<
   ListSubscriptionUsageByLocationRequest,
   SubscriptionUsageListResult,
   ListSubscriptionUsageByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17696, __c553, 0) as any as S.Schema<ListSubscriptionUsageByLocationRequest>,
-  output: __S(12385, __c387, 1) as any as S.Schema<SubscriptionUsageListResult>,
+  AzureOpContext,
+  DatabaseUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17600, __c550, 0) as any as S.Schema<ListSubscriptionUsageByLocationRequest>,
+  output: __S(12321, __c385, 1) as any as S.Schema<SubscriptionUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSynapseLinkWorkspaceByDatabaseError = AzureOpError;
 /** Gets all synapselink workspaces for a database. */
-export const ListSynapseLinkWorkspaceByDatabase: API.OperationMethod<
+export const ListSynapseLinkWorkspaceByDatabase: API.PaginatedOperationMethod<
   ListSynapseLinkWorkspaceByDatabaseRequest,
   SynapseLinkWorkspaceListResult,
   ListSynapseLinkWorkspaceByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17728, __c554, 0) as any as S.Schema<ListSynapseLinkWorkspaceByDatabaseRequest>,
-  output: __S(17734, __c554, 6) as any as S.Schema<SynapseLinkWorkspaceListResult>,
+  AzureOpContext,
+  SynapseLinkWorkspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17632, __c551, 0) as any as S.Schema<ListSynapseLinkWorkspaceByDatabaseRequest>,
+  output: __S(17638, __c551, 6) as any as S.Schema<SynapseLinkWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncAgentByServerError = AzureOpError;
 /** Lists sync agents in a server. */
-export const ListSyncAgentByServer: API.OperationMethod<
+export const ListSyncAgentByServer: API.PaginatedOperationMethod<
   ListSyncAgentByServerRequest,
   SyncAgentListResult,
   ListSyncAgentByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17760, __c555, 0) as any as S.Schema<ListSyncAgentByServerRequest>,
-  output: __S(17762, __c555, 2) as any as S.Schema<SyncAgentListResult>,
+  AzureOpContext,
+  SyncAgent
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17664, __c552, 0) as any as S.Schema<ListSyncAgentByServerRequest>,
+  output: __S(17666, __c552, 2) as any as S.Schema<SyncAgentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncAgentLinkedDatabasesError = AzureOpError;
 /** Lists databases linked to a sync agent. */
-export const ListSyncAgentLinkedDatabases: API.OperationMethod<
+export const ListSyncAgentLinkedDatabases: API.PaginatedOperationMethod<
   ListSyncAgentLinkedDatabasesRequest,
   SyncAgentLinkedDatabaseListResult,
   ListSyncAgentLinkedDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17792, __c556, 0) as any as S.Schema<ListSyncAgentLinkedDatabasesRequest>,
-  output: __S(17796, __c556, 4) as any as S.Schema<SyncAgentLinkedDatabaseListResult>,
+  AzureOpContext,
+  SyncAgentLinkedDatabase
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17696, __c553, 0) as any as S.Schema<ListSyncAgentLinkedDatabasesRequest>,
+  output: __S(17700, __c553, 4) as any as S.Schema<SyncAgentLinkedDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncGroupByDatabaseError = AzureOpError;
 /** Lists sync groups under a hub database. */
-export const ListSyncGroupByDatabase: API.OperationMethod<
+export const ListSyncGroupByDatabase: API.PaginatedOperationMethod<
   ListSyncGroupByDatabaseRequest,
   SyncGroupListResult,
   ListSyncGroupByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17856, __c558, 0) as any as S.Schema<ListSyncGroupByDatabaseRequest>,
-  output: __S(17858, __c558, 2) as any as S.Schema<SyncGroupListResult>,
+  AzureOpContext,
+  SyncGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17760, __c555, 0) as any as S.Schema<ListSyncGroupByDatabaseRequest>,
+  output: __S(17762, __c555, 2) as any as S.Schema<SyncGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncGroupHubSchemasError = AzureOpError;
 /** Gets a collection of hub database schemas. */
-export const ListSyncGroupHubSchemas: API.OperationMethod<
+export const ListSyncGroupHubSchemas: API.PaginatedOperationMethod<
   ListSyncGroupHubSchemasRequest,
   ListSyncGroupHubSchemasResponse,
   ListSyncGroupHubSchemasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17888, __c559, 0) as any as S.Schema<ListSyncGroupHubSchemasRequest>,
-  output: __S(17926, __c560, 6) as any as S.Schema<ListSyncGroupHubSchemasResponse>,
+  AzureOpContext,
+  SyncFullSchemaProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17792, __c556, 0) as any as S.Schema<ListSyncGroupHubSchemasRequest>,
+  output: __S(17830, __c557, 6) as any as S.Schema<ListSyncGroupHubSchemasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncGroupLogsError = AzureOpError;
 /** Gets a collection of sync group logs. */
-export const ListSyncGroupLogs: API.OperationMethod<
+export const ListSyncGroupLogs: API.PaginatedOperationMethod<
   ListSyncGroupLogsRequest,
   SyncGroupLogListResult,
   ListSyncGroupLogsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17952, __c561, 0) as any as S.Schema<ListSyncGroupLogsRequest>,
-  output: __S(17955, __c561, 3) as any as S.Schema<SyncGroupLogListResult>,
+  AzureOpContext,
+  SyncGroupLogProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17856, __c558, 0) as any as S.Schema<ListSyncGroupLogsRequest>,
+  output: __S(17859, __c558, 3) as any as S.Schema<SyncGroupLogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncGroupSyncDatabaseIdsError = AzureOpError;
 /** Gets a collection of sync database ids. */
-export const ListSyncGroupSyncDatabaseIds: API.OperationMethod<
+export const ListSyncGroupSyncDatabaseIds: API.PaginatedOperationMethod<
   ListSyncGroupSyncDatabaseIdsRequest,
   SyncDatabaseIdListResult,
   ListSyncGroupSyncDatabaseIdsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(17984, __c562, 0) as any as S.Schema<ListSyncGroupSyncDatabaseIdsRequest>,
-  output: __S(17986, __c562, 2) as any as S.Schema<SyncDatabaseIdListResult>,
+  AzureOpContext,
+  SyncDatabaseIdProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17888, __c559, 0) as any as S.Schema<ListSyncGroupSyncDatabaseIdsRequest>,
+  output: __S(17890, __c559, 2) as any as S.Schema<SyncDatabaseIdListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncMemberBySyncGroupError = AzureOpError;
 /** Lists sync members in the given sync group. */
-export const ListSyncMemberBySyncGroup: API.OperationMethod<
+export const ListSyncMemberBySyncGroup: API.PaginatedOperationMethod<
   ListSyncMemberBySyncGroupRequest,
   SyncMemberListResult,
   ListSyncMemberBySyncGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18016, __c563, 0) as any as S.Schema<ListSyncMemberBySyncGroupRequest>,
-  output: __S(18018, __c563, 2) as any as S.Schema<SyncMemberListResult>,
+  AzureOpContext,
+  SyncMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17920, __c560, 0) as any as S.Schema<ListSyncMemberBySyncGroupRequest>,
+  output: __S(17922, __c560, 2) as any as S.Schema<SyncMemberListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncMemberMemberSchemasError = AzureOpError;
 /** Gets a sync member database schema. */
-export const ListSyncMemberMemberSchemas: API.OperationMethod<
+export const ListSyncMemberMemberSchemas: API.PaginatedOperationMethod<
   ListSyncMemberMemberSchemasRequest,
   ListSyncMemberMemberSchemasResponse,
   ListSyncMemberMemberSchemasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18048, __c564, 0) as any as S.Schema<ListSyncMemberMemberSchemasRequest>,
-  output: __S(17926, __c560, 6) as any as S.Schema<ListSyncMemberMemberSchemasResponse>,
+  AzureOpContext,
+  SyncFullSchemaProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17952, __c561, 0) as any as S.Schema<ListSyncMemberMemberSchemasRequest>,
+  output: __S(17830, __c557, 6) as any as S.Schema<ListSyncMemberMemberSchemasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTimeZoneByLocationError = AzureOpError;
 /** Gets a list of managed instance time zones by location. */
-export const ListTimeZoneByLocation: API.OperationMethod<
+export const ListTimeZoneByLocation: API.PaginatedOperationMethod<
   ListTimeZoneByLocationRequest,
   TimeZoneListResult,
   ListTimeZoneByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18080, __c565, 0) as any as S.Schema<ListTimeZoneByLocationRequest>,
-  output: __S(18082, __c565, 2) as any as S.Schema<TimeZoneListResult>,
+  AzureOpContext,
+  TimeZone
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(17984, __c562, 0) as any as S.Schema<ListTimeZoneByLocationRequest>,
+  output: __S(17986, __c562, 2) as any as S.Schema<TimeZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTransparentDataEncryptionByDatabaseError = AzureOpError;
 /** Gets a list of the logical database's transparent data encryption. */
-export const ListTransparentDataEncryptionByDatabase: API.OperationMethod<
+export const ListTransparentDataEncryptionByDatabase: API.PaginatedOperationMethod<
   ListTransparentDataEncryptionByDatabaseRequest,
   LogicalDatabaseTransparentDataEncryptionListResult,
   ListTransparentDataEncryptionByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18112, __c566, 0) as any as S.Schema<ListTransparentDataEncryptionByDatabaseRequest>,
+  AzureOpContext,
+  LogicalDatabaseTransparentDataEncryption
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18016, __c563, 0) as any as S.Schema<ListTransparentDataEncryptionByDatabaseRequest>,
   output: __S(
-    18114,
-    __c566,
+    18018,
+    __c563,
     2,
   ) as any as S.Schema<LogicalDatabaseTransparentDataEncryptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsageByInstancePoolError = AzureOpError;
 /** Gets all instance pool usage metrics */
-export const ListUsageByInstancePool: API.OperationMethod<
+export const ListUsageByInstancePool: API.PaginatedOperationMethod<
   ListUsageByInstancePoolRequest,
   UsageListResult,
   ListUsageByInstancePoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18144, __c567, 0) as any as S.Schema<ListUsageByInstancePoolRequest>,
-  output: __S(18148, __c567, 4) as any as S.Schema<UsageListResult>,
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18048, __c564, 0) as any as S.Schema<ListUsageByInstancePoolRequest>,
+  output: __S(18052, __c564, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualClusterByResourceGroupError = AzureOpError;
 /** Gets a list of virtual clusters in a resource group. */
-export const ListVirtualClusterByResourceGroup: API.OperationMethod<
+export const ListVirtualClusterByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualClusterByResourceGroupRequest,
   VirtualClusterListResult,
   ListVirtualClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18176, __c568, 0) as any as S.Schema<ListVirtualClusterByResourceGroupRequest>,
-  output: __S(18209, __c569, 1) as any as S.Schema<VirtualClusterListResult>,
+  AzureOpContext,
+  VirtualCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18080, __c565, 0) as any as S.Schema<ListVirtualClusterByResourceGroupRequest>,
+  output: __S(18113, __c566, 1) as any as S.Schema<VirtualClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualClustersError = AzureOpError;
 /** Gets a list of all virtualClusters in the subscription. */
-export const ListVirtualClusters: API.OperationMethod<
+export const ListVirtualClusters: API.PaginatedOperationMethod<
   ListVirtualClustersRequest,
   VirtualClusterListResult,
   ListVirtualClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18272, __c571, 0) as any as S.Schema<ListVirtualClustersRequest>,
-  output: __S(18209, __c569, 1) as any as S.Schema<VirtualClusterListResult>,
+  AzureOpContext,
+  VirtualCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18176, __c568, 0) as any as S.Schema<ListVirtualClustersRequest>,
+  output: __S(18113, __c566, 1) as any as S.Schema<VirtualClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkRuleByServerError = AzureOpError;
 /** Gets a list of virtual network rules in a server. */
-export const ListVirtualNetworkRuleByServer: API.OperationMethod<
+export const ListVirtualNetworkRuleByServer: API.PaginatedOperationMethod<
   ListVirtualNetworkRuleByServerRequest,
   VirtualNetworkRuleListResult,
   ListVirtualNetworkRuleByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18304, __c572, 0) as any as S.Schema<ListVirtualNetworkRuleByServerRequest>,
-  output: __S(18306, __c572, 2) as any as S.Schema<VirtualNetworkRuleListResult>,
+  AzureOpContext,
+  VirtualNetworkRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18208, __c569, 0) as any as S.Schema<ListVirtualNetworkRuleByServerRequest>,
+  output: __S(18210, __c569, 2) as any as S.Schema<VirtualNetworkRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadClassifierByWorkloadGroupError = AzureOpError;
 /** Gets the list of workload classifiers for a workload group */
-export const ListWorkloadClassifierByWorkloadGroup: API.OperationMethod<
+export const ListWorkloadClassifierByWorkloadGroup: API.PaginatedOperationMethod<
   ListWorkloadClassifierByWorkloadGroupRequest,
   WorkloadClassifierListResult,
   ListWorkloadClassifierByWorkloadGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18336, __c573, 0) as any as S.Schema<ListWorkloadClassifierByWorkloadGroupRequest>,
-  output: __S(18338, __c573, 2) as any as S.Schema<WorkloadClassifierListResult>,
+  AzureOpContext,
+  WorkloadClassifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18240, __c570, 0) as any as S.Schema<ListWorkloadClassifierByWorkloadGroupRequest>,
+  output: __S(18242, __c570, 2) as any as S.Schema<WorkloadClassifierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadGroupByDatabaseError = AzureOpError;
 /** Gets the list of workload groups */
-export const ListWorkloadGroupByDatabase: API.OperationMethod<
+export const ListWorkloadGroupByDatabase: API.PaginatedOperationMethod<
   ListWorkloadGroupByDatabaseRequest,
   WorkloadGroupListResult,
   ListWorkloadGroupByDatabaseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(18368, __c574, 0) as any as S.Schema<ListWorkloadGroupByDatabaseRequest>,
-  output: __S(18370, __c574, 2) as any as S.Schema<WorkloadGroupListResult>,
+  AzureOpContext,
+  WorkloadGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(18272, __c571, 0) as any as S.Schema<ListWorkloadGroupByDatabaseRequest>,
+  output: __S(18274, __c571, 2) as any as S.Schema<WorkloadGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type LockLongTermRetentionBackupTimeBasedImmutabilityError = AzureOpError;
 /** Lock time based immutability of an existing long term retention backup. */
@@ -28303,13 +29752,13 @@ export const LockLongTermRetentionBackupTimeBasedImmutability: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18400,
-    __c575,
+    18304,
+    __c572,
     0,
   ) as any as S.Schema<LockLongTermRetentionBackupTimeBasedImmutabilityRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<LockLongTermRetentionBackupTimeBasedImmutabilityResponse>,
   errors: [UnknownAzureError],
@@ -28326,13 +29775,13 @@ export const LockLongTermRetentionBackupTimeBasedImmutabilityByResourceGroup: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18464,
-    __c577,
+    18368,
+    __c574,
     0,
   ) as any as S.Schema<LockLongTermRetentionBackupTimeBasedImmutabilityByResourceGroupRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<LockLongTermRetentionBackupTimeBasedImmutabilityByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -28348,10 +29797,10 @@ export const LongTermRetentionBackupsChangeAccessTier: API.OperationMethod<
   LongTermRetentionBackupsChangeAccessTierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18496, __c578, 0) as any as S.Schema<LongTermRetentionBackupsChangeAccessTierRequest>,
+  input: __S(18400, __c575, 0) as any as S.Schema<LongTermRetentionBackupsChangeAccessTierRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<LongTermRetentionBackupsChangeAccessTierResponse>,
   errors: [UnknownAzureError],
@@ -28368,13 +29817,13 @@ export const LongTermRetentionBackupsChangeAccessTierByResourceGroup: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18528,
-    __c579,
+    18432,
+    __c576,
     0,
   ) as any as S.Schema<LongTermRetentionBackupsChangeAccessTierByResourceGroupRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<LongTermRetentionBackupsChangeAccessTierByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -28390,8 +29839,8 @@ export const LongTermRetentionPoliciesCreateOrUpdate: API.OperationMethod<
   LongTermRetentionPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18560, __c580, 0) as any as S.Schema<LongTermRetentionPoliciesCreateOrUpdateRequest>,
-  output: __S(18561, __c580, 1) as any as S.Schema<LongTermRetentionPoliciesCreateOrUpdateResponse>,
+  input: __S(18464, __c577, 0) as any as S.Schema<LongTermRetentionPoliciesCreateOrUpdateRequest>,
+  output: __S(18465, __c577, 1) as any as S.Schema<LongTermRetentionPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -28405,7 +29854,7 @@ export const MaintenanceWindowsCreateOrUpdate: API.OperationMethod<
   MaintenanceWindowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18592, __c581, 0) as any as S.Schema<MaintenanceWindowsCreateOrUpdateRequest>,
+  input: __S(18496, __c578, 0) as any as S.Schema<MaintenanceWindowsCreateOrUpdateRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<MaintenanceWindowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -28421,13 +29870,13 @@ export const ManagedBackupShortTermRetentionPoliciesCreateOrUpdate: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18656,
-    __c583,
+    18560,
+    __c580,
     0,
   ) as any as S.Schema<ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequest>,
   output: __S(
-    18688,
-    __c584,
+    18592,
+    __c581,
     0,
   ) as any as S.Schema<ManagedBackupShortTermRetentionPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28444,8 +29893,8 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdate: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18720,
-    __c585,
+    18624,
+    __c582,
     0,
   ) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequest>,
   output: __S(
@@ -28466,7 +29915,7 @@ export const ManagedDatabasesCancelMove: API.OperationMethod<
   ManagedDatabasesCancelMoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18752, __c586, 0) as any as S.Schema<ManagedDatabasesCancelMoveRequest>,
+  input: __S(18656, __c583, 0) as any as S.Schema<ManagedDatabasesCancelMoveRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<ManagedDatabasesCancelMoveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -28481,8 +29930,8 @@ export const ManagedDatabasesCreateOrUpdate: API.OperationMethod<
   ManagedDatabasesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18784, __c587, 0) as any as S.Schema<ManagedDatabasesCreateOrUpdateRequest>,
-  output: __S(18816, __c588, 0) as any as S.Schema<ManagedDatabasesCreateOrUpdateResponse>,
+  input: __S(18688, __c584, 0) as any as S.Schema<ManagedDatabasesCreateOrUpdateRequest>,
+  output: __S(18720, __c585, 0) as any as S.Schema<ManagedDatabasesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -28497,8 +29946,8 @@ export const ManagedDatabaseSecurityAlertPoliciesCreateOrUpdate: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18880,
-    __c590,
+    18784,
+    __c587,
     0,
   ) as any as S.Schema<ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequest>,
   output: __S(
@@ -28520,8 +29969,8 @@ export const ManagedDatabaseSensitivityLabelsCreateOrUpdate: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18912,
-    __c591,
+    18816,
+    __c588,
     0,
   ) as any as S.Schema<ManagedDatabaseSensitivityLabelsCreateOrUpdateRequest>,
   output: __S(
@@ -28543,13 +29992,13 @@ export const ManagedDatabasesReevaluateInaccessibleDatabaseState: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18976,
-    __c593,
+    18880,
+    __c590,
     0,
   ) as any as S.Schema<ManagedDatabasesReevaluateInaccessibleDatabaseStateRequest>,
   output: __S(
-    18816,
-    __c588,
+    18720,
+    __c585,
     0,
   ) as any as S.Schema<ManagedDatabasesReevaluateInaccessibleDatabaseStateResponse>,
   errors: [UnknownAzureError],
@@ -28565,7 +30014,7 @@ export const ManagedDatabasesStartMove: API.OperationMethod<
   ManagedDatabasesStartMoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19008, __c594, 0) as any as S.Schema<ManagedDatabasesStartMoveRequest>,
+  input: __S(18912, __c591, 0) as any as S.Schema<ManagedDatabasesStartMoveRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<ManagedDatabasesStartMoveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -28581,8 +30030,8 @@ export const ManagedDatabaseTransparentDataEncryptionCreateOrUpdate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19040,
-    __c595,
+    18944,
+    __c592,
     0,
   ) as any as S.Schema<ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequest>,
   output: __S(
@@ -28604,8 +30053,8 @@ export const ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdate: 
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19072,
-    __c596,
+    18976,
+    __c593,
     0,
   ) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest>,
   output: __S(
@@ -28627,8 +30076,8 @@ export const ManagedDatabaseVulnerabilityAssessmentScansInitiateScan: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19136,
-    __c598,
+    19040,
+    __c595,
     0,
   ) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequest>,
   output: __S(
@@ -28650,13 +30099,13 @@ export const ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdate: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19168,
-    __c599,
+    19072,
+    __c596,
     0,
   ) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequest>,
   output: __S(
-    11361,
-    __c355,
+    11329,
+    __c354,
     1,
   ) as any as S.Schema<ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28673,13 +30122,13 @@ export const ManagedInstanceAdministratorsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19200,
-    __c600,
+    19104,
+    __c597,
     0,
   ) as any as S.Schema<ManagedInstanceAdministratorsCreateOrUpdateRequest>,
   output: __S(
-    19201,
-    __c600,
+    19105,
+    __c597,
     1,
   ) as any as S.Schema<ManagedInstanceAdministratorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28696,13 +30145,13 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdate: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19232,
-    __c601,
+    19136,
+    __c598,
     0,
   ) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequest>,
   output: __S(
-    19264,
-    __c602,
+    19168,
+    __c599,
     0,
   ) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28719,13 +30168,13 @@ export const ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdate: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19296,
-    __c603,
+    19200,
+    __c600,
     0,
   ) as any as S.Schema<ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequest>,
   output: __S(
-    19328,
-    __c604,
+    19232,
+    __c601,
     0,
   ) as any as S.Schema<ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28741,8 +30190,8 @@ export const ManagedInstanceDtcsCreateOrUpdate: API.OperationMethod<
   ManagedInstanceDtcsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19361, __c605, 1) as any as S.Schema<ManagedInstanceDtcsCreateOrUpdateRequest>,
-  output: __S(19362, __c605, 2) as any as S.Schema<ManagedInstanceDtcsCreateOrUpdateResponse>,
+  input: __S(19265, __c602, 1) as any as S.Schema<ManagedInstanceDtcsCreateOrUpdateRequest>,
+  output: __S(19266, __c602, 2) as any as S.Schema<ManagedInstanceDtcsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -28757,13 +30206,13 @@ export const ManagedInstanceEncryptionProtectorsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19392,
-    __c606,
+    19296,
+    __c603,
     0,
   ) as any as S.Schema<ManagedInstanceEncryptionProtectorsCreateOrUpdateRequest>,
   output: __S(
-    19393,
-    __c606,
+    19297,
+    __c603,
     1,
   ) as any as S.Schema<ManagedInstanceEncryptionProtectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28780,8 +30229,8 @@ export const ManagedInstanceEncryptionProtectorsRevalidate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19424,
-    __c607,
+    19328,
+    __c604,
     0,
   ) as any as S.Schema<ManagedInstanceEncryptionProtectorsRevalidateRequest>,
   output: __S(
@@ -28802,8 +30251,8 @@ export const ManagedInstanceKeysCreateOrUpdate: API.OperationMethod<
   ManagedInstanceKeysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19456, __c608, 0) as any as S.Schema<ManagedInstanceKeysCreateOrUpdateRequest>,
-  output: __S(19457, __c608, 1) as any as S.Schema<ManagedInstanceKeysCreateOrUpdateResponse>,
+  input: __S(19360, __c605, 0) as any as S.Schema<ManagedInstanceKeysCreateOrUpdateRequest>,
+  output: __S(19361, __c605, 1) as any as S.Schema<ManagedInstanceKeysCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -28818,13 +30267,13 @@ export const ManagedInstanceLongTermRetentionPoliciesCreateOrUpdate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19520,
-    __c610,
+    19424,
+    __c607,
     0,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateRequest>,
   output: __S(
-    19521,
-    __c610,
+    19425,
+    __c607,
     1,
   ) as any as S.Schema<ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28841,13 +30290,13 @@ export const ManagedInstancePrivateEndpointConnectionsCreateOrUpdate: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19586,
-    __c612,
+    19490,
+    __c609,
     2,
   ) as any as S.Schema<ManagedInstancePrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    19587,
-    __c612,
+    19491,
+    __c609,
     3,
   ) as any as S.Schema<ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28863,8 +30312,8 @@ export const ManagedInstancesCreateOrUpdate: API.OperationMethod<
   ManagedInstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19616, __c613, 0) as any as S.Schema<ManagedInstancesCreateOrUpdateRequest>,
-  output: __S(19680, __c615, 0) as any as S.Schema<ManagedInstancesCreateOrUpdateResponse>,
+  input: __S(19520, __c610, 0) as any as S.Schema<ManagedInstancesCreateOrUpdateRequest>,
+  output: __S(19584, __c612, 0) as any as S.Schema<ManagedInstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -28878,7 +30327,7 @@ export const ManagedInstancesFailover: API.OperationMethod<
   ManagedInstancesFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19744, __c617, 0) as any as S.Schema<ManagedInstancesFailoverRequest>,
+  input: __S(19648, __c614, 0) as any as S.Schema<ManagedInstancesFailoverRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<ManagedInstancesFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -28894,8 +30343,8 @@ export const ManagedInstancesReevaluateInaccessibleDatabaseState: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19776,
-    __c618,
+    19680,
+    __c615,
     0,
   ) as any as S.Schema<ManagedInstancesReevaluateInaccessibleDatabaseStateRequest>,
   output: __S(
@@ -28917,8 +30366,8 @@ export const ManagedInstanceVulnerabilityAssessmentsCreateOrUpdate: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19808,
-    __c619,
+    19712,
+    __c616,
     0,
   ) as any as S.Schema<ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequest>,
   output: __S(
@@ -28939,10 +30388,10 @@ export const ManagedLedgerDigestUploadsCreateOrUpdate: API.OperationMethod<
   ManagedLedgerDigestUploadsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19840, __c620, 0) as any as S.Schema<ManagedLedgerDigestUploadsCreateOrUpdateRequest>,
+  input: __S(19744, __c617, 0) as any as S.Schema<ManagedLedgerDigestUploadsCreateOrUpdateRequest>,
   output: __S(
-    24832,
-    __c776,
+    24736,
+    __c773,
     0,
   ) as any as S.Schema<ManagedLedgerDigestUploadsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28960,13 +30409,13 @@ export const ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCre
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19872,
-    __c621,
+    19776,
+    __c618,
     0,
   ) as any as S.Schema<ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateRequest>,
   output: __S(
-    18688,
-    __c584,
+    18592,
+    __c581,
     0,
   ) as any as S.Schema<ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -28982,8 +30431,8 @@ export const ManagedServerDnsAliasesAcquire: API.OperationMethod<
   ManagedServerDnsAliasesAcquireError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19904, __c622, 0) as any as S.Schema<ManagedServerDnsAliasesAcquireRequest>,
-  output: __S(19936, __c623, 0) as any as S.Schema<ManagedServerDnsAliasesAcquireResponse>,
+  input: __S(19808, __c619, 0) as any as S.Schema<ManagedServerDnsAliasesAcquireRequest>,
+  output: __S(19840, __c620, 0) as any as S.Schema<ManagedServerDnsAliasesAcquireResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -28997,8 +30446,8 @@ export const ManagedServerDnsAliasesCreateOrUpdate: API.OperationMethod<
   ManagedServerDnsAliasesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19968, __c624, 0) as any as S.Schema<ManagedServerDnsAliasesCreateOrUpdateRequest>,
-  output: __S(19936, __c623, 0) as any as S.Schema<ManagedServerDnsAliasesCreateOrUpdateResponse>,
+  input: __S(19872, __c621, 0) as any as S.Schema<ManagedServerDnsAliasesCreateOrUpdateRequest>,
+  output: __S(19840, __c620, 0) as any as S.Schema<ManagedServerDnsAliasesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29013,13 +30462,13 @@ export const ManagedServerSecurityAlertPoliciesCreateOrUpdate: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20000,
-    __c625,
+    19904,
+    __c622,
     0,
   ) as any as S.Schema<ManagedServerSecurityAlertPoliciesCreateOrUpdateRequest>,
   output: __S(
-    20032,
-    __c626,
+    19936,
+    __c623,
     0,
   ) as any as S.Schema<ManagedServerSecurityAlertPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29035,7 +30484,7 @@ export const MoveManagedDatabasesComplete: API.OperationMethod<
   MoveManagedDatabasesCompleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20096, __c628, 0) as any as S.Schema<MoveManagedDatabasesCompleteRequest>,
+  input: __S(20000, __c625, 0) as any as S.Schema<MoveManagedDatabasesCompleteRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<MoveManagedDatabasesCompleteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29051,13 +30500,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcile: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20128,
-    __c629,
+    20032,
+    __c626,
     0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>,
   output: __S(
-    20129,
-    __c629,
+    20033,
+    __c626,
     1,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>,
   errors: [UnknownAzureError],
@@ -29073,8 +30522,8 @@ export const OutboundFirewallRulesCreateOrUpdate: API.OperationMethod<
   OutboundFirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20160, __c630, 0) as any as S.Schema<OutboundFirewallRulesCreateOrUpdateRequest>,
-  output: __S(20161, __c630, 1) as any as S.Schema<OutboundFirewallRulesCreateOrUpdateResponse>,
+  input: __S(20064, __c627, 0) as any as S.Schema<OutboundFirewallRulesCreateOrUpdateRequest>,
+  output: __S(20065, __c627, 1) as any as S.Schema<OutboundFirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29088,8 +30537,8 @@ export const PauseDatabase: API.OperationMethod<
   PauseDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20192, __c631, 0) as any as S.Schema<PauseDatabaseRequest>,
-  output: __S(20224, __c632, 0) as any as S.Schema<PauseDatabaseResponse>,
+  input: __S(20096, __c628, 0) as any as S.Schema<PauseDatabaseRequest>,
+  output: __S(20128, __c629, 0) as any as S.Schema<PauseDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29103,10 +30552,10 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20257, __c633, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  input: __S(20161, __c630, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    20258,
-    __c633,
+    20162,
+    __c630,
     2,
   ) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29122,8 +30571,8 @@ export const RecoverDeletedServer: API.OperationMethod<
   RecoverDeletedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20288, __c634, 0) as any as S.Schema<RecoverDeletedServerRequest>,
-  output: __S(20289, __c634, 1) as any as S.Schema<RecoverDeletedServerResponse>,
+  input: __S(20192, __c631, 0) as any as S.Schema<RecoverDeletedServerRequest>,
+  output: __S(20193, __c631, 1) as any as S.Schema<RecoverDeletedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29137,8 +30586,8 @@ export const RefreshManagedInstanceStatus: API.OperationMethod<
   RefreshManagedInstanceStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20320, __c635, 0) as any as S.Schema<RefreshManagedInstanceStatusRequest>,
-  output: __S(20322, __c635, 2) as any as S.Schema<RefreshManagedInstanceStatusResponse>,
+  input: __S(20224, __c632, 0) as any as S.Schema<RefreshManagedInstanceStatusRequest>,
+  output: __S(20226, __c632, 2) as any as S.Schema<RefreshManagedInstanceStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29152,8 +30601,8 @@ export const RefreshServerStatus: API.OperationMethod<
   RefreshServerStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20352, __c636, 0) as any as S.Schema<RefreshServerStatusRequest>,
-  output: __S(20354, __c636, 2) as any as S.Schema<RefreshServerStatusResponse>,
+  input: __S(20256, __c633, 0) as any as S.Schema<RefreshServerStatusRequest>,
+  output: __S(20258, __c633, 2) as any as S.Schema<RefreshServerStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29167,7 +30616,7 @@ export const RefreshSyncGroupHubSchema: API.OperationMethod<
   RefreshSyncGroupHubSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20384, __c637, 0) as any as S.Schema<RefreshSyncGroupHubSchemaRequest>,
+  input: __S(20288, __c634, 0) as any as S.Schema<RefreshSyncGroupHubSchemaRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<RefreshSyncGroupHubSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29182,7 +30631,7 @@ export const RefreshSyncMemberMemberSchema: API.OperationMethod<
   RefreshSyncMemberMemberSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20416, __c638, 0) as any as S.Schema<RefreshSyncMemberMemberSchemaRequest>,
+  input: __S(20320, __c635, 0) as any as S.Schema<RefreshSyncMemberMemberSchemaRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<RefreshSyncMemberMemberSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29198,13 +30647,13 @@ export const RemoveLongTermRetentionBackupLegalHoldImmutability: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20480,
-    __c640,
+    20384,
+    __c637,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupLegalHoldImmutabilityRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupLegalHoldImmutabilityResponse>,
   errors: [UnknownAzureError],
@@ -29221,13 +30670,13 @@ export const RemoveLongTermRetentionBackupLegalHoldImmutabilityByResourceGroup: 
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20512,
-    __c641,
+    20416,
+    __c638,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupLegalHoldImmutabilityByResourceGroupRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupLegalHoldImmutabilityByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -29244,13 +30693,13 @@ export const RemoveLongTermRetentionBackupTimeBasedImmutability: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20544,
-    __c642,
+    20448,
+    __c639,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupTimeBasedImmutabilityRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupTimeBasedImmutabilityResponse>,
   errors: [UnknownAzureError],
@@ -29267,13 +30716,13 @@ export const RemoveLongTermRetentionBackupTimeBasedImmutabilityByResourceGroup: 
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20576,
-    __c643,
+    20480,
+    __c640,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupTimeBasedImmutabilityByResourceGroupRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<RemoveLongTermRetentionBackupTimeBasedImmutabilityByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -29289,7 +30738,7 @@ export const RenameDatabase: API.OperationMethod<
   RenameDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20608, __c644, 0) as any as S.Schema<RenameDatabaseRequest>,
+  input: __S(20512, __c641, 0) as any as S.Schema<RenameDatabaseRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<RenameDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29304,7 +30753,7 @@ export const ReplaceFirewallRule: API.OperationMethod<
   ReplaceFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20642, __c645, 2) as any as S.Schema<ReplaceFirewallRuleRequest>,
+  input: __S(20546, __c642, 2) as any as S.Schema<ReplaceFirewallRuleRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<ReplaceFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29319,8 +30768,8 @@ export const ReplicationLinksCreateOrUpdate: API.OperationMethod<
   ReplicationLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20673, __c646, 1) as any as S.Schema<ReplicationLinksCreateOrUpdateRequest>,
-  output: __S(20704, __c647, 0) as any as S.Schema<ReplicationLinksCreateOrUpdateResponse>,
+  input: __S(20577, __c643, 1) as any as S.Schema<ReplicationLinksCreateOrUpdateRequest>,
+  output: __S(20608, __c644, 0) as any as S.Schema<ReplicationLinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29334,7 +30783,7 @@ export const ReplicationLinksFailover: API.OperationMethod<
   ReplicationLinksFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20736, __c648, 0) as any as S.Schema<ReplicationLinksFailoverRequest>,
+  input: __S(20640, __c645, 0) as any as S.Schema<ReplicationLinksFailoverRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<ReplicationLinksFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29349,7 +30798,7 @@ export const ReplicationLinksFailoverAllowDataLoss: API.OperationMethod<
   ReplicationLinksFailoverAllowDataLossError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20768, __c649, 0) as any as S.Schema<ReplicationLinksFailoverAllowDataLossRequest>,
+  input: __S(20672, __c646, 0) as any as S.Schema<ReplicationLinksFailoverAllowDataLossRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<ReplicationLinksFailoverAllowDataLossResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29364,7 +30813,7 @@ export const RestoreManagedDatabasesComplete: API.OperationMethod<
   RestoreManagedDatabasesCompleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20800, __c650, 0) as any as S.Schema<RestoreManagedDatabasesCompleteRequest>,
+  input: __S(20704, __c647, 0) as any as S.Schema<RestoreManagedDatabasesCompleteRequest>,
   output: __S(256, __c8, 0) as any as S.Schema<RestoreManagedDatabasesCompleteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29379,8 +30828,8 @@ export const ResumeDatabase: API.OperationMethod<
   ResumeDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20864, __c652, 0) as any as S.Schema<ResumeDatabaseRequest>,
-  output: __S(20224, __c632, 0) as any as S.Schema<ResumeDatabaseResponse>,
+  input: __S(20768, __c649, 0) as any as S.Schema<ResumeDatabaseRequest>,
+  output: __S(20128, __c629, 0) as any as S.Schema<ResumeDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29394,8 +30843,8 @@ export const ResumeTransparentDataEncryption: API.OperationMethod<
   ResumeTransparentDataEncryptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20896, __c653, 0) as any as S.Schema<ResumeTransparentDataEncryptionRequest>,
-  output: __S(20928, __c654, 0) as any as S.Schema<ResumeTransparentDataEncryptionResponse>,
+  input: __S(20800, __c650, 0) as any as S.Schema<ResumeTransparentDataEncryptionRequest>,
+  output: __S(20832, __c651, 0) as any as S.Schema<ResumeTransparentDataEncryptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29409,7 +30858,7 @@ export const SensitivityLabelsCreateOrUpdate: API.OperationMethod<
   SensitivityLabelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20960, __c655, 0) as any as S.Schema<SensitivityLabelsCreateOrUpdateRequest>,
+  input: __S(20864, __c652, 0) as any as S.Schema<SensitivityLabelsCreateOrUpdateRequest>,
   output: __S(5185, __c162, 1) as any as S.Schema<SensitivityLabelsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29425,13 +30874,13 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdate: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20992,
-    __c656,
+    20896,
+    __c653,
     0,
   ) as any as S.Schema<ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest>,
   output: __S(
-    19264,
-    __c602,
+    19168,
+    __c599,
     0,
   ) as any as S.Schema<ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29447,10 +30896,10 @@ export const ServerAzureADAdministratorsCreateOrUpdate: API.OperationMethod<
   ServerAzureADAdministratorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21025, __c657, 1) as any as S.Schema<ServerAzureADAdministratorsCreateOrUpdateRequest>,
+  input: __S(20929, __c654, 1) as any as S.Schema<ServerAzureADAdministratorsCreateOrUpdateRequest>,
   output: __S(
-    21026,
-    __c657,
+    20930,
+    __c654,
     2,
   ) as any as S.Schema<ServerAzureADAdministratorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29467,13 +30916,13 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdate: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21056,
-    __c658,
+    20960,
+    __c655,
     0,
   ) as any as S.Schema<ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest>,
   output: __S(
-    19328,
-    __c604,
+    19232,
+    __c601,
     0,
   ) as any as S.Schema<ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29489,10 +30938,10 @@ export const ServerBlobAuditingPoliciesCreateOrUpdate: API.OperationMethod<
   ServerBlobAuditingPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21088, __c659, 0) as any as S.Schema<ServerBlobAuditingPoliciesCreateOrUpdateRequest>,
+  input: __S(20992, __c656, 0) as any as S.Schema<ServerBlobAuditingPoliciesCreateOrUpdateRequest>,
   output: __S(
-    21089,
-    __c659,
+    20993,
+    __c656,
     1,
   ) as any as S.Schema<ServerBlobAuditingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29508,10 +30957,10 @@ export const ServerConfigurationOptionsCreateOrUpdate: API.OperationMethod<
   ServerConfigurationOptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21120, __c660, 0) as any as S.Schema<ServerConfigurationOptionsCreateOrUpdateRequest>,
+  input: __S(21024, __c657, 0) as any as S.Schema<ServerConfigurationOptionsCreateOrUpdateRequest>,
   output: __S(
-    21121,
-    __c660,
+    21025,
+    __c657,
     1,
   ) as any as S.Schema<ServerConfigurationOptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29527,8 +30976,8 @@ export const ServerConnectionPoliciesCreateOrUpdate: API.OperationMethod<
   ServerConnectionPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21152, __c661, 0) as any as S.Schema<ServerConnectionPoliciesCreateOrUpdateRequest>,
-  output: __S(21153, __c661, 1) as any as S.Schema<ServerConnectionPoliciesCreateOrUpdateResponse>,
+  input: __S(21056, __c658, 0) as any as S.Schema<ServerConnectionPoliciesCreateOrUpdateRequest>,
+  output: __S(21057, __c658, 1) as any as S.Schema<ServerConnectionPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29542,8 +30991,8 @@ export const ServerDevOpsAuditSettingsCreateOrUpdate: API.OperationMethod<
   ServerDevOpsAuditSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21184, __c662, 0) as any as S.Schema<ServerDevOpsAuditSettingsCreateOrUpdateRequest>,
-  output: __S(21185, __c662, 1) as any as S.Schema<ServerDevOpsAuditSettingsCreateOrUpdateResponse>,
+  input: __S(21088, __c659, 0) as any as S.Schema<ServerDevOpsAuditSettingsCreateOrUpdateRequest>,
+  output: __S(21089, __c659, 1) as any as S.Schema<ServerDevOpsAuditSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29557,8 +31006,8 @@ export const ServerDnsAliasesAcquire: API.OperationMethod<
   ServerDnsAliasesAcquireError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21248, __c664, 0) as any as S.Schema<ServerDnsAliasesAcquireRequest>,
-  output: __S(21280, __c665, 0) as any as S.Schema<ServerDnsAliasesAcquireResponse>,
+  input: __S(21152, __c661, 0) as any as S.Schema<ServerDnsAliasesAcquireRequest>,
+  output: __S(21184, __c662, 0) as any as S.Schema<ServerDnsAliasesAcquireResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29572,8 +31021,8 @@ export const ServerDnsAliasesCreateOrUpdate: API.OperationMethod<
   ServerDnsAliasesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21312, __c666, 0) as any as S.Schema<ServerDnsAliasesCreateOrUpdateRequest>,
-  output: __S(21280, __c665, 0) as any as S.Schema<ServerDnsAliasesCreateOrUpdateResponse>,
+  input: __S(21216, __c663, 0) as any as S.Schema<ServerDnsAliasesCreateOrUpdateRequest>,
+  output: __S(21184, __c662, 0) as any as S.Schema<ServerDnsAliasesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29587,8 +31036,8 @@ export const ServerKeysCreateOrUpdate: API.OperationMethod<
   ServerKeysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21344, __c667, 0) as any as S.Schema<ServerKeysCreateOrUpdateRequest>,
-  output: __S(21345, __c667, 1) as any as S.Schema<ServerKeysCreateOrUpdateResponse>,
+  input: __S(21248, __c664, 0) as any as S.Schema<ServerKeysCreateOrUpdateRequest>,
+  output: __S(21249, __c664, 1) as any as S.Schema<ServerKeysCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29602,8 +31051,8 @@ export const ServersCreateOrUpdate: API.OperationMethod<
   ServersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21376, __c668, 0) as any as S.Schema<ServersCreateOrUpdateRequest>,
-  output: __S(21409, __c669, 1) as any as S.Schema<ServersCreateOrUpdateResponse>,
+  input: __S(21280, __c665, 0) as any as S.Schema<ServersCreateOrUpdateRequest>,
+  output: __S(21313, __c666, 1) as any as S.Schema<ServersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29617,10 +31066,10 @@ export const ServerSecurityAlertPoliciesCreateOrUpdate: API.OperationMethod<
   ServerSecurityAlertPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21440, __c670, 0) as any as S.Schema<ServerSecurityAlertPoliciesCreateOrUpdateRequest>,
+  input: __S(21344, __c667, 0) as any as S.Schema<ServerSecurityAlertPoliciesCreateOrUpdateRequest>,
   output: __S(
-    20032,
-    __c626,
+    19936,
+    __c623,
     0,
   ) as any as S.Schema<ServerSecurityAlertPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29636,8 +31085,8 @@ export const ServerTrustCertificatesCreateOrUpdate: API.OperationMethod<
   ServerTrustCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21472, __c671, 0) as any as S.Schema<ServerTrustCertificatesCreateOrUpdateRequest>,
-  output: __S(21473, __c671, 1) as any as S.Schema<ServerTrustCertificatesCreateOrUpdateResponse>,
+  input: __S(21376, __c668, 0) as any as S.Schema<ServerTrustCertificatesCreateOrUpdateRequest>,
+  output: __S(21377, __c668, 1) as any as S.Schema<ServerTrustCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29651,8 +31100,8 @@ export const ServerTrustGroupsCreateOrUpdate: API.OperationMethod<
   ServerTrustGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21504, __c672, 0) as any as S.Schema<ServerTrustGroupsCreateOrUpdateRequest>,
-  output: __S(21505, __c672, 1) as any as S.Schema<ServerTrustGroupsCreateOrUpdateResponse>,
+  input: __S(21408, __c669, 0) as any as S.Schema<ServerTrustGroupsCreateOrUpdateRequest>,
+  output: __S(21409, __c669, 1) as any as S.Schema<ServerTrustGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29667,8 +31116,8 @@ export const ServerVulnerabilityAssessmentsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21536,
-    __c673,
+    21440,
+    __c670,
     0,
   ) as any as S.Schema<ServerVulnerabilityAssessmentsCreateOrUpdateRequest>,
   output: __S(
@@ -29689,8 +31138,8 @@ export const SetDistributedAvailabilityGroupRole: API.OperationMethod<
   SetDistributedAvailabilityGroupRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21568, __c674, 0) as any as S.Schema<SetDistributedAvailabilityGroupRoleRequest>,
-  output: __S(25056, __c783, 0) as any as S.Schema<SetDistributedAvailabilityGroupRoleResponse>,
+  input: __S(21472, __c671, 0) as any as S.Schema<SetDistributedAvailabilityGroupRoleRequest>,
+  output: __S(24960, __c780, 0) as any as S.Schema<SetDistributedAvailabilityGroupRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29705,13 +31154,13 @@ export const SetLongTermRetentionBackupLegalHoldImmutability: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21600,
-    __c675,
+    21504,
+    __c672,
     0,
   ) as any as S.Schema<SetLongTermRetentionBackupLegalHoldImmutabilityRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<SetLongTermRetentionBackupLegalHoldImmutabilityResponse>,
   errors: [UnknownAzureError],
@@ -29728,13 +31177,13 @@ export const SetLongTermRetentionBackupLegalHoldImmutabilityByResourceGroup: API
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21696,
-    __c678,
+    21600,
+    __c675,
     0,
   ) as any as S.Schema<SetLongTermRetentionBackupLegalHoldImmutabilityByResourceGroupRequest>,
   output: __S(
-    18432,
-    __c576,
+    18336,
+    __c573,
     0,
   ) as any as S.Schema<SetLongTermRetentionBackupLegalHoldImmutabilityByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -29750,7 +31199,7 @@ export const SqlAgentCreateOrUpdate: API.OperationMethod<
   SqlAgentCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21728, __c679, 0) as any as S.Schema<SqlAgentCreateOrUpdateRequest>,
+  input: __S(21632, __c676, 0) as any as S.Schema<SqlAgentCreateOrUpdateRequest>,
   output: __S(1889, __c59, 1) as any as S.Schema<SqlAgentCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29766,8 +31215,8 @@ export const SqlVulnerabilityAssessmentBaselinesCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21760,
-    __c680,
+    21664,
+    __c677,
     0,
   ) as any as S.Schema<SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequest>,
   output: __S(
@@ -29789,8 +31238,8 @@ export const SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdate: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21792,
-    __c681,
+    21696,
+    __c678,
     0,
   ) as any as S.Schema<SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequest>,
   output: __S(
@@ -29812,8 +31261,8 @@ export const SqlVulnerabilityAssessmentsSettingsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21824,
-    __c682,
+    21728,
+    __c679,
     0,
   ) as any as S.Schema<SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequest>,
   output: __S(
@@ -29834,8 +31283,8 @@ export const StartManagedInstance: API.OperationMethod<
   StartManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21856, __c683, 0) as any as S.Schema<StartManagedInstanceRequest>,
-  output: __S(19680, __c615, 0) as any as S.Schema<StartManagedInstanceResponse>,
+  input: __S(21760, __c680, 0) as any as S.Schema<StartManagedInstanceRequest>,
+  output: __S(19584, __c612, 0) as any as S.Schema<StartManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29850,8 +31299,8 @@ export const StartStopManagedInstanceSchedulesCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21889,
-    __c684,
+    21793,
+    __c681,
     1,
   ) as any as S.Schema<StartStopManagedInstanceSchedulesCreateOrUpdateRequest>,
   output: __S(
@@ -29872,8 +31321,8 @@ export const StopManagedInstance: API.OperationMethod<
   StopManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21920, __c685, 0) as any as S.Schema<StopManagedInstanceRequest>,
-  output: __S(19680, __c615, 0) as any as S.Schema<StopManagedInstanceResponse>,
+  input: __S(21824, __c682, 0) as any as S.Schema<StopManagedInstanceRequest>,
+  output: __S(19584, __c612, 0) as any as S.Schema<StopManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29887,8 +31336,8 @@ export const SuspendTransparentDataEncryption: API.OperationMethod<
   SuspendTransparentDataEncryptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21952, __c686, 0) as any as S.Schema<SuspendTransparentDataEncryptionRequest>,
-  output: __S(20928, __c654, 0) as any as S.Schema<SuspendTransparentDataEncryptionResponse>,
+  input: __S(21856, __c683, 0) as any as S.Schema<SuspendTransparentDataEncryptionRequest>,
+  output: __S(20832, __c651, 0) as any as S.Schema<SuspendTransparentDataEncryptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29902,8 +31351,8 @@ export const SyncAgentsCreateOrUpdate: API.OperationMethod<
   SyncAgentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21985, __c687, 1) as any as S.Schema<SyncAgentsCreateOrUpdateRequest>,
-  output: __S(21986, __c687, 2) as any as S.Schema<SyncAgentsCreateOrUpdateResponse>,
+  input: __S(21889, __c684, 1) as any as S.Schema<SyncAgentsCreateOrUpdateRequest>,
+  output: __S(21890, __c684, 2) as any as S.Schema<SyncAgentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29917,8 +31366,8 @@ export const SyncGroupsCreateOrUpdate: API.OperationMethod<
   SyncGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22048, __c689, 0) as any as S.Schema<SyncGroupsCreateOrUpdateRequest>,
-  output: __S(22081, __c690, 1) as any as S.Schema<SyncGroupsCreateOrUpdateResponse>,
+  input: __S(21952, __c686, 0) as any as S.Schema<SyncGroupsCreateOrUpdateRequest>,
+  output: __S(21985, __c687, 1) as any as S.Schema<SyncGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29932,8 +31381,8 @@ export const SyncMembersCreateOrUpdate: API.OperationMethod<
   SyncMembersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22112, __c691, 0) as any as S.Schema<SyncMembersCreateOrUpdateRequest>,
-  output: __S(22145, __c692, 1) as any as S.Schema<SyncMembersCreateOrUpdateResponse>,
+  input: __S(22016, __c688, 0) as any as S.Schema<SyncMembersCreateOrUpdateRequest>,
+  output: __S(22049, __c689, 1) as any as S.Schema<SyncMembersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -29947,10 +31396,10 @@ export const TransparentDataEncryptionsCreateOrUpdate: API.OperationMethod<
   TransparentDataEncryptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22176, __c693, 0) as any as S.Schema<TransparentDataEncryptionsCreateOrUpdateRequest>,
+  input: __S(22080, __c690, 0) as any as S.Schema<TransparentDataEncryptionsCreateOrUpdateRequest>,
   output: __S(
-    22177,
-    __c693,
+    22081,
+    __c690,
     1,
   ) as any as S.Schema<TransparentDataEncryptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -29966,7 +31415,7 @@ export const TriggerSyncGroupSync: API.OperationMethod<
   TriggerSyncGroupSyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22208, __c694, 0) as any as S.Schema<TriggerSyncGroupSyncRequest>,
+  input: __S(22112, __c691, 0) as any as S.Schema<TriggerSyncGroupSyncRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<TriggerSyncGroupSyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29981,7 +31430,7 @@ export const UnlinkReplicationLink: API.OperationMethod<
   UnlinkReplicationLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22240, __c695, 0) as any as S.Schema<UnlinkReplicationLinkRequest>,
+  input: __S(22144, __c692, 0) as any as S.Schema<UnlinkReplicationLinkRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<UnlinkReplicationLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -29996,7 +31445,7 @@ export const UpdateBackupShortTermRetentionPolicy: API.OperationMethod<
   UpdateBackupShortTermRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22272, __c696, 0) as any as S.Schema<UpdateBackupShortTermRetentionPolicyRequest>,
+  input: __S(22176, __c693, 0) as any as S.Schema<UpdateBackupShortTermRetentionPolicyRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<UpdateBackupShortTermRetentionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30011,8 +31460,8 @@ export const UpdateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22305, __c697, 1) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(20224, __c632, 0) as any as S.Schema<UpdateDatabaseResponse>,
+  input: __S(22209, __c694, 1) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(20128, __c629, 0) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30026,7 +31475,7 @@ export const UpdateDatabaseAdvisor: API.OperationMethod<
   UpdateDatabaseAdvisorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22336, __c698, 0) as any as S.Schema<UpdateDatabaseAdvisorRequest>,
+  input: __S(22240, __c695, 0) as any as S.Schema<UpdateDatabaseAdvisorRequest>,
   output: __S(1249, __c39, 1) as any as S.Schema<UpdateDatabaseAdvisorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30041,7 +31490,7 @@ export const UpdateDatabaseAutomaticTuning: API.OperationMethod<
   UpdateDatabaseAutomaticTuningError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22400, __c700, 0) as any as S.Schema<UpdateDatabaseAutomaticTuningRequest>,
+  input: __S(22304, __c697, 0) as any as S.Schema<UpdateDatabaseAutomaticTuningRequest>,
   output: __S(1315, __c41, 3) as any as S.Schema<UpdateDatabaseAutomaticTuningResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30056,7 +31505,7 @@ export const UpdateDatabaseRecommendedAction: API.OperationMethod<
   UpdateDatabaseRecommendedActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22466, __c702, 2) as any as S.Schema<UpdateDatabaseRecommendedActionRequest>,
+  input: __S(22370, __c699, 2) as any as S.Schema<UpdateDatabaseRecommendedActionRequest>,
   output: __S(1192, __c37, 8) as any as S.Schema<UpdateDatabaseRecommendedActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30071,8 +31520,8 @@ export const UpdateDistributedAvailabilityGroup: API.OperationMethod<
   UpdateDistributedAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22528, __c704, 0) as any as S.Schema<UpdateDistributedAvailabilityGroupRequest>,
-  output: __S(25056, __c783, 0) as any as S.Schema<UpdateDistributedAvailabilityGroupResponse>,
+  input: __S(22432, __c701, 0) as any as S.Schema<UpdateDistributedAvailabilityGroupRequest>,
+  output: __S(24960, __c780, 0) as any as S.Schema<UpdateDistributedAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30086,8 +31535,8 @@ export const UpdateElasticPool: API.OperationMethod<
   UpdateElasticPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22561, __c705, 1) as any as S.Schema<UpdateElasticPoolRequest>,
-  output: __S(22562, __c705, 2) as any as S.Schema<UpdateElasticPoolResponse>,
+  input: __S(22465, __c702, 1) as any as S.Schema<UpdateElasticPoolRequest>,
+  output: __S(22466, __c702, 2) as any as S.Schema<UpdateElasticPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30101,7 +31550,7 @@ export const UpdateFailoverGroup: API.OperationMethod<
   UpdateFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22593, __c706, 1) as any as S.Schema<UpdateFailoverGroupRequest>,
+  input: __S(22497, __c703, 1) as any as S.Schema<UpdateFailoverGroupRequest>,
   output: __S(608, __c19, 0) as any as S.Schema<UpdateFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30116,7 +31565,7 @@ export const UpdateInstancePool: API.OperationMethod<
   UpdateInstancePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22624, __c707, 0) as any as S.Schema<UpdateInstancePoolRequest>,
+  input: __S(22528, __c704, 0) as any as S.Schema<UpdateInstancePoolRequest>,
   output: __S(10657, __c333, 1) as any as S.Schema<UpdateInstancePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30131,7 +31580,7 @@ export const UpdateJobAgent: API.OperationMethod<
   UpdateJobAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22656, __c708, 0) as any as S.Schema<UpdateJobAgentRequest>,
+  input: __S(22560, __c705, 0) as any as S.Schema<UpdateJobAgentRequest>,
   output: __S(10752, __c336, 0) as any as S.Schema<UpdateJobAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30146,8 +31595,8 @@ export const UpdateLongTermRetentionBackup: API.OperationMethod<
   UpdateLongTermRetentionBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22688, __c709, 0) as any as S.Schema<UpdateLongTermRetentionBackupRequest>,
-  output: __S(24225, __c757, 1) as any as S.Schema<UpdateLongTermRetentionBackupResponse>,
+  input: __S(22592, __c706, 0) as any as S.Schema<UpdateLongTermRetentionBackupRequest>,
+  output: __S(24129, __c754, 1) as any as S.Schema<UpdateLongTermRetentionBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30162,13 +31611,13 @@ export const UpdateLongTermRetentionBackupByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22752,
-    __c711,
+    22656,
+    __c708,
     0,
   ) as any as S.Schema<UpdateLongTermRetentionBackupByResourceGroupRequest>,
   output: __S(
-    24225,
-    __c757,
+    24129,
+    __c754,
     1,
   ) as any as S.Schema<UpdateLongTermRetentionBackupByResourceGroupResponse>,
   errors: [UnknownAzureError],
@@ -30185,13 +31634,13 @@ export const UpdateManagedBackupShortTermRetentionPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22784,
-    __c712,
+    22688,
+    __c709,
     0,
   ) as any as S.Schema<UpdateManagedBackupShortTermRetentionPolicyRequest>,
   output: __S(
-    18688,
-    __c584,
+    18592,
+    __c581,
     0,
   ) as any as S.Schema<UpdateManagedBackupShortTermRetentionPolicyResponse>,
   errors: [UnknownAzureError],
@@ -30207,8 +31656,8 @@ export const UpdateManagedDatabase: API.OperationMethod<
   UpdateManagedDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22816, __c713, 0) as any as S.Schema<UpdateManagedDatabaseRequest>,
-  output: __S(18816, __c588, 0) as any as S.Schema<UpdateManagedDatabaseResponse>,
+  input: __S(22720, __c710, 0) as any as S.Schema<UpdateManagedDatabaseRequest>,
+  output: __S(18720, __c585, 0) as any as S.Schema<UpdateManagedDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30223,8 +31672,8 @@ export const UpdateManagedDatabaseRecommendedSensitivityLabel: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22848,
-    __c714,
+    22752,
+    __c711,
     0,
   ) as any as S.Schema<UpdateManagedDatabaseRecommendedSensitivityLabelRequest>,
   output: __S(
@@ -30245,7 +31694,7 @@ export const UpdateManagedDatabaseSensitivityLabel: API.OperationMethod<
   UpdateManagedDatabaseSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22944, __c717, 0) as any as S.Schema<UpdateManagedDatabaseSensitivityLabelRequest>,
+  input: __S(22848, __c714, 0) as any as S.Schema<UpdateManagedDatabaseSensitivityLabelRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<UpdateManagedDatabaseSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30260,8 +31709,8 @@ export const UpdateManagedInstance: API.OperationMethod<
   UpdateManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23008, __c719, 0) as any as S.Schema<UpdateManagedInstanceRequest>,
-  output: __S(19680, __c615, 0) as any as S.Schema<UpdateManagedInstanceResponse>,
+  input: __S(22912, __c716, 0) as any as S.Schema<UpdateManagedInstanceRequest>,
+  output: __S(19584, __c612, 0) as any as S.Schema<UpdateManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30277,13 +31726,13 @@ export const UpdateManagedRestorableDroppedDatabaseBackupShortTermRetentionPolic
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23040,
-    __c720,
+    22944,
+    __c717,
     0,
   ) as any as S.Schema<UpdateManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyRequest>,
   output: __S(
-    18688,
-    __c584,
+    18592,
+    __c581,
     0,
   ) as any as S.Schema<UpdateManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyResponse>,
   errors: [UnknownAzureError],
@@ -30299,7 +31748,7 @@ export const UpdateRecommendedSensitivityLabel: API.OperationMethod<
   UpdateRecommendedSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23072, __c721, 0) as any as S.Schema<UpdateRecommendedSensitivityLabelRequest>,
+  input: __S(22976, __c718, 0) as any as S.Schema<UpdateRecommendedSensitivityLabelRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<UpdateRecommendedSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30314,8 +31763,8 @@ export const UpdateReplicationLink: API.OperationMethod<
   UpdateReplicationLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23105, __c722, 1) as any as S.Schema<UpdateReplicationLinkRequest>,
-  output: __S(20704, __c647, 0) as any as S.Schema<UpdateReplicationLinkResponse>,
+  input: __S(23009, __c719, 1) as any as S.Schema<UpdateReplicationLinkRequest>,
+  output: __S(20608, __c644, 0) as any as S.Schema<UpdateReplicationLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30329,7 +31778,7 @@ export const UpdateSensitivityLabel: API.OperationMethod<
   UpdateSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23136, __c723, 0) as any as S.Schema<UpdateSensitivityLabelRequest>,
+  input: __S(23040, __c720, 0) as any as S.Schema<UpdateSensitivityLabelRequest>,
   output: __S(160, __c5, 0) as any as S.Schema<UpdateSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30344,8 +31793,8 @@ export const UpdateServer: API.OperationMethod<
   UpdateServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23168, __c724, 0) as any as S.Schema<UpdateServerRequest>,
-  output: __S(21409, __c669, 1) as any as S.Schema<UpdateServerResponse>,
+  input: __S(23072, __c721, 0) as any as S.Schema<UpdateServerRequest>,
+  output: __S(21313, __c666, 1) as any as S.Schema<UpdateServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30359,7 +31808,7 @@ export const UpdateServerAdvisor: API.OperationMethod<
   UpdateServerAdvisorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23200, __c725, 0) as any as S.Schema<UpdateServerAdvisorRequest>,
+  input: __S(23104, __c722, 0) as any as S.Schema<UpdateServerAdvisorRequest>,
   output: __S(1249, __c39, 1) as any as S.Schema<UpdateServerAdvisorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30374,7 +31823,7 @@ export const UpdateServerAutomaticTuning: API.OperationMethod<
   UpdateServerAutomaticTuningError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23232, __c726, 0) as any as S.Schema<UpdateServerAutomaticTuningRequest>,
+  input: __S(23136, __c723, 0) as any as S.Schema<UpdateServerAutomaticTuningRequest>,
   output: __S(1315, __c41, 3) as any as S.Schema<UpdateServerAutomaticTuningResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -30389,8 +31838,8 @@ export const UpdateSyncGroup: API.OperationMethod<
   UpdateSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23264, __c727, 0) as any as S.Schema<UpdateSyncGroupRequest>,
-  output: __S(22081, __c690, 1) as any as S.Schema<UpdateSyncGroupResponse>,
+  input: __S(23168, __c724, 0) as any as S.Schema<UpdateSyncGroupRequest>,
+  output: __S(21985, __c687, 1) as any as S.Schema<UpdateSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30404,8 +31853,8 @@ export const UpdateSyncMember: API.OperationMethod<
   UpdateSyncMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23328, __c729, 0) as any as S.Schema<UpdateSyncMemberRequest>,
-  output: __S(22145, __c692, 1) as any as S.Schema<UpdateSyncMemberResponse>,
+  input: __S(23232, __c726, 0) as any as S.Schema<UpdateSyncMemberRequest>,
+  output: __S(22049, __c689, 1) as any as S.Schema<UpdateSyncMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30419,8 +31868,8 @@ export const UpdateVirtualCluster: API.OperationMethod<
   UpdateVirtualClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23360, __c730, 0) as any as S.Schema<UpdateVirtualClusterRequest>,
-  output: __S(23393, __c731, 1) as any as S.Schema<UpdateVirtualClusterResponse>,
+  input: __S(23264, __c727, 0) as any as S.Schema<UpdateVirtualClusterRequest>,
+  output: __S(23297, __c728, 1) as any as S.Schema<UpdateVirtualClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30434,8 +31883,8 @@ export const UpdateVirtualClusterDnsServers: API.OperationMethod<
   UpdateVirtualClusterDnsServersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23424, __c732, 0) as any as S.Schema<UpdateVirtualClusterDnsServersRequest>,
-  output: __S(23426, __c732, 2) as any as S.Schema<UpdateVirtualClusterDnsServersResponse>,
+  input: __S(23328, __c729, 0) as any as S.Schema<UpdateVirtualClusterDnsServersRequest>,
+  output: __S(23330, __c729, 2) as any as S.Schema<UpdateVirtualClusterDnsServersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30450,8 +31899,8 @@ export const ValidateManagedInstanceAzureKeyVaultEncryptionKey: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23456,
-    __c733,
+    23360,
+    __c730,
     0,
   ) as any as S.Schema<ValidateManagedInstanceAzureKeyVaultEncryptionKeyRequest>,
   output: __S(
@@ -30472,8 +31921,8 @@ export const VirtualClustersCreateOrUpdate: API.OperationMethod<
   VirtualClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23488, __c734, 0) as any as S.Schema<VirtualClustersCreateOrUpdateRequest>,
-  output: __S(23393, __c731, 1) as any as S.Schema<VirtualClustersCreateOrUpdateResponse>,
+  input: __S(23392, __c731, 0) as any as S.Schema<VirtualClustersCreateOrUpdateRequest>,
+  output: __S(23297, __c728, 1) as any as S.Schema<VirtualClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30487,8 +31936,8 @@ export const VirtualNetworkRulesCreateOrUpdate: API.OperationMethod<
   VirtualNetworkRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23520, __c735, 0) as any as S.Schema<VirtualNetworkRulesCreateOrUpdateRequest>,
-  output: __S(23521, __c735, 1) as any as S.Schema<VirtualNetworkRulesCreateOrUpdateResponse>,
+  input: __S(23424, __c732, 0) as any as S.Schema<VirtualNetworkRulesCreateOrUpdateRequest>,
+  output: __S(23425, __c732, 1) as any as S.Schema<VirtualNetworkRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30502,8 +31951,8 @@ export const WorkloadClassifiersCreateOrUpdate: API.OperationMethod<
   WorkloadClassifiersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23552, __c736, 0) as any as S.Schema<WorkloadClassifiersCreateOrUpdateRequest>,
-  output: __S(23553, __c736, 1) as any as S.Schema<WorkloadClassifiersCreateOrUpdateResponse>,
+  input: __S(23456, __c733, 0) as any as S.Schema<WorkloadClassifiersCreateOrUpdateRequest>,
+  output: __S(23457, __c733, 1) as any as S.Schema<WorkloadClassifiersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -30517,8 +31966,8 @@ export const WorkloadGroupsCreateOrUpdate: API.OperationMethod<
   WorkloadGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23584, __c737, 0) as any as S.Schema<WorkloadGroupsCreateOrUpdateRequest>,
-  output: __S(23585, __c737, 1) as any as S.Schema<WorkloadGroupsCreateOrUpdateResponse>,
+  input: __S(23488, __c734, 0) as any as S.Schema<WorkloadGroupsCreateOrUpdateRequest>,
+  output: __S(23489, __c734, 1) as any as S.Schema<WorkloadGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -32234,7 +33683,7 @@ function __c77(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25027, __c782, 3)),
+          properties: S.optional(__S(24931, __c779, 3)),
         }),
       ).annotate({ identifier: "GetDistributedAvailabilityGroupResponse" });
   }
@@ -32270,7 +33719,7 @@ function __c79(j: number): any {
           systemData: S.optional(__S(96, __c3, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(25249, __c789, 1)),
+          properties: S.optional(__S(25153, __c786, 1)),
           sku: S.optional(__S(5568, __c174, 0)),
           kind: S.optional(S.String),
         }),
@@ -32306,7 +33755,7 @@ function __c81(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25408, __c794, 0)),
+          properties: S.optional(__S(25312, __c791, 0)),
           kind: S.optional(S.String),
           location: S.optional(S.String),
         }),
@@ -32967,7 +34416,7 @@ function __c114(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25121, __c785, 1)),
+          properties: S.optional(__S(25025, __c782, 1)),
         }),
       ).annotate({ identifier: "GetJobExecutionResponse" });
   }
@@ -33273,7 +34722,7 @@ function __c127(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(24800, __c775, 0)),
+          properties: S.optional(__S(24704, __c772, 0)),
         }),
       ).annotate({ identifier: "GetLedgerDigestUploadResponse" });
   }
@@ -34921,7 +36370,7 @@ function __c199(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(23744, __c742, 0)),
+          properties: S.optional(__S(23648, __c739, 0)),
         }),
       ).annotate({ identifier: "GetManagedInstanceLongTermRetentionPolicyResponse" });
   }
@@ -35190,7 +36639,7 @@ function __c211(j: number): any {
           storageContainerPath: S.String,
           storageContainerSasKey: S.optional(S.String),
           storageAccountAccessKey: S.optional(S.String),
-          recurringScans: S.optional(__S(11328, __c354, 0)),
+          recurringScans: S.optional(__S(11296, __c353, 0)),
         }),
       ).annotate({ identifier: "ManagedInstanceVulnerabilityAssessmentProperties" });
     case 1:
@@ -37865,7 +39314,7 @@ function __c344(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           ledgerDigestUploads: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24800, __c775, 0)),
+          properties: S.optional(__S(24704, __c772, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -37886,12 +39335,14 @@ function __c345(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupShortTermRetentionPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBackupShortTermRetentionPolicyByDatabaseRequest" });
@@ -38309,12 +39760,14 @@ function __c348(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/advancedThreatProtectionSettings",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAdvancedThreatProtectionSettingsByDatabaseRequest" });
@@ -38323,21 +39776,17 @@ function __c348(j: number): any {
 function __c349(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(2112, __c66, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(11200, __c350, 0),
+          value: __S(11168, __c349, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseAdvancedThreatProtectionListResult" });
   }
 }
 function __c350(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2112, __c66, 0));
-  }
-}
-function __c351(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38358,17 +39807,17 @@ function __c351(j: number): any {
       ).annotate({ identifier: "ListDatabaseAdvisorByDatabaseRequest" });
   }
 }
-function __c352(j: number): any {
+function __c351(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(1249, __c39, 1));
     case 1:
-      return S.suspend(() => __S(11264, __c352, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(11232, __c351, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDatabaseAdvisorByDatabaseResponse",
       });
   }
 }
-function __c353(j: number): any {
+function __c352(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38378,7 +39827,7 @@ function __c353(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11360, __c355, 0)),
+          properties: S.optional(__S(11328, __c354, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -38390,7 +39839,7 @@ function __c353(j: number): any {
       ).annotate({ identifier: "DatabaseVulnerabilityAssessmentsCreateOrUpdateRequest" });
   }
 }
-function __c354(j: number): any {
+function __c353(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38402,7 +39851,7 @@ function __c354(j: number): any {
       ).annotate({ identifier: "VulnerabilityAssessmentRecurringScansProperties" });
   }
 }
-function __c355(j: number): any {
+function __c354(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38410,7 +39859,7 @@ function __c355(j: number): any {
           storageContainerPath: S.optional(S.String),
           storageContainerSasKey: S.optional(S.String),
           storageAccountAccessKey: S.optional(S.String),
-          recurringScans: S.optional(__S(11328, __c354, 0)),
+          recurringScans: S.optional(__S(11296, __c353, 0)),
         }),
       ).annotate({ identifier: "DatabaseVulnerabilityAssessmentProperties" });
     case 1:
@@ -38420,9 +39869,40 @@ function __c355(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(11360, __c355, 0)),
+          properties: S.optional(__S(11328, __c354, 0)),
         }),
       ).annotate({ identifier: "DatabaseVulnerabilityAssessmentsCreateOrUpdateResponse" });
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListDatabaseBlobAuditingPolicyByDatabaseRequest" });
+    case 1:
+      return S.Array(__S(2849, __c89, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(11361, __c355, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseBlobAuditingPolicyListResult" });
   }
 }
 function __c356(j: number): any {
@@ -38433,61 +39913,34 @@ function __c356(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/auditingSettings",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListDatabaseBlobAuditingPolicyByDatabaseRequest" });
-    case 1:
-      return S.Array(__S(2849, __c89, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(11393, __c356, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseBlobAuditingPolicyListResult" });
-  }
-}
-function __c357(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
           elasticPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/databases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseByElasticPoolRequest" });
   }
 }
-function __c358(j: number): any {
+function __c357(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(1088, __c34, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(11456, __c358, 0),
+          value: __S(11424, __c357, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseListResult" });
   }
 }
-function __c359(j: number): any {
+function __c358(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38496,18 +39949,20 @@ function __c359(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseByServerRequest" });
   }
 }
-function __c360(j: number): any {
+function __c359(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38521,31 +39976,33 @@ function __c360(j: number): any {
           column: S.optional(__S(2880, __c90, 0).pipe(T.Query())),
           orderBy: S.optional(__S(2880, __c90, 0).pipe(T.Query())),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/columns",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseColumnByDatabaseRequest" });
   }
 }
-function __c361(j: number): any {
+function __c360(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(1409, __c44, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(11552, __c361, 0),
+          value: __S(11520, __c360, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatabaseColumnByDatabaseResponse" });
   }
 }
-function __c362(j: number): any {
+function __c361(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38557,18 +40014,20 @@ function __c362(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseColumnByTableRequest" });
   }
 }
-function __c363(j: number): any {
+function __c362(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38577,12 +40036,14 @@ function __c363(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseExtensionByDatabaseRequest" });
@@ -38597,14 +40058,35 @@ function __c363(j: number): any {
         }),
       ).annotate({ identifier: "ImportExportExtensionsOperationResult" });
     case 2:
-      return S.Array(__S(11617, __c363, 1));
+      return S.Array(__S(11585, __c362, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(11618, __c363, 2)),
+          value: __S(11586, __c362, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportExportExtensionsOperationListResult" });
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/inaccessibleDatabases",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListDatabaseInaccessibleByServerRequest" });
   }
 }
 function __c364(j: number): any {
@@ -38615,32 +40097,15 @@ function __c364(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/inaccessibleDatabases",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListDatabaseInaccessibleByServerRequest" });
-  }
-}
-function __c365(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseOperationByDatabaseRequest" });
@@ -38668,7 +40133,7 @@ function __c365(j: number): any {
           estimatedCompletionTime: S.optional(S.String),
           description: S.optional(S.String),
           isCancellable: S.optional(S.Boolean),
-          operationPhaseDetails: S.optional(__S(11681, __c365, 1)),
+          operationPhaseDetails: S.optional(__S(11649, __c364, 1)),
         }),
       ).annotate({ identifier: "DatabaseOperationProperties" });
     case 3:
@@ -38678,21 +40143,21 @@ function __c365(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(11682, __c365, 2)),
+          properties: S.optional(__S(11650, __c364, 2)),
         }),
       ).annotate({ identifier: "DatabaseOperation" });
     case 4:
-      return S.Array(__S(11683, __c365, 3));
+      return S.Array(__S(11651, __c364, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(11684, __c365, 4),
+          value: __S(11652, __c364, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseOperationListResult" });
   }
 }
-function __c366(j: number): any {
+function __c365(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38717,7 +40182,7 @@ function __c366(j: number): any {
       });
   }
 }
-function __c367(j: number): any {
+function __c366(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38727,31 +40192,33 @@ function __c367(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseSchemaByDatabaseRequest" });
   }
 }
-function __c368(j: number): any {
+function __c367(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(1568, __c49, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(11776, __c368, 0),
+          value: __S(11744, __c367, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatabaseSchemaByDatabaseResponse" });
   }
 }
-function __c369(j: number): any {
+function __c368(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38768,7 +40235,7 @@ function __c369(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           dataMaskingPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11808, __c369, 0)),
+          properties: S.optional(__S(11776, __c368, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -38780,7 +40247,7 @@ function __c369(j: number): any {
       ).annotate({ identifier: "DataMaskingPoliciesCreateOrUpdateRequest" });
   }
 }
-function __c370(j: number): any {
+function __c369(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38798,14 +40265,14 @@ function __c370(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(11840, __c370, 0)),
+          properties: S.optional(__S(11808, __c369, 0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataMaskingPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c371(j: number): any {
+function __c370(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -38814,32 +40281,72 @@ function __c371(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseSecurityAlertPolicyByDatabaseRequest" });
   }
 }
-function __c372(j: number): any {
+function __c371(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(6496, __c203, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(11872, __c371, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseSecurityAlertListResult" });
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/baselines",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequest",
+      });
   }
 }
 function __c373(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(7970, __c249, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(11904, __c372, 0)),
+          value: __S(11936, __c373, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DatabaseSecurityAlertListResult" });
+      ).annotate({
+        identifier:
+          "ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponse",
+      });
   }
 }
 function __c374(j: number): any {
@@ -38852,24 +40359,26 @@ function __c374(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          baselineName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/baselines",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/baselines/{baselineName}/rules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
-        identifier:
-          "ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentRequest",
+        identifier: "ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest",
       });
   }
 }
 function __c375(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7970, __c249, 2));
+      return S.Array(__S(8865, __c277, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -38877,8 +40386,7 @@ function __c375(j: number): any {
           nextLink: S.optional(S.String),
         }),
       ).annotate({
-        identifier:
-          "ListDatabaseSqlVulnerabilityAssessmentBaselineBySqlVulnerabilityAssessmentResponse",
+        identifier: "ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineResponse",
       });
   }
 }
@@ -38892,24 +40400,26 @@ function __c376(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          baselineName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/baselines/{baselineName}/rules",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
-        identifier: "ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest",
+        identifier:
+          "ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequest",
       });
   }
 }
 function __c377(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(8865, __c277, 1));
+      return S.Array(__S(1761, __c55, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -38917,7 +40427,8 @@ function __c377(j: number): any {
           nextLink: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ListDatabaseSqlVulnerabilityAssessmentRuleBaselineByBaselineResponse",
+        identifier:
+          "ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponse",
       });
   }
 }
@@ -38931,34 +40442,31 @@ function __c378(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          scanId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/scanResults",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({
-        identifier:
-          "ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsRequest",
-      });
+      ).annotate({ identifier: "ListDatabaseSqlVulnerabilityAssessmentScanResultByScanRequest" });
   }
 }
 function __c379(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1761, __c55, 1));
+      return S.Array(__S(1832, __c57, 8));
     case 1:
       return S.suspend(() =>
         S.Struct({
           value: __S(12128, __c379, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({
-        identifier:
-          "ListDatabaseSqlVulnerabilityAssessmentScanBySqlVulnerabilityAssessmentsResponse",
-      });
+      ).annotate({ identifier: "ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponse" });
   }
 }
 function __c380(j: number): any {
@@ -38970,30 +40478,34 @@ function __c380(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          scanId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/scanResults",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListDatabaseSqlVulnerabilityAssessmentScanResultByScanRequest" });
+      ).annotate({
+        identifier: "ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseRequest",
+      });
   }
 }
 function __c381(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1832, __c57, 8));
+      return S.Array(__S(1889, __c59, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(12192, __c381, 0)),
+          value: __S(12192, __c381, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ListDatabaseSqlVulnerabilityAssessmentScanResultByScanResponse" });
+      ).annotate({
+        identifier: "ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseResponse",
+      });
   }
 }
 function __c382(j: number): any {
@@ -39005,32 +40517,32 @@ function __c382(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sqlVulnerabilityAssessments",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({
-        identifier: "ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseRequest",
-      });
+      ).annotate({ identifier: "ListDatabaseTableBySchemaRequest" });
   }
 }
 function __c383(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1889, __c59, 1));
+      return S.Array(__S(1953, __c61, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           value: __S(12256, __c383, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "ListDatabaseSqlVulnerabilityAssessmentsSettingsByDatabaseResponse",
-      });
+      ).annotate({ identifier: "ListDatabaseTableBySchemaResponse" });
   }
 }
 function __c384(j: number): any {
@@ -39042,30 +40554,30 @@ function __c384(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/schemas/{schemaName}/tables",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListDatabaseTableBySchemaRequest" });
+      ).annotate({ identifier: "ListDatabaseUsageByDatabaseRequest" });
   }
 }
 function __c385(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1953, __c61, 1));
+      return S.Array(__S(9505, __c297, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           value: __S(12320, __c385, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ListDatabaseTableBySchemaResponse" });
+      ).annotate({ identifier: "DatabaseUsageListResult" });
   }
 }
 function __c386(j: number): any {
@@ -39077,28 +40589,30 @@ function __c386(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListDatabaseUsageByDatabaseRequest" });
+      ).annotate({ identifier: "ListDatabaseVulnerabilityAssessmentByDatabaseRequest" });
   }
 }
 function __c387(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(9505, __c297, 1));
+      return S.Array(__S(11329, __c354, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           value: __S(12384, __c387, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DatabaseUsageListResult" });
+      ).annotate({ identifier: "ListDatabaseVulnerabilityAssessmentByDatabaseResponse" });
   }
 }
 function __c388(j: number): any {
@@ -39110,65 +40624,34 @@ function __c388(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListDatabaseVulnerabilityAssessmentByDatabaseRequest" });
-  }
-}
-function __c389(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11361, __c355, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(12448, __c389, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDatabaseVulnerabilityAssessmentByDatabaseResponse" });
-  }
-}
-function __c390(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseVulnerabilityAssessmentScanByDatabaseRequest" });
   }
 }
-function __c391(j: number): any {
+function __c389(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(2209, __c69, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12512, __c391, 0),
+          value: __S(12448, __c389, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatabaseVulnerabilityAssessmentScanByDatabaseResponse" });
   }
 }
-function __c392(j: number): any {
+function __c390(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39195,7 +40678,7 @@ function __c392(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           dataMaskingPolicyName: S.String.pipe(T.Label()),
           dataMaskingRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(12544, __c392, 0)),
+          properties: S.optional(__S(12480, __c390, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -39207,7 +40690,7 @@ function __c392(j: number): any {
       ).annotate({ identifier: "DataMaskingRulesCreateOrUpdateRequest" });
   }
 }
-function __c393(j: number): any {
+function __c391(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39235,12 +40718,12 @@ function __c393(j: number): any {
           systemData: S.optional(__S(96, __c3, 0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(12576, __c393, 0)),
+          properties: S.optional(__S(12512, __c391, 0)),
         }),
       ).annotate({ identifier: "DataMaskingRulesCreateOrUpdateResponse" });
   }
 }
-function __c394(j: number): any {
+function __c392(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39250,27 +40733,29 @@ function __c394(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           dataMaskingPolicyName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataMaskingRuleByDatabaseRequest" });
     case 1:
-      return S.Array(__S(12577, __c393, 1));
+      return S.Array(__S(12513, __c391, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12609, __c394, 1),
+          value: __S(12545, __c392, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataMaskingRuleListResult" });
   }
 }
-function __c395(j: number): any {
+function __c393(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39279,12 +40764,14 @@ function __c395(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/dataWarehouseUserActivities",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataWarehouseUserActivityByDatabaseRequest" });
@@ -39293,10 +40780,43 @@ function __c395(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12641, __c395, 1),
+          value: __S(12577, __c393, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataWarehouseUserActivitiesListResult" });
+  }
+}
+function __c394(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListDeletedServerByLocationRequest" });
+  }
+}
+function __c395(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2368, __c74, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(12640, __c395, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedServerListResult" });
   }
 }
 function __c396(j: number): any {
@@ -39305,49 +40825,20 @@ function __c396(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/deletedServers",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListDeletedServerByLocationRequest" });
-  }
-}
-function __c397(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2368, __c74, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(12704, __c397, 0),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedServerListResult" });
-  }
-}
-function __c398(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/deletedServers",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeletedServersRequest" });
   }
 }
-function __c399(j: number): any {
+function __c397(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39355,12 +40846,14 @@ function __c399(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/distributedAvailabilityGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDistributedAvailabilityGroupByInstanceRequest" });
@@ -39369,13 +40862,13 @@ function __c399(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(12769, __c399, 1)),
+          value: __S(12705, __c397, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupsListResult" });
   }
 }
-function __c400(j: number): any {
+function __c398(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39425,20 +40918,20 @@ function __c400(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(12801, __c400, 1)),
+          properties: S.optional(__S(12737, __c398, 1)),
         }),
       ).annotate({ identifier: "ElasticPoolActivity" });
     case 3:
-      return S.Array(__S(12802, __c400, 2));
+      return S.Array(__S(12738, __c398, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12803, __c400, 3),
+          value: __S(12739, __c398, 3),
         }),
       ).annotate({ identifier: "ElasticPoolActivityListResult" });
   }
 }
-function __c401(j: number): any {
+function __c399(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39447,12 +40940,14 @@ function __c401(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListElasticPoolByServerRequest" });
@@ -39461,13 +40956,13 @@ function __c401(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12833, __c401, 1),
+          value: __S(12769, __c399, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ElasticPoolListResult" });
   }
 }
-function __c402(j: number): any {
+function __c400(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39512,20 +41007,20 @@ function __c402(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(12865, __c402, 1)),
+          properties: S.optional(__S(12801, __c400, 1)),
         }),
       ).annotate({ identifier: "ElasticPoolDatabaseActivity" });
     case 3:
-      return S.Array(__S(12866, __c402, 2));
+      return S.Array(__S(12802, __c400, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12867, __c402, 3),
+          value: __S(12803, __c400, 3),
         }),
       ).annotate({ identifier: "ElasticPoolDatabaseActivityListResult" });
   }
 }
-function __c403(j: number): any {
+function __c401(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39534,12 +41029,14 @@ function __c403(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           elasticPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListElasticPoolOperationByElasticPoolRequest" });
@@ -39569,21 +41066,21 @@ function __c403(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(12897, __c403, 1)),
+          properties: S.optional(__S(12833, __c401, 1)),
         }),
       ).annotate({ identifier: "ElasticPoolOperation" });
     case 3:
-      return S.Array(__S(12898, __c403, 2));
+      return S.Array(__S(12834, __c401, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12899, __c403, 3),
+          value: __S(12835, __c401, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ElasticPoolOperationListResult" });
   }
 }
-function __c404(j: number): any {
+function __c402(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39591,12 +41088,14 @@ function __c404(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/encryptionProtector",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEncryptionProtectorByServerRequest" });
@@ -39605,13 +41104,13 @@ function __c404(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12929, __c404, 1),
+          value: __S(12865, __c402, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionProtectorListResult" });
   }
 }
-function __c405(j: number): any {
+function __c403(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39631,7 +41130,7 @@ function __c405(j: number): any {
       ).annotate({ identifier: "DeleteDatabaseRequest" });
   }
 }
-function __c406(j: number): any {
+function __c404(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39639,12 +41138,14 @@ function __c406(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/endpointCertificates",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEndpointCertificateByInstanceRequest" });
@@ -39653,10 +41154,71 @@ function __c406(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(12993, __c406, 1),
+          value: __S(12929, __c404, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointCertificateListResult" });
+  }
+}
+function __c405(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListExtendedDatabaseBlobAuditingPolicyByDatabaseRequest" });
+    case 1:
+      return S.Array(__S(417, __c13, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(12961, __c405, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtendedDatabaseBlobAuditingPolicyListResult" });
+  }
+}
+function __c406(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListExtendedServerBlobAuditingPolicyByServerRequest" });
+    case 1:
+      return S.Array(__S(2784, __c87, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(12993, __c406, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtendedServerBlobAuditingPolicyListResult" });
   }
 }
 function __c407(j: number): any {
@@ -39667,25 +41229,26 @@ function __c407(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extendedAuditingSettings",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListExtendedDatabaseBlobAuditingPolicyByDatabaseRequest" });
+      ).annotate({ identifier: "ListFailoverGroupByServerRequest" });
     case 1:
-      return S.Array(__S(417, __c13, 1));
+      return S.Array(__S(2944, __c92, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(13025, __c407, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ExtendedDatabaseBlobAuditingPolicyListResult" });
+      ).annotate({ identifier: "FailoverGroupListResult" });
   }
 }
 function __c408(j: number): any {
@@ -39696,24 +41259,26 @@ function __c408(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/extendedAuditingSettings",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListExtendedServerBlobAuditingPolicyByServerRequest" });
+      ).annotate({ identifier: "ListFirewallRuleByServerRequest" });
     case 1:
-      return S.Array(__S(2784, __c87, 0));
+      return S.Array(__S(801, __c25, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(13057, __c408, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ExtendedServerBlobAuditingPolicyListResult" });
+      ).annotate({ identifier: "FirewallRuleListResult" });
   }
 }
 function __c409(j: number): any {
@@ -39724,24 +41289,27 @@ function __c409(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/failoverGroups",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListFailoverGroupByServerRequest" });
+      ).annotate({ identifier: "ListGeoBackupPoliciesRequest" });
     case 1:
-      return S.Array(__S(2944, __c92, 0));
+      return S.Array(__S(961, __c30, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(13089, __c409, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "FailoverGroupListResult" });
+      ).annotate({ identifier: "GeoBackupPolicyListResult" });
   }
 }
 function __c410(j: number): any {
@@ -39751,25 +41319,27 @@ function __c410(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListFirewallRuleByServerRequest" });
+      ).annotate({ identifier: "ListInstanceFailoverGroupByLocationRequest" });
     case 1:
-      return S.Array(__S(801, __c25, 1));
+      return S.Array(__S(3104, __c97, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(13121, __c410, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "FirewallRuleListResult" });
+      ).annotate({ identifier: "InstanceFailoverGroupListResult" });
   }
 }
 function __c411(j: number): any {
@@ -39779,54 +41349,30 @@ function __c411(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/geoBackupPolicies",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListGeoBackupPoliciesRequest" });
-    case 1:
-      return S.Array(__S(961, __c30, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(13153, __c411, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeoBackupPolicyListResult" });
+      ).annotate({ identifier: "ListInstancePoolByResourceGroupRequest" });
   }
 }
 function __c412(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/instanceFailoverGroups",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListInstanceFailoverGroupByLocationRequest" });
+      return S.Array(__S(3200, __c100, 0));
     case 1:
-      return S.Array(__S(3104, __c97, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13185, __c412, 1),
+          value: __S(13184, __c412, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "InstanceFailoverGroupListResult" });
+      ).annotate({ identifier: "InstancePoolListResult" });
   }
 }
 function __c413(j: number): any {
@@ -39836,44 +41382,15 @@ function __c413(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListInstancePoolByResourceGroupRequest" });
-  }
-}
-function __c414(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3200, __c100, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(13248, __c414, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstancePoolListResult" });
-  }
-}
-function __c415(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
           instancePoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInstancePoolOperationByInstancePoolRequest" });
@@ -39882,30 +41399,32 @@ function __c415(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13281, __c415, 1),
+          value: __S(13217, __c413, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePoolOperationListResult" });
   }
 }
-function __c416(j: number): any {
+function __c414(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/instancePools",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInstancePoolsRequest" });
   }
 }
-function __c417(j: number): any {
+function __c415(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39927,7 +41446,7 @@ function __c417(j: number): any {
       ).annotate({ identifier: "CancelJobExecutionRequest" });
   }
 }
-function __c418(j: number): any {
+function __c416(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39950,7 +41469,7 @@ function __c418(j: number): any {
       ).annotate({ identifier: "DeleteDatabaseSqlVulnerabilityAssessmentRuleBaselineRequest" });
   }
 }
-function __c419(j: number): any {
+function __c417(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -39958,12 +41477,14 @@ function __c419(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/ipv6FirewallRules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIPv6FirewallRuleByServerRequest" });
@@ -39972,10 +41493,71 @@ function __c419(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13409, __c419, 1),
+          value: __S(13345, __c417, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IPv6FirewallRuleListResult" });
+  }
+}
+function __c418(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobAgentByServerRequest" });
+    case 1:
+      return S.Array(__S(3488, __c109, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(13377, __c418, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobAgentListResult" });
+  }
+}
+function __c419(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          jobAgentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobByAgentRequest" });
+    case 1:
+      return S.Array(__S(3394, __c106, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(13409, __c419, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobListResult" });
   }
 }
 function __c420(j: number): any {
@@ -39986,70 +41568,15 @@ function __c420(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobAgentByServerRequest" });
-    case 1:
-      return S.Array(__S(3488, __c109, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(13441, __c420, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobAgentListResult" });
-  }
-}
-function __c421(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
           jobAgentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobByAgentRequest" });
-    case 1:
-      return S.Array(__S(3394, __c106, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(13473, __c421, 1),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobListResult" });
-  }
-}
-function __c422(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          jobAgentName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/credentials",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobCredentialsByAgentRequest" });
@@ -40058,13 +41585,13 @@ function __c422(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13505, __c422, 1),
+          value: __S(13441, __c420, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobCredentialListResult" });
   }
 }
-function __c423(j: number): any {
+function __c421(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40080,28 +41607,91 @@ function __c423(j: number): any {
           isActive: S.optional(S.Boolean.pipe(T.Query())),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/executions",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobExecutionByAgentRequest" });
   }
 }
-function __c424(j: number): any {
+function __c422(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(3648, __c114, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13568, __c424, 0),
+          value: __S(13504, __c422, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobExecutionByAgentResponse" });
+  }
+}
+function __c423(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          jobAgentName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          createTimeMin: S.optional(S.String.pipe(T.Query())),
+          createTimeMax: S.optional(S.String.pipe(T.Query())),
+          endTimeMin: S.optional(S.String.pipe(T.Query())),
+          endTimeMax: S.optional(S.String.pipe(T.Query())),
+          isActive: S.optional(S.Boolean.pipe(T.Query())),
+          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobExecutionByJobRequest" });
+  }
+}
+function __c424(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          jobAgentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/privateEndpoints",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobPrivateEndpointByAgentRequest" });
+    case 1:
+      return S.Array(__S(3744, __c117, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(13569, __c424, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobPrivateEndpointListResult" });
   }
 }
 function __c425(j: number): any {
@@ -40114,51 +41704,30 @@ function __c425(j: number): any {
           serverName: S.String.pipe(T.Label()),
           jobAgentName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          createTimeMin: S.optional(S.String.pipe(T.Query())),
-          createTimeMax: S.optional(S.String.pipe(T.Query())),
-          endTimeMin: S.optional(S.String.pipe(T.Query())),
-          endTimeMax: S.optional(S.String.pipe(T.Query())),
-          isActive: S.optional(S.Boolean.pipe(T.Query())),
-          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/steps",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListJobExecutionByJobRequest" });
+      ).annotate({ identifier: "ListJobStepByJobRequest" });
   }
 }
 function __c426(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          jobAgentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/privateEndpoints",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobPrivateEndpointByAgentRequest" });
+      return S.Array(__S(3812, __c119, 4));
     case 1:
-      return S.Array(__S(3744, __c117, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13633, __c426, 1),
+          value: __S(13632, __c426, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "JobPrivateEndpointListResult" });
+      ).annotate({ identifier: "JobStepListResult" });
   }
 }
 function __c427(j: number): any {
@@ -40171,53 +41740,21 @@ function __c427(j: number): any {
           serverName: S.String.pipe(T.Label()),
           jobAgentName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/steps",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobStepByJobRequest" });
-  }
-}
-function __c428(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3812, __c119, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(13696, __c428, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobStepListResult" });
-  }
-}
-function __c429(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          jobAgentName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
           jobVersion: S.Number.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/versions/{jobVersion}/steps",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobStepByVersionRequest" });
   }
 }
-function __c430(j: number): any {
+function __c428(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40235,18 +41772,20 @@ function __c430(j: number): any {
           isActive: S.optional(S.Boolean.pipe(T.Query())),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobStepExecutionByJobExecutionRequest" });
   }
 }
-function __c431(j: number): any {
+function __c429(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40267,7 +41806,7 @@ function __c431(j: number): any {
       ).annotate({ identifier: "DeleteDatabaseVulnerabilityAssessmentRequest" });
   }
 }
-function __c432(j: number): any {
+function __c430(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40285,18 +41824,20 @@ function __c432(j: number): any {
           isActive: S.optional(S.Boolean.pipe(T.Query())),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/targets",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobTargetExecutionByJobExecutionRequest" });
   }
 }
-function __c433(j: number): any {
+function __c431(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40315,15 +41856,71 @@ function __c433(j: number): any {
           isActive: S.optional(S.Boolean.pipe(T.Query())),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/executions/{jobExecutionId}/steps/{stepName}/targets",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobTargetExecutionByStepRequest" });
+  }
+}
+function __c432(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          jobAgentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobTargetGroupByAgentRequest" });
+    case 1:
+      return S.Array(__S(3971, __c124, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(13825, __c432, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobTargetGroupListResult" });
+  }
+}
+function __c433(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          jobAgentName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/versions",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListJobVersionByJobRequest" });
   }
 }
 function __c434(j: number): any {
@@ -40334,82 +41931,34 @@ function __c434(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          jobAgentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/targetGroups",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobTargetGroupByAgentRequest" });
-    case 1:
-      return S.Array(__S(3971, __c124, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(13889, __c434, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobTargetGroupListResult" });
-  }
-}
-function __c435(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          jobAgentName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/jobAgents/{jobAgentName}/jobs/{jobName}/versions",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListJobVersionByJobRequest" });
-  }
-}
-function __c436(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/ledgerDigestUploads",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLedgerDigestUploadByDatabaseRequest" });
   }
 }
-function __c437(j: number): any {
+function __c435(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(4064, __c127, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(13984, __c437, 0),
+          value: __S(13920, __c435, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LedgerDigestUploadsListResult" });
   }
 }
-function __c438(j: number): any {
+function __c436(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40420,31 +41969,33 @@ function __c438(j: number): any {
           longTermRetentionDatabaseName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLongTermRetentionBackupByDatabaseRequest" });
   }
 }
-function __c439(j: number): any {
+function __c437(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(4128, __c129, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(14048, __c439, 0)),
+          value: __S(13984, __c437, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LongTermRetentionBackupListResult" });
   }
 }
-function __c440(j: number): any {
+function __c438(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40453,15 +42004,65 @@ function __c440(j: number): any {
           locationName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLongTermRetentionBackupByLocationRequest" });
+  }
+}
+function __c439(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          longTermRetentionServerName: S.String.pipe(T.Label()),
+          longTermRetentionDatabaseName: S.String.pipe(T.Label()),
+          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
+          databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListLongTermRetentionBackupByResourceGroupDatabaseRequest" });
+  }
+}
+function __c440(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
+          databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionBackups",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListLongTermRetentionBackupByResourceGroupLocationRequest" });
   }
 }
 function __c441(j: number): any {
@@ -40473,64 +42074,22 @@ function __c441(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           locationName: S.String.pipe(T.Label()),
           longTermRetentionServerName: S.String.pipe(T.Label()),
-          longTermRetentionDatabaseName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           databaseState: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionDatabases/{longTermRetentionDatabaseName}/longTermRetentionBackups",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListLongTermRetentionBackupByResourceGroupDatabaseRequest" });
-  }
-}
-function __c442(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
-          databaseState: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionBackups",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListLongTermRetentionBackupByResourceGroupLocationRequest" });
-  }
-}
-function __c443(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          longTermRetentionServerName: S.String.pipe(T.Label()),
-          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
-          databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLongTermRetentionBackupByResourceGroupServerRequest" });
   }
 }
-function __c444(j: number): any {
+function __c442(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40553,7 +42112,7 @@ function __c444(j: number): any {
       ).annotate({ identifier: "DeleteDatabaseVulnerabilityAssessmentRuleBaselineRequest" });
   }
 }
-function __c445(j: number): any {
+function __c443(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40563,15 +42122,54 @@ function __c445(j: number): any {
           longTermRetentionServerName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionServers/{longTermRetentionServerName}/longTermRetentionBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLongTermRetentionBackupByServerRequest" });
+  }
+}
+function __c444(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
+          databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListLongTermRetentionManagedInstanceBackupByDatabaseRequest" });
+  }
+}
+function __c445(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4289, __c134, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(14240, __c445, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedInstanceLongTermRetentionBackupListResult" });
   }
 }
 function __c446(j: number): any {
@@ -40582,55 +42180,22 @@ function __c446(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           locationName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           databaseState: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListLongTermRetentionManagedInstanceBackupByDatabaseRequest" });
-  }
-}
-function __c447(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(4289, __c134, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(14304, __c447, 0),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedInstanceLongTermRetentionBackupListResult" });
-  }
-}
-function __c448(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
-          databaseState: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionManagedInstanceBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLongTermRetentionManagedInstanceBackupByInstanceRequest" });
   }
 }
-function __c449(j: number): any {
+function __c447(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40642,15 +42207,70 @@ function __c449(j: number): any {
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstanceBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLongTermRetentionManagedInstanceBackupByLocationRequest" });
+  }
+}
+function __c448(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
+          databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequest",
+      });
+  }
+}
+function __c449(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
+          databaseState: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionManagedInstanceBackups",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequest",
+      });
   }
 }
 function __c450(j: number): any {
@@ -40661,20 +42281,23 @@ function __c450(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           locationName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           databaseState: S.optional(S.String.pipe(T.Query())),
+          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionDatabases/{databaseName}/longTermRetentionManagedInstanceBackups",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstanceBackups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
-        identifier: "ListLongTermRetentionManagedInstanceBackupByResourceGroupDatabaseRequest",
+        identifier: "ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequest",
       });
   }
 }
@@ -40685,21 +42308,28 @@ function __c451(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
-          databaseState: S.optional(S.String.pipe(T.Query())),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstances/{managedInstanceName}/longTermRetentionManagedInstanceBackups",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({
-        identifier: "ListLongTermRetentionManagedInstanceBackupByResourceGroupInstanceRequest",
-      });
+      ).annotate({ identifier: "ListLongTermRetentionPolicyByDatabaseRequest" });
+    case 1:
+      return S.Array(__S(4384, __c137, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(14433, __c451, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LongTermRetentionPolicyListResult" });
   }
 }
 function __c452(j: number): any {
@@ -40709,52 +42339,32 @@ function __c452(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
-          databaseState: S.optional(S.String.pipe(T.Query())),
-          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/longTermRetentionManagedInstanceBackups",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({
-        identifier: "ListLongTermRetentionManagedInstanceBackupByResourceGroupLocationRequest",
-      });
+      ).annotate({ identifier: "ListManagedBackupShortTermRetentionPolicyByDatabaseRequest" });
   }
 }
 function __c453(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/backupLongTermRetentionPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListLongTermRetentionPolicyByDatabaseRequest" });
+      return S.Array(__S(4608, __c144, 0));
     case 1:
-      return S.Array(__S(4384, __c137, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(14497, __c453, 1),
+          value: __S(14496, __c453, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "LongTermRetentionPolicyListResult" });
+      ).annotate({ identifier: "ListManagedBackupShortTermRetentionPolicyByDatabaseResponse" });
   }
 }
 function __c454(j: number): any {
@@ -40766,45 +42376,14 @@ function __c454(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupShortTermRetentionPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedBackupShortTermRetentionPolicyByDatabaseRequest" });
-  }
-}
-function __c455(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(4608, __c144, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(14560, __c455, 0),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListManagedBackupShortTermRetentionPolicyByDatabaseResponse" });
-  }
-}
-function __c456(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/advancedThreatProtectionSettings",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -40812,7 +42391,7 @@ function __c456(j: number): any {
       });
   }
 }
-function __c457(j: number): any {
+function __c455(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40832,7 +42411,7 @@ function __c457(j: number): any {
       ).annotate({ identifier: "DeleteDistributedAvailabilityGroupRequest" });
   }
 }
-function __c458(j: number): any {
+function __c456(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40840,31 +42419,33 @@ function __c458(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseByInstanceRequest" });
   }
 }
-function __c459(j: number): any {
+function __c457(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(4704, __c147, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(14688, __c459, 0),
+          value: __S(14624, __c457, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedDatabaseListResult" });
   }
 }
-function __c460(j: number): any {
+function __c458(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40878,18 +42459,20 @@ function __c460(j: number): any {
           column: S.optional(__S(2880, __c90, 0).pipe(T.Query())),
           orderBy: S.optional(__S(2880, __c90, 0).pipe(T.Query())),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/columns",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseColumnByDatabaseRequest" });
   }
 }
-function __c461(j: number): any {
+function __c459(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40901,18 +42484,20 @@ function __c461(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables/{tableName}/columns",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseColumnByTableRequest" });
   }
 }
-function __c462(j: number): any {
+function __c460(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40920,18 +42505,20 @@ function __c462(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/inaccessibleManagedDatabases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseInaccessibleByInstanceRequest" });
   }
 }
-function __c463(j: number): any {
+function __c461(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40941,12 +42528,14 @@ function __c463(j: number): any {
           locationName: S.String.pipe(T.Label()),
           onlyLatestPerDatabase: S.optional(S.Boolean.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/managedDatabaseMoveOperationResults",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseMoveOperationByLocationRequest" });
@@ -40955,13 +42544,13 @@ function __c463(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(14817, __c463, 1)),
+          value: __S(14753, __c461, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedDatabaseMoveOperationListResult" });
   }
 }
-function __c464(j: number): any {
+function __c462(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -40974,12 +42563,14 @@ function __c464(j: number): any {
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
           interval: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/queries/{queryId}/statistics",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseQueryByQueryRequest" });
@@ -40990,21 +42581,21 @@ function __c464(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(14884, __c465, 4)),
+          properties: S.optional(__S(14820, __c463, 4)),
         }),
       ).annotate({ identifier: "QueryStatistics" });
     case 2:
-      return S.Array(__S(14849, __c464, 1));
+      return S.Array(__S(14785, __c462, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(14850, __c464, 2),
+          value: __S(14786, __c462, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedInstanceQueryStatistics" });
   }
 }
-function __c465(j: number): any {
+function __c463(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41021,18 +42612,18 @@ function __c465(j: number): any {
         }),
       ).annotate({ identifier: "QueryMetricProperties" });
     case 1:
-      return S.Array(__S(14880, __c465, 0));
+      return S.Array(__S(14816, __c463, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           intervalStartTime: S.optional(S.String),
           intervalType: S.optional(S.String),
           executionCount: S.optional(S.Number),
-          metrics: S.optional(__S(14881, __c465, 1)),
+          metrics: S.optional(__S(14817, __c463, 1)),
         }),
       ).annotate({ identifier: "QueryMetricInterval" });
     case 3:
-      return S.Array(__S(14882, __c465, 2));
+      return S.Array(__S(14818, __c463, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -41040,9 +42631,54 @@ function __c465(j: number): any {
           queryId: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          intervals: S.optional(__S(14883, __c465, 3)),
+          intervals: S.optional(__S(14819, __c463, 3)),
         }),
       ).annotate({ identifier: "QueryStatisticsProperties" });
+  }
+}
+function __c464(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedDatabaseSchemaByDatabaseRequest" });
+  }
+}
+function __c465(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedDatabaseSecurityAlertPolicyByDatabaseRequest" });
   }
 }
 function __c466(j: number): any {
@@ -41055,67 +42691,17 @@ function __c466(j: number): any {
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedDatabaseSchemaByDatabaseRequest" });
-  }
-}
-function __c467(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityAlertPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedDatabaseSecurityAlertPolicyByDatabaseRequest" });
-  }
-}
-function __c468(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(11904, __c372, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedDatabaseSecurityAlertPolicyListResult" });
-  }
-}
-function __c469(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/securityEvents",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseSecurityEventByDatabaseRequest" });
@@ -41142,7 +42728,7 @@ function __c469(j: number): any {
           clientIp: S.optional(S.String),
           applicationName: S.optional(S.String),
           principalName: S.optional(S.String),
-          securityEventSqlInjectionAdditionalProperties: S.optional(__S(15009, __c469, 1)),
+          securityEventSqlInjectionAdditionalProperties: S.optional(__S(14913, __c466, 1)),
         }),
       ).annotate({ identifier: "SecurityEventProperties" });
     case 3:
@@ -41152,21 +42738,21 @@ function __c469(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(15010, __c469, 2)),
+          properties: S.optional(__S(14914, __c466, 2)),
         }),
       ).annotate({ identifier: "SecurityEvent" });
     case 4:
-      return S.Array(__S(15011, __c469, 3));
+      return S.Array(__S(14915, __c466, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15012, __c469, 4),
+          value: __S(14916, __c466, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityEventCollection" });
   }
 }
-function __c470(j: number): any {
+function __c467(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41176,31 +42762,33 @@ function __c470(j: number): any {
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/sensitivityLabels",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseSensitivityLabelByDatabaseRequest" });
   }
 }
-function __c471(j: number): any {
+function __c468(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(5185, __c162, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15072, __c471, 0),
+          value: __S(14976, __c468, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListManagedDatabaseSensitivityLabelByDatabaseResponse" });
   }
 }
-function __c472(j: number): any {
+function __c469(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41220,7 +42808,7 @@ function __c472(j: number): any {
       ).annotate({ identifier: "DeleteElasticPoolRequest" });
   }
 }
-function __c473(j: number): any {
+function __c470(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41232,18 +42820,20 @@ function __c473(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _count: S.optional(S.Boolean.pipe(T.Query("$count"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/currentSensitivityLabels",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseSensitivityLabelCurrentByDatabaseRequest" });
   }
 }
-function __c474(j: number): any {
+function __c471(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41255,15 +42845,94 @@ function __c474(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           includeDisabledRecommendations: S.optional(S.Boolean.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/recommendedSensitivityLabels",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedDatabaseSensitivityLabelRecommendedByDatabaseRequest" });
+  }
+}
+function __c472(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedDatabaseTableBySchemaRequest" });
+  }
+}
+function __c473(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedDatabaseTransparentDataEncryptionByDatabaseRequest" });
+    case 1:
+      return S.Array(__S(5280, __c165, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(15137, __c473, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedTransparentDataEncryptionListResult" });
+  }
+}
+function __c474(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedDatabaseVulnerabilityAssessmentByDatabaseRequest" });
   }
 }
 function __c475(j: number): any {
@@ -41275,17 +42944,18 @@ function __c475(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/schemas/{schemaName}/tables",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedDatabaseTableBySchemaRequest" });
+      ).annotate({ identifier: "ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseRequest" });
   }
 }
 function __c476(j: number): any {
@@ -41296,25 +42966,26 @@ function __c476(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/transparentDataEncryption",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedDatabaseTransparentDataEncryptionByDatabaseRequest" });
+      ).annotate({ identifier: "ListManagedInstanceAdministratorByInstanceRequest" });
     case 1:
-      return S.Array(__S(5280, __c165, 0));
+      return S.Array(__S(5856, __c183, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(15233, __c476, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ManagedTransparentDataEncryptionListResult" });
+      ).annotate({ identifier: "ManagedInstanceAdministratorListResult" });
   }
 }
 function __c477(j: number): any {
@@ -41325,16 +42996,19 @@ function __c477(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/advancedThreatProtectionSettings",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedDatabaseVulnerabilityAssessmentByDatabaseRequest" });
+      ).annotate({
+        identifier: "ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceRequest",
+      });
   }
 }
 function __c478(j: number): any {
@@ -41345,45 +43019,30 @@ function __c478(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedDatabaseVulnerabilityAssessmentScanByDatabaseRequest" });
+      ).annotate({ identifier: "ListManagedInstanceAzureADOnlyAuthenticationByInstanceRequest" });
   }
 }
 function __c479(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/administrators",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedInstanceAdministratorByInstanceRequest" });
+      return S.Array(__S(5984, __c187, 0));
     case 1:
-      return S.Array(__S(5856, __c183, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15329, __c479, 1),
+          value: __S(15328, __c479, 0),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ManagedInstanceAdministratorListResult" });
+      ).annotate({ identifier: "ManagedInstanceAzureADOnlyAuthListResult" });
   }
 }
 function __c480(j: number): any {
@@ -41393,86 +43052,35 @@ function __c480(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/advancedThreatProtectionSettings",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListManagedInstanceAdvancedThreatProtectionSettingsByInstanceRequest",
-      });
-  }
-}
-function __c481(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/azureADOnlyAuthentications",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedInstanceAzureADOnlyAuthenticationByInstanceRequest" });
-  }
-}
-function __c482(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5984, __c187, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(15424, __c482, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedInstanceAzureADOnlyAuthListResult" });
-  }
-}
-function __c483(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
           instancePoolName: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}/managedInstances",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedInstanceByInstancePoolRequest" });
   }
 }
-function __c484(j: number): any {
+function __c481(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(5760, __c180, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15488, __c484, 0),
+          value: __S(15392, __c481, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedInstanceListResult" });
   }
 }
-function __c485(j: number): any {
+function __c482(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41492,7 +43100,7 @@ function __c485(j: number): any {
       ).annotate({ identifier: "DeleteFailoverGroupRequest" });
   }
 }
-function __c486(j: number): any {
+function __c483(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41507,17 +43115,19 @@ function __c486(j: number): any {
           interval: S.optional(S.String.pipe(T.Query())),
           aggregationFunction: S.optional(S.String.pipe(T.Query())),
           observationMetric: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/topqueries",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedInstanceByManagedInstanceRequest" });
     case 1:
-      return S.Array(__S(14884, __c465, 4));
+      return S.Array(__S(14820, __c463, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -41527,18 +43137,99 @@ function __c486(j: number): any {
           intervalType: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          queries: S.optional(__S(15553, __c486, 1)),
+          queries: S.optional(__S(15457, __c483, 1)),
         }),
       ).annotate({ identifier: "TopQueries" });
     case 3:
-      return S.Array(__S(15554, __c486, 2));
+      return S.Array(__S(15458, __c483, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15555, __c486, 3),
+          value: __S(15459, __c483, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopQueriesListResult" });
+  }
+}
+function __c484(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedInstanceByResourceGroupRequest" });
+  }
+}
+function __c485(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dtc",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedInstanceDtcByManagedInstanceRequest" });
+    case 1:
+      return S.Array(__S(6080, __c190, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(15521, __c485, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedInstanceDtcListResult" });
+  }
+}
+function __c486(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedInstanceEncryptionProtectorByInstanceRequest" });
+    case 1:
+      return S.Array(__S(6176, __c193, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(15553, __c486, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedInstanceEncryptionProtectorListResult" });
   }
 }
 function __c487(j: number): any {
@@ -41548,16 +43239,28 @@ function __c487(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          managedInstanceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedInstanceByResourceGroupRequest" });
+      ).annotate({ identifier: "ListManagedInstanceKeyByInstanceRequest" });
+    case 1:
+      return S.Array(__S(6272, __c196, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(15585, __c487, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedInstanceKeyListResult" });
   }
 }
 function __c488(j: number): any {
@@ -41568,24 +43271,27 @@ function __c488(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dtc",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedInstanceDtcByManagedInstanceRequest" });
+      ).annotate({ identifier: "ListManagedInstanceLongTermRetentionPolicyByDatabaseRequest" });
     case 1:
-      return S.Array(__S(6080, __c190, 0));
+      return S.Array(__S(6368, __c199, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(15617, __c488, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ManagedInstanceDtcListResult" });
+      ).annotate({ identifier: "ManagedInstanceLongTermRetentionPolicyListResult" });
   }
 }
 function __c489(j: number): any {
@@ -41596,24 +43302,26 @@ function __c489(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/encryptionProtector",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedInstanceEncryptionProtectorByInstanceRequest" });
+      ).annotate({ identifier: "ListManagedInstanceOperationByManagedInstanceRequest" });
     case 1:
-      return S.Array(__S(6176, __c193, 0));
+      return S.Array(__S(6438, __c201, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(15649, __c489, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ManagedInstanceEncryptionProtectorListResult" });
+      ).annotate({ identifier: "ManagedInstanceOperationListResult" });
   }
 }
 function __c490(j: number): any {
@@ -41624,98 +43332,14 @@ function __c490(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/keys",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedInstanceKeyByInstanceRequest" });
-    case 1:
-      return S.Array(__S(6272, __c196, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(15681, __c490, 1),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedInstanceKeyListResult" });
-  }
-}
-function __c491(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/backupLongTermRetentionPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedInstanceLongTermRetentionPolicyByDatabaseRequest" });
-    case 1:
-      return S.Array(__S(6368, __c199, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(15713, __c491, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedInstanceLongTermRetentionPolicyListResult" });
-  }
-}
-function __c492(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/operations",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedInstanceOperationByManagedInstanceRequest" });
-    case 1:
-      return S.Array(__S(6438, __c201, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(15745, __c492, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedInstanceOperationListResult" });
-  }
-}
-function __c493(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/outboundNetworkDependenciesEndpoints",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -41728,35 +43352,35 @@ function __c493(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(15777, __c493, 1));
+      return S.Array(__S(15681, __c490, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(__S(15778, __c493, 2)),
+          endpointDetails: S.optional(__S(15682, __c490, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(15779, __c493, 3));
+      return S.Array(__S(15683, __c490, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(15780, __c493, 4)),
+          endpoints: S.optional(__S(15684, __c490, 4)),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpoint" });
     case 6:
-      return S.Array(__S(15781, __c493, 5));
+      return S.Array(__S(15685, __c490, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15782, __c493, 6),
+          value: __S(15686, __c490, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpointCollection" });
   }
 }
-function __c494(j: number): any {
+function __c491(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41764,12 +43388,14 @@ function __c494(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -41780,13 +43406,13 @@ function __c494(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15809, __c494, 1),
+          value: __S(15713, __c491, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedInstancePrivateEndpointConnectionListResult" });
   }
 }
-function __c495(j: number): any {
+function __c492(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41794,31 +43420,33 @@ function __c495(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/privateLinkResources",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedInstancePrivateLinkResourceByManagedInstanceRequest" });
   }
 }
-function __c496(j: number): any {
+function __c493(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(6689, __c209, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15872, __c496, 0),
+          value: __S(15776, __c493, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedInstancePrivateLinkListResult" });
   }
 }
-function __c497(j: number): any {
+function __c494(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -41838,22 +43466,80 @@ function __c497(j: number): any {
       ).annotate({ identifier: "DeleteFirewallRuleRequest" });
   }
 }
-function __c498(j: number): any {
+function __c495(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/managedInstances",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedInstancesRequest" });
+  }
+}
+function __c496(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedInstanceVulnerabilityAssessmentByInstanceRequest" });
+  }
+}
+function __c497(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6753, __c211, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(15904, __c497, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedInstanceVulnerabilityAssessmentListResult" });
+  }
+}
+function __c498(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/ledgerDigestUploads",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedLedgerDigestUploadByDatabaseRequest" });
   }
 }
 function __c499(j: number): any {
@@ -41864,28 +43550,51 @@ function __c499(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
+          restorableDroppedDatabaseId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/vulnerabilityAssessments",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedInstanceVulnerabilityAssessmentByInstanceRequest" });
+      ).annotate({
+        identifier:
+          "ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseRequest",
+      });
   }
 }
 function __c500(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6753, __c211, 1));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16000, __c500, 0),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListManagedServerDnsAliasByManagedInstanceRequest" });
+    case 1:
+      return S.Array(__S(6880, __c215, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16001, __c500, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ManagedInstanceVulnerabilityAssessmentListResult" });
+      ).annotate({ identifier: "ManagedServerDnsAliasListResult" });
   }
 }
 function __c501(j: number): any {
@@ -41896,16 +43605,17 @@ function __c501(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/databases/{databaseName}/ledgerDigestUploads",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListManagedLedgerDigestUploadByDatabaseRequest" });
+      ).annotate({ identifier: "ListManagedServerSecurityAlertPolicyByInstanceRequest" });
   }
 }
 function __c502(j: number): any {
@@ -41915,83 +43625,15 @@ function __c502(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-          restorableDroppedDatabaseId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases/{restorableDroppedDatabaseId}/backupShortTermRetentionPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "ListManagedRestorableDroppedDatabaseBackupShortTermRetentionPolicyByRestorableDroppedDatabaseRequest",
-      });
-  }
-}
-function __c503(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/dnsAliases",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedServerDnsAliasByManagedInstanceRequest" });
-    case 1:
-      return S.Array(__S(6880, __c215, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16097, __c503, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedServerDnsAliasListResult" });
-  }
-}
-function __c504(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/securityAlertPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListManagedServerSecurityAlertPolicyByInstanceRequest" });
-  }
-}
-function __c505(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/networkSecurityPerimeterConfigurations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterConfigurationByServerRequest" });
@@ -42000,22 +43642,25 @@ function __c505(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16161, __c505, 1),
+          value: __S(16065, __c502, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationListResult" });
   }
 }
-function __c506(j: number): any {
+function __c503(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Sql/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -42034,23 +43679,23 @@ function __c506(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(16193, __c506, 1)),
+          display: S.optional(__S(16097, __c503, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(16194, __c506, 2)),
+          properties: S.optional(__S(16098, __c503, 2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(16195, __c506, 3));
+      return S.Array(__S(16099, __c503, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(16196, __c506, 4)),
+          value: __S(16100, __c503, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c507(j: number): any {
+function __c504(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42058,12 +43703,14 @@ function __c507(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/outboundFirewallRules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOutboundFirewallRuleByServerRequest" });
@@ -42072,13 +43719,13 @@ function __c507(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16225, __c507, 1),
+          value: __S(16129, __c504, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundFirewallRuleListResult" });
   }
 }
-function __c508(j: number): any {
+function __c505(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42086,12 +43733,14 @@ function __c508(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByServerRequest" });
@@ -42100,13 +43749,13 @@ function __c508(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16257, __c508, 1),
+          value: __S(16161, __c505, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c509(j: number): any {
+function __c506(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42126,7 +43775,7 @@ function __c509(j: number): any {
       ).annotate({ identifier: "DeleteInstanceFailoverGroupRequest" });
   }
 }
-function __c510(j: number): any {
+function __c507(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42134,18 +43783,20 @@ function __c510(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/privateLinkResources",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByServerRequest" });
   }
 }
-function __c511(j: number): any {
+function __c508(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42167,9 +43818,74 @@ function __c511(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16353, __c511, 1),
+          value: __S(16257, __c508, 1),
         }),
       ).annotate({ identifier: "RecoverableDatabaseListResult" });
+  }
+}
+function __c509(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/recoverableDatabases",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListRecoverableManagedDatabaseByInstanceRequest" });
+    case 1:
+      return S.Array(__S(7457, __c233, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16289, __c509, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecoverableManagedDatabaseListResult" });
+  }
+}
+function __c510(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListReplicationLinkByDatabaseRequest" });
+  }
+}
+function __c511(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7520, __c235, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16352, __c511, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicationLinkListResult" });
   }
 }
 function __c512(j: number): any {
@@ -42179,25 +43895,18 @@ function __c512(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/recoverableDatabases",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/replicationLinks",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListRecoverableManagedDatabaseByInstanceRequest" });
-    case 1:
-      return S.Array(__S(7457, __c233, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16385, __c512, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecoverableManagedDatabaseListResult" });
+      ).annotate({ identifier: "ListReplicationLinkByServerRequest" });
   }
 }
 function __c513(j: number): any {
@@ -42208,29 +43917,56 @@ function __c513(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListReplicationLinkByDatabaseRequest" });
+      ).annotate({ identifier: "ListRestorableDroppedDatabaseByServerRequest" });
+    case 1:
+      return S.Array(__S(7617, __c238, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16417, __c513, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestorableDroppedDatabaseListResult" });
   }
 }
 function __c514(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7520, __c235, 0));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16448, __c514, 0),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListRestorableDroppedManagedDatabaseByInstanceRequest" });
+    case 1:
+      return S.Array(__S(7681, __c240, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16449, __c514, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ReplicationLinkListResult" });
+      ).annotate({ identifier: "RestorableDroppedManagedDatabaseListResult" });
   }
 }
 function __c515(j: number): any {
@@ -42241,15 +43977,27 @@ function __c515(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/replicationLinks",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListReplicationLinkByServerRequest" });
+      ).annotate({ identifier: "ListRestorePointByDatabaseRequest" });
+    case 1:
+      return S.Array(__S(7744, __c242, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16481, __c515, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestorePointListResult" });
   }
 }
 function __c516(j: number): any {
@@ -42260,105 +44008,22 @@ function __c516(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/restorableDroppedDatabases",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRestorableDroppedDatabaseByServerRequest" });
-    case 1:
-      return S.Array(__S(7617, __c238, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16513, __c516, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestorableDroppedDatabaseListResult" });
-  }
-}
-function __c517(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/restorableDroppedDatabases",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRestorableDroppedManagedDatabaseByInstanceRequest" });
-    case 1:
-      return S.Array(__S(7681, __c240, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16545, __c517, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestorableDroppedManagedDatabaseListResult" });
-  }
-}
-function __c518(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRestorePointByDatabaseRequest" });
-    case 1:
-      return S.Array(__S(7744, __c242, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16577, __c518, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestorePointListResult" });
-  }
-}
-function __c519(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/sensitivityLabels",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSensitivityLabelByDatabaseRequest" });
   }
 }
-function __c520(j: number): any {
+function __c517(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42370,18 +44035,20 @@ function __c520(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _count: S.optional(S.Boolean.pipe(T.Query("$count"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/currentSensitivityLabels",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSensitivityLabelCurrentByDatabaseRequest" });
   }
 }
-function __c521(j: number): any {
+function __c518(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42400,7 +44067,7 @@ function __c521(j: number): any {
       ).annotate({ identifier: "DeleteInstancePoolRequest" });
   }
 }
-function __c522(j: number): any {
+function __c519(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42412,18 +44079,20 @@ function __c522(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           includeDisabledRecommendations: S.optional(S.Boolean.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/recommendedSensitivityLabels",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSensitivityLabelRecommendedByDatabaseRequest" });
   }
 }
-function __c523(j: number): any {
+function __c520(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42431,25 +44100,20 @@ function __c523(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/advancedThreatProtectionSettings",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerAdvancedThreatProtectionSettingsByServerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(11200, __c350, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogicalServerAdvancedThreatProtectionListResult" });
   }
 }
-function __c524(j: number): any {
+function __c521(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42469,7 +44133,7 @@ function __c524(j: number): any {
       ).annotate({ identifier: "ListServerAdvisorByServerRequest" });
   }
 }
-function __c525(j: number): any {
+function __c522(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42477,12 +44141,14 @@ function __c525(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/administrators",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerAzureADAdministratorByServerRequest" });
@@ -42491,13 +44157,13 @@ function __c525(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(16801, __c525, 1)),
+          value: __S(16705, __c522, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdministratorListResult" });
   }
 }
-function __c526(j: number): any {
+function __c523(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42505,15 +44171,81 @@ function __c526(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/azureADOnlyAuthentications",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerAzureADOnlyAuthenticationByServerRequest" });
+  }
+}
+function __c524(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListServerBlobAuditingPolicyByServerRequest" });
+    case 1:
+      return S.Array(__S(8288, __c259, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16769, __c524, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServerBlobAuditingPolicyListResult" });
+  }
+}
+function __c525(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListServerByResourceGroupRequest" });
+  }
+}
+function __c526(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7840, __c245, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(16832, __c526, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServerListResult" });
   }
 }
 function __c527(j: number): any {
@@ -42523,25 +44255,27 @@ function __c527(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/auditingSettings",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverConfigurationOptions",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListServerBlobAuditingPolicyByServerRequest" });
+      ).annotate({ identifier: "ListServerConfigurationOptionByManagedInstanceRequest" });
     case 1:
-      return S.Array(__S(8288, __c259, 0));
+      return S.Array(__S(8384, __c262, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(16865, __c527, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ServerBlobAuditingPolicyListResult" });
+      ).annotate({ identifier: "ServerConfigurationOptionListResult" });
   }
 }
 function __c528(j: number): any {
@@ -42551,73 +44285,15 @@ function __c528(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServerByResourceGroupRequest" });
-  }
-}
-function __c529(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7840, __c245, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16928, __c529, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServerListResult" });
-  }
-}
-function __c530(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverConfigurationOptions",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServerConfigurationOptionByManagedInstanceRequest" });
-    case 1:
-      return S.Array(__S(8384, __c262, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(16961, __c530, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServerConfigurationOptionListResult" });
-  }
-}
-function __c531(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/connectionPolicies",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerConnectionPolicyByServerRequest" });
@@ -42626,13 +44302,13 @@ function __c531(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(16993, __c531, 1),
+          value: __S(16897, __c528, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerConnectionPolicyListResult" });
   }
 }
-function __c532(j: number): any {
+function __c529(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42640,12 +44316,14 @@ function __c532(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/devOpsAuditingSettings",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerDevOpsAuditSettingsByServerRequest" });
@@ -42654,13 +44332,13 @@ function __c532(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(17025, __c532, 1)),
+          value: __S(16929, __c529, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerDevOpsAuditSettingsListResult" });
   }
 }
-function __c533(j: number): any {
+function __c530(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42680,7 +44358,7 @@ function __c533(j: number): any {
       ).annotate({ identifier: "DeleteIPv6FirewallRuleRequest" });
   }
 }
-function __c534(j: number): any {
+function __c531(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42688,12 +44366,14 @@ function __c534(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/dnsAliases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerDnsAliasByServerRequest" });
@@ -42702,13 +44382,13 @@ function __c534(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17089, __c534, 1),
+          value: __S(16993, __c531, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerDnsAliasListResult" });
   }
 }
-function __c535(j: number): any {
+function __c532(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42716,12 +44396,14 @@ function __c535(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/keys",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerKeyByServerRequest" });
@@ -42730,13 +44412,13 @@ function __c535(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17121, __c535, 1),
+          value: __S(17025, __c532, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerKeyListResult" });
   }
 }
-function __c536(j: number): any {
+function __c533(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42744,12 +44426,14 @@ function __c536(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerOperationByServerRequest" });
@@ -42778,18 +44462,89 @@ function __c536(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(17153, __c536, 1)),
+          properties: S.optional(__S(17057, __c533, 1)),
         }),
       ).annotate({ identifier: "ServerOperation" });
     case 3:
-      return S.Array(__S(17154, __c536, 2));
+      return S.Array(__S(17058, __c533, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17155, __c536, 3),
+          value: __S(17059, __c533, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerOperationListResult" });
+  }
+}
+function __c534(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListServersRequest" });
+  }
+}
+function __c535(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListServerSecurityAlertPolicyByServerRequest" });
+  }
+}
+function __c536(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListServerTrustCertificateByInstanceRequest" });
+    case 1:
+      return S.Array(__S(8992, __c281, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(17153, __c536, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServerTrustCertificatesListResult" });
   }
 }
 function __c537(j: number): any {
@@ -42798,35 +44553,32 @@ function __c537(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListServersRequest" });
+      ).annotate({ identifier: "ListServerTrustGroupByInstanceRequest" });
   }
 }
 function __c538(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(9088, __c284, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/securityAlertPolicies",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServerSecurityAlertPolicyByServerRequest" });
+          value: __S(17216, __c538, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServerTrustGroupListResult" });
   }
 }
 function __c539(j: number): any {
@@ -42836,79 +44588,21 @@ function __c539(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServerTrustCertificateByInstanceRequest" });
-    case 1:
-      return S.Array(__S(8992, __c281, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(17249, __c539, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServerTrustCertificatesListResult" });
-  }
-}
-function __c540(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustGroups",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServerTrustGroupByInstanceRequest" });
-  }
-}
-function __c541(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(9088, __c284, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(17312, __c541, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServerTrustGroupListResult" });
-  }
-}
-function __c542(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
           locationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/locations/{locationName}/serverTrustGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerTrustGroupByLocationRequest" });
   }
 }
-function __c543(j: number): any {
+function __c540(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42938,16 +44632,16 @@ function __c543(j: number): any {
         }),
       ).annotate({ identifier: "ServerUsage" });
     case 2:
-      return S.Array(__S(17377, __c543, 1));
+      return S.Array(__S(17281, __c540, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17378, __c543, 2),
+          value: __S(17282, __c540, 2),
         }),
       ).annotate({ identifier: "ServerUsageListResult" });
   }
 }
-function __c544(j: number): any {
+function __c541(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42955,18 +44649,20 @@ function __c544(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/vulnerabilityAssessments",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerVulnerabilityAssessmentByServerRequest" });
   }
 }
-function __c545(j: number): any {
+function __c542(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -42986,7 +44682,7 @@ function __c545(j: number): any {
       ).annotate({ identifier: "CancelManagedInstanceOperationRequest" });
   }
 }
-function __c546(j: number): any {
+function __c543(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43007,7 +44703,7 @@ function __c546(j: number): any {
       ).annotate({ identifier: "DeleteJobRequest" });
   }
 }
-function __c547(j: number): any {
+function __c544(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43017,12 +44713,14 @@ function __c547(j: number): any {
           serverName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
           systemDatabaseName: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/baselines",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -43030,7 +44728,7 @@ function __c547(j: number): any {
       });
   }
 }
-function __c548(j: number): any {
+function __c545(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43041,18 +44739,20 @@ function __c548(j: number): any {
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
           baselineName: S.String.pipe(T.Label()),
           systemDatabaseName: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/baselines/{baselineName}/rules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVulnerabilityAssessmentRuleBaselineByBaselineRequest" });
   }
 }
-function __c549(j: number): any {
+function __c546(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43062,12 +44762,14 @@ function __c549(j: number): any {
           serverName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
           systemDatabaseName: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -43075,7 +44777,7 @@ function __c549(j: number): any {
       });
   }
 }
-function __c550(j: number): any {
+function __c547(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43086,15 +44788,88 @@ function __c550(j: number): any {
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
           scanId: S.String.pipe(T.Label()),
           systemDatabaseName: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/scanResults",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVulnerabilityAssessmentScanResultByScanRequest" });
+  }
+}
+function __c548(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListSqlVulnerabilityAssessmentsSettingsByServerRequest" });
+  }
+}
+function __c549(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          managedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/startStopSchedules",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListStartStopManagedInstanceScheduleByInstanceRequest" });
+    case 1:
+      return S.Array(__S(9443, __c295, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(17569, __c549, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartStopManagedInstanceScheduleListResult" });
+  }
+}
+function __c550(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/usages",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListSubscriptionUsageByLocationRequest" });
   }
 }
 function __c551(j: number): any {
@@ -43105,78 +44880,15 @@ function __c551(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/sqlVulnerabilityAssessments",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListSqlVulnerabilityAssessmentsSettingsByServerRequest" });
-  }
-}
-function __c552(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          managedInstanceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/startStopSchedules",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListStartStopManagedInstanceScheduleByInstanceRequest" });
-    case 1:
-      return S.Array(__S(9443, __c295, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(17665, __c552, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StartStopManagedInstanceScheduleListResult" });
-  }
-}
-function __c553(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/usages",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListSubscriptionUsageByLocationRequest" });
-  }
-}
-function __c554(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/linkWorkspaces",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSynapseLinkWorkspaceByDatabaseRequest" });
@@ -43188,11 +44900,11 @@ function __c554(j: number): any {
         }),
       ).annotate({ identifier: "SynapseLinkWorkspaceInfoProperties" });
     case 2:
-      return S.Array(__S(17729, __c554, 1));
+      return S.Array(__S(17633, __c551, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workspaces: S.optional(__S(17730, __c554, 2)),
+          workspaces: S.optional(__S(17634, __c551, 2)),
         }),
       ).annotate({ identifier: "SynapseLinkWorkspaceProperties" });
     case 4:
@@ -43202,21 +44914,21 @@ function __c554(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(17731, __c554, 3)),
+          properties: S.optional(__S(17635, __c551, 3)),
         }),
       ).annotate({ identifier: "SynapseLinkWorkspace" });
     case 5:
-      return S.Array(__S(17732, __c554, 4));
+      return S.Array(__S(17636, __c551, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17733, __c554, 5),
+          value: __S(17637, __c551, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SynapseLinkWorkspaceListResult" });
   }
 }
-function __c555(j: number): any {
+function __c552(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43224,12 +44936,14 @@ function __c555(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSyncAgentByServerRequest" });
@@ -43238,13 +44952,13 @@ function __c555(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17761, __c555, 1),
+          value: __S(17665, __c552, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncAgentListResult" });
   }
 }
-function __c556(j: number): any {
+function __c553(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43253,12 +44967,14 @@ function __c556(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           syncAgentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/syncAgents/{syncAgentName}/linkedDatabases",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSyncAgentLinkedDatabasesRequest" });
@@ -43280,21 +44996,21 @@ function __c556(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(17793, __c556, 1)),
+          properties: S.optional(__S(17697, __c553, 1)),
         }),
       ).annotate({ identifier: "SyncAgentLinkedDatabase" });
     case 3:
-      return S.Array(__S(17794, __c556, 2));
+      return S.Array(__S(17698, __c553, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17795, __c556, 3),
+          value: __S(17699, __c553, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncAgentLinkedDatabaseListResult" });
   }
 }
-function __c557(j: number): any {
+function __c554(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43314,7 +45030,7 @@ function __c557(j: number): any {
       ).annotate({ identifier: "DeleteJobAgentRequest" });
   }
 }
-function __c558(j: number): any {
+function __c555(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43323,12 +45039,14 @@ function __c558(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSyncGroupByDatabaseRequest" });
@@ -43337,13 +45055,13 @@ function __c558(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17857, __c558, 1),
+          value: __S(17761, __c555, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncGroupListResult" });
   }
 }
-function __c559(j: number): any {
+function __c556(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43353,18 +45071,20 @@ function __c559(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/hubSchemas",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSyncGroupHubSchemasRequest" });
   }
 }
-function __c560(j: number): any {
+function __c557(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43379,11 +45099,11 @@ function __c560(j: number): any {
         }),
       ).annotate({ identifier: "SyncFullSchemaTableColumn" });
     case 1:
-      return S.Array(__S(17920, __c560, 0));
+      return S.Array(__S(17824, __c557, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(17921, __c560, 1)),
+          columns: S.optional(__S(17825, __c557, 1)),
           errorId: S.optional(S.String),
           hasError: S.optional(S.Boolean),
           name: S.optional(S.String),
@@ -43391,26 +45111,26 @@ function __c560(j: number): any {
         }),
       ).annotate({ identifier: "SyncFullSchemaTable" });
     case 3:
-      return S.Array(__S(17922, __c560, 2));
+      return S.Array(__S(17826, __c557, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tables: S.optional(__S(17923, __c560, 3)),
+          tables: S.optional(__S(17827, __c557, 3)),
           lastUpdateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncFullSchemaProperties" });
     case 5:
-      return S.Array(__S(17924, __c560, 4));
+      return S.Array(__S(17828, __c557, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17925, __c560, 5),
+          value: __S(17829, __c557, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSyncGroupHubSchemasResponse" });
   }
 }
-function __c561(j: number): any {
+function __c558(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43424,12 +45144,14 @@ function __c561(j: number): any {
           endTime: S.String.pipe(T.Query()),
           type: S.String.pipe(T.Query()),
           continuationToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/logs",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSyncGroupLogsRequest" });
@@ -43445,14 +45167,99 @@ function __c561(j: number): any {
         }),
       ).annotate({ identifier: "SyncGroupLogProperties" });
     case 2:
-      return S.Array(__S(17953, __c561, 1));
+      return S.Array(__S(17857, __c558, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17954, __c561, 2),
+          value: __S(17858, __c558, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncGroupLogListResult" });
+  }
+}
+function __c559(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/syncDatabaseIds",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListSyncGroupSyncDatabaseIdsRequest" });
+    case 1:
+      return S.Array(__S(5664, __c177, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(17889, __c559, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SyncDatabaseIdListResult" });
+  }
+}
+function __c560(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListSyncMemberBySyncGroupRequest" });
+    case 1:
+      return S.Array(__S(9760, __c305, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(17921, __c560, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SyncMemberListResult" });
+  }
+}
+function __c561(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          serverName: S.String.pipe(T.Label()),
+          databaseName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          syncMemberName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/schemas",
+            code: 200,
+            apiVersion: "2025-01-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListSyncMemberMemberSchemasRequest" });
   }
 }
 function __c562(j: number): any {
@@ -43462,24 +45269,26 @@ function __c562(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           locationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/syncDatabaseIds",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListSyncGroupSyncDatabaseIdsRequest" });
+      ).annotate({ identifier: "ListTimeZoneByLocationRequest" });
     case 1:
-      return S.Array(__S(5664, __c177, 0));
+      return S.Array(__S(9857, __c308, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(17985, __c562, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SyncDatabaseIdListResult" });
+      ).annotate({ identifier: "TimeZoneListResult" });
   }
 }
 function __c563(j: number): any {
@@ -43491,25 +45300,26 @@ function __c563(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListSyncMemberBySyncGroupRequest" });
+      ).annotate({ identifier: "ListTransparentDataEncryptionByDatabaseRequest" });
     case 1:
-      return S.Array(__S(9760, __c305, 0));
+      return S.Array(__S(9920, __c310, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(18017, __c563, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SyncMemberListResult" });
+      ).annotate({ identifier: "LogicalDatabaseTransparentDataEncryptionListResult" });
   }
 }
 function __c564(j: number): any {
@@ -43519,92 +45329,16 @@ function __c564(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          syncMemberName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/syncGroups/{syncGroupName}/syncMembers/{syncMemberName}/schemas",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListSyncMemberMemberSchemasRequest" });
-  }
-}
-function __c565(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationName}/timeZones",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListTimeZoneByLocationRequest" });
-    case 1:
-      return S.Array(__S(9857, __c308, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(18081, __c565, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZoneListResult" });
-  }
-}
-function __c566(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          serverName: S.String.pipe(T.Label()),
-          databaseName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListTransparentDataEncryptionByDatabaseRequest" });
-    case 1:
-      return S.Array(__S(9920, __c310, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(18113, __c566, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogicalDatabaseTransparentDataEncryptionListResult" });
-  }
-}
-function __c567(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
           instancePoolName: S.String.pipe(T.Label()),
           expandChildren: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/instancePools/{instancePoolName}/usages",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsageByInstancePoolRequest" });
@@ -43619,7 +45353,7 @@ function __c567(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(__S(18145, __c567, 1)),
+          name: S.optional(__S(18049, __c564, 1)),
           type: S.optional(S.String),
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
@@ -43628,48 +45362,50 @@ function __c567(j: number): any {
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(__S(18146, __c567, 2));
+      return S.Array(__S(18050, __c564, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18147, __c567, 3),
+          value: __S(18051, __c564, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
   }
 }
-function __c568(j: number): any {
+function __c565(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/virtualClusters",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualClusterByResourceGroupRequest" });
   }
 }
-function __c569(j: number): any {
+function __c566(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(10016, __c313, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18208, __c569, 0),
+          value: __S(18112, __c566, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualClusterListResult" });
   }
 }
-function __c570(j: number): any {
+function __c567(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43690,24 +45426,26 @@ function __c570(j: number): any {
       ).annotate({ identifier: "DeleteJobCredentialsRequest" });
   }
 }
-function __c571(j: number): any {
+function __c568(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Sql/virtualClusters",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualClustersRequest" });
   }
 }
-function __c572(j: number): any {
+function __c569(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43715,12 +45453,14 @@ function __c572(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/virtualNetworkRules",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkRuleByServerRequest" });
@@ -43729,13 +45469,13 @@ function __c572(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18305, __c572, 1),
+          value: __S(18209, __c569, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkRuleListResult" });
   }
 }
-function __c573(j: number): any {
+function __c570(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43745,12 +45485,14 @@ function __c573(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           workloadGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups/{workloadGroupName}/workloadClassifiers",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadClassifierByWorkloadGroupRequest" });
@@ -43759,13 +45501,13 @@ function __c573(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18337, __c573, 1),
+          value: __S(18241, __c570, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadClassifierListResult" });
   }
 }
-function __c574(j: number): any {
+function __c571(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43774,12 +45516,14 @@ function __c574(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/workloadGroups",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadGroupByDatabaseRequest" });
@@ -43788,13 +45532,13 @@ function __c574(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18369, __c574, 1),
+          value: __S(18273, __c571, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadGroupListResult" });
   }
 }
-function __c575(j: number): any {
+function __c572(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43815,7 +45559,7 @@ function __c575(j: number): any {
       ).annotate({ identifier: "LockLongTermRetentionBackupTimeBasedImmutabilityRequest" });
   }
 }
-function __c576(j: number): any {
+function __c573(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43830,7 +45574,7 @@ function __c576(j: number): any {
       ).annotate({ identifier: "LockLongTermRetentionBackupTimeBasedImmutabilityResponse" });
   }
 }
-function __c577(j: number): any {
+function __c574(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43854,7 +45598,7 @@ function __c577(j: number): any {
       });
   }
 }
-function __c578(j: number): any {
+function __c575(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43877,7 +45621,7 @@ function __c578(j: number): any {
       ).annotate({ identifier: "LongTermRetentionBackupsChangeAccessTierRequest" });
   }
 }
-function __c579(j: number): any {
+function __c576(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43901,7 +45645,7 @@ function __c579(j: number): any {
       ).annotate({ identifier: "LongTermRetentionBackupsChangeAccessTierByResourceGroupRequest" });
   }
 }
-function __c580(j: number): any {
+function __c577(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43935,7 +45679,7 @@ function __c580(j: number): any {
       ).annotate({ identifier: "LongTermRetentionPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c581(j: number): any {
+function __c578(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43957,7 +45701,7 @@ function __c581(j: number): any {
       ).annotate({ identifier: "MaintenanceWindowsCreateOrUpdateRequest" });
   }
 }
-function __c582(j: number): any {
+function __c579(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -43978,7 +45722,7 @@ function __c582(j: number): any {
       ).annotate({ identifier: "DeleteJobPrivateEndpointRequest" });
   }
 }
-function __c583(j: number): any {
+function __c580(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44000,7 +45744,7 @@ function __c583(j: number): any {
       ).annotate({ identifier: "ManagedBackupShortTermRetentionPoliciesCreateOrUpdateRequest" });
   }
 }
-function __c584(j: number): any {
+function __c581(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44016,7 +45760,7 @@ function __c584(j: number): any {
       ).annotate({ identifier: "ManagedBackupShortTermRetentionPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c585(j: number): any {
+function __c582(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44040,7 +45784,7 @@ function __c585(j: number): any {
       });
   }
 }
-function __c586(j: number): any {
+function __c583(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44061,7 +45805,7 @@ function __c586(j: number): any {
       ).annotate({ identifier: "ManagedDatabasesCancelMoveRequest" });
   }
 }
-function __c587(j: number): any {
+function __c584(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44072,7 +45816,7 @@ function __c587(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(18848, __c589, 0)),
+          properties: S.optional(__S(18752, __c586, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44084,7 +45828,7 @@ function __c587(j: number): any {
       ).annotate({ identifier: "ManagedDatabasesCreateOrUpdateRequest" });
   }
 }
-function __c588(j: number): any {
+function __c585(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44102,7 +45846,7 @@ function __c588(j: number): any {
       ).annotate({ identifier: "ManagedDatabasesCreateOrUpdateResponse" });
   }
 }
-function __c589(j: number): any {
+function __c586(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44129,7 +45873,7 @@ function __c589(j: number): any {
       ).annotate({ identifier: "ManagedDatabasePropertiesInput" });
   }
 }
-function __c590(j: number): any {
+function __c587(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44151,7 +45895,7 @@ function __c590(j: number): any {
       ).annotate({ identifier: "ManagedDatabaseSecurityAlertPoliciesCreateOrUpdateRequest" });
   }
 }
-function __c591(j: number): any {
+function __c588(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44164,7 +45908,7 @@ function __c591(j: number): any {
           tableName: S.String.pipe(T.Label()),
           columnName: S.String.pipe(T.Label()),
           sensitivityLabelSource: S.String.pipe(T.Label()),
-          properties: S.optional(__S(18944, __c592, 0)),
+          properties: S.optional(__S(18848, __c589, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44176,7 +45920,7 @@ function __c591(j: number): any {
       ).annotate({ identifier: "ManagedDatabaseSensitivityLabelsCreateOrUpdateRequest" });
   }
 }
-function __c592(j: number): any {
+function __c589(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44191,7 +45935,7 @@ function __c592(j: number): any {
       ).annotate({ identifier: "SensitivityLabelPropertiesInput" });
   }
 }
-function __c593(j: number): any {
+function __c590(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44211,7 +45955,7 @@ function __c593(j: number): any {
       ).annotate({ identifier: "ManagedDatabasesReevaluateInaccessibleDatabaseStateRequest" });
   }
 }
-function __c594(j: number): any {
+function __c591(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44233,7 +45977,7 @@ function __c594(j: number): any {
       ).annotate({ identifier: "ManagedDatabasesStartMoveRequest" });
   }
 }
-function __c595(j: number): any {
+function __c592(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44255,7 +45999,7 @@ function __c595(j: number): any {
       ).annotate({ identifier: "ManagedDatabaseTransparentDataEncryptionCreateOrUpdateRequest" });
   }
 }
-function __c596(j: number): any {
+function __c593(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44281,7 +46025,7 @@ function __c596(j: number): any {
       });
   }
 }
-function __c597(j: number): any {
+function __c594(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44303,7 +46047,7 @@ function __c597(j: number): any {
       ).annotate({ identifier: "DeleteJobStepRequest" });
   }
 }
-function __c598(j: number): any {
+function __c595(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44325,7 +46069,7 @@ function __c598(j: number): any {
       ).annotate({ identifier: "ManagedDatabaseVulnerabilityAssessmentScansInitiateScanRequest" });
   }
 }
-function __c599(j: number): any {
+function __c596(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44335,7 +46079,7 @@ function __c599(j: number): any {
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11360, __c355, 0)),
+          properties: S.optional(__S(11328, __c354, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44347,7 +46091,7 @@ function __c599(j: number): any {
       ).annotate({ identifier: "ManagedDatabaseVulnerabilityAssessmentsCreateOrUpdateRequest" });
   }
 }
-function __c600(j: number): any {
+function __c597(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44380,7 +46124,7 @@ function __c600(j: number): any {
       ).annotate({ identifier: "ManagedInstanceAdministratorsCreateOrUpdateResponse" });
   }
 }
-function __c601(j: number): any {
+function __c598(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44403,7 +46147,7 @@ function __c601(j: number): any {
       });
   }
 }
-function __c602(j: number): any {
+function __c599(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44421,7 +46165,7 @@ function __c602(j: number): any {
       });
   }
 }
-function __c603(j: number): any {
+function __c600(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44442,7 +46186,7 @@ function __c603(j: number): any {
       ).annotate({ identifier: "ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateRequest" });
   }
 }
-function __c604(j: number): any {
+function __c601(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44458,7 +46202,7 @@ function __c604(j: number): any {
       ).annotate({ identifier: "ManagedInstanceAzureADOnlyAuthenticationsCreateOrUpdateResponse" });
   }
 }
-function __c605(j: number): any {
+function __c602(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44476,7 +46220,7 @@ function __c605(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           dtcName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19360, __c605, 0)),
+          properties: S.optional(__S(19264, __c602, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44499,7 +46243,7 @@ function __c605(j: number): any {
       ).annotate({ identifier: "ManagedInstanceDtcsCreateOrUpdateResponse" });
   }
 }
-function __c606(j: number): any {
+function __c603(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44508,7 +46252,7 @@ function __c606(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           encryptionProtectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25440, __c795, 0)),
+          properties: S.optional(__S(25344, __c792, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44533,7 +46277,7 @@ function __c606(j: number): any {
       ).annotate({ identifier: "ManagedInstanceEncryptionProtectorsCreateOrUpdateResponse" });
   }
 }
-function __c607(j: number): any {
+function __c604(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44553,7 +46297,7 @@ function __c607(j: number): any {
       ).annotate({ identifier: "ManagedInstanceEncryptionProtectorsRevalidateRequest" });
   }
 }
-function __c608(j: number): any {
+function __c605(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44562,7 +46306,7 @@ function __c608(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19488, __c609, 0)),
+          properties: S.optional(__S(19392, __c606, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44587,7 +46331,7 @@ function __c608(j: number): any {
       ).annotate({ identifier: "ManagedInstanceKeysCreateOrUpdateResponse" });
   }
 }
-function __c609(j: number): any {
+function __c606(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44598,7 +46342,7 @@ function __c609(j: number): any {
       ).annotate({ identifier: "ManagedInstanceKeyPropertiesInput" });
   }
 }
-function __c610(j: number): any {
+function __c607(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44608,7 +46352,7 @@ function __c610(j: number): any {
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23744, __c742, 0)),
+          properties: S.optional(__S(23648, __c739, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44625,14 +46369,14 @@ function __c610(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(23744, __c742, 0)),
+          properties: S.optional(__S(23648, __c739, 0)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ManagedInstanceLongTermRetentionPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c611(j: number): any {
+function __c608(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44653,7 +46397,7 @@ function __c611(j: number): any {
       ).annotate({ identifier: "DeleteJobTargetGroupRequest" });
   }
 }
-function __c612(j: number): any {
+function __c609(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44666,7 +46410,7 @@ function __c612(j: number): any {
       return S.suspend(() =>
         S.Struct({
           privateEndpoint: S.optional(__S(5664, __c177, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(19584, __c612, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(19488, __c609, 0)),
         }),
       ).annotate({
         identifier: "ManagedInstancePrivateEndpointConnectionsCreateOrUpdateRequestProperties",
@@ -44678,7 +46422,7 @@ function __c612(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19585, __c612, 1)),
+          properties: S.optional(__S(19489, __c609, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44702,7 +46446,7 @@ function __c612(j: number): any {
       ).annotate({ identifier: "ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c613(j: number): any {
+function __c610(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44712,8 +46456,8 @@ function __c613(j: number): any {
           managedInstanceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(19713, __c616, 1)),
-          identity: S.optional(__S(19648, __c614, 0)),
+          properties: S.optional(__S(19617, __c613, 1)),
+          identity: S.optional(__S(19552, __c611, 0)),
           sku: S.optional(__S(5568, __c174, 0)),
         }).pipe(
           T.Http({
@@ -44726,7 +46470,7 @@ function __c613(j: number): any {
       ).annotate({ identifier: "ManagedInstancesCreateOrUpdateRequest" });
   }
 }
-function __c614(j: number): any {
+function __c611(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44737,7 +46481,7 @@ function __c614(j: number): any {
       ).annotate({ identifier: "ManagedInstancesCreateOrUpdateRequestIdentity" });
   }
 }
-function __c615(j: number): any {
+function __c612(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44757,7 +46501,7 @@ function __c615(j: number): any {
       ).annotate({ identifier: "ManagedInstancesCreateOrUpdateResponse" });
   }
 }
-function __c616(j: number): any {
+function __c613(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44798,7 +46542,7 @@ function __c616(j: number): any {
           primaryUserAssignedIdentityId: S.optional(S.String),
           keyId: S.optional(S.String),
           administrators: S.optional(__S(5728, __c179, 0)),
-          servicePrincipal: S.optional(__S(19712, __c616, 0)),
+          servicePrincipal: S.optional(__S(19616, __c613, 0)),
           externalGovernanceStatus: S.optional(S.String),
           pricingModel: S.optional(S.String),
           authenticationMetadata: S.optional(S.String),
@@ -44808,7 +46552,7 @@ function __c616(j: number): any {
       ).annotate({ identifier: "ManagedInstancePropertiesInput" });
   }
 }
-function __c617(j: number): any {
+function __c614(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44828,7 +46572,7 @@ function __c617(j: number): any {
       ).annotate({ identifier: "ManagedInstancesFailoverRequest" });
   }
 }
-function __c618(j: number): any {
+function __c615(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44847,7 +46591,7 @@ function __c618(j: number): any {
       ).annotate({ identifier: "ManagedInstancesReevaluateInaccessibleDatabaseStateRequest" });
   }
 }
-function __c619(j: number): any {
+function __c616(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44868,7 +46612,7 @@ function __c619(j: number): any {
       ).annotate({ identifier: "ManagedInstanceVulnerabilityAssessmentsCreateOrUpdateRequest" });
   }
 }
-function __c620(j: number): any {
+function __c617(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44878,7 +46622,7 @@ function __c620(j: number): any {
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           ledgerDigestUploads: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24800, __c775, 0)),
+          properties: S.optional(__S(24704, __c772, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -44890,7 +46634,7 @@ function __c620(j: number): any {
       ).annotate({ identifier: "ManagedLedgerDigestUploadsCreateOrUpdateRequest" });
   }
 }
-function __c621(j: number): any {
+function __c618(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44915,7 +46659,7 @@ function __c621(j: number): any {
       });
   }
 }
-function __c622(j: number): any {
+function __c619(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44936,7 +46680,7 @@ function __c622(j: number): any {
       ).annotate({ identifier: "ManagedServerDnsAliasesAcquireRequest" });
   }
 }
-function __c623(j: number): any {
+function __c620(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44952,7 +46696,7 @@ function __c623(j: number): any {
       ).annotate({ identifier: "ManagedServerDnsAliasesAcquireResponse" });
   }
 }
-function __c624(j: number): any {
+function __c621(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44973,7 +46717,7 @@ function __c624(j: number): any {
       ).annotate({ identifier: "ManagedServerDnsAliasesCreateOrUpdateRequest" });
   }
 }
-function __c625(j: number): any {
+function __c622(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -44994,7 +46738,7 @@ function __c625(j: number): any {
       ).annotate({ identifier: "ManagedServerSecurityAlertPoliciesCreateOrUpdateRequest" });
   }
 }
-function __c626(j: number): any {
+function __c623(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45010,7 +46754,7 @@ function __c626(j: number): any {
       ).annotate({ identifier: "ManagedServerSecurityAlertPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c627(j: number): any {
+function __c624(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45031,7 +46775,7 @@ function __c627(j: number): any {
       ).annotate({ identifier: "DeleteLongTermRetentionBackupRequest" });
   }
 }
-function __c628(j: number): any {
+function __c625(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45052,7 +46796,7 @@ function __c628(j: number): any {
       ).annotate({ identifier: "MoveManagedDatabasesCompleteRequest" });
   }
 }
-function __c629(j: number): any {
+function __c626(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45084,7 +46828,7 @@ function __c629(j: number): any {
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationsReconcileResponse" });
   }
 }
-function __c630(j: number): any {
+function __c627(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45116,7 +46860,7 @@ function __c630(j: number): any {
       ).annotate({ identifier: "OutboundFirewallRulesCreateOrUpdateResponse" });
   }
 }
-function __c631(j: number): any {
+function __c628(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45136,7 +46880,7 @@ function __c631(j: number): any {
       ).annotate({ identifier: "PauseDatabaseRequest" });
   }
 }
-function __c632(j: number): any {
+function __c629(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45158,7 +46902,7 @@ function __c632(j: number): any {
       ).annotate({ identifier: "PauseDatabaseResponse" });
   }
 }
-function __c633(j: number): any {
+function __c630(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45174,7 +46918,7 @@ function __c633(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20256, __c633, 0)),
+          properties: S.optional(__S(20160, __c630, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -45198,7 +46942,7 @@ function __c633(j: number): any {
       ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c634(j: number): any {
+function __c631(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45228,7 +46972,7 @@ function __c634(j: number): any {
       ).annotate({ identifier: "RecoverDeletedServerResponse" });
   }
 }
-function __c635(j: number): any {
+function __c632(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45263,14 +47007,14 @@ function __c635(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(20321, __c635, 1)),
+          properties: S.optional(__S(20225, __c632, 1)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "RefreshManagedInstanceStatusResponse" });
   }
 }
-function __c636(j: number): any {
+function __c633(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45305,14 +47049,14 @@ function __c636(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(20353, __c636, 1)),
+          properties: S.optional(__S(20257, __c633, 1)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "RefreshServerStatusResponse" });
   }
 }
-function __c637(j: number): any {
+function __c634(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45333,7 +47077,7 @@ function __c637(j: number): any {
       ).annotate({ identifier: "RefreshSyncGroupHubSchemaRequest" });
   }
 }
-function __c638(j: number): any {
+function __c635(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45355,7 +47099,7 @@ function __c638(j: number): any {
       ).annotate({ identifier: "RefreshSyncMemberMemberSchemaRequest" });
   }
 }
-function __c639(j: number): any {
+function __c636(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45377,7 +47121,7 @@ function __c639(j: number): any {
       ).annotate({ identifier: "DeleteLongTermRetentionBackupByResourceGroupRequest" });
   }
 }
-function __c640(j: number): any {
+function __c637(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45398,7 +47142,7 @@ function __c640(j: number): any {
       ).annotate({ identifier: "RemoveLongTermRetentionBackupLegalHoldImmutabilityRequest" });
   }
 }
-function __c641(j: number): any {
+function __c638(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45422,7 +47166,7 @@ function __c641(j: number): any {
       });
   }
 }
-function __c642(j: number): any {
+function __c639(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45443,7 +47187,7 @@ function __c642(j: number): any {
       ).annotate({ identifier: "RemoveLongTermRetentionBackupTimeBasedImmutabilityRequest" });
   }
 }
-function __c643(j: number): any {
+function __c640(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45467,7 +47211,7 @@ function __c643(j: number): any {
       });
   }
 }
-function __c644(j: number): any {
+function __c641(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45488,7 +47232,7 @@ function __c644(j: number): any {
       ).annotate({ identifier: "RenameDatabaseRequest" });
   }
 }
-function __c645(j: number): any {
+function __c642(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45498,14 +47242,14 @@ function __c645(j: number): any {
         }),
       ).annotate({ identifier: "FirewallRuleInput" });
     case 1:
-      return S.Array(__S(20640, __c645, 0));
+      return S.Array(__S(20544, __c642, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          values: S.optional(__S(20641, __c645, 1)),
+          values: S.optional(__S(20545, __c642, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -45517,7 +47261,7 @@ function __c645(j: number): any {
       ).annotate({ identifier: "ReplaceFirewallRuleRequest" });
   }
 }
-function __c646(j: number): any {
+function __c643(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45536,7 +47280,7 @@ function __c646(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           linkId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20672, __c646, 0)),
+          properties: S.optional(__S(20576, __c643, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -45548,7 +47292,7 @@ function __c646(j: number): any {
       ).annotate({ identifier: "ReplicationLinksCreateOrUpdateRequest" });
   }
 }
-function __c647(j: number): any {
+function __c644(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45564,7 +47308,7 @@ function __c647(j: number): any {
       ).annotate({ identifier: "ReplicationLinksCreateOrUpdateResponse" });
   }
 }
-function __c648(j: number): any {
+function __c645(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45585,7 +47329,7 @@ function __c648(j: number): any {
       ).annotate({ identifier: "ReplicationLinksFailoverRequest" });
   }
 }
-function __c649(j: number): any {
+function __c646(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45606,7 +47350,7 @@ function __c649(j: number): any {
       ).annotate({ identifier: "ReplicationLinksFailoverAllowDataLossRequest" });
   }
 }
-function __c650(j: number): any {
+function __c647(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45627,7 +47371,7 @@ function __c650(j: number): any {
       ).annotate({ identifier: "RestoreManagedDatabasesCompleteRequest" });
   }
 }
-function __c651(j: number): any {
+function __c648(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45648,7 +47392,7 @@ function __c651(j: number): any {
       ).annotate({ identifier: "DeleteLongTermRetentionManagedInstanceBackupRequest" });
   }
 }
-function __c652(j: number): any {
+function __c649(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45668,7 +47412,7 @@ function __c652(j: number): any {
       ).annotate({ identifier: "ResumeDatabaseRequest" });
   }
 }
-function __c653(j: number): any {
+function __c650(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45689,7 +47433,7 @@ function __c653(j: number): any {
       ).annotate({ identifier: "ResumeTransparentDataEncryptionRequest" });
   }
 }
-function __c654(j: number): any {
+function __c651(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45705,7 +47449,7 @@ function __c654(j: number): any {
       ).annotate({ identifier: "ResumeTransparentDataEncryptionResponse" });
   }
 }
-function __c655(j: number): any {
+function __c652(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45718,7 +47462,7 @@ function __c655(j: number): any {
           tableName: S.String.pipe(T.Label()),
           columnName: S.String.pipe(T.Label()),
           sensitivityLabelSource: S.String.pipe(T.Label()),
-          properties: S.optional(__S(18944, __c592, 0)),
+          properties: S.optional(__S(18848, __c589, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -45730,7 +47474,7 @@ function __c655(j: number): any {
       ).annotate({ identifier: "SensitivityLabelsCreateOrUpdateRequest" });
   }
 }
-function __c656(j: number): any {
+function __c653(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45751,7 +47495,7 @@ function __c656(j: number): any {
       ).annotate({ identifier: "ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest" });
   }
 }
-function __c657(j: number): any {
+function __c654(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45769,7 +47513,7 @@ function __c657(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           administratorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21024, __c657, 0)),
+          properties: S.optional(__S(20928, __c654, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -45793,7 +47537,7 @@ function __c657(j: number): any {
       ).annotate({ identifier: "ServerAzureADAdministratorsCreateOrUpdateResponse" });
   }
 }
-function __c658(j: number): any {
+function __c655(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45814,7 +47558,7 @@ function __c658(j: number): any {
       ).annotate({ identifier: "ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest" });
   }
 }
-function __c659(j: number): any {
+function __c656(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45847,7 +47591,7 @@ function __c659(j: number): any {
       ).annotate({ identifier: "ServerBlobAuditingPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c660(j: number): any {
+function __c657(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45879,7 +47623,7 @@ function __c660(j: number): any {
       ).annotate({ identifier: "ServerConfigurationOptionsCreateOrUpdateResponse" });
   }
 }
-function __c661(j: number): any {
+function __c658(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45914,7 +47658,7 @@ function __c661(j: number): any {
       ).annotate({ identifier: "ServerConnectionPoliciesCreateOrUpdateResponse" });
   }
 }
-function __c662(j: number): any {
+function __c659(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45947,7 +47691,7 @@ function __c662(j: number): any {
       ).annotate({ identifier: "ServerDevOpsAuditSettingsCreateOrUpdateResponse" });
   }
 }
-function __c663(j: number): any {
+function __c660(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45971,7 +47715,7 @@ function __c663(j: number): any {
       });
   }
 }
-function __c664(j: number): any {
+function __c661(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -45992,7 +47736,7 @@ function __c664(j: number): any {
       ).annotate({ identifier: "ServerDnsAliasesAcquireRequest" });
   }
 }
-function __c665(j: number): any {
+function __c662(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46008,7 +47752,7 @@ function __c665(j: number): any {
       ).annotate({ identifier: "ServerDnsAliasesAcquireResponse" });
   }
 }
-function __c666(j: number): any {
+function __c663(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46028,7 +47772,7 @@ function __c666(j: number): any {
       ).annotate({ identifier: "ServerDnsAliasesCreateOrUpdateRequest" });
   }
 }
-function __c667(j: number): any {
+function __c664(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46037,7 +47781,7 @@ function __c667(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(19488, __c609, 0)),
+          properties: S.optional(__S(19392, __c606, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -46063,7 +47807,7 @@ function __c667(j: number): any {
       ).annotate({ identifier: "ServerKeysCreateOrUpdateResponse" });
   }
 }
-function __c668(j: number): any {
+function __c665(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46073,8 +47817,8 @@ function __c668(j: number): any {
           serverName: S.String.pipe(T.Label()),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(21408, __c669, 0)),
-          identity: S.optional(__S(19648, __c614, 0)),
+          properties: S.optional(__S(21312, __c666, 0)),
+          identity: S.optional(__S(19552, __c611, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -46086,7 +47830,7 @@ function __c668(j: number): any {
       ).annotate({ identifier: "ServersCreateOrUpdateRequest" });
   }
 }
-function __c669(j: number): any {
+function __c666(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46126,7 +47870,7 @@ function __c669(j: number): any {
       ).annotate({ identifier: "ServersCreateOrUpdateResponse" });
   }
 }
-function __c670(j: number): any {
+function __c667(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46147,7 +47891,7 @@ function __c670(j: number): any {
       ).annotate({ identifier: "ServerSecurityAlertPoliciesCreateOrUpdateRequest" });
   }
 }
-function __c671(j: number): any {
+function __c668(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46180,7 +47924,7 @@ function __c671(j: number): any {
       ).annotate({ identifier: "ServerTrustCertificatesCreateOrUpdateResponse" });
   }
 }
-function __c672(j: number): any {
+function __c669(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46213,7 +47957,7 @@ function __c672(j: number): any {
       ).annotate({ identifier: "ServerTrustGroupsCreateOrUpdateResponse" });
   }
 }
-function __c673(j: number): any {
+function __c670(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46234,7 +47978,7 @@ function __c673(j: number): any {
       ).annotate({ identifier: "ServerVulnerabilityAssessmentsCreateOrUpdateRequest" });
   }
 }
-function __c674(j: number): any {
+function __c671(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46256,7 +48000,7 @@ function __c674(j: number): any {
       ).annotate({ identifier: "SetDistributedAvailabilityGroupRoleRequest" });
   }
 }
-function __c675(j: number): any {
+function __c672(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46277,7 +48021,7 @@ function __c675(j: number): any {
       ).annotate({ identifier: "SetLongTermRetentionBackupLegalHoldImmutabilityRequest" });
   }
 }
-function __c676(j: number): any {
+function __c673(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46298,7 +48042,7 @@ function __c676(j: number): any {
       ).annotate({ identifier: "CancelSyncGroupSyncRequest" });
   }
 }
-function __c677(j: number): any {
+function __c674(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46318,7 +48062,7 @@ function __c677(j: number): any {
       ).annotate({ identifier: "DeleteManagedDatabaseRequest" });
   }
 }
-function __c678(j: number): any {
+function __c675(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46342,7 +48086,7 @@ function __c678(j: number): any {
       });
   }
 }
-function __c679(j: number): any {
+function __c676(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46362,7 +48106,7 @@ function __c679(j: number): any {
       ).annotate({ identifier: "SqlAgentCreateOrUpdateRequest" });
   }
 }
-function __c680(j: number): any {
+function __c677(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46385,7 +48129,7 @@ function __c680(j: number): any {
       ).annotate({ identifier: "SqlVulnerabilityAssessmentBaselinesCreateOrUpdateRequest" });
   }
 }
-function __c681(j: number): any {
+function __c678(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46409,7 +48153,7 @@ function __c681(j: number): any {
       ).annotate({ identifier: "SqlVulnerabilityAssessmentRuleBaselineCreateOrUpdateRequest" });
   }
 }
-function __c682(j: number): any {
+function __c679(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46430,7 +48174,7 @@ function __c682(j: number): any {
       ).annotate({ identifier: "SqlVulnerabilityAssessmentsSettingsCreateOrUpdateRequest" });
   }
 }
-function __c683(j: number): any {
+function __c680(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46449,7 +48193,7 @@ function __c683(j: number): any {
       ).annotate({ identifier: "StartManagedInstanceRequest" });
   }
 }
-function __c684(j: number): any {
+function __c681(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46466,7 +48210,7 @@ function __c684(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           startStopScheduleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21888, __c684, 0)),
+          properties: S.optional(__S(21792, __c681, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -46478,7 +48222,7 @@ function __c684(j: number): any {
       ).annotate({ identifier: "StartStopManagedInstanceSchedulesCreateOrUpdateRequest" });
   }
 }
-function __c685(j: number): any {
+function __c682(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46497,7 +48241,7 @@ function __c685(j: number): any {
       ).annotate({ identifier: "StopManagedInstanceRequest" });
   }
 }
-function __c686(j: number): any {
+function __c683(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46518,7 +48262,7 @@ function __c686(j: number): any {
       ).annotate({ identifier: "SuspendTransparentDataEncryptionRequest" });
   }
 }
-function __c687(j: number): any {
+function __c684(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46534,7 +48278,7 @@ function __c687(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           syncAgentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21984, __c687, 0)),
+          properties: S.optional(__S(21888, __c684, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -46558,7 +48302,7 @@ function __c687(j: number): any {
       ).annotate({ identifier: "SyncAgentsCreateOrUpdateResponse" });
   }
 }
-function __c688(j: number): any {
+function __c685(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46582,7 +48326,7 @@ function __c688(j: number): any {
       ).annotate({ identifier: "DeleteManagedDatabaseSensitivityLabelRequest" });
   }
 }
-function __c689(j: number): any {
+function __c686(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46592,7 +48336,7 @@ function __c689(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22080, __c690, 0)),
+          properties: S.optional(__S(21984, __c687, 0)),
           sku: S.optional(__S(5568, __c174, 0)),
         }).pipe(
           T.Http({
@@ -46605,7 +48349,7 @@ function __c689(j: number): any {
       ).annotate({ identifier: "SyncGroupsCreateOrUpdateRequest" });
   }
 }
-function __c690(j: number): any {
+function __c687(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46637,7 +48381,7 @@ function __c690(j: number): any {
       ).annotate({ identifier: "SyncGroupsCreateOrUpdateResponse" });
   }
 }
-function __c691(j: number): any {
+function __c688(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46648,7 +48392,7 @@ function __c691(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           syncMemberName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22144, __c692, 0)),
+          properties: S.optional(__S(22048, __c689, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -46660,7 +48404,7 @@ function __c691(j: number): any {
       ).annotate({ identifier: "SyncMembersCreateOrUpdateRequest" });
   }
 }
-function __c692(j: number): any {
+function __c689(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46692,7 +48436,7 @@ function __c692(j: number): any {
       ).annotate({ identifier: "SyncMembersCreateOrUpdateResponse" });
   }
 }
-function __c693(j: number): any {
+function __c690(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46727,7 +48471,7 @@ function __c693(j: number): any {
       ).annotate({ identifier: "TransparentDataEncryptionsCreateOrUpdateResponse" });
   }
 }
-function __c694(j: number): any {
+function __c691(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46748,7 +48492,7 @@ function __c694(j: number): any {
       ).annotate({ identifier: "TriggerSyncGroupSyncRequest" });
   }
 }
-function __c695(j: number): any {
+function __c692(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46770,7 +48514,7 @@ function __c695(j: number): any {
       ).annotate({ identifier: "UnlinkReplicationLinkRequest" });
   }
 }
-function __c696(j: number): any {
+function __c693(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46792,7 +48536,7 @@ function __c696(j: number): any {
       ).annotate({ identifier: "UpdateBackupShortTermRetentionPolicyRequest" });
   }
 }
-function __c697(j: number): any {
+function __c694(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46844,7 +48588,7 @@ function __c697(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           sku: S.optional(__S(5568, __c174, 0)),
           identity: S.optional(__S(5472, __c171, 0)),
-          properties: S.optional(__S(22304, __c697, 0)),
+          properties: S.optional(__S(22208, __c694, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -46857,7 +48601,7 @@ function __c697(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseRequest" });
   }
 }
-function __c698(j: number): any {
+function __c695(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46867,7 +48611,7 @@ function __c698(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           advisorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22368, __c699, 0)),
+          properties: S.optional(__S(22272, __c696, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -46879,7 +48623,7 @@ function __c698(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseAdvisorRequest" });
   }
 }
-function __c699(j: number): any {
+function __c696(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46889,7 +48633,7 @@ function __c699(j: number): any {
       ).annotate({ identifier: "AdvisorPropertiesInput" });
   }
 }
-function __c700(j: number): any {
+function __c697(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46898,7 +48642,7 @@ function __c700(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22434, __c701, 2)),
+          properties: S.optional(__S(22338, __c698, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -46910,7 +48654,7 @@ function __c700(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseAutomaticTuningRequest" });
   }
 }
-function __c701(j: number): any {
+function __c698(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46921,18 +48665,18 @@ function __c701(j: number): any {
         }),
       ).annotate({ identifier: "AutomaticTuningOptionsInput" });
     case 1:
-      return S.Record(S.String, __S(22432, __c701, 0));
+      return S.Record(S.String, __S(22336, __c698, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           desiredState: S.optional(S.String),
           actualState: S.optional(S.String),
-          options: S.optional(__S(22433, __c701, 1)),
+          options: S.optional(__S(22337, __c698, 1)),
         }),
       ).annotate({ identifier: "DatabaseAutomaticTuningPropertiesInput" });
   }
 }
-function __c702(j: number): any {
+function __c699(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46943,7 +48687,7 @@ function __c702(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: __S(22464, __c702, 0),
+          state: __S(22368, __c699, 0),
         }),
       ).annotate({ identifier: "RecommendedActionPropertiesInput" });
     case 2:
@@ -46955,7 +48699,7 @@ function __c702(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           advisorName: S.String.pipe(T.Label()),
           recommendedActionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22465, __c702, 1)),
+          properties: S.optional(__S(22369, __c699, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -46967,7 +48711,7 @@ function __c702(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseRecommendedActionRequest" });
   }
 }
-function __c703(j: number): any {
+function __c700(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46988,7 +48732,7 @@ function __c703(j: number): any {
       ).annotate({ identifier: "DeleteManagedDatabaseVulnerabilityAssessmentRequest" });
   }
 }
-function __c704(j: number): any {
+function __c701(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -46997,7 +48741,7 @@ function __c704(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           distributedAvailabilityGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24994, __c781, 2)),
+          properties: S.optional(__S(24898, __c778, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47009,14 +48753,14 @@ function __c704(j: number): any {
       ).annotate({ identifier: "UpdateDistributedAvailabilityGroupRequest" });
   }
 }
-function __c705(j: number): any {
+function __c702(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           maxSizeBytes: S.optional(S.Number),
           minCapacity: S.optional(S.Number),
-          perDatabaseSettings: S.optional(__S(25248, __c789, 0)),
+          perDatabaseSettings: S.optional(__S(25152, __c786, 0)),
           zoneRedundant: S.optional(S.Boolean),
           licenseType: S.optional(S.String),
           maintenanceConfigurationId: S.optional(S.String),
@@ -47034,7 +48778,7 @@ function __c705(j: number): any {
           serverName: S.String.pipe(T.Label()),
           elasticPoolName: S.String.pipe(T.Label()),
           sku: S.optional(__S(5568, __c174, 0)),
-          properties: S.optional(__S(22560, __c705, 0)),
+          properties: S.optional(__S(22464, __c702, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -47054,7 +48798,7 @@ function __c705(j: number): any {
           systemData: S.optional(__S(96, __c3, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(25249, __c789, 1)),
+          properties: S.optional(__S(25153, __c786, 1)),
           sku: S.optional(__S(5568, __c174, 0)),
           kind: S.optional(S.String),
           locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
@@ -47063,7 +48807,7 @@ function __c705(j: number): any {
       ).annotate({ identifier: "UpdateElasticPoolResponse" });
   }
 }
-function __c706(j: number): any {
+function __c703(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47082,7 +48826,7 @@ function __c706(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           failoverGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22592, __c706, 0)),
+          properties: S.optional(__S(22496, __c703, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -47095,7 +48839,7 @@ function __c706(j: number): any {
       ).annotate({ identifier: "UpdateFailoverGroupRequest" });
   }
 }
-function __c707(j: number): any {
+function __c704(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47117,7 +48861,7 @@ function __c707(j: number): any {
       ).annotate({ identifier: "UpdateInstancePoolRequest" });
   }
 }
-function __c708(j: number): any {
+function __c705(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47140,7 +48884,7 @@ function __c708(j: number): any {
       ).annotate({ identifier: "UpdateJobAgentRequest" });
   }
 }
-function __c709(j: number): any {
+function __c706(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47150,7 +48894,7 @@ function __c709(j: number): any {
           longTermRetentionServerName: S.String.pipe(T.Label()),
           longTermRetentionDatabaseName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22720, __c710, 0)),
+          properties: S.optional(__S(22624, __c707, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -47162,7 +48906,7 @@ function __c709(j: number): any {
       ).annotate({ identifier: "UpdateLongTermRetentionBackupRequest" });
   }
 }
-function __c710(j: number): any {
+function __c707(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47172,7 +48916,7 @@ function __c710(j: number): any {
       ).annotate({ identifier: "UpdateLongTermRetentionBackupParametersProperties" });
   }
 }
-function __c711(j: number): any {
+function __c708(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47183,7 +48927,7 @@ function __c711(j: number): any {
           longTermRetentionServerName: S.String.pipe(T.Label()),
           longTermRetentionDatabaseName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22720, __c710, 0)),
+          properties: S.optional(__S(22624, __c707, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -47195,7 +48939,7 @@ function __c711(j: number): any {
       ).annotate({ identifier: "UpdateLongTermRetentionBackupByResourceGroupRequest" });
   }
 }
-function __c712(j: number): any {
+function __c709(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47217,7 +48961,7 @@ function __c712(j: number): any {
       ).annotate({ identifier: "UpdateManagedBackupShortTermRetentionPolicyRequest" });
   }
 }
-function __c713(j: number): any {
+function __c710(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47226,7 +48970,7 @@ function __c713(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(18848, __c589, 0)),
+          properties: S.optional(__S(18752, __c586, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -47239,7 +48983,7 @@ function __c713(j: number): any {
       ).annotate({ identifier: "UpdateManagedDatabaseRequest" });
   }
 }
-function __c714(j: number): any {
+function __c711(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47248,7 +48992,7 @@ function __c714(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          operations: S.optional(__S(22882, __c715, 2)),
+          operations: S.optional(__S(22786, __c712, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47260,7 +49004,7 @@ function __c714(j: number): any {
       ).annotate({ identifier: "UpdateManagedDatabaseRecommendedSensitivityLabelRequest" });
   }
 }
-function __c715(j: number): any {
+function __c712(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47274,14 +49018,14 @@ function __c715(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(22880, __c715, 0)),
+          properties: S.optional(__S(22784, __c712, 0)),
         }),
       ).annotate({ identifier: "RecommendedSensitivityLabelUpdateInput" });
     case 2:
-      return S.Array(__S(22881, __c715, 1));
+      return S.Array(__S(22785, __c712, 1));
   }
 }
-function __c716(j: number): any {
+function __c713(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47304,7 +49048,7 @@ function __c716(j: number): any {
       ).annotate({ identifier: "DeleteManagedDatabaseVulnerabilityAssessmentRuleBaselineRequest" });
   }
 }
-function __c717(j: number): any {
+function __c714(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47313,7 +49057,7 @@ function __c717(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          operations: S.optional(__S(22979, __c718, 3)),
+          operations: S.optional(__S(22883, __c715, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47325,12 +49069,12 @@ function __c717(j: number): any {
       ).annotate({ identifier: "UpdateManagedDatabaseSensitivityLabelRequest" });
   }
 }
-function __c718(j: number): any {
+function __c715(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(18944, __c592, 0)),
+          properties: S.optional(__S(18848, __c589, 0)),
         }),
       ).annotate({ identifier: "SensitivityLabelInput" });
     case 1:
@@ -47340,20 +49084,20 @@ function __c718(j: number): any {
           schema: S.String,
           table: S.String,
           column: S.String,
-          sensitivityLabel: S.optional(__S(22976, __c718, 0)),
+          sensitivityLabel: S.optional(__S(22880, __c715, 0)),
         }),
       ).annotate({ identifier: "SensitivityLabelUpdatePropertiesInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(22977, __c718, 1)),
+          properties: S.optional(__S(22881, __c715, 1)),
         }),
       ).annotate({ identifier: "SensitivityLabelUpdateInput" });
     case 3:
-      return S.Array(__S(22978, __c718, 2));
+      return S.Array(__S(22882, __c715, 2));
   }
 }
-function __c719(j: number): any {
+function __c716(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47362,8 +49106,8 @@ function __c719(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           sku: S.optional(__S(5568, __c174, 0)),
-          identity: S.optional(__S(19648, __c614, 0)),
-          properties: S.optional(__S(19713, __c616, 1)),
+          identity: S.optional(__S(19552, __c611, 0)),
+          properties: S.optional(__S(19617, __c613, 1)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -47376,7 +49120,7 @@ function __c719(j: number): any {
       ).annotate({ identifier: "UpdateManagedInstanceRequest" });
   }
 }
-function __c720(j: number): any {
+function __c717(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47400,7 +49144,7 @@ function __c720(j: number): any {
       });
   }
 }
-function __c721(j: number): any {
+function __c718(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47409,7 +49153,7 @@ function __c721(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          operations: S.optional(__S(22882, __c715, 2)),
+          operations: S.optional(__S(22786, __c712, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47421,7 +49165,7 @@ function __c721(j: number): any {
       ).annotate({ identifier: "UpdateRecommendedSensitivityLabelRequest" });
   }
 }
-function __c722(j: number): any {
+function __c719(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47437,7 +49181,7 @@ function __c722(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           linkId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23104, __c722, 0)),
+          properties: S.optional(__S(23008, __c719, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47449,7 +49193,7 @@ function __c722(j: number): any {
       ).annotate({ identifier: "UpdateReplicationLinkRequest" });
   }
 }
-function __c723(j: number): any {
+function __c720(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47458,7 +49202,7 @@ function __c723(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          operations: S.optional(__S(22979, __c718, 3)),
+          operations: S.optional(__S(22883, __c715, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47470,7 +49214,7 @@ function __c723(j: number): any {
       ).annotate({ identifier: "UpdateSensitivityLabelRequest" });
   }
 }
-function __c724(j: number): any {
+function __c721(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47478,8 +49222,8 @@ function __c724(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(19648, __c614, 0)),
-          properties: S.optional(__S(21408, __c669, 0)),
+          identity: S.optional(__S(19552, __c611, 0)),
+          properties: S.optional(__S(21312, __c666, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -47492,7 +49236,7 @@ function __c724(j: number): any {
       ).annotate({ identifier: "UpdateServerRequest" });
   }
 }
-function __c725(j: number): any {
+function __c722(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47501,7 +49245,7 @@ function __c725(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           advisorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22368, __c699, 0)),
+          properties: S.optional(__S(22272, __c696, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47513,7 +49257,7 @@ function __c725(j: number): any {
       ).annotate({ identifier: "UpdateServerAdvisorRequest" });
   }
 }
-function __c726(j: number): any {
+function __c723(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47521,7 +49265,7 @@ function __c726(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22434, __c701, 2)),
+          properties: S.optional(__S(22338, __c698, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47533,7 +49277,7 @@ function __c726(j: number): any {
       ).annotate({ identifier: "UpdateServerAutomaticTuningRequest" });
   }
 }
-function __c727(j: number): any {
+function __c724(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47543,7 +49287,7 @@ function __c727(j: number): any {
           serverName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22080, __c690, 0)),
+          properties: S.optional(__S(21984, __c687, 0)),
           sku: S.optional(__S(5568, __c174, 0)),
         }).pipe(
           T.Http({
@@ -47556,7 +49300,7 @@ function __c727(j: number): any {
       ).annotate({ identifier: "UpdateSyncGroupRequest" });
   }
 }
-function __c728(j: number): any {
+function __c725(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47575,7 +49319,7 @@ function __c728(j: number): any {
       ).annotate({ identifier: "DeleteManagedInstanceRequest" });
   }
 }
-function __c729(j: number): any {
+function __c726(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47586,7 +49330,7 @@ function __c729(j: number): any {
           databaseName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           syncMemberName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22144, __c692, 0)),
+          properties: S.optional(__S(22048, __c689, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -47598,7 +49342,7 @@ function __c729(j: number): any {
       ).annotate({ identifier: "UpdateSyncMemberRequest" });
   }
 }
-function __c730(j: number): any {
+function __c727(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47606,7 +49350,7 @@ function __c730(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualClusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23392, __c731, 0)),
+          properties: S.optional(__S(23296, __c728, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
         }).pipe(
           T.Http({
@@ -47619,7 +49363,7 @@ function __c730(j: number): any {
       ).annotate({ identifier: "UpdateVirtualClusterRequest" });
   }
 }
-function __c731(j: number): any {
+function __c728(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47643,7 +49387,7 @@ function __c731(j: number): any {
       ).annotate({ identifier: "UpdateVirtualClusterResponse" });
   }
 }
-function __c732(j: number): any {
+function __c729(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47673,14 +49417,14 @@ function __c732(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(23425, __c732, 1)),
+          properties: S.optional(__S(23329, __c729, 1)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "UpdateVirtualClusterDnsServersResponse" });
   }
 }
-function __c733(j: number): any {
+function __c730(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47700,7 +49444,7 @@ function __c733(j: number): any {
       ).annotate({ identifier: "ValidateManagedInstanceAzureKeyVaultEncryptionKeyRequest" });
   }
 }
-function __c734(j: number): any {
+function __c731(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47710,7 +49454,7 @@ function __c734(j: number): any {
           virtualClusterName: S.String.pipe(T.Label()),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(23392, __c731, 0)),
+          properties: S.optional(__S(23296, __c728, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -47722,7 +49466,7 @@ function __c734(j: number): any {
       ).annotate({ identifier: "VirtualClustersCreateOrUpdateRequest" });
   }
 }
-function __c735(j: number): any {
+function __c732(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47755,7 +49499,7 @@ function __c735(j: number): any {
       ).annotate({ identifier: "VirtualNetworkRulesCreateOrUpdateResponse" });
   }
 }
-function __c736(j: number): any {
+function __c733(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47790,7 +49534,7 @@ function __c736(j: number): any {
       ).annotate({ identifier: "WorkloadClassifiersCreateOrUpdateResponse" });
   }
 }
-function __c737(j: number): any {
+function __c734(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47824,7 +49568,7 @@ function __c737(j: number): any {
       ).annotate({ identifier: "WorkloadGroupsCreateOrUpdateResponse" });
   }
 }
-function __c738(j: number): any {
+function __c735(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47844,7 +49588,7 @@ function __c738(j: number): any {
       ).annotate({ identifier: "DeleteManagedInstanceAdministratorRequest" });
   }
 }
-function __c739(j: number): any {
+function __c736(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47864,7 +49608,7 @@ function __c739(j: number): any {
       ).annotate({ identifier: "DeleteManagedInstanceAzureADOnlyAuthenticationRequest" });
   }
 }
-function __c740(j: number): any {
+function __c737(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47884,7 +49628,7 @@ function __c740(j: number): any {
       ).annotate({ identifier: "DeleteManagedInstanceKeyRequest" });
   }
 }
-function __c741(j: number): any {
+function __c738(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47910,13 +49654,13 @@ function __c741(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(23744, __c742, 0)),
+          properties: S.optional(__S(23648, __c739, 0)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "DeleteManagedInstanceLongTermRetentionPolicyResponse" });
   }
 }
-function __c742(j: number): any {
+function __c739(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47930,7 +49674,7 @@ function __c742(j: number): any {
       ).annotate({ identifier: "ManagedInstanceLongTermRetentionPolicyProperties" });
   }
 }
-function __c743(j: number): any {
+function __c740(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47950,7 +49694,7 @@ function __c743(j: number): any {
       ).annotate({ identifier: "DeleteManagedInstancePrivateEndpointConnectionRequest" });
   }
 }
-function __c744(j: number): any {
+function __c741(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47978,7 +49722,7 @@ function __c744(j: number): any {
       ).annotate({ identifier: "CheckNameAvailabilityResponse" });
   }
 }
-function __c745(j: number): any {
+function __c742(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -47998,7 +49742,7 @@ function __c745(j: number): any {
       ).annotate({ identifier: "DeleteManagedInstanceVulnerabilityAssessmentRequest" });
   }
 }
-function __c746(j: number): any {
+function __c743(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48018,7 +49762,7 @@ function __c746(j: number): any {
       ).annotate({ identifier: "DeleteManagedServerDnsAliasRequest" });
   }
 }
-function __c747(j: number): any {
+function __c744(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48038,7 +49782,7 @@ function __c747(j: number): any {
       ).annotate({ identifier: "DeleteOutboundFirewallRuleRequest" });
   }
 }
-function __c748(j: number): any {
+function __c745(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48058,7 +49802,7 @@ function __c748(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c749(j: number): any {
+function __c746(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48079,7 +49823,7 @@ function __c749(j: number): any {
       ).annotate({ identifier: "DeleteReplicationLinkRequest" });
   }
 }
-function __c750(j: number): any {
+function __c747(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48100,7 +49844,7 @@ function __c750(j: number): any {
       ).annotate({ identifier: "DeleteRestorePointRequest" });
   }
 }
-function __c751(j: number): any {
+function __c748(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48124,7 +49868,7 @@ function __c751(j: number): any {
       ).annotate({ identifier: "DeleteSensitivityLabelRequest" });
   }
 }
-function __c752(j: number): any {
+function __c749(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48143,7 +49887,7 @@ function __c752(j: number): any {
       ).annotate({ identifier: "DeleteServerRequest" });
   }
 }
-function __c753(j: number): any {
+function __c750(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48163,7 +49907,7 @@ function __c753(j: number): any {
       ).annotate({ identifier: "DeleteServerAzureADAdministratorRequest" });
   }
 }
-function __c754(j: number): any {
+function __c751(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48183,7 +49927,7 @@ function __c754(j: number): any {
       ).annotate({ identifier: "DeleteServerAzureADOnlyAuthenticationRequest" });
   }
 }
-function __c755(j: number): any {
+function __c752(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48193,7 +49937,7 @@ function __c755(j: number): any {
           longTermRetentionServerName: S.String.pipe(T.Label()),
           longTermRetentionDatabaseName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24192, __c756, 0)),
+          properties: S.optional(__S(24096, __c753, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -48205,7 +49949,7 @@ function __c755(j: number): any {
       ).annotate({ identifier: "CopyLongTermRetentionBackupRequest" });
   }
 }
-function __c756(j: number): any {
+function __c753(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48220,7 +49964,7 @@ function __c756(j: number): any {
       ).annotate({ identifier: "CopyLongTermRetentionBackupParametersProperties" });
   }
 }
-function __c757(j: number): any {
+function __c754(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48241,13 +49985,13 @@ function __c757(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(24224, __c757, 0)),
+          properties: S.optional(__S(24128, __c754, 0)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "CopyLongTermRetentionBackupResponse" });
   }
 }
-function __c758(j: number): any {
+function __c755(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48267,7 +50011,7 @@ function __c758(j: number): any {
       ).annotate({ identifier: "DeleteServerDnsAliasRequest" });
   }
 }
-function __c759(j: number): any {
+function __c756(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48287,7 +50031,7 @@ function __c759(j: number): any {
       ).annotate({ identifier: "DeleteServerKeyRequest" });
   }
 }
-function __c760(j: number): any {
+function __c757(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48307,7 +50051,7 @@ function __c760(j: number): any {
       ).annotate({ identifier: "DeleteServerTrustCertificateRequest" });
   }
 }
-function __c761(j: number): any {
+function __c758(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48327,7 +50071,7 @@ function __c761(j: number): any {
       ).annotate({ identifier: "DeleteServerTrustGroupRequest" });
   }
 }
-function __c762(j: number): any {
+function __c759(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48347,7 +50091,7 @@ function __c762(j: number): any {
       ).annotate({ identifier: "DeleteServerVulnerabilityAssessmentRequest" });
   }
 }
-function __c763(j: number): any {
+function __c760(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48367,7 +50111,7 @@ function __c763(j: number): any {
       ).annotate({ identifier: "DeleteSqlVulnerabilityAssessmentRequest" });
   }
 }
-function __c764(j: number): any {
+function __c761(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48390,7 +50134,7 @@ function __c764(j: number): any {
       ).annotate({ identifier: "DeleteSqlVulnerabilityAssessmentRuleBaselineRequest" });
   }
 }
-function __c765(j: number): any {
+function __c762(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48410,7 +50154,7 @@ function __c765(j: number): any {
       ).annotate({ identifier: "DeleteStartStopManagedInstanceScheduleRequest" });
   }
 }
-function __c766(j: number): any {
+function __c763(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48430,7 +50174,7 @@ function __c766(j: number): any {
       ).annotate({ identifier: "DeleteSyncAgentRequest" });
   }
 }
-function __c767(j: number): any {
+function __c764(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48451,7 +50195,7 @@ function __c767(j: number): any {
       ).annotate({ identifier: "DeleteSyncGroupRequest" });
   }
 }
-function __c768(j: number): any {
+function __c765(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48462,7 +50206,7 @@ function __c768(j: number): any {
           longTermRetentionServerName: S.String.pipe(T.Label()),
           longTermRetentionDatabaseName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24192, __c756, 0)),
+          properties: S.optional(__S(24096, __c753, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -48474,7 +50218,7 @@ function __c768(j: number): any {
       ).annotate({ identifier: "CopyLongTermRetentionBackupByResourceGroupRequest" });
   }
 }
-function __c769(j: number): any {
+function __c766(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48496,7 +50240,7 @@ function __c769(j: number): any {
       ).annotate({ identifier: "DeleteSyncMemberRequest" });
   }
 }
-function __c770(j: number): any {
+function __c767(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48515,7 +50259,7 @@ function __c770(j: number): any {
       ).annotate({ identifier: "DeleteVirtualClusterRequest" });
   }
 }
-function __c771(j: number): any {
+function __c768(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48535,7 +50279,7 @@ function __c771(j: number): any {
       ).annotate({ identifier: "DeleteVirtualNetworkRuleRequest" });
   }
 }
-function __c772(j: number): any {
+function __c769(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48557,7 +50301,7 @@ function __c772(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadClassifierRequest" });
   }
 }
-function __c773(j: number): any {
+function __c770(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48578,7 +50322,7 @@ function __c773(j: number): any {
       ).annotate({ identifier: "DeleteWorkloadGroupRequest" });
   }
 }
-function __c774(j: number): any {
+function __c771(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48599,7 +50343,7 @@ function __c774(j: number): any {
       ).annotate({ identifier: "DisableLedgerDigestUploadRequest" });
   }
 }
-function __c775(j: number): any {
+function __c772(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48610,7 +50354,7 @@ function __c775(j: number): any {
       ).annotate({ identifier: "LedgerDigestUploadsProperties" });
   }
 }
-function __c776(j: number): any {
+function __c773(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48619,14 +50363,14 @@ function __c776(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(24800, __c775, 0)),
+          properties: S.optional(__S(24704, __c772, 0)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DisableLedgerDigestUploadResponse" });
   }
 }
-function __c777(j: number): any {
+function __c774(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48650,7 +50394,7 @@ function __c777(j: number): any {
       ).annotate({ identifier: "DisableManagedDatabaseSensitivityLabelRecommendationRequest" });
   }
 }
-function __c778(j: number): any {
+function __c775(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48671,7 +50415,7 @@ function __c778(j: number): any {
       ).annotate({ identifier: "DisableManagedLedgerDigestUploadRequest" });
   }
 }
-function __c779(j: number): any {
+function __c776(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48695,7 +50439,7 @@ function __c779(j: number): any {
       ).annotate({ identifier: "DisableSensitivityLabelRecommendationRequest" });
   }
 }
-function __c780(j: number): any {
+function __c777(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48704,7 +50448,7 @@ function __c780(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           distributedAvailabilityGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24994, __c781, 2)),
+          properties: S.optional(__S(24898, __c778, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -48716,7 +50460,7 @@ function __c780(j: number): any {
       ).annotate({ identifier: "DistributedAvailabilityGroupsCreateOrUpdateRequest" });
   }
 }
-function __c781(j: number): any {
+function __c778(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48729,7 +50473,7 @@ function __c781(j: number): any {
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupDatabaseInput" });
     case 1:
-      return S.Array(__S(24992, __c781, 0));
+      return S.Array(__S(24896, __c778, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -48742,12 +50486,12 @@ function __c781(j: number): any {
           instanceAvailabilityGroupName: S.optional(S.String),
           failoverMode: S.optional(S.String),
           seedingMode: S.optional(S.String),
-          databases: S.optional(__S(24993, __c781, 1)),
+          databases: S.optional(__S(24897, __c778, 1)),
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupPropertiesInput" });
   }
 }
-function __c782(j: number): any {
+function __c779(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48777,13 +50521,13 @@ function __c782(j: number): any {
           lastBackupLsn: S.optional(S.String),
           lastBackupTime: S.optional(S.String),
           mostRecentLinkError: S.optional(S.String),
-          partnerAuthCertValidity: S.optional(__S(25024, __c782, 0)),
+          partnerAuthCertValidity: S.optional(__S(24928, __c779, 0)),
           instanceSendReplicationLagSeconds: S.optional(S.Number),
           instanceRedoReplicationLagSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupDatabase" });
     case 2:
-      return S.Array(__S(25025, __c782, 1));
+      return S.Array(__S(24929, __c779, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -48797,12 +50541,12 @@ function __c782(j: number): any {
           instanceAvailabilityGroupName: S.optional(S.String),
           failoverMode: S.optional(S.String),
           seedingMode: S.optional(S.String),
-          databases: S.optional(__S(25026, __c782, 2)),
+          databases: S.optional(__S(24930, __c779, 2)),
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupProperties" });
   }
 }
-function __c783(j: number): any {
+function __c780(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48811,14 +50555,14 @@ function __c783(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25027, __c782, 3)),
+          properties: S.optional(__S(24931, __c779, 3)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DistributedAvailabilityGroupsCreateOrUpdateResponse" });
   }
 }
-function __c784(j: number): any {
+function __c781(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48839,7 +50583,7 @@ function __c784(j: number): any {
       ).annotate({ identifier: "CreateJobExecutionRequest" });
   }
 }
-function __c785(j: number): any {
+function __c782(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48864,12 +50608,12 @@ function __c785(j: number): any {
           currentAttempts: S.optional(S.Number),
           currentAttemptStartTime: S.optional(S.String),
           lastMessage: S.optional(S.String),
-          target: S.optional(__S(25120, __c785, 0)),
+          target: S.optional(__S(25024, __c782, 0)),
         }),
       ).annotate({ identifier: "JobExecutionProperties" });
   }
 }
-function __c786(j: number): any {
+function __c783(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48878,14 +50622,14 @@ function __c786(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25121, __c785, 1)),
+          properties: S.optional(__S(25025, __c782, 1)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateJobExecutionResponse" });
   }
 }
-function __c787(j: number): any {
+function __c784(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48906,7 +50650,7 @@ function __c787(j: number): any {
       ).annotate({ identifier: "DistributedAvailabilityGroupsFailoverRequest" });
   }
 }
-function __c788(j: number): any {
+function __c785(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48914,7 +50658,7 @@ function __c788(j: number): any {
           state: S.optional(S.String),
           maxSizeBytes: S.optional(S.Number),
           minCapacity: S.optional(S.Number),
-          perDatabaseSettings: S.optional(__S(25248, __c789, 0)),
+          perDatabaseSettings: S.optional(__S(25152, __c786, 0)),
           zoneRedundant: S.optional(S.Boolean),
           licenseType: S.optional(S.String),
           maintenanceConfigurationId: S.optional(S.String),
@@ -48933,7 +50677,7 @@ function __c788(j: number): any {
           elasticPoolName: S.String.pipe(T.Label()),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(25216, __c788, 0)),
+          properties: S.optional(__S(25120, __c785, 0)),
           sku: S.optional(__S(5568, __c174, 0)),
         }).pipe(
           T.Http({
@@ -48953,7 +50697,7 @@ function __c788(j: number): any {
           systemData: S.optional(__S(96, __c3, 0)),
           tags: S.optional(__S(5536, __c173, 0)),
           location: S.String,
-          properties: S.optional(__S(25249, __c789, 1)),
+          properties: S.optional(__S(25153, __c786, 1)),
           sku: S.optional(__S(5568, __c174, 0)),
           kind: S.optional(S.String),
           azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
@@ -48963,7 +50707,7 @@ function __c788(j: number): any {
       ).annotate({ identifier: "ElasticPoolsCreateOrUpdateResponse" });
   }
 }
-function __c789(j: number): any {
+function __c786(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -48980,7 +50724,7 @@ function __c789(j: number): any {
           creationDate: S.optional(S.String),
           maxSizeBytes: S.optional(S.Number),
           minCapacity: S.optional(S.Number),
-          perDatabaseSettings: S.optional(__S(25248, __c789, 0)),
+          perDatabaseSettings: S.optional(__S(25152, __c786, 0)),
           zoneRedundant: S.optional(S.Boolean),
           licenseType: S.optional(S.String),
           maintenanceConfigurationId: S.optional(S.String),
@@ -48992,7 +50736,7 @@ function __c789(j: number): any {
       ).annotate({ identifier: "ElasticPoolProperties" });
   }
 }
-function __c790(j: number): any {
+function __c787(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49012,7 +50756,7 @@ function __c790(j: number): any {
       ).annotate({ identifier: "ElasticPoolsFailoverRequest" });
   }
 }
-function __c791(j: number): any {
+function __c788(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49036,7 +50780,7 @@ function __c791(j: number): any {
       ).annotate({ identifier: "EnableManagedDatabaseSensitivityLabelRecommendationRequest" });
   }
 }
-function __c792(j: number): any {
+function __c789(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49060,7 +50804,7 @@ function __c792(j: number): any {
       ).annotate({ identifier: "EnableSensitivityLabelRecommendationRequest" });
   }
 }
-function __c793(j: number): any {
+function __c790(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49069,7 +50813,7 @@ function __c793(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           encryptionProtectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(25440, __c795, 0)),
+          properties: S.optional(__S(25344, __c792, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -49086,7 +50830,7 @@ function __c793(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25408, __c794, 0)),
+          properties: S.optional(__S(25312, __c791, 0)),
           kind: S.optional(S.String),
           location: S.optional(S.String),
           locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
@@ -49095,7 +50839,7 @@ function __c793(j: number): any {
       ).annotate({ identifier: "EncryptionProtectorsCreateOrUpdateResponse" });
   }
 }
-function __c794(j: number): any {
+function __c791(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49111,7 +50855,7 @@ function __c794(j: number): any {
       ).annotate({ identifier: "EncryptionProtectorProperties" });
   }
 }
-function __c795(j: number): any {
+function __c792(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49123,7 +50867,7 @@ function __c795(j: number): any {
       ).annotate({ identifier: "EncryptionProtectorPropertiesInput" });
   }
 }
-function __c796(j: number): any {
+function __c793(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49143,7 +50887,7 @@ function __c796(j: number): any {
       ).annotate({ identifier: "EncryptionProtectorsRevalidateRequest" });
   }
 }
-function __c797(j: number): any {
+function __c794(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49164,7 +50908,7 @@ function __c797(j: number): any {
       ).annotate({ identifier: "ExecuteDatabaseSqlVulnerabilityAssessmentExecuteScanRequest" });
   }
 }
-function __c798(j: number): any {
+function __c795(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49185,7 +50929,7 @@ function __c798(j: number): any {
       ).annotate({ identifier: "ExecuteSqlVulnerabilityAssessmentExecuteScanRequest" });
   }
 }
-function __c799(j: number): any {
+function __c796(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49212,7 +50956,7 @@ function __c799(j: number): any {
       ).annotate({ identifier: "ExportDatabaseRequest" });
   }
 }
-function __c800(j: number): any {
+function __c797(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -49236,7 +50980,7 @@ function __c800(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(96, __c3, 0)),
-          properties: S.optional(__S(25600, __c800, 0)),
+          properties: S.optional(__S(25504, __c797, 0)),
           location: S.optional(S.String.pipe(T.Header("Location"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),

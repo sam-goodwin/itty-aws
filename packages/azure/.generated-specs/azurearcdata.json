@@ -913,10 +913,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List postgres Instance resources in the resource group\n\nGet a postgres Instances list by Resource group name.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListPostgresInstanceByResourceGroupResponse": {
@@ -1062,6 +1069,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure resource group"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1081,10 +1094,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/postgresInstances",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List postgres Instance resources in the subscription",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListPostgresInstancesResponse": {
@@ -1125,6 +1145,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the Azure subscription"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1703,10 +1729,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the active directory connectors associated with the given data controller.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListActiveDirectoryConnectorsResponse": {
@@ -1802,6 +1835,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the data controller"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2847,10 +2886,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers",
           "code": 200,
-          "apiVersion": "2023-09-01-preview"
+          "apiVersion": "2023-09-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List dataController resources in the resource group",
-        "com.distilled.openapi#apiVersion": "2023-09-01-preview"
+        "com.distilled.openapi#apiVersion": "2023-09-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListDataControllerInGroupResponse": {
@@ -2990,6 +3036,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure resource group"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3009,10 +3061,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/dataControllers",
           "code": 200,
-          "apiVersion": "2023-09-01-preview"
+          "apiVersion": "2023-09-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List dataController resources in the subscription",
-        "com.distilled.openapi#apiVersion": "2023-09-01-preview"
+        "com.distilled.openapi#apiVersion": "2023-09-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListDataControllerInSubscriptionResponse": {
@@ -3053,6 +3112,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the Azure subscription"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3907,10 +3972,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlServerLicense resources in the resource group\n\nGets all sqlServerLicenses in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlServerLicenseByResourceGroupResponse": {
@@ -4024,6 +4096,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure resource group"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4043,10 +4121,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerLicenses",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlServerLicense resources in the subscription",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlServerLicensesResponse": {
@@ -4087,6 +4172,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the Azure subscription"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9320,10 +9411,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlServerInstance resources in the resource group\n\nGets all sqlServerInstances in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlServerInstanceByResourceGroupResponse": {
@@ -9436,6 +9534,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure resource group"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9455,10 +9559,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerInstances",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlServerInstance resources in the subscription",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlServerInstancesResponse": {
@@ -9499,6 +9610,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the Azure subscription"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9981,10 +10098,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the failover groups associated with the given sql managed instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListFailoverGroupsResponse": {
@@ -10080,6 +10204,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of SQL Managed Instance"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11275,10 +11405,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlManagedInstance resources in the resource group\n\nGets all sqlManagedInstances in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlManagedInstanceByResourceGroupResponse": {
@@ -11424,6 +11561,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure resource group"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11443,10 +11586,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlManagedInstance resources in the subscription",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlManagedInstancesResponse": {
@@ -11488,6 +11638,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the Azure subscription"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11497,7 +11653,7 @@
     "com.azure.azurearcdata#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurearcdata#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.azurearcdata#ListOperationsResponse"
@@ -11507,10 +11663,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AzureArcData/operations",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Azure Data Services on Azure Arc API operations.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListOperationsResponse": {
@@ -11651,6 +11814,20 @@
         "smithy.api#documentation": "Display metadata associated with the operation."
       }
     },
+    "com.azure.azurearcdata#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.azurearcdata#ListSqlServerAvailabilityGroups": {
       "type": "operation",
       "input": {
@@ -11664,10 +11841,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the availability group associated with the given Arc Sql Server.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ArcSqlServerAvailabilityGroupListResult": {
@@ -12589,6 +12773,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of SQL Server Instance"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14690,10 +14880,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getAllAvailabilityGroups",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves full properties of all the Availability Groups in a SQL Server instance.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#GetSqlServerInstanceAllAvailabilityGroupsRequest": {
@@ -14728,6 +14925,12 @@
         },
         "replicationPartnerTypeFilter": {
           "target": "com.azure.azurearcdata#ReplicationPartnerType"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15897,10 +16100,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the databases associated with the given Arc Sql Server.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ArcSqlServerDatabaseListResult": {
@@ -16631,6 +16841,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of SQL Server Instance"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18310,10 +18526,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlServerEsuLicense resources in the resource group\n\nGets all sqlServerEsuLicenses in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#SqlServerEsuLicenseListResult": {
@@ -18427,6 +18650,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -18446,10 +18675,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sqlServerEsuLicense resources in the subscription",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurearcdata#ListSqlServerEsuLicensesRequest": {
@@ -18461,6 +18697,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

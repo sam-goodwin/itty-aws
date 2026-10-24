@@ -8058,9 +8058,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-15"
+          "apiVersion": "2026-04-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get operations of a geo-catalog collection"
+        "smithy.api#documentation": "Get operations of a geo-catalog collection",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.orbital_planetary_computer#OperationPagedResponse": {
@@ -8131,6 +8138,12 @@
             "smithy.api#httpQuery": "status",
             "smithy.api#documentation": "Operation status used to filter the results"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8196,9 +8209,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-15"
+          "apiVersion": "2026-04-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all managed identities with access to storage accounts configured for a geo-catalog"
+        "smithy.api#documentation": "Get all managed identities with access to storage accounts configured for a geo-catalog",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.orbital_planetary_computer#ManagedIdentityMetadataPagedResponse": {
@@ -8262,6 +8282,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "GeoCatalog endpoint, e.g. https://contoso-catalog.gwhqfdeddydpareu.uksouth.geocatalog.spatio.azure.com",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8603,9 +8629,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-15"
+          "apiVersion": "2026-04-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get ingestion sources in a geo-catalog"
+        "smithy.api#documentation": "Get ingestion sources in a geo-catalog",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.orbital_planetary_computer#IngestionSourceSummaryPagedResponse": {
@@ -8689,6 +8722,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "The number of items to skip"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9028,9 +9067,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-15"
+          "apiVersion": "2026-04-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the runs of an ingestion"
+        "smithy.api#documentation": "Get the runs of an ingestion",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.orbital_planetary_computer#IngestionRunPagedResponse": {
@@ -9102,6 +9148,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "The number of items to skip"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9609,9 +9661,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-15"
+          "apiVersion": "2026-04-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get ingestions of a catalog"
+        "smithy.api#documentation": "Get ingestions of a catalog",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.orbital_planetary_computer#IngestionDefinitionPagedResponse": {
@@ -9675,6 +9734,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "The number of items to skip"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

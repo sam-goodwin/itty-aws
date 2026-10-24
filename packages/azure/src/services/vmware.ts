@@ -2820,6 +2820,8 @@ export interface ListAddonsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An addon resource */
 export interface Addon {
@@ -2850,6 +2852,8 @@ export interface ListAuthorizationsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ExpressRoute Circuit Authorization */
 export interface ExpressRouteAuthorization {
@@ -2880,6 +2884,8 @@ export interface ListCloudLinksRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A cloud link resource */
 export interface CloudLink {
@@ -2910,6 +2916,8 @@ export interface ListClustersRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource model definition representing SKU */
 export type ClusterSku = ClustersCreateOrUpdateResponseSku;
@@ -2972,6 +2980,8 @@ export interface ListDatastoresRequest {
   privateCloudName: string;
   /** Name of the cluster */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A datastore resource */
 export interface Datastore {
@@ -3002,6 +3012,8 @@ export interface ListGlobalReachConnectionsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A global reach connection resource */
 export interface GlobalReachConnection {
@@ -3032,6 +3044,8 @@ export interface ListHcxEnterpriseSitesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An HCX Enterprise Site resource */
 export interface HcxEnterpriseSite {
@@ -3064,6 +3078,8 @@ export interface ListHostsRequest {
   privateCloudName: string;
   /** Name of the cluster */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The availability zones. */
 export type HostZonesList = Array<string>;
@@ -3102,6 +3118,8 @@ export interface ListIscsiPathByPrivateCloudRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An iSCSI path resource */
 export interface IscsiPath {
@@ -3132,6 +3150,8 @@ export interface ListLicensesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A license resource */
 export interface License {
@@ -3178,6 +3198,8 @@ export interface ListMaintenancesRequest {
   from?: string;
   /** date till which result should be returned. i.e. scheduledStartTime <= to */
   to?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A cluster resource */
 export interface Maintenance {
@@ -3201,7 +3223,10 @@ export interface MaintenanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -3234,7 +3259,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -3247,6 +3272,8 @@ export interface ListPlacementPoliciesRequest {
   privateCloudName: string;
   /** Name of the cluster */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A vSphere Distributed Resource Scheduler (DRS) placement policy */
 export interface PlacementPolicy {
@@ -3292,6 +3319,8 @@ export interface AdminCredentials {
 export interface ListPrivateCloudInSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type PrivateCloudTagsMap = { [key: string]: string | undefined };
@@ -3338,6 +3367,8 @@ export interface ListPrivateCloudsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProvisionedNetworksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3346,6 +3377,8 @@ export interface ListProvisionedNetworksRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A provisioned network resource */
 export interface ProvisionedNetwork {
@@ -3376,6 +3409,8 @@ export interface ListPureStoragePoliciesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An instance describing a Pure Storage Policy Based Management policy */
 export interface PureStoragePolicy {
@@ -3408,6 +3443,8 @@ export interface ListScriptCmdletsRequest {
   privateCloudName: string;
   /** Name of the script package. */
   scriptPackageName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A cmdlet available for script execution */
 export interface ScriptCmdlet {
@@ -3438,6 +3475,8 @@ export interface ListScriptExecutionsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An instance of a script executed by a user - custom or AVS */
 export interface ScriptExecution {
@@ -3468,6 +3507,8 @@ export interface ListScriptPackagesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Script Package resources available for execution */
 export interface ScriptPackage {
@@ -3494,6 +3535,8 @@ export interface ScriptPackagesList {
 export interface ListSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Describes the type of resource the SKU applies to. */
 export type ResourceSkuResourceType = "privateClouds" | "privateClouds/clusters";
@@ -3603,6 +3646,8 @@ export interface ListVirtualMachinesRequest {
   privateCloudName: string;
   /** Name of the cluster */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Virtual Machine */
 export interface VirtualMachine {
@@ -3633,6 +3678,8 @@ export interface ListWorkloadNetworkDhcpRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX DHCP */
 export interface WorkloadNetworkDhcp {
@@ -3663,6 +3710,8 @@ export interface ListWorkloadNetworkDnsServicesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX DNS Service */
 export interface WorkloadNetworkDnsService {
@@ -3693,6 +3742,8 @@ export interface ListWorkloadNetworkDnsZonesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX DNS Zone */
 export interface WorkloadNetworkDnsZone {
@@ -3723,6 +3774,8 @@ export interface ListWorkloadNetworkGatewaysRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX Gateway. */
 export interface WorkloadNetworkGateway {
@@ -3753,6 +3806,8 @@ export interface ListWorkloadNetworkPortMirroringRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX Port Mirroring */
 export interface WorkloadNetworkPortMirroring {
@@ -3783,6 +3838,8 @@ export interface ListWorkloadNetworkPublicIPsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX Public IP Block */
 export interface WorkloadNetworkPublicIP {
@@ -3813,6 +3870,8 @@ export interface ListWorkloadNetworksRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workload Network */
 export interface WorkloadNetwork {
@@ -3843,6 +3902,8 @@ export interface ListWorkloadNetworkSegmentsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX Segment */
 export interface WorkloadNetworkSegment {
@@ -3873,6 +3934,8 @@ export interface ListWorkloadNetworkVirtualMachinesRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX Virtual Machine */
 export interface WorkloadNetworkVirtualMachine {
@@ -3903,6 +3966,8 @@ export interface ListWorkloadNetworkVMGroupsRequest {
   resourceGroupName: string;
   /** Name of the private cloud */
   privateCloudName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSX VM Group */
 export interface WorkloadNetworkVMGroup {
@@ -5759,63 +5824,91 @@ export const LicensesCreateOrUpdate: API.OperationMethod<
 
 export type ListAddonsError = AzureOpError;
 /** List Addon resources by PrivateCloud */
-export const ListAddons: API.OperationMethod<
+export const ListAddons: API.PaginatedOperationMethod<
   ListAddonsRequest,
   AddonList,
   ListAddonsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Addon
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2464, __c154, 0) as any as S.Schema<ListAddonsRequest>,
   output: __S(2466, __c154, 2) as any as S.Schema<AddonList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAuthorizationsError = AzureOpError;
 /** List ExpressRouteAuthorization resources by PrivateCloud */
-export const ListAuthorizations: API.OperationMethod<
+export const ListAuthorizations: API.PaginatedOperationMethod<
   ListAuthorizationsRequest,
   ExpressRouteAuthorizationList,
   ListAuthorizationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteAuthorization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2480, __c155, 0) as any as S.Schema<ListAuthorizationsRequest>,
   output: __S(2482, __c155, 2) as any as S.Schema<ExpressRouteAuthorizationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCloudLinksError = AzureOpError;
 /** List CloudLink resources by PrivateCloud */
-export const ListCloudLinks: API.OperationMethod<
+export const ListCloudLinks: API.PaginatedOperationMethod<
   ListCloudLinksRequest,
   CloudLinkList,
   ListCloudLinksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CloudLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2496, __c156, 0) as any as S.Schema<ListCloudLinksRequest>,
   output: __S(2498, __c156, 2) as any as S.Schema<CloudLinkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClustersError = AzureOpError;
 /** List Cluster resources by PrivateCloud */
-export const ListClusters: API.OperationMethod<
+export const ListClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ClusterList,
   ListClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2512, __c157, 0) as any as S.Schema<ListClustersRequest>,
   output: __S(2514, __c157, 2) as any as S.Schema<ClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClusterZonesError = AzureOpError;
 /** List hosts by zone in a cluster */
@@ -5834,138 +5927,201 @@ export const ListClusterZones: API.OperationMethod<
 
 export type ListDatastoresError = AzureOpError;
 /** List Datastore resources by Cluster */
-export const ListDatastores: API.OperationMethod<
+export const ListDatastores: API.PaginatedOperationMethod<
   ListDatastoresRequest,
   DatastoreList,
   ListDatastoresError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Datastore
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2544, __c159, 0) as any as S.Schema<ListDatastoresRequest>,
   output: __S(2546, __c159, 2) as any as S.Schema<DatastoreList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGlobalReachConnectionsError = AzureOpError;
 /** List GlobalReachConnection resources by PrivateCloud */
-export const ListGlobalReachConnections: API.OperationMethod<
+export const ListGlobalReachConnections: API.PaginatedOperationMethod<
   ListGlobalReachConnectionsRequest,
   GlobalReachConnectionList,
   ListGlobalReachConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GlobalReachConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2560, __c160, 0) as any as S.Schema<ListGlobalReachConnectionsRequest>,
   output: __S(2562, __c160, 2) as any as S.Schema<GlobalReachConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHcxEnterpriseSitesError = AzureOpError;
 /** List HcxEnterpriseSite resources by PrivateCloud */
-export const ListHcxEnterpriseSites: API.OperationMethod<
+export const ListHcxEnterpriseSites: API.PaginatedOperationMethod<
   ListHcxEnterpriseSitesRequest,
   HcxEnterpriseSiteList,
   ListHcxEnterpriseSitesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HcxEnterpriseSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2576, __c161, 0) as any as S.Schema<ListHcxEnterpriseSitesRequest>,
   output: __S(2578, __c161, 2) as any as S.Schema<HcxEnterpriseSiteList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHostsError = AzureOpError;
 /** List Host resources by Cluster */
-export const ListHosts: API.OperationMethod<
+export const ListHosts: API.PaginatedOperationMethod<
   ListHostsRequest,
   HostListResult,
   ListHostsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Host
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2592, __c162, 0) as any as S.Schema<ListHostsRequest>,
   output: __S(2594, __c162, 2) as any as S.Schema<HostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIscsiPathByPrivateCloudError = AzureOpError;
 /** List IscsiPath resources by PrivateCloud */
-export const ListIscsiPathByPrivateCloud: API.OperationMethod<
+export const ListIscsiPathByPrivateCloud: API.PaginatedOperationMethod<
   ListIscsiPathByPrivateCloudRequest,
   IscsiPathListResult,
   ListIscsiPathByPrivateCloudError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IscsiPath
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2656, __c166, 0) as any as S.Schema<ListIscsiPathByPrivateCloudRequest>,
   output: __S(2658, __c166, 2) as any as S.Schema<IscsiPathListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLicensesError = AzureOpError;
 /** List License resources by PrivateCloud */
-export const ListLicenses: API.OperationMethod<
+export const ListLicenses: API.PaginatedOperationMethod<
   ListLicensesRequest,
   LicenseListResult,
   ListLicensesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  License
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2672, __c167, 0) as any as S.Schema<ListLicensesRequest>,
   output: __S(2674, __c167, 2) as any as S.Schema<LicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMaintenancesError = AzureOpError;
 /** List Maintenance resources by subscription ID */
-export const ListMaintenances: API.OperationMethod<
+export const ListMaintenances: API.PaginatedOperationMethod<
   ListMaintenancesRequest,
   MaintenanceListResult,
   ListMaintenancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Maintenance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2688, __c168, 0) as any as S.Schema<ListMaintenancesRequest>,
   output: __S(2690, __c168, 2) as any as S.Schema<MaintenanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2704, __c169, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(2708, __c169, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPlacementPoliciesError = AzureOpError;
 /** List PlacementPolicy resources by Cluster */
-export const ListPlacementPolicies: API.OperationMethod<
+export const ListPlacementPolicies: API.PaginatedOperationMethod<
   ListPlacementPoliciesRequest,
   PlacementPoliciesList,
   ListPlacementPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PlacementPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2720, __c170, 0) as any as S.Schema<ListPlacementPoliciesRequest>,
   output: __S(2722, __c170, 2) as any as S.Schema<PlacementPoliciesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateCloudAdminCredentialsError = AzureOpError;
 /** List the admin credentials for the private cloud */
@@ -5984,288 +6140,421 @@ export const ListPrivateCloudAdminCredentials: API.OperationMethod<
 
 export type ListPrivateCloudInSubscriptionError = AzureOpError;
 /** List PrivateCloud resources by subscription ID */
-export const ListPrivateCloudInSubscription: API.OperationMethod<
+export const ListPrivateCloudInSubscription: API.PaginatedOperationMethod<
   ListPrivateCloudInSubscriptionRequest,
   PrivateCloudList,
   ListPrivateCloudInSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateCloud
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2752, __c172, 0) as any as S.Schema<ListPrivateCloudInSubscriptionRequest>,
   output: __S(2769, __c173, 1) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateCloudsError = AzureOpError;
 /** List PrivateCloud resources by resource group */
-export const ListPrivateClouds: API.OperationMethod<
+export const ListPrivateClouds: API.PaginatedOperationMethod<
   ListPrivateCloudsRequest,
   PrivateCloudList,
   ListPrivateCloudsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateCloud
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2784, __c174, 0) as any as S.Schema<ListPrivateCloudsRequest>,
   output: __S(2769, __c173, 1) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProvisionedNetworksError = AzureOpError;
 /** List ProvisionedNetwork resources by PrivateCloud */
-export const ListProvisionedNetworks: API.OperationMethod<
+export const ListProvisionedNetworks: API.PaginatedOperationMethod<
   ListProvisionedNetworksRequest,
   ProvisionedNetworkListResult,
   ListProvisionedNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProvisionedNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2800, __c175, 0) as any as S.Schema<ListProvisionedNetworksRequest>,
   output: __S(2802, __c175, 2) as any as S.Schema<ProvisionedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPureStoragePoliciesError = AzureOpError;
 /** List PureStoragePolicy resources by PrivateCloud */
-export const ListPureStoragePolicies: API.OperationMethod<
+export const ListPureStoragePolicies: API.PaginatedOperationMethod<
   ListPureStoragePoliciesRequest,
   PureStoragePolicyListResult,
   ListPureStoragePoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PureStoragePolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2816, __c176, 0) as any as S.Schema<ListPureStoragePoliciesRequest>,
   output: __S(2818, __c176, 2) as any as S.Schema<PureStoragePolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScriptCmdletsError = AzureOpError;
 /** List ScriptCmdlet resources by ScriptPackage */
-export const ListScriptCmdlets: API.OperationMethod<
+export const ListScriptCmdlets: API.PaginatedOperationMethod<
   ListScriptCmdletsRequest,
   ScriptCmdletsList,
   ListScriptCmdletsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScriptCmdlet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2880, __c180, 0) as any as S.Schema<ListScriptCmdletsRequest>,
   output: __S(2882, __c180, 2) as any as S.Schema<ScriptCmdletsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScriptExecutionsError = AzureOpError;
 /** List ScriptExecution resources by PrivateCloud */
-export const ListScriptExecutions: API.OperationMethod<
+export const ListScriptExecutions: API.PaginatedOperationMethod<
   ListScriptExecutionsRequest,
   ScriptExecutionsList,
   ListScriptExecutionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScriptExecution
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2896, __c181, 0) as any as S.Schema<ListScriptExecutionsRequest>,
   output: __S(2898, __c181, 2) as any as S.Schema<ScriptExecutionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScriptPackagesError = AzureOpError;
 /** List ScriptPackage resources by PrivateCloud */
-export const ListScriptPackages: API.OperationMethod<
+export const ListScriptPackages: API.PaginatedOperationMethod<
   ListScriptPackagesRequest,
   ScriptPackagesList,
   ListScriptPackagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScriptPackage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2912, __c182, 0) as any as S.Schema<ListScriptPackagesRequest>,
   output: __S(2914, __c182, 2) as any as S.Schema<ScriptPackagesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusError = AzureOpError;
 /** A list of SKUs. */
-export const ListSkus: API.OperationMethod<
+export const ListSkus: API.PaginatedOperationMethod<
   ListSkusRequest,
   PagedResourceSku,
   ListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2928, __c183, 0) as any as S.Schema<ListSkusRequest>,
   output: __S(2940, __c183, 12) as any as S.Schema<PagedResourceSku>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachinesError = AzureOpError;
 /** List VirtualMachine resources by Cluster */
-export const ListVirtualMachines: API.OperationMethod<
+export const ListVirtualMachines: API.PaginatedOperationMethod<
   ListVirtualMachinesRequest,
   VirtualMachinesList,
   ListVirtualMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2944, __c184, 0) as any as S.Schema<ListVirtualMachinesRequest>,
   output: __S(2946, __c184, 2) as any as S.Schema<VirtualMachinesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkDhcpError = AzureOpError;
 /** List WorkloadNetworkDhcp resources by WorkloadNetwork */
-export const ListWorkloadNetworkDhcp: API.OperationMethod<
+export const ListWorkloadNetworkDhcp: API.PaginatedOperationMethod<
   ListWorkloadNetworkDhcpRequest,
   WorkloadNetworkDhcpList,
   ListWorkloadNetworkDhcpError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkDhcp
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2960, __c185, 0) as any as S.Schema<ListWorkloadNetworkDhcpRequest>,
   output: __S(2962, __c185, 2) as any as S.Schema<WorkloadNetworkDhcpList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkDnsServicesError = AzureOpError;
 /** List WorkloadNetworkDnsService resources by WorkloadNetwork */
-export const ListWorkloadNetworkDnsServices: API.OperationMethod<
+export const ListWorkloadNetworkDnsServices: API.PaginatedOperationMethod<
   ListWorkloadNetworkDnsServicesRequest,
   WorkloadNetworkDnsServicesList,
   ListWorkloadNetworkDnsServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkDnsService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2976, __c186, 0) as any as S.Schema<ListWorkloadNetworkDnsServicesRequest>,
   output: __S(2978, __c186, 2) as any as S.Schema<WorkloadNetworkDnsServicesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkDnsZonesError = AzureOpError;
 /** List WorkloadNetworkDnsZone resources by WorkloadNetwork */
-export const ListWorkloadNetworkDnsZones: API.OperationMethod<
+export const ListWorkloadNetworkDnsZones: API.PaginatedOperationMethod<
   ListWorkloadNetworkDnsZonesRequest,
   WorkloadNetworkDnsZonesList,
   ListWorkloadNetworkDnsZonesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkDnsZone
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2992, __c187, 0) as any as S.Schema<ListWorkloadNetworkDnsZonesRequest>,
   output: __S(2994, __c187, 2) as any as S.Schema<WorkloadNetworkDnsZonesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkGatewaysError = AzureOpError;
 /** List WorkloadNetworkGateway resources by WorkloadNetwork */
-export const ListWorkloadNetworkGateways: API.OperationMethod<
+export const ListWorkloadNetworkGateways: API.PaginatedOperationMethod<
   ListWorkloadNetworkGatewaysRequest,
   WorkloadNetworkGatewayList,
   ListWorkloadNetworkGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3008, __c188, 0) as any as S.Schema<ListWorkloadNetworkGatewaysRequest>,
   output: __S(3010, __c188, 2) as any as S.Schema<WorkloadNetworkGatewayList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkPortMirroringError = AzureOpError;
 /** List WorkloadNetworkPortMirroring resources by WorkloadNetwork */
-export const ListWorkloadNetworkPortMirroring: API.OperationMethod<
+export const ListWorkloadNetworkPortMirroring: API.PaginatedOperationMethod<
   ListWorkloadNetworkPortMirroringRequest,
   WorkloadNetworkPortMirroringList,
   ListWorkloadNetworkPortMirroringError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkPortMirroring
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3024, __c189, 0) as any as S.Schema<ListWorkloadNetworkPortMirroringRequest>,
   output: __S(3026, __c189, 2) as any as S.Schema<WorkloadNetworkPortMirroringList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkPublicIPsError = AzureOpError;
 /** List WorkloadNetworkPublicIP resources by WorkloadNetwork */
-export const ListWorkloadNetworkPublicIPs: API.OperationMethod<
+export const ListWorkloadNetworkPublicIPs: API.PaginatedOperationMethod<
   ListWorkloadNetworkPublicIPsRequest,
   WorkloadNetworkPublicIPsList,
   ListWorkloadNetworkPublicIPsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkPublicIP
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ListWorkloadNetworkPublicIPsRequest>,
   output: __S(130, __c8, 2) as any as S.Schema<WorkloadNetworkPublicIPsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworksError = AzureOpError;
 /** List WorkloadNetwork resources by PrivateCloud */
-export const ListWorkloadNetworks: API.OperationMethod<
+export const ListWorkloadNetworks: API.PaginatedOperationMethod<
   ListWorkloadNetworksRequest,
   WorkloadNetworkList,
   ListWorkloadNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListWorkloadNetworksRequest>,
   output: __S(146, __c9, 2) as any as S.Schema<WorkloadNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkSegmentsError = AzureOpError;
 /** List WorkloadNetworkSegment resources by WorkloadNetwork */
-export const ListWorkloadNetworkSegments: API.OperationMethod<
+export const ListWorkloadNetworkSegments: API.PaginatedOperationMethod<
   ListWorkloadNetworkSegmentsRequest,
   WorkloadNetworkSegmentsList,
   ListWorkloadNetworkSegmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkSegment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<ListWorkloadNetworkSegmentsRequest>,
   output: __S(162, __c10, 2) as any as S.Schema<WorkloadNetworkSegmentsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkVirtualMachinesError = AzureOpError;
 /** List WorkloadNetworkVirtualMachine resources by WorkloadNetwork */
-export const ListWorkloadNetworkVirtualMachines: API.OperationMethod<
+export const ListWorkloadNetworkVirtualMachines: API.PaginatedOperationMethod<
   ListWorkloadNetworkVirtualMachinesRequest,
   WorkloadNetworkVirtualMachinesList,
   ListWorkloadNetworkVirtualMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkVirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<ListWorkloadNetworkVirtualMachinesRequest>,
   output: __S(178, __c11, 2) as any as S.Schema<WorkloadNetworkVirtualMachinesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkloadNetworkVMGroupsError = AzureOpError;
 /** List WorkloadNetworkVMGroup resources by WorkloadNetwork */
-export const ListWorkloadNetworkVMGroups: API.OperationMethod<
+export const ListWorkloadNetworkVMGroups: API.PaginatedOperationMethod<
   ListWorkloadNetworkVMGroupsRequest,
   WorkloadNetworkVMGroupsList,
   ListWorkloadNetworkVMGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadNetworkVMGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListWorkloadNetworkVMGroupsRequest>,
   output: __S(194, __c12, 2) as any as S.Schema<WorkloadNetworkVMGroupsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MaintenancesInitiateChecksError = AzureOpError;
 /** Initiate maintenance readiness checks */
@@ -6761,12 +7050,14 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/publicIPs",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkPublicIPsRequest" });
@@ -6789,12 +7080,14 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworksRequest" });
@@ -6817,12 +7110,14 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/segments",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkSegmentsRequest" });
@@ -6845,12 +7140,14 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/virtualMachines",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkVirtualMachinesRequest" });
@@ -6873,12 +7170,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/vmGroups",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkVMGroupsRequest" });
@@ -10199,12 +10498,14 @@ function __c154(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/addons",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddonsRequest" });
@@ -10227,12 +10528,14 @@ function __c155(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAuthorizationsRequest" });
@@ -10255,12 +10558,14 @@ function __c156(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/cloudLinks",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCloudLinksRequest" });
@@ -10283,12 +10588,14 @@ function __c157(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
@@ -10347,12 +10654,14 @@ function __c159(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatastoresRequest" });
@@ -10375,12 +10684,14 @@ function __c160(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGlobalReachConnectionsRequest" });
@@ -10403,12 +10714,14 @@ function __c161(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/hcxEnterpriseSites",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHcxEnterpriseSitesRequest" });
@@ -10432,12 +10745,14 @@ function __c162(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/hosts",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHostsRequest" });
@@ -10524,12 +10839,14 @@ function __c166(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/iscsiPaths",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIscsiPathByPrivateCloudRequest" });
@@ -10552,12 +10869,14 @@ function __c167(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/licenses",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLicensesRequest" });
@@ -10584,12 +10903,14 @@ function __c168(j: number): any {
           status: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/maintenances",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMaintenancesRequest" });
@@ -10608,12 +10929,15 @@ function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.AVS/operations",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -10641,7 +10965,7 @@ function __c169(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2707, __c169, 3)),
+          value: __S(2707, __c169, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -10656,12 +10980,14 @@ function __c170(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/placementPolicies",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPlacementPoliciesRequest" });
@@ -10710,12 +11036,14 @@ function __c172(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/privateClouds",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateCloudInSubscriptionRequest" });
@@ -10741,12 +11069,14 @@ function __c174(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateCloudsRequest" });
@@ -10760,12 +11090,14 @@ function __c175(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/provisionedNetworks",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProvisionedNetworksRequest" });
@@ -10788,12 +11120,14 @@ function __c176(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/pureStoragePolicies",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPureStoragePoliciesRequest" });
@@ -10880,12 +11214,14 @@ function __c180(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           scriptPackageName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScriptCmdletsRequest" });
@@ -10908,12 +11244,14 @@ function __c181(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptExecutions",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScriptExecutionsRequest" });
@@ -10936,12 +11274,14 @@ function __c182(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScriptPackagesRequest" });
@@ -10962,12 +11302,14 @@ function __c183(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/skus",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
@@ -11051,12 +11393,14 @@ function __c184(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/virtualMachines",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachinesRequest" });
@@ -11079,12 +11423,14 @@ function __c185(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dhcpConfigurations",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkDhcpRequest" });
@@ -11107,12 +11453,14 @@ function __c186(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsServices",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkDnsServicesRequest" });
@@ -11135,12 +11483,14 @@ function __c187(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/dnsZones",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkDnsZonesRequest" });
@@ -11163,12 +11513,14 @@ function __c188(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/gateways",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkGatewaysRequest" });
@@ -11191,12 +11543,14 @@ function __c189(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/default/portMirroringProfiles",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkloadNetworkPortMirroringRequest" });

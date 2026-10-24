@@ -614,7 +614,11 @@
           "apiVersion": "2022-09-15"
         },
         "smithy.api#documentation": "List all the private endpoint connections associated with the Bot.",
-        "com.distilled.openapi#apiVersion": "2022-09-15"
+        "com.distilled.openapi#apiVersion": "2022-09-15",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.botservice#ListPrivateEndpointConnectionsResponse": {
@@ -921,10 +925,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections",
           "code": 200,
-          "apiVersion": "2022-09-15"
+          "apiVersion": "2022-09-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the Connection Settings registered to a particular BotService resource",
-        "com.distilled.openapi#apiVersion": "2022-09-15"
+        "com.distilled.openapi#apiVersion": "2022-09-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.botservice#ConnectionSettingResponseList": {
@@ -1269,6 +1280,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Bot resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2407,7 +2424,7 @@
     "com.azure.botservice#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.botservice#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.botservice#OperationEntityListResult"
@@ -2417,10 +2434,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.BotService/operations",
           "code": 200,
-          "apiVersion": "2022-09-15"
+          "apiVersion": "2022-09-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available BotService operations.",
-        "com.distilled.openapi#apiVersion": "2022-09-15"
+        "com.distilled.openapi#apiVersion": "2022-09-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.botservice#OperationEntityListResult": {
@@ -2514,6 +2538,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The operation supported by Bot Service Management."
+      }
+    },
+    "com.azure.botservice#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.botservice#GetBotCheckNameAvailability": {
@@ -2926,10 +2964,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels",
           "code": 200,
-          "apiVersion": "2022-09-15"
+          "apiVersion": "2022-09-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the Channel registrations of a particular BotService resource",
-        "com.distilled.openapi#apiVersion": "2022-09-15"
+        "com.distilled.openapi#apiVersion": "2022-09-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.botservice#ChannelResponseList": {
@@ -3076,6 +3121,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Bot resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4484,10 +4535,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices",
           "code": 200,
-          "apiVersion": "2022-09-15"
+          "apiVersion": "2022-09-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2022-09-15"
+        "com.distilled.openapi#apiVersion": "2022-09-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.botservice#BotResponseList": {
@@ -4981,6 +5039,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Azure Subscription ID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5000,10 +5064,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices",
           "code": 200,
-          "apiVersion": "2022-09-15"
+          "apiVersion": "2022-09-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a resource group",
-        "com.distilled.openapi#apiVersion": "2022-09-15"
+        "com.distilled.openapi#apiVersion": "2022-09-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.botservice#ListBotByResourceGroupRequest": {
@@ -5023,6 +5094,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Bot resource group in the user subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

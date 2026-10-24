@@ -1241,7 +1241,7 @@ export type ListConfigurationAssignmentsResultValueList = Array<ConfigurationAss
 /** Response for ConfigurationAssignments list */
 export interface ListConfigurationAssignmentsResult {
   /** The list of configuration Assignments */
-  value?: ListConfigurationAssignmentsResultValueList;
+  value: ListConfigurationAssignmentsResultValueList;
 }
 export interface ListConfigurationAssignmentsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1314,7 +1314,7 @@ export type ListMaintenanceConfigurationsResultValueList = Array<MaintenanceConf
 /** Response for MaintenanceConfigurations list */
 export interface ListMaintenanceConfigurationsResult {
   /** The list of maintenance Configurations */
-  value?: ListMaintenanceConfigurationsResultValueList;
+  value: ListMaintenanceConfigurationsResultValueList;
 }
 export interface ListMaintenanceConfigurationsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1352,7 +1352,7 @@ export type OperationsListResultValueList = Array<Operation>;
 /** Result of the List Operations operation */
 export interface OperationsListResult {
   /** A collection of operations */
-  value?: OperationsListResultValueList;
+  value: OperationsListResultValueList;
 }
 export interface ListPublicMaintenanceConfigurationsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1412,7 +1412,7 @@ export type ListUpdatesResultValueList = Array<Update>;
 /** Response for Updates list */
 export interface ListUpdatesResult {
   /** The pending updates */
-  value?: ListUpdatesResultValueList;
+  value: ListUpdatesResultValueList;
 }
 export interface ListUpdatesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1983,42 +1983,47 @@ export const GetPublicMaintenanceConfiguration: API.OperationMethod<
 
 export type ListConfigurationAssignmentParentError = AzureOpError;
 /** List configurationAssignments for resource List configurationAssignments for resource. */
-export const ListConfigurationAssignmentParent: API.OperationMethod<
+export const ListConfigurationAssignmentParent: API.PaginatedOperationMethod<
   ListConfigurationAssignmentParentRequest,
   ListConfigurationAssignmentsResult,
   ListConfigurationAssignmentParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<ListConfigurationAssignmentParentRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationAssignmentsError = AzureOpError;
 /** List configurationAssignments for resource List configurationAssignments for resource. */
-export const ListConfigurationAssignments: API.OperationMethod<
+export const ListConfigurationAssignments: API.PaginatedOperationMethod<
   ListConfigurationAssignmentsRequest,
   ListConfigurationAssignmentsResult,
   ListConfigurationAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<ListConfigurationAssignmentsRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationAssignmentsWithinSubscriptionError = AzureOpError;
 /** [UNSUPPORTED] Get configuration assignment within a subscription. This API is not implemented yet. */
-export const ListConfigurationAssignmentsWithinSubscription: API.OperationMethod<
+export const ListConfigurationAssignmentsWithinSubscription: API.PaginatedOperationMethod<
   ListConfigurationAssignmentsWithinSubscriptionRequest,
   ListConfigurationAssignmentsResult,
   ListConfigurationAssignmentsWithinSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     160,
     __c20,
@@ -2028,31 +2033,35 @@ export const ListConfigurationAssignmentsWithinSubscription: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListMaintenanceConfigurationsError = AzureOpError;
 /** Get Configuration records within a subscription */
-export const ListMaintenanceConfigurations: API.OperationMethod<
+export const ListMaintenanceConfigurations: API.PaginatedOperationMethod<
   ListMaintenanceConfigurationsRequest,
   ListMaintenanceConfigurationsResult,
   ListMaintenanceConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MaintenanceConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(168, __c21, 0) as any as S.Schema<ListMaintenanceConfigurationsRequest>,
   output: __S(177, __c22, 1) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListMaintenanceConfigurationsForResourceGroupError = AzureOpError;
 /** Get Configuration records within a subscription and resource group */
-export const ListMaintenanceConfigurationsForResourceGroup: API.OperationMethod<
+export const ListMaintenanceConfigurationsForResourceGroup: API.PaginatedOperationMethod<
   ListMaintenanceConfigurationsForResourceGroupRequest,
   ListMaintenanceConfigurationsResult,
   ListMaintenanceConfigurationsForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MaintenanceConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     184,
     __c23,
@@ -2062,67 +2071,76 @@ export const ListMaintenanceConfigurationsForResourceGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List available operations List the available operations supported by the Microsoft.Maintenance resource provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c24, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(196, __c24, 4) as any as S.Schema<OperationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListPublicMaintenanceConfigurationsError = AzureOpError;
 /** Get Public Maintenance Configuration records */
-export const ListPublicMaintenanceConfigurations: API.OperationMethod<
+export const ListPublicMaintenanceConfigurations: API.PaginatedOperationMethod<
   ListPublicMaintenanceConfigurationsRequest,
   ListMaintenanceConfigurationsResult,
   ListPublicMaintenanceConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MaintenanceConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<ListPublicMaintenanceConfigurationsRequest>,
   output: __S(177, __c22, 1) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListUpdateParentError = AzureOpError;
 /** Get Updates to resource Get updates to resources. */
-export const ListUpdateParent: API.OperationMethod<
+export const ListUpdateParent: API.PaginatedOperationMethod<
   ListUpdateParentRequest,
   ListUpdatesResult,
   ListUpdateParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Update
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<ListUpdateParentRequest>,
   output: __S(219, __c27, 3) as any as S.Schema<ListUpdatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListUpdatesError = AzureOpError;
 /** Get Updates to resource Get updates to resources. */
-export const ListUpdates: API.OperationMethod<
+export const ListUpdates: API.PaginatedOperationMethod<
   ListUpdatesRequest,
   ListUpdatesResult,
   ListUpdatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Update
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<ListUpdatesRequest>,
   output: __S(219, __c27, 3) as any as S.Schema<ListUpdatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type MaintenanceConfigurationsCreateOrUpdateError = AzureOpError;
 /** Create or Update configuration record */
@@ -2561,7 +2579,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(120, __c15, 0)),
+          value: __S(120, __c15, 0),
         }),
       ).annotate({ identifier: "ListConfigurationAssignmentsResult" });
   }
@@ -2700,7 +2718,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(176, __c22, 0)),
+          value: __S(176, __c22, 0),
         }),
       ).annotate({ identifier: "ListMaintenanceConfigurationsResult" });
   }
@@ -2760,7 +2778,7 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(195, __c24, 3)),
+          value: __S(195, __c24, 3),
         }),
       ).annotate({ identifier: "OperationsListResult" });
   }
@@ -2829,7 +2847,7 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(218, __c27, 2)),
+          value: __S(218, __c27, 2),
         }),
       ).annotate({ identifier: "ListUpdatesResult" });
   }

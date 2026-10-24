@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Authorization/denyAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets deny assignments for a scope.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#DenyAssignmentListResult": {
@@ -378,6 +385,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -475,10 +488,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/denyAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all deny assignments for the subscription.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListDenyAssignmentsRequest": {
@@ -497,6 +517,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -517,10 +543,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/denyAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets deny assignments for a resource group.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListDenyAssignmentForResourceGroupRequest": {
@@ -548,6 +581,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -567,10 +606,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/denyAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets deny assignments for a resource.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListDenyAssignmentForResourceRequest": {
@@ -629,6 +675,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -832,10 +884,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Authorization/providerOperations",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets provider operations metadata for all resource providers.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ProviderOperationsMetadataListResult": {
@@ -939,6 +998,12 @@
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "Specifies whether to expand the values."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -958,10 +1023,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all role assignments that apply to a resource group.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#RoleAssignmentListResult": {
@@ -1304,6 +1376,12 @@
             "smithy.api#httpQuery": "tenantId",
             "smithy.api#documentation": "Tenant ID for cross-tenant request"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1323,10 +1401,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/roleAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all role assignments that apply to a resource.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListRoleAssignmentForResourceRequest": {
@@ -1385,6 +1470,12 @@
             "smithy.api#httpQuery": "tenantId",
             "smithy.api#documentation": "Tenant ID for cross-tenant request"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1404,10 +1495,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all role assignments that apply to a subscription.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListRoleAssignmentForSubscriptionRequest": {
@@ -1433,6 +1531,12 @@
           "traits": {
             "smithy.api#httpQuery": "tenantId",
             "smithy.api#documentation": "Tenant ID for cross-tenant request"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1819,10 +1923,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Authorization/roleAssignments",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all role assignments that apply to a scope.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListRoleAssignmentForScopeRequest": {
@@ -1855,6 +1966,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "The skipToken to apply on the operation. Use $skipToken={skiptoken} to return paged role assignments following the skipToken passed. Only supported on provider level calls."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2115,10 +2232,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Authorization/roleDefinitions",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all role definitions that are applicable at scope and above.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#RoleDefinitionListResult": {
@@ -2347,6 +2471,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2557,10 +2687,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/permissions",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all permissions the caller has for a resource.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#PermissionGetResult": {
@@ -2642,6 +2779,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource to get the permissions for."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2661,10 +2804,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/permissions",
           "code": 200,
-          "apiVersion": "2022-04-01"
+          "apiVersion": "2022-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all permissions the caller has for a resource group.",
-        "com.distilled.openapi#apiVersion": "2022-04-01"
+        "com.distilled.openapi#apiVersion": "2022-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.authorization#ListPermissionsForResourceGroupRequest": {
@@ -2684,6 +2834,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

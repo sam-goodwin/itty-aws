@@ -98,7 +98,8 @@
       "com.azure.storagemover#StorageMoversListBySubscriptionRequest": "com.azure.storagemover#ListStorageMoverBySubscriptionRequest",
       "com.azure.storagemover#OperationsList": "com.azure.storagemover#ListOperations",
       "com.azure.storagemover#OperationsListResponse": "com.azure.storagemover#ListOperationsResponse",
-      "com.azure.storagemover#OperationsListResponseValueList": "com.azure.storagemover#ListOperationsResponseValueList"
+      "com.azure.storagemover#OperationsListResponseValueList": "com.azure.storagemover#ListOperationsResponseValueList",
+      "com.azure.storagemover#OperationsListRequest": "com.azure.storagemover#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -946,10 +947,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Job Runs in a Job Definition.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#JobRunList": {
@@ -1061,6 +1069,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Job Definition resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2309,10 +2323,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Job Definitions in a Project.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#JobDefinitionList": {
@@ -2417,6 +2438,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Project resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2869,10 +2896,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Projects in a Storage Mover.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#ProjectList": {
@@ -2968,6 +3002,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Storage Mover resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3776,10 +3816,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Endpoints in a Storage Mover.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#EndpointList": {
@@ -3914,6 +3961,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Storage Mover resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4352,10 +4405,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Connections in a Storage Mover.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#ConnectionList": {
@@ -4452,6 +4512,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Storage Mover resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5213,10 +5279,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Agents in a Storage Mover.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#AgentList": {
@@ -5312,6 +5385,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Storage Mover resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5850,10 +5929,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Storage Movers in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#StorageMoverList": {
@@ -5967,6 +6053,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5986,10 +6078,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageMover/storageMovers",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Storage Movers in a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#StorageMoversListBySubscriptionRequest": {
@@ -6002,6 +6101,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6011,7 +6116,7 @@
     "com.azure.storagemover#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagemover#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storagemover#OperationsListResponse"
@@ -6021,10 +6126,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StorageMover/operations",
           "code": 200,
-          "apiVersion": "2026-05-01"
+          "apiVersion": "2026-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-05-01"
+        "com.distilled.openapi#apiVersion": "2026-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagemover#OperationsListResponse": {
@@ -6164,6 +6276,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.storagemover#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storagemover#Storagemover": {

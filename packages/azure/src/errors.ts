@@ -1803,6 +1803,8 @@ export const AZURE_ERROR_CODE_MAP: Record<string, new (props: any) => unknown> =
   ServiceNotFound: ApiManagementServiceNotFound,
   // Microsoft.ApiManagement gateways/configConnections GET of a missing connection.
   GatewayConfigConnectionNotFound: ResourceNotFound,
+  // ARM's 404 for a child whose parent is missing (e.g. amlFilesystems/autoExportJobs).
+  ParentResourceNotFound: ResourceNotFound,
   ApplicationGroupInvalidSku: EventHubApplicationGroupNotSupported,
   RequestConflict: CognitiveServicesRequestConflict,
   RSVaultUpdateErrorConflictingOperationInProgress: RecoveryServicesVaultOperationInProgress,
@@ -1891,6 +1893,19 @@ export class WebMethodNotImplemented
 export class ServerFarmCreateNotAllowed
   extends /*@__PURE__*/ Schema.TaggedError<ServerFarmCreateNotAllowed>()(
     "ServerFarmCreateNotAllowed",
+    AzureErrorFields,
+  ).pipe(Category.withBadRequestError) {}
+
+/**
+ * Returned by ARM (HTTP 400) when the Azure Marketplace purchase behind a
+ * 3rd-party store resource fails validation, e.g. a Microsoft.Web premier
+ * add-on whose offer does not exist: "User failed validation to purchase
+ * resources. Error message: 'The offer with Offer ID '<id>' was not
+ * found. ...'". Not retryable (matched by message).
+ */
+export class MarketplacePurchaseValidationFailed
+  extends /*@__PURE__*/ Schema.TaggedError<MarketplacePurchaseValidationFailed>()(
+    "MarketplacePurchaseValidationFailed",
     AzureErrorFields,
   ).pipe(Category.withBadRequestError) {}
 
@@ -2871,6 +2886,10 @@ export const AZURE_ERROR_MESSAGE_MATCHERS: ReadonlyArray<{
     error: ServerFarmCreateNotAllowed,
   },
   {
+    includes: "User failed validation to purchase resources",
+    error: MarketplacePurchaseValidationFailed,
+  },
+  {
     includes: "Encryption scope is not supported",
     error: CognitiveServicesEncryptionScopeNotSupported,
   },
@@ -3339,6 +3358,7 @@ export type AzureApiError =
   | WebPublicCertificateNotAllowedOnTier
   | WebMethodNotImplemented
   | ServerFarmCreateNotAllowed
+  | MarketplacePurchaseValidationFailed
   | EventHubApplicationGroupNotSupported
   | EventHubClusterDeleteTooSoon
   | TrafficCollectorOperationInProgress

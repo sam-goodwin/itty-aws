@@ -462,6 +462,8 @@ export interface ListFeatureBySubscriptionLocationResourceRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Compute limit feature. */
 export interface Feature {
@@ -490,6 +492,8 @@ export interface ListGuestSubscriptionBySubscriptionLocationResourceRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Guest subscription that consumes shared compute limits. */
 export interface GuestSubscription {
@@ -520,6 +524,8 @@ export interface ListMemberCapOverrideByParentRequest {
   location: string;
   /** The name of the SharedLimitCap */
   vmFamilyName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Member cap override as a standalone child resource of `SharedLimitCap`. Use this resource to read or modify a single member's cap without resending the entire `memberCapOverrides` array on the parent. */
 export interface MemberCapOverride {
@@ -543,7 +549,10 @@ export interface MemberCapOverrideListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -576,7 +585,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -585,6 +594,8 @@ export interface ListSharedLimitBySubscriptionLocationResourceRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Compute limits shared by the subscription. */
 export interface SharedLimit {
@@ -613,6 +624,8 @@ export interface ListSharedLimitCapBySubscriptionLocationResourceRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Shared limit cap configuration for a VM family, owned by a host subscription and propagated to its member subscriptions. The same resource type is readable by host and member subscriptions, but write operations (PUT/DELETE) are scoped to the caller's subscription as the host. */
 export interface SharedLimitCap {
@@ -641,6 +654,8 @@ export interface ListTrustedHostSubscriptionBySubscriptionLocationResourceReques
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Common fields that are returned in the response for all Azure Resource Manager resources */
 export interface Resource {
@@ -669,6 +684,8 @@ export interface ListVmFamilyBySubscriptionLocationResourceRequest {
   location: string;
   /** The filter to apply to the list operation. Filter can be applied to the 'category' property. Example: $filter=category eq 'generalPurposeCategory'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** VM family resource representing a virtual machine family and its category. */
 export interface VmFamily {
@@ -1033,27 +1050,35 @@ export const GetVmFamily: API.OperationMethod<
 
 export type ListFeatureBySubscriptionLocationResourceError = AzureOpError;
 /** Lists all compute limit features for the subscription at the specified location. */
-export const ListFeatureBySubscriptionLocationResource: API.OperationMethod<
+export const ListFeatureBySubscriptionLocationResource: API.PaginatedOperationMethod<
   ListFeatureBySubscriptionLocationResourceRequest,
   FeatureListResult,
   ListFeatureBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Feature
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<ListFeatureBySubscriptionLocationResourceRequest>,
   output: __S(138, __c17, 2) as any as S.Schema<FeatureListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGuestSubscriptionBySubscriptionLocationResourceError = AzureOpError;
 /** Lists all guest subscriptions in a location. */
-export const ListGuestSubscriptionBySubscriptionLocationResource: API.OperationMethod<
+export const ListGuestSubscriptionBySubscriptionLocationResource: API.PaginatedOperationMethod<
   ListGuestSubscriptionBySubscriptionLocationResourceRequest,
   GuestSubscriptionListResult,
   ListGuestSubscriptionBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GuestSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     144,
     __c18,
@@ -1063,46 +1088,67 @@ export const ListGuestSubscriptionBySubscriptionLocationResource: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMemberCapOverrideByParentError = AzureOpError;
 /** Lists all per-member cap overrides configured under a SharedLimitCap. */
-export const ListMemberCapOverrideByParent: API.OperationMethod<
+export const ListMemberCapOverrideByParent: API.PaginatedOperationMethod<
   ListMemberCapOverrideByParentRequest,
   MemberCapOverrideListResult,
   ListMemberCapOverrideByParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MemberCapOverride
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<ListMemberCapOverrideByParentRequest>,
   output: __S(154, __c19, 2) as any as S.Schema<MemberCapOverrideListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(180, __c22, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSharedLimitBySubscriptionLocationResourceError = AzureOpError;
 /** Lists all compute limits shared by the host subscription with its guest subscriptions. */
-export const ListSharedLimitBySubscriptionLocationResource: API.OperationMethod<
+export const ListSharedLimitBySubscriptionLocationResource: API.PaginatedOperationMethod<
   ListSharedLimitBySubscriptionLocationResourceRequest,
   SharedLimitListResult,
   ListSharedLimitBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SharedLimit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     184,
     __c23,
@@ -1112,16 +1158,23 @@ export const ListSharedLimitBySubscriptionLocationResource: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSharedLimitCapBySubscriptionLocationResourceError = AzureOpError;
 /** Lists all shared limit cap configurations visible to the caller's subscription. */
-export const ListSharedLimitCapBySubscriptionLocationResource: API.OperationMethod<
+export const ListSharedLimitCapBySubscriptionLocationResource: API.PaginatedOperationMethod<
   ListSharedLimitCapBySubscriptionLocationResourceRequest,
   SharedLimitCapListResult,
   ListSharedLimitCapBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SharedLimitCap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     192,
     __c24,
@@ -1131,16 +1184,23 @@ export const ListSharedLimitCapBySubscriptionLocationResource: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTrustedHostSubscriptionBySubscriptionLocationResourceError = AzureOpError;
 /** Lists all host subscriptions that the guest subscription trusts in a location. */
-export const ListTrustedHostSubscriptionBySubscriptionLocationResource: API.OperationMethod<
+export const ListTrustedHostSubscriptionBySubscriptionLocationResource: API.PaginatedOperationMethod<
   ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest,
   TrustedHostSubscriptionListResult,
   ListTrustedHostSubscriptionBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     200,
     __c25,
@@ -1150,22 +1210,35 @@ export const ListTrustedHostSubscriptionBySubscriptionLocationResource: API.Oper
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVmFamilyBySubscriptionLocationResourceError = AzureOpError;
 /** Lists all VM families for the subscription at the specified location. */
-export const ListVmFamilyBySubscriptionLocationResource: API.OperationMethod<
+export const ListVmFamilyBySubscriptionLocationResource: API.PaginatedOperationMethod<
   ListVmFamilyBySubscriptionLocationResourceRequest,
   VmFamilyListResult,
   ListVmFamilyBySubscriptionLocationResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VmFamily
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<ListVmFamilyBySubscriptionLocationResourceRequest>,
   output: __S(210, __c26, 2) as any as S.Schema<VmFamilyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MemberCapOverridesCreateOrUpdateError = AzureOpError;
 /** Creates or replaces the cap override for a single member subscription. */
@@ -1552,12 +1625,14 @@ function __c17(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFeatureBySubscriptionLocationResourceRequest" });
@@ -1579,12 +1654,14 @@ function __c18(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGuestSubscriptionBySubscriptionLocationResourceRequest" });
@@ -1607,12 +1684,14 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           vmFamilyName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMemberCapOverrideByParentRequest" });
@@ -1663,12 +1742,15 @@ function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ComputeLimit/operations",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1696,7 +1778,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c22, 3)),
+          value: __S(179, __c22, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1709,12 +1791,14 @@ function __c23(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSharedLimitBySubscriptionLocationResourceRequest" });
@@ -1736,12 +1820,14 @@ function __c24(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSharedLimitCapBySubscriptionLocationResourceRequest" });
@@ -1763,12 +1849,14 @@ function __c25(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -1793,12 +1881,14 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
             code: 200,
             apiVersion: "2026-07-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVmFamilyBySubscriptionLocationResourceRequest" });

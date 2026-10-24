@@ -15,16 +15,82 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.fist#UsageMetricsGet": "com.azure.fist#GetUsageMetrics",
+      "com.azure.fist#UsageMetricsGetResponse": "com.azure.fist#GetUsageMetricsResponse",
+      "com.azure.fist#UsageMetricsGetRequest": "com.azure.fist#GetUsageMetricsRequest",
+      "com.azure.fist#UsageMetricsListByWorkspace": "com.azure.fist#ListUsageMetricsByWorkspace",
+      "com.azure.fist#UsageMetricsListByWorkspaceRequest": "com.azure.fist#ListUsageMetricsByWorkspaceRequest",
+      "com.azure.fist#SummariesGet": "com.azure.fist#GetSummary",
+      "com.azure.fist#SummariesGetResponse": "com.azure.fist#GetSummaryResponse",
+      "com.azure.fist#SummariesGetRequest": "com.azure.fist#GetSummaryRequest",
+      "com.azure.fist#SummariesGetRequestSummaryType": "com.azure.fist#GetSummaryRequestSummaryType",
+      "com.azure.fist#SummariesListByFirmware": "com.azure.fist#ListSummaryByFirmware",
+      "com.azure.fist#SummariesListByFirmwareRequest": "com.azure.fist#ListSummaryByFirmwareRequest",
+      "com.azure.fist#SbomComponentsListByFirmware": "com.azure.fist#ListSbomComponentByFirmware",
+      "com.azure.fist#SbomComponentsListByFirmwareRequest": "com.azure.fist#ListSbomComponentByFirmwareRequest",
+      "com.azure.fist#PasswordHashesListByFirmware": "com.azure.fist#ListPasswordHashByFirmware",
+      "com.azure.fist#PasswordHashesListByFirmwareRequest": "com.azure.fist#ListPasswordHashByFirmwareRequest",
+      "com.azure.fist#CvesListByFirmware": "com.azure.fist#ListCveByFirmware",
+      "com.azure.fist#CvesListByFirmwareRequest": "com.azure.fist#ListCveByFirmwareRequest",
+      "com.azure.fist#CryptoKeysListByFirmware": "com.azure.fist#ListCryptoKeyByFirmware",
+      "com.azure.fist#CryptoKeysListByFirmwareRequest": "com.azure.fist#ListCryptoKeyByFirmwareRequest",
+      "com.azure.fist#CryptoCertificatesListByFirmware": "com.azure.fist#ListCryptoCertificateByFirmware",
+      "com.azure.fist#CryptoCertificatesListByFirmwareRequest": "com.azure.fist#ListCryptoCertificateByFirmwareRequest",
+      "com.azure.fist#BinaryHardeningListByFirmware": "com.azure.fist#ListBinaryHardeningByFirmware",
+      "com.azure.fist#BinaryHardeningListByFirmwareRequest": "com.azure.fist#ListBinaryHardeningByFirmwareRequest",
+      "com.azure.fist#FirmwaresDelete": "com.azure.fist#DeleteFirmware",
+      "com.azure.fist#FirmwaresDeleteRequest": "com.azure.fist#DeleteFirmwareRequest",
+      "com.azure.fist#FirmwaresUpdate": "com.azure.fist#UpdateFirmware",
+      "com.azure.fist#FirmwaresUpdateResponse": "com.azure.fist#UpdateFirmwareResponse",
+      "com.azure.fist#FirmwaresUpdateRequest": "com.azure.fist#UpdateFirmwareRequest",
+      "com.azure.fist#FirmwaresCreate": "com.azure.fist#CreateFirmware",
+      "com.azure.fist#FirmwaresCreateResponse": "com.azure.fist#CreateFirmwareResponse",
+      "com.azure.fist#FirmwaresCreateRequest": "com.azure.fist#CreateFirmwareRequest",
+      "com.azure.fist#FirmwaresGet": "com.azure.fist#GetFirmware",
+      "com.azure.fist#FirmwaresGetResponse": "com.azure.fist#GetFirmwareResponse",
+      "com.azure.fist#FirmwaresGetRequest": "com.azure.fist#GetFirmwareRequest",
+      "com.azure.fist#FirmwaresListByWorkspace": "com.azure.fist#ListFirmwareByWorkspace",
+      "com.azure.fist#FirmwaresListByWorkspaceRequest": "com.azure.fist#ListFirmwareByWorkspaceRequest",
+      "com.azure.fist#WorkspacesDelete": "com.azure.fist#DeleteWorkspace",
+      "com.azure.fist#WorkspacesDeleteResponse": "com.azure.fist#DeleteWorkspaceResponse",
+      "com.azure.fist#WorkspacesDeleteRequest": "com.azure.fist#DeleteWorkspaceRequest",
+      "com.azure.fist#WorkspacesUpdate": "com.azure.fist#UpdateWorkspace",
+      "com.azure.fist#WorkspacesUpdateResponse": "com.azure.fist#UpdateWorkspaceResponse",
+      "com.azure.fist#WorkspacesUpdateResponseSku": "com.azure.fist#UpdateWorkspaceResponseSku",
+      "com.azure.fist#WorkspacesUpdateResponseTagsMap": "com.azure.fist#UpdateWorkspaceResponseTagsMap",
+      "com.azure.fist#WorkspacesUpdateRequest": "com.azure.fist#UpdateWorkspaceRequest",
+      "com.azure.fist#WorkspacesUpdateRequestTagsMap": "com.azure.fist#UpdateWorkspaceRequestTagsMap",
+      "com.azure.fist#WorkspacesCreate": "com.azure.fist#CreateWorkspace",
+      "com.azure.fist#WorkspacesCreateResponse": "com.azure.fist#CreateWorkspaceResponse",
+      "com.azure.fist#WorkspacesCreateResponseSku": "com.azure.fist#CreateWorkspaceResponseSku",
+      "com.azure.fist#WorkspacesCreateResponseTagsMap": "com.azure.fist#CreateWorkspaceResponseTagsMap",
+      "com.azure.fist#WorkspacesCreateRequest": "com.azure.fist#CreateWorkspaceRequest",
+      "com.azure.fist#WorkspacesCreateRequestSku": "com.azure.fist#CreateWorkspaceRequestSku",
+      "com.azure.fist#WorkspacesCreateRequestTagsMap": "com.azure.fist#CreateWorkspaceRequestTagsMap",
+      "com.azure.fist#WorkspacesGet": "com.azure.fist#GetWorkspace",
+      "com.azure.fist#WorkspacesGetResponse": "com.azure.fist#GetWorkspaceResponse",
+      "com.azure.fist#WorkspacesGetResponseSku": "com.azure.fist#GetWorkspaceResponseSku",
+      "com.azure.fist#WorkspacesGetResponseTagsMap": "com.azure.fist#GetWorkspaceResponseTagsMap",
+      "com.azure.fist#WorkspacesGetRequest": "com.azure.fist#GetWorkspaceRequest",
+      "com.azure.fist#WorkspacesListByResourceGroup": "com.azure.fist#ListWorkspaceByResourceGroup",
+      "com.azure.fist#WorkspacesListByResourceGroupRequest": "com.azure.fist#ListWorkspaceByResourceGroupRequest",
+      "com.azure.fist#WorkspacesListBySubscription": "com.azure.fist#ListWorkspaceBySubscription",
+      "com.azure.fist#WorkspacesListBySubscriptionRequest": "com.azure.fist#ListWorkspaceBySubscriptionRequest",
+      "com.azure.fist#OperationsList": "com.azure.fist#ListOperations",
+      "com.azure.fist#OperationsListResponse": "com.azure.fist#ListOperationsResponse",
+      "com.azure.fist#OperationsListResponseValueList": "com.azure.fist#ListOperationsResponseValueList",
+      "com.azure.fist#OperationsListRequest": "com.azure.fist#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.fist#GetUsageMetrics": {
+    "com.azure.fist#UsageMetricsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#GetUsageMetricsRequest"
+        "target": "com.azure.fist#UsageMetricsGetRequest"
       },
       "output": {
-        "target": "com.azure.fist#GetUsageMetricsResponse"
+        "target": "com.azure.fist#UsageMetricsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +103,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#GetUsageMetricsResponse": {
+    "com.azure.fist#UsageMetricsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -255,7 +321,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.fist#GetUsageMetricsRequest": {
+    "com.azure.fist#UsageMetricsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -295,10 +361,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListUsageMetricsByWorkspace": {
+    "com.azure.fist#UsageMetricsListByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListUsageMetricsByWorkspaceRequest"
+        "target": "com.azure.fist#UsageMetricsListByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.fist#UsageMetricListResult"
@@ -308,10 +374,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists monthly usage information for a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#UsageMetricListResult": {
@@ -382,7 +455,7 @@
         "smithy.api#documentation": "The object representing how many firmwares the user has uploaded to the workspace."
       }
     },
-    "com.azure.fist#ListUsageMetricsByWorkspaceRequest": {
+    "com.azure.fist#UsageMetricsListByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -407,6 +480,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the firmware analysis workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -485,13 +564,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#GetSummary": {
+    "com.azure.fist#SummariesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#GetSummaryRequest"
+        "target": "com.azure.fist#SummariesGetRequest"
       },
       "output": {
-        "target": "com.azure.fist#GetSummaryResponse"
+        "target": "com.azure.fist#SummariesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -504,7 +583,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#GetSummaryResponse": {
+    "com.azure.fist#SummariesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -601,7 +680,7 @@
         "smithy.api#documentation": "Describes the type of summary."
       }
     },
-    "com.azure.fist#GetSummaryRequest": {
+    "com.azure.fist#SummariesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -637,7 +716,7 @@
           }
         },
         "summaryType": {
-          "target": "com.azure.fist#GetSummaryRequestSummaryType",
+          "target": "com.azure.fist#SummariesGetRequestSummaryType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -649,7 +728,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#GetSummaryRequestSummaryType": {
+    "com.azure.fist#SummariesGetRequestSummaryType": {
       "type": "enum",
       "members": {
         "FIRMWARE": {
@@ -685,10 +764,10 @@
       },
       "traits": {}
     },
-    "com.azure.fist#ListSummaryByFirmware": {
+    "com.azure.fist#SummariesListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListSummaryByFirmwareRequest"
+        "target": "com.azure.fist#SummariesListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#SummaryResourceListResult"
@@ -698,10 +777,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists analysis result summary names of a firmware. To fetch the full summary data, get that summary by name.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#SummaryResourceListResult": {
@@ -772,7 +858,7 @@
         "smithy.api#documentation": "The object representing a firmware analysis summary resource."
       }
     },
-    "com.azure.fist#ListSummaryByFirmwareRequest": {
+    "com.azure.fist#SummariesListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -806,16 +892,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListSbomComponentByFirmware": {
+    "com.azure.fist#SbomComponentsListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListSbomComponentByFirmwareRequest"
+        "target": "com.azure.fist#SbomComponentsListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#SbomComponentResourceListResult"
@@ -825,10 +917,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/sbomComponents",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists sbom analysis results of a firmware.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#SbomComponentResourceListResult": {
@@ -952,7 +1051,7 @@
         "smithy.api#documentation": "File paths related to the component. Note, relatedFiles should be used instead of this property."
       }
     },
-    "com.azure.fist#ListSbomComponentByFirmwareRequest": {
+    "com.azure.fist#SbomComponentsListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -986,16 +1085,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListPasswordHashByFirmware": {
+    "com.azure.fist#PasswordHashesListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListPasswordHashByFirmwareRequest"
+        "target": "com.azure.fist#PasswordHashesListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#PasswordHashResourceListResult"
@@ -1005,10 +1110,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/passwordHashes",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists password hash analysis results of a firmware.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#PasswordHashResourceListResult": {
@@ -1136,7 +1248,7 @@
         "smithy.api#documentation": "Password hash properties"
       }
     },
-    "com.azure.fist#ListPasswordHashByFirmwareRequest": {
+    "com.azure.fist#PasswordHashesListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1170,16 +1282,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListCveByFirmware": {
+    "com.azure.fist#CvesListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListCveByFirmwareRequest"
+        "target": "com.azure.fist#CvesListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#CveResourceListResult"
@@ -1189,10 +1307,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cves",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists CVE analysis results of a firmware.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#CveResourceListResult": {
@@ -1458,7 +1583,7 @@
         "smithy.api#documentation": "Legacy component of a CVE result."
       }
     },
-    "com.azure.fist#ListCveByFirmwareRequest": {
+    "com.azure.fist#CvesListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1492,16 +1617,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListCryptoKeyByFirmware": {
+    "com.azure.fist#CryptoKeysListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListCryptoKeyByFirmwareRequest"
+        "target": "com.azure.fist#CryptoKeysListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#CryptoKeyResourceListResult"
@@ -1511,10 +1642,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoKeys",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists crypto key analysis results of a firmware.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#CryptoKeyResourceListResult": {
@@ -1705,7 +1843,7 @@
         "smithy.api#documentation": "Different types of cryptographic keys."
       }
     },
-    "com.azure.fist#ListCryptoKeyByFirmwareRequest": {
+    "com.azure.fist#CryptoKeysListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1739,16 +1877,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListCryptoCertificateByFirmware": {
+    "com.azure.fist#CryptoCertificatesListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListCryptoCertificateByFirmwareRequest"
+        "target": "com.azure.fist#CryptoCertificatesListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#CryptoCertificateResourceListResult"
@@ -1758,10 +1902,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoCertificates",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists crypto certificate analysis results of a firmware.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#CryptoCertificateResourceListResult": {
@@ -2126,7 +2277,7 @@
         "smithy.api#documentation": "Information on an entity (distinguished name) in a cryptographic certificate."
       }
     },
-    "com.azure.fist#ListCryptoCertificateByFirmwareRequest": {
+    "com.azure.fist#CryptoCertificatesListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2160,16 +2311,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListBinaryHardeningByFirmware": {
+    "com.azure.fist#BinaryHardeningListByFirmware": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListBinaryHardeningByFirmwareRequest"
+        "target": "com.azure.fist#BinaryHardeningListByFirmwareRequest"
       },
       "output": {
         "target": "com.azure.fist#BinaryHardeningResourceListResult"
@@ -2179,10 +2336,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/binaryHardeningResults",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists binary hardening analysis results of a firmware.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#BinaryHardeningResourceListResult": {
@@ -2367,7 +2531,7 @@
         "smithy.api#documentation": "Binary hardening features."
       }
     },
-    "com.azure.fist#ListBinaryHardeningByFirmwareRequest": {
+    "com.azure.fist#BinaryHardeningListByFirmwareRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2401,16 +2565,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The id of the firmware."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#DeleteFirmware": {
+    "com.azure.fist#FirmwaresDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#DeleteFirmwareRequest"
+        "target": "com.azure.fist#FirmwaresDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2426,7 +2596,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#DeleteFirmwareRequest": {
+    "com.azure.fist#FirmwaresDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2466,13 +2636,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#UpdateFirmware": {
+    "com.azure.fist#FirmwaresUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#UpdateFirmwareRequest"
+        "target": "com.azure.fist#FirmwaresUpdateRequest"
       },
       "output": {
-        "target": "com.azure.fist#UpdateFirmwareResponse"
+        "target": "com.azure.fist#FirmwaresUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2485,7 +2655,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#UpdateFirmwareResponse": {
+    "com.azure.fist#FirmwaresUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2652,7 +2822,7 @@
         "smithy.api#documentation": "The status of a firmware analysis job."
       }
     },
-    "com.azure.fist#UpdateFirmwareRequest": {
+    "com.azure.fist#FirmwaresUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2763,13 +2933,13 @@
         "smithy.api#documentation": "A list of errors or other messages generated during firmware analysis"
       }
     },
-    "com.azure.fist#CreateFirmware": {
+    "com.azure.fist#FirmwaresCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#CreateFirmwareRequest"
+        "target": "com.azure.fist#FirmwaresCreateRequest"
       },
       "output": {
-        "target": "com.azure.fist#CreateFirmwareResponse"
+        "target": "com.azure.fist#FirmwaresCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2782,7 +2952,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#CreateFirmwareResponse": {
+    "com.azure.fist#FirmwaresCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2820,7 +2990,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#CreateFirmwareRequest": {
+    "com.azure.fist#FirmwaresCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2866,13 +3036,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#GetFirmware": {
+    "com.azure.fist#FirmwaresGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#GetFirmwareRequest"
+        "target": "com.azure.fist#FirmwaresGetRequest"
       },
       "output": {
-        "target": "com.azure.fist#GetFirmwareResponse"
+        "target": "com.azure.fist#FirmwaresGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2885,7 +3055,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#GetFirmwareResponse": {
+    "com.azure.fist#FirmwaresGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2923,7 +3093,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#GetFirmwareRequest": {
+    "com.azure.fist#FirmwaresGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2963,10 +3133,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListFirmwareByWorkspace": {
+    "com.azure.fist#FirmwaresListByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListFirmwareByWorkspaceRequest"
+        "target": "com.azure.fist#FirmwaresListByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.fist#FirmwareListResult"
@@ -2976,10 +3146,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of firmwares inside a workspace.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#FirmwareListResult": {
@@ -3050,7 +3227,7 @@
         "smithy.api#documentation": "Firmware definition"
       }
     },
-    "com.azure.fist#ListFirmwareByWorkspaceRequest": {
+    "com.azure.fist#FirmwaresListByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3076,19 +3253,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the firmware analysis workspace."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#DeleteWorkspace": {
+    "com.azure.fist#WorkspacesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#DeleteWorkspaceRequest"
+        "target": "com.azure.fist#WorkspacesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.fist#DeleteWorkspaceResponse"
+        "target": "com.azure.fist#WorkspacesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3101,7 +3284,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#DeleteWorkspaceResponse": {
+    "com.azure.fist#WorkspacesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -3123,7 +3306,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#DeleteWorkspaceRequest": {
+    "com.azure.fist#WorkspacesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3155,13 +3338,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#UpdateWorkspace": {
+    "com.azure.fist#WorkspacesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#UpdateWorkspaceRequest"
+        "target": "com.azure.fist#WorkspacesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.fist#UpdateWorkspaceResponse"
+        "target": "com.azure.fist#WorkspacesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3174,7 +3357,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#UpdateWorkspaceResponse": {
+    "com.azure.fist#WorkspacesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3202,7 +3385,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fist#UpdateWorkspaceResponseTagsMap",
+          "target": "com.azure.fist#WorkspacesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3221,7 +3404,7 @@
           }
         },
         "sku": {
-          "target": "com.azure.fist#UpdateWorkspaceResponseSku",
+          "target": "com.azure.fist#WorkspacesUpdateResponseSku",
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
@@ -3231,7 +3414,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#UpdateWorkspaceResponseSku": {
+    "com.azure.fist#WorkspacesUpdateResponseSku": {
       "type": "structure",
       "members": {
         "name": {
@@ -3313,7 +3496,7 @@
         "smithy.api#documentation": "Workspace properties."
       }
     },
-    "com.azure.fist#UpdateWorkspaceResponseTagsMap": {
+    "com.azure.fist#WorkspacesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3325,7 +3508,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fist#UpdateWorkspaceRequest": {
+    "com.azure.fist#WorkspacesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3359,7 +3542,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fist#UpdateWorkspaceRequestTagsMap",
+          "target": "com.azure.fist#WorkspacesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3369,7 +3552,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#UpdateWorkspaceRequestTagsMap": {
+    "com.azure.fist#WorkspacesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3451,13 +3634,13 @@
         "smithy.api#documentation": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
       }
     },
-    "com.azure.fist#CreateWorkspace": {
+    "com.azure.fist#WorkspacesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#CreateWorkspaceRequest"
+        "target": "com.azure.fist#WorkspacesCreateRequest"
       },
       "output": {
-        "target": "com.azure.fist#CreateWorkspaceResponse"
+        "target": "com.azure.fist#WorkspacesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3470,7 +3653,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#CreateWorkspaceResponse": {
+    "com.azure.fist#WorkspacesCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3498,7 +3681,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fist#CreateWorkspaceResponseTagsMap",
+          "target": "com.azure.fist#WorkspacesCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3517,7 +3700,7 @@
           }
         },
         "sku": {
-          "target": "com.azure.fist#CreateWorkspaceResponseSku",
+          "target": "com.azure.fist#WorkspacesCreateResponseSku",
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
@@ -3527,7 +3710,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#CreateWorkspaceResponseSku": {
+    "com.azure.fist#WorkspacesCreateResponseSku": {
       "type": "structure",
       "members": {
         "name": {
@@ -3563,7 +3746,7 @@
         "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
-    "com.azure.fist#CreateWorkspaceResponseTagsMap": {
+    "com.azure.fist#WorkspacesCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3575,7 +3758,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fist#CreateWorkspaceRequest": {
+    "com.azure.fist#WorkspacesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3603,7 +3786,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fist#CreateWorkspaceRequestTagsMap",
+          "target": "com.azure.fist#WorkspacesCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3622,7 +3805,7 @@
           }
         },
         "sku": {
-          "target": "com.azure.fist#CreateWorkspaceRequestSku",
+          "target": "com.azure.fist#WorkspacesCreateRequestSku",
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
@@ -3632,7 +3815,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#CreateWorkspaceRequestSku": {
+    "com.azure.fist#WorkspacesCreateRequestSku": {
       "type": "structure",
       "members": {
         "name": {
@@ -3675,7 +3858,7 @@
         "smithy.api#documentation": "Workspace properties."
       }
     },
-    "com.azure.fist#CreateWorkspaceRequestTagsMap": {
+    "com.azure.fist#WorkspacesCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3687,13 +3870,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fist#GetWorkspace": {
+    "com.azure.fist#WorkspacesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#GetWorkspaceRequest"
+        "target": "com.azure.fist#WorkspacesGetRequest"
       },
       "output": {
-        "target": "com.azure.fist#GetWorkspaceResponse"
+        "target": "com.azure.fist#WorkspacesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3706,7 +3889,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-02"
       }
     },
-    "com.azure.fist#GetWorkspaceResponse": {
+    "com.azure.fist#WorkspacesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3734,7 +3917,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fist#GetWorkspaceResponseTagsMap",
+          "target": "com.azure.fist#WorkspacesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3753,7 +3936,7 @@
           }
         },
         "sku": {
-          "target": "com.azure.fist#GetWorkspaceResponseSku",
+          "target": "com.azure.fist#WorkspacesGetResponseSku",
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
@@ -3763,7 +3946,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#GetWorkspaceResponseSku": {
+    "com.azure.fist#WorkspacesGetResponseSku": {
       "type": "structure",
       "members": {
         "name": {
@@ -3799,7 +3982,7 @@
         "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
-    "com.azure.fist#GetWorkspaceResponseTagsMap": {
+    "com.azure.fist#WorkspacesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3811,7 +3994,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fist#GetWorkspaceRequest": {
+    "com.azure.fist#WorkspacesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3843,10 +4026,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListWorkspaceByResourceGroup": {
+    "com.azure.fist#WorkspacesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListWorkspaceByResourceGroupRequest"
+        "target": "com.azure.fist#WorkspacesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.fist#WorkspaceListResult"
@@ -3856,10 +4039,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the firmware analysis workspaces in the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fist#WorkspaceListResult": {
@@ -3997,7 +4187,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fist#ListWorkspaceByResourceGroupRequest": {
+    "com.azure.fist#WorkspacesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4015,16 +4205,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListWorkspaceBySubscription": {
+    "com.azure.fist#WorkspacesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fist#ListWorkspaceBySubscriptionRequest"
+        "target": "com.azure.fist#WorkspacesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.fist#WorkspaceListResult"
@@ -4034,13 +4230,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.IoTFirmwareDefense/workspaces",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the firmware analysis workspaces in the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.fist#ListWorkspaceBySubscriptionRequest": {
+    "com.azure.fist#WorkspacesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4050,36 +4253,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fist#ListOperations": {
+    "com.azure.fist#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.fist#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.fist#ListOperationsResponse"
+        "target": "com.azure.fist#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.IoTFirmwareDefense/operations",
           "code": 200,
-          "apiVersion": "2025-08-02"
+          "apiVersion": "2025-08-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-08-02"
+        "com.distilled.openapi#apiVersion": "2025-08-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.fist#ListOperationsResponse": {
+    "com.azure.fist#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.fist#ListOperationsResponseValueList",
+          "target": "com.azure.fist#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -4095,7 +4311,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fist#ListOperationsResponseValueList": {
+    "com.azure.fist#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.fist#Operation"
@@ -4214,78 +4430,92 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.fist#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.fist#Fist": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.fist#GetUsageMetrics"
+          "target": "com.azure.fist#UsageMetricsGet"
         },
         {
-          "target": "com.azure.fist#ListUsageMetricsByWorkspace"
+          "target": "com.azure.fist#UsageMetricsListByWorkspace"
         },
         {
           "target": "com.azure.fist#WorkspacesGenerateUploadUrl"
         },
         {
-          "target": "com.azure.fist#GetSummary"
+          "target": "com.azure.fist#SummariesGet"
         },
         {
-          "target": "com.azure.fist#ListSummaryByFirmware"
+          "target": "com.azure.fist#SummariesListByFirmware"
         },
         {
-          "target": "com.azure.fist#ListSbomComponentByFirmware"
+          "target": "com.azure.fist#SbomComponentsListByFirmware"
         },
         {
-          "target": "com.azure.fist#ListPasswordHashByFirmware"
+          "target": "com.azure.fist#PasswordHashesListByFirmware"
         },
         {
-          "target": "com.azure.fist#ListCveByFirmware"
+          "target": "com.azure.fist#CvesListByFirmware"
         },
         {
-          "target": "com.azure.fist#ListCryptoKeyByFirmware"
+          "target": "com.azure.fist#CryptoKeysListByFirmware"
         },
         {
-          "target": "com.azure.fist#ListCryptoCertificateByFirmware"
+          "target": "com.azure.fist#CryptoCertificatesListByFirmware"
         },
         {
-          "target": "com.azure.fist#ListBinaryHardeningByFirmware"
+          "target": "com.azure.fist#BinaryHardeningListByFirmware"
         },
         {
-          "target": "com.azure.fist#DeleteFirmware"
+          "target": "com.azure.fist#FirmwaresDelete"
         },
         {
-          "target": "com.azure.fist#UpdateFirmware"
+          "target": "com.azure.fist#FirmwaresUpdate"
         },
         {
-          "target": "com.azure.fist#CreateFirmware"
+          "target": "com.azure.fist#FirmwaresCreate"
         },
         {
-          "target": "com.azure.fist#GetFirmware"
+          "target": "com.azure.fist#FirmwaresGet"
         },
         {
-          "target": "com.azure.fist#ListFirmwareByWorkspace"
+          "target": "com.azure.fist#FirmwaresListByWorkspace"
         },
         {
-          "target": "com.azure.fist#DeleteWorkspace"
+          "target": "com.azure.fist#WorkspacesDelete"
         },
         {
-          "target": "com.azure.fist#UpdateWorkspace"
+          "target": "com.azure.fist#WorkspacesUpdate"
         },
         {
-          "target": "com.azure.fist#CreateWorkspace"
+          "target": "com.azure.fist#WorkspacesCreate"
         },
         {
-          "target": "com.azure.fist#GetWorkspace"
+          "target": "com.azure.fist#WorkspacesGet"
         },
         {
-          "target": "com.azure.fist#ListWorkspaceByResourceGroup"
+          "target": "com.azure.fist#WorkspacesListByResourceGroup"
         },
         {
-          "target": "com.azure.fist#ListWorkspaceBySubscription"
+          "target": "com.azure.fist#WorkspacesListBySubscription"
         },
         {
-          "target": "com.azure.fist#ListOperations"
+          "target": "com.azure.fist#OperationsList"
         }
       ],
       "traits": {

@@ -557,10 +557,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
           "code": 200,
-          "apiVersion": "2024-04-10"
+          "apiVersion": "2024-04-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of AzureLargeStorageInstances in the specified subscription and\nresource group. The operations returns various properties of each Azure\nLargeStorage instance.",
-        "com.distilled.openapi#apiVersion": "2024-04-10"
+        "com.distilled.openapi#apiVersion": "2024-04-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurelargeinstance#AzureLargeStorageInstanceListResult": {
@@ -673,6 +680,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2114,10 +2127,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeInstances",
           "code": 200,
-          "apiVersion": "2024-04-10"
+          "apiVersion": "2024-04-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure Large Instances in the specified subscription and resource\ngroup. The operations returns various properties of each Azure Large Instance.",
-        "com.distilled.openapi#apiVersion": "2024-04-10"
+        "com.distilled.openapi#apiVersion": "2024-04-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurelargeinstance#AzureLargeInstanceListResult": {
@@ -2231,6 +2251,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2250,10 +2276,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
           "code": 200,
-          "apiVersion": "2024-04-10"
+          "apiVersion": "2024-04-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of AzureLargeStorageInstances in the specified subscription. The\noperations returns various properties of each Azure LargeStorage instance.",
-        "com.distilled.openapi#apiVersion": "2024-04-10"
+        "com.distilled.openapi#apiVersion": "2024-04-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurelargeinstance#ListAzureLargeStorageInstanceBySubscriptionRequest": {
@@ -2265,6 +2298,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2285,10 +2324,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AzureLargeInstance/azureLargeInstances",
           "code": 200,
-          "apiVersion": "2024-04-10"
+          "apiVersion": "2024-04-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure Large Instances in the specified subscription. The\noperations returns various properties of each Azure Large Instance.",
-        "com.distilled.openapi#apiVersion": "2024-04-10"
+        "com.distilled.openapi#apiVersion": "2024-04-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurelargeinstance#ListAzureLargeInstanceBySubscriptionRequest": {
@@ -2301,6 +2347,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2310,7 +2362,7 @@
     "com.azure.azurelargeinstance#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurelargeinstance#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.azurelargeinstance#ListOperationsResponse"
@@ -2320,10 +2372,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AzureLargeInstance/operations",
           "code": 200,
-          "apiVersion": "2024-04-10"
+          "apiVersion": "2024-04-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-04-10"
+        "com.distilled.openapi#apiVersion": "2024-04-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azurelargeinstance#ListOperationsResponse": {
@@ -2463,6 +2522,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.azurelargeinstance#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.azurelargeinstance#Azurelargeinstance": {

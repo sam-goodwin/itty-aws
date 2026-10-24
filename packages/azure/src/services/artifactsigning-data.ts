@@ -92,6 +92,8 @@ export interface ListCertificateProfileOperationExtendedKeyUsagesRequest {
   accountName: string;
   /** Azure Artifact Signing certificate profile name under an account. */
   certificateProfile: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Extended key usage object identifier that are allowable. */
 export interface ExtendedKeyUsage {
@@ -210,12 +212,13 @@ export const GetCertificateProfileOperationSigningStatus: API.OperationMethod<
 
 export type ListCertificateProfileOperationExtendedKeyUsagesError = AzureOpError;
 /** Gets a list of extended key usage object identifiers that are allowed for this account and profile combination. The list of extended key usages are used to determine the purpose of the certificate usage as part of the signing operation. */
-export const ListCertificateProfileOperationExtendedKeyUsages: API.OperationMethod<
+export const ListCertificateProfileOperationExtendedKeyUsages: API.PaginatedOperationMethod<
   ListCertificateProfileOperationExtendedKeyUsagesRequest,
   PagedExtendedKeyUsage,
   ListCertificateProfileOperationExtendedKeyUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExtendedKeyUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     32,
     __c4,
@@ -225,7 +228,13 @@ export const ListCertificateProfileOperationExtendedKeyUsages: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type SignCertificateProfileOperationError = AzureOpError;
 /** Submit a sign operation. Submit a sign operation under the created account and profile name provided. */
@@ -361,6 +370,7 @@ function __c4(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           accountName: S.String.pipe(T.Label()),
           certificateProfile: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -369,6 +379,7 @@ function __c4(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2024-06-15",
+            nextLink: "nextLink",
             audience: "https://codesigning.azure.net/.default",
           }),
         ),

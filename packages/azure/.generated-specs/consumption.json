@@ -930,7 +930,7 @@
     "com.azure.consumption#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.consumption#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.consumption#OperationListResult"
@@ -940,10 +940,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Consumption/operations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#OperationListResult": {
@@ -1033,6 +1040,20 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
+    "com.azure.consumption#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.consumption#ReservationsSummariesListByReservationOrderAndReservation": {
       "type": "operation",
       "input": {
@@ -1046,10 +1067,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ReservationSummariesListResult": {
@@ -1274,6 +1302,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1311,10 +1345,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ReservationDetailsListResult": {
@@ -1508,6 +1549,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1527,10 +1574,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListReservationsSummaryByReservationOrderRequest": {
@@ -1557,6 +1611,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1595,10 +1655,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListReservationsDetailByReservationOrderRequest": {
@@ -1619,6 +1686,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and  'ge'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1638,10 +1711,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of transactions for reserved instances on billing account scope. Note: The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ReservationTransactionsListResult": {
@@ -1903,6 +1983,12 @@
             "smithy.api#httpQuery": "previewMarkupPercentage",
             "smithy.api#documentation": "Preview markup percentage to be applied."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1922,10 +2008,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Microsoft Azure consumption commitments for a billing account. The API is only supported for Microsoft Customer Agreements (MCA) and Direct Enterprise Agreement (EA)  billing accounts.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#Lots": {
@@ -2290,6 +2383,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2309,10 +2408,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#Events": {
@@ -2625,6 +2731,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2925,10 +3037,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Azure credits for a customer. The API is only supported for Microsoft Partner  Agreements (MPA) billing accounts.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListLotByCustomerRequest": {
@@ -2956,6 +3075,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2975,10 +3100,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of transactions for reserved instances on billing profile scope. The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ModernReservationTransactionsListResult": {
@@ -3217,6 +3349,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and  'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31)"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3236,10 +3374,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Azure credits for a billing account or a billing profile. The API is only supported for Microsoft Customer Agreements (MCA) billing accounts.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListLotByBillingProfileRequest": {
@@ -3260,6 +3405,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Azure Billing Profile ID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3279,10 +3430,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListEventByBillingProfileRequest": {
@@ -3318,6 +3476,12 @@
             "smithy.api#httpQuery": "endDate",
             "smithy.api#required": {},
             "smithy.api#documentation": "End date"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3752,10 +3916,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/usageDetails",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the usage details for the defined scope. Usage details are available via this API only for May 1, 2014 or later.\n\n**Note:Microsoft will be retiring the Consumption Usage Details API at some point in the future. We do not recommend that you take a new dependency on this API. Please use the Cost Details API instead. We will notify customers once a date for retirement has been determined.For Learn more,see [Generate Cost Details Report - Create Operation](https://learn.microsoft.com/en-us/rest/api/cost-management/generate-cost-details-report/create-operation?tabs=HTTP)**",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#UsageDetailsListResult": {
@@ -3914,6 +4085,12 @@
           "traits": {
             "smithy.api#httpQuery": "metric",
             "smithy.api#documentation": "Allows to select different type of cost/usage records."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4101,10 +4278,17 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations summaries for the defined scope daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListReservationsSummariesRequest": {
@@ -4160,6 +4344,12 @@
             "smithy.api#httpQuery": "reservationOrderId",
             "smithy.api#documentation": "Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4197,10 +4387,17 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationRecommendations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of recommendations for purchasing reserved instances.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ReservationRecommendationsListResult": {
@@ -4457,6 +4654,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "May be used to filter reservationRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Single'; properties/resourceType with allowed values ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple'] and default value 'VirtualMachines'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last7Days'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4991,10 +5194,17 @@
           "method": "GET",
           "uri": "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#ListReservationsDetailsRequest": {
@@ -5042,6 +5252,12 @@
             "smithy.api#httpQuery": "reservationOrderId",
             "smithy.api#documentation": "Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5061,10 +5277,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/marketplaces",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the marketplaces for a scope at the defined scope. Marketplaces are available via this API only for May 1, 2014 or later.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#MarketplacesListResult": {
@@ -5352,6 +5575,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skiptoken",
             "smithy.api#documentation": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6377,10 +6606,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.Consumption/budgets",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all budgets for the defined scope.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.consumption#BudgetsListResult": {
@@ -6465,6 +6701,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

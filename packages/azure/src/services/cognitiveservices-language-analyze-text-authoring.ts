@@ -384,6 +384,8 @@ export interface GetTextAuthoringTrainedModelModelEvaluationResultsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents the evaluation result of a document. */
 export interface TextAnalysisAuthoringDocumentEvaluationResult {
@@ -523,6 +525,8 @@ export interface TextAnalysisAuthoringGetSupportedLanguagesRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a supported language. */
 export interface TextAnalysisAuthoringSupportedLanguage {
@@ -552,6 +556,8 @@ export interface TextAnalysisAuthoringListDeploymentsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TextAnalysisAuthoringProjectDeployment items on this page */
 export type PagedTextAnalysisAuthoringProjectDeploymentValueList =
@@ -572,6 +578,8 @@ export interface TextAnalysisAuthoringListProjectsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TextAnalysisAuthoringProjectMetadata items on this page */
 export type PagedTextAnalysisAuthoringProjectMetadataValueList =
@@ -594,6 +602,8 @@ export interface TextAnalysisAuthoringListTrainedModelsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TextAnalysisAuthoringProjectTrainedModel items on this page */
 export type PagedTextAnalysisAuthoringProjectTrainedModelValueList =
@@ -620,6 +630,8 @@ export interface TextAnalysisAuthoringListTrainingConfigVersionsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a training config version. */
 export interface TextAnalysisAuthoringTrainingConfigVersion {
@@ -649,6 +661,8 @@ export interface TextAnalysisAuthoringListTrainingJobsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TextAnalysisAuthoringTrainingJobState items on this page */
 export type PagedTextAnalysisAuthoringTrainingJobStateValueList =
@@ -966,12 +980,13 @@ export const GetTextAuthoringTrainedModelLoadSnapshotStatus: API.OperationMethod
 
 export type GetTextAuthoringTrainedModelModelEvaluationResultsError = AzureOpError;
 /** Gets the detailed results of the evaluation for a trained model. This includes the raw inference results for the data included in the evaluation process. */
-export const GetTextAuthoringTrainedModelModelEvaluationResults: API.OperationMethod<
+export const GetTextAuthoringTrainedModelModelEvaluationResults: API.PaginatedOperationMethod<
   GetTextAuthoringTrainedModelModelEvaluationResultsRequest,
   PagedTextAnalysisAuthoringDocumentEvaluationResult,
   GetTextAuthoringTrainedModelModelEvaluationResultsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringDocumentEvaluationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     40,
     __c10,
@@ -981,7 +996,13 @@ export const GetTextAuthoringTrainedModelModelEvaluationResults: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetTextAuthoringTrainedModelModelEvaluationSummaryError = AzureOpError;
 /** Gets the evaluation summary of a trained model. The summary includes high level performance measurements of the model e.g., F1, Precision, Recall, etc. */
@@ -1049,72 +1070,101 @@ export const SwapTextAuthoringProjectDeployments: API.OperationMethod<
 
 export type TextAnalysisAuthoringGetSupportedLanguagesError = AzureOpError;
 /** Lists the supported languages. */
-export const TextAnalysisAuthoringGetSupportedLanguages: API.OperationMethod<
+export const TextAnalysisAuthoringGetSupportedLanguages: API.PaginatedOperationMethod<
   TextAnalysisAuthoringGetSupportedLanguagesRequest,
   PagedTextAnalysisAuthoringSupportedLanguage,
   TextAnalysisAuthoringGetSupportedLanguagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringSupportedLanguage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(68, __c17, 0) as any as S.Schema<TextAnalysisAuthoringGetSupportedLanguagesRequest>,
   output: __S(71, __c17, 3) as any as S.Schema<PagedTextAnalysisAuthoringSupportedLanguage>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TextAnalysisAuthoringListDeploymentsError = AzureOpError;
 /** Lists the deployments belonging to a project. */
-export const TextAnalysisAuthoringListDeployments: API.OperationMethod<
+export const TextAnalysisAuthoringListDeployments: API.PaginatedOperationMethod<
   TextAnalysisAuthoringListDeploymentsRequest,
   PagedTextAnalysisAuthoringProjectDeployment,
   TextAnalysisAuthoringListDeploymentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringProjectDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(76, __c19, 0) as any as S.Schema<TextAnalysisAuthoringListDeploymentsRequest>,
   output: __S(78, __c19, 2) as any as S.Schema<PagedTextAnalysisAuthoringProjectDeployment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TextAnalysisAuthoringListProjectsError = AzureOpError;
 /** Lists the existing projects. */
-export const TextAnalysisAuthoringListProjects: API.OperationMethod<
+export const TextAnalysisAuthoringListProjects: API.PaginatedOperationMethod<
   TextAnalysisAuthoringListProjectsRequest,
   PagedTextAnalysisAuthoringProjectMetadata,
   TextAnalysisAuthoringListProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringProjectMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c20, 0) as any as S.Schema<TextAnalysisAuthoringListProjectsRequest>,
   output: __S(82, __c20, 2) as any as S.Schema<PagedTextAnalysisAuthoringProjectMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TextAnalysisAuthoringListTrainedModelsError = AzureOpError;
 /** Lists the trained models belonging to a project. */
-export const TextAnalysisAuthoringListTrainedModels: API.OperationMethod<
+export const TextAnalysisAuthoringListTrainedModels: API.PaginatedOperationMethod<
   TextAnalysisAuthoringListTrainedModelsRequest,
   PagedTextAnalysisAuthoringProjectTrainedModel,
   TextAnalysisAuthoringListTrainedModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringProjectTrainedModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(84, __c21, 0) as any as S.Schema<TextAnalysisAuthoringListTrainedModelsRequest>,
   output: __S(86, __c21, 2) as any as S.Schema<PagedTextAnalysisAuthoringProjectTrainedModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TextAnalysisAuthoringListTrainingConfigVersionsError = AzureOpError;
 /** Lists the support training config version for a given project type. */
-export const TextAnalysisAuthoringListTrainingConfigVersions: API.OperationMethod<
+export const TextAnalysisAuthoringListTrainingConfigVersions: API.PaginatedOperationMethod<
   TextAnalysisAuthoringListTrainingConfigVersionsRequest,
   PagedTextAnalysisAuthoringTrainingConfigVersion,
   TextAnalysisAuthoringListTrainingConfigVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringTrainingConfigVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     88,
     __c22,
@@ -1124,22 +1174,35 @@ export const TextAnalysisAuthoringListTrainingConfigVersions: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TextAnalysisAuthoringListTrainingJobsError = AzureOpError;
 /** Lists the non-expired training jobs created for a project. */
-export const TextAnalysisAuthoringListTrainingJobs: API.OperationMethod<
+export const TextAnalysisAuthoringListTrainingJobs: API.PaginatedOperationMethod<
   TextAnalysisAuthoringListTrainingJobsRequest,
   PagedTextAnalysisAuthoringTrainingJobState,
   TextAnalysisAuthoringListTrainingJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextAnalysisAuthoringTrainingJobState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(92, __c23, 0) as any as S.Schema<TextAnalysisAuthoringListTrainingJobsRequest>,
   output: __S(94, __c23, 2) as any as S.Schema<PagedTextAnalysisAuthoringTrainingJobState>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TextAuthoringProjectGetExportStatusError = AzureOpError;
 /** Gets the status of an export job. Once job completes, returns the project metadata, and assets. */
@@ -1426,6 +1489,7 @@ function __c10(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1435,6 +1499,7 @@ function __c10(j: number): any {
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
             query: { stringIndexType: "Utf16CodeUnit" },
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1613,6 +1678,7 @@ function __c17(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1621,6 +1687,7 @@ function __c17(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1675,6 +1742,7 @@ function __c19(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1683,6 +1751,7 @@ function __c19(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1707,6 +1776,7 @@ function __c20(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1715,6 +1785,7 @@ function __c20(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1740,6 +1811,7 @@ function __c21(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1748,6 +1820,7 @@ function __c21(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1773,6 +1846,7 @@ function __c22(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1781,6 +1855,7 @@ function __c22(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1813,6 +1888,7 @@ function __c23(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1821,6 +1897,7 @@ function __c23(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

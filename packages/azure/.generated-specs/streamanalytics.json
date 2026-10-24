@@ -103,6 +103,7 @@
       "com.azure.streamanalytics#StreamingJobsGetResponseTagsMap": "com.azure.streamanalytics#GetStreamingJobResponseTagsMap",
       "com.azure.streamanalytics#StreamingJobsGetRequest": "com.azure.streamanalytics#GetStreamingJobRequest",
       "com.azure.streamanalytics#OperationsList": "com.azure.streamanalytics#ListOperations",
+      "com.azure.streamanalytics#OperationsListRequest": "com.azure.streamanalytics#ListOperationsRequest",
       "com.azure.streamanalytics#SubscriptionsListQuotas": "com.azure.streamanalytics#ListSubscriptionQuotas",
       "com.azure.streamanalytics#SubscriptionsListQuotasRequest": "com.azure.streamanalytics#ListSubscriptionQuotasRequest",
       "com.azure.streamanalytics#TransformationsUpdate": "com.azure.streamanalytics#UpdateTransformation",
@@ -127,10 +128,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/listStreamingJobs",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the streaming jobs in the given cluster.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#ClusterJobListResult": {
@@ -279,6 +287,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -298,10 +312,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the clusters in the given resource group.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#ClusterListResult": {
@@ -517,6 +538,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -536,10 +563,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/clusters",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the clusters in the given subscription.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#ClustersListBySubscriptionRequest": {
@@ -551,6 +585,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1365,10 +1405,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the functions under the specified streaming job.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#FunctionListResult": {
@@ -1464,6 +1511,12 @@
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "The $select OData query parameter. This is a comma-separated list of structural properties to include in the response, or \"*\" to include all properties. By default, all properties are returned except diagnostics. Currently only accepts '*' as a valid value."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2052,10 +2105,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the inputs under the specified streaming job.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#InputListResult": {
@@ -2245,6 +2305,12 @@
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "The $select OData query parameter. This is a comma-separated list of structural properties to include in the response, or \"*\" to include all properties. By default, all properties are returned except diagnostics. Currently only accepts '*' as a valid value."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2787,10 +2853,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the outputs under the specified streaming job.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#OutputListResult": {
@@ -2968,6 +3041,12 @@
           "traits": {
             "smithy.api#httpQuery": "$select",
             "smithy.api#documentation": "The $select OData query parameter. This is a comma-separated list of structural properties to include in the response, or \"*\" to include all properties. By default, all properties are returned except diagnostics. Currently only accepts '*' as a valid value."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3344,10 +3423,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the private endpoints in the cluster.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#PrivateEndpointListResult": {
@@ -3552,6 +3638,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4107,10 +4199,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StreamAnalytics/streamingjobs",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the streaming jobs in the given subscription.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#StreamingJobListResult": {
@@ -4783,6 +4882,12 @@
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4802,10 +4907,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the streaming jobs in the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#StreamingJobsListByResourceGroupRequest": {
@@ -4832,6 +4944,12 @@
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5617,7 +5735,7 @@
     "com.azure.streamanalytics#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.streamanalytics#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.streamanalytics#OperationListResult"
@@ -5627,10 +5745,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StreamAnalytics/operations",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Stream Analytics related operations.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.streamanalytics#OperationListResult": {
@@ -5718,6 +5843,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Contains the localized display information for this particular operation / action."
+      }
+    },
+    "com.azure.streamanalytics#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.streamanalytics#SubscriptionsListQuotas": {

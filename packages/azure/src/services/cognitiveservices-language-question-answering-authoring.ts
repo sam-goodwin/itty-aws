@@ -126,6 +126,8 @@ export interface GetQuestionAnsweringProjectQnasRequest {
   maxpagesize?: number;
   /** Source of the QnA. */
   source?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of questions associated with the answer. */
 export type RetrieveQnaRecordQuestionsList = Array<string>;
@@ -233,6 +235,8 @@ export interface GetQuestionAnsweringProjectSourcesRequest {
   skip?: number;
   /** The maximum number of resources to include in a single response. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Supported source types. */
 export type SourceKind = "file" | "url";
@@ -273,6 +277,8 @@ export interface GetQuestionAnsweringProjectSynonymsRequest {
   skip?: number;
   /** The maximum number of resources to include in a single response. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Collection of word alterations. */
 export type WordAlterationsAlterationsList = Array<string>;
@@ -372,6 +378,8 @@ export interface ListQuestionAnsweringProjectDeploymentsRequest {
   skip?: number;
   /** The maximum number of resources to include in a single response. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Project deployment details. */
 export interface ProjectDeployment {
@@ -398,6 +406,8 @@ export interface ListQuestionAnsweringProjectProjectsRequest {
   skip?: number;
   /** The maximum number of resources to include in a single response. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The QuestionAnsweringProjectMetadata items on this page */
 export type PagedQuestionAnsweringProjectMetadataValueList =
@@ -759,48 +769,69 @@ export const GetQuestionAnsweringProjectProjectDetails: API.OperationMethod<
 
 export type GetQuestionAnsweringProjectQnasError = AzureOpError;
 /** Gets all the QnAs of a project. */
-export const GetQuestionAnsweringProjectQnas: API.OperationMethod<
+export const GetQuestionAnsweringProjectQnas: API.PaginatedOperationMethod<
   GetQuestionAnsweringProjectQnasRequest,
   PagedRetrieveQnaRecord,
   GetQuestionAnsweringProjectQnasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RetrieveQnaRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<GetQuestionAnsweringProjectQnasRequest>,
   output: __S(371, __c23, 3) as any as S.Schema<PagedRetrieveQnaRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetQuestionAnsweringProjectSourcesError = AzureOpError;
 /** Gets all the sources of a project. */
-export const GetQuestionAnsweringProjectSources: API.OperationMethod<
+export const GetQuestionAnsweringProjectSources: API.PaginatedOperationMethod<
   GetQuestionAnsweringProjectSourcesRequest,
   PagedQnaSourceRecord,
   GetQuestionAnsweringProjectSourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  QnaSourceRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<GetQuestionAnsweringProjectSourcesRequest>,
   output: __S(419, __c26, 3) as any as S.Schema<PagedQnaSourceRecord>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetQuestionAnsweringProjectSynonymsError = AzureOpError;
 /** Gets all the synonyms of a project. */
-export const GetQuestionAnsweringProjectSynonyms: API.OperationMethod<
+export const GetQuestionAnsweringProjectSynonyms: API.PaginatedOperationMethod<
   GetQuestionAnsweringProjectSynonymsRequest,
   PagedWordAlterations,
   GetQuestionAnsweringProjectSynonymsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WordAlterations
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<GetQuestionAnsweringProjectSynonymsRequest>,
   output: __S(433, __c27, 1) as any as S.Schema<PagedWordAlterations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ImportQuestionAnsweringProjectError = AzureOpError;
 /** Import project assets. */
@@ -819,33 +850,47 @@ export const ImportQuestionAnsweringProject: API.OperationMethod<
 
 export type ListQuestionAnsweringProjectDeploymentsError = AzureOpError;
 /** List all deployments of a project. */
-export const ListQuestionAnsweringProjectDeployments: API.OperationMethod<
+export const ListQuestionAnsweringProjectDeployments: API.PaginatedOperationMethod<
   ListQuestionAnsweringProjectDeploymentsRequest,
   PagedProjectDeployment,
   ListQuestionAnsweringProjectDeploymentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProjectDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListQuestionAnsweringProjectDeploymentsRequest>,
   output: __S(83, __c5, 3) as any as S.Schema<PagedProjectDeployment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQuestionAnsweringProjectProjectsError = AzureOpError;
 /** Gets all projects for a user. */
-export const ListQuestionAnsweringProjectProjects: API.OperationMethod<
+export const ListQuestionAnsweringProjectProjects: API.PaginatedOperationMethod<
   ListQuestionAnsweringProjectProjectsRequest,
   PagedQuestionAnsweringProjectMetadata,
   ListQuestionAnsweringProjectProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  QuestionAnsweringProjectMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListQuestionAnsweringProjectProjectsRequest>,
   output: __S(98, __c6, 2) as any as S.Schema<PagedQuestionAnsweringProjectMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type QuestionAnsweringProjectsGetDeleteStatusError = AzureOpError;
 /** Gets the status of a Project delete job. */
@@ -1089,6 +1134,7 @@ function __c5(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1097,6 +1143,7 @@ function __c5(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1128,6 +1175,7 @@ function __c6(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1136,6 +1184,7 @@ function __c6(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1539,6 +1588,7 @@ function __c23(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           source: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1547,6 +1597,7 @@ function __c23(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1646,6 +1697,7 @@ function __c26(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1654,6 +1706,7 @@ function __c26(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1690,6 +1743,7 @@ function __c27(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1698,6 +1752,7 @@ function __c27(j: number): any {
             host: "{endpoint}/language",
             hostRaw: ["endpoint"],
             apiVersion: "2023-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

@@ -15,13 +15,46 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.relationships#ContainsRelationshipsListByResourceGroup": "com.azure.relationships#ListContainsRelationshipByResourceGroup",
+      "com.azure.relationships#ContainsRelationshipsListByResourceGroupRequest": "com.azure.relationships#ListContainsRelationshipByResourceGroupRequest",
+      "com.azure.relationships#ContainsRelationshipsListBySubscription": "com.azure.relationships#ListContainsRelationshipBySubscription",
+      "com.azure.relationships#ContainsRelationshipsListBySubscriptionRequest": "com.azure.relationships#ListContainsRelationshipBySubscriptionRequest",
+      "com.azure.relationships#OperationsList": "com.azure.relationships#ListOperations",
+      "com.azure.relationships#OperationsListResponse": "com.azure.relationships#ListOperationsResponse",
+      "com.azure.relationships#OperationsListResponseValueList": "com.azure.relationships#ListOperationsResponseValueList",
+      "com.azure.relationships#OperationsListRequest": "com.azure.relationships#ListOperationsRequest",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDelete": "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroup",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDeleteResponse": "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroupResponse",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDeleteRequest": "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroupRequest",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGet": "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroup",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGetResponse": "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroupResponse",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGetRequest": "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroupRequest",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupList": "com.azure.relationships#ListDependencyOfRelationshipsByServiceGroup",
+      "com.azure.relationships#DependencyOfRelationshipsByServiceGroupListRequest": "com.azure.relationships#ListDependencyOfRelationshipsByServiceGroupRequest",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsDelete": "com.azure.relationships#DeleteServiceGroupMemberRelationship",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsDeleteResponse": "com.azure.relationships#DeleteServiceGroupMemberRelationshipResponse",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsDeleteRequest": "com.azure.relationships#DeleteServiceGroupMemberRelationshipRequest",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsGet": "com.azure.relationships#GetServiceGroupMemberRelationship",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsGetResponse": "com.azure.relationships#GetServiceGroupMemberRelationshipResponse",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsGetRequest": "com.azure.relationships#GetServiceGroupMemberRelationshipRequest",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsListByParent": "com.azure.relationships#ListServiceGroupMemberRelationshipByParent",
+      "com.azure.relationships#ServiceGroupMemberRelationshipsListByParentRequest": "com.azure.relationships#ListServiceGroupMemberRelationshipByParentRequest",
+      "com.azure.relationships#DependencyOfRelationshipsDelete": "com.azure.relationships#DeleteDependencyOfRelationship",
+      "com.azure.relationships#DependencyOfRelationshipsDeleteResponse": "com.azure.relationships#DeleteDependencyOfRelationshipResponse",
+      "com.azure.relationships#DependencyOfRelationshipsDeleteRequest": "com.azure.relationships#DeleteDependencyOfRelationshipRequest",
+      "com.azure.relationships#DependencyOfRelationshipsGet": "com.azure.relationships#GetDependencyOfRelationship",
+      "com.azure.relationships#DependencyOfRelationshipsGetResponse": "com.azure.relationships#GetDependencyOfRelationshipResponse",
+      "com.azure.relationships#DependencyOfRelationshipsGetRequest": "com.azure.relationships#GetDependencyOfRelationshipRequest",
+      "com.azure.relationships#DependencyOfRelationshipsListByParent": "com.azure.relationships#ListDependencyOfRelationshipByParent",
+      "com.azure.relationships#DependencyOfRelationshipsListByParentRequest": "com.azure.relationships#ListDependencyOfRelationshipByParentRequest"
+    }
   },
   "shapes": {
-    "com.azure.relationships#ListContainsRelationshipByResourceGroup": {
+    "com.azure.relationships#ContainsRelationshipsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#ListContainsRelationshipByResourceGroupRequest"
+        "target": "com.azure.relationships#ContainsRelationshipsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.relationships#ContainsRelationshipListResult"
@@ -31,10 +64,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relationships/contains",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ContainsRelationship resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relationships#ContainsRelationshipListResult": {
@@ -383,7 +423,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.relationships#ListContainsRelationshipByResourceGroupRequest": {
+    "com.azure.relationships#ContainsRelationshipsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -408,16 +448,22 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Filters the results by target resource type. Example: properties.metadata.targetType eq 'Microsoft.Compute/virtualMachines'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#ListContainsRelationshipBySubscription": {
+    "com.azure.relationships#ContainsRelationshipsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#ListContainsRelationshipBySubscriptionRequest"
+        "target": "com.azure.relationships#ContainsRelationshipsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.relationships#ContainsRelationshipListResult"
@@ -427,13 +473,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Relationships/contains",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ContainsRelationship resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relationships#ListContainsRelationshipBySubscriptionRequest": {
+    "com.azure.relationships#ContainsRelationshipsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -450,36 +503,49 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Filters the results by target resource type. Example: properties.metadata.targetType eq 'Microsoft.Compute/virtualMachines'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#ListOperations": {
+    "com.azure.relationships#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.relationships#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.relationships#ListOperationsResponse"
+        "target": "com.azure.relationships#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.Relationships/operations",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relationships#ListOperationsResponse": {
+    "com.azure.relationships#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.relationships#ListOperationsResponseValueList",
+          "target": "com.azure.relationships#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -495,7 +561,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#ListOperationsResponseValueList": {
+    "com.azure.relationships#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.relationships#Operation"
@@ -614,13 +680,27 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroup": {
+    "com.azure.relationships#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroupRequest"
+        "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDeleteRequest"
       },
       "output": {
-        "target": "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroupResponse"
+        "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -633,7 +713,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroupResponse": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -655,7 +735,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroupRequest": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDeleteRequest": {
       "type": "structure",
       "members": {
         "serviceGroupName": {
@@ -846,13 +926,13 @@
         "smithy.api#documentation": "dependencyOf relationship properties."
       }
     },
-    "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroup": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroupRequest"
+        "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGetRequest"
       },
       "output": {
-        "target": "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroupResponse"
+        "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -865,7 +945,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroupResponse": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -903,7 +983,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroupRequest": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGetRequest": {
       "type": "structure",
       "members": {
         "serviceGroupName": {
@@ -927,10 +1007,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#ListDependencyOfRelationshipsByServiceGroup": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#ListDependencyOfRelationshipsByServiceGroupRequest"
+        "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupListRequest"
       },
       "output": {
         "target": "com.azure.relationships#DependencyOfRelationshipListResult"
@@ -940,10 +1020,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DependencyOfRelationship resources by scope",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relationships#DependencyOfRelationshipListResult": {
@@ -1014,7 +1101,7 @@
         "smithy.api#documentation": "Defines a dependencyOf relationship resource."
       }
     },
-    "com.azure.relationships#ListDependencyOfRelationshipsByServiceGroupRequest": {
+    "com.azure.relationships#DependencyOfRelationshipsByServiceGroupListRequest": {
       "type": "structure",
       "members": {
         "serviceGroupName": {
@@ -1024,32 +1111,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the service group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#DeleteServiceGroupMemberRelationship": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#DeleteServiceGroupMemberRelationshipRequest"
+        "target": "com.azure.relationships#ServiceGroupMemberRelationshipsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.relationships#DeleteServiceGroupMemberRelationshipResponse"
+        "target": "com.azure.relationships#ServiceGroupMemberRelationshipsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/{resourceUri}/providers/Microsoft.Relationships/serviceGroupMember/{name}",
           "code": 200,
-          "apiVersion": "2023-09-01-preview"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Delete a ServiceGroupMemberRelationship",
-        "com.distilled.openapi#apiVersion": "2023-09-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.relationships#DeleteServiceGroupMemberRelationshipResponse": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1071,7 +1164,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#DeleteServiceGroupMemberRelationshipRequest": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsDeleteRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1108,10 +1201,10 @@
           "method": "PUT",
           "uri": "/{resourceUri}/providers/Microsoft.Relationships/serviceGroupMember/{name}",
           "code": 200,
-          "apiVersion": "2023-09-01-preview"
+          "apiVersion": "2026-08-01"
         },
         "smithy.api#documentation": "Create a ServiceGroupMemberRelationship",
-        "com.distilled.openapi#apiVersion": "2023-09-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
     "com.azure.relationships#ServiceGroupMemberRelationshipsCreateOrUpdateResponse": {
@@ -1142,7 +1235,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.relationships#ServiceGroupMemberRelationshipPropertiesPreview",
+          "target": "com.azure.relationships#ServiceGroupMemberRelationshipPropertiesV2",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
           }
@@ -1231,7 +1324,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.relationships#ServiceGroupMemberRelationshipPropertiesPreviewInput",
+          "target": "com.azure.relationships#ServiceGroupMemberRelationshipPropertiesV2Input",
           "traits": {
             "smithy.api#documentation": "The resource-specific properties for this resource."
           }
@@ -1262,13 +1355,13 @@
         "smithy.api#documentation": "ServiceGroupMember relationship properties."
       }
     },
-    "com.azure.relationships#GetServiceGroupMemberRelationship": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#GetServiceGroupMemberRelationshipRequest"
+        "target": "com.azure.relationships#ServiceGroupMemberRelationshipsGetRequest"
       },
       "output": {
-        "target": "com.azure.relationships#GetServiceGroupMemberRelationshipResponse"
+        "target": "com.azure.relationships#ServiceGroupMemberRelationshipsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1281,7 +1374,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.relationships#GetServiceGroupMemberRelationshipResponse": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1319,7 +1412,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#GetServiceGroupMemberRelationshipRequest": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1343,10 +1436,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#ListServiceGroupMemberRelationshipByParent": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsListByParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#ListServiceGroupMemberRelationshipByParentRequest"
+        "target": "com.azure.relationships#ServiceGroupMemberRelationshipsListByParentRequest"
       },
       "output": {
         "target": "com.azure.relationships#ServiceGroupMemberRelationshipListResult"
@@ -1356,10 +1449,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.Relationships/serviceGroupMember",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ServiceGroupMemberRelationship resources by parent",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relationships#ServiceGroupMemberRelationshipListResult": {
@@ -1430,7 +1530,7 @@
         "smithy.api#documentation": "Defines a ServiceGroupMember relationship resource."
       }
     },
-    "com.azure.relationships#ListServiceGroupMemberRelationshipByParentRequest": {
+    "com.azure.relationships#ServiceGroupMemberRelationshipsListByParentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1440,19 +1540,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#DeleteDependencyOfRelationship": {
+    "com.azure.relationships#DependencyOfRelationshipsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#DeleteDependencyOfRelationshipRequest"
+        "target": "com.azure.relationships#DependencyOfRelationshipsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.relationships#DeleteDependencyOfRelationshipResponse"
+        "target": "com.azure.relationships#DependencyOfRelationshipsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1465,7 +1571,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.relationships#DeleteDependencyOfRelationshipResponse": {
+    "com.azure.relationships#DependencyOfRelationshipsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1487,7 +1593,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#DeleteDependencyOfRelationshipRequest": {
+    "com.azure.relationships#DependencyOfRelationshipsDeleteRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1612,13 +1718,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#GetDependencyOfRelationship": {
+    "com.azure.relationships#DependencyOfRelationshipsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#GetDependencyOfRelationshipRequest"
+        "target": "com.azure.relationships#DependencyOfRelationshipsGetRequest"
       },
       "output": {
-        "target": "com.azure.relationships#GetDependencyOfRelationshipResponse"
+        "target": "com.azure.relationships#DependencyOfRelationshipsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1631,7 +1737,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.relationships#GetDependencyOfRelationshipResponse": {
+    "com.azure.relationships#DependencyOfRelationshipsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1669,7 +1775,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relationships#GetDependencyOfRelationshipRequest": {
+    "com.azure.relationships#DependencyOfRelationshipsGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1693,10 +1799,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relationships#ListDependencyOfRelationshipByParent": {
+    "com.azure.relationships#DependencyOfRelationshipsListByParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relationships#ListDependencyOfRelationshipByParentRequest"
+        "target": "com.azure.relationships#DependencyOfRelationshipsListByParentRequest"
       },
       "output": {
         "target": "com.azure.relationships#DependencyOfRelationshipListResult"
@@ -1706,13 +1812,20 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.Relationships/dependencyOf",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DependencyOfRelationship resources by parent",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relationships#ListDependencyOfRelationshipByParentRequest": {
+    "com.azure.relationships#DependencyOfRelationshipsListByParentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1721,6 +1834,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1733,119 +1852,54 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.relationships#ListContainsRelationshipByResourceGroup"
+          "target": "com.azure.relationships#ContainsRelationshipsListByResourceGroup"
         },
         {
-          "target": "com.azure.relationships#ListContainsRelationshipBySubscription"
+          "target": "com.azure.relationships#ContainsRelationshipsListBySubscription"
         },
         {
-          "target": "com.azure.relationships#ListOperations"
+          "target": "com.azure.relationships#OperationsList"
         },
         {
-          "target": "com.azure.relationships#DeleteDependencyOfRelationshipsByServiceGroup"
+          "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupDelete"
         },
         {
           "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupCreateOrUpdate"
         },
         {
-          "target": "com.azure.relationships#GetDependencyOfRelationshipsByServiceGroup"
+          "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupGet"
         },
         {
-          "target": "com.azure.relationships#ListDependencyOfRelationshipsByServiceGroup"
+          "target": "com.azure.relationships#DependencyOfRelationshipsByServiceGroupList"
         },
         {
-          "target": "com.azure.relationships#DeleteServiceGroupMemberRelationship"
+          "target": "com.azure.relationships#ServiceGroupMemberRelationshipsDelete"
         },
         {
           "target": "com.azure.relationships#ServiceGroupMemberRelationshipsCreateOrUpdate"
         },
         {
-          "target": "com.azure.relationships#GetServiceGroupMemberRelationship"
+          "target": "com.azure.relationships#ServiceGroupMemberRelationshipsGet"
         },
         {
-          "target": "com.azure.relationships#ListServiceGroupMemberRelationshipByParent"
+          "target": "com.azure.relationships#ServiceGroupMemberRelationshipsListByParent"
         },
         {
-          "target": "com.azure.relationships#DeleteDependencyOfRelationship"
+          "target": "com.azure.relationships#DependencyOfRelationshipsDelete"
         },
         {
           "target": "com.azure.relationships#DependencyOfRelationshipsCreateOrUpdate"
         },
         {
-          "target": "com.azure.relationships#GetDependencyOfRelationship"
+          "target": "com.azure.relationships#DependencyOfRelationshipsGet"
         },
         {
-          "target": "com.azure.relationships#ListDependencyOfRelationshipByParent"
+          "target": "com.azure.relationships#DependencyOfRelationshipsListByParent"
         }
       ],
       "traits": {
         "smithy.api#title": "Azure Relationships",
         "smithy.api#documentation": "Azure Relationships API — merged from the relationships resource-manager specs (latest stable api-version per resource provider)."
-      }
-    },
-    "com.azure.relationships#ServiceGroupMemberRelationshipPropertiesPreviewInput": {
-      "type": "structure",
-      "members": {
-        "targetId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The service group the scoped resource joins, e.g. `/providers/Microsoft.Management/serviceGroups/{name}`.",
-            "smithy.api#required": {}
-          }
-        },
-        "targetTenant": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The tenant of the target service group."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "ServiceGroupMember relationship properties (2023-09-01-preview request shape)."
-      }
-    },
-    "com.azure.relationships#ServiceGroupMemberRelationshipPropertiesPreview": {
-      "type": "structure",
-      "members": {
-        "targetId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The service group the scoped resource joins."
-          }
-        },
-        "sourceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The scoped (member) resource id."
-          }
-        },
-        "targetTenant": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The tenant of the target service group."
-          }
-        },
-        "originInformation": {
-          "target": "com.azure.relationships#RelationshipOriginInformation",
-          "traits": {
-            "smithy.api#documentation": "Information about the origin of the relationship."
-          }
-        },
-        "metadata": {
-          "target": "com.azure.relationships#RelationshipMetadata",
-          "traits": {
-            "smithy.api#documentation": "Metadata about the relationship."
-          }
-        },
-        "provisioningState": {
-          "target": "com.azure.relationships#ProvisioningState",
-          "traits": {
-            "smithy.api#documentation": "The provisioning state of the relationship."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "ServiceGroupMember relationship properties (2023-09-01-preview response shape)."
       }
     }
   }

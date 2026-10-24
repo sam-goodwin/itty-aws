@@ -14,7 +14,8 @@
         "id": "UnreferencedShape",
         "namespace": "*"
       }
-    ]
+    ],
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.appconfiguration_data#CheckSnapshot": {
@@ -899,9 +900,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of key-value snapshots.\n\nGets a list of key-value snapshots."
+        "smithy.api#documentation": "Gets a list of key-value snapshots.\n\nGets a list of key-value snapshots.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "items"
+        }
       }
     },
     "com.azure.appconfiguration_data#SnapshotListResult": {
@@ -1059,6 +1067,12 @@
           "traits": {
             "smithy.api#httpHeader": "Sync-Token",
             "smithy.api#documentation": "Used to guarantee real-time consistency between requests."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1372,9 +1386,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of key-value revisions.\n\nGets a list of key-value revisions."
+        "smithy.api#documentation": "Gets a list of key-value revisions.\n\nGets a list of key-value revisions.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "items"
+        }
       }
     },
     "com.azure.appconfiguration_data#KeyValueListResult": {
@@ -1559,6 +1580,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2244,9 +2271,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of labels.\n\nGets a list of labels."
+        "smithy.api#documentation": "Gets a list of labels.\n\nGets a list of labels.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "items"
+        }
       }
     },
     "com.azure.appconfiguration_data#LabelListResult": {
@@ -2343,6 +2377,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3344,9 +3384,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of key-values.\n\nGets a list of key-values."
+        "smithy.api#documentation": "Gets a list of key-values.\n\nGets a list of key-values.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "items"
+        }
       }
     },
     "com.azure.appconfiguration_data#GetKeyValuesRequest": {
@@ -3427,6 +3474,12 @@
           "traits": {
             "smithy.api#httpHeader": "If-None-Match",
             "smithy.api#documentation": "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3597,9 +3650,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of keys.\n\nGets a list of keys."
+        "smithy.api#documentation": "Gets a list of keys.\n\nGets a list of keys.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "_nextLink",
+          "items": "items"
+        }
       }
     },
     "com.azure.appconfiguration_data#KeyListResult": {
@@ -3683,6 +3743,12 @@
           "traits": {
             "smithy.api#httpHeader": "Accept-Datetime",
             "smithy.api#documentation": "Requests the server to respond with the state of the resource at the specified\ntime."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -563,10 +563,17 @@
           "method": "GET",
           "uri": "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the savings plan utilization summaries for daily or monthly grain.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#BenefitUtilizationSummariesListResult": {
@@ -777,6 +784,12 @@
             "smithy.api#httpQuery": "grainParameter",
             "smithy.api#documentation": "Grain."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -906,10 +919,17 @@
           "method": "GET",
           "uri": "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the savings plan utilization summaries for daily or monthly grain.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ListBenefitUtilizationSummaryBySavingsPlanOrderRequest": {
@@ -935,6 +955,12 @@
           "traits": {
             "smithy.api#httpQuery": "grainParameter",
             "smithy.api#documentation": "Grain."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1812,10 +1838,17 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of all cost allocation rules for a billing account or enterprise enrollment.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#CostAllocationRuleList": {
@@ -1895,6 +1928,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "BillingAccount ID"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1914,10 +1953,17 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists savings plan utilization summaries for the enterprise agreement scope. Supported at grain values: 'Daily' and 'Monthly'.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ListBenefitUtilizationSummaryByBillingAccountIdRequest": {
@@ -1943,6 +1989,12 @@
           "traits": {
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2368,10 +2420,17 @@
           "method": "GET",
           "uri": "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists savings plan utilization summaries for billing profile. Supported at grain values: 'Daily' and 'Monthly'.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ListBenefitUtilizationSummaryByBillingProfileIdRequest": {
@@ -2405,6 +2464,12 @@
           "traits": {
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3578,7 +3643,7 @@
     "com.azure.cost_management#ListViews": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cost_management#ListViewsRequest"
       },
       "output": {
         "target": "com.azure.cost_management#ViewListResult"
@@ -3588,10 +3653,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/views",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all views by tenant and object.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ViewListResult": {
@@ -3665,6 +3737,20 @@
       },
       "traits": {
         "smithy.api#documentation": "States and configurations of Cost Analysis."
+      }
+    },
+    "com.azure.cost_management#ListViewsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cost_management#RunScheduledAction": {
@@ -4316,10 +4402,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/scheduledActions",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private scheduled actions.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ScheduledActionListResult": {
@@ -4410,6 +4503,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4419,7 +4518,7 @@
     "com.azure.cost_management#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cost_management#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.cost_management#OperationListResult"
@@ -4429,10 +4528,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/operations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#OperationListResult": {
@@ -4578,6 +4684,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.cost_management#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cost_management#CheckScheduledActionNameAvailability": {
@@ -5813,10 +5933,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the dimensions by the external cloud provider type.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#DimensionsListResult": {
@@ -6032,6 +6159,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "May be used to limit the number of results to the most recent N dimension data."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7122,10 +7255,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all markup rules for a billing account and billing profile.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#MarkupRulePagedResponse": {
@@ -7212,6 +7352,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "BillingProfile ID"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7461,10 +7607,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/views",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all views at the given scope.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ListViewByScopeRequest": {
@@ -7476,6 +7629,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "undefined"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8147,10 +8306,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/scheduledActions",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all shared scheduled actions within the given scope.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ListScheduledActionByScopeRequest": {
@@ -8169,6 +8335,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10722,10 +10894,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/dimensions",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the dimensions by the defined scope.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#ListDimensionsRequest": {
@@ -10765,6 +10944,12 @@
           "traits": {
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "May be used to limit the number of results to the most recent N dimension data."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11829,10 +12014,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.CostManagement/budgets",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all budgets for the defined scope.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#BudgetsListResult": {
@@ -11925,6 +12117,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "OData filter option. May be used to filter budgets by properties/category. The filter supports 'eq' only."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11944,10 +12142,17 @@
           "method": "GET",
           "uri": "/{billingScope}/providers/Microsoft.CostManagement/benefitRecommendations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of recommendations for purchasing savings plan.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cost_management#BenefitRecommendationsListResult": {
@@ -12332,6 +12537,12 @@
           "traits": {
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "May be used to expand the properties by: properties/usage, properties/allRecommendationDetails"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

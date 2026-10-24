@@ -2005,6 +2005,8 @@ export interface ListAuthorizationPolicyByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The authorization policy resource format. */
 export interface AuthorizationPolicyResourceFormat {
@@ -2021,7 +2023,7 @@ export type AuthorizationPolicyListResultValueList = Array<AuthorizationPolicyRe
 /** The response of list authorization policy operation. */
 export interface AuthorizationPolicyListResult {
   /** Results of the list operation. */
-  value?: AuthorizationPolicyListResultValueList;
+  value: AuthorizationPolicyListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2032,6 +2034,8 @@ export interface ListConnectorByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The connector resource format. */
 export interface ConnectorResourceFormat {
@@ -2048,7 +2052,7 @@ export type ConnectorListResultValueList = Array<ConnectorResourceFormat>;
 /** The response of list connector operation. */
 export interface ConnectorListResult {
   /** Results of the list operation. */
-  value?: ConnectorListResultValueList;
+  value: ConnectorListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2061,6 +2065,8 @@ export interface ListConnectorMappingByConnectorRequest {
   hubName: string;
   /** The name of the connector. */
   connectorName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The connector mapping resource format. */
 export interface ConnectorMappingResourceFormat {
@@ -2077,7 +2083,7 @@ export type ConnectorMappingListResultValueList = Array<ConnectorMappingResource
 /** The response of list connector mapping operation. */
 export interface ConnectorMappingListResult {
   /** Results of the list operation. */
-  value?: ConnectorMappingListResultValueList;
+  value: ConnectorMappingListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2086,6 +2092,8 @@ export interface ListHubByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type HubTagsMap = { [key: string]: string | undefined };
@@ -2108,13 +2116,15 @@ export type HubListResultValueList = Array<Hub>;
 /** Response of list hub operation. */
 export interface HubListResult {
   /** Results of the list operation. */
-  value?: HubListResultValueList;
+  value: HubListResultValueList;
   /** Link for next set of results. */
   nextLink?: string;
 }
 export interface ListHubsRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListInteractionByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2125,6 +2135,8 @@ export interface ListInteractionByHubRequest {
   hubName: string;
   /** Locale of interaction to retrieve, default is en-us. */
   locale_code?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The interaction resource format. */
 export interface InteractionResourceFormat {
@@ -2141,7 +2153,7 @@ export type InteractionListResultValueList = Array<InteractionResourceFormat>;
 /** The response of list interaction operation. */
 export interface InteractionListResult {
   /** Results of the list operation. */
-  value?: InteractionListResultValueList;
+  value: InteractionListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2152,6 +2164,8 @@ export interface ListKpiByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The KPI resource format. */
 export interface KpiResourceFormat {
@@ -2168,7 +2182,7 @@ export type KpiListResultValueList = Array<KpiResourceFormat>;
 /** The response of list KPI operation. */
 export interface KpiListResult {
   /** Results of the list operation. */
-  value?: KpiListResultValueList;
+  value: KpiListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2179,6 +2193,8 @@ export interface ListLinkByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The link resource format. */
 export interface LinkResourceFormat {
@@ -2195,11 +2211,14 @@ export type LinkListResultValueList = Array<LinkResourceFormat>;
 /** The response of list link operation. */
 export interface LinkListResult {
   /** Results of the list operation. */
-  value?: LinkListResultValueList;
+  value: LinkListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.CustomerInsights */
@@ -2221,7 +2240,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list Customer Insights operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -2232,6 +2251,8 @@ export interface ListPredictionByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The prediction resource format. */
 export interface PredictionResourceFormat {
@@ -2248,7 +2269,7 @@ export type PredictionListResultValueList = Array<PredictionResourceFormat>;
 /** The response of list predictions operation. */
 export interface PredictionListResult {
   /** Results of the list operation. */
-  value?: PredictionListResultValueList;
+  value: PredictionListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2261,6 +2282,8 @@ export interface ListProfileByHubRequest {
   hubName: string;
   /** Locale of profile to retrieve, default is en-us. */
   locale_code?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The profile resource format. */
 export interface ProfileResourceFormat {
@@ -2277,7 +2300,7 @@ export type ProfileListResultValueList = Array<ProfileResourceFormat>;
 /** The response of list profile operation. */
 export interface ProfileListResult {
   /** Results of the list operation. */
-  value?: ProfileListResultValueList;
+  value: ProfileListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2288,6 +2311,8 @@ export interface ListRelationshipByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The relationship resource format. */
 export interface RelationshipResourceFormat {
@@ -2304,7 +2329,7 @@ export type RelationshipListResultValueList = Array<RelationshipResourceFormat>;
 /** The response of list relationship operation. */
 export interface RelationshipListResult {
   /** Results of the list operation. */
-  value?: RelationshipListResultValueList;
+  value: RelationshipListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2315,6 +2340,8 @@ export interface ListRelationshipLinkByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The relationship link resource format. */
 export interface RelationshipLinkResourceFormat {
@@ -2331,7 +2358,7 @@ export type RelationshipLinkListResultValueList = Array<RelationshipLinkResource
 /** The response of list relationship link operation. */
 export interface RelationshipLinkListResult {
   /** Results of the list operation. */
-  value?: RelationshipLinkListResultValueList;
+  value: RelationshipLinkListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2342,6 +2369,8 @@ export interface ListRoleAssignmentByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Role Assignment resource format. */
 export interface RoleAssignmentResourceFormat {
@@ -2358,7 +2387,7 @@ export type RoleAssignmentListResultValueList = Array<RoleAssignmentResourceForm
 /** The response of list role assignment operation. */
 export interface RoleAssignmentListResult {
   /** Results of the list operation. */
-  value?: RoleAssignmentListResultValueList;
+  value: RoleAssignmentListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2369,6 +2398,8 @@ export interface ListRoleByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Role definition. */
 export interface Role {
@@ -2392,7 +2423,7 @@ export type RoleListResultValueList = Array<RoleResourceFormat>;
 /** The response of list role assignment operation. */
 export interface RoleListResult {
   /** Results of the list operation. */
-  value?: RoleListResultValueList;
+  value: RoleListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2405,6 +2436,8 @@ export interface ListViewByHubRequest {
   hubName: string;
   /** The user ID. Use * to retrieve hub level views. */
   userId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The view resource format. */
 export interface ViewResourceFormat {
@@ -2421,7 +2454,7 @@ export type ViewListResultValueList = Array<ViewResourceFormat>;
 /** The response of list view operation. */
 export interface ViewListResult {
   /** Results of the list operation. */
-  value?: ViewListResultValueList;
+  value: ViewListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -2432,6 +2465,8 @@ export interface ListWidgetTypeByHubRequest {
   resourceGroupName: string;
   /** The name of the hub. */
   hubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The WidgetTypeResourceFormat */
 export interface WidgetTypeResourceFormat {
@@ -2448,7 +2483,7 @@ export type WidgetTypeListResultValueList = Array<WidgetTypeResourceFormat>;
 /** The response of list widget type operation. */
 export interface WidgetTypeListResult {
   /** Results of the list operation. */
-  value?: WidgetTypeListResultValueList;
+  value: WidgetTypeListResultValueList;
   /** Link to the next set of results. */
   nextLink?: string;
 }
@@ -3468,258 +3503,377 @@ export const LinksCreateOrUpdate: API.OperationMethod<
 
 export type ListAuthorizationPolicyByHubError = AzureOpError;
 /** Gets all the authorization policies in a specified hub. */
-export const ListAuthorizationPolicyByHub: API.OperationMethod<
+export const ListAuthorizationPolicyByHub: API.PaginatedOperationMethod<
   ListAuthorizationPolicyByHubRequest,
   AuthorizationPolicyListResult,
   ListAuthorizationPolicyByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthorizationPolicyResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(944, __c59, 0) as any as S.Schema<ListAuthorizationPolicyByHubRequest>,
   output: __S(946, __c59, 2) as any as S.Schema<AuthorizationPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectorByHubError = AzureOpError;
 /** Gets all the connectors in the specified hub. */
-export const ListConnectorByHub: API.OperationMethod<
+export const ListConnectorByHub: API.PaginatedOperationMethod<
   ListConnectorByHubRequest,
   ConnectorListResult,
   ListConnectorByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectorResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(976, __c61, 0) as any as S.Schema<ListConnectorByHubRequest>,
   output: __S(978, __c61, 2) as any as S.Schema<ConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectorMappingByConnectorError = AzureOpError;
 /** Gets all the connector mappings in the specified connector. */
-export const ListConnectorMappingByConnector: API.OperationMethod<
+export const ListConnectorMappingByConnector: API.PaginatedOperationMethod<
   ListConnectorMappingByConnectorRequest,
   ConnectorMappingListResult,
   ListConnectorMappingByConnectorError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectorMappingResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(992, __c62, 0) as any as S.Schema<ListConnectorMappingByConnectorRequest>,
   output: __S(994, __c62, 2) as any as S.Schema<ConnectorMappingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHubByResourceGroupError = AzureOpError;
 /** Gets all the hubs in a resource group. */
-export const ListHubByResourceGroup: API.OperationMethod<
+export const ListHubByResourceGroup: API.PaginatedOperationMethod<
   ListHubByResourceGroupRequest,
   HubListResult,
   ListHubByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Hub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1008, __c63, 0) as any as S.Schema<ListHubByResourceGroupRequest>,
   output: __S(1025, __c64, 1) as any as S.Schema<HubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHubsError = AzureOpError;
 /** Gets all hubs in the specified subscription. */
-export const ListHubs: API.OperationMethod<
+export const ListHubs: API.PaginatedOperationMethod<
   ListHubsRequest,
   HubListResult,
   ListHubsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Hub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1040, __c65, 0) as any as S.Schema<ListHubsRequest>,
   output: __S(1025, __c64, 1) as any as S.Schema<HubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInteractionByHubError = AzureOpError;
 /** Gets all interactions in the hub. */
-export const ListInteractionByHub: API.OperationMethod<
+export const ListInteractionByHub: API.PaginatedOperationMethod<
   ListInteractionByHubRequest,
   InteractionListResult,
   ListInteractionByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  InteractionResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<ListInteractionByHubRequest>,
   output: __S(1058, __c66, 2) as any as S.Schema<InteractionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKpiByHubError = AzureOpError;
 /** Gets all the KPIs in the specified hub. */
-export const ListKpiByHub: API.OperationMethod<
+export const ListKpiByHub: API.PaginatedOperationMethod<
   ListKpiByHubRequest,
   KpiListResult,
   ListKpiByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KpiResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1072, __c67, 0) as any as S.Schema<ListKpiByHubRequest>,
   output: __S(1074, __c67, 2) as any as S.Schema<KpiListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLinkByHubError = AzureOpError;
 /** Gets all the links in the specified hub. */
-export const ListLinkByHub: API.OperationMethod<
+export const ListLinkByHub: API.PaginatedOperationMethod<
   ListLinkByHubRequest,
   LinkListResult,
   ListLinkByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LinkResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c68, 0) as any as S.Schema<ListLinkByHubRequest>,
   output: __S(1090, __c68, 2) as any as S.Schema<LinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Customer Insights REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1104, __c69, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1108, __c69, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPredictionByHubError = AzureOpError;
 /** Gets all the predictions in the specified hub. */
-export const ListPredictionByHub: API.OperationMethod<
+export const ListPredictionByHub: API.PaginatedOperationMethod<
   ListPredictionByHubRequest,
   PredictionListResult,
   ListPredictionByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PredictionResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1120, __c70, 0) as any as S.Schema<ListPredictionByHubRequest>,
   output: __S(1122, __c70, 2) as any as S.Schema<PredictionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProfileByHubError = AzureOpError;
 /** Gets all profile in the hub. */
-export const ListProfileByHub: API.OperationMethod<
+export const ListProfileByHub: API.PaginatedOperationMethod<
   ListProfileByHubRequest,
   ProfileListResult,
   ListProfileByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProfileResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1136, __c71, 0) as any as S.Schema<ListProfileByHubRequest>,
   output: __S(1138, __c71, 2) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRelationshipByHubError = AzureOpError;
 /** Gets all relationships in the hub. */
-export const ListRelationshipByHub: API.OperationMethod<
+export const ListRelationshipByHub: API.PaginatedOperationMethod<
   ListRelationshipByHubRequest,
   RelationshipListResult,
   ListRelationshipByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RelationshipResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1168, __c73, 0) as any as S.Schema<ListRelationshipByHubRequest>,
   output: __S(1170, __c73, 2) as any as S.Schema<RelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRelationshipLinkByHubError = AzureOpError;
 /** Gets all relationship links in the hub. */
-export const ListRelationshipLinkByHub: API.OperationMethod<
+export const ListRelationshipLinkByHub: API.PaginatedOperationMethod<
   ListRelationshipLinkByHubRequest,
   RelationshipLinkListResult,
   ListRelationshipLinkByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RelationshipLinkResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c74, 0) as any as S.Schema<ListRelationshipLinkByHubRequest>,
   output: __S(1186, __c74, 2) as any as S.Schema<RelationshipLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleAssignmentByHubError = AzureOpError;
 /** Gets all the role assignments for the specified hub. */
-export const ListRoleAssignmentByHub: API.OperationMethod<
+export const ListRoleAssignmentByHub: API.PaginatedOperationMethod<
   ListRoleAssignmentByHubRequest,
   RoleAssignmentListResult,
   ListRoleAssignmentByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleAssignmentResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1200, __c75, 0) as any as S.Schema<ListRoleAssignmentByHubRequest>,
   output: __S(1202, __c75, 2) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleByHubError = AzureOpError;
 /** Gets all the roles for the hub. */
-export const ListRoleByHub: API.OperationMethod<
+export const ListRoleByHub: API.PaginatedOperationMethod<
   ListRoleByHubRequest,
   RoleListResult,
   ListRoleByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c76, 0) as any as S.Schema<ListRoleByHubRequest>,
   output: __S(1220, __c76, 4) as any as S.Schema<RoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListViewByHubError = AzureOpError;
 /** Gets all available views for given user in the specified hub. */
-export const ListViewByHub: API.OperationMethod<
+export const ListViewByHub: API.PaginatedOperationMethod<
   ListViewByHubRequest,
   ViewListResult,
   ListViewByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ViewResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1232, __c77, 0) as any as S.Schema<ListViewByHubRequest>,
   output: __S(1234, __c77, 2) as any as S.Schema<ViewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWidgetTypeByHubError = AzureOpError;
 /** Gets all available widget types in the specified hub. */
-export const ListWidgetTypeByHub: API.OperationMethod<
+export const ListWidgetTypeByHub: API.PaginatedOperationMethod<
   ListWidgetTypeByHubRequest,
   WidgetTypeListResult,
   ListWidgetTypeByHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WidgetTypeResourceFormat
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1248, __c78, 0) as any as S.Schema<ListWidgetTypeByHubRequest>,
   output: __S(1250, __c78, 2) as any as S.Schema<WidgetTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PredictionsCreateOrUpdateError = AzureOpError;
 /** Creates a Prediction or updates an existing Prediction in the hub. */
@@ -5555,12 +5709,14 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/authorizationPolicies",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAuthorizationPolicyByHubRequest" });
@@ -5569,7 +5725,7 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(945, __c59, 1)),
+          value: __S(945, __c59, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthorizationPolicyListResult" });
@@ -5604,12 +5760,14 @@ function __c61(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectorByHubRequest" });
@@ -5618,7 +5776,7 @@ function __c61(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(977, __c61, 1)),
+          value: __S(977, __c61, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorListResult" });
@@ -5633,12 +5791,14 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}/mappings",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectorMappingByConnectorRequest" });
@@ -5647,7 +5807,7 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(993, __c62, 1)),
+          value: __S(993, __c62, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorMappingListResult" });
@@ -5660,12 +5820,14 @@ function __c63(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHubByResourceGroupRequest" });
@@ -5678,7 +5840,7 @@ function __c64(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1024, __c64, 0)),
+          value: __S(1024, __c64, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HubListResult" });
@@ -5690,12 +5852,14 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CustomerInsights/hubs",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHubsRequest" });
@@ -5710,12 +5874,14 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInteractionByHubRequest" });
@@ -5724,7 +5890,7 @@ function __c66(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1057, __c66, 1)),
+          value: __S(1057, __c66, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InteractionListResult" });
@@ -5738,12 +5904,14 @@ function __c67(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKpiByHubRequest" });
@@ -5752,7 +5920,7 @@ function __c67(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1073, __c67, 1)),
+          value: __S(1073, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "KpiListResult" });
@@ -5766,12 +5934,14 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLinkByHubRequest" });
@@ -5780,7 +5950,7 @@ function __c68(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1089, __c68, 1)),
+          value: __S(1089, __c68, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkListResult" });
@@ -5790,12 +5960,15 @@ function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CustomerInsights/operations",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -5819,7 +5992,7 @@ function __c69(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1107, __c69, 3)),
+          value: __S(1107, __c69, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -5833,12 +6006,14 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPredictionByHubRequest" });
@@ -5847,7 +6022,7 @@ function __c70(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1121, __c70, 1)),
+          value: __S(1121, __c70, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PredictionListResult" });
@@ -5862,12 +6037,14 @@ function __c71(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           locale_code: S.optional(S.String.pipe(T.Query("locale-code"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProfileByHubRequest" });
@@ -5876,7 +6053,7 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1137, __c71, 1)),
+          value: __S(1137, __c71, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileListResult" });
@@ -5909,12 +6086,14 @@ function __c73(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRelationshipByHubRequest" });
@@ -5923,7 +6102,7 @@ function __c73(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1169, __c73, 1)),
+          value: __S(1169, __c73, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipListResult" });
@@ -5937,12 +6116,14 @@ function __c74(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRelationshipLinkByHubRequest" });
@@ -5951,7 +6132,7 @@ function __c74(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1185, __c74, 1)),
+          value: __S(1185, __c74, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipLinkListResult" });
@@ -5965,12 +6146,14 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleAssignmentByHubRequest" });
@@ -5979,7 +6162,7 @@ function __c75(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1201, __c75, 1)),
+          value: __S(1201, __c75, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentListResult" });
@@ -5993,12 +6176,14 @@ function __c76(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roles",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleByHubRequest" });
@@ -6023,7 +6208,7 @@ function __c76(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1219, __c76, 3)),
+          value: __S(1219, __c76, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleListResult" });
@@ -6038,12 +6223,14 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/views",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListViewByHubRequest" });
@@ -6052,7 +6239,7 @@ function __c77(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1233, __c77, 1)),
+          value: __S(1233, __c77, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewListResult" });
@@ -6066,12 +6253,14 @@ function __c78(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/widgetTypes",
             code: 200,
             apiVersion: "2017-04-26",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWidgetTypeByHubRequest" });
@@ -6080,7 +6269,7 @@ function __c78(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1249, __c78, 1)),
+          value: __S(1249, __c78, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WidgetTypeListResult" });

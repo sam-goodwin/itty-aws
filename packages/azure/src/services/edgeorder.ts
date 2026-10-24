@@ -810,6 +810,8 @@ export interface ListAddressByResourceGroupRequest {
   _skipToken?: string;
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AddressResourceTagsMap = { [key: string]: string | undefined };
@@ -848,8 +850,13 @@ export interface ListAddressBySubscriptionRequest {
   _skipToken?: string;
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -882,7 +889,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -895,6 +902,8 @@ export interface ListOrderByResourceGroupRequest {
   _skipToken?: string;
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Specifies the properties or parameters for an order. Order is a grouping of one or more order items. */
 export interface OrderResource {
@@ -925,6 +934,8 @@ export interface ListOrderBySubscriptionRequest {
   _skipToken?: string;
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListOrderItemByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -939,6 +950,8 @@ export interface ListOrderItemByResourceGroupRequest {
   _skipToken?: string;
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type OrderItemResourceTagsMap = { [key: string]: string | undefined };
@@ -981,6 +994,8 @@ export interface ListOrderItemBySubscriptionRequest {
   _skipToken?: string;
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of product filter. */
 export type SupportedFilterTypes = "ShipToCountries" | "DoubleEncryptionStatus";
@@ -1046,6 +1061,8 @@ export interface ListProductsAndConfigurationConfigurationsRequest {
   configurationFilter?: ConfigurationFilter;
   /** Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details. */
   customerSubscriptionDetails?: CustomerSubscriptionDetails;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of description. */
 export type DescriptionType = "Base";
@@ -1353,6 +1370,8 @@ export interface ListProductsAndConfigurationProductFamiliesRequest {
   filterableProperties: ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesMap;
   /** Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details. */
   customerSubscriptionDetails?: CustomerSubscriptionDetails;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Image information for the product system. */
 export type ProductFamilyPropertiesImageInformationList = Array<ImageInformation>;
@@ -1468,6 +1487,8 @@ export interface ListProductsAndConfigurationProductFamiliesMetadataRequest {
   subscriptionId: string;
   /** $skipToken is supported on list of product families metadata, which provides the next page in the list of product families metadata. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Product families metadata details. */
 export interface ProductFamiliesMetadataDetails {
@@ -1735,147 +1756,211 @@ export const GetOrderItem: API.OperationMethod<
 
 export type ListAddressByResourceGroupError = AzureOpError;
 /** List all the addresses available under the given resource group. */
-export const ListAddressByResourceGroup: API.OperationMethod<
+export const ListAddressByResourceGroup: API.PaginatedOperationMethod<
   ListAddressByResourceGroupRequest,
   AddressResourceList,
   ListAddressByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AddressResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c41, 0) as any as S.Schema<ListAddressByResourceGroupRequest>,
   output: __S(1345, __c42, 1) as any as S.Schema<AddressResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAddressBySubscriptionError = AzureOpError;
 /** List all the addresses available under the subscription. */
-export const ListAddressBySubscription: API.OperationMethod<
+export const ListAddressBySubscription: API.PaginatedOperationMethod<
   ListAddressBySubscriptionRequest,
   AddressResourceList,
   ListAddressBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AddressResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1376, __c43, 0) as any as S.Schema<ListAddressBySubscriptionRequest>,
   output: __S(1345, __c42, 1) as any as S.Schema<AddressResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(292, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrderByResourceGroupError = AzureOpError;
 /** List orders at resource group level. */
-export const ListOrderByResourceGroup: API.OperationMethod<
+export const ListOrderByResourceGroup: API.PaginatedOperationMethod<
   ListOrderByResourceGroupRequest,
   OrderResourceList,
   ListOrderByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OrderResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<ListOrderByResourceGroupRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<OrderResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrderBySubscriptionError = AzureOpError;
 /** List orders at subscription level. */
-export const ListOrderBySubscription: API.OperationMethod<
+export const ListOrderBySubscription: API.PaginatedOperationMethod<
   ListOrderBySubscriptionRequest,
   OrderResourceList,
   ListOrderBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OrderResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<ListOrderBySubscriptionRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<OrderResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrderItemByResourceGroupError = AzureOpError;
 /** List order items at resource group level. */
-export const ListOrderItemByResourceGroup: API.OperationMethod<
+export const ListOrderItemByResourceGroup: API.PaginatedOperationMethod<
   ListOrderItemByResourceGroupRequest,
   OrderItemResourceList,
   ListOrderItemByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OrderItemResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListOrderItemByResourceGroupRequest>,
   output: __S(449, __c14, 1) as any as S.Schema<OrderItemResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrderItemBySubscriptionError = AzureOpError;
 /** List order items at subscription level. */
-export const ListOrderItemBySubscription: API.OperationMethod<
+export const ListOrderItemBySubscription: API.PaginatedOperationMethod<
   ListOrderItemBySubscriptionRequest,
   OrderItemResourceList,
   ListOrderItemBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OrderItemResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<ListOrderItemBySubscriptionRequest>,
   output: __S(449, __c14, 1) as any as S.Schema<OrderItemResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductsAndConfigurationConfigurationsError = AzureOpError;
 /** List configurations for the given product family, product line and product for the given subscription. */
-export const ListProductsAndConfigurationConfigurations: API.OperationMethod<
+export const ListProductsAndConfigurationConfigurations: API.PaginatedOperationMethod<
   ListProductsAndConfigurationConfigurationsRequest,
   Configurations,
   ListProductsAndConfigurationConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Configuration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(515, __c16, 3) as any as S.Schema<ListProductsAndConfigurationConfigurationsRequest>,
   output: __S(516, __c16, 4) as any as S.Schema<Configurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductsAndConfigurationProductFamiliesError = AzureOpError;
 /** List product families for the given subscription. */
-export const ListProductsAndConfigurationProductFamilies: API.OperationMethod<
+export const ListProductsAndConfigurationProductFamilies: API.PaginatedOperationMethod<
   ListProductsAndConfigurationProductFamiliesRequest,
   ProductFamilies,
   ListProductsAndConfigurationProductFamiliesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProductFamily
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(609, __c19, 1) as any as S.Schema<ListProductsAndConfigurationProductFamiliesRequest>,
   output: __S(649, __c20, 9) as any as S.Schema<ProductFamilies>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductsAndConfigurationProductFamiliesMetadataError = AzureOpError;
 /** List product families metadata for the given subscription. */
-export const ListProductsAndConfigurationProductFamiliesMetadata: API.OperationMethod<
+export const ListProductsAndConfigurationProductFamiliesMetadata: API.PaginatedOperationMethod<
   ListProductsAndConfigurationProductFamiliesMetadataRequest,
   ProductFamiliesMetadata,
   ListProductsAndConfigurationProductFamiliesMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProductFamiliesMetadataDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     672,
     __c21,
@@ -1885,7 +1970,13 @@ export const ListProductsAndConfigurationProductFamiliesMetadata: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type OrderItemsReturnError = AzureOpError;
 /** Return order item. */
@@ -2081,12 +2172,15 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.EdgeOrder/operations",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2114,7 +2208,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(291, __c9, 3)),
+          value: __S(291, __c9, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2129,12 +2223,14 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orders",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrderByResourceGroupRequest" });
@@ -2161,12 +2257,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orders",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrderBySubscriptionRequest" });
@@ -2183,12 +2281,14 @@ function __c13(j: number): any {
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrderItemByResourceGroupRequest" });
@@ -2217,12 +2317,14 @@ function __c15(j: number): any {
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orderItems",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrderItemBySubscriptionRequest" });
@@ -2254,12 +2356,14 @@ function __c16(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           configurationFilter: S.optional(__S(514, __c16, 2)),
           customerSubscriptionDetails: S.optional(__S(546, __c17, 2)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listConfigurations",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductsAndConfigurationConfigurationsRequest" });
@@ -2490,12 +2594,14 @@ function __c19(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           filterableProperties: __S(608, __c19, 0),
           customerSubscriptionDetails: S.optional(__S(546, __c17, 2)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/listProductFamilies",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductsAndConfigurationProductFamiliesRequest" });
@@ -2586,12 +2692,14 @@ function __c21(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/productFamiliesMetadata",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductsAndConfigurationProductFamiliesMetadataRequest" });
@@ -3275,12 +3383,14 @@ function __c41(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddressByResourceGroupRequest" });
@@ -3308,12 +3418,14 @@ function __c43(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
             code: 200,
             apiVersion: "2024-02-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddressBySubscriptionRequest" });

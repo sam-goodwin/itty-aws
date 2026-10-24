@@ -803,10 +803,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/projects",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Project resources by Workspace",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ProjectListResult": {
@@ -927,6 +934,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Workspace"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1088,10 +1101,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all private link resources for the workspace.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#WorkspacePrivateLinkResourceListResult": {
@@ -1231,6 +1251,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Workspace"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1756,10 +1782,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all private endpoint connections for a workspace.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#WorkspacePrivateEndpointConnectionListResult": {
@@ -1897,6 +1930,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Workspace"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2547,10 +2586,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/chatModelDeployments",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ChatModelDeployment resources by Workspace",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ChatModelDeploymentListResult": {
@@ -2671,6 +2717,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Workspace"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3645,10 +3697,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Workspace resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#WorkspaceListResult": {
@@ -3761,6 +3820,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4439,10 +4504,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/tools",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Tool resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ToolListResult": {
@@ -4555,6 +4627,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5381,10 +5459,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}/nodePools",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List NodePool resources by Supercomputer",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#NodePoolListResult": {
@@ -5505,6 +5590,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Supercomputer"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6553,10 +6644,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Supercomputer resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#SupercomputerListResult": {
@@ -6701,6 +6799,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7313,10 +7417,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/storageContainers/{storageContainerName}/storageAssets",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List StorageAsset resources by StorageContainer",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#StorageAssetListResult": {
@@ -7437,6 +7548,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the StorageContainer"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8044,10 +8161,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/storageContainers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List StorageContainer resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#StorageContainerListResult": {
@@ -8160,6 +8284,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8321,10 +8451,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all private link resources for the bookshelf.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#BookshelfPrivateLinkResourceListResult": {
@@ -8464,6 +8601,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Bookshelf"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8884,10 +9027,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all private endpoint connections for a bookshelf.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#BookshelfPrivateEndpointConnectionListResult": {
@@ -9025,6 +9175,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Bookshelf"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9846,10 +10002,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Bookshelf resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#BookshelfListResult": {
@@ -9963,6 +10126,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9982,10 +10151,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Discovery/workspaces",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Workspace resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ListWorkspaceBySubscriptionRequest": {
@@ -9997,6 +10173,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10017,10 +10199,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Discovery/tools",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Tool resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ListToolBySubscriptionRequest": {
@@ -10032,6 +10221,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10052,10 +10247,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Discovery/supercomputers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Supercomputer resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ListSupercomputerBySubscriptionRequest": {
@@ -10067,6 +10269,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10087,10 +10295,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Discovery/storageContainers",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List StorageContainer resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ListStorageContainerBySubscriptionRequest": {
@@ -10102,6 +10317,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10122,10 +10343,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Discovery/bookshelves",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Bookshelf resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ListBookshelveBySubscriptionRequest": {
@@ -10138,6 +10366,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -10147,7 +10381,7 @@
     "com.azure.discovery#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.discovery#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.discovery#ListOperationsResponse"
@@ -10157,10 +10391,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Discovery/operations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery#ListOperationsResponse": {
@@ -10300,6 +10541,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.discovery#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.discovery#Discovery": {

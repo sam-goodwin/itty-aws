@@ -236,7 +236,10 @@ export interface GetStorageTaskResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity: CreateStorageTaskResponseIdentity;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -269,7 +272,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -282,6 +285,8 @@ export interface ListStorageTaskAssignmentRequest {
   storageTaskName: string;
   /** Optional, specifies the maximum number of Storage Task Assignment Resource IDs to be included in the list response. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Storage Task Assignment associated with this Storage Task. */
 export interface StorageTaskAssignment {
@@ -302,6 +307,8 @@ export interface ListStorageTaskByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type StorageTaskTagsMap = { [key: string]: string | undefined };
@@ -338,6 +345,8 @@ export interface StorageTasksListResult {
 export interface ListStorageTaskBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListStorageTasksReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -350,6 +359,8 @@ export interface ListStorageTasksReportRequest {
   _maxpagesize?: number;
   /** Optional. When specified, it can be used to query using reporting properties. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents the status of the execution. */
 export type RunStatusEnum = "InProgress" | "Finished";
@@ -598,78 +609,113 @@ export const GetStorageTask: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Storage Actions Rest API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(148, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageTaskAssignmentError = AzureOpError;
 /** Lists Resource IDs of the Storage Task Assignments associated with this Storage Task. */
-export const ListStorageTaskAssignment: API.OperationMethod<
+export const ListStorageTaskAssignment: API.PaginatedOperationMethod<
   ListStorageTaskAssignmentRequest,
   StorageTaskAssignmentsListResult,
   ListStorageTaskAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTaskAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<ListStorageTaskAssignmentRequest>,
   output: __S(163, __c10, 3) as any as S.Schema<StorageTaskAssignmentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageTaskByResourceGroupError = AzureOpError;
 /** Lists all the storage tasks available under the given resource group. */
-export const ListStorageTaskByResourceGroup: API.OperationMethod<
+export const ListStorageTaskByResourceGroup: API.PaginatedOperationMethod<
   ListStorageTaskByResourceGroupRequest,
   StorageTasksListResult,
   ListStorageTaskByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<ListStorageTaskByResourceGroupRequest>,
   output: __S(193, __c12, 1) as any as S.Schema<StorageTasksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageTaskBySubscriptionError = AzureOpError;
 /** Lists all the storage tasks available under the subscription. */
-export const ListStorageTaskBySubscription: API.OperationMethod<
+export const ListStorageTaskBySubscription: API.PaginatedOperationMethod<
   ListStorageTaskBySubscriptionRequest,
   StorageTasksListResult,
   ListStorageTaskBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListStorageTaskBySubscriptionRequest>,
   output: __S(193, __c12, 1) as any as S.Schema<StorageTasksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageTasksReportError = AzureOpError;
 /** Fetch the storage tasks run report summary for each assignment. */
-export const ListStorageTasksReport: API.OperationMethod<
+export const ListStorageTasksReport: API.PaginatedOperationMethod<
   ListStorageTasksReportRequest,
   StorageTaskReportSummary,
   ListStorageTasksReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTaskReportInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<ListStorageTasksReportRequest>,
   output: __S(228, __c14, 4) as any as S.Schema<StorageTaskReportSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PreviewStorageTaskActionsError = AzureOpError;
 /** Runs the input conditions against input object metadata properties and designates matched objects in response. */
@@ -976,12 +1022,15 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.StorageActions/operations",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1009,7 +1058,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(147, __c9, 3)),
+          value: __S(147, __c9, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1024,12 +1073,14 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageTaskName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/storageTaskAssignments",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTaskAssignmentRequest" });
@@ -1057,12 +1108,14 @@ function __c11(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTaskByResourceGroupRequest" });
@@ -1087,12 +1140,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/storageTasks",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTaskBySubscriptionRequest" });
@@ -1108,12 +1163,14 @@ function __c14(j: number): any {
           storageTaskName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/reports",
             code: 200,
             apiVersion: "2023-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTasksReportRequest" });

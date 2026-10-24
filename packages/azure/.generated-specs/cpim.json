@@ -34,7 +34,11 @@
           "apiVersion": "2021-04-01"
         },
         "smithy.api#documentation": "Gets Guest Usages resources under resource group\n\nGets Guest Usages resources under a resource group for the Microsoft.AzureActiveDirectory resource provider",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.cpim#GuestUsagesResourceList": {
@@ -284,7 +288,11 @@
           "apiVersion": "2021-04-01"
         },
         "smithy.api#documentation": "Gets Guest Usages resources under a subscription\n\nGets Guest Usages resources under a subscription for the Microsoft.AzureActiveDirectory resource provider",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.cpim#ListGuestUsageBySubscriptionRequest": {
@@ -558,7 +566,7 @@
     "com.azure.cpim#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cpim#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.cpim#AvailableOperations"
@@ -571,7 +579,11 @@
           "apiVersion": "2021-04-01"
         },
         "smithy.api#documentation": "Lists the operations available from this provider.",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.cpim#AvailableOperations": {
@@ -665,6 +677,13 @@
       },
       "traits": {
         "smithy.api#documentation": "Operation display payload"
+      }
+    },
+    "com.azure.cpim#ListOperationsRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cpim#DeleteB2CTenant": {
@@ -1433,7 +1452,11 @@
           "apiVersion": "2021-04-01"
         },
         "smithy.api#documentation": "Get all the Azure AD B2C tenant resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.cpim#B2CTenantResourceList": {
@@ -1491,7 +1514,11 @@
           "apiVersion": "2021-04-01"
         },
         "smithy.api#documentation": "Get all the Azure AD B2C tenant resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-04-01"
+        "com.distilled.openapi#apiVersion": "2021-04-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.cpim#ListB2CTenantByResourceGroupRequest": {

@@ -15,51 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonyms": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonyms",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequestValueList": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequestValueList",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonyms": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonyms",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonymsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonymsRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSources": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSources",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesResponse": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesResponse",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequest": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequestBodyList": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequestBodyList",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSources": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSources",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSourcesRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSourcesRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnas": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnas",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasResponse": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasResponse",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasRequest": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnas": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnas",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnasRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnasRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedback": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedback",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequest": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequestRecordsList": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequestRecordsList",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProject": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProject",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectResponse": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectResponse",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectRequest": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeployments": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeployments",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeploymentsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeploymentsRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImport": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProject",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportResponse": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectResponse",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestAssetKind": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestAssetKind",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestFormat": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestFormat",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExport": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProject",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportResponse": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectResponse",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestAssetKind": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestAssetKind",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestFormat": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestFormat",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProject": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProject",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectResponse": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectResponse",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectRequest": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProject": "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProject",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProjectRequest": "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProjectRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetails": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetails",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetailsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetailsRequest",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjects": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjects",
-      "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjectsRequest": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjectsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeleteStatus": {
@@ -284,10 +240,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonyms": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonyms": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -306,7 +262,7 @@
         "smithy.api#documentation": "Updates all the synonyms of a project."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -326,7 +282,7 @@
           }
         },
         "value": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequestValueList",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequestValueList",
           "traits": {
             "smithy.api#documentation": "The WordAlterations items on this page",
             "smithy.api#required": {}
@@ -343,7 +299,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonymsRequestValueList": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonymsRequestValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#WordAlterations"
@@ -376,10 +332,10 @@
         "smithy.api#documentation": "Collection of word alterations."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonyms": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonyms": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonymsRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonymsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedWordAlterations"
@@ -393,9 +349,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets all the synonyms of a project."
+        "smithy.api#documentation": "Gets all the synonyms of a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_language_question_answering_authoring#PagedWordAlterations": {
@@ -428,7 +391,7 @@
         "smithy.api#documentation": "The WordAlterations items on this page"
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonymsRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonymsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -466,6 +429,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -584,13 +553,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSources": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesResponse"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -606,7 +575,7 @@
         "smithy.api#documentation": "Updates the sources of a project."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesResponse": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -621,7 +590,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -641,7 +610,7 @@
           }
         },
         "body": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequestBodyList",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -652,7 +621,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSourcesRequestBodyList": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSourcesRequestBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateSourceRecord"
@@ -788,10 +757,10 @@
         "smithy.api#documentation": "Update operation type for assets."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSources": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSourcesRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSourcesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedQnaSourceRecord"
@@ -805,9 +774,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets all the sources of a project."
+        "smithy.api#documentation": "Gets all the sources of a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_language_question_answering_authoring#PagedQnaSourceRecord": {
@@ -901,7 +877,7 @@
         "smithy.api#documentation": "Content structure type for sources."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSourcesRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSourcesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -939,6 +915,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of resources to include in a single response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1057,13 +1039,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnas": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasResponse"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1079,7 +1061,7 @@
         "smithy.api#documentation": "Updates the QnAs of a project."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasResponse": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -1094,7 +1076,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnasRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnasRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1353,10 +1335,10 @@
         "smithy.api#documentation": "List of questions associated with the answer."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnas": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnasRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnasRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedRetrieveQnaRecord"
@@ -1370,9 +1352,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets all the QnAs of a project."
+        "smithy.api#documentation": "Gets all the QnAs of a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_language_question_answering_authoring#PagedRetrieveQnaRecord": {
@@ -1492,7 +1481,7 @@
         "smithy.api#documentation": "List of questions associated with the answer."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnasRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnasRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1537,6 +1526,12 @@
           "traits": {
             "smithy.api#httpQuery": "source",
             "smithy.api#documentation": "Source of the QnA."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1655,10 +1650,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedback": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedback": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1677,7 +1672,7 @@
         "smithy.api#documentation": "Update Active Learning feedback."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1697,7 +1692,7 @@
           }
         },
         "records": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequestRecordsList",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequestRecordsList",
           "traits": {
             "smithy.api#documentation": "A list of Feedback Records for Active Learning."
           }
@@ -1707,7 +1702,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedbackRequestRecordsList": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedbackRequestRecordsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#FeedbackRecord"
@@ -1979,13 +1974,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProject": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectResponse"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2001,7 +1996,7 @@
         "smithy.api#documentation": "Deploy project to production."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectResponse": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -2016,7 +2011,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProjectRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2048,10 +2043,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeployments": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeployments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeploymentsRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeploymentsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedProjectDeployment"
@@ -2065,9 +2060,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all deployments of a project."
+        "smithy.api#documentation": "List all deployments of a project.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_language_question_answering_authoring#PagedProjectDeployment": {
@@ -2121,7 +2123,7 @@
         "smithy.api#documentation": "Project deployment details."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeploymentsRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeploymentsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2160,19 +2162,25 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of resources to include in a single response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImport": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportResponse"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2188,7 +2196,7 @@
         "smithy.api#documentation": "Import project assets."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportResponse": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -2203,7 +2211,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2223,14 +2231,14 @@
           }
         },
         "format": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestFormat",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestFormat",
           "traits": {
             "smithy.api#httpQuery": "format",
             "smithy.api#documentation": "Knowledge base Import or Export format."
           }
         },
         "assetKind": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestAssetKind",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestAssetKind",
           "traits": {
             "smithy.api#httpQuery": "assetKind",
             "smithy.api#documentation": "Kind of the asset of the project."
@@ -2436,7 +2444,7 @@
         "smithy.api#documentation": "Configurable settings of the Project."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestAssetKind": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestAssetKind": {
       "type": "enum",
       "members": {
         "QNAS": {
@@ -2454,7 +2462,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImportRequestFormat": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProjectRequestFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -2478,13 +2486,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExport": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportResponse"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2500,7 +2508,7 @@
         "smithy.api#documentation": "Export project metadata and assets."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportResponse": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -2515,7 +2523,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2535,14 +2543,14 @@
           }
         },
         "format": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestFormat",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestFormat",
           "traits": {
             "smithy.api#httpQuery": "format",
             "smithy.api#documentation": "Knowledge base Import or Export format."
           }
         },
         "assetKind": {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestAssetKind",
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestAssetKind",
           "traits": {
             "smithy.api#httpQuery": "assetKind",
             "smithy.api#documentation": "Kind of the asset of the project."
@@ -2553,7 +2561,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestAssetKind": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestAssetKind": {
       "type": "enum",
       "members": {
         "QNAS": {
@@ -2571,7 +2579,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExportRequestFormat": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProjectRequestFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -2595,13 +2603,13 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProject": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectResponse"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2617,7 +2625,7 @@
         "smithy.api#documentation": "Delete the project."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectResponse": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -2632,7 +2640,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProjectRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2656,10 +2664,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProject": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProjectRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProjectRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadata"
@@ -2735,7 +2743,7 @@
         "smithy.api#documentation": "Represents the project."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProjectRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProjectRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2783,10 +2791,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetails": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetails": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetailsRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetailsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectMetadata"
@@ -2805,7 +2813,7 @@
         "smithy.api#documentation": "Get the requested project metadata."
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetailsRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetailsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2829,10 +2837,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjects": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjectsRequest"
+        "target": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjectsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_language_question_answering_authoring#PagedQuestionAnsweringProjectMetadata"
@@ -2846,9 +2854,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-04-01"
+          "apiVersion": "2023-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets all projects for a user."
+        "smithy.api#documentation": "Gets all projects for a user.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_language_question_answering_authoring#PagedQuestionAnsweringProjectMetadata": {
@@ -2881,7 +2896,7 @@
         "smithy.api#documentation": "The QuestionAnsweringProjectMetadata items on this page"
       }
     },
-    "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjectsRequest": {
+    "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjectsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2912,6 +2927,12 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of resources to include in a single response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2926,34 +2947,34 @@
           "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeleteStatus"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSynonyms"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSynonyms"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSynonyms"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSynonyms"
         },
         {
           "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateSourcesStatus"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateSources"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectSources"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetSources"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectSources"
         },
         {
           "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetUpdateQnasStatus"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsUpdateQnas"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#UpdateQuestionAnsweringProjectQnas"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetQnas"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectQnas"
         },
         {
           "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetImportStatus"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsAddFeedback"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#AddQuestionAnsweringProjectFeedback"
         },
         {
           "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetExportStatus"
@@ -2962,28 +2983,28 @@
           "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetDeployStatus"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeployProject"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#DeployQuestionAnsweringProjectProject"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListDeployments"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectDeployments"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsImport"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ImportQuestionAnsweringProject"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsExport"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ExportQuestionAnsweringProject"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsDeleteProject"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#DeleteQuestionAnsweringProjectProject"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsCreateProject"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#CreateQuestionAnsweringProjectProject"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsGetProjectDetails"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#GetQuestionAnsweringProjectProjectDetails"
         },
         {
-          "target": "com.azure.cognitiveservices_language_question_answering_authoring#QuestionAnsweringProjectsListProjects"
+          "target": "com.azure.cognitiveservices_language_question_answering_authoring#ListQuestionAnsweringProjectProjects"
         }
       ],
       "traits": {

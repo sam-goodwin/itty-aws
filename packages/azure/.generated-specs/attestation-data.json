@@ -15,36 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.attestation_data#TcbBaselinesGet": "com.azure.attestation_data#GetTcbBaseline",
-      "com.azure.attestation_data#TcbBaselinesGetRequest": "com.azure.attestation_data#GetTcbBaselineRequest",
-      "com.azure.attestation_data#TcbBaselinesGetRequestAttestationType": "com.azure.attestation_data#GetTcbBaselineRequestAttestationType",
-      "com.azure.attestation_data#PolicyReset": "com.azure.attestation_data#ResetPolicy",
-      "com.azure.attestation_data#PolicyResetRequest": "com.azure.attestation_data#ResetPolicyRequest",
-      "com.azure.attestation_data#PolicyResetRequestAttestationType": "com.azure.attestation_data#ResetPolicyRequestAttestationType",
-      "com.azure.attestation_data#PolicySet": "com.azure.attestation_data#SetPolicy",
-      "com.azure.attestation_data#PolicySetRequest": "com.azure.attestation_data#SetPolicyRequest",
-      "com.azure.attestation_data#PolicySetRequestAttestationType": "com.azure.attestation_data#SetPolicyRequestAttestationType",
-      "com.azure.attestation_data#PolicyGet": "com.azure.attestation_data#GetPolicy",
-      "com.azure.attestation_data#PolicyGetRequest": "com.azure.attestation_data#GetPolicyRequest",
-      "com.azure.attestation_data#PolicyGetRequestAttestationType": "com.azure.attestation_data#GetPolicyRequestAttestationType",
-      "com.azure.attestation_data#SigningCertificatesGet": "com.azure.attestation_data#GetSigningCertificate",
-      "com.azure.attestation_data#SigningCertificatesGetRequest": "com.azure.attestation_data#GetSigningCertificateRequest",
-      "com.azure.attestation_data#PolicyCertificatesRemove": "com.azure.attestation_data#RemovePolicyCertificate",
-      "com.azure.attestation_data#PolicyCertificatesRemoveRequest": "com.azure.attestation_data#RemovePolicyCertificateRequest",
-      "com.azure.attestation_data#PolicyCertificatesAdd": "com.azure.attestation_data#AddPolicyCertificate",
-      "com.azure.attestation_data#PolicyCertificatesAddRequest": "com.azure.attestation_data#AddPolicyCertificateRequest",
-      "com.azure.attestation_data#PolicyCertificatesGet": "com.azure.attestation_data#GetPolicyCertificate",
-      "com.azure.attestation_data#PolicyCertificatesGetRequest": "com.azure.attestation_data#GetPolicyCertificateRequest",
-      "com.azure.attestation_data#MetadataConfigurationGet": "com.azure.attestation_data#GetMetadataConfiguration",
-      "com.azure.attestation_data#MetadataConfigurationGetRequest": "com.azure.attestation_data#GetMetadataConfigurationRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.attestation_data#TcbBaselinesGet": {
+    "com.azure.attestation_data#GetTcbBaseline": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#TcbBaselinesGetRequest"
+        "target": "com.azure.attestation_data#GetTcbBaselineRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#TcbBaselineResult"
@@ -130,7 +107,7 @@
         "smithy.api#documentation": "TEE specific Tcb baseline used in attestation, and baseline details including\nbaseline identifier, release date and minimum required software version"
       }
     },
-    "com.azure.attestation_data#TcbBaselinesGetRequest": {
+    "com.azure.attestation_data#GetTcbBaselineRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -141,7 +118,7 @@
           }
         },
         "attestationType": {
-          "target": "com.azure.attestation_data#TcbBaselinesGetRequestAttestationType",
+          "target": "com.azure.attestation_data#GetTcbBaselineRequestAttestationType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -153,7 +130,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#TcbBaselinesGetRequestAttestationType": {
+    "com.azure.attestation_data#GetTcbBaselineRequestAttestationType": {
       "type": "enum",
       "members": {
         "SGXENCLAVE": {
@@ -195,10 +172,10 @@
       },
       "traits": {}
     },
-    "com.azure.attestation_data#PolicyReset": {
+    "com.azure.attestation_data#ResetPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#PolicyResetRequest"
+        "target": "com.azure.attestation_data#ResetPolicyRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#PolicyResponse"
@@ -231,7 +208,7 @@
         "smithy.api#documentation": "The response to an attestation policy operation"
       }
     },
-    "com.azure.attestation_data#PolicyResetRequest": {
+    "com.azure.attestation_data#ResetPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -242,7 +219,7 @@
           }
         },
         "attestationType": {
-          "target": "com.azure.attestation_data#PolicyResetRequestAttestationType",
+          "target": "com.azure.attestation_data#ResetPolicyRequestAttestationType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -261,7 +238,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#PolicyResetRequestAttestationType": {
+    "com.azure.attestation_data#ResetPolicyRequestAttestationType": {
       "type": "enum",
       "members": {
         "SGXENCLAVE": {
@@ -303,10 +280,10 @@
       },
       "traits": {}
     },
-    "com.azure.attestation_data#PolicySet": {
+    "com.azure.attestation_data#SetPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#PolicySetRequest"
+        "target": "com.azure.attestation_data#SetPolicyRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#PolicyResponse"
@@ -325,7 +302,7 @@
         "smithy.api#documentation": "Sets the policy for a given attestation type.\n\nSets the policy for a given attestation type."
       }
     },
-    "com.azure.attestation_data#PolicySetRequest": {
+    "com.azure.attestation_data#SetPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -336,7 +313,7 @@
           }
         },
         "attestationType": {
-          "target": "com.azure.attestation_data#PolicySetRequestAttestationType",
+          "target": "com.azure.attestation_data#SetPolicyRequestAttestationType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -355,7 +332,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#PolicySetRequestAttestationType": {
+    "com.azure.attestation_data#SetPolicyRequestAttestationType": {
       "type": "enum",
       "members": {
         "SGXENCLAVE": {
@@ -397,10 +374,10 @@
       },
       "traits": {}
     },
-    "com.azure.attestation_data#PolicyGet": {
+    "com.azure.attestation_data#GetPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#PolicyGetRequest"
+        "target": "com.azure.attestation_data#GetPolicyRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#PolicyResponse"
@@ -419,7 +396,7 @@
         "smithy.api#documentation": "Retrieves the current policy for an attestation type.\n\nRetrieves the current policy for an attestation type."
       }
     },
-    "com.azure.attestation_data#PolicyGetRequest": {
+    "com.azure.attestation_data#GetPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -430,7 +407,7 @@
           }
         },
         "attestationType": {
-          "target": "com.azure.attestation_data#PolicyGetRequestAttestationType",
+          "target": "com.azure.attestation_data#GetPolicyRequestAttestationType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -442,7 +419,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#PolicyGetRequestAttestationType": {
+    "com.azure.attestation_data#GetPolicyRequestAttestationType": {
       "type": "enum",
       "members": {
         "SGXENCLAVE": {
@@ -484,10 +461,10 @@
       },
       "traits": {}
     },
-    "com.azure.attestation_data#SigningCertificatesGet": {
+    "com.azure.attestation_data#GetSigningCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#SigningCertificatesGetRequest"
+        "target": "com.azure.attestation_data#GetSigningCertificateRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#JsonWebKeySet"
@@ -649,7 +626,7 @@
         "smithy.api#documentation": "The \"x5c\" (X.509 certificate chain) parameter contains a chain of one\nor more PKIX certificates [RFC5280].  The certificate chain is\nrepresented as a JSON array of certificate value strings.  Each\nstring in the array is a base64-encoded (Section 4 of [RFC4648] --\nnot base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.\nThe PKIX certificate containing the key value MUST be the first\ncertificate."
       }
     },
-    "com.azure.attestation_data#SigningCertificatesGetRequest": {
+    "com.azure.attestation_data#GetSigningCertificateRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -664,10 +641,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#PolicyCertificatesRemove": {
+    "com.azure.attestation_data#RemovePolicyCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#PolicyCertificatesRemoveRequest"
+        "target": "com.azure.attestation_data#RemovePolicyCertificateRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#PolicyCertificatesModifyResponse"
@@ -700,7 +677,7 @@
         "smithy.api#documentation": "The response to an attestation policy management API"
       }
     },
-    "com.azure.attestation_data#PolicyCertificatesRemoveRequest": {
+    "com.azure.attestation_data#RemovePolicyCertificateRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -722,10 +699,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#PolicyCertificatesAdd": {
+    "com.azure.attestation_data#AddPolicyCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#PolicyCertificatesAddRequest"
+        "target": "com.azure.attestation_data#AddPolicyCertificateRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#PolicyCertificatesModifyResponse"
@@ -744,7 +721,7 @@
         "smithy.api#documentation": "Adds a new attestation policy certificate to the set of policy management\ncertificates.\n\nAdds a new attestation policy certificate to the set of policy management\ncertificates."
       }
     },
-    "com.azure.attestation_data#PolicyCertificatesAddRequest": {
+    "com.azure.attestation_data#AddPolicyCertificateRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -766,10 +743,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#PolicyCertificatesGet": {
+    "com.azure.attestation_data#GetPolicyCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#PolicyCertificatesGetRequest"
+        "target": "com.azure.attestation_data#GetPolicyCertificateRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#PolicyCertificatesResponse"
@@ -802,7 +779,7 @@
         "smithy.api#documentation": "The response to an attestation policy management API"
       }
     },
-    "com.azure.attestation_data#PolicyCertificatesGetRequest": {
+    "com.azure.attestation_data#GetPolicyCertificateRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1267,10 +1244,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.attestation_data#MetadataConfigurationGet": {
+    "com.azure.attestation_data#GetMetadataConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.attestation_data#MetadataConfigurationGetRequest"
+        "target": "com.azure.attestation_data#GetMetadataConfigurationRequest"
       },
       "output": {
         "target": "com.azure.attestation_data#OpenIDConfigurationResponse"
@@ -1360,7 +1337,7 @@
         "smithy.api#documentation": "Types supported in the OpenID metadata API"
       }
     },
-    "com.azure.attestation_data#MetadataConfigurationGetRequest": {
+    "com.azure.attestation_data#GetMetadataConfigurationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1380,28 +1357,28 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.attestation_data#TcbBaselinesGet"
+          "target": "com.azure.attestation_data#GetTcbBaseline"
         },
         {
-          "target": "com.azure.attestation_data#PolicyReset"
+          "target": "com.azure.attestation_data#ResetPolicy"
         },
         {
-          "target": "com.azure.attestation_data#PolicySet"
+          "target": "com.azure.attestation_data#SetPolicy"
         },
         {
-          "target": "com.azure.attestation_data#PolicyGet"
+          "target": "com.azure.attestation_data#GetPolicy"
         },
         {
-          "target": "com.azure.attestation_data#SigningCertificatesGet"
+          "target": "com.azure.attestation_data#GetSigningCertificate"
         },
         {
-          "target": "com.azure.attestation_data#PolicyCertificatesRemove"
+          "target": "com.azure.attestation_data#RemovePolicyCertificate"
         },
         {
-          "target": "com.azure.attestation_data#PolicyCertificatesAdd"
+          "target": "com.azure.attestation_data#AddPolicyCertificate"
         },
         {
-          "target": "com.azure.attestation_data#PolicyCertificatesGet"
+          "target": "com.azure.attestation_data#GetPolicyCertificate"
         },
         {
           "target": "com.azure.attestation_data#AttestationAttestTpm"
@@ -1422,7 +1399,7 @@
           "target": "com.azure.attestation_data#AttestationAttestAzureGuest"
         },
         {
-          "target": "com.azure.attestation_data#MetadataConfigurationGet"
+          "target": "com.azure.attestation_data#GetMetadataConfiguration"
         }
       ],
       "traits": {

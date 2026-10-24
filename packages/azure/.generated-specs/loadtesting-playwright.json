@@ -396,9 +396,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists test runs for the specified workspace ID. Supports OData query parameters such as $filter and $top. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID or Playwright Service."
+        "smithy.api#documentation": "Lists test runs for the specified workspace ID. Supports OData query parameters such as $filter and $top. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID or Playwright Service.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_playwright#PagedTestRun": {
@@ -462,6 +469,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-useragent",
             "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -866,9 +879,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists access tokens for the specified workspace ID. Supports OData query parameters: $select, $filter, $orderby, $top, and $skip. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID."
+        "smithy.api#documentation": "Lists access tokens for the specified workspace ID. Supports OData query parameters: $select, $filter, $orderby, $top, and $skip. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_playwright#PagedAccessToken": {
@@ -932,6 +952,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-useragent",
             "smithy.api#documentation": "Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

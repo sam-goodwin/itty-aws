@@ -2154,10 +2154,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Traffic Manager profiles within a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.trafficmanager#ProfileListResult": {
@@ -2264,6 +2271,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2283,10 +2296,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles",
           "code": 200,
-          "apiVersion": "2026-09-01"
+          "apiVersion": "2026-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Traffic Manager profiles within a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-09-01"
+        "com.distilled.openapi#apiVersion": "2026-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.trafficmanager#ProfilesListBySubscriptionRequest": {
@@ -2298,6 +2318,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

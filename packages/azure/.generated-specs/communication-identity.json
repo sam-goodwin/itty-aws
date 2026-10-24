@@ -15,22 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_identity#IdentityOperationsRevokeAccessTokens": "com.azure.communication_identity#RevokeIdentityOperationAccessTokens",
-      "com.azure.communication_identity#IdentityOperationsRevokeAccessTokensRequest": "com.azure.communication_identity#RevokeIdentityOperationAccessTokensRequest",
-      "com.azure.communication_identity#IdentityOperationsDelete": "com.azure.communication_identity#DeleteIdentityOperation",
-      "com.azure.communication_identity#IdentityOperationsDeleteRequest": "com.azure.communication_identity#DeleteIdentityOperationRequest",
-      "com.azure.communication_identity#IdentityOperationsCreate": "com.azure.communication_identity#CreateIdentityOperation",
-      "com.azure.communication_identity#IdentityOperationsCreateRequest": "com.azure.communication_identity#CreateIdentityOperationRequest",
-      "com.azure.communication_identity#IdentityOperationsCreateRequestCreateTokenWithScopesList": "com.azure.communication_identity#CreateIdentityOperationRequestCreateTokenWithScopesList",
-      "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignment": "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignment",
-      "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignmentRequest": "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignmentRequest",
-      "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignment": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignment",
-      "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequest": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequest",
-      "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequestClientIdsList": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequestClientIdsList",
-      "com.azure.communication_identity#TeamsExtensionOperationsGetAssignment": "com.azure.communication_identity#GetTeamsExtensionOperationAssignment",
-      "com.azure.communication_identity#TeamsExtensionOperationsGetAssignmentRequest": "com.azure.communication_identity#GetTeamsExtensionOperationAssignmentRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.communication_identity#TeamsUserOperationsExchangeTeamsUserAccessToken": {
@@ -114,10 +99,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_identity#IdentityOperationsRevokeAccessTokens": {
+    "com.azure.communication_identity#RevokeIdentityOperationAccessTokens": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_identity#IdentityOperationsRevokeAccessTokensRequest"
+        "target": "com.azure.communication_identity#RevokeIdentityOperationAccessTokensRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -136,7 +121,7 @@
         "smithy.api#documentation": "Revoke all access tokens for the specific identity.\n\nRevoke all access tokens for the specific identity."
       }
     },
-    "com.azure.communication_identity#IdentityOperationsRevokeAccessTokensRequest": {
+    "com.azure.communication_identity#RevokeIdentityOperationAccessTokensRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -266,10 +251,10 @@
         "smithy.api#documentation": "List of scopes for an access token."
       }
     },
-    "com.azure.communication_identity#IdentityOperationsDelete": {
+    "com.azure.communication_identity#DeleteIdentityOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_identity#IdentityOperationsDeleteRequest"
+        "target": "com.azure.communication_identity#DeleteIdentityOperationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -288,7 +273,7 @@
         "smithy.api#documentation": "Delete the identity, revoke all tokens for the identity and delete all associated data.\n\nDelete the identity, revoke all tokens for the identity and delete all associated data."
       }
     },
-    "com.azure.communication_identity#IdentityOperationsDeleteRequest": {
+    "com.azure.communication_identity#DeleteIdentityOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -312,10 +297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_identity#IdentityOperationsCreate": {
+    "com.azure.communication_identity#CreateIdentityOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_identity#IdentityOperationsCreateRequest"
+        "target": "com.azure.communication_identity#CreateIdentityOperationRequest"
       },
       "output": {
         "target": "com.azure.communication_identity#CommunicationIdentityAccessTokenResult"
@@ -370,7 +355,7 @@
         "smithy.api#documentation": "A communication identity."
       }
     },
-    "com.azure.communication_identity#IdentityOperationsCreateRequest": {
+    "com.azure.communication_identity#CreateIdentityOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -382,7 +367,7 @@
           }
         },
         "createTokenWithScopes": {
-          "target": "com.azure.communication_identity#IdentityOperationsCreateRequestCreateTokenWithScopesList",
+          "target": "com.azure.communication_identity#CreateIdentityOperationRequestCreateTokenWithScopesList",
           "traits": {
             "smithy.api#documentation": "Also create access token for the created identity."
           }
@@ -398,7 +383,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_identity#IdentityOperationsCreateRequestCreateTokenWithScopesList": {
+    "com.azure.communication_identity#CreateIdentityOperationRequestCreateTokenWithScopesList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_identity#CommunicationIdentityTokenScope"
@@ -407,10 +392,10 @@
         "smithy.api#documentation": "Also create access token for the created identity."
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignment": {
+    "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignmentRequest"
+        "target": "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -429,7 +414,7 @@
         "smithy.api#documentation": "Removes a Teams Phone access assignment.\n\nRemoves a Teams Phone access assignment."
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignmentRequest": {
+    "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -461,10 +446,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignment": {
+    "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequest"
+        "target": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequest"
       },
       "output": {
         "target": "com.azure.communication_identity#TeamsExtensionAssignmentResponse"
@@ -547,7 +532,7 @@
         "smithy.api#documentation": "The type of principal the assignment is for."
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequest": {
+    "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -582,7 +567,7 @@
           }
         },
         "clientIds": {
-          "target": "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequestClientIdsList",
+          "target": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequestClientIdsList",
           "traits": {
             "smithy.api#documentation": "The client IDs for the assignment."
           }
@@ -592,7 +577,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignmentRequestClientIdsList": {
+    "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignmentRequestClientIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -601,10 +586,10 @@
         "smithy.api#documentation": "The client IDs for the assignment."
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsGetAssignment": {
+    "com.azure.communication_identity#GetTeamsExtensionOperationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_identity#TeamsExtensionOperationsGetAssignmentRequest"
+        "target": "com.azure.communication_identity#GetTeamsExtensionOperationAssignmentRequest"
       },
       "output": {
         "target": "com.azure.communication_identity#TeamsExtensionAssignmentResponse"
@@ -623,7 +608,7 @@
         "smithy.api#documentation": "Get Teams Phone access assignment by object id.\n\nGet Teams Phone access assignment by object id."
       }
     },
-    "com.azure.communication_identity#TeamsExtensionOperationsGetAssignmentRequest": {
+    "com.azure.communication_identity#GetTeamsExtensionOperationAssignmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -720,25 +705,25 @@
           "target": "com.azure.communication_identity#TeamsUserOperationsExchangeTeamsUserAccessToken"
         },
         {
-          "target": "com.azure.communication_identity#IdentityOperationsRevokeAccessTokens"
+          "target": "com.azure.communication_identity#RevokeIdentityOperationAccessTokens"
         },
         {
           "target": "com.azure.communication_identity#IdentityOperationsIssueAccessToken"
         },
         {
-          "target": "com.azure.communication_identity#IdentityOperationsDelete"
+          "target": "com.azure.communication_identity#DeleteIdentityOperation"
         },
         {
-          "target": "com.azure.communication_identity#IdentityOperationsCreate"
+          "target": "com.azure.communication_identity#CreateIdentityOperation"
         },
         {
-          "target": "com.azure.communication_identity#TeamsExtensionOperationsDeleteAssignment"
+          "target": "com.azure.communication_identity#DeleteTeamsExtensionOperationAssignment"
         },
         {
-          "target": "com.azure.communication_identity#TeamsExtensionOperationsUpsertAssignment"
+          "target": "com.azure.communication_identity#UpsertTeamsExtensionOperationAssignment"
         },
         {
-          "target": "com.azure.communication_identity#TeamsExtensionOperationsGetAssignment"
+          "target": "com.azure.communication_identity#GetTeamsExtensionOperationAssignment"
         },
         {
           "target": "com.azure.communication_identity#TeamsExtensionOperationsExchangeToken"

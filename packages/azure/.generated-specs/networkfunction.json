@@ -15,16 +15,49 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.networkfunction#CollectorPoliciesDelete": "com.azure.networkfunction#DeleteCollectorPolicy",
+      "com.azure.networkfunction#CollectorPoliciesDeleteResponse": "com.azure.networkfunction#DeleteCollectorPolicyResponse",
+      "com.azure.networkfunction#CollectorPoliciesDeleteRequest": "com.azure.networkfunction#DeleteCollectorPolicyRequest",
+      "com.azure.networkfunction#CollectorPoliciesUpdateTags": "com.azure.networkfunction#UpdateCollectorPolicyTags",
+      "com.azure.networkfunction#CollectorPoliciesUpdateTagsResponse": "com.azure.networkfunction#UpdateCollectorPolicyTagsResponse",
+      "com.azure.networkfunction#CollectorPoliciesUpdateTagsResponseTagsMap": "com.azure.networkfunction#UpdateCollectorPolicyTagsResponseTagsMap",
+      "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequest": "com.azure.networkfunction#UpdateCollectorPolicyTagsRequest",
+      "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequestTagsMap": "com.azure.networkfunction#UpdateCollectorPolicyTagsRequestTagsMap",
+      "com.azure.networkfunction#CollectorPoliciesGet": "com.azure.networkfunction#GetCollectorPolicy",
+      "com.azure.networkfunction#CollectorPoliciesGetResponse": "com.azure.networkfunction#GetCollectorPolicyResponse",
+      "com.azure.networkfunction#CollectorPoliciesGetResponseTagsMap": "com.azure.networkfunction#GetCollectorPolicyResponseTagsMap",
+      "com.azure.networkfunction#CollectorPoliciesGetRequest": "com.azure.networkfunction#GetCollectorPolicyRequest",
+      "com.azure.networkfunction#CollectorPoliciesList": "com.azure.networkfunction#ListCollectorPolicies",
+      "com.azure.networkfunction#CollectorPoliciesListRequest": "com.azure.networkfunction#ListCollectorPoliciesRequest",
+      "com.azure.networkfunction#AzureTrafficCollectorsDelete": "com.azure.networkfunction#DeleteAzureTrafficCollector",
+      "com.azure.networkfunction#AzureTrafficCollectorsDeleteResponse": "com.azure.networkfunction#DeleteAzureTrafficCollectorResponse",
+      "com.azure.networkfunction#AzureTrafficCollectorsDeleteRequest": "com.azure.networkfunction#DeleteAzureTrafficCollectorRequest",
+      "com.azure.networkfunction#AzureTrafficCollectorsUpdateTags": "com.azure.networkfunction#UpdateAzureTrafficCollectorTags",
+      "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsResponse": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsResponse",
+      "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsResponseTagsMap": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsResponseTagsMap",
+      "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequest": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsRequest",
+      "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequestTagsMap": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsRequestTagsMap",
+      "com.azure.networkfunction#AzureTrafficCollectorsGet": "com.azure.networkfunction#GetAzureTrafficCollector",
+      "com.azure.networkfunction#AzureTrafficCollectorsGetResponse": "com.azure.networkfunction#GetAzureTrafficCollectorResponse",
+      "com.azure.networkfunction#AzureTrafficCollectorsGetResponseTagsMap": "com.azure.networkfunction#GetAzureTrafficCollectorResponseTagsMap",
+      "com.azure.networkfunction#AzureTrafficCollectorsGetRequest": "com.azure.networkfunction#GetAzureTrafficCollectorRequest",
+      "com.azure.networkfunction#AzureTrafficCollectorsByResourceGroupList": "com.azure.networkfunction#ListAzureTrafficCollectorsByResourceGroup",
+      "com.azure.networkfunction#AzureTrafficCollectorsByResourceGroupListRequest": "com.azure.networkfunction#ListAzureTrafficCollectorsByResourceGroupRequest",
+      "com.azure.networkfunction#AzureTrafficCollectorsBySubscriptionList": "com.azure.networkfunction#ListAzureTrafficCollectorsBySubscription",
+      "com.azure.networkfunction#AzureTrafficCollectorsBySubscriptionListRequest": "com.azure.networkfunction#ListAzureTrafficCollectorsBySubscriptionRequest",
+      "com.azure.networkfunction#NetworkFunctionListOperations": "com.azure.networkfunction#ListNetworkFunctionOperations",
+      "com.azure.networkfunction#NetworkFunctionListOperationsRequest": "com.azure.networkfunction#ListNetworkFunctionOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.networkfunction#DeleteCollectorPolicy": {
+    "com.azure.networkfunction#CollectorPoliciesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#DeleteCollectorPolicyRequest"
+        "target": "com.azure.networkfunction#CollectorPoliciesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.networkfunction#DeleteCollectorPolicyResponse"
+        "target": "com.azure.networkfunction#CollectorPoliciesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +70,7 @@
         "com.distilled.openapi#apiVersion": "2022-11-01"
       }
     },
-    "com.azure.networkfunction#DeleteCollectorPolicyResponse": {
+    "com.azure.networkfunction#CollectorPoliciesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -59,7 +92,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.networkfunction#DeleteCollectorPolicyRequest": {
+    "com.azure.networkfunction#CollectorPoliciesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -99,13 +132,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#UpdateCollectorPolicyTags": {
+    "com.azure.networkfunction#CollectorPoliciesUpdateTags": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#UpdateCollectorPolicyTagsRequest"
+        "target": "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequest"
       },
       "output": {
-        "target": "com.azure.networkfunction#UpdateCollectorPolicyTagsResponse"
+        "target": "com.azure.networkfunction#CollectorPoliciesUpdateTagsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -118,7 +151,7 @@
         "com.distilled.openapi#apiVersion": "2022-11-01"
       }
     },
-    "com.azure.networkfunction#UpdateCollectorPolicyTagsResponse": {
+    "com.azure.networkfunction#CollectorPoliciesUpdateTagsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -159,7 +192,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.networkfunction#UpdateCollectorPolicyTagsResponseTagsMap",
+          "target": "com.azure.networkfunction#CollectorPoliciesUpdateTagsResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -175,7 +208,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.networkfunction#UpdateCollectorPolicyTagsResponseTagsMap": {
+    "com.azure.networkfunction#CollectorPoliciesUpdateTagsResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -510,7 +543,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.networkfunction#UpdateCollectorPolicyTagsRequest": {
+    "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -546,7 +579,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.networkfunction#UpdateCollectorPolicyTagsRequestTagsMap",
+          "target": "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -556,7 +589,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#UpdateCollectorPolicyTagsRequestTagsMap": {
+    "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -741,13 +774,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.networkfunction#GetCollectorPolicy": {
+    "com.azure.networkfunction#CollectorPoliciesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#GetCollectorPolicyRequest"
+        "target": "com.azure.networkfunction#CollectorPoliciesGetRequest"
       },
       "output": {
-        "target": "com.azure.networkfunction#GetCollectorPolicyResponse"
+        "target": "com.azure.networkfunction#CollectorPoliciesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -760,7 +793,7 @@
         "com.distilled.openapi#apiVersion": "2022-11-01"
       }
     },
-    "com.azure.networkfunction#GetCollectorPolicyResponse": {
+    "com.azure.networkfunction#CollectorPoliciesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -801,7 +834,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.networkfunction#GetCollectorPolicyResponseTagsMap",
+          "target": "com.azure.networkfunction#CollectorPoliciesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -817,7 +850,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.networkfunction#GetCollectorPolicyResponseTagsMap": {
+    "com.azure.networkfunction#CollectorPoliciesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -829,7 +862,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.networkfunction#GetCollectorPolicyRequest": {
+    "com.azure.networkfunction#CollectorPoliciesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -869,10 +902,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#ListCollectorPolicies": {
+    "com.azure.networkfunction#CollectorPoliciesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#ListCollectorPoliciesRequest"
+        "target": "com.azure.networkfunction#CollectorPoliciesListRequest"
       },
       "output": {
         "target": "com.azure.networkfunction#CollectorPolicyListResult"
@@ -882,10 +915,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies",
           "code": 200,
-          "apiVersion": "2022-11-01"
+          "apiVersion": "2022-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return list of Collector policies in a Azure Traffic Collector",
-        "com.distilled.openapi#apiVersion": "2022-11-01"
+        "com.distilled.openapi#apiVersion": "2022-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.networkfunction#CollectorPolicyListResult": {
@@ -987,7 +1027,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.networkfunction#ListCollectorPoliciesRequest": {
+    "com.azure.networkfunction#CollectorPoliciesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1013,19 +1053,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Azure Traffic Collector name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#DeleteAzureTrafficCollector": {
+    "com.azure.networkfunction#AzureTrafficCollectorsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#DeleteAzureTrafficCollectorRequest"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.networkfunction#DeleteAzureTrafficCollectorResponse"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1038,7 +1084,7 @@
         "com.distilled.openapi#apiVersion": "2022-11-01"
       }
     },
-    "com.azure.networkfunction#DeleteAzureTrafficCollectorResponse": {
+    "com.azure.networkfunction#AzureTrafficCollectorsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1060,7 +1106,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.networkfunction#DeleteAzureTrafficCollectorRequest": {
+    "com.azure.networkfunction#AzureTrafficCollectorsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1092,13 +1138,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#UpdateAzureTrafficCollectorTags": {
+    "com.azure.networkfunction#AzureTrafficCollectorsUpdateTags": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsRequest"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequest"
       },
       "output": {
-        "target": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsResponse"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1111,7 +1157,7 @@
         "com.distilled.openapi#apiVersion": "2022-11-01"
       }
     },
-    "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsResponse": {
+    "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1152,7 +1198,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsResponseTagsMap",
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1168,7 +1214,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsResponseTagsMap": {
+    "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1229,7 +1275,7 @@
         "smithy.api#documentation": "Collector Policies for Azure Traffic Collector."
       }
     },
-    "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsRequest": {
+    "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1257,7 +1303,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsRequestTagsMap",
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1267,7 +1313,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#UpdateAzureTrafficCollectorTagsRequestTagsMap": {
+    "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1460,25 +1506,18 @@
     },
     "com.azure.networkfunction#ResourceReferenceInput": {
       "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resource ID."
-          }
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#documentation": "Resource reference properties."
       }
     },
-    "com.azure.networkfunction#GetAzureTrafficCollector": {
+    "com.azure.networkfunction#AzureTrafficCollectorsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#GetAzureTrafficCollectorRequest"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsGetRequest"
       },
       "output": {
-        "target": "com.azure.networkfunction#GetAzureTrafficCollectorResponse"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1491,7 +1530,7 @@
         "com.distilled.openapi#apiVersion": "2022-11-01"
       }
     },
-    "com.azure.networkfunction#GetAzureTrafficCollectorResponse": {
+    "com.azure.networkfunction#AzureTrafficCollectorsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1532,7 +1571,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.networkfunction#GetAzureTrafficCollectorResponseTagsMap",
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1548,7 +1587,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.networkfunction#GetAzureTrafficCollectorResponseTagsMap": {
+    "com.azure.networkfunction#AzureTrafficCollectorsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1560,7 +1599,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.networkfunction#GetAzureTrafficCollectorRequest": {
+    "com.azure.networkfunction#AzureTrafficCollectorsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1592,10 +1631,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#ListAzureTrafficCollectorsByResourceGroup": {
+    "com.azure.networkfunction#AzureTrafficCollectorsByResourceGroupList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#ListAzureTrafficCollectorsByResourceGroupRequest"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsByResourceGroupListRequest"
       },
       "output": {
         "target": "com.azure.networkfunction#AzureTrafficCollectorListResult"
@@ -1605,10 +1644,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors",
           "code": 200,
-          "apiVersion": "2022-11-01"
+          "apiVersion": "2022-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return list of Azure Traffic Collectors in a Resource Group",
-        "com.distilled.openapi#apiVersion": "2022-11-01"
+        "com.distilled.openapi#apiVersion": "2022-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.networkfunction#AzureTrafficCollectorListResult": {
@@ -1710,7 +1756,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.networkfunction#ListAzureTrafficCollectorsByResourceGroupRequest": {
+    "com.azure.networkfunction#AzureTrafficCollectorsByResourceGroupListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1728,16 +1774,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#ListAzureTrafficCollectorsBySubscription": {
+    "com.azure.networkfunction#AzureTrafficCollectorsBySubscriptionList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.networkfunction#ListAzureTrafficCollectorsBySubscriptionRequest"
+        "target": "com.azure.networkfunction#AzureTrafficCollectorsBySubscriptionListRequest"
       },
       "output": {
         "target": "com.azure.networkfunction#AzureTrafficCollectorListResult"
@@ -1747,13 +1799,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkFunction/azureTrafficCollectors",
           "code": 200,
-          "apiVersion": "2022-11-01"
+          "apiVersion": "2022-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return list of Azure Traffic Collectors in a subscription",
-        "com.distilled.openapi#apiVersion": "2022-11-01"
+        "com.distilled.openapi#apiVersion": "2022-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.networkfunction#ListAzureTrafficCollectorsBySubscriptionRequest": {
+    "com.azure.networkfunction#AzureTrafficCollectorsBySubscriptionListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1763,16 +1822,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.networkfunction#ListNetworkFunctionOperations": {
+    "com.azure.networkfunction#NetworkFunctionListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.networkfunction#NetworkFunctionListOperationsRequest"
       },
       "output": {
         "target": "com.azure.networkfunction#OperationListResult"
@@ -1782,10 +1847,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.NetworkFunction/operations",
           "code": 200,
-          "apiVersion": "2022-11-01"
+          "apiVersion": "2022-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available NetworkFunction Rest API operations.",
-        "com.distilled.openapi#apiVersion": "2022-11-01"
+        "com.distilled.openapi#apiVersion": "2022-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.networkfunction#OperationListResult": {
@@ -1882,45 +1954,59 @@
         "smithy.api#documentation": "Display metadata associated with the operation."
       }
     },
+    "com.azure.networkfunction#NetworkFunctionListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.networkfunction#Networkfunction": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.networkfunction#DeleteCollectorPolicy"
+          "target": "com.azure.networkfunction#CollectorPoliciesDelete"
         },
         {
-          "target": "com.azure.networkfunction#UpdateCollectorPolicyTags"
+          "target": "com.azure.networkfunction#CollectorPoliciesUpdateTags"
         },
         {
           "target": "com.azure.networkfunction#CollectorPoliciesCreateOrUpdate"
         },
         {
-          "target": "com.azure.networkfunction#GetCollectorPolicy"
+          "target": "com.azure.networkfunction#CollectorPoliciesGet"
         },
         {
-          "target": "com.azure.networkfunction#ListCollectorPolicies"
+          "target": "com.azure.networkfunction#CollectorPoliciesList"
         },
         {
-          "target": "com.azure.networkfunction#DeleteAzureTrafficCollector"
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsDelete"
         },
         {
-          "target": "com.azure.networkfunction#UpdateAzureTrafficCollectorTags"
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsUpdateTags"
         },
         {
           "target": "com.azure.networkfunction#AzureTrafficCollectorsCreateOrUpdate"
         },
         {
-          "target": "com.azure.networkfunction#GetAzureTrafficCollector"
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsGet"
         },
         {
-          "target": "com.azure.networkfunction#ListAzureTrafficCollectorsByResourceGroup"
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsByResourceGroupList"
         },
         {
-          "target": "com.azure.networkfunction#ListAzureTrafficCollectorsBySubscription"
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsBySubscriptionList"
         },
         {
-          "target": "com.azure.networkfunction#ListNetworkFunctionOperations"
+          "target": "com.azure.networkfunction#NetworkFunctionListOperations"
         }
       ],
       "traits": {

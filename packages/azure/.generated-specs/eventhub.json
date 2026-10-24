@@ -15,13 +15,145 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.eventhub#SchemaRegistryDelete": "com.azure.eventhub#DeleteSchemaRegistry",
+      "com.azure.eventhub#SchemaRegistryDeleteRequest": "com.azure.eventhub#DeleteSchemaRegistryRequest",
+      "com.azure.eventhub#SchemaRegistryGet": "com.azure.eventhub#GetSchemaRegistry",
+      "com.azure.eventhub#SchemaRegistryGetResponse": "com.azure.eventhub#GetSchemaRegistryResponse",
+      "com.azure.eventhub#SchemaRegistryGetRequest": "com.azure.eventhub#GetSchemaRegistryRequest",
+      "com.azure.eventhub#SchemaRegistryListByNamespace": "com.azure.eventhub#ListSchemaRegistryByNamespace",
+      "com.azure.eventhub#SchemaRegistryListByNamespaceRequest": "com.azure.eventhub#ListSchemaRegistryByNamespaceRequest",
+      "com.azure.eventhub#PrivateLinkResourcesGet": "com.azure.eventhub#GetPrivateLinkResource",
+      "com.azure.eventhub#PrivateLinkResourcesGetRequest": "com.azure.eventhub#GetPrivateLinkResourceRequest",
+      "com.azure.eventhub#PrivateEndpointConnectionsDelete": "com.azure.eventhub#DeletePrivateEndpointConnection",
+      "com.azure.eventhub#PrivateEndpointConnectionsDeleteResponse": "com.azure.eventhub#DeletePrivateEndpointConnectionResponse",
+      "com.azure.eventhub#PrivateEndpointConnectionsDeleteRequest": "com.azure.eventhub#DeletePrivateEndpointConnectionRequest",
+      "com.azure.eventhub#PrivateEndpointConnectionsGet": "com.azure.eventhub#GetPrivateEndpointConnection",
+      "com.azure.eventhub#PrivateEndpointConnectionsGetResponse": "com.azure.eventhub#GetPrivateEndpointConnectionResponse",
+      "com.azure.eventhub#PrivateEndpointConnectionsGetRequest": "com.azure.eventhub#GetPrivateEndpointConnectionRequest",
+      "com.azure.eventhub#PrivateEndpointConnectionsList": "com.azure.eventhub#ListPrivateEndpointConnections",
+      "com.azure.eventhub#PrivateEndpointConnectionsListRequest": "com.azure.eventhub#ListPrivateEndpointConnectionsRequest",
+      "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationName": "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationName",
+      "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameResponse": "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse",
+      "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameRequest": "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest",
+      "com.azure.eventhub#NetworkSecurityPerimeterConfigurationList2": "com.azure.eventhub#ListNetworkSecurityPerimeterConfiguration",
+      "com.azure.eventhub#NetworkSecurityPerimeterConfigurationListRequest": "com.azure.eventhub#ListNetworkSecurityPerimeterConfigurationRequest",
+      "com.azure.eventhub#NamespacesGetNetworkRuleSet": "com.azure.eventhub#GetNamespaceNetworkRuleSet",
+      "com.azure.eventhub#NamespacesGetNetworkRuleSetResponse": "com.azure.eventhub#GetNamespaceNetworkRuleSetResponse",
+      "com.azure.eventhub#NamespacesGetNetworkRuleSetRequest": "com.azure.eventhub#GetNamespaceNetworkRuleSetRequest",
+      "com.azure.eventhub#NamespacesListNetworkRuleSet": "com.azure.eventhub#ListNamespaceNetworkRuleSet",
+      "com.azure.eventhub#NamespacesListNetworkRuleSetRequest": "com.azure.eventhub#ListNamespaceNetworkRuleSetRequest",
+      "com.azure.eventhub#ConsumerGroupsDelete": "com.azure.eventhub#DeleteConsumerGroup",
+      "com.azure.eventhub#ConsumerGroupsDeleteRequest": "com.azure.eventhub#DeleteConsumerGroupRequest",
+      "com.azure.eventhub#ConsumerGroupsGet": "com.azure.eventhub#GetConsumerGroup",
+      "com.azure.eventhub#ConsumerGroupsGetResponse": "com.azure.eventhub#GetConsumerGroupResponse",
+      "com.azure.eventhub#ConsumerGroupsGetRequest": "com.azure.eventhub#GetConsumerGroupRequest",
+      "com.azure.eventhub#ConsumerGroupsListByEventHub": "com.azure.eventhub#ListConsumerGroupByEventHub",
+      "com.azure.eventhub#ConsumerGroupsListByEventHubRequest": "com.azure.eventhub#ListConsumerGroupByEventHubRequest",
+      "com.azure.eventhub#EventHubsRegenerateKeys": "com.azure.eventhub#RegenerateEventHubKeys",
+      "com.azure.eventhub#EventHubsRegenerateKeysRequest": "com.azure.eventhub#RegenerateEventHubKeysRequest",
+      "com.azure.eventhub#EventHubsListKeys": "com.azure.eventhub#ListEventHubKeys",
+      "com.azure.eventhub#EventHubsListKeysRequest": "com.azure.eventhub#ListEventHubKeysRequest",
+      "com.azure.eventhub#EventHubsDeleteAuthorizationRule": "com.azure.eventhub#DeleteEventHubAuthorizationRule",
+      "com.azure.eventhub#EventHubsDeleteAuthorizationRuleRequest": "com.azure.eventhub#DeleteEventHubAuthorizationRuleRequest",
+      "com.azure.eventhub#EventHubsGetAuthorizationRule": "com.azure.eventhub#GetEventHubAuthorizationRule",
+      "com.azure.eventhub#EventHubsGetAuthorizationRuleResponse": "com.azure.eventhub#GetEventHubAuthorizationRuleResponse",
+      "com.azure.eventhub#EventHubsGetAuthorizationRuleRequest": "com.azure.eventhub#GetEventHubAuthorizationRuleRequest",
+      "com.azure.eventhub#EventHubsListAuthorizationRules": "com.azure.eventhub#ListEventHubAuthorizationRules",
+      "com.azure.eventhub#EventHubsListAuthorizationRulesRequest": "com.azure.eventhub#ListEventHubAuthorizationRulesRequest",
+      "com.azure.eventhub#EventHubsDelete": "com.azure.eventhub#DeleteEventHub",
+      "com.azure.eventhub#EventHubsDeleteRequest": "com.azure.eventhub#DeleteEventHubRequest",
+      "com.azure.eventhub#EventHubsGet": "com.azure.eventhub#GetEventHub",
+      "com.azure.eventhub#EventHubsGetResponse": "com.azure.eventhub#GetEventHubResponse",
+      "com.azure.eventhub#EventHubsGetRequest": "com.azure.eventhub#GetEventHubRequest",
+      "com.azure.eventhub#EventHubsListByNamespace": "com.azure.eventhub#ListEventHubByNamespace",
+      "com.azure.eventhub#EventHubsListByNamespaceRequest": "com.azure.eventhub#ListEventHubByNamespaceRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsCheckNameAvailability": "com.azure.eventhub#CheckDisasterRecoveryConfigNameAvailability",
+      "com.azure.eventhub#DisasterRecoveryConfigsCheckNameAvailabilityRequest": "com.azure.eventhub#CheckDisasterRecoveryConfigNameAvailabilityRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsListKeys": "com.azure.eventhub#ListDisasterRecoveryConfigKeys",
+      "com.azure.eventhub#DisasterRecoveryConfigsListKeysRequest": "com.azure.eventhub#ListDisasterRecoveryConfigKeysRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRule": "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRule",
+      "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRuleResponse": "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRuleResponse",
+      "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRuleRequest": "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRuleRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsListAuthorizationRules": "com.azure.eventhub#ListDisasterRecoveryConfigAuthorizationRules",
+      "com.azure.eventhub#DisasterRecoveryConfigsListAuthorizationRulesRequest": "com.azure.eventhub#ListDisasterRecoveryConfigAuthorizationRulesRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsDelete": "com.azure.eventhub#DeleteDisasterRecoveryConfig",
+      "com.azure.eventhub#DisasterRecoveryConfigsDeleteRequest": "com.azure.eventhub#DeleteDisasterRecoveryConfigRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsGet": "com.azure.eventhub#GetDisasterRecoveryConfig",
+      "com.azure.eventhub#DisasterRecoveryConfigsGetResponse": "com.azure.eventhub#GetDisasterRecoveryConfigResponse",
+      "com.azure.eventhub#DisasterRecoveryConfigsGetRequest": "com.azure.eventhub#GetDisasterRecoveryConfigRequest",
+      "com.azure.eventhub#DisasterRecoveryConfigsList": "com.azure.eventhub#ListDisasterRecoveryConfigs",
+      "com.azure.eventhub#DisasterRecoveryConfigsListRequest": "com.azure.eventhub#ListDisasterRecoveryConfigsRequest",
+      "com.azure.eventhub#NamespacesRegenerateKeys": "com.azure.eventhub#RegenerateNamespaceKeys",
+      "com.azure.eventhub#NamespacesRegenerateKeysRequest": "com.azure.eventhub#RegenerateNamespaceKeysRequest",
+      "com.azure.eventhub#NamespacesListKeys": "com.azure.eventhub#ListNamespaceKeys",
+      "com.azure.eventhub#NamespacesListKeysRequest": "com.azure.eventhub#ListNamespaceKeysRequest",
+      "com.azure.eventhub#NamespacesDeleteAuthorizationRule": "com.azure.eventhub#DeleteNamespaceAuthorizationRule",
+      "com.azure.eventhub#NamespacesDeleteAuthorizationRuleRequest": "com.azure.eventhub#DeleteNamespaceAuthorizationRuleRequest",
+      "com.azure.eventhub#NamespacesGetAuthorizationRule": "com.azure.eventhub#GetNamespaceAuthorizationRule",
+      "com.azure.eventhub#NamespacesGetAuthorizationRuleResponse": "com.azure.eventhub#GetNamespaceAuthorizationRuleResponse",
+      "com.azure.eventhub#NamespacesGetAuthorizationRuleRequest": "com.azure.eventhub#GetNamespaceAuthorizationRuleRequest",
+      "com.azure.eventhub#NamespacesListAuthorizationRules": "com.azure.eventhub#ListNamespaceAuthorizationRules",
+      "com.azure.eventhub#NamespacesListAuthorizationRulesRequest": "com.azure.eventhub#ListNamespaceAuthorizationRulesRequest",
+      "com.azure.eventhub#ApplicationGroupDelete": "com.azure.eventhub#DeleteApplicationGroup",
+      "com.azure.eventhub#ApplicationGroupDeleteRequest": "com.azure.eventhub#DeleteApplicationGroupRequest",
+      "com.azure.eventhub#ApplicationGroupGet": "com.azure.eventhub#GetApplicationGroup",
+      "com.azure.eventhub#ApplicationGroupGetResponse": "com.azure.eventhub#GetApplicationGroupResponse",
+      "com.azure.eventhub#ApplicationGroupGetRequest": "com.azure.eventhub#GetApplicationGroupRequest",
+      "com.azure.eventhub#ApplicationGroupListByNamespace": "com.azure.eventhub#ListApplicationGroupByNamespace",
+      "com.azure.eventhub#ApplicationGroupListByNamespaceRequest": "com.azure.eventhub#ListApplicationGroupByNamespaceRequest",
+      "com.azure.eventhub#NamespacesDelete": "com.azure.eventhub#DeleteNamespace",
+      "com.azure.eventhub#NamespacesDeleteResponse": "com.azure.eventhub#DeleteNamespaceResponse",
+      "com.azure.eventhub#NamespacesDeleteRequest": "com.azure.eventhub#DeleteNamespaceRequest",
+      "com.azure.eventhub#NamespacesUpdate": "com.azure.eventhub#UpdateNamespace",
+      "com.azure.eventhub#NamespacesUpdateResponse": "com.azure.eventhub#UpdateNamespaceResponse",
+      "com.azure.eventhub#NamespacesUpdateResponseTagsMap": "com.azure.eventhub#UpdateNamespaceResponseTagsMap",
+      "com.azure.eventhub#NamespacesUpdateRequest": "com.azure.eventhub#UpdateNamespaceRequest",
+      "com.azure.eventhub#NamespacesUpdateRequestTagsMap": "com.azure.eventhub#UpdateNamespaceRequestTagsMap",
+      "com.azure.eventhub#NamespacesGet": "com.azure.eventhub#GetNamespace",
+      "com.azure.eventhub#NamespacesGetResponse": "com.azure.eventhub#GetNamespaceResponse",
+      "com.azure.eventhub#NamespacesGetResponseTagsMap": "com.azure.eventhub#GetNamespaceResponseTagsMap",
+      "com.azure.eventhub#NamespacesGetRequest": "com.azure.eventhub#GetNamespaceRequest",
+      "com.azure.eventhub#NamespacesListByResourceGroup": "com.azure.eventhub#ListNamespaceByResourceGroup",
+      "com.azure.eventhub#NamespacesListByResourceGroupRequest": "com.azure.eventhub#ListNamespaceByResourceGroupRequest",
+      "com.azure.eventhub#ConfigurationPatch": "com.azure.eventhub#PatchConfiguration",
+      "com.azure.eventhub#ConfigurationPatchRequest": "com.azure.eventhub#PatchConfigurationRequest",
+      "com.azure.eventhub#ConfigurationPatchRequestSettingsMap": "com.azure.eventhub#PatchConfigurationRequestSettingsMap",
+      "com.azure.eventhub#ConfigurationGet": "com.azure.eventhub#GetConfiguration",
+      "com.azure.eventhub#ConfigurationGetRequest": "com.azure.eventhub#GetConfigurationRequest",
+      "com.azure.eventhub#ClustersListNamespaces": "com.azure.eventhub#ListClusterNamespaces",
+      "com.azure.eventhub#ClustersListNamespacesRequest": "com.azure.eventhub#ListClusterNamespacesRequest",
+      "com.azure.eventhub#ClustersDelete": "com.azure.eventhub#DeleteCluster",
+      "com.azure.eventhub#ClustersDeleteResponse": "com.azure.eventhub#DeleteClusterResponse",
+      "com.azure.eventhub#ClustersDeleteRequest": "com.azure.eventhub#DeleteClusterRequest",
+      "com.azure.eventhub#ClustersUpdate": "com.azure.eventhub#UpdateCluster",
+      "com.azure.eventhub#ClustersUpdateResponse": "com.azure.eventhub#UpdateClusterResponse",
+      "com.azure.eventhub#ClustersUpdateResponseTagsMap": "com.azure.eventhub#UpdateClusterResponseTagsMap",
+      "com.azure.eventhub#ClustersUpdateRequest": "com.azure.eventhub#UpdateClusterRequest",
+      "com.azure.eventhub#ClustersUpdateRequestTagsMap": "com.azure.eventhub#UpdateClusterRequestTagsMap",
+      "com.azure.eventhub#ClustersGet": "com.azure.eventhub#GetCluster",
+      "com.azure.eventhub#ClustersGetResponse": "com.azure.eventhub#GetClusterResponse",
+      "com.azure.eventhub#ClustersGetResponseTagsMap": "com.azure.eventhub#GetClusterResponseTagsMap",
+      "com.azure.eventhub#ClustersGetRequest": "com.azure.eventhub#GetClusterRequest",
+      "com.azure.eventhub#ClustersListByResourceGroup": "com.azure.eventhub#ListClusterByResourceGroup",
+      "com.azure.eventhub#ClustersListByResourceGroupRequest": "com.azure.eventhub#ListClusterByResourceGroupRequest",
+      "com.azure.eventhub#NamespacesList": "com.azure.eventhub#ListNamespaces",
+      "com.azure.eventhub#NamespacesListRequest": "com.azure.eventhub#ListNamespacesRequest",
+      "com.azure.eventhub#ClustersListBySubscription": "com.azure.eventhub#ListClusterBySubscription",
+      "com.azure.eventhub#ClustersListBySubscriptionRequest": "com.azure.eventhub#ListClusterBySubscriptionRequest",
+      "com.azure.eventhub#NamespacesCheckNameAvailability": "com.azure.eventhub#CheckNamespaceNameAvailability",
+      "com.azure.eventhub#NamespacesCheckNameAvailabilityRequest": "com.azure.eventhub#CheckNamespaceNameAvailabilityRequest",
+      "com.azure.eventhub#ClustersListAvailableClusterRegion": "com.azure.eventhub#ListClusterAvailableClusterRegion",
+      "com.azure.eventhub#ClustersListAvailableClusterRegionRequest": "com.azure.eventhub#ListClusterAvailableClusterRegionRequest",
+      "com.azure.eventhub#OperationsList": "com.azure.eventhub#ListOperations",
+      "com.azure.eventhub#OperationsListRequest": "com.azure.eventhub#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.eventhub#DeleteSchemaRegistry": {
+    "com.azure.eventhub#SchemaRegistryDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteSchemaRegistryRequest"
+        "target": "com.azure.eventhub#SchemaRegistryDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -37,7 +169,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteSchemaRegistryRequest": {
+    "com.azure.eventhub#SchemaRegistryDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -420,13 +552,13 @@
         "smithy.api#documentation": "dictionary object for SchemaGroup group properties"
       }
     },
-    "com.azure.eventhub#GetSchemaRegistry": {
+    "com.azure.eventhub#SchemaRegistryGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetSchemaRegistryRequest"
+        "target": "com.azure.eventhub#SchemaRegistryGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetSchemaRegistryResponse"
+        "target": "com.azure.eventhub#SchemaRegistryGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -439,7 +571,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetSchemaRegistryResponse": {
+    "com.azure.eventhub#SchemaRegistryGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -480,7 +612,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetSchemaRegistryRequest": {
+    "com.azure.eventhub#SchemaRegistryGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -520,10 +652,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListSchemaRegistryByNamespace": {
+    "com.azure.eventhub#SchemaRegistryListByNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListSchemaRegistryByNamespaceRequest"
+        "target": "com.azure.eventhub#SchemaRegistryListByNamespaceRequest"
       },
       "output": {
         "target": "com.azure.eventhub#SchemaGroupListResult"
@@ -533,10 +665,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Schema Groups in a Namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#SchemaGroupListResult": {
@@ -610,7 +749,7 @@
         "smithy.api#documentation": "Single item in List or Get Schema Group operation"
       }
     },
-    "com.azure.eventhub#ListSchemaRegistryByNamespaceRequest": {
+    "com.azure.eventhub#SchemaRegistryListByNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -650,16 +789,22 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "May be used to limit the number of results to the most recent N usageDetails."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetPrivateLinkResource": {
+    "com.azure.eventhub#PrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetPrivateLinkResourceRequest"
+        "target": "com.azure.eventhub#PrivateLinkResourcesGetRequest"
       },
       "output": {
         "target": "com.azure.eventhub#PrivateLinkResourcesListResult"
@@ -781,7 +926,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.eventhub#GetPrivateLinkResourceRequest": {
+    "com.azure.eventhub#PrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -813,13 +958,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeletePrivateEndpointConnection": {
+    "com.azure.eventhub#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.eventhub#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.eventhub#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -832,7 +977,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.eventhub#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -854,7 +999,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.eventhub#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1139,13 +1284,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetPrivateEndpointConnection": {
+    "com.azure.eventhub#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.eventhub#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.eventhub#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1158,7 +1303,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetPrivateEndpointConnectionResponse": {
+    "com.azure.eventhub#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1202,7 +1347,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetPrivateEndpointConnectionRequest": {
+    "com.azure.eventhub#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1242,10 +1387,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListPrivateEndpointConnections": {
+    "com.azure.eventhub#PrivateEndpointConnectionsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListPrivateEndpointConnectionsRequest"
+        "target": "com.azure.eventhub#PrivateEndpointConnectionsListRequest"
       },
       "output": {
         "target": "com.azure.eventhub#PrivateEndpointConnectionListResult"
@@ -1255,10 +1400,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the available PrivateEndpointConnections within a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#PrivateEndpointConnectionListResult": {
@@ -1335,7 +1487,7 @@
         "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
       }
     },
-    "com.azure.eventhub#ListPrivateEndpointConnectionsRequest": {
+    "com.azure.eventhub#PrivateEndpointConnectionsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1360,6 +1512,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Namespace name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1448,13 +1606,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationName": {
+    "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationName": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest"
+        "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse"
+        "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1467,7 +1625,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse": {
+    "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1964,7 +2122,7 @@
         "smithy.api#documentation": "Provisioning state of NetworkSecurityPerimeter configuration propagation"
       }
     },
-    "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest": {
+    "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationNameRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2004,10 +2162,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListNetworkSecurityPerimeterConfiguration": {
+    "com.azure.eventhub#NetworkSecurityPerimeterConfigurationList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListNetworkSecurityPerimeterConfigurationRequest"
+        "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationListRequest"
       },
       "output": {
         "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationList"
@@ -2090,7 +2248,7 @@
         "smithy.api#documentation": "Network Security Perimeter related configurations of a given namespace"
       }
     },
-    "com.azure.eventhub#ListNetworkSecurityPerimeterConfigurationRequest": {
+    "com.azure.eventhub#NetworkSecurityPerimeterConfigurationListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2393,13 +2551,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetNamespaceNetworkRuleSet": {
+    "com.azure.eventhub#NamespacesGetNetworkRuleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetNamespaceNetworkRuleSetRequest"
+        "target": "com.azure.eventhub#NamespacesGetNetworkRuleSetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetNamespaceNetworkRuleSetResponse"
+        "target": "com.azure.eventhub#NamespacesGetNetworkRuleSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2412,7 +2570,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetNamespaceNetworkRuleSetResponse": {
+    "com.azure.eventhub#NamespacesGetNetworkRuleSetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2456,7 +2614,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetNamespaceNetworkRuleSetRequest": {
+    "com.azure.eventhub#NamespacesGetNetworkRuleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2488,10 +2646,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListNamespaceNetworkRuleSet": {
+    "com.azure.eventhub#NamespacesListNetworkRuleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListNamespaceNetworkRuleSetRequest"
+        "target": "com.azure.eventhub#NamespacesListNetworkRuleSetRequest"
       },
       "output": {
         "target": "com.azure.eventhub#NetworkRuleSetListResult"
@@ -2581,7 +2739,7 @@
         "smithy.api#documentation": "Description of topic resource."
       }
     },
-    "com.azure.eventhub#ListNamespaceNetworkRuleSetRequest": {
+    "com.azure.eventhub#NamespacesListNetworkRuleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2714,10 +2872,10 @@
       },
       "traits": {}
     },
-    "com.azure.eventhub#DeleteConsumerGroup": {
+    "com.azure.eventhub#ConsumerGroupsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteConsumerGroupRequest"
+        "target": "com.azure.eventhub#ConsumerGroupsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2733,7 +2891,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteConsumerGroupRequest": {
+    "com.azure.eventhub#ConsumerGroupsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2938,13 +3096,13 @@
         "smithy.api#documentation": "Single item in List or Get Consumer group operation"
       }
     },
-    "com.azure.eventhub#GetConsumerGroup": {
+    "com.azure.eventhub#ConsumerGroupsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetConsumerGroupRequest"
+        "target": "com.azure.eventhub#ConsumerGroupsGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetConsumerGroupResponse"
+        "target": "com.azure.eventhub#ConsumerGroupsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2957,7 +3115,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetConsumerGroupResponse": {
+    "com.azure.eventhub#ConsumerGroupsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3001,7 +3159,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetConsumerGroupRequest": {
+    "com.azure.eventhub#ConsumerGroupsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3049,10 +3207,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListConsumerGroupByEventHub": {
+    "com.azure.eventhub#ConsumerGroupsListByEventHub": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListConsumerGroupByEventHubRequest"
+        "target": "com.azure.eventhub#ConsumerGroupsListByEventHubRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ConsumerGroupListResult"
@@ -3062,10 +3220,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the consumer groups in a Namespace. An empty feed is returned if no consumer group exists in the Namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#ConsumerGroupListResult": {
@@ -3142,7 +3307,7 @@
         "smithy.api#documentation": "Single item in List or Get Consumer group operation"
       }
     },
-    "com.azure.eventhub#ListConsumerGroupByEventHubRequest": {
+    "com.azure.eventhub#ConsumerGroupsListByEventHubRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3190,16 +3355,22 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "May be used to limit the number of results to the most recent N usageDetails."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#RegenerateEventHubKeys": {
+    "com.azure.eventhub#EventHubsRegenerateKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#RegenerateEventHubKeysRequest"
+        "target": "com.azure.eventhub#EventHubsRegenerateKeysRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AccessKeys"
@@ -3265,7 +3436,7 @@
         "smithy.api#documentation": "Namespace/EventHub Connection String"
       }
     },
-    "com.azure.eventhub#RegenerateEventHubKeysRequest": {
+    "com.azure.eventhub#EventHubsRegenerateKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3346,10 +3517,10 @@
         "smithy.api#documentation": "The access key to regenerate."
       }
     },
-    "com.azure.eventhub#ListEventHubKeys": {
+    "com.azure.eventhub#EventHubsListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListEventHubKeysRequest"
+        "target": "com.azure.eventhub#EventHubsListKeysRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AccessKeys"
@@ -3365,7 +3536,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#ListEventHubKeysRequest": {
+    "com.azure.eventhub#EventHubsListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3413,10 +3584,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteEventHubAuthorizationRule": {
+    "com.azure.eventhub#EventHubsDeleteAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteEventHubAuthorizationRuleRequest"
+        "target": "com.azure.eventhub#EventHubsDeleteAuthorizationRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3432,7 +3603,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteEventHubAuthorizationRuleRequest": {
+    "com.azure.eventhub#EventHubsDeleteAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3645,13 +3816,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetEventHubAuthorizationRule": {
+    "com.azure.eventhub#EventHubsGetAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetEventHubAuthorizationRuleRequest"
+        "target": "com.azure.eventhub#EventHubsGetAuthorizationRuleRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetEventHubAuthorizationRuleResponse"
+        "target": "com.azure.eventhub#EventHubsGetAuthorizationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3664,7 +3835,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetEventHubAuthorizationRuleResponse": {
+    "com.azure.eventhub#EventHubsGetAuthorizationRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3708,7 +3879,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetEventHubAuthorizationRuleRequest": {
+    "com.azure.eventhub#EventHubsGetAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3756,10 +3927,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListEventHubAuthorizationRules": {
+    "com.azure.eventhub#EventHubsListAuthorizationRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListEventHubAuthorizationRulesRequest"
+        "target": "com.azure.eventhub#EventHubsListAuthorizationRulesRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AuthorizationRuleListResult"
@@ -3769,10 +3940,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the authorization rules for an Event Hub.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#AuthorizationRuleListResult": {
@@ -3849,7 +4027,7 @@
         "smithy.api#documentation": "Single item in a List or Get AuthorizationRule operation"
       }
     },
-    "com.azure.eventhub#ListEventHubAuthorizationRulesRequest": {
+    "com.azure.eventhub#EventHubsListAuthorizationRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3883,16 +4061,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Event Hub name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteEventHub": {
+    "com.azure.eventhub#EventHubsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteEventHubRequest"
+        "target": "com.azure.eventhub#EventHubsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3908,7 +4092,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteEventHubRequest": {
+    "com.azure.eventhub#EventHubsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4518,13 +4702,13 @@
         "smithy.api#documentation": "Properties supplied to the Create Or Update Event Hub operation."
       }
     },
-    "com.azure.eventhub#GetEventHub": {
+    "com.azure.eventhub#EventHubsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetEventHubRequest"
+        "target": "com.azure.eventhub#EventHubsGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetEventHubResponse"
+        "target": "com.azure.eventhub#EventHubsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4537,7 +4721,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetEventHubResponse": {
+    "com.azure.eventhub#EventHubsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4581,7 +4765,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetEventHubRequest": {
+    "com.azure.eventhub#EventHubsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4621,10 +4805,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListEventHubByNamespace": {
+    "com.azure.eventhub#EventHubsListByNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListEventHubByNamespaceRequest"
+        "target": "com.azure.eventhub#EventHubsListByNamespaceRequest"
       },
       "output": {
         "target": "com.azure.eventhub#EventHubListResult"
@@ -4634,10 +4818,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Event Hubs in a Namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#EventHubListResult": {
@@ -4714,7 +4905,7 @@
         "smithy.api#documentation": "Single item in List or Get Event Hub operation"
       }
     },
-    "com.azure.eventhub#ListEventHubByNamespaceRequest": {
+    "com.azure.eventhub#EventHubsListByNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4754,16 +4945,22 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "May be used to limit the number of results to the most recent N usageDetails."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#CheckDisasterRecoveryConfigNameAvailability": {
+    "com.azure.eventhub#DisasterRecoveryConfigsCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#CheckDisasterRecoveryConfigNameAvailabilityRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.eventhub#CheckNameAvailabilityResult"
@@ -4849,7 +5046,7 @@
         "smithy.api#documentation": "Specifies the reason for the unavailability of the service."
       }
     },
-    "com.azure.eventhub#CheckDisasterRecoveryConfigNameAvailabilityRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5006,10 +5203,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListDisasterRecoveryConfigKeys": {
+    "com.azure.eventhub#DisasterRecoveryConfigsListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListDisasterRecoveryConfigKeysRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsListKeysRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AccessKeys"
@@ -5025,7 +5222,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#ListDisasterRecoveryConfigKeysRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5073,13 +5270,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRule": {
+    "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRuleRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRuleRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRuleResponse"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5092,7 +5289,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRuleResponse": {
+    "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5136,7 +5333,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRuleRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5184,10 +5381,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListDisasterRecoveryConfigAuthorizationRules": {
+    "com.azure.eventhub#DisasterRecoveryConfigsListAuthorizationRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListDisasterRecoveryConfigAuthorizationRulesRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsListAuthorizationRulesRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AuthorizationRuleListResult"
@@ -5197,13 +5394,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of authorization rules for a Namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.eventhub#ListDisasterRecoveryConfigAuthorizationRulesRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsListAuthorizationRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5237,16 +5441,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Disaster Recovery configuration name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteDisasterRecoveryConfig": {
+    "com.azure.eventhub#DisasterRecoveryConfigsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteDisasterRecoveryConfigRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5262,7 +5472,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteDisasterRecoveryConfigRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5521,13 +5731,13 @@
         "smithy.api#documentation": "Properties required to the Create Or Update Alias(Disaster Recovery configurations)"
       }
     },
-    "com.azure.eventhub#GetDisasterRecoveryConfig": {
+    "com.azure.eventhub#DisasterRecoveryConfigsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetDisasterRecoveryConfigRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetDisasterRecoveryConfigResponse"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5540,7 +5750,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetDisasterRecoveryConfigResponse": {
+    "com.azure.eventhub#DisasterRecoveryConfigsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5584,7 +5794,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetDisasterRecoveryConfigRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5624,10 +5834,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListDisasterRecoveryConfigs": {
+    "com.azure.eventhub#DisasterRecoveryConfigsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListDisasterRecoveryConfigsRequest"
+        "target": "com.azure.eventhub#DisasterRecoveryConfigsListRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ArmDisasterRecoveryListResult"
@@ -5637,10 +5847,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/disasterRecoveryConfigs",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all Alias(Disaster Recovery configurations)",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#ArmDisasterRecoveryListResult": {
@@ -5717,7 +5934,7 @@
         "smithy.api#documentation": "Single item in List or Get Alias(Disaster Recovery configuration) operation"
       }
     },
-    "com.azure.eventhub#ListDisasterRecoveryConfigsRequest": {
+    "com.azure.eventhub#DisasterRecoveryConfigsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5743,16 +5960,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Namespace name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#RegenerateNamespaceKeys": {
+    "com.azure.eventhub#NamespacesRegenerateKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#RegenerateNamespaceKeysRequest"
+        "target": "com.azure.eventhub#NamespacesRegenerateKeysRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AccessKeys"
@@ -5768,7 +5991,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#RegenerateNamespaceKeysRequest": {
+    "com.azure.eventhub#NamespacesRegenerateKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5821,10 +6044,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListNamespaceKeys": {
+    "com.azure.eventhub#NamespacesListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListNamespaceKeysRequest"
+        "target": "com.azure.eventhub#NamespacesListKeysRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AccessKeys"
@@ -5840,7 +6063,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#ListNamespaceKeysRequest": {
+    "com.azure.eventhub#NamespacesListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5880,10 +6103,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteNamespaceAuthorizationRule": {
+    "com.azure.eventhub#NamespacesDeleteAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteNamespaceAuthorizationRuleRequest"
+        "target": "com.azure.eventhub#NamespacesDeleteAuthorizationRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5899,7 +6122,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteNamespaceAuthorizationRuleRequest": {
+    "com.azure.eventhub#NamespacesDeleteAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6048,13 +6271,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetNamespaceAuthorizationRule": {
+    "com.azure.eventhub#NamespacesGetAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetNamespaceAuthorizationRuleRequest"
+        "target": "com.azure.eventhub#NamespacesGetAuthorizationRuleRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetNamespaceAuthorizationRuleResponse"
+        "target": "com.azure.eventhub#NamespacesGetAuthorizationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6067,7 +6290,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetNamespaceAuthorizationRuleResponse": {
+    "com.azure.eventhub#NamespacesGetAuthorizationRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6111,7 +6334,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetNamespaceAuthorizationRuleRequest": {
+    "com.azure.eventhub#NamespacesGetAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6151,10 +6374,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListNamespaceAuthorizationRules": {
+    "com.azure.eventhub#NamespacesListAuthorizationRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListNamespaceAuthorizationRulesRequest"
+        "target": "com.azure.eventhub#NamespacesListAuthorizationRulesRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AuthorizationRuleListResult"
@@ -6164,13 +6387,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of authorization rules for a Namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.eventhub#ListNamespaceAuthorizationRulesRequest": {
+    "com.azure.eventhub#NamespacesListAuthorizationRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6196,16 +6426,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Namespace name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteApplicationGroup": {
+    "com.azure.eventhub#ApplicationGroupDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteApplicationGroupRequest"
+        "target": "com.azure.eventhub#ApplicationGroupDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6221,7 +6457,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteApplicationGroupRequest": {
+    "com.azure.eventhub#ApplicationGroupDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6371,18 +6607,6 @@
             "smithy.api#documentation": "Application Group Policy types",
             "smithy.api#required": {}
           }
-        },
-        "rateLimitThreshold": {
-          "target": "smithy.api#Long",
-          "traits": {
-            "smithy.api#documentation": "ThrottlingPolicy: the threshold limit above which the application group will be throttled. Rate limit is always per second."
-          }
-        },
-        "metricId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ThrottlingPolicy: metric to throttle on (IncomingBytes, OutgoingBytes, IncomingMessages, OutgoingMessages)."
-          }
         }
       },
       "traits": {
@@ -6446,13 +6670,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#GetApplicationGroup": {
+    "com.azure.eventhub#ApplicationGroupGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetApplicationGroupRequest"
+        "target": "com.azure.eventhub#ApplicationGroupGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetApplicationGroupResponse"
+        "target": "com.azure.eventhub#ApplicationGroupGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6465,7 +6689,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetApplicationGroupResponse": {
+    "com.azure.eventhub#ApplicationGroupGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6506,7 +6730,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetApplicationGroupRequest": {
+    "com.azure.eventhub#ApplicationGroupGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6546,10 +6770,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListApplicationGroupByNamespace": {
+    "com.azure.eventhub#ApplicationGroupListByNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListApplicationGroupByNamespaceRequest"
+        "target": "com.azure.eventhub#ApplicationGroupListByNamespaceRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ApplicationGroupListResult"
@@ -6559,10 +6783,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of application groups for a Namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#ApplicationGroupListResult": {
@@ -6636,7 +6867,7 @@
         "smithy.api#documentation": "The Application Group object"
       }
     },
-    "com.azure.eventhub#ListApplicationGroupByNamespaceRequest": {
+    "com.azure.eventhub#ApplicationGroupListByNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6662,19 +6893,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Namespace name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteNamespace": {
+    "com.azure.eventhub#NamespacesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteNamespaceRequest"
+        "target": "com.azure.eventhub#NamespacesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#DeleteNamespaceResponse"
+        "target": "com.azure.eventhub#NamespacesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6687,7 +6924,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteNamespaceResponse": {
+    "com.azure.eventhub#NamespacesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -6709,7 +6946,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#DeleteNamespaceRequest": {
+    "com.azure.eventhub#NamespacesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6741,13 +6978,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#UpdateNamespace": {
+    "com.azure.eventhub#NamespacesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#UpdateNamespaceRequest"
+        "target": "com.azure.eventhub#NamespacesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#UpdateNamespaceResponse"
+        "target": "com.azure.eventhub#NamespacesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6760,7 +6997,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#UpdateNamespaceResponse": {
+    "com.azure.eventhub#NamespacesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6812,7 +7049,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.eventhub#UpdateNamespaceResponseTagsMap",
+          "target": "com.azure.eventhub#NamespacesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6822,7 +7059,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#UpdateNamespaceResponseTagsMap": {
+    "com.azure.eventhub#NamespacesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7433,7 +7670,7 @@
         "smithy.api#documentation": "The minimum TLS version for the cluster to support, e.g. '1.2'"
       }
     },
-    "com.azure.eventhub#UpdateNamespaceRequest": {
+    "com.azure.eventhub#NamespacesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7485,7 +7722,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.eventhub#UpdateNamespaceRequestTagsMap",
+          "target": "com.azure.eventhub#NamespacesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -7495,7 +7732,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#UpdateNamespaceRequestTagsMap": {
+    "com.azure.eventhub#NamespacesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7927,13 +8164,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.eventhub#GetNamespace": {
+    "com.azure.eventhub#NamespacesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetNamespaceRequest"
+        "target": "com.azure.eventhub#NamespacesGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetNamespaceResponse"
+        "target": "com.azure.eventhub#NamespacesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7946,7 +8183,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetNamespaceResponse": {
+    "com.azure.eventhub#NamespacesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7998,7 +8235,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.eventhub#GetNamespaceResponseTagsMap",
+          "target": "com.azure.eventhub#NamespacesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -8008,7 +8245,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetNamespaceResponseTagsMap": {
+    "com.azure.eventhub#NamespacesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8020,7 +8257,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.eventhub#GetNamespaceRequest": {
+    "com.azure.eventhub#NamespacesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8052,10 +8289,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListNamespaceByResourceGroup": {
+    "com.azure.eventhub#NamespacesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListNamespaceByResourceGroupRequest"
+        "target": "com.azure.eventhub#NamespacesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.eventhub#EHNamespaceListResult"
@@ -8065,10 +8302,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available Namespaces within a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#EHNamespaceListResult": {
@@ -8175,7 +8419,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.eventhub#ListNamespaceByResourceGroupRequest": {
+    "com.azure.eventhub#NamespacesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8193,16 +8437,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#PatchConfiguration": {
+    "com.azure.eventhub#ConfigurationPatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#PatchConfigurationRequest"
+        "target": "com.azure.eventhub#ConfigurationPatchRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ClusterQuotaConfigurationProperties"
@@ -8244,7 +8494,7 @@
         "smithy.api#documentation": "All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster."
       }
     },
-    "com.azure.eventhub#PatchConfigurationRequest": {
+    "com.azure.eventhub#ConfigurationPatchRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8272,7 +8522,7 @@
           }
         },
         "settings": {
-          "target": "com.azure.eventhub#PatchConfigurationRequestSettingsMap",
+          "target": "com.azure.eventhub#ConfigurationPatchRequestSettingsMap",
           "traits": {
             "smithy.api#documentation": "All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster."
           }
@@ -8282,7 +8532,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#PatchConfigurationRequestSettingsMap": {
+    "com.azure.eventhub#ConfigurationPatchRequestSettingsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8294,10 +8544,10 @@
         "smithy.api#documentation": "All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster."
       }
     },
-    "com.azure.eventhub#GetConfiguration": {
+    "com.azure.eventhub#ConfigurationGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetConfigurationRequest"
+        "target": "com.azure.eventhub#ConfigurationGetRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ClusterQuotaConfigurationProperties"
@@ -8313,7 +8563,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetConfigurationRequest": {
+    "com.azure.eventhub#ConfigurationGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8345,10 +8595,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListClusterNamespaces": {
+    "com.azure.eventhub#ClustersListNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListClusterNamespacesRequest"
+        "target": "com.azure.eventhub#ClustersListNamespacesRequest"
       },
       "output": {
         "target": "com.azure.eventhub#EHNamespaceIdListResult"
@@ -8401,7 +8651,7 @@
         "smithy.api#documentation": "The full ARM ID of an Event Hubs Namespace"
       }
     },
-    "com.azure.eventhub#ListClusterNamespacesRequest": {
+    "com.azure.eventhub#ClustersListNamespacesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8433,13 +8683,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#DeleteCluster": {
+    "com.azure.eventhub#ClustersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#DeleteClusterRequest"
+        "target": "com.azure.eventhub#ClustersDeleteRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#DeleteClusterResponse"
+        "target": "com.azure.eventhub#ClustersDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8452,7 +8702,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#DeleteClusterResponse": {
+    "com.azure.eventhub#ClustersDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -8474,7 +8724,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#DeleteClusterRequest": {
+    "com.azure.eventhub#ClustersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8506,13 +8756,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#UpdateCluster": {
+    "com.azure.eventhub#ClustersUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#UpdateClusterRequest"
+        "target": "com.azure.eventhub#ClustersUpdateRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#UpdateClusterResponse"
+        "target": "com.azure.eventhub#ClustersUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8525,7 +8775,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#UpdateClusterResponse": {
+    "com.azure.eventhub#ClustersUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8571,7 +8821,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.eventhub#UpdateClusterResponseTagsMap",
+          "target": "com.azure.eventhub#ClustersUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -8595,7 +8845,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#UpdateClusterResponseTagsMap": {
+    "com.azure.eventhub#ClustersUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -8751,7 +9001,7 @@
         "smithy.api#documentation": "Provisioning state of the Cluster."
       }
     },
-    "com.azure.eventhub#UpdateClusterRequest": {
+    "com.azure.eventhub#ClustersUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8797,7 +9047,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.eventhub#UpdateClusterRequestTagsMap",
+          "target": "com.azure.eventhub#ClustersUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -8807,7 +9057,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#UpdateClusterRequestTagsMap": {
+    "com.azure.eventhub#ClustersUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -9011,13 +9261,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.eventhub#GetCluster": {
+    "com.azure.eventhub#ClustersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#GetClusterRequest"
+        "target": "com.azure.eventhub#ClustersGetRequest"
       },
       "output": {
-        "target": "com.azure.eventhub#GetClusterResponse"
+        "target": "com.azure.eventhub#ClustersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9030,7 +9280,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#GetClusterResponse": {
+    "com.azure.eventhub#ClustersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9076,7 +9326,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.eventhub#GetClusterResponseTagsMap",
+          "target": "com.azure.eventhub#ClustersGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -9086,7 +9336,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.eventhub#GetClusterResponseTagsMap": {
+    "com.azure.eventhub#ClustersGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -9098,7 +9348,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.eventhub#GetClusterRequest": {
+    "com.azure.eventhub#ClustersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9130,10 +9380,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListClusterByResourceGroup": {
+    "com.azure.eventhub#ClustersListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListClusterByResourceGroupRequest"
+        "target": "com.azure.eventhub#ClustersListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ClusterListResult"
@@ -9143,10 +9393,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available Event Hubs Clusters within an ARM resource group",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#ClusterListResult": {
@@ -9247,7 +9504,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.eventhub#ListClusterByResourceGroupRequest": {
+    "com.azure.eventhub#ClustersListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9265,16 +9522,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListNamespaces": {
+    "com.azure.eventhub#NamespacesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListNamespacesRequest"
+        "target": "com.azure.eventhub#NamespacesListRequest"
       },
       "output": {
         "target": "com.azure.eventhub#EHNamespaceListResult"
@@ -9284,13 +9547,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/namespaces",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available Namespaces within a subscription, irrespective of the resource groups.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.eventhub#ListNamespacesRequest": {
+    "com.azure.eventhub#NamespacesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9300,16 +9570,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListClusterBySubscription": {
+    "com.azure.eventhub#ClustersListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListClusterBySubscriptionRequest"
+        "target": "com.azure.eventhub#ClustersListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.eventhub#ClusterListResult"
@@ -9319,13 +9595,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.EventHub/clusters",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available Event Hubs Clusters within an ARM resource group",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.eventhub#ListClusterBySubscriptionRequest": {
+    "com.azure.eventhub#ClustersListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9335,16 +9618,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#CheckNamespaceNameAvailability": {
+    "com.azure.eventhub#NamespacesCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#CheckNamespaceNameAvailabilityRequest"
+        "target": "com.azure.eventhub#NamespacesCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.eventhub#CheckNameAvailabilityResult"
@@ -9360,7 +9649,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.eventhub#CheckNamespaceNameAvailabilityRequest": {
+    "com.azure.eventhub#NamespacesCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9383,10 +9672,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListClusterAvailableClusterRegion": {
+    "com.azure.eventhub#ClustersListAvailableClusterRegion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.eventhub#ListClusterAvailableClusterRegionRequest"
+        "target": "com.azure.eventhub#ClustersListAvailableClusterRegionRequest"
       },
       "output": {
         "target": "com.azure.eventhub#AvailableClustersList"
@@ -9439,7 +9728,7 @@
         "smithy.api#documentation": "Pre-provisioned and readily available Event Hubs Cluster count per region."
       }
     },
-    "com.azure.eventhub#ListClusterAvailableClusterRegionRequest": {
+    "com.azure.eventhub#ClustersListAvailableClusterRegionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9455,10 +9744,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.eventhub#ListOperations": {
+    "com.azure.eventhub#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventhub#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.eventhub#OperationListResult"
@@ -9468,10 +9757,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.EventHub/operations",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Event Hub REST API operations.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.eventhub#OperationListResult": {
@@ -9574,102 +9870,116 @@
         "smithy.api#documentation": "Operation display payload"
       }
     },
+    "com.azure.eventhub#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.eventhub#Eventhub": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.eventhub#DeleteSchemaRegistry"
+          "target": "com.azure.eventhub#SchemaRegistryDelete"
         },
         {
           "target": "com.azure.eventhub#SchemaRegistryCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetSchemaRegistry"
+          "target": "com.azure.eventhub#SchemaRegistryGet"
         },
         {
-          "target": "com.azure.eventhub#ListSchemaRegistryByNamespace"
+          "target": "com.azure.eventhub#SchemaRegistryListByNamespace"
         },
         {
-          "target": "com.azure.eventhub#GetPrivateLinkResource"
+          "target": "com.azure.eventhub#PrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.eventhub#DeletePrivateEndpointConnection"
+          "target": "com.azure.eventhub#PrivateEndpointConnectionsDelete"
         },
         {
           "target": "com.azure.eventhub#PrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetPrivateEndpointConnection"
+          "target": "com.azure.eventhub#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.eventhub#ListPrivateEndpointConnections"
+          "target": "com.azure.eventhub#PrivateEndpointConnectionsList"
         },
         {
           "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetNetworkSecurityPerimeterConfigurationResourceAssociationName"
+          "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationsGetResourceAssociationName"
         },
         {
-          "target": "com.azure.eventhub#ListNetworkSecurityPerimeterConfiguration"
+          "target": "com.azure.eventhub#NetworkSecurityPerimeterConfigurationList2"
         },
         {
           "target": "com.azure.eventhub#NamespacesCreateOrUpdateNetworkRuleSet"
         },
         {
-          "target": "com.azure.eventhub#GetNamespaceNetworkRuleSet"
+          "target": "com.azure.eventhub#NamespacesGetNetworkRuleSet"
         },
         {
-          "target": "com.azure.eventhub#ListNamespaceNetworkRuleSet"
+          "target": "com.azure.eventhub#NamespacesListNetworkRuleSet"
         },
         {
           "target": "com.azure.eventhub#NamespacesFailover"
         },
         {
-          "target": "com.azure.eventhub#DeleteConsumerGroup"
+          "target": "com.azure.eventhub#ConsumerGroupsDelete"
         },
         {
           "target": "com.azure.eventhub#ConsumerGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetConsumerGroup"
+          "target": "com.azure.eventhub#ConsumerGroupsGet"
         },
         {
-          "target": "com.azure.eventhub#ListConsumerGroupByEventHub"
+          "target": "com.azure.eventhub#ConsumerGroupsListByEventHub"
         },
         {
-          "target": "com.azure.eventhub#RegenerateEventHubKeys"
+          "target": "com.azure.eventhub#EventHubsRegenerateKeys"
         },
         {
-          "target": "com.azure.eventhub#ListEventHubKeys"
+          "target": "com.azure.eventhub#EventHubsListKeys"
         },
         {
-          "target": "com.azure.eventhub#DeleteEventHubAuthorizationRule"
+          "target": "com.azure.eventhub#EventHubsDeleteAuthorizationRule"
         },
         {
           "target": "com.azure.eventhub#EventHubsCreateOrUpdateAuthorizationRule"
         },
         {
-          "target": "com.azure.eventhub#GetEventHubAuthorizationRule"
+          "target": "com.azure.eventhub#EventHubsGetAuthorizationRule"
         },
         {
-          "target": "com.azure.eventhub#ListEventHubAuthorizationRules"
+          "target": "com.azure.eventhub#EventHubsListAuthorizationRules"
         },
         {
-          "target": "com.azure.eventhub#DeleteEventHub"
+          "target": "com.azure.eventhub#EventHubsDelete"
         },
         {
           "target": "com.azure.eventhub#EventHubsCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetEventHub"
+          "target": "com.azure.eventhub#EventHubsGet"
         },
         {
-          "target": "com.azure.eventhub#ListEventHubByNamespace"
+          "target": "com.azure.eventhub#EventHubsListByNamespace"
         },
         {
-          "target": "com.azure.eventhub#CheckDisasterRecoveryConfigNameAvailability"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsCheckNameAvailability"
         },
         {
           "target": "com.azure.eventhub#DisasterRecoveryConfigsFailOver"
@@ -9678,109 +9988,109 @@
           "target": "com.azure.eventhub#DisasterRecoveryConfigsBreakPairing"
         },
         {
-          "target": "com.azure.eventhub#ListDisasterRecoveryConfigKeys"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsListKeys"
         },
         {
-          "target": "com.azure.eventhub#GetDisasterRecoveryConfigAuthorizationRule"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsGetAuthorizationRule"
         },
         {
-          "target": "com.azure.eventhub#ListDisasterRecoveryConfigAuthorizationRules"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsListAuthorizationRules"
         },
         {
-          "target": "com.azure.eventhub#DeleteDisasterRecoveryConfig"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsDelete"
         },
         {
           "target": "com.azure.eventhub#DisasterRecoveryConfigsCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetDisasterRecoveryConfig"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsGet"
         },
         {
-          "target": "com.azure.eventhub#ListDisasterRecoveryConfigs"
+          "target": "com.azure.eventhub#DisasterRecoveryConfigsList"
         },
         {
-          "target": "com.azure.eventhub#RegenerateNamespaceKeys"
+          "target": "com.azure.eventhub#NamespacesRegenerateKeys"
         },
         {
-          "target": "com.azure.eventhub#ListNamespaceKeys"
+          "target": "com.azure.eventhub#NamespacesListKeys"
         },
         {
-          "target": "com.azure.eventhub#DeleteNamespaceAuthorizationRule"
+          "target": "com.azure.eventhub#NamespacesDeleteAuthorizationRule"
         },
         {
           "target": "com.azure.eventhub#NamespacesCreateOrUpdateAuthorizationRule"
         },
         {
-          "target": "com.azure.eventhub#GetNamespaceAuthorizationRule"
+          "target": "com.azure.eventhub#NamespacesGetAuthorizationRule"
         },
         {
-          "target": "com.azure.eventhub#ListNamespaceAuthorizationRules"
+          "target": "com.azure.eventhub#NamespacesListAuthorizationRules"
         },
         {
-          "target": "com.azure.eventhub#DeleteApplicationGroup"
+          "target": "com.azure.eventhub#ApplicationGroupDelete"
         },
         {
           "target": "com.azure.eventhub#ApplicationGroupCreateOrUpdateApplicationGroup"
         },
         {
-          "target": "com.azure.eventhub#GetApplicationGroup"
+          "target": "com.azure.eventhub#ApplicationGroupGet"
         },
         {
-          "target": "com.azure.eventhub#ListApplicationGroupByNamespace"
+          "target": "com.azure.eventhub#ApplicationGroupListByNamespace"
         },
         {
-          "target": "com.azure.eventhub#DeleteNamespace"
+          "target": "com.azure.eventhub#NamespacesDelete"
         },
         {
-          "target": "com.azure.eventhub#UpdateNamespace"
+          "target": "com.azure.eventhub#NamespacesUpdate"
         },
         {
           "target": "com.azure.eventhub#NamespacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetNamespace"
+          "target": "com.azure.eventhub#NamespacesGet"
         },
         {
-          "target": "com.azure.eventhub#ListNamespaceByResourceGroup"
+          "target": "com.azure.eventhub#NamespacesListByResourceGroup"
         },
         {
-          "target": "com.azure.eventhub#PatchConfiguration"
+          "target": "com.azure.eventhub#ConfigurationPatch"
         },
         {
-          "target": "com.azure.eventhub#GetConfiguration"
+          "target": "com.azure.eventhub#ConfigurationGet"
         },
         {
-          "target": "com.azure.eventhub#ListClusterNamespaces"
+          "target": "com.azure.eventhub#ClustersListNamespaces"
         },
         {
-          "target": "com.azure.eventhub#DeleteCluster"
+          "target": "com.azure.eventhub#ClustersDelete"
         },
         {
-          "target": "com.azure.eventhub#UpdateCluster"
+          "target": "com.azure.eventhub#ClustersUpdate"
         },
         {
           "target": "com.azure.eventhub#ClustersCreateOrUpdate"
         },
         {
-          "target": "com.azure.eventhub#GetCluster"
+          "target": "com.azure.eventhub#ClustersGet"
         },
         {
-          "target": "com.azure.eventhub#ListClusterByResourceGroup"
+          "target": "com.azure.eventhub#ClustersListByResourceGroup"
         },
         {
-          "target": "com.azure.eventhub#ListNamespaces"
+          "target": "com.azure.eventhub#NamespacesList"
         },
         {
-          "target": "com.azure.eventhub#ListClusterBySubscription"
+          "target": "com.azure.eventhub#ClustersListBySubscription"
         },
         {
-          "target": "com.azure.eventhub#CheckNamespaceNameAvailability"
+          "target": "com.azure.eventhub#NamespacesCheckNameAvailability"
         },
         {
-          "target": "com.azure.eventhub#ListClusterAvailableClusterRegion"
+          "target": "com.azure.eventhub#ClustersListAvailableClusterRegion"
         },
         {
-          "target": "com.azure.eventhub#ListOperations"
+          "target": "com.azure.eventhub#OperationsList"
         }
       ],
       "traits": {

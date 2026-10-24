@@ -206,10 +206,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#UsagesListResult": {
@@ -343,6 +350,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1739,10 +1752,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists security policies associated with the profile",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#SecurityPolicyListResult": {
@@ -1838,6 +1858,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2279,10 +2305,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor secrets.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#SecretListResult": {
@@ -2379,6 +2412,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2398,10 +2437,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ListRuleSetResourceUsageRequest": {
@@ -2437,6 +2483,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the rule set under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3378,10 +3430,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing delivery rules within a rule set.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#RuleListResult": {
@@ -3485,6 +3544,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the rule set under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4047,10 +4112,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor rule sets within a profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#RuleSetListResult": {
@@ -4147,6 +4219,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4166,10 +4244,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ListAFDOriginGroupResourceUsageRequest": {
@@ -4205,6 +4290,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the origin group which is unique within the endpoint."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5080,10 +5171,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing origins within an origin group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#AFDOriginListResult": {
@@ -5187,6 +5285,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the origin group which is unique within the endpoint."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5944,10 +6048,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing origin groups within a profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#AFDOriginGroupListResult": {
@@ -6043,6 +6154,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9927,10 +10044,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing origins within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#OriginListResult": {
@@ -10034,6 +10158,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10642,10 +10772,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing origin groups within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#OriginGroupListResult": {
@@ -10749,6 +10886,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11714,10 +11857,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing custom domains within an endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#CustomDomainListResult": {
@@ -11822,6 +11972,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11841,10 +11997,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Checks the quota and usage of geo filters and custom domains under the given endpoint.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ResourceUsageListResult": {
@@ -11956,6 +12119,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12825,10 +12994,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists existing CDN endpoints.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#EndpointListResult": {
@@ -12949,6 +13125,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14103,10 +14285,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor domains.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#AFDDomainListResult": {
@@ -14203,6 +14392,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14222,10 +14417,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ListProfileResourceUsageRequest": {
@@ -14253,6 +14455,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14888,10 +15096,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ListAFDEndpointResourceUsageRequest": {
@@ -14927,6 +15142,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16096,10 +16317,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the existing origins within a profile.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#RouteListResult": {
@@ -16203,6 +16431,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the endpoint under the profile which is unique globally."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16992,10 +17226,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists existing AzureFrontDoor endpoints.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#AFDEndpointListResult": {
@@ -17116,6 +17357,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17954,10 +18201,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ProfileListResult": {
@@ -18136,6 +18390,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19768,10 +20028,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the protection policies within a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#CdnWebApplicationFirewallPolicyList": {
@@ -19897,6 +20164,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20035,10 +20308,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ListProfilesRequest": {
@@ -20050,6 +20330,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20070,10 +20356,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Check the quota and actual usage of the CDN profiles under the given subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ListResourceUsageRequest": {
@@ -20085,6 +20378,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20154,10 +20453,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all available managed rule sets.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#ManagedRuleSetDefinitionList": {
@@ -20340,6 +20646,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20349,7 +20661,7 @@
     "com.azure.cdn#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cdn#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.cdn#OperationsListResult"
@@ -20359,10 +20671,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Cdn/operations",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#OperationsListResult": {
@@ -20690,10 +21009,24 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
+    "com.azure.cdn#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.cdn#ListEdgeNodes": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cdn#ListEdgeNodesRequest"
       },
       "output": {
         "target": "com.azure.cdn#EdgenodeResult"
@@ -20703,10 +21036,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Cdn/edgenodes",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cdn#EdgenodeResult": {
@@ -20863,6 +21203,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The list of ip v4 addresses."
+      }
+    },
+    "com.azure.cdn#ListEdgeNodesRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cdn#CheckNameAvailability": {

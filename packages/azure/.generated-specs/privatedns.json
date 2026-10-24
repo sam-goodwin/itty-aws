@@ -15,16 +15,63 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.privatedns#VirtualNetworkLinksDelete": "com.azure.privatedns#DeleteVirtualNetworkLink",
+      "com.azure.privatedns#VirtualNetworkLinksDeleteResponse": "com.azure.privatedns#DeleteVirtualNetworkLinkResponse",
+      "com.azure.privatedns#VirtualNetworkLinksDeleteRequest": "com.azure.privatedns#DeleteVirtualNetworkLinkRequest",
+      "com.azure.privatedns#VirtualNetworkLinksUpdate": "com.azure.privatedns#UpdateVirtualNetworkLink",
+      "com.azure.privatedns#VirtualNetworkLinksUpdateResponse": "com.azure.privatedns#UpdateVirtualNetworkLinkResponse",
+      "com.azure.privatedns#VirtualNetworkLinksUpdateResponseTagsMap": "com.azure.privatedns#UpdateVirtualNetworkLinkResponseTagsMap",
+      "com.azure.privatedns#VirtualNetworkLinksUpdateRequest": "com.azure.privatedns#UpdateVirtualNetworkLinkRequest",
+      "com.azure.privatedns#VirtualNetworkLinksUpdateRequestTagsMap": "com.azure.privatedns#UpdateVirtualNetworkLinkRequestTagsMap",
+      "com.azure.privatedns#VirtualNetworkLinksGet": "com.azure.privatedns#GetVirtualNetworkLink",
+      "com.azure.privatedns#VirtualNetworkLinksGetResponse": "com.azure.privatedns#GetVirtualNetworkLinkResponse",
+      "com.azure.privatedns#VirtualNetworkLinksGetResponseTagsMap": "com.azure.privatedns#GetVirtualNetworkLinkResponseTagsMap",
+      "com.azure.privatedns#VirtualNetworkLinksGetRequest": "com.azure.privatedns#GetVirtualNetworkLinkRequest",
+      "com.azure.privatedns#VirtualNetworkLinksList": "com.azure.privatedns#ListVirtualNetworkLinks",
+      "com.azure.privatedns#VirtualNetworkLinksListRequest": "com.azure.privatedns#ListVirtualNetworkLinksRequest",
+      "com.azure.privatedns#RecordSetsList": "com.azure.privatedns#ListRecordSets",
+      "com.azure.privatedns#RecordSetsListRequest": "com.azure.privatedns#ListRecordSetsRequest",
+      "com.azure.privatedns#RecordSetsDelete": "com.azure.privatedns#DeleteRecordSet",
+      "com.azure.privatedns#RecordSetsDeleteRequest": "com.azure.privatedns#DeleteRecordSetRequest",
+      "com.azure.privatedns#RecordSetsDeleteRequestRecordType": "com.azure.privatedns#DeleteRecordSetRequestRecordType",
+      "com.azure.privatedns#RecordSetsUpdate": "com.azure.privatedns#UpdateRecordSet",
+      "com.azure.privatedns#RecordSetsUpdateResponse": "com.azure.privatedns#UpdateRecordSetResponse",
+      "com.azure.privatedns#RecordSetsUpdateRequest": "com.azure.privatedns#UpdateRecordSetRequest",
+      "com.azure.privatedns#RecordSetsUpdateRequestRecordType": "com.azure.privatedns#UpdateRecordSetRequestRecordType",
+      "com.azure.privatedns#RecordSetsGet": "com.azure.privatedns#GetRecordSet",
+      "com.azure.privatedns#RecordSetsGetResponse": "com.azure.privatedns#GetRecordSetResponse",
+      "com.azure.privatedns#RecordSetsGetRequest": "com.azure.privatedns#GetRecordSetRequest",
+      "com.azure.privatedns#RecordSetsGetRequestRecordType": "com.azure.privatedns#GetRecordSetRequestRecordType",
+      "com.azure.privatedns#RecordSetsListByType": "com.azure.privatedns#ListRecordSetByType",
+      "com.azure.privatedns#RecordSetsListByTypeRequest": "com.azure.privatedns#ListRecordSetByTypeRequest",
+      "com.azure.privatedns#RecordSetsListByTypeRequestRecordType": "com.azure.privatedns#ListRecordSetByTypeRequestRecordType",
+      "com.azure.privatedns#PrivateZonesDelete": "com.azure.privatedns#DeletePrivateZone",
+      "com.azure.privatedns#PrivateZonesDeleteResponse": "com.azure.privatedns#DeletePrivateZoneResponse",
+      "com.azure.privatedns#PrivateZonesDeleteRequest": "com.azure.privatedns#DeletePrivateZoneRequest",
+      "com.azure.privatedns#PrivateZonesUpdate": "com.azure.privatedns#UpdatePrivateZone",
+      "com.azure.privatedns#PrivateZonesUpdateResponse": "com.azure.privatedns#UpdatePrivateZoneResponse",
+      "com.azure.privatedns#PrivateZonesUpdateResponseTagsMap": "com.azure.privatedns#UpdatePrivateZoneResponseTagsMap",
+      "com.azure.privatedns#PrivateZonesUpdateRequest": "com.azure.privatedns#UpdatePrivateZoneRequest",
+      "com.azure.privatedns#PrivateZonesUpdateRequestTagsMap": "com.azure.privatedns#UpdatePrivateZoneRequestTagsMap",
+      "com.azure.privatedns#PrivateZonesGet": "com.azure.privatedns#GetPrivateZone",
+      "com.azure.privatedns#PrivateZonesGetResponse": "com.azure.privatedns#GetPrivateZoneResponse",
+      "com.azure.privatedns#PrivateZonesGetResponseTagsMap": "com.azure.privatedns#GetPrivateZoneResponseTagsMap",
+      "com.azure.privatedns#PrivateZonesGetRequest": "com.azure.privatedns#GetPrivateZoneRequest",
+      "com.azure.privatedns#PrivateZonesListByResourceGroup": "com.azure.privatedns#ListPrivateZoneByResourceGroup",
+      "com.azure.privatedns#PrivateZonesListByResourceGroupRequest": "com.azure.privatedns#ListPrivateZoneByResourceGroupRequest",
+      "com.azure.privatedns#PrivateZonesList": "com.azure.privatedns#ListPrivateZones",
+      "com.azure.privatedns#PrivateZonesListRequest": "com.azure.privatedns#ListPrivateZonesRequest"
+    }
   },
   "shapes": {
-    "com.azure.privatedns#DeleteVirtualNetworkLink": {
+    "com.azure.privatedns#VirtualNetworkLinksDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#DeleteVirtualNetworkLinkRequest"
+        "target": "com.azure.privatedns#VirtualNetworkLinksDeleteRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#DeleteVirtualNetworkLinkResponse"
+        "target": "com.azure.privatedns#VirtualNetworkLinksDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +84,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#DeleteVirtualNetworkLinkResponse": {
+    "com.azure.privatedns#VirtualNetworkLinksDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -59,7 +106,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#DeleteVirtualNetworkLinkRequest": {
+    "com.azure.privatedns#VirtualNetworkLinksDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -99,13 +146,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#UpdateVirtualNetworkLink": {
+    "com.azure.privatedns#VirtualNetworkLinksUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#UpdateVirtualNetworkLinkRequest"
+        "target": "com.azure.privatedns#VirtualNetworkLinksUpdateRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#UpdateVirtualNetworkLinkResponse"
+        "target": "com.azure.privatedns#VirtualNetworkLinksUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -118,7 +165,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#UpdateVirtualNetworkLinkResponse": {
+    "com.azure.privatedns#VirtualNetworkLinksUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -152,7 +199,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.privatedns#UpdateVirtualNetworkLinkResponseTagsMap",
+          "target": "com.azure.privatedns#VirtualNetworkLinksUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -188,7 +235,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#UpdateVirtualNetworkLinkResponseTagsMap": {
+    "com.azure.privatedns#VirtualNetworkLinksUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -444,7 +491,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.privatedns#UpdateVirtualNetworkLinkRequest": {
+    "com.azure.privatedns#VirtualNetworkLinksUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -486,7 +533,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.privatedns#UpdateVirtualNetworkLinkRequestTagsMap",
+          "target": "com.azure.privatedns#VirtualNetworkLinksUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -508,7 +555,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#UpdateVirtualNetworkLinkRequestTagsMap": {
+    "com.azure.privatedns#VirtualNetworkLinksUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -723,13 +770,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.privatedns#GetVirtualNetworkLink": {
+    "com.azure.privatedns#VirtualNetworkLinksGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#GetVirtualNetworkLinkRequest"
+        "target": "com.azure.privatedns#VirtualNetworkLinksGetRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#GetVirtualNetworkLinkResponse"
+        "target": "com.azure.privatedns#VirtualNetworkLinksGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -742,7 +789,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#GetVirtualNetworkLinkResponse": {
+    "com.azure.privatedns#VirtualNetworkLinksGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -776,7 +823,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.privatedns#GetVirtualNetworkLinkResponseTagsMap",
+          "target": "com.azure.privatedns#VirtualNetworkLinksGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -798,7 +845,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#GetVirtualNetworkLinkResponseTagsMap": {
+    "com.azure.privatedns#VirtualNetworkLinksGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -810,7 +857,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.privatedns#GetVirtualNetworkLinkRequest": {
+    "com.azure.privatedns#VirtualNetworkLinksGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -850,10 +897,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#ListVirtualNetworkLinks": {
+    "com.azure.privatedns#VirtualNetworkLinksList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#ListVirtualNetworkLinksRequest"
+        "target": "com.azure.privatedns#VirtualNetworkLinksListRequest"
       },
       "output": {
         "target": "com.azure.privatedns#VirtualNetworkLinkListResult"
@@ -863,10 +910,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the virtual network links to the specified Private DNS zone.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.privatedns#VirtualNetworkLinkListResult": {
@@ -967,7 +1021,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.privatedns#ListVirtualNetworkLinksRequest": {
+    "com.azure.privatedns#VirtualNetworkLinksListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1000,16 +1054,22 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of virtual network links to return. If not specified, returns up to 100 virtual network links."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#ListRecordSets": {
+    "com.azure.privatedns#RecordSetsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#ListRecordSetsRequest"
+        "target": "com.azure.privatedns#RecordSetsListRequest"
       },
       "output": {
         "target": "com.azure.privatedns#RecordSetListResult"
@@ -1019,10 +1079,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/aLL",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all record sets in a Private DNS zone.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.privatedns#RecordSetListResult": {
@@ -1426,7 +1493,7 @@
         "smithy.api#documentation": "The metadata attached to the record set."
       }
     },
-    "com.azure.privatedns#ListRecordSetsRequest": {
+    "com.azure.privatedns#RecordSetsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1466,16 +1533,22 @@
             "smithy.api#httpQuery": "$recordsetnamesuffix",
             "smithy.api#documentation": "The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with \".<recordsetnamesuffix>\"."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#DeleteRecordSet": {
+    "com.azure.privatedns#RecordSetsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#DeleteRecordSetRequest"
+        "target": "com.azure.privatedns#RecordSetsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1491,7 +1564,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#DeleteRecordSetRequest": {
+    "com.azure.privatedns#RecordSetsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1519,7 +1592,7 @@
           }
         },
         "recordType": {
-          "target": "com.azure.privatedns#DeleteRecordSetRequestRecordType",
+          "target": "com.azure.privatedns#RecordSetsDeleteRequestRecordType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -1539,7 +1612,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#DeleteRecordSetRequestRecordType": {
+    "com.azure.privatedns#RecordSetsDeleteRequestRecordType": {
       "type": "enum",
       "members": {
         "A": {
@@ -1593,13 +1666,13 @@
       },
       "traits": {}
     },
-    "com.azure.privatedns#UpdateRecordSet": {
+    "com.azure.privatedns#RecordSetsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#UpdateRecordSetRequest"
+        "target": "com.azure.privatedns#RecordSetsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#UpdateRecordSetResponse"
+        "target": "com.azure.privatedns#RecordSetsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1612,7 +1685,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#UpdateRecordSetResponse": {
+    "com.azure.privatedns#RecordSetsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1656,7 +1729,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#UpdateRecordSetRequest": {
+    "com.azure.privatedns#RecordSetsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1684,7 +1757,7 @@
           }
         },
         "recordType": {
-          "target": "com.azure.privatedns#UpdateRecordSetRequestRecordType",
+          "target": "com.azure.privatedns#RecordSetsUpdateRequestRecordType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -1850,7 +1923,7 @@
         "smithy.api#documentation": "The metadata attached to the record set."
       }
     },
-    "com.azure.privatedns#UpdateRecordSetRequestRecordType": {
+    "com.azure.privatedns#RecordSetsUpdateRequestRecordType": {
       "type": "enum",
       "members": {
         "A": {
@@ -2081,13 +2154,13 @@
       },
       "traits": {}
     },
-    "com.azure.privatedns#GetRecordSet": {
+    "com.azure.privatedns#RecordSetsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#GetRecordSetRequest"
+        "target": "com.azure.privatedns#RecordSetsGetRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#GetRecordSetResponse"
+        "target": "com.azure.privatedns#RecordSetsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2100,7 +2173,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#GetRecordSetResponse": {
+    "com.azure.privatedns#RecordSetsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2144,7 +2217,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#GetRecordSetRequest": {
+    "com.azure.privatedns#RecordSetsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2172,7 +2245,7 @@
           }
         },
         "recordType": {
-          "target": "com.azure.privatedns#GetRecordSetRequestRecordType",
+          "target": "com.azure.privatedns#RecordSetsGetRequestRecordType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -2192,7 +2265,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#GetRecordSetRequestRecordType": {
+    "com.azure.privatedns#RecordSetsGetRequestRecordType": {
       "type": "enum",
       "members": {
         "A": {
@@ -2246,10 +2319,10 @@
       },
       "traits": {}
     },
-    "com.azure.privatedns#ListRecordSetByType": {
+    "com.azure.privatedns#RecordSetsListByType": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#ListRecordSetByTypeRequest"
+        "target": "com.azure.privatedns#RecordSetsListByTypeRequest"
       },
       "output": {
         "target": "com.azure.privatedns#RecordSetListResult"
@@ -2259,13 +2332,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the record sets of a specified type in a Private DNS zone.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.privatedns#ListRecordSetByTypeRequest": {
+    "com.azure.privatedns#RecordSetsListByTypeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2293,7 +2373,7 @@
           }
         },
         "recordType": {
-          "target": "com.azure.privatedns#ListRecordSetByTypeRequestRecordType",
+          "target": "com.azure.privatedns#RecordSetsListByTypeRequestRecordType",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -2313,13 +2393,19 @@
             "smithy.api#httpQuery": "$recordsetnamesuffix",
             "smithy.api#documentation": "The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with \".<recordsetnamesuffix>\"."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#ListRecordSetByTypeRequestRecordType": {
+    "com.azure.privatedns#RecordSetsListByTypeRequestRecordType": {
       "type": "enum",
       "members": {
         "A": {
@@ -2373,13 +2459,13 @@
       },
       "traits": {}
     },
-    "com.azure.privatedns#DeletePrivateZone": {
+    "com.azure.privatedns#PrivateZonesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#DeletePrivateZoneRequest"
+        "target": "com.azure.privatedns#PrivateZonesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#DeletePrivateZoneResponse"
+        "target": "com.azure.privatedns#PrivateZonesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2392,7 +2478,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#DeletePrivateZoneResponse": {
+    "com.azure.privatedns#PrivateZonesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2414,7 +2500,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#DeletePrivateZoneRequest": {
+    "com.azure.privatedns#PrivateZonesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2446,13 +2532,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#UpdatePrivateZone": {
+    "com.azure.privatedns#PrivateZonesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#UpdatePrivateZoneRequest"
+        "target": "com.azure.privatedns#PrivateZonesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#UpdatePrivateZoneResponse"
+        "target": "com.azure.privatedns#PrivateZonesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2465,7 +2551,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#UpdatePrivateZoneResponse": {
+    "com.azure.privatedns#PrivateZonesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2499,7 +2585,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.privatedns#UpdatePrivateZoneResponseTagsMap",
+          "target": "com.azure.privatedns#PrivateZonesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2535,7 +2621,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#UpdatePrivateZoneResponseTagsMap": {
+    "com.azure.privatedns#PrivateZonesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2603,7 +2689,7 @@
         "smithy.api#documentation": "Represents the properties of the Private DNS zone."
       }
     },
-    "com.azure.privatedns#UpdatePrivateZoneRequest": {
+    "com.azure.privatedns#PrivateZonesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2637,7 +2723,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.privatedns#UpdatePrivateZoneRequestTagsMap",
+          "target": "com.azure.privatedns#PrivateZonesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2659,7 +2745,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#UpdatePrivateZoneRequestTagsMap": {
+    "com.azure.privatedns#PrivateZonesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2847,13 +2933,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.privatedns#GetPrivateZone": {
+    "com.azure.privatedns#PrivateZonesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#GetPrivateZoneRequest"
+        "target": "com.azure.privatedns#PrivateZonesGetRequest"
       },
       "output": {
-        "target": "com.azure.privatedns#GetPrivateZoneResponse"
+        "target": "com.azure.privatedns#PrivateZonesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2866,7 +2952,7 @@
         "com.distilled.openapi#apiVersion": "2024-06-01"
       }
     },
-    "com.azure.privatedns#GetPrivateZoneResponse": {
+    "com.azure.privatedns#PrivateZonesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2900,7 +2986,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.privatedns#GetPrivateZoneResponseTagsMap",
+          "target": "com.azure.privatedns#PrivateZonesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2922,7 +3008,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.privatedns#GetPrivateZoneResponseTagsMap": {
+    "com.azure.privatedns#PrivateZonesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2934,7 +3020,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.privatedns#GetPrivateZoneRequest": {
+    "com.azure.privatedns#PrivateZonesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2966,10 +3052,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#ListPrivateZoneByResourceGroup": {
+    "com.azure.privatedns#PrivateZonesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#ListPrivateZoneByResourceGroupRequest"
+        "target": "com.azure.privatedns#PrivateZonesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.privatedns#PrivateZoneListResult"
@@ -2979,10 +3065,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Private DNS zones within a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.privatedns#PrivateZoneListResult": {
@@ -3083,7 +3176,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.privatedns#ListPrivateZoneByResourceGroupRequest": {
+    "com.azure.privatedns#PrivateZonesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3108,16 +3201,22 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of record sets to return. If not specified, returns up to 100 record sets."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.privatedns#ListPrivateZones": {
+    "com.azure.privatedns#PrivateZonesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.privatedns#ListPrivateZonesRequest"
+        "target": "com.azure.privatedns#PrivateZonesListRequest"
       },
       "output": {
         "target": "com.azure.privatedns#PrivateZoneListResult"
@@ -3127,13 +3226,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateDnsZones",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2024-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Private DNS zones in all resource groups in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2024-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.privatedns#ListPrivateZonesRequest": {
+    "com.azure.privatedns#PrivateZonesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3150,6 +3256,12 @@
             "smithy.api#httpQuery": "$top",
             "smithy.api#documentation": "The maximum number of Private DNS zones to return. If not specified, returns up to 100 zones."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3161,55 +3273,55 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.privatedns#DeleteVirtualNetworkLink"
+          "target": "com.azure.privatedns#VirtualNetworkLinksDelete"
         },
         {
-          "target": "com.azure.privatedns#UpdateVirtualNetworkLink"
+          "target": "com.azure.privatedns#VirtualNetworkLinksUpdate"
         },
         {
           "target": "com.azure.privatedns#VirtualNetworkLinksCreateOrUpdate"
         },
         {
-          "target": "com.azure.privatedns#GetVirtualNetworkLink"
+          "target": "com.azure.privatedns#VirtualNetworkLinksGet"
         },
         {
-          "target": "com.azure.privatedns#ListVirtualNetworkLinks"
+          "target": "com.azure.privatedns#VirtualNetworkLinksList"
         },
         {
-          "target": "com.azure.privatedns#ListRecordSets"
+          "target": "com.azure.privatedns#RecordSetsList"
         },
         {
-          "target": "com.azure.privatedns#DeleteRecordSet"
+          "target": "com.azure.privatedns#RecordSetsDelete"
         },
         {
-          "target": "com.azure.privatedns#UpdateRecordSet"
+          "target": "com.azure.privatedns#RecordSetsUpdate"
         },
         {
           "target": "com.azure.privatedns#RecordSetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.privatedns#GetRecordSet"
+          "target": "com.azure.privatedns#RecordSetsGet"
         },
         {
-          "target": "com.azure.privatedns#ListRecordSetByType"
+          "target": "com.azure.privatedns#RecordSetsListByType"
         },
         {
-          "target": "com.azure.privatedns#DeletePrivateZone"
+          "target": "com.azure.privatedns#PrivateZonesDelete"
         },
         {
-          "target": "com.azure.privatedns#UpdatePrivateZone"
+          "target": "com.azure.privatedns#PrivateZonesUpdate"
         },
         {
           "target": "com.azure.privatedns#PrivateZonesCreateOrUpdate"
         },
         {
-          "target": "com.azure.privatedns#GetPrivateZone"
+          "target": "com.azure.privatedns#PrivateZonesGet"
         },
         {
-          "target": "com.azure.privatedns#ListPrivateZoneByResourceGroup"
+          "target": "com.azure.privatedns#PrivateZonesListByResourceGroup"
         },
         {
-          "target": "com.azure.privatedns#ListPrivateZones"
+          "target": "com.azure.privatedns#PrivateZonesList"
         }
       ],
       "traits": {

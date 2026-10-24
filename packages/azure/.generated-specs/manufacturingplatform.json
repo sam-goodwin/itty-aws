@@ -15,13 +15,40 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.manufacturingplatform#ManufacturingDataServicesListAvailableVersions": "com.azure.manufacturingplatform#ListManufacturingDataServiceAvailableVersions",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesListAvailableVersionsRequest": "com.azure.manufacturingplatform#ListManufacturingDataServiceAvailableVersionsRequest",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesDelete": "com.azure.manufacturingplatform#DeleteManufacturingDataService",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesDeleteResponse": "com.azure.manufacturingplatform#DeleteManufacturingDataServiceResponse",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesDeleteRequest": "com.azure.manufacturingplatform#DeleteManufacturingDataServiceRequest",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdate": "com.azure.manufacturingplatform#UpdateManufacturingDataService",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponse": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponse",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseSku": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseSku",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseIdentity": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseIdentity",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseTagsMap": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseTagsMap",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateRequest": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceRequest",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateRequestTagsMap": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceRequestTagsMap",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesGet": "com.azure.manufacturingplatform#GetManufacturingDataService",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponse": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponse",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseSku": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseSku",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseIdentity": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseIdentity",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseTagsMap": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseTagsMap",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesGetRequest": "com.azure.manufacturingplatform#GetManufacturingDataServiceRequest",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesListByResourceGroup": "com.azure.manufacturingplatform#ListManufacturingDataServiceByResourceGroup",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesListByResourceGroupRequest": "com.azure.manufacturingplatform#ListManufacturingDataServiceByResourceGroupRequest",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesListBySubscription": "com.azure.manufacturingplatform#ListManufacturingDataServiceBySubscription",
+      "com.azure.manufacturingplatform#ManufacturingDataServicesListBySubscriptionRequest": "com.azure.manufacturingplatform#ListManufacturingDataServiceBySubscriptionRequest",
+      "com.azure.manufacturingplatform#OperationsList": "com.azure.manufacturingplatform#ListOperations",
+      "com.azure.manufacturingplatform#OperationsListResponse": "com.azure.manufacturingplatform#ListOperationsResponse",
+      "com.azure.manufacturingplatform#OperationsListResponseValueList": "com.azure.manufacturingplatform#ListOperationsResponseValueList",
+      "com.azure.manufacturingplatform#OperationsListRequest": "com.azure.manufacturingplatform#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.manufacturingplatform#ListManufacturingDataServiceAvailableVersions": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesListAvailableVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.manufacturingplatform#ListManufacturingDataServiceAvailableVersionsRequest"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesListAvailableVersionsRequest"
       },
       "output": {
         "target": "com.azure.manufacturingplatform#AvailableVersionListResult"
@@ -97,7 +124,7 @@
         "smithy.api#documentation": "Information about application versions"
       }
     },
-    "com.azure.manufacturingplatform#ListManufacturingDataServiceAvailableVersionsRequest": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesListAvailableVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -129,13 +156,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.manufacturingplatform#DeleteManufacturingDataService": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.manufacturingplatform#DeleteManufacturingDataServiceRequest"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.manufacturingplatform#DeleteManufacturingDataServiceResponse"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -148,7 +175,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.manufacturingplatform#DeleteManufacturingDataServiceResponse": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -170,7 +197,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.manufacturingplatform#DeleteManufacturingDataServiceRequest": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -202,13 +229,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataService": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceRequest"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponse"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -221,7 +248,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponse": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -249,7 +276,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseTagsMap",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -268,13 +295,13 @@
           }
         },
         "identity": {
-          "target": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseIdentity",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         },
         "sku": {
-          "target": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseSku",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseSku",
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
@@ -298,7 +325,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseSku": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseSku": {
       "type": "structure",
       "members": {
         "name": {
@@ -366,7 +393,7 @@
         "smithy.api#documentation": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseIdentity": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1068,7 +1095,7 @@
         "smithy.api#documentation": "The status of the current operation."
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataServiceResponseTagsMap": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1188,7 +1215,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataServiceRequest": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1228,7 +1255,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.manufacturingplatform#UpdateManufacturingDataServiceRequestTagsMap",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1417,7 +1444,7 @@
         "smithy.api#documentation": "The properties related to OpenAI Resource"
       }
     },
-    "com.azure.manufacturingplatform#UpdateManufacturingDataServiceRequestTagsMap": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2012,13 +2039,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.manufacturingplatform#GetManufacturingDataService": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.manufacturingplatform#GetManufacturingDataServiceRequest"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesGetRequest"
       },
       "output": {
-        "target": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponse"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2031,7 +2058,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.manufacturingplatform#GetManufacturingDataServiceResponse": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2059,7 +2086,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseTagsMap",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2078,13 +2105,13 @@
           }
         },
         "identity": {
-          "target": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseIdentity",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         },
         "sku": {
-          "target": "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseSku",
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseSku",
           "traits": {
             "smithy.api#documentation": "The resource model definition representing SKU"
           }
@@ -2094,7 +2121,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseSku": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseSku": {
       "type": "structure",
       "members": {
         "name": {
@@ -2130,7 +2157,7 @@
         "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
-    "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseIdentity": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -2159,7 +2186,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.manufacturingplatform#GetManufacturingDataServiceResponseTagsMap": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2171,7 +2198,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.manufacturingplatform#GetManufacturingDataServiceRequest": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2203,10 +2230,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.manufacturingplatform#ListManufacturingDataServiceByResourceGroup": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.manufacturingplatform#ListManufacturingDataServiceByResourceGroupRequest"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.manufacturingplatform#MdsResourceListResult"
@@ -2216,10 +2243,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2025-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List MdsResource resources by resource group",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2025-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.manufacturingplatform#MdsResourceListResult": {
@@ -2392,7 +2426,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.manufacturingplatform#ListManufacturingDataServiceByResourceGroupRequest": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2410,16 +2444,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.manufacturingplatform#ListManufacturingDataServiceBySubscription": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.manufacturingplatform#ListManufacturingDataServiceBySubscriptionRequest"
+        "target": "com.azure.manufacturingplatform#ManufacturingDataServicesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.manufacturingplatform#MdsResourceListResult"
@@ -2429,13 +2469,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2025-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List MdsResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2025-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.manufacturingplatform#ListManufacturingDataServiceBySubscriptionRequest": {
+    "com.azure.manufacturingplatform#ManufacturingDataServicesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2445,36 +2492,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.manufacturingplatform#ListOperations": {
+    "com.azure.manufacturingplatform#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.manufacturingplatform#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.manufacturingplatform#ListOperationsResponse"
+        "target": "com.azure.manufacturingplatform#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.ManufacturingPlatform/operations",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2025-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2025-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.manufacturingplatform#ListOperationsResponse": {
+    "com.azure.manufacturingplatform#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.manufacturingplatform#ListOperationsResponseValueList",
+          "target": "com.azure.manufacturingplatform#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -2490,7 +2550,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.manufacturingplatform#ListOperationsResponseValueList": {
+    "com.azure.manufacturingplatform#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.manufacturingplatform#Operation"
@@ -2609,33 +2669,47 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.manufacturingplatform#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.manufacturingplatform#Manufacturingplatform": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.manufacturingplatform#ListManufacturingDataServiceAvailableVersions"
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesListAvailableVersions"
         },
         {
-          "target": "com.azure.manufacturingplatform#DeleteManufacturingDataService"
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesDelete"
         },
         {
-          "target": "com.azure.manufacturingplatform#UpdateManufacturingDataService"
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesUpdate"
         },
         {
           "target": "com.azure.manufacturingplatform#ManufacturingDataServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.manufacturingplatform#GetManufacturingDataService"
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesGet"
         },
         {
-          "target": "com.azure.manufacturingplatform#ListManufacturingDataServiceByResourceGroup"
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesListByResourceGroup"
         },
         {
-          "target": "com.azure.manufacturingplatform#ListManufacturingDataServiceBySubscription"
+          "target": "com.azure.manufacturingplatform#ManufacturingDataServicesListBySubscription"
         },
         {
-          "target": "com.azure.manufacturingplatform#ListOperations"
+          "target": "com.azure.manufacturingplatform#OperationsList"
         }
       ],
       "traits": {

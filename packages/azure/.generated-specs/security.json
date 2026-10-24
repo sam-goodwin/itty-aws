@@ -15,13 +15,22 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.security#DataScannersDelete": "com.azure.security#DeleteDataScanner",
+      "com.azure.security#DataScannersDeleteRequest": "com.azure.security#DeleteDataScannerRequest",
+      "com.azure.security#DataScannersGet": "com.azure.security#GetDataScanner",
+      "com.azure.security#DataScannersGetResponse": "com.azure.security#GetDataScannerResponse",
+      "com.azure.security#DataScannersGetResponseIdentity": "com.azure.security#GetDataScannerResponseIdentity",
+      "com.azure.security#DataScannersGetRequest": "com.azure.security#GetDataScannerRequest",
+      "com.azure.security#DataScannersList": "com.azure.security#ListDataScanners",
+      "com.azure.security#DataScannersListRequest": "com.azure.security#ListDataScannersRequest"
+    }
   },
   "shapes": {
-    "com.azure.security#DeleteDataScanner": {
+    "com.azure.security#DataScannersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.security#DeleteDataScannerRequest"
+        "target": "com.azure.security#DataScannersDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -37,7 +46,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.security#DeleteDataScannerRequest": {
+    "com.azure.security#DataScannersDeleteRequest": {
       "type": "structure",
       "members": {
         "scopeId": {
@@ -328,13 +337,13 @@
         "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
-    "com.azure.security#GetDataScanner": {
+    "com.azure.security#DataScannersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.security#GetDataScannerRequest"
+        "target": "com.azure.security#DataScannersGetRequest"
       },
       "output": {
-        "target": "com.azure.security#GetDataScannerResponse"
+        "target": "com.azure.security#DataScannersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -347,7 +356,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.security#GetDataScannerResponse": {
+    "com.azure.security#DataScannersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -381,7 +390,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.security#GetDataScannerResponseIdentity",
+          "target": "com.azure.security#DataScannersGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
@@ -391,7 +400,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.security#GetDataScannerResponseIdentity": {
+    "com.azure.security#DataScannersGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -417,7 +426,7 @@
         "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
-    "com.azure.security#GetDataScannerRequest": {
+    "com.azure.security#DataScannersGetRequest": {
       "type": "structure",
       "members": {
         "scopeId": {
@@ -441,10 +450,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.security#ListDataScanners": {
+    "com.azure.security#DataScannersList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.security#ListDataScannersRequest"
+        "target": "com.azure.security#DataScannersListRequest"
       },
       "output": {
         "target": "com.azure.security#DataScannerList"
@@ -454,10 +463,17 @@
           "method": "GET",
           "uri": "/{scopeId}/providers/Microsoft.Security/dataScanners",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all data scanner resources for the specified scope.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.security#DataScannerList": {
@@ -560,7 +576,7 @@
         "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
-    "com.azure.security#ListDataScannersRequest": {
+    "com.azure.security#DataScannersListRequest": {
       "type": "structure",
       "members": {
         "scopeId": {
@@ -569,6 +585,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}')."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -581,16 +603,16 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.security#DeleteDataScanner"
+          "target": "com.azure.security#DataScannersDelete"
         },
         {
           "target": "com.azure.security#DataScannersCreateOrUpdate"
         },
         {
-          "target": "com.azure.security#GetDataScanner"
+          "target": "com.azure.security#DataScannersGet"
         },
         {
-          "target": "com.azure.security#ListDataScanners"
+          "target": "com.azure.security#DataScannersList"
         }
       ],
       "traits": {

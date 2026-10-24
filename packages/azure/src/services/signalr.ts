@@ -612,7 +612,10 @@ export interface GetSignalRSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   properties?: SharedPrivateLinkResourceProperties;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that describes a operation. */
 export interface OperationDisplay {
   /** Friendly name of the resource provider */
@@ -694,7 +697,7 @@ export type OperationListValueList = Array<Operation>;
 /** Result of the request to list REST API operations. It contains a list of operations. */
 export interface OperationList {
   /** List of operations supported by the resource provider. */
-  value?: OperationListValueList;
+  value: OperationListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -703,6 +706,8 @@ export interface ListSignalRByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SignalRResourceTagsMap = { [key: string]: string | undefined };
@@ -730,13 +735,15 @@ export type SignalRResourceListValueList = Array<SignalRResource>;
 /** Object that includes an array of resources and a possible link for next set. */
 export interface SignalRResourceList {
   /** List of the resources */
-  value?: SignalRResourceListValueList;
+  value: SignalRResourceListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
 export interface ListSignalRBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSignalRCustomCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -745,6 +752,8 @@ export interface ListSignalRCustomCertificatesRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A custom certificate. */
 export interface CustomCertificate {
@@ -763,7 +772,7 @@ export type CustomCertificateListValueList = Array<CustomCertificate>;
 /** Custom certificates list. */
 export interface CustomCertificateList {
   /** List of custom certificates of this resource. */
-  value?: CustomCertificateListValueList;
+  value: CustomCertificateListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -774,6 +783,8 @@ export interface ListSignalRCustomDomainsRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A custom domain */
 export interface CustomDomain {
@@ -792,7 +803,7 @@ export type CustomDomainListValueList = Array<CustomDomain>;
 /** Custom domains list */
 export interface CustomDomainList {
   /** List of custom domains that bind to this resource. */
-  value?: CustomDomainListValueList;
+  value: CustomDomainListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -822,13 +833,15 @@ export interface ListSignalRPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList = Array<PrivateEndpointConnection>;
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionList {
   /** The list of the private endpoint connections */
-  value?: PrivateEndpointConnectionListValueList;
+  value: PrivateEndpointConnectionListValueList;
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
@@ -839,6 +852,8 @@ export interface ListSignalRPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Required members of the private link resource */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
@@ -890,7 +905,7 @@ export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
 /** Contains a list of PrivateLinkResource and a possible link to query more results */
 export interface PrivateLinkResourceList {
   /** List of PrivateLinkResource */
-  value?: PrivateLinkResourceListValueList;
+  value: PrivateLinkResourceListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -901,6 +916,8 @@ export interface ListSignalRReplicasRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ReplicaTagsMap = { [key: string]: string | undefined };
@@ -925,7 +942,7 @@ export interface Replica {
 export type ReplicaListValueList = Array<Replica>;
 export interface ReplicaList {
   /** List of the replica */
-  value?: ReplicaListValueList;
+  value: ReplicaListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -938,13 +955,15 @@ export interface ListSignalRReplicaSharedPrivateLinkResourcesRequest {
   resourceName: string;
   /** The name of the replica. */
   replicaName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList = Array<SharedPrivateLinkResource>;
 /** A list of shared private link resources */
 export interface SharedPrivateLinkResourceList {
   /** The list of the shared private link resources */
-  value?: SharedPrivateLinkResourceListValueList;
+  value: SharedPrivateLinkResourceListValueList;
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
@@ -997,6 +1016,8 @@ export interface ListSignalRSharedPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSignalRSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1011,6 +1032,8 @@ export interface ListUsagesRequest {
   subscriptionId: string;
   /** the location like "eastus" */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Localizable String object containing the name and a localized value. */
 export interface SignalRUsageName {
@@ -1036,7 +1059,7 @@ export type SignalRUsageListValueList = Array<SignalRUsage>;
 /** Object that includes an array of the resource usages and a possible link for next set. */
 export interface SignalRUsageList {
   /** List of the resource usages */
-  value?: SignalRUsageListValueList;
+  value: SignalRUsageListValueList;
   /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -1644,78 +1667,113 @@ export const GetSignalRSharedPrivateLinkResource: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available REST API operations of the Microsoft.SignalRService provider. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(300, __c9, 12) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRByResourceGroupError = AzureOpError;
 /** Handles requests to list all resources in a resource group. */
-export const ListSignalRByResourceGroup: API.OperationMethod<
+export const ListSignalRByResourceGroup: API.PaginatedOperationMethod<
   ListSignalRByResourceGroupRequest,
   SignalRResourceList,
   ListSignalRByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SignalRResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<ListSignalRByResourceGroupRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<SignalRResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRBySubscriptionError = AzureOpError;
 /** Handles requests to list all resources in a subscription. */
-export const ListSignalRBySubscription: API.OperationMethod<
+export const ListSignalRBySubscription: API.PaginatedOperationMethod<
   ListSignalRBySubscriptionRequest,
   SignalRResourceList,
   ListSignalRBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SignalRResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<ListSignalRBySubscriptionRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<SignalRResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRCustomCertificatesError = AzureOpError;
 /** List all custom certificates. */
-export const ListSignalRCustomCertificates: API.OperationMethod<
+export const ListSignalRCustomCertificates: API.PaginatedOperationMethod<
   ListSignalRCustomCertificatesRequest,
   CustomCertificateList,
   ListSignalRCustomCertificatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListSignalRCustomCertificatesRequest>,
   output: __S(418, __c13, 2) as any as S.Schema<CustomCertificateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRCustomDomainsError = AzureOpError;
 /** List all custom domains. */
-export const ListSignalRCustomDomains: API.OperationMethod<
+export const ListSignalRCustomDomains: API.PaginatedOperationMethod<
   ListSignalRCustomDomainsRequest,
   CustomDomainList,
   ListSignalRCustomDomainsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomDomain
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ListSignalRCustomDomainsRequest>,
   output: __S(450, __c14, 2) as any as S.Schema<CustomDomainList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRKeysError = AzureOpError;
 /** Get the access keys of the resource. */
@@ -1734,63 +1792,91 @@ export const ListSignalRKeys: API.OperationMethod<
 
 export type ListSignalRPrivateEndpointConnectionsError = AzureOpError;
 /** List private endpoint connections */
-export const ListSignalRPrivateEndpointConnections: API.OperationMethod<
+export const ListSignalRPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListSignalRPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionList,
   ListSignalRPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ListSignalRPrivateEndpointConnectionsRequest>,
   output: __S(545, __c17, 1) as any as S.Schema<PrivateEndpointConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRPrivateLinkResourcesError = AzureOpError;
 /** Get the private link resources that need to be created for a resource. */
-export const ListSignalRPrivateLinkResources: API.OperationMethod<
+export const ListSignalRPrivateLinkResources: API.PaginatedOperationMethod<
   ListSignalRPrivateLinkResourcesRequest,
   PrivateLinkResourceList,
   ListSignalRPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListSignalRPrivateLinkResourcesRequest>,
   output: __S(583, __c18, 7) as any as S.Schema<PrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRReplicasError = AzureOpError;
 /** List all replicas belong to this resource */
-export const ListSignalRReplicas: API.OperationMethod<
+export const ListSignalRReplicas: API.PaginatedOperationMethod<
   ListSignalRReplicasRequest,
   ReplicaList,
   ListSignalRReplicasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Replica
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListSignalRReplicasRequest>,
   output: __S(610, __c19, 2) as any as S.Schema<ReplicaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRReplicaSharedPrivateLinkResourcesError = AzureOpError;
 /** List shared private link resources */
-export const ListSignalRReplicaSharedPrivateLinkResources: API.OperationMethod<
+export const ListSignalRReplicaSharedPrivateLinkResources: API.PaginatedOperationMethod<
   ListSignalRReplicaSharedPrivateLinkResourcesRequest,
   SharedPrivateLinkResourceList,
   ListSignalRReplicaSharedPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SharedPrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListSignalRReplicaSharedPrivateLinkResourcesRequest>,
   output: __S(672, __c21, 0) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRReplicaSkusError = AzureOpError;
 /** List all available skus of the replica resource. */
@@ -1809,18 +1895,25 @@ export const ListSignalRReplicaSkus: API.OperationMethod<
 
 export type ListSignalRSharedPrivateLinkResourcesError = AzureOpError;
 /** List shared private link resources */
-export const ListSignalRSharedPrivateLinkResources: API.OperationMethod<
+export const ListSignalRSharedPrivateLinkResources: API.PaginatedOperationMethod<
   ListSignalRSharedPrivateLinkResourcesRequest,
   SharedPrivateLinkResourceList,
   ListSignalRSharedPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SharedPrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c24, 0) as any as S.Schema<ListSignalRSharedPrivateLinkResourcesRequest>,
   output: __S(672, __c21, 0) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSignalRSkusError = AzureOpError;
 /** List all available skus of the resource. */
@@ -1839,18 +1932,25 @@ export const ListSignalRSkus: API.OperationMethod<
 
 export type ListUsagesError = AzureOpError;
 /** List resource usage quotas by location. */
-export const ListUsages: API.OperationMethod<
+export const ListUsages: API.PaginatedOperationMethod<
   ListUsagesRequest,
   SignalRUsageList,
   ListUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SignalRUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(832, __c26, 0) as any as S.Schema<ListUsagesRequest>,
   output: __S(836, __c26, 4) as any as S.Schema<SignalRUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RegenerateSignalRKeyError = AzureOpError;
 /** Regenerate the access key for the resource. PrimaryKey and SecondaryKey cannot be regenerated at the same time. */
@@ -2216,12 +2316,15 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.SignalRService/operations",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2297,7 +2400,7 @@ function __c9(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(299, __c9, 11)),
+          value: __S(299, __c9, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -2310,12 +2413,14 @@ function __c10(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRByResourceGroupRequest" });
@@ -2328,7 +2433,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(352, __c11, 0)),
+          value: __S(352, __c11, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRResourceList" });
@@ -2340,12 +2445,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/signalR",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRBySubscriptionRequest" });
@@ -2359,12 +2466,14 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRCustomCertificatesRequest" });
@@ -2373,7 +2482,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(417, __c13, 1)),
+          value: __S(417, __c13, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomCertificateList" });
@@ -2387,12 +2496,14 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRCustomDomainsRequest" });
@@ -2401,7 +2512,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(449, __c14, 1)),
+          value: __S(449, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainList" });
@@ -2463,19 +2574,21 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRPrivateEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1728, __c54, 0)),
+          value: __S(1728, __c54, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionList" });
@@ -2489,12 +2602,14 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateLinkResources",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRPrivateLinkResourcesRequest" });
@@ -2539,7 +2654,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(582, __c18, 6)),
+          value: __S(582, __c18, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceList" });
@@ -2553,12 +2668,14 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRReplicasRequest" });
@@ -2567,7 +2684,7 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(609, __c19, 1)),
+          value: __S(609, __c19, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaList" });
@@ -2582,12 +2699,14 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRReplicaSharedPrivateLinkResourcesRequest" });
@@ -2598,7 +2717,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1760, __c55, 0)),
+          value: __S(1760, __c55, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedPrivateLinkResourceList" });
@@ -2665,12 +2784,14 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSignalRSharedPrivateLinkResourcesRequest" });
@@ -2702,12 +2823,14 @@ function __c26(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
             code: 200,
             apiVersion: "2024-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
@@ -2733,7 +2856,7 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(835, __c26, 3)),
+          value: __S(835, __c26, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRUsageList" });

@@ -3018,6 +3018,8 @@ export interface ListArmTemplatesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ArmTemplateTagsMap = { [key: string]: string | undefined };
@@ -3064,6 +3066,8 @@ export interface ListArtifactsRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ArtifactTagsMap = { [key: string]: string | undefined };
@@ -3108,6 +3112,8 @@ export interface ListArtifactSourcesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ArtifactSourceTagsMap = { [key: string]: string | undefined };
@@ -3152,6 +3158,8 @@ export interface ListCustomImagesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CustomImageTagsMap = { [key: string]: string | undefined };
@@ -3198,6 +3206,8 @@ export interface ListDisksRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DiskTagsMap = { [key: string]: string | undefined };
@@ -3244,6 +3254,8 @@ export interface ListEnvironmentsRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DtlEnvironmentTagsMap = { [key: string]: string | undefined };
@@ -3288,6 +3300,8 @@ export interface ListFormulasRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FormulaTagsMap = { [key: string]: string | undefined };
@@ -3332,6 +3346,8 @@ export interface ListGalleryImagesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of a gallery image. */
 export interface GalleryImageProperties {
@@ -3393,6 +3409,8 @@ export interface ListGlobalScheduleByResourceGroupRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Schedule items on this page */
 export type ScheduleListValueList = Array<Schedule>;
@@ -3414,6 +3432,8 @@ export interface ListGlobalScheduleBySubscriptionRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLabByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -3428,6 +3448,8 @@ export interface ListLabByResourceGroupRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LabTagsMap = { [key: string]: string | undefined };
@@ -3468,6 +3490,8 @@ export interface ListLabBySubscriptionRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLabVhdsRequest {
   /** The ID of the target subscription. */
@@ -3476,6 +3500,8 @@ export interface ListLabVhdsRequest {
   resourceGroupName: string;
   /** The name of the lab. */
   name: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of a VHD in the lab. */
 export interface LabVhd {
@@ -3506,6 +3532,8 @@ export interface ListNotificationChannelsRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NotificationChannelTagsMap = { [key: string]: string | undefined };
@@ -3552,6 +3580,8 @@ export interface ListPoliciesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The tags of the resource. */
 export type PolicyTagsMap = { [key: string]: string | undefined };
@@ -3581,7 +3611,10 @@ export interface PolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListProviderOperationsRequest {}
+export interface ListProviderOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -3614,7 +3647,7 @@ export interface Operation {
 export type ListProviderOperationsResponseValueList = Array<Operation>;
 export interface ListProviderOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListProviderOperationsResponseValueList;
+  value: ListProviderOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -3627,6 +3660,8 @@ export interface ListScheduleApplicableRequest {
   labName: string;
   /** The name of the Schedule */
   name: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSchedulesRequest {
   /** The ID of the target subscription. */
@@ -3643,6 +3678,8 @@ export interface ListSchedulesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSecretsRequest {
   /** The ID of the target subscription. */
@@ -3661,6 +3698,8 @@ export interface ListSecretsRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SecretTagsMap = { [key: string]: string | undefined };
@@ -3739,6 +3778,8 @@ export interface ListServiceFabricsRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ServiceFabricTagsMap = { [key: string]: string | undefined };
@@ -3787,6 +3828,8 @@ export interface ListServiceFabricSchedulesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListUsersRequest {
   /** The ID of the target subscription. */
@@ -3803,6 +3846,8 @@ export interface ListUsersRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type UserTagsMap = { [key: string]: string | undefined };
@@ -3877,6 +3922,8 @@ export interface ListVirtualMachinesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LabVirtualMachineTagsMap = { [key: string]: string | undefined };
@@ -3923,6 +3970,8 @@ export interface ListVirtualMachineSchedulesRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualNetworksRequest {
   /** The ID of the target subscription. */
@@ -3939,6 +3988,8 @@ export interface ListVirtualNetworksRequest {
   _top?: number;
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
@@ -6295,288 +6346,421 @@ export const LabsGenerateUploadUri: API.OperationMethod<
 
 export type ListArmTemplatesError = AzureOpError;
 /** List azure resource manager templates in a given artifact source. */
-export const ListArmTemplates: API.OperationMethod<
+export const ListArmTemplates: API.PaginatedOperationMethod<
   ListArmTemplatesRequest,
   ArmTemplateList,
   ListArmTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ArmTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2128, __c133, 0) as any as S.Schema<ListArmTemplatesRequest>,
   output: __S(2130, __c133, 2) as any as S.Schema<ArmTemplateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListArtifactsError = AzureOpError;
 /** List artifacts in a given artifact source. */
-export const ListArtifacts: API.OperationMethod<
+export const ListArtifacts: API.PaginatedOperationMethod<
   ListArtifactsRequest,
   ArtifactList,
   ListArtifactsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Artifact
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2144, __c134, 0) as any as S.Schema<ListArtifactsRequest>,
   output: __S(2146, __c134, 2) as any as S.Schema<ArtifactList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListArtifactSourcesError = AzureOpError;
 /** List artifact sources in a given lab. */
-export const ListArtifactSources: API.OperationMethod<
+export const ListArtifactSources: API.PaginatedOperationMethod<
   ListArtifactSourcesRequest,
   ArtifactSourceList,
   ListArtifactSourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ArtifactSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2160, __c135, 0) as any as S.Schema<ListArtifactSourcesRequest>,
   output: __S(2162, __c135, 2) as any as S.Schema<ArtifactSourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomImagesError = AzureOpError;
 /** List custom images in a given lab. */
-export const ListCustomImages: API.OperationMethod<
+export const ListCustomImages: API.PaginatedOperationMethod<
   ListCustomImagesRequest,
   CustomImageList,
   ListCustomImagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomImage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2208, __c138, 0) as any as S.Schema<ListCustomImagesRequest>,
   output: __S(2210, __c138, 2) as any as S.Schema<CustomImageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDisksError = AzureOpError;
 /** List disks in a given user profile. */
-export const ListDisks: API.OperationMethod<
+export const ListDisks: API.PaginatedOperationMethod<
   ListDisksRequest,
   DiskList,
   ListDisksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Disk
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2224, __c139, 0) as any as S.Schema<ListDisksRequest>,
   output: __S(2226, __c139, 2) as any as S.Schema<DiskList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnvironmentsError = AzureOpError;
 /** List environments in a given user profile. */
-export const ListEnvironments: API.OperationMethod<
+export const ListEnvironments: API.PaginatedOperationMethod<
   ListEnvironmentsRequest,
   DtlEnvironmentList,
   ListEnvironmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DtlEnvironment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2240, __c140, 0) as any as S.Schema<ListEnvironmentsRequest>,
   output: __S(2242, __c140, 2) as any as S.Schema<DtlEnvironmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFormulasError = AzureOpError;
 /** List formulas in a given lab. */
-export const ListFormulas: API.OperationMethod<
+export const ListFormulas: API.PaginatedOperationMethod<
   ListFormulasRequest,
   FormulaList,
   ListFormulasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Formula
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2256, __c141, 0) as any as S.Schema<ListFormulasRequest>,
   output: __S(2258, __c141, 2) as any as S.Schema<FormulaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGalleryImagesError = AzureOpError;
 /** List gallery images in a given lab. */
-export const ListGalleryImages: API.OperationMethod<
+export const ListGalleryImages: API.PaginatedOperationMethod<
   ListGalleryImagesRequest,
   GalleryImageList,
   ListGalleryImagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GalleryImage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2272, __c142, 0) as any as S.Schema<ListGalleryImagesRequest>,
   output: __S(2276, __c142, 4) as any as S.Schema<GalleryImageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGlobalScheduleByResourceGroupError = AzureOpError;
 /** List schedules in a resource group. */
-export const ListGlobalScheduleByResourceGroup: API.OperationMethod<
+export const ListGlobalScheduleByResourceGroup: API.PaginatedOperationMethod<
   ListGlobalScheduleByResourceGroupRequest,
   ScheduleList,
   ListGlobalScheduleByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2288, __c143, 0) as any as S.Schema<ListGlobalScheduleByResourceGroupRequest>,
   output: __S(2305, __c144, 1) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGlobalScheduleBySubscriptionError = AzureOpError;
 /** List schedules in a subscription. */
-export const ListGlobalScheduleBySubscription: API.OperationMethod<
+export const ListGlobalScheduleBySubscription: API.PaginatedOperationMethod<
   ListGlobalScheduleBySubscriptionRequest,
   ScheduleList,
   ListGlobalScheduleBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2320, __c145, 0) as any as S.Schema<ListGlobalScheduleBySubscriptionRequest>,
   output: __S(2305, __c144, 1) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabByResourceGroupError = AzureOpError;
 /** List labs in a resource group. */
-export const ListLabByResourceGroup: API.OperationMethod<
+export const ListLabByResourceGroup: API.PaginatedOperationMethod<
   ListLabByResourceGroupRequest,
   LabList,
   ListLabByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Lab
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2336, __c146, 0) as any as S.Schema<ListLabByResourceGroupRequest>,
   output: __S(2353, __c147, 1) as any as S.Schema<LabList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabBySubscriptionError = AzureOpError;
 /** List labs in a subscription. */
-export const ListLabBySubscription: API.OperationMethod<
+export const ListLabBySubscription: API.PaginatedOperationMethod<
   ListLabBySubscriptionRequest,
   LabList,
   ListLabBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Lab
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2368, __c148, 0) as any as S.Schema<ListLabBySubscriptionRequest>,
   output: __S(2353, __c147, 1) as any as S.Schema<LabList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLabVhdsError = AzureOpError;
 /** List disk images available for custom image creation. */
-export const ListLabVhds: API.OperationMethod<
+export const ListLabVhds: API.PaginatedOperationMethod<
   ListLabVhdsRequest,
   LabVhdList,
   ListLabVhdsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LabVhd
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2384, __c149, 0) as any as S.Schema<ListLabVhdsRequest>,
   output: __S(2387, __c149, 3) as any as S.Schema<LabVhdList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNotificationChannelsError = AzureOpError;
 /** List notification channels in a given lab. */
-export const ListNotificationChannels: API.OperationMethod<
+export const ListNotificationChannels: API.PaginatedOperationMethod<
   ListNotificationChannelsRequest,
   NotificationChannelList,
   ListNotificationChannelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NotificationChannel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2544, __c159, 0) as any as S.Schema<ListNotificationChannelsRequest>,
   output: __S(2546, __c159, 2) as any as S.Schema<NotificationChannelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoliciesError = AzureOpError;
 /** List policies in a given policy set. */
-export const ListPolicies: API.OperationMethod<
+export const ListPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   PolicyList,
   ListPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2560, __c160, 0) as any as S.Schema<ListPoliciesRequest>,
   output: __S(2562, __c160, 2) as any as S.Schema<PolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProviderOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListProviderOperations: API.OperationMethod<
+export const ListProviderOperations: API.PaginatedOperationMethod<
   ListProviderOperationsRequest,
   ListProviderOperationsResponse,
   ListProviderOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2576, __c161, 0) as any as S.Schema<ListProviderOperationsRequest>,
   output: __S(2580, __c161, 4) as any as S.Schema<ListProviderOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduleApplicableError = AzureOpError;
 /** Lists all applicable schedules */
-export const ListScheduleApplicable: API.OperationMethod<
+export const ListScheduleApplicable: API.PaginatedOperationMethod<
   ListScheduleApplicableRequest,
   ScheduleList,
   ListScheduleApplicableError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2592, __c162, 0) as any as S.Schema<ListScheduleApplicableRequest>,
   output: __S(2305, __c144, 1) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSchedulesError = AzureOpError;
 /** List schedules in a given lab. */
-export const ListSchedules: API.OperationMethod<
+export const ListSchedules: API.PaginatedOperationMethod<
   ListSchedulesRequest,
   ScheduleList,
   ListSchedulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2608, __c163, 0) as any as S.Schema<ListSchedulesRequest>,
   output: __S(2305, __c144, 1) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecretsError = AzureOpError;
 /** List secrets in a given user profile. */
-export const ListSecrets: API.OperationMethod<
+export const ListSecrets: API.PaginatedOperationMethod<
   ListSecretsRequest,
   SecretList,
   ListSecretsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Secret
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2624, __c164, 0) as any as S.Schema<ListSecretsRequest>,
   output: __S(2626, __c164, 2) as any as S.Schema<SecretList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceFabricApplicableSchedulesError = AzureOpError;
 /** Lists the applicable start/stop schedules, if any. */
@@ -6595,48 +6779,69 @@ export const ListServiceFabricApplicableSchedules: API.OperationMethod<
 
 export type ListServiceFabricsError = AzureOpError;
 /** List service fabrics in a given user profile. */
-export const ListServiceFabrics: API.OperationMethod<
+export const ListServiceFabrics: API.PaginatedOperationMethod<
   ListServiceFabricsRequest,
   ServiceFabricList,
   ListServiceFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceFabric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2656, __c166, 0) as any as S.Schema<ListServiceFabricsRequest>,
   output: __S(2658, __c166, 2) as any as S.Schema<ServiceFabricList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceFabricSchedulesError = AzureOpError;
 /** List schedules in a given service fabric. */
-export const ListServiceFabricSchedules: API.OperationMethod<
+export const ListServiceFabricSchedules: API.PaginatedOperationMethod<
   ListServiceFabricSchedulesRequest,
   ScheduleList,
   ListServiceFabricSchedulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2672, __c167, 0) as any as S.Schema<ListServiceFabricSchedulesRequest>,
   output: __S(2305, __c144, 1) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsersError = AzureOpError;
 /** List user profiles in a given lab. */
-export const ListUsers: API.OperationMethod<
+export const ListUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   UserList,
   ListUsersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2688, __c168, 0) as any as S.Schema<ListUsersRequest>,
   output: __S(2690, __c168, 2) as any as S.Schema<UserList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineApplicableSchedulesError = AzureOpError;
 /** Lists the applicable start/stop schedules, if any. */
@@ -6655,48 +6860,69 @@ export const ListVirtualMachineApplicableSchedules: API.OperationMethod<
 
 export type ListVirtualMachinesError = AzureOpError;
 /** List virtual machines in a given lab. */
-export const ListVirtualMachines: API.OperationMethod<
+export const ListVirtualMachines: API.PaginatedOperationMethod<
   ListVirtualMachinesRequest,
   LabVirtualMachineList,
   ListVirtualMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LabVirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2752, __c172, 0) as any as S.Schema<ListVirtualMachinesRequest>,
   output: __S(2754, __c172, 2) as any as S.Schema<LabVirtualMachineList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineSchedulesError = AzureOpError;
 /** List schedules in a given virtual machine. */
-export const ListVirtualMachineSchedules: API.OperationMethod<
+export const ListVirtualMachineSchedules: API.PaginatedOperationMethod<
   ListVirtualMachineSchedulesRequest,
   ScheduleList,
   ListVirtualMachineSchedulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2768, __c173, 0) as any as S.Schema<ListVirtualMachineSchedulesRequest>,
   output: __S(2305, __c144, 1) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworksError = AzureOpError;
 /** List virtual networks in a given lab. */
-export const ListVirtualNetworks: API.OperationMethod<
+export const ListVirtualNetworks: API.PaginatedOperationMethod<
   ListVirtualNetworksRequest,
   VirtualNetworkList,
   ListVirtualNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2784, __c174, 0) as any as S.Schema<ListVirtualNetworksRequest>,
   output: __S(2786, __c174, 2) as any as S.Schema<VirtualNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type NotificationChannelsCreateOrUpdateError = AzureOpError;
 /** Create or replace an existing notification channel. */
@@ -10505,12 +10731,14 @@ function __c133(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListArmTemplatesRequest" });
@@ -10538,12 +10766,14 @@ function __c134(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListArtifactsRequest" });
@@ -10570,12 +10800,14 @@ function __c135(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListArtifactSourcesRequest" });
@@ -10727,12 +10959,14 @@ function __c138(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomImagesRequest" });
@@ -10760,12 +10994,14 @@ function __c139(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDisksRequest" });
@@ -10793,12 +11029,14 @@ function __c140(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
@@ -10825,12 +11063,14 @@ function __c141(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFormulasRequest" });
@@ -10857,12 +11097,14 @@ function __c142(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/galleryimages",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGalleryImagesRequest" });
@@ -10913,12 +11155,14 @@ function __c143(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGlobalScheduleByResourceGroupRequest" });
@@ -10947,12 +11191,14 @@ function __c145(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/schedules",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGlobalScheduleBySubscriptionRequest" });
@@ -10969,12 +11215,14 @@ function __c146(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabByResourceGroupRequest" });
@@ -11003,12 +11251,14 @@ function __c148(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/labs",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabBySubscriptionRequest" });
@@ -11022,12 +11272,14 @@ function __c149(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/listVhds",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLabVhdsRequest" });
@@ -11253,12 +11505,14 @@ function __c159(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNotificationChannelsRequest" });
@@ -11286,12 +11540,14 @@ function __c160(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
@@ -11310,12 +11566,15 @@ function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DevTestLab/operations",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProviderOperationsRequest" });
@@ -11343,7 +11602,7 @@ function __c161(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2579, __c161, 3)),
+          value: __S(2579, __c161, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProviderOperationsResponse" });
@@ -11358,12 +11617,14 @@ function __c162(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/listApplicable",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScheduleApplicableRequest" });
@@ -11381,12 +11642,14 @@ function __c163(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSchedulesRequest" });
@@ -11405,12 +11668,14 @@ function __c164(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecretsRequest" });
@@ -11459,12 +11724,14 @@ function __c166(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceFabricsRequest" });
@@ -11493,12 +11760,14 @@ function __c167(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/servicefabrics/{serviceFabricName}/schedules",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceFabricSchedulesRequest" });
@@ -11516,12 +11785,14 @@ function __c168(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsersRequest" });
@@ -11685,12 +11956,14 @@ function __c172(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachinesRequest" });
@@ -11718,12 +11991,14 @@ function __c173(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineSchedulesRequest" });
@@ -11741,12 +12016,14 @@ function __c174(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks",
             code: 200,
             apiVersion: "2018-09-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworksRequest" });

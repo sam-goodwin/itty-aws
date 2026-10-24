@@ -15,96 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_job_router#JobRouterOperationsAcceptJobOffer": "com.azure.communication_job_router#AcceptJobRouterOperationJobOffer",
-      "com.azure.communication_job_router#JobRouterOperationsAcceptJobOfferRequest": "com.azure.communication_job_router#AcceptJobRouterOperationJobOfferRequest",
-      "com.azure.communication_job_router#JobRouterOperationsDeleteWorker": "com.azure.communication_job_router#DeleteJobRouterOperationWorker",
-      "com.azure.communication_job_router#JobRouterOperationsDeleteWorkerRequest": "com.azure.communication_job_router#DeleteJobRouterOperationWorkerRequest",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorker": "com.azure.communication_job_router#UpsertJobRouterOperationWorker",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerResponse": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerResponse",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequest": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequest",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestChannelsList": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestChannelsList",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestTagsMap": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestTagsMap",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestLabelsMap": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestLabelsMap",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestQueuesList": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestQueuesList",
-      "com.azure.communication_job_router#JobRouterOperationsGetWorker": "com.azure.communication_job_router#GetJobRouterOperationWorker",
-      "com.azure.communication_job_router#JobRouterOperationsGetWorkerResponse": "com.azure.communication_job_router#GetJobRouterOperationWorkerResponse",
-      "com.azure.communication_job_router#JobRouterOperationsGetWorkerRequest": "com.azure.communication_job_router#GetJobRouterOperationWorkerRequest",
-      "com.azure.communication_job_router#JobRouterOperationsListWorkers": "com.azure.communication_job_router#ListJobRouterOperationWorkers",
-      "com.azure.communication_job_router#JobRouterOperationsListWorkersRequest": "com.azure.communication_job_router#ListJobRouterOperationWorkersRequest",
-      "com.azure.communication_job_router#JobRouterOperationsListWorkersRequestState": "com.azure.communication_job_router#ListJobRouterOperationWorkersRequestState",
-      "com.azure.communication_job_router#JobRouterOperationsGetQueueStatistics": "com.azure.communication_job_router#GetJobRouterOperationQueueStatistics",
-      "com.azure.communication_job_router#JobRouterOperationsGetQueueStatisticsRequest": "com.azure.communication_job_router#GetJobRouterOperationQueueStatisticsRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteQueue": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationQueue",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteQueueRequest": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationQueueRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueue": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueue",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueResponse": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueRequest": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueRequestLabelsMap": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueRequestLabelsMap",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueue": "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueue",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueueResponse": "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueueResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueueRequest": "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueueRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListQueues": "com.azure.communication_job_router#ListJobRouterAdministrationOperationQueues",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListQueuesRequest": "com.azure.communication_job_router#ListJobRouterAdministrationOperationQueuesRequest",
-      "com.azure.communication_job_router#JobRouterOperationsGetInQueuePosition": "com.azure.communication_job_router#GetJobRouterOperationInQueuePosition",
-      "com.azure.communication_job_router#JobRouterOperationsGetInQueuePositionRequest": "com.azure.communication_job_router#GetJobRouterOperationInQueuePositionRequest",
-      "com.azure.communication_job_router#JobRouterOperationsUnassignJob": "com.azure.communication_job_router#UnassignJobRouterOperationJob",
-      "com.azure.communication_job_router#JobRouterOperationsUnassignJobRequest": "com.azure.communication_job_router#UnassignJobRouterOperationJobRequest",
-      "com.azure.communication_job_router#JobRouterOperationsCompleteJob": "com.azure.communication_job_router#CompleteJobRouterOperationJob",
-      "com.azure.communication_job_router#JobRouterOperationsCompleteJobResponse": "com.azure.communication_job_router#CompleteJobRouterOperationJobResponse",
-      "com.azure.communication_job_router#JobRouterOperationsCompleteJobRequest": "com.azure.communication_job_router#CompleteJobRouterOperationJobRequest",
-      "com.azure.communication_job_router#JobRouterOperationsCancelJob": "com.azure.communication_job_router#CancelJobRouterOperationJob",
-      "com.azure.communication_job_router#JobRouterOperationsCancelJobResponse": "com.azure.communication_job_router#CancelJobRouterOperationJobResponse",
-      "com.azure.communication_job_router#JobRouterOperationsCancelJobRequest": "com.azure.communication_job_router#CancelJobRouterOperationJobRequest",
-      "com.azure.communication_job_router#JobRouterOperationsDeleteJob": "com.azure.communication_job_router#DeleteJobRouterOperationJob",
-      "com.azure.communication_job_router#JobRouterOperationsDeleteJobRequest": "com.azure.communication_job_router#DeleteJobRouterOperationJobRequest",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJob": "com.azure.communication_job_router#UpsertJobRouterOperationJob",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJobResponse": "com.azure.communication_job_router#UpsertJobRouterOperationJobResponse",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequest": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequest",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestNotesList": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestNotesList",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestTagsMap": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestTagsMap",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestLabelsMap": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestLabelsMap",
-      "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestRequestedWorkerSelectorsList": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestRequestedWorkerSelectorsList",
-      "com.azure.communication_job_router#JobRouterOperationsGetJob": "com.azure.communication_job_router#GetJobRouterOperationJob",
-      "com.azure.communication_job_router#JobRouterOperationsGetJobResponse": "com.azure.communication_job_router#GetJobRouterOperationJobResponse",
-      "com.azure.communication_job_router#JobRouterOperationsGetJobRequest": "com.azure.communication_job_router#GetJobRouterOperationJobRequest",
-      "com.azure.communication_job_router#JobRouterOperationsListJobs": "com.azure.communication_job_router#ListJobRouterOperationJobs",
-      "com.azure.communication_job_router#JobRouterOperationsListJobsRequest": "com.azure.communication_job_router#ListJobRouterOperationJobsRequest",
-      "com.azure.communication_job_router#JobRouterOperationsListJobsRequestStatus": "com.azure.communication_job_router#ListJobRouterOperationJobsRequestStatus",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteExceptionPolicy": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationExceptionPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteExceptionPolicyRequest": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationExceptionPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicy": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyResponse": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyRequest": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyRequestExceptionRulesList": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyRequestExceptionRulesList",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicy": "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicyResponse": "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicyResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicyRequest": "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListExceptionPolicies": "com.azure.communication_job_router#ListJobRouterAdministrationOperationExceptionPolicies",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListExceptionPoliciesRequest": "com.azure.communication_job_router#ListJobRouterAdministrationOperationExceptionPoliciesRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteDistributionPolicy": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationDistributionPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteDistributionPolicyRequest": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationDistributionPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicy": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicyResponse": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicyResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicyRequest": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicy": "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicyResponse": "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicyResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicyRequest": "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListDistributionPolicies": "com.azure.communication_job_router#ListJobRouterAdministrationOperationDistributionPolicies",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListDistributionPoliciesRequest": "com.azure.communication_job_router#ListJobRouterAdministrationOperationDistributionPoliciesRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteClassificationPolicy": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationClassificationPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteClassificationPolicyRequest": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationClassificationPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicy": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyResponse": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequest": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequestWorkerSelectorAttachmentsList": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequestWorkerSelectorAttachmentsList",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequestQueueSelectorAttachmentsList": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequestQueueSelectorAttachmentsList",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicy": "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicy",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicyResponse": "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicyResponse",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicyRequest": "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicyRequest",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListClassificationPolicies": "com.azure.communication_job_router#ListJobRouterAdministrationOperationClassificationPolicies",
-      "com.azure.communication_job_router#JobRouterAdministrationOperationsListClassificationPoliciesRequest": "com.azure.communication_job_router#ListJobRouterAdministrationOperationClassificationPoliciesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.communication_job_router#JobRouterOperationsDeclineJobOffer": {
@@ -182,10 +93,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsAcceptJobOffer": {
+    "com.azure.communication_job_router#AcceptJobRouterOperationJobOffer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsAcceptJobOfferRequest"
+        "target": "com.azure.communication_job_router#AcceptJobRouterOperationJobOfferRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#AcceptJobOfferResult"
@@ -233,7 +144,7 @@
         "smithy.api#documentation": "Response containing ids for the worker, job, and assignment from an accepted offer."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsAcceptJobOfferRequest": {
+    "com.azure.communication_job_router#AcceptJobRouterOperationJobOfferRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -265,10 +176,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsDeleteWorker": {
+    "com.azure.communication_job_router#DeleteJobRouterOperationWorker": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsDeleteWorkerRequest"
+        "target": "com.azure.communication_job_router#DeleteJobRouterOperationWorkerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -287,7 +198,7 @@
         "smithy.api#documentation": "Deletes a worker and all of its traces.\n\nDeletes a worker and all of its traces."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsDeleteWorkerRequest": {
+    "com.azure.communication_job_router#DeleteJobRouterOperationWorkerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -311,13 +222,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorker": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorker": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequest"
+        "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerResponse"
+        "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -333,7 +244,7 @@
         "smithy.api#documentation": "Creates or updates a worker.\n\nCreates or updates a worker."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerResponse": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorkerResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -614,7 +525,7 @@
         "smithy.api#documentation": "Enums for worker states."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequest": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -648,7 +559,7 @@
           }
         },
         "queues": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestQueuesList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestQueuesList",
           "traits": {
             "smithy.api#documentation": "Collection of queue(s) that this worker can receive work from."
           }
@@ -660,19 +571,19 @@
           }
         },
         "labels": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestLabelsMap",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestLabelsMap",
           "traits": {
             "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
           }
         },
         "tags": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestTagsMap",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "A set of non-identifying attributes attached to this worker. Values must be primitive values - number, string, boolean."
           }
         },
         "channels": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestChannelsList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestChannelsList",
           "traits": {
             "smithy.api#documentation": "Collection of channel(s) this worker can handle and their impact on the workers capacity."
           }
@@ -688,7 +599,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestChannelsList": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestChannelsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_job_router#RouterChannel"
@@ -697,7 +608,7 @@
         "smithy.api#documentation": "Collection of channel(s) this worker can handle and their impact on the workers capacity."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestTagsMap": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -709,7 +620,7 @@
         "smithy.api#documentation": "A set of non-identifying attributes attached to this worker. Values must be primitive values - number, string, boolean."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestLabelsMap": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestLabelsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -721,7 +632,7 @@
         "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertWorkerRequestQueuesList": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationWorkerRequestQueuesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -730,13 +641,13 @@
         "smithy.api#documentation": "Collection of queue(s) that this worker can receive work from."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetWorker": {
+    "com.azure.communication_job_router#GetJobRouterOperationWorker": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsGetWorkerRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterOperationWorkerRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsGetWorkerResponse"
+        "target": "com.azure.communication_job_router#GetJobRouterOperationWorkerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -752,7 +663,7 @@
         "smithy.api#documentation": "Retrieves an existing worker by Id.\n\nRetrieves an existing worker by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetWorkerResponse": {
+    "com.azure.communication_job_router#GetJobRouterOperationWorkerResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -842,7 +753,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetWorkerRequest": {
+    "com.azure.communication_job_router#GetJobRouterOperationWorkerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -866,10 +777,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsListWorkers": {
+    "com.azure.communication_job_router#ListJobRouterOperationWorkers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsListWorkersRequest"
+        "target": "com.azure.communication_job_router#ListJobRouterOperationWorkersRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#PagedRouterWorker"
@@ -883,9 +794,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves existing workers.\n\nRetrieves existing workers."
+        "smithy.api#documentation": "Retrieves existing workers.\n\nRetrieves existing workers.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_job_router#PagedRouterWorker": {
@@ -1000,7 +918,7 @@
         "smithy.api#documentation": "An entity for jobs to be routed to."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsListWorkersRequest": {
+    "com.azure.communication_job_router#ListJobRouterOperationWorkersRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1019,7 +937,7 @@
           }
         },
         "state": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsListWorkersRequestState",
+          "target": "com.azure.communication_job_router#ListJobRouterOperationWorkersRequestState",
           "traits": {
             "smithy.api#httpQuery": "state",
             "smithy.api#documentation": "If specified, select workers by worker state."
@@ -1045,13 +963,19 @@
             "smithy.api#httpQuery": "hasCapacity",
             "smithy.api#documentation": "If set to true, select only workers who have capacity for the channel specified by `channelId` or for any channel if `channelId` not specified. If set to false, then will return all workers including workers without any capacity for jobs. Defaults to false."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsListWorkersRequestState": {
+    "com.azure.communication_job_router#ListJobRouterOperationWorkersRequestState": {
       "type": "enum",
       "members": {
         "ACTIVE": {
@@ -1081,10 +1005,10 @@
       },
       "traits": {}
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetQueueStatistics": {
+    "com.azure.communication_job_router#GetJobRouterOperationQueueStatistics": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsGetQueueStatisticsRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterOperationQueueStatisticsRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#RouterQueueStatistics"
@@ -1149,7 +1073,7 @@
         "smithy.api#documentation": "The estimated wait time of this queue rounded up to the nearest minute, grouped by job priority."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetQueueStatisticsRequest": {
+    "com.azure.communication_job_router#GetJobRouterOperationQueueStatisticsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1173,10 +1097,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteQueue": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationQueue": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteQueueRequest"
+        "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationQueueRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1195,7 +1119,7 @@
         "smithy.api#documentation": "Deletes a queue by Id.\n\nDeletes a queue by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteQueueRequest": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationQueueRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1219,13 +1143,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueue": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueue": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueRequest"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueResponse"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1241,7 +1165,7 @@
         "smithy.api#documentation": "Creates or updates a queue.\n\nCreates or updates a queue."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueResponse": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -1307,7 +1231,7 @@
         "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueRequest": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1353,7 +1277,7 @@
           }
         },
         "labels": {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueRequestLabelsMap",
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueRequestLabelsMap",
           "traits": {
             "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
           }
@@ -1369,7 +1293,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueueRequestLabelsMap": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueueRequestLabelsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1381,13 +1305,13 @@
         "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueue": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueue": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueueRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueueRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueueResponse"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueueResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1403,7 +1327,7 @@
         "smithy.api#documentation": "Retrieves an existing queue by Id.\n\nRetrieves an existing queue by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueueResponse": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueueResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -1457,7 +1381,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueueRequest": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueueRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1481,10 +1405,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListQueues": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationQueues": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListQueuesRequest"
+        "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationQueuesRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#PagedRouterQueue"
@@ -1498,9 +1422,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves existing queues.\n\nRetrieves existing queues."
+        "smithy.api#documentation": "Retrieves existing queues.\n\nRetrieves existing queues.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_job_router#PagedRouterQueue": {
@@ -1579,7 +1510,7 @@
         "smithy.api#documentation": "A queue that can contain jobs to be routed."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListQueuesRequest": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationQueuesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1596,16 +1527,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of objects to return per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetInQueuePosition": {
+    "com.azure.communication_job_router#GetJobRouterOperationInQueuePosition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsGetInQueuePositionRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterOperationInQueuePositionRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#RouterJobPositionDetails"
@@ -1667,7 +1604,7 @@
         "smithy.api#documentation": "Position and estimated wait time for a job."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetInQueuePositionRequest": {
+    "com.azure.communication_job_router#GetJobRouterOperationInQueuePositionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1691,10 +1628,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUnassignJob": {
+    "com.azure.communication_job_router#UnassignJobRouterOperationJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsUnassignJobRequest"
+        "target": "com.azure.communication_job_router#UnassignJobRouterOperationJobRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#UnassignJobResult"
@@ -1735,7 +1672,7 @@
         "smithy.api#documentation": "Response payload after a job has been successfully unassigned."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUnassignJobRequest": {
+    "com.azure.communication_job_router#UnassignJobRouterOperationJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1860,13 +1797,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsCompleteJob": {
+    "com.azure.communication_job_router#CompleteJobRouterOperationJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsCompleteJobRequest"
+        "target": "com.azure.communication_job_router#CompleteJobRouterOperationJobRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsCompleteJobResponse"
+        "target": "com.azure.communication_job_router#CompleteJobRouterOperationJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1882,7 +1819,7 @@
         "smithy.api#documentation": "Completes an assigned job.\n\nCompletes an assigned job."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsCompleteJobResponse": {
+    "com.azure.communication_job_router#CompleteJobRouterOperationJobResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1897,7 +1834,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsCompleteJobRequest": {
+    "com.azure.communication_job_router#CompleteJobRouterOperationJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1935,13 +1872,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsCancelJob": {
+    "com.azure.communication_job_router#CancelJobRouterOperationJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsCancelJobRequest"
+        "target": "com.azure.communication_job_router#CancelJobRouterOperationJobRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsCancelJobResponse"
+        "target": "com.azure.communication_job_router#CancelJobRouterOperationJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1957,7 +1894,7 @@
         "smithy.api#documentation": "Submits request to cancel an existing job by Id while supplying free-form cancellation reason.\n\nSubmits request to cancel an existing job by Id while supplying free-form cancellation reason."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsCancelJobResponse": {
+    "com.azure.communication_job_router#CancelJobRouterOperationJobResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1972,7 +1909,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsCancelJobRequest": {
+    "com.azure.communication_job_router#CancelJobRouterOperationJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2069,10 +2006,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsDeleteJob": {
+    "com.azure.communication_job_router#DeleteJobRouterOperationJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsDeleteJobRequest"
+        "target": "com.azure.communication_job_router#DeleteJobRouterOperationJobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2091,7 +2028,7 @@
         "smithy.api#documentation": "Deletes a job and all of its traces.\n\nDeletes a job and all of its traces."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsDeleteJobRequest": {
+    "com.azure.communication_job_router#DeleteJobRouterOperationJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2115,13 +2052,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJob": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequest"
+        "target": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJobResponse"
+        "target": "com.azure.communication_job_router#UpsertJobRouterOperationJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2137,7 +2074,7 @@
         "smithy.api#documentation": "Creates or updates a router job.\n\nCreates or updates a router job."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJobResponse": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJobResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -2624,7 +2561,7 @@
         "smithy.api#documentation": "Describes the various status of a job."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequest": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2694,25 +2631,25 @@
           }
         },
         "requestedWorkerSelectors": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestRequestedWorkerSelectorsList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestRequestedWorkerSelectorsList",
           "traits": {
             "smithy.api#documentation": "A collection of manually specified worker selectors, which a worker must satisfy in order to process this job."
           }
         },
         "labels": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestLabelsMap",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestLabelsMap",
           "traits": {
             "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
           }
         },
         "tags": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestTagsMap",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "A set of non-identifying attributes attached to this job. Values must be primitive values - number, string, boolean."
           }
         },
         "notes": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestNotesList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestNotesList",
           "traits": {
             "smithy.api#documentation": "Notes attached to a job, sorted by timestamp."
           }
@@ -2743,7 +2680,7 @@
         "smithy.api#documentation": "A matching mode of one of the following types:\nQueueAndMatchMode: Used when matching worker to a job is required to be done right after job is queued.\nScheduleAndSuspendMode: Used for scheduling jobs to be queued at a future time. At specified time, matching of a worker to the job will not start automatically.\nSuspendMode: Used when matching workers to a job needs to be suspended."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestNotesList": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestNotesList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_job_router#RouterJobNote"
@@ -2752,7 +2689,7 @@
         "smithy.api#documentation": "Notes attached to a job, sorted by timestamp."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestTagsMap": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2764,7 +2701,7 @@
         "smithy.api#documentation": "A set of non-identifying attributes attached to this job. Values must be primitive values - number, string, boolean."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestLabelsMap": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestLabelsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2776,7 +2713,7 @@
         "smithy.api#documentation": "A set of key/value pairs that are identifying attributes used by the rules engines to make decisions. Values must be primitive values - number, string, boolean."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsUpsertJobRequestRequestedWorkerSelectorsList": {
+    "com.azure.communication_job_router#UpsertJobRouterOperationJobRequestRequestedWorkerSelectorsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_job_router#RouterWorkerSelectorInput"
@@ -2825,13 +2762,13 @@
         "smithy.api#documentation": "Describes a condition that must be met against a set of labels for worker selection."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetJob": {
+    "com.azure.communication_job_router#GetJobRouterOperationJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsGetJobRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterOperationJobRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsGetJobResponse"
+        "target": "com.azure.communication_job_router#GetJobRouterOperationJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2847,7 +2784,7 @@
         "smithy.api#documentation": "Retrieves an existing job by Id.\n\nRetrieves an existing job by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetJobResponse": {
+    "com.azure.communication_job_router#GetJobRouterOperationJobResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -2973,7 +2910,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsGetJobRequest": {
+    "com.azure.communication_job_router#GetJobRouterOperationJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2997,10 +2934,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsListJobs": {
+    "com.azure.communication_job_router#ListJobRouterOperationJobs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterOperationsListJobsRequest"
+        "target": "com.azure.communication_job_router#ListJobRouterOperationJobsRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#PagedRouterJob"
@@ -3014,9 +2951,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves list of jobs based on filter parameters.\n\nRetrieves list of jobs based on filter parameters."
+        "smithy.api#documentation": "Retrieves list of jobs based on filter parameters.\n\nRetrieves list of jobs based on filter parameters.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_job_router#PagedRouterJob": {
@@ -3167,7 +3111,7 @@
         "smithy.api#documentation": "A unit of work to be routed"
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsListJobsRequest": {
+    "com.azure.communication_job_router#ListJobRouterOperationJobsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3186,7 +3130,7 @@
           }
         },
         "status": {
-          "target": "com.azure.communication_job_router#JobRouterOperationsListJobsRequestStatus",
+          "target": "com.azure.communication_job_router#ListJobRouterOperationJobsRequestStatus",
           "traits": {
             "smithy.api#httpQuery": "status",
             "smithy.api#documentation": "If specified, filter jobs by status."
@@ -3226,13 +3170,19 @@
             "smithy.api#httpQuery": "scheduledAfter",
             "smithy.api#documentation": "If specified, filter on jobs that was scheduled at or after given value. Range: [scheduledAfter, +Inf)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterOperationsListJobsRequestStatus": {
+    "com.azure.communication_job_router#ListJobRouterOperationJobsRequestStatus": {
       "type": "enum",
       "members": {
         "ALL": {
@@ -3322,10 +3272,10 @@
       },
       "traits": {}
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteExceptionPolicy": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationExceptionPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteExceptionPolicyRequest"
+        "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationExceptionPolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3344,7 +3294,7 @@
         "smithy.api#documentation": "Deletes a exception policy by Id.\n\nDeletes a exception policy by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteExceptionPolicyRequest": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationExceptionPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3368,13 +3318,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicy": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyRequest"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyResponse"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3390,7 +3340,7 @@
         "smithy.api#documentation": "Creates or updates a exception policy.\n\nCreates or updates a exception policy."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyResponse": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -3561,7 +3511,7 @@
         "smithy.api#documentation": "Discriminators for supported exception trigger types."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyRequest": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3601,7 +3551,7 @@
           }
         },
         "exceptionRules": {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyRequestExceptionRulesList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyRequestExceptionRulesList",
           "traits": {
             "smithy.api#documentation": "A collection of exception rules on the exception policy."
           }
@@ -3611,7 +3561,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicyRequestExceptionRulesList": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicyRequestExceptionRulesList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_job_router#ExceptionRule"
@@ -3620,13 +3570,13 @@
         "smithy.api#documentation": "A collection of exception rules on the exception policy."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicy": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicyRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicyRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicyResponse"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3642,7 +3592,7 @@
         "smithy.api#documentation": "Retrieves an existing exception policy by Id.\n\nRetrieves an existing exception policy by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicyResponse": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicyResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -3684,7 +3634,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicyRequest": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3708,10 +3658,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListExceptionPolicies": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationExceptionPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListExceptionPoliciesRequest"
+        "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationExceptionPoliciesRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#PagedExceptionPolicy"
@@ -3725,9 +3675,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves existing exception policies.\n\nRetrieves existing exception policies."
+        "smithy.api#documentation": "Retrieves existing exception policies.\n\nRetrieves existing exception policies.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_job_router#PagedExceptionPolicy": {
@@ -3794,7 +3751,7 @@
         "smithy.api#documentation": "A policy that defines actions to execute when exception are triggered."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListExceptionPoliciesRequest": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationExceptionPoliciesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3811,16 +3768,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of objects to return per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteDistributionPolicy": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationDistributionPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteDistributionPolicyRequest"
+        "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationDistributionPolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3839,7 +3802,7 @@
         "smithy.api#documentation": "Delete a distribution policy by Id.\n\nDelete a distribution policy by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteDistributionPolicyRequest": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationDistributionPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3863,13 +3826,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicy": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicyRequest"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicyRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicyResponse"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3885,7 +3848,7 @@
         "smithy.api#documentation": "Creates or updates a distribution policy.\n\nCreates or updates a distribution policy."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicyResponse": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicyResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -3992,7 +3955,7 @@
         "smithy.api#documentation": "Discriminators for supported distribution mode types."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicyRequest": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4081,13 +4044,13 @@
         "smithy.api#documentation": "Abstract base class for defining a distribution mode."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicy": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicyRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicyRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicyResponse"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4103,7 +4066,7 @@
         "smithy.api#documentation": "Retrieves an existing distribution policy by Id.\n\nRetrieves an existing distribution policy by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicyResponse": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicyResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -4151,7 +4114,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicyRequest": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4175,10 +4138,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListDistributionPolicies": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationDistributionPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListDistributionPoliciesRequest"
+        "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationDistributionPoliciesRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#PagedDistributionPolicy"
@@ -4192,9 +4155,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves existing distribution policies.\n\nRetrieves existing distribution policies."
+        "smithy.api#documentation": "Retrieves existing distribution policies.\n\nRetrieves existing distribution policies.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_job_router#PagedDistributionPolicy": {
@@ -4267,7 +4237,7 @@
         "smithy.api#documentation": "Policy governing how jobs are distributed to workers"
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListDistributionPoliciesRequest": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationDistributionPoliciesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4284,16 +4254,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of objects to return per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteClassificationPolicy": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationClassificationPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteClassificationPolicyRequest"
+        "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationClassificationPolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4312,7 +4288,7 @@
         "smithy.api#documentation": "Delete a classification policy by Id.\n\nDelete a classification policy by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteClassificationPolicyRequest": {
+    "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationClassificationPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4336,13 +4312,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicy": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequest"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyResponse"
+        "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4358,7 +4334,7 @@
         "smithy.api#documentation": "Creates or updates a classification policy.\n\nCreates or updates a classification policy."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyResponse": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -4595,7 +4571,7 @@
         "smithy.api#documentation": "Discriminators for supported queue selector attachment types."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequest": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4641,7 +4617,7 @@
           }
         },
         "queueSelectorAttachments": {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequestQueueSelectorAttachmentsList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequestQueueSelectorAttachmentsList",
           "traits": {
             "smithy.api#documentation": "Queue selector attachments used to resolve a queue for a job."
           }
@@ -4653,7 +4629,7 @@
           }
         },
         "workerSelectorAttachments": {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequestWorkerSelectorAttachmentsList",
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequestWorkerSelectorAttachmentsList",
           "traits": {
             "smithy.api#documentation": "Worker selector attachments used to attach worker selectors to a job."
           }
@@ -4663,7 +4639,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequestWorkerSelectorAttachmentsList": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequestWorkerSelectorAttachmentsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_job_router#WorkerSelectorAttachment"
@@ -4687,7 +4663,7 @@
         "smithy.api#documentation": "A rule of one of the following types:\nStaticRule:  A rule providing static rules that always return the same result, regardless of input.\nDirectMapRule:  A rule that return the same labels as the input labels.\nExpressionRule: A rule providing inline expression rules.\nFunctionRule: A rule providing a binding to an HTTP Triggered Azure Function.\nWebhookRule: A rule providing a binding to a webserver following OAuth2.0 authentication protocol."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicyRequestQueueSelectorAttachmentsList": {
+    "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicyRequestQueueSelectorAttachmentsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_job_router#QueueSelectorAttachment"
@@ -4696,13 +4672,13 @@
         "smithy.api#documentation": "Queue selector attachments used to resolve a queue for a job."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicy": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicyRequest"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicyRequest"
       },
       "output": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicyResponse"
+        "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4718,7 +4694,7 @@
         "smithy.api#documentation": "Retrieves an existing classification policy by Id.\n\nRetrieves an existing classification policy by Id."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicyResponse": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicyResponse": {
       "type": "structure",
       "members": {
         "etag": {
@@ -4778,7 +4754,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicyRequest": {
+    "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicyRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4802,10 +4778,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListClassificationPolicies": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationClassificationPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListClassificationPoliciesRequest"
+        "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationClassificationPoliciesRequest"
       },
       "output": {
         "target": "com.azure.communication_job_router#PagedClassificationPolicy"
@@ -4819,9 +4795,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-11-01"
+          "apiVersion": "2023-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves existing classification policies.\n\nRetrieves existing classification policies."
+        "smithy.api#documentation": "Retrieves existing classification policies.\n\nRetrieves existing classification policies.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_job_router#PagedClassificationPolicy": {
@@ -4906,7 +4889,7 @@
         "smithy.api#documentation": "A container for the rules that govern how jobs are classified."
       }
     },
-    "com.azure.communication_job_router#JobRouterAdministrationOperationsListClassificationPoliciesRequest": {
+    "com.azure.communication_job_router#ListJobRouterAdministrationOperationClassificationPoliciesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4923,6 +4906,12 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of objects to return per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4937,100 +4926,100 @@
           "target": "com.azure.communication_job_router#JobRouterOperationsDeclineJobOffer"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsAcceptJobOffer"
+          "target": "com.azure.communication_job_router#AcceptJobRouterOperationJobOffer"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsDeleteWorker"
+          "target": "com.azure.communication_job_router#DeleteJobRouterOperationWorker"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertWorker"
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationWorker"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsGetWorker"
+          "target": "com.azure.communication_job_router#GetJobRouterOperationWorker"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsListWorkers"
+          "target": "com.azure.communication_job_router#ListJobRouterOperationWorkers"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsGetQueueStatistics"
+          "target": "com.azure.communication_job_router#GetJobRouterOperationQueueStatistics"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteQueue"
+          "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationQueue"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertQueue"
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationQueue"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetQueue"
+          "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationQueue"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListQueues"
+          "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationQueues"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsGetInQueuePosition"
+          "target": "com.azure.communication_job_router#GetJobRouterOperationInQueuePosition"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUnassignJob"
+          "target": "com.azure.communication_job_router#UnassignJobRouterOperationJob"
         },
         {
           "target": "com.azure.communication_job_router#JobRouterOperationsCloseJob"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsCompleteJob"
+          "target": "com.azure.communication_job_router#CompleteJobRouterOperationJob"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsCancelJob"
+          "target": "com.azure.communication_job_router#CancelJobRouterOperationJob"
         },
         {
           "target": "com.azure.communication_job_router#JobRouterOperationsReclassifyJob"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsDeleteJob"
+          "target": "com.azure.communication_job_router#DeleteJobRouterOperationJob"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsUpsertJob"
+          "target": "com.azure.communication_job_router#UpsertJobRouterOperationJob"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsGetJob"
+          "target": "com.azure.communication_job_router#GetJobRouterOperationJob"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterOperationsListJobs"
+          "target": "com.azure.communication_job_router#ListJobRouterOperationJobs"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteExceptionPolicy"
+          "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationExceptionPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertExceptionPolicy"
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationExceptionPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetExceptionPolicy"
+          "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationExceptionPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListExceptionPolicies"
+          "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationExceptionPolicies"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteDistributionPolicy"
+          "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationDistributionPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertDistributionPolicy"
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationDistributionPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetDistributionPolicy"
+          "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationDistributionPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListDistributionPolicies"
+          "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationDistributionPolicies"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsDeleteClassificationPolicy"
+          "target": "com.azure.communication_job_router#DeleteJobRouterAdministrationOperationClassificationPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsUpsertClassificationPolicy"
+          "target": "com.azure.communication_job_router#UpsertJobRouterAdministrationOperationClassificationPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsGetClassificationPolicy"
+          "target": "com.azure.communication_job_router#GetJobRouterAdministrationOperationClassificationPolicy"
         },
         {
-          "target": "com.azure.communication_job_router#JobRouterAdministrationOperationsListClassificationPolicies"
+          "target": "com.azure.communication_job_router#ListJobRouterAdministrationOperationClassificationPolicies"
         }
       ],
       "traits": {

@@ -1,0 +1,155 @@
+{
+  "description": "ARM has not rolled out api-version 2026-06-01 for Microsoft.Edge/contexts/workflows (400: 'No registered resource provider found for location eastus and API version 2026-06-01 for type contexts/workflows'; supported 2025-06-01, 2025-08-01). The 2025-08-01 workflow, workflow version, and execution schemas match 2026-06-01. Pin every workflow, workflow version, and execution operation to 2025-08-01.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#DeleteExecution/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#DeleteExecution/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#UpdateExecution/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#UpdateExecution/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ExecutionsCreateOrUpdate/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ExecutionsCreateOrUpdate/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#GetExecution/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#GetExecution/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ListExecutionByWorkflowVersion/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ListExecutionByWorkflowVersion/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#DeleteWorkflowVersion/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#DeleteWorkflowVersion/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#UpdateWorkflowVersion/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#UpdateWorkflowVersion/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#WorkflowVersionsCreateOrUpdate/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#WorkflowVersionsCreateOrUpdate/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#GetWorkflowVersion/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#GetWorkflowVersion/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ListWorkflowVersionByWorkflow/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ListWorkflowVersionByWorkflow/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#DeleteWorkflow/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#DeleteWorkflow/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#UpdateWorkflow/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#UpdateWorkflow/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#WorkflowsCreateOrUpdate/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#WorkflowsCreateOrUpdate/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#GetWorkflow/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#GetWorkflow/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ListWorkflowByContext/traits/smithy.api#http/apiVersion",
+      "value": "2025-08-01"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.azure.edge#ListWorkflowByContext/traits/com.distilled.openapi#apiVersion",
+      "value": "2025-08-01"
+    }
+  ]
+}

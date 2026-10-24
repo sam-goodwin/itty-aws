@@ -2070,6 +2070,8 @@ export interface ListAddonByRoleRequest {
   deviceName: string;
   /** The name of the role. */
   roleName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Role Addon */
 export interface Addon {
@@ -2100,6 +2102,8 @@ export interface ListAlertByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Alert on the data box edge/gateway device. */
 export interface Alert {
@@ -2126,6 +2130,8 @@ export interface AlertList {
 export interface ListAvailableSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Availability of the Sku for the region. */
 export type DataBoxEdgeSkuLocationsList = Array<string>;
@@ -2223,6 +2229,8 @@ export interface ListBandwidthScheduleByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The bandwidth schedule details. */
 export interface BandwidthSchedule {
@@ -2255,6 +2263,8 @@ export interface ListContainerByStorageAccountRequest {
   deviceName: string;
   /** The storage account name. */
   storageAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a container on the Data Box Edge/Gateway device. */
 export interface Container {
@@ -2285,6 +2295,8 @@ export interface ListDeviceByResourceGroupRequest {
   resourceGroupName: string;
   /** Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DataBoxEdgeDeviceTagsMap = { [key: string]: string | undefined };
@@ -2327,6 +2339,8 @@ export interface ListDeviceBySubscriptionRequest {
   subscriptionId: string;
   /** Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListMonitoringConfigRequest {
   /** The ID of the target subscription. */
@@ -2337,6 +2351,8 @@ export interface ListMonitoringConfigRequest {
   deviceName: string;
   /** The name of the role. */
   roleName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The metric setting details for the role */
 export interface MonitoringMetricConfiguration {
@@ -2367,6 +2383,8 @@ export interface ListNodeByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The current status of the individual node */
 export type NodeStatus = "Unknown" | "Up" | "Down" | "Rebooting" | "ShuttingDown";
@@ -2407,7 +2425,10 @@ export interface NodeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Operation display properties. */
 export interface OperationDisplay {
   /** Provider name. */
@@ -2520,6 +2541,8 @@ export interface ListOrderByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The order details. */
 export interface Order {
@@ -2570,6 +2593,8 @@ export interface ListRoleByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Compute role. */
 export interface Role {
@@ -2600,6 +2625,8 @@ export interface ListShareByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a share on the Data Box Edge/Gateway device. */
 export interface Share {
@@ -2630,6 +2657,8 @@ export interface ListStorageAccountByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Storage Account on the Data Box Edge/Gateway device. */
 export interface StorageAccount {
@@ -2660,6 +2689,8 @@ export interface ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The storage account credential. */
 export interface StorageAccountCredential {
@@ -2692,6 +2723,8 @@ export interface ListTriggerByDataBoxEdgeDeviceRequest {
   deviceName: string;
   /** Specify $filter='CustomContextTag eq <tag>' to filter on custom context tag property */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Trigger details. */
 export interface Trigger {
@@ -2724,6 +2757,8 @@ export interface ListUserByDataBoxEdgeDeviceRequest {
   deviceName: string;
   /** Specify $filter='Type eq <type>' to filter on user type property */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a user who has access to one or more shares on the Data Box Edge/Gateway device. */
 export interface User {
@@ -3957,168 +3992,245 @@ export const InstallDeviceUpdates: API.OperationMethod<
 
 export type ListAddonByRoleError = AzureOpError;
 /** Lists all the addons configured in the role. */
-export const ListAddonByRole: API.OperationMethod<
+export const ListAddonByRole: API.PaginatedOperationMethod<
   ListAddonByRoleRequest,
   AddonList,
   ListAddonByRoleError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Addon
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1104, __c69, 0) as any as S.Schema<ListAddonByRoleRequest>,
   output: __S(1121, __c70, 1) as any as S.Schema<AddonList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAlertByDataBoxEdgeDeviceError = AzureOpError;
 /** Gets all the alerts for a Data Box Edge/Data Box Gateway device. */
-export const ListAlertByDataBoxEdgeDevice: API.OperationMethod<
+export const ListAlertByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListAlertByDataBoxEdgeDeviceRequest,
   AlertList,
   ListAlertByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1136, __c71, 0) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>,
   output: __S(1138, __c71, 2) as any as S.Schema<AlertList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailableSkusError = AzureOpError;
 /** List all the available Skus and information related to them. List all the available Skus and information related to them. */
-export const ListAvailableSkus: API.OperationMethod<
+export const ListAvailableSkus: API.PaginatedOperationMethod<
   ListAvailableSkusRequest,
   DataBoxEdgeSkuList,
   ListAvailableSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataBoxEdgeSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1152, __c72, 0) as any as S.Schema<ListAvailableSkusRequest>,
   output: __S(1161, __c72, 9) as any as S.Schema<DataBoxEdgeSkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBandwidthScheduleByDataBoxEdgeDeviceError = AzureOpError;
 /** Gets all the bandwidth schedules for a Data Box Edge/Data Box Gateway device. */
-export const ListBandwidthScheduleByDataBoxEdgeDevice: API.OperationMethod<
+export const ListBandwidthScheduleByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListBandwidthScheduleByDataBoxEdgeDeviceRequest,
   BandwidthSchedulesList,
   ListBandwidthScheduleByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BandwidthSchedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1168, __c73, 0) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>,
   output: __S(1170, __c73, 2) as any as S.Schema<BandwidthSchedulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContainerByStorageAccountError = AzureOpError;
 /** Lists all the containers of a storage Account in a Data Box Edge/Data Box Gateway device. Lists all the containers of a storage Account in a Data Box Edge/Data Box Gateway device. */
-export const ListContainerByStorageAccount: API.OperationMethod<
+export const ListContainerByStorageAccount: API.PaginatedOperationMethod<
   ListContainerByStorageAccountRequest,
   ContainerList,
   ListContainerByStorageAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Container
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c74, 0) as any as S.Schema<ListContainerByStorageAccountRequest>,
   output: __S(1186, __c74, 2) as any as S.Schema<ContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceByResourceGroupError = AzureOpError;
 /** Gets all the Data Box Edge/Data Box Gateway devices in a resource group. */
-export const ListDeviceByResourceGroup: API.OperationMethod<
+export const ListDeviceByResourceGroup: API.PaginatedOperationMethod<
   ListDeviceByResourceGroupRequest,
   DataBoxEdgeDeviceList,
   ListDeviceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataBoxEdgeDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1200, __c75, 0) as any as S.Schema<ListDeviceByResourceGroupRequest>,
   output: __S(1217, __c76, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceBySubscriptionError = AzureOpError;
 /** Gets all the Data Box Edge/Data Box Gateway devices in a subscription. */
-export const ListDeviceBySubscription: API.OperationMethod<
+export const ListDeviceBySubscription: API.PaginatedOperationMethod<
   ListDeviceBySubscriptionRequest,
   DataBoxEdgeDeviceList,
   ListDeviceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataBoxEdgeDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1232, __c77, 0) as any as S.Schema<ListDeviceBySubscriptionRequest>,
   output: __S(1217, __c76, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMonitoringConfigError = AzureOpError;
 /** Lists metric configurations in a role. Lists metric configurations in a role. */
-export const ListMonitoringConfig: API.OperationMethod<
+export const ListMonitoringConfig: API.PaginatedOperationMethod<
   ListMonitoringConfigRequest,
   MonitoringMetricConfigurationList,
   ListMonitoringConfigError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MonitoringMetricConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1264, __c79, 0) as any as S.Schema<ListMonitoringConfigRequest>,
   output: __S(1266, __c79, 2) as any as S.Schema<MonitoringMetricConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNodeByDataBoxEdgeDeviceError = AzureOpError;
 /** Gets all the nodes currently configured under this Data Box Edge device */
-export const ListNodeByDataBoxEdgeDevice: API.OperationMethod<
+export const ListNodeByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListNodeByDataBoxEdgeDeviceRequest,
   NodeList,
   ListNodeByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Node
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c80, 0) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>,
   output: __S(1284, __c80, 4) as any as S.Schema<NodeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List all the supported operations. List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1296, __c81, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1306, __c81, 10) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrderByDataBoxEdgeDeviceError = AzureOpError;
 /** Lists all the orders related to a Data Box Edge/Data Box Gateway device. Lists all the orders related to a Data Box Edge/Data Box Gateway device. */
-export const ListOrderByDataBoxEdgeDevice: API.OperationMethod<
+export const ListOrderByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListOrderByDataBoxEdgeDeviceRequest,
   OrderList,
   ListOrderByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Order
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c82, 0) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>,
   output: __S(1314, __c82, 2) as any as S.Schema<OrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrderDCAccessCodeError = AzureOpError;
 /** Gets the DCAccess Code Gets the DCAccess Code */
@@ -4137,57 +4249,79 @@ export const ListOrderDCAccessCode: API.OperationMethod<
 
 export type ListRoleByDataBoxEdgeDeviceError = AzureOpError;
 /** Lists all the roles configured in a Data Box Edge/Data Box Gateway device. */
-export const ListRoleByDataBoxEdgeDevice: API.OperationMethod<
+export const ListRoleByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListRoleByDataBoxEdgeDeviceRequest,
   RoleList,
   ListRoleByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Role
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1344, __c84, 0) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>,
   output: __S(1121, __c70, 1) as any as S.Schema<RoleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListShareByDataBoxEdgeDeviceError = AzureOpError;
 /** Lists all the shares in a Data Box Edge/Data Box Gateway device. Lists all the shares in a Data Box Edge/Data Box Gateway device. */
-export const ListShareByDataBoxEdgeDevice: API.OperationMethod<
+export const ListShareByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListShareByDataBoxEdgeDeviceRequest,
   ShareList,
   ListShareByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Share
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1360, __c85, 0) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>,
   output: __S(1362, __c85, 2) as any as S.Schema<ShareList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageAccountByDataBoxEdgeDeviceError = AzureOpError;
 /** Lists all the StorageAccounts in a Data Box Edge/Data Box Gateway device. Lists all the StorageAccounts in a Data Box Edge/Data Box Gateway device. */
-export const ListStorageAccountByDataBoxEdgeDevice: API.OperationMethod<
+export const ListStorageAccountByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListStorageAccountByDataBoxEdgeDeviceRequest,
   StorageAccountList,
   ListStorageAccountByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1376, __c86, 0) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>,
   output: __S(1378, __c86, 2) as any as S.Schema<StorageAccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageAccountCredentialsByDataBoxEdgeDeviceError = AzureOpError;
 /** Gets all the storage account credentials in a Data Box Edge/Data Box Gateway device. Gets all the storage account credentials in a Data Box Edge/Data Box Gateway device. */
-export const ListStorageAccountCredentialsByDataBoxEdgeDevice: API.OperationMethod<
+export const ListStorageAccountCredentialsByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest,
   StorageAccountCredentialList,
   ListStorageAccountCredentialsByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageAccountCredential
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1392,
     __c87,
@@ -4197,37 +4331,57 @@ export const ListStorageAccountCredentialsByDataBoxEdgeDevice: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTriggerByDataBoxEdgeDeviceError = AzureOpError;
 /** Lists all the triggers configured in the device. */
-export const ListTriggerByDataBoxEdgeDevice: API.OperationMethod<
+export const ListTriggerByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListTriggerByDataBoxEdgeDeviceRequest,
   TriggerList,
   ListTriggerByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Trigger
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1408, __c88, 0) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>,
   output: __S(1121, __c70, 1) as any as S.Schema<TriggerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUserByDataBoxEdgeDeviceError = AzureOpError;
 /** Gets all the users registered on a Data Box Edge/Data Box Gateway device. */
-export const ListUserByDataBoxEdgeDevice: API.OperationMethod<
+export const ListUserByDataBoxEdgeDevice: API.PaginatedOperationMethod<
   ListUserByDataBoxEdgeDeviceRequest,
   UserList,
   ListUserByDataBoxEdgeDeviceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1440, __c90, 0) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>,
   output: __S(1442, __c90, 2) as any as S.Schema<UserList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MonitoringConfigCreateOrUpdateError = AzureOpError;
 /** Creates a new metric configuration or updates an existing one for a role. Creates a new metric configuration or updates an existing one for a role. */
@@ -6316,12 +6470,14 @@ function __c69(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/addons",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddonByRoleRequest" });
@@ -6348,12 +6504,14 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/alerts",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAlertByDataBoxEdgeDeviceRequest" });
@@ -6374,12 +6532,14 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/availableSkus",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailableSkusRequest" });
@@ -6451,12 +6611,14 @@ function __c73(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBandwidthScheduleByDataBoxEdgeDeviceRequest" });
@@ -6480,12 +6642,14 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           storageAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContainerByStorageAccountRequest" });
@@ -6508,12 +6672,14 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeviceByResourceGroupRequest" });
@@ -6539,12 +6705,14 @@ function __c77(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeviceBySubscriptionRequest" });
@@ -6579,12 +6747,14 @@ function __c79(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMonitoringConfigRequest" });
@@ -6607,12 +6777,14 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/nodes",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNodeByDataBoxEdgeDeviceRequest" });
@@ -6652,12 +6824,15 @@ function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DataBoxEdge/operations",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -6739,12 +6914,14 @@ function __c82(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrderByDataBoxEdgeDeviceRequest" });
@@ -6798,12 +6975,14 @@ function __c84(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleByDataBoxEdgeDeviceRequest" });
@@ -6817,12 +6996,14 @@ function __c85(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListShareByDataBoxEdgeDeviceRequest" });
@@ -6845,12 +7026,14 @@ function __c86(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageAccountByDataBoxEdgeDeviceRequest" });
@@ -6873,12 +7056,14 @@ function __c87(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest" });
@@ -6902,12 +7087,14 @@ function __c88(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/triggers",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTriggerByDataBoxEdgeDeviceRequest" });
@@ -6943,12 +7130,14 @@ function __c90(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users",
             code: 200,
             apiVersion: "2023-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUserByDataBoxEdgeDeviceRequest" });

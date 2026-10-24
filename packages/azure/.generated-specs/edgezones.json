@@ -15,16 +15,32 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.edgezones#ExtendedZonesUnregister": "com.azure.edgezones#UnregisterExtendedZone",
+      "com.azure.edgezones#ExtendedZonesUnregisterResponse": "com.azure.edgezones#UnregisterExtendedZoneResponse",
+      "com.azure.edgezones#ExtendedZonesUnregisterRequest": "com.azure.edgezones#UnregisterExtendedZoneRequest",
+      "com.azure.edgezones#ExtendedZonesRegister": "com.azure.edgezones#RegisterExtendedZone",
+      "com.azure.edgezones#ExtendedZonesRegisterResponse": "com.azure.edgezones#RegisterExtendedZoneResponse",
+      "com.azure.edgezones#ExtendedZonesRegisterRequest": "com.azure.edgezones#RegisterExtendedZoneRequest",
+      "com.azure.edgezones#ExtendedZonesGet": "com.azure.edgezones#GetExtendedZone",
+      "com.azure.edgezones#ExtendedZonesGetResponse": "com.azure.edgezones#GetExtendedZoneResponse",
+      "com.azure.edgezones#ExtendedZonesGetRequest": "com.azure.edgezones#GetExtendedZoneRequest",
+      "com.azure.edgezones#ExtendedZonesListBySubscription": "com.azure.edgezones#ListExtendedZoneBySubscription",
+      "com.azure.edgezones#ExtendedZonesListBySubscriptionRequest": "com.azure.edgezones#ListExtendedZoneBySubscriptionRequest",
+      "com.azure.edgezones#OperationsList": "com.azure.edgezones#ListOperations",
+      "com.azure.edgezones#OperationsListResponse": "com.azure.edgezones#ListOperationsResponse",
+      "com.azure.edgezones#OperationsListResponseValueList": "com.azure.edgezones#ListOperationsResponseValueList",
+      "com.azure.edgezones#OperationsListRequest": "com.azure.edgezones#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.edgezones#UnregisterExtendedZone": {
+    "com.azure.edgezones#ExtendedZonesUnregister": {
       "type": "operation",
       "input": {
-        "target": "com.azure.edgezones#UnregisterExtendedZoneRequest"
+        "target": "com.azure.edgezones#ExtendedZonesUnregisterRequest"
       },
       "output": {
-        "target": "com.azure.edgezones#UnregisterExtendedZoneResponse"
+        "target": "com.azure.edgezones#ExtendedZonesUnregisterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +53,7 @@
         "com.distilled.openapi#apiVersion": "2026-10-01"
       }
     },
-    "com.azure.edgezones#UnregisterExtendedZoneResponse": {
+    "com.azure.edgezones#ExtendedZonesUnregisterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -348,7 +364,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.edgezones#UnregisterExtendedZoneRequest": {
+    "com.azure.edgezones#ExtendedZonesUnregisterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -372,13 +388,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#RegisterExtendedZone": {
+    "com.azure.edgezones#ExtendedZonesRegister": {
       "type": "operation",
       "input": {
-        "target": "com.azure.edgezones#RegisterExtendedZoneRequest"
+        "target": "com.azure.edgezones#ExtendedZonesRegisterRequest"
       },
       "output": {
-        "target": "com.azure.edgezones#RegisterExtendedZoneResponse"
+        "target": "com.azure.edgezones#ExtendedZonesRegisterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -391,7 +407,7 @@
         "com.distilled.openapi#apiVersion": "2026-10-01"
       }
     },
-    "com.azure.edgezones#RegisterExtendedZoneResponse": {
+    "com.azure.edgezones#ExtendedZonesRegisterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -429,7 +445,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.edgezones#RegisterExtendedZoneRequest": {
+    "com.azure.edgezones#ExtendedZonesRegisterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -453,13 +469,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#GetExtendedZone": {
+    "com.azure.edgezones#ExtendedZonesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.edgezones#GetExtendedZoneRequest"
+        "target": "com.azure.edgezones#ExtendedZonesGetRequest"
       },
       "output": {
-        "target": "com.azure.edgezones#GetExtendedZoneResponse"
+        "target": "com.azure.edgezones#ExtendedZonesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -472,7 +488,7 @@
         "com.distilled.openapi#apiVersion": "2026-10-01"
       }
     },
-    "com.azure.edgezones#GetExtendedZoneResponse": {
+    "com.azure.edgezones#ExtendedZonesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -510,7 +526,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.edgezones#GetExtendedZoneRequest": {
+    "com.azure.edgezones#ExtendedZonesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -534,10 +550,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#ListExtendedZoneBySubscription": {
+    "com.azure.edgezones#ExtendedZonesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.edgezones#ListExtendedZoneBySubscriptionRequest"
+        "target": "com.azure.edgezones#ExtendedZonesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.edgezones#ExtendedZoneListResult"
@@ -547,10 +563,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Azure Extended Zones available to a subscription",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.edgezones#ExtendedZoneListResult": {
@@ -621,7 +644,7 @@
         "smithy.api#documentation": "Resource that represents an Azure Extended Zone available to a subscription for registering and unregistering."
       }
     },
-    "com.azure.edgezones#ListExtendedZoneBySubscriptionRequest": {
+    "com.azure.edgezones#ExtendedZonesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -631,36 +654,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#ListOperations": {
+    "com.azure.edgezones#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.edgezones#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.edgezones#ListOperationsResponse"
+        "target": "com.azure.edgezones#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.EdgeZones/operations",
           "code": 200,
-          "apiVersion": "2026-10-01"
+          "apiVersion": "2026-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-10-01"
+        "com.distilled.openapi#apiVersion": "2026-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.edgezones#ListOperationsResponse": {
+    "com.azure.edgezones#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.edgezones#ListOperationsResponseValueList",
+          "target": "com.azure.edgezones#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -676,7 +712,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.edgezones#ListOperationsResponseValueList": {
+    "com.azure.edgezones#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.edgezones#Operation"
@@ -795,24 +831,38 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.edgezones#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.edgezones#Edgezones": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.edgezones#UnregisterExtendedZone"
+          "target": "com.azure.edgezones#ExtendedZonesUnregister"
         },
         {
-          "target": "com.azure.edgezones#RegisterExtendedZone"
+          "target": "com.azure.edgezones#ExtendedZonesRegister"
         },
         {
-          "target": "com.azure.edgezones#GetExtendedZone"
+          "target": "com.azure.edgezones#ExtendedZonesGet"
         },
         {
-          "target": "com.azure.edgezones#ListExtendedZoneBySubscription"
+          "target": "com.azure.edgezones#ExtendedZonesListBySubscription"
         },
         {
-          "target": "com.azure.edgezones#ListOperations"
+          "target": "com.azure.edgezones#OperationsList"
         }
       ],
       "traits": {

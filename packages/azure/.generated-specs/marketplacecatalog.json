@@ -15,33 +15,93 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.marketplacecatalog#OperationsList": "com.azure.marketplacecatalog#ListOperations",
+      "com.azure.marketplacecatalog#OperationsListResponse": "com.azure.marketplacecatalog#ListOperationsResponse",
+      "com.azure.marketplacecatalog#OperationsListResponseValueList": "com.azure.marketplacecatalog#ListOperationsResponseValueList",
+      "com.azure.marketplacecatalog#OperationsListRequest": "com.azure.marketplacecatalog#ListOperationsRequest",
+      "com.azure.marketplacecatalog#GetApiKeysList": "com.azure.marketplacecatalog#ListGetApiKeys",
+      "com.azure.marketplacecatalog#GetApiKeysListRequest": "com.azure.marketplacecatalog#ListGetApiKeysRequest",
+      "com.azure.marketplacecatalog#RevokeApiKeyPost": "com.azure.marketplacecatalog#PostRevokeApiKey",
+      "com.azure.marketplacecatalog#RevokeApiKeyPostRequest": "com.azure.marketplacecatalog#PostRevokeApiKeyRequest",
+      "com.azure.marketplacecatalog#CreateApiKeyPost": "com.azure.marketplacecatalog#PostCreateApiKey",
+      "com.azure.marketplacecatalog#CreateApiKeyPostRequest": "com.azure.marketplacecatalog#PostCreateApiKeyRequest",
+      "com.azure.marketplacecatalog#EdgeZonesProductsList": "com.azure.marketplacecatalog#ListEdgeZonesProducts",
+      "com.azure.marketplacecatalog#EdgeZonesProductsListRequest": "com.azure.marketplacecatalog#ListEdgeZonesProductsRequest",
+      "com.azure.marketplacecatalog#ProductGetGetBySubscription": "com.azure.marketplacecatalog#GetProductGetBySubscription",
+      "com.azure.marketplacecatalog#ProductGetGetBySubscriptionRequest": "com.azure.marketplacecatalog#GetProductGetBySubscriptionRequest",
+      "com.azure.marketplacecatalog#ProductListListBySubscription": "com.azure.marketplacecatalog#ListProductListBySubscription",
+      "com.azure.marketplacecatalog#ProductListListBySubscriptionRequest": "com.azure.marketplacecatalog#ListProductListBySubscriptionRequest",
+      "com.azure.marketplacecatalog#ProductGetGetByTenant": "com.azure.marketplacecatalog#GetProductGetByTenant",
+      "com.azure.marketplacecatalog#ProductGetGetByTenantRequest": "com.azure.marketplacecatalog#GetProductGetByTenantRequest",
+      "com.azure.marketplacecatalog#ProductListListByTenant": "com.azure.marketplacecatalog#ListProductListByTenant",
+      "com.azure.marketplacecatalog#ProductListListByTenantRequest": "com.azure.marketplacecatalog#ListProductListByTenantRequest",
+      "com.azure.marketplacecatalog#ProductGetGetByBillingAccount": "com.azure.marketplacecatalog#GetProductGetByBillingAccount",
+      "com.azure.marketplacecatalog#ProductGetGetByBillingAccountRequest": "com.azure.marketplacecatalog#GetProductGetByBillingAccountRequest",
+      "com.azure.marketplacecatalog#ProductListListByBillingAccount": "com.azure.marketplacecatalog#ListProductListByBillingAccount",
+      "com.azure.marketplacecatalog#ProductListListByBillingAccountRequest": "com.azure.marketplacecatalog#ListProductListByBillingAccountRequest",
+      "com.azure.marketplacecatalog#ProductGetGetByBillingProfile": "com.azure.marketplacecatalog#GetProductGetByBillingProfile",
+      "com.azure.marketplacecatalog#ProductGetGetByBillingProfileRequest": "com.azure.marketplacecatalog#GetProductGetByBillingProfileRequest",
+      "com.azure.marketplacecatalog#ProductListListByBillingProfile": "com.azure.marketplacecatalog#ListProductListByBillingProfile",
+      "com.azure.marketplacecatalog#ProductListListByBillingProfileRequest": "com.azure.marketplacecatalog#ListProductListByBillingProfileRequest",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccount": "com.azure.marketplacecatalog#GetSkusByBillingAccount",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponse": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponse",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseAvailabilitiesList": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseAvailabilitiesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponsePricingAudiencesList": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponsePricingAudiencesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseCategoryIdsList": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseCategoryIdsList",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseOfferingPropertiesList": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseOfferingPropertiesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseSkuAttributesList": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseSkuAttributesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseProductAttributesList": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseProductAttributesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingAccountRequest": "com.azure.marketplacecatalog#GetSkusByBillingAccountRequest",
+      "com.azure.marketplacecatalog#SkusListByBillingAccount": "com.azure.marketplacecatalog#ListSkusByBillingAccount",
+      "com.azure.marketplacecatalog#SkusListByBillingAccountRequest": "com.azure.marketplacecatalog#ListSkusByBillingAccountRequest",
+      "com.azure.marketplacecatalog#SkusListByBillingAccountRequestLocationsList": "com.azure.marketplacecatalog#ListSkusByBillingAccountRequestLocationsList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfile": "com.azure.marketplacecatalog#GetSkusByBillingProfile",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponse": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponse",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseAvailabilitiesList": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseAvailabilitiesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponsePricingAudiencesList": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponsePricingAudiencesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseCategoryIdsList": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseCategoryIdsList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseOfferingPropertiesList": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseOfferingPropertiesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseSkuAttributesList": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseSkuAttributesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseProductAttributesList": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseProductAttributesList",
+      "com.azure.marketplacecatalog#SkusGetByBillingProfileRequest": "com.azure.marketplacecatalog#GetSkusByBillingProfileRequest",
+      "com.azure.marketplacecatalog#SkusListByBillingProfile": "com.azure.marketplacecatalog#ListSkusByBillingProfile",
+      "com.azure.marketplacecatalog#SkusListByBillingProfileRequest": "com.azure.marketplacecatalog#ListSkusByBillingProfileRequest",
+      "com.azure.marketplacecatalog#SkusListByBillingProfileRequestLocationsList": "com.azure.marketplacecatalog#ListSkusByBillingProfileRequestLocationsList"
+    }
   },
   "shapes": {
-    "com.azure.marketplacecatalog#ListOperations": {
+    "com.azure.marketplacecatalog#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.marketplacecatalog#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.marketplacecatalog#ListOperationsResponse"
+        "target": "com.azure.marketplacecatalog#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.Marketplace/operations",
           "code": 200,
-          "apiVersion": "2023-01-01-preview"
+          "apiVersion": "2023-01-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Microsoft.Marketplace REST API operations.",
-        "com.distilled.openapi#apiVersion": "2023-01-01-preview"
+        "com.distilled.openapi#apiVersion": "2023-01-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.marketplacecatalog#ListOperationsResponse": {
+    "com.azure.marketplacecatalog#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.marketplacecatalog#ListOperationsResponseValueList",
+          "target": "com.azure.marketplacecatalog#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -57,7 +117,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.marketplacecatalog#ListOperationsResponseValueList": {
+    "com.azure.marketplacecatalog#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Operation"
@@ -176,10 +236,24 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.marketplacecatalog#ListGetApiKeys": {
+    "com.azure.marketplacecatalog#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplacecatalog#GetApiKeysList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListGetApiKeysRequest"
+        "target": "com.azure.marketplacecatalog#GetApiKeysListRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ApiKeys"
@@ -189,10 +263,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Marketplace/keys",
           "code": 200,
-          "apiVersion": "2023-01-01-preview"
+          "apiVersion": "2023-01-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves a list of API keys associated with a selected subscription. Please note that this API is currently in a preview state and requires sign-up to the 'Discovery Api Key Early Access' preview feature using a valid Azure subscription. For more information on this process please see the documentation for Marketplace Catalog APIs [here](https://learn.microsoft.com/en-us/rest/api/marketplacecatalog/dataplane/products/get?view=rest-marketplacecatalog-dataplane-2023-05-01-preview&tabs=HTTP)",
-        "com.distilled.openapi#apiVersion": "2023-01-01-preview"
+        "com.distilled.openapi#apiVersion": "2023-01-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.marketplacecatalog#ApiKeys": {
@@ -239,7 +320,7 @@
         "smithy.api#documentation": "ApiKey object containing both the key and its alias."
       }
     },
-    "com.azure.marketplacecatalog#ListGetApiKeysRequest": {
+    "com.azure.marketplacecatalog#GetApiKeysListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -249,16 +330,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#PostRevokeApiKey": {
+    "com.azure.marketplacecatalog#RevokeApiKeyPost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#PostRevokeApiKeyRequest"
+        "target": "com.azure.marketplacecatalog#RevokeApiKeyPostRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -274,7 +361,7 @@
         "com.distilled.openapi#apiVersion": "2023-01-01-preview"
       }
     },
-    "com.azure.marketplacecatalog#PostRevokeApiKeyRequest": {
+    "com.azure.marketplacecatalog#RevokeApiKeyPostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -298,10 +385,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#PostCreateApiKey": {
+    "com.azure.marketplacecatalog#CreateApiKeyPost": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#PostCreateApiKeyRequest"
+        "target": "com.azure.marketplacecatalog#CreateApiKeyPostRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ApiKey"
@@ -317,7 +404,7 @@
         "com.distilled.openapi#apiVersion": "2023-01-01-preview"
       }
     },
-    "com.azure.marketplacecatalog#PostCreateApiKeyRequest": {
+    "com.azure.marketplacecatalog#CreateApiKeyPostRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -341,10 +428,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListEdgeZonesProducts": {
+    "com.azure.marketplacecatalog#EdgeZonesProductsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListEdgeZonesProductsRequest"
+        "target": "com.azure.marketplacecatalog#EdgeZonesProductsListRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#PageResultOfCatalogItem"
@@ -4245,7 +4332,7 @@
       },
       "traits": {}
     },
-    "com.azure.marketplacecatalog#ListEdgeZonesProductsRequest": {
+    "com.azure.marketplacecatalog#EdgeZonesProductsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4305,10 +4392,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetBySubscription": {
+    "com.azure.marketplacecatalog#ProductGetGetBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#GetProductGetBySubscriptionRequest"
+        "target": "com.azure.marketplacecatalog#ProductGetGetBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductDetails"
@@ -6715,7 +6802,7 @@
         "smithy.api#documentation": "Array of product categories"
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetBySubscriptionRequest": {
+    "com.azure.marketplacecatalog#ProductGetGetBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6788,10 +6875,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListProductListBySubscription": {
+    "com.azure.marketplacecatalog#ProductListListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListProductListBySubscriptionRequest"
+        "target": "com.azure.marketplacecatalog#ProductListListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductSummaryListResult"
@@ -7324,7 +7411,7 @@
         "smithy.api#documentation": "Array of product categories"
       }
     },
-    "com.azure.marketplacecatalog#ListProductListBySubscriptionRequest": {
+    "com.azure.marketplacecatalog#ProductListListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7389,10 +7476,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetByTenant": {
+    "com.azure.marketplacecatalog#ProductGetGetByTenant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#GetProductGetByTenantRequest"
+        "target": "com.azure.marketplacecatalog#ProductGetGetByTenantRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductDetails"
@@ -7408,7 +7495,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetByTenantRequest": {
+    "com.azure.marketplacecatalog#ProductGetGetByTenantRequest": {
       "type": "structure",
       "members": {
         "productId": {
@@ -7481,10 +7568,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListProductListByTenant": {
+    "com.azure.marketplacecatalog#ProductListListByTenant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListProductListByTenantRequest"
+        "target": "com.azure.marketplacecatalog#ProductListListByTenantRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductSummaryListResult"
@@ -7500,7 +7587,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#ListProductListByTenantRequest": {
+    "com.azure.marketplacecatalog#ProductListListByTenantRequest": {
       "type": "structure",
       "members": {
         "market": {
@@ -7564,10 +7651,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetByBillingAccount": {
+    "com.azure.marketplacecatalog#ProductGetGetByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#GetProductGetByBillingAccountRequest"
+        "target": "com.azure.marketplacecatalog#ProductGetGetByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductDetails"
@@ -7583,7 +7670,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetByBillingAccountRequest": {
+    "com.azure.marketplacecatalog#ProductGetGetByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -7649,10 +7736,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListProductListByBillingAccount": {
+    "com.azure.marketplacecatalog#ProductListListByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListProductListByBillingAccountRequest"
+        "target": "com.azure.marketplacecatalog#ProductListListByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductSummaryListResult"
@@ -7668,7 +7755,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#ListProductListByBillingAccountRequest": {
+    "com.azure.marketplacecatalog#ProductListListByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -7740,10 +7827,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetByBillingProfile": {
+    "com.azure.marketplacecatalog#ProductGetGetByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#GetProductGetByBillingProfileRequest"
+        "target": "com.azure.marketplacecatalog#ProductGetGetByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductDetails"
@@ -7759,7 +7846,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#GetProductGetByBillingProfileRequest": {
+    "com.azure.marketplacecatalog#ProductGetGetByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -7833,10 +7920,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListProductListByBillingProfile": {
+    "com.azure.marketplacecatalog#ProductListListByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListProductListByBillingProfileRequest"
+        "target": "com.azure.marketplacecatalog#ProductListListByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#ProductSummaryListResult"
@@ -7852,7 +7939,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#ListProductListByBillingProfileRequest": {
+    "com.azure.marketplacecatalog#ProductListListByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -8491,13 +8578,13 @@
       },
       "traits": {}
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccount": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountRequest"
+        "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponse"
+        "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8510,7 +8597,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponse": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "productId": {
@@ -8575,7 +8662,7 @@
           }
         },
         "productAttributes": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseProductAttributesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseProductAttributesList",
           "traits": {
             "smithy.api#documentation": "The product attributes."
           }
@@ -8710,7 +8797,7 @@
           }
         },
         "skuAttributes": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseSkuAttributesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseSkuAttributesList",
           "traits": {
             "smithy.api#documentation": "The SKU attributes."
           }
@@ -8722,7 +8809,7 @@
           }
         },
         "offeringProperties": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseOfferingPropertiesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseOfferingPropertiesList",
           "traits": {
             "smithy.api#documentation": "Offering properties such as: product code (UPN), term id, meter type, offering id."
           }
@@ -8740,19 +8827,19 @@
           }
         },
         "categoryIds": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseCategoryIdsList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseCategoryIdsList",
           "traits": {
             "smithy.api#documentation": "Category IDs for this SKU."
           }
         },
         "pricingAudiences": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponsePricingAudiencesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponsePricingAudiencesList",
           "traits": {
             "smithy.api#documentation": "Pricing audiences for the SKU."
           }
         },
         "availabilities": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseAvailabilitiesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseAvailabilitiesList",
           "traits": {
             "smithy.api#documentation": "Availabilities for this SKU."
           }
@@ -8762,7 +8849,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseAvailabilitiesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseAvailabilitiesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Availability_2"
@@ -9146,7 +9233,7 @@
         "smithy.api#documentation": "Included quantity properties for a meter"
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponsePricingAudiencesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponsePricingAudiencesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -9155,7 +9242,7 @@
         "smithy.api#documentation": "Pricing audiences for the SKU."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseCategoryIdsList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseCategoryIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -9396,7 +9483,7 @@
         "smithy.api#documentation": "AAD SKU identifiers."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseOfferingPropertiesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseOfferingPropertiesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#OfferingProperties_2"
@@ -9505,7 +9592,7 @@
         "smithy.api#documentation": "SKU properties, can be different per each service family."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseSkuAttributesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseSkuAttributesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Attribute_2"
@@ -9534,7 +9621,7 @@
         "smithy.api#documentation": "Key-value attribute pair."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountResponseProductAttributesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountResponseProductAttributesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Attribute_2"
@@ -9543,7 +9630,7 @@
         "smithy.api#documentation": "The product attributes."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingAccountRequest": {
+    "com.azure.marketplacecatalog#SkusGetByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -9588,10 +9675,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListSkusByBillingAccount": {
+    "com.azure.marketplacecatalog#SkusListByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListSkusByBillingAccountRequest"
+        "target": "com.azure.marketplacecatalog#SkusListByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#SkuSummaryListResult"
@@ -9601,10 +9688,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Marketplace/skus",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists SKUs for billing account.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.marketplacecatalog#SkuSummaryListResult": {
@@ -9928,7 +10022,7 @@
         "smithy.api#documentation": "The product attributes."
       }
     },
-    "com.azure.marketplacecatalog#ListSkusByBillingAccountRequest": {
+    "com.azure.marketplacecatalog#SkusListByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -9963,7 +10057,7 @@
           }
         },
         "locations": {
-          "target": "com.azure.marketplacecatalog#ListSkusByBillingAccountRequestLocationsList",
+          "target": "com.azure.marketplacecatalog#SkusListByBillingAccountRequestLocationsList",
           "traits": {
             "smithy.api#httpQuery": "locations",
             "smithy.api#documentation": "Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/."
@@ -9996,26 +10090,32 @@
             "smithy.api#httpQuery": "$orderBy",
             "smithy.api#documentation": "Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are:\n- `lastModifiedDateTime`\n- `skuName`\n- `skuId`\n- `productId`\n- `serviceFamily`\n- `service`"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListSkusByBillingAccountRequestLocationsList": {
+    "com.azure.marketplacecatalog#SkusListByBillingAccountRequestLocationsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfile": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileRequest"
+        "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponse"
+        "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10028,7 +10128,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponse": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "productId": {
@@ -10093,7 +10193,7 @@
           }
         },
         "productAttributes": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseProductAttributesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseProductAttributesList",
           "traits": {
             "smithy.api#documentation": "The product attributes."
           }
@@ -10228,7 +10328,7 @@
           }
         },
         "skuAttributes": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseSkuAttributesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseSkuAttributesList",
           "traits": {
             "smithy.api#documentation": "The SKU attributes."
           }
@@ -10240,7 +10340,7 @@
           }
         },
         "offeringProperties": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseOfferingPropertiesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseOfferingPropertiesList",
           "traits": {
             "smithy.api#documentation": "Offering properties such as: product code (UPN), term id, meter type, offering id."
           }
@@ -10258,19 +10358,19 @@
           }
         },
         "categoryIds": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseCategoryIdsList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseCategoryIdsList",
           "traits": {
             "smithy.api#documentation": "Category IDs for this SKU."
           }
         },
         "pricingAudiences": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponsePricingAudiencesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponsePricingAudiencesList",
           "traits": {
             "smithy.api#documentation": "Pricing audiences for the SKU."
           }
         },
         "availabilities": {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseAvailabilitiesList",
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseAvailabilitiesList",
           "traits": {
             "smithy.api#documentation": "Availabilities for this SKU."
           }
@@ -10280,7 +10380,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseAvailabilitiesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseAvailabilitiesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Availability_2"
@@ -10289,7 +10389,7 @@
         "smithy.api#documentation": "Availabilities for this SKU."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponsePricingAudiencesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponsePricingAudiencesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -10298,7 +10398,7 @@
         "smithy.api#documentation": "Pricing audiences for the SKU."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseCategoryIdsList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseCategoryIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -10307,7 +10407,7 @@
         "smithy.api#documentation": "Category IDs for this SKU."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseOfferingPropertiesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseOfferingPropertiesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#OfferingProperties_2"
@@ -10316,7 +10416,7 @@
         "smithy.api#documentation": "Offering properties such as: product code (UPN), term id, meter type, offering id."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseSkuAttributesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseSkuAttributesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Attribute_2"
@@ -10325,7 +10425,7 @@
         "smithy.api#documentation": "The SKU attributes."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileResponseProductAttributesList": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileResponseProductAttributesList": {
       "type": "list",
       "member": {
         "target": "com.azure.marketplacecatalog#Attribute_2"
@@ -10334,7 +10434,7 @@
         "smithy.api#documentation": "The product attributes."
       }
     },
-    "com.azure.marketplacecatalog#GetSkusByBillingProfileRequest": {
+    "com.azure.marketplacecatalog#SkusGetByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -10387,10 +10487,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListSkusByBillingProfile": {
+    "com.azure.marketplacecatalog#SkusListByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplacecatalog#ListSkusByBillingProfileRequest"
+        "target": "com.azure.marketplacecatalog#SkusListByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.marketplacecatalog#SkuSummaryListResult"
@@ -10400,13 +10500,20 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Marketplace/skus",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists SKUs for billing profile.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.marketplacecatalog#ListSkusByBillingProfileRequest": {
+    "com.azure.marketplacecatalog#SkusListByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -10449,7 +10556,7 @@
           }
         },
         "locations": {
-          "target": "com.azure.marketplacecatalog#ListSkusByBillingProfileRequestLocationsList",
+          "target": "com.azure.marketplacecatalog#SkusListByBillingProfileRequestLocationsList",
           "traits": {
             "smithy.api#httpQuery": "locations",
             "smithy.api#documentation": "Return SKUs available in the selected locations. Enumeration of the Azure datacenter regions. See https://azure.microsoft.com/regions/."
@@ -10482,13 +10589,19 @@
             "smithy.api#httpQuery": "$orderBy",
             "smithy.api#documentation": "Ordering expression for the results using OData notation. Avoid using orderBy unless essential as this may impact the latency of your request. Example: $orderBy=skuName desc. This API only supports ordering by a single field. Fields that can be ordered by are:\n- `lastModifiedDateTime`\n- `skuName`\n- `skuId`\n- `productId`\n- `serviceFamily`\n- `service`"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplacecatalog#ListSkusByBillingProfileRequestLocationsList": {
+    "com.azure.marketplacecatalog#SkusListByBillingProfileRequestLocationsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -10500,58 +10613,58 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.marketplacecatalog#ListOperations"
+          "target": "com.azure.marketplacecatalog#OperationsList"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListGetApiKeys"
+          "target": "com.azure.marketplacecatalog#GetApiKeysList"
         },
         {
-          "target": "com.azure.marketplacecatalog#PostRevokeApiKey"
+          "target": "com.azure.marketplacecatalog#RevokeApiKeyPost"
         },
         {
-          "target": "com.azure.marketplacecatalog#PostCreateApiKey"
+          "target": "com.azure.marketplacecatalog#CreateApiKeyPost"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListEdgeZonesProducts"
+          "target": "com.azure.marketplacecatalog#EdgeZonesProductsList"
         },
         {
-          "target": "com.azure.marketplacecatalog#GetProductGetBySubscription"
+          "target": "com.azure.marketplacecatalog#ProductGetGetBySubscription"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListProductListBySubscription"
+          "target": "com.azure.marketplacecatalog#ProductListListBySubscription"
         },
         {
-          "target": "com.azure.marketplacecatalog#GetProductGetByTenant"
+          "target": "com.azure.marketplacecatalog#ProductGetGetByTenant"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListProductListByTenant"
+          "target": "com.azure.marketplacecatalog#ProductListListByTenant"
         },
         {
-          "target": "com.azure.marketplacecatalog#GetProductGetByBillingAccount"
+          "target": "com.azure.marketplacecatalog#ProductGetGetByBillingAccount"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListProductListByBillingAccount"
+          "target": "com.azure.marketplacecatalog#ProductListListByBillingAccount"
         },
         {
-          "target": "com.azure.marketplacecatalog#GetProductGetByBillingProfile"
+          "target": "com.azure.marketplacecatalog#ProductGetGetByBillingProfile"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListProductListByBillingProfile"
+          "target": "com.azure.marketplacecatalog#ProductListListByBillingProfile"
         },
         {
           "target": "com.azure.marketplacecatalog#SearchPostArm"
         },
         {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingAccount"
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingAccount"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListSkusByBillingAccount"
+          "target": "com.azure.marketplacecatalog#SkusListByBillingAccount"
         },
         {
-          "target": "com.azure.marketplacecatalog#GetSkusByBillingProfile"
+          "target": "com.azure.marketplacecatalog#SkusGetByBillingProfile"
         },
         {
-          "target": "com.azure.marketplacecatalog#ListSkusByBillingProfile"
+          "target": "com.azure.marketplacecatalog#SkusListByBillingProfile"
         }
       ],
       "traits": {

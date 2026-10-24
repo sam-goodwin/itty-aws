@@ -10359,6 +10359,8 @@ export interface DisconnectActiveSessionsRequest {
   bastionHostName: string;
   /** List of session IDs. */
   sessionIds?: DisconnectActiveSessionsRequestSessionIdsList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The session state detail for a target. */
 export interface BastionSessionState {
@@ -14943,6 +14945,8 @@ export interface GetActiveSessionsRequest {
   resourceGroupName: string;
   /** The name of the Bastion Host. */
   bastionHostName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The protocol used to connect to the target. */
 export type BastionActiveSessionProtocol = "SSH" | "RDP";
@@ -15251,6 +15255,8 @@ export interface GetApplicationGatewayWafDynamicManifestRequest {
   subscriptionId: string;
   /** The location for which the WAF dynamic manifest is requested. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** the default web application firewall rule set. */
 export interface DefaultRuleSetPropertyFormat {
@@ -15573,6 +15579,8 @@ export interface GetBastionShareableLinkRequest {
   bastionHostName: string;
   /** List of VM references. */
   vms?: GetBastionShareableLinkRequestVmsList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VMTagsMap = { [key: string]: string | undefined };
@@ -26053,6 +26061,8 @@ export interface GetServiceGatewayAddressLocationsRequest {
   resourceGroupName: string;
   /** The name of the service gateway. */
   serviceGatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Collection of services in address. */
 export type ServiceGatewayAddressServicesList = Array<string>;
@@ -26089,6 +26099,8 @@ export interface GetServiceGatewayServicesRequest {
   resourceGroupName: string;
   /** The name of the service gateway. */
   serviceGatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Name of the service. */
 export type ServiceGatewayServicePropertiesFormatServiceType =
@@ -32598,6 +32610,8 @@ export interface GetVpnLinkConnectionAllSharedKeysRequest {
   connectionName: string;
   /** The name of the vpn link connection. */
   linkConnectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Provisioning states of a resource. */
 export type SharedKeyPropertiesProvisioningState =
@@ -34982,6 +34996,8 @@ export interface ListAddressPrefixSetsRequest {
   resourceGroupName: string;
   /** The name of the application security group. */
   applicationSecurityGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Address prefix set child resource of an application security group. */
 export interface AddressPrefixSet {
@@ -35018,6 +35034,8 @@ export interface ListAdminRuleCollectionsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type AdminRuleCollectionSystemDataCreatedByType =
@@ -35085,6 +35103,8 @@ export interface ListAdminRulesRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type BaseAdminRuleSystemDataCreatedByType =
@@ -35143,6 +35163,8 @@ export interface AdminRuleListResult {
 export interface ListApplicationGatewayAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ApplicationGateway items on this page */
 export type ApplicationGatewayListResultValueList = Array<ApplicationGateway>;
@@ -35265,6 +35287,8 @@ export interface ListApplicationGatewayAvailableSslOptionsResponse {
 export interface ListApplicationGatewayAvailableSslPredefinedPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Ssl predefined policy. */
 export interface ApplicationGatewaySslPredefinedPolicy {
@@ -35355,6 +35379,8 @@ export interface ListApplicationGatewayPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the application gateway. */
   applicationGatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ApplicationGatewayPrivateEndpointConnection items on this page */
 export type ApplicationGatewayPrivateEndpointConnectionListResultValueList =
@@ -35373,6 +35399,8 @@ export interface ListApplicationGatewayPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the application gateway. */
   applicationGatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Required member names of private link resource. */
 export type ApplicationGatewayPrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
@@ -35415,10 +35443,14 @@ export interface ListApplicationGatewaysRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListApplicationSecurityGroupAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ApplicationSecurityGroup items on this page */
 export type ApplicationSecurityGroupListResultValueList = Array<ApplicationSecurityGroup>;
@@ -35434,12 +35466,16 @@ export interface ListApplicationSecurityGroupsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAuthenticationPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AuthenticationPolicyTagsMap = { [key: string]: string | undefined };
@@ -35518,12 +35554,16 @@ export interface AuthenticationPolicyListResult {
 export interface ListAuthenticationPolicyAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAvailableDelegationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The actions permitted to the service upon delegation. */
 export type AvailableDelegationActionsList = Array<string>;
@@ -35554,6 +35594,8 @@ export interface ListAvailableEndpointServicesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Endpoint service. */
 export interface EndpointServiceResult {
@@ -35580,6 +35622,8 @@ export interface ListAvailablePrivateEndpointTypeByResourceGroupRequest {
   resourceGroupName: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The information of an AvailablePrivateEndpointType. */
 export interface AvailablePrivateEndpointType {
@@ -35608,6 +35652,8 @@ export interface ListAvailablePrivateEndpointTypesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAvailableResourceGroupDelegationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35616,6 +35662,8 @@ export interface ListAvailableResourceGroupDelegationsRequest {
   resourceGroupName: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAvailableServiceAliasByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -35624,6 +35672,8 @@ export interface ListAvailableServiceAliasByResourceGroupRequest {
   resourceGroupName: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The available service alias. */
 export interface AvailableServiceAlias {
@@ -35650,10 +35700,14 @@ export interface ListAvailableServiceAliasesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAzureFirewallAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AzureFirewallTagsMap = { [key: string]: string | undefined };
@@ -35694,6 +35748,8 @@ export interface AzureFirewallListResult {
 export interface ListAzureFirewallFqdnTagAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AzureFirewallFqdnTagTagsMap = { [key: string]: string | undefined };
@@ -35762,12 +35818,16 @@ export interface ListAzureFirewallsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBastionHostByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BastionHostTagsMap = { [key: string]: string | undefined };
@@ -35823,10 +35883,14 @@ export interface BastionHostListResult {
 export interface ListBastionHostsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBgpServiceCommunitiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BgpServiceCommunityTagsMap = { [key: string]: string | undefined };
@@ -35891,6 +35955,8 @@ export interface ListCommitsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type CommitSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -35942,6 +36008,8 @@ export interface ListConfigurationPolicyGroupByVpnServerConfigurationRequest {
   resourceGroupName: string;
   /** The name of the resource that is unique within a resource group. This name can be used to access the resource. */
   vpnServerConfigurationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VpnServerConfigurationPolicyGroup items on this page */
 export type ListVpnServerConfigurationPolicyGroupsResultValueList =
@@ -35960,6 +36028,8 @@ export interface ListConnectionMonitorsRequest {
   resourceGroupName: string;
   /** The name of the network watcher. */
   networkWatcherName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Connection monitor tags. */
 export type ConnectionMonitorResultTagsMap = { [key: string]: string | undefined };
@@ -35985,7 +36055,7 @@ export type ConnectionMonitorListResultValueList = Array<ConnectionMonitorResult
 /** List of connection monitors. */
 export interface ConnectionMonitorListResult {
   /** Information about connection monitors. */
-  value?: ConnectionMonitorListResultValueList;
+  value: ConnectionMonitorListResultValueList;
   /** URL to get the next set of results. */
   nextLink?: string;
 }
@@ -35996,6 +36066,8 @@ export interface ListConnectionPoliciesRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ConnectionPolicy resource defined for VirtualHub. */
 export interface ConnectionPolicy {
@@ -36030,6 +36102,8 @@ export interface ListConnectivityConfigurationsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ConnectivityConfigurationSystemDataCreatedByType =
@@ -36085,6 +36159,8 @@ export interface ConnectivityConfigurationListResult {
 export interface ListCustomIPPrefixAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CustomIpPrefixTagsMap = { [key: string]: string | undefined };
@@ -36127,12 +36203,16 @@ export interface ListCustomIPPrefixesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDdosCustomPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DdosCustomPolicyTagsMap = { [key: string]: string | undefined };
@@ -36165,12 +36245,16 @@ export interface DdosCustomPolicyListResult {
 export interface ListDdosCustomPolicyAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDdosProtectionPlanByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DdosProtectionPlanTagsMap = { [key: string]: string | undefined };
@@ -36203,6 +36287,8 @@ export interface DdosProtectionPlanListResult {
 export interface ListDdosProtectionPlansRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDefaultSecurityRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36211,6 +36297,8 @@ export interface ListDefaultSecurityRulesRequest {
   resourceGroupName: string;
   /** The name of the network security group. */
   networkSecurityGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SecurityRule items on this page */
 export type SecurityRuleListResultValueList = Array<SecurityRule_6>;
@@ -36226,6 +36314,8 @@ export interface ListDscpConfigurationRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DscpConfigurationTagsMap = { [key: string]: string | undefined };
@@ -36258,10 +36348,14 @@ export interface DscpConfigurationListResult {
 export interface ListDscpConfigurationAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListExpressRouteCircuitAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExpressRouteCircuitTagsMap = { [key: string]: string | undefined };
@@ -36350,6 +36444,8 @@ export interface ListExpressRouteCircuitAuthorizationsRequest {
   resourceGroupName: string;
   /** The name of express route circuit. */
   circuitName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteCircuitAuthorization items on this page */
 export type AuthorizationListResultValueList = Array<ExpressRouteCircuitAuthorization>;
@@ -36369,6 +36465,8 @@ export interface ListExpressRouteCircuitConnectionsRequest {
   circuitName: string;
   /** The name of the peering. */
   peeringName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteCircuitConnection items on this page */
 export type ExpressRouteCircuitConnectionListResultValueList = Array<ExpressRouteCircuitConnection>;
@@ -36386,6 +36484,8 @@ export interface ListExpressRouteCircuitPeeringsRequest {
   resourceGroupName: string;
   /** The name of express route circuit. */
   circuitName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteCircuitPeering items on this page */
 export type ExpressRouteCircuitPeeringListResultValueList = Array<ExpressRouteCircuitPeering>;
@@ -36479,6 +36579,8 @@ export interface ListExpressRouteCircuitsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListExpressRouteConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36512,6 +36614,8 @@ export interface ListExpressRouteCrossConnectionByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExpressRouteCrossConnectionTagsMap = { [key: string]: string | undefined };
@@ -36548,6 +36652,8 @@ export interface ListExpressRouteCrossConnectionPeeringsRequest {
   resourceGroupName: string;
   /** The name of the ExpressRouteCrossConnection (service key of the circuit). */
   crossConnectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteCrossConnectionPeering items on this page */
 export type ExpressRouteCrossConnectionPeeringListValueList =
@@ -36613,6 +36719,8 @@ export interface ListExpressRouteCrossConnectionsRequest {
   subscriptionId: string;
   /** The filter to apply on the operation. For example, you can use $filter=name eq '{circuitServiceKey}'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListExpressRouteGatewayByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36655,6 +36763,8 @@ export interface ListExpressRouteLagByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExpressRouteLagTagsMap = { [key: string]: string | undefined };
@@ -36704,6 +36814,8 @@ export interface ExpressRouteLagListResult {
 export interface ListExpressRouteLagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListExpressRouteLagsLinksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -36712,6 +36824,8 @@ export interface ListExpressRouteLagsLinksRequest {
   resourceGroupName: string;
   /** The name of ExpressRouteLag. */
   expressRouteLagName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteLagLink items on this page */
 export type ExpressRouteLagLinkListResultValueList = Array<ExpressRouteLagLink>;
@@ -36731,6 +36845,8 @@ export interface ListExpressRouteLagsMembersRequest {
   expressRouteLagName: string;
   /** The name of the express route LAG link. */
   linkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteLagMember items on this page */
 export type ExpressRouteLagMemberListResultValueList = Array<ExpressRouteLagMember>;
@@ -36748,6 +36864,8 @@ export interface ListExpressRouteLinksRequest {
   resourceGroupName: string;
   /** The name of ExpressRoutePort. */
   expressRoutePortName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ExpressRouteLink items on this page */
 export type ExpressRouteLinkListResultValueList = Array<ExpressRouteLink>;
@@ -36779,6 +36897,8 @@ export interface ListExpressRoutePortAuthorizationsRequest {
   resourceGroupName: string;
   /** The name of the express route port. */
   expressRoutePortName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** ExpressRoutePort Authorization resource definition. */
 export interface ExpressRoutePortAuthorization {
@@ -36807,6 +36927,8 @@ export interface ListExpressRoutePortByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExpressRoutePortTagsMap = { [key: string]: string | undefined };
@@ -36856,10 +36978,14 @@ export interface ExpressRoutePortListResult {
 export interface ListExpressRoutePortsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListExpressRoutePortsLocationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExpressRoutePortsLocationTagsMap = { [key: string]: string | undefined };
@@ -36924,6 +37050,8 @@ export interface ExpressRouteProviderPortListResult {
 export interface ListExpressRouteServiceProvidersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ExpressRouteServiceProviderTagsMap = { [key: string]: string | undefined };
@@ -36985,6 +37113,8 @@ export interface ListFirewallPoliciesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FirewallPolicyTagsMap = { [key: string]: string | undefined };
@@ -37034,6 +37164,8 @@ export interface FirewallPolicyListResult {
 export interface ListFirewallPolicyAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of values to filter the current field by */
 export type FilterItemsValuesList = Array<string>;
@@ -37166,6 +37298,8 @@ export interface ListFirewallPolicyKubeSelectorGroupsRequest {
   resourceGroupName: string;
   /** The name of the Firewall Policy. */
   firewallPolicyName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Firewall Policy Kubernetes Selector Group resource. */
 export interface FirewallPolicyKubeSelectorGroup {
@@ -37197,6 +37331,8 @@ export interface ListFirewallPolicyRuleCollectionGroupsRequest {
   resourceGroupName: string;
   /** The name of the Firewall Policy. */
   firewallPolicyName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Rule Collection Group resource. */
 export interface FirewallPolicyRuleCollectionGroup {
@@ -37224,6 +37360,8 @@ export interface FirewallPolicyRuleCollectionGroupListResult {
 export interface ListFirstPartyServiceTagAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FirstPartyServiceTagTagsMap = { [key: string]: string | undefined };
@@ -37258,6 +37396,8 @@ export interface ListFirstPartyServiceTagsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListFlowLogsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37266,6 +37406,8 @@ export interface ListFlowLogsRequest {
   resourceGroupName: string;
   /** The name of the network watcher. */
   networkWatcherName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FlowLogTagsMap = { [key: string]: string | undefined };
@@ -37319,6 +37461,8 @@ export interface ListHubRouteTablesRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** RouteTable resource in a virtual hub. */
 export interface HubRouteTable {
@@ -37349,6 +37493,8 @@ export interface ListHubVirtualNetworkConnectionsRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** HubVirtualNetworkConnection Resource. */
 export interface HubVirtualNetworkConnection {
@@ -37377,6 +37523,8 @@ export interface ListInboundNatRulesRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The InboundNatRule items on this page */
 export type InboundNatRuleListResultValueList = Array<InboundNatRule>;
@@ -37390,6 +37538,8 @@ export interface InboundNatRuleListResult {
 export interface ListInterconnectGroupAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type InterconnectGroupTagsMap = { [key: string]: string | undefined };
@@ -37424,12 +37574,16 @@ export interface ListInterconnectGroupsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIpAllocationByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type IpAllocationTagsMap = { [key: string]: string | undefined };
@@ -37462,6 +37616,8 @@ export interface IpAllocationListResult {
 export interface ListIpAllocationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIpamPoolAssociatedResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37472,6 +37628,8 @@ export interface ListIpamPoolAssociatedResourcesRequest {
   networkManagerName: string;
   /** Pool resource name. */
   poolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of assigned IP address prefixes in the IpamPool of the associated resource. */
 export type PoolAssociationAddressPrefixesList = Array<string>;
@@ -37523,6 +37681,8 @@ export interface ListIpamPoolsRequest {
   sortKey?: string;
   /** Optional sort value for pagination. */
   sortValue?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type IpamPoolSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -37582,6 +37742,8 @@ export interface ListIpGroupByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type IpGroupTagsMap = { [key: string]: string | undefined };
@@ -37614,10 +37776,14 @@ export interface IpGroupListResult {
 export interface ListIpGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLoadBalancerAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LoadBalancerTagsMap = { [key: string]: string | undefined };
@@ -37660,6 +37826,8 @@ export interface ListLoadBalancerBackendAddressPoolsRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The BackendAddressPool items on this page */
 export type LoadBalancerBackendAddressPoolListResultValueList =
@@ -37678,6 +37846,8 @@ export interface ListLoadBalancerFrontendIPConfigurationsRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The FrontendIPConfiguration items on this page */
 export type LoadBalancerFrontendIPConfigurationListResultValueList = Array<FrontendIPConfiguration>;
@@ -37736,6 +37906,8 @@ export interface ListLoadBalancerLoadBalancingRulesRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The LoadBalancingRule items on this page */
 export type LoadBalancerLoadBalancingRuleListResultValueList = Array<LoadBalancingRule>;
@@ -37753,6 +37925,8 @@ export interface ListLoadBalancerNetworkInterfacesRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NetworkInterface items on this page */
 export type ListLoadBalancerNetworkInterfacesResponseValueList = Array<NetworkInterface_3>;
@@ -37769,6 +37943,8 @@ export interface ListLoadBalancerOutboundRulesRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The OutboundRule items on this page */
 export type LoadBalancerOutboundRuleListResultValueList = Array<OutboundRule>;
@@ -37786,6 +37962,8 @@ export interface ListLoadBalancerProbesRequest {
   resourceGroupName: string;
   /** The name of the load balancer. */
   loadBalancerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Probe items on this page */
 export type LoadBalancerProbeListResultValueList = Array<Probe>;
@@ -37801,12 +37979,16 @@ export interface ListLoadBalancersRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLocalNetworkGatewaysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The LocalNetworkGateway items on this page */
 export type LocalNetworkGatewayListResultValueList = Array<LocalNetworkGateway>;
@@ -37824,6 +38006,8 @@ export interface ListManagementGroupNetworkManagerConnectionsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NetworkManagerConnectionSystemDataCreatedByType =
@@ -37879,6 +38063,8 @@ export interface NetworkManagerConnectionListResult {
 export interface ListNatGatewayAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NatGateway items on this page */
 export type NatGatewayListResultValueList = Array<NatGateway_5>;
@@ -37894,6 +38080,8 @@ export interface ListNatGatewaysRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNatRuleByVpnGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -37902,6 +38090,8 @@ export interface ListNatRuleByVpnGatewayRequest {
   resourceGroupName: string;
   /** The name of the gateway. */
   gatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VpnGatewayNatRule items on this page */
 export type ListVpnGatewayNatRulesResultValueList = Array<VpnGatewayNatRule>;
@@ -37923,6 +38113,8 @@ export interface ListNetworkGroupsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NetworkGroupSystemDataCreatedByType =
@@ -37978,6 +38170,8 @@ export interface NetworkGroupListResult {
 export interface ListNetworkInterfaceAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NetworkInterface items on this page */
 export type NetworkInterfaceListResultValueList = Array<NetworkInterface_6>;
@@ -37995,6 +38189,8 @@ export interface ListNetworkInterfaceCloudServiceNetworkInterfacesRequest {
   resourceGroupName: string;
   /** The name of the cloud service. */
   cloudServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfacesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38005,6 +38201,8 @@ export interface ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfacesRe
   cloudServiceName: string;
   /** The name of role instance. */
   roleInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkInterfaceEffectiveNetworkSecurityGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38125,6 +38323,8 @@ export interface ListNetworkInterfaceIPConfigurationsRequest {
   resourceGroupName: string;
   /** The name of the network interface. */
   networkInterfaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NetworkInterfaceIPConfiguration items on this page */
 export type NetworkInterfaceIPConfigurationListResultValueList =
@@ -38143,6 +38343,8 @@ export interface ListNetworkInterfaceLoadBalancersRequest {
   resourceGroupName: string;
   /** The name of the network interface. */
   networkInterfaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NetworkInterfaceLoadBalancerListResultValueItemTagsMap = {
@@ -38242,6 +38444,8 @@ export interface ListNetworkInterfacesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkInterfaceTapConfigurationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38250,6 +38454,8 @@ export interface ListNetworkInterfaceTapConfigurationsRequest {
   resourceGroupName: string;
   /** The name of the network interface. */
   networkInterfaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NetworkInterfaceTapConfiguration items on this page */
 export type NetworkInterfaceTapConfigurationListResultValueList =
@@ -38268,6 +38474,8 @@ export interface ListNetworkManagerBySubscriptionRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NetworkManagerTagsMap = { [key: string]: string | undefined };
@@ -38481,6 +38689,8 @@ export interface ListNetworkManagerRoutingConfigurationsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NetworkManagerRoutingConfigurationSystemDataCreatedByType =
@@ -38543,10 +38753,14 @@ export interface ListNetworkManagersRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkProfileAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NetworkProfileTagsMap = { [key: string]: string | undefined };
@@ -38581,10 +38795,14 @@ export interface ListNetworkProfilesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkSecurityGroupAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NetworkSecurityGroup items on this page */
 export type NetworkSecurityGroupListResultValueList = Array<NetworkSecurityGroup_6>;
@@ -38600,6 +38818,8 @@ export interface ListNetworkSecurityGroupsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkSecurityPerimeterAccessRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38614,6 +38834,8 @@ export interface ListNetworkSecurityPerimeterAccessRulesRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NspAccessRuleSystemDataCreatedByType =
@@ -38669,6 +38891,8 @@ export interface ListNetworkSecurityPerimeterAssociableResourceTypesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Public DNS zone names of the resources. */
 export type PerimeterAssociableResourcePropertiesPublicDnsZonesList = Array<string>;
@@ -38728,6 +38952,8 @@ export interface ListNetworkSecurityPerimeterAssociationsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NspAssociationSystemDataCreatedByType =
@@ -38785,6 +39011,8 @@ export interface ListNetworkSecurityPerimeterBySubscriptionRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NetworkSecurityPerimeterSystemDataCreatedByType =
@@ -38852,6 +39080,8 @@ export interface ListNetworkSecurityPerimeterLinkReferencesRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NspLinkReferenceSystemDataCreatedByType =
@@ -38913,6 +39143,8 @@ export interface ListNetworkSecurityPerimeterLinksRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NspLinkSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -38966,6 +39198,8 @@ export interface ListNetworkSecurityPerimeterLoggingConfigurationsRequest {
   resourceGroupName: string;
   /** The name of the network security perimeter. */
   networkSecurityPerimeterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NspLoggingConfigurationSystemDataCreatedByType =
@@ -39027,6 +39261,8 @@ export interface ListNetworkSecurityPerimeterProfilesRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NspProfileSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -39082,12 +39318,16 @@ export interface ListNetworkSecurityPerimetersRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkSecurityPerimeterServiceTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSP service tags. */
 export type NspServiceTagsResourceServiceTagsList = Array<string>;
@@ -39110,6 +39350,8 @@ export interface ListNetworkVirtualApplianceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NetworkVirtualApplianceTagsMap = { [key: string]: string | undefined };
@@ -39163,6 +39405,8 @@ export interface ListNetworkVirtualApplianceConnectionsRequest {
   resourceGroupName: string;
   /** The name of Network Virtual Appliance. */
   networkVirtualApplianceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NetworkVirtualApplianceConnection resource. */
 export interface NetworkVirtualApplianceConnection {
@@ -39186,10 +39430,14 @@ export interface NetworkVirtualApplianceConnectionList {
 export interface ListNetworkVirtualAppliancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkWatcherAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NetworkWatcherTagsMap = { [key: string]: string | undefined };
@@ -39215,7 +39463,7 @@ export type NetworkWatcherListResultValueList = Array<NetworkWatcher>;
 /** Response for ListNetworkWatchers API service call. */
 export interface NetworkWatcherListResult {
   /** List of network watcher resources. */
-  value?: NetworkWatcherListResultValueList;
+  value: NetworkWatcherListResultValueList;
   /** URL to get the next set of results. */
   nextLink?: string;
 }
@@ -39288,6 +39536,8 @@ export interface ListNetworkWatchersRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNetworkWatchersConnectionAnalyzersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39296,17 +39546,22 @@ export interface ListNetworkWatchersConnectionAnalyzersRequest {
   resourceGroupName: string;
   /** The name of the network watcher. */
   networkWatcherName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Information about connection analyzers. */
 export type ConnectionAnalyzerListResultValueList = Array<ConnectionAnalyzer>;
 /** List of connection analyzers. */
 export interface ConnectionAnalyzerListResult {
   /** Information about connection analyzers. */
-  value?: ConnectionAnalyzerListResultValueList;
+  value: ConnectionAnalyzerListResultValueList;
   /** URL to get the next set of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft Network. */
@@ -39423,6 +39678,8 @@ export interface ListP2sVpnGatewayByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The P2SVpnGateway items on this page */
 export type ListP2SVpnGatewaysResultValueList = Array<P2SVpnGateway>;
@@ -39436,6 +39693,8 @@ export interface ListP2SVpnGatewaysResult {
 export interface ListP2sVpnGatewaysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPacketCapturesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39444,13 +39703,15 @@ export interface ListPacketCapturesRequest {
   resourceGroupName: string;
   /** The name of the network watcher. */
   networkWatcherName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Information about packet capture sessions. */
 export type PacketCaptureListResultValueList = Array<PacketCaptureResult>;
 /** List of packet capture sessions. */
 export interface PacketCaptureListResult {
   /** Information about packet capture sessions. */
-  value?: PacketCaptureListResultValueList;
+  value: PacketCaptureListResultValueList;
   /** URL to get the next set of results. */
   nextLink?: string;
 }
@@ -39463,6 +39724,8 @@ export interface ListPeerExpressRouteCircuitConnectionsRequest {
   circuitName: string;
   /** The name of the peering. */
   peeringName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PeerExpressRouteCircuitConnection items on this page */
 export type PeerExpressRouteCircuitConnectionListResultValueList =
@@ -39481,6 +39744,8 @@ export interface ListPrivateDnsZoneGroupsRequest {
   resourceGroupName: string;
   /** The name of the private endpoint. */
   privateEndpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Private dns zone group resource. */
 export interface PrivateDnsZoneGroup {
@@ -39505,6 +39770,8 @@ export interface PrivateDnsZoneGroupListResult {
 export interface ListPrivateEndpointBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpoint items on this page */
 export type PrivateEndpointListResultValueList = Array<PrivateEndpoint_5>;
@@ -39520,12 +39787,16 @@ export interface ListPrivateEndpointsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServiceAutoApprovedPrivateLinkServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The information of an AutoApprovedPrivateLinkService. */
 export interface AutoApprovedPrivateLinkService {
@@ -39548,10 +39819,14 @@ export interface ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResource
   resourceGroupName: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateLinkService items on this page */
 export type PrivateLinkServiceListResultValueList = Array<PrivateLinkService_5>;
@@ -39569,6 +39844,8 @@ export interface ListPrivateLinkServicePrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the private link service. */
   serviceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection_5>;
@@ -39584,10 +39861,14 @@ export interface ListPrivateLinkServicesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPublicIPAddressAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PublicIPAddress items on this page */
 export type PublicIPAddressListResultValueList = Array<PublicIPAddress_6>;
@@ -39605,6 +39886,8 @@ export interface ListPublicIPAddressCloudServicePublicIPAddressesRequest {
   resourceGroupName: string;
   /** The name of the cloud service. */
   cloudServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPublicIPAddressCloudServiceRoleInstancePublicIPAddressesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39619,16 +39902,22 @@ export interface ListPublicIPAddressCloudServiceRoleInstancePublicIPAddressesReq
   networkInterfaceName: string;
   /** The name of the IP configuration. */
   ipConfigurationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPublicIPAddressesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPublicIPPrefixAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type PublicIPPrefixTagsMap = { [key: string]: string | undefined };
@@ -39673,6 +39962,8 @@ export interface ListPublicIPPrefixesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReachabilityAnalysisIntentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39693,6 +39984,8 @@ export interface ListReachabilityAnalysisIntentsRequest {
   sortKey?: string;
   /** Optional sort value for pagination. */
   sortValue?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ReachabilityAnalysisIntentSystemDataCreatedByType =
@@ -39762,6 +40055,8 @@ export interface ListReachabilityAnalysisRunsRequest {
   sortKey?: string;
   /** Optional sort value for pagination. */
   sortValue?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ReachabilityAnalysisRunSystemDataCreatedByType =
@@ -39836,6 +40131,8 @@ export interface ListRouteFilterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RouteFilterTagsMap = { [key: string]: string | undefined };
@@ -39872,6 +40169,8 @@ export interface ListRouteFilterRuleByRouteFilterRequest {
   resourceGroupName: string;
   /** The name of the route filter. */
   routeFilterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The RouteFilterRule items on this page */
 export type RouteFilterRuleListResultValueList = Array<RouteFilterRule>;
@@ -39885,6 +40184,8 @@ export interface RouteFilterRuleListResult {
 export interface ListRouteFiltersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRouteMapsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39893,6 +40194,8 @@ export interface ListRouteMapsRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The RouteMap child resource of a Virtual hub. */
 export interface RouteMap {
@@ -39923,6 +40226,8 @@ export interface ListRoutesRequest {
   resourceGroupName: string;
   /** The name of the route table. */
   routeTableName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Route items on this page */
 export type RouteListResultValueList = Array<Route_6>;
@@ -39936,6 +40241,8 @@ export interface RouteListResult {
 export interface ListRouteTableAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The RouteTable items on this page */
 export type RouteTableListResultValueList = Array<RouteTable_6>;
@@ -39951,6 +40258,8 @@ export interface ListRouteTablesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRoutingIntentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39959,6 +40268,8 @@ export interface ListRoutingIntentRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The routing intent child resource of a Virtual hub. */
 export interface RoutingIntent {
@@ -39995,6 +40306,8 @@ export interface ListRoutingRuleCollectionsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type RoutingRuleCollectionSystemDataCreatedByType =
@@ -40062,6 +40375,8 @@ export interface ListRoutingRulesRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type RoutingRuleSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -40121,6 +40436,8 @@ export interface ListScopeConnectionsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ScopeConnectionSystemDataCreatedByType =
@@ -40184,6 +40501,8 @@ export interface ListSecurityAdminConfigurationsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type SecurityAdminConfigurationSystemDataCreatedByType =
@@ -40241,6 +40560,8 @@ export interface ListSecurityPartnerProviderByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SecurityPartnerProviderTagsMap = { [key: string]: string | undefined };
@@ -40273,6 +40594,8 @@ export interface SecurityPartnerProviderListResult {
 export interface ListSecurityPartnerProvidersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSecurityRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40281,6 +40604,8 @@ export interface ListSecurityRulesRequest {
   resourceGroupName: string;
   /** The name of the network security group. */
   networkSecurityGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSecurityUserConfigurationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40293,6 +40618,8 @@ export interface ListSecurityUserConfigurationsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type SecurityUserConfigurationSystemDataCreatedByType =
@@ -40358,6 +40685,8 @@ export interface ListSecurityUserRuleCollectionsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type SecurityUserRuleCollectionSystemDataCreatedByType =
@@ -40425,6 +40754,8 @@ export interface ListSecurityUserRulesRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type SecurityUserRuleSystemDataCreatedByType =
@@ -40499,6 +40830,8 @@ export interface ServiceAssociationLinksListResult {
 export interface ListServiceEndpointPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ServiceEndpointPolicyTagsMap = { [key: string]: string | undefined };
@@ -40535,6 +40868,8 @@ export interface ListServiceEndpointPolicyByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceEndpointPolicyDefinitionByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40543,6 +40878,8 @@ export interface ListServiceEndpointPolicyDefinitionByResourceGroupRequest {
   resourceGroupName: string;
   /** The name of the service endpoint policy. */
   serviceEndpointPolicyName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ServiceEndpointPolicyDefinition items on this page */
 export type ServiceEndpointPolicyDefinitionListResultValueList =
@@ -40557,6 +40894,8 @@ export interface ServiceEndpointPolicyDefinitionListResult {
 export interface ListServiceGatewayAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ServiceGatewaySystemDataCreatedByType =
@@ -40626,6 +40965,8 @@ export interface ListServiceGatewaysRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListServiceTagInformationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -40636,6 +40977,8 @@ export interface ListServiceTagInformationRequest {
   noAddressPrefixes?: boolean;
   /** Return tag information for a particular tag. */
   tagName?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of IP address prefixes. */
 export type ServiceTagInformationPropertiesFormatAddressPrefixesList = Array<string>;
@@ -40716,6 +41059,8 @@ export interface ListStaticCidrsRequest {
   sortKey?: string;
   /** Optional sort value for pagination. */
   sortValue?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type StaticCidrSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
@@ -40775,6 +41120,8 @@ export interface ListStaticMembersRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type StaticMemberSystemDataCreatedByType =
@@ -40834,6 +41181,8 @@ export interface ListSubgroupsRequest {
   resourceGroupName: string;
   /** The name of the interconnect group. */
   interconnectGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Subgroup items on this page */
 export type SubgroupListResultValueList = Array<Subgroup>;
@@ -40851,6 +41200,8 @@ export interface ListSubnetsRequest {
   resourceGroupName: string;
   /** The name of the virtual network. */
   virtualNetworkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Subnet items on this page */
 export type SubnetListResultValueList = Array<Subnet_6>;
@@ -40868,12 +41219,16 @@ export interface ListSubscriptionNetworkManagerConnectionsRequest {
   _top?: number;
   /** SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An enum describing the unit of measurement. */
 export type UsageUnit = "Count";
@@ -40923,6 +41278,8 @@ export interface ListVerifierWorkspacesRequest {
   sortKey?: string;
   /** Optional sort value for pagination. */
   sortValue?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type VerifierWorkspaceSystemDataCreatedByType =
@@ -41011,6 +41368,8 @@ export interface ListVirtualApplianceSitesRequest {
   resourceGroupName: string;
   /** The name of Network Virtual Appliance. */
   networkVirtualApplianceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Virtual Appliance Site resource. */
 export interface VirtualApplianceSite {
@@ -41037,6 +41396,8 @@ export interface NetworkVirtualApplianceSiteListResult {
 export interface ListVirtualApplianceSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NetworkVirtualApplianceSkuTagsMap = { [key: string]: string | undefined };
@@ -41122,6 +41483,8 @@ export interface ListVirtualHubBgpConnectionsRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Virtual Appliance Site resource. */
 export interface BgpConnection {
@@ -41150,6 +41513,8 @@ export interface ListVirtualHubByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualHubTagsMap = { [key: string]: string | undefined };
@@ -41188,6 +41553,8 @@ export interface ListVirtualHubIpConfigurationRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** IpConfigurations. */
 export interface HubIpConfiguration {
@@ -41218,6 +41585,8 @@ export interface ListVirtualHubRouteTableV2sRequest {
   resourceGroupName: string;
   /** The name of the VirtualHub. */
   virtualHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VirtualHubRouteTableV2 items on this page */
 export type ListVirtualHubRouteTableV2sResultValueList = Array<VirtualHubRouteTableV2>;
@@ -41231,10 +41600,14 @@ export interface ListVirtualHubRouteTableV2sResult {
 export interface ListVirtualHubsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualNetworkAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
@@ -41271,6 +41644,8 @@ export interface VirtualNetworkListResult {
 export interface ListVirtualNetworkApplianceAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualNetworkApplianceTagsMap = { [key: string]: string | undefined };
@@ -41305,6 +41680,8 @@ export interface ListVirtualNetworkAppliancesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualNetworkDdosProtectionStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41317,6 +41694,8 @@ export interface ListVirtualNetworkDdosProtectionStatusRequest {
   top?: number;
   /** The skipToken that is given with nextLink. */
   skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Value indicating whether the IP address is DDoS workload protected or not. */
 export type PublicIpDdosProtectionStatusResultIsWorkloadProtected = "False" | "True";
@@ -41350,6 +41729,8 @@ export interface ListVirtualNetworkGatewayConnectionsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualNetworkGatewayConnectionTagsMap = { [key: string]: string | undefined };
@@ -41387,6 +41768,8 @@ export interface ListVirtualNetworkGatewayConnectionsRequest2 {
   resourceGroupName: string;
   /** The name of the virtual network gateway. */
   virtualNetworkGatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualNetworkGatewayConnectionListEntityTagsMap = {
@@ -41538,6 +41921,8 @@ export interface ListVirtualNetworkGatewayNatRuleByVirtualNetworkGatewayRequest 
   resourceGroupName: string;
   /** The name of the virtual network gateway. */
   virtualNetworkGatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VirtualNetworkGatewayNatRule items on this page */
 export type ListVirtualNetworkGatewayNatRulesResultValueList = Array<VirtualNetworkGatewayNatRule>;
@@ -41577,6 +41962,8 @@ export interface ListVirtualNetworkGatewaysRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VirtualNetworkGateway items on this page */
 export type VirtualNetworkGatewayListResultValueList = Array<VirtualNetworkGateway>;
@@ -41594,6 +41981,8 @@ export interface ListVirtualNetworkPeeringsRequest {
   resourceGroupName: string;
   /** The name of the virtual network. */
   virtualNetworkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VirtualNetworkPeering items on this page */
 export type VirtualNetworkPeeringListResultValueList = Array<VirtualNetworkPeering>;
@@ -41609,10 +41998,14 @@ export interface ListVirtualNetworksRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualNetworkTapAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualNetworkTapTagsMap = { [key: string]: string | undefined };
@@ -41647,6 +42040,8 @@ export interface ListVirtualNetworkTapByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualNetworkUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41655,6 +42050,8 @@ export interface ListVirtualNetworkUsageRequest {
   resourceGroupName: string;
   /** The name of the virtual network. */
   virtualNetworkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Usage strings container. */
 export interface VirtualNetworkUsageName {
@@ -41690,6 +42087,8 @@ export interface ListVirtualRouterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualRouterTagsMap = { [key: string]: string | undefined };
@@ -41726,6 +42125,8 @@ export interface ListVirtualRouterPeeringsRequest {
   resourceGroupName: string;
   /** The name of the Virtual Router. */
   virtualRouterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Virtual Router Peering resource. */
 export interface VirtualRouterPeering {
@@ -41752,12 +42153,16 @@ export interface VirtualRouterPeeringListResult {
 export interface ListVirtualRoutersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualWanByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualWANTagsMap = { [key: string]: string | undefined };
@@ -41790,6 +42195,8 @@ export interface ListVirtualWANsResult {
 export interface ListVirtualWansRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVpnConnectionByVpnGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41798,6 +42205,8 @@ export interface ListVpnConnectionByVpnGatewayRequest {
   resourceGroupName: string;
   /** The name of the gateway. */
   gatewayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VpnConnection items on this page */
 export type ListVpnConnectionsResultValueList = Array<VpnConnection>;
@@ -41813,6 +42222,8 @@ export interface ListVpnGatewayByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VpnGatewayTagsMap = { [key: string]: string | undefined };
@@ -41845,6 +42256,8 @@ export interface ListVpnGatewaysResult {
 export interface ListVpnGatewaysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVpnLinkConnectionByVpnConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41855,6 +42268,8 @@ export interface ListVpnLinkConnectionByVpnConnectionRequest {
   gatewayName: string;
   /** The name of the vpn connection. */
   connectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VpnSiteLinkConnection items on this page */
 export type ListVpnSiteLinkConnectionsResultValueList = Array<VpnSiteLinkConnection>;
@@ -41892,6 +42307,8 @@ export interface ListVpnServerConfigurationByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VpnServerConfigurationTagsMap = { [key: string]: string | undefined };
@@ -41940,6 +42357,8 @@ export interface ListVpnServerConfigurationRadiusSecretsResponse {
 export interface ListVpnServerConfigurationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVpnServerConfigurationsAssociatedWithVirtualWanRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -41965,6 +42384,8 @@ export interface ListVpnSiteByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VpnSiteTagsMap = { [key: string]: string | undefined };
@@ -42001,6 +42422,8 @@ export interface ListVpnSiteLinkByVpnSiteRequest {
   resourceGroupName: string;
   /** The name of the VpnSite being retrieved. */
   vpnSiteName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The VpnSiteLink items on this page */
 export type ListVpnSiteLinksResultValueList = Array<VpnSiteLink>;
@@ -42014,12 +42437,16 @@ export interface ListVpnSiteLinksResult {
 export interface ListVpnSitesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWebApplicationFirewallPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WebApplicationFirewallPolicyTagsMap = { [key: string]: string | undefined };
@@ -42052,10 +42479,14 @@ export interface WebApplicationFirewallPolicyListResult {
 export interface ListWebApplicationFirewallPolicyAllRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWebCategoryBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Web Category Resource. */
 export interface AzureWebCategory {
@@ -45168,6 +45599,8 @@ export interface PutBastionShareableLinkRequest {
   bastionHostName: string;
   /** List of VM references. */
   vms?: PutBastionShareableLinkRequestVmsList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Response for all the Bastion Shareable Link endpoints. */
 export interface PutBastionShareableLinkResponse {
@@ -55300,18 +55733,25 @@ export const DeployFirewallPolicyDeployment: API.OperationMethod<
 
 export type DisconnectActiveSessionsError = AzureOpError;
 /** Returns the list of currently active sessions on the Bastion. */
-export const DisconnectActiveSessions: API.OperationMethod<
+export const DisconnectActiveSessions: API.PaginatedOperationMethod<
   DisconnectActiveSessionsRequest,
   BastionSessionDeleteResult,
   DisconnectActiveSessionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BastionSessionState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2464, __c77, 0) as any as S.Schema<DisconnectActiveSessionsRequest>,
   output: __S(2467, __c77, 3) as any as S.Schema<BastionSessionDeleteResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type DisconnectP2sVpnGatewayP2sVpnConnectionsError = AzureOpError;
 /** Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group. */
@@ -55883,18 +56323,25 @@ export const Generatevirtualwanvpnserverconfigurationvpnprofile: API.OperationMe
 
 export type GetActiveSessionsError = AzureOpError;
 /** Returns the list of currently active sessions on the Bastion. */
-export const GetActiveSessions: API.OperationMethod<
+export const GetActiveSessions: API.PaginatedOperationMethod<
   GetActiveSessionsRequest,
   BastionActiveSessionListResult,
   GetActiveSessionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BastionActiveSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6048, __c189, 0) as any as S.Schema<GetActiveSessionsRequest>,
   output: __S(6051, __c189, 3) as any as S.Schema<BastionActiveSessionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetAddressPrefixSetError = AzureOpError;
 /** Gets the specified address prefix set. */
@@ -55996,18 +56443,25 @@ export const GetApplicationGatewaySslPredefinedPolicy: API.OperationMethod<
 
 export type GetApplicationGatewayWafDynamicManifestError = AzureOpError;
 /** Gets the regional application gateway waf manifest. */
-export const GetApplicationGatewayWafDynamicManifest: API.OperationMethod<
+export const GetApplicationGatewayWafDynamicManifest: API.PaginatedOperationMethod<
   GetApplicationGatewayWafDynamicManifestRequest,
   ApplicationGatewayWafDynamicManifestResultList,
   GetApplicationGatewayWafDynamicManifestError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationGatewayWafDynamicManifestResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6368, __c199, 0) as any as S.Schema<GetApplicationGatewayWafDynamicManifestRequest>,
   output: __S(6370, __c199, 2) as any as S.Schema<ApplicationGatewayWafDynamicManifestResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetApplicationGatewayWafDynamicManifestsDefaultError = AzureOpError;
 /** Gets the regional application gateway waf manifest. */
@@ -56094,18 +56548,25 @@ export const GetBastionHost: API.OperationMethod<
 
 export type GetBastionShareableLinkError = AzureOpError;
 /** Return the Bastion Shareable Links for all the VMs specified in the request. */
-export const GetBastionShareableLink: API.OperationMethod<
+export const GetBastionShareableLink: API.PaginatedOperationMethod<
   GetBastionShareableLinkRequest,
   BastionShareableLinkListResult,
   GetBastionShareableLinkError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BastionShareableLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6944, __c217, 0) as any as S.Schema<GetBastionShareableLinkRequest>,
   output: __S(6945, __c217, 1) as any as S.Schema<BastionShareableLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetCommitError = AzureOpError;
 /** Gets the specified commit. */
@@ -58111,33 +58572,47 @@ export const GetServiceGateway: API.OperationMethod<
 
 export type GetServiceGatewayAddressLocationsError = AzureOpError;
 /** Get address locations in service gateway. */
-export const GetServiceGatewayAddressLocations: API.OperationMethod<
+export const GetServiceGatewayAddressLocations: API.PaginatedOperationMethod<
   GetServiceGatewayAddressLocationsRequest,
   GetServiceGatewayAddressLocationsResult,
   GetServiceGatewayAddressLocationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceGatewayAddressLocationResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(16128, __c504, 0) as any as S.Schema<GetServiceGatewayAddressLocationsRequest>,
   output: __S(16131, __c504, 3) as any as S.Schema<GetServiceGatewayAddressLocationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetServiceGatewayServicesError = AzureOpError;
 /** Get Services in service gateway. */
-export const GetServiceGatewayServices: API.OperationMethod<
+export const GetServiceGatewayServices: API.PaginatedOperationMethod<
   GetServiceGatewayServicesRequest,
   GetServiceGatewayServicesResult,
   GetServiceGatewayServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceGatewayService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(16192, __c506, 0) as any as S.Schema<GetServiceGatewayServicesRequest>,
   output: __S(16196, __c506, 4) as any as S.Schema<GetServiceGatewayServicesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetStaticCidrError = AzureOpError;
 /** Gets the specific Static CIDR resource. Gets the specific Static CIDR resource. */
@@ -58800,18 +59275,25 @@ export const GetVpnGateway: API.OperationMethod<
 
 export type GetVpnLinkConnectionAllSharedKeysError = AzureOpError;
 /** Lists all shared keys of VpnLink connection specified. */
-export const GetVpnLinkConnectionAllSharedKeys: API.OperationMethod<
+export const GetVpnLinkConnectionAllSharedKeys: API.PaginatedOperationMethod<
   GetVpnLinkConnectionAllSharedKeysRequest,
   ConnectionSharedKeyResultList,
   GetVpnLinkConnectionAllSharedKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectionSharedKeyResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(19488, __c609, 0) as any as S.Schema<GetVpnLinkConnectionAllSharedKeysRequest>,
   output: __S(19490, __c609, 2) as any as S.Schema<ConnectionSharedKeyResultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetVpnLinkConnectionDefaultSharedKeyError = AzureOpError;
 /** Gets the shared key of VpnLink connection specified. */
@@ -59131,63 +59613,91 @@ export const ListActiveSecurityAdminRules: API.OperationMethod<
 
 export type ListAddressPrefixSetsError = AzureOpError;
 /** Gets all address prefix sets in an application security group. */
-export const ListAddressPrefixSets: API.OperationMethod<
+export const ListAddressPrefixSets: API.PaginatedOperationMethod<
   ListAddressPrefixSetsRequest,
   AddressPrefixSetListResult,
   ListAddressPrefixSetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AddressPrefixSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(21216, __c663, 0) as any as S.Schema<ListAddressPrefixSetsRequest>,
   output: __S(21218, __c663, 2) as any as S.Schema<AddressPrefixSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAdminRuleCollectionsError = AzureOpError;
 /** Lists all the rule collections in a security admin configuration, in a paginated format. */
-export const ListAdminRuleCollections: API.OperationMethod<
+export const ListAdminRuleCollections: API.PaginatedOperationMethod<
   ListAdminRuleCollectionsRequest,
   AdminRuleCollectionListResult,
   ListAdminRuleCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AdminRuleCollection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(21248, __c664, 0) as any as S.Schema<ListAdminRuleCollectionsRequest>,
   output: __S(21281, __c665, 1) as any as S.Schema<AdminRuleCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAdminRulesError = AzureOpError;
 /** List all network manager security configuration admin rules. */
-export const ListAdminRules: API.OperationMethod<
+export const ListAdminRules: API.PaginatedOperationMethod<
   ListAdminRulesRequest,
   AdminRuleListResult,
   ListAdminRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BaseAdminRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(21312, __c666, 0) as any as S.Schema<ListAdminRulesRequest>,
   output: __S(21314, __c666, 2) as any as S.Schema<AdminRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationGatewayAllError = AzureOpError;
 /** Gets all the application gateways in a subscription. */
-export const ListApplicationGatewayAll: API.OperationMethod<
+export const ListApplicationGatewayAll: API.PaginatedOperationMethod<
   ListApplicationGatewayAllRequest,
   ApplicationGatewayListResult,
   ListApplicationGatewayAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(21344, __c667, 0) as any as S.Schema<ListApplicationGatewayAllRequest>,
   output: __S(21376, __c668, 0) as any as S.Schema<ApplicationGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationGatewayAvailableRequestHeadersError = AzureOpError;
 /** Lists all available request headers. */
@@ -59279,12 +59789,13 @@ export const ListApplicationGatewayAvailableSslOptions: API.OperationMethod<
 
 export type ListApplicationGatewayAvailableSslPredefinedPoliciesError = AzureOpError;
 /** Lists all SSL predefined policies for configuring Ssl policy. */
-export const ListApplicationGatewayAvailableSslPredefinedPolicies: API.OperationMethod<
+export const ListApplicationGatewayAvailableSslPredefinedPolicies: API.PaginatedOperationMethod<
   ListApplicationGatewayAvailableSslPredefinedPoliciesRequest,
   ApplicationGatewayAvailableSslPredefinedPolicies,
   ListApplicationGatewayAvailableSslPredefinedPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationGatewaySslPredefinedPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     22304,
     __c697,
@@ -59298,7 +59809,13 @@ export const ListApplicationGatewayAvailableSslPredefinedPolicies: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationGatewayAvailableWafRuleSetsError = AzureOpError;
 /** Lists all available web application firewall rule sets. */
@@ -59321,12 +59838,13 @@ export const ListApplicationGatewayAvailableWafRuleSets: API.OperationMethod<
 
 export type ListApplicationGatewayPrivateEndpointConnectionsError = AzureOpError;
 /** Lists all private endpoint connections on an application gateway. */
-export const ListApplicationGatewayPrivateEndpointConnections: API.OperationMethod<
+export const ListApplicationGatewayPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListApplicationGatewayPrivateEndpointConnectionsRequest,
   ApplicationGatewayPrivateEndpointConnectionListResult,
   ListApplicationGatewayPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationGatewayPrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     22368,
     __c699,
@@ -59340,16 +59858,23 @@ export const ListApplicationGatewayPrivateEndpointConnections: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationGatewayPrivateLinkResourcesError = AzureOpError;
 /** Lists all private link resources on an application gateway. */
-export const ListApplicationGatewayPrivateLinkResources: API.OperationMethod<
+export const ListApplicationGatewayPrivateLinkResources: API.PaginatedOperationMethod<
   ListApplicationGatewayPrivateLinkResourcesRequest,
   ApplicationGatewayPrivateLinkResourceListResult,
   ListApplicationGatewayPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationGatewayPrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     22400,
     __c700,
@@ -59359,121 +59884,177 @@ export const ListApplicationGatewayPrivateLinkResources: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationGatewaysError = AzureOpError;
 /** Lists all application gateways in a resource group. */
-export const ListApplicationGateways: API.OperationMethod<
+export const ListApplicationGateways: API.PaginatedOperationMethod<
   ListApplicationGatewaysRequest,
   ApplicationGatewayListResult,
   ListApplicationGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22432, __c701, 0) as any as S.Schema<ListApplicationGatewaysRequest>,
   output: __S(21376, __c668, 0) as any as S.Schema<ApplicationGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationSecurityGroupAllError = AzureOpError;
 /** Gets all application security groups in a subscription. */
-export const ListApplicationSecurityGroupAll: API.OperationMethod<
+export const ListApplicationSecurityGroupAll: API.PaginatedOperationMethod<
   ListApplicationSecurityGroupAllRequest,
   ApplicationSecurityGroupListResult,
   ListApplicationSecurityGroupAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22464, __c702, 0) as any as S.Schema<ListApplicationSecurityGroupAllRequest>,
   output: __S(22496, __c703, 0) as any as S.Schema<ApplicationSecurityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationSecurityGroupsError = AzureOpError;
 /** Gets all the application security groups in a resource group. */
-export const ListApplicationSecurityGroups: API.OperationMethod<
+export const ListApplicationSecurityGroups: API.PaginatedOperationMethod<
   ListApplicationSecurityGroupsRequest,
   ApplicationSecurityGroupListResult,
   ListApplicationSecurityGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationSecurityGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22528, __c704, 0) as any as S.Schema<ListApplicationSecurityGroupsRequest>,
   output: __S(22496, __c703, 0) as any as S.Schema<ApplicationSecurityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAuthenticationPoliciesError = AzureOpError;
 /** Lists all of the authentication policies within a resource group. */
-export const ListAuthenticationPolicies: API.OperationMethod<
+export const ListAuthenticationPolicies: API.PaginatedOperationMethod<
   ListAuthenticationPoliciesRequest,
   AuthenticationPolicyListResult,
   ListAuthenticationPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthenticationPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22592, __c706, 0) as any as S.Schema<ListAuthenticationPoliciesRequest>,
   output: __S(22625, __c707, 1) as any as S.Schema<AuthenticationPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAuthenticationPolicyAllError = AzureOpError;
 /** Gets all the authentication policies in a subscription. */
-export const ListAuthenticationPolicyAll: API.OperationMethod<
+export const ListAuthenticationPolicyAll: API.PaginatedOperationMethod<
   ListAuthenticationPolicyAllRequest,
   AuthenticationPolicyListResult,
   ListAuthenticationPolicyAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthenticationPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22656, __c708, 0) as any as S.Schema<ListAuthenticationPolicyAllRequest>,
   output: __S(22625, __c707, 1) as any as S.Schema<AuthenticationPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailableDelegationsError = AzureOpError;
 /** Gets all of the available subnet delegations for this subscription in this region. */
-export const ListAvailableDelegations: API.OperationMethod<
+export const ListAvailableDelegations: API.PaginatedOperationMethod<
   ListAvailableDelegationsRequest,
   AvailableDelegationsResult,
   ListAvailableDelegationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailableDelegation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22688, __c709, 0) as any as S.Schema<ListAvailableDelegationsRequest>,
   output: __S(22722, __c710, 2) as any as S.Schema<AvailableDelegationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailableEndpointServicesError = AzureOpError;
 /** List what values of endpoint services are available for use. */
-export const ListAvailableEndpointServices: API.OperationMethod<
+export const ListAvailableEndpointServices: API.PaginatedOperationMethod<
   ListAvailableEndpointServicesRequest,
   EndpointServicesListResult,
   ListAvailableEndpointServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EndpointServiceResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22752, __c711, 0) as any as S.Schema<ListAvailableEndpointServicesRequest>,
   output: __S(22755, __c711, 3) as any as S.Schema<EndpointServicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailablePrivateEndpointTypeByResourceGroupError = AzureOpError;
 /** Returns all of the resource types that can be linked to a Private Endpoint in this subscription in this region. */
-export const ListAvailablePrivateEndpointTypeByResourceGroup: API.OperationMethod<
+export const ListAvailablePrivateEndpointTypeByResourceGroup: API.PaginatedOperationMethod<
   ListAvailablePrivateEndpointTypeByResourceGroupRequest,
   AvailablePrivateEndpointTypesResult,
   ListAvailablePrivateEndpointTypeByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailablePrivateEndpointType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     22784,
     __c712,
@@ -59483,97 +60064,145 @@ export const ListAvailablePrivateEndpointTypeByResourceGroup: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailablePrivateEndpointTypesError = AzureOpError;
 /** Returns all of the resource types that can be linked to a Private Endpoint in this subscription in this region. */
-export const ListAvailablePrivateEndpointTypes: API.OperationMethod<
+export const ListAvailablePrivateEndpointTypes: API.PaginatedOperationMethod<
   ListAvailablePrivateEndpointTypesRequest,
   AvailablePrivateEndpointTypesResult,
   ListAvailablePrivateEndpointTypesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailablePrivateEndpointType
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22848, __c714, 0) as any as S.Schema<ListAvailablePrivateEndpointTypesRequest>,
   output: __S(22818, __c713, 2) as any as S.Schema<AvailablePrivateEndpointTypesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailableResourceGroupDelegationsError = AzureOpError;
 /** Gets all of the available subnet delegations for this resource group in this region. */
-export const ListAvailableResourceGroupDelegations: API.OperationMethod<
+export const ListAvailableResourceGroupDelegations: API.PaginatedOperationMethod<
   ListAvailableResourceGroupDelegationsRequest,
   AvailableDelegationsResult,
   ListAvailableResourceGroupDelegationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailableDelegation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22880, __c715, 0) as any as S.Schema<ListAvailableResourceGroupDelegationsRequest>,
   output: __S(22722, __c710, 2) as any as S.Schema<AvailableDelegationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailableServiceAliasByResourceGroupError = AzureOpError;
 /** Gets all available service aliases for this resource group in this region. */
-export const ListAvailableServiceAliasByResourceGroup: API.OperationMethod<
+export const ListAvailableServiceAliasByResourceGroup: API.PaginatedOperationMethod<
   ListAvailableServiceAliasByResourceGroupRequest,
   AvailableServiceAliasesResult,
   ListAvailableServiceAliasByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailableServiceAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22912, __c716, 0) as any as S.Schema<ListAvailableServiceAliasByResourceGroupRequest>,
   output: __S(22946, __c717, 2) as any as S.Schema<AvailableServiceAliasesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailableServiceAliasesError = AzureOpError;
 /** Gets all available service aliases for this subscription in this region. */
-export const ListAvailableServiceAliases: API.OperationMethod<
+export const ListAvailableServiceAliases: API.PaginatedOperationMethod<
   ListAvailableServiceAliasesRequest,
   AvailableServiceAliasesResult,
   ListAvailableServiceAliasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailableServiceAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(22976, __c718, 0) as any as S.Schema<ListAvailableServiceAliasesRequest>,
   output: __S(22946, __c717, 2) as any as S.Schema<AvailableServiceAliasesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAzureFirewallAllError = AzureOpError;
 /** Gets all the Azure Firewalls in a subscription. */
-export const ListAzureFirewallAll: API.OperationMethod<
+export const ListAzureFirewallAll: API.PaginatedOperationMethod<
   ListAzureFirewallAllRequest,
   AzureFirewallListResult,
   ListAzureFirewallAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AzureFirewall
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23008, __c719, 0) as any as S.Schema<ListAzureFirewallAllRequest>,
   output: __S(23041, __c720, 1) as any as S.Schema<AzureFirewallListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAzureFirewallFqdnTagAllError = AzureOpError;
 /** Gets all the Azure Firewall FQDN Tags in a subscription. */
-export const ListAzureFirewallFqdnTagAll: API.OperationMethod<
+export const ListAzureFirewallFqdnTagAll: API.PaginatedOperationMethod<
   ListAzureFirewallFqdnTagAllRequest,
   AzureFirewallFqdnTagListResult,
   ListAzureFirewallFqdnTagAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AzureFirewallFqdnTag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23104, __c722, 0) as any as S.Schema<ListAzureFirewallFqdnTagAllRequest>,
   output: __S(23108, __c722, 4) as any as S.Schema<AzureFirewallFqdnTagListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAzureFirewallLearnedPrefixesError = AzureOpError;
 /** Retrieves a list of all IP prefixes that azure firewall has learned to not SNAT. */
@@ -59592,87 +60221,123 @@ export const ListAzureFirewallLearnedPrefixes: API.OperationMethod<
 
 export type ListAzureFirewallsError = AzureOpError;
 /** Lists all Azure Firewalls in a resource group. */
-export const ListAzureFirewalls: API.OperationMethod<
+export const ListAzureFirewalls: API.PaginatedOperationMethod<
   ListAzureFirewallsRequest,
   AzureFirewallListResult,
   ListAzureFirewallsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AzureFirewall
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23168, __c724, 0) as any as S.Schema<ListAzureFirewallsRequest>,
   output: __S(23041, __c720, 1) as any as S.Schema<AzureFirewallListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBastionHostByResourceGroupError = AzureOpError;
 /** Lists all Bastion Hosts in a resource group. */
-export const ListBastionHostByResourceGroup: API.OperationMethod<
+export const ListBastionHostByResourceGroup: API.PaginatedOperationMethod<
   ListBastionHostByResourceGroupRequest,
   BastionHostListResult,
   ListBastionHostByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BastionHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23200, __c725, 0) as any as S.Schema<ListBastionHostByResourceGroupRequest>,
   output: __S(23233, __c726, 1) as any as S.Schema<BastionHostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBastionHostsError = AzureOpError;
 /** Lists all Bastion Hosts in a subscription. */
-export const ListBastionHosts: API.OperationMethod<
+export const ListBastionHosts: API.PaginatedOperationMethod<
   ListBastionHostsRequest,
   BastionHostListResult,
   ListBastionHostsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BastionHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23264, __c727, 0) as any as S.Schema<ListBastionHostsRequest>,
   output: __S(23233, __c726, 1) as any as S.Schema<BastionHostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBgpServiceCommunitiesError = AzureOpError;
 /** Gets all the available bgp service communities. */
-export const ListBgpServiceCommunities: API.OperationMethod<
+export const ListBgpServiceCommunities: API.PaginatedOperationMethod<
   ListBgpServiceCommunitiesRequest,
   BgpServiceCommunityListResult,
   ListBgpServiceCommunitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BgpServiceCommunity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23296, __c728, 0) as any as S.Schema<ListBgpServiceCommunitiesRequest>,
   output: __S(23302, __c728, 6) as any as S.Schema<BgpServiceCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommitsError = AzureOpError;
 /** Lists all commits for the specified network manager. */
-export const ListCommits: API.OperationMethod<
+export const ListCommits: API.PaginatedOperationMethod<
   ListCommitsRequest,
   CommitListResult,
   ListCommitsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Commit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23328, __c729, 0) as any as S.Schema<ListCommitsRequest>,
   output: __S(23330, __c729, 2) as any as S.Schema<CommitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConfigurationPolicyGroupByVpnServerConfigurationError = AzureOpError;
 /** Lists all the configurationPolicyGroups in a resource group for a vpnServerConfiguration. */
-export const ListConfigurationPolicyGroupByVpnServerConfiguration: API.OperationMethod<
+export const ListConfigurationPolicyGroupByVpnServerConfiguration: API.PaginatedOperationMethod<
   ListConfigurationPolicyGroupByVpnServerConfigurationRequest,
   ListVpnServerConfigurationPolicyGroupsResult,
   ListConfigurationPolicyGroupByVpnServerConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnServerConfigurationPolicyGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     23360,
     __c730,
@@ -59682,202 +60347,299 @@ export const ListConfigurationPolicyGroupByVpnServerConfiguration: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectionMonitorsError = AzureOpError;
 /** Lists all connection monitors for the specified Network Watcher. */
-export const ListConnectionMonitors: API.OperationMethod<
+export const ListConnectionMonitors: API.PaginatedOperationMethod<
   ListConnectionMonitorsRequest,
   ConnectionMonitorListResult,
   ListConnectionMonitorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectionMonitorResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23392, __c731, 0) as any as S.Schema<ListConnectionMonitorsRequest>,
   output: __S(23394, __c731, 2) as any as S.Schema<ConnectionMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectionPoliciesError = AzureOpError;
 /** Retrieves the details of all ConnectionPolicies. */
-export const ListConnectionPolicies: API.OperationMethod<
+export const ListConnectionPolicies: API.PaginatedOperationMethod<
   ListConnectionPoliciesRequest,
   ListConnectionPoliciesResult,
   ListConnectionPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23424, __c732, 0) as any as S.Schema<ListConnectionPoliciesRequest>,
   output: __S(23426, __c732, 2) as any as S.Schema<ListConnectionPoliciesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectivityConfigurationsError = AzureOpError;
 /** Lists all the network manager connectivity configuration in a specified network manager. */
-export const ListConnectivityConfigurations: API.OperationMethod<
+export const ListConnectivityConfigurations: API.PaginatedOperationMethod<
   ListConnectivityConfigurationsRequest,
   ConnectivityConfigurationListResult,
   ListConnectivityConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectivityConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23488, __c734, 0) as any as S.Schema<ListConnectivityConfigurationsRequest>,
   output: __S(23490, __c734, 2) as any as S.Schema<ConnectivityConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomIPPrefixAllError = AzureOpError;
 /** Gets all the custom IP prefixes in a subscription. */
-export const ListCustomIPPrefixAll: API.OperationMethod<
+export const ListCustomIPPrefixAll: API.PaginatedOperationMethod<
   ListCustomIPPrefixAllRequest,
   CustomIpPrefixListResult,
   ListCustomIPPrefixAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomIpPrefix
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23520, __c735, 0) as any as S.Schema<ListCustomIPPrefixAllRequest>,
   output: __S(23553, __c736, 1) as any as S.Schema<CustomIpPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomIPPrefixesError = AzureOpError;
 /** Gets all custom IP prefixes in a resource group. */
-export const ListCustomIPPrefixes: API.OperationMethod<
+export const ListCustomIPPrefixes: API.PaginatedOperationMethod<
   ListCustomIPPrefixesRequest,
   CustomIpPrefixListResult,
   ListCustomIPPrefixesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomIpPrefix
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23584, __c737, 0) as any as S.Schema<ListCustomIPPrefixesRequest>,
   output: __S(23553, __c736, 1) as any as S.Schema<CustomIpPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDdosCustomPoliciesError = AzureOpError;
 /** Gets all the DDoS custom policies in a resource group. */
-export const ListDdosCustomPolicies: API.OperationMethod<
+export const ListDdosCustomPolicies: API.PaginatedOperationMethod<
   ListDdosCustomPoliciesRequest,
   DdosCustomPolicyListResult,
   ListDdosCustomPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DdosCustomPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23616, __c738, 0) as any as S.Schema<ListDdosCustomPoliciesRequest>,
   output: __S(23649, __c739, 1) as any as S.Schema<DdosCustomPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDdosCustomPolicyAllError = AzureOpError;
 /** Gets all the DDoS custom policies in a subscription. */
-export const ListDdosCustomPolicyAll: API.OperationMethod<
+export const ListDdosCustomPolicyAll: API.PaginatedOperationMethod<
   ListDdosCustomPolicyAllRequest,
   DdosCustomPolicyListResult,
   ListDdosCustomPolicyAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DdosCustomPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23680, __c740, 0) as any as S.Schema<ListDdosCustomPolicyAllRequest>,
   output: __S(23649, __c739, 1) as any as S.Schema<DdosCustomPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDdosProtectionPlanByResourceGroupError = AzureOpError;
 /** Gets all the DDoS protection plans in a resource group. */
-export const ListDdosProtectionPlanByResourceGroup: API.OperationMethod<
+export const ListDdosProtectionPlanByResourceGroup: API.PaginatedOperationMethod<
   ListDdosProtectionPlanByResourceGroupRequest,
   DdosProtectionPlanListResult,
   ListDdosProtectionPlanByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DdosProtectionPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23712, __c741, 0) as any as S.Schema<ListDdosProtectionPlanByResourceGroupRequest>,
   output: __S(23745, __c742, 1) as any as S.Schema<DdosProtectionPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDdosProtectionPlansError = AzureOpError;
 /** Gets all DDoS protection plans in a subscription. */
-export const ListDdosProtectionPlans: API.OperationMethod<
+export const ListDdosProtectionPlans: API.PaginatedOperationMethod<
   ListDdosProtectionPlansRequest,
   DdosProtectionPlanListResult,
   ListDdosProtectionPlansError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DdosProtectionPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23776, __c743, 0) as any as S.Schema<ListDdosProtectionPlansRequest>,
   output: __S(23745, __c742, 1) as any as S.Schema<DdosProtectionPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDefaultSecurityRulesError = AzureOpError;
 /** Gets all default security rules in a network security group. */
-export const ListDefaultSecurityRules: API.OperationMethod<
+export const ListDefaultSecurityRules: API.PaginatedOperationMethod<
   ListDefaultSecurityRulesRequest,
   SecurityRuleListResult,
   ListDefaultSecurityRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityRule_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23808, __c744, 0) as any as S.Schema<ListDefaultSecurityRulesRequest>,
   output: __S(23840, __c745, 0) as any as S.Schema<SecurityRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDscpConfigurationError = AzureOpError;
 /** Gets a DSCP Configuration. */
-export const ListDscpConfiguration: API.OperationMethod<
+export const ListDscpConfiguration: API.PaginatedOperationMethod<
   ListDscpConfigurationRequest,
   DscpConfigurationListResult,
   ListDscpConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DscpConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23872, __c746, 0) as any as S.Schema<ListDscpConfigurationRequest>,
   output: __S(23905, __c747, 1) as any as S.Schema<DscpConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDscpConfigurationAllError = AzureOpError;
 /** Gets all dscp configurations in a subscription. */
-export const ListDscpConfigurationAll: API.OperationMethod<
+export const ListDscpConfigurationAll: API.PaginatedOperationMethod<
   ListDscpConfigurationAllRequest,
   DscpConfigurationListResult,
   ListDscpConfigurationAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DscpConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(23936, __c748, 0) as any as S.Schema<ListDscpConfigurationAllRequest>,
   output: __S(23905, __c747, 1) as any as S.Schema<DscpConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCircuitAllError = AzureOpError;
 /** Gets all the express route circuits in a subscription. */
-export const ListExpressRouteCircuitAll: API.OperationMethod<
+export const ListExpressRouteCircuitAll: API.PaginatedOperationMethod<
   ListExpressRouteCircuitAllRequest,
   ExpressRouteCircuitListResult,
   ListExpressRouteCircuitAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCircuit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24000, __c750, 0) as any as S.Schema<ListExpressRouteCircuitAllRequest>,
   output: __S(24033, __c751, 1) as any as S.Schema<ExpressRouteCircuitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCircuitArpTableError = AzureOpError;
 /** Gets the currently advertised ARP table associated with the express route circuit in a resource group. */
@@ -59915,48 +60677,69 @@ export const ListExpressRouteCircuitAuthorizationKeys: API.OperationMethod<
 
 export type ListExpressRouteCircuitAuthorizationsError = AzureOpError;
 /** Gets all authorizations in an express route circuit. */
-export const ListExpressRouteCircuitAuthorizations: API.OperationMethod<
+export const ListExpressRouteCircuitAuthorizations: API.PaginatedOperationMethod<
   ListExpressRouteCircuitAuthorizationsRequest,
   AuthorizationListResult,
   ListExpressRouteCircuitAuthorizationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCircuitAuthorization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24192, __c756, 0) as any as S.Schema<ListExpressRouteCircuitAuthorizationsRequest>,
   output: __S(24193, __c756, 1) as any as S.Schema<AuthorizationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCircuitConnectionsError = AzureOpError;
 /** Gets all global reach connections associated with a private peering in an express route circuit. */
-export const ListExpressRouteCircuitConnections: API.OperationMethod<
+export const ListExpressRouteCircuitConnections: API.PaginatedOperationMethod<
   ListExpressRouteCircuitConnectionsRequest,
   ExpressRouteCircuitConnectionListResult,
   ListExpressRouteCircuitConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCircuitConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24224, __c757, 0) as any as S.Schema<ListExpressRouteCircuitConnectionsRequest>,
   output: __S(24225, __c757, 1) as any as S.Schema<ExpressRouteCircuitConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCircuitPeeringsError = AzureOpError;
 /** Gets all peerings in a specified express route circuit. */
-export const ListExpressRouteCircuitPeerings: API.OperationMethod<
+export const ListExpressRouteCircuitPeerings: API.PaginatedOperationMethod<
   ListExpressRouteCircuitPeeringsRequest,
   ExpressRouteCircuitPeeringListResult,
   ListExpressRouteCircuitPeeringsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCircuitPeering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24256, __c758, 0) as any as S.Schema<ListExpressRouteCircuitPeeringsRequest>,
   output: __S(24257, __c758, 1) as any as S.Schema<ExpressRouteCircuitPeeringListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCircuitRoutesTableError = AzureOpError;
 /** Gets the currently advertised routes table associated with the express route circuit in a resource group. */
@@ -59994,18 +60777,25 @@ export const ListExpressRouteCircuitRoutesTableSummary: API.OperationMethod<
 
 export type ListExpressRouteCircuitsError = AzureOpError;
 /** Gets all the express route circuits in a resource group. */
-export const ListExpressRouteCircuits: API.OperationMethod<
+export const ListExpressRouteCircuits: API.PaginatedOperationMethod<
   ListExpressRouteCircuitsRequest,
   ExpressRouteCircuitListResult,
   ListExpressRouteCircuitsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCircuit
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24384, __c762, 0) as any as S.Schema<ListExpressRouteCircuitsRequest>,
   output: __S(24033, __c751, 1) as any as S.Schema<ExpressRouteCircuitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteConnectionsError = AzureOpError;
 /** Lists ExpressRouteConnections. */
@@ -60039,12 +60829,13 @@ export const ListExpressRouteCrossConnectionArpTable: API.OperationMethod<
 
 export type ListExpressRouteCrossConnectionByResourceGroupError = AzureOpError;
 /** Retrieves all the ExpressRouteCrossConnections in a resource group. */
-export const ListExpressRouteCrossConnectionByResourceGroup: API.OperationMethod<
+export const ListExpressRouteCrossConnectionByResourceGroup: API.PaginatedOperationMethod<
   ListExpressRouteCrossConnectionByResourceGroupRequest,
   ExpressRouteCrossConnectionListResult,
   ListExpressRouteCrossConnectionByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCrossConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     24576,
     __c768,
@@ -60054,22 +60845,35 @@ export const ListExpressRouteCrossConnectionByResourceGroup: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCrossConnectionPeeringsError = AzureOpError;
 /** Gets all peerings in a specified ExpressRouteCrossConnection. */
-export const ListExpressRouteCrossConnectionPeerings: API.OperationMethod<
+export const ListExpressRouteCrossConnectionPeerings: API.PaginatedOperationMethod<
   ListExpressRouteCrossConnectionPeeringsRequest,
   ExpressRouteCrossConnectionPeeringList,
   ListExpressRouteCrossConnectionPeeringsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCrossConnectionPeering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24640, __c770, 0) as any as S.Schema<ListExpressRouteCrossConnectionPeeringsRequest>,
   output: __S(24641, __c770, 1) as any as S.Schema<ExpressRouteCrossConnectionPeeringList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteCrossConnectionRoutesTableError = AzureOpError;
 /** Gets the currently advertised routes table associated with the express route cross connection in a resource group. */
@@ -60115,18 +60919,25 @@ export const ListExpressRouteCrossConnectionRoutesTableSummary: API.OperationMet
 
 export type ListExpressRouteCrossConnectionsError = AzureOpError;
 /** Retrieves all the ExpressRouteCrossConnections in a subscription. */
-export const ListExpressRouteCrossConnections: API.OperationMethod<
+export const ListExpressRouteCrossConnections: API.PaginatedOperationMethod<
   ListExpressRouteCrossConnectionsRequest,
   ExpressRouteCrossConnectionListResult,
   ListExpressRouteCrossConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteCrossConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24736, __c773, 0) as any as S.Schema<ListExpressRouteCrossConnectionsRequest>,
   output: __S(24609, __c769, 1) as any as S.Schema<ExpressRouteCrossConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteGatewayByResourceGroupError = AzureOpError;
 /** Lists ExpressRoute gateways in a given resource group. */
@@ -60160,78 +60971,113 @@ export const ListExpressRouteGatewayBySubscription: API.OperationMethod<
 
 export type ListExpressRouteLagByResourceGroupError = AzureOpError;
 /** List all the ExpressRouteLag resources in the specified resource group. */
-export const ListExpressRouteLagByResourceGroup: API.OperationMethod<
+export const ListExpressRouteLagByResourceGroup: API.PaginatedOperationMethod<
   ListExpressRouteLagByResourceGroupRequest,
   ExpressRouteLagListResult,
   ListExpressRouteLagByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteLag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24864, __c777, 0) as any as S.Schema<ListExpressRouteLagByResourceGroupRequest>,
   output: __S(24897, __c778, 1) as any as S.Schema<ExpressRouteLagListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteLagsError = AzureOpError;
 /** List all the ExpressRouteLag resources in the specified subscription. */
-export const ListExpressRouteLags: API.OperationMethod<
+export const ListExpressRouteLags: API.PaginatedOperationMethod<
   ListExpressRouteLagsRequest,
   ExpressRouteLagListResult,
   ListExpressRouteLagsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteLag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24928, __c779, 0) as any as S.Schema<ListExpressRouteLagsRequest>,
   output: __S(24897, __c778, 1) as any as S.Schema<ExpressRouteLagListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteLagsLinksError = AzureOpError;
 /** Retrieve the ExpressRouteLagLink sub-resources of the specified ExpressRouteLag resource. */
-export const ListExpressRouteLagsLinks: API.OperationMethod<
+export const ListExpressRouteLagsLinks: API.PaginatedOperationMethod<
   ListExpressRouteLagsLinksRequest,
   ExpressRouteLagLinkListResult,
   ListExpressRouteLagsLinksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteLagLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24992, __c781, 0) as any as S.Schema<ListExpressRouteLagsLinksRequest>,
   output: __S(24993, __c781, 1) as any as S.Schema<ExpressRouteLagLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteLagsMembersError = AzureOpError;
 /** Retrieve the ExpressRouteLagMember sub-resources of the specified ExpressRouteLagLink resource. */
-export const ListExpressRouteLagsMembers: API.OperationMethod<
+export const ListExpressRouteLagsMembers: API.PaginatedOperationMethod<
   ListExpressRouteLagsMembersRequest,
   ExpressRouteLagMemberListResult,
   ListExpressRouteLagsMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteLagMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25024, __c782, 0) as any as S.Schema<ListExpressRouteLagsMembersRequest>,
   output: __S(25025, __c782, 1) as any as S.Schema<ExpressRouteLagMemberListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteLinksError = AzureOpError;
 /** Retrieve the ExpressRouteLink sub-resources of the specified ExpressRoutePort resource. */
-export const ListExpressRouteLinks: API.OperationMethod<
+export const ListExpressRouteLinks: API.PaginatedOperationMethod<
   ListExpressRouteLinksRequest,
   ExpressRouteLinkListResult,
   ListExpressRouteLinksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25056, __c783, 0) as any as S.Schema<ListExpressRouteLinksRequest>,
   output: __S(25057, __c783, 1) as any as S.Schema<ExpressRouteLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRoutePortAuthorizationKeysError = AzureOpError;
 /** Gets the authorization key associated with the specified express route port authorization. */
@@ -60250,63 +61096,91 @@ export const ListExpressRoutePortAuthorizationKeys: API.OperationMethod<
 
 export type ListExpressRoutePortAuthorizationsError = AzureOpError;
 /** Gets all authorizations in an express route port. */
-export const ListExpressRoutePortAuthorizations: API.OperationMethod<
+export const ListExpressRoutePortAuthorizations: API.PaginatedOperationMethod<
   ListExpressRoutePortAuthorizationsRequest,
   ExpressRoutePortAuthorizationListResult,
   ListExpressRoutePortAuthorizationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRoutePortAuthorization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25120, __c785, 0) as any as S.Schema<ListExpressRoutePortAuthorizationsRequest>,
   output: __S(25122, __c785, 2) as any as S.Schema<ExpressRoutePortAuthorizationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRoutePortByResourceGroupError = AzureOpError;
 /** List all the ExpressRoutePort resources in the specified resource group. */
-export const ListExpressRoutePortByResourceGroup: API.OperationMethod<
+export const ListExpressRoutePortByResourceGroup: API.PaginatedOperationMethod<
   ListExpressRoutePortByResourceGroupRequest,
   ExpressRoutePortListResult,
   ListExpressRoutePortByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRoutePort
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25152, __c786, 0) as any as S.Schema<ListExpressRoutePortByResourceGroupRequest>,
   output: __S(25185, __c787, 1) as any as S.Schema<ExpressRoutePortListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRoutePortsError = AzureOpError;
 /** List all the ExpressRoutePort resources in the specified subscription. */
-export const ListExpressRoutePorts: API.OperationMethod<
+export const ListExpressRoutePorts: API.PaginatedOperationMethod<
   ListExpressRoutePortsRequest,
   ExpressRoutePortListResult,
   ListExpressRoutePortsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRoutePort
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25216, __c788, 0) as any as S.Schema<ListExpressRoutePortsRequest>,
   output: __S(25185, __c787, 1) as any as S.Schema<ExpressRoutePortListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRoutePortsLocationsError = AzureOpError;
 /** Retrieves all ExpressRoutePort peering locations. Does not return available bandwidths for each location. Available bandwidths can only be obtained when retrieving a specific peering location. */
-export const ListExpressRoutePortsLocations: API.OperationMethod<
+export const ListExpressRoutePortsLocations: API.PaginatedOperationMethod<
   ListExpressRoutePortsLocationsRequest,
   ExpressRoutePortsLocationListResult,
   ListExpressRoutePortsLocationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRoutePortsLocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25248, __c789, 0) as any as S.Schema<ListExpressRoutePortsLocationsRequest>,
   output: __S(25250, __c789, 2) as any as S.Schema<ExpressRoutePortsLocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExpressRouteProviderPortsLocationError = AzureOpError;
 /** Retrieves all the ExpressRouteProviderPorts in a subscription. */
@@ -60325,48 +61199,69 @@ export const ListExpressRouteProviderPortsLocation: API.OperationMethod<
 
 export type ListExpressRouteServiceProvidersError = AzureOpError;
 /** Gets all the available express route service providers. */
-export const ListExpressRouteServiceProviders: API.OperationMethod<
+export const ListExpressRouteServiceProviders: API.PaginatedOperationMethod<
   ListExpressRouteServiceProvidersRequest,
   ExpressRouteServiceProviderListResult,
   ListExpressRouteServiceProvidersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressRouteServiceProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25312, __c791, 0) as any as S.Schema<ListExpressRouteServiceProvidersRequest>,
   output: __S(25318, __c791, 6) as any as S.Schema<ExpressRouteServiceProviderListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirewallPoliciesError = AzureOpError;
 /** Lists all Firewall Policies in a resource group. */
-export const ListFirewallPolicies: API.OperationMethod<
+export const ListFirewallPolicies: API.PaginatedOperationMethod<
   ListFirewallPoliciesRequest,
   FirewallPolicyListResult,
   ListFirewallPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirewallPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25376, __c793, 0) as any as S.Schema<ListFirewallPoliciesRequest>,
   output: __S(25409, __c794, 1) as any as S.Schema<FirewallPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirewallPolicyAllError = AzureOpError;
 /** Gets all the Firewall Policies in a subscription. */
-export const ListFirewallPolicyAll: API.OperationMethod<
+export const ListFirewallPolicyAll: API.PaginatedOperationMethod<
   ListFirewallPolicyAllRequest,
   FirewallPolicyListResult,
   ListFirewallPolicyAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirewallPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25440, __c795, 0) as any as S.Schema<ListFirewallPolicyAllRequest>,
   output: __S(25409, __c794, 1) as any as S.Schema<FirewallPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirewallPolicyIdpsSignaturesError = AzureOpError;
 /** Retrieves the current status of IDPS signatures for the relevant policy. Maximal amount of returned signatures is 1000. */
@@ -60419,288 +61314,421 @@ export const ListFirewallPolicyIdpsSignaturesOverrides: API.OperationMethod<
 
 export type ListFirewallPolicyKubeSelectorGroupsError = AzureOpError;
 /** Lists all FirewallPolicyKubeSelectorGroups in a FirewallPolicy resource. */
-export const ListFirewallPolicyKubeSelectorGroups: API.OperationMethod<
+export const ListFirewallPolicyKubeSelectorGroups: API.PaginatedOperationMethod<
   ListFirewallPolicyKubeSelectorGroupsRequest,
   FirewallPolicyKubeSelectorGroupListResult,
   ListFirewallPolicyKubeSelectorGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirewallPolicyKubeSelectorGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25568, __c799, 0) as any as S.Schema<ListFirewallPolicyKubeSelectorGroupsRequest>,
   output: __S(25570, __c799, 2) as any as S.Schema<FirewallPolicyKubeSelectorGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirewallPolicyRuleCollectionGroupsError = AzureOpError;
 /** Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource. */
-export const ListFirewallPolicyRuleCollectionGroups: API.OperationMethod<
+export const ListFirewallPolicyRuleCollectionGroups: API.PaginatedOperationMethod<
   ListFirewallPolicyRuleCollectionGroupsRequest,
   FirewallPolicyRuleCollectionGroupListResult,
   ListFirewallPolicyRuleCollectionGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirewallPolicyRuleCollectionGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25600, __c800, 0) as any as S.Schema<ListFirewallPolicyRuleCollectionGroupsRequest>,
   output: __S(25602, __c800, 2) as any as S.Schema<FirewallPolicyRuleCollectionGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirstPartyServiceTagAllError = AzureOpError;
 /** Gets all the first party service tags in a subscription. */
-export const ListFirstPartyServiceTagAll: API.OperationMethod<
+export const ListFirstPartyServiceTagAll: API.PaginatedOperationMethod<
   ListFirstPartyServiceTagAllRequest,
   FirstPartyServiceTagListResult,
   ListFirstPartyServiceTagAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirstPartyServiceTag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25632, __c801, 0) as any as S.Schema<ListFirstPartyServiceTagAllRequest>,
   output: __S(25665, __c802, 1) as any as S.Schema<FirstPartyServiceTagListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirstPartyServiceTagsError = AzureOpError;
 /** Gets all the first party service tags in a resource group. */
-export const ListFirstPartyServiceTags: API.OperationMethod<
+export const ListFirstPartyServiceTags: API.PaginatedOperationMethod<
   ListFirstPartyServiceTagsRequest,
   FirstPartyServiceTagListResult,
   ListFirstPartyServiceTagsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirstPartyServiceTag
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25696, __c803, 0) as any as S.Schema<ListFirstPartyServiceTagsRequest>,
   output: __S(25665, __c802, 1) as any as S.Schema<FirstPartyServiceTagListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFlowLogsError = AzureOpError;
 /** Lists all flow log resources for the specified Network Watcher. */
-export const ListFlowLogs: API.OperationMethod<
+export const ListFlowLogs: API.PaginatedOperationMethod<
   ListFlowLogsRequest,
   FlowLogListResult,
   ListFlowLogsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FlowLog
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25728, __c804, 0) as any as S.Schema<ListFlowLogsRequest>,
   output: __S(25729, __c804, 1) as any as S.Schema<FlowLogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHubRouteTablesError = AzureOpError;
 /** Retrieves the details of all RouteTables. */
-export const ListHubRouteTables: API.OperationMethod<
+export const ListHubRouteTables: API.PaginatedOperationMethod<
   ListHubRouteTablesRequest,
   ListHubRouteTablesResult,
   ListHubRouteTablesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HubRouteTable
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25792, __c806, 0) as any as S.Schema<ListHubRouteTablesRequest>,
   output: __S(25794, __c806, 2) as any as S.Schema<ListHubRouteTablesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHubVirtualNetworkConnectionsError = AzureOpError;
 /** Retrieves the details of all HubVirtualNetworkConnections. */
-export const ListHubVirtualNetworkConnections: API.OperationMethod<
+export const ListHubVirtualNetworkConnections: API.PaginatedOperationMethod<
   ListHubVirtualNetworkConnectionsRequest,
   ListHubVirtualNetworkConnectionsResult,
   ListHubVirtualNetworkConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HubVirtualNetworkConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25824, __c807, 0) as any as S.Schema<ListHubVirtualNetworkConnectionsRequest>,
   output: __S(25826, __c807, 2) as any as S.Schema<ListHubVirtualNetworkConnectionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInboundNatRulesError = AzureOpError;
 /** Gets all the inbound NAT rules in a load balancer. */
-export const ListInboundNatRules: API.OperationMethod<
+export const ListInboundNatRules: API.PaginatedOperationMethod<
   ListInboundNatRulesRequest,
   InboundNatRuleListResult,
   ListInboundNatRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  InboundNatRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25856, __c808, 0) as any as S.Schema<ListInboundNatRulesRequest>,
   output: __S(25857, __c808, 1) as any as S.Schema<InboundNatRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInterconnectGroupAllError = AzureOpError;
 /** Gets all interconnect groups in a subscription. */
-export const ListInterconnectGroupAll: API.OperationMethod<
+export const ListInterconnectGroupAll: API.PaginatedOperationMethod<
   ListInterconnectGroupAllRequest,
   InterconnectGroupListResult,
   ListInterconnectGroupAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  InterconnectGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25888, __c809, 0) as any as S.Schema<ListInterconnectGroupAllRequest>,
   output: __S(25921, __c810, 1) as any as S.Schema<InterconnectGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInterconnectGroupsError = AzureOpError;
 /** Gets all interconnect groups in a resource group. */
-export const ListInterconnectGroups: API.OperationMethod<
+export const ListInterconnectGroups: API.PaginatedOperationMethod<
   ListInterconnectGroupsRequest,
   InterconnectGroupListResult,
   ListInterconnectGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  InterconnectGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25952, __c811, 0) as any as S.Schema<ListInterconnectGroupsRequest>,
   output: __S(25921, __c810, 1) as any as S.Schema<InterconnectGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIpAllocationByResourceGroupError = AzureOpError;
 /** Gets all IpAllocations in a resource group. */
-export const ListIpAllocationByResourceGroup: API.OperationMethod<
+export const ListIpAllocationByResourceGroup: API.PaginatedOperationMethod<
   ListIpAllocationByResourceGroupRequest,
   IpAllocationListResult,
   ListIpAllocationByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IpAllocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(25984, __c812, 0) as any as S.Schema<ListIpAllocationByResourceGroupRequest>,
   output: __S(26017, __c813, 1) as any as S.Schema<IpAllocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIpAllocationsError = AzureOpError;
 /** Gets all IpAllocations in a subscription. */
-export const ListIpAllocations: API.OperationMethod<
+export const ListIpAllocations: API.PaginatedOperationMethod<
   ListIpAllocationsRequest,
   IpAllocationListResult,
   ListIpAllocationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IpAllocation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26048, __c814, 0) as any as S.Schema<ListIpAllocationsRequest>,
   output: __S(26017, __c813, 1) as any as S.Schema<IpAllocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIpamPoolAssociatedResourcesError = AzureOpError;
 /** List Associated Resource in the Pool. List Associated Resource in the Pool. */
-export const ListIpamPoolAssociatedResources: API.OperationMethod<
+export const ListIpamPoolAssociatedResources: API.PaginatedOperationMethod<
   ListIpamPoolAssociatedResourcesRequest,
   PoolAssociationList,
   ListIpamPoolAssociatedResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PoolAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26080, __c815, 0) as any as S.Schema<ListIpamPoolAssociatedResourcesRequest>,
   output: __S(26083, __c815, 3) as any as S.Schema<PoolAssociationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIpamPoolsError = AzureOpError;
 /** Gets list of Pool resources at Network Manager level. Gets list of Pool resources at Network Manager level. */
-export const ListIpamPools: API.OperationMethod<
+export const ListIpamPools: API.PaginatedOperationMethod<
   ListIpamPoolsRequest,
   IpamPoolList,
   ListIpamPoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IpamPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26112, __c816, 0) as any as S.Schema<ListIpamPoolsRequest>,
   output: __S(26114, __c816, 2) as any as S.Schema<IpamPoolList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIpGroupByResourceGroupError = AzureOpError;
 /** Gets all IpGroups in a resource group. */
-export const ListIpGroupByResourceGroup: API.OperationMethod<
+export const ListIpGroupByResourceGroup: API.PaginatedOperationMethod<
   ListIpGroupByResourceGroupRequest,
   IpGroupListResult,
   ListIpGroupByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IpGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26144, __c817, 0) as any as S.Schema<ListIpGroupByResourceGroupRequest>,
   output: __S(26177, __c818, 1) as any as S.Schema<IpGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIpGroupsError = AzureOpError;
 /** Gets all IpGroups in a subscription. */
-export const ListIpGroups: API.OperationMethod<
+export const ListIpGroups: API.PaginatedOperationMethod<
   ListIpGroupsRequest,
   IpGroupListResult,
   ListIpGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IpGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26240, __c820, 0) as any as S.Schema<ListIpGroupsRequest>,
   output: __S(26177, __c818, 1) as any as S.Schema<IpGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerAllError = AzureOpError;
 /** Gets all the load balancers in a subscription. */
-export const ListLoadBalancerAll: API.OperationMethod<
+export const ListLoadBalancerAll: API.PaginatedOperationMethod<
   ListLoadBalancerAllRequest,
   LoadBalancerListResult,
   ListLoadBalancerAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LoadBalancer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26272, __c821, 0) as any as S.Schema<ListLoadBalancerAllRequest>,
   output: __S(26305, __c822, 1) as any as S.Schema<LoadBalancerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerBackendAddressPoolsError = AzureOpError;
 /** Gets all the load balancer backed address pools. */
-export const ListLoadBalancerBackendAddressPools: API.OperationMethod<
+export const ListLoadBalancerBackendAddressPools: API.PaginatedOperationMethod<
   ListLoadBalancerBackendAddressPoolsRequest,
   LoadBalancerBackendAddressPoolListResult,
   ListLoadBalancerBackendAddressPoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterfaceIPConfigurationPropertiesFormatLoadBalancerBackendAddressPoolsItem_3
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26336, __c823, 0) as any as S.Schema<ListLoadBalancerBackendAddressPoolsRequest>,
   output: __S(26337, __c823, 1) as any as S.Schema<LoadBalancerBackendAddressPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerFrontendIPConfigurationsError = AzureOpError;
 /** Gets all the load balancer frontend IP configurations. */
-export const ListLoadBalancerFrontendIPConfigurations: API.OperationMethod<
+export const ListLoadBalancerFrontendIPConfigurations: API.PaginatedOperationMethod<
   ListLoadBalancerFrontendIPConfigurationsRequest,
   LoadBalancerFrontendIPConfigurationListResult,
   ListLoadBalancerFrontendIPConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FrontendIPConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26368, __c824, 0) as any as S.Schema<ListLoadBalancerFrontendIPConfigurationsRequest>,
   output: __S(26369, __c824, 1) as any as S.Schema<LoadBalancerFrontendIPConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerInboundNatRulePortMappingsError = AzureOpError;
 /** List of inbound NAT rule port mappings. */
@@ -60723,102 +61751,145 @@ export const ListLoadBalancerInboundNatRulePortMappings: API.OperationMethod<
 
 export type ListLoadBalancerLoadBalancingRulesError = AzureOpError;
 /** Gets all the load balancing rules in a load balancer. */
-export const ListLoadBalancerLoadBalancingRules: API.OperationMethod<
+export const ListLoadBalancerLoadBalancingRules: API.PaginatedOperationMethod<
   ListLoadBalancerLoadBalancingRulesRequest,
   LoadBalancerLoadBalancingRuleListResult,
   ListLoadBalancerLoadBalancingRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LoadBalancingRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26432, __c826, 0) as any as S.Schema<ListLoadBalancerLoadBalancingRulesRequest>,
   output: __S(26433, __c826, 1) as any as S.Schema<LoadBalancerLoadBalancingRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerNetworkInterfacesError = AzureOpError;
 /** Gets associated load balancer network interfaces. */
-export const ListLoadBalancerNetworkInterfaces: API.OperationMethod<
+export const ListLoadBalancerNetworkInterfaces: API.PaginatedOperationMethod<
   ListLoadBalancerNetworkInterfacesRequest,
   ListLoadBalancerNetworkInterfacesResponse,
   ListLoadBalancerNetworkInterfacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterface_3
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26464, __c827, 0) as any as S.Schema<ListLoadBalancerNetworkInterfacesRequest>,
   output: __S(26465, __c827, 1) as any as S.Schema<ListLoadBalancerNetworkInterfacesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerOutboundRulesError = AzureOpError;
 /** Gets all the outbound rules in a load balancer. */
-export const ListLoadBalancerOutboundRules: API.OperationMethod<
+export const ListLoadBalancerOutboundRules: API.PaginatedOperationMethod<
   ListLoadBalancerOutboundRulesRequest,
   LoadBalancerOutboundRuleListResult,
   ListLoadBalancerOutboundRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26496, __c828, 0) as any as S.Schema<ListLoadBalancerOutboundRulesRequest>,
   output: __S(26497, __c828, 1) as any as S.Schema<LoadBalancerOutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancerProbesError = AzureOpError;
 /** Gets all the load balancer probes. */
-export const ListLoadBalancerProbes: API.OperationMethod<
+export const ListLoadBalancerProbes: API.PaginatedOperationMethod<
   ListLoadBalancerProbesRequest,
   LoadBalancerProbeListResult,
   ListLoadBalancerProbesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Probe
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26528, __c829, 0) as any as S.Schema<ListLoadBalancerProbesRequest>,
   output: __S(26529, __c829, 1) as any as S.Schema<LoadBalancerProbeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadBalancersError = AzureOpError;
 /** Gets all the load balancers in a resource group. */
-export const ListLoadBalancers: API.OperationMethod<
+export const ListLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersRequest,
   LoadBalancerListResult,
   ListLoadBalancersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LoadBalancer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26560, __c830, 0) as any as S.Schema<ListLoadBalancersRequest>,
   output: __S(26305, __c822, 1) as any as S.Schema<LoadBalancerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocalNetworkGatewaysError = AzureOpError;
 /** Gets all the local network gateways in a resource group. */
-export const ListLocalNetworkGateways: API.OperationMethod<
+export const ListLocalNetworkGateways: API.PaginatedOperationMethod<
   ListLocalNetworkGatewaysRequest,
   LocalNetworkGatewayListResult,
   ListLocalNetworkGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LocalNetworkGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26688, __c834, 0) as any as S.Schema<ListLocalNetworkGatewaysRequest>,
   output: __S(26690, __c834, 2) as any as S.Schema<LocalNetworkGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagementGroupNetworkManagerConnectionsError = AzureOpError;
 /** List all network manager connections created by this management group. */
-export const ListManagementGroupNetworkManagerConnections: API.OperationMethod<
+export const ListManagementGroupNetworkManagerConnections: API.PaginatedOperationMethod<
   ListManagementGroupNetworkManagerConnectionsRequest,
   NetworkManagerConnectionListResult,
   ListManagementGroupNetworkManagerConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkManagerConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     26720,
     __c835,
@@ -60828,91 +61899,133 @@ export const ListManagementGroupNetworkManagerConnections: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNatGatewayAllError = AzureOpError;
 /** Gets all the Nat Gateways in a subscription. */
-export const ListNatGatewayAll: API.OperationMethod<
+export const ListNatGatewayAll: API.PaginatedOperationMethod<
   ListNatGatewayAllRequest,
   NatGatewayListResult,
   ListNatGatewayAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NatGateway_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26784, __c837, 0) as any as S.Schema<ListNatGatewayAllRequest>,
   output: __S(26817, __c838, 1) as any as S.Schema<NatGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNatGatewaysError = AzureOpError;
 /** Gets all nat gateways in a resource group. */
-export const ListNatGateways: API.OperationMethod<
+export const ListNatGateways: API.PaginatedOperationMethod<
   ListNatGatewaysRequest,
   NatGatewayListResult,
   ListNatGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NatGateway_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26848, __c839, 0) as any as S.Schema<ListNatGatewaysRequest>,
   output: __S(26817, __c838, 1) as any as S.Schema<NatGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNatRuleByVpnGatewayError = AzureOpError;
 /** Retrieves all nat rules for a particular virtual wan vpn gateway. */
-export const ListNatRuleByVpnGateway: API.OperationMethod<
+export const ListNatRuleByVpnGateway: API.PaginatedOperationMethod<
   ListNatRuleByVpnGatewayRequest,
   ListVpnGatewayNatRulesResult,
   ListNatRuleByVpnGatewayError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnGatewayNatRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26880, __c840, 0) as any as S.Schema<ListNatRuleByVpnGatewayRequest>,
   output: __S(26881, __c840, 1) as any as S.Schema<ListVpnGatewayNatRulesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkGroupsError = AzureOpError;
 /** Lists the specified network group. */
-export const ListNetworkGroups: API.OperationMethod<
+export const ListNetworkGroups: API.PaginatedOperationMethod<
   ListNetworkGroupsRequest,
   NetworkGroupListResult,
   ListNetworkGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26912, __c841, 0) as any as S.Schema<ListNetworkGroupsRequest>,
   output: __S(26914, __c841, 2) as any as S.Schema<NetworkGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfaceAllError = AzureOpError;
 /** Gets all network interfaces in a subscription. */
-export const ListNetworkInterfaceAll: API.OperationMethod<
+export const ListNetworkInterfaceAll: API.PaginatedOperationMethod<
   ListNetworkInterfaceAllRequest,
   NetworkInterfaceListResult,
   ListNetworkInterfaceAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterface_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(26944, __c842, 0) as any as S.Schema<ListNetworkInterfaceAllRequest>,
   output: __S(26976, __c843, 0) as any as S.Schema<NetworkInterfaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfaceCloudServiceNetworkInterfacesError = AzureOpError;
 /** Gets all network interfaces in a cloud service. */
-export const ListNetworkInterfaceCloudServiceNetworkInterfaces: API.OperationMethod<
+export const ListNetworkInterfaceCloudServiceNetworkInterfaces: API.PaginatedOperationMethod<
   ListNetworkInterfaceCloudServiceNetworkInterfacesRequest,
   NetworkInterfaceListResult,
   ListNetworkInterfaceCloudServiceNetworkInterfacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterface_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     27008,
     __c844,
@@ -60922,16 +62035,23 @@ export const ListNetworkInterfaceCloudServiceNetworkInterfaces: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfacesError = AzureOpError;
 /** Gets information about all network interfaces in a role instance in a cloud service. */
-export const ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfaces: API.OperationMethod<
+export const ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfaces: API.PaginatedOperationMethod<
   ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfacesRequest,
   NetworkInterfaceListResult,
   ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterface_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     27040,
     __c845,
@@ -60941,7 +62061,13 @@ export const ListNetworkInterfaceCloudServiceRoleInstanceNetworkInterfaces: API.
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfaceEffectiveNetworkSecurityGroupsError = AzureOpError;
 /** Gets all network security groups applied to a network interface. */
@@ -60964,78 +62090,113 @@ export const ListNetworkInterfaceEffectiveNetworkSecurityGroups: API.OperationMe
 
 export type ListNetworkInterfaceIPConfigurationsError = AzureOpError;
 /** Get all ip configurations in a network interface. */
-export const ListNetworkInterfaceIPConfigurations: API.OperationMethod<
+export const ListNetworkInterfaceIPConfigurations: API.PaginatedOperationMethod<
   ListNetworkInterfaceIPConfigurationsRequest,
   NetworkInterfaceIPConfigurationListResult,
   ListNetworkInterfaceIPConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterfaceIPConfiguration_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27136, __c848, 0) as any as S.Schema<ListNetworkInterfaceIPConfigurationsRequest>,
   output: __S(27137, __c848, 1) as any as S.Schema<NetworkInterfaceIPConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfaceLoadBalancersError = AzureOpError;
 /** List all load balancers in a network interface. */
-export const ListNetworkInterfaceLoadBalancers: API.OperationMethod<
+export const ListNetworkInterfaceLoadBalancers: API.PaginatedOperationMethod<
   ListNetworkInterfaceLoadBalancersRequest,
   NetworkInterfaceLoadBalancerListResult,
   ListNetworkInterfaceLoadBalancersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterfaceLoadBalancerListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27168, __c849, 0) as any as S.Schema<ListNetworkInterfaceLoadBalancersRequest>,
   output: __S(27172, __c849, 4) as any as S.Schema<NetworkInterfaceLoadBalancerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfacesError = AzureOpError;
 /** Gets all network interfaces in a resource group. */
-export const ListNetworkInterfaces: API.OperationMethod<
+export const ListNetworkInterfaces: API.PaginatedOperationMethod<
   ListNetworkInterfacesRequest,
   NetworkInterfaceListResult,
   ListNetworkInterfacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkInterface_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27200, __c850, 0) as any as S.Schema<ListNetworkInterfacesRequest>,
   output: __S(26976, __c843, 0) as any as S.Schema<NetworkInterfaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkInterfaceTapConfigurationsError = AzureOpError;
 /** Get all Tap configurations in a network interface. */
-export const ListNetworkInterfaceTapConfigurations: API.OperationMethod<
+export const ListNetworkInterfaceTapConfigurations: API.PaginatedOperationMethod<
   ListNetworkInterfaceTapConfigurationsRequest,
   NetworkInterfaceTapConfigurationListResult,
   ListNetworkInterfaceTapConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkTapPropertiesFormatNetworkInterfaceTapConfigurationsItem_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27232, __c851, 0) as any as S.Schema<ListNetworkInterfaceTapConfigurationsRequest>,
   output: __S(27233, __c851, 1) as any as S.Schema<NetworkInterfaceTapConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkManagerBySubscriptionError = AzureOpError;
 /** List all network managers in a subscription. */
-export const ListNetworkManagerBySubscription: API.OperationMethod<
+export const ListNetworkManagerBySubscription: API.PaginatedOperationMethod<
   ListNetworkManagerBySubscriptionRequest,
   NetworkManagerListResult,
   ListNetworkManagerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkManager
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27264, __c852, 0) as any as S.Schema<ListNetworkManagerBySubscriptionRequest>,
   output: __S(27297, __c853, 1) as any as S.Schema<NetworkManagerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkManagerDeploymentStatusError = AzureOpError;
 /** Post to List of Network Manager Deployment Status. */
@@ -61100,117 +62261,167 @@ export const ListNetworkManagerEffectiveSecurityAdminRules: API.OperationMethod<
 
 export type ListNetworkManagerRoutingConfigurationsError = AzureOpError;
 /** Lists all the network manager routing configurations in a network manager, in a paginated format. */
-export const ListNetworkManagerRoutingConfigurations: API.OperationMethod<
+export const ListNetworkManagerRoutingConfigurations: API.PaginatedOperationMethod<
   ListNetworkManagerRoutingConfigurationsRequest,
   NetworkManagerRoutingConfigurationListResult,
   ListNetworkManagerRoutingConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkManagerRoutingConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27424, __c857, 0) as any as S.Schema<ListNetworkManagerRoutingConfigurationsRequest>,
   output: __S(27426, __c857, 2) as any as S.Schema<NetworkManagerRoutingConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkManagersError = AzureOpError;
 /** List network managers in a resource group. */
-export const ListNetworkManagers: API.OperationMethod<
+export const ListNetworkManagers: API.PaginatedOperationMethod<
   ListNetworkManagersRequest,
   NetworkManagerListResult,
   ListNetworkManagersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkManager
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27456, __c858, 0) as any as S.Schema<ListNetworkManagersRequest>,
   output: __S(27297, __c853, 1) as any as S.Schema<NetworkManagerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkProfileAllError = AzureOpError;
 /** Gets all the network profiles in a subscription. */
-export const ListNetworkProfileAll: API.OperationMethod<
+export const ListNetworkProfileAll: API.PaginatedOperationMethod<
   ListNetworkProfileAllRequest,
   NetworkProfileListResult,
   ListNetworkProfileAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27520, __c860, 0) as any as S.Schema<ListNetworkProfileAllRequest>,
   output: __S(27553, __c861, 1) as any as S.Schema<NetworkProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkProfilesError = AzureOpError;
 /** Gets all network profiles in a resource group. */
-export const ListNetworkProfiles: API.OperationMethod<
+export const ListNetworkProfiles: API.PaginatedOperationMethod<
   ListNetworkProfilesRequest,
   NetworkProfileListResult,
   ListNetworkProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27584, __c862, 0) as any as S.Schema<ListNetworkProfilesRequest>,
   output: __S(27553, __c861, 1) as any as S.Schema<NetworkProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityGroupAllError = AzureOpError;
 /** Gets all network security groups in a subscription. */
-export const ListNetworkSecurityGroupAll: API.OperationMethod<
+export const ListNetworkSecurityGroupAll: API.PaginatedOperationMethod<
   ListNetworkSecurityGroupAllRequest,
   NetworkSecurityGroupListResult,
   ListNetworkSecurityGroupAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityGroup_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27616, __c863, 0) as any as S.Schema<ListNetworkSecurityGroupAllRequest>,
   output: __S(27649, __c864, 1) as any as S.Schema<NetworkSecurityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityGroupsError = AzureOpError;
 /** Gets all network security groups in a resource group. */
-export const ListNetworkSecurityGroups: API.OperationMethod<
+export const ListNetworkSecurityGroups: API.PaginatedOperationMethod<
   ListNetworkSecurityGroupsRequest,
   NetworkSecurityGroupListResult,
   ListNetworkSecurityGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityGroup_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27680, __c865, 0) as any as S.Schema<ListNetworkSecurityGroupsRequest>,
   output: __S(27649, __c864, 1) as any as S.Schema<NetworkSecurityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterAccessRulesError = AzureOpError;
 /** Lists the NSP access rules in the specified NSP profile. */
-export const ListNetworkSecurityPerimeterAccessRules: API.OperationMethod<
+export const ListNetworkSecurityPerimeterAccessRules: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterAccessRulesRequest,
   NspAccessRuleListResult,
   ListNetworkSecurityPerimeterAccessRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspAccessRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27712, __c866, 0) as any as S.Schema<ListNetworkSecurityPerimeterAccessRulesRequest>,
   output: __S(27714, __c866, 2) as any as S.Schema<NspAccessRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterAssociableResourceTypesError = AzureOpError;
 /** Gets the list of resources that are onboarded with NSP. These resources can be associated with a network security perimeter */
-export const ListNetworkSecurityPerimeterAssociableResourceTypes: API.OperationMethod<
+export const ListNetworkSecurityPerimeterAssociableResourceTypes: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterAssociableResourceTypesRequest,
   PerimeterAssociableResourcesListResult,
   ListNetworkSecurityPerimeterAssociableResourceTypesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PerimeterAssociableResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     27744,
     __c867,
@@ -61220,31 +62431,45 @@ export const ListNetworkSecurityPerimeterAssociableResourceTypes: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterAssociationsError = AzureOpError;
 /** Lists the NSP resource associations. */
-export const ListNetworkSecurityPerimeterAssociations: API.OperationMethod<
+export const ListNetworkSecurityPerimeterAssociations: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterAssociationsRequest,
   NspAssociationsListResult,
   ListNetworkSecurityPerimeterAssociationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27776, __c868, 0) as any as S.Schema<ListNetworkSecurityPerimeterAssociationsRequest>,
   output: __S(27778, __c868, 2) as any as S.Schema<NspAssociationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterBySubscriptionError = AzureOpError;
 /** List all network security perimeters in a subscription. */
-export const ListNetworkSecurityPerimeterBySubscription: API.OperationMethod<
+export const ListNetworkSecurityPerimeterBySubscription: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterBySubscriptionRequest,
   NetworkSecurityPerimeterListResult,
   ListNetworkSecurityPerimeterBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     27808,
     __c869,
@@ -61254,16 +62479,23 @@ export const ListNetworkSecurityPerimeterBySubscription: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterLinkReferencesError = AzureOpError;
 /** Lists the NSP LinkReference resources in the specified network security perimeter. */
-export const ListNetworkSecurityPerimeterLinkReferences: API.OperationMethod<
+export const ListNetworkSecurityPerimeterLinkReferences: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterLinkReferencesRequest,
   NspLinkReferenceListResult,
   ListNetworkSecurityPerimeterLinkReferencesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspLinkReference
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     27872,
     __c871,
@@ -61273,31 +62505,45 @@ export const ListNetworkSecurityPerimeterLinkReferences: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterLinksError = AzureOpError;
 /** Lists the NSP Link resources in the specified network security perimeter. */
-export const ListNetworkSecurityPerimeterLinks: API.OperationMethod<
+export const ListNetworkSecurityPerimeterLinks: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterLinksRequest,
   NspLinkListResult,
   ListNetworkSecurityPerimeterLinksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(27904, __c872, 0) as any as S.Schema<ListNetworkSecurityPerimeterLinksRequest>,
   output: __S(27906, __c872, 2) as any as S.Schema<NspLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterLoggingConfigurationsError = AzureOpError;
 /** Lists the NSP logging configuration. */
-export const ListNetworkSecurityPerimeterLoggingConfigurations: API.OperationMethod<
+export const ListNetworkSecurityPerimeterLoggingConfigurations: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterLoggingConfigurationsRequest,
   NspLoggingConfigurationListResult,
   ListNetworkSecurityPerimeterLoggingConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspLoggingConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     27968,
     __c874,
@@ -61307,61 +62553,89 @@ export const ListNetworkSecurityPerimeterLoggingConfigurations: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterProfilesError = AzureOpError;
 /** Lists the NSP profiles in the specified network security perimeter. */
-export const ListNetworkSecurityPerimeterProfiles: API.OperationMethod<
+export const ListNetworkSecurityPerimeterProfiles: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterProfilesRequest,
   NspProfileListResult,
   ListNetworkSecurityPerimeterProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28000, __c875, 0) as any as S.Schema<ListNetworkSecurityPerimeterProfilesRequest>,
   output: __S(28002, __c875, 2) as any as S.Schema<NspProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimetersError = AzureOpError;
 /** List network security perimeters in a resource group. */
-export const ListNetworkSecurityPerimeters: API.OperationMethod<
+export const ListNetworkSecurityPerimeters: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimetersRequest,
   NetworkSecurityPerimeterListResult,
   ListNetworkSecurityPerimetersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28032, __c876, 0) as any as S.Schema<ListNetworkSecurityPerimetersRequest>,
   output: __S(27841, __c870, 1) as any as S.Schema<NetworkSecurityPerimeterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterServiceTagsError = AzureOpError;
 /** Gets the list of service tags supported by NSP. These service tags can be used to create access rules in NSP. */
-export const ListNetworkSecurityPerimeterServiceTags: API.OperationMethod<
+export const ListNetworkSecurityPerimeterServiceTags: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterServiceTagsRequest,
   NspServiceTagsListResult,
   ListNetworkSecurityPerimeterServiceTagsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NspServiceTagsResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28064, __c877, 0) as any as S.Schema<ListNetworkSecurityPerimeterServiceTagsRequest>,
   output: __S(28067, __c877, 3) as any as S.Schema<NspServiceTagsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkVirtualApplianceByResourceGroupError = AzureOpError;
 /** Lists all Network Virtual Appliances in a resource group. */
-export const ListNetworkVirtualApplianceByResourceGroup: API.OperationMethod<
+export const ListNetworkVirtualApplianceByResourceGroup: API.PaginatedOperationMethod<
   ListNetworkVirtualApplianceByResourceGroupRequest,
   NetworkVirtualApplianceListResult,
   ListNetworkVirtualApplianceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkVirtualAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     28096,
     __c878,
@@ -61371,52 +62645,79 @@ export const ListNetworkVirtualApplianceByResourceGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkVirtualApplianceConnectionsError = AzureOpError;
 /** Lists NetworkVirtualApplianceConnections under the NVA. */
-export const ListNetworkVirtualApplianceConnections: API.OperationMethod<
+export const ListNetworkVirtualApplianceConnections: API.PaginatedOperationMethod<
   ListNetworkVirtualApplianceConnectionsRequest,
   NetworkVirtualApplianceConnectionList,
   ListNetworkVirtualApplianceConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkVirtualApplianceConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28160, __c880, 0) as any as S.Schema<ListNetworkVirtualApplianceConnectionsRequest>,
   output: __S(28162, __c880, 2) as any as S.Schema<NetworkVirtualApplianceConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkVirtualAppliancesError = AzureOpError;
 /** Gets all Network Virtual Appliances in a subscription. */
-export const ListNetworkVirtualAppliances: API.OperationMethod<
+export const ListNetworkVirtualAppliances: API.PaginatedOperationMethod<
   ListNetworkVirtualAppliancesRequest,
   NetworkVirtualApplianceListResult,
   ListNetworkVirtualAppliancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkVirtualAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28192, __c881, 0) as any as S.Schema<ListNetworkVirtualAppliancesRequest>,
   output: __S(28129, __c879, 1) as any as S.Schema<NetworkVirtualApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkWatcherAllError = AzureOpError;
 /** Gets all network watchers by subscription. */
-export const ListNetworkWatcherAll: API.OperationMethod<
+export const ListNetworkWatcherAll: API.PaginatedOperationMethod<
   ListNetworkWatcherAllRequest,
   NetworkWatcherListResult,
   ListNetworkWatcherAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkWatcher
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28224, __c882, 0) as any as S.Schema<ListNetworkWatcherAllRequest>,
   output: __S(28257, __c883, 1) as any as S.Schema<NetworkWatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkWatcherAvailableProvidersError = AzureOpError;
 /** NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region. */
@@ -61435,162 +62736,233 @@ export const ListNetworkWatcherAvailableProviders: API.OperationMethod<
 
 export type ListNetworkWatchersError = AzureOpError;
 /** Gets all network watchers by resource group. */
-export const ListNetworkWatchers: API.OperationMethod<
+export const ListNetworkWatchers: API.PaginatedOperationMethod<
   ListNetworkWatchersRequest,
   NetworkWatcherListResult,
   ListNetworkWatchersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkWatcher
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28320, __c885, 0) as any as S.Schema<ListNetworkWatchersRequest>,
   output: __S(28257, __c883, 1) as any as S.Schema<NetworkWatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkWatchersConnectionAnalyzersError = AzureOpError;
 /** Lists all connection analyzers in the specified network watcher. */
-export const ListNetworkWatchersConnectionAnalyzers: API.OperationMethod<
+export const ListNetworkWatchersConnectionAnalyzers: API.PaginatedOperationMethod<
   ListNetworkWatchersConnectionAnalyzersRequest,
   ConnectionAnalyzerListResult,
   ListNetworkWatchersConnectionAnalyzersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectionAnalyzer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28384, __c887, 0) as any as S.Schema<ListNetworkWatchersConnectionAnalyzersRequest>,
   output: __S(28386, __c887, 2) as any as S.Schema<ConnectionAnalyzerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Network Rest API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28416, __c888, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(28430, __c888, 14) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListP2sVpnGatewayByResourceGroupError = AzureOpError;
 /** Lists all the P2SVpnGateways in a resource group. */
-export const ListP2sVpnGatewayByResourceGroup: API.OperationMethod<
+export const ListP2sVpnGatewayByResourceGroup: API.PaginatedOperationMethod<
   ListP2sVpnGatewayByResourceGroupRequest,
   ListP2SVpnGatewaysResult,
   ListP2sVpnGatewayByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  P2SVpnGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28448, __c889, 0) as any as S.Schema<ListP2sVpnGatewayByResourceGroupRequest>,
   output: __S(28480, __c890, 0) as any as S.Schema<ListP2SVpnGatewaysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListP2sVpnGatewaysError = AzureOpError;
 /** Lists all the P2SVpnGateways in a subscription. */
-export const ListP2sVpnGateways: API.OperationMethod<
+export const ListP2sVpnGateways: API.PaginatedOperationMethod<
   ListP2sVpnGatewaysRequest,
   ListP2SVpnGatewaysResult,
   ListP2sVpnGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  P2SVpnGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28512, __c891, 0) as any as S.Schema<ListP2sVpnGatewaysRequest>,
   output: __S(28480, __c890, 0) as any as S.Schema<ListP2SVpnGatewaysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPacketCapturesError = AzureOpError;
 /** Lists all packet capture sessions within the specified resource group. */
-export const ListPacketCaptures: API.OperationMethod<
+export const ListPacketCaptures: API.PaginatedOperationMethod<
   ListPacketCapturesRequest,
   PacketCaptureListResult,
   ListPacketCapturesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PacketCaptureResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28544, __c892, 0) as any as S.Schema<ListPacketCapturesRequest>,
   output: __S(28546, __c892, 2) as any as S.Schema<PacketCaptureListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPeerExpressRouteCircuitConnectionsError = AzureOpError;
 /** Gets all global reach peer connections associated with a private peering in an express route circuit. */
-export const ListPeerExpressRouteCircuitConnections: API.OperationMethod<
+export const ListPeerExpressRouteCircuitConnections: API.PaginatedOperationMethod<
   ListPeerExpressRouteCircuitConnectionsRequest,
   PeerExpressRouteCircuitConnectionListResult,
   ListPeerExpressRouteCircuitConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PeerExpressRouteCircuitConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28576, __c893, 0) as any as S.Schema<ListPeerExpressRouteCircuitConnectionsRequest>,
   output: __S(28577, __c893, 1) as any as S.Schema<PeerExpressRouteCircuitConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateDnsZoneGroupsError = AzureOpError;
 /** Gets all private dns zone groups in a private endpoint. */
-export const ListPrivateDnsZoneGroups: API.OperationMethod<
+export const ListPrivateDnsZoneGroups: API.PaginatedOperationMethod<
   ListPrivateDnsZoneGroupsRequest,
   PrivateDnsZoneGroupListResult,
   ListPrivateDnsZoneGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateDnsZoneGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28608, __c894, 0) as any as S.Schema<ListPrivateDnsZoneGroupsRequest>,
   output: __S(28610, __c894, 2) as any as S.Schema<PrivateDnsZoneGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointBySubscriptionError = AzureOpError;
 /** Gets all private endpoints in a subscription. */
-export const ListPrivateEndpointBySubscription: API.OperationMethod<
+export const ListPrivateEndpointBySubscription: API.PaginatedOperationMethod<
   ListPrivateEndpointBySubscriptionRequest,
   PrivateEndpointListResult,
   ListPrivateEndpointBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpoint_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28640, __c895, 0) as any as S.Schema<ListPrivateEndpointBySubscriptionRequest>,
   output: __S(28672, __c896, 0) as any as S.Schema<PrivateEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointsError = AzureOpError;
 /** Gets all private endpoints in a resource group. */
-export const ListPrivateEndpoints: API.OperationMethod<
+export const ListPrivateEndpoints: API.PaginatedOperationMethod<
   ListPrivateEndpointsRequest,
   PrivateEndpointListResult,
   ListPrivateEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpoint_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28704, __c897, 0) as any as S.Schema<ListPrivateEndpointsRequest>,
   output: __S(28672, __c896, 0) as any as S.Schema<PrivateEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServiceAutoApprovedPrivateLinkServicesError = AzureOpError;
 /** Returns all of the private link service ids that can be linked to a Private Endpoint with auto approved in this subscription in this region. */
-export const ListPrivateLinkServiceAutoApprovedPrivateLinkServices: API.OperationMethod<
+export const ListPrivateLinkServiceAutoApprovedPrivateLinkServices: API.PaginatedOperationMethod<
   ListPrivateLinkServiceAutoApprovedPrivateLinkServicesRequest,
   AutoApprovedPrivateLinkServicesResult,
   ListPrivateLinkServiceAutoApprovedPrivateLinkServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AutoApprovedPrivateLinkService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     28736,
     __c898,
@@ -61600,17 +62972,24 @@ export const ListPrivateLinkServiceAutoApprovedPrivateLinkServices: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResourceGroupError =
   AzureOpError;
 /** Returns all of the private link service ids that can be linked to a Private Endpoint with auto approved in this subscription in this region. */
-export const ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResourceGroupRequest,
   AutoApprovedPrivateLinkServicesResult,
   ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AutoApprovedPrivateLinkService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     28832,
     __c901,
@@ -61620,31 +62999,45 @@ export const ListPrivateLinkServiceAutoApprovedPrivateLinkServicesByResourceGrou
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServiceBySubscriptionError = AzureOpError;
 /** Gets all private link service in a subscription. */
-export const ListPrivateLinkServiceBySubscription: API.OperationMethod<
+export const ListPrivateLinkServiceBySubscription: API.PaginatedOperationMethod<
   ListPrivateLinkServiceBySubscriptionRequest,
   PrivateLinkServiceListResult,
   ListPrivateLinkServiceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkService_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28864, __c902, 0) as any as S.Schema<ListPrivateLinkServiceBySubscriptionRequest>,
   output: __S(28897, __c903, 1) as any as S.Schema<PrivateLinkServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicePrivateEndpointConnectionsError = AzureOpError;
 /** Gets all private end point connections for a specific private link service. */
-export const ListPrivateLinkServicePrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateLinkServicePrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateLinkServicePrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateLinkServicePrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     28928,
     __c904,
@@ -61654,46 +63047,67 @@ export const ListPrivateLinkServicePrivateEndpointConnections: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesError = AzureOpError;
 /** Gets all private link services in a resource group. */
-export const ListPrivateLinkServices: API.OperationMethod<
+export const ListPrivateLinkServices: API.PaginatedOperationMethod<
   ListPrivateLinkServicesRequest,
   PrivateLinkServiceListResult,
   ListPrivateLinkServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkService_5
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28960, __c905, 0) as any as S.Schema<ListPrivateLinkServicesRequest>,
   output: __S(28897, __c903, 1) as any as S.Schema<PrivateLinkServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPublicIPAddressAllError = AzureOpError;
 /** Gets all the public IP addresses in a subscription. */
-export const ListPublicIPAddressAll: API.OperationMethod<
+export const ListPublicIPAddressAll: API.PaginatedOperationMethod<
   ListPublicIPAddressAllRequest,
   PublicIPAddressListResult,
   ListPublicIPAddressAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIPAddress_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28992, __c906, 0) as any as S.Schema<ListPublicIPAddressAllRequest>,
   output: __S(29025, __c907, 1) as any as S.Schema<PublicIPAddressListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPublicIPAddressCloudServicePublicIPAddressesError = AzureOpError;
 /** Gets information about all public IP addresses on a cloud service level. */
-export const ListPublicIPAddressCloudServicePublicIPAddresses: API.OperationMethod<
+export const ListPublicIPAddressCloudServicePublicIPAddresses: API.PaginatedOperationMethod<
   ListPublicIPAddressCloudServicePublicIPAddressesRequest,
   PublicIPAddressListResult,
   ListPublicIPAddressCloudServicePublicIPAddressesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIPAddress_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     29056,
     __c908,
@@ -61703,16 +63117,23 @@ export const ListPublicIPAddressCloudServicePublicIPAddresses: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPublicIPAddressCloudServiceRoleInstancePublicIPAddressesError = AzureOpError;
 /** Gets information about all public IP addresses in a role instance IP configuration in a cloud service. */
-export const ListPublicIPAddressCloudServiceRoleInstancePublicIPAddresses: API.OperationMethod<
+export const ListPublicIPAddressCloudServiceRoleInstancePublicIPAddresses: API.PaginatedOperationMethod<
   ListPublicIPAddressCloudServiceRoleInstancePublicIPAddressesRequest,
   PublicIPAddressListResult,
   ListPublicIPAddressCloudServiceRoleInstancePublicIPAddressesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIPAddress_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     29088,
     __c909,
@@ -61722,82 +63143,123 @@ export const ListPublicIPAddressCloudServiceRoleInstancePublicIPAddresses: API.O
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPublicIPAddressesError = AzureOpError;
 /** Gets all public IP addresses in a resource group. */
-export const ListPublicIPAddresses: API.OperationMethod<
+export const ListPublicIPAddresses: API.PaginatedOperationMethod<
   ListPublicIPAddressesRequest,
   PublicIPAddressListResult,
   ListPublicIPAddressesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIPAddress_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29120, __c910, 0) as any as S.Schema<ListPublicIPAddressesRequest>,
   output: __S(29025, __c907, 1) as any as S.Schema<PublicIPAddressListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPublicIPPrefixAllError = AzureOpError;
 /** Gets all the public IP prefixes in a subscription. */
-export const ListPublicIPPrefixAll: API.OperationMethod<
+export const ListPublicIPPrefixAll: API.PaginatedOperationMethod<
   ListPublicIPPrefixAllRequest,
   PublicIPPrefixListResult,
   ListPublicIPPrefixAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIPPrefix
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29152, __c911, 0) as any as S.Schema<ListPublicIPPrefixAllRequest>,
   output: __S(29185, __c912, 1) as any as S.Schema<PublicIPPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPublicIPPrefixesError = AzureOpError;
 /** Gets all public IP prefixes in a resource group. */
-export const ListPublicIPPrefixes: API.OperationMethod<
+export const ListPublicIPPrefixes: API.PaginatedOperationMethod<
   ListPublicIPPrefixesRequest,
   PublicIPPrefixListResult,
   ListPublicIPPrefixesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIPPrefix
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29216, __c913, 0) as any as S.Schema<ListPublicIPPrefixesRequest>,
   output: __S(29185, __c912, 1) as any as S.Schema<PublicIPPrefixListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReachabilityAnalysisIntentsError = AzureOpError;
 /** Gets list of Reachability Analysis Intents . Gets list of Reachability Analysis Intents . */
-export const ListReachabilityAnalysisIntents: API.OperationMethod<
+export const ListReachabilityAnalysisIntents: API.PaginatedOperationMethod<
   ListReachabilityAnalysisIntentsRequest,
   ReachabilityAnalysisIntentListResult,
   ListReachabilityAnalysisIntentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReachabilityAnalysisIntent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29280, __c915, 0) as any as S.Schema<ListReachabilityAnalysisIntentsRequest>,
   output: __S(29282, __c915, 2) as any as S.Schema<ReachabilityAnalysisIntentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReachabilityAnalysisRunsError = AzureOpError;
 /** Gets list of Reachability Analysis Runs. Gets list of Reachability Analysis Runs. */
-export const ListReachabilityAnalysisRuns: API.OperationMethod<
+export const ListReachabilityAnalysisRuns: API.PaginatedOperationMethod<
   ListReachabilityAnalysisRunsRequest,
   ReachabilityAnalysisRunListResult,
   ListReachabilityAnalysisRunsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReachabilityAnalysisRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29312, __c916, 0) as any as S.Schema<ListReachabilityAnalysisRunsRequest>,
   output: __S(29314, __c916, 2) as any as S.Schema<ReachabilityAnalysisRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListResourceNavigationLinksError = AzureOpError;
 /** Gets a list of resource navigation links for a subnet. */
@@ -61816,192 +63278,277 @@ export const ListResourceNavigationLinks: API.OperationMethod<
 
 export type ListRouteFilterByResourceGroupError = AzureOpError;
 /** Gets all route filters in a resource group. */
-export const ListRouteFilterByResourceGroup: API.OperationMethod<
+export const ListRouteFilterByResourceGroup: API.PaginatedOperationMethod<
   ListRouteFilterByResourceGroupRequest,
   RouteFilterListResult,
   ListRouteFilterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouteFilter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29376, __c918, 0) as any as S.Schema<ListRouteFilterByResourceGroupRequest>,
   output: __S(29409, __c919, 1) as any as S.Schema<RouteFilterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRouteFilterRuleByRouteFilterError = AzureOpError;
 /** Gets all RouteFilterRules in a route filter. */
-export const ListRouteFilterRuleByRouteFilter: API.OperationMethod<
+export const ListRouteFilterRuleByRouteFilter: API.PaginatedOperationMethod<
   ListRouteFilterRuleByRouteFilterRequest,
   RouteFilterRuleListResult,
   ListRouteFilterRuleByRouteFilterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouteFilterRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29440, __c920, 0) as any as S.Schema<ListRouteFilterRuleByRouteFilterRequest>,
   output: __S(29441, __c920, 1) as any as S.Schema<RouteFilterRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRouteFiltersError = AzureOpError;
 /** Gets all route filters in a subscription. */
-export const ListRouteFilters: API.OperationMethod<
+export const ListRouteFilters: API.PaginatedOperationMethod<
   ListRouteFiltersRequest,
   RouteFilterListResult,
   ListRouteFiltersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouteFilter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29472, __c921, 0) as any as S.Schema<ListRouteFiltersRequest>,
   output: __S(29409, __c919, 1) as any as S.Schema<RouteFilterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRouteMapsError = AzureOpError;
 /** Retrieves the details of all RouteMaps. */
-export const ListRouteMaps: API.OperationMethod<
+export const ListRouteMaps: API.PaginatedOperationMethod<
   ListRouteMapsRequest,
   ListRouteMapsResult,
   ListRouteMapsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouteMap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29504, __c922, 0) as any as S.Schema<ListRouteMapsRequest>,
   output: __S(29506, __c922, 2) as any as S.Schema<ListRouteMapsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoutesError = AzureOpError;
 /** Gets all routes in a route table. */
-export const ListRoutes: API.OperationMethod<
+export const ListRoutes: API.PaginatedOperationMethod<
   ListRoutesRequest,
   RouteListResult,
   ListRoutesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Route_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29536, __c923, 0) as any as S.Schema<ListRoutesRequest>,
   output: __S(29537, __c923, 1) as any as S.Schema<RouteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRouteTableAllError = AzureOpError;
 /** Gets all route tables in a subscription. */
-export const ListRouteTableAll: API.OperationMethod<
+export const ListRouteTableAll: API.PaginatedOperationMethod<
   ListRouteTableAllRequest,
   RouteTableListResult,
   ListRouteTableAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouteTable_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29568, __c924, 0) as any as S.Schema<ListRouteTableAllRequest>,
   output: __S(29601, __c925, 1) as any as S.Schema<RouteTableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRouteTablesError = AzureOpError;
 /** Gets all route tables in a resource group. */
-export const ListRouteTables: API.OperationMethod<
+export const ListRouteTables: API.PaginatedOperationMethod<
   ListRouteTablesRequest,
   RouteTableListResult,
   ListRouteTablesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouteTable_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29632, __c926, 0) as any as S.Schema<ListRouteTablesRequest>,
   output: __S(29601, __c925, 1) as any as S.Schema<RouteTableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoutingIntentError = AzureOpError;
 /** Retrieves the details of all RoutingIntent child resources of the VirtualHub. */
-export const ListRoutingIntent: API.OperationMethod<
+export const ListRoutingIntent: API.PaginatedOperationMethod<
   ListRoutingIntentRequest,
   ListRoutingIntentResult,
   ListRoutingIntentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoutingIntent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29696, __c928, 0) as any as S.Schema<ListRoutingIntentRequest>,
   output: __S(29698, __c928, 2) as any as S.Schema<ListRoutingIntentResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoutingRuleCollectionsError = AzureOpError;
 /** Lists all the rule collections in a routing configuration, in a paginated format. */
-export const ListRoutingRuleCollections: API.OperationMethod<
+export const ListRoutingRuleCollections: API.PaginatedOperationMethod<
   ListRoutingRuleCollectionsRequest,
   RoutingRuleCollectionListResult,
   ListRoutingRuleCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoutingRuleCollection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29728, __c929, 0) as any as S.Schema<ListRoutingRuleCollectionsRequest>,
   output: __S(29730, __c929, 2) as any as S.Schema<RoutingRuleCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoutingRulesError = AzureOpError;
 /** List all network manager routing configuration routing rules. */
-export const ListRoutingRules: API.OperationMethod<
+export const ListRoutingRules: API.PaginatedOperationMethod<
   ListRoutingRulesRequest,
   RoutingRuleListResult,
   ListRoutingRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoutingRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29760, __c930, 0) as any as S.Schema<ListRoutingRulesRequest>,
   output: __S(29762, __c930, 2) as any as S.Schema<RoutingRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScopeConnectionsError = AzureOpError;
 /** List all scope connections created by this network manager. */
-export const ListScopeConnections: API.OperationMethod<
+export const ListScopeConnections: API.PaginatedOperationMethod<
   ListScopeConnectionsRequest,
   ScopeConnectionListResult,
   ListScopeConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScopeConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29792, __c931, 0) as any as S.Schema<ListScopeConnectionsRequest>,
   output: __S(29794, __c931, 2) as any as S.Schema<ScopeConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityAdminConfigurationsError = AzureOpError;
 /** Lists all the network manager security admin configurations in a network manager, in a paginated format. */
-export const ListSecurityAdminConfigurations: API.OperationMethod<
+export const ListSecurityAdminConfigurations: API.PaginatedOperationMethod<
   ListSecurityAdminConfigurationsRequest,
   SecurityAdminConfigurationListResult,
   ListSecurityAdminConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityAdminConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29824, __c932, 0) as any as S.Schema<ListSecurityAdminConfigurationsRequest>,
   output: __S(29826, __c932, 2) as any as S.Schema<SecurityAdminConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityPartnerProviderByResourceGroupError = AzureOpError;
 /** Lists all Security Partner Providers in a resource group. */
-export const ListSecurityPartnerProviderByResourceGroup: API.OperationMethod<
+export const ListSecurityPartnerProviderByResourceGroup: API.PaginatedOperationMethod<
   ListSecurityPartnerProviderByResourceGroupRequest,
   SecurityPartnerProviderListResult,
   ListSecurityPartnerProviderByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityPartnerProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     29856,
     __c933,
@@ -62011,82 +63558,123 @@ export const ListSecurityPartnerProviderByResourceGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityPartnerProvidersError = AzureOpError;
 /** Gets all the Security Partner Providers in a subscription. */
-export const ListSecurityPartnerProviders: API.OperationMethod<
+export const ListSecurityPartnerProviders: API.PaginatedOperationMethod<
   ListSecurityPartnerProvidersRequest,
   SecurityPartnerProviderListResult,
   ListSecurityPartnerProvidersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityPartnerProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29920, __c935, 0) as any as S.Schema<ListSecurityPartnerProvidersRequest>,
   output: __S(29889, __c934, 1) as any as S.Schema<SecurityPartnerProviderListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityRulesError = AzureOpError;
 /** Gets all security rules in a network security group. */
-export const ListSecurityRules: API.OperationMethod<
+export const ListSecurityRules: API.PaginatedOperationMethod<
   ListSecurityRulesRequest,
   SecurityRuleListResult,
   ListSecurityRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityRule_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29952, __c936, 0) as any as S.Schema<ListSecurityRulesRequest>,
   output: __S(23840, __c745, 0) as any as S.Schema<SecurityRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityUserConfigurationsError = AzureOpError;
 /** Lists all the network manager security user configurations in a network manager, in a paginated format. */
-export const ListSecurityUserConfigurations: API.OperationMethod<
+export const ListSecurityUserConfigurations: API.PaginatedOperationMethod<
   ListSecurityUserConfigurationsRequest,
   SecurityUserConfigurationListResult,
   ListSecurityUserConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityUserConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(29984, __c937, 0) as any as S.Schema<ListSecurityUserConfigurationsRequest>,
   output: __S(29986, __c937, 2) as any as S.Schema<SecurityUserConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityUserRuleCollectionsError = AzureOpError;
 /** Lists all the security user rule collections in a security configuration, in a paginated format. */
-export const ListSecurityUserRuleCollections: API.OperationMethod<
+export const ListSecurityUserRuleCollections: API.PaginatedOperationMethod<
   ListSecurityUserRuleCollectionsRequest,
   SecurityUserRuleCollectionListResult,
   ListSecurityUserRuleCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityUserRuleCollection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30016, __c938, 0) as any as S.Schema<ListSecurityUserRuleCollectionsRequest>,
   output: __S(21281, __c665, 1) as any as S.Schema<SecurityUserRuleCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityUserRulesError = AzureOpError;
 /** Lists all Security User Rules in a rule collection. */
-export const ListSecurityUserRules: API.OperationMethod<
+export const ListSecurityUserRules: API.PaginatedOperationMethod<
   ListSecurityUserRulesRequest,
   SecurityUserRuleListResult,
   ListSecurityUserRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityUserRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30080, __c940, 0) as any as S.Schema<ListSecurityUserRulesRequest>,
   output: __S(30082, __c940, 2) as any as S.Schema<SecurityUserRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceAssociationLinksError = AzureOpError;
 /** Gets a list of service association links for a subnet. */
@@ -62105,42 +63693,57 @@ export const ListServiceAssociationLinks: API.OperationMethod<
 
 export type ListServiceEndpointPoliciesError = AzureOpError;
 /** Gets all the service endpoint policies in a subscription. */
-export const ListServiceEndpointPolicies: API.OperationMethod<
+export const ListServiceEndpointPolicies: API.PaginatedOperationMethod<
   ListServiceEndpointPoliciesRequest,
   ServiceEndpointPolicyListResult,
   ListServiceEndpointPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceEndpointPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30144, __c942, 0) as any as S.Schema<ListServiceEndpointPoliciesRequest>,
   output: __S(30177, __c943, 1) as any as S.Schema<ServiceEndpointPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceEndpointPolicyByResourceGroupError = AzureOpError;
 /** Gets all service endpoint Policies in a resource group. */
-export const ListServiceEndpointPolicyByResourceGroup: API.OperationMethod<
+export const ListServiceEndpointPolicyByResourceGroup: API.PaginatedOperationMethod<
   ListServiceEndpointPolicyByResourceGroupRequest,
   ServiceEndpointPolicyListResult,
   ListServiceEndpointPolicyByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceEndpointPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30208, __c944, 0) as any as S.Schema<ListServiceEndpointPolicyByResourceGroupRequest>,
   output: __S(30177, __c943, 1) as any as S.Schema<ServiceEndpointPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceEndpointPolicyDefinitionByResourceGroupError = AzureOpError;
 /** Gets all service endpoint policy definitions in a service end point policy. */
-export const ListServiceEndpointPolicyDefinitionByResourceGroup: API.OperationMethod<
+export const ListServiceEndpointPolicyDefinitionByResourceGroup: API.PaginatedOperationMethod<
   ListServiceEndpointPolicyDefinitionByResourceGroupRequest,
   ServiceEndpointPolicyDefinitionListResult,
   ListServiceEndpointPolicyDefinitionByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceEndpointPolicyDefinition_2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     30240,
     __c945,
@@ -62150,52 +63753,79 @@ export const ListServiceEndpointPolicyDefinitionByResourceGroup: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceGatewayAllError = AzureOpError;
 /** Gets all the service gateways in a subscription. */
-export const ListServiceGatewayAll: API.OperationMethod<
+export const ListServiceGatewayAll: API.PaginatedOperationMethod<
   ListServiceGatewayAllRequest,
   ServiceGatewayListResult,
   ListServiceGatewayAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30272, __c946, 0) as any as S.Schema<ListServiceGatewayAllRequest>,
   output: __S(30305, __c947, 1) as any as S.Schema<ServiceGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceGatewaysError = AzureOpError;
 /** Gets all the service gateways in a resource group. */
-export const ListServiceGateways: API.OperationMethod<
+export const ListServiceGateways: API.PaginatedOperationMethod<
   ListServiceGatewaysRequest,
   ServiceGatewayListResult,
   ListServiceGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30336, __c948, 0) as any as S.Schema<ListServiceGatewaysRequest>,
   output: __S(30305, __c947, 1) as any as S.Schema<ServiceGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceTagInformationError = AzureOpError;
 /** Gets a list of service tag information resources with pagination. */
-export const ListServiceTagInformation: API.OperationMethod<
+export const ListServiceTagInformation: API.PaginatedOperationMethod<
   ListServiceTagInformationRequest,
   ServiceTagInformationListResult,
   ListServiceTagInformationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceTagInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30368, __c949, 0) as any as S.Schema<ListServiceTagInformationRequest>,
   output: __S(30369, __c949, 1) as any as S.Schema<ServiceTagInformationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceTagsError = AzureOpError;
 /** Gets a list of service tag information resources. */
@@ -62214,108 +63844,157 @@ export const ListServiceTags: API.OperationMethod<
 
 export type ListStaticCidrsError = AzureOpError;
 /** Gets list of Static CIDR resources at Network Manager level. Gets list of Static CIDR resources at Network Manager level. */
-export const ListStaticCidrs: API.OperationMethod<
+export const ListStaticCidrs: API.PaginatedOperationMethod<
   ListStaticCidrsRequest,
   StaticCidrList,
   ListStaticCidrsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StaticCidr
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30464, __c952, 0) as any as S.Schema<ListStaticCidrsRequest>,
   output: __S(30466, __c952, 2) as any as S.Schema<StaticCidrList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStaticMembersError = AzureOpError;
 /** Lists the specified static member. */
-export const ListStaticMembers: API.OperationMethod<
+export const ListStaticMembers: API.PaginatedOperationMethod<
   ListStaticMembersRequest,
   StaticMemberListResult,
   ListStaticMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StaticMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30528, __c954, 0) as any as S.Schema<ListStaticMembersRequest>,
   output: __S(30530, __c954, 2) as any as S.Schema<StaticMemberListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSubgroupsError = AzureOpError;
 /** Gets all subgroups in an interconnect group. */
-export const ListSubgroups: API.OperationMethod<
+export const ListSubgroups: API.PaginatedOperationMethod<
   ListSubgroupsRequest,
   SubgroupListResult,
   ListSubgroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Subgroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30560, __c955, 0) as any as S.Schema<ListSubgroupsRequest>,
   output: __S(30561, __c955, 1) as any as S.Schema<SubgroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSubnetsError = AzureOpError;
 /** Gets all subnets in a virtual network. */
-export const ListSubnets: API.OperationMethod<
+export const ListSubnets: API.PaginatedOperationMethod<
   ListSubnetsRequest,
   SubnetListResult,
   ListSubnetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Subnet_6
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30592, __c956, 0) as any as S.Schema<ListSubnetsRequest>,
   output: __S(30593, __c956, 1) as any as S.Schema<SubnetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSubscriptionNetworkManagerConnectionsError = AzureOpError;
 /** List all network manager connections created by this subscription. */
-export const ListSubscriptionNetworkManagerConnections: API.OperationMethod<
+export const ListSubscriptionNetworkManagerConnections: API.PaginatedOperationMethod<
   ListSubscriptionNetworkManagerConnectionsRequest,
   NetworkManagerConnectionListResult,
   ListSubscriptionNetworkManagerConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkManagerConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30624, __c957, 0) as any as S.Schema<ListSubscriptionNetworkManagerConnectionsRequest>,
   output: __S(26753, __c836, 1) as any as S.Schema<NetworkManagerConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsagesError = AzureOpError;
 /** List network usages for a subscription. */
-export const ListUsages: API.OperationMethod<
+export const ListUsages: API.PaginatedOperationMethod<
   ListUsagesRequest,
   UsagesListResult,
   ListUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30656, __c958, 0) as any as S.Schema<ListUsagesRequest>,
   output: __S(30660, __c958, 4) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVerifierWorkspacesError = AzureOpError;
 /** Gets list of Verifier Workspaces. Gets list of Verifier Workspaces. */
-export const ListVerifierWorkspaces: API.OperationMethod<
+export const ListVerifierWorkspaces: API.PaginatedOperationMethod<
   ListVerifierWorkspacesRequest,
   VerifierWorkspaceListResult,
   ListVerifierWorkspacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VerifierWorkspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30688, __c959, 0) as any as S.Schema<ListVerifierWorkspacesRequest>,
   output: __S(30690, __c959, 2) as any as S.Schema<VerifierWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVipSwapError = AzureOpError;
 /** Gets the list of SwapResource which identifies the slot type for the specified cloud service. The slot type on a cloud service can either be Staging or Production */
@@ -62334,33 +64013,47 @@ export const ListVipSwap: API.OperationMethod<
 
 export type ListVirtualApplianceSitesError = AzureOpError;
 /** Lists all Network Virtual Appliance Sites in a Network Virtual Appliance resource. */
-export const ListVirtualApplianceSites: API.OperationMethod<
+export const ListVirtualApplianceSites: API.PaginatedOperationMethod<
   ListVirtualApplianceSitesRequest,
   NetworkVirtualApplianceSiteListResult,
   ListVirtualApplianceSitesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualApplianceSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30752, __c961, 0) as any as S.Schema<ListVirtualApplianceSitesRequest>,
   output: __S(30754, __c961, 2) as any as S.Schema<NetworkVirtualApplianceSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualApplianceSkusError = AzureOpError;
 /** List all SKUs available for a virtual appliance. */
-export const ListVirtualApplianceSkus: API.OperationMethod<
+export const ListVirtualApplianceSkus: API.PaginatedOperationMethod<
   ListVirtualApplianceSkusRequest,
   NetworkVirtualApplianceSkuListResult,
   ListVirtualApplianceSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkVirtualApplianceSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(30784, __c962, 0) as any as S.Schema<ListVirtualApplianceSkusRequest>,
   output: __S(30786, __c962, 2) as any as S.Schema<NetworkVirtualApplianceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualHubBgpConnectionAdvertisedRoutesError = AzureOpError;
 /** Retrieves a list of routes the virtual hub bgp connection is advertising to the specified peer. */
@@ -62406,177 +64099,255 @@ export const ListVirtualHubBgpConnectionLearnedRoutes: API.OperationMethod<
 
 export type ListVirtualHubBgpConnectionsError = AzureOpError;
 /** Retrieves the details of all VirtualHubBgpConnections. */
-export const ListVirtualHubBgpConnections: API.OperationMethod<
+export const ListVirtualHubBgpConnections: API.PaginatedOperationMethod<
   ListVirtualHubBgpConnectionsRequest,
   ListVirtualHubBgpConnectionResults,
   ListVirtualHubBgpConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BgpConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31456, __c983, 0) as any as S.Schema<ListVirtualHubBgpConnectionsRequest>,
   output: __S(31458, __c983, 2) as any as S.Schema<ListVirtualHubBgpConnectionResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualHubByResourceGroupError = AzureOpError;
 /** Lists all the VirtualHubs in a resource group. */
-export const ListVirtualHubByResourceGroup: API.OperationMethod<
+export const ListVirtualHubByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualHubByResourceGroupRequest,
   ListVirtualHubsResult,
   ListVirtualHubByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualHub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31488, __c984, 0) as any as S.Schema<ListVirtualHubByResourceGroupRequest>,
   output: __S(31521, __c985, 1) as any as S.Schema<ListVirtualHubsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualHubIpConfigurationError = AzureOpError;
 /** Retrieves the details of all VirtualHubIpConfigurations. */
-export const ListVirtualHubIpConfiguration: API.OperationMethod<
+export const ListVirtualHubIpConfiguration: API.PaginatedOperationMethod<
   ListVirtualHubIpConfigurationRequest,
   ListVirtualHubIpConfigurationResults,
   ListVirtualHubIpConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HubIpConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31552, __c986, 0) as any as S.Schema<ListVirtualHubIpConfigurationRequest>,
   output: __S(31554, __c986, 2) as any as S.Schema<ListVirtualHubIpConfigurationResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualHubRouteTableV2sError = AzureOpError;
 /** Retrieves the details of all VirtualHubRouteTableV2s. */
-export const ListVirtualHubRouteTableV2s: API.OperationMethod<
+export const ListVirtualHubRouteTableV2s: API.PaginatedOperationMethod<
   ListVirtualHubRouteTableV2sRequest,
   ListVirtualHubRouteTableV2sResult,
   ListVirtualHubRouteTableV2sError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualHubRouteTableV2
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31584, __c987, 0) as any as S.Schema<ListVirtualHubRouteTableV2sRequest>,
   output: __S(31585, __c987, 1) as any as S.Schema<ListVirtualHubRouteTableV2sResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualHubsError = AzureOpError;
 /** Lists all the VirtualHubs in a subscription. */
-export const ListVirtualHubs: API.OperationMethod<
+export const ListVirtualHubs: API.PaginatedOperationMethod<
   ListVirtualHubsRequest,
   ListVirtualHubsResult,
   ListVirtualHubsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualHub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31616, __c988, 0) as any as S.Schema<ListVirtualHubsRequest>,
   output: __S(31521, __c985, 1) as any as S.Schema<ListVirtualHubsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkAllError = AzureOpError;
 /** Gets all virtual networks in a subscription. */
-export const ListVirtualNetworkAll: API.OperationMethod<
+export const ListVirtualNetworkAll: API.PaginatedOperationMethod<
   ListVirtualNetworkAllRequest,
   VirtualNetworkListResult,
   ListVirtualNetworkAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31648, __c989, 0) as any as S.Schema<ListVirtualNetworkAllRequest>,
   output: __S(31681, __c990, 1) as any as S.Schema<VirtualNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkApplianceAllError = AzureOpError;
 /** Gets all virtual network appliances in a subscription. */
-export const ListVirtualNetworkApplianceAll: API.OperationMethod<
+export const ListVirtualNetworkApplianceAll: API.PaginatedOperationMethod<
   ListVirtualNetworkApplianceAllRequest,
   VirtualNetworkApplianceListResult,
   ListVirtualNetworkApplianceAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31712, __c991, 0) as any as S.Schema<ListVirtualNetworkApplianceAllRequest>,
   output: __S(31745, __c992, 1) as any as S.Schema<VirtualNetworkApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkAppliancesError = AzureOpError;
 /** Gets all virtual network appliances in a resource group. */
-export const ListVirtualNetworkAppliances: API.OperationMethod<
+export const ListVirtualNetworkAppliances: API.PaginatedOperationMethod<
   ListVirtualNetworkAppliancesRequest,
   VirtualNetworkApplianceListResult,
   ListVirtualNetworkAppliancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31776, __c993, 0) as any as S.Schema<ListVirtualNetworkAppliancesRequest>,
   output: __S(31745, __c992, 1) as any as S.Schema<VirtualNetworkApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkDdosProtectionStatusError = AzureOpError;
 /** Gets the Ddos Protection Status of all IP Addresses under the Virtual Network */
-export const ListVirtualNetworkDdosProtectionStatus: API.OperationMethod<
+export const ListVirtualNetworkDdosProtectionStatus: API.PaginatedOperationMethod<
   ListVirtualNetworkDdosProtectionStatusRequest,
   VirtualNetworkDdosProtectionStatusResult,
   ListVirtualNetworkDdosProtectionStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PublicIpDdosProtectionStatusResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31808, __c994, 0) as any as S.Schema<ListVirtualNetworkDdosProtectionStatusRequest>,
   output: __S(31811, __c994, 3) as any as S.Schema<VirtualNetworkDdosProtectionStatusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkGatewayConnectionsError = AzureOpError;
 /** The List VirtualNetworkGatewayConnections operation retrieves all the virtual network gateways connections created. */
-export const ListVirtualNetworkGatewayConnections: API.OperationMethod<
+export const ListVirtualNetworkGatewayConnections: API.PaginatedOperationMethod<
   ListVirtualNetworkGatewayConnectionsRequest,
   VirtualNetworkGatewayConnectionListResult,
   ListVirtualNetworkGatewayConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkGatewayConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31872, __c996, 0) as any as S.Schema<ListVirtualNetworkGatewayConnectionsRequest>,
   output: __S(31874, __c996, 2) as any as S.Schema<VirtualNetworkGatewayConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkGatewayConnections2Error = AzureOpError;
 /** Gets all the connections in a virtual network gateway. */
-export const ListVirtualNetworkGatewayConnections2: API.OperationMethod<
+export const ListVirtualNetworkGatewayConnections2: API.PaginatedOperationMethod<
   ListVirtualNetworkGatewayConnectionsRequest2,
   VirtualNetworkGatewayListConnectionsResult,
   ListVirtualNetworkGatewayConnections2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkGatewayConnectionListEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(31904, __c997, 0) as any as S.Schema<ListVirtualNetworkGatewayConnectionsRequest2>,
   output: __S(31908, __c997, 4) as any as S.Schema<VirtualNetworkGatewayListConnectionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkGatewayNatRuleByVirtualNetworkGatewayError = AzureOpError;
 /** Retrieves all nat rules for a particular virtual network gateway. */
-export const ListVirtualNetworkGatewayNatRuleByVirtualNetworkGateway: API.OperationMethod<
+export const ListVirtualNetworkGatewayNatRuleByVirtualNetworkGateway: API.PaginatedOperationMethod<
   ListVirtualNetworkGatewayNatRuleByVirtualNetworkGatewayRequest,
   ListVirtualNetworkGatewayNatRulesResult,
   ListVirtualNetworkGatewayNatRuleByVirtualNetworkGatewayError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkGatewayNatRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     31936,
     __c998,
@@ -62586,7 +64357,13 @@ export const ListVirtualNetworkGatewayNatRuleByVirtualNetworkGateway: API.Operat
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkGatewayRadiusSecretsError = AzureOpError;
 /** List all Radius servers with respective radius secrets from virtual network gateway VpnClientConfiguration. */
@@ -62605,228 +64382,333 @@ export const ListVirtualNetworkGatewayRadiusSecrets: API.OperationMethod<
 
 export type ListVirtualNetworkGatewaysError = AzureOpError;
 /** Gets all virtual network gateways by resource group. */
-export const ListVirtualNetworkGateways: API.OperationMethod<
+export const ListVirtualNetworkGateways: API.PaginatedOperationMethod<
   ListVirtualNetworkGatewaysRequest,
   VirtualNetworkGatewayListResult,
   ListVirtualNetworkGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32032, __c1001, 0) as any as S.Schema<ListVirtualNetworkGatewaysRequest>,
   output: __S(32034, __c1001, 2) as any as S.Schema<VirtualNetworkGatewayListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkPeeringsError = AzureOpError;
 /** Gets all virtual network peerings in a virtual network. */
-export const ListVirtualNetworkPeerings: API.OperationMethod<
+export const ListVirtualNetworkPeerings: API.PaginatedOperationMethod<
   ListVirtualNetworkPeeringsRequest,
   VirtualNetworkPeeringListResult,
   ListVirtualNetworkPeeringsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkPeering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32064, __c1002, 0) as any as S.Schema<ListVirtualNetworkPeeringsRequest>,
   output: __S(32065, __c1002, 1) as any as S.Schema<VirtualNetworkPeeringListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworksError = AzureOpError;
 /** Gets all virtual networks in a resource group. */
-export const ListVirtualNetworks: API.OperationMethod<
+export const ListVirtualNetworks: API.PaginatedOperationMethod<
   ListVirtualNetworksRequest,
   VirtualNetworkListResult,
   ListVirtualNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32096, __c1003, 0) as any as S.Schema<ListVirtualNetworksRequest>,
   output: __S(31681, __c990, 1) as any as S.Schema<VirtualNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkTapAllError = AzureOpError;
 /** Gets all the VirtualNetworkTaps in a subscription. */
-export const ListVirtualNetworkTapAll: API.OperationMethod<
+export const ListVirtualNetworkTapAll: API.PaginatedOperationMethod<
   ListVirtualNetworkTapAllRequest,
   VirtualNetworkTapListResult,
   ListVirtualNetworkTapAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkTap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32128, __c1004, 0) as any as S.Schema<ListVirtualNetworkTapAllRequest>,
   output: __S(32161, __c1005, 1) as any as S.Schema<VirtualNetworkTapListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkTapByResourceGroupError = AzureOpError;
 /** Gets all the VirtualNetworkTaps in a subscription. */
-export const ListVirtualNetworkTapByResourceGroup: API.OperationMethod<
+export const ListVirtualNetworkTapByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualNetworkTapByResourceGroupRequest,
   VirtualNetworkTapListResult,
   ListVirtualNetworkTapByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkTap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32192, __c1006, 0) as any as S.Schema<ListVirtualNetworkTapByResourceGroupRequest>,
   output: __S(32161, __c1005, 1) as any as S.Schema<VirtualNetworkTapListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworkUsageError = AzureOpError;
 /** Lists usage stats. */
-export const ListVirtualNetworkUsage: API.OperationMethod<
+export const ListVirtualNetworkUsage: API.PaginatedOperationMethod<
   ListVirtualNetworkUsageRequest,
   VirtualNetworkListUsageResult,
   ListVirtualNetworkUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32224, __c1007, 0) as any as S.Schema<ListVirtualNetworkUsageRequest>,
   output: __S(32228, __c1007, 4) as any as S.Schema<VirtualNetworkListUsageResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualRouterByResourceGroupError = AzureOpError;
 /** Lists all Virtual Routers in a resource group. */
-export const ListVirtualRouterByResourceGroup: API.OperationMethod<
+export const ListVirtualRouterByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualRouterByResourceGroupRequest,
   VirtualRouterListResult,
   ListVirtualRouterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualRouter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32288, __c1009, 0) as any as S.Schema<ListVirtualRouterByResourceGroupRequest>,
   output: __S(32321, __c1010, 1) as any as S.Schema<VirtualRouterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualRouterPeeringsError = AzureOpError;
 /** Lists all Virtual Router Peerings in a Virtual Router resource. */
-export const ListVirtualRouterPeerings: API.OperationMethod<
+export const ListVirtualRouterPeerings: API.PaginatedOperationMethod<
   ListVirtualRouterPeeringsRequest,
   VirtualRouterPeeringListResult,
   ListVirtualRouterPeeringsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualRouterPeering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32352, __c1011, 0) as any as S.Schema<ListVirtualRouterPeeringsRequest>,
   output: __S(32354, __c1011, 2) as any as S.Schema<VirtualRouterPeeringListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualRoutersError = AzureOpError;
 /** Gets all the Virtual Routers in a subscription. */
-export const ListVirtualRouters: API.OperationMethod<
+export const ListVirtualRouters: API.PaginatedOperationMethod<
   ListVirtualRoutersRequest,
   VirtualRouterListResult,
   ListVirtualRoutersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualRouter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32384, __c1012, 0) as any as S.Schema<ListVirtualRoutersRequest>,
   output: __S(32321, __c1010, 1) as any as S.Schema<VirtualRouterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualWanByResourceGroupError = AzureOpError;
 /** Lists all the VirtualWANs in a resource group. */
-export const ListVirtualWanByResourceGroup: API.OperationMethod<
+export const ListVirtualWanByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualWanByResourceGroupRequest,
   ListVirtualWANsResult,
   ListVirtualWanByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualWAN
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32416, __c1013, 0) as any as S.Schema<ListVirtualWanByResourceGroupRequest>,
   output: __S(32449, __c1014, 1) as any as S.Schema<ListVirtualWANsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualWansError = AzureOpError;
 /** Lists all the VirtualWANs in a subscription. */
-export const ListVirtualWans: API.OperationMethod<
+export const ListVirtualWans: API.PaginatedOperationMethod<
   ListVirtualWansRequest,
   ListVirtualWANsResult,
   ListVirtualWansError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualWAN
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32480, __c1015, 0) as any as S.Schema<ListVirtualWansRequest>,
   output: __S(32449, __c1014, 1) as any as S.Schema<ListVirtualWANsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnConnectionByVpnGatewayError = AzureOpError;
 /** Retrieves all vpn connections for a particular virtual wan vpn gateway. */
-export const ListVpnConnectionByVpnGateway: API.OperationMethod<
+export const ListVpnConnectionByVpnGateway: API.PaginatedOperationMethod<
   ListVpnConnectionByVpnGatewayRequest,
   ListVpnConnectionsResult,
   ListVpnConnectionByVpnGatewayError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32512, __c1016, 0) as any as S.Schema<ListVpnConnectionByVpnGatewayRequest>,
   output: __S(32513, __c1016, 1) as any as S.Schema<ListVpnConnectionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnGatewayByResourceGroupError = AzureOpError;
 /** Lists all the VpnGateways in a resource group. */
-export const ListVpnGatewayByResourceGroup: API.OperationMethod<
+export const ListVpnGatewayByResourceGroup: API.PaginatedOperationMethod<
   ListVpnGatewayByResourceGroupRequest,
   ListVpnGatewaysResult,
   ListVpnGatewayByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32544, __c1017, 0) as any as S.Schema<ListVpnGatewayByResourceGroupRequest>,
   output: __S(32577, __c1018, 1) as any as S.Schema<ListVpnGatewaysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnGatewaysError = AzureOpError;
 /** Lists all the VpnGateways in a subscription. */
-export const ListVpnGateways: API.OperationMethod<
+export const ListVpnGateways: API.PaginatedOperationMethod<
   ListVpnGatewaysRequest,
   ListVpnGatewaysResult,
   ListVpnGatewaysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnGateway
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32608, __c1019, 0) as any as S.Schema<ListVpnGatewaysRequest>,
   output: __S(32577, __c1018, 1) as any as S.Schema<ListVpnGatewaysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnLinkConnectionByVpnConnectionError = AzureOpError;
 /** Retrieves all vpn site link connections for a particular virtual wan vpn gateway vpn connection. */
-export const ListVpnLinkConnectionByVpnConnection: API.OperationMethod<
+export const ListVpnLinkConnectionByVpnConnection: API.PaginatedOperationMethod<
   ListVpnLinkConnectionByVpnConnectionRequest,
   ListVpnSiteLinkConnectionsResult,
   ListVpnLinkConnectionByVpnConnectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnSiteLinkConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32640, __c1020, 0) as any as S.Schema<ListVpnLinkConnectionByVpnConnectionRequest>,
   output: __S(32641, __c1020, 1) as any as S.Schema<ListVpnSiteLinkConnectionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnLinkConnectionDefaultSharedKeyError = AzureOpError;
 /** Gets the value of the shared key of VpnLink connection specified. */
@@ -62845,12 +64727,13 @@ export const ListVpnLinkConnectionDefaultSharedKey: API.OperationMethod<
 
 export type ListVpnServerConfigurationByResourceGroupError = AzureOpError;
 /** Lists all the vpnServerConfigurations in a resource group. */
-export const ListVpnServerConfigurationByResourceGroup: API.OperationMethod<
+export const ListVpnServerConfigurationByResourceGroup: API.PaginatedOperationMethod<
   ListVpnServerConfigurationByResourceGroupRequest,
   ListVpnServerConfigurationsResult,
   ListVpnServerConfigurationByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnServerConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     32768,
     __c1024,
@@ -62860,7 +64743,13 @@ export const ListVpnServerConfigurationByResourceGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnServerConfigurationRadiusSecretsError = AzureOpError;
 /** List all Radius servers with respective radius secrets from VpnServerConfiguration. */
@@ -62883,18 +64772,25 @@ export const ListVpnServerConfigurationRadiusSecrets: API.OperationMethod<
 
 export type ListVpnServerConfigurationsError = AzureOpError;
 /** Lists all the VpnServerConfigurations in a subscription. */
-export const ListVpnServerConfigurations: API.OperationMethod<
+export const ListVpnServerConfigurations: API.PaginatedOperationMethod<
   ListVpnServerConfigurationsRequest,
   ListVpnServerConfigurationsResult,
   ListVpnServerConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnServerConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32864, __c1027, 0) as any as S.Schema<ListVpnServerConfigurationsRequest>,
   output: __S(32801, __c1025, 1) as any as S.Schema<ListVpnServerConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnServerConfigurationsAssociatedWithVirtualWanError = AzureOpError;
 /** Gives the list of VpnServerConfigurations associated with Virtual Wan in a resource group. */
@@ -62917,93 +64813,135 @@ export const ListVpnServerConfigurationsAssociatedWithVirtualWan: API.OperationM
 
 export type ListVpnSiteByResourceGroupError = AzureOpError;
 /** Lists all the vpnSites in a resource group. */
-export const ListVpnSiteByResourceGroup: API.OperationMethod<
+export const ListVpnSiteByResourceGroup: API.PaginatedOperationMethod<
   ListVpnSiteByResourceGroupRequest,
   ListVpnSitesResult,
   ListVpnSiteByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32928, __c1029, 0) as any as S.Schema<ListVpnSiteByResourceGroupRequest>,
   output: __S(32961, __c1030, 1) as any as S.Schema<ListVpnSitesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnSiteLinkByVpnSiteError = AzureOpError;
 /** Lists all the vpnSiteLinks in a resource group for a vpn site. */
-export const ListVpnSiteLinkByVpnSite: API.OperationMethod<
+export const ListVpnSiteLinkByVpnSite: API.PaginatedOperationMethod<
   ListVpnSiteLinkByVpnSiteRequest,
   ListVpnSiteLinksResult,
   ListVpnSiteLinkByVpnSiteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnSiteLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32992, __c1031, 0) as any as S.Schema<ListVpnSiteLinkByVpnSiteRequest>,
   output: __S(32993, __c1031, 1) as any as S.Schema<ListVpnSiteLinksResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVpnSitesError = AzureOpError;
 /** Lists all the VpnSites in a subscription. */
-export const ListVpnSites: API.OperationMethod<
+export const ListVpnSites: API.PaginatedOperationMethod<
   ListVpnSitesRequest,
   ListVpnSitesResult,
   ListVpnSitesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VpnSite
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(33024, __c1032, 0) as any as S.Schema<ListVpnSitesRequest>,
   output: __S(32961, __c1030, 1) as any as S.Schema<ListVpnSitesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebApplicationFirewallPoliciesError = AzureOpError;
 /** Lists all of the protection policies within a resource group. */
-export const ListWebApplicationFirewallPolicies: API.OperationMethod<
+export const ListWebApplicationFirewallPolicies: API.PaginatedOperationMethod<
   ListWebApplicationFirewallPoliciesRequest,
   WebApplicationFirewallPolicyListResult,
   ListWebApplicationFirewallPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebApplicationFirewallPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(33056, __c1033, 0) as any as S.Schema<ListWebApplicationFirewallPoliciesRequest>,
   output: __S(33089, __c1034, 1) as any as S.Schema<WebApplicationFirewallPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebApplicationFirewallPolicyAllError = AzureOpError;
 /** Gets all the WAF policies in a subscription. */
-export const ListWebApplicationFirewallPolicyAll: API.OperationMethod<
+export const ListWebApplicationFirewallPolicyAll: API.PaginatedOperationMethod<
   ListWebApplicationFirewallPolicyAllRequest,
   WebApplicationFirewallPolicyListResult,
   ListWebApplicationFirewallPolicyAllError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebApplicationFirewallPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(33120, __c1035, 0) as any as S.Schema<ListWebApplicationFirewallPolicyAllRequest>,
   output: __S(33089, __c1034, 1) as any as S.Schema<WebApplicationFirewallPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWebCategoryBySubscriptionError = AzureOpError;
 /** Gets all the Azure Web Categories in a subscription. */
-export const ListWebCategoryBySubscription: API.OperationMethod<
+export const ListWebCategoryBySubscription: API.PaginatedOperationMethod<
   ListWebCategoryBySubscriptionRequest,
   AzureWebCategoryListResult,
   ListWebCategoryBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AzureWebCategory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(33152, __c1036, 0) as any as S.Schema<ListWebCategoryBySubscriptionRequest>,
   output: __S(33154, __c1036, 2) as any as S.Schema<AzureWebCategoryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type LoadBalancerBackendAddressPoolsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a load balancer backend address pool. */
@@ -63810,18 +65748,25 @@ export const PublicIPPrefixesCreateOrUpdate: API.OperationMethod<
 
 export type PutBastionShareableLinkError = AzureOpError;
 /** Creates a Bastion Shareable Links for all the VMs specified in the request. */
-export const PutBastionShareableLink: API.OperationMethod<
+export const PutBastionShareableLink: API.PaginatedOperationMethod<
   PutBastionShareableLinkRequest,
   PutBastionShareableLinkResponse,
   PutBastionShareableLinkError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BastionShareableLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(35104, __c1097, 0) as any as S.Schema<PutBastionShareableLinkRequest>,
   output: __S(35105, __c1097, 1) as any as S.Schema<PutBastionShareableLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PutFirewallPolicyIdpsSignaturesOverrideError = AzureOpError;
 /** Will override/create a new signature overrides for the policy's IDPS */
@@ -67735,12 +69680,14 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           bastionHostName: S.String.pipe(T.Label()),
           sessionIds: S.optional(__S(128, __c4, 0)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "DisconnectActiveSessionsRequest" });
@@ -71096,12 +73043,14 @@ function __c189(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           bastionHostName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetActiveSessionsRequest" });
@@ -71312,12 +73261,14 @@ function __c199(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/applicationGatewayWafDynamicManifests",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetApplicationGatewayWafDynamicManifestRequest" });
@@ -71706,12 +73657,14 @@ function __c217(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           bastionHostName: S.String.pipe(T.Label()),
           vms: S.optional(__S(24481, __c765, 1)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetBastionShareableLinkRequest" });
@@ -80253,12 +82206,14 @@ function __c504(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceGatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/addressLocations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetServiceGatewayAddressLocationsRequest" });
@@ -80301,12 +82256,14 @@ function __c506(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceGatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways/{serviceGatewayName}/services",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetServiceGatewayServicesRequest" });
@@ -84315,12 +86272,14 @@ function __c609(j: number): any {
           gatewayName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           linkConnectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections/{linkConnectionName}/sharedKeys",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetVpnLinkConnectionAllSharedKeysRequest" });
@@ -85882,12 +87841,14 @@ function __c663(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationSecurityGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}/addressPrefixSets",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAddressPrefixSetsRequest" });
@@ -85913,12 +87874,14 @@ function __c664(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAdminRuleCollectionsRequest" });
@@ -85949,12 +87912,14 @@ function __c666(j: number): any {
           ruleCollectionName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAdminRulesRequest" });
@@ -85975,12 +87940,14 @@ function __c667(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationGatewayAllRequest" });
@@ -87152,12 +89119,14 @@ function __c697(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationGatewayAvailableSslPredefinedPoliciesRequest" });
@@ -87227,12 +89196,14 @@ function __c699(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationGatewayPrivateEndpointConnectionsRequest" });
@@ -87253,12 +89224,14 @@ function __c700(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateLinkResources",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationGatewayPrivateLinkResourcesRequest" });
@@ -87298,12 +89271,14 @@ function __c701(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationGatewaysRequest" });
@@ -87315,12 +89290,14 @@ function __c702(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationSecurityGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationSecurityGroupAllRequest" });
@@ -87344,12 +89321,14 @@ function __c704(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationSecurityGroupsRequest" });
@@ -87381,12 +89360,14 @@ function __c706(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/authenticationPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAuthenticationPoliciesRequest" });
@@ -87411,12 +89392,14 @@ function __c708(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/authenticationPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAuthenticationPolicyAllRequest" });
@@ -87429,12 +89412,14 @@ function __c709(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableDelegations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailableDelegationsRequest" });
@@ -87470,12 +89455,14 @@ function __c711(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/virtualNetworkAvailableEndpointServices",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailableEndpointServicesRequest" });
@@ -87506,12 +89493,14 @@ function __c712(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailablePrivateEndpointTypeByResourceGroupRequest" });
@@ -87547,12 +89536,14 @@ function __c714(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailablePrivateEndpointTypesRequest" });
@@ -87566,12 +89557,14 @@ function __c715(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableDelegations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailableResourceGroupDelegationsRequest" });
@@ -87585,12 +89578,14 @@ function __c716(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availableServiceAliases",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailableServiceAliasByResourceGroupRequest" });
@@ -87625,12 +89620,14 @@ function __c718(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availableServiceAliases",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailableServiceAliasesRequest" });
@@ -87642,12 +89639,14 @@ function __c719(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewalls",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAzureFirewallAllRequest" });
@@ -87691,12 +89690,14 @@ function __c722(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureFirewallFqdnTags",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAzureFirewallFqdnTagAllRequest" });
@@ -87764,12 +89765,14 @@ function __c724(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/azureFirewalls",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAzureFirewallsRequest" });
@@ -87782,12 +89785,14 @@ function __c725(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBastionHostByResourceGroupRequest" });
@@ -87812,12 +89817,14 @@ function __c727(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBastionHostsRequest" });
@@ -87829,12 +89836,14 @@ function __c728(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBgpServiceCommunitiesRequest" });
@@ -87890,12 +89899,14 @@ function __c729(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commits",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommitsRequest" });
@@ -87918,12 +89929,14 @@ function __c730(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vpnServerConfigurationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations/{vpnServerConfigurationName}/configurationPolicyGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConfigurationPolicyGroupByVpnServerConfigurationRequest" });
@@ -87944,12 +89957,14 @@ function __c731(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkWatcherName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectionMonitorsRequest" });
@@ -87958,7 +89973,7 @@ function __c731(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(23393, __c731, 1)),
+          value: __S(23393, __c731, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionMonitorListResult" });
@@ -87972,12 +89987,14 @@ function __c732(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/connectionPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectionPoliciesRequest" });
@@ -88021,12 +90038,14 @@ function __c734(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectivityConfigurationsRequest" });
@@ -88047,12 +90066,14 @@ function __c735(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomIPPrefixAllRequest" });
@@ -88078,12 +90099,14 @@ function __c737(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomIPPrefixesRequest" });
@@ -88096,12 +90119,14 @@ function __c738(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDdosCustomPoliciesRequest" });
@@ -88126,12 +90151,14 @@ function __c740(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosCustomPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDdosCustomPolicyAllRequest" });
@@ -88144,12 +90171,14 @@ function __c741(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDdosProtectionPlanByResourceGroupRequest" });
@@ -88174,12 +90203,14 @@ function __c743(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDdosProtectionPlansRequest" });
@@ -88193,12 +90224,14 @@ function __c744(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkSecurityGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDefaultSecurityRulesRequest" });
@@ -88222,12 +90255,14 @@ function __c746(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDscpConfigurationRequest" });
@@ -88252,12 +90287,14 @@ function __c748(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dscpConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDscpConfigurationAllRequest" });
@@ -88288,12 +90325,14 @@ function __c750(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCircuits",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCircuitAllRequest" });
@@ -88395,12 +90434,14 @@ function __c756(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           circuitName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCircuitAuthorizationsRequest" });
@@ -88422,12 +90463,14 @@ function __c757(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           circuitName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/connections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCircuitConnectionsRequest" });
@@ -88448,12 +90491,14 @@ function __c758(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           circuitName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCircuitPeeringsRequest" });
@@ -88561,12 +90606,14 @@ function __c762(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCircuitsRequest" });
@@ -88669,12 +90716,14 @@ function __c768(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCrossConnectionByResourceGroupRequest" });
@@ -88701,12 +90750,14 @@ function __c770(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           crossConnectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCrossConnections/{crossConnectionName}/peerings",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCrossConnectionPeeringsRequest" });
@@ -88788,12 +90839,14 @@ function __c773(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteCrossConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteCrossConnectionsRequest" });
@@ -88853,12 +90906,14 @@ function __c777(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteLags",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteLagByResourceGroupRequest" });
@@ -88883,12 +90938,14 @@ function __c779(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteLags",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteLagsRequest" });
@@ -88922,12 +90979,14 @@ function __c781(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           expressRouteLagName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteLags/{expressRouteLagName}/links",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteLagsLinksRequest" });
@@ -88949,12 +91008,14 @@ function __c782(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           expressRouteLagName: S.String.pipe(T.Label()),
           linkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteLags/{expressRouteLagName}/links/{linkName}/members",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteLagsMembersRequest" });
@@ -88975,12 +91036,14 @@ function __c783(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           expressRoutePortName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteLinksRequest" });
@@ -89021,12 +91084,14 @@ function __c785(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           expressRoutePortName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRoutePortAuthorizationsRequest" });
@@ -89048,12 +91113,14 @@ function __c786(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRoutePortByResourceGroupRequest" });
@@ -89078,12 +91145,14 @@ function __c788(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePorts",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRoutePortsRequest" });
@@ -89095,12 +91164,14 @@ function __c789(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRoutePortsLocationsRequest" });
@@ -89148,12 +91219,14 @@ function __c791(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteServiceProviders",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExpressRouteServiceProvidersRequest" });
@@ -89223,12 +91296,14 @@ function __c793(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFirewallPoliciesRequest" });
@@ -89253,12 +91328,14 @@ function __c795(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/firewallPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFirewallPolicyAllRequest" });
@@ -89390,12 +91467,14 @@ function __c799(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           firewallPolicyName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/kubeSelectorGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFirewallPolicyKubeSelectorGroupsRequest" });
@@ -89418,12 +91497,14 @@ function __c800(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           firewallPolicyName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFirewallPolicyRuleCollectionGroupsRequest" });
@@ -89444,12 +91525,14 @@ function __c801(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/firstPartyServiceTags",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFirstPartyServiceTagAllRequest" });
@@ -89475,12 +91558,14 @@ function __c803(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firstPartyServiceTags",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFirstPartyServiceTagsRequest" });
@@ -89494,12 +91579,14 @@ function __c804(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkWatcherName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFlowLogsRequest" });
@@ -89540,12 +91627,14 @@ function __c806(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubRouteTables",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHubRouteTablesRequest" });
@@ -89568,12 +91657,14 @@ function __c807(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHubVirtualNetworkConnectionsRequest" });
@@ -89596,12 +91687,14 @@ function __c808(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInboundNatRulesRequest" });
@@ -89620,12 +91713,14 @@ function __c809(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/interconnectGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInterconnectGroupAllRequest" });
@@ -89651,12 +91746,14 @@ function __c811(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInterconnectGroupsRequest" });
@@ -89669,12 +91766,14 @@ function __c812(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpAllocationByResourceGroupRequest" });
@@ -89699,12 +91798,14 @@ function __c814(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpAllocationsRequest" });
@@ -89719,12 +91820,14 @@ function __c815(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkManagerName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/listAssociatedResources",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpamPoolAssociatedResourcesRequest" });
@@ -89766,12 +91869,14 @@ function __c816(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           sortKey: S.optional(S.String.pipe(T.Query())),
           sortValue: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpamPoolsRequest" });
@@ -89793,12 +91898,14 @@ function __c817(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpGroupByResourceGroupRequest" });
@@ -89843,12 +91950,14 @@ function __c820(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ipGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpGroupsRequest" });
@@ -89860,12 +91969,14 @@ function __c821(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerAllRequest" });
@@ -89892,12 +92003,14 @@ function __c823(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerBackendAddressPoolsRequest" });
@@ -89918,12 +92031,14 @@ function __c824(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerFrontendIPConfigurationsRequest" });
@@ -89985,12 +92100,14 @@ function __c826(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerLoadBalancingRulesRequest" });
@@ -90011,12 +92128,14 @@ function __c827(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/networkInterfaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerNetworkInterfacesRequest" });
@@ -90037,12 +92156,14 @@ function __c828(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerOutboundRulesRequest" });
@@ -90063,12 +92184,14 @@ function __c829(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancerProbesRequest" });
@@ -90088,12 +92211,14 @@ function __c830(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLoadBalancersRequest" });
@@ -90175,12 +92300,14 @@ function __c834(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocalNetworkGatewaysRequest" });
@@ -90203,12 +92330,14 @@ function __c835(j: number): any {
           managementGroupId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagementGroupNetworkManagerConnectionsRequest" });
@@ -90233,12 +92362,14 @@ function __c837(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/natGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNatGatewayAllRequest" });
@@ -90264,12 +92395,14 @@ function __c839(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/natGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNatGatewaysRequest" });
@@ -90283,12 +92416,14 @@ function __c840(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNatRuleByVpnGatewayRequest" });
@@ -90311,12 +92446,14 @@ function __c841(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkGroupsRequest" });
@@ -90337,12 +92474,14 @@ function __c842(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkInterfaceAllRequest" });
@@ -90367,12 +92506,14 @@ function __c844(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cloudServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/networkInterfaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkInterfaceCloudServiceNetworkInterfacesRequest" });
@@ -90387,12 +92528,14 @@ function __c845(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cloudServiceName: S.String.pipe(T.Label()),
           roleInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -90478,12 +92621,14 @@ function __c848(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkInterfaceIPConfigurationsRequest" });
@@ -90504,12 +92649,14 @@ function __c849(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkInterfaceLoadBalancersRequest" });
@@ -90561,12 +92708,14 @@ function __c850(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkInterfacesRequest" });
@@ -90580,12 +92729,14 @@ function __c851(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkInterfaceTapConfigurationsRequest" });
@@ -90606,12 +92757,14 @@ function __c852(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkManagerBySubscriptionRequest" });
@@ -90762,12 +92915,14 @@ function __c857(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkManagerRoutingConfigurationsRequest" });
@@ -90791,12 +92946,14 @@ function __c858(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkManagersRequest" });
@@ -90827,12 +92984,14 @@ function __c860(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkProfiles",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkProfileAllRequest" });
@@ -90858,12 +93017,14 @@ function __c862(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkProfilesRequest" });
@@ -90875,12 +93036,14 @@ function __c863(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityGroupAllRequest" });
@@ -90906,12 +93069,14 @@ function __c865(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityGroupsRequest" });
@@ -90928,12 +93093,14 @@ function __c866(j: number): any {
           profileName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterAccessRulesRequest" });
@@ -90955,12 +93122,14 @@ function __c867(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/perimeterAssociableResourceTypes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterAssociableResourceTypesRequest" });
@@ -91006,12 +93175,14 @@ function __c868(j: number): any {
           networkSecurityPerimeterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterAssociationsRequest" });
@@ -91034,12 +93205,14 @@ function __c869(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityPerimeters",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterBySubscriptionRequest" });
@@ -91068,12 +93241,14 @@ function __c871(j: number): any {
           networkSecurityPerimeterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterLinkReferencesRequest" });
@@ -91098,12 +93273,14 @@ function __c872(j: number): any {
           networkSecurityPerimeterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterLinksRequest" });
@@ -91145,12 +93322,14 @@ function __c874(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkSecurityPerimeterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/loggingConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterLoggingConfigurationsRequest" });
@@ -91175,12 +93354,14 @@ function __c875(j: number): any {
           networkSecurityPerimeterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterProfilesRequest" });
@@ -91204,12 +93385,14 @@ function __c876(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimetersRequest" });
@@ -91222,12 +93405,14 @@ function __c877(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/nspServiceTags",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterServiceTagsRequest" });
@@ -91255,12 +93440,14 @@ function __c878(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkVirtualApplianceByResourceGroupRequest" });
@@ -91287,12 +93474,14 @@ function __c880(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkVirtualApplianceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkVirtualApplianceConnectionsRequest" });
@@ -91313,12 +93502,14 @@ function __c881(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualAppliances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkVirtualAppliancesRequest" });
@@ -91330,12 +93521,14 @@ function __c882(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkWatcherAllRequest" });
@@ -91348,7 +93541,7 @@ function __c883(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(28256, __c883, 0)),
+          value: __S(28256, __c883, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkWatcherListResult" });
@@ -91421,12 +93614,14 @@ function __c885(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkWatchersRequest" });
@@ -91459,12 +93654,14 @@ function __c887(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkWatcherName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionAnalyzers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkWatchersConnectionAnalyzersRequest" });
@@ -91473,7 +93670,7 @@ function __c887(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(28385, __c887, 1)),
+          value: __S(28385, __c887, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionAnalyzerListResult" });
@@ -91483,12 +93680,15 @@ function __c888(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Network/operations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -91592,12 +93792,14 @@ function __c889(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/p2svpnGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListP2sVpnGatewayByResourceGroupRequest" });
@@ -91620,12 +93822,14 @@ function __c891(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/p2svpnGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListP2sVpnGatewaysRequest" });
@@ -91639,12 +93843,14 @@ function __c892(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkWatcherName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPacketCapturesRequest" });
@@ -91653,7 +93859,7 @@ function __c892(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(28545, __c892, 1)),
+          value: __S(28545, __c892, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PacketCaptureListResult" });
@@ -91668,12 +93874,14 @@ function __c893(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           circuitName: S.String.pipe(T.Label()),
           peeringName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPeerExpressRouteCircuitConnectionsRequest" });
@@ -91694,12 +93902,14 @@ function __c894(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateEndpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateDnsZoneGroupsRequest" });
@@ -91720,12 +93930,14 @@ function __c895(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateEndpoints",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointBySubscriptionRequest" });
@@ -91749,12 +93961,14 @@ function __c897(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointsRequest" });
@@ -91767,12 +93981,14 @@ function __c898(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServiceAutoApprovedPrivateLinkServicesRequest" });
@@ -91824,12 +94040,14 @@ function __c901(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -91843,12 +94061,14 @@ function __c902(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateLinkServices",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServiceBySubscriptionRequest" });
@@ -91875,12 +94095,14 @@ function __c904(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicePrivateEndpointConnectionsRequest" });
@@ -91900,12 +94122,14 @@ function __c905(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesRequest" });
@@ -91917,12 +94141,14 @@ function __c906(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPAddresses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPublicIPAddressAllRequest" });
@@ -91949,12 +94175,14 @@ function __c908(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cloudServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/publicipaddresses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPublicIPAddressCloudServicePublicIPAddressesRequest" });
@@ -91971,12 +94199,14 @@ function __c909(j: number): any {
           roleInstanceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
           ipConfigurationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/networkInterfaces/{networkInterfaceName}/ipconfigurations/{ipConfigurationName}/publicipaddresses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -91991,12 +94221,14 @@ function __c910(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPublicIPAddressesRequest" });
@@ -92008,12 +94240,14 @@ function __c911(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPPrefixes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPublicIPPrefixAllRequest" });
@@ -92039,12 +94273,14 @@ function __c913(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPublicIPPrefixesRequest" });
@@ -92083,12 +94319,14 @@ function __c915(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           sortKey: S.optional(S.String.pipe(T.Query())),
           sortValue: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisIntents",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReachabilityAnalysisIntentsRequest" });
@@ -92117,12 +94355,14 @@ function __c916(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           sortKey: S.optional(S.String.pipe(T.Query())),
           sortValue: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces/{workspaceName}/reachabilityAnalysisRuns",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReachabilityAnalysisRunsRequest" });
@@ -92171,12 +94411,14 @@ function __c918(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteFilterByResourceGroupRequest" });
@@ -92203,12 +94445,14 @@ function __c920(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routeFilterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters/{routeFilterName}/routeFilterRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteFilterRuleByRouteFilterRequest" });
@@ -92227,12 +94471,14 @@ function __c921(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteFiltersRequest" });
@@ -92246,12 +94492,14 @@ function __c922(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteMapsRequest" });
@@ -92274,12 +94522,14 @@ function __c923(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routeTableName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoutesRequest" });
@@ -92298,12 +94548,14 @@ function __c924(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeTables",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteTableAllRequest" });
@@ -92329,12 +94581,14 @@ function __c926(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteTablesRequest" });
@@ -92368,12 +94622,14 @@ function __c928(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoutingIntentRequest" });
@@ -92399,12 +94655,14 @@ function __c929(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoutingRuleCollectionsRequest" });
@@ -92431,12 +94689,14 @@ function __c930(j: number): any {
           ruleCollectionName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoutingRulesRequest" });
@@ -92461,12 +94721,14 @@ function __c931(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScopeConnectionsRequest" });
@@ -92491,12 +94753,14 @@ function __c932(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityAdminConfigurationsRequest" });
@@ -92518,12 +94782,14 @@ function __c933(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityPartnerProviderByResourceGroupRequest" });
@@ -92548,12 +94814,14 @@ function __c935(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityPartnerProvidersRequest" });
@@ -92567,12 +94835,14 @@ function __c936(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkSecurityGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityRulesRequest" });
@@ -92588,12 +94858,14 @@ function __c937(j: number): any {
           networkManagerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityUserConfigurationsRequest" });
@@ -92619,12 +94891,14 @@ function __c938(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityUserRuleCollectionsRequest" });
@@ -92663,12 +94937,14 @@ function __c940(j: number): any {
           ruleCollectionName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityUserConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityUserRulesRequest" });
@@ -92716,12 +94992,14 @@ function __c942(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/serviceEndpointPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceEndpointPoliciesRequest" });
@@ -92747,12 +95025,14 @@ function __c944(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceEndpointPolicyByResourceGroupRequest" });
@@ -92766,12 +95046,14 @@ function __c945(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serviceEndpointPolicyName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceEndpointPolicyDefinitionByResourceGroupRequest" });
@@ -92790,12 +95072,14 @@ function __c946(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/serviceGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceGatewayAllRequest" });
@@ -92821,12 +95105,14 @@ function __c948(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceGatewaysRequest" });
@@ -92841,12 +95127,14 @@ function __c949(j: number): any {
           location: S.String.pipe(T.Label()),
           noAddressPrefixes: S.optional(S.Boolean.pipe(T.Query())),
           tagName: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTagDetails",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceTagInformationRequest" });
@@ -92928,12 +95216,14 @@ function __c952(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           sortKey: S.optional(S.String.pipe(T.Query())),
           sortValue: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/ipamPools/{poolName}/staticCidrs",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStaticCidrsRequest" });
@@ -92979,12 +95269,14 @@ function __c954(j: number): any {
           networkGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStaticMembersRequest" });
@@ -93007,12 +95299,14 @@ function __c955(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           interconnectGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/interconnectGroups/{interconnectGroupName}/subgroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSubgroupsRequest" });
@@ -93033,12 +95327,14 @@ function __c956(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSubnetsRequest" });
@@ -93059,12 +95355,14 @@ function __c957(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSubscriptionNetworkManagerConnectionsRequest" });
@@ -93077,12 +95375,14 @@ function __c958(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
@@ -93127,12 +95427,14 @@ function __c959(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           sortKey: S.optional(S.String.pipe(T.Query())),
           sortValue: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/verifierWorkspaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVerifierWorkspacesRequest" });
@@ -93182,12 +95484,14 @@ function __c961(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkVirtualApplianceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualApplianceSitesRequest" });
@@ -93208,12 +95512,14 @@ function __c962(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualApplianceSkusRequest" });
@@ -94703,12 +97009,14 @@ function __c983(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualHubBgpConnectionsRequest" });
@@ -94730,12 +97038,14 @@ function __c984(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualHubByResourceGroupRequest" });
@@ -94762,12 +97072,14 @@ function __c986(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/ipConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualHubIpConfigurationRequest" });
@@ -94790,12 +97102,14 @@ function __c987(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeTables",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualHubRouteTableV2sRequest" });
@@ -94814,12 +97128,14 @@ function __c988(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualHubs",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualHubsRequest" });
@@ -94831,12 +97147,14 @@ function __c989(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworks",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkAllRequest" });
@@ -94861,12 +97179,14 @@ function __c991(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkAppliances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkApplianceAllRequest" });
@@ -94892,12 +97212,14 @@ function __c993(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkAppliances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkAppliancesRequest" });
@@ -94913,12 +97235,14 @@ function __c994(j: number): any {
           virtualNetworkName: S.String.pipe(T.Label()),
           top: S.optional(S.Number.pipe(T.Query())),
           skipToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/ddosProtectionStatus",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkDdosProtectionStatusRequest" });
@@ -94971,12 +97295,14 @@ function __c996(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkGatewayConnectionsRequest" });
@@ -94999,12 +97325,14 @@ function __c997(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkGatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/connections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkGatewayConnectionsRequest2" });
@@ -95068,12 +97396,14 @@ function __c998(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkGatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/natRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkGatewayNatRuleByVirtualNetworkGatewayRequest" });
@@ -95132,12 +97462,14 @@ function __c1001(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkGatewaysRequest" });
@@ -95160,12 +97492,14 @@ function __c1002(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkPeeringsRequest" });
@@ -95185,12 +97519,14 @@ function __c1003(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworksRequest" });
@@ -95202,12 +97538,14 @@ function __c1004(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkTaps",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkTapAllRequest" });
@@ -95233,12 +97571,14 @@ function __c1006(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkTapByResourceGroupRequest" });
@@ -95252,12 +97592,14 @@ function __c1007(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/usages",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworkUsageRequest" });
@@ -95315,12 +97657,14 @@ function __c1009(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualRouterByResourceGroupRequest" });
@@ -95347,12 +97691,14 @@ function __c1011(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualRouterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualRouterPeeringsRequest" });
@@ -95373,12 +97719,14 @@ function __c1012(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualRouters",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualRoutersRequest" });
@@ -95391,12 +97739,14 @@ function __c1013(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualWanByResourceGroupRequest" });
@@ -95421,12 +97771,14 @@ function __c1015(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualWans",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualWansRequest" });
@@ -95440,12 +97792,14 @@ function __c1016(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnConnectionByVpnGatewayRequest" });
@@ -95465,12 +97819,14 @@ function __c1017(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnGatewayByResourceGroupRequest" });
@@ -95495,12 +97851,14 @@ function __c1019(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnGateways",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnGatewaysRequest" });
@@ -95515,12 +97873,14 @@ function __c1020(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           gatewayName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/vpnConnections/{connectionName}/vpnLinkConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnLinkConnectionByVpnConnectionRequest" });
@@ -95592,12 +97952,14 @@ function __c1024(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnServerConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnServerConfigurationByResourceGroupRequest" });
@@ -95641,12 +98003,14 @@ function __c1027(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnServerConfigurations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnServerConfigurationsRequest" });
@@ -95686,12 +98050,14 @@ function __c1029(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnSiteByResourceGroupRequest" });
@@ -95718,12 +98084,14 @@ function __c1031(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vpnSiteName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnSites/{vpnSiteName}/vpnSiteLinks",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnSiteLinkByVpnSiteRequest" });
@@ -95742,12 +98110,14 @@ function __c1032(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/vpnSites",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVpnSitesRequest" });
@@ -95760,12 +98130,14 @@ function __c1033(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebApplicationFirewallPoliciesRequest" });
@@ -95790,12 +98162,14 @@ function __c1035(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebApplicationFirewallPolicyAllRequest" });
@@ -95807,12 +98181,14 @@ function __c1036(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWebCategoryBySubscriptionRequest" });
@@ -97761,12 +100137,14 @@ function __c1097(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           bastionHostName: S.String.pipe(T.Label()),
           vms: S.optional(__S(24481, __c765, 1)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "PutBastionShareableLinkRequest" });

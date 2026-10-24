@@ -1063,12 +1063,14 @@ export interface ListDatasetFilesRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available files. - Supported properties: name, createdDateTime, kind. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - and, or, not are supported. - Example: filter=name eq 'myaudio.wav' and kind eq 'Audio' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
 export type PaginatedFilesValuesList = Array<File>;
 export interface PaginatedFiles {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedFilesValuesList;
+  values: PaginatedFilesValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -1083,6 +1085,8 @@ export interface ListDatasetsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available datasets. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale, kind. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. -Example: filter=createdDateTime gt 2022-02-01T11:00:00Z and displayName eq 'My dataset' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface Dataset {
   /** The location of this entity. */
@@ -1111,7 +1115,7 @@ export interface Dataset {
 export type PaginatedDatasetsValuesList = Array<Dataset>;
 export interface PaginatedDatasets {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedDatasetsValuesList;
+  values: PaginatedDatasetsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -1144,6 +1148,8 @@ export interface ListEndpointsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available endpoints. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=locale eq 'en-US' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface Endpoint {
   /** The location of this entity. */
@@ -1170,7 +1176,7 @@ export interface Endpoint {
 export type PaginatedEndpointsValuesList = Array<Endpoint>;
 export interface PaginatedEndpoints {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedEndpointsValuesList;
+  values: PaginatedEndpointsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -1195,6 +1201,8 @@ export interface ListEvaluationFilesRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available files. - Supported properties: name, createdDateTime, kind. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - and, or, not are supported. - Example: filter=name eq 'myaudio.wav' and kind eq 'Audio' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListEvaluationsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1205,6 +1213,8 @@ export interface ListEvaluationsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available evaluations. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status and locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=displayName eq 'My evaluation' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface Evaluation {
   /** The display name of the object. */
@@ -1235,7 +1245,7 @@ export interface Evaluation {
 export type PaginatedEvaluationsValuesList = Array<Evaluation>;
 export interface PaginatedEvaluations {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedEvaluationsValuesList;
+  values: PaginatedEvaluationsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -1256,6 +1266,8 @@ export interface ListModelBaseModelsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available base models. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=status eq 'NotStarted' or status eq 'Running' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface BaseModel {
   /** The location of this entity. */
@@ -1278,7 +1290,7 @@ export interface BaseModel {
 export type PaginatedBaseModelsValuesList = Array<BaseModel>;
 export interface PaginatedBaseModels {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedBaseModelsValuesList;
+  values: PaginatedBaseModelsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
 }
@@ -1291,6 +1303,8 @@ export interface ListModelCustomModelsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available models. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=status eq 'NotStarted' or status eq 'Running' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The custom properties of this entity. The maximum allowed key length is 64 characters, the maximum allowed value length is 256 characters and the count of allowed entries is 10. */
 export type CustomModelCustomPropertiesMap = { [key: string]: string | undefined };
@@ -1323,7 +1337,7 @@ export interface CustomModel {
 export type PaginatedCustomModelsValuesList = Array<CustomModel>;
 export interface PaginatedCustomModels {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedCustomModelsValuesList;
+  values: PaginatedCustomModelsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -1342,6 +1356,8 @@ export interface ListModelFilesRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available files. - Supported properties: name, createdDateTime, kind. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - and, or, not are supported. - Example: filter=name eq 'myaudio.wav' and kind eq 'Audio' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListModelSupportedLocalesRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1360,6 +1376,8 @@ export interface ListProjectDatasetsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available datasets. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale, kind. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=createdDateTime gt 2022-02-01T11:00:00Z */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProjectEndpointsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1372,6 +1390,8 @@ export interface ListProjectEndpointsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available endpoints. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=locale eq 'en-US' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProjectEvaluationsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1384,6 +1404,8 @@ export interface ListProjectEvaluationsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available evaluations. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status and locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example filter=displayName eq 'My evaluation' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProjectModelsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1396,6 +1418,8 @@ export interface ListProjectModelsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available models. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=status eq 'NotStarted' or status eq 'Running' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProjectsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1406,12 +1430,14 @@ export interface ListProjectsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available projects. - Supported properties: displayName, description, createdDateTime, locale, foundryProjectName. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - and, or, not are supported. - Example: filter=displayName eq 'My test' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
 export type PaginatedProjectsValuesList = Array<Project>;
 export interface PaginatedProjects {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedProjectsValuesList;
+  values: PaginatedProjectsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
 }
@@ -1432,6 +1458,8 @@ export interface ListProjectTranscriptionsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available transcriptions. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=createdDateTime gt 2022-02-01T11:00:00Z */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface Transcription {
   /** The location of this entity. */
@@ -1463,7 +1491,7 @@ export interface Transcription {
 export type PaginatedTranscriptionsValuesList = Array<Transcription>;
 export interface PaginatedTranscriptions {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedTranscriptionsValuesList;
+  values: PaginatedTranscriptionsValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -1482,6 +1510,8 @@ export interface ListTranscriptionFilesRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available files. - Supported properties: name, createdDateTime, kind. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime. - and, or, not are supported. - Example: filter=name eq 'myaudio.wav.json' and kind eq 'Transcription' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTranscriptionsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1492,6 +1522,8 @@ export interface ListTranscriptionsRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available transcriptions. - Supported properties: displayName, description, createdDateTime, lastActionDateTime, status, locale. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=createdDateTime gt 2022-02-01T11:00:00Z */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTranscriptionSupportedLocalesRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://westus.api.cognitive.microsoft.com). */
@@ -1512,6 +1544,8 @@ export interface ListWebHooksRequest {
   top?: number;
   /** A filtering expression for selecting a subset of the available hooks. Supported properties: displayName, description, createdDateTime, lastActionDateTime, status and webUrl. - Operators: - eq, ne are supported for all properties. - gt, ge, lt, le are supported for createdDateTime and lastActionDateTime. - and, or, not are supported. - Example: filter=displayName eq 'test' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface WebHook {
   /** The location of this entity. */
@@ -1537,7 +1571,7 @@ export interface WebHook {
 export type PaginatedWebHooksValuesList = Array<WebHook>;
 export interface PaginatedWebHooks {
   /** A list of entities limited by either the passed query parameters 'skip' and 'top' or their default values. When iterating through a list using pagination and deleting entities in parallel, some entities will be skipped in the results. It's recommended to build a list on the client and delete after the fetching of the complete list. */
-  values?: PaginatedWebHooksValuesList;
+  values: PaginatedWebHooksValuesList;
   /** A link to the next set of paginated results if there are more entities available; otherwise null. */
   _nextLink?: string;
   /** The minimum number of seconds to wait for a non terminal operation to complete. */
@@ -2464,33 +2498,47 @@ export const GetWebHook: API.OperationMethod<
 
 export type ListDatasetFilesError = AzureOpError;
 /** Gets the files of the dataset identified by the given ID. */
-export const ListDatasetFiles: API.OperationMethod<
+export const ListDatasetFiles: API.PaginatedOperationMethod<
   ListDatasetFilesRequest,
   PaginatedFiles,
   ListDatasetFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  File
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c42, 0) as any as S.Schema<ListDatasetFilesRequest>,
   output: __S(345, __c43, 1) as any as S.Schema<PaginatedFiles>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListDatasetsError = AzureOpError;
 /** Gets a list of datasets for the authenticated subscription. */
-export const ListDatasets: API.OperationMethod<
+export const ListDatasets: API.PaginatedOperationMethod<
   ListDatasetsRequest,
   PaginatedDatasets,
   ListDatasetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dataset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c44, 0) as any as S.Schema<ListDatasetsRequest>,
   output: __S(362, __c45, 2) as any as S.Schema<PaginatedDatasets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListDatasetSupportedLocalesError = AzureOpError;
 /** Gets a list of supported locales for datasets. */
@@ -2509,18 +2557,25 @@ export const ListDatasetSupportedLocales: API.OperationMethod<
 
 export type ListEndpointsError = AzureOpError;
 /** Gets the list of endpoints for the authenticated subscription. */
-export const ListEndpoints: API.OperationMethod<
+export const ListEndpoints: API.PaginatedOperationMethod<
   ListEndpointsRequest,
   PaginatedEndpoints,
   ListEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(376, __c47, 0) as any as S.Schema<ListEndpointsRequest>,
   output: __S(386, __c48, 2) as any as S.Schema<PaginatedEndpoints>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListEndpointSupportedLocalesError = AzureOpError;
 /** Gets a list of supported locales for endpoint creations. */
@@ -2539,33 +2594,47 @@ export const ListEndpointSupportedLocales: API.OperationMethod<
 
 export type ListEvaluationFilesError = AzureOpError;
 /** Gets the files of the evaluation identified by the given ID. */
-export const ListEvaluationFiles: API.OperationMethod<
+export const ListEvaluationFiles: API.PaginatedOperationMethod<
   ListEvaluationFilesRequest,
   PaginatedFiles,
   ListEvaluationFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  File
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(408, __c51, 0) as any as S.Schema<ListEvaluationFilesRequest>,
   output: __S(345, __c43, 1) as any as S.Schema<PaginatedFiles>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListEvaluationsError = AzureOpError;
 /** Gets the list of evaluations for the authenticated subscription. */
-export const ListEvaluations: API.OperationMethod<
+export const ListEvaluations: API.PaginatedOperationMethod<
   ListEvaluationsRequest,
   PaginatedEvaluations,
   ListEvaluationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Evaluation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c52, 0) as any as S.Schema<ListEvaluationsRequest>,
   output: __S(426, __c53, 2) as any as S.Schema<PaginatedEvaluations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListEvaluationSupportedLocalesError = AzureOpError;
 /** Gets a list of supported locales for evaluations. */
@@ -2584,48 +2653,69 @@ export const ListEvaluationSupportedLocales: API.OperationMethod<
 
 export type ListModelBaseModelsError = AzureOpError;
 /** Gets the list of base models for the authenticated subscription. */
-export const ListModelBaseModels: API.OperationMethod<
+export const ListModelBaseModels: API.PaginatedOperationMethod<
   ListModelBaseModelsRequest,
   PaginatedBaseModels,
   ListModelBaseModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BaseModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(440, __c55, 0) as any as S.Schema<ListModelBaseModelsRequest>,
   output: __S(442, __c55, 2) as any as S.Schema<PaginatedBaseModels>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListModelCustomModelsError = AzureOpError;
 /** Gets the list of custom models for the authenticated subscription. */
-export const ListModelCustomModels: API.OperationMethod<
+export const ListModelCustomModels: API.PaginatedOperationMethod<
   ListModelCustomModelsRequest,
   PaginatedCustomModels,
   ListModelCustomModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c56, 0) as any as S.Schema<ListModelCustomModelsRequest>,
   output: __S(458, __c57, 2) as any as S.Schema<PaginatedCustomModels>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListModelFilesError = AzureOpError;
 /** Gets the files of the model identified by the given ID. */
-export const ListModelFiles: API.OperationMethod<
+export const ListModelFiles: API.PaginatedOperationMethod<
   ListModelFilesRequest,
   PaginatedFiles,
   ListModelFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  File
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(488, __c61, 0) as any as S.Schema<ListModelFilesRequest>,
   output: __S(345, __c43, 1) as any as S.Schema<PaginatedFiles>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListModelSupportedLocalesError = AzureOpError;
 /** Gets a list of supported locales for model adaptation. */
@@ -2644,78 +2734,113 @@ export const ListModelSupportedLocales: API.OperationMethod<
 
 export type ListProjectDatasetsError = AzureOpError;
 /** Gets the list of datasets for specified project. */
-export const ListProjectDatasets: API.OperationMethod<
+export const ListProjectDatasets: API.PaginatedOperationMethod<
   ListProjectDatasetsRequest,
   PaginatedDatasets,
   ListProjectDatasetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dataset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(504, __c63, 0) as any as S.Schema<ListProjectDatasetsRequest>,
   output: __S(362, __c45, 2) as any as S.Schema<PaginatedDatasets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListProjectEndpointsError = AzureOpError;
 /** Gets the list of endpoints for specified project. */
-export const ListProjectEndpoints: API.OperationMethod<
+export const ListProjectEndpoints: API.PaginatedOperationMethod<
   ListProjectEndpointsRequest,
   PaginatedEndpoints,
   ListProjectEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c64, 0) as any as S.Schema<ListProjectEndpointsRequest>,
   output: __S(386, __c48, 2) as any as S.Schema<PaginatedEndpoints>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListProjectEvaluationsError = AzureOpError;
 /** Gets the list of evaluations for specified project. */
-export const ListProjectEvaluations: API.OperationMethod<
+export const ListProjectEvaluations: API.PaginatedOperationMethod<
   ListProjectEvaluationsRequest,
   PaginatedEvaluations,
   ListProjectEvaluationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Evaluation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(520, __c65, 0) as any as S.Schema<ListProjectEvaluationsRequest>,
   output: __S(426, __c53, 2) as any as S.Schema<PaginatedEvaluations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListProjectModelsError = AzureOpError;
 /** Gets the list of models for specified project. */
-export const ListProjectModels: API.OperationMethod<
+export const ListProjectModels: API.PaginatedOperationMethod<
   ListProjectModelsRequest,
   PaginatedCustomModels,
   ListProjectModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(528, __c66, 0) as any as S.Schema<ListProjectModelsRequest>,
   output: __S(458, __c57, 2) as any as S.Schema<PaginatedCustomModels>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListProjectsError = AzureOpError;
 /** Gets the list of projects for the authenticated subscription. */
-export const ListProjects: API.OperationMethod<
+export const ListProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   PaginatedProjects,
   ListProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Project
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(536, __c67, 0) as any as S.Schema<ListProjectsRequest>,
   output: __S(538, __c67, 2) as any as S.Schema<PaginatedProjects>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListProjectSupportedLocalesError = AzureOpError;
 /** Gets the list of supported locales. */
@@ -2734,48 +2859,69 @@ export const ListProjectSupportedLocales: API.OperationMethod<
 
 export type ListProjectTranscriptionsError = AzureOpError;
 /** Gets the list of transcriptions for specified project. */
-export const ListProjectTranscriptions: API.OperationMethod<
+export const ListProjectTranscriptions: API.PaginatedOperationMethod<
   ListProjectTranscriptionsRequest,
   PaginatedTranscriptions,
   ListProjectTranscriptionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Transcription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(552, __c69, 0) as any as S.Schema<ListProjectTranscriptionsRequest>,
   output: __S(562, __c70, 2) as any as S.Schema<PaginatedTranscriptions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListTranscriptionFilesError = AzureOpError;
 /** Gets the files of the transcription identified by the given ID. */
-export const ListTranscriptionFiles: API.OperationMethod<
+export const ListTranscriptionFiles: API.PaginatedOperationMethod<
   ListTranscriptionFilesRequest,
   PaginatedFiles,
   ListTranscriptionFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  File
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(568, __c71, 0) as any as S.Schema<ListTranscriptionFilesRequest>,
   output: __S(345, __c43, 1) as any as S.Schema<PaginatedFiles>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListTranscriptionsError = AzureOpError;
 /** Gets a list of transcriptions for the authenticated subscription. */
-export const ListTranscriptions: API.OperationMethod<
+export const ListTranscriptions: API.PaginatedOperationMethod<
   ListTranscriptionsRequest,
   PaginatedTranscriptions,
   ListTranscriptionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Transcription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(600, __c75, 0) as any as S.Schema<ListTranscriptionsRequest>,
   output: __S(562, __c70, 2) as any as S.Schema<PaginatedTranscriptions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ListTranscriptionSupportedLocalesError = AzureOpError;
 /** Gets a list of supported locales for offline transcriptions. */
@@ -2794,18 +2940,25 @@ export const ListTranscriptionSupportedLocales: API.OperationMethod<
 
 export type ListWebHooksError = AzureOpError;
 /** Gets the list of web hooks for the authenticated subscription. */
-export const ListWebHooks: API.OperationMethod<
+export const ListWebHooks: API.PaginatedOperationMethod<
   ListWebHooksRequest,
   PaginatedWebHooks,
   ListWebHooksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WebHook
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(616, __c77, 0) as any as S.Schema<ListWebHooksRequest>,
   output: __S(619, __c77, 3) as any as S.Schema<PaginatedWebHooks>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "values",
+  } as const,
+})) as any;
 
 export type ModelsAuthorizeCopyError = AzureOpError;
 /** Allows another speech resource (source) to copy a model to this speech resource (target). This method can be used to allow copying a model from another speech resource. Only custom models can be copied from another speech resource. */
@@ -4020,6 +4173,7 @@ function __c42(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4028,6 +4182,7 @@ function __c42(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4041,7 +4196,7 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(344, __c43, 0)),
+          values: __S(344, __c43, 0),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
@@ -4057,6 +4212,7 @@ function __c44(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4065,6 +4221,7 @@ function __c44(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4096,7 +4253,7 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(361, __c45, 1)),
+          values: __S(361, __c45, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
@@ -4143,6 +4300,7 @@ function __c47(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4151,6 +4309,7 @@ function __c47(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4181,7 +4340,7 @@ function __c48(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(385, __c48, 1)),
+          values: __S(385, __c48, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
@@ -4227,6 +4386,7 @@ function __c51(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4235,6 +4395,7 @@ function __c51(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4250,6 +4411,7 @@ function __c52(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4258,6 +4420,7 @@ function __c52(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4292,7 +4455,7 @@ function __c53(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(425, __c53, 1)),
+          values: __S(425, __c53, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
@@ -4328,6 +4491,7 @@ function __c55(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4336,6 +4500,7 @@ function __c55(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4345,7 +4510,7 @@ function __c55(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(441, __c55, 1)),
+          values: __S(441, __c55, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "PaginatedBaseModels" });
@@ -4360,6 +4525,7 @@ function __c56(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4368,6 +4534,7 @@ function __c56(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4399,7 +4566,7 @@ function __c57(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(457, __c57, 1)),
+          values: __S(457, __c57, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
@@ -4536,6 +4703,7 @@ function __c61(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4544,6 +4712,7 @@ function __c61(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4580,6 +4749,7 @@ function __c63(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4588,6 +4758,7 @@ function __c63(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4604,6 +4775,7 @@ function __c64(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4612,6 +4784,7 @@ function __c64(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4628,6 +4801,7 @@ function __c65(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4636,6 +4810,7 @@ function __c65(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4652,6 +4827,7 @@ function __c66(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4660,6 +4836,7 @@ function __c66(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4675,6 +4852,7 @@ function __c67(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4683,6 +4861,7 @@ function __c67(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4692,7 +4871,7 @@ function __c67(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(537, __c67, 1)),
+          values: __S(537, __c67, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "PaginatedProjects" });
@@ -4728,6 +4907,7 @@ function __c69(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4736,6 +4916,7 @@ function __c69(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4769,7 +4950,7 @@ function __c70(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(561, __c70, 1)),
+          values: __S(561, __c70, 1),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
@@ -4787,6 +4968,7 @@ function __c71(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4795,6 +4977,7 @@ function __c71(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4908,6 +5091,7 @@ function __c75(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4916,6 +5100,7 @@ function __c75(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4958,6 +5143,7 @@ function __c77(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4966,6 +5152,7 @@ function __c77(j: number): any {
             host: "{endpoint}/speechtotext",
             hostRaw: ["endpoint"],
             apiVersion: "2025-10-15",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -4991,7 +5178,7 @@ function __c77(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(618, __c77, 2)),
+          values: __S(618, __c77, 2),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),

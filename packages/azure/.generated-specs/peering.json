@@ -15,13 +15,108 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.peering#RpUnbilledPrefixesList": "com.azure.peering#ListRpUnbilledPrefixes",
+      "com.azure.peering#RpUnbilledPrefixesListRequest": "com.azure.peering#ListRpUnbilledPrefixesRequest",
+      "com.azure.peering#RegisteredPrefixesValidate": "com.azure.peering#ValidateRegisteredPrefix",
+      "com.azure.peering#RegisteredPrefixesValidateResponse": "com.azure.peering#ValidateRegisteredPrefixResponse",
+      "com.azure.peering#RegisteredPrefixesValidateRequest": "com.azure.peering#ValidateRegisteredPrefixRequest",
+      "com.azure.peering#RegisteredPrefixesDelete": "com.azure.peering#DeleteRegisteredPrefix",
+      "com.azure.peering#RegisteredPrefixesDeleteRequest": "com.azure.peering#DeleteRegisteredPrefixRequest",
+      "com.azure.peering#RegisteredPrefixesGet": "com.azure.peering#GetRegisteredPrefix",
+      "com.azure.peering#RegisteredPrefixesGetResponse": "com.azure.peering#GetRegisteredPrefixResponse",
+      "com.azure.peering#RegisteredPrefixesGetRequest": "com.azure.peering#GetRegisteredPrefixRequest",
+      "com.azure.peering#RegisteredPrefixesListByPeering": "com.azure.peering#ListRegisteredPrefixByPeering",
+      "com.azure.peering#RegisteredPrefixesListByPeeringRequest": "com.azure.peering#ListRegisteredPrefixByPeeringRequest",
+      "com.azure.peering#RegisteredAsnsDelete": "com.azure.peering#DeleteRegisteredAsn",
+      "com.azure.peering#RegisteredAsnsDeleteRequest": "com.azure.peering#DeleteRegisteredAsnRequest",
+      "com.azure.peering#RegisteredAsnsGet": "com.azure.peering#GetRegisteredAsn",
+      "com.azure.peering#RegisteredAsnsGetResponse": "com.azure.peering#GetRegisteredAsnResponse",
+      "com.azure.peering#RegisteredAsnsGetRequest": "com.azure.peering#GetRegisteredAsnRequest",
+      "com.azure.peering#RegisteredAsnsListByPeering": "com.azure.peering#ListRegisteredAsnByPeering",
+      "com.azure.peering#RegisteredAsnsListByPeeringRequest": "com.azure.peering#ListRegisteredAsnByPeeringRequest",
+      "com.azure.peering#ReceivedRoutesListByPeering": "com.azure.peering#ListReceivedRouteByPeering",
+      "com.azure.peering#ReceivedRoutesListByPeeringRequest": "com.azure.peering#ListReceivedRouteByPeeringRequest",
+      "com.azure.peering#PeeringsDelete": "com.azure.peering#DeletePeering",
+      "com.azure.peering#PeeringsDeleteRequest": "com.azure.peering#DeletePeeringRequest",
+      "com.azure.peering#PeeringsUpdate": "com.azure.peering#UpdatePeering",
+      "com.azure.peering#PeeringsUpdateResponse": "com.azure.peering#UpdatePeeringResponse",
+      "com.azure.peering#PeeringsUpdateResponseTagsMap": "com.azure.peering#UpdatePeeringResponseTagsMap",
+      "com.azure.peering#PeeringsUpdateRequest": "com.azure.peering#UpdatePeeringRequest",
+      "com.azure.peering#PeeringsUpdateRequestTagsMap": "com.azure.peering#UpdatePeeringRequestTagsMap",
+      "com.azure.peering#PeeringsGet": "com.azure.peering#GetPeering",
+      "com.azure.peering#PeeringsGetResponse": "com.azure.peering#GetPeeringResponse",
+      "com.azure.peering#PeeringsGetResponseTagsMap": "com.azure.peering#GetPeeringResponseTagsMap",
+      "com.azure.peering#PeeringsGetRequest": "com.azure.peering#GetPeeringRequest",
+      "com.azure.peering#PeeringsListByResourceGroup": "com.azure.peering#ListPeeringByResourceGroup",
+      "com.azure.peering#PeeringsListByResourceGroupRequest": "com.azure.peering#ListPeeringByResourceGroupRequest",
+      "com.azure.peering#PrefixesDelete": "com.azure.peering#DeletePrefix",
+      "com.azure.peering#PrefixesDeleteRequest": "com.azure.peering#DeletePrefixRequest",
+      "com.azure.peering#PrefixesGet": "com.azure.peering#GetPrefix",
+      "com.azure.peering#PrefixesGetResponse": "com.azure.peering#GetPrefixResponse",
+      "com.azure.peering#PrefixesGetRequest": "com.azure.peering#GetPrefixRequest",
+      "com.azure.peering#PrefixesListByPeeringService": "com.azure.peering#ListPrefixByPeeringService",
+      "com.azure.peering#PrefixesListByPeeringServiceRequest": "com.azure.peering#ListPrefixByPeeringServiceRequest",
+      "com.azure.peering#ConnectionMonitorTestsDelete": "com.azure.peering#DeleteConnectionMonitorTest",
+      "com.azure.peering#ConnectionMonitorTestsDeleteRequest": "com.azure.peering#DeleteConnectionMonitorTestRequest",
+      "com.azure.peering#ConnectionMonitorTestsGet": "com.azure.peering#GetConnectionMonitorTest",
+      "com.azure.peering#ConnectionMonitorTestsGetResponse": "com.azure.peering#GetConnectionMonitorTestResponse",
+      "com.azure.peering#ConnectionMonitorTestsGetRequest": "com.azure.peering#GetConnectionMonitorTestRequest",
+      "com.azure.peering#ConnectionMonitorTestsListByPeeringService": "com.azure.peering#ListConnectionMonitorTestByPeeringService",
+      "com.azure.peering#ConnectionMonitorTestsListByPeeringServiceRequest": "com.azure.peering#ListConnectionMonitorTestByPeeringServiceRequest",
+      "com.azure.peering#PeeringServicesDelete": "com.azure.peering#DeletePeeringService",
+      "com.azure.peering#PeeringServicesDeleteRequest": "com.azure.peering#DeletePeeringServiceRequest",
+      "com.azure.peering#PeeringServicesUpdate": "com.azure.peering#UpdatePeeringService",
+      "com.azure.peering#PeeringServicesUpdateResponse": "com.azure.peering#UpdatePeeringServiceResponse",
+      "com.azure.peering#PeeringServicesUpdateResponseTagsMap": "com.azure.peering#UpdatePeeringServiceResponseTagsMap",
+      "com.azure.peering#PeeringServicesUpdateRequest": "com.azure.peering#UpdatePeeringServiceRequest",
+      "com.azure.peering#PeeringServicesUpdateRequestTagsMap": "com.azure.peering#UpdatePeeringServiceRequestTagsMap",
+      "com.azure.peering#PeeringServicesGet": "com.azure.peering#GetPeeringService",
+      "com.azure.peering#PeeringServicesGetResponse": "com.azure.peering#GetPeeringServiceResponse",
+      "com.azure.peering#PeeringServicesGetResponseTagsMap": "com.azure.peering#GetPeeringServiceResponseTagsMap",
+      "com.azure.peering#PeeringServicesGetRequest": "com.azure.peering#GetPeeringServiceRequest",
+      "com.azure.peering#PeeringServicesListByResourceGroup": "com.azure.peering#ListPeeringServiceByResourceGroup",
+      "com.azure.peering#PeeringServicesListByResourceGroupRequest": "com.azure.peering#ListPeeringServiceByResourceGroupRequest",
+      "com.azure.peering#PeeringsListBySubscription": "com.azure.peering#ListPeeringBySubscription",
+      "com.azure.peering#PeeringsListBySubscriptionRequest": "com.azure.peering#ListPeeringBySubscriptionRequest",
+      "com.azure.peering#PeeringServicesListBySubscription": "com.azure.peering#ListPeeringServiceBySubscription",
+      "com.azure.peering#PeeringServicesListBySubscriptionRequest": "com.azure.peering#ListPeeringServiceBySubscriptionRequest",
+      "com.azure.peering#PeeringServiceProvidersList": "com.azure.peering#ListPeeringServiceProviders",
+      "com.azure.peering#PeeringServiceProvidersListRequest": "com.azure.peering#ListPeeringServiceProvidersRequest",
+      "com.azure.peering#PeeringServiceLocationsList": "com.azure.peering#ListPeeringServiceLocations",
+      "com.azure.peering#PeeringServiceLocationsListRequest": "com.azure.peering#ListPeeringServiceLocationsRequest",
+      "com.azure.peering#PeeringServiceCountriesList": "com.azure.peering#ListPeeringServiceCountries",
+      "com.azure.peering#PeeringServiceCountriesListRequest": "com.azure.peering#ListPeeringServiceCountriesRequest",
+      "com.azure.peering#PeeringLocationsList": "com.azure.peering#ListPeeringLocations",
+      "com.azure.peering#PeeringLocationsListRequest": "com.azure.peering#ListPeeringLocationsRequest",
+      "com.azure.peering#PeeringLocationsListRequestDirectPeeringType": "com.azure.peering#ListPeeringLocationsRequestDirectPeeringType",
+      "com.azure.peering#PeeringLocationsListRequestKind": "com.azure.peering#ListPeeringLocationsRequestKind",
+      "com.azure.peering#PeerAsnsDelete": "com.azure.peering#DeletePeerAsn",
+      "com.azure.peering#PeerAsnsDeleteRequest": "com.azure.peering#DeletePeerAsnRequest",
+      "com.azure.peering#PeerAsnsGet": "com.azure.peering#GetPeerAsn",
+      "com.azure.peering#PeerAsnsGetResponse": "com.azure.peering#GetPeerAsnResponse",
+      "com.azure.peering#PeerAsnsGetRequest": "com.azure.peering#GetPeerAsnRequest",
+      "com.azure.peering#PeerAsnsListBySubscription": "com.azure.peering#ListPeerAsnBySubscription",
+      "com.azure.peering#PeerAsnsListBySubscriptionRequest": "com.azure.peering#ListPeerAsnBySubscriptionRequest",
+      "com.azure.peering#LookingGlassInvoke": "com.azure.peering#InvokeLookingGlass",
+      "com.azure.peering#LookingGlassInvokeRequest": "com.azure.peering#InvokeLookingGlassRequest",
+      "com.azure.peering#LookingGlassInvokeRequestSourceType": "com.azure.peering#InvokeLookingGlassRequestSourceType",
+      "com.azure.peering#LookingGlassInvokeRequestCommand": "com.azure.peering#InvokeLookingGlassRequestCommand",
+      "com.azure.peering#LegacyPeeringsList": "com.azure.peering#ListLegacyPeerings",
+      "com.azure.peering#LegacyPeeringsListRequest": "com.azure.peering#ListLegacyPeeringsRequest",
+      "com.azure.peering#LegacyPeeringsListRequestDirectPeeringType": "com.azure.peering#ListLegacyPeeringsRequestDirectPeeringType",
+      "com.azure.peering#LegacyPeeringsListRequestKind": "com.azure.peering#ListLegacyPeeringsRequestKind",
+      "com.azure.peering#CdnPeeringPrefixesList": "com.azure.peering#ListCdnPeeringPrefixes",
+      "com.azure.peering#CdnPeeringPrefixesListRequest": "com.azure.peering#ListCdnPeeringPrefixesRequest",
+      "com.azure.peering#OperationsList": "com.azure.peering#ListOperations",
+      "com.azure.peering#OperationsListRequest": "com.azure.peering#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.peering#ListRpUnbilledPrefixes": {
+    "com.azure.peering#RpUnbilledPrefixesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListRpUnbilledPrefixesRequest"
+        "target": "com.azure.peering#RpUnbilledPrefixesListRequest"
       },
       "output": {
         "target": "com.azure.peering#RpUnbilledPrefixListResult"
@@ -31,10 +126,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/rpUnbilledPrefixes",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the RP unbilled prefixes for the specified peering",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#RpUnbilledPrefixListResult": {
@@ -93,7 +195,7 @@
         "smithy.api#documentation": "The Routing Preference unbilled prefix"
       }
     },
-    "com.azure.peering#ListRpUnbilledPrefixesRequest": {
+    "com.azure.peering#RpUnbilledPrefixesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -126,19 +228,25 @@
             "smithy.api#httpQuery": "consolidate",
             "smithy.api#documentation": "Flag to enable consolidation prefixes"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ValidateRegisteredPrefix": {
+    "com.azure.peering#RegisteredPrefixesValidate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ValidateRegisteredPrefixRequest"
+        "target": "com.azure.peering#RegisteredPrefixesValidateRequest"
       },
       "output": {
-        "target": "com.azure.peering#ValidateRegisteredPrefixResponse"
+        "target": "com.azure.peering#RegisteredPrefixesValidateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -151,7 +259,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#ValidateRegisteredPrefixResponse": {
+    "com.azure.peering#RegisteredPrefixesValidateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -423,7 +531,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.peering#ValidateRegisteredPrefixRequest": {
+    "com.azure.peering#RegisteredPrefixesValidateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -463,10 +571,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#DeleteRegisteredPrefix": {
+    "com.azure.peering#RegisteredPrefixesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeleteRegisteredPrefixRequest"
+        "target": "com.azure.peering#RegisteredPrefixesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -482,7 +590,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeleteRegisteredPrefixRequest": {
+    "com.azure.peering#RegisteredPrefixesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -639,13 +747,13 @@
         "smithy.api#documentation": "The properties that define a registered prefix."
       }
     },
-    "com.azure.peering#GetRegisteredPrefix": {
+    "com.azure.peering#RegisteredPrefixesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetRegisteredPrefixRequest"
+        "target": "com.azure.peering#RegisteredPrefixesGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetRegisteredPrefixResponse"
+        "target": "com.azure.peering#RegisteredPrefixesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -658,7 +766,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetRegisteredPrefixResponse": {
+    "com.azure.peering#RegisteredPrefixesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -696,7 +804,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetRegisteredPrefixRequest": {
+    "com.azure.peering#RegisteredPrefixesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -736,10 +844,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListRegisteredPrefixByPeering": {
+    "com.azure.peering#RegisteredPrefixesListByPeering": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListRegisteredPrefixByPeeringRequest"
+        "target": "com.azure.peering#RegisteredPrefixesListByPeeringRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringRegisteredPrefixListResult"
@@ -749,10 +857,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredPrefixes",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all registered prefixes under the given subscription, resource group and peering.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringRegisteredPrefixListResult": {
@@ -823,7 +938,7 @@
         "smithy.api#documentation": "The customer's prefix that is registered by the peering service provider."
       }
     },
-    "com.azure.peering#ListRegisteredPrefixByPeeringRequest": {
+    "com.azure.peering#RegisteredPrefixesListByPeeringRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -849,16 +964,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the peering."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#DeleteRegisteredAsn": {
+    "com.azure.peering#RegisteredAsnsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeleteRegisteredAsnRequest"
+        "target": "com.azure.peering#RegisteredAsnsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -874,7 +995,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeleteRegisteredAsnRequest": {
+    "com.azure.peering#RegisteredAsnsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1057,13 +1178,13 @@
         "smithy.api#documentation": "The properties that define a registered ASN."
       }
     },
-    "com.azure.peering#GetRegisteredAsn": {
+    "com.azure.peering#RegisteredAsnsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetRegisteredAsnRequest"
+        "target": "com.azure.peering#RegisteredAsnsGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetRegisteredAsnResponse"
+        "target": "com.azure.peering#RegisteredAsnsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1076,7 +1197,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetRegisteredAsnResponse": {
+    "com.azure.peering#RegisteredAsnsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1114,7 +1235,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetRegisteredAsnRequest": {
+    "com.azure.peering#RegisteredAsnsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1154,10 +1275,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListRegisteredAsnByPeering": {
+    "com.azure.peering#RegisteredAsnsListByPeering": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListRegisteredAsnByPeeringRequest"
+        "target": "com.azure.peering#RegisteredAsnsListByPeeringRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringRegisteredAsnListResult"
@@ -1167,10 +1288,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/registeredAsns",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all registered ASNs under the given subscription, resource group and peering.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringRegisteredAsnListResult": {
@@ -1241,7 +1369,7 @@
         "smithy.api#documentation": "The customer's ASN that is registered by the peering service provider."
       }
     },
-    "com.azure.peering#ListRegisteredAsnByPeeringRequest": {
+    "com.azure.peering#RegisteredAsnsListByPeeringRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1267,16 +1395,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the peering."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListReceivedRouteByPeering": {
+    "com.azure.peering#ReceivedRoutesListByPeering": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListReceivedRouteByPeeringRequest"
+        "target": "com.azure.peering#ReceivedRoutesListByPeeringRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringReceivedRouteListResult"
@@ -1286,10 +1420,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings/{peeringName}/receivedRoutes",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the prefixes received over the specified peering under the given subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringReceivedRouteListResult": {
@@ -1372,7 +1513,7 @@
         "smithy.api#documentation": "The properties that define a received route."
       }
     },
-    "com.azure.peering#ListReceivedRouteByPeeringRequest": {
+    "com.azure.peering#ReceivedRoutesListByPeeringRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1433,16 +1574,22 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "The optional page continuation token that is used in the event of paginated result."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#DeletePeering": {
+    "com.azure.peering#PeeringsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeletePeeringRequest"
+        "target": "com.azure.peering#PeeringsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1458,7 +1605,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeletePeeringRequest": {
+    "com.azure.peering#PeeringsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1490,13 +1637,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#UpdatePeering": {
+    "com.azure.peering#PeeringsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#UpdatePeeringRequest"
+        "target": "com.azure.peering#PeeringsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.peering#UpdatePeeringResponse"
+        "target": "com.azure.peering#PeeringsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1509,7 +1656,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#UpdatePeeringResponse": {
+    "com.azure.peering#PeeringsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1537,7 +1684,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.peering#UpdatePeeringResponseTagsMap",
+          "target": "com.azure.peering#PeeringsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2374,7 +2521,7 @@
         "smithy.api#documentation": "The field indicating if Microsoft provides session ip addresses."
       }
     },
-    "com.azure.peering#UpdatePeeringResponseTagsMap": {
+    "com.azure.peering#PeeringsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2386,7 +2533,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#UpdatePeeringRequest": {
+    "com.azure.peering#PeeringsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2414,7 +2561,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.peering#UpdatePeeringRequestTagsMap",
+          "target": "com.azure.peering#PeeringsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Gets or sets the tags, a dictionary of descriptors arm object"
           }
@@ -2424,7 +2571,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#UpdatePeeringRequestTagsMap": {
+    "com.azure.peering#PeeringsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2810,13 +2957,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#GetPeering": {
+    "com.azure.peering#PeeringsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetPeeringRequest"
+        "target": "com.azure.peering#PeeringsGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetPeeringResponse"
+        "target": "com.azure.peering#PeeringsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2829,7 +2976,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetPeeringResponse": {
+    "com.azure.peering#PeeringsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2857,7 +3004,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.peering#GetPeeringResponseTagsMap",
+          "target": "com.azure.peering#PeeringsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2894,7 +3041,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetPeeringResponseTagsMap": {
+    "com.azure.peering#PeeringsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2906,7 +3053,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#GetPeeringRequest": {
+    "com.azure.peering#PeeringsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2938,10 +3085,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringByResourceGroup": {
+    "com.azure.peering#PeeringsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringByResourceGroupRequest"
+        "target": "com.azure.peering#PeeringsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringListResult"
@@ -2951,10 +3098,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peerings",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the peerings under the given subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringListResult": {
@@ -3064,7 +3218,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#ListPeeringByResourceGroupRequest": {
+    "com.azure.peering#PeeringsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3082,16 +3236,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#DeletePrefix": {
+    "com.azure.peering#PrefixesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeletePrefixRequest"
+        "target": "com.azure.peering#PrefixesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3107,7 +3267,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeletePrefixRequest": {
+    "com.azure.peering#PrefixesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3393,13 +3553,13 @@
         "smithy.api#documentation": "The peering service prefix properties class."
       }
     },
-    "com.azure.peering#GetPrefix": {
+    "com.azure.peering#PrefixesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetPrefixRequest"
+        "target": "com.azure.peering#PrefixesGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetPrefixResponse"
+        "target": "com.azure.peering#PrefixesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3412,7 +3572,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetPrefixResponse": {
+    "com.azure.peering#PrefixesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3450,7 +3610,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetPrefixRequest": {
+    "com.azure.peering#PrefixesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3497,10 +3657,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPrefixByPeeringService": {
+    "com.azure.peering#PrefixesListByPeeringService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPrefixByPeeringServiceRequest"
+        "target": "com.azure.peering#PrefixesListByPeeringServiceRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringServicePrefixListResult"
@@ -3510,10 +3670,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/prefixes",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all prefixes under the given subscription, resource group and peering service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringServicePrefixListResult": {
@@ -3584,7 +3751,7 @@
         "smithy.api#documentation": "The peering service prefix class."
       }
     },
-    "com.azure.peering#ListPrefixByPeeringServiceRequest": {
+    "com.azure.peering#PrefixesListByPeeringServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3617,16 +3784,22 @@
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "The properties to be expanded."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#DeleteConnectionMonitorTest": {
+    "com.azure.peering#ConnectionMonitorTestsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeleteConnectionMonitorTestRequest"
+        "target": "com.azure.peering#ConnectionMonitorTestsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3642,7 +3815,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeleteConnectionMonitorTestRequest": {
+    "com.azure.peering#ConnectionMonitorTestsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3876,13 +4049,13 @@
         "smithy.api#documentation": "The properties that define a Connection Monitor Test."
       }
     },
-    "com.azure.peering#GetConnectionMonitorTest": {
+    "com.azure.peering#ConnectionMonitorTestsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetConnectionMonitorTestRequest"
+        "target": "com.azure.peering#ConnectionMonitorTestsGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetConnectionMonitorTestResponse"
+        "target": "com.azure.peering#ConnectionMonitorTestsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3895,7 +4068,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetConnectionMonitorTestResponse": {
+    "com.azure.peering#ConnectionMonitorTestsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3933,7 +4106,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetConnectionMonitorTestRequest": {
+    "com.azure.peering#ConnectionMonitorTestsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3973,10 +4146,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListConnectionMonitorTestByPeeringService": {
+    "com.azure.peering#ConnectionMonitorTestsListByPeeringService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListConnectionMonitorTestByPeeringServiceRequest"
+        "target": "com.azure.peering#ConnectionMonitorTestsListByPeeringServiceRequest"
       },
       "output": {
         "target": "com.azure.peering#ConnectionMonitorTestListResult"
@@ -3986,10 +4159,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices/{peeringServiceName}/connectionMonitorTests",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all connection monitor tests under the given subscription, resource group and peering service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#ConnectionMonitorTestListResult": {
@@ -4060,7 +4240,7 @@
         "smithy.api#documentation": "The Connection Monitor Test class."
       }
     },
-    "com.azure.peering#ListConnectionMonitorTestByPeeringServiceRequest": {
+    "com.azure.peering#ConnectionMonitorTestsListByPeeringServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4086,16 +4266,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the peering."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#DeletePeeringService": {
+    "com.azure.peering#PeeringServicesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeletePeeringServiceRequest"
+        "target": "com.azure.peering#PeeringServicesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4111,7 +4297,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeletePeeringServiceRequest": {
+    "com.azure.peering#PeeringServicesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4143,13 +4329,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#UpdatePeeringService": {
+    "com.azure.peering#PeeringServicesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#UpdatePeeringServiceRequest"
+        "target": "com.azure.peering#PeeringServicesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.peering#UpdatePeeringServiceResponse"
+        "target": "com.azure.peering#PeeringServicesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4162,7 +4348,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#UpdatePeeringServiceResponse": {
+    "com.azure.peering#PeeringServicesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4190,7 +4376,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.peering#UpdatePeeringServiceResponseTagsMap",
+          "target": "com.azure.peering#PeeringServicesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4312,7 +4498,7 @@
         "smithy.api#documentation": "The list of connected agents."
       }
     },
-    "com.azure.peering#UpdatePeeringServiceResponseTagsMap": {
+    "com.azure.peering#PeeringServicesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4324,7 +4510,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#UpdatePeeringServiceRequest": {
+    "com.azure.peering#PeeringServicesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4352,7 +4538,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.peering#UpdatePeeringServiceRequestTagsMap",
+          "target": "com.azure.peering#PeeringServicesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Gets or sets the tags, a dictionary of descriptors arm object"
           }
@@ -4362,7 +4548,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#UpdatePeeringServiceRequestTagsMap": {
+    "com.azure.peering#PeeringServicesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4576,13 +4762,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#GetPeeringService": {
+    "com.azure.peering#PeeringServicesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetPeeringServiceRequest"
+        "target": "com.azure.peering#PeeringServicesGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetPeeringServiceResponse"
+        "target": "com.azure.peering#PeeringServicesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4595,7 +4781,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetPeeringServiceResponse": {
+    "com.azure.peering#PeeringServicesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4623,7 +4809,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.peering#GetPeeringServiceResponseTagsMap",
+          "target": "com.azure.peering#PeeringServicesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4652,7 +4838,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetPeeringServiceResponseTagsMap": {
+    "com.azure.peering#PeeringServicesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4664,7 +4850,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#GetPeeringServiceRequest": {
+    "com.azure.peering#PeeringServicesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4696,10 +4882,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringServiceByResourceGroup": {
+    "com.azure.peering#PeeringServicesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringServiceByResourceGroupRequest"
+        "target": "com.azure.peering#PeeringServicesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringServiceListResult"
@@ -4709,10 +4895,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Peering/peeringServices",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the peering services under the given subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringServiceListResult": {
@@ -4814,7 +5007,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.peering#ListPeeringServiceByResourceGroupRequest": {
+    "com.azure.peering#PeeringServicesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4832,16 +5025,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringBySubscription": {
+    "com.azure.peering#PeeringsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringBySubscriptionRequest"
+        "target": "com.azure.peering#PeeringsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringListResult"
@@ -4851,13 +5050,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerings",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the peerings under the given subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.peering#ListPeeringBySubscriptionRequest": {
+    "com.azure.peering#PeeringsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4867,16 +5073,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringServiceBySubscription": {
+    "com.azure.peering#PeeringServicesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringServiceBySubscriptionRequest"
+        "target": "com.azure.peering#PeeringServicesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringServiceListResult"
@@ -4886,13 +5098,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServices",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the peerings under the given subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.peering#ListPeeringServiceBySubscriptionRequest": {
+    "com.azure.peering#PeeringServicesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4902,16 +5121,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringServiceProviders": {
+    "com.azure.peering#PeeringServiceProvidersList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringServiceProvidersRequest"
+        "target": "com.azure.peering#PeeringServiceProvidersListRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringServiceProviderListResult"
@@ -4921,10 +5146,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceProviders",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available peering service locations for the specified kind of peering.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringServiceProviderListResult": {
@@ -5024,7 +5256,7 @@
         "smithy.api#documentation": "The list of locations at which the service provider peers with Microsoft."
       }
     },
-    "com.azure.peering#ListPeeringServiceProvidersRequest": {
+    "com.azure.peering#PeeringServiceProvidersListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5034,16 +5266,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringServiceLocations": {
+    "com.azure.peering#PeeringServiceLocationsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringServiceLocationsRequest"
+        "target": "com.azure.peering#PeeringServiceLocationsListRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringServiceLocationListResult"
@@ -5053,10 +5291,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceLocations",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available locations for peering service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringServiceLocationListResult": {
@@ -5153,7 +5398,7 @@
         "smithy.api#documentation": "The properties that define connectivity to the Peering Service Location."
       }
     },
-    "com.azure.peering#ListPeeringServiceLocationsRequest": {
+    "com.azure.peering#PeeringServiceLocationsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5170,16 +5415,22 @@
             "smithy.api#httpQuery": "country",
             "smithy.api#documentation": "The country of interest, in which the locations are to be present."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringServiceCountries": {
+    "com.azure.peering#PeeringServiceCountriesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringServiceCountriesRequest"
+        "target": "com.azure.peering#PeeringServiceCountriesListRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringServiceCountryListResult"
@@ -5189,10 +5440,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringServiceCountries",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available countries for peering service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringServiceCountryListResult": {
@@ -5257,7 +5515,7 @@
         "smithy.api#documentation": "Common fields that are returned in the response for all Azure Resource Manager resources"
       }
     },
-    "com.azure.peering#ListPeeringServiceCountriesRequest": {
+    "com.azure.peering#PeeringServiceCountriesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5267,16 +5525,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringLocations": {
+    "com.azure.peering#PeeringLocationsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeeringLocationsRequest"
+        "target": "com.azure.peering#PeeringLocationsListRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringLocationListResult"
@@ -5286,10 +5550,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peeringLocations",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available peering locations for the specified kind of peering.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeeringLocationListResult": {
@@ -5573,7 +5844,7 @@
         "smithy.api#documentation": "The properties that define a direct peering facility."
       }
     },
-    "com.azure.peering#ListPeeringLocationsRequest": {
+    "com.azure.peering#PeeringLocationsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5585,7 +5856,7 @@
           }
         },
         "kind": {
-          "target": "com.azure.peering#ListPeeringLocationsRequestKind",
+          "target": "com.azure.peering#PeeringLocationsListRequestKind",
           "traits": {
             "smithy.api#httpQuery": "kind",
             "smithy.api#required": {},
@@ -5593,10 +5864,16 @@
           }
         },
         "directPeeringType": {
-          "target": "com.azure.peering#ListPeeringLocationsRequestDirectPeeringType",
+          "target": "com.azure.peering#PeeringLocationsListRequestDirectPeeringType",
           "traits": {
             "smithy.api#httpQuery": "directPeeringType",
             "smithy.api#documentation": "The type of direct peering."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5604,7 +5881,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeeringLocationsRequestDirectPeeringType": {
+    "com.azure.peering#PeeringLocationsListRequestDirectPeeringType": {
       "type": "enum",
       "members": {
         "EDGE": {
@@ -5664,7 +5941,7 @@
       },
       "traits": {}
     },
-    "com.azure.peering#ListPeeringLocationsRequestKind": {
+    "com.azure.peering#PeeringLocationsListRequestKind": {
       "type": "enum",
       "members": {
         "DIRECT": {
@@ -5682,10 +5959,10 @@
       },
       "traits": {}
     },
-    "com.azure.peering#DeletePeerAsn": {
+    "com.azure.peering#PeerAsnsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#DeletePeerAsnRequest"
+        "target": "com.azure.peering#PeerAsnsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5701,7 +5978,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#DeletePeerAsnRequest": {
+    "com.azure.peering#PeerAsnsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5996,13 +6273,13 @@
         "smithy.api#documentation": "The contact details of the peer."
       }
     },
-    "com.azure.peering#GetPeerAsn": {
+    "com.azure.peering#PeerAsnsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#GetPeerAsnRequest"
+        "target": "com.azure.peering#PeerAsnsGetRequest"
       },
       "output": {
-        "target": "com.azure.peering#GetPeerAsnResponse"
+        "target": "com.azure.peering#PeerAsnsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6015,7 +6292,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.peering#GetPeerAsnResponse": {
+    "com.azure.peering#PeerAsnsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6053,7 +6330,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.peering#GetPeerAsnRequest": {
+    "com.azure.peering#PeerAsnsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6077,10 +6354,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListPeerAsnBySubscription": {
+    "com.azure.peering#PeerAsnsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListPeerAsnBySubscriptionRequest"
+        "target": "com.azure.peering#PeerAsnsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.peering#PeerAsnListResult"
@@ -6090,10 +6367,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/peerAsns",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the peer ASNs under the given subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#PeerAsnListResult": {
@@ -6164,7 +6448,7 @@
         "smithy.api#documentation": "The essential information related to the peer's ASN."
       }
     },
-    "com.azure.peering#ListPeerAsnBySubscriptionRequest": {
+    "com.azure.peering#PeerAsnsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6174,16 +6458,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#InvokeLookingGlass": {
+    "com.azure.peering#LookingGlassInvoke": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#InvokeLookingGlassRequest"
+        "target": "com.azure.peering#LookingGlassInvokeRequest"
       },
       "output": {
         "target": "com.azure.peering#LookingGlassOutput"
@@ -6245,7 +6535,7 @@
         "smithy.api#documentation": "Invoked command"
       }
     },
-    "com.azure.peering#InvokeLookingGlassRequest": {
+    "com.azure.peering#LookingGlassInvokeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6257,7 +6547,7 @@
           }
         },
         "command": {
-          "target": "com.azure.peering#InvokeLookingGlassRequestCommand",
+          "target": "com.azure.peering#LookingGlassInvokeRequestCommand",
           "traits": {
             "smithy.api#httpQuery": "command",
             "smithy.api#required": {},
@@ -6265,7 +6555,7 @@
           }
         },
         "sourceType": {
-          "target": "com.azure.peering#InvokeLookingGlassRequestSourceType",
+          "target": "com.azure.peering#LookingGlassInvokeRequestSourceType",
           "traits": {
             "smithy.api#httpQuery": "sourceType",
             "smithy.api#required": {},
@@ -6293,7 +6583,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#InvokeLookingGlassRequestSourceType": {
+    "com.azure.peering#LookingGlassInvokeRequestSourceType": {
       "type": "enum",
       "members": {
         "EDGESITE": {
@@ -6311,7 +6601,7 @@
       },
       "traits": {}
     },
-    "com.azure.peering#InvokeLookingGlassRequestCommand": {
+    "com.azure.peering#LookingGlassInvokeRequestCommand": {
       "type": "enum",
       "members": {
         "TRACEROUTE": {
@@ -6335,10 +6625,10 @@
       },
       "traits": {}
     },
-    "com.azure.peering#ListLegacyPeerings": {
+    "com.azure.peering#LegacyPeeringsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListLegacyPeeringsRequest"
+        "target": "com.azure.peering#LegacyPeeringsListRequest"
       },
       "output": {
         "target": "com.azure.peering#PeeringListResult"
@@ -6348,13 +6638,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/legacyPeerings",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the legacy peerings under the given subscription matching the specified kind and location.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.peering#ListLegacyPeeringsRequest": {
+    "com.azure.peering#LegacyPeeringsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6374,7 +6671,7 @@
           }
         },
         "kind": {
-          "target": "com.azure.peering#ListLegacyPeeringsRequestKind",
+          "target": "com.azure.peering#LegacyPeeringsListRequestKind",
           "traits": {
             "smithy.api#httpQuery": "kind",
             "smithy.api#required": {},
@@ -6389,10 +6686,16 @@
           }
         },
         "directPeeringType": {
-          "target": "com.azure.peering#ListLegacyPeeringsRequestDirectPeeringType",
+          "target": "com.azure.peering#LegacyPeeringsListRequestDirectPeeringType",
           "traits": {
             "smithy.api#httpQuery": "directPeeringType",
             "smithy.api#documentation": "The direct peering type."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6400,7 +6703,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListLegacyPeeringsRequestDirectPeeringType": {
+    "com.azure.peering#LegacyPeeringsListRequestDirectPeeringType": {
       "type": "enum",
       "members": {
         "EDGE": {
@@ -6460,7 +6763,7 @@
       },
       "traits": {}
     },
-    "com.azure.peering#ListLegacyPeeringsRequestKind": {
+    "com.azure.peering#LegacyPeeringsListRequestKind": {
       "type": "enum",
       "members": {
         "DIRECT": {
@@ -6595,10 +6898,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListCdnPeeringPrefixes": {
+    "com.azure.peering#CdnPeeringPrefixesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.peering#ListCdnPeeringPrefixesRequest"
+        "target": "com.azure.peering#CdnPeeringPrefixesListRequest"
       },
       "output": {
         "target": "com.azure.peering#CdnPeeringPrefixListResult"
@@ -6608,10 +6911,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Peering/cdnPeeringPrefixes",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the advertised prefixes for the specified peering location",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#CdnPeeringPrefixListResult": {
@@ -6720,7 +7030,7 @@
         "smithy.api#documentation": "The properties that define a CDN peering prefix"
       }
     },
-    "com.azure.peering#ListCdnPeeringPrefixesRequest": {
+    "com.azure.peering#CdnPeeringPrefixesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6738,16 +7048,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The peering location."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.peering#ListOperations": {
+    "com.azure.peering#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.peering#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.peering#OperationListResult"
@@ -6757,10 +7073,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Peering/operations",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.peering#OperationListResult": {
@@ -6981,132 +7304,146 @@
         "smithy.api#documentation": "The information related to the operation."
       }
     },
+    "com.azure.peering#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.peering#Peering": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.peering#ListRpUnbilledPrefixes"
+          "target": "com.azure.peering#RpUnbilledPrefixesList"
         },
         {
-          "target": "com.azure.peering#ValidateRegisteredPrefix"
+          "target": "com.azure.peering#RegisteredPrefixesValidate"
         },
         {
-          "target": "com.azure.peering#DeleteRegisteredPrefix"
+          "target": "com.azure.peering#RegisteredPrefixesDelete"
         },
         {
           "target": "com.azure.peering#RegisteredPrefixesCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetRegisteredPrefix"
+          "target": "com.azure.peering#RegisteredPrefixesGet"
         },
         {
-          "target": "com.azure.peering#ListRegisteredPrefixByPeering"
+          "target": "com.azure.peering#RegisteredPrefixesListByPeering"
         },
         {
-          "target": "com.azure.peering#DeleteRegisteredAsn"
+          "target": "com.azure.peering#RegisteredAsnsDelete"
         },
         {
           "target": "com.azure.peering#RegisteredAsnsCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetRegisteredAsn"
+          "target": "com.azure.peering#RegisteredAsnsGet"
         },
         {
-          "target": "com.azure.peering#ListRegisteredAsnByPeering"
+          "target": "com.azure.peering#RegisteredAsnsListByPeering"
         },
         {
-          "target": "com.azure.peering#ListReceivedRouteByPeering"
+          "target": "com.azure.peering#ReceivedRoutesListByPeering"
         },
         {
-          "target": "com.azure.peering#DeletePeering"
+          "target": "com.azure.peering#PeeringsDelete"
         },
         {
-          "target": "com.azure.peering#UpdatePeering"
+          "target": "com.azure.peering#PeeringsUpdate"
         },
         {
           "target": "com.azure.peering#PeeringsCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetPeering"
+          "target": "com.azure.peering#PeeringsGet"
         },
         {
-          "target": "com.azure.peering#ListPeeringByResourceGroup"
+          "target": "com.azure.peering#PeeringsListByResourceGroup"
         },
         {
-          "target": "com.azure.peering#DeletePrefix"
+          "target": "com.azure.peering#PrefixesDelete"
         },
         {
           "target": "com.azure.peering#PrefixesCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetPrefix"
+          "target": "com.azure.peering#PrefixesGet"
         },
         {
-          "target": "com.azure.peering#ListPrefixByPeeringService"
+          "target": "com.azure.peering#PrefixesListByPeeringService"
         },
         {
-          "target": "com.azure.peering#DeleteConnectionMonitorTest"
+          "target": "com.azure.peering#ConnectionMonitorTestsDelete"
         },
         {
           "target": "com.azure.peering#ConnectionMonitorTestsCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetConnectionMonitorTest"
+          "target": "com.azure.peering#ConnectionMonitorTestsGet"
         },
         {
-          "target": "com.azure.peering#ListConnectionMonitorTestByPeeringService"
+          "target": "com.azure.peering#ConnectionMonitorTestsListByPeeringService"
         },
         {
-          "target": "com.azure.peering#DeletePeeringService"
+          "target": "com.azure.peering#PeeringServicesDelete"
         },
         {
-          "target": "com.azure.peering#UpdatePeeringService"
+          "target": "com.azure.peering#PeeringServicesUpdate"
         },
         {
           "target": "com.azure.peering#PeeringServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetPeeringService"
+          "target": "com.azure.peering#PeeringServicesGet"
         },
         {
-          "target": "com.azure.peering#ListPeeringServiceByResourceGroup"
+          "target": "com.azure.peering#PeeringServicesListByResourceGroup"
         },
         {
-          "target": "com.azure.peering#ListPeeringBySubscription"
+          "target": "com.azure.peering#PeeringsListBySubscription"
         },
         {
-          "target": "com.azure.peering#ListPeeringServiceBySubscription"
+          "target": "com.azure.peering#PeeringServicesListBySubscription"
         },
         {
-          "target": "com.azure.peering#ListPeeringServiceProviders"
+          "target": "com.azure.peering#PeeringServiceProvidersList"
         },
         {
-          "target": "com.azure.peering#ListPeeringServiceLocations"
+          "target": "com.azure.peering#PeeringServiceLocationsList"
         },
         {
-          "target": "com.azure.peering#ListPeeringServiceCountries"
+          "target": "com.azure.peering#PeeringServiceCountriesList"
         },
         {
-          "target": "com.azure.peering#ListPeeringLocations"
+          "target": "com.azure.peering#PeeringLocationsList"
         },
         {
-          "target": "com.azure.peering#DeletePeerAsn"
+          "target": "com.azure.peering#PeerAsnsDelete"
         },
         {
           "target": "com.azure.peering#PeerAsnsCreateOrUpdate"
         },
         {
-          "target": "com.azure.peering#GetPeerAsn"
+          "target": "com.azure.peering#PeerAsnsGet"
         },
         {
-          "target": "com.azure.peering#ListPeerAsnBySubscription"
+          "target": "com.azure.peering#PeerAsnsListBySubscription"
         },
         {
-          "target": "com.azure.peering#InvokeLookingGlass"
+          "target": "com.azure.peering#LookingGlassInvoke"
         },
         {
-          "target": "com.azure.peering#ListLegacyPeerings"
+          "target": "com.azure.peering#LegacyPeeringsList"
         },
         {
           "target": "com.azure.peering#PeeringServicesInitializeConnectionMonitor"
@@ -7115,10 +7452,10 @@
           "target": "com.azure.peering#CheckServiceProviderAvailability"
         },
         {
-          "target": "com.azure.peering#ListCdnPeeringPrefixes"
+          "target": "com.azure.peering#CdnPeeringPrefixesList"
         },
         {
-          "target": "com.azure.peering#ListOperations"
+          "target": "com.azure.peering#OperationsList"
         }
       ],
       "traits": {

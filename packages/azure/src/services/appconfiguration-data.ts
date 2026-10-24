@@ -332,6 +332,8 @@ export interface GetKeysRequest {
   syncToken?: string;
   /** Requests the server to respond with the state of the resource at the specified time. */
   acceptDatetime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Keys serve as identifiers for key-values and are used to store and retrieve corresponding values. */
 export interface Key {
@@ -343,7 +345,7 @@ export type KeyListResultItemsList = Array<Key>;
 /** The result of a list request. */
 export interface KeyListResult {
   /** The collection value. */
-  items?: KeyListResultItemsList;
+  items: KeyListResultItemsList;
   /** The URI that can be used to request the next set of paged results. */
   _nextLink?: string;
 }
@@ -437,6 +439,8 @@ export interface GetKeyValuesRequest {
   ifMatch?: string;
   /** Used to perform an operation only if the targeted resource's etag does not match the value provided. */
   ifNoneMatch?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A key-value pair representing application settings. */
 export interface KeyValue {
@@ -464,7 +468,7 @@ export type KeyValueListResultItemsList = Array<KeyValue>;
 /** The result of a list request. */
 export interface KeyValueListResult {
   /** The collection value. */
-  items?: KeyValueListResultItemsList;
+  items: KeyValueListResultItemsList;
   /** An identifier representing the returned state of the resource. */
   etag?: string;
   /** The URI that can be used to request the next set of paged results. */
@@ -488,6 +492,8 @@ export interface GetLabelsRequest {
   acceptDatetime?: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Labels are used to group key-values. */
 export interface Label {
@@ -499,7 +505,7 @@ export type LabelListResultItemsList = Array<Label>;
 /** The result of a list request. */
 export interface LabelListResult {
   /** The collection value. */
-  items?: LabelListResultItemsList;
+  items: LabelListResultItemsList;
   /** The URI that can be used to request the next set of paged results. */
   _nextLink?: string;
 }
@@ -578,6 +584,8 @@ export interface GetRevisionsRequest {
   acceptDatetime?: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type GetSnapshotRequestSelectItem =
   | "name"
@@ -665,6 +673,8 @@ export interface GetSnapshotsRequest {
   status?: GetSnapshotsRequestStatusList;
   /** Used to guarantee real-time consistency between requests. */
   syncToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A snapshot is a named, immutable subset of an App Configuration store's key-values. */
 export interface Snapshot {
@@ -698,7 +708,7 @@ export type SnapshotListResultItemsList = Array<Snapshot>;
 /** The result of a snapshot list request. */
 export interface SnapshotListResult {
   /** The collection value. */
-  items?: SnapshotListResultItemsList;
+  items: SnapshotListResultItemsList;
   /** The URI that can be used to request the next set of paged results. */
   _nextLink?: string;
 }
@@ -990,18 +1000,25 @@ export const DeleteLock: API.OperationMethod<
 
 export type GetKeysError = AzureOpError;
 /** Gets a list of keys. Gets a list of keys. */
-export const GetKeys: API.OperationMethod<
+export const GetKeys: API.PaginatedOperationMethod<
   GetKeysRequest,
   KeyListResult,
   GetKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Key
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<GetKeysRequest>,
   output: __S(43, __c5, 3) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "items",
+  } as const,
+})) as any;
 
 export type GetKeyValueError = AzureOpError;
 /** Gets a single key-value. Gets a single key-value. */
@@ -1020,33 +1037,47 @@ export const GetKeyValue: API.OperationMethod<
 
 export type GetKeyValuesError = AzureOpError;
 /** Gets a list of key-values. Gets a list of key-values. */
-export const GetKeyValues: API.OperationMethod<
+export const GetKeyValues: API.PaginatedOperationMethod<
   GetKeyValuesRequest,
   KeyValueListResult,
   GetKeyValuesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KeyValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<GetKeyValuesRequest>,
   output: __S(66, __c8, 2) as any as S.Schema<KeyValueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "items",
+  } as const,
+})) as any;
 
 export type GetLabelsError = AzureOpError;
 /** Gets a list of labels. Gets a list of labels. */
-export const GetLabels: API.OperationMethod<
+export const GetLabels: API.PaginatedOperationMethod<
   GetLabelsRequest,
   LabelListResult,
   GetLabelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Label
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<GetLabelsRequest>,
   output: __S(75, __c9, 3) as any as S.Schema<LabelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "items",
+  } as const,
+})) as any;
 
 export type GetOperationDetailsError = AzureOpError;
 /** Gets the state of a long running operation. Gets the state of a long running operation. */
@@ -1065,18 +1096,25 @@ export const GetOperationDetails: API.OperationMethod<
 
 export type GetRevisionsError = AzureOpError;
 /** Gets a list of key-value revisions. Gets a list of key-value revisions. */
-export const GetRevisions: API.OperationMethod<
+export const GetRevisions: API.PaginatedOperationMethod<
   GetRevisionsRequest,
   KeyValueListResult,
   GetRevisionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KeyValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<GetRevisionsRequest>,
   output: __S(66, __c8, 2) as any as S.Schema<KeyValueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "items",
+  } as const,
+})) as any;
 
 export type GetSnapshotError = AzureOpError;
 /** Gets a single key-value snapshot. Gets a single key-value snapshot. */
@@ -1095,18 +1133,25 @@ export const GetSnapshot: API.OperationMethod<
 
 export type GetSnapshotsError = AzureOpError;
 /** Gets a list of key-value snapshots. Gets a list of key-value snapshots. */
-export const GetSnapshots: API.OperationMethod<
+export const GetSnapshots: API.PaginatedOperationMethod<
   GetSnapshotsRequest,
   SnapshotListResult,
   GetSnapshotsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<GetSnapshotsRequest>,
   output: __S(115, __c14, 3) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_nextLink",
+    items: "items",
+  } as const,
+})) as any;
 
 export type PutKeyValueError = AzureOpError;
 /** Creates a key-value. Creates a key-value. */
@@ -1236,6 +1281,7 @@ function __c5(j: number): any {
           After: S.optional(S.String.pipe(T.Query())),
           syncToken: S.optional(S.String.pipe(T.Header("Sync-Token"))),
           acceptDatetime: S.optional(S.String.pipe(T.Header("Accept-Datetime"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1244,6 +1290,7 @@ function __c5(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://azconfig.io/.default",
           }),
         ),
@@ -1259,7 +1306,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(42, __c5, 2)),
+          items: __S(42, __c5, 2),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "KeyListResult" });
@@ -1310,6 +1357,7 @@ function __c7(j: number): any {
           acceptDatetime: S.optional(S.String.pipe(T.Header("Accept-Datetime"))),
           ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
           ifNoneMatch: S.optional(S.String.pipe(T.Header("If-None-Match"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1318,6 +1366,7 @@ function __c7(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://azconfig.io/.default",
           }),
         ),
@@ -1345,7 +1394,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(65, __c8, 1)),
+          items: __S(65, __c8, 1),
           etag: S.optional(S.String),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
@@ -1365,6 +1414,7 @@ function __c9(j: number): any {
           syncToken: S.optional(S.String.pipe(T.Header("Sync-Token"))),
           acceptDatetime: S.optional(S.String.pipe(T.Header("Accept-Datetime"))),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1373,6 +1423,7 @@ function __c9(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://azconfig.io/.default",
           }),
         ),
@@ -1388,7 +1439,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(74, __c9, 2)),
+          items: __S(74, __c9, 2),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "LabelListResult" });
@@ -1457,6 +1508,7 @@ function __c11(j: number): any {
           syncToken: S.optional(S.String.pipe(T.Header("Sync-Token"))),
           acceptDatetime: S.optional(S.String.pipe(T.Header("Accept-Datetime"))),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1465,6 +1517,7 @@ function __c11(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://azconfig.io/.default",
           }),
         ),
@@ -1530,6 +1583,7 @@ function __c14(j: number): any {
           _Select: S.optional(__S(24, __c3, 0).pipe(T.Query("$Select"))),
           status: S.optional(__S(24, __c3, 0).pipe(T.Query())),
           syncToken: S.optional(S.String.pipe(T.Header("Sync-Token"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1538,6 +1592,7 @@ function __c14(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://azconfig.io/.default",
           }),
         ),
@@ -1564,7 +1619,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(114, __c14, 2)),
+          items: __S(114, __c14, 2),
           _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
         }),
       ).annotate({ identifier: "SnapshotListResult" });

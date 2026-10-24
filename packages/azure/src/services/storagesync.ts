@@ -1409,6 +1409,8 @@ export interface ListCloudEndpointBySyncGroupRequest {
   storageSyncServiceName: string;
   /** Name of Sync Group resource. */
   syncGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Cloud Endpoint object. */
 export interface CloudEndpoint {
@@ -1428,11 +1430,14 @@ export type CloudEndpointArrayValueList = Array<CloudEndpoint>;
 /** Array of CloudEndpoint */
 export interface CloudEndpointArray {
   /** Collection of CloudEndpoint. */
-  value?: CloudEndpointArrayValueList;
+  value: CloudEndpointArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The operation supported by storage sync. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -1519,6 +1524,8 @@ export interface ListPrivateEndpointConnectionByStorageSyncServiceRequest {
   resourceGroupName: string;
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
@@ -1529,7 +1536,7 @@ export type PrivateEndpointConnectionListResultValueList =
 /** List of private endpoint connections associated with the specified resource. */
 export interface PrivateEndpointConnectionListResult {
   /** List of private endpoint connections associated with the specified resource. */
-  value?: PrivateEndpointConnectionListResultValueList;
+  value: PrivateEndpointConnectionListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1581,6 +1588,8 @@ export interface ListRegisteredServerByStorageSyncServiceRequest {
   resourceGroupName: string;
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Registered Server resource. */
 export interface RegisteredServer {
@@ -1600,7 +1609,7 @@ export type RegisteredServerArrayValueList = Array<RegisteredServer>;
 /** Array of RegisteredServer */
 export interface RegisteredServerArray {
   /** Collection of Registered Server. */
-  value?: RegisteredServerArrayValueList;
+  value: RegisteredServerArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1613,6 +1622,8 @@ export interface ListServerEndpointBySyncGroupRequest {
   storageSyncServiceName: string;
   /** Name of Sync Group resource. */
   syncGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Server Endpoint object. */
 export interface ServerEndpoint {
@@ -1632,7 +1643,7 @@ export type ServerEndpointArrayValueList = Array<ServerEndpoint>;
 /** Array of ServerEndpoint */
 export interface ServerEndpointArray {
   /** Collection of ServerEndpoint. */
-  value?: ServerEndpointArrayValueList;
+  value: ServerEndpointArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
   /** Operation Status Location URI */
@@ -1643,6 +1654,8 @@ export interface ListStorageSyncServiceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type StorageSyncServiceTagsMap = { [key: string]: string | undefined };
@@ -1672,13 +1685,15 @@ export type StorageSyncServiceArrayValueList = Array<StorageSyncService>;
 /** Array of StorageSyncServices */
 export interface StorageSyncServiceArray {
   /** Collection of StorageSyncServices. */
-  value?: StorageSyncServiceArrayValueList;
+  value: StorageSyncServiceArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
 export interface ListStorageSyncServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSyncGroupByStorageSyncServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1687,6 +1702,8 @@ export interface ListSyncGroupByStorageSyncServiceRequest {
   resourceGroupName: string;
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Sync Group object. */
 export interface SyncGroup {
@@ -1706,7 +1723,7 @@ export type SyncGroupArrayValueList = Array<SyncGroup>;
 /** Array of SyncGroup */
 export interface SyncGroupArray {
   /** Collection of SyncGroup. */
-  value?: SyncGroupArrayValueList;
+  value: SyncGroupArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1717,6 +1734,8 @@ export interface ListWorkflowByStorageSyncServiceRequest {
   resourceGroupName: string;
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workflow resource. */
 export interface Workflow {
@@ -1736,7 +1755,7 @@ export type WorkflowArrayValueList = Array<Workflow>;
 /** Array of Workflow */
 export interface WorkflowArray {
   /** Collection of workflow items. */
-  value?: WorkflowArrayValueList;
+  value: WorkflowArrayValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -2468,42 +2487,57 @@ export const GetWorkflow: API.OperationMethod<
 
 export type ListCloudEndpointBySyncGroupError = AzureOpError;
 /** Get a CloudEndpoint List. */
-export const ListCloudEndpointBySyncGroup: API.OperationMethod<
+export const ListCloudEndpointBySyncGroup: API.PaginatedOperationMethod<
   ListCloudEndpointBySyncGroupRequest,
   CloudEndpointArray,
   ListCloudEndpointBySyncGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CloudEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c32, 0) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>,
   output: __S(1026, __c32, 2) as any as S.Schema<CloudEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationEntityListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1066, __c33, 10) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByStorageSyncServiceError = AzureOpError;
 /** Get a PrivateEndpointConnection List. */
-export const ListPrivateEndpointConnectionByStorageSyncService: API.OperationMethod<
+export const ListPrivateEndpointConnectionByStorageSyncService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByStorageSyncServiceRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionByStorageSyncServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageSyncServicePropertiesPrivateEndpointConnectionsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1088,
     __c34,
@@ -2513,7 +2547,13 @@ export const ListPrivateEndpointConnectionByStorageSyncService: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByStorageSyncServiceError = AzureOpError;
 /** Gets the private link resources that need to be created for a storage sync service. */
@@ -2536,93 +2576,135 @@ export const ListPrivateLinkResourceByStorageSyncService: API.OperationMethod<
 
 export type ListRegisteredServerByStorageSyncServiceError = AzureOpError;
 /** Get a given registered server list. */
-export const ListRegisteredServerByStorageSyncService: API.OperationMethod<
+export const ListRegisteredServerByStorageSyncService: API.PaginatedOperationMethod<
   ListRegisteredServerByStorageSyncServiceRequest,
   RegisteredServerArray,
   ListRegisteredServerByStorageSyncServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RegisteredServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1248, __c39, 0) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>,
   output: __S(1250, __c39, 2) as any as S.Schema<RegisteredServerArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServerEndpointBySyncGroupError = AzureOpError;
 /** Get a ServerEndpoint list. */
-export const ListServerEndpointBySyncGroup: API.OperationMethod<
+export const ListServerEndpointBySyncGroup: API.PaginatedOperationMethod<
   ListServerEndpointBySyncGroupRequest,
   ServerEndpointArray,
   ListServerEndpointBySyncGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<ListServerEndpointBySyncGroupRequest>,
   output: __S(1282, __c40, 2) as any as S.Schema<ServerEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageSyncServiceByResourceGroupError = AzureOpError;
 /** Get a StorageSyncService list by Resource group name. */
-export const ListStorageSyncServiceByResourceGroup: API.OperationMethod<
+export const ListStorageSyncServiceByResourceGroup: API.PaginatedOperationMethod<
   ListStorageSyncServiceByResourceGroupRequest,
   StorageSyncServiceArray,
   ListStorageSyncServiceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageSyncService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c41, 0) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>,
   output: __S(1345, __c42, 1) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageSyncServiceBySubscriptionError = AzureOpError;
 /** Get a StorageSyncService list by subscription. */
-export const ListStorageSyncServiceBySubscription: API.OperationMethod<
+export const ListStorageSyncServiceBySubscription: API.PaginatedOperationMethod<
   ListStorageSyncServiceBySubscriptionRequest,
   StorageSyncServiceArray,
   ListStorageSyncServiceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageSyncService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1376, __c43, 0) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>,
   output: __S(1345, __c42, 1) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSyncGroupByStorageSyncServiceError = AzureOpError;
 /** Get a SyncGroup List. */
-export const ListSyncGroupByStorageSyncService: API.OperationMethod<
+export const ListSyncGroupByStorageSyncService: API.PaginatedOperationMethod<
   ListSyncGroupByStorageSyncServiceRequest,
   SyncGroupArray,
   ListSyncGroupByStorageSyncServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SyncGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1408, __c44, 0) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>,
   output: __S(1410, __c44, 2) as any as S.Schema<SyncGroupArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowByStorageSyncServiceError = AzureOpError;
 /** Get a Workflow List */
-export const ListWorkflowByStorageSyncService: API.OperationMethod<
+export const ListWorkflowByStorageSyncService: API.PaginatedOperationMethod<
   ListWorkflowByStorageSyncServiceRequest,
   WorkflowArray,
   ListWorkflowByStorageSyncServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workflow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1440, __c45, 0) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>,
   output: __S(1442, __c45, 2) as any as S.Schema<WorkflowArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type LocationOperationStatus2Error = AzureOpError;
 /** Get Operation status */
@@ -3449,12 +3531,14 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCloudEndpointBySyncGroupRequest" });
@@ -3463,7 +3547,7 @@ function __c32(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1025, __c32, 1)),
+          value: __S(1025, __c32, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudEndpointArray" });
@@ -3473,12 +3557,15 @@ function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.StorageSync/operations",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -3557,19 +3644,21 @@ function __c34(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByStorageSyncServiceRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(160, __c5, 0)),
+          value: __S(160, __c5, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -3681,12 +3770,14 @@ function __c39(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRegisteredServerByStorageSyncServiceRequest" });
@@ -3695,7 +3786,7 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1249, __c39, 1)),
+          value: __S(1249, __c39, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisteredServerArray" });
@@ -3710,12 +3801,14 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServerEndpointBySyncGroupRequest" });
@@ -3724,7 +3817,7 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1281, __c40, 1)),
+          value: __S(1281, __c40, 1),
           nextLink: S.optional(S.String),
           location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
@@ -3738,12 +3831,14 @@ function __c41(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageSyncServiceByResourceGroupRequest" });
@@ -3756,7 +3851,7 @@ function __c42(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1344, __c42, 0)),
+          value: __S(1344, __c42, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageSyncServiceArray" });
@@ -3768,12 +3863,14 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageSyncServiceBySubscriptionRequest" });
@@ -3787,12 +3884,14 @@ function __c44(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSyncGroupByStorageSyncServiceRequest" });
@@ -3801,7 +3900,7 @@ function __c44(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1409, __c44, 1)),
+          value: __S(1409, __c44, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncGroupArray" });
@@ -3815,12 +3914,14 @@ function __c45(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
             code: 200,
             apiVersion: "2025-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowByStorageSyncServiceRequest" });
@@ -3829,7 +3930,7 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1441, __c45, 1)),
+          value: __S(1441, __c45, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowArray" });

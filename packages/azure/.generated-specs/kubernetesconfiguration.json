@@ -15,13 +15,75 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.kubernetesconfiguration#OperationStatusGet": "com.azure.kubernetesconfiguration#GetOperationStatus",
+      "com.azure.kubernetesconfiguration#OperationStatusGetRequest": "com.azure.kubernetesconfiguration#GetOperationStatusRequest",
+      "com.azure.kubernetesconfiguration#ExtensionsDelete": "com.azure.kubernetesconfiguration#DeleteExtension",
+      "com.azure.kubernetesconfiguration#ExtensionsDeleteResponse": "com.azure.kubernetesconfiguration#DeleteExtensionResponse",
+      "com.azure.kubernetesconfiguration#ExtensionsDeleteRequest": "com.azure.kubernetesconfiguration#DeleteExtensionRequest",
+      "com.azure.kubernetesconfiguration#ExtensionsUpdate": "com.azure.kubernetesconfiguration#UpdateExtension",
+      "com.azure.kubernetesconfiguration#ExtensionsUpdateResponse": "com.azure.kubernetesconfiguration#UpdateExtensionResponse",
+      "com.azure.kubernetesconfiguration#ExtensionsUpdateResponsePlan": "com.azure.kubernetesconfiguration#UpdateExtensionResponsePlan",
+      "com.azure.kubernetesconfiguration#ExtensionsUpdateResponseIdentity": "com.azure.kubernetesconfiguration#UpdateExtensionResponseIdentity",
+      "com.azure.kubernetesconfiguration#ExtensionsUpdateResponseIdentityType": "com.azure.kubernetesconfiguration#UpdateExtensionResponseIdentityType",
+      "com.azure.kubernetesconfiguration#ExtensionsUpdateRequest": "com.azure.kubernetesconfiguration#UpdateExtensionRequest",
+      "com.azure.kubernetesconfiguration#ExtensionsCreate": "com.azure.kubernetesconfiguration#CreateExtension",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateResponse": "com.azure.kubernetesconfiguration#CreateExtensionResponse",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateResponsePlan": "com.azure.kubernetesconfiguration#CreateExtensionResponsePlan",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateResponseIdentity": "com.azure.kubernetesconfiguration#CreateExtensionResponseIdentity",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateResponseIdentityType": "com.azure.kubernetesconfiguration#CreateExtensionResponseIdentityType",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateRequest": "com.azure.kubernetesconfiguration#CreateExtensionRequest",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateRequestPlan": "com.azure.kubernetesconfiguration#CreateExtensionRequestPlan",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateRequestIdentity": "com.azure.kubernetesconfiguration#CreateExtensionRequestIdentity",
+      "com.azure.kubernetesconfiguration#ExtensionsCreateRequestIdentityType": "com.azure.kubernetesconfiguration#CreateExtensionRequestIdentityType",
+      "com.azure.kubernetesconfiguration#ExtensionsGet": "com.azure.kubernetesconfiguration#GetExtension",
+      "com.azure.kubernetesconfiguration#ExtensionsGetResponse": "com.azure.kubernetesconfiguration#GetExtensionResponse",
+      "com.azure.kubernetesconfiguration#ExtensionsGetResponsePlan": "com.azure.kubernetesconfiguration#GetExtensionResponsePlan",
+      "com.azure.kubernetesconfiguration#ExtensionsGetResponseIdentity": "com.azure.kubernetesconfiguration#GetExtensionResponseIdentity",
+      "com.azure.kubernetesconfiguration#ExtensionsGetResponseIdentityType": "com.azure.kubernetesconfiguration#GetExtensionResponseIdentityType",
+      "com.azure.kubernetesconfiguration#ExtensionsGetRequest": "com.azure.kubernetesconfiguration#GetExtensionRequest",
+      "com.azure.kubernetesconfiguration#ExtensionsList2": "com.azure.kubernetesconfiguration#ListExtensions",
+      "com.azure.kubernetesconfiguration#ExtensionsListRequest": "com.azure.kubernetesconfiguration#ListExtensionsRequest",
+      "com.azure.kubernetesconfiguration#FluxConfigOperationStatusGet": "com.azure.kubernetesconfiguration#GetFluxConfigOperationStatus",
+      "com.azure.kubernetesconfiguration#FluxConfigOperationStatusGetRequest": "com.azure.kubernetesconfiguration#GetFluxConfigOperationStatusRequest",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsDelete": "com.azure.kubernetesconfiguration#DeleteFluxConfiguration",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsDeleteResponse": "com.azure.kubernetesconfiguration#DeleteFluxConfigurationResponse",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsDeleteRequest": "com.azure.kubernetesconfiguration#DeleteFluxConfigurationRequest",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsUpdate": "com.azure.kubernetesconfiguration#UpdateFluxConfiguration",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsUpdateResponse": "com.azure.kubernetesconfiguration#UpdateFluxConfigurationResponse",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsUpdateRequest": "com.azure.kubernetesconfiguration#UpdateFluxConfigurationRequest",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsGet": "com.azure.kubernetesconfiguration#GetFluxConfiguration",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsGetResponse": "com.azure.kubernetesconfiguration#GetFluxConfigurationResponse",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsGetRequest": "com.azure.kubernetesconfiguration#GetFluxConfigurationRequest",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsList2": "com.azure.kubernetesconfiguration#ListFluxConfigurations",
+      "com.azure.kubernetesconfiguration#FluxConfigurationsListRequest": "com.azure.kubernetesconfiguration#ListFluxConfigurationsRequest",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsList": "com.azure.kubernetesconfiguration#ListSourceControlConfigurations",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsListRequest": "com.azure.kubernetesconfiguration#ListSourceControlConfigurationsRequest",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsDelete": "com.azure.kubernetesconfiguration#DeleteSourceControlConfiguration",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsDeleteRequest": "com.azure.kubernetesconfiguration#DeleteSourceControlConfigurationRequest",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGet": "com.azure.kubernetesconfiguration#GetSourceControlConfiguration",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponse": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponse",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemData": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemData",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemDataLastModifiedByType": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemDataLastModifiedByType",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemDataCreatedByType": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemDataCreatedByType",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseProperties": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseProperties",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponsePropertiesProvisioningState": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponsePropertiesProvisioningState",
+      "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetRequest": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationRequest",
+      "com.azure.kubernetesconfiguration#OperationsList": "com.azure.kubernetesconfiguration#ListOperations",
+      "com.azure.kubernetesconfiguration#OperationsListResponse": "com.azure.kubernetesconfiguration#ListOperationsResponse",
+      "com.azure.kubernetesconfiguration#OperationsListResponseValueList": "com.azure.kubernetesconfiguration#ListOperationsResponseValueList",
+      "com.azure.kubernetesconfiguration#OperationsListRequest": "com.azure.kubernetesconfiguration#ListOperationsRequest",
+      "com.azure.kubernetesconfiguration#OperationStatusList": "com.azure.kubernetesconfiguration#ListOperationStatus",
+      "com.azure.kubernetesconfiguration#OperationStatusListResponse": "com.azure.kubernetesconfiguration#ListOperationStatusResponse",
+      "com.azure.kubernetesconfiguration#OperationStatusListResponseValueList": "com.azure.kubernetesconfiguration#ListOperationStatusResponseValueList",
+      "com.azure.kubernetesconfiguration#OperationStatusListRequest": "com.azure.kubernetesconfiguration#ListOperationStatusRequest"
+    }
   },
   "shapes": {
-    "com.azure.kubernetesconfiguration#GetOperationStatus": {
+    "com.azure.kubernetesconfiguration#OperationStatusGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#GetOperationStatusRequest"
+        "target": "com.azure.kubernetesconfiguration#OperationStatusGetRequest"
       },
       "output": {
         "target": "com.azure.kubernetesconfiguration#OperationStatusResult"
@@ -221,7 +283,7 @@
         "smithy.api#documentation": "Additional information, if available."
       }
     },
-    "com.azure.kubernetesconfiguration#GetOperationStatusRequest": {
+    "com.azure.kubernetesconfiguration#OperationStatusGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -284,13 +346,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteExtension": {
+    "com.azure.kubernetesconfiguration#ExtensionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#DeleteExtensionRequest"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#DeleteExtensionResponse"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -303,7 +365,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteExtensionResponse": {
+    "com.azure.kubernetesconfiguration#ExtensionsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -325,7 +387,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteExtensionRequest": {
+    "com.azure.kubernetesconfiguration#ExtensionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -388,13 +450,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateExtension": {
+    "com.azure.kubernetesconfiguration#ExtensionsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#UpdateExtensionRequest"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#UpdateExtensionResponse"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -407,7 +469,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateExtensionResponse": {
+    "com.azure.kubernetesconfiguration#ExtensionsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -441,7 +503,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.kubernetesconfiguration#UpdateExtensionResponseIdentity",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Identity for the resource."
           }
@@ -453,7 +515,7 @@
           }
         },
         "plan": {
-          "target": "com.azure.kubernetesconfiguration#UpdateExtensionResponsePlan",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsUpdateResponsePlan",
           "traits": {
             "smithy.api#documentation": "Plan for the resource."
           }
@@ -477,7 +539,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateExtensionResponsePlan": {
+    "com.azure.kubernetesconfiguration#ExtensionsUpdateResponsePlan": {
       "type": "structure",
       "members": {
         "name": {
@@ -518,7 +580,7 @@
         "smithy.api#documentation": "Plan for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateExtensionResponseIdentity": {
+    "com.azure.kubernetesconfiguration#ExtensionsUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -534,7 +596,7 @@
           }
         },
         "type": {
-          "target": "com.azure.kubernetesconfiguration#UpdateExtensionResponseIdentityType",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsUpdateResponseIdentityType",
           "traits": {
             "smithy.api#documentation": "The identity type."
           }
@@ -544,7 +606,7 @@
         "smithy.api#documentation": "Identity for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateExtensionResponseIdentityType": {
+    "com.azure.kubernetesconfiguration#ExtensionsUpdateResponseIdentityType": {
       "type": "enum",
       "members": {
         "SYSTEMASSIGNED": {
@@ -1241,7 +1303,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateExtensionRequest": {
+    "com.azure.kubernetesconfiguration#ExtensionsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1400,13 +1462,13 @@
         "smithy.api#documentation": "The upgrade mode for auto upgrade.\nThe default is \"compatible\"."
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtension": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#CreateExtensionRequest"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsCreateRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#CreateExtensionResponse"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1419,7 +1481,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionResponse": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1453,7 +1515,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.kubernetesconfiguration#CreateExtensionResponseIdentity",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Identity for the resource."
           }
@@ -1465,7 +1527,7 @@
           }
         },
         "plan": {
-          "target": "com.azure.kubernetesconfiguration#CreateExtensionResponsePlan",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreateResponsePlan",
           "traits": {
             "smithy.api#documentation": "Plan for the resource."
           }
@@ -1489,7 +1551,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionResponsePlan": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateResponsePlan": {
       "type": "structure",
       "members": {
         "name": {
@@ -1530,7 +1592,7 @@
         "smithy.api#documentation": "Plan for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionResponseIdentity": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -1546,7 +1608,7 @@
           }
         },
         "type": {
-          "target": "com.azure.kubernetesconfiguration#CreateExtensionResponseIdentityType",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreateResponseIdentityType",
           "traits": {
             "smithy.api#documentation": "The identity type."
           }
@@ -1556,7 +1618,7 @@
         "smithy.api#documentation": "Identity for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionResponseIdentityType": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateResponseIdentityType": {
       "type": "enum",
       "members": {
         "SYSTEMASSIGNED": {
@@ -1570,7 +1632,7 @@
         "smithy.api#documentation": "The identity type."
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionRequest": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1628,7 +1690,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.kubernetesconfiguration#CreateExtensionRequestIdentity",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Identity for the resource."
           }
@@ -1640,7 +1702,7 @@
           }
         },
         "plan": {
-          "target": "com.azure.kubernetesconfiguration#CreateExtensionRequestPlan",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreateRequestPlan",
           "traits": {
             "smithy.api#documentation": "Plan for the resource."
           }
@@ -1650,7 +1712,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionRequestPlan": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateRequestPlan": {
       "type": "structure",
       "members": {
         "name": {
@@ -1691,11 +1753,11 @@
         "smithy.api#documentation": "Plan for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionRequestIdentity": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.azure.kubernetesconfiguration#CreateExtensionRequestIdentityType",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreateRequestIdentityType",
           "traits": {
             "smithy.api#documentation": "The identity type."
           }
@@ -1705,7 +1767,7 @@
         "smithy.api#documentation": "Identity for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#CreateExtensionRequestIdentityType": {
+    "com.azure.kubernetesconfiguration#ExtensionsCreateRequestIdentityType": {
       "type": "enum",
       "members": {
         "SYSTEMASSIGNED": {
@@ -1908,13 +1970,13 @@
         "smithy.api#documentation": "Configuration settings, as name-value pairs for configuring this extension."
       }
     },
-    "com.azure.kubernetesconfiguration#GetExtension": {
+    "com.azure.kubernetesconfiguration#ExtensionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#GetExtensionRequest"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsGetRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#GetExtensionResponse"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1927,7 +1989,7 @@
         "com.distilled.openapi#apiVersion": "2025-03-01"
       }
     },
-    "com.azure.kubernetesconfiguration#GetExtensionResponse": {
+    "com.azure.kubernetesconfiguration#ExtensionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1961,7 +2023,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.kubernetesconfiguration#GetExtensionResponseIdentity",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Identity for the resource."
           }
@@ -1973,7 +2035,7 @@
           }
         },
         "plan": {
-          "target": "com.azure.kubernetesconfiguration#GetExtensionResponsePlan",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsGetResponsePlan",
           "traits": {
             "smithy.api#documentation": "Plan for the resource."
           }
@@ -1983,7 +2045,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#GetExtensionResponsePlan": {
+    "com.azure.kubernetesconfiguration#ExtensionsGetResponsePlan": {
       "type": "structure",
       "members": {
         "name": {
@@ -2024,7 +2086,7 @@
         "smithy.api#documentation": "Plan for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#GetExtensionResponseIdentity": {
+    "com.azure.kubernetesconfiguration#ExtensionsGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -2040,7 +2102,7 @@
           }
         },
         "type": {
-          "target": "com.azure.kubernetesconfiguration#GetExtensionResponseIdentityType",
+          "target": "com.azure.kubernetesconfiguration#ExtensionsGetResponseIdentityType",
           "traits": {
             "smithy.api#documentation": "The identity type."
           }
@@ -2050,7 +2112,7 @@
         "smithy.api#documentation": "Identity for the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#GetExtensionResponseIdentityType": {
+    "com.azure.kubernetesconfiguration#ExtensionsGetResponseIdentityType": {
       "type": "enum",
       "members": {
         "SYSTEMASSIGNED": {
@@ -2064,7 +2126,7 @@
         "smithy.api#documentation": "The identity type."
       }
     },
-    "com.azure.kubernetesconfiguration#GetExtensionRequest": {
+    "com.azure.kubernetesconfiguration#ExtensionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2120,10 +2182,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#ListExtensions": {
+    "com.azure.kubernetesconfiguration#ExtensionsList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#ListExtensionsRequest"
+        "target": "com.azure.kubernetesconfiguration#ExtensionsListRequest"
       },
       "output": {
         "target": "com.azure.kubernetesconfiguration#ExtensionsList"
@@ -2133,10 +2195,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/extensions",
           "code": 200,
-          "apiVersion": "2025-03-01"
+          "apiVersion": "2025-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Extensions in the cluster.",
-        "com.distilled.openapi#apiVersion": "2025-03-01"
+        "com.distilled.openapi#apiVersion": "2025-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.kubernetesconfiguration#ExtensionsList": {
@@ -2306,7 +2375,7 @@
         "smithy.api#documentation": "The identity type."
       }
     },
-    "com.azure.kubernetesconfiguration#ListExtensionsRequest": {
+    "com.azure.kubernetesconfiguration#ExtensionsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2348,16 +2417,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the kubernetes cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#GetFluxConfigOperationStatus": {
+    "com.azure.kubernetesconfiguration#FluxConfigOperationStatusGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#GetFluxConfigOperationStatusRequest"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigOperationStatusGetRequest"
       },
       "output": {
         "target": "com.azure.kubernetesconfiguration#OperationStatusResult_2"
@@ -2412,7 +2487,7 @@
         "smithy.api#documentation": "The current status of an async operation."
       }
     },
-    "com.azure.kubernetesconfiguration#GetFluxConfigOperationStatusRequest": {
+    "com.azure.kubernetesconfiguration#FluxConfigOperationStatusGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2475,13 +2550,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteFluxConfiguration": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#DeleteFluxConfigurationRequest"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#DeleteFluxConfigurationResponse"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2494,7 +2569,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteFluxConfigurationResponse": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -2516,7 +2591,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteFluxConfigurationRequest": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2579,13 +2654,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateFluxConfiguration": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#UpdateFluxConfigurationRequest"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#UpdateFluxConfigurationResponse"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2598,7 +2673,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateFluxConfigurationResponse": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3830,7 +3905,7 @@
         "smithy.api#documentation": "Scope at which the operator will be installed."
       }
     },
-    "com.azure.kubernetesconfiguration#UpdateFluxConfigurationRequest": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5012,13 +5087,13 @@
         "smithy.api#documentation": "Scope at which the operator will be installed."
       }
     },
-    "com.azure.kubernetesconfiguration#GetFluxConfiguration": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#GetFluxConfigurationRequest"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsGetRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#GetFluxConfigurationResponse"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5031,7 +5106,7 @@
         "com.distilled.openapi#apiVersion": "2025-04-01"
       }
     },
-    "com.azure.kubernetesconfiguration#GetFluxConfigurationResponse": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5069,7 +5144,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#GetFluxConfigurationRequest": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5125,10 +5200,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#ListFluxConfigurations": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#ListFluxConfigurationsRequest"
+        "target": "com.azure.kubernetesconfiguration#FluxConfigurationsListRequest"
       },
       "output": {
         "target": "com.azure.kubernetesconfiguration#FluxConfigurationsList"
@@ -5138,10 +5213,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/fluxConfigurations",
           "code": 200,
-          "apiVersion": "2025-04-01"
+          "apiVersion": "2025-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Flux Configurations.",
-        "com.distilled.openapi#apiVersion": "2025-04-01"
+        "com.distilled.openapi#apiVersion": "2025-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.kubernetesconfiguration#FluxConfigurationsList": {
@@ -5212,7 +5294,7 @@
         "smithy.api#documentation": "The Flux Configuration object returned in Get & Put response."
       }
     },
-    "com.azure.kubernetesconfiguration#ListFluxConfigurationsRequest": {
+    "com.azure.kubernetesconfiguration#FluxConfigurationsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5254,16 +5336,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the kubernetes cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#ListSourceControlConfigurations": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#ListSourceControlConfigurationsRequest"
+        "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsListRequest"
       },
       "output": {
         "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationList"
@@ -5273,10 +5361,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations",
           "code": 200,
-          "apiVersion": "2023-05-01"
+          "apiVersion": "2023-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Source Control Configurations.",
-        "com.distilled.openapi#apiVersion": "2023-05-01"
+        "com.distilled.openapi#apiVersion": "2023-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.kubernetesconfiguration#SourceControlConfigurationList": {
@@ -5740,7 +5835,7 @@
         "smithy.api#documentation": "Type of the operator"
       }
     },
-    "com.azure.kubernetesconfiguration#ListSourceControlConfigurationsRequest": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5782,16 +5877,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the kubernetes cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteSourceControlConfiguration": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#DeleteSourceControlConfigurationRequest"
+        "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5807,7 +5908,7 @@
         "com.distilled.openapi#apiVersion": "2023-05-01"
       }
     },
-    "com.azure.kubernetesconfiguration#DeleteSourceControlConfigurationRequest": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6282,13 +6383,13 @@
         "smithy.api#documentation": "Properties to create a Source Control Configuration resource"
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfiguration": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationRequest"
+        "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponse"
+        "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6301,7 +6402,7 @@
         "com.distilled.openapi#apiVersion": "2023-05-01"
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponse": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6323,13 +6424,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseProperties",
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseProperties",
           "traits": {
             "smithy.api#documentation": "Properties to create a Source Control Configuration resource"
           }
         },
         "systemData": {
-          "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemData",
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -6339,7 +6440,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemData": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -6349,7 +6450,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemDataCreatedByType",
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -6367,7 +6468,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemDataLastModifiedByType",
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -6383,7 +6484,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemDataLastModifiedByType": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -6415,7 +6516,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseSystemDataCreatedByType": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -6447,7 +6548,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponseProperties": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponseProperties": {
       "type": "structure",
       "members": {
         "repositoryUrl": {
@@ -6517,7 +6618,7 @@
           }
         },
         "provisioningState": {
-          "target": "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponsePropertiesProvisioningState",
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponsePropertiesProvisioningState",
           "traits": {
             "smithy.api#documentation": "The provisioning state of the resource provider."
           }
@@ -6533,7 +6634,7 @@
         "smithy.api#documentation": "Properties to create a Source Control Configuration resource"
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationResponsePropertiesProvisioningState": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetResponsePropertiesProvisioningState": {
       "type": "enum",
       "members": {
         "ACCEPTED": {
@@ -6571,7 +6672,7 @@
         "smithy.api#documentation": "The provisioning state of the resource provider."
       }
     },
-    "com.azure.kubernetesconfiguration#GetSourceControlConfigurationRequest": {
+    "com.azure.kubernetesconfiguration#SourceControlConfigurationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6627,30 +6728,37 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperations": {
+    "com.azure.kubernetesconfiguration#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.kubernetesconfiguration#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#ListOperationsResponse"
+        "target": "com.azure.kubernetesconfiguration#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.KubernetesConfiguration/operations",
           "code": 200,
-          "apiVersion": "2023-05-01"
+          "apiVersion": "2023-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the available operations the KubernetesConfiguration resource provider supports.",
-        "com.distilled.openapi#apiVersion": "2023-05-01"
+        "com.distilled.openapi#apiVersion": "2023-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperationsResponse": {
+    "com.azure.kubernetesconfiguration#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.kubernetesconfiguration#ListOperationsResponseValueList",
+          "target": "com.azure.kubernetesconfiguration#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by this resource provider."
           }
@@ -6666,7 +6774,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperationsResponseValueList": {
+    "com.azure.kubernetesconfiguration#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.kubernetesconfiguration#ResourceProviderOperation"
@@ -6739,30 +6847,51 @@
         "smithy.api#documentation": "Display metadata associated with the operation."
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperationStatus": {
+    "com.azure.kubernetesconfiguration#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.kubernetesconfiguration#OperationStatusList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.kubernetesconfiguration#ListOperationStatusRequest"
+        "target": "com.azure.kubernetesconfiguration#OperationStatusListRequest"
       },
       "output": {
-        "target": "com.azure.kubernetesconfiguration#ListOperationStatusResponse"
+        "target": "com.azure.kubernetesconfiguration#OperationStatusListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/operations",
           "code": 200,
-          "apiVersion": "2023-05-01"
+          "apiVersion": "2023-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Async Operations, currently in progress, in a cluster",
-        "com.distilled.openapi#apiVersion": "2023-05-01"
+        "com.distilled.openapi#apiVersion": "2023-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperationStatusResponse": {
+    "com.azure.kubernetesconfiguration#OperationStatusListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.kubernetesconfiguration#ListOperationStatusResponseValueList",
+          "target": "com.azure.kubernetesconfiguration#OperationStatusListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of async operations in progress, in the cluster."
           }
@@ -6778,7 +6907,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperationStatusResponseValueList": {
+    "com.azure.kubernetesconfiguration#OperationStatusListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.kubernetesconfiguration#OperationStatusResult"
@@ -6787,7 +6916,7 @@
         "smithy.api#documentation": "List of async operations in progress, in the cluster."
       }
     },
-    "com.azure.kubernetesconfiguration#ListOperationStatusRequest": {
+    "com.azure.kubernetesconfiguration#OperationStatusListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6829,6 +6958,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the kubernetes cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6840,58 +6975,58 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.kubernetesconfiguration#GetOperationStatus"
+          "target": "com.azure.kubernetesconfiguration#OperationStatusGet"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#DeleteExtension"
+          "target": "com.azure.kubernetesconfiguration#ExtensionsDelete"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#UpdateExtension"
+          "target": "com.azure.kubernetesconfiguration#ExtensionsUpdate"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#CreateExtension"
+          "target": "com.azure.kubernetesconfiguration#ExtensionsCreate"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#GetExtension"
+          "target": "com.azure.kubernetesconfiguration#ExtensionsGet"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#ListExtensions"
+          "target": "com.azure.kubernetesconfiguration#ExtensionsList2"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#GetFluxConfigOperationStatus"
+          "target": "com.azure.kubernetesconfiguration#FluxConfigOperationStatusGet"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#DeleteFluxConfiguration"
+          "target": "com.azure.kubernetesconfiguration#FluxConfigurationsDelete"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#UpdateFluxConfiguration"
+          "target": "com.azure.kubernetesconfiguration#FluxConfigurationsUpdate"
         },
         {
           "target": "com.azure.kubernetesconfiguration#FluxConfigurationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#GetFluxConfiguration"
+          "target": "com.azure.kubernetesconfiguration#FluxConfigurationsGet"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#ListFluxConfigurations"
+          "target": "com.azure.kubernetesconfiguration#FluxConfigurationsList2"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#ListSourceControlConfigurations"
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsList"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#DeleteSourceControlConfiguration"
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsDelete"
         },
         {
           "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#GetSourceControlConfiguration"
+          "target": "com.azure.kubernetesconfiguration#SourceControlConfigurationsGet"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#ListOperations"
+          "target": "com.azure.kubernetesconfiguration#OperationsList"
         },
         {
-          "target": "com.azure.kubernetesconfiguration#ListOperationStatus"
+          "target": "com.azure.kubernetesconfiguration#OperationStatusList"
         }
       ],
       "traits": {

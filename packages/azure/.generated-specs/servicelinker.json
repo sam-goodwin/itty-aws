@@ -15,13 +15,84 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.servicelinker#LinkersListDaprConfigurations": "com.azure.servicelinker#ListLinkerDaprConfigurations",
+      "com.azure.servicelinker#LinkersListDaprConfigurationsRequest": "com.azure.servicelinker#ListLinkerDaprConfigurationsRequest",
+      "com.azure.servicelinker#ConfigurationNamesList": "com.azure.servicelinker#ListConfigurationNames",
+      "com.azure.servicelinker#ConfigurationNamesListRequest": "com.azure.servicelinker#ListConfigurationNamesRequest",
+      "com.azure.servicelinker#OperationsList": "com.azure.servicelinker#ListOperations",
+      "com.azure.servicelinker#OperationsListResponse": "com.azure.servicelinker#ListOperationsResponse",
+      "com.azure.servicelinker#OperationsListResponseValueList": "com.azure.servicelinker#ListOperationsResponseValueList",
+      "com.azure.servicelinker#OperationsListRequest": "com.azure.servicelinker#ListOperationsRequest",
+      "com.azure.servicelinker#LinkersGenerateConfigurations": "com.azure.servicelinker#GenerateLinkerConfigurations",
+      "com.azure.servicelinker#LinkersGenerateConfigurationsRequest": "com.azure.servicelinker#GenerateLinkerConfigurationsRequest",
+      "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap": "com.azure.servicelinker#GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap",
+      "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap": "com.azure.servicelinker#GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap",
+      "com.azure.servicelinker#LinkersGenerateConfigurationsRequestCustomizedKeysMap": "com.azure.servicelinker#GenerateLinkerConfigurationsRequestCustomizedKeysMap",
+      "com.azure.servicelinker#LinkersDeleteDryrun": "com.azure.servicelinker#DeleteLinkerDryrun",
+      "com.azure.servicelinker#LinkersDeleteDryrunRequest": "com.azure.servicelinker#DeleteLinkerDryrunRequest",
+      "com.azure.servicelinker#LinkersUpdateDryrun": "com.azure.servicelinker#UpdateLinkerDryrun",
+      "com.azure.servicelinker#LinkersUpdateDryrunResponse": "com.azure.servicelinker#UpdateLinkerDryrunResponse",
+      "com.azure.servicelinker#LinkersUpdateDryrunRequest": "com.azure.servicelinker#UpdateLinkerDryrunRequest",
+      "com.azure.servicelinker#LinkersCreateDryrun": "com.azure.servicelinker#CreateLinkerDryrun",
+      "com.azure.servicelinker#LinkersCreateDryrunResponse": "com.azure.servicelinker#CreateLinkerDryrunResponse",
+      "com.azure.servicelinker#LinkersCreateDryrunRequest": "com.azure.servicelinker#CreateLinkerDryrunRequest",
+      "com.azure.servicelinker#LinkersGetDryrun": "com.azure.servicelinker#GetLinkerDryrun",
+      "com.azure.servicelinker#LinkersGetDryrunResponse": "com.azure.servicelinker#GetLinkerDryrunResponse",
+      "com.azure.servicelinker#LinkersGetDryrunRequest": "com.azure.servicelinker#GetLinkerDryrunRequest",
+      "com.azure.servicelinker#LinkersListDryrun": "com.azure.servicelinker#ListLinkerDryrun",
+      "com.azure.servicelinker#LinkersListDryrunRequest": "com.azure.servicelinker#ListLinkerDryrunRequest",
+      "com.azure.servicelinker#LinkerListConfigurations": "com.azure.servicelinker#ListLinkerConfigurations",
+      "com.azure.servicelinker#LinkerListConfigurationsRequest": "com.azure.servicelinker#ListLinkerConfigurationsRequest",
+      "com.azure.servicelinker#LinkerValidate": "com.azure.servicelinker#ValidateLinker",
+      "com.azure.servicelinker#LinkerValidateRequest": "com.azure.servicelinker#ValidateLinkerRequest",
+      "com.azure.servicelinker#LinkerDelete": "com.azure.servicelinker#DeleteLinker",
+      "com.azure.servicelinker#LinkerDeleteRequest": "com.azure.servicelinker#DeleteLinkerRequest",
+      "com.azure.servicelinker#LinkerUpdate": "com.azure.servicelinker#UpdateLinker",
+      "com.azure.servicelinker#LinkerUpdateResponse": "com.azure.servicelinker#UpdateLinkerResponse",
+      "com.azure.servicelinker#LinkerUpdateRequest": "com.azure.servicelinker#UpdateLinkerRequest",
+      "com.azure.servicelinker#LinkerGet": "com.azure.servicelinker#GetLinker",
+      "com.azure.servicelinker#LinkerGetResponse": "com.azure.servicelinker#GetLinkerResponse",
+      "com.azure.servicelinker#LinkerGetRequest": "com.azure.servicelinker#GetLinkerRequest",
+      "com.azure.servicelinker#LinkerList": "com.azure.servicelinker#ListLinker",
+      "com.azure.servicelinker#LinkerListRequest": "com.azure.servicelinker#ListLinkerRequest",
+      "com.azure.servicelinker#ConnectorGenerateConfigurations": "com.azure.servicelinker#GenerateConnectorConfigurations",
+      "com.azure.servicelinker#ConnectorGenerateConfigurationsRequest": "com.azure.servicelinker#GenerateConnectorConfigurationsRequest",
+      "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap": "com.azure.servicelinker#GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap",
+      "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap": "com.azure.servicelinker#GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap",
+      "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestCustomizedKeysMap": "com.azure.servicelinker#GenerateConnectorConfigurationsRequestCustomizedKeysMap",
+      "com.azure.servicelinker#ConnectorValidate": "com.azure.servicelinker#ValidateConnector",
+      "com.azure.servicelinker#ConnectorValidateRequest": "com.azure.servicelinker#ValidateConnectorRequest",
+      "com.azure.servicelinker#ConnectorDelete": "com.azure.servicelinker#DeleteConnector",
+      "com.azure.servicelinker#ConnectorDeleteRequest": "com.azure.servicelinker#DeleteConnectorRequest",
+      "com.azure.servicelinker#ConnectorUpdate": "com.azure.servicelinker#UpdateConnector",
+      "com.azure.servicelinker#ConnectorUpdateResponse": "com.azure.servicelinker#UpdateConnectorResponse",
+      "com.azure.servicelinker#ConnectorUpdateRequest": "com.azure.servicelinker#UpdateConnectorRequest",
+      "com.azure.servicelinker#ConnectorGet": "com.azure.servicelinker#GetConnector",
+      "com.azure.servicelinker#ConnectorGetResponse": "com.azure.servicelinker#GetConnectorResponse",
+      "com.azure.servicelinker#ConnectorGetRequest": "com.azure.servicelinker#GetConnectorRequest",
+      "com.azure.servicelinker#ConnectorList": "com.azure.servicelinker#ListConnector",
+      "com.azure.servicelinker#ConnectorListRequest": "com.azure.servicelinker#ListConnectorRequest",
+      "com.azure.servicelinker#ConnectorDeleteDryrun": "com.azure.servicelinker#DeleteConnectorDryrun",
+      "com.azure.servicelinker#ConnectorDeleteDryrunRequest": "com.azure.servicelinker#DeleteConnectorDryrunRequest",
+      "com.azure.servicelinker#ConnectorUpdateDryrun": "com.azure.servicelinker#UpdateConnectorDryrun",
+      "com.azure.servicelinker#ConnectorUpdateDryrunResponse": "com.azure.servicelinker#UpdateConnectorDryrunResponse",
+      "com.azure.servicelinker#ConnectorUpdateDryrunRequest": "com.azure.servicelinker#UpdateConnectorDryrunRequest",
+      "com.azure.servicelinker#ConnectorCreateDryrun": "com.azure.servicelinker#CreateConnectorDryrun",
+      "com.azure.servicelinker#ConnectorCreateDryrunResponse": "com.azure.servicelinker#CreateConnectorDryrunResponse",
+      "com.azure.servicelinker#ConnectorCreateDryrunRequest": "com.azure.servicelinker#CreateConnectorDryrunRequest",
+      "com.azure.servicelinker#ConnectorGetDryrun": "com.azure.servicelinker#GetConnectorDryrun",
+      "com.azure.servicelinker#ConnectorGetDryrunResponse": "com.azure.servicelinker#GetConnectorDryrunResponse",
+      "com.azure.servicelinker#ConnectorGetDryrunRequest": "com.azure.servicelinker#GetConnectorDryrunRequest",
+      "com.azure.servicelinker#ConnectorListDryrun": "com.azure.servicelinker#ListConnectorDryrun",
+      "com.azure.servicelinker#ConnectorListDryrunRequest": "com.azure.servicelinker#ListConnectorDryrunRequest"
+    }
   },
   "shapes": {
-    "com.azure.servicelinker#ListLinkerDaprConfigurations": {
+    "com.azure.servicelinker#LinkersListDaprConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListLinkerDaprConfigurationsRequest"
+        "target": "com.azure.servicelinker#LinkersListDaprConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#DaprConfigurationList"
@@ -31,10 +102,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ServiceLinker/daprConfigurations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the dapr configuration supported by Service Connector.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicelinker#DaprConfigurationList": {
@@ -305,7 +383,7 @@
         "smithy.api#documentation": "The authentication type."
       }
     },
-    "com.azure.servicelinker#ListLinkerDaprConfigurationsRequest": {
+    "com.azure.servicelinker#LinkersListDaprConfigurationsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -315,16 +393,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource to be connected."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListConfigurationNames": {
+    "com.azure.servicelinker#ConfigurationNamesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListConfigurationNamesRequest"
+        "target": "com.azure.servicelinker#ConfigurationNamesListRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ConfigurationNameResult"
@@ -334,10 +418,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ServiceLinker/configurationNames",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the configuration names generated by Service Connector for all target, client types, auth types.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicelinker#ConfigurationNameResult": {
@@ -564,7 +655,7 @@
         "smithy.api#documentation": "The application client type"
       }
     },
-    "com.azure.servicelinker#ListConfigurationNamesRequest": {
+    "com.azure.servicelinker#ConfigurationNamesListRequest": {
       "type": "structure",
       "members": {
         "_filter": {
@@ -580,36 +671,49 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "OData skipToken option for pagination."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListOperations": {
+    "com.azure.servicelinker#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.servicelinker#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#ListOperationsResponse"
+        "target": "com.azure.servicelinker#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.ServiceLinker/operations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available ServiceLinker REST API operations.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.servicelinker#ListOperationsResponse": {
+    "com.azure.servicelinker#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.servicelinker#ListOperationsResponseValueList",
+          "target": "com.azure.servicelinker#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -625,7 +729,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#ListOperationsResponseValueList": {
+    "com.azure.servicelinker#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.servicelinker#Operation"
@@ -744,10 +848,24 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.servicelinker#GenerateLinkerConfigurations": {
+    "com.azure.servicelinker#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicelinker#LinkersGenerateConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#GenerateLinkerConfigurationsRequest"
+        "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ConfigurationResult"
@@ -847,7 +965,7 @@
         "smithy.api#documentation": "Type of configuration to determine whether the configuration can be modified after creation. KeyvaultSecret means the configuration references a key vault secret, such as App Service/ACA key vault reference. Default means the configuration is real value, such as user name, raw secret, etc."
       }
     },
-    "com.azure.servicelinker#GenerateLinkerConfigurationsRequest": {
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -879,7 +997,7 @@
           }
         },
         "customizedKeys": {
-          "target": "com.azure.servicelinker#GenerateLinkerConfigurationsRequestCustomizedKeysMap",
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequestCustomizedKeysMap",
           "traits": {
             "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
           }
@@ -891,13 +1009,13 @@
           }
         },
         "additionalConfigurations": {
-          "target": "com.azure.servicelinker#GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap",
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap",
           "traits": {
             "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
           }
         },
         "additionalConnectionStringProperties": {
-          "target": "com.azure.servicelinker#GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap",
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap",
           "traits": {
             "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
           }
@@ -929,7 +1047,7 @@
         "smithy.api#documentation": "An option to store configuration into different place"
       }
     },
-    "com.azure.servicelinker#GenerateLinkerConfigurationsRequestAdditionalConnectionStringPropertiesMap": {
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -941,7 +1059,7 @@
         "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
       }
     },
-    "com.azure.servicelinker#GenerateLinkerConfigurationsRequestAdditionalConfigurationsMap": {
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1012,7 +1130,7 @@
         "smithy.api#documentation": "Additional dapr metadata"
       }
     },
-    "com.azure.servicelinker#GenerateLinkerConfigurationsRequestCustomizedKeysMap": {
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequestCustomizedKeysMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1064,10 +1182,10 @@
         "smithy.api#documentation": "The cleanup behavior to indicate whether clean up operation when resource is deleted or updated"
       }
     },
-    "com.azure.servicelinker#DeleteLinkerDryrun": {
+    "com.azure.servicelinker#LinkersDeleteDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#DeleteLinkerDryrunRequest"
+        "target": "com.azure.servicelinker#LinkersDeleteDryrunRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1083,7 +1201,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#DeleteLinkerDryrunRequest": {
+    "com.azure.servicelinker#LinkersDeleteDryrunRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1107,13 +1225,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#UpdateLinkerDryrun": {
+    "com.azure.servicelinker#LinkersUpdateDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#UpdateLinkerDryrunRequest"
+        "target": "com.azure.servicelinker#LinkersUpdateDryrunRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#UpdateLinkerDryrunResponse"
+        "target": "com.azure.servicelinker#LinkersUpdateDryrunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1126,7 +1244,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#UpdateLinkerDryrunResponse": {
+    "com.azure.servicelinker#LinkersUpdateDryrunResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1448,7 +1566,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.servicelinker#UpdateLinkerDryrunRequest": {
+    "com.azure.servicelinker#LinkersUpdateDryrunRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1492,13 +1610,13 @@
         "smithy.api#documentation": "The properties of the dryrun job"
       }
     },
-    "com.azure.servicelinker#CreateLinkerDryrun": {
+    "com.azure.servicelinker#LinkersCreateDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#CreateLinkerDryrunRequest"
+        "target": "com.azure.servicelinker#LinkersCreateDryrunRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#CreateLinkerDryrunResponse"
+        "target": "com.azure.servicelinker#LinkersCreateDryrunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1511,7 +1629,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#CreateLinkerDryrunResponse": {
+    "com.azure.servicelinker#LinkersCreateDryrunResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1549,7 +1667,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#CreateLinkerDryrunRequest": {
+    "com.azure.servicelinker#LinkersCreateDryrunRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1579,13 +1697,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#GetLinkerDryrun": {
+    "com.azure.servicelinker#LinkersGetDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#GetLinkerDryrunRequest"
+        "target": "com.azure.servicelinker#LinkersGetDryrunRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#GetLinkerDryrunResponse"
+        "target": "com.azure.servicelinker#LinkersGetDryrunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1598,7 +1716,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#GetLinkerDryrunResponse": {
+    "com.azure.servicelinker#LinkersGetDryrunResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1636,7 +1754,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#GetLinkerDryrunRequest": {
+    "com.azure.servicelinker#LinkersGetDryrunRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1660,10 +1778,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListLinkerDryrun": {
+    "com.azure.servicelinker#LinkersListDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListLinkerDryrunRequest"
+        "target": "com.azure.servicelinker#LinkersListDryrunRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#DryrunList"
@@ -1673,10 +1791,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "list dryrun jobs",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicelinker#DryrunList": {
@@ -1747,7 +1872,7 @@
         "smithy.api#documentation": "a dryrun job resource"
       }
     },
-    "com.azure.servicelinker#ListLinkerDryrunRequest": {
+    "com.azure.servicelinker#LinkersListDryrunRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1757,16 +1882,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource to be connected."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListLinkerConfigurations": {
+    "com.azure.servicelinker#LinkerListConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListLinkerConfigurationsRequest"
+        "target": "com.azure.servicelinker#LinkerListConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ConfigurationResult"
@@ -1782,7 +1913,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#ListLinkerConfigurationsRequest": {
+    "com.azure.servicelinker#LinkerListConfigurationsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -1806,10 +1937,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ValidateLinker": {
+    "com.azure.servicelinker#LinkerValidate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ValidateLinkerRequest"
+        "target": "com.azure.servicelinker#LinkerValidateRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ValidateOperationResult"
@@ -1994,7 +2125,7 @@
         "smithy.api#documentation": "The result of validation"
       }
     },
-    "com.azure.servicelinker#ValidateLinkerRequest": {
+    "com.azure.servicelinker#LinkerValidateRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2018,10 +2149,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#DeleteLinker": {
+    "com.azure.servicelinker#LinkerDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#DeleteLinkerRequest"
+        "target": "com.azure.servicelinker#LinkerDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2037,7 +2168,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#DeleteLinkerRequest": {
+    "com.azure.servicelinker#LinkerDeleteRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2061,13 +2192,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#UpdateLinker": {
+    "com.azure.servicelinker#LinkerUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#UpdateLinkerRequest"
+        "target": "com.azure.servicelinker#LinkerUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#UpdateLinkerResponse"
+        "target": "com.azure.servicelinker#LinkerUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2080,7 +2211,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#UpdateLinkerResponse": {
+    "com.azure.servicelinker#LinkerUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2432,74 +2563,6 @@
           "traits": {
             "smithy.api#documentation": "Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth."
           }
-        },
-        "userName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Username created in the database mapped to the identity/user (identity, userAccount, servicePrincipal* auth types)."
-          }
-        },
-        "deleteOrUpdateBehavior": {
-          "target": "com.azure.servicelinker#DeleteOrUpdateBehavior",
-          "traits": {
-            "smithy.api#documentation": "Indicates whether to clean up previous operation when Linker is updating or deleting."
-          }
-        },
-        "roles": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Optional, the RBAC role names to grant on the target (string array)."
-          }
-        },
-        "clientId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Client Id of the user-assigned identity or service principal (`userAssignedIdentity`, `servicePrincipal*`)."
-          }
-        },
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Subscription id of the user-assigned identity (`userAssignedIdentity`)."
-          }
-        },
-        "principalId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Principal Id of the service principal or user (`servicePrincipal*`, `userAccount`)."
-          }
-        },
-        "secret": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Secret of the service principal (`servicePrincipalSecret`).",
-            "smithy.api#sensitive": {}
-          }
-        },
-        "certificate": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ServicePrincipal certificate (`servicePrincipalCertificate`).",
-            "smithy.api#sensitive": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Username or account name for secret auth (`secret`)."
-          }
-        },
-        "secretInfo": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Password or key vault secret for secret auth (`secret`), polymorphic on `secretType`: `{ secretType: \"rawValue\", value }`, `{ secretType: \"keyVaultSecretReference\", name, version }`, `{ secretType: \"keyVaultSecretUri\", value }`."
-          }
-        },
-        "permissions": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Permissions of the accessKey (`accessKey`): string array of `Read`, `Write`, `Listen`, `Send`, `Manage`."
-          }
         }
       },
       "traits": {
@@ -2534,24 +2597,6 @@
           "traits": {
             "smithy.api#documentation": "The target service type.",
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The Id of the target Azure resource (`type: AzureResource`)."
-          }
-        },
-        "resourceProperties": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Additional target resource properties (`type: AzureResource`), polymorphic on `type`, e.g. `{ type: \"KeyVault\", connectAsKubernetesCsiDriver: true }`."
-          }
-        },
-        "endpoint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The endpoint of the service (`type: ConfluentBootstrapServer | ConfluentSchemaRegistry | SelfHostedServer`)."
           }
         }
       },
@@ -2591,7 +2636,7 @@
         "smithy.api#documentation": "The target service type."
       }
     },
-    "com.azure.servicelinker#UpdateLinkerRequest": {
+    "com.azure.servicelinker#LinkerUpdateRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2858,13 +2903,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#GetLinker": {
+    "com.azure.servicelinker#LinkerGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#GetLinkerRequest"
+        "target": "com.azure.servicelinker#LinkerGetRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#GetLinkerResponse"
+        "target": "com.azure.servicelinker#LinkerGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2877,7 +2922,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#GetLinkerResponse": {
+    "com.azure.servicelinker#LinkerGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2916,7 +2961,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#GetLinkerRequest": {
+    "com.azure.servicelinker#LinkerGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2940,10 +2985,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListLinker": {
+    "com.azure.servicelinker#LinkerList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListLinkerRequest"
+        "target": "com.azure.servicelinker#LinkerListRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ResourceList"
@@ -2953,10 +2998,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of Linkers which connects to the resource. which supports to config both application and target service during the resource provision.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.servicelinker#ResourceList": {
@@ -3028,7 +3080,7 @@
         "smithy.api#documentation": "Linker of source and target resource"
       }
     },
-    "com.azure.servicelinker#ListLinkerRequest": {
+    "com.azure.servicelinker#LinkerListRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3038,16 +3090,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource to be connected."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#GenerateConnectorConfigurations": {
+    "com.azure.servicelinker#ConnectorGenerateConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#GenerateConnectorConfigurationsRequest"
+        "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ConfigurationResult"
@@ -3063,7 +3121,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#GenerateConnectorConfigurationsRequest": {
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3111,7 +3169,7 @@
           }
         },
         "customizedKeys": {
-          "target": "com.azure.servicelinker#GenerateConnectorConfigurationsRequestCustomizedKeysMap",
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestCustomizedKeysMap",
           "traits": {
             "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
           }
@@ -3123,13 +3181,13 @@
           }
         },
         "additionalConfigurations": {
-          "target": "com.azure.servicelinker#GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap",
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap",
           "traits": {
             "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
           }
         },
         "additionalConnectionStringProperties": {
-          "target": "com.azure.servicelinker#GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap",
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap",
           "traits": {
             "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
           }
@@ -3146,7 +3204,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#GenerateConnectorConfigurationsRequestAdditionalConnectionStringPropertiesMap": {
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3158,7 +3216,7 @@
         "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
       }
     },
-    "com.azure.servicelinker#GenerateConnectorConfigurationsRequestAdditionalConfigurationsMap": {
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3170,7 +3228,7 @@
         "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
       }
     },
-    "com.azure.servicelinker#GenerateConnectorConfigurationsRequestCustomizedKeysMap": {
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestCustomizedKeysMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3182,10 +3240,10 @@
         "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
       }
     },
-    "com.azure.servicelinker#ValidateConnector": {
+    "com.azure.servicelinker#ConnectorValidate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ValidateConnectorRequest"
+        "target": "com.azure.servicelinker#ConnectorValidateRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ValidateOperationResult"
@@ -3201,7 +3259,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#ValidateConnectorRequest": {
+    "com.azure.servicelinker#ConnectorValidateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3241,10 +3299,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#DeleteConnector": {
+    "com.azure.servicelinker#ConnectorDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#DeleteConnectorRequest"
+        "target": "com.azure.servicelinker#ConnectorDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3260,7 +3318,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#DeleteConnectorRequest": {
+    "com.azure.servicelinker#ConnectorDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3300,13 +3358,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#UpdateConnector": {
+    "com.azure.servicelinker#ConnectorUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#UpdateConnectorRequest"
+        "target": "com.azure.servicelinker#ConnectorUpdateRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#UpdateConnectorResponse"
+        "target": "com.azure.servicelinker#ConnectorUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3319,7 +3377,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#UpdateConnectorResponse": {
+    "com.azure.servicelinker#ConnectorUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3358,7 +3416,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#UpdateConnectorRequest": {
+    "com.azure.servicelinker#ConnectorUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3509,13 +3567,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#GetConnector": {
+    "com.azure.servicelinker#ConnectorGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#GetConnectorRequest"
+        "target": "com.azure.servicelinker#ConnectorGetRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#GetConnectorResponse"
+        "target": "com.azure.servicelinker#ConnectorGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3528,7 +3586,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#GetConnectorResponse": {
+    "com.azure.servicelinker#ConnectorGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3567,7 +3625,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#GetConnectorRequest": {
+    "com.azure.servicelinker#ConnectorGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3607,10 +3665,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListConnector": {
+    "com.azure.servicelinker#ConnectorList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListConnectorRequest"
+        "target": "com.azure.servicelinker#ConnectorListRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#ResourceList"
@@ -3620,13 +3678,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of connector which connects to the resource, which supports to config the target service during the resource provision.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.servicelinker#ListConnectorRequest": {
+    "com.azure.servicelinker#ConnectorListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3652,16 +3717,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#DeleteConnectorDryrun": {
+    "com.azure.servicelinker#ConnectorDeleteDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#DeleteConnectorDryrunRequest"
+        "target": "com.azure.servicelinker#ConnectorDeleteDryrunRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3677,7 +3748,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#DeleteConnectorDryrunRequest": {
+    "com.azure.servicelinker#ConnectorDeleteDryrunRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3717,13 +3788,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#UpdateConnectorDryrun": {
+    "com.azure.servicelinker#ConnectorUpdateDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#UpdateConnectorDryrunRequest"
+        "target": "com.azure.servicelinker#ConnectorUpdateDryrunRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#UpdateConnectorDryrunResponse"
+        "target": "com.azure.servicelinker#ConnectorUpdateDryrunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3736,7 +3807,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#UpdateConnectorDryrunResponse": {
+    "com.azure.servicelinker#ConnectorUpdateDryrunResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3774,7 +3845,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#UpdateConnectorDryrunRequest": {
+    "com.azure.servicelinker#ConnectorUpdateDryrunRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3820,13 +3891,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#CreateConnectorDryrun": {
+    "com.azure.servicelinker#ConnectorCreateDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#CreateConnectorDryrunRequest"
+        "target": "com.azure.servicelinker#ConnectorCreateDryrunRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#CreateConnectorDryrunResponse"
+        "target": "com.azure.servicelinker#ConnectorCreateDryrunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3839,7 +3910,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#CreateConnectorDryrunResponse": {
+    "com.azure.servicelinker#ConnectorCreateDryrunResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3877,7 +3948,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#CreateConnectorDryrunRequest": {
+    "com.azure.servicelinker#ConnectorCreateDryrunRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3923,13 +3994,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#GetConnectorDryrun": {
+    "com.azure.servicelinker#ConnectorGetDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#GetConnectorDryrunRequest"
+        "target": "com.azure.servicelinker#ConnectorGetDryrunRequest"
       },
       "output": {
-        "target": "com.azure.servicelinker#GetConnectorDryrunResponse"
+        "target": "com.azure.servicelinker#ConnectorGetDryrunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3942,7 +4013,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.servicelinker#GetConnectorDryrunResponse": {
+    "com.azure.servicelinker#ConnectorGetDryrunResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3980,7 +4051,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.servicelinker#GetConnectorDryrunRequest": {
+    "com.azure.servicelinker#ConnectorGetDryrunRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4020,10 +4091,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.servicelinker#ListConnectorDryrun": {
+    "com.azure.servicelinker#ConnectorListDryrun": {
       "type": "operation",
       "input": {
-        "target": "com.azure.servicelinker#ListConnectorDryrunRequest"
+        "target": "com.azure.servicelinker#ConnectorListDryrunRequest"
       },
       "output": {
         "target": "com.azure.servicelinker#DryrunList"
@@ -4033,13 +4104,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "list dryrun jobs",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.servicelinker#ListConnectorDryrunRequest": {
+    "com.azure.servicelinker#ConnectorListDryrunRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4065,6 +4143,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4076,88 +4160,88 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.servicelinker#ListLinkerDaprConfigurations"
+          "target": "com.azure.servicelinker#LinkersListDaprConfigurations"
         },
         {
-          "target": "com.azure.servicelinker#ListConfigurationNames"
+          "target": "com.azure.servicelinker#ConfigurationNamesList"
         },
         {
-          "target": "com.azure.servicelinker#ListOperations"
+          "target": "com.azure.servicelinker#OperationsList"
         },
         {
-          "target": "com.azure.servicelinker#GenerateLinkerConfigurations"
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurations"
         },
         {
-          "target": "com.azure.servicelinker#DeleteLinkerDryrun"
+          "target": "com.azure.servicelinker#LinkersDeleteDryrun"
         },
         {
-          "target": "com.azure.servicelinker#UpdateLinkerDryrun"
+          "target": "com.azure.servicelinker#LinkersUpdateDryrun"
         },
         {
-          "target": "com.azure.servicelinker#CreateLinkerDryrun"
+          "target": "com.azure.servicelinker#LinkersCreateDryrun"
         },
         {
-          "target": "com.azure.servicelinker#GetLinkerDryrun"
+          "target": "com.azure.servicelinker#LinkersGetDryrun"
         },
         {
-          "target": "com.azure.servicelinker#ListLinkerDryrun"
+          "target": "com.azure.servicelinker#LinkersListDryrun"
         },
         {
-          "target": "com.azure.servicelinker#ListLinkerConfigurations"
+          "target": "com.azure.servicelinker#LinkerListConfigurations"
         },
         {
-          "target": "com.azure.servicelinker#ValidateLinker"
+          "target": "com.azure.servicelinker#LinkerValidate"
         },
         {
-          "target": "com.azure.servicelinker#DeleteLinker"
+          "target": "com.azure.servicelinker#LinkerDelete"
         },
         {
-          "target": "com.azure.servicelinker#UpdateLinker"
+          "target": "com.azure.servicelinker#LinkerUpdate"
         },
         {
           "target": "com.azure.servicelinker#LinkerCreateOrUpdate"
         },
         {
-          "target": "com.azure.servicelinker#GetLinker"
+          "target": "com.azure.servicelinker#LinkerGet"
         },
         {
-          "target": "com.azure.servicelinker#ListLinker"
+          "target": "com.azure.servicelinker#LinkerList"
         },
         {
-          "target": "com.azure.servicelinker#GenerateConnectorConfigurations"
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurations"
         },
         {
-          "target": "com.azure.servicelinker#ValidateConnector"
+          "target": "com.azure.servicelinker#ConnectorValidate"
         },
         {
-          "target": "com.azure.servicelinker#DeleteConnector"
+          "target": "com.azure.servicelinker#ConnectorDelete"
         },
         {
-          "target": "com.azure.servicelinker#UpdateConnector"
+          "target": "com.azure.servicelinker#ConnectorUpdate"
         },
         {
           "target": "com.azure.servicelinker#ConnectorCreateOrUpdate"
         },
         {
-          "target": "com.azure.servicelinker#GetConnector"
+          "target": "com.azure.servicelinker#ConnectorGet"
         },
         {
-          "target": "com.azure.servicelinker#ListConnector"
+          "target": "com.azure.servicelinker#ConnectorList"
         },
         {
-          "target": "com.azure.servicelinker#DeleteConnectorDryrun"
+          "target": "com.azure.servicelinker#ConnectorDeleteDryrun"
         },
         {
-          "target": "com.azure.servicelinker#UpdateConnectorDryrun"
+          "target": "com.azure.servicelinker#ConnectorUpdateDryrun"
         },
         {
-          "target": "com.azure.servicelinker#CreateConnectorDryrun"
+          "target": "com.azure.servicelinker#ConnectorCreateDryrun"
         },
         {
-          "target": "com.azure.servicelinker#GetConnectorDryrun"
+          "target": "com.azure.servicelinker#ConnectorGetDryrun"
         },
         {
-          "target": "com.azure.servicelinker#ListConnectorDryrun"
+          "target": "com.azure.servicelinker#ConnectorListDryrun"
         }
       ],
       "traits": {

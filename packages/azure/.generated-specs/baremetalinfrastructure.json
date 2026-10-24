@@ -943,10 +943,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances",
           "code": 200,
-          "apiVersion": "2023-04-06"
+          "apiVersion": "2023-04-06",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure BareMetalStorage instances in the specified subscription and resource group.\n\nGets a list of AzureBareMetalStorage instances in the specified subscription and resource group. The operations returns various properties of each Azure BareMetal instance.",
-        "com.distilled.openapi#apiVersion": "2023-04-06"
+        "com.distilled.openapi#apiVersion": "2023-04-06",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesListResult": {
@@ -1167,6 +1174,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1186,10 +1199,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances",
           "code": 200,
-          "apiVersion": "2023-04-06"
+          "apiVersion": "2023-04-06",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure BareMetalStorage instances in the specified subscription.\n\nGets a list of AzureBareMetalStorage instances in the specified subscription. The operations returns various properties of each Azure BareMetal instance.",
-        "com.distilled.openapi#apiVersion": "2023-04-06"
+        "com.distilled.openapi#apiVersion": "2023-04-06",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.baremetalinfrastructure#ListAzureBareMetalStorageInstanceBySubscriptionRequest": {
@@ -1201,6 +1221,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2271,7 +2297,7 @@
     "com.azure.baremetalinfrastructure#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.baremetalinfrastructure#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.baremetalinfrastructure#OperationList"
@@ -2284,7 +2310,11 @@
           "apiVersion": "2023-04-06"
         },
         "smithy.api#documentation": "Gets a list of AzureBareMetal management operations.",
-        "com.distilled.openapi#apiVersion": "2023-04-06"
+        "com.distilled.openapi#apiVersion": "2023-04-06",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.baremetalinfrastructure#OperationList": {
@@ -2368,6 +2398,13 @@
         "smithy.api#documentation": "Detailed BareMetal operation information"
       }
     },
+    "com.azure.baremetalinfrastructure#ListOperationsRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.baremetalinfrastructure#ListAzureBareMetalInstanceByResourceGroup": {
       "type": "operation",
       "input": {
@@ -2381,10 +2418,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances",
           "code": 200,
-          "apiVersion": "2023-04-06"
+          "apiVersion": "2023-04-06",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure BareMetal instances in the specified subscription and resource group.\n\nGets a list of AzureBareMetal instances in the specified subscription and resource group. The operations returns various properties of each Azure BareMetal instance.",
-        "com.distilled.openapi#apiVersion": "2023-04-06"
+        "com.distilled.openapi#apiVersion": "2023-04-06",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.baremetalinfrastructure#AzureBareMetalInstancesListResult": {
@@ -2605,6 +2649,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2624,10 +2674,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances",
           "code": 200,
-          "apiVersion": "2023-04-06"
+          "apiVersion": "2023-04-06",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure BareMetal instances in the specified subscription.\n\nGets a list of AzureBareMetal instances in the specified subscription. The operations returns various properties of each Azure BareMetal instance.",
-        "com.distilled.openapi#apiVersion": "2023-04-06"
+        "com.distilled.openapi#apiVersion": "2023-04-06",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.baremetalinfrastructure#ListAzureBareMetalInstanceBySubscriptionRequest": {
@@ -2639,6 +2696,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -15,68 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetOperation": "com.azure.ai_document_intelligence#GetMiscellaneousOperationOperation",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetOperationRequest": "com.azure.ai_document_intelligence#GetMiscellaneousOperationOperationRequest",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperation": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperation",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationResponse": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationResponse",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationResponseTagsMap": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationResponseTagsMap",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationRequest": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationRequest",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperation": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperation",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationResponse": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationResponse",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationResponseTagsMap": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationResponseTagsMap",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationRequest": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationRequest",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperation": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperation",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationResponse": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationResponse",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationResponseTagsMap": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationResponseTagsMap",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationRequest": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationRequest",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsListOperations": "com.azure.ai_document_intelligence#ListMiscellaneousOperationOperations",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsListOperationsRequest": "com.azure.ai_document_intelligence#ListMiscellaneousOperationOperationsRequest",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetResourceDetails": "com.azure.ai_document_intelligence#GetMiscellaneousOperationResourceDetails",
-      "com.azure.ai_document_intelligence#MiscellaneousOperationsGetResourceDetailsRequest": "com.azure.ai_document_intelligence#GetMiscellaneousOperationResourceDetailsRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdf": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdf",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdfResponse": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdfResponse",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdfRequest": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdfRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigure": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigure",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigureResponse": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigureResponse",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigureRequest": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigureRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeResult": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeResult",
-      "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeResultRequest": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeResultRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResult": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResult",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultRequest": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeBatchResult": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeBatchResult",
-      "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeBatchResultRequest": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeBatchResultRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeBatchResult": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeBatchResult",
-      "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeBatchResultRequest": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeBatchResultRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsListAnalyzeBatchResults": "com.azure.ai_document_intelligence#ListDocumentModelAnalyzeBatchResults",
-      "com.azure.ai_document_intelligence#DocumentModelsListAnalyzeBatchResultsRequest": "com.azure.ai_document_intelligence#ListDocumentModelAnalyzeBatchResultsRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsCopyModelTo": "com.azure.ai_document_intelligence#CopyDocumentModelModelTo",
-      "com.azure.ai_document_intelligence#DocumentModelsCopyModelToResponse": "com.azure.ai_document_intelligence#CopyDocumentModelModelToResponse",
-      "com.azure.ai_document_intelligence#DocumentModelsCopyModelToRequest": "com.azure.ai_document_intelligence#CopyDocumentModelModelToRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsDeleteModel": "com.azure.ai_document_intelligence#DeleteDocumentModelModel",
-      "com.azure.ai_document_intelligence#DocumentModelsDeleteModelRequest": "com.azure.ai_document_intelligence#DeleteDocumentModelModelRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsGetModel": "com.azure.ai_document_intelligence#GetDocumentModelModel",
-      "com.azure.ai_document_intelligence#DocumentModelsGetModelRequest": "com.azure.ai_document_intelligence#GetDocumentModelModelRequest",
-      "com.azure.ai_document_intelligence#DocumentModelsListModels": "com.azure.ai_document_intelligence#ListDocumentModelModels",
-      "com.azure.ai_document_intelligence#DocumentModelsListModelsRequest": "com.azure.ai_document_intelligence#ListDocumentModelModelsRequest",
-      "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifyResult": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifyResult",
-      "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifyResultRequest": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifyResultRequest",
-      "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierTo": "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierTo",
-      "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierToResponse": "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierToResponse",
-      "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierToRequest": "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierToRequest",
-      "com.azure.ai_document_intelligence#DocumentClassifiersDeleteClassifier": "com.azure.ai_document_intelligence#DeleteDocumentClassifierClassifier",
-      "com.azure.ai_document_intelligence#DocumentClassifiersDeleteClassifierRequest": "com.azure.ai_document_intelligence#DeleteDocumentClassifierClassifierRequest",
-      "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifier": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifier",
-      "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifierRequest": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifierRequest",
-      "com.azure.ai_document_intelligence#DocumentClassifiersListClassifiers": "com.azure.ai_document_intelligence#ListDocumentClassifierClassifiers",
-      "com.azure.ai_document_intelligence#DocumentClassifiersListClassifiersRequest": "com.azure.ai_document_intelligence#ListDocumentClassifierClassifiersRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetOperation": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetOperationRequest"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationOperationRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#DocumentIntelligenceOperationDetails"
@@ -338,7 +283,7 @@
         "smithy.api#documentation": "Operation status."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetOperationRequest": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1067,13 +1012,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperation": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationRequest"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationResponse"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1089,7 +1034,7 @@
         "smithy.api#documentation": "Gets operation info."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationResponse": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationResponse": {
       "type": "structure",
       "members": {
         "operationId": {
@@ -1147,7 +1092,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationResponseTagsMap",
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
           }
@@ -1169,7 +1114,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationResponseTagsMap": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1181,7 +1126,7 @@
         "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperationRequest": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1502,13 +1447,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperation": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationRequest"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationResponse"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1524,7 +1469,7 @@
         "smithy.api#documentation": "Gets operation info."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationResponse": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationResponse": {
       "type": "structure",
       "members": {
         "operationId": {
@@ -1582,7 +1527,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationResponseTagsMap",
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
           }
@@ -1604,7 +1549,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationResponseTagsMap": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1616,7 +1561,7 @@
         "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperationRequest": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2054,13 +1999,13 @@
       },
       "traits": {}
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperation": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationRequest"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationResponse"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2076,7 +2021,7 @@
         "smithy.api#documentation": "Gets operation info."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationResponse": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationResponse": {
       "type": "structure",
       "members": {
         "operationId": {
@@ -2134,7 +2079,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationResponseTagsMap",
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
           }
@@ -2156,7 +2101,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationResponseTagsMap": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2168,7 +2113,7 @@
         "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperationRequest": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2199,10 +2144,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsListOperations": {
+    "com.azure.ai_document_intelligence#ListMiscellaneousOperationOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsListOperationsRequest"
+        "target": "com.azure.ai_document_intelligence#ListMiscellaneousOperationOperationsRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#PagedDocumentIntelligenceOperationDetails"
@@ -2216,9 +2161,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-11-30"
+          "apiVersion": "2024-11-30",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all operations."
+        "smithy.api#documentation": "Lists all operations.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_document_intelligence#PagedDocumentIntelligenceOperationDetails": {
@@ -2251,7 +2203,7 @@
         "smithy.api#documentation": "The DocumentIntelligenceOperationDetails items on this page"
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsListOperationsRequest": {
+    "com.azure.ai_document_intelligence#ListMiscellaneousOperationOperationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2268,16 +2220,22 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetResourceDetails": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationResourceDetails": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetResourceDetailsRequest"
+        "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationResourceDetailsRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#DocumentIntelligenceResourceDetails"
@@ -2333,7 +2291,7 @@
         "smithy.api#documentation": "Details regarding custom document models."
       }
     },
-    "com.azure.ai_document_intelligence#MiscellaneousOperationsGetResourceDetailsRequest": {
+    "com.azure.ai_document_intelligence#GetMiscellaneousOperationResourceDetailsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2740,13 +2698,13 @@
         "smithy.api#documentation": "List of key-value tag attributes associated with the document model."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdf": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdf": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdfRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdfRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdfResponse"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdfResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2762,7 +2720,7 @@
         "smithy.api#documentation": "Gets the generated searchable PDF output from document analysis."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdfResponse": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdfResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2777,7 +2735,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdfRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdfRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2809,13 +2767,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigure": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigure": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigureRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigureRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigureResponse"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigureResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2831,7 +2789,7 @@
         "smithy.api#documentation": "Gets the generated cropped image of specified figure from document analysis."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigureResponse": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigureResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2846,7 +2804,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigureRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigureRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2886,10 +2844,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeResult": {
+    "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeResultRequest"
+        "target": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeResultRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2908,7 +2866,7 @@
         "smithy.api#documentation": "Mark the result of document analysis for deletion."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeResultRequest": {
+    "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2940,10 +2898,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResult": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#AnalyzeOperation"
@@ -5002,7 +4960,7 @@
         "smithy.api#documentation": "Method used to compute string offset and length."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5034,10 +4992,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeBatchResult": {
+    "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeBatchResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeBatchResultRequest"
+        "target": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeBatchResultRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5056,7 +5014,7 @@
         "smithy.api#documentation": "Mark the batch document analysis result for deletion."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeBatchResultRequest": {
+    "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeBatchResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5088,10 +5046,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeBatchResult": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeBatchResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeBatchResultRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeBatchResultRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#AnalyzeBatchOperation"
@@ -5241,7 +5199,7 @@
         "smithy.api#documentation": "Operation detail for a document in a batch analysis."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeBatchResultRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeBatchResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5273,10 +5231,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsListAnalyzeBatchResults": {
+    "com.azure.ai_document_intelligence#ListDocumentModelAnalyzeBatchResults": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsListAnalyzeBatchResultsRequest"
+        "target": "com.azure.ai_document_intelligence#ListDocumentModelAnalyzeBatchResultsRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#PagedAnalyzeBatchOperation"
@@ -5290,9 +5248,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-11-30"
+          "apiVersion": "2024-11-30",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List batch document analysis results."
+        "smithy.api#documentation": "List batch document analysis results.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_document_intelligence#PagedAnalyzeBatchOperation": {
@@ -5325,7 +5290,7 @@
         "smithy.api#documentation": "The AnalyzeBatchOperation items on this page"
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsListAnalyzeBatchResultsRequest": {
+    "com.azure.ai_document_intelligence#ListDocumentModelAnalyzeBatchResultsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5343,19 +5308,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Unique document model name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsCopyModelTo": {
+    "com.azure.ai_document_intelligence#CopyDocumentModelModelTo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsCopyModelToRequest"
+        "target": "com.azure.ai_document_intelligence#CopyDocumentModelModelToRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsCopyModelToResponse"
+        "target": "com.azure.ai_document_intelligence#CopyDocumentModelModelToResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5371,7 +5342,7 @@
         "smithy.api#documentation": "Copies document model to the target resource, region, and modelId."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsCopyModelToResponse": {
+    "com.azure.ai_document_intelligence#CopyDocumentModelModelToResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -5393,7 +5364,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsCopyModelToRequest": {
+    "com.azure.ai_document_intelligence#CopyDocumentModelModelToRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5460,10 +5431,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsDeleteModel": {
+    "com.azure.ai_document_intelligence#DeleteDocumentModelModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsDeleteModelRequest"
+        "target": "com.azure.ai_document_intelligence#DeleteDocumentModelModelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5482,7 +5453,7 @@
         "smithy.api#documentation": "Deletes document model."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsDeleteModelRequest": {
+    "com.azure.ai_document_intelligence#DeleteDocumentModelModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5513,10 +5484,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetModel": {
+    "com.azure.ai_document_intelligence#GetDocumentModelModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsGetModelRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentModelModelRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#DocumentModelDetails"
@@ -5535,7 +5506,7 @@
         "smithy.api#documentation": "Gets detailed document model information."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsGetModelRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentModelModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6096,10 +6067,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_document_intelligence#DocumentModelsListModels": {
+    "com.azure.ai_document_intelligence#ListDocumentModelModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentModelsListModelsRequest"
+        "target": "com.azure.ai_document_intelligence#ListDocumentModelModelsRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#PagedDocumentModelDetails"
@@ -6113,9 +6084,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-11-30"
+          "apiVersion": "2024-11-30",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all document models"
+        "smithy.api#documentation": "List all document models",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_document_intelligence#PagedDocumentModelDetails": {
@@ -6148,7 +6126,7 @@
         "smithy.api#documentation": "The DocumentModelDetails items on this page"
       }
     },
-    "com.azure.ai_document_intelligence#DocumentModelsListModelsRequest": {
+    "com.azure.ai_document_intelligence#ListDocumentModelModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6164,6 +6142,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6395,10 +6379,10 @@
         "smithy.api#documentation": "List of key-value tag attributes associated with the document classifier."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifyResult": {
+    "com.azure.ai_document_intelligence#GetDocumentClassifierClassifyResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifyResultRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifyResultRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#AnalyzeOperation"
@@ -6417,7 +6401,7 @@
         "smithy.api#documentation": "Gets the result of document classifier."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifyResultRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentClassifierClassifyResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6449,13 +6433,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierTo": {
+    "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierTo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierToRequest"
+        "target": "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierToRequest"
       },
       "output": {
-        "target": "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierToResponse"
+        "target": "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierToResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6471,7 +6455,7 @@
         "smithy.api#documentation": "Copies document classifier to the target resource, region, and classifierId."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierToResponse": {
+    "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierToResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -6493,7 +6477,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierToRequest": {
+    "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierToRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6704,10 +6688,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersDeleteClassifier": {
+    "com.azure.ai_document_intelligence#DeleteDocumentClassifierClassifier": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentClassifiersDeleteClassifierRequest"
+        "target": "com.azure.ai_document_intelligence#DeleteDocumentClassifierClassifierRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6726,7 +6710,7 @@
         "smithy.api#documentation": "Deletes document classifier."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersDeleteClassifierRequest": {
+    "com.azure.ai_document_intelligence#DeleteDocumentClassifierClassifierRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6757,10 +6741,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifier": {
+    "com.azure.ai_document_intelligence#GetDocumentClassifierClassifier": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifierRequest"
+        "target": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifierRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#DocumentClassifierDetails"
@@ -6779,7 +6763,7 @@
         "smithy.api#documentation": "Gets detailed document classifier information."
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifierRequest": {
+    "com.azure.ai_document_intelligence#GetDocumentClassifierClassifierRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6810,10 +6794,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersListClassifiers": {
+    "com.azure.ai_document_intelligence#ListDocumentClassifierClassifiers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_document_intelligence#DocumentClassifiersListClassifiersRequest"
+        "target": "com.azure.ai_document_intelligence#ListDocumentClassifierClassifiersRequest"
       },
       "output": {
         "target": "com.azure.ai_document_intelligence#PagedDocumentClassifierDetails"
@@ -6827,9 +6811,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-11-30"
+          "apiVersion": "2024-11-30",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all document classifiers."
+        "smithy.api#documentation": "List all document classifiers.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_document_intelligence#PagedDocumentClassifierDetails": {
@@ -6862,7 +6853,7 @@
         "smithy.api#documentation": "The DocumentClassifierDetails items on this page"
       }
     },
-    "com.azure.ai_document_intelligence#DocumentClassifiersListClassifiersRequest": {
+    "com.azure.ai_document_intelligence#ListDocumentClassifierClassifiersRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6879,6 +6870,12 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6890,19 +6887,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetOperation"
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationOperation"
         },
         {
           "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelCopyToOperation"
         },
         {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelComposeOperation"
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelComposeOperation"
         },
         {
           "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierCopyToOperation"
         },
         {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentClassifierBuildOperation"
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentClassifierBuildOperation"
         },
         {
           "target": "com.azure.ai_document_intelligence#DocumentModelsAnalyzeDocument"
@@ -6911,13 +6908,13 @@
           "target": "com.azure.ai_document_intelligence#DocumentClassifiersClassifyDocument"
         },
         {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetDocumentModelBuildOperation"
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationDocumentModelBuildOperation"
         },
         {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsListOperations"
+          "target": "com.azure.ai_document_intelligence#ListMiscellaneousOperationOperations"
         },
         {
-          "target": "com.azure.ai_document_intelligence#MiscellaneousOperationsGetResourceDetails"
+          "target": "com.azure.ai_document_intelligence#GetMiscellaneousOperationResourceDetails"
         },
         {
           "target": "com.azure.ai_document_intelligence#DocumentModelsComposeModel"
@@ -6929,34 +6926,34 @@
           "target": "com.azure.ai_document_intelligence#DocumentModelsAuthorizeModelCopy"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultPdf"
+          "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultPdf"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResultFigure"
+          "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResultFigure"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeResult"
+          "target": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeResult"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeResult"
+          "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeResult"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsDeleteAnalyzeBatchResult"
+          "target": "com.azure.ai_document_intelligence#DeleteDocumentModelAnalyzeBatchResult"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsGetAnalyzeBatchResult"
+          "target": "com.azure.ai_document_intelligence#GetDocumentModelAnalyzeBatchResult"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsListAnalyzeBatchResults"
+          "target": "com.azure.ai_document_intelligence#ListDocumentModelAnalyzeBatchResults"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsCopyModelTo"
+          "target": "com.azure.ai_document_intelligence#CopyDocumentModelModelTo"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsDeleteModel"
+          "target": "com.azure.ai_document_intelligence#DeleteDocumentModelModel"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsGetModel"
+          "target": "com.azure.ai_document_intelligence#GetDocumentModelModel"
         },
         {
           "target": "com.azure.ai_document_intelligence#DocumentModelsAnalyzeBatchDocuments"
@@ -6965,7 +6962,7 @@
           "target": "com.azure.ai_document_intelligence#DocumentModelsAnalyzeDocumentFromStream"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentModelsListModels"
+          "target": "com.azure.ai_document_intelligence#ListDocumentModelModels"
         },
         {
           "target": "com.azure.ai_document_intelligence#DocumentClassifiersBuildClassifier"
@@ -6974,22 +6971,22 @@
           "target": "com.azure.ai_document_intelligence#DocumentClassifiersAuthorizeClassifierCopy"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifyResult"
+          "target": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifyResult"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentClassifiersCopyClassifierTo"
+          "target": "com.azure.ai_document_intelligence#CopyDocumentClassifierClassifierTo"
         },
         {
           "target": "com.azure.ai_document_intelligence#DocumentClassifiersClassifyDocumentFromStream"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentClassifiersDeleteClassifier"
+          "target": "com.azure.ai_document_intelligence#DeleteDocumentClassifierClassifier"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentClassifiersGetClassifier"
+          "target": "com.azure.ai_document_intelligence#GetDocumentClassifierClassifier"
         },
         {
-          "target": "com.azure.ai_document_intelligence#DocumentClassifiersListClassifiers"
+          "target": "com.azure.ai_document_intelligence#ListDocumentClassifierClassifiers"
         }
       ],
       "traits": {

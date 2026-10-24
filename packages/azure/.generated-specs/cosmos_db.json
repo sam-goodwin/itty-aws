@@ -573,10 +573,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the fleetspaces accounts  under a fleetspace.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#FleetspaceAccountListResult": {
@@ -680,6 +687,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB fleetspace name. Needs to be unique under a fleet."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1239,10 +1252,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the fleetspaces under a fleet.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#FleetspaceListResult": {
@@ -1338,6 +1358,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB fleet name. Needs to be unique under a subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1849,10 +1875,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the fleets under the specified subscription and resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#FleetListResult": {
@@ -1966,6 +1999,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1985,10 +2024,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the usages (most recent data) for the given database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#UsagesResult": {
@@ -2158,6 +2204,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2177,10 +2229,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given account target region. This url is only for PBS and Replication Latency data",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#PercentileMetricListResult": {
@@ -2389,6 +2448,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4059,10 +4124,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Tables under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#TableListResult": {
@@ -4184,6 +4256,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4619,10 +4697,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Table Role Definitions.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#TableRoleDefinitionListResult": {
@@ -4718,6 +4803,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5098,10 +5189,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Table Role Assignments.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#TableRoleAssignmentListResult": {
@@ -5197,6 +5295,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5562,10 +5666,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB SQL Role Definitions.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlRoleDefinitionListResult": {
@@ -5657,6 +5768,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5998,10 +6115,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB SQL Role Assignments.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlRoleAssignmentListResult": {
@@ -6093,6 +6217,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7252,10 +7382,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlUserDefinedFunctionListResult": {
@@ -7393,6 +7530,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB container name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8026,10 +8169,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SQL trigger under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlTriggerListResult": {
@@ -8167,6 +8317,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB container name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9344,10 +9500,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SQL storedProcedure under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlStoredProcedureListResult": {
@@ -9485,6 +9648,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB container name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11217,10 +11386,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SQL container under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlContainerListResult": {
@@ -11350,6 +11526,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11746,10 +11928,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL database.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ClientEncryptionKeysListResult": {
@@ -11849,6 +12038,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12419,10 +12614,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the SQL databases under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#SqlDatabaseListResult": {
@@ -12545,6 +12747,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12564,10 +12772,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sourceRegion/{sourceRegion}/targetRegion/{targetRegion}/percentile/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given account, source and target region. This url is only for PBS and Replication Latency data",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListPercentileSourceTargetMetricsRequest": {
@@ -12619,6 +12834,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13103,10 +13324,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the status of service.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ServiceResourceListResult": {
@@ -13199,6 +13427,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13218,10 +13452,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given database account and region.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MetricListResult": {
@@ -13389,6 +13630,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13408,10 +13655,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given collection and region, split by partition.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#PartitionMetricListResult": {
@@ -13563,6 +13817,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13582,10 +13842,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given partition key range id and region.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListPartitionKeyRangeIdRegionMetricsRequest": {
@@ -13654,6 +13921,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13673,10 +13946,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given database account, collection and region.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListCollectionRegionMetricsRequest": {
@@ -13736,6 +14016,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14138,10 +14424,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the private link resources that need to be created for a Cosmos DB account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#PrivateLinkResourceListResult": {
@@ -14233,6 +14526,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14672,10 +14971,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private endpoint connections on a Cosmos DB account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#PrivateEndpointConnectionListResult": {
@@ -14768,6 +15074,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14787,10 +15099,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given database account. This url is only for PBS and Replication Latency data",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListPercentileMetricsRequest": {
@@ -14826,6 +15145,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15635,10 +15960,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the notebook workspace resources of an existing Cosmos DB account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#NotebookWorkspaceListResult": {
@@ -15730,6 +16062,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16119,10 +16457,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Mongo User Definition.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MongoUserDefinitionListResult": {
@@ -16214,6 +16559,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16654,10 +17005,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Mongo Role Definitions.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MongoRoleDefinitionListResult": {
@@ -16749,6 +17107,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18793,10 +19157,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the MongoDB collection under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MongoDBCollectionListResult": {
@@ -18926,6 +19297,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19484,10 +19861,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the MongoDB databases under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MongoDBDatabaseListResult": {
@@ -19609,6 +19993,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19987,10 +20377,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB MongoMI Role Definitions.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MongoMIRoleDefinitionListResult": {
@@ -20086,6 +20483,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20466,10 +20869,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB MongoMI Role Assignments.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MongoMIRoleAssignmentListResult": {
@@ -20566,6 +20976,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20585,10 +21001,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListDatabaseAccountMetricsRequest": {
@@ -20625,6 +21048,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20644,10 +21073,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves metric definitions for the given database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#MetricDefinitionsListResult": {
@@ -20812,6 +21248,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21474,10 +21916,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#GremlinRoleDefinitionListResult": {
@@ -21573,6 +22022,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21953,10 +22408,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#GremlinRoleAssignmentListResult": {
@@ -22052,6 +22514,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24027,10 +24495,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Gremlin graph under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#GremlinGraphListResult": {
@@ -24160,6 +24635,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24718,10 +25199,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Gremlin databases under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#GremlinDatabaseListResult": {
@@ -24843,6 +25331,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24979,10 +25473,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the usages (most recent data) for the given database.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListDatabaseUsagesRequest": {
@@ -25026,6 +25527,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25045,10 +25552,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given database account and database.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListDatabaseMetricsRequest": {
@@ -25093,6 +25607,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25112,10 +25632,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves metric definitions for the given database.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListDatabaseMetricDefinitionsRequest": {
@@ -25152,6 +25679,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database rid."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25171,10 +25704,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the usages (most recent storage data) for the given collection.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListCollectionUsagesRequest": {
@@ -25226,6 +25766,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25245,10 +25791,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the usages (most recent storage data) for the given collection, split by partition.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#PartitionUsagesResult": {
@@ -25376,6 +25929,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25395,10 +25954,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given collection, split by partition.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListCollectionPartitionMetricsRequest": {
@@ -25451,6 +26017,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25470,10 +26042,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given partition key range id.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListPartitionKeyRangeIdMetricsRequest": {
@@ -25534,6 +26113,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25553,10 +26138,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the metrics determined by the given filter for the given database account and collection.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListCollectionMetricsRequest": {
@@ -25609,6 +26201,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25628,10 +26226,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves metric definitions for the given collection.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListCollectionMetricDefinitionsRequest": {
@@ -25675,6 +26280,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB collection rid."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26053,10 +26664,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#CassandraRoleDefinitionListResult": {
@@ -26152,6 +26770,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26532,10 +27156,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#CassandraRoleAssignmentListResult": {
@@ -26631,6 +27262,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28540,10 +29177,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Cassandra table under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#CassandraTableListResult": {
@@ -28673,6 +29317,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB keyspace name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29167,10 +29817,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#CassandraKeyspaceListResult": {
@@ -29292,6 +29949,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB database account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -31679,10 +32342,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the Azure Cosmos DB database accounts available under the given resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#DatabaseAccountsListResult": {
@@ -31828,6 +32498,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -33321,10 +33997,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all data centers in a particular managed Cassandra cluster.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListDataCenters": {
@@ -33416,6 +34099,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Managed Cassandra cluster name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -34574,10 +35263,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all managed Cassandra clusters in this resource group.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListClusters": {
@@ -34692,6 +35388,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -34711,10 +35413,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read' permission.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableDatabaseAccountsListResult": {
@@ -34926,6 +35635,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -34945,10 +35660,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB Tables. This helps in scenario where table was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableTablesListResult": {
@@ -35151,6 +35873,12 @@
             "smithy.api#httpQuery": "endTime",
             "smithy.api#documentation": "Restorable Tables event feed end time."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -35170,10 +35898,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return a list of tables that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableTableResourcesListResult": {
@@ -35268,6 +36003,12 @@
             "smithy.api#httpQuery": "restoreTimestampInUtc",
             "smithy.api#documentation": "The timestamp when the restorable resources existed."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -35287,10 +36028,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return a list of database and container combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableSqlResourcesListResult": {
@@ -35406,6 +36154,12 @@
             "smithy.api#httpQuery": "restoreTimestampInUtc",
             "smithy.api#documentation": "The timestamp when the restorable resources existed."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -35425,10 +36179,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB SQL databases under the restorable account.  This helps in scenario where database was accidentally deleted to get the deletion time.  This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableSqlDatabasesListResult": {
@@ -35668,6 +36429,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The instanceId GUID of a restorable database account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -35687,10 +36454,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB SQL containers under a specific database.  This helps in scenario where container was accidentally deleted.  This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableSqlContainersListResult": {
@@ -36008,6 +36782,12 @@
             "smithy.api#httpQuery": "endTime",
             "smithy.api#documentation": "Restorable Sql containers event feed end time."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -36027,10 +36807,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return a list of database and collection combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableMongodbResourcesListResult": {
@@ -36146,6 +36933,12 @@
             "smithy.api#httpQuery": "restoreTimestampInUtc",
             "smithy.api#documentation": "The timestamp when the restorable resources existed."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -36165,10 +36958,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB MongoDB databases under the restorable account.  This helps in scenario where database was accidentally deleted to get the deletion time.  This API requires  'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableMongodbDatabasesListResult": {
@@ -36319,6 +37119,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The instanceId GUID of a restorable database account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -36338,10 +37144,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbCollections",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB MongoDB collections under a specific database.  This helps in scenario where container was accidentally deleted.  This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableMongodbCollectionsListResult": {
@@ -36513,6 +37326,12 @@
             "smithy.api#httpQuery": "endTime",
             "smithy.api#documentation": "Restorable MongoDB collections event feed end time."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -36532,10 +37351,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Return a list of gremlin database and graphs combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableGremlinResourcesListResult": {
@@ -36651,6 +37477,12 @@
             "smithy.api#httpQuery": "restoreTimestampInUtc",
             "smithy.api#documentation": "The timestamp when the restorable resources existed."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -36670,10 +37502,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableGremlinDatabasesListResult": {
@@ -36824,6 +37663,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The instanceId GUID of a restorable database account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -36843,10 +37688,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin graphs under a specific database. This helps in scenario where container was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#RestorableGremlinGraphsListResult": {
@@ -37018,6 +37870,12 @@
             "smithy.api#httpQuery": "endTime",
             "smithy.api#documentation": "Restorable Gremlin graphs event feed end time."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -37132,10 +37990,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region.  This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read' permission.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListRestorableDatabaseAccountByLocationRequest": {
@@ -37155,6 +38020,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Cosmos DB region, with spaces between words and each word capitalized."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -37335,10 +38206,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Cosmos DB locations and their properties",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#LocationListResult": {
@@ -37415,6 +38293,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -37434,10 +38318,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/fleets",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the fleets under the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListFleetRequest": {
@@ -37449,6 +38340,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -37469,10 +38366,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the Azure Cosmos DB database accounts available under the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListDatabaseAccountsRequest": {
@@ -37484,6 +38388,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -37504,10 +38414,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all managed Cassandra clusters in this subscription.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#ListCassandraClusterBySubscriptionRequest": {
@@ -37520,6 +38437,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -37529,7 +38452,7 @@
     "com.azure.cosmos_db#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cosmos_db#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.cosmos_db#OperationListResult"
@@ -37539,10 +38462,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DocumentDB/operations",
           "code": 200,
-          "apiVersion": "2026-03-15"
+          "apiVersion": "2026-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Cosmos DB Resource Provider operations.",
-        "com.distilled.openapi#apiVersion": "2026-03-15"
+        "com.distilled.openapi#apiVersion": "2026-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cosmos_db#OperationListResult": {
@@ -37625,6 +38555,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.cosmos_db#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cosmos_db#CosmosDb": {

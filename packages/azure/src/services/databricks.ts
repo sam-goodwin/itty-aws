@@ -705,6 +705,8 @@ export interface ListAccessConnectorByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AccessConnectorTagsMap = { [key: string]: string | undefined };
@@ -739,8 +741,13 @@ export interface AccessConnectorListResult {
 export interface ListAccessConnectorBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: ex Microsoft.Databricks */
@@ -764,7 +771,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list Resource Provider operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Resource Provider operations supported by the Resource Provider resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -775,6 +782,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionsListValueList = Array<PrivateEndpointConnection>;
@@ -792,6 +801,8 @@ export interface ListPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The group information for creating a private endpoint on a workspace */
 export interface GroupIdInformation {
@@ -820,6 +831,8 @@ export interface ListVNetPeeringByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Peerings in a VirtualNetwork resource */
 export interface VirtualNetworkPeering {
@@ -846,6 +859,8 @@ export interface ListWorkspaceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
@@ -878,6 +893,8 @@ export interface WorkspaceListResult {
 export interface ListWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type UpdateAccessConnectorRequestTagsMap = { [key: string]: string | undefined };
@@ -1227,123 +1244,179 @@ export const GetWorkspace: API.OperationMethod<
 
 export type ListAccessConnectorByResourceGroupError = AzureOpError;
 /** Gets all the Azure Databricks Access Connectors within a resource group. */
-export const ListAccessConnectorByResourceGroup: API.OperationMethod<
+export const ListAccessConnectorByResourceGroup: API.PaginatedOperationMethod<
   ListAccessConnectorByResourceGroupRequest,
   AccessConnectorListResult,
   ListAccessConnectorByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccessConnector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListAccessConnectorByResourceGroupRequest>,
   output: __S(449, __c14, 1) as any as S.Schema<AccessConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccessConnectorBySubscriptionError = AzureOpError;
 /** Gets all the Azure Databricks Access Connectors within a subscription. */
-export const ListAccessConnectorBySubscription: API.OperationMethod<
+export const ListAccessConnectorBySubscription: API.PaginatedOperationMethod<
   ListAccessConnectorBySubscriptionRequest,
   AccessConnectorListResult,
   ListAccessConnectorBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccessConnector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<ListAccessConnectorBySubscriptionRequest>,
   output: __S(449, __c14, 1) as any as S.Schema<AccessConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(516, __c16, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List private endpoint connections List private endpoint connections of the workspace */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionsList,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(545, __c17, 1) as any as S.Schema<PrivateEndpointConnectionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourcesError = AzureOpError;
 /** List private link resources List private link resources for a given workspace */
-export const ListPrivateLinkResources: API.OperationMethod<
+export const ListPrivateLinkResources: API.PaginatedOperationMethod<
   ListPrivateLinkResourcesRequest,
   PrivateLinkResourcesList,
   ListPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GroupIdInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
   output: __S(578, __c18, 2) as any as S.Schema<PrivateLinkResourcesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVNetPeeringByWorkspaceError = AzureOpError;
 /** Lists the workspace vNet Peerings. */
-export const ListVNetPeeringByWorkspace: API.OperationMethod<
+export const ListVNetPeeringByWorkspace: API.PaginatedOperationMethod<
   ListVNetPeeringByWorkspaceRequest,
   VirtualNetworkPeeringList,
   ListVNetPeeringByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetworkPeering
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListVNetPeeringByWorkspaceRequest>,
   output: __S(610, __c19, 2) as any as S.Schema<VirtualNetworkPeeringList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceByResourceGroupError = AzureOpError;
 /** Gets all the workspaces within a resource group. */
-export const ListWorkspaceByResourceGroup: API.OperationMethod<
+export const ListWorkspaceByResourceGroup: API.PaginatedOperationMethod<
   ListWorkspaceByResourceGroupRequest,
   WorkspaceListResult,
   ListWorkspaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
   output: __S(673, __c21, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceBySubscriptionError = AzureOpError;
 /** Gets all the workspaces within a subscription. */
-export const ListWorkspaceBySubscription: API.OperationMethod<
+export const ListWorkspaceBySubscription: API.PaginatedOperationMethod<
   ListWorkspaceBySubscriptionRequest,
   WorkspaceListResult,
   ListWorkspaceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
   output: __S(673, __c21, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateAccessConnectorError = AzureOpError;
 /** Updates an Azure Databricks Access Connector. */
@@ -1818,12 +1891,14 @@ function __c13(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccessConnectorByResourceGroupRequest" });
@@ -1848,12 +1923,14 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/accessConnectors",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccessConnectorBySubscriptionRequest" });
@@ -1863,12 +1940,15 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Databricks/operations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1893,7 +1973,7 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(515, __c16, 3)),
+          value: __S(515, __c16, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1907,12 +1987,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
@@ -1933,12 +2015,14 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateLinkResources",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourcesRequest" });
@@ -1961,12 +2045,14 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVNetPeeringByWorkspaceRequest" });
@@ -1988,12 +2074,14 @@ function __c20(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceByResourceGroupRequest" });
@@ -2018,12 +2106,14 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Databricks/workspaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceBySubscriptionRequest" });

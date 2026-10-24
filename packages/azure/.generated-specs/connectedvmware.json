@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET GuestAgent in a vm.\n\nReturns the list of GuestAgent of the given vm.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#GuestAgentList": {
@@ -463,6 +470,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -718,10 +731,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/hybridIdentityMetadata",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET HybridIdentityMetadata in a vm.\n\nReturns the list of HybridIdentityMetadata of the given vm.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#VmInstanceHybridIdentityMetadataList": {
@@ -828,6 +848,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1075,10 +1101,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements List virtual machine instances.\n\nLists all of the virtual machine instances within the specified parent resource.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#VirtualMachineInstancesList": {
@@ -2241,6 +2274,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3106,10 +3145,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET inventoryItems in a vCenter.\n\nReturns the list of inventoryItems of the given vCenter.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#InventoryItemsList": {
@@ -3301,6 +3347,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the vCenter."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3601,10 +3653,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET virtualNetworks in a resource group.\n\nList of virtualNetworks in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#VirtualNetworksList": {
@@ -3904,6 +3963,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3923,10 +3988,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET virtualNetworks in a subscription.\n\nList of virtualNetworks in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListVirtualNetworksRequest": {
@@ -3938,6 +4010,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4271,10 +4349,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET virtualMachineTemplates in a resource group.\n\nList of virtualMachineTemplates in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#VirtualMachineTemplatesList": {
@@ -4658,6 +4743,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4677,10 +4768,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET virtualMachineTemplates in a subscription.\n\nList of virtualMachineTemplates in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListVirtualMachineTemplatesRequest": {
@@ -4692,6 +4790,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5025,10 +5129,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET vCenters in a resource group.\n\nList of vCenters in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#VCentersList": {
@@ -5362,6 +5473,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5381,10 +5498,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/vcenters",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET vCenters in a subscription.\n\nList of vCenters in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListVCentersRequest": {
@@ -5396,6 +5520,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5730,10 +5860,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET datastores in a resource group.\n\nList of datastores in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#DatastoresList": {
@@ -6045,6 +6182,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6064,10 +6207,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/datastores",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET datastores in a subscription.\n\nList of datastores in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListDatastoresRequest": {
@@ -6079,6 +6229,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6412,10 +6568,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET hosts in a resource group.\n\nList of hosts in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#HostsList": {
@@ -6769,6 +6932,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6788,10 +6957,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/hosts",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET hosts in a subscription.\n\nList of hosts in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListHostsRequest": {
@@ -6803,6 +6979,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7136,10 +7318,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET clusters in a resource group.\n\nList of clusters in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ClustersList": {
@@ -7493,6 +7682,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7512,10 +7707,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/clusters",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET clusters in a subscription.\n\nList of clusters in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListClustersRequest": {
@@ -7527,6 +7729,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7860,10 +8068,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET resourcePools in a resource group.\n\nList of resourcePools in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ResourcePoolsList": {
@@ -8253,6 +8468,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Resource Group Name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8272,10 +8493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET resourcePools in a subscription.\n\nList of resourcePools in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#ListResourcePoolsRequest": {
@@ -8287,6 +8515,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8610,7 +8844,7 @@
     "com.azure.connectedvmware#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.connectedvmware#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.connectedvmware#OperationsList"
@@ -8620,10 +8854,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ConnectedVMwarevSphere/operations",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of all operations.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.connectedvmware#OperationsList": {
@@ -8712,6 +8953,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties of the operation"
+      }
+    },
+    "com.azure.connectedvmware#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.connectedvmware#Connectedvmware": {

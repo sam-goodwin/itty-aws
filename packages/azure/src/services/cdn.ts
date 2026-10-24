@@ -3113,6 +3113,8 @@ export interface ListAFDCustomDomainByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
 export interface AFDDomain {
@@ -3143,6 +3145,8 @@ export interface ListAFDEndpointByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AFDEndpointTagsMap = { [key: string]: string | undefined };
@@ -3181,6 +3185,8 @@ export interface ListAFDEndpointResourceUsageRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An enum describing the unit of measurement. */
 export type UsageUnit = "Count";
@@ -3222,6 +3228,8 @@ export interface ListAFDOriginByOriginGroupRequest {
   profileName: string;
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
 export interface AFDOrigin {
@@ -3252,6 +3260,8 @@ export interface ListAFDOriginGroupByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door. */
 export interface AFDOriginGroup {
@@ -3284,6 +3294,8 @@ export interface ListAFDOriginGroupResourceUsageRequest {
   profileName: string;
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAFDProfileResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3292,6 +3304,8 @@ export interface ListAFDProfileResourceUsageRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCustomDomainByEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3302,6 +3316,8 @@ export interface ListCustomDomainByEndpointRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
 export interface CustomDomain {
@@ -3325,7 +3341,10 @@ export interface CustomDomainListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListEdgeNodesRequest {}
+export interface ListEdgeNodesRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** CIDR Ip address */
 export interface CidrIpAddress {
   /** Ip address itself. */
@@ -3382,6 +3401,8 @@ export interface ListEndpointByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type EndpointTagsMap = { [key: string]: string | undefined };
@@ -3420,6 +3441,8 @@ export interface ListEndpointResourceUsageRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Unit of the usage. e.g. count. */
 export type ResourceUsageUnit = "count";
@@ -3446,6 +3469,8 @@ export interface ResourceUsageListResult {
 export interface ListManagedRuleSetsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Describes a managed rule definition. */
 export interface ManagedRuleDefinition {
@@ -3502,7 +3527,10 @@ export interface ManagedRuleSetDefinitionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Cdn */
@@ -3617,6 +3645,8 @@ export interface ListOriginByEndpointRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
 export interface Origin {
@@ -3649,6 +3679,8 @@ export interface ListOriginGroupByEndpointRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN. */
 export interface OriginGroup {
@@ -3677,6 +3709,8 @@ export interface ListPoliciesRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CdnWebApplicationFirewallPolicyTagsMap = { [key: string]: string | undefined };
@@ -3715,6 +3749,8 @@ export interface ListProfileByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
@@ -3771,10 +3807,14 @@ export interface ListProfileResourceUsageRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProfilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProfileSupportedOptimizationTypesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3795,6 +3835,8 @@ export interface SupportedOptimizationTypesListResult {
 export interface ListResourceUsageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRouteByEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3805,6 +3847,8 @@ export interface ListRouteByEndpointRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Friendly Routes name mapping to the any Routes or secret related information. */
 export interface Route {
@@ -3837,6 +3881,8 @@ export interface ListRuleByRuleSetRequest {
   profileName: string;
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Friendly Rules name mapping to the any Rules or secret related information. */
 export interface Rule {
@@ -3867,6 +3913,8 @@ export interface ListRuleSetByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Friendly RuleSet name mapping to the any RuleSet or secret related information. */
 export interface RuleSet {
@@ -3899,6 +3947,8 @@ export interface ListRuleSetResourceUsageRequest {
   profileName: string;
   /** Name of the rule set under the profile which is unique globally. */
   ruleSetName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSecretByProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3907,6 +3957,8 @@ export interface ListSecretByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Friendly Secret name mapping to the any Secret or secret related information. */
 export interface Secret {
@@ -3937,6 +3989,8 @@ export interface ListSecurityPolicyByProfileRequest {
   resourceGroupName: string;
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SecurityPolicy association for AzureFrontDoor profile */
 export interface SecurityPolicy {
@@ -5877,288 +5931,421 @@ export const GetSecurityPolicy: API.OperationMethod<
 
 export type ListAFDCustomDomainByProfileError = AzureOpError;
 /** Lists existing AzureFrontDoor domains. */
-export const ListAFDCustomDomainByProfile: API.OperationMethod<
+export const ListAFDCustomDomainByProfile: API.PaginatedOperationMethod<
   ListAFDCustomDomainByProfileRequest,
   AFDDomainListResult,
   ListAFDCustomDomainByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AFDDomain
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4096, __c128, 0) as any as S.Schema<ListAFDCustomDomainByProfileRequest>,
   output: __S(4098, __c128, 2) as any as S.Schema<AFDDomainListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAFDEndpointByProfileError = AzureOpError;
 /** Lists existing AzureFrontDoor endpoints. */
-export const ListAFDEndpointByProfile: API.OperationMethod<
+export const ListAFDEndpointByProfile: API.PaginatedOperationMethod<
   ListAFDEndpointByProfileRequest,
   AFDEndpointListResult,
   ListAFDEndpointByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AFDEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4128, __c129, 0) as any as S.Schema<ListAFDEndpointByProfileRequest>,
   output: __S(4130, __c129, 2) as any as S.Schema<AFDEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAFDEndpointResourceUsageError = AzureOpError;
 /** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const ListAFDEndpointResourceUsage: API.OperationMethod<
+export const ListAFDEndpointResourceUsage: API.PaginatedOperationMethod<
   ListAFDEndpointResourceUsageRequest,
   UsagesListResult,
   ListAFDEndpointResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4160, __c130, 0) as any as S.Schema<ListAFDEndpointResourceUsageRequest>,
   output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAFDOriginByOriginGroupError = AzureOpError;
 /** Lists all of the existing origins within an origin group. */
-export const ListAFDOriginByOriginGroup: API.OperationMethod<
+export const ListAFDOriginByOriginGroup: API.PaginatedOperationMethod<
   ListAFDOriginByOriginGroupRequest,
   AFDOriginListResult,
   ListAFDOriginByOriginGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AFDOrigin
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4224, __c132, 0) as any as S.Schema<ListAFDOriginByOriginGroupRequest>,
   output: __S(4226, __c132, 2) as any as S.Schema<AFDOriginListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAFDOriginGroupByProfileError = AzureOpError;
 /** Lists all of the existing origin groups within a profile. */
-export const ListAFDOriginGroupByProfile: API.OperationMethod<
+export const ListAFDOriginGroupByProfile: API.PaginatedOperationMethod<
   ListAFDOriginGroupByProfileRequest,
   AFDOriginGroupListResult,
   ListAFDOriginGroupByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AFDOriginGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4256, __c133, 0) as any as S.Schema<ListAFDOriginGroupByProfileRequest>,
   output: __S(4258, __c133, 2) as any as S.Schema<AFDOriginGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAFDOriginGroupResourceUsageError = AzureOpError;
 /** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const ListAFDOriginGroupResourceUsage: API.OperationMethod<
+export const ListAFDOriginGroupResourceUsage: API.PaginatedOperationMethod<
   ListAFDOriginGroupResourceUsageRequest,
   UsagesListResult,
   ListAFDOriginGroupResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4288, __c134, 0) as any as S.Schema<ListAFDOriginGroupResourceUsageRequest>,
   output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAFDProfileResourceUsageError = AzureOpError;
 /** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const ListAFDProfileResourceUsage: API.OperationMethod<
+export const ListAFDProfileResourceUsage: API.PaginatedOperationMethod<
   ListAFDProfileResourceUsageRequest,
   UsagesListResult,
   ListAFDProfileResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4320, __c135, 0) as any as S.Schema<ListAFDProfileResourceUsageRequest>,
   output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomDomainByEndpointError = AzureOpError;
 /** Lists all of the existing custom domains within an endpoint. */
-export const ListCustomDomainByEndpoint: API.OperationMethod<
+export const ListCustomDomainByEndpoint: API.PaginatedOperationMethod<
   ListCustomDomainByEndpointRequest,
   CustomDomainListResult,
   ListCustomDomainByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomDomain
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4352, __c136, 0) as any as S.Schema<ListCustomDomainByEndpointRequest>,
   output: __S(4354, __c136, 2) as any as S.Schema<CustomDomainListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEdgeNodesError = AzureOpError;
 /** Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users. */
-export const ListEdgeNodes: API.OperationMethod<
+export const ListEdgeNodes: API.PaginatedOperationMethod<
   ListEdgeNodesRequest,
   EdgenodeResult,
   ListEdgeNodesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EdgeNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4448, __c139, 0) as any as S.Schema<ListEdgeNodesRequest>,
   output: __S(4456, __c139, 8) as any as S.Schema<EdgenodeResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEndpointByProfileError = AzureOpError;
 /** Lists existing CDN endpoints. */
-export const ListEndpointByProfile: API.OperationMethod<
+export const ListEndpointByProfile: API.PaginatedOperationMethod<
   ListEndpointByProfileRequest,
   EndpointListResult,
   ListEndpointByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Endpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4480, __c140, 0) as any as S.Schema<ListEndpointByProfileRequest>,
   output: __S(4482, __c140, 2) as any as S.Schema<EndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEndpointResourceUsageError = AzureOpError;
 /** Checks the quota and usage of geo filters and custom domains under the given endpoint. */
-export const ListEndpointResourceUsage: API.OperationMethod<
+export const ListEndpointResourceUsage: API.PaginatedOperationMethod<
   ListEndpointResourceUsageRequest,
   ResourceUsageListResult,
   ListEndpointResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4512, __c141, 0) as any as S.Schema<ListEndpointResourceUsageRequest>,
   output: __S(4546, __c142, 2) as any as S.Schema<ResourceUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedRuleSetsError = AzureOpError;
 /** Lists all available managed rule sets. */
-export const ListManagedRuleSets: API.OperationMethod<
+export const ListManagedRuleSets: API.PaginatedOperationMethod<
   ListManagedRuleSetsRequest,
   ManagedRuleSetDefinitionList,
   ListManagedRuleSetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedRuleSetDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4576, __c143, 0) as any as S.Schema<ListManagedRuleSetsRequest>,
   output: __S(4584, __c143, 8) as any as S.Schema<ManagedRuleSetDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4608, __c144, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(4622, __c144, 14) as any as S.Schema<OperationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOriginByEndpointError = AzureOpError;
 /** Lists all of the existing origins within an endpoint. */
-export const ListOriginByEndpoint: API.OperationMethod<
+export const ListOriginByEndpoint: API.PaginatedOperationMethod<
   ListOriginByEndpointRequest,
   OriginListResult,
   ListOriginByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Origin
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4640, __c145, 0) as any as S.Schema<ListOriginByEndpointRequest>,
   output: __S(4642, __c145, 2) as any as S.Schema<OriginListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOriginGroupByEndpointError = AzureOpError;
 /** Lists all of the existing origin groups within an endpoint. */
-export const ListOriginGroupByEndpoint: API.OperationMethod<
+export const ListOriginGroupByEndpoint: API.PaginatedOperationMethod<
   ListOriginGroupByEndpointRequest,
   OriginGroupListResult,
   ListOriginGroupByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OriginGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4672, __c146, 0) as any as S.Schema<ListOriginGroupByEndpointRequest>,
   output: __S(4674, __c146, 2) as any as S.Schema<OriginGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoliciesError = AzureOpError;
 /** Lists all of the protection policies within a resource group. */
-export const ListPolicies: API.OperationMethod<
+export const ListPolicies: API.PaginatedOperationMethod<
   ListPoliciesRequest,
   CdnWebApplicationFirewallPolicyList,
   ListPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CdnWebApplicationFirewallPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4704, __c147, 0) as any as S.Schema<ListPoliciesRequest>,
   output: __S(4706, __c147, 2) as any as S.Schema<CdnWebApplicationFirewallPolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProfileByResourceGroupError = AzureOpError;
 /** Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within a resource group. */
-export const ListProfileByResourceGroup: API.OperationMethod<
+export const ListProfileByResourceGroup: API.PaginatedOperationMethod<
   ListProfileByResourceGroupRequest,
   ProfileListResult,
   ListProfileByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Profile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4736, __c148, 0) as any as S.Schema<ListProfileByResourceGroupRequest>,
   output: __S(4769, __c149, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProfileResourceUsageError = AzureOpError;
 /** Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile. */
-export const ListProfileResourceUsage: API.OperationMethod<
+export const ListProfileResourceUsage: API.PaginatedOperationMethod<
   ListProfileResourceUsageRequest,
   ResourceUsageListResult,
   ListProfileResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4800, __c150, 0) as any as S.Schema<ListProfileResourceUsageRequest>,
   output: __S(4546, __c142, 2) as any as S.Schema<ResourceUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProfilesError = AzureOpError;
 /** Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within an Azure subscription. */
-export const ListProfiles: API.OperationMethod<
+export const ListProfiles: API.PaginatedOperationMethod<
   ListProfilesRequest,
   ProfileListResult,
   ListProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Profile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4928, __c154, 0) as any as S.Schema<ListProfilesRequest>,
   output: __S(4769, __c149, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProfileSupportedOptimizationTypesError = AzureOpError;
 /** Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values. */
@@ -6177,108 +6364,157 @@ export const ListProfileSupportedOptimizationTypes: API.OperationMethod<
 
 export type ListResourceUsageError = AzureOpError;
 /** Check the quota and actual usage of the CDN profiles under the given subscription. */
-export const ListResourceUsage: API.OperationMethod<
+export const ListResourceUsage: API.PaginatedOperationMethod<
   ListResourceUsageRequest,
   ResourceUsageListResult,
   ListResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4992, __c156, 0) as any as S.Schema<ListResourceUsageRequest>,
   output: __S(4546, __c142, 2) as any as S.Schema<ResourceUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRouteByEndpointError = AzureOpError;
 /** Lists all of the existing origins within a profile. */
-export const ListRouteByEndpoint: API.OperationMethod<
+export const ListRouteByEndpoint: API.PaginatedOperationMethod<
   ListRouteByEndpointRequest,
   RouteListResult,
   ListRouteByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Route
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5024, __c157, 0) as any as S.Schema<ListRouteByEndpointRequest>,
   output: __S(5026, __c157, 2) as any as S.Schema<RouteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRuleByRuleSetError = AzureOpError;
 /** Lists all of the existing delivery rules within a rule set. */
-export const ListRuleByRuleSet: API.OperationMethod<
+export const ListRuleByRuleSet: API.PaginatedOperationMethod<
   ListRuleByRuleSetRequest,
   RuleListResult,
   ListRuleByRuleSetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Rule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5056, __c158, 0) as any as S.Schema<ListRuleByRuleSetRequest>,
   output: __S(5058, __c158, 2) as any as S.Schema<RuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRuleSetByProfileError = AzureOpError;
 /** Lists existing AzureFrontDoor rule sets within a profile. */
-export const ListRuleSetByProfile: API.OperationMethod<
+export const ListRuleSetByProfile: API.PaginatedOperationMethod<
   ListRuleSetByProfileRequest,
   RuleSetListResult,
   ListRuleSetByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RuleSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5088, __c159, 0) as any as S.Schema<ListRuleSetByProfileRequest>,
   output: __S(5090, __c159, 2) as any as S.Schema<RuleSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRuleSetResourceUsageError = AzureOpError;
 /** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const ListRuleSetResourceUsage: API.OperationMethod<
+export const ListRuleSetResourceUsage: API.PaginatedOperationMethod<
   ListRuleSetResourceUsageRequest,
   UsagesListResult,
   ListRuleSetResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5120, __c160, 0) as any as S.Schema<ListRuleSetResourceUsageRequest>,
   output: __S(4195, __c131, 3) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecretByProfileError = AzureOpError;
 /** Lists existing AzureFrontDoor secrets. */
-export const ListSecretByProfile: API.OperationMethod<
+export const ListSecretByProfile: API.PaginatedOperationMethod<
   ListSecretByProfileRequest,
   SecretListResult,
   ListSecretByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Secret
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5152, __c161, 0) as any as S.Schema<ListSecretByProfileRequest>,
   output: __S(5154, __c161, 2) as any as S.Schema<SecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityPolicyByProfileError = AzureOpError;
 /** Lists security policies associated with the profile */
-export const ListSecurityPolicyByProfile: API.OperationMethod<
+export const ListSecurityPolicyByProfile: API.PaginatedOperationMethod<
   ListSecurityPolicyByProfileRequest,
   SecurityPolicyListResult,
   ListSecurityPolicyByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecurityPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5184, __c162, 0) as any as S.Schema<ListSecurityPolicyByProfileRequest>,
   output: __S(5186, __c162, 2) as any as S.Schema<SecurityPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MigrateProfileError = AzureOpError;
 /** Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this. */
@@ -9900,12 +10136,14 @@ function __c128(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDCustomDomainByProfileRequest" });
@@ -9928,12 +10166,14 @@ function __c129(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDEndpointByProfileRequest" });
@@ -9957,12 +10197,14 @@ function __c130(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDEndpointResourceUsageRequest" });
@@ -10007,12 +10249,14 @@ function __c132(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDOriginByOriginGroupRequest" });
@@ -10035,12 +10279,14 @@ function __c133(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDOriginGroupByProfileRequest" });
@@ -10064,12 +10310,14 @@ function __c134(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           originGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDOriginGroupResourceUsageRequest" });
@@ -10083,12 +10331,14 @@ function __c135(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAFDProfileResourceUsageRequest" });
@@ -10103,12 +10353,14 @@ function __c136(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomDomainByEndpointRequest" });
@@ -10158,12 +10410,15 @@ function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Cdn/edgenodes",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEdgeNodesRequest" });
@@ -10221,12 +10476,14 @@ function __c140(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEndpointByProfileRequest" });
@@ -10250,12 +10507,14 @@ function __c141(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEndpointResourceUsageRequest" });
@@ -10289,12 +10548,14 @@ function __c143(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedRuleSetsRequest" });
@@ -10352,12 +10613,15 @@ function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Cdn/operations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -10461,12 +10725,14 @@ function __c145(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOriginByEndpointRequest" });
@@ -10490,12 +10756,14 @@ function __c146(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOriginGroupByEndpointRequest" });
@@ -10517,12 +10785,14 @@ function __c147(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
@@ -10544,12 +10814,14 @@ function __c148(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProfileByResourceGroupRequest" });
@@ -10576,12 +10848,14 @@ function __c150(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProfileResourceUsageRequest" });
@@ -10695,12 +10969,14 @@ function __c154(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProfilesRequest" });
@@ -10737,12 +11013,14 @@ function __c156(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListResourceUsageRequest" });
@@ -10757,12 +11035,14 @@ function __c157(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRouteByEndpointRequest" });
@@ -10786,12 +11066,14 @@ function __c158(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRuleByRuleSetRequest" });
@@ -10814,12 +11096,14 @@ function __c159(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRuleSetByProfileRequest" });
@@ -10843,12 +11127,14 @@ function __c160(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRuleSetResourceUsageRequest" });
@@ -10862,12 +11148,14 @@ function __c161(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecretByProfileRequest" });
@@ -10890,12 +11178,14 @@ function __c162(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityPolicyByProfileRequest" });

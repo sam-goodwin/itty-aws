@@ -1830,6 +1830,196 @@ function specAudience(doc: any): string | undefined {
 }
 
 // ============================================================================
+// Pagination (`x-ms-pageable`)
+// ============================================================================
+//
+// Azure lists answer `{ value: [...], nextLink?: "<absolute url>" }` and the
+// swagger marks the operation `x-ms-pageable: { nextLinkName, itemName }`
+// (`itemName` defaults to `value`; `nextLinkName: null` is a single page).
+// The converter drops vendor extensions, so markPageableOps tags each
+// pageable swagger operation with a marker query parameter, and
+// stampPageable finds it on the converted input again and turns it into:
+//
+//   nextLink  `smithy.api#paginated { mode: "cursor", inputToken: "nextLink",
+//             outputToken: <nextLink member>, items }` plus an input member
+//             `nextLink` named by the http trait's `nextLink`. The protocol
+//             GETs that absolute URL as-is (it already carries
+//             `api-version` and skip tokens) with the operation's auth.
+//   marker    Storage's `NextMarker` fed back as the `marker` query
+//             parameter: a plain cursor, no URL override.
+//   single    `nextLinkName: null`: `{ mode: "single", items }`.
+//
+// A pageable operation whose next page is another operation
+// (`operationName`, a POST) or whose response has no items list stays a
+// plain operation.
+
+const PAGEABLE_MARKER = "__distilled_pageable_";
+const PAGINATED_TRAIT = "smithy.api#paginated";
+/** The input member the protocol reads the next page's URL from. */
+const NEXT_LINK_MEMBER = "nextLink";
+
+interface PageableOp {
+  readonly nextLinkName: string | null;
+  readonly itemName: string;
+  readonly operationName?: string;
+}
+
+/** Mirrors the shared converter's member naming (`@odata.nextLink` → `_odata_nextLink`). */
+const pageMemberIdent = (name: string): string => {
+  let out = name.replace(/[^A-Za-z0-9_]/g, "_");
+  if (/^[0-9]/.test(out)) out = `_${out}`;
+  return out || "_";
+};
+
+/** Tag every `x-ms-pageable` operation of a swagger document; returns their facts by marker index. */
+function markPageableOps(doc: any): PageableOp[] {
+  const facts: PageableOp[] = [];
+  const items: Array<[string, any]> = [
+    ...Object.entries<any>(doc.paths ?? {}),
+    ...Object.entries<any>(doc["x-ms-paths"] ?? {}),
+  ];
+  for (const [, item] of items) {
+    if (!item || typeof item !== "object") continue;
+    for (const method of HTTP_METHOD_KEYS) {
+      const op = item[method];
+      const pageable = op?.["x-ms-pageable"];
+      if (!pageable || typeof pageable !== "object") continue;
+      const nextLinkName = typeof pageable.nextLinkName === "string" ? pageable.nextLinkName : null;
+      const itemName = typeof pageable.itemName === "string" ? pageable.itemName : "value";
+      const operationName =
+        typeof pageable.operationName === "string" ? pageable.operationName : undefined;
+      op.parameters = [
+        ...(Array.isArray(op.parameters) ? op.parameters : []),
+        { name: `${PAGEABLE_MARKER}${facts.length}`, in: "query", type: "string" },
+      ];
+      facts.push({ nextLinkName, itemName, ...(operationName ? { operationName } : {}) });
+    }
+  }
+  return facts;
+}
+
+/** The member of `shape` whose key or wire name is `wire`. */
+const memberByWire = (shape: any, wire: string): string | undefined =>
+  Object.entries<any>(shape?.members ?? {}).find(
+    ([key, m]) => key === wire || m?.traits?.["smithy.api#jsonName"] === wire,
+  )?.[0];
+
+/**
+ * The items path of a page: the `itemName` member, or (Storage, whose specs
+ * leave `itemName` at its `value` default) the first list member at the
+ * top level or one struct below (`Segment.BlobItems`).
+ */
+function pageItemsPath(model: SmithyModel, output: any, itemName: string): string | undefined {
+  const isList = (m: any) => model.shapes[m?.target]?.type === "list";
+  const named = memberByWire(output, itemName);
+  if (named !== undefined) return isList(output.members[named]) ? named : undefined;
+  const members = Object.entries<any>(output.members ?? {});
+  const top = members.find(([, m]) => isList(m));
+  if (top) return top[0];
+  for (const [key, m] of members) {
+    const inner = model.shapes[m?.target];
+    if (inner?.type !== "structure") continue;
+    const lists = Object.entries<any>(inner.members ?? {}).filter(([, im]) => isList(im));
+    const pick = lists.find(([k]) => /Items$/.test(k)) ?? lists[0];
+    if (pick) return `${key}.${pick[0]}`;
+  }
+  return undefined;
+}
+
+/** Counts of how each marked operation was stamped, for the convert summary. */
+const pageableStats = { nextLink: 0, marker: 0, single: 0, skipped: [] as string[] };
+
+/**
+ * Replace every converted operation's pageable marker with its pagination
+ * (see the section comment). Runs after the data-plane stamp, so Storage's
+ * XML outputs are in their final shape.
+ */
+function stampPageable(model: SmithyModel, facts: readonly PageableOp[]): void {
+  for (const [opId, def] of Object.entries<any>(model.shapes)) {
+    if (def.type !== "operation") continue;
+    const input = model.shapes[def.input?.target];
+    const entry = Object.entries<any>(input?.members ?? {}).find(
+      ([, m]) =>
+        typeof m?.traits?.["smithy.api#httpQuery"] === "string" &&
+        m.traits["smithy.api#httpQuery"].startsWith(PAGEABLE_MARKER),
+    );
+    if (!entry) continue;
+    const [markerKey, marker] = entry;
+    delete input.members[markerKey];
+    const page = facts[Number(marker.traits["smithy.api#httpQuery"].slice(PAGEABLE_MARKER.length))];
+    const output = model.shapes[def.output?.target];
+    const http = def.traits?.["smithy.api#http"];
+    if (!page || !http) throw new Error(`pageable marker without its facts on ${opId}`);
+    if (page.operationName !== undefined) {
+      pageableStats.skipped.push(`${local(opId)}: next page is ${page.operationName}`);
+      continue;
+    }
+    const items =
+      output?.type === "structure" ? pageItemsPath(model, output, page.itemName) : undefined;
+    if (items === undefined) {
+      pageableStats.skipped.push(`${local(opId)}: no ${page.itemName} list in the response`);
+      continue;
+    }
+    if (page.nextLinkName === null) {
+      def.traits[PAGINATED_TRAIT] = { mode: "single", items };
+      pageableStats.single++;
+      continue;
+    }
+    let outputToken = memberByWire(output, page.nextLinkName);
+    if (outputToken === undefined) {
+      // Many list schemas leave the next link out; the service still sends it.
+      outputToken = pageMemberIdent(page.nextLinkName);
+      if (outputToken in output.members) {
+        pageableStats.skipped.push(`${local(opId)}: ${outputToken} is not the next link`);
+        continue;
+      }
+      output.members[outputToken] = {
+        target: "smithy.api#String",
+        traits: {
+          "smithy.api#documentation": "The URL to get the next page of results, if any.",
+          ...(outputToken !== page.nextLinkName
+            ? { "smithy.api#jsonName": page.nextLinkName }
+            : {}),
+        },
+      };
+    }
+    // Storage: `NextMarker` goes back as the `marker` query parameter.
+    const markerInput = Object.entries<any>(input.members).find(
+      ([, m]) => m?.traits?.["smithy.api#httpQuery"] === "marker",
+    )?.[0];
+    if (page.nextLinkName === "NextMarker" && markerInput !== undefined) {
+      def.traits[PAGINATED_TRAIT] = {
+        mode: "cursor",
+        inputToken: markerInput,
+        outputToken,
+        items,
+      };
+      pageableStats.marker++;
+      continue;
+    }
+    if (NEXT_LINK_MEMBER in input.members) {
+      pageableStats.skipped.push(`${local(opId)}: input already has ${NEXT_LINK_MEMBER}`);
+      continue;
+    }
+    input.members[NEXT_LINK_MEMBER] = {
+      target: "smithy.api#String",
+      traits: {
+        "smithy.api#documentation":
+          "The absolute URL of a page returned by a previous call; when set, every other member is ignored.",
+      },
+    };
+    http.nextLink = NEXT_LINK_MEMBER;
+    def.traits[PAGINATED_TRAIT] = {
+      mode: "cursor",
+      inputToken: NEXT_LINK_MEMBER,
+      outputToken,
+      items,
+    };
+    pageableStats.nextLink++;
+  }
+}
+
+// ============================================================================
 // Main
 // ============================================================================
 
@@ -1904,6 +2094,7 @@ async function main() {
 
       try {
         const resolved = loadResolvedSpec(spec.filePath, spec.versionDir);
+        const pageable = markPageableOps(resolved);
 
         // Merging resolves collisions by final name (v0 semantics), so name
         // first and keep the way back to the upstream names.
@@ -1926,6 +2117,7 @@ async function main() {
         });
         const upstreamOf = applyDeferredNames(model);
         foldApiVersion(model);
+        stampPageable(model, pageable);
         mergeSpecModel(merged, model, upstreamOf);
 
         specSuccessCount++;
@@ -1982,6 +2174,7 @@ async function main() {
       try {
         const resolved = loadResolvedSpec(filePath, g.versionDir);
         audience ??= specAudience(resolved);
+        const pageable = markPageableOps(resolved);
         const { host, ops } = prepareDataPlaneSpec(
           resolved,
           g.apiVersion,
@@ -2009,6 +2202,7 @@ async function main() {
         });
         const upstreamOf = applyDeferredNames(model);
         stampDataPlaneModel(model, host, ops, resolved);
+        stampPageable(model, pageable);
         const extras = DATA_PLANE_OP_EXTRAS[g.module];
         for (const def of Object.values<any>(extras ? model.shapes : {})) {
           const http = def.type === "operation" ? def.traits?.["smithy.api#http"] : undefined;
@@ -2070,6 +2264,11 @@ async function main() {
   );
   console.log(`  Total operations: ${totalOps} ARM + ${dataPlaneOps} data-plane`);
   console.log(`  Colliding operations skipped (first spec wins): ${totalSkipped}`);
+  console.log(
+    `  Pageable operations: ${pageableStats.nextLink} nextLink, ${pageableStats.marker} marker, ` +
+      `${pageableStats.single} single page, ${pageableStats.skipped.length} left unpaginated`,
+  );
+  for (const s of pageableStats.skipped) console.log(`   ⏭  ${s}`);
   console.log(`  Elapsed: ${((Date.now() - started) / 1000).toFixed(1)}s`);
   console.log(`  Output: ${outDir}`);
   // patches/<service>/*.json are Smithy ops on upstream names; finalize

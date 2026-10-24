@@ -782,10 +782,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of webhooks.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#WebhookListResult": {
@@ -888,6 +895,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1652,10 +1665,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of watchers.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#WatcherListResult": {
@@ -1788,6 +1808,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2269,10 +2295,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of variables.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#VariableListResult": {
@@ -2369,6 +2402,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2388,10 +2427,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/usages",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the usage for the account id.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#UsageListResult": {
@@ -2510,6 +2556,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2529,10 +2581,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/statistics",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the statistics for the account.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#StatisticsListResult": {
@@ -2632,6 +2691,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2824,10 +2889,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of sync job streams identified by sync job id.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#SourceControlSyncJobStreamsListBySyncJob": {
@@ -2961,6 +3033,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3333,10 +3411,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of source control sync jobs.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#SourceControlSyncJobListResult": {
@@ -3409,6 +3494,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4026,10 +4117,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of source controls.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#SourceControlListResult": {
@@ -4132,6 +4230,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6725,10 +6829,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of schedules.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ScheduleListResult": {
@@ -6824,6 +6935,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7751,10 +7868,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the a list of Packages",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#PackageListResult": {
@@ -7883,6 +8007,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Runtime Environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8449,10 +8579,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of RuntimeEnvironments.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#RuntimeEnvironmentListResult": {
@@ -8573,6 +8710,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9288,10 +9431,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of test job streams identified by runbook name.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#JobStreamListResult": {
@@ -9364,6 +9514,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10973,10 +11129,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of runbooks.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#RunbookListResult": {
@@ -11103,6 +11266,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11822,10 +11991,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of python 3 packages.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ModuleListResult": {
@@ -11952,6 +12128,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12458,10 +12640,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of python 2 packages.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ListPython2PackageByAutomationAccountRequest": {
@@ -12490,6 +12679,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12509,10 +12704,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the private link resources that need to be created for Automation account.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#PrivateLinkResourceListResult": {
@@ -12633,6 +12835,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13078,10 +13286,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private endpoint connections on a Automation account.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#PrivateEndpointConnectionListResult": {
@@ -13174,6 +13389,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13193,10 +13414,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/objectDataTypes/{typeName}/fields",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of fields of a given type across all accessible modules.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#TypeFieldListResult": {
@@ -13278,6 +13506,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of type."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13792,10 +14026,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the Dsc node report list by node id.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#DscNodeReportListResult": {
@@ -13868,6 +14109,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14268,10 +14515,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of dsc nodes.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#DscNodeListResult": {
@@ -14400,6 +14654,12 @@
           "traits": {
             "smithy.api#httpQuery": "$inlinecount",
             "smithy.api#documentation": "Return total rows."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14960,10 +15220,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of dsc node configurations.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#DscNodeConfigurationListResult": {
@@ -15093,6 +15360,12 @@
             "smithy.api#httpQuery": "$inlinecount",
             "smithy.api#documentation": "Return total rows."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15112,10 +15385,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of fields of a given type identified by module name.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ListFieldByTypeRequest": {
@@ -15160,6 +15440,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of type."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15179,10 +15465,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/objectDataTypes/{typeName}/fields",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of fields of a given type identified by module name.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ObjectDataTypesListFieldsByModuleAndTypeRequest": {
@@ -15226,6 +15519,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of type."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15541,10 +15840,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of activities in the module identified by module name.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ActivityListResult": {
@@ -15610,6 +15916,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The module name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16163,10 +16475,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of modules.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ListModuleByAutomationAccountRequest": {
@@ -16194,6 +16513,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16352,10 +16677,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the deleted runbooks for an automation account.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#DeletedRunbookListResult": {
@@ -16490,6 +16822,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16701,10 +17039,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of jobs streams identified by job name.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ListJobStreamByJobRequest": {
@@ -16747,6 +17092,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17516,10 +17867,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of jobs.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#JobListResultV2": {
@@ -17701,6 +18059,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18091,10 +18455,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of job schedules.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#JobScheduleListResult": {
@@ -18197,6 +18568,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18831,10 +19208,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of hybrid runbook workers.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#HybridRunbookWorkersListResult": {
@@ -18970,6 +19354,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19507,10 +19897,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of hybrid runbook worker groups.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#HybridRunbookWorkerGroupsListResult": {
@@ -19638,6 +20035,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20122,10 +20525,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of credentials.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#CredentialListResult": {
@@ -20221,6 +20631,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20885,10 +21301,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of connections.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ConnectionListResult": {
@@ -20984,6 +21407,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21381,10 +21810,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of connection types.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ConnectionTypeListResult": {
@@ -21480,6 +21916,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22287,10 +22729,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of configurations.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#DscConfigurationListResult": {
@@ -22450,6 +22899,12 @@
           "traits": {
             "smithy.api#httpQuery": "$inlinecount",
             "smithy.api#documentation": "Return total rows."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22937,10 +23392,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of certificates.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#CertificateListResult": {
@@ -23036,6 +23498,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the automation account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24199,10 +24667,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve a list of accounts within a given resource group.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#AutomationAccountListResult": {
@@ -24327,6 +24802,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24484,10 +24965,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Automation Accounts within an Azure subscription.\n\nRetrieve a list of accounts within a given subscription.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#ListAutomationAccountRequest": {
@@ -24500,6 +24988,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24509,7 +25003,7 @@
     "com.azure.automation#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.automation#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.automation#OperationListResult"
@@ -24519,10 +25013,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Automation/operations",
           "code": 200,
-          "apiVersion": "2024-10-23"
+          "apiVersion": "2024-10-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Automation REST API operations.",
-        "com.distilled.openapi#apiVersion": "2024-10-23"
+        "com.distilled.openapi#apiVersion": "2024-10-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.automation#OperationListResult": {
@@ -24768,6 +25269,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Provider, Resource and Operation values"
+      }
+    },
+    "com.azure.automation#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.automation#Automation": {

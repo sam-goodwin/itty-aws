@@ -15,7 +15,65 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.search#SharedPrivateLinkResourcesDelete": "com.azure.search#DeleteSharedPrivateLinkResource",
+      "com.azure.search#SharedPrivateLinkResourcesDeleteResponse": "com.azure.search#DeleteSharedPrivateLinkResourceResponse",
+      "com.azure.search#SharedPrivateLinkResourcesDeleteRequest": "com.azure.search#DeleteSharedPrivateLinkResourceRequest",
+      "com.azure.search#SharedPrivateLinkResourcesGet": "com.azure.search#GetSharedPrivateLinkResource",
+      "com.azure.search#SharedPrivateLinkResourcesGetResponse": "com.azure.search#GetSharedPrivateLinkResourceResponse",
+      "com.azure.search#SharedPrivateLinkResourcesGetRequest": "com.azure.search#GetSharedPrivateLinkResourceRequest",
+      "com.azure.search#SharedPrivateLinkResourcesListByService": "com.azure.search#ListSharedPrivateLinkResourceByService",
+      "com.azure.search#SharedPrivateLinkResourcesListByServiceRequest": "com.azure.search#ListSharedPrivateLinkResourceByServiceRequest",
+      "com.azure.search#AdminKeysRegenerate": "com.azure.search#RegenerateAdminKey",
+      "com.azure.search#AdminKeysRegenerateRequest": "com.azure.search#RegenerateAdminKeyRequest",
+      "com.azure.search#AdminKeysRegenerateRequestKeyKind": "com.azure.search#RegenerateAdminKeyRequestKeyKind",
+      "com.azure.search#PrivateLinkResourcesListSupported": "com.azure.search#ListPrivateLinkResourceSupported",
+      "com.azure.search#PrivateLinkResourcesListSupportedRequest": "com.azure.search#ListPrivateLinkResourceSupportedRequest",
+      "com.azure.search#PrivateEndpointConnectionsDelete": "com.azure.search#DeletePrivateEndpointConnection",
+      "com.azure.search#PrivateEndpointConnectionsDeleteResponse": "com.azure.search#DeletePrivateEndpointConnectionResponse",
+      "com.azure.search#PrivateEndpointConnectionsDeleteRequest": "com.azure.search#DeletePrivateEndpointConnectionRequest",
+      "com.azure.search#PrivateEndpointConnectionsUpdate": "com.azure.search#UpdatePrivateEndpointConnection",
+      "com.azure.search#PrivateEndpointConnectionsUpdateResponse": "com.azure.search#UpdatePrivateEndpointConnectionResponse",
+      "com.azure.search#PrivateEndpointConnectionsUpdateRequest": "com.azure.search#UpdatePrivateEndpointConnectionRequest",
+      "com.azure.search#PrivateEndpointConnectionsGet": "com.azure.search#GetPrivateEndpointConnection",
+      "com.azure.search#PrivateEndpointConnectionsGetResponse": "com.azure.search#GetPrivateEndpointConnectionResponse",
+      "com.azure.search#PrivateEndpointConnectionsGetRequest": "com.azure.search#GetPrivateEndpointConnectionRequest",
+      "com.azure.search#PrivateEndpointConnectionsListByService": "com.azure.search#ListPrivateEndpointConnectionByService",
+      "com.azure.search#PrivateEndpointConnectionsListByServiceRequest": "com.azure.search#ListPrivateEndpointConnectionByServiceRequest",
+      "com.azure.search#NetworkSecurityPerimeterConfigurationsGet": "com.azure.search#GetNetworkSecurityPerimeterConfiguration",
+      "com.azure.search#NetworkSecurityPerimeterConfigurationsGetResponse": "com.azure.search#GetNetworkSecurityPerimeterConfigurationResponse",
+      "com.azure.search#NetworkSecurityPerimeterConfigurationsGetRequest": "com.azure.search#GetNetworkSecurityPerimeterConfigurationRequest",
+      "com.azure.search#NetworkSecurityPerimeterConfigurationsListByService": "com.azure.search#ListNetworkSecurityPerimeterConfigurationByService",
+      "com.azure.search#NetworkSecurityPerimeterConfigurationsListByServiceRequest": "com.azure.search#ListNetworkSecurityPerimeterConfigurationByServiceRequest",
+      "com.azure.search#AdminKeysGet": "com.azure.search#GetAdminKey",
+      "com.azure.search#AdminKeysGetRequest": "com.azure.search#GetAdminKeyRequest",
+      "com.azure.search#QueryKeysDelete": "com.azure.search#DeleteQueryKey",
+      "com.azure.search#QueryKeysDeleteRequest": "com.azure.search#DeleteQueryKeyRequest",
+      "com.azure.search#QueryKeysCreate": "com.azure.search#CreateQueryKey",
+      "com.azure.search#QueryKeysCreateRequest": "com.azure.search#CreateQueryKeyRequest",
+      "com.azure.search#ServicesDelete": "com.azure.search#DeleteService",
+      "com.azure.search#ServicesDeleteRequest": "com.azure.search#DeleteServiceRequest",
+      "com.azure.search#ServicesUpdate": "com.azure.search#UpdateService",
+      "com.azure.search#ServicesUpdateResponse": "com.azure.search#UpdateServiceResponse",
+      "com.azure.search#ServicesUpdateResponseTagsMap": "com.azure.search#UpdateServiceResponseTagsMap",
+      "com.azure.search#ServicesUpdateRequest": "com.azure.search#UpdateServiceRequest",
+      "com.azure.search#ServicesUpdateRequestTagsMap": "com.azure.search#UpdateServiceRequestTagsMap",
+      "com.azure.search#ServicesGet": "com.azure.search#GetService",
+      "com.azure.search#ServicesGetResponse": "com.azure.search#GetServiceResponse",
+      "com.azure.search#ServicesGetResponseTagsMap": "com.azure.search#GetServiceResponseTagsMap",
+      "com.azure.search#ServicesGetRequest": "com.azure.search#GetServiceRequest",
+      "com.azure.search#ServicesListByResourceGroup": "com.azure.search#ListServiceByResourceGroup",
+      "com.azure.search#ServicesListByResourceGroupRequest": "com.azure.search#ListServiceByResourceGroupRequest",
+      "com.azure.search#ServicesListBySubscription": "com.azure.search#ListServiceBySubscription",
+      "com.azure.search#ServicesListBySubscriptionRequest": "com.azure.search#ListServiceBySubscriptionRequest",
+      "com.azure.search#UsagesListBySubscription": "com.azure.search#ListUsageBySubscription",
+      "com.azure.search#UsagesListBySubscriptionRequest": "com.azure.search#ListUsageBySubscriptionRequest",
+      "com.azure.search#ServicesCheckNameAvailability": "com.azure.search#CheckServiceNameAvailability",
+      "com.azure.search#ServicesCheckNameAvailabilityRequest": "com.azure.search#CheckServiceNameAvailabilityRequest",
+      "com.azure.search#ServicesCheckNameAvailabilityRequestType": "com.azure.search#CheckServiceNameAvailabilityRequestType",
+      "com.azure.search#OperationsList": "com.azure.search#ListOperations",
+      "com.azure.search#OperationsListRequest": "com.azure.search#ListOperationsRequest"
+    }
   },
   "shapes": {
     "com.azure.search#ServicesUpgrade": {
@@ -1307,13 +1365,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#DeleteSharedPrivateLinkResource": {
+    "com.azure.search#SharedPrivateLinkResourcesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#DeleteSharedPrivateLinkResourceRequest"
+        "target": "com.azure.search#SharedPrivateLinkResourcesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.search#DeleteSharedPrivateLinkResourceResponse"
+        "target": "com.azure.search#SharedPrivateLinkResourcesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1326,7 +1384,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#DeleteSharedPrivateLinkResourceResponse": {
+    "com.azure.search#SharedPrivateLinkResourcesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -1348,7 +1406,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#DeleteSharedPrivateLinkResourceRequest": {
+    "com.azure.search#SharedPrivateLinkResourcesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1498,13 +1556,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#GetSharedPrivateLinkResource": {
+    "com.azure.search#SharedPrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#GetSharedPrivateLinkResourceRequest"
+        "target": "com.azure.search#SharedPrivateLinkResourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.search#GetSharedPrivateLinkResourceResponse"
+        "target": "com.azure.search#SharedPrivateLinkResourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1517,7 +1575,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#GetSharedPrivateLinkResourceResponse": {
+    "com.azure.search#SharedPrivateLinkResourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1555,7 +1613,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#GetSharedPrivateLinkResourceRequest": {
+    "com.azure.search#SharedPrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1595,10 +1653,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#ListSharedPrivateLinkResourceByService": {
+    "com.azure.search#SharedPrivateLinkResourcesListByService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListSharedPrivateLinkResourceByServiceRequest"
+        "target": "com.azure.search#SharedPrivateLinkResourcesListByServiceRequest"
       },
       "output": {
         "target": "com.azure.search#SharedPrivateLinkResourceListResult"
@@ -1608,10 +1666,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/sharedPrivateLinkResources",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all shared private link resources managed by the given service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#SharedPrivateLinkResourceListResult": {
@@ -1643,7 +1708,7 @@
         "smithy.api#documentation": "The list of shared private link resources."
       }
     },
-    "com.azure.search#ListSharedPrivateLinkResourceByServiceRequest": {
+    "com.azure.search#SharedPrivateLinkResourcesListByServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1669,16 +1734,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#RegenerateAdminKey": {
+    "com.azure.search#AdminKeysRegenerate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#RegenerateAdminKeyRequest"
+        "target": "com.azure.search#AdminKeysRegenerateRequest"
       },
       "output": {
         "target": "com.azure.search#AdminKeyResult"
@@ -1714,7 +1785,7 @@
         "smithy.api#documentation": "Response containing the primary and secondary admin API keys for a given Azure AI Search service."
       }
     },
-    "com.azure.search#RegenerateAdminKeyRequest": {
+    "com.azure.search#AdminKeysRegenerateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1742,7 +1813,7 @@
           }
         },
         "keyKind": {
-          "target": "com.azure.search#RegenerateAdminKeyRequestKeyKind",
+          "target": "com.azure.search#AdminKeysRegenerateRequestKeyKind",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -1754,7 +1825,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#RegenerateAdminKeyRequestKeyKind": {
+    "com.azure.search#AdminKeysRegenerateRequestKeyKind": {
       "type": "enum",
       "members": {
         "PRIMARY": {
@@ -1772,10 +1843,10 @@
       },
       "traits": {}
     },
-    "com.azure.search#ListPrivateLinkResourceSupported": {
+    "com.azure.search#PrivateLinkResourcesListSupported": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListPrivateLinkResourceSupportedRequest"
+        "target": "com.azure.search#PrivateLinkResourcesListSupportedRequest"
       },
       "output": {
         "target": "com.azure.search#PrivateLinkResourcesResult"
@@ -1785,10 +1856,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all supported private link resource types for the given service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#PrivateLinkResourcesResult": {
@@ -1963,7 +2041,7 @@
         "smithy.api#documentation": "The list of required members of the private link resource."
       }
     },
-    "com.azure.search#ListPrivateLinkResourceSupportedRequest": {
+    "com.azure.search#PrivateLinkResourcesListSupportedRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1989,19 +2067,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#DeletePrivateEndpointConnection": {
+    "com.azure.search#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.search#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.search#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.search#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2014,7 +2098,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.search#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2052,7 +2136,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.search#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2092,13 +2176,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#UpdatePrivateEndpointConnection": {
+    "com.azure.search#PrivateEndpointConnectionsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#UpdatePrivateEndpointConnectionRequest"
+        "target": "com.azure.search#PrivateEndpointConnectionsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.search#UpdatePrivateEndpointConnectionResponse"
+        "target": "com.azure.search#PrivateEndpointConnectionsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2111,7 +2195,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#UpdatePrivateEndpointConnectionResponse": {
+    "com.azure.search#PrivateEndpointConnectionsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2149,7 +2233,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#UpdatePrivateEndpointConnectionRequest": {
+    "com.azure.search#PrivateEndpointConnectionsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2195,13 +2279,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#GetPrivateEndpointConnection": {
+    "com.azure.search#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.search#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.search#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.search#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2214,7 +2298,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#GetPrivateEndpointConnectionResponse": {
+    "com.azure.search#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2252,7 +2336,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#GetPrivateEndpointConnectionRequest": {
+    "com.azure.search#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2292,10 +2376,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#ListPrivateEndpointConnectionByService": {
+    "com.azure.search#PrivateEndpointConnectionsListByService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListPrivateEndpointConnectionByServiceRequest"
+        "target": "com.azure.search#PrivateEndpointConnectionsListByServiceRequest"
       },
       "output": {
         "target": "com.azure.search#PrivateEndpointConnectionListResult"
@@ -2305,10 +2389,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all private endpoint connections in the given service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#PrivateEndpointConnectionListResult": {
@@ -2340,7 +2431,7 @@
         "smithy.api#documentation": "The list of private endpoint connections."
       }
     },
-    "com.azure.search#ListPrivateEndpointConnectionByServiceRequest": {
+    "com.azure.search#PrivateEndpointConnectionsListByServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2365,6 +2456,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2446,13 +2543,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#GetNetworkSecurityPerimeterConfiguration": {
+    "com.azure.search#NetworkSecurityPerimeterConfigurationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#GetNetworkSecurityPerimeterConfigurationRequest"
+        "target": "com.azure.search#NetworkSecurityPerimeterConfigurationsGetRequest"
       },
       "output": {
-        "target": "com.azure.search#GetNetworkSecurityPerimeterConfigurationResponse"
+        "target": "com.azure.search#NetworkSecurityPerimeterConfigurationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2465,7 +2562,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#GetNetworkSecurityPerimeterConfigurationResponse": {
+    "com.azure.search#NetworkSecurityPerimeterConfigurationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2987,7 +3084,7 @@
         "smithy.api#documentation": "Provisioning state of a network security perimeter configuration that is being created or updated."
       }
     },
-    "com.azure.search#GetNetworkSecurityPerimeterConfigurationRequest": {
+    "com.azure.search#NetworkSecurityPerimeterConfigurationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3027,10 +3124,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#ListNetworkSecurityPerimeterConfigurationByService": {
+    "com.azure.search#NetworkSecurityPerimeterConfigurationsListByService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListNetworkSecurityPerimeterConfigurationByServiceRequest"
+        "target": "com.azure.search#NetworkSecurityPerimeterConfigurationsListByServiceRequest"
       },
       "output": {
         "target": "com.azure.search#NetworkSecurityPerimeterConfigurationListResult"
@@ -3040,10 +3137,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of network security perimeter configurations for a search service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#NetworkSecurityPerimeterConfigurationListResult": {
@@ -3111,7 +3215,7 @@
         "smithy.api#documentation": "Network security perimeter (NSP) configuration resource"
       }
     },
-    "com.azure.search#ListNetworkSecurityPerimeterConfigurationByServiceRequest": {
+    "com.azure.search#NetworkSecurityPerimeterConfigurationsListByServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3137,6 +3241,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3156,10 +3266,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/listQueryKeys",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of query API keys for the given Azure AI Search service.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#ListQueryKeysResult": {
@@ -3237,16 +3354,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#GetAdminKey": {
+    "com.azure.search#AdminKeysGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#GetAdminKeyRequest"
+        "target": "com.azure.search#AdminKeysGetRequest"
       },
       "output": {
         "target": "com.azure.search#AdminKeyResult"
@@ -3262,7 +3385,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#GetAdminKeyRequest": {
+    "com.azure.search#AdminKeysGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3294,10 +3417,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#DeleteQueryKey": {
+    "com.azure.search#QueryKeysDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#DeleteQueryKeyRequest"
+        "target": "com.azure.search#QueryKeysDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3313,7 +3436,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#DeleteQueryKeyRequest": {
+    "com.azure.search#QueryKeysDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3353,10 +3476,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#CreateQueryKey": {
+    "com.azure.search#QueryKeysCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#CreateQueryKeyRequest"
+        "target": "com.azure.search#QueryKeysCreateRequest"
       },
       "output": {
         "target": "com.azure.search#QueryKey"
@@ -3372,7 +3495,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#CreateQueryKeyRequest": {
+    "com.azure.search#QueryKeysCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3412,10 +3535,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#DeleteService": {
+    "com.azure.search#ServicesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#DeleteServiceRequest"
+        "target": "com.azure.search#ServicesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3431,7 +3554,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#DeleteServiceRequest": {
+    "com.azure.search#ServicesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3463,13 +3586,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#UpdateService": {
+    "com.azure.search#ServicesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#UpdateServiceRequest"
+        "target": "com.azure.search#ServicesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.search#UpdateServiceResponse"
+        "target": "com.azure.search#ServicesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3482,7 +3605,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#UpdateServiceResponse": {
+    "com.azure.search#ServicesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3510,7 +3633,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.search#UpdateServiceResponseTagsMap",
+          "target": "com.azure.search#ServicesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3545,7 +3668,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#UpdateServiceResponseTagsMap": {
+    "com.azure.search#ServicesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3557,7 +3680,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.search#UpdateServiceRequest": {
+    "com.azure.search#ServicesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3603,7 +3726,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.search#UpdateServiceRequestTagsMap",
+          "target": "com.azure.search#ServicesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Tags to help categorize the resource in the Azure portal."
           }
@@ -3659,7 +3782,7 @@
         "smithy.api#documentation": "User assigned identity properties"
       }
     },
-    "com.azure.search#UpdateServiceRequestTagsMap": {
+    "com.azure.search#ServicesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3997,13 +4120,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.search#GetService": {
+    "com.azure.search#ServicesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#GetServiceRequest"
+        "target": "com.azure.search#ServicesGetRequest"
       },
       "output": {
-        "target": "com.azure.search#GetServiceResponse"
+        "target": "com.azure.search#ServicesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4016,7 +4139,7 @@
         "com.distilled.openapi#apiVersion": "2025-05-01"
       }
     },
-    "com.azure.search#GetServiceResponse": {
+    "com.azure.search#ServicesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4044,7 +4167,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.search#GetServiceResponseTagsMap",
+          "target": "com.azure.search#ServicesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4079,7 +4202,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.search#GetServiceResponseTagsMap": {
+    "com.azure.search#ServicesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4091,7 +4214,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.search#GetServiceRequest": {
+    "com.azure.search#ServicesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4123,10 +4246,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#ListServiceByResourceGroup": {
+    "com.azure.search#ServicesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListServiceByResourceGroupRequest"
+        "target": "com.azure.search#ServicesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.search#SearchServiceListResult"
@@ -4136,10 +4259,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all search services in the given resource group.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#SearchServiceListResult": {
@@ -4246,7 +4376,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.search#ListServiceByResourceGroupRequest": {
+    "com.azure.search#ServicesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4264,16 +4394,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#ListServiceBySubscription": {
+    "com.azure.search#ServicesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListServiceBySubscriptionRequest"
+        "target": "com.azure.search#ServicesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.search#SearchServiceListResult"
@@ -4283,13 +4419,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Search/searchServices",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of all search services in the given subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.search#ListServiceBySubscriptionRequest": {
+    "com.azure.search#ServicesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4298,6 +4441,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4414,10 +4563,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#ListUsageBySubscription": {
+    "com.azure.search#UsagesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#ListUsageBySubscriptionRequest"
+        "target": "com.azure.search#UsagesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.search#QuotaUsagesListResult"
@@ -4427,10 +4576,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a list of all Azure AI Search quota usages across the subscription.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#QuotaUsagesListResult": {
@@ -4462,7 +4618,7 @@
         "smithy.api#documentation": "The quota usages for the SKUs supported by Azure AI Search."
       }
     },
-    "com.azure.search#ListUsageBySubscriptionRequest": {
+    "com.azure.search#UsagesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4480,16 +4636,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#CheckServiceNameAvailability": {
+    "com.azure.search#ServicesCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.search#CheckServiceNameAvailabilityRequest"
+        "target": "com.azure.search#ServicesCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.search#CheckNameAvailabilityOutput"
@@ -4551,7 +4713,7 @@
         "smithy.api#documentation": "The reason why the name is not available. 'Invalid' indicates the name provided does not match the naming requirements (incorrect length, unsupported characters, etc.). 'AlreadyExists' indicates that the name is already in use and is therefore unavailable."
       }
     },
-    "com.azure.search#CheckServiceNameAvailabilityRequest": {
+    "com.azure.search#ServicesCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4570,7 +4732,7 @@
           }
         },
         "type": {
-          "target": "com.azure.search#CheckServiceNameAvailabilityRequestType",
+          "target": "com.azure.search#ServicesCheckNameAvailabilityRequestType",
           "traits": {
             "smithy.api#documentation": "The type of the resource whose name is to be validated. This value must always be 'searchServices'.",
             "smithy.api#required": {}
@@ -4581,7 +4743,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.search#CheckServiceNameAvailabilityRequestType": {
+    "com.azure.search#ServicesCheckNameAvailabilityRequestType": {
       "type": "enum",
       "members": {
         "SEARCHSERVICES": {
@@ -4595,10 +4757,10 @@
         "smithy.api#documentation": "The type of the resource whose name is to be validated. This value must always be 'searchServices'."
       }
     },
-    "com.azure.search#ListOperations": {
+    "com.azure.search#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.search#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.search#OperationListResult"
@@ -4608,10 +4770,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Search/operations",
           "code": 200,
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available REST API operations of the Microsoft.Search provider.",
-        "com.distilled.openapi#apiVersion": "2025-05-01"
+        "com.distilled.openapi#apiVersion": "2025-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.search#OperationListResult": {
@@ -4753,6 +4922,20 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.search#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.search#Search": {
       "type": "service",
       "version": "1.0",
@@ -4761,85 +4944,85 @@
           "target": "com.azure.search#ServicesUpgrade"
         },
         {
-          "target": "com.azure.search#DeleteSharedPrivateLinkResource"
+          "target": "com.azure.search#SharedPrivateLinkResourcesDelete"
         },
         {
           "target": "com.azure.search#SharedPrivateLinkResourcesCreateOrUpdate"
         },
         {
-          "target": "com.azure.search#GetSharedPrivateLinkResource"
+          "target": "com.azure.search#SharedPrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.search#ListSharedPrivateLinkResourceByService"
+          "target": "com.azure.search#SharedPrivateLinkResourcesListByService"
         },
         {
-          "target": "com.azure.search#RegenerateAdminKey"
+          "target": "com.azure.search#AdminKeysRegenerate"
         },
         {
-          "target": "com.azure.search#ListPrivateLinkResourceSupported"
+          "target": "com.azure.search#PrivateLinkResourcesListSupported"
         },
         {
-          "target": "com.azure.search#DeletePrivateEndpointConnection"
+          "target": "com.azure.search#PrivateEndpointConnectionsDelete"
         },
         {
-          "target": "com.azure.search#UpdatePrivateEndpointConnection"
+          "target": "com.azure.search#PrivateEndpointConnectionsUpdate"
         },
         {
-          "target": "com.azure.search#GetPrivateEndpointConnection"
+          "target": "com.azure.search#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.search#ListPrivateEndpointConnectionByService"
+          "target": "com.azure.search#PrivateEndpointConnectionsListByService"
         },
         {
           "target": "com.azure.search#NetworkSecurityPerimeterConfigurationsReconcile"
         },
         {
-          "target": "com.azure.search#GetNetworkSecurityPerimeterConfiguration"
+          "target": "com.azure.search#NetworkSecurityPerimeterConfigurationsGet"
         },
         {
-          "target": "com.azure.search#ListNetworkSecurityPerimeterConfigurationByService"
+          "target": "com.azure.search#NetworkSecurityPerimeterConfigurationsListByService"
         },
         {
           "target": "com.azure.search#QueryKeysListBySearchService"
         },
         {
-          "target": "com.azure.search#GetAdminKey"
+          "target": "com.azure.search#AdminKeysGet"
         },
         {
-          "target": "com.azure.search#DeleteQueryKey"
+          "target": "com.azure.search#QueryKeysDelete"
         },
         {
-          "target": "com.azure.search#CreateQueryKey"
+          "target": "com.azure.search#QueryKeysCreate"
         },
         {
-          "target": "com.azure.search#DeleteService"
+          "target": "com.azure.search#ServicesDelete"
         },
         {
-          "target": "com.azure.search#UpdateService"
+          "target": "com.azure.search#ServicesUpdate"
         },
         {
           "target": "com.azure.search#ServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.search#GetService"
+          "target": "com.azure.search#ServicesGet"
         },
         {
-          "target": "com.azure.search#ListServiceByResourceGroup"
+          "target": "com.azure.search#ServicesListByResourceGroup"
         },
         {
-          "target": "com.azure.search#ListServiceBySubscription"
+          "target": "com.azure.search#ServicesListBySubscription"
         },
         {
           "target": "com.azure.search#UsageBySubscriptionSku"
         },
         {
-          "target": "com.azure.search#ListUsageBySubscription"
+          "target": "com.azure.search#UsagesListBySubscription"
         },
         {
-          "target": "com.azure.search#CheckServiceNameAvailability"
+          "target": "com.azure.search#ServicesCheckNameAvailability"
         },
         {
-          "target": "com.azure.search#ListOperations"
+          "target": "com.azure.search#OperationsList"
         }
       ],
       "traits": {

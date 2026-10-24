@@ -3165,6 +3165,8 @@ export interface ListClusterRecoveryPointByReplicationProtectionClusterRequest {
   protectionContainerName: string;
   /** Replication protection cluster name. */
   replicationProtectionClusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ClusterRecoveryPoint items on this page */
 export type ClusterRecoveryPointCollectionValueList = Array<ClusterRecoveryPoint>;
@@ -3188,6 +3190,8 @@ export interface ListMigrationRecoveryPointByReplicationMigrationItemsRequest {
   protectionContainerName: string;
   /** Migration item name. */
   migrationItemName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Recovery point for a migration item. */
 export interface MigrationRecoveryPoint {
@@ -3218,6 +3222,8 @@ export interface ListOperationsRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Contains the localized display information for this particular operation / action. These value will be used by several clients for (1) custom role definitions for RBAC; (2) complex query filters for the event service; and (3) audit history / records for management operations. */
 export interface Display {
@@ -3263,6 +3269,8 @@ export interface ListRecoveryPointByReplicationProtectedItemsRequest {
   protectionContainerName: string;
   /** Replication protected item name. */
   replicatedProtectedItemName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Recovery point. */
 export interface RecoveryPoint {
@@ -3295,6 +3303,8 @@ export interface ListReplicationAlertSettingsRequest {
   resourceGroupName: string;
   /** The name of the Vault */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Implements the Alert class. */
 export interface Alert {
@@ -3329,6 +3339,8 @@ export interface ListReplicationAppliancesRequest {
   resourceName: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Appliance specific details. */
 export type ApplianceSpecificDetails = EventProviderSpecificDetails;
@@ -3388,6 +3400,8 @@ export interface ListReplicationEventsRequest {
   resourceName: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Implements the Event class. */
 export interface Event {
@@ -3420,6 +3434,8 @@ export interface ListReplicationFabricsRequest {
   resourceGroupName: string;
   /** The name of the Vault */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Fabric definition. */
 export interface Fabric {
@@ -3454,6 +3470,8 @@ export interface ListReplicationJobsRequest {
   resourceName: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Job details. */
 export interface Job {
@@ -3488,6 +3506,8 @@ export interface ListReplicationLogicalNetworkByReplicationFabricsRequest {
   resourceName: string;
   /** Fabric name. */
   fabricName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Logical network data model. */
 export interface LogicalNetwork {
@@ -3530,6 +3550,8 @@ export interface ListReplicationMigrationItemByReplicationProtectionContainersRe
   takeToken?: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Migration item. */
 export interface MigrationItem {
@@ -3568,6 +3590,8 @@ export interface ListReplicationMigrationItemsRequest {
   takeToken?: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationNetworkByReplicationFabricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3578,6 +3602,8 @@ export interface ListReplicationNetworkByReplicationFabricsRequest {
   resourceName: string;
   /** Fabric name. */
   fabricName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Network model. */
 export interface Network {
@@ -3614,6 +3640,8 @@ export interface ListReplicationNetworkMappingByReplicationNetworksRequest {
   fabricName: string;
   /** Primary network name. */
   networkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions. */
 export interface NetworkMapping {
@@ -3646,6 +3674,8 @@ export interface ListReplicationNetworkMappingsRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationNetworksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3654,6 +3684,8 @@ export interface ListReplicationNetworksRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3662,6 +3694,8 @@ export interface ListReplicationPoliciesRequest {
   resourceGroupName: string;
   /** The name of the Vault */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Protection profile details. */
 export interface Policy {
@@ -3704,6 +3738,8 @@ export interface ListReplicationProtectableItemByReplicationProtectionContainers
   _take?: string;
   /** skipToken OData query parameter. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Replication protected item. */
 export interface ProtectableItem {
@@ -3740,6 +3776,8 @@ export interface ListReplicationProtectedItemByReplicationProtectionContainersRe
   fabricName: string;
   /** Protection container name. */
   protectionContainerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Replication protected item. */
 export interface ReplicationProtectedItem {
@@ -3776,6 +3814,8 @@ export interface ListReplicationProtectedItemsRequest {
   skipToken?: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationProtectionClusterByReplicationProtectionContainersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3788,6 +3828,8 @@ export interface ListReplicationProtectionClusterByReplicationProtectionContaine
   fabricName: string;
   /** Protection container name. */
   protectionContainerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Replication protection Cluster. */
 export interface ReplicationProtectionCluster {
@@ -3822,6 +3864,8 @@ export interface ListReplicationProtectionClustersRequest {
   skipToken?: string;
   /** OData filter options. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationProtectionContainerByReplicationFabricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3832,6 +3876,8 @@ export interface ListReplicationProtectionContainerByReplicationFabricsRequest {
   resourceName: string;
   /** Fabric name. */
   fabricName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Protection container details. */
 export interface ProtectionContainer {
@@ -3868,6 +3914,8 @@ export interface ListReplicationProtectionContainerMappingByReplicationProtectio
   fabricName: string;
   /** Protection container name. */
   protectionContainerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Protection container mapping object. */
 export interface ProtectionContainerMapping {
@@ -3900,6 +3948,8 @@ export interface ListReplicationProtectionContainerMappingsRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationProtectionContainersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3908,6 +3958,8 @@ export interface ListReplicationProtectionContainersRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationProtectionIntentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3920,6 +3972,8 @@ export interface ListReplicationProtectionIntentsRequest {
   skipToken?: string;
   /** The page size. */
   takeToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Replication protection intent. */
 export interface ReplicationProtectionIntent {
@@ -3952,6 +4006,8 @@ export interface ListReplicationRecoveryPlansRequest {
   resourceGroupName: string;
   /** The name of the Vault */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Recovery plan details. */
 export interface RecoveryPlan {
@@ -3986,6 +4042,8 @@ export interface ListReplicationRecoveryServicesProviderByReplicationFabricsRequ
   resourceName: string;
   /** Fabric name. */
   fabricName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Provider details. */
 export interface RecoveryServicesProvider {
@@ -4018,6 +4076,8 @@ export interface ListReplicationRecoveryServicesProvidersRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationStorageClassificationByReplicationFabricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4028,6 +4088,8 @@ export interface ListReplicationStorageClassificationByReplicationFabricsRequest
   resourceName: string;
   /** Fabric name. */
   fabricName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Storage object definition. */
 export interface StorageClassification {
@@ -4064,6 +4126,8 @@ export interface ListReplicationStorageClassificationMappingByReplicationStorage
   fabricName: string;
   /** Storage classification name. */
   storageClassificationName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Storage mapping object. */
 export interface StorageClassificationMapping {
@@ -4096,6 +4160,8 @@ export interface ListReplicationStorageClassificationMappingsRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationStorageClassificationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4104,6 +4170,8 @@ export interface ListReplicationStorageClassificationsRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReplicationVaultSettingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4112,6 +4180,8 @@ export interface ListReplicationVaultSettingRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Vault setting. */
 export interface VaultSetting {
@@ -4146,6 +4216,8 @@ export interface ListReplicationvCenterByReplicationFabricsRequest {
   resourceName: string;
   /** Fabric name. */
   fabricName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** vCenter definition. */
 export interface VCenter {
@@ -4178,6 +4250,8 @@ export interface ListReplicationvCentersRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTargetComputeSizByReplicationProtectedItemsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4192,6 +4266,8 @@ export interface ListTargetComputeSizByReplicationProtectedItemsRequest {
   protectionContainerName: string;
   /** Replication protected item name. */
   replicatedProtectedItemName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents the error used to indicate why the target compute size is not applicable. */
 export interface ComputeSizeErrorDetails {
@@ -7171,12 +7247,13 @@ export const GetSupportedOperatingSystem: API.OperationMethod<
 
 export type ListClusterRecoveryPointByReplicationProtectionClusterError = AzureOpError;
 /** Gets the list of cluster recovery points. The list of cluster recovery points. */
-export const ListClusterRecoveryPointByReplicationProtectionCluster: API.OperationMethod<
+export const ListClusterRecoveryPointByReplicationProtectionCluster: API.PaginatedOperationMethod<
   ListClusterRecoveryPointByReplicationProtectionClusterRequest,
   ClusterRecoveryPointCollection,
   ListClusterRecoveryPointByReplicationProtectionClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterRecoveryPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2960,
     __c185,
@@ -7186,16 +7263,23 @@ export const ListClusterRecoveryPointByReplicationProtectionCluster: API.Operati
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMigrationRecoveryPointByReplicationMigrationItemsError = AzureOpError;
 /** Gets the recovery points for a migration item. Gets the recovery points for a migration item. */
-export const ListMigrationRecoveryPointByReplicationMigrationItems: API.OperationMethod<
+export const ListMigrationRecoveryPointByReplicationMigrationItems: API.PaginatedOperationMethod<
   ListMigrationRecoveryPointByReplicationMigrationItemsRequest,
   MigrationRecoveryPointCollection,
   ListMigrationRecoveryPointByReplicationMigrationItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MigrationRecoveryPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2976,
     __c186,
@@ -7205,31 +7289,45 @@ export const ListMigrationRecoveryPointByReplicationMigrationItems: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Returns the list of available operations. Operation to return the list of available operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsDiscoveryCollection,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationsDiscovery
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2992, __c187, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(2996, __c187, 4) as any as S.Schema<OperationsDiscoveryCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecoveryPointByReplicationProtectedItemsError = AzureOpError;
 /** Gets the list of recovery points for a replication protected item. Lists the available recovery points for a replication protected item. */
-export const ListRecoveryPointByReplicationProtectedItems: API.OperationMethod<
+export const ListRecoveryPointByReplicationProtectedItems: API.PaginatedOperationMethod<
   ListRecoveryPointByReplicationProtectedItemsRequest,
   RecoveryPointCollection,
   ListRecoveryPointByReplicationProtectedItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecoveryPoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3008,
     __c188,
@@ -7239,37 +7337,57 @@ export const ListRecoveryPointByReplicationProtectedItems: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationAlertSettingsError = AzureOpError;
 /** Gets the list of configured email notification(alert) configurations. Gets the list of email notification(alert) configurations for the vault. */
-export const ListReplicationAlertSettings: API.OperationMethod<
+export const ListReplicationAlertSettings: API.PaginatedOperationMethod<
   ListReplicationAlertSettingsRequest,
   AlertCollection,
   ListReplicationAlertSettingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Alert
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3024, __c189, 0) as any as S.Schema<ListReplicationAlertSettingsRequest>,
   output: __S(3026, __c189, 2) as any as S.Schema<AlertCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationAppliancesError = AzureOpError;
 /** Gets the list of appliances. Gets the list of Azure Site Recovery appliances for the vault. */
-export const ListReplicationAppliances: API.OperationMethod<
+export const ListReplicationAppliances: API.PaginatedOperationMethod<
   ListReplicationAppliancesRequest,
   ApplianceCollection,
   ListReplicationAppliancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3056, __c191, 0) as any as S.Schema<ListReplicationAppliancesRequest>,
   output: __S(3059, __c191, 3) as any as S.Schema<ApplianceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationEligibilityResultsError = AzureOpError;
 /** Gets the validation errors in case the VM is unsuitable for protection. Validates whether a given VM can be protected or not in which case returns list of errors. */
@@ -7288,57 +7406,79 @@ export const ListReplicationEligibilityResults: API.OperationMethod<
 
 export type ListReplicationEventsError = AzureOpError;
 /** Gets the list of Azure Site Recovery events. Gets the list of Azure Site Recovery events for the vault. */
-export const ListReplicationEvents: API.OperationMethod<
+export const ListReplicationEvents: API.PaginatedOperationMethod<
   ListReplicationEventsRequest,
   EventCollection,
   ListReplicationEventsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3088, __c193, 0) as any as S.Schema<ListReplicationEventsRequest>,
   output: __S(3090, __c193, 2) as any as S.Schema<EventCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationFabricsError = AzureOpError;
 /** Gets the list of ASR fabrics. Gets a list of the Azure Site Recovery fabrics in the vault. */
-export const ListReplicationFabrics: API.OperationMethod<
+export const ListReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationFabricsRequest,
   FabricCollection,
   ListReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Fabric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3104, __c194, 0) as any as S.Schema<ListReplicationFabricsRequest>,
   output: __S(3106, __c194, 2) as any as S.Schema<FabricCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationJobsError = AzureOpError;
 /** Gets the list of jobs. Gets the list of Azure Site Recovery Jobs for the vault. */
-export const ListReplicationJobs: API.OperationMethod<
+export const ListReplicationJobs: API.PaginatedOperationMethod<
   ListReplicationJobsRequest,
   JobCollection,
   ListReplicationJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3120, __c195, 0) as any as S.Schema<ListReplicationJobsRequest>,
   output: __S(3122, __c195, 2) as any as S.Schema<JobCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationLogicalNetworkByReplicationFabricsError = AzureOpError;
 /** Gets the list of logical networks under a fabric. Lists all the logical networks of the Azure Site Recovery fabric. */
-export const ListReplicationLogicalNetworkByReplicationFabrics: API.OperationMethod<
+export const ListReplicationLogicalNetworkByReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationLogicalNetworkByReplicationFabricsRequest,
   LogicalNetworkCollection,
   ListReplicationLogicalNetworkByReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LogicalNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3136,
     __c196,
@@ -7348,16 +7488,23 @@ export const ListReplicationLogicalNetworkByReplicationFabrics: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationMigrationItemByReplicationProtectionContainersError = AzureOpError;
 /** Gets the list of migration items in the protection container. Gets the list of ASR migration items in the protection container. */
-export const ListReplicationMigrationItemByReplicationProtectionContainers: API.OperationMethod<
+export const ListReplicationMigrationItemByReplicationProtectionContainers: API.PaginatedOperationMethod<
   ListReplicationMigrationItemByReplicationProtectionContainersRequest,
   MigrationItemCollection,
   ListReplicationMigrationItemByReplicationProtectionContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MigrationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3152,
     __c197,
@@ -7367,46 +7514,67 @@ export const ListReplicationMigrationItemByReplicationProtectionContainers: API.
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationMigrationItemsError = AzureOpError;
 /** Gets the list of migration items in the vault. Gets the list of migration items in the vault. */
-export const ListReplicationMigrationItems: API.OperationMethod<
+export const ListReplicationMigrationItems: API.PaginatedOperationMethod<
   ListReplicationMigrationItemsRequest,
   MigrationItemCollection,
   ListReplicationMigrationItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MigrationItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3184, __c199, 0) as any as S.Schema<ListReplicationMigrationItemsRequest>,
   output: __S(3169, __c198, 1) as any as S.Schema<MigrationItemCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationNetworkByReplicationFabricsError = AzureOpError;
 /** Gets the list of networks under a fabric. Lists the networks available for a fabric. */
-export const ListReplicationNetworkByReplicationFabrics: API.OperationMethod<
+export const ListReplicationNetworkByReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationNetworkByReplicationFabricsRequest,
   NetworkCollection,
   ListReplicationNetworkByReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3200, __c200, 0) as any as S.Schema<ListReplicationNetworkByReplicationFabricsRequest>,
   output: __S(3217, __c201, 1) as any as S.Schema<NetworkCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationNetworkMappingByReplicationNetworksError = AzureOpError;
 /** Gets all the network mappings under a network. Lists all ASR network mappings for the specified network. */
-export const ListReplicationNetworkMappingByReplicationNetworks: API.OperationMethod<
+export const ListReplicationNetworkMappingByReplicationNetworks: API.PaginatedOperationMethod<
   ListReplicationNetworkMappingByReplicationNetworksRequest,
   NetworkMappingCollection,
   ListReplicationNetworkMappingByReplicationNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3232,
     __c202,
@@ -7416,61 +7584,89 @@ export const ListReplicationNetworkMappingByReplicationNetworks: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationNetworkMappingsError = AzureOpError;
 /** Gets all the network mappings under a vault. Lists all ASR network mappings in the vault. */
-export const ListReplicationNetworkMappings: API.OperationMethod<
+export const ListReplicationNetworkMappings: API.PaginatedOperationMethod<
   ListReplicationNetworkMappingsRequest,
   NetworkMappingCollection,
   ListReplicationNetworkMappingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3280, __c205, 0) as any as S.Schema<ListReplicationNetworkMappingsRequest>,
   output: __S(3249, __c203, 1) as any as S.Schema<NetworkMappingCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationNetworksError = AzureOpError;
 /** Gets the list of networks. View-only API. Lists the networks available in a vault. */
-export const ListReplicationNetworks: API.OperationMethod<
+export const ListReplicationNetworks: API.PaginatedOperationMethod<
   ListReplicationNetworksRequest,
   NetworkCollection,
   ListReplicationNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3296, __c206, 0) as any as S.Schema<ListReplicationNetworksRequest>,
   output: __S(3217, __c201, 1) as any as S.Schema<NetworkCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationPoliciesError = AzureOpError;
 /** Gets the list of replication policies. Lists the replication policies for a vault. */
-export const ListReplicationPolicies: API.OperationMethod<
+export const ListReplicationPolicies: API.PaginatedOperationMethod<
   ListReplicationPoliciesRequest,
   PolicyCollection,
   ListReplicationPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Policy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3312, __c207, 0) as any as S.Schema<ListReplicationPoliciesRequest>,
   output: __S(3314, __c207, 2) as any as S.Schema<PolicyCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectableItemByReplicationProtectionContainersError = AzureOpError;
 /** Gets the list of protectable items. Lists the protectable items in a protection container. */
-export const ListReplicationProtectableItemByReplicationProtectionContainers: API.OperationMethod<
+export const ListReplicationProtectableItemByReplicationProtectionContainers: API.PaginatedOperationMethod<
   ListReplicationProtectableItemByReplicationProtectionContainersRequest,
   ProtectableItemCollection,
   ListReplicationProtectableItemByReplicationProtectionContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProtectableItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3328,
     __c208,
@@ -7480,16 +7676,23 @@ export const ListReplicationProtectableItemByReplicationProtectionContainers: AP
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectedItemByReplicationProtectionContainersError = AzureOpError;
 /** Gets the list of Replication protected items. Gets the list of ASR replication protected items in the protection container. */
-export const ListReplicationProtectedItemByReplicationProtectionContainers: API.OperationMethod<
+export const ListReplicationProtectedItemByReplicationProtectionContainers: API.PaginatedOperationMethod<
   ListReplicationProtectedItemByReplicationProtectionContainersRequest,
   ReplicationProtectedItemCollection,
   ListReplicationProtectedItemByReplicationProtectionContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationProtectedItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3344,
     __c209,
@@ -7499,31 +7702,45 @@ export const ListReplicationProtectedItemByReplicationProtectionContainers: API.
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectedItemsError = AzureOpError;
 /** Gets the list of replication protected items. Gets the list of ASR replication protected items in the vault. */
-export const ListReplicationProtectedItems: API.OperationMethod<
+export const ListReplicationProtectedItems: API.PaginatedOperationMethod<
   ListReplicationProtectedItemsRequest,
   ReplicationProtectedItemCollection,
   ListReplicationProtectedItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationProtectedItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3376, __c211, 0) as any as S.Schema<ListReplicationProtectedItemsRequest>,
   output: __S(3361, __c210, 1) as any as S.Schema<ReplicationProtectedItemCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionClusterByReplicationProtectionContainersError = AzureOpError;
 /** Gets the list of Replication protection clusters in fabric, container. Gets the list of ASR replication protected clusters in the protection container. */
-export const ListReplicationProtectionClusterByReplicationProtectionContainers: API.OperationMethod<
+export const ListReplicationProtectionClusterByReplicationProtectionContainers: API.PaginatedOperationMethod<
   ListReplicationProtectionClusterByReplicationProtectionContainersRequest,
   ReplicationProtectionClusterCollection,
   ListReplicationProtectionClusterByReplicationProtectionContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationProtectionCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3392,
     __c212,
@@ -7533,31 +7750,45 @@ export const ListReplicationProtectionClusterByReplicationProtectionContainers: 
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionClustersError = AzureOpError;
 /** Gets the list of Replication protection clusters in vault. Gets the list of ASR replication protected clusters in the vault. */
-export const ListReplicationProtectionClusters: API.OperationMethod<
+export const ListReplicationProtectionClusters: API.PaginatedOperationMethod<
   ListReplicationProtectionClustersRequest,
   ReplicationProtectionClusterCollection,
   ListReplicationProtectionClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationProtectionCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3424, __c214, 0) as any as S.Schema<ListReplicationProtectionClustersRequest>,
   output: __S(3409, __c213, 1) as any as S.Schema<ReplicationProtectionClusterCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionContainerByReplicationFabricsError = AzureOpError;
 /** Gets the list of protection container for a fabric. Lists the protection containers in the specified fabric. */
-export const ListReplicationProtectionContainerByReplicationFabrics: API.OperationMethod<
+export const ListReplicationProtectionContainerByReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationProtectionContainerByReplicationFabricsRequest,
   ProtectionContainerCollection,
   ListReplicationProtectionContainerByReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProtectionContainer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3440,
     __c215,
@@ -7567,17 +7798,24 @@ export const ListReplicationProtectionContainerByReplicationFabrics: API.Operati
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionContainerMappingByReplicationProtectionContainersError =
   AzureOpError;
 /** Gets the list of protection container mappings for a protection container. Lists the protection container mappings for a protection container. */
-export const ListReplicationProtectionContainerMappingByReplicationProtectionContainers: API.OperationMethod<
+export const ListReplicationProtectionContainerMappingByReplicationProtectionContainers: API.PaginatedOperationMethod<
   ListReplicationProtectionContainerMappingByReplicationProtectionContainersRequest,
   ProtectionContainerMappingCollection,
   ListReplicationProtectionContainerMappingByReplicationProtectionContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProtectionContainerMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3472,
     __c217,
@@ -7587,76 +7825,111 @@ export const ListReplicationProtectionContainerMappingByReplicationProtectionCon
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionContainerMappingsError = AzureOpError;
 /** Gets the list of all protection container mappings in a vault. Lists the protection container mappings in the vault. */
-export const ListReplicationProtectionContainerMappings: API.OperationMethod<
+export const ListReplicationProtectionContainerMappings: API.PaginatedOperationMethod<
   ListReplicationProtectionContainerMappingsRequest,
   ProtectionContainerMappingCollection,
   ListReplicationProtectionContainerMappingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProtectionContainerMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3520, __c220, 0) as any as S.Schema<ListReplicationProtectionContainerMappingsRequest>,
   output: __S(3489, __c218, 1) as any as S.Schema<ProtectionContainerMappingCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionContainersError = AzureOpError;
 /** Gets the list of all protection containers in a vault. Lists the protection containers in a vault. */
-export const ListReplicationProtectionContainers: API.OperationMethod<
+export const ListReplicationProtectionContainers: API.PaginatedOperationMethod<
   ListReplicationProtectionContainersRequest,
   ProtectionContainerCollection,
   ListReplicationProtectionContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProtectionContainer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3536, __c221, 0) as any as S.Schema<ListReplicationProtectionContainersRequest>,
   output: __S(3457, __c216, 1) as any as S.Schema<ProtectionContainerCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationProtectionIntentsError = AzureOpError;
 /** Gets the list of replication protection intent objects. Gets the list of ASR replication protection intent objects in the vault. */
-export const ListReplicationProtectionIntents: API.OperationMethod<
+export const ListReplicationProtectionIntents: API.PaginatedOperationMethod<
   ListReplicationProtectionIntentsRequest,
   ReplicationProtectionIntentCollection,
   ListReplicationProtectionIntentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationProtectionIntent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3552, __c222, 0) as any as S.Schema<ListReplicationProtectionIntentsRequest>,
   output: __S(3554, __c222, 2) as any as S.Schema<ReplicationProtectionIntentCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationRecoveryPlansError = AzureOpError;
 /** Gets the list of recovery plans. Lists the recovery plans in the vault. */
-export const ListReplicationRecoveryPlans: API.OperationMethod<
+export const ListReplicationRecoveryPlans: API.PaginatedOperationMethod<
   ListReplicationRecoveryPlansRequest,
   RecoveryPlanCollection,
   ListReplicationRecoveryPlansError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecoveryPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3568, __c223, 0) as any as S.Schema<ListReplicationRecoveryPlansRequest>,
   output: __S(3570, __c223, 2) as any as S.Schema<RecoveryPlanCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationRecoveryServicesProviderByReplicationFabricsError = AzureOpError;
 /** Gets the list of registered recovery services providers for the fabric. Lists the registered recovery services providers for the specified fabric. */
-export const ListReplicationRecoveryServicesProviderByReplicationFabrics: API.OperationMethod<
+export const ListReplicationRecoveryServicesProviderByReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationRecoveryServicesProviderByReplicationFabricsRequest,
   RecoveryServicesProviderCollection,
   ListReplicationRecoveryServicesProviderByReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecoveryServicesProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3584,
     __c224,
@@ -7666,31 +7939,45 @@ export const ListReplicationRecoveryServicesProviderByReplicationFabrics: API.Op
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationRecoveryServicesProvidersError = AzureOpError;
 /** Gets the list of registered recovery services providers in the vault. This is a view only api. Lists the registered recovery services providers in the vault. */
-export const ListReplicationRecoveryServicesProviders: API.OperationMethod<
+export const ListReplicationRecoveryServicesProviders: API.PaginatedOperationMethod<
   ListReplicationRecoveryServicesProvidersRequest,
   RecoveryServicesProviderCollection,
   ListReplicationRecoveryServicesProvidersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecoveryServicesProvider
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3616, __c226, 0) as any as S.Schema<ListReplicationRecoveryServicesProvidersRequest>,
   output: __S(3601, __c225, 1) as any as S.Schema<RecoveryServicesProviderCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationStorageClassificationByReplicationFabricsError = AzureOpError;
 /** Gets the list of storage classification objects under a fabric. Lists the storage classifications available in the specified fabric. */
-export const ListReplicationStorageClassificationByReplicationFabrics: API.OperationMethod<
+export const ListReplicationStorageClassificationByReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationStorageClassificationByReplicationFabricsRequest,
   StorageClassificationCollection,
   ListReplicationStorageClassificationByReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageClassification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3632,
     __c227,
@@ -7700,17 +7987,24 @@ export const ListReplicationStorageClassificationByReplicationFabrics: API.Opera
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationStorageClassificationMappingByReplicationStorageClassificationsError =
   AzureOpError;
 /** Gets the list of storage classification mappings objects under a storage. Lists the storage classification mappings for the fabric. */
-export const ListReplicationStorageClassificationMappingByReplicationStorageClassifications: API.OperationMethod<
+export const ListReplicationStorageClassificationMappingByReplicationStorageClassifications: API.PaginatedOperationMethod<
   ListReplicationStorageClassificationMappingByReplicationStorageClassificationsRequest,
   StorageClassificationMappingCollection,
   ListReplicationStorageClassificationMappingByReplicationStorageClassificationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageClassificationMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3664,
     __c229,
@@ -7720,16 +8014,23 @@ export const ListReplicationStorageClassificationMappingByReplicationStorageClas
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationStorageClassificationMappingsError = AzureOpError;
 /** Gets the list of storage classification mappings objects under a vault. Lists the storage classification mappings in the vault. */
-export const ListReplicationStorageClassificationMappings: API.OperationMethod<
+export const ListReplicationStorageClassificationMappings: API.PaginatedOperationMethod<
   ListReplicationStorageClassificationMappingsRequest,
   StorageClassificationMappingCollection,
   ListReplicationStorageClassificationMappingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageClassificationMapping
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3696,
     __c231,
@@ -7739,76 +8040,111 @@ export const ListReplicationStorageClassificationMappings: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationStorageClassificationsError = AzureOpError;
 /** Gets the list of storage classification objects under a vault. Lists the storage classifications in the vault. */
-export const ListReplicationStorageClassifications: API.OperationMethod<
+export const ListReplicationStorageClassifications: API.PaginatedOperationMethod<
   ListReplicationStorageClassificationsRequest,
   StorageClassificationCollection,
   ListReplicationStorageClassificationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageClassification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3712, __c232, 0) as any as S.Schema<ListReplicationStorageClassificationsRequest>,
   output: __S(3649, __c228, 1) as any as S.Schema<StorageClassificationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationVaultSettingError = AzureOpError;
 /** Gets the list of vault setting. Gets the list of vault setting. This includes the Migration Hub connection settings. */
-export const ListReplicationVaultSetting: API.OperationMethod<
+export const ListReplicationVaultSetting: API.PaginatedOperationMethod<
   ListReplicationVaultSettingRequest,
   VaultSettingCollection,
   ListReplicationVaultSettingError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VaultSetting
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListReplicationVaultSettingRequest>,
   output: __S(194, __c12, 2) as any as S.Schema<VaultSettingCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationvCenterByReplicationFabricsError = AzureOpError;
 /** Gets the list of vCenter registered under a fabric. Lists the vCenter servers registered in a fabric. */
-export const ListReplicationvCenterByReplicationFabrics: API.OperationMethod<
+export const ListReplicationvCenterByReplicationFabrics: API.PaginatedOperationMethod<
   ListReplicationvCenterByReplicationFabricsRequest,
   VCenterCollection,
   ListReplicationvCenterByReplicationFabricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VCenter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListReplicationvCenterByReplicationFabricsRequest>,
   output: __S(225, __c14, 1) as any as S.Schema<VCenterCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReplicationvCentersError = AzureOpError;
 /** Gets the list of vCenter registered under the vault. Lists the vCenter servers registered in the vault. */
-export const ListReplicationvCenters: API.OperationMethod<
+export const ListReplicationvCenters: API.PaginatedOperationMethod<
   ListReplicationvCentersRequest,
   VCenterCollection,
   ListReplicationvCentersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VCenter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<ListReplicationvCentersRequest>,
   output: __S(225, __c14, 1) as any as S.Schema<VCenterCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTargetComputeSizByReplicationProtectedItemsError = AzureOpError;
 /** Gets the list of target compute sizes for the replication protected item. Lists the available target compute sizes for a replication protected item. */
-export const ListTargetComputeSizByReplicationProtectedItems: API.OperationMethod<
+export const ListTargetComputeSizByReplicationProtectedItems: API.PaginatedOperationMethod<
   ListTargetComputeSizByReplicationProtectedItemsRequest,
   TargetComputeSizeCollection,
   ListTargetComputeSizByReplicationProtectedItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TargetComputeSize
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     256,
     __c16,
@@ -7818,7 +8154,13 @@ export const ListTargetComputeSizByReplicationProtectedItems: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MigrateReplicationFabricToAadError = AzureOpError;
 /** Migrates the site to AAD. The operation to migrate an Azure Site Recovery fabric to AAD. */
@@ -8924,12 +9266,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationVaultSettingRequest" });
@@ -8953,12 +9297,14 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationvCenterByReplicationFabricsRequest" });
@@ -8985,12 +9331,14 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationvCentersRequest" });
@@ -9007,12 +9355,14 @@ function __c16(j: number): any {
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
           replicatedProtectedItemName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/targetComputeSizes",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTargetComputeSizByReplicationProtectedItemsRequest" });
@@ -13100,12 +13450,14 @@ function __c185(j: number): any {
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
           replicationProtectionClusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/recoveryPoints",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterRecoveryPointByReplicationProtectionClusterRequest" });
@@ -13131,12 +13483,14 @@ function __c186(j: number): any {
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
           migrationItemName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMigrationRecoveryPointByReplicationMigrationItemsRequest" });
@@ -13158,12 +13512,14 @@ function __c187(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/operations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -13207,12 +13563,14 @@ function __c188(j: number): any {
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
           replicatedProtectedItemName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecoveryPointByReplicationProtectedItemsRequest" });
@@ -13235,12 +13593,14 @@ function __c189(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationAlertSettingsRequest" });
@@ -13286,12 +13646,14 @@ function __c191(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAppliances",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationAppliancesRequest" });
@@ -13348,12 +13710,14 @@ function __c193(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationEventsRequest" });
@@ -13376,12 +13740,14 @@ function __c194(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationFabricsRequest" });
@@ -13405,12 +13771,14 @@ function __c195(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationJobsRequest" });
@@ -13434,12 +13802,14 @@ function __c196(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationLogicalNetworkByReplicationFabricsRequest" });
@@ -13467,12 +13837,14 @@ function __c197(j: number): any {
           skipToken: S.optional(S.String.pipe(T.Query())),
           takeToken: S.optional(S.String.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -13504,12 +13876,14 @@ function __c199(j: number): any {
           skipToken: S.optional(S.String.pipe(T.Query())),
           takeToken: S.optional(S.String.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationMigrationItemsRequest" });
@@ -13524,12 +13898,14 @@ function __c200(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationNetworkByReplicationFabricsRequest" });
@@ -13558,12 +13934,14 @@ function __c202(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           networkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationNetworkMappingByReplicationNetworksRequest" });
@@ -13612,12 +13990,14 @@ function __c205(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationNetworkMappingsRequest" });
@@ -13631,12 +14011,14 @@ function __c206(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationNetworksRequest" });
@@ -13650,12 +14032,14 @@ function __c207(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationPoliciesRequest" });
@@ -13683,12 +14067,14 @@ function __c208(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _take: S.optional(S.String.pipe(T.Query("$take"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -13715,12 +14101,14 @@ function __c209(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -13751,12 +14139,14 @@ function __c211(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           skipToken: S.optional(S.String.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationProtectedItemsRequest" });
@@ -13772,12 +14162,14 @@ function __c212(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -13808,12 +14200,14 @@ function __c214(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           skipToken: S.optional(S.String.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionClusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationProtectionClustersRequest" });
@@ -13828,12 +14222,14 @@ function __c215(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationProtectionContainerByReplicationFabricsRequest" });
@@ -13862,12 +14258,14 @@ function __c217(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           protectionContainerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -13917,12 +14315,14 @@ function __c220(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainerMappings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationProtectionContainerMappingsRequest" });
@@ -13936,12 +14336,14 @@ function __c221(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationProtectionContainersRequest" });
@@ -13957,12 +14359,14 @@ function __c222(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           skipToken: S.optional(S.String.pipe(T.Query())),
           takeToken: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationProtectionIntentsRequest" });
@@ -13985,12 +14389,14 @@ function __c223(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationRecoveryPlansRequest" });
@@ -14014,12 +14420,14 @@ function __c224(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -14048,12 +14456,14 @@ function __c226(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryServicesProviders",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationRecoveryServicesProvidersRequest" });
@@ -14068,12 +14478,14 @@ function __c227(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationStorageClassificationByReplicationFabricsRequest" });
@@ -14102,12 +14514,14 @@ function __c229(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           storageClassificationName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -14137,12 +14551,14 @@ function __c231(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassificationMappings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationStorageClassificationMappingsRequest" });
@@ -14156,12 +14572,14 @@ function __c232(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassifications",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReplicationStorageClassificationsRequest" });

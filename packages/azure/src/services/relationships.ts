@@ -241,6 +241,8 @@ export interface ListContainsRelationshipByResourceGroupRequest {
   resourceGroupName: string;
   /** Filters the results by target resource type. Example: properties.metadata.targetType eq 'Microsoft.Compute/virtualMachines' */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** contains relationship properties. */
 export interface ContainsRelationshipProperties {
@@ -284,10 +286,14 @@ export interface ListContainsRelationshipBySubscriptionRequest {
   subscriptionId: string;
   /** Filters the results by target resource type. Example: properties.metadata.targetType eq 'Microsoft.Compute/virtualMachines' */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDependencyOfRelationshipByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Defines a dependencyOf relationship resource. */
 export interface DependencyOfRelationship {
@@ -314,8 +320,13 @@ export interface DependencyOfRelationshipListResult {
 export interface ListDependencyOfRelationshipsByServiceGroupRequest {
   /** The name of the service group. */
   serviceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -348,13 +359,15 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
 export interface ListServiceGroupMemberRelationshipByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Defines a ServiceGroupMember relationship resource. */
 export interface ServiceGroupMemberRelationship {
@@ -555,93 +568,135 @@ export const GetServiceGroupMemberRelationship: API.OperationMethod<
 
 export type ListContainsRelationshipByResourceGroupError = AzureOpError;
 /** List ContainsRelationship resources by resource group */
-export const ListContainsRelationshipByResourceGroup: API.OperationMethod<
+export const ListContainsRelationshipByResourceGroup: API.PaginatedOperationMethod<
   ListContainsRelationshipByResourceGroupRequest,
   ContainsRelationshipListResult,
   ListContainsRelationshipByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContainsRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<ListContainsRelationshipByResourceGroupRequest>,
   output: __S(169, __c21, 1) as any as S.Schema<ContainsRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContainsRelationshipBySubscriptionError = AzureOpError;
 /** List ContainsRelationship resources by subscription ID */
-export const ListContainsRelationshipBySubscription: API.OperationMethod<
+export const ListContainsRelationshipBySubscription: API.PaginatedOperationMethod<
   ListContainsRelationshipBySubscriptionRequest,
   ContainsRelationshipListResult,
   ListContainsRelationshipBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContainsRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<ListContainsRelationshipBySubscriptionRequest>,
   output: __S(169, __c21, 1) as any as S.Schema<ContainsRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDependencyOfRelationshipByParentError = AzureOpError;
 /** List DependencyOfRelationship resources by parent */
-export const ListDependencyOfRelationshipByParent: API.OperationMethod<
+export const ListDependencyOfRelationshipByParent: API.PaginatedOperationMethod<
   ListDependencyOfRelationshipByParentRequest,
   DependencyOfRelationshipListResult,
   ListDependencyOfRelationshipByParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DependencyOfRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<ListDependencyOfRelationshipByParentRequest>,
   output: __S(169, __c21, 1) as any as S.Schema<DependencyOfRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDependencyOfRelationshipsByServiceGroupError = AzureOpError;
 /** List DependencyOfRelationship resources by scope */
-export const ListDependencyOfRelationshipsByServiceGroup: API.OperationMethod<
+export const ListDependencyOfRelationshipsByServiceGroup: API.PaginatedOperationMethod<
   ListDependencyOfRelationshipsByServiceGroupRequest,
   DependencyOfRelationshipListResult,
   ListDependencyOfRelationshipsByServiceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DependencyOfRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<ListDependencyOfRelationshipsByServiceGroupRequest>,
   output: __S(169, __c21, 1) as any as S.Schema<DependencyOfRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(44, __c5, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceGroupMemberRelationshipByParentError = AzureOpError;
 /** List ServiceGroupMemberRelationship resources by parent */
-export const ListServiceGroupMemberRelationshipByParent: API.OperationMethod<
+export const ListServiceGroupMemberRelationshipByParent: API.PaginatedOperationMethod<
   ListServiceGroupMemberRelationshipByParentRequest,
   ServiceGroupMemberRelationshipListResult,
   ListServiceGroupMemberRelationshipByParentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceGroupMemberRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<ListServiceGroupMemberRelationshipByParentRequest>,
   output: __S(50, __c6, 2) as any as S.Schema<ServiceGroupMemberRelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ServiceGroupMemberRelationshipsCreateOrUpdateError = AzureOpError;
 /** Create a ServiceGroupMemberRelationship */
@@ -716,12 +771,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.Relationships/dependencyOf",
             code: 200,
             apiVersion: "2026-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDependencyOfRelationshipByParentRequest" });
@@ -733,12 +790,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf",
             code: 200,
             apiVersion: "2026-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDependencyOfRelationshipsByServiceGroupRequest" });
@@ -748,12 +807,15 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Relationships/operations",
             code: 200,
             apiVersion: "2026-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -781,7 +843,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: __S(43, __c5, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -793,12 +855,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.Relationships/serviceGroupMember",
             code: 200,
             apiVersion: "2026-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceGroupMemberRelationshipByParentRequest" });
@@ -1083,12 +1147,14 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relationships/contains",
             code: 200,
             apiVersion: "2026-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContainsRelationshipByResourceGroupRequest" });
@@ -1114,12 +1180,14 @@ function __c22(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Relationships/contains",
             code: 200,
             apiVersion: "2026-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContainsRelationshipBySubscriptionRequest" });

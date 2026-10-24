@@ -990,7 +990,7 @@ export type BestPracticeListValueList = Array<BestPractice>;
 /** The response of the list best practice operation. */
 export interface BestPracticeList {
   /** Result of the list best practice operation. */
-  value?: BestPracticeListValueList;
+  value: BestPracticeListValueList;
 }
 export interface ListBestPracticesVersionByTenantRequest {
   /** The Automanage best practice name. */
@@ -1051,7 +1051,7 @@ export type ConfigurationProfileAssignmentListValueList = Array<ConfigurationPro
 /** The response of the list configuration profile assignment operation. */
 export interface ConfigurationProfileAssignmentList {
   /** Result of the list configuration profile assignment operation. */
-  value?: ConfigurationProfileAssignmentListValueList;
+  value: ConfigurationProfileAssignmentListValueList;
 }
 export interface ListConfigurationProfileAssignmentByMachineNameRequest {
   /** The ID of the target subscription. */
@@ -1136,7 +1136,7 @@ export type ConfigurationProfileListValueList = Array<ConfigurationProfile>;
 /** The response of the list configuration profile operation. */
 export interface ConfigurationProfileList {
   /** Result of the list ConfigurationProfile operation. */
-  value?: ConfigurationProfileListValueList;
+  value: ConfigurationProfileListValueList;
 }
 export interface ListConfigurationProfileBySubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1197,7 +1197,7 @@ export type ReportListValueList = Array<Report>;
 /** The response of the list report operation. */
 export interface ReportList {
   /** Result of the list report operation. */
-  value?: ReportListValueList;
+  value: ReportListValueList;
 }
 export interface ListHCRPReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
@@ -1242,7 +1242,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -1305,7 +1305,7 @@ export type ServicePrincipalListResultValueList = Array<ServicePrincipal>;
 /** The list of ServicePrincipals. */
 export interface ServicePrincipalListResult {
   /** The list of servicePrincipals. */
-  value?: ServicePrincipalListResultValueList;
+  value: ServicePrincipalListResultValueList;
 }
 /** The tags of the resource. */
 export type UpdateConfigurationProfileRequestTagsMap = { [key: string]: string | undefined };
@@ -1707,42 +1707,47 @@ export const GetServicePrincipal: API.OperationMethod<
 
 export type ListBestPracticeByTenantError = AzureOpError;
 /** Retrieve a list of Automanage best practices */
-export const ListBestPracticeByTenant: API.OperationMethod<
+export const ListBestPracticeByTenant: API.PaginatedOperationMethod<
   ListBestPracticeByTenantRequest,
   BestPracticeList,
   ListBestPracticeByTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BestPractice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListBestPracticeByTenantRequest>,
   output: __S(337, __c21, 1) as any as S.Schema<BestPracticeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListBestPracticesVersionByTenantError = AzureOpError;
 /** Retrieve a list of Automanage best practices versions */
-export const ListBestPracticesVersionByTenant: API.OperationMethod<
+export const ListBestPracticesVersionByTenant: API.PaginatedOperationMethod<
   ListBestPracticesVersionByTenantRequest,
   BestPracticeList,
   ListBestPracticesVersionByTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BestPractice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListBestPracticesVersionByTenantRequest>,
   output: __S(337, __c21, 1) as any as S.Schema<BestPracticeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileAssignmentByClusterNameError = AzureOpError;
 /** Get list of configuration profile assignments */
-export const ListConfigurationProfileAssignmentByClusterName: API.OperationMethod<
+export const ListConfigurationProfileAssignmentByClusterName: API.PaginatedOperationMethod<
   ListConfigurationProfileAssignmentByClusterNameRequest,
   ConfigurationProfileAssignmentList,
   ListConfigurationProfileAssignmentByClusterNameError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfileAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     368,
     __c23,
@@ -1752,16 +1757,18 @@ export const ListConfigurationProfileAssignmentByClusterName: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileAssignmentByMachineNameError = AzureOpError;
 /** Get list of configuration profile assignments */
-export const ListConfigurationProfileAssignmentByMachineName: API.OperationMethod<
+export const ListConfigurationProfileAssignmentByMachineName: API.PaginatedOperationMethod<
   ListConfigurationProfileAssignmentByMachineNameRequest,
   ConfigurationProfileAssignmentList,
   ListConfigurationProfileAssignmentByMachineNameError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfileAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     400,
     __c25,
@@ -1771,16 +1778,18 @@ export const ListConfigurationProfileAssignmentByMachineName: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileAssignmentBySubscriptionError = AzureOpError;
 /** Get list of configuration profile assignments under a given subscription */
-export const ListConfigurationProfileAssignmentBySubscription: API.OperationMethod<
+export const ListConfigurationProfileAssignmentBySubscription: API.PaginatedOperationMethod<
   ListConfigurationProfileAssignmentBySubscriptionRequest,
   ConfigurationProfileAssignmentList,
   ListConfigurationProfileAssignmentBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfileAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     416,
     __c26,
@@ -1790,16 +1799,18 @@ export const ListConfigurationProfileAssignmentBySubscription: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileAssignmentByVirtualMachinesError = AzureOpError;
 /** Get list of configuration profile assignments */
-export const ListConfigurationProfileAssignmentByVirtualMachines: API.OperationMethod<
+export const ListConfigurationProfileAssignmentByVirtualMachines: API.PaginatedOperationMethod<
   ListConfigurationProfileAssignmentByVirtualMachinesRequest,
   ConfigurationProfileAssignmentList,
   ListConfigurationProfileAssignmentByVirtualMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfileAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     432,
     __c27,
@@ -1809,61 +1820,69 @@ export const ListConfigurationProfileAssignmentByVirtualMachines: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileAssignmentsError = AzureOpError;
 /** Get list of configuration profile assignments */
-export const ListConfigurationProfileAssignments: API.OperationMethod<
+export const ListConfigurationProfileAssignments: API.PaginatedOperationMethod<
   ListConfigurationProfileAssignmentsRequest,
   ConfigurationProfileAssignmentList,
   ListConfigurationProfileAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfileAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListConfigurationProfileAssignmentsRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<ConfigurationProfileAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileByResourceGroupError = AzureOpError;
 /** Retrieve a list of configuration profile within a given resource group */
-export const ListConfigurationProfileByResourceGroup: API.OperationMethod<
+export const ListConfigurationProfileByResourceGroup: API.PaginatedOperationMethod<
   ListConfigurationProfileByResourceGroupRequest,
   ConfigurationProfileList,
   ListConfigurationProfileByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListConfigurationProfileByResourceGroupRequest>,
   output: __S(481, __c30, 1) as any as S.Schema<ConfigurationProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfileBySubscriptionError = AzureOpError;
 /** Retrieve a list of configuration profile within a subscription */
-export const ListConfigurationProfileBySubscription: API.OperationMethod<
+export const ListConfigurationProfileBySubscription: API.PaginatedOperationMethod<
   ListConfigurationProfileBySubscriptionRequest,
   ConfigurationProfileList,
   ListConfigurationProfileBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<ListConfigurationProfileBySubscriptionRequest>,
   output: __S(481, __c30, 1) as any as S.Schema<ConfigurationProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationProfilesVersionChildResourcesError = AzureOpError;
 /** Retrieve a list of configuration profile version for a configuration profile */
-export const ListConfigurationProfilesVersionChildResources: API.OperationMethod<
+export const ListConfigurationProfilesVersionChildResources: API.PaginatedOperationMethod<
   ListConfigurationProfilesVersionChildResourcesRequest,
   ConfigurationProfileList,
   ListConfigurationProfilesVersionChildResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigurationProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     560,
     __c35,
@@ -1873,16 +1892,18 @@ export const ListConfigurationProfilesVersionChildResources: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListHCIReportByConfigurationProfileAssignmentsError = AzureOpError;
 /** Retrieve a list of reports within a given configuration profile assignment */
-export const ListHCIReportByConfigurationProfileAssignments: API.OperationMethod<
+export const ListHCIReportByConfigurationProfileAssignments: API.PaginatedOperationMethod<
   ListHCIReportByConfigurationProfileAssignmentsRequest,
   ReportList,
   ListHCIReportByConfigurationProfileAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Report
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     576,
     __c36,
@@ -1892,16 +1913,18 @@ export const ListHCIReportByConfigurationProfileAssignments: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListHCRPReportByConfigurationProfileAssignmentsError = AzureOpError;
 /** Retrieve a list of reports within a given configuration profile assignment */
-export const ListHCRPReportByConfigurationProfileAssignments: API.OperationMethod<
+export const ListHCRPReportByConfigurationProfileAssignments: API.PaginatedOperationMethod<
   ListHCRPReportByConfigurationProfileAssignmentsRequest,
   ReportList,
   ListHCRPReportByConfigurationProfileAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Report
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     608,
     __c38,
@@ -1911,52 +1934,59 @@ export const ListHCRPReportByConfigurationProfileAssignments: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Automanage REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(628, __c39, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListReportByConfigurationProfileAssignmentsError = AzureOpError;
 /** Retrieve a list of reports within a given configuration profile assignment */
-export const ListReportByConfigurationProfileAssignments: API.OperationMethod<
+export const ListReportByConfigurationProfileAssignments: API.PaginatedOperationMethod<
   ListReportByConfigurationProfileAssignmentsRequest,
   ReportList,
   ListReportByConfigurationProfileAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Report
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<ListReportByConfigurationProfileAssignmentsRequest>,
   output: __S(593, __c37, 1) as any as S.Schema<ReportList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServicePrincipalBySubscriptionError = AzureOpError;
 /** Get the Automanage AAD first party Application Service Principal details for the subscription id. */
-export const ListServicePrincipalBySubscription: API.OperationMethod<
+export const ListServicePrincipalBySubscription: API.PaginatedOperationMethod<
   ListServicePrincipalBySubscriptionRequest,
   ServicePrincipalListResult,
   ListServicePrincipalBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServicePrincipal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<ListServicePrincipalBySubscriptionRequest>,
   output: __S(658, __c41, 2) as any as S.Schema<ServicePrincipalListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type UpdateConfigurationProfileError = AzureOpError;
 /** Updates a configuration profile */
@@ -2430,7 +2460,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(336, __c21, 0)),
+          value: __S(336, __c21, 0),
         }),
       ).annotate({ identifier: "BestPracticeList" });
   }
@@ -2478,7 +2508,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(384, __c24, 0)),
+          value: __S(384, __c24, 0),
         }),
       ).annotate({ identifier: "ConfigurationProfileAssignmentList" });
   }
@@ -2581,7 +2611,7 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(480, __c30, 0)),
+          value: __S(480, __c30, 0),
         }),
       ).annotate({ identifier: "ConfigurationProfileList" });
   }
@@ -2699,7 +2729,7 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(592, __c37, 0)),
+          value: __S(592, __c37, 0),
         }),
       ).annotate({ identifier: "ReportList" });
   }
@@ -2761,7 +2791,7 @@ function __c39(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(627, __c39, 3)),
+          value: __S(627, __c39, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2807,7 +2837,7 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(657, __c41, 1)),
+          value: __S(657, __c41, 1),
         }),
       ).annotate({ identifier: "ServicePrincipalListResult" });
   }

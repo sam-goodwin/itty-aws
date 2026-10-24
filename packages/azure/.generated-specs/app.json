@@ -1768,10 +1768,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sessionPools",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the session pools in a given resource group of a subscription.\n\nGet the session pools in a given resource group of a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#SessionPoolCollection": {
@@ -1919,6 +1926,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2300,10 +2313,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups/{sandboxGroupName}/vnetConnections",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all VnetConnections in the specified SandboxGroup.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#VnetConnectionListResult": {
@@ -2405,6 +2425,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the SandboxGroup"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3030,10 +3056,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/sandboxGroups",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all SandboxGroups in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#SandboxGroupListResult": {
@@ -3147,6 +3180,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3166,10 +3205,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/workloadProfileStates",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all workload Profile States for a Managed Environment..\n\nGet all workload Profile States for a Managed Environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#WorkloadProfileStatesCollection": {
@@ -3292,6 +3338,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Environment."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3311,10 +3363,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/usages",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the current usage information as well as the limits for environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListUsagesResult": {
@@ -3442,6 +3501,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4099,10 +4164,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private link resources for a given managed environment.\n\nList private link resources for a given managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#PrivateLinkResourceListResult": {
@@ -4198,6 +4270,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managed environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4705,10 +4783,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections for a given managed environment.\n\nList private endpoint connections for a given managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#PrivateEndpointConnectionListResult": {
@@ -4804,6 +4889,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managed environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5440,10 +5531,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Managed Certificates in a given managed environment.\n\nGet the Managed Certificates in a given managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ManagedCertificateCollection": {
@@ -5564,6 +5662,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5946,10 +6050,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/maintenanceConfigurations",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all maintenance configurations in the specified Managed Environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#MaintenanceConfigurationCollection": {
@@ -6045,6 +6156,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managed environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6658,10 +6775,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/javaComponents",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Java Components for a managed environment.\n\nGet the Java Components for a managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#JavaComponentsCollection": {
@@ -6757,6 +6881,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managed environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7524,10 +7654,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/httpRouteConfigs",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the Http Route Configs in a given managed environment.\n\nGet the Managed Http Routes in a given managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#HttpRouteConfigCollection": {
@@ -7623,6 +7760,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managed environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8345,10 +8488,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/dotNetComponents",
           "code": 200,
-          "apiVersion": "2026-03-02-preview"
+          "apiVersion": "2026-03-02-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the .NET Components for a managed environment.\n\nLists the .NET components in a managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-03-02-preview"
+        "com.distilled.openapi#apiVersion": "2026-03-02-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#DotNetComponentsCollection": {
@@ -8444,6 +8594,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the managed environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10403,10 +10559,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}/resiliencyPolicies",
           "code": 200,
-          "apiVersion": "2026-03-02-preview"
+          "apiVersion": "2026-03-02-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the resiliency policies for a Dapr component.\n\nLists the resiliency policies configured for a Dapr component.",
-        "com.distilled.openapi#apiVersion": "2026-03-02-preview"
+        "com.distilled.openapi#apiVersion": "2026-03-02-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#DaprComponentResiliencyPoliciesCollection": {
@@ -10510,6 +10673,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Dapr Component."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11166,10 +11335,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Dapr Components for a managed environment.\n\nGet the Dapr Components for a managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#DaprComponentsCollection": {
@@ -11265,6 +11441,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Managed Environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12123,10 +12305,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Certificates in a given managed environment.\n\nGet the Certificates in a given managed environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#CertificateCollection": {
@@ -12247,6 +12436,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Managed Environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13119,10 +13314,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the Environments in a resource group.\n\nGet all the Managed Environments in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ManagedEnvironmentsCollection": {
@@ -13276,6 +13478,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15605,10 +15813,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/executions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a Container Apps Job's executions\n\nGet a Container Apps Job's executions",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ContainerAppJobExecutions": {
@@ -15664,6 +15879,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15781,10 +16002,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}/detectors",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of diagnostics for a given Container App Job.\n\nGet the list of diagnostics for a Container App Job.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListJobDetectorsRequest": {
@@ -15812,6 +16040,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App Job."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16952,10 +17186,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Container Apps Jobs in a given resource group.\n\nGet the Container Apps Jobs in a given resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#JobsCollection": {
@@ -17103,6 +17344,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19328,10 +19575,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Container App SourceControls in a given resource group.\n\nGet the Container App SourceControls in a given resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#SourceControlCollection": {
@@ -19427,6 +19681,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20153,10 +20413,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/functions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the functions for a given Container App Revision.\n\nLists the functions available in a specific Container App revision.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ContainerAppsFunctionCollection": {
@@ -20260,6 +20527,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App Revision."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20677,10 +20950,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Revisions for a given Container App.\n\nGet the Revisions for a given Container App.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#RevisionCollection": {
@@ -20783,6 +21063,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21146,10 +21432,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/providers/Microsoft.App/logicApps/{logicAppName}/workflows",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the workflows for a logic app.\n\nList the workflows for a logic app.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#WorkflowEnvelopeCollection": {
@@ -21259,6 +21552,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Logic App, the extension resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21738,10 +22037,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private link resources for a given Container App.\n\nLists the private link resources supported by a Container App.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppPrivateLinkResourcesRequest": {
@@ -21769,6 +22075,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22084,10 +22396,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections for a given Container App.\n\nLists all private endpoint connections associated with a Container App.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppPrivateEndpointConnectionsRequest": {
@@ -22115,6 +22434,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22755,10 +23080,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/labelHistories",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Label History for a given Container App.\n\nLists the label revision histories for a Container App.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#LabelHistoryCollection": {
@@ -22861,6 +23193,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23112,10 +23450,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/functions",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the functions for a given Container App from the latest Revision.\n\nLists the functions available in the latest revision of a Container App.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppsFunctionsRequest": {
@@ -23143,6 +23488,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23260,10 +23611,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectors",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of diagnostics for a given Container App.\n\nGet the list of diagnostics for a given Container App.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppsDiagnosticDetectorsRequest": {
@@ -23291,6 +23649,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23478,10 +23842,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectorProperties/revisionsApi/revisions/",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Revisions for a given Container App.\n\nA synchronous resource action.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppsDiagnosticRevisionsRequest": {
@@ -23516,6 +23887,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25088,10 +25465,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/authConfigs",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Container App AuthConfigs in a given resource group.\n\nGet the Container App AuthConfigs in a given resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#AuthConfigCollection": {
@@ -25187,6 +25571,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Container App."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26340,10 +26730,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Container Apps in a given resource group.\n\nGet the Container Apps in a given resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ContainerAppCollection": {
@@ -26509,6 +26906,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -27369,10 +27772,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Dapr Components for a connected environment.\n\nGet the Dapr Components for a connected environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListConnectedEnvironmentsDaprComponentsRequest": {
@@ -27400,6 +27810,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the connected environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28053,10 +28469,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/certificates",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Certificates in a given connected environment.\n\nGet the Certificates in a given connected environment.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListConnectedEnvironmentsCertificatesRequest": {
@@ -28084,6 +28507,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Connected Environment."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28732,10 +29161,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all connectedEnvironments in a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ConnectedEnvironmentCollection": {
@@ -28855,6 +29291,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -28874,10 +29316,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/sessionPools",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the session pools in a given subscription.\n\nGet the session pools in a given subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppsSessionPoolBySubscriptionRequest": {
@@ -28889,6 +29338,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28909,10 +29364,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/sandboxGroups",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all SandboxGroups for a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListSandboxGroupBySubscriptionRequest": {
@@ -28924,6 +29386,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28944,10 +29412,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/managedEnvironments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all Environments for a subscription.\n\nGet all Managed Environments for a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListManagedEnvironmentBySubscriptionRequest": {
@@ -28959,6 +29434,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28979,10 +29460,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets, for the specified location, the current resource usage information as well as the limits under the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListUsagesRequest": {
@@ -29002,6 +29490,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The location for which resource usage is queried."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29159,10 +29653,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/availableManagedEnvironmentsWorkloadProfileTypes",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get available workload profiles by location.\n\nGet all available workload profiles for a location.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#AvailableWorkloadProfilesCollection": {
@@ -29321,6 +29822,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -29340,10 +29847,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/availableManagedEnvironmentsModes",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get available environment modes by location.\n\nGets the environment modes available to a subscription in a location.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#AvailableEnvironmentModesCollection": {
@@ -29458,6 +29972,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -29477,10 +29997,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/jobs",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Container Apps Jobs in a given subscription.\n\nGet the Container Apps Jobs in a given subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListJobBySubscriptionRequest": {
@@ -29492,6 +30019,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29562,10 +30095,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/containerApps",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the Container Apps in a given subscription.\n\nGet the Container Apps in a given subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListContainerAppBySubscriptionRequest": {
@@ -29577,6 +30117,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29597,10 +30143,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/connectedEnvironments",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all connectedEnvironments for a subscription.\n\nGet all connectedEnvironments for a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListConnectedEnvironmentBySubscriptionRequest": {
@@ -29613,6 +30166,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -29622,7 +30181,7 @@
     "com.azure.app#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.app#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.app#AvailableOperations"
@@ -29632,10 +30191,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.App/operations",
           "code": 200,
-          "apiVersion": "2026-07-01"
+          "apiVersion": "2026-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available RP operations.",
-        "com.distilled.openapi#apiVersion": "2026-07-01"
+        "com.distilled.openapi#apiVersion": "2026-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#AvailableOperations": {
@@ -29730,6 +30296,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Operation display payload"
+      }
+    },
+    "com.azure.app#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.app#StopAgent": {
@@ -31141,10 +31721,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents/{agentName}/connectors",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the connectors for an Agent",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#AgentConnectorListResult": {
@@ -31202,6 +31789,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Agent"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -32090,10 +32683,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/agents",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the agents in a resource group",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#AgentListResult": {
@@ -32260,6 +32860,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -32279,10 +32885,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/locations/{location}/supportedAgentModels",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List SupportedAgentModel resources by SubscriptionLocationResource",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#SupportedAgentModelListResult": {
@@ -32418,6 +33031,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -32437,10 +33056,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.App/agents",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all agents for a subscription",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.app#ListAgentBySubscriptionRequest": {
@@ -32452,6 +33078,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

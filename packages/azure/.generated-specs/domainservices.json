@@ -2052,10 +2052,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices",
           "code": 200,
-          "apiVersion": "2022-12-01"
+          "apiVersion": "2022-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Domain Services in Resource Group\n\nThe List Domain Services in Resource Group operation lists all the domain services available under the given resource group.",
-        "com.distilled.openapi#apiVersion": "2022-12-01"
+        "com.distilled.openapi#apiVersion": "2022-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainservices#DomainServiceListResult": {
@@ -2281,6 +2288,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group within the user's subscription. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2300,10 +2313,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AAD/domainServices",
           "code": 200,
-          "apiVersion": "2022-12-01"
+          "apiVersion": "2022-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Domain Services in Subscription\n\nThe List Domain Services in Subscription operation lists all the domain services available under the given subscription (and across all resource groups within that subscription).",
-        "com.distilled.openapi#apiVersion": "2022-12-01"
+        "com.distilled.openapi#apiVersion": "2022-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainservices#ListDomainServicesRequest": {
@@ -2316,6 +2336,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2325,7 +2351,7 @@
     "com.azure.domainservices#ListDomainServiceOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.domainservices#ListDomainServiceOperationsRequest"
       },
       "output": {
         "target": "com.azure.domainservices#OperationEntityListResult"
@@ -2335,10 +2361,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AAD/operations",
           "code": 200,
-          "apiVersion": "2022-12-01"
+          "apiVersion": "2022-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available Domain Services operations.",
-        "com.distilled.openapi#apiVersion": "2022-12-01"
+        "com.distilled.openapi#apiVersion": "2022-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainservices#OperationEntityListResult": {
@@ -2426,6 +2459,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The operation supported by Domain Services."
+      }
+    },
+    "com.azure.domainservices#ListDomainServiceOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.domainservices#DeleteOuContainer": {
@@ -3335,10 +3382,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Aad/domainServices/{domainServiceName}/ouContainer",
           "code": 200,
-          "apiVersion": "2022-12-01"
+          "apiVersion": "2022-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of OuContainers in DomainService instance\n\nThe List of OuContainers in DomainService instance.",
-        "com.distilled.openapi#apiVersion": "2022-12-01"
+        "com.distilled.openapi#apiVersion": "2022-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainservices#OuContainerListResult": {
@@ -3572,6 +3626,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the domain service."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3581,7 +3641,7 @@
     "com.azure.domainservices#ListOuContainerOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.domainservices#ListOuContainerOperationsRequest"
       },
       "output": {
         "target": "com.azure.domainservices#OperationEntityListResult"
@@ -3591,10 +3651,31 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Aad/operations",
           "code": 200,
-          "apiVersion": "2022-12-01"
+          "apiVersion": "2022-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available OuContainer operations.",
-        "com.distilled.openapi#apiVersion": "2022-12-01"
+        "com.distilled.openapi#apiVersion": "2022-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
+      }
+    },
+    "com.azure.domainservices#ListOuContainerOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.domainservices#Domainservices": {

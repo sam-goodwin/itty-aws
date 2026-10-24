@@ -98,6 +98,8 @@ export interface ListTextBlocklistTextBlocklistItemsRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TextBlocklistItem items on this page */
 export type PagedTextBlocklistItemValueList = Array<TextBlocklistItem>;
@@ -111,6 +113,8 @@ export interface PagedTextBlocklistItem {
 export interface ListTextBlocklistTextBlocklistsRequest {
   /** Supported Cognitive Services endpoints (protocol and hostname, for example: https://<resource-name>.cognitiveservices.azure.com). */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TextBlocklist items on this page */
 export type PagedTextBlocklistValueList = Array<TextBlocklist>;
@@ -322,33 +326,47 @@ export const ImageOperationsAnalyzeImage: API.OperationMethod<
 
 export type ListTextBlocklistTextBlocklistItemsError = AzureOpError;
 /** Get All BlocklistItems By blocklistName Get all blocklistItems in a text blocklist. */
-export const ListTextBlocklistTextBlocklistItems: API.OperationMethod<
+export const ListTextBlocklistTextBlocklistItems: API.PaginatedOperationMethod<
   ListTextBlocklistTextBlocklistItemsRequest,
   PagedTextBlocklistItem,
   ListTextBlocklistTextBlocklistItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextBlocklistItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c10, 0) as any as S.Schema<ListTextBlocklistTextBlocklistItemsRequest>,
   output: __S(41, __c10, 1) as any as S.Schema<PagedTextBlocklistItem>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTextBlocklistTextBlocklistsError = AzureOpError;
 /** Get All Text Blocklists Get all text blocklists details. */
-export const ListTextBlocklistTextBlocklists: API.OperationMethod<
+export const ListTextBlocklistTextBlocklists: API.PaginatedOperationMethod<
   ListTextBlocklistTextBlocklistsRequest,
   PagedTextBlocklist,
   ListTextBlocklistTextBlocklistsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TextBlocklist
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(48, __c12, 0) as any as S.Schema<ListTextBlocklistTextBlocklistsRequest>,
   output: __S(50, __c12, 2) as any as S.Schema<PagedTextBlocklist>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RemoveTextBlocklistBlocklistItemsError = AzureOpError;
 /** Remove BlocklistItems From Text Blocklist Remove blocklistItems from a text blocklist. You can remove at most 100 BlocklistItems in one request. */
@@ -668,6 +686,7 @@ function __c10(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -676,6 +695,7 @@ function __c10(j: number): any {
             host: "{endpoint}/contentsafety",
             hostRaw: ["endpoint"],
             apiVersion: "2024-09-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -701,6 +721,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -709,6 +730,7 @@ function __c12(j: number): any {
             host: "{endpoint}/contentsafety",
             hostRaw: ["endpoint"],
             apiVersion: "2024-09-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

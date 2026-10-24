@@ -2969,6 +2969,8 @@ export interface JobsListJobPreparationAndReleaseTaskStatusRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** BatchJobPreparationTaskState enums */
 export type BatchJobPreparationTaskState = "running" | "completed";
@@ -3039,7 +3041,7 @@ export type BatchJobPreparationAndReleaseTaskStatusListResultValueList =
 /** The result of listing the status of the Job Preparation and Job Release Tasks for a Job. */
 export interface BatchJobPreparationAndReleaseTaskStatusListResult {
   /** A list of Job Preparation and Job Release Task execution information. */
-  value?: BatchJobPreparationAndReleaseTaskStatusListResultValueList;
+  value: BatchJobPreparationAndReleaseTaskStatusListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3058,6 +3060,8 @@ export interface ListApplicationApplicationsRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Contains information about an application in an Azure Batch Account. */
 export interface BatchApplication {
@@ -3073,7 +3077,7 @@ export type BatchApplicationListResultValueList = Array<BatchApplication>;
 /** The result of listing the applications available in an Account. */
 export interface BatchApplicationListResult {
   /** The list of applications available in the Account. */
-  value?: BatchApplicationListResultValueList;
+  value: BatchApplicationListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3100,6 +3104,8 @@ export interface ListJobJobsRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Batch Job. */
 export interface BatchJob {
@@ -3161,7 +3167,7 @@ export type BatchJobListResultValueList = Array<BatchJob>;
 /** The result of listing the Jobs in an Account. */
 export interface BatchJobListResult {
   /** The list of Jobs. */
-  value?: BatchJobListResultValueList;
+  value: BatchJobListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3190,6 +3196,8 @@ export interface ListJobJobsFromScheduleRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListJobScheduleJobSchedulesRequestSelectList = Array<string>;
 export type ListJobScheduleJobSchedulesRequestExpandList = Array<string>;
@@ -3212,6 +3220,8 @@ export interface ListJobScheduleJobSchedulesRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Job Schedule that allows recurring Jobs by specifying when to run Jobs and a specification used to create each Job. */
 export interface BatchJobSchedule {
@@ -3251,7 +3261,7 @@ export type BatchJobScheduleListResultValueList = Array<BatchJobSchedule>;
 /** The result of listing the Job Schedules in an Account. */
 export interface BatchJobScheduleListResult {
   /** The list of Job Schedules. */
-  value?: BatchJobScheduleListResultValueList;
+  value: BatchJobScheduleListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3277,6 +3287,8 @@ export interface ListNodeNodeExtensionsRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The configuration for virtual machine extension instance view. */
 export interface BatchNodeVMExtension {
@@ -3292,7 +3304,7 @@ export type BatchNodeVMExtensionListResultValueList = Array<BatchNodeVMExtension
 /** The result of listing the Compute Node extensions in a Node. */
 export interface BatchNodeVMExtensionListResult {
   /** The list of Compute Node extensions. */
-  value?: BatchNodeVMExtensionListResultValueList;
+  value: BatchNodeVMExtensionListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3319,6 +3331,8 @@ export interface ListNodeNodeFilesRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of a file on a Compute Node. */
 export interface FileProperties {
@@ -3349,7 +3363,7 @@ export type BatchNodeFileListResultValueList = Array<BatchNodeFile>;
 /** The result of listing the files on a Compute Node, or the files associated with a Task on a Compute Node. */
 export interface BatchNodeFileListResult {
   /** The list of files. */
-  value?: BatchNodeFileListResultValueList;
+  value: BatchNodeFileListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3375,6 +3389,8 @@ export interface ListNodeNodesRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Compute Node in the Batch service. */
 export interface BatchNode {
@@ -3430,7 +3446,7 @@ export type BatchNodeListResultValueList = Array<BatchNode>;
 /** The result of listing the Compute Nodes in a Pool. */
 export interface BatchNodeListResult {
   /** The list of Compute Nodes. */
-  value?: BatchNodeListResultValueList;
+  value: BatchNodeListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3451,6 +3467,8 @@ export interface ListPoolPoolNodeCountsRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The number of Compute Nodes in each Compute Node state. */
 export interface BatchNodeCounts {
@@ -3503,7 +3521,7 @@ export type BatchPoolNodeCountsListResultValueList = Array<BatchPoolNodeCounts>;
 /** The result of listing the Compute Node counts in the Account. */
 export interface BatchPoolNodeCountsListResult {
   /** A list of Compute Node counts by Pool. */
-  value?: BatchPoolNodeCountsListResultValueList;
+  value: BatchPoolNodeCountsListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3530,6 +3548,8 @@ export interface ListPoolPoolsRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Pool in the Azure Batch service. */
 export interface BatchPool {
@@ -3607,7 +3627,7 @@ export type BatchPoolListResultValueList = Array<BatchPool>;
 /** The result of listing the Pools in an Account. */
 export interface BatchPoolListResult {
   /** The list of Pools. */
-  value?: BatchPoolListResultValueList;
+  value: BatchPoolListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3632,6 +3652,8 @@ export interface ListPoolPoolUsageMetricsRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Usage metrics for a Pool across an aggregation interval. */
 export interface BatchPoolUsageMetrics {
@@ -3651,7 +3673,7 @@ export type BatchPoolListUsageMetricsResultValueList = Array<BatchPoolUsageMetri
 /** The result of a listing the usage metrics for an Account. */
 export interface BatchPoolListUsageMetricsResult {
   /** The Pool usage metrics data. */
-  value?: BatchPoolListUsageMetricsResultValueList;
+  value: BatchPoolListUsageMetricsResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3672,6 +3694,8 @@ export interface ListPoolSupportedImagesRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** OSType enums */
 export type OSType = "linux" | "windows";
@@ -3699,7 +3723,7 @@ export type BatchAccountListSupportedImagesResultValueList = Array<BatchSupporte
 /** The result of listing the supported Virtual Machine Images. */
 export interface BatchAccountListSupportedImagesResult {
   /** The list of supported Virtual Machine Images. */
-  value?: BatchAccountListSupportedImagesResultValueList;
+  value: BatchAccountListSupportedImagesResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3723,6 +3747,8 @@ export interface ListTaskSubTasksRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** BatchSubtaskState enums */
 export type BatchSubtaskState = "preparing" | "running" | "completed";
@@ -3758,7 +3784,7 @@ export type BatchTaskListSubtasksResultValueList = Array<BatchSubtask>;
 /** The result of listing the subtasks of a Task. */
 export interface BatchTaskListSubtasksResult {
   /** The list of subtasks. */
-  value?: BatchTaskListSubtasksResultValueList;
+  value: BatchTaskListSubtasksResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -3785,6 +3811,8 @@ export interface ListTaskTaskFilesRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListTaskTasksRequestSelectList = Array<string>;
 export type ListTaskTasksRequestExpandList = Array<string>;
@@ -3809,6 +3837,8 @@ export interface ListTaskTasksRequest {
   returnClientRequestId?: boolean;
   /** The time the request was issued. Client libraries typically set this to the current system clock time; set it explicitly if you are calling the REST API directly. */
   ocpDate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Batch will retry Tasks when a recovery operation is triggered on a Node. Examples of recovery operations include (but are not limited to) when an unhealthy Node is rebooted or a Compute Node disappeared due to host failure. Retries due to recovery operations are independent of and are not counted against the maxTaskRetryCount. Even if the maxTaskRetryCount is 0, an internal retry due to a recovery operation may occur. Because of this, all Tasks should be idempotent. This means Tasks need to tolerate being interrupted and restarted without causing any corruption or duplicate data. The best practice for long running Tasks is to use some form of checkpointing. */
 export interface BatchTask {
@@ -3870,7 +3900,7 @@ export type BatchTaskListResultValueList = Array<BatchTask>;
 /** The result of listing the Tasks in a Job. */
 export interface BatchTaskListResult {
   /** The list of Tasks. */
-  value?: BatchTaskListResultValueList;
+  value: BatchTaskListResultValueList;
   /** The URL to get the next set of results. */
   odata_nextLink?: string;
   /** The ETag HTTP response header. This is an opaque string. You can use it to detect whether the resource has changed between requests. In particular, you can pass the ETag to one of the If-Modified-Since, If-Unmodified-Since, If-Match or If-None-Match headers. */
@@ -5420,228 +5450,333 @@ export const JobSchedulesJobScheduleExists: API.OperationMethod<
 
 export type JobsListJobPreparationAndReleaseTaskStatusError = AzureOpError;
 /** Lists the execution status of the Job Preparation and Job Release Task for the specified Job across the Compute Nodes where the Job has run. This API returns the Job Preparation and Job Release Task status on all Compute Nodes that have run the Job Preparation or Job Release Task. This includes Compute Nodes which have since been removed from the Pool. If this API is invoked on a Job which has no Job Preparation or Job Release Task, the Batch service returns HTTP status code 409 (Conflict) with an error code of JobPreparationTaskNotSpecified. */
-export const JobsListJobPreparationAndReleaseTaskStatus: API.OperationMethod<
+export const JobsListJobPreparationAndReleaseTaskStatus: API.PaginatedOperationMethod<
   JobsListJobPreparationAndReleaseTaskStatusRequest,
   BatchJobPreparationAndReleaseTaskStatusListResult,
   JobsListJobPreparationAndReleaseTaskStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchJobPreparationAndReleaseTaskStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2112, __c66, 0) as any as S.Schema<JobsListJobPreparationAndReleaseTaskStatusRequest>,
   output: __S(2117, __c66, 5) as any as S.Schema<BatchJobPreparationAndReleaseTaskStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationApplicationsError = AzureOpError;
 /** Lists all of the applications available in the specified Account. This operation returns only Applications and versions that are available for use on Compute Nodes; that is, that can be used in an Package reference. For administrator information about applications and versions that are not yet available to Compute Nodes, use the Azure portal or the Azure Resource Manager API. */
-export const ListApplicationApplications: API.OperationMethod<
+export const ListApplicationApplications: API.PaginatedOperationMethod<
   ListApplicationApplicationsRequest,
   BatchApplicationListResult,
   ListApplicationApplicationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2144, __c67, 0) as any as S.Schema<ListApplicationApplicationsRequest>,
   output: __S(2147, __c67, 3) as any as S.Schema<BatchApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobJobsError = AzureOpError;
 /** Lists all of the Jobs in the specified Account. Lists all of the Jobs in the specified Account. */
-export const ListJobJobs: API.OperationMethod<
+export const ListJobJobs: API.PaginatedOperationMethod<
   ListJobJobsRequest,
   BatchJobListResult,
   ListJobJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2176, __c68, 0) as any as S.Schema<ListJobJobsRequest>,
   output: __S(2210, __c69, 2) as any as S.Schema<BatchJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobJobsFromScheduleError = AzureOpError;
 /** Lists the Jobs that have been created under the specified Job Schedule. Lists the Jobs that have been created under the specified Job Schedule. */
-export const ListJobJobsFromSchedule: API.OperationMethod<
+export const ListJobJobsFromSchedule: API.PaginatedOperationMethod<
   ListJobJobsFromScheduleRequest,
   BatchJobListResult,
   ListJobJobsFromScheduleError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2240, __c70, 0) as any as S.Schema<ListJobJobsFromScheduleRequest>,
   output: __S(2210, __c69, 2) as any as S.Schema<BatchJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobScheduleJobSchedulesError = AzureOpError;
 /** Lists all of the Job Schedules in the specified Account. Lists all of the Job Schedules in the specified Account. */
-export const ListJobScheduleJobSchedules: API.OperationMethod<
+export const ListJobScheduleJobSchedules: API.PaginatedOperationMethod<
   ListJobScheduleJobSchedulesRequest,
   BatchJobScheduleListResult,
   ListJobScheduleJobSchedulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchJobSchedule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2272, __c71, 0) as any as S.Schema<ListJobScheduleJobSchedulesRequest>,
   output: __S(2275, __c71, 3) as any as S.Schema<BatchJobScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNodeNodeExtensionsError = AzureOpError;
 /** Lists the Compute Nodes Extensions in the specified Pool. Lists the Compute Nodes Extensions in the specified Pool. */
-export const ListNodeNodeExtensions: API.OperationMethod<
+export const ListNodeNodeExtensions: API.PaginatedOperationMethod<
   ListNodeNodeExtensionsRequest,
   BatchNodeVMExtensionListResult,
   ListNodeNodeExtensionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchNodeVMExtension
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2368, __c74, 0) as any as S.Schema<ListNodeNodeExtensionsRequest>,
   output: __S(2371, __c74, 3) as any as S.Schema<BatchNodeVMExtensionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNodeNodeFilesError = AzureOpError;
 /** Lists all of the files in Task directories on the specified Compute Node. Lists all of the files in Task directories on the specified Compute Node. */
-export const ListNodeNodeFiles: API.OperationMethod<
+export const ListNodeNodeFiles: API.PaginatedOperationMethod<
   ListNodeNodeFilesRequest,
   BatchNodeFileListResult,
   ListNodeNodeFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchNodeFile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2400, __c75, 0) as any as S.Schema<ListNodeNodeFilesRequest>,
   output: __S(2435, __c76, 3) as any as S.Schema<BatchNodeFileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNodeNodesError = AzureOpError;
 /** Lists the Compute Nodes in the specified Pool. Lists the Compute Nodes in the specified Pool. */
-export const ListNodeNodes: API.OperationMethod<
+export const ListNodeNodes: API.PaginatedOperationMethod<
   ListNodeNodesRequest,
   BatchNodeListResult,
   ListNodeNodesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2464, __c77, 0) as any as S.Schema<ListNodeNodesRequest>,
   output: __S(2467, __c77, 3) as any as S.Schema<BatchNodeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoolPoolNodeCountsError = AzureOpError;
 /** Gets the number of Compute Nodes in each state, grouped by Pool. Note that the numbers returned may not always be up to date. If you need exact node counts, use a list query. */
-export const ListPoolPoolNodeCounts: API.OperationMethod<
+export const ListPoolPoolNodeCounts: API.PaginatedOperationMethod<
   ListPoolPoolNodeCountsRequest,
   BatchPoolNodeCountsListResult,
   ListPoolPoolNodeCountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchPoolNodeCounts
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2496, __c78, 0) as any as S.Schema<ListPoolPoolNodeCountsRequest>,
   output: __S(2500, __c78, 4) as any as S.Schema<BatchPoolNodeCountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoolPoolsError = AzureOpError;
 /** Lists all of the Pools in the specified Account. Lists all of the Pools in the specified Account. */
-export const ListPoolPools: API.OperationMethod<
+export const ListPoolPools: API.PaginatedOperationMethod<
   ListPoolPoolsRequest,
   BatchPoolListResult,
   ListPoolPoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2528, __c79, 0) as any as S.Schema<ListPoolPoolsRequest>,
   output: __S(2531, __c79, 3) as any as S.Schema<BatchPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoolPoolUsageMetricsError = AzureOpError;
 /** Lists the usage metrics, aggregated by Pool across individual time intervals, for the specified Account. If you do not specify a $filter clause including a poolId, the response includes all Pools that existed in the Account in the time range of the returned aggregation intervals. If you do not specify a $filter clause including a startTime or endTime these filters default to the start and end times of the last aggregation interval currently available; that is, only the last aggregation interval is returned. */
-export const ListPoolPoolUsageMetrics: API.OperationMethod<
+export const ListPoolPoolUsageMetrics: API.PaginatedOperationMethod<
   ListPoolPoolUsageMetricsRequest,
   BatchPoolListUsageMetricsResult,
   ListPoolPoolUsageMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchPoolUsageMetrics
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2560, __c80, 0) as any as S.Schema<ListPoolPoolUsageMetricsRequest>,
   output: __S(2563, __c80, 3) as any as S.Schema<BatchPoolListUsageMetricsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPoolSupportedImagesError = AzureOpError;
 /** Lists all Virtual Machine Images supported by the Azure Batch service. Lists all Virtual Machine Images supported by the Azure Batch service. */
-export const ListPoolSupportedImages: API.OperationMethod<
+export const ListPoolSupportedImages: API.PaginatedOperationMethod<
   ListPoolSupportedImagesRequest,
   BatchAccountListSupportedImagesResult,
   ListPoolSupportedImagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchSupportedImage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2592, __c81, 0) as any as S.Schema<ListPoolSupportedImagesRequest>,
   output: __S(2595, __c81, 3) as any as S.Schema<BatchAccountListSupportedImagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTaskSubTasksError = AzureOpError;
 /** Lists all of the subtasks that are associated with the specified multi-instance Task. If the Task is not a multi-instance Task then this returns an empty collection. */
-export const ListTaskSubTasks: API.OperationMethod<
+export const ListTaskSubTasks: API.PaginatedOperationMethod<
   ListTaskSubTasksRequest,
   BatchTaskListSubtasksResult,
   ListTaskSubTasksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchSubtask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2624, __c82, 0) as any as S.Schema<ListTaskSubTasksRequest>,
   output: __S(2627, __c82, 3) as any as S.Schema<BatchTaskListSubtasksResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTaskTaskFilesError = AzureOpError;
 /** Lists the files in a Task's directory on its Compute Node. Lists the files in a Task's directory on its Compute Node. */
-export const ListTaskTaskFiles: API.OperationMethod<
+export const ListTaskTaskFiles: API.PaginatedOperationMethod<
   ListTaskTaskFilesRequest,
   BatchNodeFileListResult,
   ListTaskTaskFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchNodeFile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2656, __c83, 0) as any as S.Schema<ListTaskTaskFilesRequest>,
   output: __S(2435, __c76, 3) as any as S.Schema<BatchNodeFileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTaskTasksError = AzureOpError;
 /** Lists all of the Tasks that are associated with the specified Job. For multi-instance Tasks, information such as affinityId, executionInfo and nodeInfo refer to the primary Task. Use the list subtasks API to retrieve information about subtasks. */
-export const ListTaskTasks: API.OperationMethod<
+export const ListTaskTasks: API.PaginatedOperationMethod<
   ListTaskTasksRequest,
   BatchTaskListResult,
   ListTaskTasksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2688, __c84, 0) as any as S.Schema<ListTaskTasksRequest>,
   output: __S(2691, __c84, 3) as any as S.Schema<BatchTaskListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type NodesDeallocateNodeError = AzureOpError;
 /** Deallocates the specified Compute Node. You can deallocate a Compute Node only if it is in an idle or running state. */
@@ -8181,6 +8316,7 @@ function __c66(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8189,6 +8325,7 @@ function __c66(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8238,7 +8375,7 @@ function __c66(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2116, __c66, 4)),
+          value: __S(2116, __c66, 4),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8256,6 +8393,7 @@ function __c67(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8264,6 +8402,7 @@ function __c67(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8281,7 +8420,7 @@ function __c67(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2146, __c67, 2)),
+          value: __S(2146, __c67, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8302,6 +8441,7 @@ function __c68(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8310,6 +8450,7 @@ function __c68(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8354,7 +8495,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2209, __c69, 1)),
+          value: __S(2209, __c69, 1),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8376,6 +8517,7 @@ function __c70(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8384,6 +8526,7 @@ function __c70(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8404,6 +8547,7 @@ function __c71(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8412,6 +8556,7 @@ function __c71(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8441,7 +8586,7 @@ function __c71(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2274, __c71, 2)),
+          value: __S(2274, __c71, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8572,6 +8717,7 @@ function __c74(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8580,6 +8726,7 @@ function __c74(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8597,7 +8744,7 @@ function __c74(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2370, __c74, 2)),
+          value: __S(2370, __c74, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8619,6 +8766,7 @@ function __c75(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8627,6 +8775,7 @@ function __c75(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8659,7 +8808,7 @@ function __c76(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2434, __c76, 2)),
+          value: __S(2434, __c76, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8680,6 +8829,7 @@ function __c77(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8688,6 +8838,7 @@ function __c77(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8725,7 +8876,7 @@ function __c77(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2466, __c77, 2)),
+          value: __S(2466, __c77, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8744,6 +8895,7 @@ function __c78(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8752,6 +8904,7 @@ function __c78(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8791,7 +8944,7 @@ function __c78(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2499, __c78, 3)),
+          value: __S(2499, __c78, 3),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8812,6 +8965,7 @@ function __c79(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8820,6 +8974,7 @@ function __c79(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8868,7 +9023,7 @@ function __c79(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2530, __c79, 2)),
+          value: __S(2530, __c79, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8889,6 +9044,7 @@ function __c80(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8897,6 +9053,7 @@ function __c80(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8916,7 +9073,7 @@ function __c80(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2562, __c80, 2)),
+          value: __S(2562, __c80, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8935,6 +9092,7 @@ function __c81(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8943,6 +9101,7 @@ function __c81(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -8963,7 +9122,7 @@ function __c81(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2594, __c81, 2)),
+          value: __S(2594, __c81, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -8983,6 +9142,7 @@ function __c82(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8991,6 +9151,7 @@ function __c82(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -9017,7 +9178,7 @@ function __c82(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2626, __c82, 2)),
+          value: __S(2626, __c82, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),
@@ -9039,6 +9200,7 @@ function __c83(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9047,6 +9209,7 @@ function __c83(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -9068,6 +9231,7 @@ function __c84(j: number): any {
           clientRequestId: S.optional(S.String.pipe(T.Header("client-request-id"))),
           returnClientRequestId: S.optional(S.Boolean.pipe(T.Header("return-client-request-id"))),
           ocpDate: S.optional(S.String.pipe(T.Header("ocp-date"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9076,6 +9240,7 @@ function __c84(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-06-01",
+            nextLink: "nextLink",
             audience: "https://batch.core.windows.net/.default",
           }),
         ),
@@ -9116,7 +9281,7 @@ function __c84(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2690, __c84, 2)),
+          value: __S(2690, __c84, 2),
           odata_nextLink: S.optional(S.String.pipe(T.Body("odata.nextLink"))),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),
         }),

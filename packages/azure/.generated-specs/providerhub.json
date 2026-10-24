@@ -15,13 +15,128 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.providerhub#ProviderMonitorSettingsDelete": "com.azure.providerhub#DeleteProviderMonitorSettings",
+      "com.azure.providerhub#ProviderMonitorSettingsDeleteRequest": "com.azure.providerhub#DeleteProviderMonitorSettingsRequest",
+      "com.azure.providerhub#ProviderMonitorSettingsUpdate": "com.azure.providerhub#UpdateProviderMonitorSettings",
+      "com.azure.providerhub#ProviderMonitorSettingsUpdateResponse": "com.azure.providerhub#UpdateProviderMonitorSettingsResponse",
+      "com.azure.providerhub#ProviderMonitorSettingsUpdateResponseTagsMap": "com.azure.providerhub#UpdateProviderMonitorSettingsResponseTagsMap",
+      "com.azure.providerhub#ProviderMonitorSettingsUpdateRequest": "com.azure.providerhub#UpdateProviderMonitorSettingsRequest",
+      "com.azure.providerhub#ProviderMonitorSettingsCreate": "com.azure.providerhub#CreateProviderMonitorSettings",
+      "com.azure.providerhub#ProviderMonitorSettingsCreateResponse": "com.azure.providerhub#CreateProviderMonitorSettingsResponse",
+      "com.azure.providerhub#ProviderMonitorSettingsCreateResponseTagsMap": "com.azure.providerhub#CreateProviderMonitorSettingsResponseTagsMap",
+      "com.azure.providerhub#ProviderMonitorSettingsCreateRequest": "com.azure.providerhub#CreateProviderMonitorSettingsRequest",
+      "com.azure.providerhub#ProviderMonitorSettingsCreateRequestTagsMap": "com.azure.providerhub#CreateProviderMonitorSettingsRequestTagsMap",
+      "com.azure.providerhub#ProviderMonitorSettingsGet": "com.azure.providerhub#GetProviderMonitorSettings",
+      "com.azure.providerhub#ProviderMonitorSettingsGetResponse": "com.azure.providerhub#GetProviderMonitorSettingsResponse",
+      "com.azure.providerhub#ProviderMonitorSettingsGetResponseTagsMap": "com.azure.providerhub#GetProviderMonitorSettingsResponseTagsMap",
+      "com.azure.providerhub#ProviderMonitorSettingsGetRequest": "com.azure.providerhub#GetProviderMonitorSettingsRequest",
+      "com.azure.providerhub#ProviderMonitorSettingsListByResourceGroup": "com.azure.providerhub#ListProviderMonitorSettingsByResourceGroup",
+      "com.azure.providerhub#ProviderMonitorSettingsListByResourceGroupRequest": "com.azure.providerhub#ListProviderMonitorSettingsByResourceGroupRequest",
+      "com.azure.providerhub#SkusDelete": "com.azure.providerhub#DeleteSkus",
+      "com.azure.providerhub#SkusDeleteRequest": "com.azure.providerhub#DeleteSkusRequest",
+      "com.azure.providerhub#SkusGet": "com.azure.providerhub#GetSkus",
+      "com.azure.providerhub#SkusGetResponse": "com.azure.providerhub#GetSkusResponse",
+      "com.azure.providerhub#SkusGetRequest": "com.azure.providerhub#GetSkusRequest",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrations": "com.azure.providerhub#ListSkusByResourceTypeRegistrations",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsRequest": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsRequest",
+      "com.azure.providerhub#SkusDeleteNestedResourceTypeFirst": "com.azure.providerhub#DeleteSkusNestedResourceTypeFirst",
+      "com.azure.providerhub#SkusDeleteNestedResourceTypeFirstRequest": "com.azure.providerhub#DeleteSkusNestedResourceTypeFirstRequest",
+      "com.azure.providerhub#SkusGetNestedResourceTypeFirst": "com.azure.providerhub#GetSkusNestedResourceTypeFirst",
+      "com.azure.providerhub#SkusGetNestedResourceTypeFirstResponse": "com.azure.providerhub#GetSkusNestedResourceTypeFirstResponse",
+      "com.azure.providerhub#SkusGetNestedResourceTypeFirstRequest": "com.azure.providerhub#GetSkusNestedResourceTypeFirstRequest",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirst": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest",
+      "com.azure.providerhub#SkusDeleteNestedResourceTypeSecond": "com.azure.providerhub#DeleteSkusNestedResourceTypeSecond",
+      "com.azure.providerhub#SkusDeleteNestedResourceTypeSecondRequest": "com.azure.providerhub#DeleteSkusNestedResourceTypeSecondRequest",
+      "com.azure.providerhub#SkusGetNestedResourceTypeSecond": "com.azure.providerhub#GetSkusNestedResourceTypeSecond",
+      "com.azure.providerhub#SkusGetNestedResourceTypeSecondResponse": "com.azure.providerhub#GetSkusNestedResourceTypeSecondResponse",
+      "com.azure.providerhub#SkusGetNestedResourceTypeSecondRequest": "com.azure.providerhub#GetSkusNestedResourceTypeSecondRequest",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecond": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest",
+      "com.azure.providerhub#SkusDeleteNestedResourceTypeThird": "com.azure.providerhub#DeleteSkusNestedResourceTypeThird",
+      "com.azure.providerhub#SkusDeleteNestedResourceTypeThirdRequest": "com.azure.providerhub#DeleteSkusNestedResourceTypeThirdRequest",
+      "com.azure.providerhub#SkusGetNestedResourceTypeThird": "com.azure.providerhub#GetSkusNestedResourceTypeThird",
+      "com.azure.providerhub#SkusGetNestedResourceTypeThirdResponse": "com.azure.providerhub#GetSkusNestedResourceTypeThirdResponse",
+      "com.azure.providerhub#SkusGetNestedResourceTypeThirdRequest": "com.azure.providerhub#GetSkusNestedResourceTypeThirdRequest",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThird": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeThird",
+      "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest",
+      "com.azure.providerhub#ResourceTypeRegistrationsDelete": "com.azure.providerhub#DeleteResourceTypeRegistration",
+      "com.azure.providerhub#ResourceTypeRegistrationsDeleteResponse": "com.azure.providerhub#DeleteResourceTypeRegistrationResponse",
+      "com.azure.providerhub#ResourceTypeRegistrationsDeleteRequest": "com.azure.providerhub#DeleteResourceTypeRegistrationRequest",
+      "com.azure.providerhub#ResourceTypeRegistrationsGet": "com.azure.providerhub#GetResourceTypeRegistration",
+      "com.azure.providerhub#ResourceTypeRegistrationsGetResponse": "com.azure.providerhub#GetResourceTypeRegistrationResponse",
+      "com.azure.providerhub#ResourceTypeRegistrationsGetResponseKind": "com.azure.providerhub#GetResourceTypeRegistrationResponseKind",
+      "com.azure.providerhub#ResourceTypeRegistrationsGetRequest": "com.azure.providerhub#GetResourceTypeRegistrationRequest",
+      "com.azure.providerhub#ResourceTypeRegistrationsListByProviderRegistration": "com.azure.providerhub#ListResourceTypeRegistrationByProviderRegistration",
+      "com.azure.providerhub#ResourceTypeRegistrationsListByProviderRegistrationRequest": "com.azure.providerhub#ListResourceTypeRegistrationByProviderRegistrationRequest",
+      "com.azure.providerhub#ResourceActionsDeleteResources": "com.azure.providerhub#DeleteResourceActionResources",
+      "com.azure.providerhub#ResourceActionsDeleteResourcesResponse": "com.azure.providerhub#DeleteResourceActionResourcesResponse",
+      "com.azure.providerhub#ResourceActionsDeleteResourcesRequest": "com.azure.providerhub#DeleteResourceActionResourcesRequest",
+      "com.azure.providerhub#ResourceActionsDeleteResourcesRequestResourcesList": "com.azure.providerhub#DeleteResourceActionResourcesRequestResourcesList",
+      "com.azure.providerhub#OperationsDelete": "com.azure.providerhub#DeleteOperation",
+      "com.azure.providerhub#OperationsDeleteRequest": "com.azure.providerhub#DeleteOperationRequest",
+      "com.azure.providerhub#OperationsListByProviderRegistration": "com.azure.providerhub#ListOperationByProviderRegistration",
+      "com.azure.providerhub#OperationsListByProviderRegistrationResponse": "com.azure.providerhub#ListOperationByProviderRegistrationResponse",
+      "com.azure.providerhub#OperationsListByProviderRegistrationRequest": "com.azure.providerhub#ListOperationByProviderRegistrationRequest",
+      "com.azure.providerhub#NotificationRegistrationsDelete": "com.azure.providerhub#DeleteNotificationRegistration",
+      "com.azure.providerhub#NotificationRegistrationsDeleteRequest": "com.azure.providerhub#DeleteNotificationRegistrationRequest",
+      "com.azure.providerhub#NotificationRegistrationsGet": "com.azure.providerhub#GetNotificationRegistration",
+      "com.azure.providerhub#NotificationRegistrationsGetResponse": "com.azure.providerhub#GetNotificationRegistrationResponse",
+      "com.azure.providerhub#NotificationRegistrationsGetRequest": "com.azure.providerhub#GetNotificationRegistrationRequest",
+      "com.azure.providerhub#NotificationRegistrationsListByProviderRegistration": "com.azure.providerhub#ListNotificationRegistrationByProviderRegistration",
+      "com.azure.providerhub#NotificationRegistrationsListByProviderRegistrationRequest": "com.azure.providerhub#ListNotificationRegistrationByProviderRegistrationRequest",
+      "com.azure.providerhub#ManifestsGet": "com.azure.providerhub#GetManifest",
+      "com.azure.providerhub#ManifestsGetResponse": "com.azure.providerhub#GetManifestResponse",
+      "com.azure.providerhub#ManifestsGetRequest": "com.azure.providerhub#GetManifestRequest",
+      "com.azure.providerhub#ProviderRegistrationsGenerateOperations": "com.azure.providerhub#GenerateProviderRegistrationOperations",
+      "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponse": "com.azure.providerhub#GenerateProviderRegistrationOperationsResponse",
+      "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponseBodyList": "com.azure.providerhub#GenerateProviderRegistrationOperationsResponseBodyList",
+      "com.azure.providerhub#ProviderRegistrationsGenerateOperationsRequest": "com.azure.providerhub#GenerateProviderRegistrationOperationsRequest",
+      "com.azure.providerhub#DefaultRolloutsStop": "com.azure.providerhub#StopDefaultRollout",
+      "com.azure.providerhub#DefaultRolloutsStopRequest": "com.azure.providerhub#StopDefaultRolloutRequest",
+      "com.azure.providerhub#DefaultRolloutsDelete": "com.azure.providerhub#DeleteDefaultRollout",
+      "com.azure.providerhub#DefaultRolloutsDeleteRequest": "com.azure.providerhub#DeleteDefaultRolloutRequest",
+      "com.azure.providerhub#DefaultRolloutsGet": "com.azure.providerhub#GetDefaultRollout",
+      "com.azure.providerhub#DefaultRolloutsGetResponse": "com.azure.providerhub#GetDefaultRolloutResponse",
+      "com.azure.providerhub#DefaultRolloutsGetRequest": "com.azure.providerhub#GetDefaultRolloutRequest",
+      "com.azure.providerhub#DefaultRolloutsListByProviderRegistration": "com.azure.providerhub#ListDefaultRolloutByProviderRegistration",
+      "com.azure.providerhub#DefaultRolloutsListByProviderRegistrationRequest": "com.azure.providerhub#ListDefaultRolloutByProviderRegistrationRequest",
+      "com.azure.providerhub#CustomRolloutsStop": "com.azure.providerhub#StopCustomRollout",
+      "com.azure.providerhub#CustomRolloutsStopRequest": "com.azure.providerhub#StopCustomRolloutRequest",
+      "com.azure.providerhub#CustomRolloutsDelete": "com.azure.providerhub#DeleteCustomRollout",
+      "com.azure.providerhub#CustomRolloutsDeleteRequest": "com.azure.providerhub#DeleteCustomRolloutRequest",
+      "com.azure.providerhub#CustomRolloutsGet": "com.azure.providerhub#GetCustomRollout",
+      "com.azure.providerhub#CustomRolloutsGetResponse": "com.azure.providerhub#GetCustomRolloutResponse",
+      "com.azure.providerhub#CustomRolloutsGetRequest": "com.azure.providerhub#GetCustomRolloutRequest",
+      "com.azure.providerhub#CustomRolloutsListByProviderRegistration": "com.azure.providerhub#ListCustomRolloutByProviderRegistration",
+      "com.azure.providerhub#CustomRolloutsListByProviderRegistrationRequest": "com.azure.providerhub#ListCustomRolloutByProviderRegistrationRequest",
+      "com.azure.providerhub#AuthorizedApplicationsDelete": "com.azure.providerhub#DeleteAuthorizedApplication",
+      "com.azure.providerhub#AuthorizedApplicationsDeleteRequest": "com.azure.providerhub#DeleteAuthorizedApplicationRequest",
+      "com.azure.providerhub#AuthorizedApplicationsGet": "com.azure.providerhub#GetAuthorizedApplication",
+      "com.azure.providerhub#AuthorizedApplicationsGetResponse": "com.azure.providerhub#GetAuthorizedApplicationResponse",
+      "com.azure.providerhub#AuthorizedApplicationsGetRequest": "com.azure.providerhub#GetAuthorizedApplicationRequest",
+      "com.azure.providerhub#AuthorizedApplicationsList": "com.azure.providerhub#ListAuthorizedApplications",
+      "com.azure.providerhub#AuthorizedApplicationsListRequest": "com.azure.providerhub#ListAuthorizedApplicationsRequest",
+      "com.azure.providerhub#ProviderRegistrationsDelete": "com.azure.providerhub#DeleteProviderRegistration",
+      "com.azure.providerhub#ProviderRegistrationsDeleteRequest": "com.azure.providerhub#DeleteProviderRegistrationRequest",
+      "com.azure.providerhub#ProviderRegistrationsGet": "com.azure.providerhub#GetProviderRegistration",
+      "com.azure.providerhub#ProviderRegistrationsGetResponse": "com.azure.providerhub#GetProviderRegistrationResponse",
+      "com.azure.providerhub#ProviderRegistrationsGetResponseKind": "com.azure.providerhub#GetProviderRegistrationResponseKind",
+      "com.azure.providerhub#ProviderRegistrationsGetRequest": "com.azure.providerhub#GetProviderRegistrationRequest",
+      "com.azure.providerhub#ProviderRegistrationsList": "com.azure.providerhub#ListProviderRegistrations",
+      "com.azure.providerhub#ProviderRegistrationsListRequest": "com.azure.providerhub#ListProviderRegistrationsRequest",
+      "com.azure.providerhub#ProviderMonitorSettingsListBySubscription": "com.azure.providerhub#ListProviderMonitorSettingsBySubscription",
+      "com.azure.providerhub#ProviderMonitorSettingsListBySubscriptionRequest": "com.azure.providerhub#ListProviderMonitorSettingsBySubscriptionRequest",
+      "com.azure.providerhub#OperationsList": "com.azure.providerhub#ListOperations",
+      "com.azure.providerhub#OperationsListRequest": "com.azure.providerhub#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.providerhub#DeleteProviderMonitorSettings": {
+    "com.azure.providerhub#ProviderMonitorSettingsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteProviderMonitorSettingsRequest"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -37,7 +152,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteProviderMonitorSettingsRequest": {
+    "com.azure.providerhub#ProviderMonitorSettingsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -69,13 +184,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#UpdateProviderMonitorSettings": {
+    "com.azure.providerhub#ProviderMonitorSettingsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#UpdateProviderMonitorSettingsRequest"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#UpdateProviderMonitorSettingsResponse"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -88,7 +203,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#UpdateProviderMonitorSettingsResponse": {
+    "com.azure.providerhub#ProviderMonitorSettingsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -116,7 +231,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.providerhub#UpdateProviderMonitorSettingsResponseTagsMap",
+          "target": "com.azure.providerhub#ProviderMonitorSettingsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -232,7 +347,7 @@
       },
       "traits": {}
     },
-    "com.azure.providerhub#UpdateProviderMonitorSettingsResponseTagsMap": {
+    "com.azure.providerhub#ProviderMonitorSettingsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -352,7 +467,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.providerhub#UpdateProviderMonitorSettingsRequest": {
+    "com.azure.providerhub#ProviderMonitorSettingsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -384,13 +499,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#CreateProviderMonitorSettings": {
+    "com.azure.providerhub#ProviderMonitorSettingsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#CreateProviderMonitorSettingsRequest"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsCreateRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#CreateProviderMonitorSettingsResponse"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -403,7 +518,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#CreateProviderMonitorSettingsResponse": {
+    "com.azure.providerhub#ProviderMonitorSettingsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -431,7 +546,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.providerhub#CreateProviderMonitorSettingsResponseTagsMap",
+          "target": "com.azure.providerhub#ProviderMonitorSettingsCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -465,7 +580,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#CreateProviderMonitorSettingsResponseTagsMap": {
+    "com.azure.providerhub#ProviderMonitorSettingsCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -477,7 +592,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.providerhub#CreateProviderMonitorSettingsRequest": {
+    "com.azure.providerhub#ProviderMonitorSettingsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -505,7 +620,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.providerhub#CreateProviderMonitorSettingsRequestTagsMap",
+          "target": "com.azure.providerhub#ProviderMonitorSettingsCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -525,7 +640,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#CreateProviderMonitorSettingsRequestTagsMap": {
+    "com.azure.providerhub#ProviderMonitorSettingsCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -537,13 +652,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.providerhub#GetProviderMonitorSettings": {
+    "com.azure.providerhub#ProviderMonitorSettingsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetProviderMonitorSettingsRequest"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetProviderMonitorSettingsResponse"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -556,7 +671,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetProviderMonitorSettingsResponse": {
+    "com.azure.providerhub#ProviderMonitorSettingsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -584,7 +699,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.providerhub#GetProviderMonitorSettingsResponseTagsMap",
+          "target": "com.azure.providerhub#ProviderMonitorSettingsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -604,7 +719,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetProviderMonitorSettingsResponseTagsMap": {
+    "com.azure.providerhub#ProviderMonitorSettingsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -616,7 +731,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.providerhub#GetProviderMonitorSettingsRequest": {
+    "com.azure.providerhub#ProviderMonitorSettingsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -648,10 +763,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListProviderMonitorSettingsByResourceGroup": {
+    "com.azure.providerhub#ProviderMonitorSettingsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListProviderMonitorSettingsByResourceGroupRequest"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.providerhub#ProviderMonitorSettingArrayResponseWithContinuation"
@@ -661,10 +776,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the provider monitor settings in the resource group.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#ProviderMonitorSettingArrayResponseWithContinuation": {
@@ -757,7 +879,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.providerhub#ListProviderMonitorSettingsByResourceGroupRequest": {
+    "com.azure.providerhub#ProviderMonitorSettingsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -775,16 +897,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteSkus": {
+    "com.azure.providerhub#SkusDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteSkusRequest"
+        "target": "com.azure.providerhub#SkusDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -800,7 +928,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteSkusRequest": {
+    "com.azure.providerhub#SkusDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1332,13 +1460,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GetSkus": {
+    "com.azure.providerhub#SkusGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetSkusRequest"
+        "target": "com.azure.providerhub#SkusGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetSkusResponse"
+        "target": "com.azure.providerhub#SkusGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1351,7 +1479,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetSkusResponse": {
+    "com.azure.providerhub#SkusGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1386,7 +1514,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetSkusRequest": {
+    "com.azure.providerhub#SkusGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1426,10 +1554,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrations": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsRequest"
+        "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsRequest"
       },
       "output": {
         "target": "com.azure.providerhub#SkuResourceArrayResponseWithContinuation"
@@ -1439,10 +1567,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#SkuResourceArrayResponseWithContinuation": {
@@ -1510,7 +1645,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsRequest": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1536,16 +1671,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The resource type."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteSkusNestedResourceTypeFirst": {
+    "com.azure.providerhub#SkusDeleteNestedResourceTypeFirst": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteSkusNestedResourceTypeFirstRequest"
+        "target": "com.azure.providerhub#SkusDeleteNestedResourceTypeFirstRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1561,7 +1702,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteSkusNestedResourceTypeFirstRequest": {
+    "com.azure.providerhub#SkusDeleteNestedResourceTypeFirstRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1714,13 +1855,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeFirst": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeFirst": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetSkusNestedResourceTypeFirstRequest"
+        "target": "com.azure.providerhub#SkusGetNestedResourceTypeFirstRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetSkusNestedResourceTypeFirstResponse"
+        "target": "com.azure.providerhub#SkusGetNestedResourceTypeFirstResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1733,7 +1874,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeFirstResponse": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeFirstResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1768,7 +1909,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeFirstRequest": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeFirstRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1816,10 +1957,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirst": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest"
+        "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest"
       },
       "output": {
         "target": "com.azure.providerhub#SkuResourceArrayResponseWithContinuation"
@@ -1829,13 +1970,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1869,16 +2017,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The first child resource type."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteSkusNestedResourceTypeSecond": {
+    "com.azure.providerhub#SkusDeleteNestedResourceTypeSecond": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteSkusNestedResourceTypeSecondRequest"
+        "target": "com.azure.providerhub#SkusDeleteNestedResourceTypeSecondRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1894,7 +2048,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteSkusNestedResourceTypeSecondRequest": {
+    "com.azure.providerhub#SkusDeleteNestedResourceTypeSecondRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2063,13 +2217,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeSecond": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeSecond": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetSkusNestedResourceTypeSecondRequest"
+        "target": "com.azure.providerhub#SkusGetNestedResourceTypeSecondRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetSkusNestedResourceTypeSecondResponse"
+        "target": "com.azure.providerhub#SkusGetNestedResourceTypeSecondResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2082,7 +2236,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeSecondResponse": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeSecondResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2117,7 +2271,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeSecondRequest": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeSecondRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2173,10 +2327,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecond": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest"
+        "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest"
       },
       "output": {
         "target": "com.azure.providerhub#SkuResourceArrayResponseWithContinuation"
@@ -2186,13 +2340,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2234,16 +2395,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The second child resource type."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteSkusNestedResourceTypeThird": {
+    "com.azure.providerhub#SkusDeleteNestedResourceTypeThird": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteSkusNestedResourceTypeThirdRequest"
+        "target": "com.azure.providerhub#SkusDeleteNestedResourceTypeThirdRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2259,7 +2426,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteSkusNestedResourceTypeThirdRequest": {
+    "com.azure.providerhub#SkusDeleteNestedResourceTypeThirdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2444,13 +2611,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeThird": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeThird": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetSkusNestedResourceTypeThirdRequest"
+        "target": "com.azure.providerhub#SkusGetNestedResourceTypeThirdRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetSkusNestedResourceTypeThirdResponse"
+        "target": "com.azure.providerhub#SkusGetNestedResourceTypeThirdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2463,7 +2630,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeThirdResponse": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeThirdResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2498,7 +2665,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetSkusNestedResourceTypeThirdRequest": {
+    "com.azure.providerhub#SkusGetNestedResourceTypeThirdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2562,10 +2729,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeThird": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThird": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest"
+        "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest"
       },
       "output": {
         "target": "com.azure.providerhub#SkuResourceArrayResponseWithContinuation"
@@ -2575,13 +2742,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of skus for the given resource type.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest": {
+    "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2631,19 +2805,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The third child resource type."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteResourceTypeRegistration": {
+    "com.azure.providerhub#ResourceTypeRegistrationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteResourceTypeRegistrationRequest"
+        "target": "com.azure.providerhub#ResourceTypeRegistrationsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#DeleteResourceTypeRegistrationResponse"
+        "target": "com.azure.providerhub#ResourceTypeRegistrationsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2656,7 +2836,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteResourceTypeRegistrationResponse": {
+    "com.azure.providerhub#ResourceTypeRegistrationsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -2678,7 +2858,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#DeleteResourceTypeRegistrationRequest": {
+    "com.azure.providerhub#ResourceTypeRegistrationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7137,13 +7317,13 @@
         "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
-    "com.azure.providerhub#GetResourceTypeRegistration": {
+    "com.azure.providerhub#ResourceTypeRegistrationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetResourceTypeRegistrationRequest"
+        "target": "com.azure.providerhub#ResourceTypeRegistrationsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetResourceTypeRegistrationResponse"
+        "target": "com.azure.providerhub#ResourceTypeRegistrationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7156,7 +7336,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetResourceTypeRegistrationResponse": {
+    "com.azure.providerhub#ResourceTypeRegistrationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7187,7 +7367,7 @@
           "target": "com.azure.providerhub#ResourceTypeRegistrationProperties"
         },
         "kind": {
-          "target": "com.azure.providerhub#GetResourceTypeRegistrationResponseKind",
+          "target": "com.azure.providerhub#ResourceTypeRegistrationsGetResponseKind",
           "traits": {
             "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
           }
@@ -7197,7 +7377,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetResourceTypeRegistrationResponseKind": {
+    "com.azure.providerhub#ResourceTypeRegistrationsGetResponseKind": {
       "type": "enum",
       "members": {
         "MANAGED": {
@@ -7223,7 +7403,7 @@
         "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
-    "com.azure.providerhub#GetResourceTypeRegistrationRequest": {
+    "com.azure.providerhub#ResourceTypeRegistrationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7255,10 +7435,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListResourceTypeRegistrationByProviderRegistration": {
+    "com.azure.providerhub#ResourceTypeRegistrationsListByProviderRegistration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListResourceTypeRegistrationByProviderRegistrationRequest"
+        "target": "com.azure.providerhub#ResourceTypeRegistrationsListByProviderRegistrationRequest"
       },
       "output": {
         "target": "com.azure.providerhub#ResourceTypeRegistrationArrayResponseWithContinuation"
@@ -7268,10 +7448,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the resource types for the given provider.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#ResourceTypeRegistrationArrayResponseWithContinuation": {
@@ -7371,7 +7558,7 @@
         "smithy.api#documentation": "Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
-    "com.azure.providerhub#ListResourceTypeRegistrationByProviderRegistrationRequest": {
+    "com.azure.providerhub#ResourceTypeRegistrationsListByProviderRegistrationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7389,19 +7576,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteResourceActionResources": {
+    "com.azure.providerhub#ResourceActionsDeleteResources": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteResourceActionResourcesRequest"
+        "target": "com.azure.providerhub#ResourceActionsDeleteResourcesRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#DeleteResourceActionResourcesResponse"
+        "target": "com.azure.providerhub#ResourceActionsDeleteResourcesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7414,7 +7607,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteResourceActionResourcesResponse": {
+    "com.azure.providerhub#ResourceActionsDeleteResourcesResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -7436,7 +7629,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#DeleteResourceActionResourcesRequest": {
+    "com.azure.providerhub#ResourceActionsDeleteResourcesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7464,7 +7657,7 @@
           }
         },
         "resources": {
-          "target": "com.azure.providerhub#DeleteResourceActionResourcesRequestResourcesList",
+          "target": "com.azure.providerhub#ResourceActionsDeleteResourcesRequestResourcesList",
           "traits": {
             "smithy.api#documentation": "resource management action content."
           }
@@ -7474,7 +7667,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteResourceActionResourcesRequestResourcesList": {
+    "com.azure.providerhub#ResourceActionsDeleteResourcesRequestResourcesList": {
       "type": "list",
       "member": {
         "target": "com.azure.providerhub#ResourceManagementEntityInput"
@@ -7508,10 +7701,10 @@
       },
       "traits": {}
     },
-    "com.azure.providerhub#DeleteOperation": {
+    "com.azure.providerhub#OperationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteOperationRequest"
+        "target": "com.azure.providerhub#OperationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7527,7 +7720,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteOperationRequest": {
+    "com.azure.providerhub#OperationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7898,13 +8091,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListOperationByProviderRegistration": {
+    "com.azure.providerhub#OperationsListByProviderRegistration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListOperationByProviderRegistrationRequest"
+        "target": "com.azure.providerhub#OperationsListByProviderRegistrationRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#ListOperationByProviderRegistrationResponse"
+        "target": "com.azure.providerhub#OperationsListByProviderRegistrationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7917,7 +8110,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#ListOperationByProviderRegistrationResponse": {
+    "com.azure.providerhub#OperationsListByProviderRegistrationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7952,7 +8145,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#ListOperationByProviderRegistrationRequest": {
+    "com.azure.providerhub#OperationsListByProviderRegistrationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7976,10 +8169,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteNotificationRegistration": {
+    "com.azure.providerhub#NotificationRegistrationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteNotificationRegistrationRequest"
+        "target": "com.azure.providerhub#NotificationRegistrationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7995,7 +8188,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteNotificationRegistrationRequest": {
+    "com.azure.providerhub#NotificationRegistrationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8243,13 +8436,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GetNotificationRegistration": {
+    "com.azure.providerhub#NotificationRegistrationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetNotificationRegistrationRequest"
+        "target": "com.azure.providerhub#NotificationRegistrationsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetNotificationRegistrationResponse"
+        "target": "com.azure.providerhub#NotificationRegistrationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8262,7 +8455,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetNotificationRegistrationResponse": {
+    "com.azure.providerhub#NotificationRegistrationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8297,7 +8490,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetNotificationRegistrationRequest": {
+    "com.azure.providerhub#NotificationRegistrationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8329,10 +8522,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListNotificationRegistrationByProviderRegistration": {
+    "com.azure.providerhub#NotificationRegistrationsListByProviderRegistration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListNotificationRegistrationByProviderRegistrationRequest"
+        "target": "com.azure.providerhub#NotificationRegistrationsListByProviderRegistrationRequest"
       },
       "output": {
         "target": "com.azure.providerhub#NotificationRegistrationArrayResponseWithContinuation"
@@ -8342,10 +8535,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the notification registrations for the given provider.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#NotificationRegistrationArrayResponseWithContinuation": {
@@ -8413,7 +8613,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.providerhub#ListNotificationRegistrationByProviderRegistrationRequest": {
+    "com.azure.providerhub#NotificationRegistrationsListByProviderRegistrationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8430,6 +8630,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8578,13 +8784,13 @@
         "smithy.api#documentation": "The manifest properties."
       }
     },
-    "com.azure.providerhub#GetManifest": {
+    "com.azure.providerhub#ManifestsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetManifestRequest"
+        "target": "com.azure.providerhub#ManifestsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetManifestResponse"
+        "target": "com.azure.providerhub#ManifestsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8597,7 +8803,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetManifestResponse": {
+    "com.azure.providerhub#ManifestsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8635,7 +8841,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetManifestRequest": {
+    "com.azure.providerhub#ManifestsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8667,13 +8873,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GenerateProviderRegistrationOperations": {
+    "com.azure.providerhub#ProviderRegistrationsGenerateOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GenerateProviderRegistrationOperationsRequest"
+        "target": "com.azure.providerhub#ProviderRegistrationsGenerateOperationsRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GenerateProviderRegistrationOperationsResponse"
+        "target": "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8686,11 +8892,11 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GenerateProviderRegistrationOperationsResponse": {
+    "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.providerhub#GenerateProviderRegistrationOperationsResponseBodyList",
+          "target": "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -8701,7 +8907,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GenerateProviderRegistrationOperationsResponseBodyList": {
+    "com.azure.providerhub#ProviderRegistrationsGenerateOperationsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.providerhub#OperationsDefinition"
@@ -8754,7 +8960,7 @@
         "smithy.api#documentation": "Properties of an Operation."
       }
     },
-    "com.azure.providerhub#GenerateProviderRegistrationOperationsRequest": {
+    "com.azure.providerhub#ProviderRegistrationsGenerateOperationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9861,10 +10067,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#StopDefaultRollout": {
+    "com.azure.providerhub#DefaultRolloutsStop": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#StopDefaultRolloutRequest"
+        "target": "com.azure.providerhub#DefaultRolloutsStopRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9880,7 +10086,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#StopDefaultRolloutRequest": {
+    "com.azure.providerhub#DefaultRolloutsStopRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9912,10 +10118,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteDefaultRollout": {
+    "com.azure.providerhub#DefaultRolloutsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteDefaultRolloutRequest"
+        "target": "com.azure.providerhub#DefaultRolloutsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9931,7 +10137,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteDefaultRolloutRequest": {
+    "com.azure.providerhub#DefaultRolloutsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11673,13 +11879,13 @@
         "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
-    "com.azure.providerhub#GetDefaultRollout": {
+    "com.azure.providerhub#DefaultRolloutsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetDefaultRolloutRequest"
+        "target": "com.azure.providerhub#DefaultRolloutsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetDefaultRolloutResponse"
+        "target": "com.azure.providerhub#DefaultRolloutsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11692,7 +11898,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetDefaultRolloutResponse": {
+    "com.azure.providerhub#DefaultRolloutsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11730,7 +11936,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetDefaultRolloutRequest": {
+    "com.azure.providerhub#DefaultRolloutsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11762,10 +11968,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListDefaultRolloutByProviderRegistration": {
+    "com.azure.providerhub#DefaultRolloutsListByProviderRegistration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListDefaultRolloutByProviderRegistrationRequest"
+        "target": "com.azure.providerhub#DefaultRolloutsListByProviderRegistrationRequest"
       },
       "output": {
         "target": "com.azure.providerhub#DefaultRolloutArrayResponseWithContinuation"
@@ -11775,10 +11981,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the rollouts for the given provider.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#DefaultRolloutArrayResponseWithContinuation": {
@@ -11849,7 +12062,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.providerhub#ListDefaultRolloutByProviderRegistrationRequest": {
+    "com.azure.providerhub#DefaultRolloutsListByProviderRegistrationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11867,16 +12080,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#StopCustomRollout": {
+    "com.azure.providerhub#CustomRolloutsStop": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#StopCustomRolloutRequest"
+        "target": "com.azure.providerhub#CustomRolloutsStopRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11892,7 +12111,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#StopCustomRolloutRequest": {
+    "com.azure.providerhub#CustomRolloutsStopRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11924,10 +12143,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteCustomRollout": {
+    "com.azure.providerhub#CustomRolloutsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteCustomRolloutRequest"
+        "target": "com.azure.providerhub#CustomRolloutsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11943,7 +12162,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteCustomRolloutRequest": {
+    "com.azure.providerhub#CustomRolloutsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12468,13 +12687,13 @@
         "smithy.api#documentation": "The list of ARM regions scoped for the release."
       }
     },
-    "com.azure.providerhub#GetCustomRollout": {
+    "com.azure.providerhub#CustomRolloutsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetCustomRolloutRequest"
+        "target": "com.azure.providerhub#CustomRolloutsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetCustomRolloutResponse"
+        "target": "com.azure.providerhub#CustomRolloutsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12487,7 +12706,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetCustomRolloutResponse": {
+    "com.azure.providerhub#CustomRolloutsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12526,7 +12745,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetCustomRolloutRequest": {
+    "com.azure.providerhub#CustomRolloutsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12558,10 +12777,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListCustomRolloutByProviderRegistration": {
+    "com.azure.providerhub#CustomRolloutsListByProviderRegistration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListCustomRolloutByProviderRegistrationRequest"
+        "target": "com.azure.providerhub#CustomRolloutsListByProviderRegistrationRequest"
       },
       "output": {
         "target": "com.azure.providerhub#CustomRolloutArrayResponseWithContinuation"
@@ -12571,10 +12790,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the custom rollouts for the given provider.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#CustomRolloutArrayResponseWithContinuation": {
@@ -12646,7 +12872,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.providerhub#ListCustomRolloutByProviderRegistrationRequest": {
+    "com.azure.providerhub#CustomRolloutsListByProviderRegistrationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12663,6 +12889,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12727,10 +12959,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteAuthorizedApplication": {
+    "com.azure.providerhub#AuthorizedApplicationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteAuthorizedApplicationRequest"
+        "target": "com.azure.providerhub#AuthorizedApplicationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12746,7 +12978,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteAuthorizedApplicationRequest": {
+    "com.azure.providerhub#AuthorizedApplicationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12983,13 +13215,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#GetAuthorizedApplication": {
+    "com.azure.providerhub#AuthorizedApplicationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetAuthorizedApplicationRequest"
+        "target": "com.azure.providerhub#AuthorizedApplicationsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetAuthorizedApplicationResponse"
+        "target": "com.azure.providerhub#AuthorizedApplicationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13002,7 +13234,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetAuthorizedApplicationResponse": {
+    "com.azure.providerhub#AuthorizedApplicationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13037,7 +13269,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetAuthorizedApplicationRequest": {
+    "com.azure.providerhub#AuthorizedApplicationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13069,10 +13301,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListAuthorizedApplications": {
+    "com.azure.providerhub#AuthorizedApplicationsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListAuthorizedApplicationsRequest"
+        "target": "com.azure.providerhub#AuthorizedApplicationsListRequest"
       },
       "output": {
         "target": "com.azure.providerhub#AuthorizedApplicationArrayResponseWithContinuation"
@@ -13082,10 +13314,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the authorized applications in the provider namespace.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#AuthorizedApplicationArrayResponseWithContinuation": {
@@ -13153,7 +13392,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.providerhub#ListAuthorizedApplicationsRequest": {
+    "com.azure.providerhub#AuthorizedApplicationsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13171,16 +13410,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource provider hosted within ProviderHub."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#DeleteProviderRegistration": {
+    "com.azure.providerhub#ProviderRegistrationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#DeleteProviderRegistrationRequest"
+        "target": "com.azure.providerhub#ProviderRegistrationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13196,7 +13441,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#DeleteProviderRegistrationRequest": {
+    "com.azure.providerhub#ProviderRegistrationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13379,13 +13624,13 @@
         "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
-    "com.azure.providerhub#GetProviderRegistration": {
+    "com.azure.providerhub#ProviderRegistrationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#GetProviderRegistrationRequest"
+        "target": "com.azure.providerhub#ProviderRegistrationsGetRequest"
       },
       "output": {
-        "target": "com.azure.providerhub#GetProviderRegistrationResponse"
+        "target": "com.azure.providerhub#ProviderRegistrationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13398,7 +13643,7 @@
         "com.distilled.openapi#apiVersion": "2025-10-01"
       }
     },
-    "com.azure.providerhub#GetProviderRegistrationResponse": {
+    "com.azure.providerhub#ProviderRegistrationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13429,7 +13674,7 @@
           "target": "com.azure.providerhub#ProviderRegistrationProperties"
         },
         "kind": {
-          "target": "com.azure.providerhub#GetProviderRegistrationResponseKind",
+          "target": "com.azure.providerhub#ProviderRegistrationsGetResponseKind",
           "traits": {
             "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
           }
@@ -13439,7 +13684,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.providerhub#GetProviderRegistrationResponseKind": {
+    "com.azure.providerhub#ProviderRegistrationsGetResponseKind": {
       "type": "enum",
       "members": {
         "MANAGED": {
@@ -13465,7 +13710,7 @@
         "smithy.api#documentation": "Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type."
       }
     },
-    "com.azure.providerhub#GetProviderRegistrationRequest": {
+    "com.azure.providerhub#ProviderRegistrationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13489,10 +13734,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListProviderRegistrations": {
+    "com.azure.providerhub#ProviderRegistrationsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListProviderRegistrationsRequest"
+        "target": "com.azure.providerhub#ProviderRegistrationsListRequest"
       },
       "output": {
         "target": "com.azure.providerhub#ProviderRegistrationArrayResponseWithContinuation"
@@ -13502,10 +13747,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the provider registrations in the subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#ProviderRegistrationArrayResponseWithContinuation": {
@@ -13538,7 +13790,7 @@
         "smithy.api#documentation": "The ProviderRegistration items on this page"
       }
     },
-    "com.azure.providerhub#ListProviderRegistrationsRequest": {
+    "com.azure.providerhub#ProviderRegistrationsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13548,16 +13800,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListProviderMonitorSettingsBySubscription": {
+    "com.azure.providerhub#ProviderMonitorSettingsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.providerhub#ListProviderMonitorSettingsBySubscriptionRequest"
+        "target": "com.azure.providerhub#ProviderMonitorSettingsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.providerhub#ProviderMonitorSettingArrayResponseWithContinuation"
@@ -13567,13 +13825,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of the provider monitor settings in the subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.providerhub#ListProviderMonitorSettingsBySubscriptionRequest": {
+    "com.azure.providerhub#ProviderMonitorSettingsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13583,16 +13848,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.providerhub#ListOperations": {
+    "com.azure.providerhub#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.providerhub#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.providerhub#OperationsDefinitionArrayResponseWithContinuation"
@@ -13602,10 +13873,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ProviderHub/operations",
           "code": 200,
-          "apiVersion": "2025-10-01"
+          "apiVersion": "2025-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-10-01"
+        "com.distilled.openapi#apiVersion": "2025-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.providerhub#OperationsDefinitionArrayResponseWithContinuation": {
@@ -13635,183 +13913,197 @@
         "smithy.api#documentation": "The value."
       }
     },
+    "com.azure.providerhub#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.providerhub#Providerhub": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.providerhub#DeleteProviderMonitorSettings"
+          "target": "com.azure.providerhub#ProviderMonitorSettingsDelete"
         },
         {
-          "target": "com.azure.providerhub#UpdateProviderMonitorSettings"
+          "target": "com.azure.providerhub#ProviderMonitorSettingsUpdate"
         },
         {
-          "target": "com.azure.providerhub#CreateProviderMonitorSettings"
+          "target": "com.azure.providerhub#ProviderMonitorSettingsCreate"
         },
         {
-          "target": "com.azure.providerhub#GetProviderMonitorSettings"
+          "target": "com.azure.providerhub#ProviderMonitorSettingsGet"
         },
         {
-          "target": "com.azure.providerhub#ListProviderMonitorSettingsByResourceGroup"
+          "target": "com.azure.providerhub#ProviderMonitorSettingsListByResourceGroup"
         },
         {
-          "target": "com.azure.providerhub#DeleteSkus"
+          "target": "com.azure.providerhub#SkusDelete"
         },
         {
           "target": "com.azure.providerhub#SkusCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetSkus"
+          "target": "com.azure.providerhub#SkusGet"
         },
         {
-          "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrations"
+          "target": "com.azure.providerhub#SkusListByResourceTypeRegistrations"
         },
         {
-          "target": "com.azure.providerhub#DeleteSkusNestedResourceTypeFirst"
+          "target": "com.azure.providerhub#SkusDeleteNestedResourceTypeFirst"
         },
         {
           "target": "com.azure.providerhub#SkusCreateOrUpdateNestedResourceTypeFirst"
         },
         {
-          "target": "com.azure.providerhub#GetSkusNestedResourceTypeFirst"
+          "target": "com.azure.providerhub#SkusGetNestedResourceTypeFirst"
         },
         {
-          "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst"
+          "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeFirst"
         },
         {
-          "target": "com.azure.providerhub#DeleteSkusNestedResourceTypeSecond"
+          "target": "com.azure.providerhub#SkusDeleteNestedResourceTypeSecond"
         },
         {
           "target": "com.azure.providerhub#SkusCreateOrUpdateNestedResourceTypeSecond"
         },
         {
-          "target": "com.azure.providerhub#GetSkusNestedResourceTypeSecond"
+          "target": "com.azure.providerhub#SkusGetNestedResourceTypeSecond"
         },
         {
-          "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond"
+          "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeSecond"
         },
         {
-          "target": "com.azure.providerhub#DeleteSkusNestedResourceTypeThird"
+          "target": "com.azure.providerhub#SkusDeleteNestedResourceTypeThird"
         },
         {
           "target": "com.azure.providerhub#SkusCreateOrUpdateNestedResourceTypeThird"
         },
         {
-          "target": "com.azure.providerhub#GetSkusNestedResourceTypeThird"
+          "target": "com.azure.providerhub#SkusGetNestedResourceTypeThird"
         },
         {
-          "target": "com.azure.providerhub#ListSkusByResourceTypeRegistrationsNestedResourceTypeThird"
+          "target": "com.azure.providerhub#SkusListByResourceTypeRegistrationsNestedResourceTypeThird"
         },
         {
-          "target": "com.azure.providerhub#DeleteResourceTypeRegistration"
+          "target": "com.azure.providerhub#ResourceTypeRegistrationsDelete"
         },
         {
           "target": "com.azure.providerhub#ResourceTypeRegistrationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetResourceTypeRegistration"
+          "target": "com.azure.providerhub#ResourceTypeRegistrationsGet"
         },
         {
-          "target": "com.azure.providerhub#ListResourceTypeRegistrationByProviderRegistration"
+          "target": "com.azure.providerhub#ResourceTypeRegistrationsListByProviderRegistration"
         },
         {
-          "target": "com.azure.providerhub#DeleteResourceActionResources"
+          "target": "com.azure.providerhub#ResourceActionsDeleteResources"
         },
         {
-          "target": "com.azure.providerhub#DeleteOperation"
+          "target": "com.azure.providerhub#OperationsDelete"
         },
         {
           "target": "com.azure.providerhub#OperationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#ListOperationByProviderRegistration"
+          "target": "com.azure.providerhub#OperationsListByProviderRegistration"
         },
         {
-          "target": "com.azure.providerhub#DeleteNotificationRegistration"
+          "target": "com.azure.providerhub#NotificationRegistrationsDelete"
         },
         {
           "target": "com.azure.providerhub#NotificationRegistrationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetNotificationRegistration"
+          "target": "com.azure.providerhub#NotificationRegistrationsGet"
         },
         {
-          "target": "com.azure.providerhub#ListNotificationRegistrationByProviderRegistration"
+          "target": "com.azure.providerhub#NotificationRegistrationsListByProviderRegistration"
         },
         {
           "target": "com.azure.providerhub#ManifestsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetManifest"
+          "target": "com.azure.providerhub#ManifestsGet"
         },
         {
-          "target": "com.azure.providerhub#GenerateProviderRegistrationOperations"
+          "target": "com.azure.providerhub#ProviderRegistrationsGenerateOperations"
         },
         {
           "target": "com.azure.providerhub#GenerateManifest"
         },
         {
-          "target": "com.azure.providerhub#StopDefaultRollout"
+          "target": "com.azure.providerhub#DefaultRolloutsStop"
         },
         {
-          "target": "com.azure.providerhub#DeleteDefaultRollout"
+          "target": "com.azure.providerhub#DefaultRolloutsDelete"
         },
         {
           "target": "com.azure.providerhub#DefaultRolloutsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetDefaultRollout"
+          "target": "com.azure.providerhub#DefaultRolloutsGet"
         },
         {
-          "target": "com.azure.providerhub#ListDefaultRolloutByProviderRegistration"
+          "target": "com.azure.providerhub#DefaultRolloutsListByProviderRegistration"
         },
         {
-          "target": "com.azure.providerhub#StopCustomRollout"
+          "target": "com.azure.providerhub#CustomRolloutsStop"
         },
         {
-          "target": "com.azure.providerhub#DeleteCustomRollout"
+          "target": "com.azure.providerhub#CustomRolloutsDelete"
         },
         {
           "target": "com.azure.providerhub#CustomRolloutsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetCustomRollout"
+          "target": "com.azure.providerhub#CustomRolloutsGet"
         },
         {
-          "target": "com.azure.providerhub#ListCustomRolloutByProviderRegistration"
+          "target": "com.azure.providerhub#CustomRolloutsListByProviderRegistration"
         },
         {
           "target": "com.azure.providerhub#CheckinManifest"
         },
         {
-          "target": "com.azure.providerhub#DeleteAuthorizedApplication"
+          "target": "com.azure.providerhub#AuthorizedApplicationsDelete"
         },
         {
           "target": "com.azure.providerhub#AuthorizedApplicationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetAuthorizedApplication"
+          "target": "com.azure.providerhub#AuthorizedApplicationsGet"
         },
         {
-          "target": "com.azure.providerhub#ListAuthorizedApplications"
+          "target": "com.azure.providerhub#AuthorizedApplicationsList"
         },
         {
-          "target": "com.azure.providerhub#DeleteProviderRegistration"
+          "target": "com.azure.providerhub#ProviderRegistrationsDelete"
         },
         {
           "target": "com.azure.providerhub#ProviderRegistrationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.providerhub#GetProviderRegistration"
+          "target": "com.azure.providerhub#ProviderRegistrationsGet"
         },
         {
-          "target": "com.azure.providerhub#ListProviderRegistrations"
+          "target": "com.azure.providerhub#ProviderRegistrationsList"
         },
         {
-          "target": "com.azure.providerhub#ListProviderMonitorSettingsBySubscription"
+          "target": "com.azure.providerhub#ProviderMonitorSettingsListBySubscription"
         },
         {
-          "target": "com.azure.providerhub#ListOperations"
+          "target": "com.azure.providerhub#OperationsList"
         }
       ],
       "traits": {

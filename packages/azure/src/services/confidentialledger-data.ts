@@ -519,6 +519,8 @@ export interface UserDefinedRole {
 export interface ListCollectionsRequest {
   /** The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com. */
   ledgerEndpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Identifier for collections. */
 export interface Collection {
@@ -537,6 +539,8 @@ export interface PagedCollections {
 export interface ListConsortiumMembersRequest {
   /** The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com. */
   ledgerEndpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Describes a member of the consortium. */
 export interface ConsortiumMember {
@@ -565,6 +569,8 @@ export interface ListLedgerEntriesRequest {
   toTransactionId?: string;
   /** Single tag. */
   tag?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of ledger entries. */
 export type PagedLedgerEntriesEntriesList = Array<LedgerEntry>;
@@ -580,13 +586,15 @@ export interface PagedLedgerEntries {
 export interface ListLedgerUsersRequest {
   /** The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com. */
   ledgerEndpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Ledger users with details. */
 export type PagedLedgerUsersLedgerUsersList = Array<LedgerUserMultipleRoles>;
 /** Paginated users returned in response to a query. */
 export interface PagedLedgerUsers {
   /** Ledger users with details. */
-  ledgerUsers?: PagedLedgerUsersLedgerUsersList;
+  ledgerUsers: PagedLedgerUsersLedgerUsersList;
   /** Path from which to retrieve the next page of results. */
   nextLink?: string;
 }
@@ -595,6 +603,8 @@ export interface ListTagsRequest {
   ledgerEndpoint: string;
   /** The collection id. */
   collectionId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of tags. */
 export type PagedTagsTagsList = Array<string>;
@@ -608,6 +618,8 @@ export interface PagedTags {
 export interface ListUserDefinedFunctionsRequest {
   /** The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com. */
   ledgerEndpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** User-defined functions. */
 export type PagedUserDefinedFunctionsFunctionsList = Array<UserDefinedFunction>;
@@ -621,13 +633,15 @@ export interface PagedUserDefinedFunctions {
 export interface ListUsersRequest {
   /** The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com. */
   ledgerEndpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Ledger users. */
 export type PagedUsersLedgerUsersList = Array<LedgerUser>;
 /** Paginated users returned in response to a query. */
 export interface PagedUsers {
   /** Ledger users. */
-  ledgerUsers?: PagedUsersLedgerUsersList;
+  ledgerUsers: PagedUsersLedgerUsersList;
   /** Path from which to retrieve the next page of results. */
   nextLink?: string;
 }
@@ -1017,108 +1031,157 @@ export const GetUserDefinedRole: API.OperationMethod<
 
 export type ListCollectionsError = AzureOpError;
 /** Retrieves a list of collection ids present in the Confidential Ledger Collection ids are user-created collections of ledger entries */
-export const ListCollections: API.OperationMethod<
+export const ListCollections: API.PaginatedOperationMethod<
   ListCollectionsRequest,
   PagedCollections,
   ListCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Collection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ListCollectionsRequest>,
   output: __S(386, __c24, 2) as any as S.Schema<PagedCollections>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "collections",
+  } as const,
+})) as any;
 
 export type ListConsortiumMembersError = AzureOpError;
 /** Lists the consortium members. Consortium members can manage the Confidential Ledger. */
-export const ListConsortiumMembers: API.OperationMethod<
+export const ListConsortiumMembers: API.PaginatedOperationMethod<
   ListConsortiumMembersRequest,
   Consortium,
   ListConsortiumMembersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConsortiumMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListConsortiumMembersRequest>,
   output: __S(403, __c25, 3) as any as S.Schema<Consortium>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "members",
+  } as const,
+})) as any;
 
 export type ListLedgerEntriesError = AzureOpError;
 /** Gets ledger entries from a collection corresponding to a range. A collection id may optionally be specified. Only entries in the specified (or default) collection will be returned. */
-export const ListLedgerEntries: API.OperationMethod<
+export const ListLedgerEntries: API.PaginatedOperationMethod<
   ListLedgerEntriesRequest,
   PagedLedgerEntries,
   ListLedgerEntriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LedgerEntry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<ListLedgerEntriesRequest>,
   output: __S(418, __c26, 2) as any as S.Schema<PagedLedgerEntries>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "entries",
+  } as const,
+})) as any;
 
 export type ListLedgerUsersError = AzureOpError;
 /** Gets details on a list of users. All users' object IDs and multiple roles will be returned. */
-export const ListLedgerUsers: API.OperationMethod<
+export const ListLedgerUsers: API.PaginatedOperationMethod<
   ListLedgerUsersRequest,
   PagedLedgerUsers,
   ListLedgerUsersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LedgerUserMultipleRoles
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListLedgerUsersRequest>,
   output: __S(434, __c27, 2) as any as S.Schema<PagedLedgerUsers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "ledgerUsers",
+  } as const,
+})) as any;
 
 export type ListTagsError = AzureOpError;
 /** Gets a list of tags for a collection. Retrieves the tags associated with a collection. */
-export const ListTags: API.OperationMethod<
+export const ListTags: API.PaginatedOperationMethod<
   ListTagsRequest,
   PagedTags,
   ListTagsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListTagsRequest>,
   output: __S(449, __c28, 1) as any as S.Schema<PagedTags>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "tags",
+  } as const,
+})) as any;
 
 export type ListUserDefinedFunctionsError = AzureOpError;
 /** Retrieves a list of user defined functions present in the Confidential Ledger User defined functions stored in the Confidential Ledger */
-export const ListUserDefinedFunctions: API.OperationMethod<
+export const ListUserDefinedFunctions: API.PaginatedOperationMethod<
   ListUserDefinedFunctionsRequest,
   PagedUserDefinedFunctions,
   ListUserDefinedFunctionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  UserDefinedFunction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListUserDefinedFunctionsRequest>,
   output: __S(466, __c29, 2) as any as S.Schema<PagedUserDefinedFunctions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "functions",
+  } as const,
+})) as any;
 
 export type ListUsersError = AzureOpError;
 /** Gets details on a list of users. All users' object IDs and single role per user will be returned. */
-export const ListUsers: API.OperationMethod<
+export const ListUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   PagedUsers,
   ListUsersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LedgerUser
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c34, 0) as any as S.Schema<ListUsersRequest>,
   output: __S(546, __c34, 2) as any as S.Schema<PagedUsers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "ledgerUsers",
+  } as const,
+})) as any;
 
 export type UpdateRuntimeOptionsError = AzureOpError;
 /** Runtime options for user defined endpoints. Updates the runtime options. */
@@ -1747,6 +1810,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ledgerEndpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1755,6 +1819,7 @@ function __c24(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -1776,6 +1841,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ledgerEndpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1784,6 +1850,7 @@ function __c25(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -1816,6 +1883,7 @@ function __c26(j: number): any {
           fromTransactionId: S.optional(S.String.pipe(T.Query())),
           toTransactionId: S.optional(S.String.pipe(T.Query())),
           tag: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1824,6 +1892,7 @@ function __c26(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -1846,6 +1915,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ledgerEndpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1854,6 +1924,7 @@ function __c27(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -1863,7 +1934,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ledgerUsers: S.optional(__S(433, __c27, 1)),
+          ledgerUsers: __S(433, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedLedgerUsers" });
@@ -1876,6 +1947,7 @@ function __c28(j: number): any {
         S.Struct({
           ledgerEndpoint: S.String.pipe(T.HostLabel()),
           collectionId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1884,6 +1956,7 @@ function __c28(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -1903,6 +1976,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ledgerEndpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1911,6 +1985,7 @@ function __c29(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -2020,6 +2095,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ledgerEndpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2028,6 +2104,7 @@ function __c34(j: number): any {
             host: "{ledgerEndpoint}",
             hostRaw: ["ledgerEndpoint"],
             apiVersion: "2026-02-23",
+            nextLink: "nextLink",
             audience: "https://confidential-ledger.azure.com/.default",
           }),
         ),
@@ -2037,7 +2114,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ledgerUsers: S.optional(__S(545, __c34, 1)),
+          ledgerUsers: __S(545, __c34, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedUsers" });

@@ -129,7 +129,8 @@
       "com.azure.storagesync#StorageSyncServicesListBySubscriptionRequest": "com.azure.storagesync#ListStorageSyncServiceBySubscriptionRequest",
       "com.azure.storagesync#StorageSyncServicesCheckNameAvailability": "com.azure.storagesync#CheckStorageSyncServiceNameAvailability",
       "com.azure.storagesync#StorageSyncServicesCheckNameAvailabilityRequest": "com.azure.storagesync#CheckStorageSyncServiceNameAvailabilityRequest",
-      "com.azure.storagesync#OperationsList": "com.azure.storagesync#ListOperations"
+      "com.azure.storagesync#OperationsList": "com.azure.storagesync#ListOperations",
+      "com.azure.storagesync#OperationsListRequest": "com.azure.storagesync#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -530,10 +531,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a Workflow List",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#WorkflowArray": {
@@ -628,6 +636,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Storage Sync Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2585,10 +2599,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a ServerEndpoint list.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#ServerEndpointArray": {
@@ -2698,6 +2719,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Sync Group resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4323,10 +4350,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a CloudEndpoint List.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#CloudEndpointArray": {
@@ -4429,6 +4463,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Sync Group resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4728,10 +4768,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a SyncGroup List.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#SyncGroupArray": {
@@ -4826,6 +4873,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Storage Sync Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5675,10 +5728,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a given registered server list.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#RegisteredServerArray": {
@@ -5773,6 +5833,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Storage Sync Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6426,10 +6492,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a PrivateEndpointConnection List.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#PrivateEndpointConnectionListResult": {
@@ -6524,6 +6597,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of Storage Sync Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7466,10 +7545,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a StorageSyncService list by Resource group name.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#StorageSyncServiceArray": {
@@ -7616,6 +7702,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7867,10 +7959,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a StorageSyncService list by subscription.",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#StorageSyncServicesListBySubscriptionRequest": {
@@ -7882,6 +7981,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8108,7 +8213,7 @@
     "com.azure.storagesync#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagesync#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storagesync#OperationEntityListResult"
@@ -8118,10 +8223,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StorageSync/operations",
           "code": 200,
-          "apiVersion": "2025-12-01"
+          "apiVersion": "2025-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-12-01"
+        "com.distilled.openapi#apiVersion": "2025-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagesync#OperationEntityListResult": {
@@ -8359,6 +8471,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The operation supported by storage sync."
+      }
+    },
+    "com.azure.storagesync#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storagesync#Storagesync": {

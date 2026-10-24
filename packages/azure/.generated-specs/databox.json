@@ -834,10 +834,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/locations/{location}/availableSkus",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2025-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This method provides the list of available skus for the given subscription, resource group and location.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2025-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databox#AvailableSkusResult": {
@@ -1183,6 +1190,12 @@
           "traits": {
             "smithy.api#documentation": "Sku Names to filter for available skus"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1422,10 +1435,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs/{jobName}/listCredentials",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2025-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "This method gets the unencrypted secrets related to the job.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2025-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databox#UnencryptedCredentialsList": {
@@ -1582,6 +1602,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5086,10 +5112,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBox/jobs",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2025-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the jobs available under the given resource group.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2025-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databox#JobResourceList": {
@@ -5223,6 +5256,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "$skipToken is supported on Get list of jobs, which provides the next page in the list of jobs."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5390,10 +5429,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataBox/jobs",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2025-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the jobs available under the subscription.",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2025-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databox#ListJobsRequest": {
@@ -5413,6 +5459,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "$skipToken is supported on Get list of jobs, which provides the next page in the list of jobs."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5422,7 +5474,7 @@
     "com.azure.databox#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.databox#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.databox#OperationList"
@@ -5432,10 +5484,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataBox/operations",
           "code": 200,
-          "apiVersion": "2025-07-01"
+          "apiVersion": "2025-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-07-01"
+        "com.distilled.openapi#apiVersion": "2025-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databox#OperationList": {
@@ -5535,6 +5594,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Operation display"
+      }
+    },
+    "com.azure.databox#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.databox#Databox": {

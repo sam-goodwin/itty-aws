@@ -15,18 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsages": "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsages",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsagesRequest": "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsagesRequest",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatus": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatus",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusResponse": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusResponse",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusRequest": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusRequest",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsSign": "com.azure.artifactsigning_data#SignCertificateProfileOperation",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsSignResponse": "com.azure.artifactsigning_data#SignCertificateProfileOperationResponse",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequest": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequest",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestAuthenticodeHashListList": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestAuthenticodeHashListList",
-      "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestFileHashListList": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestFileHashListList"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificate": {
@@ -98,10 +87,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsages": {
+    "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsagesRequest"
+        "target": "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsagesRequest"
       },
       "output": {
         "target": "com.azure.artifactsigning_data#PagedExtendedKeyUsage"
@@ -115,9 +104,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-06-15"
+          "apiVersion": "2024-06-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of extended key usage object identifiers that are allowed for this account and profile combination.\n\nThe list of extended key usages are used to determine the purpose of the certificate usage as part of the signing operation."
+        "smithy.api#documentation": "Gets a list of extended key usage object identifiers that are allowed for this account and profile combination.\n\nThe list of extended key usages are used to determine the purpose of the certificate usage as part of the signing operation.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.artifactsigning_data#PagedExtendedKeyUsage": {
@@ -165,7 +161,7 @@
         "smithy.api#documentation": "Extended key usage object identifier that are allowable."
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsagesRequest": {
+    "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsagesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -190,6 +186,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Azure Artifact Signing certificate profile name under an account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -266,13 +268,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatus": {
+    "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusRequest"
+        "target": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusRequest"
       },
       "output": {
-        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusResponse"
+        "target": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -288,7 +290,7 @@
         "smithy.api#documentation": "Gets the status of a signing operation.\n\nThis status operation requires that a Sign request has been submitted and the operationId is known."
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusResponse": {
+    "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -449,7 +451,7 @@
         "smithy.api#documentation": "Enum describing allowed operation states."
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatusRequest": {
+    "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -489,13 +491,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsSign": {
+    "com.azure.artifactsigning_data#SignCertificateProfileOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequest"
+        "target": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequest"
       },
       "output": {
-        "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignResponse"
+        "target": "com.azure.artifactsigning_data#SignCertificateProfileOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -511,7 +513,7 @@
         "smithy.api#documentation": "Submit a sign operation.\n\nSubmit a sign operation under the created account and profile name provided."
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsSignResponse": {
+    "com.azure.artifactsigning_data#SignCertificateProfileOperationResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -526,7 +528,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequest": {
+    "com.azure.artifactsigning_data#SignCertificateProfileOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -582,13 +584,13 @@
           }
         },
         "fileHashList": {
-          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestFileHashListList",
+          "target": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestFileHashListList",
           "traits": {
             "smithy.api#documentation": "List of full file digital signatures."
           }
         },
         "authenticodeHashList": {
-          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestAuthenticodeHashListList",
+          "target": "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestAuthenticodeHashListList",
           "traits": {
             "smithy.api#documentation": "List of authenticode digital signatures."
           }
@@ -598,7 +600,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestAuthenticodeHashListList": {
+    "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestAuthenticodeHashListList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -607,7 +609,7 @@
         "smithy.api#documentation": "List of authenticode digital signatures."
       }
     },
-    "com.azure.artifactsigning_data#CertificateProfileOperationsSignRequestFileHashListList": {
+    "com.azure.artifactsigning_data#SignCertificateProfileOperationRequestFileHashListList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -692,16 +694,16 @@
           "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignRootCertificate"
         },
         {
-          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsListExtendedKeyUsages"
+          "target": "com.azure.artifactsigning_data#ListCertificateProfileOperationExtendedKeyUsages"
         },
         {
           "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSignCertificateChain"
         },
         {
-          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsGetSigningStatus"
+          "target": "com.azure.artifactsigning_data#GetCertificateProfileOperationSigningStatus"
         },
         {
-          "target": "com.azure.artifactsigning_data#CertificateProfileOperationsSign"
+          "target": "com.azure.artifactsigning_data#SignCertificateProfileOperation"
         }
       ],
       "traits": {

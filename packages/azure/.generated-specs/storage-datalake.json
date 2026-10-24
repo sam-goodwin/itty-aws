@@ -3394,7 +3394,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "The List Blobs operation returns a list of the blobs under the specified container"
+        "smithy.api#documentation": "The List Blobs operation returns a list of the blobs under the specified container",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "Segment.BlobItems"
+        }
       }
     },
     "com.azure.storage_datalake#ListFileSystemBlobHierarchySegmentResponse": {
@@ -3900,7 +3906,11 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "List Paths\n\nList FileSystem paths and their properties."
+        "smithy.api#documentation": "List Paths\n\nList FileSystem paths and their properties.",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "paths"
+        }
       }
     },
     "com.azure.storage_datalake#ListFileSystemPathsResponse": {
@@ -4594,7 +4604,11 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "List FileSystems\n\nList filesystems and their properties in given account."
+        "smithy.api#documentation": "List FileSystems\n\nList filesystems and their properties in given account.",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "filesystems"
+        }
       }
     },
     "com.azure.storage_datalake#ListServiceFileSystemsResponse": {

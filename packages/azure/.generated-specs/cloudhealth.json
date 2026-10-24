@@ -934,10 +934,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/signaldefinitions",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List SignalDefinition resources by HealthModel",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#SignalDefinitionListResult": {
@@ -1040,6 +1047,12 @@
           "traits": {
             "smithy.api#httpQuery": "timestamp",
             "smithy.api#documentation": "Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1459,10 +1472,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/relationships",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Relationship resources by HealthModel",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#RelationshipListResult": {
@@ -1565,6 +1585,12 @@
           "traits": {
             "smithy.api#httpQuery": "timestamp",
             "smithy.api#documentation": "Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5011,10 +5037,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/entities",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Entity resources by HealthModel",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#EntityListResult": {
@@ -5117,6 +5150,12 @@
           "traits": {
             "smithy.api#httpQuery": "timestamp",
             "smithy.api#documentation": "Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5703,10 +5742,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/discoveryrules",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List DiscoveryRule resources by HealthModel",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#DiscoveryRuleListResult": {
@@ -5809,6 +5855,12 @@
           "traits": {
             "smithy.api#httpQuery": "timestamp",
             "smithy.api#documentation": "Timestamp to use for the operation. When specified, the version of the resource at this point in time is retrieved. If not specified, the latest version is used."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6198,10 +6250,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels/{healthModelName}/authenticationsettings",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List AuthenticationSetting resources by HealthModel",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#AuthenticationSettingListResult": {
@@ -6297,6 +6356,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of health model resource"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7130,10 +7195,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CloudHealth/healthmodels",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List HealthModel resources by resource group",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#HealthModelListResult": {
@@ -7300,6 +7372,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7319,10 +7397,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CloudHealth/healthmodels",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List HealthModel resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#ListHealthModelBySubscriptionRequest": {
@@ -7335,6 +7420,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7344,7 +7435,7 @@
     "com.azure.cloudhealth#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.cloudhealth#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.cloudhealth#ListOperationsResponse"
@@ -7354,10 +7445,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CloudHealth/operations",
           "code": 200,
-          "apiVersion": "2026-11-01"
+          "apiVersion": "2026-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-11-01"
+        "com.distilled.openapi#apiVersion": "2026-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cloudhealth#ListOperationsResponse": {
@@ -7497,6 +7595,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.cloudhealth#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.cloudhealth#Cloudhealth": {

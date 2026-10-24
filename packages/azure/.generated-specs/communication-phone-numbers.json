@@ -15,51 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbers": "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbers",
-      "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbersRequest": "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbersRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersGetByNumber": "com.azure.communication_phone_numbers#GetPhoneNumberByNumber",
-      "com.azure.communication_phone_numbers#PhoneNumbersGetByNumberRequest": "com.azure.communication_phone_numbers#GetPhoneNumberByNumberRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilities": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilities",
-      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesResponse": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesResponse",
-      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequest": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestSms": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestSms",
-      "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestCalling": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestCalling",
-      "com.azure.communication_phone_numbers#PhoneNumbersCancelOperation": "com.azure.communication_phone_numbers#CancelPhoneNumberOperation",
-      "com.azure.communication_phone_numbers#PhoneNumbersCancelOperationRequest": "com.azure.communication_phone_numbers#CancelPhoneNumberOperationRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersGetOperation": "com.azure.communication_phone_numbers#GetPhoneNumberOperation",
-      "com.azure.communication_phone_numbers#PhoneNumbersGetOperationRequest": "com.azure.communication_phone_numbers#GetPhoneNumberOperationRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbers": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbers",
-      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersResponse": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersResponse",
-      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequest": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestAssignmentType": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestAssignmentType",
-      "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestPhoneNumberType": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestPhoneNumberType",
-      "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservation": "com.azure.communication_phone_numbers#DeletePhoneNumberReservation",
-      "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservationRequest": "com.azure.communication_phone_numbers#DeletePhoneNumberReservationRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersGetReservation": "com.azure.communication_phone_numbers#GetPhoneNumberReservation",
-      "com.azure.communication_phone_numbers#PhoneNumbersGetReservationRequest": "com.azure.communication_phone_numbers#GetPhoneNumberReservationRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersListReservations": "com.azure.communication_phone_numbers#ListPhoneNumberReservations",
-      "com.azure.communication_phone_numbers#PhoneNumbersListReservationsRequest": "com.azure.communication_phone_numbers#ListPhoneNumberReservationsRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersListOfferings": "com.azure.communication_phone_numbers#ListPhoneNumberOfferings",
-      "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequest": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestAssignmentType": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestAssignmentType",
-      "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestPhoneNumberType": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestPhoneNumberType",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalities": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalities",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequest": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequestPhoneNumberType": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequestPhoneNumberType",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountries": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountries",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountriesRequest": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountriesRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodes": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodes",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequest": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequest",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestAssignmentType": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestAssignmentType",
-      "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestPhoneNumberType": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestPhoneNumberType"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearch": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumbersOperatorInformation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequest"
+        "target": "com.azure.communication_phone_numbers#SearchPhoneNumbersOperatorInformationRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#OperatorInformationResult"
@@ -201,7 +163,7 @@
         "smithy.api#documentation": "Type of service associated with the phone number"
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequest": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumbersOperatorInformationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -213,7 +175,7 @@
           }
         },
         "phoneNumbers": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequestPhoneNumbersList",
+          "target": "com.azure.communication_phone_numbers#SearchPhoneNumbersOperatorInformationRequestPhoneNumbersList",
           "traits": {
             "smithy.api#documentation": "Phone number(s) whose operator information is being requested",
             "smithy.api#required": {}
@@ -241,7 +203,7 @@
         "smithy.api#documentation": "Represents options to modify a search request for operator information"
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearchRequestPhoneNumbersList": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumbersOperatorInformationRequestPhoneNumbersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -250,10 +212,10 @@
         "smithy.api#documentation": "Phone number(s) whose operator information is being requested"
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbers": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbersRequest"
+        "target": "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbersRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumbers"
@@ -267,9 +229,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of all purchased phone numbers."
+        "smithy.api#documentation": "Gets the list of all purchased phone numbers.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "phoneNumbers"
+        }
       }
     },
     "com.azure.communication_phone_numbers#PurchasedPhoneNumbers": {
@@ -539,7 +508,7 @@
         "smithy.api#documentation": "The phone number's type, e.g. geographic, tollFree, mobile."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbersRequest": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbersRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -562,6 +531,12 @@
           "traits": {
             "smithy.api#httpQuery": "top",
             "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -630,10 +605,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersGetByNumber": {
+    "com.azure.communication_phone_numbers#GetPhoneNumberByNumber": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetByNumberRequest"
+        "target": "com.azure.communication_phone_numbers#GetPhoneNumberByNumberRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PurchasedPhoneNumber"
@@ -652,7 +627,7 @@
         "smithy.api#documentation": "Gets the details of the given purchased phone number."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersGetByNumberRequest": {
+    "com.azure.communication_phone_numbers#GetPhoneNumberByNumberRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -676,13 +651,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilities": {
+    "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilities": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequest"
+        "target": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequest"
       },
       "output": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesResponse"
+        "target": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -698,7 +673,7 @@
         "smithy.api#documentation": "Updates the capabilities of a phone number."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesResponse": {
+    "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -720,7 +695,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequest": {
+    "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -740,13 +715,13 @@
           }
         },
         "calling": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestCalling",
+          "target": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestCalling",
           "traits": {
             "smithy.api#documentation": "Capability value for calling."
           }
         },
         "sms": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestSms",
+          "target": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestSms",
           "traits": {
             "smithy.api#documentation": "Capability value for SMS."
           }
@@ -756,7 +731,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestSms": {
+    "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestSms": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -788,7 +763,7 @@
         "smithy.api#documentation": "Capability value for SMS."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilitiesRequestCalling": {
+    "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilitiesRequestCalling": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -820,10 +795,10 @@
         "smithy.api#documentation": "Capability value for calling."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersCancelOperation": {
+    "com.azure.communication_phone_numbers#CancelPhoneNumberOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersCancelOperationRequest"
+        "target": "com.azure.communication_phone_numbers#CancelPhoneNumberOperationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -842,7 +817,7 @@
         "smithy.api#documentation": "Cancels an operation by its id."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersCancelOperationRequest": {
+    "com.azure.communication_phone_numbers#CancelPhoneNumberOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -866,10 +841,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersGetOperation": {
+    "com.azure.communication_phone_numbers#GetPhoneNumberOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetOperationRequest"
+        "target": "com.azure.communication_phone_numbers#GetPhoneNumberOperationRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PhoneNumberOperation"
@@ -1115,7 +1090,7 @@
         "smithy.api#documentation": "The type of operation, e.g. Search"
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersGetOperationRequest": {
+    "com.azure.communication_phone_numbers#GetPhoneNumberOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1488,13 +1463,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbers": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequest"
+        "target": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequest"
       },
       "output": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersResponse"
+        "target": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1510,7 +1485,7 @@
         "smithy.api#documentation": "Search for available phone numbers to purchase."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersResponse": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1532,7 +1507,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequest": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1552,14 +1527,14 @@
           }
         },
         "phoneNumberType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestPhoneNumberType",
+          "target": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestPhoneNumberType",
           "traits": {
             "smithy.api#documentation": "The type of phone numbers to search for, e.g. geographic, tollFree, mobile.",
             "smithy.api#required": {}
           }
         },
         "assignmentType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestAssignmentType",
+          "target": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestAssignmentType",
           "traits": {
             "smithy.api#documentation": "The assignment type of the phone numbers to search for. A phone number can be assigned to a person, or to an application.",
             "smithy.api#required": {}
@@ -1588,7 +1563,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestAssignmentType": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestAssignmentType": {
       "type": "enum",
       "members": {
         "PERSON": {
@@ -1608,7 +1583,7 @@
         "smithy.api#documentation": "The assignment type of the phone numbers to search for. A phone number can be assigned to a person, or to an application."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbersRequestPhoneNumberType": {
+    "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbersRequestPhoneNumberType": {
       "type": "enum",
       "members": {
         "GEOGRAPHIC": {
@@ -1701,10 +1676,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservation": {
+    "com.azure.communication_phone_numbers#DeletePhoneNumberReservation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservationRequest"
+        "target": "com.azure.communication_phone_numbers#DeletePhoneNumberReservationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1723,7 +1698,7 @@
         "smithy.api#documentation": "Deletes a reservation by its ID.\n\nDeletes the reservation with the given ID. Any phone number in the reservation will be released and made available for others to purchase. Only reservations with 'active' status can be deleted."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservationRequest": {
+    "com.azure.communication_phone_numbers#DeletePhoneNumberReservationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2146,10 +2121,10 @@
         "smithy.api#documentation": "Represents the number type of the offering."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersGetReservation": {
+    "com.azure.communication_phone_numbers#GetPhoneNumberReservation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersGetReservationRequest"
+        "target": "com.azure.communication_phone_numbers#GetPhoneNumberReservationRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PhoneNumbersReservation"
@@ -2168,7 +2143,7 @@
         "smithy.api#documentation": "Gets a reservation by its ID.\n\nRetrieves the reservation with the given ID, including all of the phone numbers associated with it."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersGetReservationRequest": {
+    "com.azure.communication_phone_numbers#GetPhoneNumberReservationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2192,10 +2167,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListReservations": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberReservations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersListReservationsRequest"
+        "target": "com.azure.communication_phone_numbers#ListPhoneNumberReservationsRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PhoneNumbersReservations"
@@ -2209,9 +2184,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists all reservations.\n\nRetrieves a paginated list of all phone number reservations. Note that the reservations will not be populated with the phone numbers associated with them."
+        "smithy.api#documentation": "Lists all reservations.\n\nRetrieves a paginated list of all phone number reservations. Note that the reservations will not be populated with the phone numbers associated with them.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "reservations"
+        }
       }
     },
     "com.azure.communication_phone_numbers#PhoneNumbersReservations": {
@@ -2244,7 +2226,7 @@
         "smithy.api#documentation": "Represents a list of phone numbers reservations. Note that the phone numbers from each reservation are not included."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListReservationsRequest": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberReservationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2261,16 +2243,22 @@
             "smithy.api#httpQuery": "maxPageSize",
             "smithy.api#documentation": "An optional parameter for how many entries to return, for pagination purposes. The default value is 100."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListOfferings": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberOfferings": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequest"
+        "target": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#OfferingsResponse"
@@ -2284,9 +2272,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List available offerings of capabilities with rates for the given country."
+        "smithy.api#documentation": "List available offerings of capabilities with rates for the given country.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "phoneNumberOfferings"
+        }
       }
     },
     "com.azure.communication_phone_numbers#OfferingsResponse": {
@@ -2393,7 +2388,7 @@
         "smithy.api#documentation": "Represents the number type of the offering."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequest": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2427,14 +2422,14 @@
           }
         },
         "phoneNumberType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestPhoneNumberType",
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestPhoneNumberType",
           "traits": {
             "smithy.api#httpQuery": "phoneNumberType",
             "smithy.api#documentation": "Filter by numberType, e.g. Geographic, TollFree, Mobile."
           }
         },
         "assignmentType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestAssignmentType",
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestAssignmentType",
           "traits": {
             "smithy.api#httpQuery": "assignmentType",
             "smithy.api#documentation": "Filter by assignmentType, e.g. Person, Application."
@@ -2446,13 +2441,19 @@
             "smithy.api#httpHeader": "accept-language",
             "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestAssignmentType": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestAssignmentType": {
       "type": "enum",
       "members": {
         "PERSON": {
@@ -2470,7 +2471,7 @@
       },
       "traits": {}
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListOfferingsRequestPhoneNumberType": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberOfferingsRequestPhoneNumberType": {
       "type": "enum",
       "members": {
         "GEOGRAPHIC": {
@@ -2494,10 +2495,10 @@
       },
       "traits": {}
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalities": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalities": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequest"
+        "target": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PhoneNumberLocalities"
@@ -2511,9 +2512,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of cities or towns with available phone numbers."
+        "smithy.api#documentation": "Gets the list of cities or towns with available phone numbers.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "phoneNumberLocalities"
+        }
       }
     },
     "com.azure.communication_phone_numbers#PhoneNumberLocalities": {
@@ -2585,7 +2593,7 @@
         "smithy.api#documentation": "Represents an administrative division. e.g. state or province."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequest": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2626,7 +2634,7 @@
           }
         },
         "phoneNumberType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequestPhoneNumberType",
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequestPhoneNumberType",
           "traits": {
             "smithy.api#httpQuery": "phoneNumberType",
             "smithy.api#documentation": "Filter by numberType, e.g. Geographic, TollFree, Mobile."
@@ -2638,13 +2646,19 @@
             "smithy.api#httpHeader": "accept-language",
             "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalitiesRequestPhoneNumberType": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalitiesRequestPhoneNumberType": {
       "type": "enum",
       "members": {
         "GEOGRAPHIC": {
@@ -2899,10 +2913,10 @@
         "smithy.api#documentation": "Represents the number type of the offering."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountries": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountries": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountriesRequest"
+        "target": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountriesRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PhoneNumberCountries"
@@ -2916,9 +2930,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of supported countries."
+        "smithy.api#documentation": "Gets the list of supported countries.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "countries"
+        }
       }
     },
     "com.azure.communication_phone_numbers#PhoneNumberCountries": {
@@ -2972,7 +2993,7 @@
         "smithy.api#documentation": "Represents a country."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountriesRequest": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountriesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3003,16 +3024,22 @@
             "smithy.api#httpHeader": "accept-language",
             "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodes": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequest"
+        "target": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequest"
       },
       "output": {
         "target": "com.azure.communication_phone_numbers#PhoneNumberAreaCodes"
@@ -3026,9 +3053,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-06-01"
+          "apiVersion": "2025-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of available area codes."
+        "smithy.api#documentation": "Gets the list of available area codes.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "areaCodes"
+        }
       }
     },
     "com.azure.communication_phone_numbers#PhoneNumberAreaCodes": {
@@ -3075,7 +3109,7 @@
         "smithy.api#documentation": "Represents an Area Code."
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequest": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3095,7 +3129,7 @@
           }
         },
         "phoneNumberType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestPhoneNumberType",
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestPhoneNumberType",
           "traits": {
             "smithy.api#httpQuery": "phoneNumberType",
             "smithy.api#required": {},
@@ -3117,7 +3151,7 @@
           }
         },
         "assignmentType": {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestAssignmentType",
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestAssignmentType",
           "traits": {
             "smithy.api#httpQuery": "assignmentType",
             "smithy.api#documentation": "Filter by assignmentType, e.g. Person, Application."
@@ -3143,13 +3177,19 @@
             "smithy.api#httpHeader": "accept-language",
             "smithy.api#documentation": "The locale to display in the localized fields in the response. e.g. 'en-US'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestAssignmentType": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestAssignmentType": {
       "type": "enum",
       "members": {
         "PERSON": {
@@ -3167,7 +3207,7 @@
       },
       "traits": {}
     },
-    "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodesRequestPhoneNumberType": {
+    "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodesRequestPhoneNumberType": {
       "type": "enum",
       "members": {
         "GEOGRAPHIC": {
@@ -3196,25 +3236,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersOperatorInformationSearch"
+          "target": "com.azure.communication_phone_numbers#SearchPhoneNumbersOperatorInformation"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListPhoneNumbers"
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberPhoneNumbers"
         },
         {
           "target": "com.azure.communication_phone_numbers#PhoneNumbersReleasePhoneNumber"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetByNumber"
+          "target": "com.azure.communication_phone_numbers#GetPhoneNumberByNumber"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersUpdateCapabilities"
+          "target": "com.azure.communication_phone_numbers#UpdatePhoneNumberCapabilities"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersCancelOperation"
+          "target": "com.azure.communication_phone_numbers#CancelPhoneNumberOperation"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetOperation"
+          "target": "com.azure.communication_phone_numbers#GetPhoneNumberOperation"
         },
         {
           "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchasePhoneNumbers"
@@ -3223,37 +3263,37 @@
           "target": "com.azure.communication_phone_numbers#PhoneNumbersGetSearchResult"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersSearchAvailablePhoneNumbers"
+          "target": "com.azure.communication_phone_numbers#SearchPhoneNumberAvailablePhoneNumbers"
         },
         {
           "target": "com.azure.communication_phone_numbers#PhoneNumbersPurchaseReservation"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersDeleteReservation"
+          "target": "com.azure.communication_phone_numbers#DeletePhoneNumberReservation"
         },
         {
           "target": "com.azure.communication_phone_numbers#PhoneNumbersCreateOrUpdateReservation"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersGetReservation"
+          "target": "com.azure.communication_phone_numbers#GetPhoneNumberReservation"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListReservations"
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberReservations"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListOfferings"
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberOfferings"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableLocalities"
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableLocalities"
         },
         {
           "target": "com.azure.communication_phone_numbers#PhoneNumbersBrowseAvailableNumbers"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAvailableCountries"
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberAvailableCountries"
         },
         {
-          "target": "com.azure.communication_phone_numbers#PhoneNumbersListAreaCodes"
+          "target": "com.azure.communication_phone_numbers#ListPhoneNumberAreaCodes"
         }
       ],
       "traits": {

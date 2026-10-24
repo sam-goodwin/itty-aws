@@ -43,7 +43,8 @@
       "com.azure.storagediscovery#StorageDiscoveryWorkspacesListBySubscriptionRequest": "com.azure.storagediscovery#ListStorageDiscoveryWorkspaceBySubscriptionRequest",
       "com.azure.storagediscovery#OperationsList": "com.azure.storagediscovery#ListOperations",
       "com.azure.storagediscovery#OperationsListResponse": "com.azure.storagediscovery#ListOperationsResponse",
-      "com.azure.storagediscovery#OperationsListResponseValueList": "com.azure.storagediscovery#ListOperationsResponseValueList"
+      "com.azure.storagediscovery#OperationsListResponseValueList": "com.azure.storagediscovery#ListOperationsResponseValueList",
+      "com.azure.storagediscovery#OperationsListRequest": "com.azure.storagediscovery#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -491,10 +492,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
           "code": 200,
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ReportResource resources by StorageDiscoveryWorkspace",
-        "com.distilled.openapi#apiVersion": "2025-09-01"
+        "com.distilled.openapi#apiVersion": "2025-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagediscovery#ReportResourceListResult": {
@@ -590,6 +598,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the StorageDiscoveryWorkspace"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1423,10 +1437,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces",
           "code": 200,
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List StorageDiscoveryWorkspace resources by resource group",
-        "com.distilled.openapi#apiVersion": "2025-09-01"
+        "com.distilled.openapi#apiVersion": "2025-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagediscovery#StorageDiscoveryWorkspaceListResult": {
@@ -1540,6 +1561,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1559,10 +1586,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports",
           "code": 200,
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ReportResource resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2025-09-01"
+        "com.distilled.openapi#apiVersion": "2025-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagediscovery#ReportListBySubscriptionRequest": {
@@ -1583,6 +1617,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the StorageDiscoveryWorkspace"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1602,10 +1642,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces",
           "code": 200,
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List StorageDiscoveryWorkspace resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2025-09-01"
+        "com.distilled.openapi#apiVersion": "2025-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagediscovery#StorageDiscoveryWorkspacesListBySubscriptionRequest": {
@@ -1618,6 +1665,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1627,7 +1680,7 @@
     "com.azure.storagediscovery#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagediscovery#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storagediscovery#OperationsListResponse"
@@ -1637,10 +1690,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StorageDiscovery/operations",
           "code": 200,
-          "apiVersion": "2025-09-01"
+          "apiVersion": "2025-09-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-09-01"
+        "com.distilled.openapi#apiVersion": "2025-09-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagediscovery#OperationsListResponse": {
@@ -1780,6 +1840,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.storagediscovery#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storagediscovery#Storagediscovery": {

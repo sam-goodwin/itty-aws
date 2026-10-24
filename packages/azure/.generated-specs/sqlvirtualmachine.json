@@ -67,7 +67,8 @@
       "com.azure.sqlvirtualmachine#SqlVirtualMachinesListRequest": "com.azure.sqlvirtualmachine#ListSqlVirtualMachinesRequest",
       "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsList": "com.azure.sqlvirtualmachine#ListSqlVirtualMachineGroups",
       "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsListRequest": "com.azure.sqlvirtualmachine#ListSqlVirtualMachineGroupsRequest",
-      "com.azure.sqlvirtualmachine#OperationsList": "com.azure.sqlvirtualmachine#ListOperations"
+      "com.azure.sqlvirtualmachine#OperationsList": "com.azure.sqlvirtualmachine#ListOperations",
+      "com.azure.sqlvirtualmachine#OperationsListRequest": "com.azure.sqlvirtualmachine#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -2658,10 +2659,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all SQL virtual machines in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachineListResult": {
@@ -2781,6 +2789,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2800,10 +2814,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/sqlVirtualMachines",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of sql virtual machines in a SQL virtual machine group.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachinesListBySqlVmGroupRequest": {
@@ -2831,6 +2852,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the SQL virtual machine group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3519,10 +3546,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all availability group listeners in a SQL virtual machine group.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#AvailabilityGroupListenerListResult": {
@@ -3618,6 +3652,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the SQL virtual machine group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4349,10 +4389,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all SQL virtual machine groups in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupListResult": {
@@ -4466,6 +4513,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4485,10 +4538,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all SQL virtual machines in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachinesListRequest": {
@@ -4500,6 +4560,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4520,10 +4586,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all SQL virtual machine groups in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsListRequest": {
@@ -4536,6 +4609,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4545,7 +4624,7 @@
     "com.azure.sqlvirtualmachine#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.sqlvirtualmachine#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.sqlvirtualmachine#OperationListResult"
@@ -4555,10 +4634,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.SqlVirtualMachine/operations",
           "code": 200,
-          "apiVersion": "2023-10-01"
+          "apiVersion": "2023-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available SQL Virtual Machine Rest API operations.",
-        "com.distilled.openapi#apiVersion": "2023-10-01"
+        "com.distilled.openapi#apiVersion": "2023-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.sqlvirtualmachine#OperationListResult": {
@@ -4685,6 +4771,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Display metadata associated with the operation."
+      }
+    },
+    "com.azure.sqlvirtualmachine#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.sqlvirtualmachine#Sqlvirtualmachine": {

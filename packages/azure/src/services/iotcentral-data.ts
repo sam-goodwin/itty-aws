@@ -590,6 +590,8 @@ export interface GetDeviceCommandHistoryRequest {
   deviceId: string;
   /** Name of this device command. */
   commandName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The device command definition. */
 export interface DeviceCommand {
@@ -626,6 +628,8 @@ export interface GetDeviceComponentCommandHistoryRequest {
   componentName: string;
   /** Name of this device command. */
   commandName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface GetDeviceComponentPropertiesRequest {
   /** The base domain for all Azure IoT Central service requests. */
@@ -724,6 +728,8 @@ export interface GetDeviceGroupDevicesRequest {
   subdomain: string;
   /** Unique ID for the device group. */
   deviceGroupId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of devices belonging to the device group. */
 export type DeviceGroupDeviceCollectionValueList = Array<Device>;
@@ -745,6 +751,8 @@ export interface GetDeviceModuleCommandHistoryRequest {
   moduleName: string;
   /** Name of this device command. */
   commandName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface GetDeviceModuleComponentCommandHistoryRequest {
   /** The base domain for all Azure IoT Central service requests. */
@@ -759,6 +767,8 @@ export interface GetDeviceModuleComponentCommandHistoryRequest {
   componentName: string;
   /** Name of this device command. */
   commandName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface GetDeviceModuleComponentPropertiesRequest {
   /** The base domain for all Azure IoT Central service requests. */
@@ -887,6 +897,8 @@ export interface GetJobDevicesRequest {
   subdomain: string;
   /** Unique ID of the job. */
   jobId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The job device status definition. */
 export interface JobDeviceStatus {
@@ -968,6 +980,8 @@ export interface ListApiTokensRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of role assignments that specify the permissions to access the application. */
 export type ApiTokenRolesList = Array<RoleAssignment>;
@@ -1013,6 +1027,8 @@ export interface ListDeviceGroupsRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of device groups. */
 export type DeviceGroupCollectionValueList = Array<DeviceGroup>;
@@ -1048,6 +1064,8 @@ export interface ListDeviceRelationshipsRequest {
   subdomain: string;
   /** Unique ID of the device. */
   deviceId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of device relationships. */
 export type DeviceRelationshipCollectionValueList = Array<DeviceRelationship>;
@@ -1063,6 +1081,8 @@ export interface ListDevicesRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of devices. */
 export type DeviceCollectionValueList = Array<Device>;
@@ -1078,6 +1098,8 @@ export interface ListDeviceTemplatesRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of device templates. */
 export type DeviceTemplateCollectionValueList = Array<DeviceTemplate>;
@@ -1093,6 +1115,8 @@ export interface ListEnrollmentGroupsRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of enrollment groups. */
 export type EnrollmentGroupCollectionValueList = Array<EnrollmentGroup>;
@@ -1108,6 +1132,8 @@ export interface ListJobsRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of jobs. */
 export type JobCollectionValueList = Array<Job>;
@@ -1123,6 +1149,8 @@ export interface ListOrganizationsRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of organizations. */
 export type OrganizationCollectionValueList = Array<Organization>;
@@ -1138,6 +1166,8 @@ export interface ListRolesRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of roles. */
 export type RoleCollectionValueList = Array<Role>;
@@ -1155,12 +1185,16 @@ export interface ListScheduledJobJobsRequest {
   subdomain: string;
   /** Unique ID of the scheduled job. */
   scheduledJobId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListScheduledJobsRequest {
   /** The base domain for all Azure IoT Central service requests. */
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of scheduled jobs. */
 export type ScheduledJobCollectionValueList = Array<ScheduledJob>;
@@ -1176,6 +1210,8 @@ export interface ListUsersRequest {
   baseDomain?: string;
   /** The application subdomain. */
   subdomain: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of role assignments that specify the permissions to access the application. */
 export type UserRolesList = Array<RoleAssignment>;
@@ -1847,33 +1883,47 @@ export const GetDeviceAttestation: API.OperationMethod<
 
 export type GetDeviceCommandHistoryError = AzureOpError;
 /** Get device command history */
-export const GetDeviceCommandHistory: API.OperationMethod<
+export const GetDeviceCommandHistory: API.PaginatedOperationMethod<
   GetDeviceCommandHistoryRequest,
   DeviceCommandCollection,
   GetDeviceCommandHistoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceCommand
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<GetDeviceCommandHistoryRequest>,
   output: __S(137, __c17, 1) as any as S.Schema<DeviceCommandCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDeviceComponentCommandHistoryError = AzureOpError;
 /** Get component command history */
-export const GetDeviceComponentCommandHistory: API.OperationMethod<
+export const GetDeviceComponentCommandHistory: API.PaginatedOperationMethod<
   GetDeviceComponentCommandHistoryRequest,
   DeviceCommandCollection,
   GetDeviceComponentCommandHistoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceCommand
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<GetDeviceComponentCommandHistoryRequest>,
   output: __S(137, __c17, 1) as any as S.Schema<DeviceCommandCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDeviceComponentPropertiesError = AzureOpError;
 /** Get device properties for a specific component */
@@ -1937,48 +1987,69 @@ export const GetDeviceGroup: API.OperationMethod<
 
 export type GetDeviceGroupDevicesError = AzureOpError;
 /** Get the devices of a device group Get the list of devices by device group ID. */
-export const GetDeviceGroupDevices: API.OperationMethod<
+export const GetDeviceGroupDevices: API.PaginatedOperationMethod<
   GetDeviceGroupDevicesRequest,
   DeviceGroupDeviceCollection,
   GetDeviceGroupDevicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Device
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(232, __c29, 0) as any as S.Schema<GetDeviceGroupDevicesRequest>,
   output: __S(241, __c30, 1) as any as S.Schema<DeviceGroupDeviceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDeviceModuleCommandHistoryError = AzureOpError;
 /** Get module command history */
-export const GetDeviceModuleCommandHistory: API.OperationMethod<
+export const GetDeviceModuleCommandHistory: API.PaginatedOperationMethod<
   GetDeviceModuleCommandHistoryRequest,
   DeviceCommandCollection,
   GetDeviceModuleCommandHistoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceCommand
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(248, __c31, 0) as any as S.Schema<GetDeviceModuleCommandHistoryRequest>,
   output: __S(137, __c17, 1) as any as S.Schema<DeviceCommandCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDeviceModuleComponentCommandHistoryError = AzureOpError;
 /** Get module component command history */
-export const GetDeviceModuleComponentCommandHistory: API.OperationMethod<
+export const GetDeviceModuleComponentCommandHistory: API.PaginatedOperationMethod<
   GetDeviceModuleComponentCommandHistoryRequest,
   DeviceCommandCollection,
   GetDeviceModuleComponentCommandHistoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceCommand
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c32, 0) as any as S.Schema<GetDeviceModuleComponentCommandHistoryRequest>,
   output: __S(137, __c17, 1) as any as S.Schema<DeviceCommandCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDeviceModuleComponentPropertiesError = AzureOpError;
 /** Get module properties for a specific component */
@@ -2158,18 +2229,25 @@ export const GetJob: API.OperationMethod<GetJobRequest, Job, GetJobError, AzureO
 
 export type GetJobDevicesError = AzureOpError;
 /** Get device statuses Get the list of individual device statuses by job ID. */
-export const GetJobDevices: API.OperationMethod<
+export const GetJobDevices: API.PaginatedOperationMethod<
   GetJobDevicesRequest,
   JobDeviceStatusCollection,
   GetJobDevicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  JobDeviceStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(376, __c47, 0) as any as S.Schema<GetJobDevicesRequest>,
   output: __S(379, __c47, 3) as any as S.Schema<JobDeviceStatusCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetOrganizationError = AzureOpError;
 /** Get an organization by ID */
@@ -2240,18 +2318,25 @@ export const JobsRerun: API.OperationMethod<JobsRerunRequest, Job, JobsRerunErro
 
 export type ListApiTokensError = AzureOpError;
 /** Get the list of API tokens in an application. The token value will never be returned for security reasons. */
-export const ListApiTokens: API.OperationMethod<
+export const ListApiTokens: API.PaginatedOperationMethod<
   ListApiTokensRequest,
   ApiTokenCollection,
   ListApiTokensError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApiToken
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c56, 0) as any as S.Schema<ListApiTokensRequest>,
   output: __S(450, __c56, 2) as any as S.Schema<ApiTokenCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceComponentsError = AzureOpError;
 /** List the components present in a device */
@@ -2270,18 +2355,25 @@ export const ListDeviceComponents: API.OperationMethod<
 
 export type ListDeviceGroupsError = AzureOpError;
 /** Get the list of device groups in an application. */
-export const ListDeviceGroups: API.OperationMethod<
+export const ListDeviceGroups: API.PaginatedOperationMethod<
   ListDeviceGroupsRequest,
   DeviceGroupCollection,
   ListDeviceGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(472, __c59, 0) as any as S.Schema<ListDeviceGroupsRequest>,
   output: __S(474, __c59, 2) as any as S.Schema<DeviceGroupCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceModuleComponentsError = AzureOpError;
 /** List the components present in a module */
@@ -2315,153 +2407,223 @@ export const ListDeviceModules: API.OperationMethod<
 
 export type ListDeviceRelationshipsError = AzureOpError;
 /** Given the ID for an upstream device, will return the upstream and the downstream relationships associated with that gateway. These downstream relationships are only those associated with the direct downstream level (they don't work recursively). List all relationships based on device ID */
-export const ListDeviceRelationships: API.OperationMethod<
+export const ListDeviceRelationships: API.PaginatedOperationMethod<
   ListDeviceRelationshipsRequest,
   DeviceRelationshipCollection,
   ListDeviceRelationshipsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(496, __c62, 0) as any as S.Schema<ListDeviceRelationshipsRequest>,
   output: __S(498, __c62, 2) as any as S.Schema<DeviceRelationshipCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDevicesError = AzureOpError;
 /** Get the list of devices in an application. */
-export const ListDevices: API.OperationMethod<
+export const ListDevices: API.PaginatedOperationMethod<
   ListDevicesRequest,
   DeviceCollection,
   ListDevicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Device
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(520, __c65, 0) as any as S.Schema<ListDevicesRequest>,
   output: __S(241, __c30, 1) as any as S.Schema<DeviceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceTemplatesError = AzureOpError;
 /** Get the list of device templates in an application. */
-export const ListDeviceTemplates: API.OperationMethod<
+export const ListDeviceTemplates: API.PaginatedOperationMethod<
   ListDeviceTemplatesRequest,
   DeviceTemplateCollection,
   ListDeviceTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(528, __c66, 0) as any as S.Schema<ListDeviceTemplatesRequest>,
   output: __S(530, __c66, 2) as any as S.Schema<DeviceTemplateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnrollmentGroupsError = AzureOpError;
 /** Get the list of enrollment groups in an application */
-export const ListEnrollmentGroups: API.OperationMethod<
+export const ListEnrollmentGroups: API.PaginatedOperationMethod<
   ListEnrollmentGroupsRequest,
   EnrollmentGroupCollection,
   ListEnrollmentGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnrollmentGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(536, __c67, 0) as any as S.Schema<ListEnrollmentGroupsRequest>,
   output: __S(538, __c67, 2) as any as S.Schema<EnrollmentGroupCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobsError = AzureOpError;
 /** Get the list of jobs in an application */
-export const ListJobs: API.OperationMethod<
+export const ListJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   JobCollection,
   ListJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c68, 0) as any as S.Schema<ListJobsRequest>,
   output: __S(553, __c69, 1) as any as S.Schema<JobCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrganizationsError = AzureOpError;
 /** Get the list of organizations the user has access to in an application */
-export const ListOrganizations: API.OperationMethod<
+export const ListOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   OrganizationCollection,
   ListOrganizationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Organization
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(560, __c70, 0) as any as S.Schema<ListOrganizationsRequest>,
   output: __S(562, __c70, 2) as any as S.Schema<OrganizationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRolesError = AzureOpError;
 /** Get the list of roles in an application. */
-export const ListRoles: API.OperationMethod<
+export const ListRoles: API.PaginatedOperationMethod<
   ListRolesRequest,
   RoleCollection,
   ListRolesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Role
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(568, __c71, 0) as any as S.Schema<ListRolesRequest>,
   output: __S(570, __c71, 2) as any as S.Schema<RoleCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduledJobJobsError = AzureOpError;
 /** Get the list of jobs for a scheduled job definition */
-export const ListScheduledJobJobs: API.OperationMethod<
+export const ListScheduledJobJobs: API.PaginatedOperationMethod<
   ListScheduledJobJobsRequest,
   JobCollection,
   ListScheduledJobJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Job
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c72, 0) as any as S.Schema<ListScheduledJobJobsRequest>,
   output: __S(553, __c69, 1) as any as S.Schema<JobCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduledJobsError = AzureOpError;
 /** Get the list of scheduled job definitions in an application */
-export const ListScheduledJobs: API.OperationMethod<
+export const ListScheduledJobs: API.PaginatedOperationMethod<
   ListScheduledJobsRequest,
   ScheduledJobCollection,
   ListScheduledJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScheduledJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(584, __c73, 0) as any as S.Schema<ListScheduledJobsRequest>,
   output: __S(586, __c73, 2) as any as S.Schema<ScheduledJobCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsersError = AzureOpError;
 /** Get the list of users in an application */
-export const ListUsers: API.OperationMethod<
+export const ListUsers: API.PaginatedOperationMethod<
   ListUsersRequest,
   UserCollection,
   ListUsersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  User
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(592, __c74, 0) as any as S.Schema<ListUsersRequest>,
   output: __S(594, __c74, 2) as any as S.Schema<UserCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RemoveApiTokenError = AzureOpError;
 /** Delete an API token. */
@@ -3366,6 +3528,7 @@ function __c16(j: number): any {
           subdomain: S.String.pipe(T.HostLabel()),
           deviceId: S.String.pipe(T.Label()),
           commandName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3375,6 +3538,7 @@ function __c16(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -3419,6 +3583,7 @@ function __c19(j: number): any {
           deviceId: S.String.pipe(T.Label()),
           componentName: S.String.pipe(T.Label()),
           commandName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3428,6 +3593,7 @@ function __c19(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -3638,6 +3804,7 @@ function __c29(j: number): any {
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
           deviceGroupId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3647,6 +3814,7 @@ function __c29(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -3676,6 +3844,7 @@ function __c31(j: number): any {
           deviceId: S.String.pipe(T.Label()),
           moduleName: S.String.pipe(T.Label()),
           commandName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3685,6 +3854,7 @@ function __c31(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -3702,6 +3872,7 @@ function __c32(j: number): any {
           moduleName: S.String.pipe(T.Label()),
           componentName: S.String.pipe(T.Label()),
           commandName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3711,6 +3882,7 @@ function __c32(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4054,6 +4226,7 @@ function __c47(j: number): any {
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
           jobId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4063,6 +4236,7 @@ function __c47(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4257,6 +4431,7 @@ function __c56(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4266,6 +4441,7 @@ function __c56(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4324,6 +4500,7 @@ function __c59(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4333,6 +4510,7 @@ function __c59(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4403,6 +4581,7 @@ function __c62(j: number): any {
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
           deviceId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4412,6 +4591,7 @@ function __c62(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4477,6 +4657,7 @@ function __c65(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4486,6 +4667,7 @@ function __c65(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4499,6 +4681,7 @@ function __c66(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4508,6 +4691,7 @@ function __c66(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4530,6 +4714,7 @@ function __c67(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4539,6 +4724,7 @@ function __c67(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4561,6 +4747,7 @@ function __c68(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4570,6 +4757,7 @@ function __c68(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4596,6 +4784,7 @@ function __c70(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4605,6 +4794,7 @@ function __c70(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4627,6 +4817,7 @@ function __c71(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4636,6 +4827,7 @@ function __c71(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4659,6 +4851,7 @@ function __c72(j: number): any {
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
           scheduledJobId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4668,6 +4861,7 @@ function __c72(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4681,6 +4875,7 @@ function __c73(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4690,6 +4885,7 @@ function __c73(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),
@@ -4712,6 +4908,7 @@ function __c74(j: number): any {
         S.Struct({
           baseDomain: S.optional(S.String.pipe(T.HostLabel())),
           subdomain: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4721,6 +4918,7 @@ function __c74(j: number): any {
             hostRaw: ["baseDomain"],
             hostDefaults: { baseDomain: "azureiotcentral.com" },
             apiVersion: "2022-07-31",
+            nextLink: "nextLink",
             audience: "https://apps.azureiotcentral.com/.default",
           }),
         ),

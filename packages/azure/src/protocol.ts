@@ -55,6 +55,12 @@ import { httpSymbol } from "@distilled.cloud/core/trait";
  *             writes, and Cosmos DB's `authScheme: "cosmos-aad"`
  *             (`type=aad&ver=1.0&sig=<token>`, URL-encoded)
  *
+ *             pageable operations (`x-ms-pageable`, see convert.ts): an
+ *             input carrying a page's `nextLink` is a GET of that absolute
+ *             URL as-is, with the same auth headers; core's cursor
+ *             strategy feeds each page's `nextLink` back in (`.pages()` /
+ *             `.items()`)
+ *
  *   response: 2xx JSON is the payload (no envelope; sensitive members
  *             delivered as `Redacted`); errors are matched first against the
  *             operation's own typed errors (wire matchers in the model, only
@@ -232,6 +238,9 @@ const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAs
       baseUrl = host;
       fields = withoutHostMembers(http.host, unwrapped);
     }
+    // Pageable operations: a page's `nextLink` is never sent as a member.
+    const nextLink = nextLinkOf(http, unwrapped);
+    if (http?.nextLink !== undefined) fields = withoutMember(fields, http.nextLink);
     // The ARM token only goes to ARM. A data-plane host gets a token for its
     // own audience (a static token is sent as-is), and none when its
     // audience is unknown.
@@ -276,26 +285,46 @@ const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAs
           : `Bearer ${Redacted.value(token)}`;
     }
 
+    const headers: Record<string, string> = {
+      ...(authorization !== undefined ? { Authorization: authorization } : {}),
+      // ARM speaks JSON; without this, some resource providers negotiate
+      // another media type (API Management returns policies as raw XML).
+      // Storage answers in its own media types (XML lists, raw bytes).
+      ...(http?.storage === true ? {} : { Accept: http?.accept ?? "application/json" }),
+      ...http?.headers,
+      ...(http?.apiVersion !== undefined && http.apiVersionHeader !== undefined
+        ? { [http.apiVersionHeader]: http.apiVersion }
+        : {}),
+      // Storage and Tables want the request time on every authorized call.
+      ...(http?.apiVersionHeader === "x-ms-version"
+        ? { "x-ms-date": new Date().toUTCString() }
+        : {}),
+      ...prefixHeaders,
+    };
+
+    // The next page of a pageable operation: GET its `nextLink` as-is with
+    // the same auth. The link already carries `api-version` and the skip
+    // token; a version is added only when the link has none.
+    if (nextLink !== undefined) {
+      let url = resolveNextLink(nextLink, baseUrl);
+      if (
+        http?.apiVersion &&
+        http.apiVersionHeader === undefined &&
+        !/[?&]api-version=/.test(url)
+      ) {
+        url += `${url.includes("?") ? "&" : "?"}api-version=${encodeURIComponent(http.apiVersion)}`;
+      }
+      if (sas !== undefined && !/[?&]sig=/.test(url)) {
+        url += `${url.includes("?") ? "&" : "?"}${sas}`;
+      }
+      return HttpClientRequest.setHeaders(HttpClientRequest.get(url), headers);
+    }
+
     let request = buildRequest({
       input: fields,
       inputAst,
       baseUrl,
-      headers: {
-        ...(authorization !== undefined ? { Authorization: authorization } : {}),
-        // ARM speaks JSON; without this, some resource providers negotiate
-        // another media type (API Management returns policies as raw XML).
-        // Storage answers in its own media types (XML lists, raw bytes).
-        ...(http?.storage === true ? {} : { Accept: http?.accept ?? "application/json" }),
-        ...http?.headers,
-        ...(http?.apiVersion !== undefined && http.apiVersionHeader !== undefined
-          ? { [http.apiVersionHeader]: http.apiVersion }
-          : {}),
-        // Storage and Tables want the request time on every authorized call.
-        ...(http?.apiVersionHeader === "x-ms-version"
-          ? { "x-ms-date": new Date().toUTCString() }
-          : {}),
-        ...prefixHeaders,
-      },
+      headers,
     });
     if (xmlBody !== undefined) {
       request = HttpClientRequest.setBody(request, HttpBody.text(xmlBody, "application/xml"));
@@ -462,6 +491,34 @@ const withoutHostMembers = (template: string, input: unknown): unknown => {
   const rest = { ...(input as Record<string, unknown>) };
   for (const [, name] of template.matchAll(HOST_PLACEHOLDER)) delete rest[name!];
   return rest;
+};
+
+/** The page URL a pageable operation's input carries, if any (`""` is none). */
+const nextLinkOf = (http: HttpTrait | undefined, input: unknown): string | undefined => {
+  if (http?.nextLink === undefined || input === null || typeof input !== "object") return undefined;
+  const value = (input as Record<string, unknown>)[http.nextLink];
+  return typeof value === "string" && value !== "" ? value : undefined;
+};
+
+/** The input without one member. */
+const withoutMember = (input: unknown, name: string): unknown => {
+  if (input === null || typeof input !== "object" || !(name in input)) return input;
+  const rest = { ...(input as Record<string, unknown>) };
+  delete rest[name];
+  return rest;
+};
+
+/**
+ * A `nextLink` is absolute (Azure's guidelines require it); a path-relative
+ * one some data planes send resolves against the operation's endpoint.
+ */
+const resolveNextLink = (link: string, baseUrl: string): string => {
+  if (/^https?:\/\//i.test(link)) return link;
+  try {
+    return new URL(link, `${baseUrl}/`).toString();
+  } catch {
+    return link;
+  }
 };
 
 // ---------------------------------------------------------------------------

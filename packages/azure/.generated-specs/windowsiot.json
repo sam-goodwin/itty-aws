@@ -35,7 +35,8 @@
       "com.azure.windowsiot#ServicesGetResponse": "com.azure.windowsiot#GetServiceResponse",
       "com.azure.windowsiot#ServicesGetResponseTagsMap": "com.azure.windowsiot#GetServiceResponseTagsMap",
       "com.azure.windowsiot#ServicesGetRequest": "com.azure.windowsiot#GetServiceRequest",
-      "com.azure.windowsiot#OperationsList": "com.azure.windowsiot#ListOperations"
+      "com.azure.windowsiot#OperationsList": "com.azure.windowsiot#ListOperations",
+      "com.azure.windowsiot#OperationsListRequest": "com.azure.windowsiot#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -140,10 +141,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.WindowsIoT/deviceServices",
           "code": 200,
-          "apiVersion": "2019-06-01"
+          "apiVersion": "2019-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the IoT hubs in a subscription.",
-        "com.distilled.openapi#apiVersion": "2019-06-01"
+        "com.distilled.openapi#apiVersion": "2019-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.windowsiot#DeviceServiceDescriptionListResult": {
@@ -285,6 +293,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The subscription identifier."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -304,10 +318,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.WindowsIoT/deviceServices",
           "code": 200,
-          "apiVersion": "2019-06-01"
+          "apiVersion": "2019-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the IoT hubs in a resource group.",
-        "com.distilled.openapi#apiVersion": "2019-06-01"
+        "com.distilled.openapi#apiVersion": "2019-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.windowsiot#ServicesListByResourceGroupRequest": {
@@ -327,6 +348,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group that contains the Windows IoT Device Service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -893,7 +920,7 @@
     "com.azure.windowsiot#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.windowsiot#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.windowsiot#OperationListResult"
@@ -903,10 +930,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.WindowsIoT/operations",
           "code": 200,
-          "apiVersion": "2019-06-01"
+          "apiVersion": "2019-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Windows IoT Services REST API operations.",
-        "com.distilled.openapi#apiVersion": "2019-06-01"
+        "com.distilled.openapi#apiVersion": "2019-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.windowsiot#OperationListResult": {
@@ -1000,6 +1034,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The operation supported by Azure Data Catalog Service."
+      }
+    },
+    "com.azure.windowsiot#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.windowsiot#Windowsiot": {

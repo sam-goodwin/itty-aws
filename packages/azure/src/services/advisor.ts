@@ -456,15 +456,20 @@ export type ConfigurationListResultValueList = Array<ConfigData>;
 /** The list of Advisor configurations. */
 export interface ConfigurationListResult {
   /** The list of configurations. */
-  value?: ConfigurationListResultValueList;
+  value: ConfigurationListResultValueList;
   /** The link used to get the next page of configurations. */
   nextLink?: string;
 }
 export interface ListConfigurationBySubscriptionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The operation supported by Advisor. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -490,18 +495,20 @@ export interface OperationEntityListResult {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The list of operations. */
-  value?: OperationEntityListResultValueList;
+  value: OperationEntityListResultValueList;
 }
 export interface ListRecommendationMetadataRequest {
   /** The filter to apply to the recommendation metadata.<br>Filter can be applied to properties ['[recommendationCategory](#category)', '[recommendationSubCategory](#recommendationSubCategory)', 'RetirementDate'] with operators ['eq', 'and', 'le', 'ge']<br>The filter can also be applied to property ['[TrackingIds]']<br><br>U+26A0 **Note:** `recommendationControl` is a legacy filter property and will be deprecated in the future. Please use `recommendationSubCategory` for filtering recommendation subcategory.<br><br>Valid options for recommendationSubCategory: ['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=recommendationCategory eq 'HighAvailability' and recommendationSubCategory eq 'ServiceUpgradeAndRetirement' and retirementDate ge '2024-01-01' and retirementDate le '2028-01-01'. Filter can be applied on trackingIds as well.<br>- $filter=trackingIds/any(t: t eq 'some-guid')<br><br>U+26A0 **Note:** `trackingIDs` filter can be used for filtering one value at a time. The support to filter multiple values is not currently available. Also the support to add other filters along with `trackingIDs` is not available. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of metadata entities. */
 export type MetadataEntityListResultValueList = Array<MetadataEntity>;
 /** The list of metadata entities */
 export interface MetadataEntityListResult {
   /** The list of metadata entities. */
-  value?: MetadataEntityListResultValueList;
+  value: MetadataEntityListResultValueList;
   /** The link used to get the next page of metadata. */
   nextLink?: string;
 }
@@ -514,6 +521,8 @@ export interface ListRecommendationsRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Advisor Recommendation. */
 export interface ResourceRecommendationBase {
@@ -535,7 +544,7 @@ export interface ResourceRecommendationBaseListResult {
   /** The link used to get the next page of recommendations. */
   nextLink?: string;
   /** The list of recommendations. */
-  value?: ResourceRecommendationBaseListResultValueList;
+  value: ResourceRecommendationBaseListResultValueList;
 }
 export interface ListSuppressionsRequest {
   /** The Azure subscription ID. */
@@ -544,6 +553,8 @@ export interface ListSuppressionsRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule. */
 export interface SuppressionContract {
@@ -565,7 +576,7 @@ export interface SuppressionContractListResult {
   /** The link used to get the next page of suppressions. */
   nextLink?: string;
   /** The list of suppressions. */
-  value?: SuppressionContractListResultValueList;
+  value: SuppressionContractListResultValueList;
 }
 /** Type of the prediction. */
 export type PredictionRequestPropertiesPredictionType = "PredictiveRightsizing";
@@ -774,93 +785,130 @@ export const ListAdvisorScores: API.OperationMethod<
 
 export type ListConfigurationByResourceGroupError = AzureOpError;
 /** Retrieve Azure Advisor configurations. */
-export const ListConfigurationByResourceGroup: API.OperationMethod<
+export const ListConfigurationByResourceGroup: API.PaginatedOperationMethod<
   ListConfigurationByResourceGroupRequest,
   ConfigurationListResult,
   ListConfigurationByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListConfigurationBySubscriptionError = AzureOpError;
 /** Retrieve Azure Advisor configurations. Retrieve Azure Advisor configurations and also retrieve configurations of contained resource groups. */
-export const ListConfigurationBySubscription: API.OperationMethod<
+export const ListConfigurationBySubscription: API.PaginatedOperationMethod<
   ListConfigurationBySubscriptionRequest,
   ConfigurationListResult,
   ListConfigurationBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConfigData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all the available Advisor REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationEntityListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(68, __c8, 4) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecommendationMetadataError = AzureOpError;
 /** Gets the list of metadata entities. */
-export const ListRecommendationMetadata: API.OperationMethod<
+export const ListRecommendationMetadata: API.PaginatedOperationMethod<
   ListRecommendationMetadataRequest,
   MetadataEntityListResult,
   ListRecommendationMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetadataEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListRecommendationMetadataRequest>,
   output: __S(74, __c9, 2) as any as S.Schema<MetadataEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecommendationsError = AzureOpError;
 /** Obtains cached recommendations for a subscription. The recommendations are generated or computed by invoking generateRecommendations. */
-export const ListRecommendations: API.OperationMethod<
+export const ListRecommendations: API.PaginatedOperationMethod<
   ListRecommendationsRequest,
   ResourceRecommendationBaseListResult,
   ListRecommendationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceRecommendationBase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListRecommendationsRequest>,
   output: __S(82, __c10, 2) as any as S.Schema<ResourceRecommendationBaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSuppressionsError = AzureOpError;
 /** Retrieves the list of snoozed or dismissed suppressions for a subscription. The snoozed or dismissed attribute of a recommendation is referred to as a suppression. */
-export const ListSuppressions: API.OperationMethod<
+export const ListSuppressions: API.PaginatedOperationMethod<
   ListSuppressionsRequest,
   SuppressionContractListResult,
   ListSuppressionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SuppressionContract
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<ListSuppressionsRequest>,
   output: __S(90, __c11, 2) as any as S.Schema<SuppressionContractListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PredictError = AzureOpError;
 /** Predicts a recommendation. */
@@ -1014,7 +1062,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(48, __c6, 0)),
+          value: __S(48, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationListResult" });
@@ -1026,12 +1074,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/configurations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConfigurationBySubscriptionRequest" });
@@ -1041,12 +1091,15 @@ function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Advisor/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1072,7 +1125,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(67, __c8, 3)),
+          value: __S(67, __c8, 3),
         }),
       ).annotate({ identifier: "OperationEntityListResult" });
   }
@@ -1083,12 +1136,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Advisor/metadata",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecommendationMetadataRequest" });
@@ -1097,7 +1152,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(73, __c9, 1)),
+          value: __S(73, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataEntityListResult" });
@@ -1112,12 +1167,14 @@ function __c10(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/recommendations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecommendationsRequest" });
@@ -1127,7 +1184,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(81, __c10, 1)),
+          value: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "ResourceRecommendationBaseListResult" });
   }
@@ -1140,12 +1197,14 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/suppressions",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSuppressionsRequest" });
@@ -1155,7 +1214,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(89, __c11, 1)),
+          value: __S(89, __c11, 1),
         }),
       ).annotate({ identifier: "SuppressionContractListResult" });
   }

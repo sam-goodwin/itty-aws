@@ -640,6 +640,8 @@ export interface ListAppServiceCertificateOrderByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AppServiceCertificateOrderTagsMap = { [key: string]: string | undefined };
@@ -678,6 +680,8 @@ export interface ListAppServiceCertificateOrderCertificatesRequest {
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AppServiceCertificateResourceTagsMap = { [key: string]: string | undefined };
@@ -712,6 +716,8 @@ export interface AppServiceCertificateCollection {
 export interface ListAppServiceCertificateOrdersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest {
   /** The ID of the target subscription. */
@@ -720,6 +726,8 @@ export interface ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetect
   resourceGroupName: string;
   /** Name of the certificate order.. */
   certificateOrderName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Class representing Response from Detector */
 export interface DetectorResponse {
@@ -745,7 +753,10 @@ export interface DetectorResponseCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListCertificateRegistrationProviderOperationsRequest {}
+export interface ListCertificateRegistrationProviderOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Meta data about operation used for display in portal. */
 export interface CsmOperationDisplay {
   provider?: string;
@@ -1188,12 +1199,13 @@ export const GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorRes
 
 export type ListAppServiceCertificateOrderByResourceGroupError = AzureOpError;
 /** Get certificate orders in a resource group. Description for Get certificate orders in a resource group. */
-export const ListAppServiceCertificateOrderByResourceGroup: API.OperationMethod<
+export const ListAppServiceCertificateOrderByResourceGroup: API.PaginatedOperationMethod<
   ListAppServiceCertificateOrderByResourceGroupRequest,
   AppServiceCertificateOrderCollection,
   ListAppServiceCertificateOrderByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AppServiceCertificateOrder
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     352,
     __c11,
@@ -1203,47 +1215,68 @@ export const ListAppServiceCertificateOrderByResourceGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAppServiceCertificateOrderCertificatesError = AzureOpError;
 /** List all certificates associated with a certificate order. Description for List all certificates associated with a certificate order. */
-export const ListAppServiceCertificateOrderCertificates: API.OperationMethod<
+export const ListAppServiceCertificateOrderCertificates: API.PaginatedOperationMethod<
   ListAppServiceCertificateOrderCertificatesRequest,
   AppServiceCertificateCollection,
   ListAppServiceCertificateOrderCertificatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AppServiceCertificateResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListAppServiceCertificateOrderCertificatesRequest>,
   output: __S(418, __c13, 2) as any as S.Schema<AppServiceCertificateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAppServiceCertificateOrdersError = AzureOpError;
 /** List all certificate orders in a subscription. Description for List all certificate orders in a subscription. */
-export const ListAppServiceCertificateOrders: API.OperationMethod<
+export const ListAppServiceCertificateOrders: API.PaginatedOperationMethod<
   ListAppServiceCertificateOrdersRequest,
   AppServiceCertificateOrderCollection,
   ListAppServiceCertificateOrdersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AppServiceCertificateOrder
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ListAppServiceCertificateOrdersRequest>,
   output: __S(385, __c12, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseError =
   AzureOpError;
 /** Microsoft.CertificateRegistration to get the list of detectors for this RP. Description for Microsoft.CertificateRegistration to get the list of detectors for this RP. */
-export const ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponse: API.OperationMethod<
+export const ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponse: API.PaginatedOperationMethod<
   ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest,
   DetectorResponseCollection,
   ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DetectorResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     480,
     __c15,
@@ -1253,16 +1286,23 @@ export const ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorRe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCertificateRegistrationProviderOperationsError = AzureOpError;
 /** Implements Csm operations Api to exposes the list of available Csm Apis under the resource provider Description for Implements Csm operations Api to exposes the list of available Csm Apis under the resource provider */
-export const ListCertificateRegistrationProviderOperations: API.OperationMethod<
+export const ListCertificateRegistrationProviderOperations: API.PaginatedOperationMethod<
   ListCertificateRegistrationProviderOperationsRequest,
   CsmOperationCollection,
   ListCertificateRegistrationProviderOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CsmOperationDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     512,
     __c16,
@@ -1272,7 +1312,13 @@ export const ListCertificateRegistrationProviderOperations: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RenewAppServiceCertificateOrderError = AzureOpError;
 /** Renew an existing certificate order. Description for Renew an existing certificate order. */
@@ -1768,12 +1814,14 @@ function __c11(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders",
             code: 200,
             apiVersion: "2024-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAppServiceCertificateOrderByResourceGroupRequest" });
@@ -1800,12 +1848,14 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates",
             code: 200,
             apiVersion: "2024-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAppServiceCertificateOrderCertificatesRequest" });
@@ -1826,12 +1876,14 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders",
             code: 200,
             apiVersion: "2024-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAppServiceCertificateOrdersRequest" });
@@ -1845,12 +1897,14 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/detectors",
             code: 200,
             apiVersion: "2024-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -1872,12 +1926,15 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CertificateRegistration/operations",
             code: 200,
             apiVersion: "2024-11-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCertificateRegistrationProviderOperationsRequest" });

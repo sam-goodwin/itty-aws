@@ -4250,6 +4250,8 @@ export interface ListAgentPoolsRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Agent Pool. */
 export interface AgentPool {
@@ -4284,6 +4286,8 @@ export interface ListAutoUpgradeProfileByFleetRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The AutoUpgradeProfile resource. */
 export interface AutoUpgradeProfile {
@@ -4312,6 +4316,8 @@ export interface AutoUpgradeProfileListResult {
 export interface ListDeploymentSafeguardsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Deployment Safeguards */
 export interface DeploymentSafeguard {
@@ -4342,6 +4348,8 @@ export interface ListFleetByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FleetTagsMap = { [key: string]: string | undefined };
@@ -4384,6 +4392,8 @@ export interface ListFleetBySubscriptionRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListFleetCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4414,6 +4424,8 @@ export interface ListFleetManagedNamespaceByFleetRequest {
   resourceGroupName: string;
   /** The name of the Fleet resource. */
   fleetName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FleetManagedNamespaceTagsMap = { [key: string]: string | undefined };
@@ -4458,6 +4470,8 @@ export interface ListFleetMemberByFleetRequest {
   _skipToken?: string;
   /** Filter the result list using the given expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure. */
 export interface FleetMember {
@@ -4494,6 +4508,8 @@ export interface ListFleetUpdateStrategyByFleetRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Defines a multi-stage process to perform update operations across members of a Fleet. */
 export interface FleetUpdateStrategy {
@@ -4532,6 +4548,8 @@ export interface ListGateByFleetRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Gate controls the progression during a staged rollout, e.g. in an Update Run. */
 export interface Gate {
@@ -4564,6 +4582,8 @@ export interface ListIdentityBindingByManagedClusterRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The IdentityBinding resource. */
 export interface IdentityBinding {
@@ -4598,6 +4618,8 @@ export interface ListMachinesRequest {
   resourceName: string;
   /** The name of the agent pool. */
   agentPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Availability zone in which machine is located. */
 export type MachineZonesList = Array<string>;
@@ -4632,6 +4654,8 @@ export interface ListMaintenanceConfigurationByManagedClusterRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance. */
 export interface MaintenanceConfiguration {
@@ -4660,6 +4684,8 @@ export interface ListManagedClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ManagedClusterTagsMap = { [key: string]: string | undefined };
@@ -4790,6 +4816,8 @@ export interface ListManagedClusterMeshRevisionProfilesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Mesh revision profile for a mesh. */
 export interface MeshRevisionProfile {
@@ -4820,6 +4848,8 @@ export interface ListManagedClusterMeshUpgradeProfilesRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Upgrade profile for given mesh. */
 export interface MeshUpgradeProfile {
@@ -4850,6 +4880,8 @@ export interface ListManagedClusterOutboundNetworkDependenciesEndpointsRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** connect information from the AKS agent nodes to a single endpoint. */
 export interface EndpointDetail {
@@ -4892,6 +4924,8 @@ export interface OutboundEnvironmentEndpointCollection {
 export interface ListManagedClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListManagedNamespaceByManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4900,6 +4934,8 @@ export interface ListManagedNamespaceByManagedClusterRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ManagedNamespaceTagsMap = { [key: string]: string | undefined };
@@ -4941,7 +4977,10 @@ export interface ListManagedNamespaceCredentialRequest {
   /** The name of the managed namespace. */
   managedNamespaceName: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Describes the properties of a Operation Value Display. */
 export interface OperationValueDisplay {
   /** The display name of the operation. */
@@ -5019,6 +5058,8 @@ export interface ListSnapshotByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SnapshotTagsMap = { [key: string]: string | undefined };
@@ -5051,6 +5092,8 @@ export interface SnapshotListResult {
 export interface ListSnapshotsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTrustedAccessRoleBindingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5059,6 +5102,8 @@ export interface ListTrustedAccessRoleBindingsRequest {
   resourceGroupName: string;
   /** The name of the managed cluster resource. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Defines binding between a resource and role */
 export interface TrustedAccessRoleBinding {
@@ -5087,6 +5132,8 @@ export interface ListTrustedAccessRolesRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of allowed verbs */
 export type TrustedAccessRoleRuleVerbsList = Array<string>;
@@ -5142,6 +5189,8 @@ export interface ListUpdateRunByFleetRequest {
   _top?: number;
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A multi-stage process to perform update operations across members of a Fleet. */
 export interface UpdateRun {
@@ -7117,78 +7166,113 @@ export const IdentityBindingsCreateOrUpdate: API.OperationMethod<
 
 export type ListAgentPoolsError = AzureOpError;
 /** Gets a list of agent pools in the specified managed cluster. */
-export const ListAgentPools: API.OperationMethod<
+export const ListAgentPools: API.PaginatedOperationMethod<
   ListAgentPoolsRequest,
   AgentPoolListResult,
   ListAgentPoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AgentPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3456, __c108, 0) as any as S.Schema<ListAgentPoolsRequest>,
   output: __S(3458, __c108, 2) as any as S.Schema<AgentPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAutoUpgradeProfileByFleetError = AzureOpError;
 /** List AutoUpgradeProfile resources by Fleet */
-export const ListAutoUpgradeProfileByFleet: API.OperationMethod<
+export const ListAutoUpgradeProfileByFleet: API.PaginatedOperationMethod<
   ListAutoUpgradeProfileByFleetRequest,
   AutoUpgradeProfileListResult,
   ListAutoUpgradeProfileByFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AutoUpgradeProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3488, __c109, 0) as any as S.Schema<ListAutoUpgradeProfileByFleetRequest>,
   output: __S(3490, __c109, 2) as any as S.Schema<AutoUpgradeProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeploymentSafeguardsError = AzureOpError;
 /** List DeploymentSafeguards by parent resource */
-export const ListDeploymentSafeguards: API.OperationMethod<
+export const ListDeploymentSafeguards: API.PaginatedOperationMethod<
   ListDeploymentSafeguardsRequest,
   DeploymentSafeguardListResult,
   ListDeploymentSafeguardsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeploymentSafeguard
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3520, __c110, 0) as any as S.Schema<ListDeploymentSafeguardsRequest>,
   output: __S(3522, __c110, 2) as any as S.Schema<DeploymentSafeguardListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetByResourceGroupError = AzureOpError;
 /** Lists fleets in the specified subscription and resource group. */
-export const ListFleetByResourceGroup: API.OperationMethod<
+export const ListFleetByResourceGroup: API.PaginatedOperationMethod<
   ListFleetByResourceGroupRequest,
   FleetListResult,
   ListFleetByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Fleet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3552, __c111, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
   output: __S(3585, __c112, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetBySubscriptionError = AzureOpError;
 /** Lists fleets in the specified subscription. */
-export const ListFleetBySubscription: API.OperationMethod<
+export const ListFleetBySubscription: API.PaginatedOperationMethod<
   ListFleetBySubscriptionRequest,
   FleetListResult,
   ListFleetBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Fleet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3616, __c113, 0) as any as S.Schema<ListFleetBySubscriptionRequest>,
   output: __S(3585, __c112, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetCredentialsError = AzureOpError;
 /** Lists the user credentials of a Fleet. */
@@ -7207,102 +7291,145 @@ export const ListFleetCredentials: API.OperationMethod<
 
 export type ListFleetManagedNamespaceByFleetError = AzureOpError;
 /** List FleetManagedNamespace resources by Fleet */
-export const ListFleetManagedNamespaceByFleet: API.OperationMethod<
+export const ListFleetManagedNamespaceByFleet: API.PaginatedOperationMethod<
   ListFleetManagedNamespaceByFleetRequest,
   FleetManagedNamespaceListResult,
   ListFleetManagedNamespaceByFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetManagedNamespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3712, __c116, 0) as any as S.Schema<ListFleetManagedNamespaceByFleetRequest>,
   output: __S(3714, __c116, 2) as any as S.Schema<FleetManagedNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetMemberByFleetError = AzureOpError;
 /** List FleetMember resources by Fleet */
-export const ListFleetMemberByFleet: API.OperationMethod<
+export const ListFleetMemberByFleet: API.PaginatedOperationMethod<
   ListFleetMemberByFleetRequest,
   FleetMemberListResult,
   ListFleetMemberByFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetMember
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3744, __c117, 0) as any as S.Schema<ListFleetMemberByFleetRequest>,
   output: __S(3746, __c117, 2) as any as S.Schema<FleetMemberListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetUpdateStrategyByFleetError = AzureOpError;
 /** List FleetUpdateStrategy resources by Fleet */
-export const ListFleetUpdateStrategyByFleet: API.OperationMethod<
+export const ListFleetUpdateStrategyByFleet: API.PaginatedOperationMethod<
   ListFleetUpdateStrategyByFleetRequest,
   FleetUpdateStrategyListResult,
   ListFleetUpdateStrategyByFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetUpdateStrategy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3776, __c118, 0) as any as S.Schema<ListFleetUpdateStrategyByFleetRequest>,
   output: __S(3778, __c118, 2) as any as S.Schema<FleetUpdateStrategyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGateByFleetError = AzureOpError;
 /** List Gate resources by Fleet */
-export const ListGateByFleet: API.OperationMethod<
+export const ListGateByFleet: API.PaginatedOperationMethod<
   ListGateByFleetRequest,
   GateListResult,
   ListGateByFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Gate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3872, __c121, 0) as any as S.Schema<ListGateByFleetRequest>,
   output: __S(3874, __c121, 2) as any as S.Schema<GateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIdentityBindingByManagedClusterError = AzureOpError;
 /** Gets a list of identity bindings in the specified managed cluster. */
-export const ListIdentityBindingByManagedCluster: API.OperationMethod<
+export const ListIdentityBindingByManagedCluster: API.PaginatedOperationMethod<
   ListIdentityBindingByManagedClusterRequest,
   IdentityBindingListResult,
   ListIdentityBindingByManagedClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IdentityBinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3904, __c122, 0) as any as S.Schema<ListIdentityBindingByManagedClusterRequest>,
   output: __S(3906, __c122, 2) as any as S.Schema<IdentityBindingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMachinesError = AzureOpError;
 /** Gets a list of machines in the specified agent pool. */
-export const ListMachines: API.OperationMethod<
+export const ListMachines: API.PaginatedOperationMethod<
   ListMachinesRequest,
   MachineListResult,
   ListMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Machine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3936, __c123, 0) as any as S.Schema<ListMachinesRequest>,
   output: __S(3938, __c123, 2) as any as S.Schema<MachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMaintenanceConfigurationByManagedClusterError = AzureOpError;
 /** Gets a list of maintenance configurations in the specified managed cluster. */
-export const ListMaintenanceConfigurationByManagedCluster: API.OperationMethod<
+export const ListMaintenanceConfigurationByManagedCluster: API.PaginatedOperationMethod<
   ListMaintenanceConfigurationByManagedClusterRequest,
   MaintenanceConfigurationListResult,
   ListMaintenanceConfigurationByManagedClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MaintenanceConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3968,
     __c124,
@@ -7312,22 +7439,35 @@ export const ListMaintenanceConfigurationByManagedCluster: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedClusterByResourceGroupError = AzureOpError;
 /** Lists managed clusters in the specified subscription and resource group. */
-export const ListManagedClusterByResourceGroup: API.OperationMethod<
+export const ListManagedClusterByResourceGroup: API.PaginatedOperationMethod<
   ListManagedClusterByResourceGroupRequest,
   ManagedClusterListResult,
   ListManagedClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4000, __c125, 0) as any as S.Schema<ListManagedClusterByResourceGroupRequest>,
   output: __S(4033, __c126, 1) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedClusterClusterAdminCredentialsError = AzureOpError;
 /** Lists the admin credentials of a managed cluster. */
@@ -7395,42 +7535,57 @@ export const ListManagedClusterKubernetesVersions: API.OperationMethod<
 
 export type ListManagedClusterMeshRevisionProfilesError = AzureOpError;
 /** Lists mesh revision profiles for all meshes in the specified location. Contains extra metadata on each revision, including supported revisions, cluster compatibility and available upgrades */
-export const ListManagedClusterMeshRevisionProfiles: API.OperationMethod<
+export const ListManagedClusterMeshRevisionProfiles: API.PaginatedOperationMethod<
   ListManagedClusterMeshRevisionProfilesRequest,
   MeshRevisionProfileList,
   ListManagedClusterMeshRevisionProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MeshRevisionProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4192, __c131, 0) as any as S.Schema<ListManagedClusterMeshRevisionProfilesRequest>,
   output: __S(4194, __c131, 2) as any as S.Schema<MeshRevisionProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedClusterMeshUpgradeProfilesError = AzureOpError;
 /** Lists available upgrades for all service meshes in a specific cluster. */
-export const ListManagedClusterMeshUpgradeProfiles: API.OperationMethod<
+export const ListManagedClusterMeshUpgradeProfiles: API.PaginatedOperationMethod<
   ListManagedClusterMeshUpgradeProfilesRequest,
   MeshUpgradeProfileList,
   ListManagedClusterMeshUpgradeProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MeshUpgradeProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4320, __c135, 0) as any as S.Schema<ListManagedClusterMeshUpgradeProfilesRequest>,
   output: __S(4322, __c135, 2) as any as S.Schema<MeshUpgradeProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedClusterOutboundNetworkDependenciesEndpointsError = AzureOpError;
 /** Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint. */
-export const ListManagedClusterOutboundNetworkDependenciesEndpoints: API.OperationMethod<
+export const ListManagedClusterOutboundNetworkDependenciesEndpoints: API.PaginatedOperationMethod<
   ListManagedClusterOutboundNetworkDependenciesEndpointsRequest,
   OutboundEnvironmentEndpointCollection,
   ListManagedClusterOutboundNetworkDependenciesEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundEnvironmentEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     4352,
     __c136,
@@ -7440,37 +7595,57 @@ export const ListManagedClusterOutboundNetworkDependenciesEndpoints: API.Operati
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedClustersError = AzureOpError;
 /** Gets a list of managed clusters in the specified subscription. */
-export const ListManagedClusters: API.OperationMethod<
+export const ListManagedClusters: API.PaginatedOperationMethod<
   ListManagedClustersRequest,
   ManagedClusterListResult,
   ListManagedClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4384, __c137, 0) as any as S.Schema<ListManagedClustersRequest>,
   output: __S(4033, __c126, 1) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedNamespaceByManagedClusterError = AzureOpError;
 /** Gets a list of managed namespaces in the specified managed cluster. */
-export const ListManagedNamespaceByManagedCluster: API.OperationMethod<
+export const ListManagedNamespaceByManagedCluster: API.PaginatedOperationMethod<
   ListManagedNamespaceByManagedClusterRequest,
   ManagedNamespaceListResult,
   ListManagedNamespaceByManagedClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedNamespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4416, __c138, 0) as any as S.Schema<ListManagedNamespaceByManagedClusterRequest>,
   output: __S(4418, __c138, 2) as any as S.Schema<ManagedNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedNamespaceCredentialError = AzureOpError;
 /** Lists the credentials of a namespace. */
@@ -7489,18 +7664,25 @@ export const ListManagedNamespaceCredential: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Gets a list of operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationValue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4480, __c140, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(4484, __c140, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** Gets a list of private endpoint connections in the specified managed cluster. To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters */
@@ -7534,78 +7716,113 @@ export const ListPrivateLinkResources: API.OperationMethod<
 
 export type ListSnapshotByResourceGroupError = AzureOpError;
 /** Lists snapshots in the specified subscription and resource group. */
-export const ListSnapshotByResourceGroup: API.OperationMethod<
+export const ListSnapshotByResourceGroup: API.PaginatedOperationMethod<
   ListSnapshotByResourceGroupRequest,
   SnapshotListResult,
   ListSnapshotByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4576, __c143, 0) as any as S.Schema<ListSnapshotByResourceGroupRequest>,
   output: __S(4609, __c144, 1) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSnapshotsError = AzureOpError;
 /** Gets a list of snapshots in the specified subscription. */
-export const ListSnapshots: API.OperationMethod<
+export const ListSnapshots: API.PaginatedOperationMethod<
   ListSnapshotsRequest,
   SnapshotListResult,
   ListSnapshotsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Snapshot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4640, __c145, 0) as any as S.Schema<ListSnapshotsRequest>,
   output: __S(4609, __c144, 1) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTrustedAccessRoleBindingsError = AzureOpError;
 /** List trusted access role bindings. */
-export const ListTrustedAccessRoleBindings: API.OperationMethod<
+export const ListTrustedAccessRoleBindings: API.PaginatedOperationMethod<
   ListTrustedAccessRoleBindingsRequest,
   TrustedAccessRoleBindingListResult,
   ListTrustedAccessRoleBindingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TrustedAccessRoleBinding
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4704, __c147, 0) as any as S.Schema<ListTrustedAccessRoleBindingsRequest>,
   output: __S(4706, __c147, 2) as any as S.Schema<TrustedAccessRoleBindingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTrustedAccessRolesError = AzureOpError;
 /** List supported trusted access roles. */
-export const ListTrustedAccessRoles: API.OperationMethod<
+export const ListTrustedAccessRoles: API.PaginatedOperationMethod<
   ListTrustedAccessRolesRequest,
   TrustedAccessRoleListResult,
   ListTrustedAccessRolesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TrustedAccessRole
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4736, __c148, 0) as any as S.Schema<ListTrustedAccessRolesRequest>,
   output: __S(4741, __c148, 5) as any as S.Schema<TrustedAccessRoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUpdateRunByFleetError = AzureOpError;
 /** List UpdateRun resources by Fleet */
-export const ListUpdateRunByFleet: API.OperationMethod<
+export const ListUpdateRunByFleet: API.PaginatedOperationMethod<
   ListUpdateRunByFleetRequest,
   UpdateRunListResult,
   ListUpdateRunByFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  UpdateRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4768, __c149, 0) as any as S.Schema<ListUpdateRunByFleetRequest>,
   output: __S(4770, __c149, 2) as any as S.Schema<UpdateRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MaintenanceConfigurationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a maintenance configuration in the specified managed cluster. */
@@ -11655,12 +11872,14 @@ function __c108(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAgentPoolsRequest" });
@@ -11685,12 +11904,14 @@ function __c109(j: number): any {
           fleetName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAutoUpgradeProfileByFleetRequest" });
@@ -11711,12 +11932,14 @@ function __c110(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.ContainerService/deploymentSafeguards",
             code: 200,
             apiVersion: "2025-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeploymentSafeguardsRequest" });
@@ -11738,12 +11961,14 @@ function __c111(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetByResourceGroupRequest" });
@@ -11770,12 +11995,14 @@ function __c113(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/fleets",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetBySubscriptionRequest" });
@@ -11827,12 +12054,14 @@ function __c116(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/managedNamespaces",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetManagedNamespaceByFleetRequest" });
@@ -11858,12 +12087,14 @@ function __c117(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetMemberByFleetRequest" });
@@ -11888,12 +12119,14 @@ function __c118(j: number): any {
           fleetName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetUpdateStrategyByFleetRequest" });
@@ -11972,12 +12205,14 @@ function __c121(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/gates",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGateByFleetRequest" });
@@ -12000,12 +12235,14 @@ function __c122(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/identityBindings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIdentityBindingByManagedClusterRequest" });
@@ -12029,12 +12266,14 @@ function __c123(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/machines",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMachinesRequest" });
@@ -12057,12 +12296,14 @@ function __c124(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/maintenanceConfigurations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMaintenanceConfigurationByManagedClusterRequest" });
@@ -12084,12 +12325,14 @@ function __c125(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedClusterByResourceGroupRequest" });
@@ -12226,12 +12469,14 @@ function __c131(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/meshRevisionProfiles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedClusterMeshRevisionProfilesRequest" });
@@ -12320,12 +12565,14 @@ function __c135(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/meshUpgradeProfiles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedClusterMeshUpgradeProfilesRequest" });
@@ -12348,12 +12595,14 @@ function __c136(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/outboundNetworkDependenciesEndpoints",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedClusterOutboundNetworkDependenciesEndpointsRequest" });
@@ -12401,12 +12650,14 @@ function __c137(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/managedClusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedClustersRequest" });
@@ -12420,12 +12671,14 @@ function __c138(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedNamespaceByManagedClusterRequest" });
@@ -12464,12 +12717,15 @@ function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ContainerService/operations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -12560,12 +12816,14 @@ function __c143(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/snapshots",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSnapshotByResourceGroupRequest" });
@@ -12590,12 +12848,14 @@ function __c145(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/snapshots",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSnapshotsRequest" });
@@ -12632,12 +12892,14 @@ function __c147(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTrustedAccessRoleBindingsRequest" });
@@ -12659,12 +12921,14 @@ function __c148(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/trustedAccessRoles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTrustedAccessRolesRequest" });
@@ -12709,12 +12973,14 @@ function __c149(j: number): any {
           fleetName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUpdateRunByFleetRequest" });

@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/skus",
           "code": 200,
-          "apiVersion": "2026-08-31"
+          "apiVersion": "2026-08-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of valid SKUs and tiers for a provisioning service.",
-        "com.distilled.openapi#apiVersion": "2026-08-31"
+        "com.distilled.openapi#apiVersion": "2026-08-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceprovisioningservices#IotDpsSkuDefinitionListResult": {
@@ -120,6 +127,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the provisioning service to retrieve."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1182,10 +1195,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/listkeys",
           "code": 200,
-          "apiVersion": "2026-08-31"
+          "apiVersion": "2026-08-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the primary and secondary keys for a provisioning service.",
-        "com.distilled.openapi#apiVersion": "2026-08-31"
+        "com.distilled.openapi#apiVersion": "2026-08-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceprovisioningservices#SharedAccessSignatureAuthorizationRuleListResult": {
@@ -1321,6 +1341,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the provisioning service to retrieve."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3807,10 +3833,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices",
           "code": 200,
-          "apiVersion": "2026-08-31"
+          "apiVersion": "2026-08-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get a list of all provisioning services in the given resource group.",
-        "com.distilled.openapi#apiVersion": "2026-08-31"
+        "com.distilled.openapi#apiVersion": "2026-08-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceprovisioningservices#ProvisioningServiceDescriptionListResult": {
@@ -3988,6 +4021,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4007,10 +4046,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/provisioningServices",
           "code": 200,
-          "apiVersion": "2026-08-31"
+          "apiVersion": "2026-08-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the provisioning services for a given subscription id.",
-        "com.distilled.openapi#apiVersion": "2026-08-31"
+        "com.distilled.openapi#apiVersion": "2026-08-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceprovisioningservices#ListIotDpsResourceBySubscriptionRequest": {
@@ -4022,6 +4068,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4120,7 +4172,7 @@
     "com.azure.deviceprovisioningservices#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.deviceprovisioningservices#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioningservices#OperationListResult"
@@ -4130,10 +4182,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Devices/operations",
           "code": 200,
-          "apiVersion": "2026-08-31"
+          "apiVersion": "2026-08-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-08-31"
+        "com.distilled.openapi#apiVersion": "2026-08-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceprovisioningservices#OperationListResult": {
@@ -4208,6 +4267,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The display information for the operation."
+      }
+    },
+    "com.azure.deviceprovisioningservices#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.deviceprovisioningservices#Deviceprovisioningservices": {

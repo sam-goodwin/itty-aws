@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controllers",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the delegatedController resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#DelegatedControllers": {
@@ -211,6 +218,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -230,10 +243,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/controllers",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the delegatedController resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#ListDelegatedNetworkBySubscriptionRequest": {
@@ -245,6 +265,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -679,10 +705,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the DelegatedSubnets resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#DelegatedSubnets": {
@@ -881,6 +914,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -900,10 +939,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the DelegatedSubnets resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#ListDelegatedSubnetServiceBySubscriptionRequest": {
@@ -915,6 +961,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1386,7 +1438,7 @@
     "com.azure.dnc#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.dnc#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.dnc#ListOperationsResponse"
@@ -1396,10 +1448,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DelegatedNetwork/operations",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available DelegatedNetwork service REST API operations.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#ListOperationsResponse": {
@@ -1541,6 +1600,20 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.dnc#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.dnc#ListOrchestratorInstanceServiceByResourceGroup": {
       "type": "operation",
       "input": {
@@ -1554,10 +1627,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the OrchestratorInstances resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#Orchestrators": {
@@ -1838,6 +1918,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1857,10 +1943,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/orchestrators",
           "code": 200,
-          "apiVersion": "2021-03-15"
+          "apiVersion": "2021-03-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the orchestratorInstance resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-03-15"
+        "com.distilled.openapi#apiVersion": "2021-03-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dnc#ListOrchestratorInstanceServiceBySubscriptionRequest": {
@@ -1872,6 +1965,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

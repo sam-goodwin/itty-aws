@@ -1220,10 +1220,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get schema registry clusters",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#ListSchemaRegistryClustersResponse": {
@@ -1303,6 +1310,12 @@
           "traits": {
             "smithy.api#httpQuery": "pageToken",
             "smithy.api#documentation": "An opaque pagination token to fetch the next set of records"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1777,10 +1790,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists of all the topics in a clusters",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#ListTopicsSuccessResponse": {
@@ -1906,6 +1926,12 @@
           "traits": {
             "smithy.api#httpQuery": "pageToken",
             "smithy.api#documentation": "An opaque pagination token to fetch the next set of records"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2734,10 +2760,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the connectors in a cluster",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#ListConnectorsSuccessResponse": {
@@ -2864,6 +2897,12 @@
           "traits": {
             "smithy.api#httpQuery": "pageToken",
             "smithy.api#documentation": "An opaque pagination token to fetch the next set of records"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3431,10 +3470,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists of all the clusters in a environment",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#ListClustersSuccessResponse": {
@@ -3558,6 +3604,12 @@
           "traits": {
             "smithy.api#httpQuery": "pageToken",
             "smithy.api#documentation": "An opaque pagination token to fetch the next set of records"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3911,10 +3963,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists of all the environments in a organization",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#GetEnvironmentsResponse": {
@@ -4030,6 +4089,12 @@
           "traits": {
             "smithy.api#httpQuery": "pageToken",
             "smithy.api#documentation": "An opaque pagination token to fetch the next set of records"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6105,10 +6170,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Organizations under the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#OrganizationResourceListResult": {
@@ -6223,6 +6295,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6242,10 +6320,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/organizations",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all organizations under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#ListOrganizationBySubscriptionRequest": {
@@ -6257,6 +6342,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6520,10 +6611,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Confluent/agreements",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Confluent marketplace agreements in the subscription.\n\nList Confluent marketplace agreements in the subscription.",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#ConfluentAgreementResourceListResponse": {
@@ -6566,6 +6664,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6575,7 +6679,7 @@
     "com.azure.confluent#ListOrganizationOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.confluent#ListOrganizationOperationsRequest"
       },
       "output": {
         "target": "com.azure.confluent#OperationListResult"
@@ -6585,10 +6689,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Confluent/operations",
           "code": 200,
-          "apiVersion": "2024-07-01"
+          "apiVersion": "2024-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-07-01"
+        "com.distilled.openapi#apiVersion": "2024-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confluent#OperationListResult": {
@@ -6677,6 +6788,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.confluent#ListOrganizationOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.confluent#Confluent": {

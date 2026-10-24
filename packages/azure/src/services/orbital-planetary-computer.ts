@@ -20151,6 +20151,8 @@ export interface ListIngestionOperationsRequest {
   collectionId?: string;
   /** Operation status used to filter the results */
   status?: ListIngestionOperationsRequestStatus | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The items on the page */
 export type OperationPagedResponseValueList = Array<Operation>;
@@ -20172,6 +20174,8 @@ export interface ListIngestionRunsRequest {
   _top?: number;
   /** The number of items to skip */
   _skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The items on the page */
 export type IngestionRunPagedResponseValueList = Array<IngestionRun>;
@@ -20191,6 +20195,8 @@ export interface ListIngestionsRequest {
   _top?: number;
   /** The number of items to skip */
   _skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The items on the page */
 export type IngestionDefinitionPagedResponseValueList = Array<IngestionDefinition>;
@@ -20204,6 +20210,8 @@ export interface IngestionDefinitionPagedResponse {
 export interface ListIngestionSourceManagedIdentitiesRequest {
   /** GeoCatalog endpoint, e.g. https://contoso-catalog.gwhqfdeddydpareu.uksouth.geocatalog.spatio.azure.com */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Managed Identity metadata */
 export interface ManagedIdentityMetadata {
@@ -20228,6 +20236,8 @@ export interface ListIngestionSourcesRequest {
   _top?: number;
   /** The number of items to skip */
   _skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Ingestion source summary */
 export interface IngestionSourceSummary {
@@ -26370,78 +26380,113 @@ export const GetTileMatrixList: API.OperationMethod<
 
 export type ListIngestionOperationsError = AzureOpError;
 /** Get operations of a geo-catalog collection */
-export const ListIngestionOperations: API.OperationMethod<
+export const ListIngestionOperations: API.PaginatedOperationMethod<
   ListIngestionOperationsRequest,
   OperationPagedResponse,
   ListIngestionOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<ListIngestionOperationsRequest>,
   output: __S(218, __c27, 2) as any as S.Schema<OperationPagedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIngestionRunsError = AzureOpError;
 /** Get the runs of an ingestion */
-export const ListIngestionRuns: API.OperationMethod<
+export const ListIngestionRuns: API.PaginatedOperationMethod<
   ListIngestionRunsRequest,
   IngestionRunPagedResponse,
   ListIngestionRunsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IngestionRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<ListIngestionRunsRequest>,
   output: __S(226, __c28, 2) as any as S.Schema<IngestionRunPagedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIngestionsError = AzureOpError;
 /** Get ingestions of a catalog */
-export const ListIngestions: API.OperationMethod<
+export const ListIngestions: API.PaginatedOperationMethod<
   ListIngestionsRequest,
   IngestionDefinitionPagedResponse,
   ListIngestionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IngestionDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(232, __c29, 0) as any as S.Schema<ListIngestionsRequest>,
   output: __S(234, __c29, 2) as any as S.Schema<IngestionDefinitionPagedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIngestionSourceManagedIdentitiesError = AzureOpError;
 /** Get all managed identities with access to storage accounts configured for a geo-catalog */
-export const ListIngestionSourceManagedIdentities: API.OperationMethod<
+export const ListIngestionSourceManagedIdentities: API.PaginatedOperationMethod<
   ListIngestionSourceManagedIdentitiesRequest,
   ManagedIdentityMetadataPagedResponse,
   ListIngestionSourceManagedIdentitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedIdentityMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(248, __c31, 0) as any as S.Schema<ListIngestionSourceManagedIdentitiesRequest>,
   output: __S(251, __c31, 3) as any as S.Schema<ManagedIdentityMetadataPagedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIngestionSourcesError = AzureOpError;
 /** Get ingestion sources in a geo-catalog */
-export const ListIngestionSources: API.OperationMethod<
+export const ListIngestionSources: API.PaginatedOperationMethod<
   ListIngestionSourcesRequest,
   IngestionSourceSummaryPagedResponse,
   ListIngestionSourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IngestionSourceSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c32, 0) as any as S.Schema<ListIngestionSourcesRequest>,
   output: __S(259, __c32, 3) as any as S.Schema<IngestionSourceSummaryPagedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MosaicCollectionsFeatureGeoJsonCropError = AzureOpError;
 /** Collection Geojson Feature Create image from a geojson feature (without format in path). */
@@ -27489,6 +27534,7 @@ function __c27(j: number): any {
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           collectionId: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27497,6 +27543,7 @@ function __c27(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-15",
+            nextLink: "nextLink",
             audience: "https://geocatalog.spatio.azure.com/.default",
           }),
         ),
@@ -27522,6 +27569,7 @@ function __c28(j: number): any {
           ingestionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27530,6 +27578,7 @@ function __c28(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-15",
+            nextLink: "nextLink",
             audience: "https://geocatalog.spatio.azure.com/.default",
           }),
         ),
@@ -27554,6 +27603,7 @@ function __c29(j: number): any {
           collectionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27562,6 +27612,7 @@ function __c29(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-15",
+            nextLink: "nextLink",
             audience: "https://geocatalog.spatio.azure.com/.default",
           }),
         ),
@@ -27603,6 +27654,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27611,6 +27663,7 @@ function __c31(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-15",
+            nextLink: "nextLink",
             audience: "https://geocatalog.spatio.azure.com/.default",
           }),
         ),
@@ -27641,6 +27694,7 @@ function __c32(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27649,6 +27703,7 @@ function __c32(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-15",
+            nextLink: "nextLink",
             audience: "https://geocatalog.spatio.azure.com/.default",
           }),
         ),

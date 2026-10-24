@@ -68,7 +68,10 @@ export interface GetNotificationResponse {
   /** The offer data structure. */
   properties?: OfferProperties;
 }
-export interface GetNotificationOperationsRequest {}
+export interface GetNotificationOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource of the operation */
@@ -98,7 +101,7 @@ export type AvailableOperationsValueList = Array<OperationDetail>;
 /** Available operations of the service */
 export interface AvailableOperations {
   /** Collection of available operation details */
-  value?: AvailableOperationsValueList;
+  value: AvailableOperationsValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -107,6 +110,8 @@ export interface ListNotificationsRequest {
   subscription: string;
   /** user's principal id */
   principalId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type NotificationSystemDataCreatedByType =
@@ -151,7 +156,7 @@ export interface Notification {
 export type NotificationListValueList = Array<Notification>;
 /** Notifications List */
 export interface NotificationList {
-  value?: NotificationListValueList;
+  value: NotificationListValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -170,32 +175,46 @@ export const GetNotification: API.OperationMethod<
 }));
 
 export type GetNotificationOperationsError = AzureOpError;
-export const GetNotificationOperations: API.OperationMethod<
+export const GetNotificationOperations: API.PaginatedOperationMethod<
   GetNotificationOperationsRequest,
   AvailableOperations,
   GetNotificationOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(16, __c2, 0) as any as S.Schema<GetNotificationOperationsRequest>,
   output: __S(20, __c2, 4) as any as S.Schema<AvailableOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNotificationsError = AzureOpError;
-export const ListNotifications: API.OperationMethod<
+export const ListNotifications: API.PaginatedOperationMethod<
   ListNotificationsRequest,
   NotificationList,
   ListNotificationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Notification
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<ListNotificationsRequest>,
   output: __S(26, __c3, 2) as any as S.Schema<NotificationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -255,12 +274,15 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.MarketplaceNotifications/operations",
             code: 200,
             apiVersion: "2021-03-03",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetNotificationOperationsRequest" });
@@ -288,7 +310,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(19, __c2, 3)),
+          value: __S(19, __c2, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableOperations" });
@@ -301,12 +323,14 @@ function __c3(j: number): any {
         S.Struct({
           subscription: S.String.pipe(T.Label()),
           principalId: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscription}/providers/Microsoft.MarketplaceNotifications/reviewsNotifications",
             code: 200,
             apiVersion: "2021-03-03",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNotificationsRequest" });
@@ -315,7 +339,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(25, __c3, 1)),
+          value: __S(25, __c3, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationList" });

@@ -15,44 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.ai_projects#IndexesDeleteVersion": "com.azure.ai_projects#DeleteIndexVersion",
-      "com.azure.ai_projects#IndexesDeleteVersionRequest": "com.azure.ai_projects#DeleteIndexVersionRequest",
-      "com.azure.ai_projects#IndexesGetVersion": "com.azure.ai_projects#GetIndexVersion",
-      "com.azure.ai_projects#IndexesGetVersionRequest": "com.azure.ai_projects#GetIndexVersionRequest",
-      "com.azure.ai_projects#IndexesListVersions": "com.azure.ai_projects#ListIndexVersions",
-      "com.azure.ai_projects#IndexesListVersionsRequest": "com.azure.ai_projects#ListIndexVersionsRequest",
-      "com.azure.ai_projects#IndexesListLatest": "com.azure.ai_projects#ListIndexLatest",
-      "com.azure.ai_projects#IndexesListLatestRequest": "com.azure.ai_projects#ListIndexLatestRequest",
-      "com.azure.ai_projects#DeploymentsGet": "com.azure.ai_projects#GetDeployment",
-      "com.azure.ai_projects#DeploymentsGetRequest": "com.azure.ai_projects#GetDeploymentRequest",
-      "com.azure.ai_projects#DeploymentsList": "com.azure.ai_projects#ListDeployments",
-      "com.azure.ai_projects#DeploymentsListRequest": "com.azure.ai_projects#ListDeploymentsRequest",
-      "com.azure.ai_projects#DeploymentsListRequestDeploymentType": "com.azure.ai_projects#ListDeploymentsRequestDeploymentType",
-      "com.azure.ai_projects#DatasetsGetCredentials": "com.azure.ai_projects#GetDatasetCredentials",
-      "com.azure.ai_projects#DatasetsGetCredentialsRequest": "com.azure.ai_projects#GetDatasetCredentialsRequest",
-      "com.azure.ai_projects#DatasetsDeleteVersion": "com.azure.ai_projects#DeleteDatasetVersion",
-      "com.azure.ai_projects#DatasetsDeleteVersionRequest": "com.azure.ai_projects#DeleteDatasetVersionRequest",
-      "com.azure.ai_projects#DatasetsGetVersion": "com.azure.ai_projects#GetDatasetVersion",
-      "com.azure.ai_projects#DatasetsGetVersionRequest": "com.azure.ai_projects#GetDatasetVersionRequest",
-      "com.azure.ai_projects#DatasetsListVersions": "com.azure.ai_projects#ListDatasetVersions",
-      "com.azure.ai_projects#DatasetsListVersionsRequest": "com.azure.ai_projects#ListDatasetVersionsRequest",
-      "com.azure.ai_projects#DatasetsListLatest": "com.azure.ai_projects#ListDatasetLatest",
-      "com.azure.ai_projects#DatasetsListLatestRequest": "com.azure.ai_projects#ListDatasetLatestRequest",
-      "com.azure.ai_projects#ConnectionsGetWithCredentials": "com.azure.ai_projects#GetConnectionWithCredentials",
-      "com.azure.ai_projects#ConnectionsGetWithCredentialsRequest": "com.azure.ai_projects#GetConnectionWithCredentialsRequest",
-      "com.azure.ai_projects#ConnectionsGet": "com.azure.ai_projects#GetConnection",
-      "com.azure.ai_projects#ConnectionsGetRequest": "com.azure.ai_projects#GetConnectionRequest",
-      "com.azure.ai_projects#ConnectionsList": "com.azure.ai_projects#ListConnections",
-      "com.azure.ai_projects#ConnectionsListRequest": "com.azure.ai_projects#ListConnectionsRequest",
-      "com.azure.ai_projects#ConnectionsListRequestConnectionType": "com.azure.ai_projects#ListConnectionsRequestConnectionType"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.ai_projects#IndexesDeleteVersion": {
+    "com.azure.ai_projects#DeleteIndexVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#IndexesDeleteVersionRequest"
+        "target": "com.azure.ai_projects#DeleteIndexVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -71,7 +40,7 @@
         "smithy.api#documentation": "Delete the specific version of the Index. The service returns 204 No Content if the Index was deleted successfully or if the Index does not exist."
       }
     },
-    "com.azure.ai_projects#IndexesDeleteVersionRequest": {
+    "com.azure.ai_projects#DeleteIndexVersionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -271,10 +240,10 @@
         "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
       }
     },
-    "com.azure.ai_projects#IndexesGetVersion": {
+    "com.azure.ai_projects#GetIndexVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#IndexesGetVersionRequest"
+        "target": "com.azure.ai_projects#GetIndexVersionRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#Index"
@@ -293,7 +262,7 @@
         "smithy.api#documentation": "Get the specific version of the Index. The service returns 404 Not Found error if the Index does not exist."
       }
     },
-    "com.azure.ai_projects#IndexesGetVersionRequest": {
+    "com.azure.ai_projects#GetIndexVersionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -325,10 +294,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#IndexesListVersions": {
+    "com.azure.ai_projects#ListIndexVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#IndexesListVersionsRequest"
+        "target": "com.azure.ai_projects#ListIndexVersionsRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#PagedIndex"
@@ -342,9 +311,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all versions of the given Index"
+        "smithy.api#documentation": "List all versions of the given Index",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_projects#PagedIndex": {
@@ -377,7 +353,7 @@
         "smithy.api#documentation": "The Index items on this page"
       }
     },
-    "com.azure.ai_projects#IndexesListVersionsRequest": {
+    "com.azure.ai_projects#ListIndexVersionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -395,16 +371,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#IndexesListLatest": {
+    "com.azure.ai_projects#ListIndexLatest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#IndexesListLatestRequest"
+        "target": "com.azure.ai_projects#ListIndexLatestRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#PagedIndex"
@@ -418,12 +400,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List the latest version of each Index"
+        "smithy.api#documentation": "List the latest version of each Index",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.ai_projects#IndexesListLatestRequest": {
+    "com.azure.ai_projects#ListIndexLatestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -433,16 +422,22 @@
             "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#DeploymentsGet": {
+    "com.azure.ai_projects#GetDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DeploymentsGetRequest"
+        "target": "com.azure.ai_projects#GetDeploymentRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#Deployment"
@@ -495,7 +490,7 @@
       },
       "traits": {}
     },
-    "com.azure.ai_projects#DeploymentsGetRequest": {
+    "com.azure.ai_projects#GetDeploymentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -526,10 +521,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#DeploymentsList": {
+    "com.azure.ai_projects#ListDeployments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DeploymentsListRequest"
+        "target": "com.azure.ai_projects#ListDeploymentsRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#PagedDeployment"
@@ -543,9 +538,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all deployed models in the project"
+        "smithy.api#documentation": "List all deployed models in the project",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_projects#PagedDeployment": {
@@ -578,7 +580,7 @@
         "smithy.api#documentation": "The Deployment items on this page"
       }
     },
-    "com.azure.ai_projects#DeploymentsListRequest": {
+    "com.azure.ai_projects#ListDeploymentsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -604,7 +606,7 @@
           }
         },
         "deploymentType": {
-          "target": "com.azure.ai_projects#DeploymentsListRequestDeploymentType",
+          "target": "com.azure.ai_projects#ListDeploymentsRequestDeploymentType",
           "traits": {
             "smithy.api#httpQuery": "deploymentType",
             "smithy.api#documentation": "Type of deployment to filter list by"
@@ -616,13 +618,19 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#DeploymentsListRequestDeploymentType": {
+    "com.azure.ai_projects#ListDeploymentsRequestDeploymentType": {
       "type": "enum",
       "members": {
         "MODELDEPLOYMENT": {
@@ -835,10 +843,10 @@
         "smithy.api#documentation": "BlobReference is the only supported type."
       }
     },
-    "com.azure.ai_projects#DatasetsGetCredentials": {
+    "com.azure.ai_projects#GetDatasetCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DatasetsGetCredentialsRequest"
+        "target": "com.azure.ai_projects#GetDatasetCredentialsRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#AssetCredentialResponse"
@@ -872,7 +880,7 @@
         "smithy.api#documentation": "Represents a reference to a blob for consumption"
       }
     },
-    "com.azure.ai_projects#DatasetsGetCredentialsRequest": {
+    "com.azure.ai_projects#GetDatasetCredentialsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -904,10 +912,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#DatasetsDeleteVersion": {
+    "com.azure.ai_projects#DeleteDatasetVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DatasetsDeleteVersionRequest"
+        "target": "com.azure.ai_projects#DeleteDatasetVersionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -926,7 +934,7 @@
         "smithy.api#documentation": "Delete the specific version of the DatasetVersion. The service returns 204 No Content if the DatasetVersion was deleted successfully or if the DatasetVersion does not exist."
       }
     },
-    "com.azure.ai_projects#DatasetsDeleteVersionRequest": {
+    "com.azure.ai_projects#DeleteDatasetVersionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1154,10 +1162,10 @@
         "smithy.api#documentation": "Tag dictionary. Tags can be added, removed, and updated."
       }
     },
-    "com.azure.ai_projects#DatasetsGetVersion": {
+    "com.azure.ai_projects#GetDatasetVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DatasetsGetVersionRequest"
+        "target": "com.azure.ai_projects#GetDatasetVersionRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#DatasetVersion"
@@ -1176,7 +1184,7 @@
         "smithy.api#documentation": "Get the specific version of the DatasetVersion. The service returns 404 Not Found error if the DatasetVersion does not exist."
       }
     },
-    "com.azure.ai_projects#DatasetsGetVersionRequest": {
+    "com.azure.ai_projects#GetDatasetVersionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1208,10 +1216,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#DatasetsListVersions": {
+    "com.azure.ai_projects#ListDatasetVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DatasetsListVersionsRequest"
+        "target": "com.azure.ai_projects#ListDatasetVersionsRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#PagedDatasetVersion"
@@ -1225,9 +1233,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all versions of the given DatasetVersion"
+        "smithy.api#documentation": "List all versions of the given DatasetVersion",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_projects#PagedDatasetVersion": {
@@ -1260,7 +1275,7 @@
         "smithy.api#documentation": "The DatasetVersion items on this page"
       }
     },
-    "com.azure.ai_projects#DatasetsListVersionsRequest": {
+    "com.azure.ai_projects#ListDatasetVersionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1278,16 +1293,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#DatasetsListLatest": {
+    "com.azure.ai_projects#ListDatasetLatest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#DatasetsListLatestRequest"
+        "target": "com.azure.ai_projects#ListDatasetLatestRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#PagedDatasetVersion"
@@ -1301,12 +1322,19 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List the latest version of each DatasetVersion"
+        "smithy.api#documentation": "List the latest version of each DatasetVersion",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.ai_projects#DatasetsListLatestRequest": {
+    "com.azure.ai_projects#ListDatasetLatestRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1316,16 +1344,22 @@
             "smithy.api#documentation": "Foundry Project endpoint in the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}\".\nIf you only have one Project in your Foundry Hub, or to target the default Project\nin your Hub, use the form\n\"https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project\"",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#ConnectionsGetWithCredentials": {
+    "com.azure.ai_projects#GetConnectionWithCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#ConnectionsGetWithCredentialsRequest"
+        "target": "com.azure.ai_projects#GetConnectionWithCredentialsRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#Connection"
@@ -1528,7 +1562,7 @@
         "smithy.api#documentation": "The Type (or category) of the connection"
       }
     },
-    "com.azure.ai_projects#ConnectionsGetWithCredentialsRequest": {
+    "com.azure.ai_projects#GetConnectionWithCredentialsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1559,10 +1593,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#ConnectionsGet": {
+    "com.azure.ai_projects#GetConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#ConnectionsGetRequest"
+        "target": "com.azure.ai_projects#GetConnectionRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#Connection"
@@ -1581,7 +1615,7 @@
         "smithy.api#documentation": "Get a connection by name, without populating connection credentials"
       }
     },
-    "com.azure.ai_projects#ConnectionsGetRequest": {
+    "com.azure.ai_projects#GetConnectionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1612,10 +1646,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#ConnectionsList": {
+    "com.azure.ai_projects#ListConnections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_projects#ConnectionsListRequest"
+        "target": "com.azure.ai_projects#ListConnectionsRequest"
       },
       "output": {
         "target": "com.azure.ai_projects#PagedConnection"
@@ -1629,9 +1663,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-05-01"
+          "apiVersion": "2025-05-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all connections in the project, without populating connection credentials"
+        "smithy.api#documentation": "List all connections in the project, without populating connection credentials",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_projects#PagedConnection": {
@@ -1664,7 +1705,7 @@
         "smithy.api#documentation": "The Connection items on this page"
       }
     },
-    "com.azure.ai_projects#ConnectionsListRequest": {
+    "com.azure.ai_projects#ListConnectionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1676,7 +1717,7 @@
           }
         },
         "connectionType": {
-          "target": "com.azure.ai_projects#ConnectionsListRequestConnectionType",
+          "target": "com.azure.ai_projects#ListConnectionsRequestConnectionType",
           "traits": {
             "smithy.api#httpQuery": "connectionType",
             "smithy.api#documentation": "List connections of this specific type"
@@ -1695,13 +1736,19 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_projects#ConnectionsListRequestConnectionType": {
+    "com.azure.ai_projects#ListConnectionsRequestConnectionType": {
       "type": "enum",
       "members": {
         "AZUREOPENAI": {
@@ -1766,55 +1813,55 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.ai_projects#IndexesDeleteVersion"
+          "target": "com.azure.ai_projects#DeleteIndexVersion"
         },
         {
           "target": "com.azure.ai_projects#IndexesCreateOrUpdateVersion"
         },
         {
-          "target": "com.azure.ai_projects#IndexesGetVersion"
+          "target": "com.azure.ai_projects#GetIndexVersion"
         },
         {
-          "target": "com.azure.ai_projects#IndexesListVersions"
+          "target": "com.azure.ai_projects#ListIndexVersions"
         },
         {
-          "target": "com.azure.ai_projects#IndexesListLatest"
+          "target": "com.azure.ai_projects#ListIndexLatest"
         },
         {
-          "target": "com.azure.ai_projects#DeploymentsGet"
+          "target": "com.azure.ai_projects#GetDeployment"
         },
         {
-          "target": "com.azure.ai_projects#DeploymentsList"
+          "target": "com.azure.ai_projects#ListDeployments"
         },
         {
           "target": "com.azure.ai_projects#DatasetsStartPendingUploadVersion"
         },
         {
-          "target": "com.azure.ai_projects#DatasetsGetCredentials"
+          "target": "com.azure.ai_projects#GetDatasetCredentials"
         },
         {
-          "target": "com.azure.ai_projects#DatasetsDeleteVersion"
+          "target": "com.azure.ai_projects#DeleteDatasetVersion"
         },
         {
           "target": "com.azure.ai_projects#DatasetsCreateOrUpdateVersion"
         },
         {
-          "target": "com.azure.ai_projects#DatasetsGetVersion"
+          "target": "com.azure.ai_projects#GetDatasetVersion"
         },
         {
-          "target": "com.azure.ai_projects#DatasetsListVersions"
+          "target": "com.azure.ai_projects#ListDatasetVersions"
         },
         {
-          "target": "com.azure.ai_projects#DatasetsListLatest"
+          "target": "com.azure.ai_projects#ListDatasetLatest"
         },
         {
-          "target": "com.azure.ai_projects#ConnectionsGetWithCredentials"
+          "target": "com.azure.ai_projects#GetConnectionWithCredentials"
         },
         {
-          "target": "com.azure.ai_projects#ConnectionsGet"
+          "target": "com.azure.ai_projects#GetConnection"
         },
         {
-          "target": "com.azure.ai_projects#ConnectionsList"
+          "target": "com.azure.ai_projects#ListConnections"
         }
       ],
       "traits": {

@@ -383,9 +383,16 @@
           "uri": "/accounts/{accountId}/access-tokens",
           "code": 200,
           "host": "{endpoint}",
-          "apiVersion": "2024-12-01"
+          "apiVersion": "2024-12-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists access-tokens for the given account id. It can use OData query params like $select, $filter, $orderby, $top and $skip. The default page size is 10. Use nextLink in response to fetch more objects in the list. Authorization required is Bearer JWT Access token provided by EntraID."
+        "smithy.api#documentation": "Lists access-tokens for the given account id. It can use OData query params like $select, $filter, $orderby, $top and $skip. The default page size is 10. Use nextLink in response to fetch more objects in the list. Authorization required is Bearer JWT Access token provided by EntraID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.playwrighttesting_auth_manager#PagedAccessToken": {
@@ -442,6 +449,12 @@
           "traits": {
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

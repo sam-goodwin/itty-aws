@@ -964,6 +964,8 @@ export interface ListApplicationByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
@@ -1022,19 +1024,23 @@ export type ApplicationListResultValueList = Array<Application>;
 /** List of managed applications. */
 export interface ApplicationListResult {
   /** The array of managed applications. */
-  value?: ApplicationListResultValueList;
+  value: ApplicationListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
 export interface ListApplicationBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListApplicationDefinitionByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags */
 export type ApplicationDefinitionTagsMap = { [key: string]: string | undefined };
@@ -1091,13 +1097,15 @@ export type ApplicationDefinitionListResultValueList = Array<ApplicationDefiniti
 /** List of managed application definitions. */
 export interface ApplicationDefinitionListResult {
   /** The array of managed application definitions. */
-  value?: ApplicationDefinitionListResultValueList;
+  value: ApplicationDefinitionListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
 export interface ListApplicationDefinitionBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The user assigned identities. */
 export type ListApplicationTokensRequestUserAssignedIdentitiesList = Array<string>;
@@ -1202,7 +1210,10 @@ export interface ListJitRequestBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1235,7 +1246,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -1766,63 +1777,91 @@ export const ListApplicationAllowedUpgradePlans: API.OperationMethod<
 
 export type ListApplicationByResourceGroupError = AzureOpError;
 /** Lists all the applications within a resource group. */
-export const ListApplicationByResourceGroup: API.OperationMethod<
+export const ListApplicationByResourceGroup: API.PaginatedOperationMethod<
   ListApplicationByResourceGroupRequest,
   ApplicationListResult,
   ListApplicationByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListApplicationByResourceGroupRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationBySubscriptionError = AzureOpError;
 /** Lists all the applications within a subscription. */
-export const ListApplicationBySubscription: API.OperationMethod<
+export const ListApplicationBySubscription: API.PaginatedOperationMethod<
   ListApplicationBySubscriptionRequest,
   ApplicationListResult,
   ListApplicationBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Application
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListApplicationBySubscriptionRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationDefinitionByResourceGroupError = AzureOpError;
 /** Lists the managed application definitions in a resource group. */
-export const ListApplicationDefinitionByResourceGroup: API.OperationMethod<
+export const ListApplicationDefinitionByResourceGroup: API.PaginatedOperationMethod<
   ListApplicationDefinitionByResourceGroupRequest,
   ApplicationDefinitionListResult,
   ListApplicationDefinitionByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<ListApplicationDefinitionByResourceGroupRequest>,
   output: __S(321, __c20, 1) as any as S.Schema<ApplicationDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationDefinitionBySubscriptionError = AzureOpError;
 /** Lists all the application definitions within a subscription. */
-export const ListApplicationDefinitionBySubscription: API.OperationMethod<
+export const ListApplicationDefinitionBySubscription: API.PaginatedOperationMethod<
   ListApplicationDefinitionBySubscriptionRequest,
   ApplicationDefinitionListResult,
   ListApplicationDefinitionBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplicationDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListApplicationDefinitionBySubscriptionRequest>,
   output: __S(321, __c20, 1) as any as S.Schema<ApplicationDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplicationTokensError = AzureOpError;
 /** List tokens for application. */
@@ -1871,18 +1910,25 @@ export const ListJitRequestBySubscription: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Microsoft.Solutions REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(436, __c27, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RefreshApplicationPermissionsError = AzureOpError;
 /** Refresh Permissions for application. */
@@ -2443,12 +2489,14 @@ function __c16(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
             code: 200,
             apiVersion: "2021-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationByResourceGroupRequest" });
@@ -2461,7 +2509,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(272, __c17, 0)),
+          value: __S(272, __c17, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationListResult" });
@@ -2473,12 +2521,14 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
             code: 200,
             apiVersion: "2021-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationBySubscriptionRequest" });
@@ -2491,12 +2541,14 @@ function __c19(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
             code: 200,
             apiVersion: "2021-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationDefinitionByResourceGroupRequest" });
@@ -2509,7 +2561,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(320, __c20, 0)),
+          value: __S(320, __c20, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationDefinitionListResult" });
@@ -2521,12 +2573,14 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applicationDefinitions",
             code: 200,
             apiVersion: "2021-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplicationDefinitionBySubscriptionRequest" });
@@ -2645,12 +2699,15 @@ function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Solutions/operations",
             code: 200,
             apiVersion: "2021-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2678,7 +2735,7 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(435, __c27, 3)),
+          value: __S(435, __c27, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });

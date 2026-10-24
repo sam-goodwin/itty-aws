@@ -15,40 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaults": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaults",
-      "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequest": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequestModelDeploymentsMap": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequestModelDeploymentsMap",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetDefaults": "com.azure.ai_content_understanding#GetContentAnalyzerDefaults",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetDefaultsRequest": "com.azure.ai_content_understanding#GetContentAnalyzerDefaultsRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatus": "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatus",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatusRequest": "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatusRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersCopy": "com.azure.ai_content_understanding#CopyContentAnalyzer",
-      "com.azure.ai_content_understanding#ContentAnalyzersCopyResponse": "com.azure.ai_content_understanding#CopyContentAnalyzerResponse",
-      "com.azure.ai_content_understanding#ContentAnalyzersCopyRequest": "com.azure.ai_content_understanding#CopyContentAnalyzerRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersDelete": "com.azure.ai_content_understanding#DeleteContentAnalyzer",
-      "com.azure.ai_content_understanding#ContentAnalyzersDeleteRequest": "com.azure.ai_content_understanding#DeleteContentAnalyzerRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersUpdate": "com.azure.ai_content_understanding#UpdateContentAnalyzer",
-      "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequest": "com.azure.ai_content_understanding#UpdateContentAnalyzerRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequestTagsMap": "com.azure.ai_content_understanding#UpdateContentAnalyzerRequestTagsMap",
-      "com.azure.ai_content_understanding#ContentAnalyzersGet": "com.azure.ai_content_understanding#GetContentAnalyzer",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetRequest": "com.azure.ai_content_understanding#GetContentAnalyzerRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersList": "com.azure.ai_content_understanding#ListContentAnalyzers",
-      "com.azure.ai_content_understanding#ContentAnalyzersListRequest": "com.azure.ai_content_understanding#ListContentAnalyzersRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetResultFile": "com.azure.ai_content_understanding#GetContentAnalyzerResultFile",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileResponse": "com.azure.ai_content_understanding#GetContentAnalyzerResultFileResponse",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileRequest": "com.azure.ai_content_understanding#GetContentAnalyzerResultFileRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersDeleteResult": "com.azure.ai_content_understanding#DeleteContentAnalyzerResult",
-      "com.azure.ai_content_understanding#ContentAnalyzersDeleteResultRequest": "com.azure.ai_content_understanding#DeleteContentAnalyzerResultRequest",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetResult": "com.azure.ai_content_understanding#GetContentAnalyzerResult",
-      "com.azure.ai_content_understanding#ContentAnalyzersGetResultRequest": "com.azure.ai_content_understanding#GetContentAnalyzerResultRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaults": {
+    "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaults": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequest"
+        "target": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#ContentUnderstandingDefaults"
@@ -94,7 +67,7 @@
         "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequest": {
+    "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -106,7 +79,7 @@
           }
         },
         "modelDeployments": {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequestModelDeploymentsMap",
+          "target": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequestModelDeploymentsMap",
           "traits": {
             "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
           }
@@ -116,7 +89,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaultsRequestModelDeploymentsMap": {
+    "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaultsRequestModelDeploymentsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -128,10 +101,10 @@
         "smithy.api#documentation": "Specify the default mapping of model names to LLM/embedding deployments in Microsoft Foundry. For details and current semantics, see https://aka.ms/cudoc-quickstart-rest."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetDefaults": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerDefaults": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetDefaultsRequest"
+        "target": "com.azure.ai_content_understanding#GetContentAnalyzerDefaultsRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#ContentUnderstandingDefaults"
@@ -150,7 +123,7 @@
         "smithy.api#documentation": "Return default settings for this Content Understanding resource."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetDefaultsRequest": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerDefaultsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -166,10 +139,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatus": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatusRequest"
+        "target": "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#ContentAnalyzerOperationStatus"
@@ -1133,7 +1106,7 @@
         "smithy.api#documentation": "Enum describing allowed operation states."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatusRequest": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1260,13 +1233,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersCopy": {
+    "com.azure.ai_content_understanding#CopyContentAnalyzer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersCopyRequest"
+        "target": "com.azure.ai_content_understanding#CopyContentAnalyzerRequest"
       },
       "output": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersCopyResponse"
+        "target": "com.azure.ai_content_understanding#CopyContentAnalyzerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1282,7 +1255,7 @@
         "smithy.api#documentation": "Create a copy of the source analyzer to the current location."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersCopyResponse": {
+    "com.azure.ai_content_understanding#CopyContentAnalyzerResponse": {
       "type": "structure",
       "members": {
         "analyzerId": {
@@ -1392,7 +1365,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersCopyRequest": {
+    "com.azure.ai_content_understanding#CopyContentAnalyzerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1747,10 +1720,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersDelete": {
+    "com.azure.ai_content_understanding#DeleteContentAnalyzer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersDeleteRequest"
+        "target": "com.azure.ai_content_understanding#DeleteContentAnalyzerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1769,7 +1742,7 @@
         "smithy.api#documentation": "Delete analyzer."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersDeleteRequest": {
+    "com.azure.ai_content_understanding#DeleteContentAnalyzerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1800,10 +1773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersUpdate": {
+    "com.azure.ai_content_understanding#UpdateContentAnalyzer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequest"
+        "target": "com.azure.ai_content_understanding#UpdateContentAnalyzerRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#ContentAnalyzer"
@@ -1822,7 +1795,7 @@
         "smithy.api#documentation": "Update analyzer properties."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequest": {
+    "com.azure.ai_content_understanding#UpdateContentAnalyzerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1855,7 +1828,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequestTagsMap",
+          "target": "com.azure.ai_content_understanding#UpdateContentAnalyzerRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Tags associated with the analyzer."
           }
@@ -1865,7 +1838,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersUpdateRequestTagsMap": {
+    "com.azure.ai_content_understanding#UpdateContentAnalyzerRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2492,10 +2465,10 @@
         "smithy.api#documentation": "Tags associated with the analyzer."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGet": {
+    "com.azure.ai_content_understanding#GetContentAnalyzer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetRequest"
+        "target": "com.azure.ai_content_understanding#GetContentAnalyzerRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#ContentAnalyzer"
@@ -2514,7 +2487,7 @@
         "smithy.api#documentation": "Get analyzer properties."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetRequest": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2545,10 +2518,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersList": {
+    "com.azure.ai_content_understanding#ListContentAnalyzers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersListRequest"
+        "target": "com.azure.ai_content_understanding#ListContentAnalyzersRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#PagedContentAnalyzer"
@@ -2562,9 +2535,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List analyzers."
+        "smithy.api#documentation": "List analyzers.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.ai_content_understanding#PagedContentAnalyzer": {
@@ -2597,7 +2577,7 @@
         "smithy.api#documentation": "The ContentAnalyzer items on this page"
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersListRequest": {
+    "com.azure.ai_content_understanding#ListContentAnalyzersRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2614,19 +2594,25 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetResultFile": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerResultFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileRequest"
+        "target": "com.azure.ai_content_understanding#GetContentAnalyzerResultFileRequest"
       },
       "output": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileResponse"
+        "target": "com.azure.ai_content_understanding#GetContentAnalyzerResultFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2642,7 +2628,7 @@
         "smithy.api#documentation": "Get a file associated with the result of an analysis operation."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileResponse": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerResultFileResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2657,7 +2643,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetResultFileRequest": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerResultFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2689,10 +2675,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersDeleteResult": {
+    "com.azure.ai_content_understanding#DeleteContentAnalyzerResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersDeleteResultRequest"
+        "target": "com.azure.ai_content_understanding#DeleteContentAnalyzerResultRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2711,7 +2697,7 @@
         "smithy.api#documentation": "Mark the result of an analysis operation for deletion."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersDeleteResultRequest": {
+    "com.azure.ai_content_understanding#DeleteContentAnalyzerResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2735,10 +2721,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetResult": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultRequest"
+        "target": "com.azure.ai_content_understanding#GetContentAnalyzerResultRequest"
       },
       "output": {
         "target": "com.azure.ai_content_understanding#ContentAnalyzerAnalyzeOperationStatus"
@@ -3008,7 +2994,7 @@
         "smithy.api#documentation": "Warnings encountered while analyzing the document."
       }
     },
-    "com.azure.ai_content_understanding#ContentAnalyzersGetResultRequest": {
+    "com.azure.ai_content_understanding#GetContentAnalyzerResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3037,19 +3023,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdateDefaults"
+          "target": "com.azure.ai_content_understanding#UpdateContentAnalyzerDefaults"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetDefaults"
+          "target": "com.azure.ai_content_understanding#GetContentAnalyzerDefaults"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetOperationStatus"
+          "target": "com.azure.ai_content_understanding#GetContentAnalyzerOperationStatus"
         },
         {
           "target": "com.azure.ai_content_understanding#ContentAnalyzersGrantCopyAuthorization"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersCopy"
+          "target": "com.azure.ai_content_understanding#CopyContentAnalyzer"
         },
         {
           "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyzeBinary"
@@ -3058,28 +3044,28 @@
           "target": "com.azure.ai_content_understanding#ContentAnalyzersAnalyze"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersDelete"
+          "target": "com.azure.ai_content_understanding#DeleteContentAnalyzer"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersUpdate"
+          "target": "com.azure.ai_content_understanding#UpdateContentAnalyzer"
         },
         {
           "target": "com.azure.ai_content_understanding#ContentAnalyzersCreateOrReplace"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersGet"
+          "target": "com.azure.ai_content_understanding#GetContentAnalyzer"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersList"
+          "target": "com.azure.ai_content_understanding#ListContentAnalyzers"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResultFile"
+          "target": "com.azure.ai_content_understanding#GetContentAnalyzerResultFile"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersDeleteResult"
+          "target": "com.azure.ai_content_understanding#DeleteContentAnalyzerResult"
         },
         {
-          "target": "com.azure.ai_content_understanding#ContentAnalyzersGetResult"
+          "target": "com.azure.ai_content_understanding#GetContentAnalyzerResult"
         }
       ],
       "traits": {

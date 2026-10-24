@@ -15,53 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_openai_inference#ImageGenerationsCreate": "com.azure.cognitiveservices_openai_inference#CreateImageGeneration",
-      "com.azure.cognitiveservices_openai_inference#ImageGenerationsCreateRequest": "com.azure.cognitiveservices_openai_inference#CreateImageGenerationRequest",
-      "com.azure.cognitiveservices_openai_inference#TranslationsCreate": "com.azure.cognitiveservices_openai_inference#CreateTranslation",
-      "com.azure.cognitiveservices_openai_inference#TranslationsCreateResponse": "com.azure.cognitiveservices_openai_inference#CreateTranslationResponse",
-      "com.azure.cognitiveservices_openai_inference#TranslationsCreateResponseBody": "com.azure.cognitiveservices_openai_inference#CreateTranslationResponseBody",
-      "com.azure.cognitiveservices_openai_inference#TranslationsCreateRequest": "com.azure.cognitiveservices_openai_inference#CreateTranslationRequest",
-      "com.azure.cognitiveservices_openai_inference#TranscriptionsCreate": "com.azure.cognitiveservices_openai_inference#CreateTranscription",
-      "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateResponse": "com.azure.cognitiveservices_openai_inference#CreateTranscriptionResponse",
-      "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateResponseBody": "com.azure.cognitiveservices_openai_inference#CreateTranscriptionResponseBody",
-      "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateRequest": "com.azure.cognitiveservices_openai_inference#CreateTranscriptionRequest",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreate": "com.azure.cognitiveservices_openai_inference#CreateChatCompletion",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateResponse": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionResponse2",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateResponseBody": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionResponseBody",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequest": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequest",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionsList": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionsList",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionCall": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionCall",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionCallCase0": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionCallCase0",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestToolsList": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestToolsList",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestResponseFormat": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestResponseFormat",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestDataSourcesList": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestDataSourcesList",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestMessagesList": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestMessagesList",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestStop": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestStop",
-      "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestStopCase1List": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestStopCase1List",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreate": "com.azure.cognitiveservices_openai_inference#CreateEmbedding",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponse": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponse",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseUsage": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseUsage",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataList": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataList",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataItem": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataItem",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataItemEmbeddingList": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataItemEmbeddingList",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequest": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequest",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequestInput": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequestInput",
-      "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequestInputCase1List": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequestInputCase1List",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreate": "com.azure.cognitiveservices_openai_inference#CreateCompletion",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequest": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequest",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestStop": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestStop",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestStopCase1List": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestStopCase1List",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestLogitBiasMap": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestLogitBiasMap",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestPrompt": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestPrompt",
-      "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestPromptCase1List": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestPromptCase1List"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_openai_inference#ImageGenerationsCreate": {
+    "com.azure.cognitiveservices_openai_inference#CreateImageGeneration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_inference#ImageGenerationsCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateImageGenerationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_inference#GenerateImagesResponse"
@@ -250,7 +210,7 @@
         "smithy.api#documentation": "Information about the content filtering results."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ImageGenerationsCreateRequest": {
+    "com.azure.cognitiveservices_openai_inference#CreateImageGenerationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -389,13 +349,13 @@
         "smithy.api#documentation": "The size of the generated images."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranslationsCreate": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranslation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_inference#TranslationsCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateTranslationRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_inference#TranslationsCreateResponse"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateTranslationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -410,11 +370,11 @@
         "com.distilled.openapi#contentType": "multipart"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranslationsCreateResponse": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranslationResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_openai_inference#TranslationsCreateResponseBody",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateTranslationResponseBody",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -425,7 +385,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranslationsCreateResponseBody": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranslationResponseBody": {
       "type": "union",
       "members": {
         "AudioResponse": {
@@ -592,7 +552,7 @@
         "smithy.api#documentation": "Translation or transcription response when response_format was json"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranslationsCreateRequest": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranslationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -674,13 +634,13 @@
         "smithy.api#documentation": "Defines the format of the output."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranscriptionsCreate": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateTranscriptionRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateResponse"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateTranscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -695,11 +655,11 @@
         "com.distilled.openapi#contentType": "multipart"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateResponse": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranscriptionResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateResponseBody",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateTranscriptionResponseBody",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -710,7 +670,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateResponseBody": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranscriptionResponseBody": {
       "type": "union",
       "members": {
         "AudioResponse": {
@@ -722,7 +682,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#TranscriptionsCreateRequest": {
+    "com.azure.cognitiveservices_openai_inference#CreateTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -772,13 +732,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreate": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateResponse"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionResponse2"
       },
       "traits": {
         "smithy.api#http": {
@@ -791,11 +751,11 @@
         "smithy.api#documentation": "Creates a completion for the chat message"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateResponse": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionResponse2": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateResponseBody",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionResponseBody",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -806,7 +766,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateResponseBody": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionResponseBody": {
       "type": "union",
       "members": {
         "CreateChatCompletionResponse": {
@@ -1839,7 +1799,7 @@
         "smithy.api#documentation": "Information about the content filtering category (hate, sexual, violence, self_harm), if it has been detected, as well as the severity level (very_low, low, medium, high-scale that determines the intensity and risk level of harmful content) and if it has been filtered or not. Information about jailbreak content and profanity, if it has been detected, and if it has been filtered or not. And information about customer block list, if it has been filtered and its id."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequest": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1878,7 +1838,7 @@
           }
         },
         "stop": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestStop",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestStop",
           "traits": {
             "smithy.api#documentation": "Up to 4 sequences where the API will stop generating further tokens."
           }
@@ -1922,14 +1882,14 @@
           }
         },
         "messages": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestMessagesList",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestMessagesList",
           "traits": {
             "smithy.api#documentation": "A list of messages comprising the conversation so far. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb).",
             "smithy.api#required": {}
           }
         },
         "data_sources": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestDataSourcesList",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestDataSourcesList",
           "traits": {
             "smithy.api#documentation": "  The configuration entries for Azure OpenAI chat extensions that use them.\n  This additional specification is only compatible with Azure OpenAI."
           }
@@ -1962,7 +1922,7 @@
           }
         },
         "response_format": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestResponseFormat",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestResponseFormat",
           "traits": {
             "smithy.api#documentation": "An object specifying the format that the model must output. Compatible with [GPT-4o](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#gpt-4-and-gpt-4-turbo-models), [GPT-4o mini](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#gpt-4-and-gpt-4-turbo-models), [GPT-4 Turbo](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#gpt-4-and-gpt-4-turbo-models) and all [GPT-3.5](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#gpt-35) Turbo models newer than `gpt-3.5-turbo-1106`.\n\nSetting to `{ \"type\": \"json_schema\", \"json_schema\": {...} }` enables Structured Outputs which guarantees the model will match your supplied JSON schema.\n\nSetting to `{ \"type\": \"json_object\" }` enables JSON mode, which guarantees the message the model generates is valid JSON.\n\n**Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly \"stuck\" request. Also note that the message content may be partially cut off if `finish_reason=\"length\"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.\n"
           }
@@ -1975,7 +1935,7 @@
           }
         },
         "tools": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestToolsList",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestToolsList",
           "traits": {
             "smithy.api#documentation": "A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.\n"
           }
@@ -1984,13 +1944,13 @@
           "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionToolChoiceOption"
         },
         "function_call": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionCall",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionCall",
           "traits": {
             "smithy.api#documentation": "Deprecated in favor of `tool_choice`.\n\nControls which (if any) function is called by the model.\n`none` means the model will not call a function and instead generates a message.\n`auto` means the model can pick between generating a message or calling a function.\nSpecifying a particular function via `{\"name\": \"my_function\"}` forces the model to call that function.\n\n`none` is the default when no functions are present. `auto` is the default if functions are present.\n"
           }
         },
         "functions": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionsList",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionsList",
           "traits": {
             "smithy.api#documentation": "Deprecated in favor of `tools`.\n\nA list of functions the model may generate JSON inputs for.\n"
           }
@@ -2000,7 +1960,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionsList": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionFunctions"
@@ -2043,11 +2003,11 @@
         "smithy.api#documentation": "The parameters the functions accepts, described as a JSON Schema object. See the guide](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. \n\nOmitting `parameters` defines a function with an empty parameter list."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionCall": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionCall": {
       "type": "union",
       "members": {
         "Case0": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionCallCase0"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionCallCase0"
         },
         "ChatCompletionFunctionCallOption": {
           "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionFunctionCallOption"
@@ -2072,7 +2032,7 @@
         "smithy.api#documentation": "Specifying a particular function via `{\"name\": \"my_function\"}` forces the model to call that function.\n"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestFunctionCallCase0": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestFunctionCallCase0": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -2180,7 +2140,7 @@
         "smithy.api#documentation": "`none` means the model will not call a function and instead generates a message. `auto` means the model can pick between generating a message or calling a function."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestToolsList": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestToolsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionTool"
@@ -2251,7 +2211,7 @@
         "smithy.api#documentation": "The type of the tool. Currently, only `function` is supported."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestResponseFormat": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestResponseFormat": {
       "type": "union",
       "members": {
         "ResponseFormatText": {
@@ -2396,7 +2356,7 @@
         "smithy.api#documentation": "The type of response format being defined: `text`"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestDataSourcesList": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestDataSourcesList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_openai_inference#AzureChatExtensionConfiguration"
@@ -2439,7 +2399,7 @@
         "smithy.api#documentation": "  A representation of configuration data for a single Azure OpenAI chat extension. This will be used by a chat\n  completions request that should use Azure OpenAI chat extensions to augment the response behavior.\n  The use of this configuration is compatible only with Azure OpenAI."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestMessagesList": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestMessagesList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionRequestMessage"
@@ -2982,21 +2942,21 @@
         "smithy.api#documentation": "An array of content parts with a defined type. For system messages, only type `text` is supported."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestStop": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestStop": {
       "type": "union",
       "members": {
         "Case0": {
           "target": "smithy.api#String"
         },
         "Case1": {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestStopCase1List"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestStopCase1List"
         }
       },
       "traits": {
         "smithy.api#documentation": "Up to 4 sequences where the API will stop generating further tokens."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreateRequestStopCase1List": {
+    "com.azure.cognitiveservices_openai_inference#CreateChatCompletionRequestStopCase1List": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -3005,13 +2965,13 @@
         "smithy.api#documentation": "Array minimum size of 1 and maximum of 4"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreate": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbedding": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponse"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3024,7 +2984,7 @@
         "smithy.api#documentation": "Get a vector representation of a given input that can be easily consumed by machine learning models and algorithms."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponse": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -3040,13 +3000,13 @@
           }
         },
         "data": {
-          "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataList",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataList",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "usage": {
-          "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseUsage",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseUsage",
           "traits": {
             "smithy.api#required": {}
           }
@@ -3056,7 +3016,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseUsage": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseUsage": {
       "type": "structure",
       "members": {
         "prompt_tokens": {
@@ -3074,14 +3034,14 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataList": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataList": {
       "type": "list",
       "member": {
-        "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataItem"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataItem"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataItem": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataItem": {
       "type": "structure",
       "members": {
         "index": {
@@ -3097,7 +3057,7 @@
           }
         },
         "embedding": {
-          "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataItemEmbeddingList",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataItemEmbeddingList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -3105,14 +3065,14 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateResponseDataItemEmbeddingList": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingResponseDataItemEmbeddingList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Double"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequest": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3131,7 +3091,7 @@
           }
         },
         "input": {
-          "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequestInput",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequestInput",
           "traits": {
             "smithy.api#documentation": "Input text to get embeddings for, encoded as a string. To get embeddings for multiple inputs in a single request, pass an array of strings. Each input must not exceed 2048 tokens in length.\nUnless you are embedding code, we suggest replacing newlines (\\n) in your input with a single space, as we have observed inferior results when newlines are present.",
             "smithy.api#required": {}
@@ -3168,31 +3128,31 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequestInput": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequestInput": {
       "type": "union",
       "members": {
         "Case0": {
           "target": "smithy.api#String"
         },
         "Case1": {
-          "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequestInputCase1List"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequestInputCase1List"
         }
       },
       "traits": {
         "smithy.api#documentation": "Input text to get embeddings for, encoded as a string. To get embeddings for multiple inputs in a single request, pass an array of strings. Each input must not exceed 2048 tokens in length.\nUnless you are embedding code, we suggest replacing newlines (\\n) in your input with a single space, as we have observed inferior results when newlines are present."
       }
     },
-    "com.azure.cognitiveservices_openai_inference#EmbeddingsCreateRequestInputCase1List": {
+    "com.azure.cognitiveservices_openai_inference#CreateEmbeddingRequestInputCase1List": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreate": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionResponse"
@@ -3403,7 +3363,7 @@
         "smithy.api#documentation": "The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,\n`length` if the maximum number of tokens specified in the request was reached,\nor `content_filter` if content was omitted due to a flag from our content filters.\n"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequest": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3421,7 +3381,7 @@
           }
         },
         "prompt": {
-          "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestPrompt",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestPrompt",
           "traits": {
             "smithy.api#documentation": "The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.\n\nNote that <|endoftext|> is the document separator that the model sees during training, so if a prompt is not specified the model will generate as if from the beginning of a new document.\n",
             "smithy.api#required": {},
@@ -3450,7 +3410,7 @@
           }
         },
         "logit_bias": {
-          "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestLogitBiasMap",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestLogitBiasMap",
           "traits": {
             "smithy.api#documentation": "Modify the likelihood of specified tokens appearing in the completion.\n\nAccepts a JSON object that maps tokens (specified by their token ID in the GPT tokenizer) to an associated bias value from -100 to 100. You can use this [tokenizer tool](https://platform.openai.com/tokenizer?view=bpe) to convert text to token IDs. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the relevant token.\n\nAs an example, you can pass `{\"50256\": -100}` to prevent the <|endoftext|> token from being generated.\n",
             "com.distilled.openapi#nullable": {}
@@ -3492,7 +3452,7 @@
           }
         },
         "stop": {
-          "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestStop",
+          "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestStop",
           "traits": {
             "smithy.api#documentation": "Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.\n",
             "com.distilled.openapi#nullable": {}
@@ -3537,28 +3497,28 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestStop": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestStop": {
       "type": "union",
       "members": {
         "Case0": {
           "target": "smithy.api#String"
         },
         "Case1": {
-          "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestStopCase1List"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestStopCase1List"
         }
       },
       "traits": {
         "smithy.api#documentation": "Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence.\n"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestStopCase1List": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestStopCase1List": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestLogitBiasMap": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestLogitBiasMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3570,21 +3530,21 @@
         "smithy.api#documentation": "Modify the likelihood of specified tokens appearing in the completion.\n\nAccepts a JSON object that maps tokens (specified by their token ID in the GPT tokenizer) to an associated bias value from -100 to 100. You can use this [tokenizer tool](https://platform.openai.com/tokenizer?view=bpe) to convert text to token IDs. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the relevant token.\n\nAs an example, you can pass `{\"50256\": -100}` to prevent the <|endoftext|> token from being generated.\n"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestPrompt": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestPrompt": {
       "type": "union",
       "members": {
         "Case0": {
           "target": "smithy.api#String"
         },
         "Case1": {
-          "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestPromptCase1List"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestPromptCase1List"
         }
       },
       "traits": {
         "smithy.api#documentation": "The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.\n\nNote that <|endoftext|> is the document separator that the model sees during training, so if a prompt is not specified the model will generate as if from the beginning of a new document.\n"
       }
     },
-    "com.azure.cognitiveservices_openai_inference#CompletionsCreateRequestPromptCase1List": {
+    "com.azure.cognitiveservices_openai_inference#CreateCompletionRequestPromptCase1List": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -3596,22 +3556,22 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_openai_inference#ImageGenerationsCreate"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateImageGeneration"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_inference#TranslationsCreate"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateTranslation"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_inference#TranscriptionsCreate"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateTranscription"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_inference#ChatCompletionsCreate"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateChatCompletion"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_inference#EmbeddingsCreate"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateEmbedding"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_inference#CompletionsCreate"
+          "target": "com.azure.cognitiveservices_openai_inference#CreateCompletion"
         }
       ],
       "traits": {

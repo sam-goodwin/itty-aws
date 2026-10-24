@@ -181,10 +181,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the IP address aggregates for a given service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#IPAddressAggregates": {
@@ -355,6 +362,12 @@
             "smithy.api#httpQuery": "skiptoken",
             "smithy.api#documentation": "A continuationtoken value returned in paginated result to load different pages."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -486,7 +499,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Initiate the generation of a new Risky IP report. Returns the URI for the new one.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#RiskyIPBlobUris": {
@@ -588,7 +605,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets all Risky IP report URIs for the last 7 days.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ServicesListAllRiskyIpDownloadReportRequest": {
@@ -932,7 +953,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the global configuration.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#GlobalConfigurations": {
@@ -1062,10 +1087,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/exportstatus",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the export status.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ExportStatuses": {
@@ -1159,6 +1191,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The server Id."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1181,7 +1219,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the last time when the server uploaded data to Azure Active Directory Connect Health Service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#DataFreshnessDetails": {
@@ -1290,7 +1332,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Credentials": {
@@ -1398,7 +1444,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the connector details for a service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Connectors": {
@@ -1801,10 +1851,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/alerts",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of an alert for a given service and server combination.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Alerts": {
@@ -2167,6 +2224,12 @@
           "traits": {
             "smithy.api#httpQuery": "to",
             "smithy.api#documentation": "The end date till when to query for."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2687,10 +2750,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of the servers, for a given service, that are onboarded to Azure Active Directory Connect Health Service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ServiceMembers": {
@@ -2765,6 +2835,12 @@
             "smithy.api#httpQuery": "dimensionSignature",
             "smithy.api#documentation": "The value of the dimension."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2787,7 +2863,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the bad password login attempt report for an user",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ErrorReportUsersEntries": {
@@ -2890,7 +2970,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the service level monitoring configurations.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Items": {
@@ -3216,10 +3300,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the service related metrics information.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#MetricMetadataList": {
@@ -3287,6 +3378,12 @@
             "smithy.api#httpQuery": "perfCounter",
             "smithy.api#documentation": "Indicates if only performance counter metrics are requested."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3306,10 +3403,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the sum of the metric values for a given metric and group combination.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Metrics": {
@@ -3379,6 +3483,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The group name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3398,10 +3508,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the average of the metric values for a given metric and group combination.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListServiceMetricsAverageRequest": {
@@ -3429,6 +3546,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The group name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3524,7 +3647,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets a list of all alert feedback for a given tenant and alert type.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#AlertFeedbacks": {
@@ -3726,10 +3853,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exportstatus",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the export status.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ServicesListExportStatusRequest": {
@@ -3741,6 +3875,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3764,7 +3904,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the categorized export errors.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#MergedExportErrors": {
@@ -4050,7 +4194,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the count of latest AAD export errors.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ErrorCounts": {
@@ -4174,10 +4322,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the alerts for a given service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListServiceAlertsRequest": {
@@ -4217,6 +4372,12 @@
           "traits": {
             "smithy.api#httpQuery": "to",
             "smithy.api#documentation": "The end date till when to query for."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4675,10 +4836,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services/premiumCheck",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Services": {
@@ -4751,6 +4919,12 @@
           "traits": {
             "smithy.api#httpQuery": "takeCount",
             "smithy.api#documentation": "The take count , which specifies the number of elements that can be returned from a sequence."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4960,10 +5134,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/services",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of services, for a tenant, that are onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListServicesRequest": {
@@ -4995,6 +5176,12 @@
           "traits": {
             "smithy.api#httpQuery": "takeCount",
             "smithy.api#documentation": "The take count , which specifies the number of elements that can be returned from a sequence."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5367,7 +5554,7 @@
     "com.azure.adhybridhealthservice#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.adhybridhealthservice#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.adhybridhealthservice#OperationListResponse"
@@ -5377,10 +5564,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/operations",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available Azure Data Factory API operations.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#OperationListResponse": {
@@ -5444,6 +5638,20 @@
         "smithy.api#documentation": "The details of the operation."
       }
     },
+    "com.azure.adhybridhealthservice#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.adhybridhealthservice#ListAddsServicePremiumServices": {
       "type": "operation",
       "input": {
@@ -5457,10 +5665,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/premiumCheck",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of Active Directory Domain Services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServicePremiumServicesRequest": {
@@ -5493,6 +5708,12 @@
             "smithy.api#httpQuery": "takeCount",
             "smithy.api#documentation": "The take count , which specifies the number of elements that can be returned from a sequence."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5515,7 +5736,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServiceMemberCredentialsRequest": {
@@ -5562,10 +5787,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/alerts",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of an alert for a given Active Directory Domain Controller service and server combination.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServiceServerAlertsRequest": {
@@ -5613,6 +5845,12 @@
           "traits": {
             "smithy.api#httpQuery": "to",
             "smithy.api#documentation": "The end date till when to query for."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5943,10 +6181,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of the servers, for a given Active Directory Domain Controller service, that are onboarded to Azure Active Directory Connect Health Service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServicesServiceMembersRequest": {
@@ -5980,6 +6225,12 @@
             "smithy.api#httpQuery": "dimensionSignature",
             "smithy.api#documentation": "The value of the dimension."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6002,7 +6253,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ReplicationSummaryList": {
@@ -6336,7 +6591,11 @@
           "apiVersion": "2014-01-01"
         },
         "smithy.api#documentation": "Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ReplicationDetailsList": {
@@ -6538,10 +6797,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the service related metrics information.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServiceMetricMetadataRequest": {
@@ -6568,6 +6834,12 @@
             "smithy.api#httpQuery": "perfCounter",
             "smithy.api#documentation": "Indicates if only performance counter metrics are requested."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6587,10 +6859,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the sum of the metric values for a given metric and group combination.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServiceMetricsSumRequest": {
@@ -6619,6 +6898,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The group name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6638,10 +6923,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the average of the metric values for a given metric and group combination.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServiceMetricsAverageRequest": {
@@ -6669,6 +6961,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The group name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7031,10 +7329,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addomainservicemembers",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of the servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#AddsServiceMembers": {
@@ -7469,6 +7774,12 @@
             "smithy.api#httpQuery": "takeCount",
             "smithy.api#documentation": "The take count , which specifies the number of elements that can be returned from a sequence."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7512,10 +7823,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of the Active Directory Domain servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServiceMembersRequest": {
@@ -7534,6 +7852,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The server property filter to apply."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7554,10 +7878,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/dimensions/{dimension}",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the dimensions for a given dimension type in a server.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#Dimensions": {
@@ -7719,6 +8050,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The dimension type."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7738,10 +8075,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the service configurations.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#AddsConfiguration": {
@@ -7802,6 +8146,12 @@
             "smithy.api#httpQuery": "grouping",
             "smithy.api#documentation": "The grouping for configurations."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7821,10 +8171,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/alerts",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the alerts for a given Active Directory Domain Service.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAlertAddsAlertsRequest": {
@@ -7864,6 +8221,12 @@
           "traits": {
             "smithy.api#httpQuery": "to",
             "smithy.api#documentation": "The end date till when to query for."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8341,10 +8704,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ADHybridHealthService/addsservices",
           "code": 200,
-          "apiVersion": "2014-01-01"
+          "apiVersion": "2014-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of Active Directory Domain Service, for a tenant, that are onboarded to Azure Active Directory Connect Health.",
-        "com.distilled.openapi#apiVersion": "2014-01-01"
+        "com.distilled.openapi#apiVersion": "2014-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.adhybridhealthservice#ListAddsServicesRequest": {
@@ -8376,6 +8746,12 @@
           "traits": {
             "smithy.api#httpQuery": "takeCount",
             "smithy.api#documentation": "The take count , which specifies the number of elements that can be returned from a sequence."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -15,13 +15,99 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.relay#WCFRelaysRegenerateKeys": "com.azure.relay#RegenerateWCFRelayKeys",
+      "com.azure.relay#WCFRelaysRegenerateKeysRequest": "com.azure.relay#RegenerateWCFRelayKeysRequest",
+      "com.azure.relay#WCFRelaysListKeys": "com.azure.relay#ListWCFRelayKeys",
+      "com.azure.relay#WCFRelaysListKeysRequest": "com.azure.relay#ListWCFRelayKeysRequest",
+      "com.azure.relay#WCFRelaysDeleteAuthorizationRule": "com.azure.relay#DeleteWCFRelayAuthorizationRule",
+      "com.azure.relay#WCFRelaysDeleteAuthorizationRuleRequest": "com.azure.relay#DeleteWCFRelayAuthorizationRuleRequest",
+      "com.azure.relay#WCFRelaysGetAuthorizationRule": "com.azure.relay#GetWCFRelayAuthorizationRule",
+      "com.azure.relay#WCFRelaysGetAuthorizationRuleResponse": "com.azure.relay#GetWCFRelayAuthorizationRuleResponse",
+      "com.azure.relay#WCFRelaysGetAuthorizationRuleRequest": "com.azure.relay#GetWCFRelayAuthorizationRuleRequest",
+      "com.azure.relay#WCFRelaysListAuthorizationRules": "com.azure.relay#ListWCFRelayAuthorizationRules",
+      "com.azure.relay#WCFRelaysListAuthorizationRulesRequest": "com.azure.relay#ListWCFRelayAuthorizationRulesRequest",
+      "com.azure.relay#WCFRelaysDelete": "com.azure.relay#DeleteWCFRelay",
+      "com.azure.relay#WCFRelaysDeleteRequest": "com.azure.relay#DeleteWCFRelayRequest",
+      "com.azure.relay#WCFRelaysGet": "com.azure.relay#GetWCFRelay",
+      "com.azure.relay#WCFRelaysGetResponse": "com.azure.relay#GetWCFRelayResponse",
+      "com.azure.relay#WCFRelaysGetRequest": "com.azure.relay#GetWCFRelayRequest",
+      "com.azure.relay#WCFRelaysListByNamespace": "com.azure.relay#ListWCFRelayByNamespace",
+      "com.azure.relay#WCFRelaysListByNamespaceRequest": "com.azure.relay#ListWCFRelayByNamespaceRequest",
+      "com.azure.relay#PrivateLinkResourcesGet": "com.azure.relay#GetPrivateLinkResource",
+      "com.azure.relay#PrivateLinkResourcesGetResponse": "com.azure.relay#GetPrivateLinkResourceResponse",
+      "com.azure.relay#PrivateLinkResourcesGetRequest": "com.azure.relay#GetPrivateLinkResourceRequest",
+      "com.azure.relay#PrivateLinkResourcesList": "com.azure.relay#ListPrivateLinkResources",
+      "com.azure.relay#PrivateLinkResourcesListRequest": "com.azure.relay#ListPrivateLinkResourcesRequest",
+      "com.azure.relay#PrivateEndpointConnectionsDelete": "com.azure.relay#DeletePrivateEndpointConnection",
+      "com.azure.relay#PrivateEndpointConnectionsDeleteResponse": "com.azure.relay#DeletePrivateEndpointConnectionResponse",
+      "com.azure.relay#PrivateEndpointConnectionsDeleteRequest": "com.azure.relay#DeletePrivateEndpointConnectionRequest",
+      "com.azure.relay#PrivateEndpointConnectionsGet": "com.azure.relay#GetPrivateEndpointConnection",
+      "com.azure.relay#PrivateEndpointConnectionsGetResponse": "com.azure.relay#GetPrivateEndpointConnectionResponse",
+      "com.azure.relay#PrivateEndpointConnectionsGetRequest": "com.azure.relay#GetPrivateEndpointConnectionRequest",
+      "com.azure.relay#PrivateEndpointConnectionsList": "com.azure.relay#ListPrivateEndpointConnections",
+      "com.azure.relay#PrivateEndpointConnectionsListRequest": "com.azure.relay#ListPrivateEndpointConnectionsRequest",
+      "com.azure.relay#NamespacesGetNetworkRuleSet": "com.azure.relay#GetNamespaceNetworkRuleSet",
+      "com.azure.relay#NamespacesGetNetworkRuleSetResponse": "com.azure.relay#GetNamespaceNetworkRuleSetResponse",
+      "com.azure.relay#NamespacesGetNetworkRuleSetRequest": "com.azure.relay#GetNamespaceNetworkRuleSetRequest",
+      "com.azure.relay#HybridConnectionsRegenerateKeys": "com.azure.relay#RegenerateHybridConnectionKeys",
+      "com.azure.relay#HybridConnectionsRegenerateKeysRequest": "com.azure.relay#RegenerateHybridConnectionKeysRequest",
+      "com.azure.relay#HybridConnectionsListKeys": "com.azure.relay#ListHybridConnectionKeys",
+      "com.azure.relay#HybridConnectionsListKeysRequest": "com.azure.relay#ListHybridConnectionKeysRequest",
+      "com.azure.relay#HybridConnectionsDeleteAuthorizationRule": "com.azure.relay#DeleteHybridConnectionAuthorizationRule",
+      "com.azure.relay#HybridConnectionsDeleteAuthorizationRuleRequest": "com.azure.relay#DeleteHybridConnectionAuthorizationRuleRequest",
+      "com.azure.relay#HybridConnectionsGetAuthorizationRule": "com.azure.relay#GetHybridConnectionAuthorizationRule",
+      "com.azure.relay#HybridConnectionsGetAuthorizationRuleResponse": "com.azure.relay#GetHybridConnectionAuthorizationRuleResponse",
+      "com.azure.relay#HybridConnectionsGetAuthorizationRuleRequest": "com.azure.relay#GetHybridConnectionAuthorizationRuleRequest",
+      "com.azure.relay#HybridConnectionsListAuthorizationRules": "com.azure.relay#ListHybridConnectionAuthorizationRules",
+      "com.azure.relay#HybridConnectionsListAuthorizationRulesRequest": "com.azure.relay#ListHybridConnectionAuthorizationRulesRequest",
+      "com.azure.relay#HybridConnectionsDelete": "com.azure.relay#DeleteHybridConnection",
+      "com.azure.relay#HybridConnectionsDeleteRequest": "com.azure.relay#DeleteHybridConnectionRequest",
+      "com.azure.relay#HybridConnectionsGet": "com.azure.relay#GetHybridConnection",
+      "com.azure.relay#HybridConnectionsGetResponse": "com.azure.relay#GetHybridConnectionResponse",
+      "com.azure.relay#HybridConnectionsGetRequest": "com.azure.relay#GetHybridConnectionRequest",
+      "com.azure.relay#HybridConnectionsListByNamespace": "com.azure.relay#ListHybridConnectionByNamespace",
+      "com.azure.relay#HybridConnectionsListByNamespaceRequest": "com.azure.relay#ListHybridConnectionByNamespaceRequest",
+      "com.azure.relay#NamespacesRegenerateKeys": "com.azure.relay#RegenerateNamespaceKeys",
+      "com.azure.relay#NamespacesRegenerateKeysRequest": "com.azure.relay#RegenerateNamespaceKeysRequest",
+      "com.azure.relay#NamespacesListKeys": "com.azure.relay#ListNamespaceKeys",
+      "com.azure.relay#NamespacesListKeysRequest": "com.azure.relay#ListNamespaceKeysRequest",
+      "com.azure.relay#NamespacesDeleteAuthorizationRule": "com.azure.relay#DeleteNamespaceAuthorizationRule",
+      "com.azure.relay#NamespacesDeleteAuthorizationRuleRequest": "com.azure.relay#DeleteNamespaceAuthorizationRuleRequest",
+      "com.azure.relay#NamespacesGetAuthorizationRule": "com.azure.relay#GetNamespaceAuthorizationRule",
+      "com.azure.relay#NamespacesGetAuthorizationRuleResponse": "com.azure.relay#GetNamespaceAuthorizationRuleResponse",
+      "com.azure.relay#NamespacesGetAuthorizationRuleRequest": "com.azure.relay#GetNamespaceAuthorizationRuleRequest",
+      "com.azure.relay#NamespacesListAuthorizationRules": "com.azure.relay#ListNamespaceAuthorizationRules",
+      "com.azure.relay#NamespacesListAuthorizationRulesRequest": "com.azure.relay#ListNamespaceAuthorizationRulesRequest",
+      "com.azure.relay#NamespacesDelete": "com.azure.relay#DeleteNamespace",
+      "com.azure.relay#NamespacesDeleteResponse": "com.azure.relay#DeleteNamespaceResponse",
+      "com.azure.relay#NamespacesDeleteRequest": "com.azure.relay#DeleteNamespaceRequest",
+      "com.azure.relay#NamespacesUpdate": "com.azure.relay#UpdateNamespace",
+      "com.azure.relay#NamespacesUpdateResponse": "com.azure.relay#UpdateNamespaceResponse",
+      "com.azure.relay#NamespacesUpdateResponseTagsMap": "com.azure.relay#UpdateNamespaceResponseTagsMap",
+      "com.azure.relay#NamespacesUpdateRequest": "com.azure.relay#UpdateNamespaceRequest",
+      "com.azure.relay#NamespacesUpdateRequestTagsMap": "com.azure.relay#UpdateNamespaceRequestTagsMap",
+      "com.azure.relay#NamespacesGet": "com.azure.relay#GetNamespace",
+      "com.azure.relay#NamespacesGetResponse": "com.azure.relay#GetNamespaceResponse",
+      "com.azure.relay#NamespacesGetResponseTagsMap": "com.azure.relay#GetNamespaceResponseTagsMap",
+      "com.azure.relay#NamespacesGetRequest": "com.azure.relay#GetNamespaceRequest",
+      "com.azure.relay#NamespacesListByResourceGroup": "com.azure.relay#ListNamespaceByResourceGroup",
+      "com.azure.relay#NamespacesListByResourceGroupRequest": "com.azure.relay#ListNamespaceByResourceGroupRequest",
+      "com.azure.relay#NamespacesList": "com.azure.relay#ListNamespaces",
+      "com.azure.relay#NamespacesListRequest": "com.azure.relay#ListNamespacesRequest",
+      "com.azure.relay#NamespacesCheckNameAvailability": "com.azure.relay#CheckNamespaceNameAvailability",
+      "com.azure.relay#NamespacesCheckNameAvailabilityRequest": "com.azure.relay#CheckNamespaceNameAvailabilityRequest",
+      "com.azure.relay#OperationsList": "com.azure.relay#ListOperations",
+      "com.azure.relay#OperationsListResponse": "com.azure.relay#ListOperationsResponse",
+      "com.azure.relay#OperationsListResponseValueList": "com.azure.relay#ListOperationsResponseValueList",
+      "com.azure.relay#OperationsListRequest": "com.azure.relay#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.relay#RegenerateWCFRelayKeys": {
+    "com.azure.relay#WCFRelaysRegenerateKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#RegenerateWCFRelayKeysRequest"
+        "target": "com.azure.relay#WCFRelaysRegenerateKeysRequest"
       },
       "output": {
         "target": "com.azure.relay#AccessKeys"
@@ -75,7 +161,7 @@
         "smithy.api#documentation": "Namespace/Relay Connection String"
       }
     },
-    "com.azure.relay#RegenerateWCFRelayKeysRequest": {
+    "com.azure.relay#WCFRelaysRegenerateKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -156,10 +242,10 @@
         "smithy.api#documentation": "The access key to regenerate."
       }
     },
-    "com.azure.relay#ListWCFRelayKeys": {
+    "com.azure.relay#WCFRelaysListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListWCFRelayKeysRequest"
+        "target": "com.azure.relay#WCFRelaysListKeysRequest"
       },
       "output": {
         "target": "com.azure.relay#AccessKeys"
@@ -175,7 +261,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#ListWCFRelayKeysRequest": {
+    "com.azure.relay#WCFRelaysListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -223,10 +309,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeleteWCFRelayAuthorizationRule": {
+    "com.azure.relay#WCFRelaysDeleteAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeleteWCFRelayAuthorizationRuleRequest"
+        "target": "com.azure.relay#WCFRelaysDeleteAuthorizationRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -242,7 +328,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeleteWCFRelayAuthorizationRuleRequest": {
+    "com.azure.relay#WCFRelaysDeleteAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -563,13 +649,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#GetWCFRelayAuthorizationRule": {
+    "com.azure.relay#WCFRelaysGetAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetWCFRelayAuthorizationRuleRequest"
+        "target": "com.azure.relay#WCFRelaysGetAuthorizationRuleRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetWCFRelayAuthorizationRuleResponse"
+        "target": "com.azure.relay#WCFRelaysGetAuthorizationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -582,7 +668,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetWCFRelayAuthorizationRuleResponse": {
+    "com.azure.relay#WCFRelaysGetAuthorizationRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -626,7 +712,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetWCFRelayAuthorizationRuleRequest": {
+    "com.azure.relay#WCFRelaysGetAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -674,10 +760,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListWCFRelayAuthorizationRules": {
+    "com.azure.relay#WCFRelaysListAuthorizationRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListWCFRelayAuthorizationRulesRequest"
+        "target": "com.azure.relay#WCFRelaysListAuthorizationRulesRequest"
       },
       "output": {
         "target": "com.azure.relay#AuthorizationRuleListResult"
@@ -687,10 +773,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Authorization rules for a WCF relay.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relay#AuthorizationRuleListResult": {
@@ -767,7 +860,7 @@
         "smithy.api#documentation": "Single item in a List or Get AuthorizationRule operation"
       }
     },
-    "com.azure.relay#ListWCFRelayAuthorizationRulesRequest": {
+    "com.azure.relay#WCFRelaysListAuthorizationRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -801,16 +894,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The relay name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeleteWCFRelay": {
+    "com.azure.relay#WCFRelaysDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeleteWCFRelayRequest"
+        "target": "com.azure.relay#WCFRelaysDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -826,7 +925,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeleteWCFRelayRequest": {
+    "com.azure.relay#WCFRelaysDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1083,13 +1182,13 @@
         "smithy.api#documentation": "Properties of the WCF relay."
       }
     },
-    "com.azure.relay#GetWCFRelay": {
+    "com.azure.relay#WCFRelaysGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetWCFRelayRequest"
+        "target": "com.azure.relay#WCFRelaysGetRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetWCFRelayResponse"
+        "target": "com.azure.relay#WCFRelaysGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1102,7 +1201,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetWCFRelayResponse": {
+    "com.azure.relay#WCFRelaysGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1146,7 +1245,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetWCFRelayRequest": {
+    "com.azure.relay#WCFRelaysGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1186,10 +1285,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListWCFRelayByNamespace": {
+    "com.azure.relay#WCFRelaysListByNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListWCFRelayByNamespaceRequest"
+        "target": "com.azure.relay#WCFRelaysListByNamespaceRequest"
       },
       "output": {
         "target": "com.azure.relay#WcfRelaysListResult"
@@ -1199,10 +1298,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the WCF relays within the namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relay#WcfRelaysListResult": {
@@ -1279,7 +1385,7 @@
         "smithy.api#documentation": "Description of the WCF relay resource."
       }
     },
-    "com.azure.relay#ListWCFRelayByNamespaceRequest": {
+    "com.azure.relay#WCFRelaysListByNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1305,19 +1411,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The namespace name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#GetPrivateLinkResource": {
+    "com.azure.relay#PrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetPrivateLinkResourceRequest"
+        "target": "com.azure.relay#PrivateLinkResourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetPrivateLinkResourceResponse"
+        "target": "com.azure.relay#PrivateLinkResourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1330,7 +1442,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetPrivateLinkResourceResponse": {
+    "com.azure.relay#PrivateLinkResourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1412,7 +1524,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.relay#GetPrivateLinkResourceRequest": {
+    "com.azure.relay#PrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1452,10 +1564,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListPrivateLinkResources": {
+    "com.azure.relay#PrivateLinkResourcesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListPrivateLinkResourcesRequest"
+        "target": "com.azure.relay#PrivateLinkResourcesListRequest"
       },
       "output": {
         "target": "com.azure.relay#PrivateLinkResourcesListResult"
@@ -1539,7 +1651,7 @@
         "smithy.api#documentation": "A resource that supports private link capabilities."
       }
     },
-    "com.azure.relay#ListPrivateLinkResourcesRequest": {
+    "com.azure.relay#PrivateLinkResourcesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1571,13 +1683,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeletePrivateEndpointConnection": {
+    "com.azure.relay#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.relay#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.relay#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.relay#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1590,7 +1702,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.relay#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1612,7 +1724,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.relay#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1897,13 +2009,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#GetPrivateEndpointConnection": {
+    "com.azure.relay#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.relay#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.relay#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1916,7 +2028,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetPrivateEndpointConnectionResponse": {
+    "com.azure.relay#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1960,7 +2072,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetPrivateEndpointConnectionRequest": {
+    "com.azure.relay#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2000,10 +2112,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListPrivateEndpointConnections": {
+    "com.azure.relay#PrivateEndpointConnectionsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListPrivateEndpointConnectionsRequest"
+        "target": "com.azure.relay#PrivateEndpointConnectionsListRequest"
       },
       "output": {
         "target": "com.azure.relay#PrivateEndpointConnectionListResult"
@@ -2013,10 +2125,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the available PrivateEndpointConnections within a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relay#PrivateEndpointConnectionListResult": {
@@ -2093,7 +2212,7 @@
         "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
       }
     },
-    "com.azure.relay#ListPrivateEndpointConnectionsRequest": {
+    "com.azure.relay#PrivateEndpointConnectionsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2118,6 +2237,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The namespace name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2341,13 +2466,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#GetNamespaceNetworkRuleSet": {
+    "com.azure.relay#NamespacesGetNetworkRuleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetNamespaceNetworkRuleSetRequest"
+        "target": "com.azure.relay#NamespacesGetNetworkRuleSetRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetNamespaceNetworkRuleSetResponse"
+        "target": "com.azure.relay#NamespacesGetNetworkRuleSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2360,7 +2485,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetNamespaceNetworkRuleSetResponse": {
+    "com.azure.relay#NamespacesGetNetworkRuleSetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2398,7 +2523,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetNamespaceNetworkRuleSetRequest": {
+    "com.azure.relay#NamespacesGetNetworkRuleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2430,10 +2555,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#RegenerateHybridConnectionKeys": {
+    "com.azure.relay#HybridConnectionsRegenerateKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#RegenerateHybridConnectionKeysRequest"
+        "target": "com.azure.relay#HybridConnectionsRegenerateKeysRequest"
       },
       "output": {
         "target": "com.azure.relay#AccessKeys"
@@ -2449,7 +2574,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#RegenerateHybridConnectionKeysRequest": {
+    "com.azure.relay#HybridConnectionsRegenerateKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2510,10 +2635,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListHybridConnectionKeys": {
+    "com.azure.relay#HybridConnectionsListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListHybridConnectionKeysRequest"
+        "target": "com.azure.relay#HybridConnectionsListKeysRequest"
       },
       "output": {
         "target": "com.azure.relay#AccessKeys"
@@ -2529,7 +2654,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#ListHybridConnectionKeysRequest": {
+    "com.azure.relay#HybridConnectionsListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2577,10 +2702,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeleteHybridConnectionAuthorizationRule": {
+    "com.azure.relay#HybridConnectionsDeleteAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeleteHybridConnectionAuthorizationRuleRequest"
+        "target": "com.azure.relay#HybridConnectionsDeleteAuthorizationRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2596,7 +2721,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeleteHybridConnectionAuthorizationRuleRequest": {
+    "com.azure.relay#HybridConnectionsDeleteAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2761,13 +2886,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#GetHybridConnectionAuthorizationRule": {
+    "com.azure.relay#HybridConnectionsGetAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetHybridConnectionAuthorizationRuleRequest"
+        "target": "com.azure.relay#HybridConnectionsGetAuthorizationRuleRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetHybridConnectionAuthorizationRuleResponse"
+        "target": "com.azure.relay#HybridConnectionsGetAuthorizationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2780,7 +2905,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetHybridConnectionAuthorizationRuleResponse": {
+    "com.azure.relay#HybridConnectionsGetAuthorizationRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2824,7 +2949,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetHybridConnectionAuthorizationRuleRequest": {
+    "com.azure.relay#HybridConnectionsGetAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2872,10 +2997,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListHybridConnectionAuthorizationRules": {
+    "com.azure.relay#HybridConnectionsListAuthorizationRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListHybridConnectionAuthorizationRulesRequest"
+        "target": "com.azure.relay#HybridConnectionsListAuthorizationRulesRequest"
       },
       "output": {
         "target": "com.azure.relay#AuthorizationRuleListResult"
@@ -2885,13 +3010,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Authorization rules for a hybrid connection.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relay#ListHybridConnectionAuthorizationRulesRequest": {
+    "com.azure.relay#HybridConnectionsListAuthorizationRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2925,16 +3057,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The hybrid connection name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeleteHybridConnection": {
+    "com.azure.relay#HybridConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeleteHybridConnectionRequest"
+        "target": "com.azure.relay#HybridConnectionsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2950,7 +3088,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeleteHybridConnectionRequest": {
+    "com.azure.relay#HybridConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3157,13 +3295,13 @@
         "smithy.api#documentation": "Properties of the HybridConnection."
       }
     },
-    "com.azure.relay#GetHybridConnection": {
+    "com.azure.relay#HybridConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetHybridConnectionRequest"
+        "target": "com.azure.relay#HybridConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetHybridConnectionResponse"
+        "target": "com.azure.relay#HybridConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3176,7 +3314,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetHybridConnectionResponse": {
+    "com.azure.relay#HybridConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3220,7 +3358,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetHybridConnectionRequest": {
+    "com.azure.relay#HybridConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3260,10 +3398,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListHybridConnectionByNamespace": {
+    "com.azure.relay#HybridConnectionsListByNamespace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListHybridConnectionByNamespaceRequest"
+        "target": "com.azure.relay#HybridConnectionsListByNamespaceRequest"
       },
       "output": {
         "target": "com.azure.relay#HybridConnectionListResult"
@@ -3273,10 +3411,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the hybrid connection within the namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relay#HybridConnectionListResult": {
@@ -3353,7 +3498,7 @@
         "smithy.api#documentation": "Description of hybrid connection resource."
       }
     },
-    "com.azure.relay#ListHybridConnectionByNamespaceRequest": {
+    "com.azure.relay#HybridConnectionsListByNamespaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3379,16 +3524,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The namespace name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#RegenerateNamespaceKeys": {
+    "com.azure.relay#NamespacesRegenerateKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#RegenerateNamespaceKeysRequest"
+        "target": "com.azure.relay#NamespacesRegenerateKeysRequest"
       },
       "output": {
         "target": "com.azure.relay#AccessKeys"
@@ -3404,7 +3555,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#RegenerateNamespaceKeysRequest": {
+    "com.azure.relay#NamespacesRegenerateKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3457,10 +3608,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListNamespaceKeys": {
+    "com.azure.relay#NamespacesListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListNamespaceKeysRequest"
+        "target": "com.azure.relay#NamespacesListKeysRequest"
       },
       "output": {
         "target": "com.azure.relay#AccessKeys"
@@ -3476,7 +3627,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#ListNamespaceKeysRequest": {
+    "com.azure.relay#NamespacesListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3516,10 +3667,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeleteNamespaceAuthorizationRule": {
+    "com.azure.relay#NamespacesDeleteAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeleteNamespaceAuthorizationRuleRequest"
+        "target": "com.azure.relay#NamespacesDeleteAuthorizationRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3535,7 +3686,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeleteNamespaceAuthorizationRuleRequest": {
+    "com.azure.relay#NamespacesDeleteAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3684,13 +3835,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#GetNamespaceAuthorizationRule": {
+    "com.azure.relay#NamespacesGetAuthorizationRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetNamespaceAuthorizationRuleRequest"
+        "target": "com.azure.relay#NamespacesGetAuthorizationRuleRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetNamespaceAuthorizationRuleResponse"
+        "target": "com.azure.relay#NamespacesGetAuthorizationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3703,7 +3854,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetNamespaceAuthorizationRuleResponse": {
+    "com.azure.relay#NamespacesGetAuthorizationRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3747,7 +3898,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetNamespaceAuthorizationRuleRequest": {
+    "com.azure.relay#NamespacesGetAuthorizationRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3787,10 +3938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListNamespaceAuthorizationRules": {
+    "com.azure.relay#NamespacesListAuthorizationRules": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListNamespaceAuthorizationRulesRequest"
+        "target": "com.azure.relay#NamespacesListAuthorizationRulesRequest"
       },
       "output": {
         "target": "com.azure.relay#AuthorizationRuleListResult"
@@ -3800,13 +3951,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Authorization rules for a namespace.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relay#ListNamespaceAuthorizationRulesRequest": {
+    "com.azure.relay#NamespacesListAuthorizationRulesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3832,19 +3990,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The namespace name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#DeleteNamespace": {
+    "com.azure.relay#NamespacesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#DeleteNamespaceRequest"
+        "target": "com.azure.relay#NamespacesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.relay#DeleteNamespaceResponse"
+        "target": "com.azure.relay#NamespacesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3857,7 +4021,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#DeleteNamespaceResponse": {
+    "com.azure.relay#NamespacesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -3879,7 +4043,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#DeleteNamespaceRequest": {
+    "com.azure.relay#NamespacesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3911,13 +4075,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#UpdateNamespace": {
+    "com.azure.relay#NamespacesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#UpdateNamespaceRequest"
+        "target": "com.azure.relay#NamespacesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.relay#UpdateNamespaceResponse"
+        "target": "com.azure.relay#NamespacesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3930,7 +4094,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#UpdateNamespaceResponse": {
+    "com.azure.relay#NamespacesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3958,7 +4122,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.relay#UpdateNamespaceResponseTagsMap",
+          "target": "com.azure.relay#NamespacesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4153,7 +4317,7 @@
         "smithy.api#documentation": "List of private endpoint connections."
       }
     },
-    "com.azure.relay#UpdateNamespaceResponseTagsMap": {
+    "com.azure.relay#NamespacesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4165,7 +4329,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.relay#UpdateNamespaceRequest": {
+    "com.azure.relay#NamespacesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4193,7 +4357,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.relay#UpdateNamespaceRequestTagsMap",
+          "target": "com.azure.relay#NamespacesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4290,7 +4454,7 @@
         "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
       }
     },
-    "com.azure.relay#UpdateNamespaceRequestTagsMap": {
+    "com.azure.relay#NamespacesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4473,13 +4637,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.relay#GetNamespace": {
+    "com.azure.relay#NamespacesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#GetNamespaceRequest"
+        "target": "com.azure.relay#NamespacesGetRequest"
       },
       "output": {
-        "target": "com.azure.relay#GetNamespaceResponse"
+        "target": "com.azure.relay#NamespacesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4492,7 +4656,7 @@
         "com.distilled.openapi#apiVersion": "2026-01-01"
       }
     },
-    "com.azure.relay#GetNamespaceResponse": {
+    "com.azure.relay#NamespacesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4520,7 +4684,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.relay#GetNamespaceResponseTagsMap",
+          "target": "com.azure.relay#NamespacesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4549,7 +4713,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#GetNamespaceResponseTagsMap": {
+    "com.azure.relay#NamespacesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4561,7 +4725,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.relay#GetNamespaceRequest": {
+    "com.azure.relay#NamespacesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4593,10 +4757,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListNamespaceByResourceGroup": {
+    "com.azure.relay#NamespacesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListNamespaceByResourceGroupRequest"
+        "target": "com.azure.relay#NamespacesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.relay#RelayNamespaceListResult"
@@ -4606,10 +4770,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available namespaces within the ResourceGroup.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.relay#RelayNamespaceListResult": {
@@ -4711,7 +4882,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.relay#ListNamespaceByResourceGroupRequest": {
+    "com.azure.relay#NamespacesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4729,16 +4900,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListNamespaces": {
+    "com.azure.relay#NamespacesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#ListNamespacesRequest"
+        "target": "com.azure.relay#NamespacesListRequest"
       },
       "output": {
         "target": "com.azure.relay#RelayNamespaceListResult"
@@ -4748,13 +4925,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available namespaces within the subscription regardless of the resourceGroups.",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relay#ListNamespacesRequest": {
+    "com.azure.relay#NamespacesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4764,16 +4948,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#CheckNamespaceNameAvailability": {
+    "com.azure.relay#NamespacesCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.relay#CheckNamespaceNameAvailabilityRequest"
+        "target": "com.azure.relay#NamespacesCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.relay#CheckNameAvailabilityResult"
@@ -4859,7 +5049,7 @@
         "smithy.api#documentation": "Specifies the reason for the unavailability of the service."
       }
     },
-    "com.azure.relay#CheckNamespaceNameAvailabilityRequest": {
+    "com.azure.relay#NamespacesCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4882,30 +5072,37 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.relay#ListOperations": {
+    "com.azure.relay#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.relay#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.relay#ListOperationsResponse"
+        "target": "com.azure.relay#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.Relay/operations",
           "code": 200,
-          "apiVersion": "2026-01-01"
+          "apiVersion": "2026-01-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-01-01"
+        "com.distilled.openapi#apiVersion": "2026-01-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.relay#ListOperationsResponse": {
+    "com.azure.relay#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.relay#ListOperationsResponseValueList",
+          "target": "com.azure.relay#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -4921,7 +5118,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.relay#ListOperationsResponseValueList": {
+    "com.azure.relay#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.relay#Operation"
@@ -5040,135 +5237,149 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.relay#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.relay#Relay": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.relay#RegenerateWCFRelayKeys"
+          "target": "com.azure.relay#WCFRelaysRegenerateKeys"
         },
         {
-          "target": "com.azure.relay#ListWCFRelayKeys"
+          "target": "com.azure.relay#WCFRelaysListKeys"
         },
         {
-          "target": "com.azure.relay#DeleteWCFRelayAuthorizationRule"
+          "target": "com.azure.relay#WCFRelaysDeleteAuthorizationRule"
         },
         {
           "target": "com.azure.relay#WCFRelaysCreateOrUpdateAuthorizationRule"
         },
         {
-          "target": "com.azure.relay#GetWCFRelayAuthorizationRule"
+          "target": "com.azure.relay#WCFRelaysGetAuthorizationRule"
         },
         {
-          "target": "com.azure.relay#ListWCFRelayAuthorizationRules"
+          "target": "com.azure.relay#WCFRelaysListAuthorizationRules"
         },
         {
-          "target": "com.azure.relay#DeleteWCFRelay"
+          "target": "com.azure.relay#WCFRelaysDelete"
         },
         {
           "target": "com.azure.relay#WCFRelaysCreateOrUpdate"
         },
         {
-          "target": "com.azure.relay#GetWCFRelay"
+          "target": "com.azure.relay#WCFRelaysGet"
         },
         {
-          "target": "com.azure.relay#ListWCFRelayByNamespace"
+          "target": "com.azure.relay#WCFRelaysListByNamespace"
         },
         {
-          "target": "com.azure.relay#GetPrivateLinkResource"
+          "target": "com.azure.relay#PrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.relay#ListPrivateLinkResources"
+          "target": "com.azure.relay#PrivateLinkResourcesList"
         },
         {
-          "target": "com.azure.relay#DeletePrivateEndpointConnection"
+          "target": "com.azure.relay#PrivateEndpointConnectionsDelete"
         },
         {
           "target": "com.azure.relay#PrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.relay#GetPrivateEndpointConnection"
+          "target": "com.azure.relay#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.relay#ListPrivateEndpointConnections"
+          "target": "com.azure.relay#PrivateEndpointConnectionsList"
         },
         {
           "target": "com.azure.relay#NamespacesCreateOrUpdateNetworkRuleSet"
         },
         {
-          "target": "com.azure.relay#GetNamespaceNetworkRuleSet"
+          "target": "com.azure.relay#NamespacesGetNetworkRuleSet"
         },
         {
-          "target": "com.azure.relay#RegenerateHybridConnectionKeys"
+          "target": "com.azure.relay#HybridConnectionsRegenerateKeys"
         },
         {
-          "target": "com.azure.relay#ListHybridConnectionKeys"
+          "target": "com.azure.relay#HybridConnectionsListKeys"
         },
         {
-          "target": "com.azure.relay#DeleteHybridConnectionAuthorizationRule"
+          "target": "com.azure.relay#HybridConnectionsDeleteAuthorizationRule"
         },
         {
           "target": "com.azure.relay#HybridConnectionsCreateOrUpdateAuthorizationRule"
         },
         {
-          "target": "com.azure.relay#GetHybridConnectionAuthorizationRule"
+          "target": "com.azure.relay#HybridConnectionsGetAuthorizationRule"
         },
         {
-          "target": "com.azure.relay#ListHybridConnectionAuthorizationRules"
+          "target": "com.azure.relay#HybridConnectionsListAuthorizationRules"
         },
         {
-          "target": "com.azure.relay#DeleteHybridConnection"
+          "target": "com.azure.relay#HybridConnectionsDelete"
         },
         {
           "target": "com.azure.relay#HybridConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.relay#GetHybridConnection"
+          "target": "com.azure.relay#HybridConnectionsGet"
         },
         {
-          "target": "com.azure.relay#ListHybridConnectionByNamespace"
+          "target": "com.azure.relay#HybridConnectionsListByNamespace"
         },
         {
-          "target": "com.azure.relay#RegenerateNamespaceKeys"
+          "target": "com.azure.relay#NamespacesRegenerateKeys"
         },
         {
-          "target": "com.azure.relay#ListNamespaceKeys"
+          "target": "com.azure.relay#NamespacesListKeys"
         },
         {
-          "target": "com.azure.relay#DeleteNamespaceAuthorizationRule"
+          "target": "com.azure.relay#NamespacesDeleteAuthorizationRule"
         },
         {
           "target": "com.azure.relay#NamespacesCreateOrUpdateAuthorizationRule"
         },
         {
-          "target": "com.azure.relay#GetNamespaceAuthorizationRule"
+          "target": "com.azure.relay#NamespacesGetAuthorizationRule"
         },
         {
-          "target": "com.azure.relay#ListNamespaceAuthorizationRules"
+          "target": "com.azure.relay#NamespacesListAuthorizationRules"
         },
         {
-          "target": "com.azure.relay#DeleteNamespace"
+          "target": "com.azure.relay#NamespacesDelete"
         },
         {
-          "target": "com.azure.relay#UpdateNamespace"
+          "target": "com.azure.relay#NamespacesUpdate"
         },
         {
           "target": "com.azure.relay#NamespacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.relay#GetNamespace"
+          "target": "com.azure.relay#NamespacesGet"
         },
         {
-          "target": "com.azure.relay#ListNamespaceByResourceGroup"
+          "target": "com.azure.relay#NamespacesListByResourceGroup"
         },
         {
-          "target": "com.azure.relay#ListNamespaces"
+          "target": "com.azure.relay#NamespacesList"
         },
         {
-          "target": "com.azure.relay#CheckNamespaceNameAvailability"
+          "target": "com.azure.relay#NamespacesCheckNameAvailability"
         },
         {
-          "target": "com.azure.relay#ListOperations"
+          "target": "com.azure.relay#OperationsList"
         }
       ],
       "traits": {

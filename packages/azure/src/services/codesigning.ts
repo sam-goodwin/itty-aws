@@ -314,6 +314,8 @@ export interface ListCertificateProfileByCodeSigningAccountRequest {
   resourceGroupName: string;
   /** Artifact Signing account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Certificate profile resource. */
 export interface CertificateProfile {
@@ -342,6 +344,8 @@ export interface ListCodeSigningAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CodeSigningAccountTagsMap = { [key: string]: string | undefined };
@@ -374,8 +378,13 @@ export interface CodeSigningAccountListResult {
 export interface ListCodeSigningAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -408,7 +417,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -586,63 +595,91 @@ export const GetCodeSigningAccount: API.OperationMethod<
 
 export type ListCertificateProfileByCodeSigningAccountError = AzureOpError;
 /** List certificate profiles under an artifact signing account. */
-export const ListCertificateProfileByCodeSigningAccount: API.OperationMethod<
+export const ListCertificateProfileByCodeSigningAccount: API.PaginatedOperationMethod<
   ListCertificateProfileByCodeSigningAccountRequest,
   CertificateProfileListResult,
   ListCertificateProfileByCodeSigningAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CertificateProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>,
   output: __S(130, __c16, 2) as any as S.Schema<CertificateProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCodeSigningAccountByResourceGroupError = AzureOpError;
 /** Lists artifact signing accounts within a resource group. */
-export const ListCodeSigningAccountByResourceGroup: API.OperationMethod<
+export const ListCodeSigningAccountByResourceGroup: API.PaginatedOperationMethod<
   ListCodeSigningAccountByResourceGroupRequest,
   CodeSigningAccountListResult,
   ListCodeSigningAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CodeSigningAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>,
   output: __S(145, __c18, 1) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCodeSigningAccountBySubscriptionError = AzureOpError;
 /** Lists artifact signing accounts within a subscription. */
-export const ListCodeSigningAccountBySubscription: API.OperationMethod<
+export const ListCodeSigningAccountBySubscription: API.PaginatedOperationMethod<
   ListCodeSigningAccountBySubscriptionRequest,
   CodeSigningAccountListResult,
   ListCodeSigningAccountBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CodeSigningAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>,
   output: __S(145, __c18, 1) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(36, __c4, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RevokeCertificateProfileCertificateError = AzureOpError;
 /** Revoke a certificate under a certificate profile. */
@@ -810,12 +847,15 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CodeSigning/operations",
             code: 200,
             apiVersion: "2025-10-13",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -843,7 +883,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35, __c4, 3)),
+          value: __S(35, __c4, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1113,12 +1153,14 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles",
             code: 200,
             apiVersion: "2025-10-13",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCertificateProfileByCodeSigningAccountRequest" });
@@ -1140,12 +1182,14 @@ function __c17(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts",
             code: 200,
             apiVersion: "2025-10-13",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCodeSigningAccountByResourceGroupRequest" });
@@ -1170,12 +1214,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts",
             code: 200,
             apiVersion: "2025-10-13",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCodeSigningAccountBySubscriptionRequest" });

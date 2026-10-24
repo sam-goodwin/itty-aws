@@ -341,13 +341,15 @@ export interface ListRoleAssignmentForScopeRequest {
   scope: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Role assignment list. */
 export type RoleAssignmentListResultValueList = Array<RoleAssignment>;
 /** Role assignment list operation result. */
 export interface RoleAssignmentListResult {
   /** Role assignment list. */
-  value?: RoleAssignmentListResultValueList;
+  value: RoleAssignmentListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
@@ -358,13 +360,15 @@ export interface ListRoleDefinitionsRequest {
   scope: string;
   /** The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Role definition list. */
 export type RoleDefinitionListResultValueList = Array<RoleDefinition>;
 /** Role definition list operation result. */
 export interface RoleDefinitionListResult {
   /** Role definition list. */
-  value?: RoleDefinitionListResultValueList;
+  value: RoleDefinitionListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
@@ -715,33 +719,47 @@ export const GetSettings: API.OperationMethod<
 
 export type ListRoleAssignmentForScopeError = AzureOpError;
 /** Gets role assignments for a scope. */
-export const ListRoleAssignmentForScope: API.OperationMethod<
+export const ListRoleAssignmentForScope: API.PaginatedOperationMethod<
   ListRoleAssignmentForScopeRequest,
   RoleAssignmentListResult,
   ListRoleAssignmentForScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListRoleAssignmentForScopeRequest>,
   output: __S(82, __c10, 2) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleDefinitionsError = AzureOpError;
 /** Get all role definitions that are applicable at scope and above. */
-export const ListRoleDefinitions: API.OperationMethod<
+export const ListRoleDefinitions: API.PaginatedOperationMethod<
   ListRoleDefinitionsRequest,
   RoleDefinitionListResult,
   ListRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c11, 0) as any as S.Schema<ListRoleDefinitionsRequest>,
   output: __S(90, __c11, 2) as any as S.Schema<RoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PreFullBackupError = AzureOpError;
 /** Pre-backup operation for checking whether the customer can perform a full backup operation. */
@@ -1070,6 +1088,7 @@ function __c10(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1078,6 +1097,7 @@ function __c10(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1087,7 +1107,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(81, __c10, 1)),
+          value: __S(81, __c10, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentListResult" });
@@ -1101,6 +1121,7 @@ function __c11(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1109,6 +1130,7 @@ function __c11(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1118,7 +1140,7 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(89, __c11, 1)),
+          value: __S(89, __c11, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleDefinitionListResult" });

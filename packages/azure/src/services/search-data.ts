@@ -2031,6 +2031,8 @@ export interface GetIndexStatsSummaryRequest {
   searchType?: GetIndexStatsSummaryRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Statistics for a given index. Statistics are collected periodically and are not guaranteed to always be up-to-date. */
 export interface IndexStatisticsSummary {
@@ -2739,6 +2741,8 @@ export interface ListAliasesRequest {
   searchType?: ListAliasesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The aliases in the Search service. */
 export type ListAliasesResultValueList = Array<SearchAlias>;
@@ -2764,6 +2768,8 @@ export interface ListDataSourcesRequest {
   searchType?: ListDataSourcesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The datasources in the Search service. */
 export type ListDataSourcesResultValueList = Array<SearchIndexerDataSource>;
@@ -2827,6 +2833,8 @@ export interface ListIndexersRequest {
   searchType?: ListIndexersRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The indexers in the Search service. */
 export type ListIndexersResultValueList = Array<SearchIndexer>;
@@ -2849,6 +2857,8 @@ export interface ListIndexesRequest {
   searchType?: ListIndexesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The indexes in the Search service. */
 export type ListIndexesResultValueList = Array<SearchIndex>;
@@ -2874,6 +2884,8 @@ export interface ListIndexWithSelectedPropertiesRequest {
   searchType?: ListIndexWithSelectedPropertiesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The fields of the index. */
 export type SearchIndexResponseFieldsList = Array<SearchField>;
@@ -2953,6 +2965,8 @@ export interface ListKnowledgeBasesRequest {
   searchType?: ListKnowledgeBasesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The knowledge bases in the service. */
 export type ListKnowledgeBasesResultValueList = Array<KnowledgeBase>;
@@ -2979,6 +2993,8 @@ export interface ListKnowledgeSourceFilesRequest {
   searchType?: ListKnowledgeSourceFilesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Custom key/value metadata stored with the file. Returned but not searchable or filterable. */
 export type KnowledgeSourceFileMetadataMap = { [key: string]: string | undefined };
@@ -3037,6 +3053,8 @@ export interface ListKnowledgeSourcesRequest {
   searchType?: ListKnowledgeSourcesRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The knowledge sources in the service. */
 export type ListKnowledgeSourcesResultValueList = Array<KnowledgeSource>;
@@ -3062,6 +3080,8 @@ export interface ListSkillsetsRequest {
   searchType?: ListSkillsetsRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The skillsets defined in the Search service. */
 export type ListSkillsetsResultValueList = Array<SearchIndexerSkillset>;
@@ -3087,6 +3107,8 @@ export interface ListSynonymMapsRequest {
   searchType?: ListSynonymMapsRequestSearchType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The synonym maps in the Search service. */
 export type ListSynonymMapsResultValueList = Array<SynonymMap>;
@@ -3714,18 +3736,25 @@ export const GetIndexStatistics: API.OperationMethod<
 
 export type GetIndexStatsSummaryError = AzureOpError;
 /** Retrieves a summary of statistics for all indexes in the search service. */
-export const GetIndexStatsSummary: API.OperationMethod<
+export const GetIndexStatsSummary: API.PaginatedOperationMethod<
   GetIndexStatsSummaryRequest,
   ListIndexStatsSummary,
   GetIndexStatsSummaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IndexStatisticsSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c38, 0) as any as S.Schema<GetIndexStatsSummaryRequest>,
   output: __S(1219, __c38, 3) as any as S.Schema<ListIndexStatsSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetKnowledgeBaseError = AzureOpError;
 /** Retrieves a knowledge base definition. */
@@ -3939,33 +3968,47 @@ export const KnowledgeSourcesCreateOrUpdate: API.OperationMethod<
 
 export type ListAliasesError = AzureOpError;
 /** Lists all aliases available for a search service. */
-export const ListAliases: API.OperationMethod<
+export const ListAliases: API.PaginatedOperationMethod<
   ListAliasesRequest,
   ListAliasesResult,
   ListAliasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SearchAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1824, __c57, 0) as any as S.Schema<ListAliasesRequest>,
   output: __S(1826, __c57, 2) as any as S.Schema<ListAliasesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataSourcesError = AzureOpError;
 /** Lists all datasources available for a search service. */
-export const ListDataSources: API.OperationMethod<
+export const ListDataSources: API.PaginatedOperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResult,
   ListDataSourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SearchIndexerDataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1856, __c58, 0) as any as S.Schema<ListDataSourcesRequest>,
   output: __S(1858, __c58, 2) as any as S.Schema<ListDataSourcesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDocumentsError = AzureOpError;
 /** Sends a batch of document write actions to the index. */
@@ -3984,123 +4027,179 @@ export const ListDocuments: API.OperationMethod<
 
 export type ListIndexersError = AzureOpError;
 /** Lists all indexers available for a search service. */
-export const ListIndexers: API.OperationMethod<
+export const ListIndexers: API.PaginatedOperationMethod<
   ListIndexersRequest,
   ListIndexersResult,
   ListIndexersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SearchIndexer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1920, __c60, 0) as any as S.Schema<ListIndexersRequest>,
   output: __S(1922, __c60, 2) as any as S.Schema<ListIndexersResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIndexesError = AzureOpError;
 /** Lists all indexes available for a search service. */
-export const ListIndexes: API.OperationMethod<
+export const ListIndexes: API.PaginatedOperationMethod<
   ListIndexesRequest,
   ListIndexesResult,
   ListIndexesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SearchIndex
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2048, __c64, 0) as any as S.Schema<ListIndexesRequest>,
   output: __S(2050, __c64, 2) as any as S.Schema<ListIndexesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIndexWithSelectedPropertiesError = AzureOpError;
 /** Lists all indexes available for a search service. */
-export const ListIndexWithSelectedProperties: API.OperationMethod<
+export const ListIndexWithSelectedProperties: API.PaginatedOperationMethod<
   ListIndexWithSelectedPropertiesRequest,
   ListIndexesSelectedResult,
   ListIndexWithSelectedPropertiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SearchIndexResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2080, __c65, 0) as any as S.Schema<ListIndexWithSelectedPropertiesRequest>,
   output: __S(2083, __c65, 3) as any as S.Schema<ListIndexesSelectedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKnowledgeBasesError = AzureOpError;
 /** Lists all knowledge bases available for a search service. */
-export const ListKnowledgeBases: API.OperationMethod<
+export const ListKnowledgeBases: API.PaginatedOperationMethod<
   ListKnowledgeBasesRequest,
   ListKnowledgeBasesResult,
   ListKnowledgeBasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KnowledgeBase
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2112, __c66, 0) as any as S.Schema<ListKnowledgeBasesRequest>,
   output: __S(2114, __c66, 2) as any as S.Schema<ListKnowledgeBasesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKnowledgeSourceFilesError = AzureOpError;
 /** Lists all files in a File knowledge source. */
-export const ListKnowledgeSourceFiles: API.OperationMethod<
+export const ListKnowledgeSourceFiles: API.PaginatedOperationMethod<
   ListKnowledgeSourceFilesRequest,
   ListKnowledgeSourceFilesResult,
   ListKnowledgeSourceFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KnowledgeSourceFile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2144, __c67, 0) as any as S.Schema<ListKnowledgeSourceFilesRequest>,
   output: __S(2146, __c67, 2) as any as S.Schema<ListKnowledgeSourceFilesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKnowledgeSourcesError = AzureOpError;
 /** Lists all knowledge sources available for a search service. */
-export const ListKnowledgeSources: API.OperationMethod<
+export const ListKnowledgeSources: API.PaginatedOperationMethod<
   ListKnowledgeSourcesRequest,
   ListKnowledgeSourcesResult,
   ListKnowledgeSourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KnowledgeSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2208, __c69, 0) as any as S.Schema<ListKnowledgeSourcesRequest>,
   output: __S(2210, __c69, 2) as any as S.Schema<ListKnowledgeSourcesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkillsetsError = AzureOpError;
 /** List all skillsets in a search service. */
-export const ListSkillsets: API.OperationMethod<
+export const ListSkillsets: API.PaginatedOperationMethod<
   ListSkillsetsRequest,
   ListSkillsetsResult,
   ListSkillsetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SearchIndexerSkillset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2240, __c70, 0) as any as S.Schema<ListSkillsetsRequest>,
   output: __S(2242, __c70, 2) as any as S.Schema<ListSkillsetsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSynonymMapsError = AzureOpError;
 /** Lists all synonym maps available for a search service. */
-export const ListSynonymMaps: API.OperationMethod<
+export const ListSynonymMaps: API.PaginatedOperationMethod<
   ListSynonymMapsRequest,
   ListSynonymMapsResult,
   ListSynonymMapsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SynonymMap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2272, __c71, 0) as any as S.Schema<ListSynonymMapsRequest>,
   output: __S(2274, __c71, 2) as any as S.Schema<ListSynonymMapsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PostDocumentsAutocompleteError = AzureOpError;
 /** Autocompletes incomplete query terms based on input text and matching terms in the index. */
@@ -5533,6 +5632,7 @@ function __c38(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5541,6 +5641,7 @@ function __c38(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6307,6 +6408,7 @@ function __c57(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6315,6 +6417,7 @@ function __c57(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6341,6 +6444,7 @@ function __c58(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6349,6 +6453,7 @@ function __c58(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6426,6 +6531,7 @@ function __c60(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6434,6 +6540,7 @@ function __c60(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6531,6 +6638,7 @@ function __c64(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6539,6 +6647,7 @@ function __c64(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6565,6 +6674,7 @@ function __c65(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6573,6 +6683,7 @@ function __c65(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6622,6 +6733,7 @@ function __c66(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6630,6 +6742,7 @@ function __c66(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6657,6 +6770,7 @@ function __c67(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6665,6 +6779,7 @@ function __c67(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6711,6 +6826,7 @@ function __c69(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6719,6 +6835,7 @@ function __c69(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6745,6 +6862,7 @@ function __c70(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6753,6 +6871,7 @@ function __c70(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),
@@ -6779,6 +6898,7 @@ function __c71(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           searchType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6787,6 +6907,7 @@ function __c71(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-10-01",
+            nextLink: "nextLink",
             audience: "https://search.azure.com/.default",
           }),
         ),

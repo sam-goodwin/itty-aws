@@ -633,6 +633,8 @@ export interface ListDigitalTwinByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group that contains the DigitalTwinsInstance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type DigitalTwinsDescriptionTagsMap = { [key: string]: string | undefined };
@@ -662,11 +664,13 @@ export interface DigitalTwinsDescriptionListResult {
   /** The link used to get the next page of DigitalTwins description objects. */
   nextLink?: string | null;
   /** A list of DigitalTwins description objects. */
-  value?: DigitalTwinsDescriptionListResultValueList;
+  value: DigitalTwinsDescriptionListResultValueList;
 }
 export interface ListDigitalTwinsRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDigitalTwinsEndpointRequest {
   /** The subscription identifier. */
@@ -675,6 +679,8 @@ export interface ListDigitalTwinsEndpointRequest {
   resourceGroupName: string;
   /** The name of the DigitalTwinsInstance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** DigitalTwinsInstance endpoint resource. */
 export interface DigitalTwinsEndpointResource {
@@ -696,9 +702,12 @@ export interface DigitalTwinsEndpointResourceListResult {
   /** The link used to get the next page of DigitalTwinsInstance Endpoints. */
   nextLink?: string | null;
   /** A list of DigitalTwinsInstance Endpoints. */
-  value?: DigitalTwinsEndpointResourceListResultValueList;
+  value: DigitalTwinsEndpointResourceListResultValueList;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft DigitalTwins. */
@@ -732,7 +741,7 @@ export interface OperationListResult {
   /** The link used to get the next page of DigitalTwins description objects. */
   nextLink?: string | null;
   /** A list of DigitalTwins operations supported by the Microsoft.DigitalTwins resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
 }
 export interface ListPrivateEndpointConnectionsRequest {
   /** The subscription identifier. */
@@ -771,6 +780,8 @@ export interface ListTimeSeriesDatabaseConnectionsRequest {
   resourceGroupName: string;
   /** The name of the DigitalTwinsInstance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Describes a time series database connection resource. */
 export interface TimeSeriesDatabaseConnection {
@@ -792,7 +803,7 @@ export interface TimeSeriesDatabaseConnectionListResult {
   /** The link used to get the next page of results. */
   nextLink?: string | null;
   /** A list of time series database connection resources. */
-  value?: TimeSeriesDatabaseConnectionListResultValueList;
+  value: TimeSeriesDatabaseConnectionListResultValueList;
 }
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The subscription identifier. */
@@ -1086,63 +1097,91 @@ export const GetTimeSeriesDatabaseConnection: API.OperationMethod<
 
 export type ListDigitalTwinByResourceGroupError = AzureOpError;
 /** Get all the DigitalTwinsInstances in a resource group. */
-export const ListDigitalTwinByResourceGroup: API.OperationMethod<
+export const ListDigitalTwinByResourceGroup: API.PaginatedOperationMethod<
   ListDigitalTwinByResourceGroupRequest,
   DigitalTwinsDescriptionListResult,
   ListDigitalTwinByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DigitalTwinsDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListDigitalTwinByResourceGroupRequest>,
   output: __S(89, __c11, 1) as any as S.Schema<DigitalTwinsDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDigitalTwinsError = AzureOpError;
 /** Get all the DigitalTwinsInstances in a subscription. */
-export const ListDigitalTwins: API.OperationMethod<
+export const ListDigitalTwins: API.PaginatedOperationMethod<
   ListDigitalTwinsRequest,
   DigitalTwinsDescriptionListResult,
   ListDigitalTwinsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DigitalTwinsDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<ListDigitalTwinsRequest>,
   output: __S(89, __c11, 1) as any as S.Schema<DigitalTwinsDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDigitalTwinsEndpointError = AzureOpError;
 /** Get DigitalTwinsInstance Endpoints. */
-export const ListDigitalTwinsEndpoint: API.OperationMethod<
+export const ListDigitalTwinsEndpoint: API.PaginatedOperationMethod<
   ListDigitalTwinsEndpointRequest,
   DigitalTwinsEndpointResourceListResult,
   ListDigitalTwinsEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DigitalTwinsEndpointResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<ListDigitalTwinsEndpointRequest>,
   output: __S(106, __c13, 2) as any as S.Schema<DigitalTwinsEndpointResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available DigitalTwins service REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(117, __c14, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List private endpoint connection properties. */
@@ -1176,18 +1215,25 @@ export const ListPrivateLinkResources: API.OperationMethod<
 
 export type ListTimeSeriesDatabaseConnectionsError = AzureOpError;
 /** Get all existing time series database connections for this DigitalTwins instance. */
-export const ListTimeSeriesDatabaseConnections: API.OperationMethod<
+export const ListTimeSeriesDatabaseConnections: API.PaginatedOperationMethod<
   ListTimeSeriesDatabaseConnectionsRequest,
   TimeSeriesDatabaseConnectionListResult,
   ListTimeSeriesDatabaseConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TimeSeriesDatabaseConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<ListTimeSeriesDatabaseConnectionsRequest>,
   output: __S(138, __c17, 2) as any as S.Schema<TimeSeriesDatabaseConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PrivateEndpointConnectionsCreateOrUpdateError = AzureOpError;
 /** Update the status of a private endpoint connection with the given name. */
@@ -1466,12 +1512,14 @@ function __c10(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
             code: 200,
             apiVersion: "2023-01-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDigitalTwinByResourceGroupRequest" });
@@ -1485,7 +1533,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(88, __c11, 0)),
+          value: __S(88, __c11, 0),
         }),
       ).annotate({ identifier: "DigitalTwinsDescriptionListResult" });
   }
@@ -1496,12 +1544,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
             code: 200,
             apiVersion: "2023-01-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDigitalTwinsRequest" });
@@ -1515,12 +1565,14 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints",
             code: 200,
             apiVersion: "2023-01-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDigitalTwinsEndpointRequest" });
@@ -1530,7 +1582,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(105, __c13, 1)),
+          value: __S(105, __c13, 1),
         }),
       ).annotate({ identifier: "DigitalTwinsEndpointResourceListResult" });
   }
@@ -1539,12 +1591,15 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DigitalTwins/operations",
             code: 200,
             apiVersion: "2023-01-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1575,7 +1630,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(116, __c14, 4)),
+          value: __S(116, __c14, 4),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
@@ -1640,12 +1695,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections",
             code: 200,
             apiVersion: "2023-01-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTimeSeriesDatabaseConnectionsRequest" });
@@ -1655,7 +1712,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(137, __c17, 1)),
+          value: __S(137, __c17, 1),
         }),
       ).annotate({ identifier: "TimeSeriesDatabaseConnectionListResult" });
   }

@@ -1083,10 +1083,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists triggers.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#TriggerListResponse": {
@@ -1189,6 +1196,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2241,10 +2254,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/queryDataFlowDebugSessions",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Query all active data flow debug sessions.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#QueryDataFlowDebugSessionsResponse": {
@@ -2365,6 +2385,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2904,10 +2930,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists Private endpoint connections",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#PrivateEndpointConnectionListResponse": {
@@ -3009,6 +3042,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3928,10 +3967,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists pipelines.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#PipelineListResponse": {
@@ -4035,6 +4081,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4848,10 +4900,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks/{managedVirtualNetworkName}/managedPrivateEndpoints",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists managed private endpoints.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#ManagedPrivateEndpointListResponse": {
@@ -4962,6 +5021,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Managed virtual network name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5226,10 +5291,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/managedVirtualNetworks",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists managed Virtual Networks.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#ManagedVirtualNetworkListResponse": {
@@ -5332,6 +5404,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5753,10 +5831,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/linkedservices",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists linked services.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#LinkedServiceListResponse": {
@@ -5859,6 +5944,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8522,10 +8613,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists integration runtimes.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#IntegrationRuntimeListResponse": {
@@ -8628,6 +8726,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9024,10 +9128,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/globalParameters",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists Global parameters",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#GlobalParameterListResponse": {
@@ -9142,6 +9253,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10138,10 +10255,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/datasets",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists datasets.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#DatasetListResponse": {
@@ -10244,6 +10368,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10600,10 +10730,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/dataflows",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists data flows.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#DataFlowListResponse": {
@@ -10706,6 +10843,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11043,10 +11186,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List credentials.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#CredentialListResponse": {
@@ -11149,6 +11299,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12350,10 +12506,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all resources of type change data capture.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#ChangeDataCaptureListResponse": {
@@ -12457,6 +12620,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The factory name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13594,10 +13763,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists factories.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#FactoryListResponse": {
@@ -13722,6 +13898,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13926,10 +14108,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/factories",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists factories under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#ListFactoriesRequest": {
@@ -13942,6 +14131,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13951,7 +14146,7 @@
     "com.azure.datafactory#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datafactory#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.datafactory#OperationListResponse"
@@ -13961,10 +14156,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataFactory/operations",
           "code": 200,
-          "apiVersion": "2018-06-01"
+          "apiVersion": "2018-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the available Azure Data Factory API operations.",
-        "com.distilled.openapi#apiVersion": "2018-06-01"
+        "com.distilled.openapi#apiVersion": "2018-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datafactory#OperationListResponse": {
@@ -14268,6 +14470,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Metadata associated with the operation."
+      }
+    },
+    "com.azure.datafactory#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.datafactory#Datafactory": {

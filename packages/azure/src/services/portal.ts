@@ -208,6 +208,8 @@ export interface ListDashboardByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DashboardTagsMap = { [key: string]: string | undefined };
@@ -239,6 +241,8 @@ export interface ListDashboardByResourceGroupResponse {
 export interface ListDashboardBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Dashboard items on this page */
 export type ListDashboardBySubscriptionResponseValueList = Array<Dashboard>;
@@ -248,7 +252,10 @@ export interface ListDashboardBySubscriptionResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListListTenantConfigurationViolationsRequest {}
+export interface ListListTenantConfigurationViolationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Violation information. */
 export interface Violation {
   /** Id of the item that violates tenant configuration. */
@@ -266,7 +273,10 @@ export interface ListListTenantConfigurationViolationsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -299,11 +309,14 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export interface ListTenantConfigurationsRequest {}
+export interface ListTenantConfigurationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The tenant configuration resource definition. */
 export interface Configuration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -458,78 +471,113 @@ export const GetTenantConfiguration: API.OperationMethod<
 
 export type ListDashboardByResourceGroupError = AzureOpError;
 /** Gets all the Dashboards within a resource group. */
-export const ListDashboardByResourceGroup: API.OperationMethod<
+export const ListDashboardByResourceGroup: API.PaginatedOperationMethod<
   ListDashboardByResourceGroupRequest,
   ListDashboardByResourceGroupResponse,
   ListDashboardByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dashboard
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<ListDashboardByResourceGroupRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<ListDashboardByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDashboardBySubscriptionError = AzureOpError;
 /** Gets all the dashboards within a subscription. */
-export const ListDashboardBySubscription: API.OperationMethod<
+export const ListDashboardBySubscription: API.PaginatedOperationMethod<
   ListDashboardBySubscriptionRequest,
   ListDashboardBySubscriptionResponse,
   ListDashboardBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dashboard
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(120, __c15, 0) as any as S.Schema<ListDashboardBySubscriptionRequest>,
   output: __S(113, __c14, 1) as any as S.Schema<ListDashboardBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListListTenantConfigurationViolationsError = AzureOpError;
 /** Gets list of items that violate tenant's configuration. */
-export const ListListTenantConfigurationViolations: API.OperationMethod<
+export const ListListTenantConfigurationViolations: API.PaginatedOperationMethod<
   ListListTenantConfigurationViolationsRequest,
   ListListTenantConfigurationViolationsResponse,
   ListListTenantConfigurationViolationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Violation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListListTenantConfigurationViolationsRequest>,
   output: __S(131, __c16, 3) as any as S.Schema<ListListTenantConfigurationViolationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(140, __c17, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTenantConfigurationsError = AzureOpError;
 /** Gets list of the tenant configurations. */
-export const ListTenantConfigurations: API.OperationMethod<
+export const ListTenantConfigurations: API.PaginatedOperationMethod<
   ListTenantConfigurationsRequest,
   ListTenantConfigurationsResponse,
   ListTenantConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Configuration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<ListTenantConfigurationsRequest>,
   output: __S(50, __c6, 2) as any as S.Schema<ListTenantConfigurationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateDashboardError = AzureOpError;
 /** Updates an existing Dashboard. */
@@ -699,12 +747,15 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Portal/tenantConfigurations",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTenantConfigurationsRequest" });
@@ -825,12 +876,14 @@ function __c13(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards",
             code: 200,
             apiVersion: "2025-04-01-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDashboardByResourceGroupRequest" });
@@ -855,12 +908,14 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Portal/dashboards",
             code: 200,
             apiVersion: "2025-04-01-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDashboardBySubscriptionRequest" });
@@ -870,12 +925,15 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/Microsoft.Portal/listTenantConfigurationViolations",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListListTenantConfigurationViolationsRequest" });
@@ -902,12 +960,15 @@ function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Portal/operations",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -935,7 +996,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c17, 3)),
+          value: __S(139, __c17, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });

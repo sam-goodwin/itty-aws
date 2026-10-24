@@ -3011,7 +3011,7 @@
     "com.azure.billing#ListRecipientTransfers": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.billing#ListRecipientTransfersRequest"
       },
       "output": {
         "target": "com.azure.billing#RecipientTransferDetailsListResult"
@@ -3021,10 +3021,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/transfers",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the transfer requests received by the caller.\n\nLists the transfer requests received by the caller.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#RecipientTransferDetailsListResult": {
@@ -3111,6 +3118,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#ListRecipientTransfersRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.billing#DeletePaymentMethodByUser": {
@@ -3353,7 +3374,7 @@
     "com.azure.billing#ListPaymentMethodByUser": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.billing#ListPaymentMethodByUserRequest"
       },
       "output": {
         "target": "com.azure.billing#PaymentMethodsListResult"
@@ -3363,10 +3384,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/paymentMethods",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the payment methods owned by the caller.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#PaymentMethodsListResult": {
@@ -3455,10 +3483,24 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
+    "com.azure.billing#ListPaymentMethodByUserRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.billing#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.billing#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.billing#OperationListResult"
@@ -3468,10 +3510,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/operations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of operations supported by provider.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#OperationListResult": {
@@ -3559,6 +3608,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.billing#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.billing#BillingRequestsCreateOrUpdate": {
@@ -4218,10 +4281,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingRequests",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The list of billing requests submitted by a user.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingRequestListResult": {
@@ -4353,6 +4423,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5385,10 +5461,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/invoices",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the invoices for a subscription. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#InvoiceListResult": {
@@ -5542,6 +5625,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5849,10 +5938,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlans",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List savings plans by billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListSavingsPlanByBillingAccountResponse": {
@@ -6567,6 +6663,12 @@
             "smithy.api#httpQuery": "refreshSummary",
             "smithy.api#documentation": "To indicate whether to refresh the roll up counts of the savings plans group by provisioning states"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7026,10 +7128,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List savings plans in an order by billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#SavingsPlanModelList": {
@@ -7079,6 +7188,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Order ID of the savings plan"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7449,10 +7564,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Savings plan orders by billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#SavingsPlanOrderModelList": {
@@ -7578,6 +7700,12 @@
           "traits": {
             "smithy.api#httpQuery": "skiptoken",
             "smithy.api#documentation": "The number of savings plans to skip from the list before returning results"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7987,10 +8115,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations in the billing account and the roll up counts of reservations group by provisioning states.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ReservationsListResult": {
@@ -9017,6 +9152,12 @@
             "smithy.api#httpQuery": "take",
             "smithy.api#documentation": "The number of reservations to return in API response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9507,10 +9648,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get Reservations in a given reservation Order in the billing account\n\nList Reservations within a single ReservationOrder in the billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ReservationList": {
@@ -9560,6 +9708,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Order Id of the reservation"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9901,10 +10055,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all `ReservationOrders in the billing account.\n\nList all the ReservationOrders in the billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ReservationOrderList": {
@@ -10026,6 +10187,12 @@
           "traits": {
             "smithy.api#httpQuery": "skiptoken",
             "smithy.api#documentation": "The number of reservations to skip from the list before returning results"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10882,10 +11049,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the products for a billing account. These don't include products billed based on usage. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement or Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ProductListResult": {
@@ -11025,6 +11199,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11647,10 +11827,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/paymentMethods",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the payment methods available for a billing account. Along with the payment methods owned by the caller, these payment methods can be attached to a billing profile to make payments. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListPaymentMethodByBillingAccountRequest": {
@@ -11662,6 +11849,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11682,10 +11875,17 @@
           "method": "POST",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/listInvoiceSectionsWithCreateSubscriptionPermission",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#InvoiceSectionWithCreateSubPermissionListResult": {
@@ -11838,6 +12038,12 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "The filter query option allows clients to filter a collection of resources that are addressed by a request URL."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11900,10 +12106,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the transactions for an invoice. Transactions include purchases, refunds and Azure usage charges.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#TransactionListResult": {
@@ -12384,6 +12597,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12761,10 +12980,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the invoices for a billing account for a given start date and end date. The operation is supported for all billing account types.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListInvoiceByBillingAccountRequest": {
@@ -12832,6 +13058,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12978,10 +13210,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingSubscriptions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscriptions for an enrollment account. The operation is supported for billing accounts with agreement type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingSubscriptionListResult": {
@@ -13657,6 +13896,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13857,10 +14102,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleDefinitions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the definition for an enrollment account. The operation is supported for billing accounts with agreement type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingRoleDefinitionListResult": {
@@ -13966,6 +14218,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enrollment account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14340,10 +14598,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role assignments for the caller on a enrollment account. The operation is supported for billing accounts of type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingRoleAssignmentListResult": {
@@ -14385,6 +14650,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enrollment account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14404,10 +14675,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has for an enrollment account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingPermissionListResult": {
@@ -14457,6 +14735,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the enrollment account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14644,10 +14928,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the enrollment accounts for a billing account. The operation is supported only for billing accounts with agreement type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#EnrollmentAccountListResult": {
@@ -14787,6 +15078,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14963,10 +15260,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/enrollmentAccounts",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the enrollment accounts for a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListEnrollmentAccountByDepartmentRequest": {
@@ -15028,6 +15332,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15235,10 +15545,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleDefinitions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the definition for a department. The operation is supported for billing accounts with agreement type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleDefinitionByDepartmentRequest": {
@@ -15258,6 +15575,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the department."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15581,10 +15904,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role assignments for the caller on a department. The operation is supported for billing accounts of type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleAssignmentByDepartmentRequest": {
@@ -15605,6 +15935,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the department."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15624,10 +15960,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has for a department.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingPermissionsByDepartmentRequest": {
@@ -15647,6 +15990,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the department."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15798,10 +16147,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the departments that a user has access to. The operation is supported only for billing accounts with agreement type Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#DepartmentListResult": {
@@ -15935,6 +16291,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15954,10 +16316,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/products",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the products for a customer. These don't include products billed based on usage.The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListProductByCustomerRequest": {
@@ -16019,6 +16388,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16337,10 +16712,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingSubscriptions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscriptions for a customer at billing account level. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingSubscriptionByCustomerAtBillingAccountRequest": {
@@ -16417,6 +16799,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -16436,10 +16824,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has for a customer at billing account level.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingPermissionsByCustomerAtBillingAccountRequest": {
@@ -16459,6 +16854,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16664,10 +17065,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the customers that are billed to a billing account. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#CustomerListResult": {
@@ -16814,6 +17222,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19036,10 +19450,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscriptions for a billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingSubscriptionByBillingAccountRequest": {
@@ -19121,6 +19542,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19783,10 +20210,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscription aliases for a billing account. The operation is supported for seat based billing subscriptions.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingSubscriptionAliasListResult": {
@@ -19934,6 +20368,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20052,10 +20492,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleDefinitions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role definitions for a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleDefinitionByBillingAccountRequest": {
@@ -20067,6 +20514,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20366,10 +20819,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role assignments for the caller on a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleAssignmentByBillingAccountRequest": {
@@ -20403,6 +20863,12 @@
             "smithy.api#httpQuery": "skip",
             "smithy.api#documentation": "The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20422,10 +20888,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRequests",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The list of billing requests submitted for the billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRequestByBillingAccountRequest": {
@@ -20479,6 +20952,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20673,10 +21152,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/transactions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billed or unbilled transactions by billing profile name for given start and end date. Transactions include purchases, refunds and Azure usage charges. Unbilled transactions are listed under pending invoice Id and do not include tax. Tax is added to the amount once an invoice is generated.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListTransactionByBillingProfileRequest": {
@@ -20762,6 +21248,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20899,10 +21391,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/reservations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the reservations for a billing profile and the roll up counts of reservations group by provisioning state.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListReservationByBillingProfileRequest": {
@@ -20965,6 +21464,12 @@
             "smithy.api#httpQuery": "take",
             "smithy.api#documentation": "The number of reservations to return in API response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20984,10 +21489,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/products",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the products for a billing profile. These don't include products billed based on usage. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement or Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListProductByBillingProfileRequest": {
@@ -21049,6 +21561,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21580,10 +22098,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/paymentMethodLinks",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists payment methods attached to a billing profile. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#PaymentMethodLinksListResult": {
@@ -21690,6 +22215,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -21709,10 +22240,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the invoices for a billing profile for a given start date and end date. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListInvoiceByBillingProfileRequest": {
@@ -21788,6 +22326,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22384,10 +22928,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the transfer requests for an invoice section. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#TransferDetailsListResult": {
@@ -22502,6 +23053,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies an invoice section."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -22521,10 +23078,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transactions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billed or unbilled transactions by invoice section name for given start date and end date. Transactions include purchases, refunds and Azure usage charges. Unbilled transactions are listed under pending invoice Id and do not include tax. Tax is added to the amount once an invoice is generated.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListTransactionByInvoiceSectionRequest": {
@@ -22618,6 +23182,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22763,10 +23333,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/products",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the products for an invoice section. These don't include products billed based on usage. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListProductByInvoiceSectionRequest": {
@@ -22836,6 +23413,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23108,10 +23691,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingSubscriptions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscriptions that are billed to an invoice section. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingSubscriptionByInvoiceSectionRequest": {
@@ -23195,6 +23785,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23330,10 +23926,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleDefinitions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role definitions for an invoice section. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleDefinitionByInvoiceSectionRequest": {
@@ -23361,6 +23964,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies an invoice section."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -23555,10 +24164,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleAssignments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role assignments for the caller on an invoice section. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleAssignmentByInvoiceSectionRequest": {
@@ -23608,6 +24224,12 @@
             "smithy.api#httpQuery": "skip",
             "smithy.api#documentation": "The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -23627,10 +24249,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRequests",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The list of billing requests submitted for the invoice section.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRequestByInvoiceSectionRequest": {
@@ -23701,6 +24330,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -23720,10 +24355,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has for an invoice section.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingPermissionsByInvoiceSectionRequest": {
@@ -23751,6 +24393,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies an invoice section."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24208,10 +24856,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the invoice sections that a user has access to. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#InvoiceSectionListResult": {
@@ -24366,6 +25021,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -24828,10 +25489,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transfers",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the transfer requests sent to a customer. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#PartnerTransferDetailsListResult": {
@@ -24946,6 +25614,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -24965,10 +25639,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transactions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billed or unbilled transactions by customer id for given start date and end date. Transactions include purchases, refunds and Azure usage charges. Unbilled transactions are listed under pending invoice Id and do not include tax. Tax is added to the amount once an invoice is generated.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListTransactionByCustomerRequest": {
@@ -25062,6 +25743,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25731,10 +26418,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingSubscriptions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscriptions for a customer. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingSubscriptionByCustomerRequest": {
@@ -25818,6 +26512,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25953,10 +26653,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleDefinitions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role definitions for a customer. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleDefinitionByCustomerRequest": {
@@ -25984,6 +26691,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26178,10 +26891,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleAssignments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role assignments for the caller on customer. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleAssignmentByCustomerRequest": {
@@ -26231,6 +26951,12 @@
             "smithy.api#httpQuery": "skip",
             "smithy.api#documentation": "The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -26250,10 +26976,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRequests",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The list of billing requests submitted for the customer.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRequestByCustomerRequest": {
@@ -26324,6 +27057,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -26343,10 +27082,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has for a customer.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingPermissionsByCustomerRequest": {
@@ -26374,6 +27120,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26501,10 +27253,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the customers that are billed to a billing profile. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListCustomerByBillingProfileRequest": {
@@ -26573,6 +27332,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26943,10 +27708,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingSubscriptions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the subscriptions that are billed to a billing profile. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement or Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingSubscriptionByBillingProfileRequest": {
@@ -27022,6 +27794,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -27149,10 +27927,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleDefinitions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role definitions for a billing profile. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleDefinitionByBillingProfileRequest": {
@@ -27172,6 +27957,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -27350,10 +28141,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleAssignments",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the role assignments for the caller on a billing profile. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRoleAssignmentByBillingProfileRequest": {
@@ -27395,6 +28193,12 @@
             "smithy.api#httpQuery": "skip",
             "smithy.api#documentation": "The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -27414,10 +28218,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRequests",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "The list of billing requests submitted for the billing profile.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingRequestByBillingProfileRequest": {
@@ -27480,6 +28291,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -27499,10 +28316,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has on a billing profile.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingPermissionsByBillingProfileRequest": {
@@ -27522,6 +28346,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28366,10 +29196,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing profiles that a user has access to. The operation is supported for billing accounts with agreement of type Microsoft Customer Agreement and Microsoft Partner Agreement.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingProfileListResult": {
@@ -28517,6 +29354,12 @@
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -28536,10 +29379,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingPermissions",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing permissions the caller has on a billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#ListBillingPermissionsByBillingAccountRequest": {
@@ -28551,6 +29401,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29121,10 +29977,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the associated tenants that can collaborate with the billing account on commerce activities like viewing and downloading invoices, managing payments, making purchases, and managing or provisioning licenses.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#AssociatedTenantListResult": {
@@ -29271,6 +30134,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29634,10 +30503,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/agreements",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the agreements for a billing account.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#AgreementListResult": {
@@ -29742,6 +30618,12 @@
           "traits": {
             "smithy.api#httpQuery": "expand",
             "smithy.api#documentation": "May be used to expand the participants."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -30218,10 +31100,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Billing/billingAccounts",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the billing accounts that a user has access to.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.billing#BillingAccountListResult": {
@@ -30395,6 +31284,12 @@
           "traits": {
             "smithy.api#httpQuery": "search",
             "smithy.api#documentation": "The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

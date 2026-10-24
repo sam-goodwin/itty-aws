@@ -3309,6 +3309,8 @@ export interface ListAzureADOnlyAuthenticationsRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Active Directory Only Authentication Info */
 export interface AzureADOnlyAuthentication {
@@ -3326,7 +3328,7 @@ export type AzureADOnlyAuthenticationListResultValueList = Array<AzureADOnlyAuth
 /** A list of active directory only authentications. */
 export interface AzureADOnlyAuthenticationListResult {
   /** Array of results. */
-  value?: AzureADOnlyAuthenticationListResultValueList;
+  value: AzureADOnlyAuthenticationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3337,6 +3339,8 @@ export interface ListBigDataPoolByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BigDataPoolResourceInfoTagsMap = { [key: string]: string | undefined };
@@ -3362,7 +3366,7 @@ export interface BigDataPoolResourceInfoListResult {
   /** Link to the next page of results */
   nextLink?: string;
   /** List of Big Data pools */
-  value?: BigDataPoolResourceInfoListResultValueList;
+  value: BigDataPoolResourceInfoListResultValueList;
 }
 export type ListDataMaskingRuleBySqlPoolRequestDataMaskingPolicyName = "Default";
 export interface ListDataMaskingRuleBySqlPoolRequest {
@@ -3397,7 +3401,7 @@ export type DataMaskingRuleListResultValueList = Array<DataMaskingRule>;
 /** The response to a list data masking rules request. */
 export interface DataMaskingRuleListResult {
   /** The list of Sql pool data masking rules. */
-  value?: DataMaskingRuleListResultValueList;
+  value: DataMaskingRuleListResultValueList;
 }
 export interface ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest {
   /** The ID of the target subscription. */
@@ -3408,6 +3412,8 @@ export interface ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An extended Sql pool blob auditing policy. */
 export interface ExtendedSqlPoolBlobAuditingPolicy {
@@ -3426,7 +3432,7 @@ export type ExtendedSqlPoolBlobAuditingPolicyListResultValueList =
 /** A list of sql pool extended auditing settings. */
 export interface ExtendedSqlPoolBlobAuditingPolicyListResult {
   /** Array of results. */
-  value?: ExtendedSqlPoolBlobAuditingPolicyListResultValueList;
+  value: ExtendedSqlPoolBlobAuditingPolicyListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3454,6 +3460,8 @@ export interface ListIntegrationRuntimeByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Integration runtime resource type. */
 export interface IntegrationRuntimeResource {
@@ -3600,6 +3608,8 @@ export interface ListIpFirewallRuleByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** IP firewall rule */
 export interface IpFirewallRuleInfo {
@@ -3619,7 +3629,7 @@ export interface IpFirewallRuleInfoListResult {
   /** Link to next page of results */
   nextLink?: string;
   /** List of IP firewall rules */
-  value?: IpFirewallRuleInfoListResultValueList;
+  value: IpFirewallRuleInfoListResultValueList;
 }
 export interface ListKeyByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -3628,6 +3638,8 @@ export interface ListKeyByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A workspace key */
 export interface Key {
@@ -3647,7 +3659,7 @@ export interface KeyInfoListResult {
   /** Link to the next page of results */
   nextLink?: string;
   /** List of keys */
-  value?: KeyInfoListResultValueList;
+  value: KeyInfoListResultValueList;
 }
 export interface ListLibraryByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -3656,6 +3668,8 @@ export interface ListLibraryByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Library/package information of a Big Data pool powered by Apache Spark */
 export type LibraryResourceProperties = BigDataPoolResourcePropertiesCustomLibrariesItem;
@@ -3779,6 +3793,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private endpoint connection */
 export type PrivateEndpointConnection = WorkspacePropertiesPrivateEndpointConnectionsItem;
@@ -3787,7 +3803,7 @@ export type ListPrivateEndpointConnectionsResponseValueList =
   Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export interface ListPrivateEndpointConnectionsResponse {
   /** Array of results. */
-  value?: ListPrivateEndpointConnectionsResponseValueList;
+  value: ListPrivateEndpointConnectionsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3798,6 +3814,8 @@ export interface ListPrivateEndpointConnectionsPrivateLinkHubRequest {
   resourceGroupName: string;
   /** Name of the privateLinkHub */
   privateLinkHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of a private endpoint connection. */
 export type PrivateEndpointConnectionForPrivateLinkHubProperties =
@@ -3813,7 +3831,7 @@ export interface PrivateEndpointConnectionForPrivateLinkHub {
 export type ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList =
   Array<PrivateEndpointConnectionForPrivateLinkHub>;
 export interface ListPrivateEndpointConnectionsPrivateLinkHubResponse {
-  value?: ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList;
+  value: ListPrivateEndpointConnectionsPrivateLinkHubResponseValueList;
   nextLink?: string;
 }
 export interface ListPrivateLinkHubByResourceGroupRequest {
@@ -3821,6 +3839,8 @@ export interface ListPrivateLinkHubByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type PrivateLinkHubTagsMap = { [key: string]: string | undefined };
@@ -3846,7 +3866,7 @@ export interface PrivateLinkHubInfoListResult {
   /** Link to the next page of results */
   nextLink?: string;
   /** List of privateLinkHubs */
-  value?: PrivateLinkHubInfoListResultValueList;
+  value: PrivateLinkHubInfoListResultValueList;
 }
 export interface ListPrivateLinkHubPrivateLinkResourcesRequest {
   /** The ID of the target subscription. */
@@ -3855,6 +3875,8 @@ export interface ListPrivateLinkHubPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the private link hub */
   privateLinkHubName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private link resource */
 export interface PrivateLinkResource {
@@ -3872,13 +3894,15 @@ export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of results. */
-  value?: PrivateLinkResourceListResultValueList;
+  value: PrivateLinkResourceListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListPrivateLinkHubsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. */
@@ -3887,6 +3911,8 @@ export interface ListPrivateLinkResourcesRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRestorableDroppedSqlPoolByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -3925,6 +3951,8 @@ export interface ListSqlPoolBlobAuditingPolicyBySqlPoolRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Sql pool blob auditing policy. */
 export interface SqlPoolBlobAuditingPolicy {
@@ -3944,7 +3972,7 @@ export type SqlPoolBlobAuditingPolicyListResultValueList = Array<SqlPoolBlobAudi
 /** A list of Sql pool auditing settings. */
 export interface SqlPoolBlobAuditingPolicyListResult {
   /** Array of results. */
-  value?: SqlPoolBlobAuditingPolicyListResultValueList;
+  value: SqlPoolBlobAuditingPolicyListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3955,6 +3983,8 @@ export interface ListSqlPoolByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlPoolTagsMap = { [key: string]: string | undefined };
@@ -3982,7 +4012,7 @@ export interface SqlPoolInfoListResult {
   /** Link to the next page of results */
   nextLink?: string;
   /** List of SQL pools */
-  value?: SqlPoolInfoListResultValueList;
+  value: SqlPoolInfoListResultValueList;
 }
 export interface ListSqlPoolGeoBackupPoliciesRequest {
   /** The ID of the target subscription. */
@@ -4014,7 +4044,7 @@ export type GeoBackupPolicyListResultValueList = Array<GeoBackupPolicy>;
 /** The response to a list geo backup policies request. */
 export interface GeoBackupPolicyListResult {
   /** The list of geo backup policies. */
-  value?: GeoBackupPolicyListResultValueList;
+  value: GeoBackupPolicyListResultValueList;
 }
 export interface ListSqlPoolOperationsRequest {
   /** The ID of the target subscription. */
@@ -4025,6 +4055,8 @@ export interface ListSqlPoolOperationsRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The operation state. */
 export type SqlPoolOperationPropertiesState =
@@ -4081,7 +4113,7 @@ export type SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList = Array
 /** The response to a list Sql pool operations request */
 export interface SqlPoolBlobAuditingPolicySqlPoolOperationListResult {
   /** Array of results. */
-  value?: SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList;
+  value: SqlPoolBlobAuditingPolicySqlPoolOperationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4094,6 +4126,8 @@ export interface ListSqlPoolReplicationLinksRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Sql pool replication link. */
 export interface ReplicationLink {
@@ -4113,7 +4147,7 @@ export type ReplicationLinkListResultValueList = Array<ReplicationLink>;
 /** Represents the response to a List Sql pool replication link request. */
 export interface ReplicationLinkListResult {
   /** The list of Sql pool replication links housed in the Sql pool. */
-  value?: ReplicationLinkListResultValueList;
+  value: ReplicationLinkListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4126,6 +4160,8 @@ export interface ListSqlPoolRestorePointsRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Database restore points. */
 export interface RestorePoint {
@@ -4145,7 +4181,7 @@ export type RestorePointListResultValueList = Array<RestorePoint>;
 /** A list of long term retention backups. */
 export interface RestorePointListResult {
   /** Array of results. */
-  value?: RestorePointListResultValueList;
+  value: RestorePointListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4160,6 +4196,8 @@ export interface ListSqlPoolSchemasRequest {
   sqlPoolName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Common fields that are returned in the response for all Azure Resource Manager resources */
 export interface Resource {
@@ -4175,7 +4213,7 @@ export type SqlPoolSchemaListResultValueList = Array<Resource>;
 /** A list of Sql pool schemas. */
 export interface SqlPoolSchemaListResult {
   /** Array of results. */
-  value?: SqlPoolSchemaListResultValueList;
+  value: SqlPoolSchemaListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4188,6 +4226,8 @@ export interface ListSqlPoolSecurityAlertPoliciesRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Sql pool security alert policy. */
 export interface SqlPoolSecurityAlertPolicy {
@@ -4205,7 +4245,7 @@ export type ListSqlPoolSecurityAlertPoliciesValueList = Array<SqlPoolSecurityAle
 /** A list of SQL pool security alert policies. */
 export interface ListSqlPoolSecurityAlertPolicies {
   /** Array of results. */
-  value?: ListSqlPoolSecurityAlertPoliciesValueList;
+  value: ListSqlPoolSecurityAlertPoliciesValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4220,6 +4260,8 @@ export interface ListSqlPoolSensitivityLabelCurrentRequest {
   sqlPoolName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A sensitivity label. */
 export interface SensitivityLabel {
@@ -4239,7 +4281,7 @@ export type SensitivityLabelListResultValueList = Array<SensitivityLabel>;
 /** A list of sensitivity labels. */
 export interface SensitivityLabelListResult {
   /** Array of results. */
-  value?: SensitivityLabelListResultValueList;
+  value: SensitivityLabelListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4258,6 +4300,8 @@ export interface ListSqlPoolSensitivityLabelRecommendedRequest {
   _skipToken?: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSqlPoolTableBySchemaRequest {
   /** The ID of the target subscription. */
@@ -4272,13 +4316,15 @@ export interface ListSqlPoolTableBySchemaRequest {
   schemaName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type SqlPoolTableListResultValueList = Array<Resource>;
 /** A list of Sql pool tables. */
 export interface SqlPoolTableListResult {
   /** Array of results. */
-  value?: SqlPoolTableListResultValueList;
+  value: SqlPoolTableListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4297,6 +4343,8 @@ export interface ListSqlPoolTableColumnByTableNameRequest {
   tableName: string;
   /** An OData filter expression that filters elements in the collection. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Sql pool column resource. */
 export interface SqlPoolColumn {
@@ -4314,7 +4362,7 @@ export type SqlPoolColumnListResultValueList = Array<SqlPoolColumn>;
 /** A list of Sql pool columns. */
 export interface SqlPoolColumnListResult {
   /** Array of results. */
-  value?: SqlPoolColumnListResultValueList;
+  value: SqlPoolColumnListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4327,6 +4375,8 @@ export interface ListSqlPoolTransparentDataEncryptionsRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Sql pool transparent data encryption configuration. */
 export interface TransparentDataEncryption {
@@ -4346,7 +4396,7 @@ export type TransparentDataEncryptionListResultValueList = Array<TransparentData
 /** A list of transparent data encryption configurations. */
 export interface TransparentDataEncryptionListResult {
   /** Array of results. */
-  value?: TransparentDataEncryptionListResultValueList;
+  value: TransparentDataEncryptionListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4359,6 +4409,8 @@ export interface ListSqlPoolUsagesRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Sql pool usages. */
 export interface SqlPoolUsage {
@@ -4395,6 +4447,8 @@ export interface ListSqlPoolVulnerabilityAssessmentsRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Sql pool vulnerability assessment. */
 export interface SqlPoolVulnerabilityAssessment {
@@ -4413,7 +4467,7 @@ export type SqlPoolVulnerabilityAssessmentListResultValueList =
 /** A list of the Sql pool's vulnerability assessments. */
 export interface SqlPoolVulnerabilityAssessmentListResult {
   /** Array of results. */
-  value?: SqlPoolVulnerabilityAssessmentListResultValueList;
+  value: SqlPoolVulnerabilityAssessmentListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4431,6 +4485,8 @@ export interface ListSqlPoolVulnerabilityAssessmentScansRequest {
   vulnerabilityAssessmentName:
     | ListSqlPoolVulnerabilityAssessmentScansRequestVulnerabilityAssessmentName
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A vulnerability assessment scan record. */
 export interface VulnerabilityAssessmentScanRecord {
@@ -4449,7 +4505,7 @@ export type VulnerabilityAssessmentScanRecordListResultValueList =
 /** A list of vulnerability assessment scan records. */
 export interface VulnerabilityAssessmentScanRecordListResult {
   /** Array of results. */
-  value?: VulnerabilityAssessmentScanRecordListResultValueList;
+  value: VulnerabilityAssessmentScanRecordListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4464,6 +4520,8 @@ export interface ListSqlPoolWorkloadClassifierRequest {
   sqlPoolName: string;
   /** The name of the workload group. */
   workloadGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workload classifier operations for a data warehouse */
 export interface WorkloadClassifier {
@@ -4481,7 +4539,7 @@ export type WorkloadClassifierListResultValueList = Array<WorkloadClassifier>;
 /** A list of workload classifiers for a workload group. */
 export interface WorkloadClassifierListResult {
   /** Array of results. */
-  value?: WorkloadClassifierListResultValueList;
+  value: WorkloadClassifierListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4494,6 +4552,8 @@ export interface ListSqlPoolWorkloadGroupRequest {
   workspaceName: string;
   /** SQL pool name */
   sqlPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workload group operations for a sql pool */
 export interface WorkloadGroup {
@@ -4511,7 +4571,7 @@ export type WorkloadGroupListResultValueList = Array<WorkloadGroup>;
 /** A list of workload groups. */
 export interface WorkloadGroupListResult {
   /** Array of results. */
-  value?: WorkloadGroupListResultValueList;
+  value: WorkloadGroupListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4520,6 +4580,8 @@ export interface ListWorkspaceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
@@ -4547,7 +4609,7 @@ export interface WorkspaceInfoListResult {
   /** Link to the next page of results */
   nextLink?: string;
   /** List of workspaces */
-  value?: WorkspaceInfoListResultValueList;
+  value: WorkspaceInfoListResultValueList;
 }
 export interface ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest {
   /** The ID of the target subscription. */
@@ -4556,6 +4618,8 @@ export interface ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceReque
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server blob auditing policy. */
 export interface ServerBlobAuditingPolicy {
@@ -4573,7 +4637,7 @@ export type ServerBlobAuditingPolicyListResultValueList = Array<ServerBlobAuditi
 /** A list of server auditing settings. */
 export interface ServerBlobAuditingPolicyListResult {
   /** Array of results. */
-  value?: ServerBlobAuditingPolicyListResultValueList;
+  value: ServerBlobAuditingPolicyListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4584,6 +4648,8 @@ export interface ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequ
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dedicated Sql Minimal Tls Settings Info */
 export interface DedicatedSQLminimalTlsSettings {
@@ -4604,7 +4670,7 @@ export type DedicatedSQLminimalTlsSettingsListResultValueList =
 /** A list of the server's dedicated sql minimal tls settings. */
 export interface DedicatedSQLminimalTlsSettingsListResult {
   /** Array of results. */
-  value?: DedicatedSQLminimalTlsSettingsListResultValueList;
+  value: DedicatedSQLminimalTlsSettingsListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4615,6 +4681,8 @@ export interface ListWorkspaceManagedSqlServerEncryptionProtectorRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The server encryption protector. */
 export interface EncryptionProtector {
@@ -4636,7 +4704,7 @@ export type EncryptionProtectorListResultValueList = Array<EncryptionProtector>;
 /** A list of server encryption protectors. */
 export interface EncryptionProtectorListResult {
   /** Array of results. */
-  value?: EncryptionProtectorListResultValueList;
+  value: EncryptionProtectorListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4647,6 +4715,8 @@ export interface ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorksp
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An extended server blob auditing policy. */
 export interface ExtendedServerBlobAuditingPolicy {
@@ -4665,7 +4735,7 @@ export type ExtendedServerBlobAuditingPolicyListResultValueList =
 /** A list of server extended auditing settings. */
 export interface ExtendedServerBlobAuditingPolicyListResult {
   /** Array of results. */
-  value?: ExtendedServerBlobAuditingPolicyListResultValueList;
+  value: ExtendedServerBlobAuditingPolicyListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4676,6 +4746,8 @@ export interface ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A recoverable sql pool */
 export interface RecoverableSqlPool {
@@ -4693,7 +4765,7 @@ export type RecoverableSqlPoolListResultValueList = Array<RecoverableSqlPool>;
 /** The response to a list recoverable sql pools request */
 export interface RecoverableSqlPoolListResult {
   /** A list of recoverable sql pool */
-  value?: RecoverableSqlPoolListResultValueList;
+  value: RecoverableSqlPoolListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4704,6 +4776,8 @@ export interface ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workspace managed Sql server security alert policy. */
 export interface ServerSecurityAlertPolicy {
@@ -4721,7 +4795,7 @@ export type ServerSecurityAlertPolicyListResultValueList = Array<ServerSecurityA
 /** A list of the workspace managed sql server's security alert policies. */
 export interface ServerSecurityAlertPolicyListResult {
   /** Array of results. */
-  value?: ServerSecurityAlertPolicyListResultValueList;
+  value: ServerSecurityAlertPolicyListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4732,6 +4806,8 @@ export interface ListWorkspaceManagedSqlServerUsagesRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents server metrics. */
 export interface ServerUsage {
@@ -4766,6 +4842,8 @@ export interface ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A server vulnerability assessment. */
 export interface ServerVulnerabilityAssessment {
@@ -4783,13 +4861,15 @@ export type ServerVulnerabilityAssessmentListResultValueList = Array<ServerVulne
 /** A list of the server's vulnerability assessments. */
 export interface ServerVulnerabilityAssessmentListResult {
   /** Array of results. */
-  value?: ServerVulnerabilityAssessmentListResultValueList;
+  value: ServerVulnerabilityAssessmentListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListWorkspacesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface PauseSqlPoolRequest {
   /** The ID of the target subscription. */
@@ -7437,57 +7517,74 @@ export const KeysCreateOrUpdate: API.OperationMethod<
 
 export type ListAzureADOnlyAuthenticationsError = AzureOpError;
 /** Gets a list of Azure Active Directory only authentication property Gets a list of Azure Active Directory only authentication property for a workspace */
-export const ListAzureADOnlyAuthentications: API.OperationMethod<
+export const ListAzureADOnlyAuthentications: API.PaginatedOperationMethod<
   ListAzureADOnlyAuthenticationsRequest,
   AzureADOnlyAuthenticationListResult,
   ListAzureADOnlyAuthenticationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AzureADOnlyAuthentication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3584, __c224, 0) as any as S.Schema<ListAzureADOnlyAuthenticationsRequest>,
   output: __S(3586, __c224, 2) as any as S.Schema<AzureADOnlyAuthenticationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBigDataPoolByWorkspaceError = AzureOpError;
 /** List the Big Data pools in a workspace. List Big Data pools in a workspace. */
-export const ListBigDataPoolByWorkspace: API.OperationMethod<
+export const ListBigDataPoolByWorkspace: API.PaginatedOperationMethod<
   ListBigDataPoolByWorkspaceRequest,
   BigDataPoolResourceInfoListResult,
   ListBigDataPoolByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BigDataPoolResourceInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3600, __c225, 0) as any as S.Schema<ListBigDataPoolByWorkspaceRequest>,
   output: __S(3602, __c225, 2) as any as S.Schema<BigDataPoolResourceInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataMaskingRuleBySqlPoolError = AzureOpError;
 /** Gets a list of Sql pool data masking rules. */
-export const ListDataMaskingRuleBySqlPool: API.OperationMethod<
+export const ListDataMaskingRuleBySqlPool: API.PaginatedOperationMethod<
   ListDataMaskingRuleBySqlPoolRequest,
   DataMaskingRuleListResult,
   ListDataMaskingRuleBySqlPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataMaskingRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3632, __c227, 0) as any as S.Schema<ListDataMaskingRuleBySqlPoolRequest>,
   output: __S(3634, __c227, 2) as any as S.Schema<DataMaskingRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolError = AzureOpError;
 /** Lists extended auditing settings of a Sql pool. */
-export const ListExtendedSqlPoolBlobAuditingPolicyBySqlPool: API.OperationMethod<
+export const ListExtendedSqlPoolBlobAuditingPolicyBySqlPool: API.PaginatedOperationMethod<
   ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest,
   ExtendedSqlPoolBlobAuditingPolicyListResult,
   ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExtendedSqlPoolBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3648,
     __c228,
@@ -7497,7 +7594,13 @@ export const ListExtendedSqlPoolBlobAuditingPolicyBySqlPool: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationRuntimeAuthKeysError = AzureOpError;
 /** List integration runtime authentication keys List authentication keys in an integration runtime */
@@ -7516,18 +7619,25 @@ export const ListIntegrationRuntimeAuthKeys: API.OperationMethod<
 
 export type ListIntegrationRuntimeByWorkspaceError = AzureOpError;
 /** List integration runtimes List all integration runtimes */
-export const ListIntegrationRuntimeByWorkspace: API.OperationMethod<
+export const ListIntegrationRuntimeByWorkspace: API.PaginatedOperationMethod<
   ListIntegrationRuntimeByWorkspaceRequest,
   IntegrationRuntimeListResponse,
   ListIntegrationRuntimeByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationRuntimeResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3696, __c231, 0) as any as S.Schema<ListIntegrationRuntimeByWorkspaceRequest>,
   output: __S(3698, __c231, 2) as any as S.Schema<IntegrationRuntimeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationRuntimeMonitoringDataError = AzureOpError;
 /** Get integration runtime monitoring data Get monitoring data for an integration runtime */
@@ -7584,48 +7694,69 @@ export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpoints: API.Ope
 
 export type ListIpFirewallRuleByWorkspaceError = AzureOpError;
 /** Returns a list of firewall rules */
-export const ListIpFirewallRuleByWorkspace: API.OperationMethod<
+export const ListIpFirewallRuleByWorkspace: API.PaginatedOperationMethod<
   ListIpFirewallRuleByWorkspaceRequest,
   IpFirewallRuleInfoListResult,
   ListIpFirewallRuleByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IpFirewallRuleInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3760, __c235, 0) as any as S.Schema<ListIpFirewallRuleByWorkspaceRequest>,
   output: __S(3762, __c235, 2) as any as S.Schema<IpFirewallRuleInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKeyByWorkspaceError = AzureOpError;
 /** Returns a list of keys in a workspace */
-export const ListKeyByWorkspace: API.OperationMethod<
+export const ListKeyByWorkspace: API.PaginatedOperationMethod<
   ListKeyByWorkspaceRequest,
   KeyInfoListResult,
   ListKeyByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Key
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3776, __c236, 0) as any as S.Schema<ListKeyByWorkspaceRequest>,
   output: __S(3778, __c236, 2) as any as S.Schema<KeyInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLibraryByWorkspaceError = AzureOpError;
 /** List the libraries in a workspace. List libraries in a workspace. */
-export const ListLibraryByWorkspace: API.OperationMethod<
+export const ListLibraryByWorkspace: API.PaginatedOperationMethod<
   ListLibraryByWorkspaceRequest,
   LibraryListResponse,
   ListLibraryByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LibraryResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3792, __c237, 0) as any as S.Schema<ListLibraryByWorkspaceRequest>,
   output: __S(3794, __c237, 2) as any as S.Schema<LibraryListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** All operations Get all available operations */
@@ -7644,27 +7775,35 @@ export const ListOperations: API.OperationMethod<
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** Lists private endpoint connection in workspace. */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   ListPrivateEndpointConnectionsResponse,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkspacePropertiesPrivateEndpointConnectionsItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(113, __c7, 1) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsPrivateLinkHubError = AzureOpError;
 /** Get all PrivateEndpointConnections in the PrivateLinkHub */
-export const ListPrivateEndpointConnectionsPrivateLinkHub: API.OperationMethod<
+export const ListPrivateEndpointConnectionsPrivateLinkHub: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsPrivateLinkHubRequest,
   ListPrivateEndpointConnectionsPrivateLinkHubResponse,
   ListPrivateEndpointConnectionsPrivateLinkHubError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnectionForPrivateLinkHub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ListPrivateEndpointConnectionsPrivateLinkHubRequest>,
   output: __S(
     130,
@@ -7674,136 +7813,189 @@ export const ListPrivateEndpointConnectionsPrivateLinkHub: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkHubByResourceGroupError = AzureOpError;
 /** Returns a list of privateLinkHubs in a resource group */
-export const ListPrivateLinkHubByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkHubByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkHubByResourceGroupRequest,
   PrivateLinkHubInfoListResult,
   ListPrivateLinkHubByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkHub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListPrivateLinkHubByResourceGroupRequest>,
   output: __S(161, __c10, 1) as any as S.Schema<PrivateLinkHubInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkHubPrivateLinkResourcesError = AzureOpError;
 /** Private Link Resources Get all private link resources for a private link hub */
-export const ListPrivateLinkHubPrivateLinkResources: API.OperationMethod<
+export const ListPrivateLinkHubPrivateLinkResources: API.PaginatedOperationMethod<
   ListPrivateLinkHubPrivateLinkResourcesRequest,
   PrivateLinkResourceListResult,
   ListPrivateLinkHubPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<ListPrivateLinkHubPrivateLinkResourcesRequest>,
   output: __S(193, __c12, 1) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkHubsError = AzureOpError;
 /** Returns a list of privateLinkHubs in a subscription */
-export const ListPrivateLinkHubs: API.OperationMethod<
+export const ListPrivateLinkHubs: API.PaginatedOperationMethod<
   ListPrivateLinkHubsRequest,
   PrivateLinkHubInfoListResult,
   ListPrivateLinkHubsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkHub
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListPrivateLinkHubsRequest>,
   output: __S(161, __c10, 1) as any as S.Schema<PrivateLinkHubInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourcesError = AzureOpError;
 /** Private Link Resources Get all private link resources for a workspaces */
-export const ListPrivateLinkResources: API.OperationMethod<
+export const ListPrivateLinkResources: API.PaginatedOperationMethod<
   ListPrivateLinkResourcesRequest,
   PrivateLinkResourceListResult,
   ListPrivateLinkResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
   output: __S(193, __c12, 1) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableDroppedSqlPoolByWorkspaceError = AzureOpError;
 /** Gets a list of deleted Sql pools that can be restored */
-export const ListRestorableDroppedSqlPoolByWorkspace: API.OperationMethod<
+export const ListRestorableDroppedSqlPoolByWorkspace: API.PaginatedOperationMethod<
   ListRestorableDroppedSqlPoolByWorkspaceRequest,
   RestorableDroppedSqlPoolListResult,
   ListRestorableDroppedSqlPoolByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableDroppedSqlPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<ListRestorableDroppedSqlPoolByWorkspaceRequest>,
   output: __S(242, __c15, 2) as any as S.Schema<RestorableDroppedSqlPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListSqlPoolBlobAuditingPolicyBySqlPoolError = AzureOpError;
 /** Lists auditing settings of a Sql pool. */
-export const ListSqlPoolBlobAuditingPolicyBySqlPool: API.OperationMethod<
+export const ListSqlPoolBlobAuditingPolicyBySqlPool: API.PaginatedOperationMethod<
   ListSqlPoolBlobAuditingPolicyBySqlPoolRequest,
   SqlPoolBlobAuditingPolicyListResult,
   ListSqlPoolBlobAuditingPolicyBySqlPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPoolBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListSqlPoolBlobAuditingPolicyBySqlPoolRequest>,
   output: __S(258, __c16, 2) as any as S.Schema<SqlPoolBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolByWorkspaceError = AzureOpError;
 /** List SQL pools List all SQL pools */
-export const ListSqlPoolByWorkspace: API.OperationMethod<
+export const ListSqlPoolByWorkspace: API.PaginatedOperationMethod<
   ListSqlPoolByWorkspaceRequest,
   SqlPoolInfoListResult,
   ListSqlPoolByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<ListSqlPoolByWorkspaceRequest>,
   output: __S(274, __c17, 2) as any as S.Schema<SqlPoolInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolGeoBackupPoliciesError = AzureOpError;
 /** List SQL pool geo backup policies Get list of SQL pool geo backup policies */
-export const ListSqlPoolGeoBackupPolicies: API.OperationMethod<
+export const ListSqlPoolGeoBackupPolicies: API.PaginatedOperationMethod<
   ListSqlPoolGeoBackupPoliciesRequest,
   GeoBackupPolicyListResult,
   ListSqlPoolGeoBackupPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GeoBackupPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<ListSqlPoolGeoBackupPoliciesRequest>,
   output: __S(306, __c19, 2) as any as S.Schema<GeoBackupPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListSqlPoolOperationsError = AzureOpError;
 /** Gets a list of operations performed on the SQL pool Gets a list of operations performed on the SQL pool. */
-export const ListSqlPoolOperations: API.OperationMethod<
+export const ListSqlPoolOperations: API.PaginatedOperationMethod<
   ListSqlPoolOperationsRequest,
   SqlPoolBlobAuditingPolicySqlPoolOperationListResult,
   ListSqlPoolOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPoolOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListSqlPoolOperationsRequest>,
   output: __S(
     324,
@@ -7813,241 +8005,353 @@ export const ListSqlPoolOperations: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolReplicationLinksError = AzureOpError;
 /** Get SQL pool replication links Lists a Sql pool's replication links. */
-export const ListSqlPoolReplicationLinks: API.OperationMethod<
+export const ListSqlPoolReplicationLinks: API.PaginatedOperationMethod<
   ListSqlPoolReplicationLinksRequest,
   ReplicationLinkListResult,
   ListSqlPoolReplicationLinksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReplicationLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListSqlPoolReplicationLinksRequest>,
   output: __S(338, __c21, 2) as any as S.Schema<ReplicationLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolRestorePointsError = AzureOpError;
 /** Get SQL pool backup Get SQL pool backup information */
-export const ListSqlPoolRestorePoints: API.OperationMethod<
+export const ListSqlPoolRestorePoints: API.PaginatedOperationMethod<
   ListSqlPoolRestorePointsRequest,
   RestorePointListResult,
   ListSqlPoolRestorePointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorePoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListSqlPoolRestorePointsRequest>,
   output: __S(354, __c22, 2) as any as S.Schema<RestorePointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolSchemasError = AzureOpError;
 /** Gets schemas of a given SQL pool Gets schemas of a given SQL pool. */
-export const ListSqlPoolSchemas: API.OperationMethod<
+export const ListSqlPoolSchemas: API.PaginatedOperationMethod<
   ListSqlPoolSchemasRequest,
   SqlPoolSchemaListResult,
   ListSqlPoolSchemasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListSqlPoolSchemasRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<SqlPoolSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolSecurityAlertPolicies2Error = AzureOpError;
 /** List Sql pool's security alert policies Get a list of Sql pool's security alert policies. */
-export const ListSqlPoolSecurityAlertPolicies2: API.OperationMethod<
+export const ListSqlPoolSecurityAlertPolicies2: API.PaginatedOperationMethod<
   ListSqlPoolSecurityAlertPoliciesRequest,
   ListSqlPoolSecurityAlertPolicies,
   ListSqlPoolSecurityAlertPolicies2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPoolSecurityAlertPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListSqlPoolSecurityAlertPoliciesRequest>,
   output: __S(417, __c26, 1) as any as S.Schema<ListSqlPoolSecurityAlertPolicies>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolSensitivityLabelCurrentError = AzureOpError;
 /** Gets SQL pool sensitivity labels Gets SQL pool sensitivity labels. */
-export const ListSqlPoolSensitivityLabelCurrent: API.OperationMethod<
+export const ListSqlPoolSensitivityLabelCurrent: API.PaginatedOperationMethod<
   ListSqlPoolSensitivityLabelCurrentRequest,
   SensitivityLabelListResult,
   ListSqlPoolSensitivityLabelCurrentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListSqlPoolSensitivityLabelCurrentRequest>,
   output: __S(449, __c28, 1) as any as S.Schema<SensitivityLabelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolSensitivityLabelRecommendedError = AzureOpError;
 /** Gets sensitivity labels of a given SQL pool Gets sensitivity labels of a given SQL pool. */
-export const ListSqlPoolSensitivityLabelRecommended: API.OperationMethod<
+export const ListSqlPoolSensitivityLabelRecommended: API.PaginatedOperationMethod<
   ListSqlPoolSensitivityLabelRecommendedRequest,
   SensitivityLabelListResult,
   ListSqlPoolSensitivityLabelRecommendedError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SensitivityLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListSqlPoolSensitivityLabelRecommendedRequest>,
   output: __S(449, __c28, 1) as any as S.Schema<SensitivityLabelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolTableBySchemaError = AzureOpError;
 /** Gets tables of a given schema in a SQL pool Gets tables of a given schema in a SQL pool. */
-export const ListSqlPoolTableBySchema: API.OperationMethod<
+export const ListSqlPoolTableBySchema: API.PaginatedOperationMethod<
   ListSqlPoolTableBySchemaRequest,
   SqlPoolTableListResult,
   ListSqlPoolTableBySchemaError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Resource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<ListSqlPoolTableBySchemaRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<SqlPoolTableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolTableColumnByTableNameError = AzureOpError;
 /** Gets columns in a given table in a SQL pool Gets columns in a given table in a SQL pool. */
-export const ListSqlPoolTableColumnByTableName: API.OperationMethod<
+export const ListSqlPoolTableColumnByTableName: API.PaginatedOperationMethod<
   ListSqlPoolTableColumnByTableNameRequest,
   SqlPoolColumnListResult,
   ListSqlPoolTableColumnByTableNameError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPoolColumn
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<ListSqlPoolTableColumnByTableNameRequest>,
   output: __S(498, __c31, 2) as any as S.Schema<SqlPoolColumnListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolTransparentDataEncryptionsError = AzureOpError;
 /** SQL pool's transparent data encryption configurations Get list of SQL pool's transparent data encryption configurations. */
-export const ListSqlPoolTransparentDataEncryptions: API.OperationMethod<
+export const ListSqlPoolTransparentDataEncryptions: API.PaginatedOperationMethod<
   ListSqlPoolTransparentDataEncryptionsRequest,
   TransparentDataEncryptionListResult,
   ListSqlPoolTransparentDataEncryptionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TransparentDataEncryption
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c34, 0) as any as S.Schema<ListSqlPoolTransparentDataEncryptionsRequest>,
   output: __S(546, __c34, 2) as any as S.Schema<TransparentDataEncryptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolUsagesError = AzureOpError;
 /** Gets SQL pool usages Gets SQL pool usages. */
-export const ListSqlPoolUsages: API.OperationMethod<
+export const ListSqlPoolUsages: API.PaginatedOperationMethod<
   ListSqlPoolUsagesRequest,
   SqlPoolUsageListResult,
   ListSqlPoolUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPoolUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<ListSqlPoolUsagesRequest>,
   output: __S(578, __c36, 2) as any as S.Schema<SqlPoolUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolVulnerabilityAssessmentsError = AzureOpError;
 /** Lists the vulnerability assessment policies associated with a SQL pool Lists the vulnerability assessment policies associated with a SQL pool. */
-export const ListSqlPoolVulnerabilityAssessments: API.OperationMethod<
+export const ListSqlPoolVulnerabilityAssessments: API.PaginatedOperationMethod<
   ListSqlPoolVulnerabilityAssessmentsRequest,
   SqlPoolVulnerabilityAssessmentListResult,
   ListSqlPoolVulnerabilityAssessmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlPoolVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(592, __c37, 0) as any as S.Schema<ListSqlPoolVulnerabilityAssessmentsRequest>,
   output: __S(594, __c37, 2) as any as S.Schema<SqlPoolVulnerabilityAssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolVulnerabilityAssessmentScansError = AzureOpError;
 /** Lists the vulnerability assessment scans of a SQL pool Lists the vulnerability assessment scans of a SQL pool. */
-export const ListSqlPoolVulnerabilityAssessmentScans: API.OperationMethod<
+export const ListSqlPoolVulnerabilityAssessmentScans: API.PaginatedOperationMethod<
   ListSqlPoolVulnerabilityAssessmentScansRequest,
   VulnerabilityAssessmentScanRecordListResult,
   ListSqlPoolVulnerabilityAssessmentScansError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VulnerabilityAssessmentScanRecord
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<ListSqlPoolVulnerabilityAssessmentScansRequest>,
   output: __S(610, __c38, 2) as any as S.Schema<VulnerabilityAssessmentScanRecordListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolWorkloadClassifierError = AzureOpError;
 /** Sql pool's workload classifier Get list of Sql pool's workload classifier for workload groups. */
-export const ListSqlPoolWorkloadClassifier: API.OperationMethod<
+export const ListSqlPoolWorkloadClassifier: API.PaginatedOperationMethod<
   ListSqlPoolWorkloadClassifierRequest,
   WorkloadClassifierListResult,
   ListSqlPoolWorkloadClassifierError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadClassifier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<ListSqlPoolWorkloadClassifierRequest>,
   output: __S(626, __c39, 2) as any as S.Schema<WorkloadClassifierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlPoolWorkloadGroupError = AzureOpError;
 /** Sql pool's workload groups Get list of Sql pool's workload groups. */
-export const ListSqlPoolWorkloadGroup: API.OperationMethod<
+export const ListSqlPoolWorkloadGroup: API.PaginatedOperationMethod<
   ListSqlPoolWorkloadGroupRequest,
   WorkloadGroupListResult,
   ListSqlPoolWorkloadGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkloadGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<ListSqlPoolWorkloadGroupRequest>,
   output: __S(642, __c40, 2) as any as S.Schema<WorkloadGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceByResourceGroupError = AzureOpError;
 /** Returns a list of workspaces in a resource group */
-export const ListWorkspaceByResourceGroup: API.OperationMethod<
+export const ListWorkspaceByResourceGroup: API.PaginatedOperationMethod<
   ListWorkspaceByResourceGroupRequest,
   WorkspaceInfoListResult,
   ListWorkspaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
   output: __S(673, __c42, 1) as any as S.Schema<WorkspaceInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceError = AzureOpError;
 /** List workspace server's blob auditing policies. List workspace managed sql server's blob auditing policies. */
-export const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspace: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspace: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest,
   ServerBlobAuditingPolicyListResult,
   ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     688,
     __c43,
@@ -8057,16 +8361,23 @@ export const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspace: API.Ope
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsError = AzureOpError;
 /** List workspace server's minimal tls settings. List workspace managed sql server's minimal tls settings. */
-export const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettings: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettings: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest,
   DedicatedSQLminimalTlsSettingsListResult,
   ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedSQLminimalTlsSettings
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     704,
     __c44,
@@ -8076,16 +8387,23 @@ export const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettings: API.Op
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerEncryptionProtectorError = AzureOpError;
 /** Get list of encryption protectors for the server. Get list of encryption protectors for workspace managed sql server. */
-export const ListWorkspaceManagedSqlServerEncryptionProtector: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerEncryptionProtector: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerEncryptionProtectorRequest,
   EncryptionProtectorListResult,
   ListWorkspaceManagedSqlServerEncryptionProtectorError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EncryptionProtector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     720,
     __c45,
@@ -8095,16 +8413,23 @@ export const ListWorkspaceManagedSqlServerEncryptionProtector: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceError = AzureOpError;
 /** List server's extended blob auditing policies. List workspace managed sql server's extended blob auditing policies. */
-export const ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspace: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspace: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceRequest,
   ExtendedServerBlobAuditingPolicyListResult,
   ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExtendedServerBlobAuditingPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     768,
     __c48,
@@ -8114,16 +8439,23 @@ export const ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspace:
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerRecoverableSqlPoolsError = AzureOpError;
 /** Get list of recoverable sql pools for the server. Get list of recoverable sql pools for workspace managed sql server. */
-export const ListWorkspaceManagedSqlServerRecoverableSqlPools: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerRecoverableSqlPools: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest,
   RecoverableSqlPoolListResult,
   ListWorkspaceManagedSqlServerRecoverableSqlPoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecoverableSqlPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     784,
     __c49,
@@ -8133,16 +8465,23 @@ export const ListWorkspaceManagedSqlServerRecoverableSqlPools: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerSecurityAlertPolicyError = AzureOpError;
 /** Get server's threat detection policies. Get workspace managed sql server's threat detection policies. */
-export const ListWorkspaceManagedSqlServerSecurityAlertPolicy: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerSecurityAlertPolicy: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest,
   ServerSecurityAlertPolicyListResult,
   ListWorkspaceManagedSqlServerSecurityAlertPolicyError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerSecurityAlertPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     800,
     __c50,
@@ -8152,31 +8491,45 @@ export const ListWorkspaceManagedSqlServerSecurityAlertPolicy: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerUsagesError = AzureOpError;
 /** Get list of usages metric for the server. Get list of server usages metric for workspace managed sql server. */
-export const ListWorkspaceManagedSqlServerUsages: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerUsages: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerUsagesRequest,
   ServerUsageListResult,
   ListWorkspaceManagedSqlServerUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(816, __c51, 0) as any as S.Schema<ListWorkspaceManagedSqlServerUsagesRequest>,
   output: __S(578, __c36, 2) as any as S.Schema<ServerUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceManagedSqlServerVulnerabilityAssessmentsError = AzureOpError;
 /** Lists the vulnerability assessment policies associated with a server. Lists the vulnerability assessment policies associated with a workspace managed sql server. */
-export const ListWorkspaceManagedSqlServerVulnerabilityAssessments: API.OperationMethod<
+export const ListWorkspaceManagedSqlServerVulnerabilityAssessments: API.PaginatedOperationMethod<
   ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest,
   ServerVulnerabilityAssessmentListResult,
   ListWorkspaceManagedSqlServerVulnerabilityAssessmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerVulnerabilityAssessment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     832,
     __c52,
@@ -8186,22 +8539,35 @@ export const ListWorkspaceManagedSqlServerVulnerabilityAssessments: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspacesError = AzureOpError;
 /** Returns a list of workspaces in a subscription */
-export const ListWorkspaces: API.OperationMethod<
+export const ListWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   WorkspaceInfoListResult,
   ListWorkspacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(848, __c53, 0) as any as S.Schema<ListWorkspacesRequest>,
   output: __S(673, __c42, 1) as any as S.Schema<WorkspaceInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PauseSqlPoolError = AzureOpError;
 /** Pause SQL pool Pause a SQL pool */
@@ -9215,19 +9581,21 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1744, __c109, 0)),
+          value: __S(1744, __c109, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsResponse" });
@@ -9241,12 +9609,14 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateLinkHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsPrivateLinkHubRequest" });
@@ -9255,7 +9625,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c8, 1)),
+          value: __S(129, __c8, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsPrivateLinkHubResponse" });
@@ -9268,12 +9638,14 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkHubByResourceGroupRequest" });
@@ -9287,7 +9659,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(160, __c10, 0)),
+          value: __S(160, __c10, 0),
         }),
       ).annotate({ identifier: "PrivateLinkHubInfoListResult" });
   }
@@ -9300,12 +9672,14 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateLinkHubName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkHubPrivateLinkResourcesRequest" });
@@ -9318,7 +9692,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(192, __c12, 0)),
+          value: __S(192, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
@@ -9330,12 +9704,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/privateLinkHubs",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkHubsRequest" });
@@ -9349,12 +9725,14 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourcesRequest" });
@@ -9396,12 +9774,14 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolBlobAuditingPolicyBySqlPoolRequest" });
@@ -9410,7 +9790,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(257, __c16, 1)),
+          value: __S(257, __c16, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolBlobAuditingPolicyListResult" });
@@ -9424,12 +9804,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolByWorkspaceRequest" });
@@ -9439,7 +9821,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(273, __c17, 1)),
+          value: __S(273, __c17, 1),
         }),
       ).annotate({ identifier: "SqlPoolInfoListResult" });
   }
@@ -9488,7 +9870,7 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(305, __c19, 1)),
+          value: __S(305, __c19, 1),
         }),
       ).annotate({ identifier: "GeoBackupPolicyListResult" });
   }
@@ -9502,12 +9884,14 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operations",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolOperationsRequest" });
@@ -9544,7 +9928,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(323, __c20, 3)),
+          value: __S(323, __c20, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolBlobAuditingPolicySqlPoolOperationListResult" });
@@ -9559,12 +9943,14 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolReplicationLinksRequest" });
@@ -9573,7 +9959,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(337, __c21, 1)),
+          value: __S(337, __c21, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationLinkListResult" });
@@ -9588,12 +9974,14 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolRestorePointsRequest" });
@@ -9602,7 +9990,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(353, __c22, 1)),
+          value: __S(353, __c22, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorePointListResult" });
@@ -9618,12 +10006,14 @@ function __c23(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolSchemasRequest" });
@@ -9636,7 +10026,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(384, __c24, 0)),
+          value: __S(384, __c24, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolSchemaListResult" });
@@ -9651,12 +10041,14 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolSecurityAlertPoliciesRequest" });
@@ -9669,7 +10061,7 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(416, __c26, 0)),
+          value: __S(416, __c26, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlPoolSecurityAlertPolicies" });
@@ -9685,12 +10077,14 @@ function __c27(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolSensitivityLabelCurrentRequest" });
@@ -9703,7 +10097,7 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(448, __c28, 0)),
+          value: __S(448, __c28, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SensitivityLabelListResult" });
@@ -9721,12 +10115,14 @@ function __c29(j: number): any {
           includeDisabledRecommendations: S.optional(S.Boolean.pipe(T.Query())),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/recommendedSensitivityLabels",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolSensitivityLabelRecommendedRequest" });
@@ -9743,12 +10139,14 @@ function __c30(j: number): any {
           sqlPoolName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolTableBySchemaRequest" });
@@ -9766,12 +10164,14 @@ function __c31(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolTableColumnByTableNameRequest" });
@@ -9780,7 +10180,7 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(497, __c31, 1)),
+          value: __S(497, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolColumnListResult" });
@@ -9836,12 +10236,14 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolTransparentDataEncryptionsRequest" });
@@ -9850,7 +10252,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(545, __c34, 1)),
+          value: __S(545, __c34, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransparentDataEncryptionListResult" });
@@ -9865,12 +10267,14 @@ function __c35(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/usages",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolUsagesRequest" });
@@ -9910,12 +10314,14 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolVulnerabilityAssessmentsRequest" });
@@ -9924,7 +10330,7 @@ function __c37(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(593, __c37, 1)),
+          value: __S(593, __c37, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolVulnerabilityAssessmentListResult" });
@@ -9940,12 +10346,14 @@ function __c38(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolVulnerabilityAssessmentScansRequest" });
@@ -9954,7 +10362,7 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(609, __c38, 1)),
+          value: __S(609, __c38, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VulnerabilityAssessmentScanRecordListResult" });
@@ -9970,12 +10378,14 @@ function __c39(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           workloadGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolWorkloadClassifierRequest" });
@@ -9984,7 +10394,7 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(625, __c39, 1)),
+          value: __S(625, __c39, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadClassifierListResult" });
@@ -9999,12 +10409,14 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolWorkloadGroupRequest" });
@@ -10013,7 +10425,7 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(641, __c40, 1)),
+          value: __S(641, __c40, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadGroupListResult" });
@@ -10026,12 +10438,14 @@ function __c41(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceByResourceGroupRequest" });
@@ -10045,7 +10459,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(672, __c42, 0)),
+          value: __S(672, __c42, 0),
         }),
       ).annotate({ identifier: "WorkspaceInfoListResult" });
   }
@@ -10058,12 +10472,14 @@ function __c43(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -10074,7 +10490,7 @@ function __c43(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(689, __c43, 1)),
+          value: __S(689, __c43, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerBlobAuditingPolicyListResult" });
@@ -10088,12 +10504,14 @@ function __c44(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -10104,7 +10522,7 @@ function __c44(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(705, __c44, 1)),
+          value: __S(705, __c44, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedSQLminimalTlsSettingsListResult" });
@@ -10118,12 +10536,14 @@ function __c45(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceManagedSqlServerEncryptionProtectorRequest" });
@@ -10132,7 +10552,7 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(721, __c45, 1)),
+          value: __S(721, __c45, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionProtectorListResult" });
@@ -10186,12 +10606,14 @@ function __c48(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -10202,7 +10624,7 @@ function __c48(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(769, __c48, 1)),
+          value: __S(769, __c48, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedServerBlobAuditingPolicyListResult" });
@@ -10216,12 +10638,14 @@ function __c49(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest" });
@@ -10230,7 +10654,7 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(785, __c49, 1)),
+          value: __S(785, __c49, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecoverableSqlPoolListResult" });
@@ -10244,12 +10668,14 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest" });
@@ -10263,12 +10689,14 @@ function __c51(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlUsages",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceManagedSqlServerUsagesRequest" });
@@ -10282,12 +10710,14 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest" });
@@ -10296,7 +10726,7 @@ function __c52(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(833, __c52, 1)),
+          value: __S(833, __c52, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerVulnerabilityAssessmentListResult" });
@@ -10308,12 +10738,14 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/workspaces",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspacesRequest" });
@@ -14354,12 +14786,14 @@ function __c224(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAzureADOnlyAuthenticationsRequest" });
@@ -14368,7 +14802,7 @@ function __c224(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3585, __c224, 1)),
+          value: __S(3585, __c224, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureADOnlyAuthenticationListResult" });
@@ -14382,12 +14816,14 @@ function __c225(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBigDataPoolByWorkspaceRequest" });
@@ -14397,7 +14833,7 @@ function __c225(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(3601, __c225, 1)),
+          value: __S(3601, __c225, 1),
         }),
       ).annotate({ identifier: "BigDataPoolResourceInfoListResult" });
   }
@@ -14446,7 +14882,7 @@ function __c227(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3633, __c227, 1)),
+          value: __S(3633, __c227, 1),
         }),
       ).annotate({ identifier: "DataMaskingRuleListResult" });
   }
@@ -14460,12 +14896,14 @@ function __c228(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest" });
@@ -14474,7 +14912,7 @@ function __c228(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3649, __c228, 1)),
+          value: __S(3649, __c228, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedSqlPoolBlobAuditingPolicyListResult" });
@@ -14519,12 +14957,14 @@ function __c231(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationRuntimeByWorkspaceRequest" });
@@ -14685,12 +15125,14 @@ function __c235(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIpFirewallRuleByWorkspaceRequest" });
@@ -14700,7 +15142,7 @@ function __c235(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(3761, __c235, 1)),
+          value: __S(3761, __c235, 1),
         }),
       ).annotate({ identifier: "IpFirewallRuleInfoListResult" });
   }
@@ -14713,12 +15155,14 @@ function __c236(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKeyByWorkspaceRequest" });
@@ -14728,7 +15172,7 @@ function __c236(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(3777, __c236, 1)),
+          value: __S(3777, __c236, 1),
         }),
       ).annotate({ identifier: "KeyInfoListResult" });
   }
@@ -14741,12 +15185,14 @@ function __c237(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
             code: 200,
             apiVersion: "2021-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLibraryByWorkspaceRequest" });

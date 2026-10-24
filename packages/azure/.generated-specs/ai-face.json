@@ -15,121 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonGroup": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonGroup",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonGroupRequest": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonGroupRequest",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonDirectory": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonDirectory",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonDirectoryRequest": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonDirectoryRequest",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFromLargePersonGroup": "com.azure.ai_face#VerifyFaceRecognitionOperationFromLargePersonGroup",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFromLargePersonGroupRequest": "com.azure.ai_face#VerifyFaceRecognitionOperationFromLargePersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFace": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequest": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequestDetectionModel": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequestDetectionModel",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequestTargetFaceList": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequestTargetFaceList",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFace": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequest": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequestDetectionModel": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequestDetectionModel",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequestTargetFaceList": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequestTargetFaceList",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFaceToFace": "com.azure.ai_face#VerifyFaceRecognitionOperationFaceToFace",
-      "com.azure.ai_face#FaceRecognitionOperationsVerifyFaceToFaceRequest": "com.azure.ai_face#VerifyFaceRecognitionOperationFaceToFaceRequest",
-      "com.azure.ai_face#LivenessSessionOperationsGetSessionImage": "com.azure.ai_face#GetLivenessSessionOperationSessionImage",
-      "com.azure.ai_face#LivenessSessionOperationsGetSessionImageResponse": "com.azure.ai_face#GetLivenessSessionOperationSessionImageResponse",
-      "com.azure.ai_face#LivenessSessionOperationsGetSessionImageRequest": "com.azure.ai_face#GetLivenessSessionOperationSessionImageRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupTrainingStatus": "com.azure.ai_face#GetPersonGroupOperationPersonGroupTrainingStatus",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupTrainingStatusRequest": "com.azure.ai_face#GetPersonGroupOperationPersonGroupTrainingStatusRequest",
-      "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonFace": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonFaceRequest": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonFace": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonFaceRequest": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonFace": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonFaceRequest": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrl": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrl",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequest": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequestDetectionModel": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequestDetectionModel",
-      "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequestTargetFaceList": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequestTargetFaceList",
-      "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPerson": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonRequest": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPerson": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonRequest": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPerson": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonRequest": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupPerson": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupPersonRequest": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersons": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersons",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsResponse": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsResponse",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsResponseBodyList": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsResponseBodyList",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsRequest": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsRequest",
-      "com.azure.ai_face#PersonGroupOperationsDeletePersonGroup": "com.azure.ai_face#DeletePersonGroupOperationPersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupRequest": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroup": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupRequest": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsCreatePersonGroup": "com.azure.ai_face#CreatePersonGroupOperationPersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupRequest": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupRequestRecognitionModel": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupRequestRecognitionModel",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroup": "com.azure.ai_face#GetPersonGroupOperationPersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupRequest": "com.azure.ai_face#GetPersonGroupOperationPersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroups": "com.azure.ai_face#GetPersonGroupOperationPersonGroups",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsResponse": "com.azure.ai_face#GetPersonGroupOperationPersonGroupsResponse",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsResponseBodyList": "com.azure.ai_face#GetPersonGroupOperationPersonGroupsResponseBodyList",
-      "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsRequest": "com.azure.ai_face#GetPersonGroupOperationPersonGroupsRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupTrainingStatus": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupTrainingStatus",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupTrainingStatusRequest": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupTrainingStatusRequest",
-      "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonFace": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonFaceRequest": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonFace": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonFaceRequest": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonFace": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonFace",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonFaceRequest": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonFaceRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrl": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrl",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequest": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequest",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequestDetectionModel": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequestDetectionModel",
-      "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequestTargetFaceList": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequestTargetFaceList",
-      "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPerson": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonRequest": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPerson": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonRequest": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPerson": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonRequest": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupPerson": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupPerson",
-      "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupPersonRequest": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupPersonRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersons": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersons",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsResponse": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsResponse",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsResponseBodyList": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsResponseBodyList",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsRequest": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsRequest",
-      "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroup": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupRequest": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroup": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupRequest": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroup": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupRequest": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupRequestRecognitionModel": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupRequestRecognitionModel",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroup": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroup",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupRequest": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupRequest",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroups": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroups",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsResponse": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsResponse",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsResponseBodyList": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsResponseBodyList",
-      "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsRequest": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsRequest",
-      "com.azure.ai_face#FaceListOperationsGetLargeFaceLists": "com.azure.ai_face#GetFaceListOperationLargeFaceLists",
-      "com.azure.ai_face#FaceListOperationsGetLargeFaceListsResponse": "com.azure.ai_face#GetFaceListOperationLargeFaceListsResponse",
-      "com.azure.ai_face#FaceListOperationsGetLargeFaceListsResponseBodyList": "com.azure.ai_face#GetFaceListOperationLargeFaceListsResponseBodyList",
-      "com.azure.ai_face#FaceListOperationsGetLargeFaceListsRequest": "com.azure.ai_face#GetFaceListOperationLargeFaceListsRequest",
-      "com.azure.ai_face#FaceListOperationsGetFaceLists": "com.azure.ai_face#GetFaceListOperationFaceLists",
-      "com.azure.ai_face#FaceListOperationsGetFaceListsResponse": "com.azure.ai_face#GetFaceListOperationFaceListsResponse",
-      "com.azure.ai_face#FaceListOperationsGetFaceListsResponseBodyList": "com.azure.ai_face#GetFaceListOperationFaceListsResponseBodyList",
-      "com.azure.ai_face#FaceListOperationsGetFaceListsRequest": "com.azure.ai_face#GetFaceListOperationFaceListsRequest",
-      "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessSession": "com.azure.ai_face#DeleteLivenessSessionOperationLivenessSession",
-      "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessSessionRequest": "com.azure.ai_face#DeleteLivenessSessionOperationLivenessSessionRequest",
-      "com.azure.ai_face#LivenessSessionOperationsGetLivenessSessionResult": "com.azure.ai_face#GetLivenessSessionOperationLivenessSessionResult",
-      "com.azure.ai_face#LivenessSessionOperationsGetLivenessSessionResultRequest": "com.azure.ai_face#GetLivenessSessionOperationLivenessSessionResultRequest",
-      "com.azure.ai_face#LivenessSessionOperationsCreateLivenessSession": "com.azure.ai_face#CreateLivenessSessionOperationLivenessSession",
-      "com.azure.ai_face#LivenessSessionOperationsCreateLivenessSessionRequest": "com.azure.ai_face#CreateLivenessSessionOperationLivenessSessionRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonGroup": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonGroupRequest"
+        "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonGroupRequest"
       },
       "output": {
         "target": "com.azure.ai_face#VerificationResult"
@@ -169,7 +61,7 @@
         "smithy.api#documentation": "Verify result."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonGroupRequest": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -206,10 +98,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonDirectory": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonDirectory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonDirectoryRequest"
+        "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonDirectoryRequest"
       },
       "output": {
         "target": "com.azure.ai_face#VerificationResult"
@@ -227,7 +119,7 @@
         "smithy.api#documentation": "Verify whether a face belongs to a person in Person Directory.\n\n> [!NOTE]\n>\n> *\n>   * Higher face image quality means better identification precision. Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.\n>   * For the scenarios that are sensitive to accuracy please make your own judgment.\n>   * The Verify operation can only match faces obtained with the same recognition model, that is associated with the query face."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonDirectoryRequest": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonDirectoryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -257,10 +149,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFromLargePersonGroup": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFromLargePersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFromLargePersonGroupRequest"
+        "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFromLargePersonGroupRequest"
       },
       "output": {
         "target": "com.azure.ai_face#VerificationResult"
@@ -278,7 +170,7 @@
         "smithy.api#documentation": "Verify whether a face belongs to a person in a Large Person Group.\n\n> [!NOTE]\n>\n> *\n>   * Higher face image quality means better identification precision. Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.\n>   * For the scenarios that are sensitive to accuracy please make your own judgment.\n>   * The 'recognitionModel' associated with the query face should be the same as the 'recognitionModel' used by the Large Person Group."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFromLargePersonGroupRequest": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFromLargePersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -315,10 +207,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFace": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "com.azure.ai_face#AddFaceResult"
@@ -351,7 +243,7 @@
         "smithy.api#documentation": "Response body for adding face."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -379,14 +271,14 @@
           }
         },
         "targetFace": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequestTargetFaceList",
+          "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequestTargetFaceList",
           "traits": {
             "smithy.api#httpQuery": "targetFace",
             "smithy.api#documentation": "A face rectangle to specify the target face to be added to a person, in the format of 'targetFace=left,top,width,height'."
           }
         },
         "detectionModel": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequestDetectionModel",
+          "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequestDetectionModel",
           "traits": {
             "smithy.api#httpQuery": "detectionModel",
             "smithy.api#documentation": "The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include 'detection_01', 'detection_02' and 'detection_03'. The default value is 'detection_01'."
@@ -411,7 +303,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequestDetectionModel": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequestDetectionModel": {
       "type": "enum",
       "members": {
         "DETECTION_01": {
@@ -435,17 +327,17 @@
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceRequestTargetFaceList": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceRequestTargetFaceList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFace": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "com.azure.ai_face#AddFaceResult"
@@ -463,7 +355,7 @@
         "smithy.api#documentation": "Add a face to a person into a Large Person Group for face identification or verification.\n\nTo deal with an image containing multiple faces, input face can be specified as an image with a targetFace rectangle. It returns a persistedFaceId representing the added face. No image will be stored. Only the extracted face feature(s) will be stored on server until \"Delete Large Person Group Person Face\", \"Delete Large Person Group Person\" or \"Delete Large Person Group\" is called.\n\nNote that persistedFaceId is different from faceId generated by \"Detect\".\n\n>\n*\n  * Each person entry can hold up to 248 faces.\n  * Higher face image quality means better recognition precision. Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.\n  * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed image file size is from 1KB to 6MB.\n  * \"targetFace\" rectangle should contain one face. Zero or multiple faces will be regarded as an error. If the provided \"targetFace\" rectangle is not returned from \"Detect\", there's no guarantee to detect and add the face successfully.\n  * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or large occlusions will cause failures.\n  * The minimum detectable face size is 36x36 pixels in an image no larger than 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will need a proportionally larger minimum face size.\n  * Different 'detectionModel' values can be provided. To use and compare different detection models, please refer to [here](https://learn.microsoft.com/azure/ai-services/computer-vision/how-to/specify-detection-model)."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -491,14 +383,14 @@
           }
         },
         "targetFace": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequestTargetFaceList",
+          "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequestTargetFaceList",
           "traits": {
             "smithy.api#httpQuery": "targetFace",
             "smithy.api#documentation": "A face rectangle to specify the target face to be added to a person, in the format of 'targetFace=left,top,width,height'."
           }
         },
         "detectionModel": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequestDetectionModel",
+          "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequestDetectionModel",
           "traits": {
             "smithy.api#httpQuery": "detectionModel",
             "smithy.api#documentation": "The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include 'detection_01', 'detection_02' and 'detection_03'. The default value is 'detection_01'."
@@ -523,7 +415,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequestDetectionModel": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequestDetectionModel": {
       "type": "enum",
       "members": {
         "DETECTION_01": {
@@ -547,7 +439,7 @@
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceRequestTargetFaceList": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceRequestTargetFaceList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
@@ -1002,13 +894,13 @@
         "smithy.api#documentation": "Array of query faces faceIds, created by the \"Detect\". Each of the faces are identified independently. The valid number of faceIds is between [1, 10]."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceList": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListRequest"
+        "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListResponse"
+        "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1023,11 +915,11 @@
         "smithy.api#documentation": "Given query face's faceId, to search the similar-looking faces from a Large Face List. A 'largeFaceListId' is created by Create Large Face List.\n\nDepending on the input the returned similar faces list contains faceIds or persistedFaceIds ranked by similarity.\n\nFind similar has two working modes, \"matchPerson\" and \"matchFace\". \"matchPerson\" is the default mode that it tries to find faces of the same person as possible by using internal same-person thresholds. It is useful to find a known person's other photos. Note that an empty list will be returned if no faces pass the internal thresholds. \"matchFace\" mode ignores same-person thresholds and returns ranked similar faces anyway, even the similarity is low. It can be used in the cases like searching celebrity-looking faces.\n\nThe 'recognitionModel' associated with the query faceId should be the same as the 'recognitionModel' used by the target Large Face List."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListResponse": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListResponseBodyList",
+          "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -1038,7 +930,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListResponseBodyList": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#FindSimilarResult"
@@ -1072,7 +964,7 @@
         "smithy.api#documentation": "Response body for find similar face operation."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListRequest": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1097,7 +989,7 @@
           }
         },
         "mode": {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListRequestMode",
+          "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceRequestMode",
           "traits": {
             "smithy.api#documentation": "Similar face searching mode. It can be 'matchPerson' or 'matchFace'. Default value is 'matchPerson'."
           }
@@ -1114,7 +1006,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceListRequestMode": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFaceRequestMode": {
       "type": "enum",
       "members": {
         "MATCHPERSON": {
@@ -1134,13 +1026,13 @@
         "smithy.api#documentation": "Similar face searching mode. It can be 'matchPerson' or 'matchFace'. Default value is 'matchPerson'."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceList": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListRequest"
+        "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListResponse"
+        "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1155,11 +1047,11 @@
         "smithy.api#documentation": "Given query face's faceId, to search the similar-looking faces from a Face List. A 'faceListId' is created by Create Face List.\n\nDepending on the input the returned similar faces list contains faceIds or persistedFaceIds ranked by similarity.\n\nFind similar has two working modes, \"matchPerson\" and \"matchFace\". \"matchPerson\" is the default mode that it tries to find faces of the same person as possible by using internal same-person thresholds. It is useful to find a known person's other photos. Note that an empty list will be returned if no faces pass the internal thresholds. \"matchFace\" mode ignores same-person thresholds and returns ranked similar faces anyway, even the similarity is low. It can be used in the cases like searching celebrity-looking faces.\n\nThe 'recognitionModel' associated with the query faceId should be the same as the 'recognitionModel' used by the target Face List."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListResponse": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListResponseBodyList",
+          "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -1170,14 +1062,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListResponseBodyList": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#FindSimilarResult"
       },
       "traits": {}
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListRequest": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1202,7 +1094,7 @@
           }
         },
         "mode": {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListRequestMode",
+          "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceRequestMode",
           "traits": {
             "smithy.api#documentation": "Similar face searching mode. It can be 'matchPerson' or 'matchFace'. Default value is 'matchPerson'."
           }
@@ -1219,7 +1111,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceListRequestMode": {
+    "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFaceRequestMode": {
       "type": "enum",
       "members": {
         "MATCHPERSON": {
@@ -2791,10 +2683,10 @@
       },
       "traits": {}
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFaceToFace": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFaceToFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFaceToFaceRequest"
+        "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFaceToFaceRequest"
       },
       "output": {
         "target": "com.azure.ai_face#VerificationResult"
@@ -2812,7 +2704,7 @@
         "smithy.api#documentation": "Verify whether two faces belong to a same person.\n\n> [!NOTE]\n>\n> *\n>   * Higher face image quality means better identification precision. Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.\n>   * For the scenarios that are sensitive to accuracy please make your own judgment.\n>   * The 'recognitionModel' associated with the both faces should be the same."
       }
     },
-    "com.azure.ai_face#FaceRecognitionOperationsVerifyFaceToFaceRequest": {
+    "com.azure.ai_face#VerifyFaceRecognitionOperationFaceToFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2842,13 +2734,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsGetSessionImage": {
+    "com.azure.ai_face#GetLivenessSessionOperationSessionImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#LivenessSessionOperationsGetSessionImageRequest"
+        "target": "com.azure.ai_face#GetLivenessSessionOperationSessionImageRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#LivenessSessionOperationsGetSessionImageResponse"
+        "target": "com.azure.ai_face#GetLivenessSessionOperationSessionImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2863,7 +2755,7 @@
         "smithy.api#documentation": "Get session image stored during the liveness session."
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsGetSessionImageResponse": {
+    "com.azure.ai_face#GetLivenessSessionOperationSessionImageResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2878,7 +2770,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsGetSessionImageRequest": {
+    "com.azure.ai_face#GetLivenessSessionOperationSessionImageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2902,10 +2794,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupTrainingStatus": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupTrainingStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupTrainingStatusRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupTrainingStatusRequest"
       },
       "output": {
         "target": "com.azure.ai_face#TrainingResult"
@@ -2997,7 +2889,7 @@
         "smithy.api#documentation": "The status of long running operation."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupTrainingStatusRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupTrainingStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3081,10 +2973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonFace": {
+    "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3102,7 +2994,7 @@
         "smithy.api#documentation": "Delete a face from a person in a Person Group by specified personGroupId, personId and persistedFaceId.\n\nAdding/deleting faces to/from a same person will be processed sequentially. Adding/deleting faces to/from different persons are processed in parallel."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3142,10 +3034,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonFace": {
+    "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3163,7 +3055,7 @@
         "smithy.api#documentation": "Update a person persisted face's userData field."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3209,10 +3101,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonFace": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "com.azure.ai_face#PersonGroupPersonFace"
@@ -3251,7 +3143,7 @@
         "smithy.api#documentation": "Face resource for person group person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3291,10 +3183,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrl": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrl": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequest"
+        "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequest"
       },
       "output": {
         "target": "com.azure.ai_face#AddFaceResult"
@@ -3312,7 +3204,7 @@
         "smithy.api#documentation": "Add a face to a person into a Person Group for face identification or verification.\n\nTo deal with an image containing multiple faces, input face can be specified as an image with a targetFace rectangle. It returns a persistedFaceId representing the added face. No image will be stored. Only the extracted face feature(s) will be stored on server until \"Delete Person Group Person Face\", \"Delete Person Group Person\" or \"Delete Person Group\" is called.\n\nNote that persistedFaceId is different from faceId generated by \"Detect\".\n\n>\n* \n  * Each person entry can hold up to 248 faces.\n  * Higher face image quality means better recognition precision. Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.\n  * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed image file size is from 1KB to 6MB.\n  * \"targetFace\" rectangle should contain one face. Zero or multiple faces will be regarded as an error. If the provided \"targetFace\" rectangle is not returned from \"Detect\", there's no guarantee to detect and add the face successfully.\n  * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or large occlusions will cause failures.\n  * The minimum detectable face size is 36x36 pixels in an image no larger than 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will need a proportionally larger minimum face size.\n  * Different 'detectionModel' values can be provided. To use and compare different detection models, please refer to [here](https://learn.microsoft.com/azure/ai-services/computer-vision/how-to/specify-detection-model)."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequest": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3340,14 +3232,14 @@
           }
         },
         "targetFace": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequestTargetFaceList",
+          "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequestTargetFaceList",
           "traits": {
             "smithy.api#httpQuery": "targetFace",
             "smithy.api#documentation": "A face rectangle to specify the target face to be added to a person, in the format of 'targetFace=left,top,width,height'."
           }
         },
         "detectionModel": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequestDetectionModel",
+          "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequestDetectionModel",
           "traits": {
             "smithy.api#httpQuery": "detectionModel",
             "smithy.api#documentation": "The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include 'detection_01', 'detection_02' and 'detection_03'. The default value is 'detection_01'."
@@ -3372,7 +3264,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequestDetectionModel": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequestDetectionModel": {
       "type": "enum",
       "members": {
         "DETECTION_01": {
@@ -3396,17 +3288,17 @@
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrlRequestTargetFaceList": {
+    "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrlRequestTargetFaceList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPerson": {
+    "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3424,7 +3316,7 @@
         "smithy.api#documentation": "Delete an existing person from a Person Group. The persistedFaceId, userData, person name and face feature(s) in the person entry will all be deleted."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonRequest": {
+    "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3456,10 +3348,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPerson": {
+    "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3477,7 +3369,7 @@
         "smithy.api#documentation": "Update name or userData of a person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonRequest": {
+    "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3521,10 +3413,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPerson": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonRequest"
       },
       "output": {
         "target": "com.azure.ai_face#PersonGroupPerson"
@@ -3585,7 +3477,7 @@
         "smithy.api#documentation": "Face ids of registered faces in the person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3617,10 +3509,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupPerson": {
+    "com.azure.ai_face#CreatePersonGroupOperationPersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupPersonRequest"
       },
       "output": {
         "target": "com.azure.ai_face#CreatePersonResult"
@@ -3653,7 +3545,7 @@
         "smithy.api#documentation": "Response of create person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupPersonRequest": {
+    "com.azure.ai_face#CreatePersonGroupOperationPersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3690,13 +3582,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersons": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersons": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsResponse"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3711,11 +3603,11 @@
         "smithy.api#documentation": "List all persons' information in the specified Person Group, including personId, name, userData and persistedFaceIds of registered person faces.\n\nPersons are stored in alphabetical order of personId created in \"Create Person Group Person\".\n>\n*\n  * \"start\" parameter (string, optional) specifies an ID value from which returned entries will have larger IDs based on string comparison. Setting \"start\" to an empty value indicates that entries should be returned starting from the first item.\n  * \"top\" parameter (int, optional) determines the maximum number of entries to be returned, with a limit of up to 1000 entries per call. To retrieve additional entries beyond this limit, specify \"start\" with the personId of the last entry returned in the current call.\n\n> [!TIP]\n>\n> * For example, there are total 5 items with their IDs: \"itemId1\", ..., \"itemId5\".\n>   * \"start=&top=\" will return all 5 items.\n>   * \"start=&top=2\" will return \"itemId1\", \"itemId2\".\n>   * \"start=itemId2&top=3\" will return \"itemId3\", \"itemId4\", \"itemId5\"."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsResponse": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsResponseBodyList",
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -3726,14 +3618,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsResponseBodyList": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#PersonGroupPerson"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonsRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3771,10 +3663,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeletePersonGroup": {
+    "com.azure.ai_face#DeletePersonGroupOperationPersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupRequest"
+        "target": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3792,7 +3684,7 @@
         "smithy.api#documentation": "Delete an existing Person Group with specified personGroupId. Persisted data in this Person Group will be deleted."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupRequest": {
+    "com.azure.ai_face#DeletePersonGroupOperationPersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3816,10 +3708,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroup": {
+    "com.azure.ai_face#UpdatePersonGroupOperationPersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupRequest"
+        "target": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3837,7 +3729,7 @@
         "smithy.api#documentation": "Update an existing Person Group's name and userData. The properties keep unchanged if they are not in request body."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupRequest": {
+    "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3873,10 +3765,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreatePersonGroup": {
+    "com.azure.ai_face#CreatePersonGroupOperationPersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupRequest"
+        "target": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3894,7 +3786,7 @@
         "smithy.api#documentation": "Create a new Person Group with specified personGroupId, name, user-provided userData and recognitionModel.\n\nA Person Group is a container holding the uploaded person data, including face recognition features.\n\nAfter creation, use \"Create Person Group Person\" to add persons into the group, and then call \"Train Person Group\" to get this group ready for \"Identify From Person Group\".\n\nNo image will be stored. Only the person's extracted face feature(s) and userData will be stored on server until \"Delete Person Group Person\" or \"Delete Person Group\" is called.\n\n'recognitionModel' should be specified to associate with this Person Group. The default value for 'recognitionModel' is 'recognition_01', if the latest model needed, please explicitly specify the model you need in this parameter. New faces that are added to an existing Person Group will use the recognition model that's already associated with the collection. Existing face feature(s) in a Person Group can't be updated to features extracted by another version of recognition model.\n\n> [!NOTE]\n>\n> *\n>   * Free-tier subscription quota: 1,000 Person Groups. Each holds up to 1,000 persons.\n>   * S0-tier subscription quota: 1,000,000 Person Groups. Each holds up to 10,000 persons.\n>   * to handle larger scale face identification problem, please consider using Large Person Group."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupRequest": {
+    "com.azure.ai_face#CreatePersonGroupOperationPersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3927,7 +3819,7 @@
           }
         },
         "recognitionModel": {
-          "target": "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupRequestRecognitionModel",
+          "target": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupRequestRecognitionModel",
           "traits": {
             "smithy.api#documentation": "The 'recognitionModel' associated with this face list. Supported 'recognitionModel' values include 'recognition_01', 'recognition_02, 'recognition_03', and 'recognition_04'. The default value is 'recognition_01'. 'recognition_04' is recommended since its accuracy is improved on faces wearing masks compared with 'recognition_03', and its overall accuracy is improved compared with 'recognition_01' and 'recognition_02'."
           }
@@ -3937,7 +3829,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupRequestRecognitionModel": {
+    "com.azure.ai_face#CreatePersonGroupOperationPersonGroupRequestRecognitionModel": {
       "type": "enum",
       "members": {
         "RECOGNITION_01": {
@@ -3969,10 +3861,10 @@
         "smithy.api#documentation": "The 'recognitionModel' associated with this face list. Supported 'recognitionModel' values include 'recognition_01', 'recognition_02, 'recognition_03', and 'recognition_04'. The default value is 'recognition_01'. 'recognition_04' is recommended since its accuracy is improved on faces wearing masks compared with 'recognition_03', and its overall accuracy is improved compared with 'recognition_01' and 'recognition_02'."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroup": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupRequest"
       },
       "output": {
         "target": "com.azure.ai_face#PersonGroup"
@@ -4024,7 +3916,7 @@
         "smithy.api#documentation": "The container of the uploaded person data, including face recognition feature, and up to 10,000 persons. To handle larger scale face identification problem, please consider using Large Person Group."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4055,13 +3947,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroups": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupsRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsResponse"
+        "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4076,11 +3968,11 @@
         "smithy.api#documentation": "List Person Groups' personGroupId, name, userData and recognitionModel.\n\nPerson Groups are stored in alphabetical order of personGroupId.\n>\n*\n  * \"start\" parameter (string, optional) specifies an ID value from which returned entries will have larger IDs based on string comparison. Setting \"start\" to an empty value indicates that entries should be returned starting from the first item.\n  * \"top\" parameter (int, optional) determines the maximum number of entries to be returned, with a limit of up to 1000 entries per call. To retrieve additional entries beyond this limit, specify \"start\" with the personId of the last entry returned in the current call.\n\n> [!TIP]\n>\n> * For example, there are total 5 items with their IDs: \"itemId1\", ..., \"itemId5\".\n>   * \"start=&top=\" will return all 5 items.\n>   * \"start=&top=2\" will return \"itemId1\", \"itemId2\".\n>   * \"start=itemId2&top=3\" will return \"itemId3\", \"itemId4\", \"itemId5\"."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsResponse": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsResponseBodyList",
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4091,14 +3983,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsResponseBodyList": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#PersonGroup"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsGetPersonGroupsRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationPersonGroupsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4135,10 +4027,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupTrainingStatus": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupTrainingStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupTrainingStatusRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupTrainingStatusRequest"
       },
       "output": {
         "target": "com.azure.ai_face#TrainingResult"
@@ -4156,7 +4048,7 @@
         "smithy.api#documentation": "To check Large Person Group training status completed or still ongoing. Large Person Group training is an asynchronous operation triggered by \"Train Large Person Group\" API.\n\nTraining time depends on the number of person entries, and their faces in a Large Person Group. It could be in seconds, or up to half an hour for 1,000,000 persons."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupTrainingStatusRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupTrainingStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4240,10 +4132,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonFace": {
+    "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4261,7 +4153,7 @@
         "smithy.api#documentation": "Delete a face from a person in a Large Person Group by specified largePersonGroupId, personId and persistedFaceId.\n\nAdding/deleting faces to/from a same person will be processed sequentially. Adding/deleting faces to/from different persons are processed in parallel."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4301,10 +4193,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonFace": {
+    "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4322,7 +4214,7 @@
         "smithy.api#documentation": "Update a person persisted face's userData field."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4368,10 +4260,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonFace": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonFace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonFaceRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonFaceRequest"
       },
       "output": {
         "target": "com.azure.ai_face#LargePersonGroupPersonFace"
@@ -4410,7 +4302,7 @@
         "smithy.api#documentation": "Face resource for large person group person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonFaceRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonFaceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4450,10 +4342,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrl": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrl": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequest"
+        "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequest"
       },
       "output": {
         "target": "com.azure.ai_face#AddFaceResult"
@@ -4471,7 +4363,7 @@
         "smithy.api#documentation": "Add a face to a person into a Large Person Group for face identification or verification.\n\nTo deal with an image containing multiple faces, input face can be specified as an image with a targetFace rectangle. It returns a persistedFaceId representing the added face. No image will be stored. Only the extracted face feature(s) will be stored on server until \"Delete Large Person Group Person Face\", \"Delete Large Person Group Person\" or \"Delete Large Person Group\" is called.\n\nNote that persistedFaceId is different from faceId generated by \"Detect\".\n\n>\n*\n  * Each person entry can hold up to 248 faces.\n  * Higher face image quality means better recognition precision. Please consider high-quality faces: frontal, clear, and face size is 200x200 pixels (100 pixels between eyes) or bigger.\n  * JPEG, PNG, GIF (the first frame), and BMP format are supported. The allowed image file size is from 1KB to 6MB.\n  * \"targetFace\" rectangle should contain one face. Zero or multiple faces will be regarded as an error. If the provided \"targetFace\" rectangle is not returned from \"Detect\", there's no guarantee to detect and add the face successfully.\n  * Out of detectable face size (36x36 - 4096x4096 pixels), large head-pose, or large occlusions will cause failures.\n  * The minimum detectable face size is 36x36 pixels in an image no larger than 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will need a proportionally larger minimum face size.\n  * Different 'detectionModel' values can be provided. To use and compare different detection models, please refer to [here](https://learn.microsoft.com/azure/ai-services/computer-vision/how-to/specify-detection-model)."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequest": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4499,14 +4391,14 @@
           }
         },
         "targetFace": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequestTargetFaceList",
+          "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequestTargetFaceList",
           "traits": {
             "smithy.api#httpQuery": "targetFace",
             "smithy.api#documentation": "A face rectangle to specify the target face to be added to a person, in the format of 'targetFace=left,top,width,height'."
           }
         },
         "detectionModel": {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequestDetectionModel",
+          "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequestDetectionModel",
           "traits": {
             "smithy.api#httpQuery": "detectionModel",
             "smithy.api#documentation": "The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include 'detection_01', 'detection_02' and 'detection_03'. The default value is 'detection_01'."
@@ -4531,7 +4423,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequestDetectionModel": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequestDetectionModel": {
       "type": "enum",
       "members": {
         "DETECTION_01": {
@@ -4555,17 +4447,17 @@
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrlRequestTargetFaceList": {
+    "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrlRequestTargetFaceList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPerson": {
+    "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4583,7 +4475,7 @@
         "smithy.api#documentation": "Delete an existing person from a Large Person Group. The persistedFaceId, userData, person name and face feature(s) in the person entry will all be deleted."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonRequest": {
+    "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4615,10 +4507,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPerson": {
+    "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4636,7 +4528,7 @@
         "smithy.api#documentation": "Update name or userData of a person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonRequest": {
+    "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4680,10 +4572,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPerson": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonRequest"
       },
       "output": {
         "target": "com.azure.ai_face#LargePersonGroupPerson"
@@ -4744,7 +4636,7 @@
         "smithy.api#documentation": "Face ids of registered faces in the person."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4776,10 +4668,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupPerson": {
+    "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupPerson": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupPersonRequest"
+        "target": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupPersonRequest"
       },
       "output": {
         "target": "com.azure.ai_face#CreatePersonResult"
@@ -4797,7 +4689,7 @@
         "smithy.api#documentation": "Create a new person in a specified Large Person Group. To add face to this person, please call \"Add Large Person Group Person Face\".\n\n> [!NOTE]\n>\n> *\n>   * Free-tier subscription quota:\n>     * 1,000 persons in all Large Person Groups.\n>   * S0-tier subscription quota:\n>     * 1,000,000 persons per Large Person Group.\n>     * 1,000,000 Large Person Groups.\n>     * 1,000,000,000 persons in all Large Person Groups."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupPersonRequest": {
+    "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupPersonRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4834,13 +4726,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersons": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersons": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsResponse"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4855,11 +4747,11 @@
         "smithy.api#documentation": "List all persons' information in the specified Large Person Group, including personId, name, userData and persistedFaceIds of registered person faces.\n\nPersons are stored in alphabetical order of personId created in \"Create Large Person Group Person\".\n>\n*\n  * \"start\" parameter (string, optional) specifies an ID value from which returned entries will have larger IDs based on string comparison. Setting \"start\" to an empty value indicates that entries should be returned starting from the first item.\n  * \"top\" parameter (int, optional) determines the maximum number of entries to be returned, with a limit of up to 1000 entries per call. To retrieve additional entries beyond this limit, specify \"start\" with the personId of the last entry returned in the current call.\n\n> [!TIP]\n>\n> * For example, there are total 5 items with their IDs: \"itemId1\", ..., \"itemId5\".\n>   * \"start=&top=\" will return all 5 items.\n>   * \"start=&top=2\" will return \"itemId1\", \"itemId2\".\n>   * \"start=itemId2&top=3\" will return \"itemId3\", \"itemId4\", \"itemId5\"."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsResponse": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsResponseBodyList",
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4870,14 +4762,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsResponseBodyList": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#LargePersonGroupPerson"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonsRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4915,10 +4807,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroup": {
+    "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupRequest"
+        "target": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4936,7 +4828,7 @@
         "smithy.api#documentation": "Delete an existing Large Person Group with specified personGroupId. Persisted data in this Large Person Group will be deleted."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupRequest": {
+    "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4960,10 +4852,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroup": {
+    "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupRequest"
+        "target": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4981,7 +4873,7 @@
         "smithy.api#documentation": "Update an existing Large Person Group's name and userData. The properties keep unchanged if they are not in request body."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupRequest": {
+    "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5017,10 +4909,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroup": {
+    "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupRequest"
+        "target": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5038,7 +4930,7 @@
         "smithy.api#documentation": "Create a new Large Person Group with user-specified largePersonGroupId, name, an optional userData and recognitionModel.\n\nA Large Person Group is a container holding the uploaded person data, including the face recognition features. It can hold up to 1,000,000 entities.\n\nAfter creation, use \"Create Large Person Group Person\" to add person into the group, and call \"Train Large Person Group\" to get this group ready for \"Identify From Large Person Group\".\n\nNo image will be stored. Only the person's extracted face feature(s) and userData will be stored on server until \"Delete Large Person Group Person\" or \"Delete Large Person Group\" is called.\n\n'recognitionModel' should be specified to associate with this Large Person Group. The default value for 'recognitionModel' is 'recognition_01', if the latest model needed, please explicitly specify the model you need in this parameter. New faces that are added to an existing Large Person Group will use the recognition model that's already associated with the collection. Existing face feature(s) in a Large Person Group can't be updated to features extracted by another version of recognition model.\n\n> [!NOTE]\n>\n> *\n>   * Free-tier subscription quota: 1,000 Large Person Groups.\n>   * S0-tier subscription quota: 1,000,000 Large Person Groups."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupRequest": {
+    "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5071,7 +4963,7 @@
           }
         },
         "recognitionModel": {
-          "target": "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupRequestRecognitionModel",
+          "target": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupRequestRecognitionModel",
           "traits": {
             "smithy.api#documentation": "The 'recognitionModel' associated with this face list. Supported 'recognitionModel' values include 'recognition_01', 'recognition_02, 'recognition_03', and 'recognition_04'. The default value is 'recognition_01'. 'recognition_04' is recommended since its accuracy is improved on faces wearing masks compared with 'recognition_03', and its overall accuracy is improved compared with 'recognition_01' and 'recognition_02'."
           }
@@ -5081,7 +4973,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupRequestRecognitionModel": {
+    "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupRequestRecognitionModel": {
       "type": "enum",
       "members": {
         "RECOGNITION_01": {
@@ -5113,10 +5005,10 @@
         "smithy.api#documentation": "The 'recognitionModel' associated with this face list. Supported 'recognitionModel' values include 'recognition_01', 'recognition_02, 'recognition_03', and 'recognition_04'. The default value is 'recognition_01'. 'recognition_04' is recommended since its accuracy is improved on faces wearing masks compared with 'recognition_03', and its overall accuracy is improved compared with 'recognition_01' and 'recognition_02'."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroup": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupRequest"
       },
       "output": {
         "target": "com.azure.ai_face#LargePersonGroup"
@@ -5168,7 +5060,7 @@
         "smithy.api#documentation": "The container of the uploaded person data, including face recognition feature, and up to 1,000,000 people."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5199,13 +5091,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroups": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsRequest"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsResponse"
+        "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5220,11 +5112,11 @@
         "smithy.api#documentation": "List all existing Large Person Groups' largePersonGroupId, name, userData and recognitionModel.\n\nLarge Person Groups are stored in alphabetical order of largePersonGroupId.\n>\n*\n  * \"start\" parameter (string, optional) specifies an ID value from which returned entries will have larger IDs based on string comparison. Setting \"start\" to an empty value indicates that entries should be returned starting from the first item.\n  * \"top\" parameter (int, optional) determines the maximum number of entries to be returned, with a limit of up to 1000 entries per call. To retrieve additional entries beyond this limit, specify \"start\" with the personId of the last entry returned in the current call.\n\n> [!TIP]\n>\n> * For example, there are total 5 items with their IDs: \"itemId1\", ..., \"itemId5\".\n>   * \"start=&top=\" will return all 5 items.\n>   * \"start=&top=2\" will return \"itemId1\", \"itemId2\".\n>   * \"start=itemId2&top=3\" will return \"itemId3\", \"itemId4\", \"itemId5\"."
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsResponse": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsResponseBodyList",
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5235,14 +5127,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsResponseBodyList": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#LargePersonGroup"
       },
       "traits": {}
     },
-    "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupsRequest": {
+    "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6039,13 +5931,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetLargeFaceLists": {
+    "com.azure.ai_face#GetFaceListOperationLargeFaceLists": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceListOperationsGetLargeFaceListsRequest"
+        "target": "com.azure.ai_face#GetFaceListOperationLargeFaceListsRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#FaceListOperationsGetLargeFaceListsResponse"
+        "target": "com.azure.ai_face#GetFaceListOperationLargeFaceListsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6060,11 +5952,11 @@
         "smithy.api#documentation": "List Large Face Lists' information of largeFaceListId, name, userData and recognitionModel.\n\nTo get face information inside largeFaceList use \"Get Large Face List Face\".\n\nLarge Face Lists are stored in alphabetical order of largeFaceListId.\n>\n*\n  * \"start\" parameter (string, optional) specifies an ID value from which returned entries will have larger IDs based on string comparison. Setting \"start\" to an empty value indicates that entries should be returned starting from the first item.\n  * \"top\" parameter (int, optional) determines the maximum number of entries to be returned, with a limit of up to 1000 entries per call. To retrieve additional entries beyond this limit, specify \"start\" with the personId of the last entry returned in the current call.\n\n> [!TIP]\n>\n> * For example, there are total 5 items with their IDs: \"itemId1\", ..., \"itemId5\".\n>   * \"start=&top=\" will return all 5 items.\n>   * \"start=&top=2\" will return \"itemId1\", \"itemId2\".\n>   * \"start=itemId2&top=3\" will return \"itemId3\", \"itemId4\", \"itemId5\"."
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetLargeFaceListsResponse": {
+    "com.azure.ai_face#GetFaceListOperationLargeFaceListsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#FaceListOperationsGetLargeFaceListsResponseBodyList",
+          "target": "com.azure.ai_face#GetFaceListOperationLargeFaceListsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6075,14 +5967,14 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetLargeFaceListsResponseBodyList": {
+    "com.azure.ai_face#GetFaceListOperationLargeFaceListsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#LargeFaceList"
       },
       "traits": {}
     },
-    "com.azure.ai_face#FaceListOperationsGetLargeFaceListsRequest": {
+    "com.azure.ai_face#GetFaceListOperationLargeFaceListsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -6904,13 +6796,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetFaceLists": {
+    "com.azure.ai_face#GetFaceListOperationFaceLists": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#FaceListOperationsGetFaceListsRequest"
+        "target": "com.azure.ai_face#GetFaceListOperationFaceListsRequest"
       },
       "output": {
-        "target": "com.azure.ai_face#FaceListOperationsGetFaceListsResponse"
+        "target": "com.azure.ai_face#GetFaceListOperationFaceListsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6925,11 +6817,11 @@
         "smithy.api#documentation": "List Face Lists' faceListId, name, userData and recognitionModel.\n\nTo get face information inside Face List use \"Get Face List\"."
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetFaceListsResponse": {
+    "com.azure.ai_face#GetFaceListOperationFaceListsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.ai_face#FaceListOperationsGetFaceListsResponseBodyList",
+          "target": "com.azure.ai_face#GetFaceListOperationFaceListsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6940,7 +6832,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetFaceListsResponseBodyList": {
+    "com.azure.ai_face#GetFaceListOperationFaceListsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.azure.ai_face#FaceListItem"
@@ -6981,7 +6873,7 @@
         "smithy.api#documentation": "Face list item for list face list."
       }
     },
-    "com.azure.ai_face#FaceListOperationsGetFaceListsRequest": {
+    "com.azure.ai_face#GetFaceListOperationFaceListsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7507,10 +7399,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessSession": {
+    "com.azure.ai_face#DeleteLivenessSessionOperationLivenessSession": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessSessionRequest"
+        "target": "com.azure.ai_face#DeleteLivenessSessionOperationLivenessSessionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7528,7 +7420,7 @@
         "smithy.api#documentation": "Delete all session related information for matching the specified session id.\n\n> [!NOTE]\n> Deleting a session deactivates the Session Auth Token by blocking future API calls made with that Auth Token. While this can be used to remove any access for that token, those requests will still count towards overall resource rate limits. It's best to leverage TokenTTL to limit length of tokens in the case that it is misused."
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessSessionRequest": {
+    "com.azure.ai_face#DeleteLivenessSessionOperationLivenessSessionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7552,10 +7444,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsGetLivenessSessionResult": {
+    "com.azure.ai_face#GetLivenessSessionOperationLivenessSessionResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#LivenessSessionOperationsGetLivenessSessionResultRequest"
+        "target": "com.azure.ai_face#GetLivenessSessionOperationLivenessSessionResultRequest"
       },
       "output": {
         "target": "com.azure.ai_face#LivenessSession"
@@ -7707,7 +7599,7 @@
         "smithy.api#documentation": "The results of the liveness classification."
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsGetLivenessSessionResultRequest": {
+    "com.azure.ai_face#GetLivenessSessionOperationLivenessSessionResultRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -7731,10 +7623,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsCreateLivenessSession": {
+    "com.azure.ai_face#CreateLivenessSessionOperationLivenessSession": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_face#LivenessSessionOperationsCreateLivenessSessionRequest"
+        "target": "com.azure.ai_face#CreateLivenessSessionOperationLivenessSessionRequest"
       },
       "output": {
         "target": "com.azure.ai_face#LivenessSession"
@@ -7752,7 +7644,7 @@
         "smithy.api#documentation": "Create a new detect liveness session.\n\nA session is best for client device scenarios where developers want to authorize a client device to perform only a liveness detection without granting full access to their resource. Created sessions have a limited life span and only authorize clients to perform the desired action before access is expired.\n\nPermissions includes...\n>\n*\n  * A token lifetime of 10 minutes.\n\n> [!NOTE]\n> Client access can be revoked by deleting the session using the Delete Liveness Session operation. To retrieve a result, use the Get Liveness Session. To audit the individual requests that a client has made to your resource, use the List Liveness Session Audit Entries."
       }
     },
-    "com.azure.ai_face#LivenessSessionOperationsCreateLivenessSessionRequest": {
+    "com.azure.ai_face#CreateLivenessSessionOperationLivenessSessionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -8090,19 +7982,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonGroup"
+          "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFromPersonDirectory"
+          "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFromPersonDirectory"
         },
         {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFromLargePersonGroup"
+          "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFromLargePersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFace"
+          "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFace"
+          "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFace"
         },
         {
           "target": "com.azure.ai_face#FaceListOperationsAddLargeFaceListFace"
@@ -8117,10 +8009,10 @@
           "target": "com.azure.ai_face#FaceRecognitionOperationsIdentifyFromDynamicPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromLargeFaceList"
+          "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromLargeFace"
         },
         {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsFindSimilarFromFaceList"
+          "target": "com.azure.ai_face#ListFaceRecognitionOperationsFindSimilarFromFace"
         },
         {
           "target": "com.azure.ai_face#FaceListOperationsAddFaceListFace"
@@ -8132,106 +8024,106 @@
           "target": "com.azure.ai_face#FaceDetectionOperationsDetect"
         },
         {
-          "target": "com.azure.ai_face#FaceRecognitionOperationsVerifyFaceToFace"
+          "target": "com.azure.ai_face#VerifyFaceRecognitionOperationFaceToFace"
         },
         {
-          "target": "com.azure.ai_face#LivenessSessionOperationsGetSessionImage"
+          "target": "com.azure.ai_face#GetLivenessSessionOperationSessionImage"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupTrainingStatus"
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupTrainingStatus"
         },
         {
           "target": "com.azure.ai_face#PersonGroupOperationsTrainPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPersonFace"
+          "target": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPersonFace"
+          "target": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersonFace"
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddPersonGroupPersonFaceFromUrl"
+          "target": "com.azure.ai_face#AddPersonGroupOperationPersonGroupPersonFaceFromUrl"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsDeletePersonGroupPerson"
+          "target": "com.azure.ai_face#DeletePersonGroupOperationPersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroupPerson"
+          "target": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPerson"
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsCreatePersonGroupPerson"
+          "target": "com.azure.ai_face#CreatePersonGroupOperationPersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroupPersons"
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroupPersons"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsDeletePersonGroup"
+          "target": "com.azure.ai_face#DeletePersonGroupOperationPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsUpdatePersonGroup"
+          "target": "com.azure.ai_face#UpdatePersonGroupOperationPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsCreatePersonGroup"
+          "target": "com.azure.ai_face#CreatePersonGroupOperationPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroup"
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetPersonGroups"
+          "target": "com.azure.ai_face#GetPersonGroupOperationPersonGroups"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupTrainingStatus"
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupTrainingStatus"
         },
         {
           "target": "com.azure.ai_face#PersonGroupOperationsTrainLargePersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPersonFace"
+          "target": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPersonFace"
+          "target": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersonFace"
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersonFace"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsAddLargePersonGroupPersonFaceFromUrl"
+          "target": "com.azure.ai_face#AddPersonGroupOperationLargePersonGroupPersonFaceFromUrl"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroupPerson"
+          "target": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroupPerson"
+          "target": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPerson"
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroupPerson"
+          "target": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroupPerson"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroupPersons"
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroupPersons"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsDeleteLargePersonGroup"
+          "target": "com.azure.ai_face#DeletePersonGroupOperationLargePersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsUpdateLargePersonGroup"
+          "target": "com.azure.ai_face#UpdatePersonGroupOperationLargePersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsCreateLargePersonGroup"
+          "target": "com.azure.ai_face#CreatePersonGroupOperationLargePersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroup"
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroup"
         },
         {
-          "target": "com.azure.ai_face#PersonGroupOperationsGetLargePersonGroups"
+          "target": "com.azure.ai_face#GetPersonGroupOperationLargePersonGroups"
         },
         {
           "target": "com.azure.ai_face#FaceListOperationsGetLargeFaceListTrainingStatus"
@@ -8267,7 +8159,7 @@
           "target": "com.azure.ai_face#FaceListOperationsGetLargeFaceList"
         },
         {
-          "target": "com.azure.ai_face#FaceListOperationsGetLargeFaceLists"
+          "target": "com.azure.ai_face#GetFaceListOperationLargeFaceLists"
         },
         {
           "target": "com.azure.ai_face#FaceRecognitionOperationsIdentifyFromPersonGroup"
@@ -8297,7 +8189,7 @@
           "target": "com.azure.ai_face#FaceListOperationsGetFaceList"
         },
         {
-          "target": "com.azure.ai_face#FaceListOperationsGetFaceLists"
+          "target": "com.azure.ai_face#GetFaceListOperationFaceLists"
         },
         {
           "target": "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessWithVerifySession"
@@ -8309,13 +8201,13 @@
           "target": "com.azure.ai_face#LivenessSessionOperationsCreateLivenessWithVerifySession"
         },
         {
-          "target": "com.azure.ai_face#LivenessSessionOperationsDeleteLivenessSession"
+          "target": "com.azure.ai_face#DeleteLivenessSessionOperationLivenessSession"
         },
         {
-          "target": "com.azure.ai_face#LivenessSessionOperationsGetLivenessSessionResult"
+          "target": "com.azure.ai_face#GetLivenessSessionOperationLivenessSessionResult"
         },
         {
-          "target": "com.azure.ai_face#LivenessSessionOperationsCreateLivenessSession"
+          "target": "com.azure.ai_face#CreateLivenessSessionOperationLivenessSession"
         },
         {
           "target": "com.azure.ai_face#FaceDetectionOperationsDetectFromUrl"

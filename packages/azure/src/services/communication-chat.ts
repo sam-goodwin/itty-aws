@@ -132,6 +132,8 @@ export interface ChatThreadListChatReadReceiptsRequest {
   maxPageSize?: number;
   /** Skips chat message read receipts up to a specified position in response. */
   skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A chat message read receipt indicates the time a chat message was read by a recipient. */
 export interface ChatMessageReadReceipt {
@@ -306,6 +308,8 @@ export interface ListChatChatThreadsRequest {
   maxPageSize?: number;
   /** The earliest point in time to get chat threads up to. The timestamp should be in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`. */
   startTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Summary information of a chat thread. */
 export interface ChatThreadItem {
@@ -336,6 +340,8 @@ export interface ListChatThreadChatMessagesRequest {
   maxPageSize?: number;
   /** The earliest point in time to get messages after. The timestamp should be in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`. */
   startTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Collection of chat messages. */
 export type ChatMessagesCollectionValueList = Array<ChatMessage>;
@@ -355,6 +361,8 @@ export interface ListChatThreadChatParticipantsRequest {
   maxPageSize?: number;
   /** Skips participants up to a specified position in response. */
   skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Chat participants. */
 export type ChatParticipantsCollectionValueList = Array<ChatParticipant>;
@@ -463,18 +471,25 @@ export const AddChatThreadChatParticipants: API.OperationMethod<
 
 export type ChatThreadListChatReadReceiptsError = AzureOpError;
 /** Gets chat message read receipts for a thread. */
-export const ChatThreadListChatReadReceipts: API.OperationMethod<
+export const ChatThreadListChatReadReceipts: API.PaginatedOperationMethod<
   ChatThreadListChatReadReceiptsRequest,
   ChatMessageReadReceiptsCollection,
   ChatThreadListChatReadReceiptsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChatMessageReadReceipt
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28, __c7, 0) as any as S.Schema<ChatThreadListChatReadReceiptsRequest>,
   output: __S(31, __c7, 3) as any as S.Schema<ChatMessageReadReceiptsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ChatThreadSendChatReadReceiptError = AzureOpError;
 /** Sends a read receipt event to a thread, on behalf of a user. */
@@ -568,48 +583,69 @@ export const GetChatThreadChatThreadProperties: API.OperationMethod<
 
 export type ListChatChatThreadsError = AzureOpError;
 /** Gets the list of chat threads of a user. */
-export const ListChatChatThreads: API.OperationMethod<
+export const ListChatChatThreads: API.PaginatedOperationMethod<
   ListChatChatThreadsRequest,
   ChatThreadsItemCollection,
   ListChatChatThreadsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChatThreadItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c24, 0) as any as S.Schema<ListChatChatThreadsRequest>,
   output: __S(99, __c24, 3) as any as S.Schema<ChatThreadsItemCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListChatThreadChatMessagesError = AzureOpError;
 /** Gets a list of messages from a thread. */
-export const ListChatThreadChatMessages: API.OperationMethod<
+export const ListChatThreadChatMessages: API.PaginatedOperationMethod<
   ListChatThreadChatMessagesRequest,
   ChatMessagesCollection,
   ListChatThreadChatMessagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChatMessage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(100, __c25, 0) as any as S.Schema<ListChatThreadChatMessagesRequest>,
   output: __S(102, __c25, 2) as any as S.Schema<ChatMessagesCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListChatThreadChatParticipantsError = AzureOpError;
 /** Gets the participants of a thread. */
-export const ListChatThreadChatParticipants: API.OperationMethod<
+export const ListChatThreadChatParticipants: API.PaginatedOperationMethod<
   ListChatThreadChatParticipantsRequest,
   ChatParticipantsCollection,
   ListChatThreadChatParticipantsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ChatParticipant
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32, __c8, 0) as any as S.Schema<ListChatThreadChatParticipantsRequest>,
   output: __S(33, __c8, 1) as any as S.Schema<ChatParticipantsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RemoveChatThreadChatParticipantError = AzureOpError;
 /** Remove a participant from a thread. */
@@ -825,6 +861,7 @@ function __c7(j: number): any {
           chatThreadId: S.String.pipe(T.Label()),
           maxPageSize: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -833,6 +870,7 @@ function __c7(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-03-15",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -865,6 +903,7 @@ function __c8(j: number): any {
           chatThreadId: S.String.pipe(T.Label()),
           maxPageSize: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -873,6 +912,7 @@ function __c8(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-03-15",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1233,6 +1273,7 @@ function __c24(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           maxPageSize: S.optional(S.Number.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1241,6 +1282,7 @@ function __c24(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-03-15",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -1274,6 +1316,7 @@ function __c25(j: number): any {
           chatThreadId: S.String.pipe(T.Label()),
           maxPageSize: S.optional(S.Number.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1282,6 +1325,7 @@ function __c25(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-03-15",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),

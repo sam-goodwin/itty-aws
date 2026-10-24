@@ -427,18 +427,22 @@ export interface ListJobCollectionByResourceGroupRequest {
   subscriptionId: string;
   /** The resource group name. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the job collections. */
 export type JobCollectionListResultValueList = Array<JobCollectionDefinition>;
 export interface JobCollectionListResult {
   /** Gets the job collections. */
-  value?: JobCollectionListResultValueList;
+  value: JobCollectionListResultValueList;
   /** Gets or sets the URL to get the next set of job collections. */
   nextLink?: string;
 }
 export interface ListJobCollectionBySubscriptionRequest {
   /** The subscription id. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListJobJobHistoryRequest {
   /** The subscription id. */
@@ -455,6 +459,8 @@ export interface ListJobJobHistoryRequest {
   _skip?: number;
   /** The filter to apply on the job state. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the job history action name. */
 export type JobHistoryDefinitionPropertiesActionName = "MainAction" | "ErrorAction";
@@ -492,7 +498,7 @@ export interface JobHistoryDefinition {
 export type JobHistoryListResultValueList = Array<JobHistoryDefinition>;
 export interface JobHistoryListResult {
   /** Gets or sets the job histories under job. */
-  value?: JobHistoryListResultValueList;
+  value: JobHistoryListResultValueList;
   /** Gets or sets the URL to get the next set of job histories. */
   nextLink?: string;
 }
@@ -509,12 +515,14 @@ export interface ListJobsRequest {
   _skip?: number;
   /** The filter to apply on the job state. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets or sets all jobs under job collection. */
 export type JobListResultValueList = Array<JobDefinition>;
 export interface JobListResult {
   /** Gets or sets all jobs under job collection. */
-  value?: JobListResultValueList;
+  value: JobListResultValueList;
   /** Gets or sets the URL to get the next set of jobs. */
   nextLink?: string;
 }
@@ -681,63 +689,91 @@ export const JobsCreateOrUpdate: API.OperationMethod<
 
 export type ListJobCollectionByResourceGroupError = AzureOpError;
 /** Gets all job collections under specified resource group. */
-export const ListJobCollectionByResourceGroup: API.OperationMethod<
+export const ListJobCollectionByResourceGroup: API.PaginatedOperationMethod<
   ListJobCollectionByResourceGroupRequest,
   JobCollectionListResult,
   ListJobCollectionByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  JobCollectionDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListJobCollectionByResourceGroupRequest>,
   output: __S(609, __c19, 1) as any as S.Schema<JobCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobCollectionBySubscriptionError = AzureOpError;
 /** Gets all job collections under specified subscription. */
-export const ListJobCollectionBySubscription: API.OperationMethod<
+export const ListJobCollectionBySubscription: API.PaginatedOperationMethod<
   ListJobCollectionBySubscriptionRequest,
   JobCollectionListResult,
   ListJobCollectionBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  JobCollectionDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListJobCollectionBySubscriptionRequest>,
   output: __S(609, __c19, 1) as any as S.Schema<JobCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobJobHistoryError = AzureOpError;
 /** Lists job history. */
-export const ListJobJobHistory: API.OperationMethod<
+export const ListJobJobHistory: API.PaginatedOperationMethod<
   ListJobJobHistoryRequest,
   JobHistoryListResult,
   ListJobJobHistoryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  JobHistoryDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c3, 0) as any as S.Schema<ListJobJobHistoryRequest>,
   output: __S(100, __c3, 4) as any as S.Schema<JobHistoryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobsError = AzureOpError;
 /** Lists all jobs under the specified job collection. */
-export const ListJobs: API.OperationMethod<
+export const ListJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   JobListResult,
   ListJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  JobDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c4, 0) as any as S.Schema<ListJobsRequest>,
   output: __S(130, __c4, 2) as any as S.Schema<JobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PatchJobError = AzureOpError;
 /** Patches an existing job. */
@@ -842,12 +878,14 @@ function __c3(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history",
             code: 200,
             apiVersion: "2016-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobJobHistoryRequest" });
@@ -878,7 +916,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(99, __c3, 3)),
+          value: __S(99, __c3, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobHistoryListResult" });
@@ -895,12 +933,14 @@ function __c4(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs",
             code: 200,
             apiVersion: "2016-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobsRequest" });
@@ -909,7 +949,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c4, 1)),
+          value: __S(129, __c4, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListResult" });
@@ -1342,12 +1382,14 @@ function __c18(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections",
             code: 200,
             apiVersion: "2016-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobCollectionByResourceGroupRequest" });
@@ -1360,7 +1402,7 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(608, __c19, 0)),
+          value: __S(608, __c19, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobCollectionListResult" });
@@ -1372,12 +1414,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections",
             code: 200,
             apiVersion: "2016-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListJobCollectionBySubscriptionRequest" });

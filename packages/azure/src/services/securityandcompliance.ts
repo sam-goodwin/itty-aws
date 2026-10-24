@@ -1559,7 +1559,10 @@ export interface GetPrivateLinkServicesForSCCPowershellResponse {
   /** The properties of a service instance. */
   properties?: GetPrivateLinkServicesForSCCPowershellResponseProperties;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.SecurityAndCompliance */
@@ -1589,7 +1592,7 @@ export interface OperationListResult {
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service operations supported by the Microsoft.SecurityAndCompliance resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
 }
 export interface ListPrivateEndpointConnectionsAdtAPIByServiceRequest {
   /** The subscription identifier. */
@@ -1598,13 +1601,15 @@ export interface ListPrivateEndpointConnectionsAdtAPIByServiceRequest {
   resourceGroupName: string;
   /** The name of the service instance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsAdtAPIByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export interface ListPrivateEndpointConnectionsAdtAPIByServiceResponse {
   /** Array of private endpoint connections */
-  value?: ListPrivateEndpointConnectionsAdtAPIByServiceResponseValueList;
+  value: ListPrivateEndpointConnectionsAdtAPIByServiceResponseValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1615,13 +1620,15 @@ export interface ListPrivateEndpointConnectionsCompByServiceRequest {
   resourceGroupName: string;
   /** The name of the service instance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsCompByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export interface ListPrivateEndpointConnectionsCompByServiceResponse {
   /** Array of private endpoint connections */
-  value?: ListPrivateEndpointConnectionsCompByServiceResponseValueList;
+  value: ListPrivateEndpointConnectionsCompByServiceResponseValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1632,13 +1639,15 @@ export interface ListPrivateEndpointConnectionsForEDMByServiceRequest {
   resourceGroupName: string;
   /** The name of the service instance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsForEDMByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export interface ListPrivateEndpointConnectionsForEDMByServiceResponse {
   /** Array of private endpoint connections */
-  value?: ListPrivateEndpointConnectionsForEDMByServiceResponseValueList;
+  value: ListPrivateEndpointConnectionsForEDMByServiceResponseValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1649,13 +1658,15 @@ export interface ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest 
   resourceGroupName: string;
   /** The name of the service instance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export interface ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponse {
   /** Array of private endpoint connections */
-  value?: ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList;
+  value: ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponseValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1666,13 +1677,15 @@ export interface ListPrivateEndpointConnectionsForSCCPowershellByServiceRequest 
   resourceGroupName: string;
   /** The name of the service instance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export interface ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse {
   /** Array of private endpoint connections */
-  value?: ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList;
+  value: ListPrivateEndpointConnectionsForSCCPowershellByServiceResponseValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1683,13 +1696,15 @@ export interface ListPrivateEndpointConnectionsSecByServiceRequest {
   resourceGroupName: string;
   /** The name of the service instance. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsSecByServiceResponseValueList =
   Array<PrivateEndpointConnection>;
 export interface ListPrivateEndpointConnectionsSecByServiceResponse {
   /** Array of private endpoint connections */
-  value?: ListPrivateEndpointConnectionsSecByServiceResponseValueList;
+  value: ListPrivateEndpointConnectionsSecByServiceResponseValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1834,6 +1849,8 @@ export interface ListPrivateLinkResourcesSecByServiceResponse {
 export interface ListPrivateLinkServicesForEDMUploadRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateLinkServicesForEDMUploadDescriptionSystemDataCreatedByType =
@@ -1947,17 +1964,21 @@ export interface PrivateLinkServicesForEDMUploadDescriptionListResult {
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: PrivateLinkServicesForEDMUploadDescriptionListResultValueList;
+  value: PrivateLinkServicesForEDMUploadDescriptionListResultValueList;
 }
 export interface ListPrivateLinkServicesForEDMUploadByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServicesForM365ComplianceCenterRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateLinkServicesForM365ComplianceCenterDescriptionSystemDataCreatedByType =
@@ -2076,17 +2097,21 @@ export interface PrivateLinkServicesForM365ComplianceCenterDescriptionListResult
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: PrivateLinkServicesForM365ComplianceCenterDescriptionListResultValueList;
+  value: PrivateLinkServicesForM365ComplianceCenterDescriptionListResultValueList;
 }
 export interface ListPrivateLinkServicesForM365ComplianceCenterByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServicesForM365SecurityCenterRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateLinkServicesForM365SecurityCenterDescriptionSystemDataCreatedByType =
@@ -2205,17 +2230,21 @@ export interface PrivateLinkServicesForM365SecurityCenterDescriptionListResult {
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: PrivateLinkServicesForM365SecurityCenterDescriptionListResultValueList;
+  value: PrivateLinkServicesForM365SecurityCenterDescriptionListResultValueList;
 }
 export interface ListPrivateLinkServicesForM365SecurityCenterByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServicesForMIPPolicySyncRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateLinkServicesForMIPPolicySyncDescriptionSystemDataCreatedByType =
@@ -2329,17 +2358,21 @@ export interface PrivateLinkServicesForMIPPolicySyncDescriptionListResult {
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: PrivateLinkServicesForMIPPolicySyncDescriptionListResultValueList;
+  value: PrivateLinkServicesForMIPPolicySyncDescriptionListResultValueList;
 }
 export interface ListPrivateLinkServicesForMIPPolicySyncByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServicesForO365ManagementActivityAPIRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateLinkServicesForO365ManagementActivityAPIDescriptionSystemDataCreatedByType =
@@ -2458,17 +2491,21 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIDescriptionListR
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResultValueList;
+  value: PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResultValueList;
 }
 export interface ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateLinkServicesForSCCPowershellRequest {
   /** The subscription identifier. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type PrivateLinkServicesForSCCPowershellDescriptionSystemDataCreatedByType =
@@ -2582,13 +2619,15 @@ export interface PrivateLinkServicesForSCCPowershellDescriptionListResult {
   /** The link used to get the next page of service description objects. */
   nextLink?: string;
   /** A list of service description objects. */
-  value?: PrivateLinkServicesForSCCPowershellDescriptionListResultValueList;
+  value: PrivateLinkServicesForSCCPowershellDescriptionListResultValueList;
 }
 export interface ListPrivateLinkServicesForSCCPowershellByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the service instance. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Private Endpoint resource. */
 export interface PrivateEndpointInput {}
@@ -5235,27 +5274,35 @@ export const GetPrivateLinkServicesForSCCPowershell: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available SecurityAndCompliance REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c32, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(516, __c32, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsAdtAPIByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionsAdtAPIByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionsAdtAPIByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsAdtAPIByServiceRequest,
   ListPrivateEndpointConnectionsAdtAPIByServiceResponse,
   ListPrivateEndpointConnectionsAdtAPIByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     528,
     __c33,
@@ -5269,16 +5316,23 @@ export const ListPrivateEndpointConnectionsAdtAPIByService: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsCompByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionsCompByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionsCompByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsCompByServiceRequest,
   ListPrivateEndpointConnectionsCompByServiceResponse,
   ListPrivateEndpointConnectionsCompByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<ListPrivateEndpointConnectionsCompByServiceRequest>,
   output: __S(
     544,
@@ -5288,16 +5342,23 @@ export const ListPrivateEndpointConnectionsCompByService: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsForEDMByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionsForEDMByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionsForEDMByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsForEDMByServiceRequest,
   ListPrivateEndpointConnectionsForEDMByServiceResponse,
   ListPrivateEndpointConnectionsForEDMByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     576,
     __c36,
@@ -5311,16 +5372,23 @@ export const ListPrivateEndpointConnectionsForEDMByService: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsForMIPPolicySyncByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionsForMIPPolicySyncByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionsForMIPPolicySyncByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest,
   ListPrivateEndpointConnectionsForMIPPolicySyncByServiceResponse,
   ListPrivateEndpointConnectionsForMIPPolicySyncByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     592,
     __c37,
@@ -5334,16 +5402,23 @@ export const ListPrivateEndpointConnectionsForMIPPolicySyncByService: API.Operat
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsForSCCPowershellByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionsForSCCPowershellByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionsForSCCPowershellByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsForSCCPowershellByServiceRequest,
   ListPrivateEndpointConnectionsForSCCPowershellByServiceResponse,
   ListPrivateEndpointConnectionsForSCCPowershellByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     608,
     __c38,
@@ -5357,22 +5432,35 @@ export const ListPrivateEndpointConnectionsForSCCPowershellByService: API.Operat
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsSecByServiceError = AzureOpError;
 /** Lists all private endpoint connections for a service. */
-export const ListPrivateEndpointConnectionsSecByService: API.OperationMethod<
+export const ListPrivateEndpointConnectionsSecByService: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsSecByServiceRequest,
   ListPrivateEndpointConnectionsSecByServiceResponse,
   ListPrivateEndpointConnectionsSecByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceRequest>,
   output: __S(544, __c34, 0) as any as S.Schema<ListPrivateEndpointConnectionsSecByServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByServiceError = AzureOpError;
 /** Gets the private link resources that need to be created for a service. */
@@ -5482,12 +5570,13 @@ export const ListPrivateLinkResourcesSecByService: API.OperationMethod<
 
 export type ListPrivateLinkServicesForEDMUploadError = AzureOpError;
 /** Get all the privateLinkServicesForEDMUpload instances in a subscription. */
-export const ListPrivateLinkServicesForEDMUpload: API.OperationMethod<
+export const ListPrivateLinkServicesForEDMUpload: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForEDMUploadRequest,
   PrivateLinkServicesForEDMUploadDescriptionListResult,
   ListPrivateLinkServicesForEDMUploadError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForEDMUploadDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<ListPrivateLinkServicesForEDMUploadRequest>,
   output: __S(
     785,
@@ -5497,16 +5586,23 @@ export const ListPrivateLinkServicesForEDMUpload: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForEDMUploadByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListPrivateLinkServicesForEDMUploadByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServicesForEDMUploadByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForEDMUploadByResourceGroupRequest,
   PrivateLinkServicesForEDMUploadDescriptionListResult,
   ListPrivateLinkServicesForEDMUploadByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForEDMUploadDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     800,
     __c50,
@@ -5520,16 +5616,23 @@ export const ListPrivateLinkServicesForEDMUploadByResourceGroup: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForM365ComplianceCenterError = AzureOpError;
 /** Get all the privateLinkServicesForM365ComplianceCenter instances in a subscription. */
-export const ListPrivateLinkServicesForM365ComplianceCenter: API.OperationMethod<
+export const ListPrivateLinkServicesForM365ComplianceCenter: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForM365ComplianceCenterRequest,
   PrivateLinkServicesForM365ComplianceCenterDescriptionListResult,
   ListPrivateLinkServicesForM365ComplianceCenterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForM365ComplianceCenterDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     816,
     __c51,
@@ -5543,16 +5646,23 @@ export const ListPrivateLinkServicesForM365ComplianceCenter: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForM365ComplianceCenterByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListPrivateLinkServicesForM365ComplianceCenterByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServicesForM365ComplianceCenterByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForM365ComplianceCenterByResourceGroupRequest,
   PrivateLinkServicesForM365ComplianceCenterDescriptionListResult,
   ListPrivateLinkServicesForM365ComplianceCenterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForM365ComplianceCenterDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     832,
     __c52,
@@ -5566,16 +5676,23 @@ export const ListPrivateLinkServicesForM365ComplianceCenterByResourceGroup: API.
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForM365SecurityCenterError = AzureOpError;
 /** Get all the privateLinkServicesForM365SecurityCenter instances in a subscription. */
-export const ListPrivateLinkServicesForM365SecurityCenter: API.OperationMethod<
+export const ListPrivateLinkServicesForM365SecurityCenter: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForM365SecurityCenterRequest,
   PrivateLinkServicesForM365SecurityCenterDescriptionListResult,
   ListPrivateLinkServicesForM365SecurityCenterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForM365SecurityCenterDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(848, __c53, 0) as any as S.Schema<ListPrivateLinkServicesForM365SecurityCenterRequest>,
   output: __S(
     785,
@@ -5585,16 +5702,23 @@ export const ListPrivateLinkServicesForM365SecurityCenter: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForM365SecurityCenterByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListPrivateLinkServicesForM365SecurityCenterByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServicesForM365SecurityCenterByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForM365SecurityCenterByResourceGroupRequest,
   PrivateLinkServicesForM365SecurityCenterDescriptionListResult,
   ListPrivateLinkServicesForM365SecurityCenterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForM365SecurityCenterDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     864,
     __c54,
@@ -5608,16 +5732,23 @@ export const ListPrivateLinkServicesForM365SecurityCenterByResourceGroup: API.Op
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForMIPPolicySyncError = AzureOpError;
 /** Get all the privateLinkServicesForMIPPolicySync instances in a subscription. */
-export const ListPrivateLinkServicesForMIPPolicySync: API.OperationMethod<
+export const ListPrivateLinkServicesForMIPPolicySync: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForMIPPolicySyncRequest,
   PrivateLinkServicesForMIPPolicySyncDescriptionListResult,
   ListPrivateLinkServicesForMIPPolicySyncError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForMIPPolicySyncDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(896, __c56, 0) as any as S.Schema<ListPrivateLinkServicesForMIPPolicySyncRequest>,
   output: __S(
     785,
@@ -5627,16 +5758,23 @@ export const ListPrivateLinkServicesForMIPPolicySync: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForMIPPolicySyncByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListPrivateLinkServicesForMIPPolicySyncByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServicesForMIPPolicySyncByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForMIPPolicySyncByResourceGroupRequest,
   PrivateLinkServicesForMIPPolicySyncDescriptionListResult,
   ListPrivateLinkServicesForMIPPolicySyncByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForMIPPolicySyncDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     912,
     __c57,
@@ -5650,16 +5788,23 @@ export const ListPrivateLinkServicesForMIPPolicySyncByResourceGroup: API.Operati
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForO365ManagementActivityAPIError = AzureOpError;
 /** Get all the privateLinkServicesForO365ManagementActivityAPI instances in a subscription. */
-export const ListPrivateLinkServicesForO365ManagementActivityAPI: API.OperationMethod<
+export const ListPrivateLinkServicesForO365ManagementActivityAPI: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForO365ManagementActivityAPIRequest,
   PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResult,
   ListPrivateLinkServicesForO365ManagementActivityAPIError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForO365ManagementActivityAPIDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     928,
     __c58,
@@ -5673,16 +5818,23 @@ export const ListPrivateLinkServicesForO365ManagementActivityAPI: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroupRequest,
   PrivateLinkServicesForO365ManagementActivityAPIDescriptionListResult,
   ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForO365ManagementActivityAPIDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     944,
     __c59,
@@ -5696,16 +5848,23 @@ export const ListPrivateLinkServicesForO365ManagementActivityAPIByResourceGroup:
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForSCCPowershellError = AzureOpError;
 /** Get all the privateLinkServicesForSCCPowershell instances in a subscription. */
-export const ListPrivateLinkServicesForSCCPowershell: API.OperationMethod<
+export const ListPrivateLinkServicesForSCCPowershell: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForSCCPowershellRequest,
   PrivateLinkServicesForSCCPowershellDescriptionListResult,
   ListPrivateLinkServicesForSCCPowershellError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForSCCPowershellDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(960, __c60, 0) as any as S.Schema<ListPrivateLinkServicesForSCCPowershellRequest>,
   output: __S(
     785,
@@ -5715,16 +5874,23 @@ export const ListPrivateLinkServicesForSCCPowershell: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkServicesForSCCPowershellByResourceGroupError = AzureOpError;
 /** Get all the service instances in a resource group. */
-export const ListPrivateLinkServicesForSCCPowershellByResourceGroup: API.OperationMethod<
+export const ListPrivateLinkServicesForSCCPowershellByResourceGroup: API.PaginatedOperationMethod<
   ListPrivateLinkServicesForSCCPowershellByResourceGroupRequest,
   PrivateLinkServicesForSCCPowershellDescriptionListResult,
   ListPrivateLinkServicesForSCCPowershellByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkServicesForSCCPowershellDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     976,
     __c61,
@@ -5738,7 +5904,13 @@ export const ListPrivateLinkServicesForSCCPowershellByResourceGroup: API.Operati
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PrivateEndpointConnectionsAdtAPICreateOrUpdateError = AzureOpError;
 /** Update the state of the specified private endpoint connection associated with the service. */
@@ -6802,12 +6974,15 @@ function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.SecurityAndCompliance/operations",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -6835,7 +7010,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(515, __c32, 3)),
+          value: __S(515, __c32, 3),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
@@ -6848,12 +7023,14 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsAdtAPIByServiceRequest" });
@@ -6864,7 +7041,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(384, __c24, 0)),
+          value: __S(384, __c24, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsAdtAPIByServiceResponse" });
@@ -6878,12 +7055,14 @@ function __c35(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsCompByServiceRequest" });
@@ -6897,12 +7076,14 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsForEDMByServiceRequest" });
@@ -6916,12 +7097,14 @@ function __c37(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsForMIPPolicySyncByServiceRequest" });
@@ -6935,12 +7118,14 @@ function __c38(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsForSCCPowershellByServiceRequest" });
@@ -6954,12 +7139,14 @@ function __c39(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsSecByServiceRequest" });
@@ -7118,12 +7305,14 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForEDMUploadRequest" });
@@ -7137,7 +7326,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(784, __c49, 0)),
+          value: __S(784, __c49, 0),
         }),
       ).annotate({ identifier: "PrivateLinkServicesForEDMUploadDescriptionListResult" });
   }
@@ -7149,12 +7338,14 @@ function __c50(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForEDMUploadByResourceGroupRequest" });
@@ -7166,12 +7357,14 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForM365ComplianceCenterRequest" });
@@ -7184,12 +7377,14 @@ function __c52(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -7203,12 +7398,14 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForM365SecurityCenterRequest" });
@@ -7221,12 +7418,14 @@ function __c54(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -7260,12 +7459,14 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForMIPPolicySyncRequest" });
@@ -7278,12 +7479,14 @@ function __c57(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForMIPPolicySyncByResourceGroupRequest" });
@@ -7295,12 +7498,14 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForO365ManagementActivityAPIRequest" });
@@ -7313,12 +7518,14 @@ function __c59(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -7332,12 +7539,14 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForSCCPowershellRequest" });
@@ -7350,12 +7559,14 @@ function __c61(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell",
             code: 200,
             apiVersion: "2021-03-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkServicesForSCCPowershellByResourceGroupRequest" });

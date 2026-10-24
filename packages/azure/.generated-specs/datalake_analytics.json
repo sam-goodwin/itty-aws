@@ -933,10 +933,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/firewallRules",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Analytics firewall rules within the specified Data Lake Analytics account.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#FirewallRuleListResult": {
@@ -1025,6 +1032,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Data Lake Analytics account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1566,10 +1579,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/computePolicies",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Data Lake Analytics compute policies within the specified Data Lake Analytics account. An account supports, at most, 50 policies",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#ComputePolicyListResult": {
@@ -1659,6 +1679,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Data Lake Analytics account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1678,10 +1704,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers/{containerName}/listSasTokens",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#SasTokenInformationListResult": {
@@ -1769,6 +1802,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure storage container for which the SAS token is being requested."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1902,10 +1941,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts/{storageAccountName}/containers",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Azure Storage containers, if any, associated with the specified Data Lake Analytics and Azure Storage account combination. The response includes a link to the next page of results, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#StorageContainerListResult": {
@@ -2002,6 +2048,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure storage account from which to list blob containers."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2358,10 +2410,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/storageAccounts",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the first page of Azure Storage accounts, if any, linked to the specified Data Lake Analytics account. The response includes a link to the next page, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#StorageAccountInformationListResult": {
@@ -2492,6 +2551,12 @@
           "traits": {
             "smithy.api#httpQuery": "$count",
             "smithy.api#documentation": "The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2755,10 +2820,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}/dataLakeStoreAccounts",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the first page of Data Lake Store accounts linked to the specified Data Lake Analytics account. The response includes a link to the next page, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#DataLakeStoreAccountInformationListResult": {
@@ -2889,6 +2961,12 @@
           "traits": {
             "smithy.api#httpQuery": "$count",
             "smithy.api#documentation": "The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4672,10 +4750,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the first page of Data Lake Analytics accounts, if any, within a specific resource group. This includes a link to the next page, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#DataLakeAnalyticsAccountListResult": {
@@ -4967,6 +5052,12 @@
             "smithy.api#httpQuery": "$count",
             "smithy.api#documentation": "The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4986,10 +5077,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeAnalytics/accounts",
           "code": 200,
-          "apiVersion": "2016-11-01"
+          "apiVersion": "2016-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the first page of Data Lake Analytics accounts, if any, within the current subscription. This includes a link to the next page, if any.",
-        "com.distilled.openapi#apiVersion": "2016-11-01"
+        "com.distilled.openapi#apiVersion": "2016-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datalake_analytics#ListAccountsRequest": {
@@ -5043,6 +5141,12 @@
           "traits": {
             "smithy.api#httpQuery": "$count",
             "smithy.api#documentation": "The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -846,6 +846,8 @@ export interface GetTagResponse {
 export interface ListBudgetsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A budget resource. */
 export interface Budget {
@@ -867,7 +869,7 @@ export type BudgetsListResultValueList = Array<Budget>;
 /** Result of listing budgets. It contains a list of available budgets in the scope provided. */
 export interface BudgetsListResult {
   /** The list of budgets. */
-  value?: BudgetsListResultValueList;
+  value: BudgetsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -912,6 +914,8 @@ export interface ListEventByBillingAccountRequest {
   billingAccountId: string;
   /** May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Identifies the type of the event. */
 export type EventType =
@@ -998,7 +1002,7 @@ export type EventsValueList = Array<EventSummary>;
 /** Result of listing event summary. */
 export interface Events {
   /** The list of event summary. */
-  value?: EventsValueList;
+  value: EventsValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -1011,12 +1015,16 @@ export interface ListEventByBillingProfileRequest {
   startDate: string;
   /** End date */
   endDate: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLotByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The source of the lot. */
 export type LotSource = "PurchasedCredit" | "PromotionalCredit" | "ConsumptionCommitment";
@@ -1081,7 +1089,7 @@ export type LotsValueList = Array<LotSummary>;
 /** Result of listing lot summary. */
 export interface Lots {
   /** The list of lot summary. */
-  value?: LotsValueList;
+  value: LotsValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -1090,6 +1098,8 @@ export interface ListLotByBillingProfileRequest {
   billingAccountId: string;
   /** Azure Billing Profile ID. */
   billingProfileId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListLotByCustomerRequest {
   /** BillingAccount ID */
@@ -1098,6 +1108,8 @@ export interface ListLotByCustomerRequest {
   customerId: string;
   /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListMarketplacesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1108,6 +1120,8 @@ export interface ListMarketplacesRequest {
   _top?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of the marketplace usage detail. */
 export interface MarketplaceProperties {
@@ -1188,11 +1202,14 @@ export type MarketplacesListResultValueList = Array<Marketplace>;
 /** Result of listing marketplaces. It contains a list of available marketplaces in reverse chronological order by billing period. */
 export interface MarketplacesListResult {
   /** The list of marketplaces. */
-  value?: MarketplacesListResultValueList;
+  value: MarketplacesListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Consumption. */
@@ -1218,7 +1235,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of listing consumption operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -1227,6 +1244,8 @@ export interface ListReservationRecommendationsRequest {
   resourceScope: string;
   /** May be used to filter reservationRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Single'; properties/resourceType with allowed values ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple'] and default value 'VirtualMachines'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last7Days'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type ReservationRecommendationSystemDataCreatedByType =
@@ -1285,7 +1304,7 @@ export type ReservationRecommendationsListResultValueList = Array<ReservationRec
 /** Result of listing reservation recommendations. */
 export interface ReservationRecommendationsListResult {
   /** The list of reservation recommendations. */
-  value?: ReservationRecommendationsListResultValueList;
+  value: ReservationRecommendationsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
   /** The link (url) to the previous page of results. */
@@ -1296,6 +1315,8 @@ export interface ListReservationsDetailByReservationOrderRequest {
   reservationOrderId: string;
   /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of the reservation detail. */
 export interface ReservationDetailProperties {
@@ -1346,7 +1367,7 @@ export type ReservationDetailsListResultValueList = Array<ReservationDetail>;
 /** Result of listing reservation details. */
 export interface ReservationDetailsListResult {
   /** The list of reservation details. */
-  value?: ReservationDetailsListResultValueList;
+  value: ReservationDetailsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -1363,6 +1384,8 @@ export interface ListReservationsDetailsRequest {
   reservationId?: string;
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListReservationsSummariesRequestGrain = "daily" | "monthly";
 export interface ListReservationsSummariesRequest {
@@ -1380,6 +1403,8 @@ export interface ListReservationsSummariesRequest {
   reservationId?: string;
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of the reservation summary. */
 export interface ReservationSummaryProperties {
@@ -1438,7 +1463,7 @@ export type ReservationSummariesListResultValueList = Array<ReservationSummary>;
 /** Result of listing reservation summaries. */
 export interface ReservationSummariesListResult {
   /** The list of reservation summaries. */
-  value?: ReservationSummariesListResultValueList;
+  value: ReservationSummariesListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -1450,6 +1475,8 @@ export interface ListReservationsSummaryByReservationOrderRequest {
   grain: ListReservationsSummaryByReservationOrderRequestGrain | (string & {});
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReservationTransactionByBillingProfileRequest {
   /** BillingAccount ID */
@@ -1458,6 +1485,8 @@ export interface ListReservationTransactionByBillingProfileRequest {
   billingProfileId: string;
   /** Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and 'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31) */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of a modern reservation transaction. */
 export interface ModernReservationTransactionProperties {
@@ -1524,7 +1553,7 @@ export type ModernReservationTransactionsListResultValueList = Array<ModernReser
 /** Result of listing reservation recommendations. */
 export interface ModernReservationTransactionsListResult {
   /** The list of reservation recommendations. */
-  value?: ModernReservationTransactionsListResultValueList;
+  value: ModernReservationTransactionsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -1537,6 +1566,8 @@ export interface ListReservationTransactionsRequest {
   useMarkupIfPartner?: boolean;
   /** Preview markup percentage to be applied. */
   previewMarkupPercentage?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of a legacy reservation transaction. */
 export interface LegacyReservationTransactionProperties {
@@ -1609,7 +1640,7 @@ export type ReservationTransactionsListResultValueList = Array<ReservationTransa
 /** Result of listing reservation recommendations. */
 export interface ReservationTransactionsListResult {
   /** The list of reservation recommendations. */
-  value?: ReservationTransactionsListResultValueList;
+  value: ReservationTransactionsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -1627,6 +1658,8 @@ export interface ListUsageDetailsRequest {
   _top?: number;
   /** Allows to select different type of cost/usage records. */
   metric?: ListUsageDetailsRequestMetric | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Specifies the kind of usage details. */
 export type UsageDetailsKind = "legacy" | "modern";
@@ -1654,7 +1687,7 @@ export type UsageDetailsListResultValueList = Array<UsageDetail>;
 /** Result of listing usage details. It contains a list of available usage details in reverse chronological order by billing period. */
 export interface UsageDetailsListResult {
   /** The list of usage details. */
-  value?: UsageDetailsListResultValueList;
+  value: UsageDetailsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -1665,6 +1698,8 @@ export interface ReservationsDetailsListByReservationOrderAndReservationRequest 
   reservationId: string;
   /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   | "daily"
@@ -1678,6 +1713,8 @@ export interface ReservationsSummariesListByReservationOrderAndReservationReques
   grain: ReservationsSummariesListByReservationOrderAndReservationRequestGrain | (string & {});
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type BudgetsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation. */
@@ -1884,18 +1921,25 @@ export const GetTag: API.OperationMethod<
 
 export type ListBudgetsError = AzureOpError;
 /** Lists all budgets for the defined scope. */
-export const ListBudgets: API.OperationMethod<
+export const ListBudgets: API.PaginatedOperationMethod<
   ListBudgetsRequest,
   BudgetsListResult,
   ListBudgetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Budget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ListBudgetsRequest>,
   output: __S(130, __c8, 2) as any as S.Schema<BudgetsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListChargesError = AzureOpError;
 /** Lists the charges based for the defined scope. */
@@ -1914,237 +1958,343 @@ export const ListCharges: API.OperationMethod<
 
 export type ListEventByBillingAccountError = AzureOpError;
 /** Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date. */
-export const ListEventByBillingAccount: API.OperationMethod<
+export const ListEventByBillingAccount: API.PaginatedOperationMethod<
   ListEventByBillingAccountRequest,
   Events,
   ListEventByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<ListEventByBillingAccountRequest>,
   output: __S(179, __c11, 3) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEventByBillingProfileError = AzureOpError;
 /** Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date. */
-export const ListEventByBillingProfile: API.OperationMethod<
+export const ListEventByBillingProfile: API.PaginatedOperationMethod<
   ListEventByBillingProfileRequest,
   Events,
   ListEventByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListEventByBillingProfileRequest>,
   output: __S(179, __c11, 3) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLotByBillingAccountError = AzureOpError;
 /** Lists all Microsoft Azure consumption commitments for a billing account. The API is only supported for Microsoft Customer Agreements (MCA) and Direct Enterprise Agreement (EA) billing accounts. */
-export const ListLotByBillingAccount: API.OperationMethod<
+export const ListLotByBillingAccount: API.PaginatedOperationMethod<
   ListLotByBillingAccountRequest,
   Lots,
   ListLotByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LotSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListLotByBillingAccountRequest>,
   output: __S(227, __c14, 3) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLotByBillingProfileError = AzureOpError;
 /** Lists all Azure credits for a billing account or a billing profile. The API is only supported for Microsoft Customer Agreements (MCA) billing accounts. */
-export const ListLotByBillingProfile: API.OperationMethod<
+export const ListLotByBillingProfile: API.PaginatedOperationMethod<
   ListLotByBillingProfileRequest,
   Lots,
   ListLotByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LotSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<ListLotByBillingProfileRequest>,
   output: __S(227, __c14, 3) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLotByCustomerError = AzureOpError;
 /** Lists all Azure credits for a customer. The API is only supported for Microsoft Partner Agreements (MPA) billing accounts. */
-export const ListLotByCustomer: API.OperationMethod<
+export const ListLotByCustomer: API.PaginatedOperationMethod<
   ListLotByCustomerRequest,
   Lots,
   ListLotByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LotSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListLotByCustomerRequest>,
   output: __S(227, __c14, 3) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMarketplacesError = AzureOpError;
 /** Lists the marketplaces for a scope at the defined scope. Marketplaces are available via this API only for May 1, 2014 or later. */
-export const ListMarketplaces: API.OperationMethod<
+export const ListMarketplaces: API.PaginatedOperationMethod<
   ListMarketplacesRequest,
   MarketplacesListResult,
   ListMarketplacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Marketplace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListMarketplacesRequest>,
   output: __S(292, __c18, 4) as any as S.Schema<MarketplacesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(308, __c19, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationRecommendationsError = AzureOpError;
 /** List of recommendations for purchasing reserved instances. */
-export const ListReservationRecommendations: API.OperationMethod<
+export const ListReservationRecommendations: API.PaginatedOperationMethod<
   ListReservationRecommendationsRequest,
   ReservationRecommendationsListResult,
   ListReservationRecommendationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationRecommendation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListReservationRecommendationsRequest>,
   output: __S(323, __c20, 3) as any as S.Schema<ReservationRecommendationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationsDetailByReservationOrderError = AzureOpError;
 /** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
-export const ListReservationsDetailByReservationOrder: API.OperationMethod<
+export const ListReservationsDetailByReservationOrder: API.PaginatedOperationMethod<
   ListReservationsDetailByReservationOrderRequest,
   ReservationDetailsListResult,
   ListReservationsDetailByReservationOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListReservationsDetailByReservationOrderRequest>,
   output: __S(355, __c22, 3) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationsDetailsError = AzureOpError;
 /** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
-export const ListReservationsDetails: API.OperationMethod<
+export const ListReservationsDetails: API.PaginatedOperationMethod<
   ListReservationsDetailsRequest,
   ReservationDetailsListResult,
   ListReservationsDetailsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListReservationsDetailsRequest>,
   output: __S(355, __c22, 3) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationsSummariesError = AzureOpError;
 /** Lists the reservations summaries for the defined scope daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ListReservationsSummaries: API.OperationMethod<
+export const ListReservationsSummaries: API.PaginatedOperationMethod<
   ListReservationsSummariesRequest,
   ReservationSummariesListResult,
   ListReservationsSummariesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ListReservationsSummariesRequest>,
   output: __S(403, __c25, 3) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationsSummaryByReservationOrderError = AzureOpError;
 /** Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ListReservationsSummaryByReservationOrder: API.OperationMethod<
+export const ListReservationsSummaryByReservationOrder: API.PaginatedOperationMethod<
   ListReservationsSummaryByReservationOrderRequest,
   ReservationSummariesListResult,
   ListReservationsSummaryByReservationOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<ListReservationsSummaryByReservationOrderRequest>,
   output: __S(403, __c25, 3) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationTransactionByBillingProfileError = AzureOpError;
 /** List of transactions for reserved instances on billing profile scope. The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ListReservationTransactionByBillingProfile: API.OperationMethod<
+export const ListReservationTransactionByBillingProfile: API.PaginatedOperationMethod<
   ListReservationTransactionByBillingProfileRequest,
   ModernReservationTransactionsListResult,
   ListReservationTransactionByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ModernReservationTransaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListReservationTransactionByBillingProfileRequest>,
   output: __S(436, __c27, 4) as any as S.Schema<ModernReservationTransactionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationTransactionsError = AzureOpError;
 /** List of transactions for reserved instances on billing account scope. Note: The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ListReservationTransactions: API.OperationMethod<
+export const ListReservationTransactions: API.PaginatedOperationMethod<
   ListReservationTransactionsRequest,
   ReservationTransactionsListResult,
   ListReservationTransactionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationTransaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListReservationTransactionsRequest>,
   output: __S(452, __c28, 4) as any as S.Schema<ReservationTransactionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsageDetailsError = AzureOpError;
 /** Lists the usage details for the defined scope. Usage details are available via this API only for May 1, 2014 or later. **Note:Microsoft will be retiring the Consumption Usage Details API at some point in the future. We do not recommend that you take a new dependency on this API. Please use the Cost Details API instead. We will notify customers once a date for retirement has been determined.For Learn more,see [Generate Cost Details Report - Create Operation](https://learn.microsoft.com/en-us/rest/api/cost-management/generate-cost-details-report/create-operation?tabs=HTTP)** */
-export const ListUsageDetails: API.OperationMethod<
+export const ListUsageDetails: API.PaginatedOperationMethod<
   ListUsageDetailsRequest,
   UsageDetailsListResult,
   ListUsageDetailsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  UsageDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListUsageDetailsRequest>,
   output: __S(467, __c29, 3) as any as S.Schema<UsageDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ReservationsDetailsListByReservationOrderAndReservationError = AzureOpError;
 /** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
-export const ReservationsDetailsListByReservationOrderAndReservation: API.OperationMethod<
+export const ReservationsDetailsListByReservationOrderAndReservation: API.PaginatedOperationMethod<
   ReservationsDetailsListByReservationOrderAndReservationRequest,
   ReservationDetailsListResult,
   ReservationsDetailsListByReservationOrderAndReservationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     528,
     __c33,
@@ -2154,16 +2304,23 @@ export const ReservationsDetailsListByReservationOrderAndReservation: API.Operat
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ReservationsSummariesListByReservationOrderAndReservationError = AzureOpError;
 /** Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ReservationsSummariesListByReservationOrderAndReservation: API.OperationMethod<
+export const ReservationsSummariesListByReservationOrderAndReservation: API.PaginatedOperationMethod<
   ReservationsSummariesListByReservationOrderAndReservationRequest,
   ReservationSummariesListResult,
   ReservationsSummariesListByReservationOrderAndReservationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     544,
     __c34,
@@ -2173,7 +2330,13 @@ export const ReservationsSummariesListByReservationOrderAndReservation: API.Oper
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -2508,12 +2671,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.Consumption/budgets",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBudgetsRequest" });
@@ -2522,7 +2687,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c8, 1)),
+          value: __S(129, __c8, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BudgetsListResult" });
@@ -2575,12 +2740,14 @@ function __c10(j: number): any {
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEventByBillingAccountRequest" });
@@ -2635,7 +2802,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(178, __c11, 2)),
+          value: __S(178, __c11, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Events" });
@@ -2650,12 +2817,14 @@ function __c12(j: number): any {
           billingProfileId: S.String.pipe(T.Label()),
           startDate: S.String.pipe(T.Query()),
           endDate: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEventByBillingProfileRequest" });
@@ -2668,12 +2837,14 @@ function __c13(j: number): any {
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLotByBillingAccountRequest" });
@@ -2719,7 +2890,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(226, __c14, 2)),
+          value: __S(226, __c14, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Lots" });
@@ -2732,12 +2903,14 @@ function __c15(j: number): any {
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLotByBillingProfileRequest" });
@@ -2751,12 +2924,14 @@ function __c16(j: number): any {
           billingAccountId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLotByCustomerRequest" });
@@ -2804,12 +2979,14 @@ function __c18(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.Consumption/marketplaces",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMarketplacesRequest" });
@@ -2861,7 +3038,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(291, __c18, 3)),
+          value: __S(291, __c18, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketplacesListResult" });
@@ -2871,12 +3048,15 @@ function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Consumption/operations",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2902,7 +3082,7 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(307, __c19, 3)),
+          value: __S(307, __c19, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2915,12 +3095,14 @@ function __c20(j: number): any {
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceScope+}/providers/Microsoft.Consumption/reservationRecommendations",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationRecommendationsRequest" });
@@ -2943,7 +3125,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(322, __c20, 2)),
+          value: __S(322, __c20, 2),
           nextLink: S.optional(S.String),
           previousLink: S.optional(S.String),
         }),
@@ -2957,12 +3139,14 @@ function __c21(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationsDetailByReservationOrderRequest" });
@@ -3003,7 +3187,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(354, __c22, 2)),
+          value: __S(354, __c22, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationDetailsListResult" });
@@ -3020,12 +3204,14 @@ function __c23(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           reservationId: S.optional(S.String.pipe(T.Query())),
           reservationOrderId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceScope+}/providers/Microsoft.Consumption/reservationDetails",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationsDetailsRequest" });
@@ -3043,12 +3229,14 @@ function __c24(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           reservationId: S.optional(S.String.pipe(T.Query())),
           reservationOrderId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceScope+}/providers/Microsoft.Consumption/reservationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationsSummariesRequest" });
@@ -3093,7 +3281,7 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(402, __c25, 2)),
+          value: __S(402, __c25, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationSummariesListResult" });
@@ -3107,12 +3295,14 @@ function __c26(j: number): any {
           reservationOrderId: S.String.pipe(T.Label()),
           grain: S.String.pipe(T.Query()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationsSummaryByReservationOrderRequest" });
@@ -3126,12 +3316,14 @@ function __c27(j: number): any {
           billingAccountId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/reservationTransactions",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationTransactionByBillingProfileRequest" });
@@ -3176,7 +3368,7 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(435, __c27, 3)),
+          value: __S(435, __c27, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModernReservationTransactionsListResult" });
@@ -3191,12 +3383,14 @@ function __c28(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           useMarkupIfPartner: S.optional(S.Boolean.pipe(T.Query())),
           previewMarkupPercentage: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationTransactionsRequest" });
@@ -3244,7 +3438,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(451, __c28, 3)),
+          value: __S(451, __c28, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationTransactionsListResult" });
@@ -3261,12 +3455,14 @@ function __c29(j: number): any {
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           metric: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.Consumption/usageDetails",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsageDetailsRequest" });
@@ -3287,7 +3483,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(466, __c29, 2)),
+          value: __S(466, __c29, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageDetailsListResult" });
@@ -3370,12 +3566,14 @@ function __c33(j: number): any {
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ReservationsDetailsListByReservationOrderAndReservationRequest" });
@@ -3390,12 +3588,14 @@ function __c34(j: number): any {
           reservationId: S.String.pipe(T.Label()),
           grain: S.String.pipe(T.Query()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({

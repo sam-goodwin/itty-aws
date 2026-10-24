@@ -579,6 +579,8 @@ export interface DimensionsByExternalCloudProviderTypeRequest {
   _skiptoken?: string;
   /** May be used to limit the number of results to the most recent N dimension data. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DimensionTagsMap = { [key: string]: string | undefined };
@@ -629,7 +631,7 @@ export type DimensionsListResultValueList = Array<Dimension>;
 /** Result of listing dimensions. It contains a list of available dimensions. */
 export interface DimensionsListResult {
   /** The list of dimensions. */
-  value?: DimensionsListResultValueList;
+  value: DimensionsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -2188,6 +2190,8 @@ export interface ListBenefitRecommendationsRequest {
   _orderby?: string;
   /** May be used to expand the properties by: properties/usage, properties/allRecommendationDetails */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The number of days used to look back. */
 export type LookBackPeriod = "Last7Days" | "Last30Days" | "Last60Days";
@@ -2283,7 +2287,7 @@ export type BenefitRecommendationsListResultValueList = Array<BenefitRecommendat
 /** Result of listing benefit recommendations. */
 export interface BenefitRecommendationsListResult {
   /** The list of benefit recommendations. */
-  value?: BenefitRecommendationsListResultValueList;
+  value: BenefitRecommendationsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
@@ -2300,6 +2304,8 @@ export interface ListBenefitUtilizationSummaryByBillingAccountIdRequest {
     | (string & {});
   /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Benefit utilization summary resource. */
 export interface BenefitUtilizationSummary {
@@ -2319,7 +2325,7 @@ export type BenefitUtilizationSummariesListResultValueList = Array<BenefitUtiliz
 /** List of benefit utilization summaries. */
 export interface BenefitUtilizationSummariesListResult {
   /** The list of benefit utilization summaries. */
-  value?: BenefitUtilizationSummariesListResultValueList;
+  value: BenefitUtilizationSummariesListResultValueList;
   /** The link (URL) to the next page of results. */
   nextLink?: string;
 }
@@ -2338,6 +2344,8 @@ export interface ListBenefitUtilizationSummaryByBillingProfileIdRequest {
     | (string & {});
   /** Supports filtering by properties/benefitId, properties/benefitOrderId and properties/usageDate. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListBenefitUtilizationSummaryBySavingsPlanIdRequestGrainParameter =
   | "Hourly"
@@ -2354,6 +2362,8 @@ export interface ListBenefitUtilizationSummaryBySavingsPlanIdRequest {
   grainParameter?:
     | ListBenefitUtilizationSummaryBySavingsPlanIdRequestGrainParameter
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListBenefitUtilizationSummaryBySavingsPlanOrderRequestGrainParameter =
   | "Hourly"
@@ -2368,12 +2378,16 @@ export interface ListBenefitUtilizationSummaryBySavingsPlanOrderRequest {
   grainParameter?:
     | ListBenefitUtilizationSummaryBySavingsPlanOrderRequestGrainParameter
     | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBudgetsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** OData filter option. May be used to filter budgets by properties/category. The filter supports 'eq' only. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A budget resource. */
 export interface Budget {
@@ -2395,13 +2409,15 @@ export type BudgetsListResultValueList = Array<Budget>;
 /** Result of listing budgets. It contains a list of available budgets in the scope provided. */
 export interface BudgetsListResult {
   /** The list of budgets. */
-  value?: BudgetsListResultValueList;
+  value: BudgetsListResultValueList;
   /** The link (url) to the next page of results.\r\nIt's null for now, added for future use. */
   nextLink?: string;
 }
 export interface ListCostAllocationRulesRequest {
   /** BillingAccount ID */
   billingAccountId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The cost allocation rule model definition */
 export interface CostAllocationRuleDefinition {
@@ -2421,7 +2437,7 @@ export type CostAllocationRuleListValueList = Array<CostAllocationRuleDefinition
 /** Result of listing cost allocation rules. It contains a list of available rules in the billing account or enterprise enrollment provided. */
 export interface CostAllocationRuleList {
   /** The list of cost allocation rules. */
-  value?: CostAllocationRuleListValueList;
+  value: CostAllocationRuleListValueList;
   /** URL to get the next set of rule list results if there are any. */
   nextLink?: string;
 }
@@ -2436,6 +2452,8 @@ export interface ListDimensionsRequest {
   _skiptoken?: string;
   /** May be used to limit the number of results to the most recent N dimension data. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListExportsRequest {
   /** The scope associated with alerts operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners. */
@@ -2476,6 +2494,8 @@ export interface ListMarkupRulesRequest {
   billingAccountId: string;
   /** BillingProfile ID */
   billingProfileId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Markup rule */
 export interface MarkupRule {
@@ -2495,11 +2515,14 @@ export type MarkupRulePagedResponseValueList = Array<MarkupRule>;
 /** Markup rule list result. It contains a list of Markup rules. */
 export interface MarkupRulePagedResponse {
   /** The list of markup rules. */
-  value?: MarkupRulePagedResponseValueList;
+  value: MarkupRulePagedResponseValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface CostManagementOperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2535,7 +2558,7 @@ export type OperationListResultValueList = Array<CostManagementOperation>;
 /** Result of listing cost management operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of cost management operations supported by the Microsoft.CostManagement resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -2544,6 +2567,8 @@ export interface ListScheduledActionByScopeRequest {
   scope: string;
   /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Scheduled action definition. */
 export interface ScheduledAction {
@@ -2567,13 +2592,15 @@ export type ScheduledActionListResultValueList = Array<ScheduledAction>;
 /** Scheduled actions list result. It contains a list of scheduled actions. */
 export interface ScheduledActionListResult {
   /** The list of scheduled actions. */
-  value?: ScheduledActionListResultValueList;
+  value: ScheduledActionListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
 export interface ListScheduledActionsRequest {
   /** May be used to filter scheduled actions by properties/viewId. Supported operator is 'eq'. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSettingsRequest {
   /** undefined */
@@ -2602,6 +2629,8 @@ export interface SettingsListResult {
 export interface ListViewByScopeRequest {
   /** undefined */
   scope: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** States and configurations of Cost Analysis. */
 export interface View {
@@ -2623,11 +2652,14 @@ export type ViewListResultValueList = Array<View>;
 /** Result of listing views. It contains a list of available views. */
 export interface ViewListResult {
   /** The list of views. */
-  value?: ViewListResultValueList;
+  value: ViewListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export interface ListViewsRequest {}
+export interface ListViewsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 export interface MarkupRulesCreateOrUpdateRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -3204,18 +3236,25 @@ export const DeleteViewByScope: API.OperationMethod<
 
 export type DimensionsByExternalCloudProviderTypeError = AzureOpError;
 /** Lists the dimensions by the external cloud provider type. */
-export const DimensionsByExternalCloudProviderType: API.OperationMethod<
+export const DimensionsByExternalCloudProviderType: API.PaginatedOperationMethod<
   DimensionsByExternalCloudProviderTypeRequest,
   DimensionsListResult,
   DimensionsByExternalCloudProviderTypeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dimension
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<DimensionsByExternalCloudProviderTypeRequest>,
   output: __S(243, __c15, 3) as any as S.Schema<DimensionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type DismissAlertError = AzureOpError;
 /** Dismisses the specified alert */
@@ -3741,27 +3780,35 @@ export const ListAlerts: API.OperationMethod<
 
 export type ListBenefitRecommendationsError = AzureOpError;
 /** List of recommendations for purchasing savings plan. */
-export const ListBenefitRecommendations: API.OperationMethod<
+export const ListBenefitRecommendations: API.PaginatedOperationMethod<
   ListBenefitRecommendationsRequest,
   BenefitRecommendationsListResult,
   ListBenefitRecommendationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BenefitRecommendationModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c68, 0) as any as S.Schema<ListBenefitRecommendationsRequest>,
   output: __S(1097, __c68, 9) as any as S.Schema<BenefitRecommendationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBenefitUtilizationSummaryByBillingAccountIdError = AzureOpError;
 /** Lists savings plan utilization summaries for the enterprise agreement scope. Supported at grain values: 'Daily' and 'Monthly'. */
-export const ListBenefitUtilizationSummaryByBillingAccountId: API.OperationMethod<
+export const ListBenefitUtilizationSummaryByBillingAccountId: API.PaginatedOperationMethod<
   ListBenefitUtilizationSummaryByBillingAccountIdRequest,
   BenefitUtilizationSummariesListResult,
   ListBenefitUtilizationSummaryByBillingAccountIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BenefitUtilizationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1168,
     __c73,
@@ -3771,16 +3818,23 @@ export const ListBenefitUtilizationSummaryByBillingAccountId: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBenefitUtilizationSummaryByBillingProfileIdError = AzureOpError;
 /** Lists savings plan utilization summaries for billing profile. Supported at grain values: 'Daily' and 'Monthly'. */
-export const ListBenefitUtilizationSummaryByBillingProfileId: API.OperationMethod<
+export const ListBenefitUtilizationSummaryByBillingProfileId: API.PaginatedOperationMethod<
   ListBenefitUtilizationSummaryByBillingProfileIdRequest,
   BenefitUtilizationSummariesListResult,
   ListBenefitUtilizationSummaryByBillingProfileIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BenefitUtilizationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1216,
     __c76,
@@ -3790,16 +3844,23 @@ export const ListBenefitUtilizationSummaryByBillingProfileId: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBenefitUtilizationSummaryBySavingsPlanIdError = AzureOpError;
 /** Lists the savings plan utilization summaries for daily or monthly grain. */
-export const ListBenefitUtilizationSummaryBySavingsPlanId: API.OperationMethod<
+export const ListBenefitUtilizationSummaryBySavingsPlanId: API.PaginatedOperationMethod<
   ListBenefitUtilizationSummaryBySavingsPlanIdRequest,
   BenefitUtilizationSummariesListResult,
   ListBenefitUtilizationSummaryBySavingsPlanIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BenefitUtilizationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1232,
     __c77,
@@ -3809,16 +3870,23 @@ export const ListBenefitUtilizationSummaryBySavingsPlanId: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBenefitUtilizationSummaryBySavingsPlanOrderError = AzureOpError;
 /** Lists the savings plan utilization summaries for daily or monthly grain. */
-export const ListBenefitUtilizationSummaryBySavingsPlanOrder: API.OperationMethod<
+export const ListBenefitUtilizationSummaryBySavingsPlanOrder: API.PaginatedOperationMethod<
   ListBenefitUtilizationSummaryBySavingsPlanOrderRequest,
   BenefitUtilizationSummariesListResult,
   ListBenefitUtilizationSummaryBySavingsPlanOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BenefitUtilizationSummary
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1248,
     __c78,
@@ -3828,52 +3896,79 @@ export const ListBenefitUtilizationSummaryBySavingsPlanOrder: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBudgetsError = AzureOpError;
 /** Lists all budgets for the defined scope. */
-export const ListBudgets: API.OperationMethod<
+export const ListBudgets: API.PaginatedOperationMethod<
   ListBudgetsRequest,
   BudgetsListResult,
   ListBudgetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Budget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1264, __c79, 0) as any as S.Schema<ListBudgetsRequest>,
   output: __S(1266, __c79, 2) as any as S.Schema<BudgetsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCostAllocationRulesError = AzureOpError;
 /** Get the list of all cost allocation rules for a billing account or enterprise enrollment. */
-export const ListCostAllocationRules: API.OperationMethod<
+export const ListCostAllocationRules: API.PaginatedOperationMethod<
   ListCostAllocationRulesRequest,
   CostAllocationRuleList,
   ListCostAllocationRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CostAllocationRuleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c80, 0) as any as S.Schema<ListCostAllocationRulesRequest>,
   output: __S(1282, __c80, 2) as any as S.Schema<CostAllocationRuleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDimensionsError = AzureOpError;
 /** Lists the dimensions by the defined scope. */
-export const ListDimensions: API.OperationMethod<
+export const ListDimensions: API.PaginatedOperationMethod<
   ListDimensionsRequest,
   DimensionsListResult,
   ListDimensionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Dimension
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1296, __c81, 0) as any as S.Schema<ListDimensionsRequest>,
   output: __S(243, __c15, 3) as any as S.Schema<DimensionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListExportsError = AzureOpError;
 /** The operation to list all exports at the given scope. */
@@ -3892,63 +3987,91 @@ export const ListExports: API.OperationMethod<
 
 export type ListMarkupRulesError = AzureOpError;
 /** List all markup rules for a billing account and billing profile. */
-export const ListMarkupRules: API.OperationMethod<
+export const ListMarkupRules: API.PaginatedOperationMethod<
   ListMarkupRulesRequest,
   MarkupRulePagedResponse,
   ListMarkupRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MarkupRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1328, __c83, 0) as any as S.Schema<ListMarkupRulesRequest>,
   output: __S(1330, __c83, 2) as any as S.Schema<MarkupRulePagedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CostManagementOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1344, __c84, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1348, __c84, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduledActionByScopeError = AzureOpError;
 /** List all shared scheduled actions within the given scope. */
-export const ListScheduledActionByScope: API.OperationMethod<
+export const ListScheduledActionByScope: API.PaginatedOperationMethod<
   ListScheduledActionByScopeRequest,
   ScheduledActionListResult,
   ListScheduledActionByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScheduledAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1392, __c87, 0) as any as S.Schema<ListScheduledActionByScopeRequest>,
   output: __S(1409, __c88, 1) as any as S.Schema<ScheduledActionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduledActionsError = AzureOpError;
 /** List all private scheduled actions. */
-export const ListScheduledActions: API.OperationMethod<
+export const ListScheduledActions: API.PaginatedOperationMethod<
   ListScheduledActionsRequest,
   ScheduledActionListResult,
   ListScheduledActionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScheduledAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1424, __c89, 0) as any as S.Schema<ListScheduledActionsRequest>,
   output: __S(1409, __c88, 1) as any as S.Schema<ScheduledActionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSettingsError = AzureOpError;
 /** List all cost management settings in the requested scope. */
@@ -3967,33 +4090,47 @@ export const ListSettings: API.OperationMethod<
 
 export type ListViewByScopeError = AzureOpError;
 /** Lists all views at the given scope. */
-export const ListViewByScope: API.OperationMethod<
+export const ListViewByScope: API.PaginatedOperationMethod<
   ListViewByScopeRequest,
   ViewListResult,
   ListViewByScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  View
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1456, __c91, 0) as any as S.Schema<ListViewByScopeRequest>,
   output: __S(1473, __c92, 1) as any as S.Schema<ViewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListViewsError = AzureOpError;
 /** Lists all views by tenant and object. */
-export const ListViews: API.OperationMethod<
+export const ListViews: API.PaginatedOperationMethod<
   ListViewsRequest,
   ViewListResult,
   ListViewsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  View
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1488, __c93, 0) as any as S.Schema<ListViewsRequest>,
   output: __S(1473, __c92, 1) as any as S.Schema<ViewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MarkupRulesCreateOrUpdateError = AzureOpError;
 /** Create or update a markup rule for a billing account and billing profile. */
@@ -4434,12 +4571,14 @@ function __c13(j: number): any {
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CostManagement/{externalCloudProviderType}/{externalCloudProviderId}/dimensions",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "DimensionsByExternalCloudProviderTypeRequest" });
@@ -4485,7 +4624,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(242, __c15, 2)),
+          value: __S(242, __c15, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionsListResult" });
@@ -5991,12 +6130,14 @@ function __c68(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{billingScope+}/providers/Microsoft.CostManagement/benefitRecommendations",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBenefitRecommendationsRequest" });
@@ -6066,7 +6207,7 @@ function __c68(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1096, __c68, 8)),
+          value: __S(1096, __c68, 8),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BenefitRecommendationsListResult" });
@@ -6178,12 +6319,14 @@ function __c73(j: number): any {
           billingAccountId: S.String.pipe(T.Label()),
           grainParameter: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBenefitUtilizationSummaryByBillingAccountIdRequest" });
@@ -6194,7 +6337,7 @@ function __c74(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1200, __c75, 0)),
+          value: __S(1200, __c75, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BenefitUtilizationSummariesListResult" });
@@ -6215,12 +6358,14 @@ function __c76(j: number): any {
           billingProfileId: S.String.pipe(T.Label()),
           grainParameter: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBenefitUtilizationSummaryByBillingProfileIdRequest" });
@@ -6235,12 +6380,14 @@ function __c77(j: number): any {
           savingsPlanId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           grainParameter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBenefitUtilizationSummaryBySavingsPlanIdRequest" });
@@ -6254,12 +6401,14 @@ function __c78(j: number): any {
           savingsPlanOrderId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           grainParameter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/benefitUtilizationSummaries",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBenefitUtilizationSummaryBySavingsPlanOrderRequest" });
@@ -6272,12 +6421,14 @@ function __c79(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.CostManagement/budgets",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBudgetsRequest" });
@@ -6286,7 +6437,7 @@ function __c79(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1265, __c79, 1)),
+          value: __S(1265, __c79, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BudgetsListResult" });
@@ -6298,12 +6449,14 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/costAllocationRules",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCostAllocationRulesRequest" });
@@ -6312,7 +6465,7 @@ function __c80(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1281, __c80, 1)),
+          value: __S(1281, __c80, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostAllocationRuleList" });
@@ -6328,12 +6481,14 @@ function __c81(j: number): any {
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.CostManagement/dimensions",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDimensionsRequest" });
@@ -6372,12 +6527,14 @@ function __c83(j: number): any {
         S.Struct({
           billingAccountId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/markupRules",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMarkupRulesRequest" });
@@ -6386,7 +6543,7 @@ function __c83(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1329, __c83, 1)),
+          value: __S(1329, __c83, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarkupRulePagedResponse" });
@@ -6396,12 +6553,15 @@ function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CostManagement/operations",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -6430,7 +6590,7 @@ function __c84(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1347, __c84, 3)),
+          value: __S(1347, __c84, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -6489,12 +6649,14 @@ function __c87(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.CostManagement/scheduledActions",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScheduledActionByScopeRequest" });
@@ -6507,7 +6669,7 @@ function __c88(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1408, __c88, 0)),
+          value: __S(1408, __c88, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledActionListResult" });
@@ -6519,12 +6681,14 @@ function __c89(j: number): any {
       return S.suspend(() =>
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CostManagement/scheduledActions",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScheduledActionsRequest" });
@@ -6559,12 +6723,14 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.CostManagement/views",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListViewByScopeRequest" });
@@ -6577,7 +6743,7 @@ function __c92(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1472, __c92, 0)),
+          value: __S(1472, __c92, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewListResult" });
@@ -6587,12 +6753,15 @@ function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CostManagement/views",
             code: 200,
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListViewsRequest" });

@@ -460,10 +460,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Private Endpoint Connections for the given policy.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azureactivedirectory#PrivateEndpointConnectionListResult": {
@@ -553,6 +560,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the private link policy in Azure AD."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -572,10 +585,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Operation to return the list of Private Link Policies For AzureAD scoped to the resourceGroup.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azureactivedirectory#PrivateLinkPolicyListResult": {
@@ -714,6 +734,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of an Azure resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -733,10 +759,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/microsoft.aadiam/privateLinkForAzureAd",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all  Private Link Policies For AzureAD in the given subscription.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdBySubscriptionRequest": {
@@ -748,6 +781,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Azure subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1440,10 +1479,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.aadiam/privateLinkForAzureAd/{policyName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2020-03-01"
+          "apiVersion": "2020-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the private link resources that need to be created for a policy of AzureAD.",
-        "com.distilled.openapi#apiVersion": "2020-03-01"
+        "com.distilled.openapi#apiVersion": "2020-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azureactivedirectory#PrivateLinkResourceListResult": {
@@ -1532,6 +1578,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the private link policy in Azure AD."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -891,6 +891,8 @@ export interface ListDeviceManagementBestUpdatesForGroupRequest {
   instanceId: string;
   /** Group identifier. */
   groupId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DeviceClassSubgroupUpdatableDevices items on this page */
 export type DeviceClassSubgroupUpdatableDevicesListValueList =
@@ -913,6 +915,8 @@ export interface ListDeviceManagementDeploymentsForDeviceClassSubgroupRequest {
   deviceClassId: string;
   /** Orders the set of deployments returned. You can order by start date. */
   orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Deployment items on this page */
 export type DeploymentsListValueList = Array<Deployment>;
@@ -932,6 +936,8 @@ export interface ListDeviceManagementDeploymentsForGroupRequest {
   groupId: string;
   /** Orders the set of deployments returned. You can order by start date. */
   orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDeviceManagementDeviceClassesRequest {
   /** The Device Update for IoT Hub account endpoint (hostname only, no protocol). */
@@ -940,6 +946,8 @@ export interface ListDeviceManagementDeviceClassesRequest {
   instanceId: string;
   /** Restricts the set of device classes returned. You can filter on friendly name. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DeviceClass items on this page */
 export type DeviceClassesListValueList = Array<DeviceClass>;
@@ -959,6 +967,8 @@ export interface ListDeviceManagementDeviceClassSubgroupsForGroupRequest {
   groupId: string;
   /** Restricts the set of device class subgroups returned. You can filter on compat properties by name and value. (i.e. filter=compatProperties/propertyName1 eq 'value1' and compatProperties/propertyName2 eq 'value2') */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DeviceClassSubgroup items on this page */
 export type DeviceClassSubgroupsListValueList = Array<DeviceClassSubgroup>;
@@ -976,6 +986,8 @@ export interface ListDeviceManagementDevicesRequest {
   instanceId: string;
   /** Restricts the set of devices returned. You can filter on GroupId, DeviceClassId, or GroupId and DeploymentStatus. Use DeploymentStatus eq null to query for devices with no deployment status (that have never been deployed to). */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Device items on this page */
 export type DevicesListValueList = Array<Device>;
@@ -999,6 +1011,8 @@ export interface ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymen
   deploymentId: string;
   /** Restricts the set of deployment device states returned. You can filter on deviceId and moduleId and/or deviceState. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Deployment device status. */
 export interface DeploymentDeviceState {
@@ -1029,6 +1043,8 @@ export interface ListDeviceManagementGroupsRequest {
   instanceId: string;
   /** Orders the set of groups returned. You can order by groupId, deviceCount, createdDate, subgroupsWithNewUpdatesAvailableCount, subgroupsWithUpdatesInProgressCount, or subgroupsOnLatestUpdateCount. */
   orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Group items on this page */
 export type GroupsListValueList = Array<Group>;
@@ -1046,6 +1062,8 @@ export interface ListDeviceManagementHealthOfDevicesRequest {
   instanceId: string;
   /** Restricts the set of devices for which device health is returned. You can filter on status, device id and module id. */
   filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Device health states */
 export type DeviceHealthState = "healthy" | "unhealthy";
@@ -1089,6 +1107,8 @@ export interface ListDeviceManagementInstallableUpdatesForDeviceClassRequest {
   instanceId: string;
   /** Device class identifier. */
   deviceClassId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The UpdateInfo items on this page */
 export type UpdateInfoListValueList = Array<UpdateInfo>;
@@ -1104,6 +1124,8 @@ export interface ListDeviceManagementLogCollectionsRequest {
   endpoint: string;
   /** The Device Update for IoT Hub account instance identifier. */
   instanceId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The LogCollection items on this page */
 export type LogCollectionListValueList = Array<LogCollection>;
@@ -1123,6 +1145,8 @@ export interface ListDeviceManagementOperationStatusesRequest {
   filter?: string;
   /** Specifies a non-negative integer n that limits the number of items returned from a collection. The service returns the number of available items up to but not greater than the specified value n. */
   top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Operation metadata. */
 export interface DeviceOperation {
@@ -1161,6 +1185,8 @@ export interface ListDeviceUpdateFilesRequest {
   name: string;
   /** Update version. */
   version: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The collection of pageable items. */
 export type StringsListValueList = Array<string>;
@@ -1178,6 +1204,8 @@ export interface ListDeviceUpdateNamesRequest {
   instanceId: string;
   /** Update provider. */
   provider: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDeviceUpdateOperationStatusesRequest {
   /** The Device Update for IoT Hub account endpoint (hostname only, no protocol). */
@@ -1188,6 +1216,8 @@ export interface ListDeviceUpdateOperationStatusesRequest {
   filter?: string;
   /** Specifies a non-negative integer n that limits the number of items returned from a collection. The service returns the number of available items up to but not greater than the specified value n. */
   top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Operation metadata. */
 export interface UpdateOperation {
@@ -1224,6 +1254,8 @@ export interface ListDeviceUpdateProvidersRequest {
   endpoint: string;
   /** The Device Update for IoT Hub account instance identifier. */
   instanceId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDeviceUpdateUpdatesRequest {
   /** The Device Update for IoT Hub account endpoint (hostname only, no protocol). */
@@ -1234,6 +1266,8 @@ export interface ListDeviceUpdateUpdatesRequest {
   search?: string;
   /** Optional to filter updates by isDeployable property. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Update items on this page */
 export type UpdateListValueList = Array<Update>;
@@ -1255,6 +1289,8 @@ export interface ListDeviceUpdateVersionsRequest {
   name: string;
   /** Optional to filter updates by isDeployable property. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface RetryDeviceManagementDeploymentRequest {
   /** The Device Update for IoT Hub account endpoint (hostname only, no protocol). */
@@ -1754,27 +1790,35 @@ export const ImportDeviceManagementDevices: API.OperationMethod<
 
 export type ListDeviceManagementBestUpdatesForGroupError = AzureOpError;
 /** Get the best available updates for a device group and a count of how many devices need each update. */
-export const ListDeviceManagementBestUpdatesForGroup: API.OperationMethod<
+export const ListDeviceManagementBestUpdatesForGroup: API.PaginatedOperationMethod<
   ListDeviceManagementBestUpdatesForGroupRequest,
   DeviceClassSubgroupUpdatableDevicesList,
   ListDeviceManagementBestUpdatesForGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceClassSubgroupUpdatableDevices
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<ListDeviceManagementBestUpdatesForGroupRequest>,
   output: __S(266, __c33, 2) as any as S.Schema<DeviceClassSubgroupUpdatableDevicesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementDeploymentsForDeviceClassSubgroupError = AzureOpError;
 /** Gets a list of deployments for a device class subgroup. */
-export const ListDeviceManagementDeploymentsForDeviceClassSubgroup: API.OperationMethod<
+export const ListDeviceManagementDeploymentsForDeviceClassSubgroup: API.PaginatedOperationMethod<
   ListDeviceManagementDeploymentsForDeviceClassSubgroupRequest,
   DeploymentsList,
   ListDeviceManagementDeploymentsForDeviceClassSubgroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     272,
     __c34,
@@ -1784,46 +1828,67 @@ export const ListDeviceManagementDeploymentsForDeviceClassSubgroup: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementDeploymentsForGroupError = AzureOpError;
 /** Gets a list of deployments for a device group. */
-export const ListDeviceManagementDeploymentsForGroup: API.OperationMethod<
+export const ListDeviceManagementDeploymentsForGroup: API.PaginatedOperationMethod<
   ListDeviceManagementDeploymentsForGroupRequest,
   DeploymentsList,
   ListDeviceManagementDeploymentsForGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(296, __c37, 0) as any as S.Schema<ListDeviceManagementDeploymentsForGroupRequest>,
   output: __S(281, __c35, 1) as any as S.Schema<DeploymentsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementDeviceClassesError = AzureOpError;
 /** Gets a list of all device classes (sets of devices compatible with the same updates based on the model Id and compat properties reported in the Device Update PnP interface in IoT Hub) for all devices connected to Device Update for IoT Hub. */
-export const ListDeviceManagementDeviceClasses: API.OperationMethod<
+export const ListDeviceManagementDeviceClasses: API.PaginatedOperationMethod<
   ListDeviceManagementDeviceClassesRequest,
   DeviceClassesList,
   ListDeviceManagementDeviceClassesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceClass
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c38, 0) as any as S.Schema<ListDeviceManagementDeviceClassesRequest>,
   output: __S(306, __c38, 2) as any as S.Schema<DeviceClassesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementDeviceClassSubgroupsForGroupError = AzureOpError;
 /** Get the device class subgroups for the group. A device class subgroup is the set of devices within the group that share the same device class. All devices within the same device class are compatible with the same updates. */
-export const ListDeviceManagementDeviceClassSubgroupsForGroup: API.OperationMethod<
+export const ListDeviceManagementDeviceClassSubgroupsForGroup: API.PaginatedOperationMethod<
   ListDeviceManagementDeviceClassSubgroupsForGroupRequest,
   DeviceClassSubgroupsList,
   ListDeviceManagementDeviceClassSubgroupsForGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceClassSubgroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     312,
     __c39,
@@ -1833,31 +1898,45 @@ export const ListDeviceManagementDeviceClassSubgroupsForGroup: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementDevicesError = AzureOpError;
 /** Gets a list of devices connected to Device Update for IoT Hub. */
-export const ListDeviceManagementDevices: API.OperationMethod<
+export const ListDeviceManagementDevices: API.PaginatedOperationMethod<
   ListDeviceManagementDevicesRequest,
   DevicesList,
   ListDeviceManagementDevicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Device
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c40, 0) as any as S.Schema<ListDeviceManagementDevicesRequest>,
   output: __S(322, __c40, 2) as any as S.Schema<DevicesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymentError = AzureOpError;
 /** Gets a list of devices in a deployment along with their state. Useful for getting a list of failed devices. */
-export const ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeployment: API.OperationMethod<
+export const ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeployment: API.PaginatedOperationMethod<
   ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymentRequest,
   DeploymentDeviceStatesList,
   ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeploymentDeviceState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     328,
     __c41,
@@ -1867,46 +1946,67 @@ export const ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeployment: A
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementGroupsError = AzureOpError;
 /** Gets a list of all device groups. The $default group will always be returned first. */
-export const ListDeviceManagementGroups: API.OperationMethod<
+export const ListDeviceManagementGroups: API.PaginatedOperationMethod<
   ListDeviceManagementGroupsRequest,
   GroupsList,
   ListDeviceManagementGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Group
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c42, 0) as any as S.Schema<ListDeviceManagementGroupsRequest>,
   output: __S(338, __c42, 2) as any as S.Schema<GroupsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementHealthOfDevicesError = AzureOpError;
 /** Get list of device health */
-export const ListDeviceManagementHealthOfDevices: API.OperationMethod<
+export const ListDeviceManagementHealthOfDevices: API.PaginatedOperationMethod<
   ListDeviceManagementHealthOfDevicesRequest,
   DeviceHealthList,
   ListDeviceManagementHealthOfDevicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceHealth
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(344, __c43, 0) as any as S.Schema<ListDeviceManagementHealthOfDevicesRequest>,
   output: __S(349, __c43, 5) as any as S.Schema<DeviceHealthList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementInstallableUpdatesForDeviceClassError = AzureOpError;
 /** Gets a list of installable updates for a device class. */
-export const ListDeviceManagementInstallableUpdatesForDeviceClass: API.OperationMethod<
+export const ListDeviceManagementInstallableUpdatesForDeviceClass: API.PaginatedOperationMethod<
   ListDeviceManagementInstallableUpdatesForDeviceClassRequest,
   UpdateInfoList,
   ListDeviceManagementInstallableUpdatesForDeviceClassError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  UpdateInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     352,
     __c44,
@@ -1916,127 +2016,189 @@ export const ListDeviceManagementInstallableUpdatesForDeviceClass: API.Operation
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementLogCollectionsError = AzureOpError;
 /** Get all device diagnostics log collections */
-export const ListDeviceManagementLogCollections: API.OperationMethod<
+export const ListDeviceManagementLogCollections: API.PaginatedOperationMethod<
   ListDeviceManagementLogCollectionsRequest,
   LogCollectionList,
   ListDeviceManagementLogCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LogCollection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(360, __c45, 0) as any as S.Schema<ListDeviceManagementLogCollectionsRequest>,
   output: __S(362, __c45, 2) as any as S.Schema<LogCollectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceManagementOperationStatusesError = AzureOpError;
 /** Get a list of all device import operations. Completed operations are kept for 7 days before auto-deleted. */
-export const ListDeviceManagementOperationStatuses: API.OperationMethod<
+export const ListDeviceManagementOperationStatuses: API.PaginatedOperationMethod<
   ListDeviceManagementOperationStatusesRequest,
   DeviceOperationsList,
   ListDeviceManagementOperationStatusesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeviceOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c46, 0) as any as S.Schema<ListDeviceManagementOperationStatusesRequest>,
   output: __S(371, __c46, 3) as any as S.Schema<DeviceOperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceUpdateFilesError = AzureOpError;
 /** Get a list of all update file identifiers for the specified version. */
-export const ListDeviceUpdateFiles: API.OperationMethod<
+export const ListDeviceUpdateFiles: API.PaginatedOperationMethod<
   ListDeviceUpdateFilesRequest,
   StringsList,
   ListDeviceUpdateFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c48, 0) as any as S.Schema<ListDeviceUpdateFilesRequest>,
   output: __S(392, __c49, 0) as any as S.Schema<StringsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceUpdateNamesError = AzureOpError;
 /** Get a list of all update names that match the specified provider. */
-export const ListDeviceUpdateNames: API.OperationMethod<
+export const ListDeviceUpdateNames: API.PaginatedOperationMethod<
   ListDeviceUpdateNamesRequest,
   StringsList,
   ListDeviceUpdateNamesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c50, 0) as any as S.Schema<ListDeviceUpdateNamesRequest>,
   output: __S(392, __c49, 0) as any as S.Schema<StringsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceUpdateOperationStatusesError = AzureOpError;
 /** Get a list of all import update operations. Completed operations are kept for 7 days before auto-deleted. Delete operations are not returned by this API version. */
-export const ListDeviceUpdateOperationStatuses: API.OperationMethod<
+export const ListDeviceUpdateOperationStatuses: API.PaginatedOperationMethod<
   ListDeviceUpdateOperationStatusesRequest,
   UpdateOperationsList,
   ListDeviceUpdateOperationStatusesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  UpdateOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(408, __c51, 0) as any as S.Schema<ListDeviceUpdateOperationStatusesRequest>,
   output: __S(411, __c51, 3) as any as S.Schema<UpdateOperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceUpdateProvidersError = AzureOpError;
 /** Get a list of all update providers that have been imported to Device Update for IoT Hub. */
-export const ListDeviceUpdateProviders: API.OperationMethod<
+export const ListDeviceUpdateProviders: API.PaginatedOperationMethod<
   ListDeviceUpdateProvidersRequest,
   StringsList,
   ListDeviceUpdateProvidersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c52, 0) as any as S.Schema<ListDeviceUpdateProvidersRequest>,
   output: __S(392, __c49, 0) as any as S.Schema<StringsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceUpdateUpdatesError = AzureOpError;
 /** Get a list of all updates that have been imported to Device Update for IoT Hub. */
-export const ListDeviceUpdateUpdates: API.OperationMethod<
+export const ListDeviceUpdateUpdates: API.PaginatedOperationMethod<
   ListDeviceUpdateUpdatesRequest,
   UpdateList,
   ListDeviceUpdateUpdatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Update
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(424, __c53, 0) as any as S.Schema<ListDeviceUpdateUpdatesRequest>,
   output: __S(426, __c53, 2) as any as S.Schema<UpdateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeviceUpdateVersionsError = AzureOpError;
 /** Get a list of all update versions that match the specified provider and name. */
-export const ListDeviceUpdateVersions: API.OperationMethod<
+export const ListDeviceUpdateVersions: API.PaginatedOperationMethod<
   ListDeviceUpdateVersionsRequest,
   StringsList,
   ListDeviceUpdateVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c54, 0) as any as S.Schema<ListDeviceUpdateVersionsRequest>,
   output: __S(392, __c49, 0) as any as S.Schema<StringsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RetryDeviceManagementDeploymentError = AzureOpError;
 /** Retries a deployment with failed devices. */
@@ -2960,6 +3122,7 @@ function __c33(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           groupId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2967,6 +3130,7 @@ function __c33(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -2992,6 +3156,7 @@ function __c34(j: number): any {
           groupId: S.String.pipe(T.Label()),
           deviceClassId: S.String.pipe(T.Label()),
           orderby: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2999,6 +3164,7 @@ function __c34(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3049,6 +3215,7 @@ function __c37(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           groupId: S.String.pipe(T.Label()),
           orderby: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3056,6 +3223,7 @@ function __c37(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3070,6 +3238,7 @@ function __c38(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3077,6 +3246,7 @@ function __c38(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3101,6 +3271,7 @@ function __c39(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           groupId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3108,6 +3279,7 @@ function __c39(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3131,6 +3303,7 @@ function __c40(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3138,6 +3311,7 @@ function __c40(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3164,6 +3338,7 @@ function __c41(j: number): any {
           deviceClassId: S.String.pipe(T.Label()),
           deploymentId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3171,6 +3346,7 @@ function __c41(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3206,6 +3382,7 @@ function __c42(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           orderby: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3213,6 +3390,7 @@ function __c42(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3236,6 +3414,7 @@ function __c43(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           filter: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3243,6 +3422,7 @@ function __c43(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3285,6 +3465,7 @@ function __c44(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           deviceClassId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3292,6 +3473,7 @@ function __c44(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3314,6 +3496,7 @@ function __c45(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3321,6 +3504,7 @@ function __c45(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3345,6 +3529,7 @@ function __c46(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3352,6 +3537,7 @@ function __c46(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3410,6 +3596,7 @@ function __c48(j: number): any {
           provider: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3417,6 +3604,7 @@ function __c48(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3442,6 +3630,7 @@ function __c50(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
           provider: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3449,6 +3638,7 @@ function __c50(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3464,6 +3654,7 @@ function __c51(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3471,6 +3662,7 @@ function __c51(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3507,6 +3699,7 @@ function __c52(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           instanceId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3514,6 +3707,7 @@ function __c52(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3529,6 +3723,7 @@ function __c53(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           search: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3536,6 +3731,7 @@ function __c53(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),
@@ -3561,6 +3757,7 @@ function __c54(j: number): any {
           provider: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3568,6 +3765,7 @@ function __c54(j: number): any {
             code: 200,
             host: "https://{endpoint}",
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://api.adu.microsoft.com/.default",
           }),
         ),

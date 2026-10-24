@@ -191,10 +191,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/skus",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the SKUs available for the provided resource.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ListResourceSkusResult": {
@@ -779,6 +786,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1567,10 +1580,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of the existing sandbox custom images of the given Kusto cluster.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#SandboxCustomImagesListResult": {
@@ -1666,6 +1686,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2110,10 +2136,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of private link resources.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#PrivateLinkResourceListResult": {
@@ -2208,6 +2241,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2638,10 +2677,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of private endpoint connections.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#PrivateEndpointConnectionListResult": {
@@ -2736,6 +2782,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3204,10 +3256,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Kusto cluster principalAssignments.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ClusterPrincipalAssignmentListResult": {
@@ -3303,6 +3362,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3322,10 +3387,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/outboundNetworkDependenciesEndpoints",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the network endpoints of all outbound dependencies of a Kusto cluster",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#OutboundNetworkDependenciesEndpointListResult": {
@@ -3511,6 +3583,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4170,10 +4248,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of managed private endpoints.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ManagedPrivateEndpointListResult": {
@@ -4269,6 +4354,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4288,10 +4379,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listLanguageExtensions",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of language extensions that can run within KQL queries.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#LanguageExtensionsList": {
@@ -4349,6 +4447,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4368,10 +4472,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listFollowerDatabases",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of databases that are owned by this cluster and were followed by another cluster.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#FollowerDatabaseListResult": {
@@ -4623,6 +4734,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4642,10 +4759,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listFollowerDatabases",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of databases that are owned by this cluster and were followed by another cluster.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#FollowerDatabaseListResultGet": {
@@ -4758,6 +4882,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4777,10 +4907,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/listCalloutPolicies",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the allowed callout policies for the specified service.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#CalloutPoliciesList": {
@@ -4964,6 +5101,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5825,10 +5968,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of database scripts for given database.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ScriptListResult": {
@@ -5931,6 +6081,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6644,10 +6800,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Kusto cluster database principalAssignments.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#DatabasePrincipalAssignmentListResult": {
@@ -6751,6 +6914,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6770,10 +6939,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/listPrincipals",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of database principals of the given Kusto cluster and database.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ListDatabasePrincipalsRequest": {
@@ -6809,6 +6985,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7480,10 +7662,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of data connections of the given Kusto database.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#DataConnectionListResult": {
@@ -7593,6 +7782,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8570,10 +8765,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of databases of the given Kusto cluster.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#DatabaseListResult": {
@@ -8690,6 +8892,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skiptoken",
             "smithy.api#documentation": "Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9342,10 +9550,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns the list of attached database configurations of the given Kusto cluster.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#AttachedDatabaseConfigurationListResult": {
@@ -9446,6 +9661,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Kusto cluster."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11444,10 +11665,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Kusto clusters within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ClusterListResult": {
@@ -11594,6 +11822,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11613,10 +11847,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/skus",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists eligible SKUs for Kusto resource provider.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#SkuDescriptionList": {
@@ -11832,6 +12073,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11851,10 +12098,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/skus",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists eligible region SKUs for Kusto resource provider by Azure region.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ListSkusRequest": {
@@ -11874,6 +12128,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12150,10 +12410,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/clusters",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Kusto clusters within a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#ListClustersRequest": {
@@ -12166,6 +12433,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12175,7 +12448,7 @@
     "com.azure.azure_kusto#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azure_kusto#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.azure_kusto#OperationListResult"
@@ -12185,10 +12458,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Kusto/operations",
           "code": 200,
-          "apiVersion": "2025-02-14"
+          "apiVersion": "2025-02-14",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-02-14"
+        "com.distilled.openapi#apiVersion": "2025-02-14",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.azure_kusto#OperationListResult": {
@@ -12282,6 +12562,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that describes the operation."
+      }
+    },
+    "com.azure.azure_kusto#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.azure_kusto#AzureKusto": {

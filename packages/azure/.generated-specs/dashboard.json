@@ -418,10 +418,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private link resources information for this grafana resource",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#PrivateLinkResourceListResult": {
@@ -517,6 +524,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The workspace name of Azure Managed Grafana."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1041,10 +1054,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get private endpoint connection",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#PrivateEndpointConnectionListResult": {
@@ -1140,6 +1160,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The workspace name of Azure Managed Grafana."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1848,10 +1874,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/managedPrivateEndpoints",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all managed private endpoints of a grafana resource.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#ManagedPrivateEndpointModelListResponse": {
@@ -1972,6 +2005,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The workspace name of Azure Managed Grafana."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2617,10 +2656,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/integrationFabrics",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List IntegrationFabric resources by ManagedGrafana",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#IntegrationFabricListResponse": {
@@ -2738,6 +2784,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The workspace name of Azure Managed Grafana."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4702,10 +4754,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all resources of workspaces for Grafana under the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#ManagedGrafanaListResponse": {
@@ -4861,6 +4920,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5358,10 +5423,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/dashboards",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all resources of dashboards under the specified resource group.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#ManagedDashboardListResponse": {
@@ -5475,6 +5547,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5494,10 +5572,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/grafana",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all resources of workspaces for Grafana under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#ListGrafanaRequest": {
@@ -5509,6 +5594,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5529,10 +5620,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Dashboard/dashboards",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all resources of dashboards under the specified subscription.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#ListDashboardBySubscriptionRequest": {
@@ -5545,6 +5643,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5554,7 +5658,7 @@
     "com.azure.dashboard#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.dashboard#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.dashboard#ListOperationsResponse"
@@ -5564,10 +5668,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Dashboard/operations",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.dashboard#ListOperationsResponse": {
@@ -5707,6 +5818,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.dashboard#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.dashboard#Dashboard": {

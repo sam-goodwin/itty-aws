@@ -14,7 +14,8 @@
         "id": "UnreferencedShape",
         "namespace": "*"
       }
-    ]
+    ],
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.cognitiveservices_custom_vision_prediction#ObjectDetectorAnalyzeImageUrlWithoutSaving": {

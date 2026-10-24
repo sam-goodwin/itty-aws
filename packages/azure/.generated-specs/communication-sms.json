@@ -15,28 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_sms#DeliveryReportsGet": "com.azure.communication_sms#GetDeliveryReport",
-      "com.azure.communication_sms#DeliveryReportsGetRequest": "com.azure.communication_sms#GetDeliveryReportRequest",
-      "com.azure.communication_sms#OptOutsCheck": "com.azure.communication_sms#CheckOptOut",
-      "com.azure.communication_sms#OptOutsCheckRequest": "com.azure.communication_sms#CheckOptOutRequest",
-      "com.azure.communication_sms#OptOutsCheckRequestRecipientsList": "com.azure.communication_sms#CheckOptOutRequestRecipientsList",
-      "com.azure.communication_sms#OptOutsRemove": "com.azure.communication_sms#RemoveOptOut",
-      "com.azure.communication_sms#OptOutsRemoveRequest": "com.azure.communication_sms#RemoveOptOutRequest",
-      "com.azure.communication_sms#OptOutsRemoveRequestRecipientsList": "com.azure.communication_sms#RemoveOptOutRequestRecipientsList",
-      "com.azure.communication_sms#OptOutsAdd": "com.azure.communication_sms#AddOptOut",
-      "com.azure.communication_sms#OptOutsAddRequest": "com.azure.communication_sms#AddOptOutRequest",
-      "com.azure.communication_sms#OptOutsAddRequestRecipientsList": "com.azure.communication_sms#AddOptOutRequestRecipientsList",
-      "com.azure.communication_sms#SmsSend": "com.azure.communication_sms#SendSms",
-      "com.azure.communication_sms#SmsSendRequest": "com.azure.communication_sms#SendSmsRequest",
-      "com.azure.communication_sms#SmsSendRequestSmsRecipientsList": "com.azure.communication_sms#SendSmsRequestSmsRecipientsList"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_sms#DeliveryReportsGet": {
+    "com.azure.communication_sms#GetDeliveryReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sms#DeliveryReportsGetRequest"
+        "target": "com.azure.communication_sms#GetDeliveryReportRequest"
       },
       "output": {
         "target": "com.azure.communication_sms#DeliveryReport"
@@ -179,7 +164,7 @@
         "smithy.api#documentation": "The delivery status of the message."
       }
     },
-    "com.azure.communication_sms#DeliveryReportsGetRequest": {
+    "com.azure.communication_sms#GetDeliveryReportRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -203,10 +188,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_sms#OptOutsCheck": {
+    "com.azure.communication_sms#CheckOptOut": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sms#OptOutsCheckRequest"
+        "target": "com.azure.communication_sms#CheckOptOutRequest"
       },
       "output": {
         "target": "com.azure.communication_sms#OptOutResponse"
@@ -277,7 +262,7 @@
       },
       "traits": {}
     },
-    "com.azure.communication_sms#OptOutsCheckRequest": {
+    "com.azure.communication_sms#CheckOptOutRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -296,7 +281,7 @@
           }
         },
         "recipients": {
-          "target": "com.azure.communication_sms#OptOutsCheckRequestRecipientsList",
+          "target": "com.azure.communication_sms#CheckOptOutRequestRecipientsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -306,7 +291,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_sms#OptOutsCheckRequestRecipientsList": {
+    "com.azure.communication_sms#CheckOptOutRequestRecipientsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_sms#OptOutRecipient"
@@ -328,10 +313,10 @@
         "smithy.api#documentation": "A single opt out recipient number."
       }
     },
-    "com.azure.communication_sms#OptOutsRemove": {
+    "com.azure.communication_sms#RemoveOptOut": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sms#OptOutsRemoveRequest"
+        "target": "com.azure.communication_sms#RemoveOptOutRequest"
       },
       "output": {
         "target": "com.azure.communication_sms#OptOutResponse"
@@ -350,7 +335,7 @@
         "smithy.api#documentation": "Remove phone numbers from the optouts list."
       }
     },
-    "com.azure.communication_sms#OptOutsRemoveRequest": {
+    "com.azure.communication_sms#RemoveOptOutRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -369,7 +354,7 @@
           }
         },
         "recipients": {
-          "target": "com.azure.communication_sms#OptOutsRemoveRequestRecipientsList",
+          "target": "com.azure.communication_sms#RemoveOptOutRequestRecipientsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -379,17 +364,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_sms#OptOutsRemoveRequestRecipientsList": {
+    "com.azure.communication_sms#RemoveOptOutRequestRecipientsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_sms#OptOutRecipient"
       },
       "traits": {}
     },
-    "com.azure.communication_sms#OptOutsAdd": {
+    "com.azure.communication_sms#AddOptOut": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sms#OptOutsAddRequest"
+        "target": "com.azure.communication_sms#AddOptOutRequest"
       },
       "output": {
         "target": "com.azure.communication_sms#OptOutResponse"
@@ -408,7 +393,7 @@
         "smithy.api#documentation": "Add phone numbers to the optouts list which shall stop receiving messages from a sender number."
       }
     },
-    "com.azure.communication_sms#OptOutsAddRequest": {
+    "com.azure.communication_sms#AddOptOutRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -427,7 +412,7 @@
           }
         },
         "recipients": {
-          "target": "com.azure.communication_sms#OptOutsAddRequestRecipientsList",
+          "target": "com.azure.communication_sms#AddOptOutRequestRecipientsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -437,17 +422,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_sms#OptOutsAddRequestRecipientsList": {
+    "com.azure.communication_sms#AddOptOutRequestRecipientsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_sms#OptOutRecipient"
       },
       "traits": {}
     },
-    "com.azure.communication_sms#SmsSend": {
+    "com.azure.communication_sms#SendSms": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_sms#SmsSendRequest"
+        "target": "com.azure.communication_sms#SendSmsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -466,7 +451,7 @@
         "smithy.api#documentation": "Sends a SMS message from a phone number that belongs to the authenticated account."
       }
     },
-    "com.azure.communication_sms#SmsSendRequest": {
+    "com.azure.communication_sms#SendSmsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -485,7 +470,7 @@
           }
         },
         "smsRecipients": {
-          "target": "com.azure.communication_sms#SmsSendRequestSmsRecipientsList",
+          "target": "com.azure.communication_sms#SendSmsRequestSmsRecipientsList",
           "traits": {
             "smithy.api#documentation": "The recipient's phone number in E.164 format. In this version, a minimum of 1 and upto 100 recipients in the list are supported.",
             "smithy.api#required": {}
@@ -558,7 +543,7 @@
         "smithy.api#documentation": "Defines optional parameters for connecting with the Messaging Connect Partner to deliver SMS."
       }
     },
-    "com.azure.communication_sms#SmsSendRequestSmsRecipientsList": {
+    "com.azure.communication_sms#SendSmsRequestSmsRecipientsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_sms#SmsRecipient"
@@ -599,19 +584,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_sms#DeliveryReportsGet"
+          "target": "com.azure.communication_sms#GetDeliveryReport"
         },
         {
-          "target": "com.azure.communication_sms#OptOutsCheck"
+          "target": "com.azure.communication_sms#CheckOptOut"
         },
         {
-          "target": "com.azure.communication_sms#OptOutsRemove"
+          "target": "com.azure.communication_sms#RemoveOptOut"
         },
         {
-          "target": "com.azure.communication_sms#OptOutsAdd"
+          "target": "com.azure.communication_sms#AddOptOut"
         },
         {
-          "target": "com.azure.communication_sms#SmsSend"
+          "target": "com.azure.communication_sms#SendSms"
         }
       ],
       "traits": {

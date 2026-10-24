@@ -433,13 +433,15 @@ export interface ListDenyAssignmentForResourceRequest {
   resourceName: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Deny assignment list. */
 export type DenyAssignmentListResultValueList = Array<DenyAssignment>;
 /** Deny assignment list operation result. */
 export interface DenyAssignmentListResult {
   /** Deny assignment list. */
-  value?: DenyAssignmentListResultValueList;
+  value: DenyAssignmentListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
@@ -450,18 +452,24 @@ export interface ListDenyAssignmentForResourceGroupRequest {
   resourceGroupName: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDenyAssignmentForScopeRequest {
   /** The scope of the deny assignments. */
   scope: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDenyAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPermissionsForResourceRequest {
   /** The ID of the target subscription. */
@@ -476,13 +484,15 @@ export interface ListPermissionsForResourceRequest {
   resourceType: string;
   /** The name of the resource to get the permissions for. */
   resourceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An array of permissions. */
 export type PermissionGetResultValueList = Array<Permission>;
 /** Permissions information. */
 export interface PermissionGetResult {
   /** An array of permissions. */
-  value?: PermissionGetResultValueList;
+  value: PermissionGetResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
@@ -491,10 +501,14 @@ export interface ListPermissionsForResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProviderOperationsMetadataRequest {
   /** Specifies whether to expand the values. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The provider resource types */
 export type ProviderOperationsMetadataResourceTypesList = Array<ResourceType>;
@@ -539,6 +553,8 @@ export interface ListRoleAssignmentForResourceRequest {
   _filter?: string;
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Role Assignments */
 export interface RoleAssignment {
@@ -571,6 +587,8 @@ export interface ListRoleAssignmentForResourceGroupRequest {
   _filter?: string;
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRoleAssignmentForScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -581,6 +599,8 @@ export interface ListRoleAssignmentForScopeRequest {
   tenantId?: string;
   /** The skipToken to apply on the operation. Use $skipToken={skiptoken} to return paged role assignments following the skipToken passed. Only supported on provider level calls. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRoleAssignmentForSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -589,19 +609,23 @@ export interface ListRoleAssignmentForSubscriptionRequest {
   _filter?: string;
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRoleDefinitionsRequest {
   /** The scope of the role definition. */
   scope: string;
   /** The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Role definition list. */
 export type RoleDefinitionListResultValueList = Array<RoleDefinition>;
 /** Role definition list operation result. */
 export interface RoleDefinitionListResult {
   /** Role definition list. */
-  value?: RoleDefinitionListResultValueList;
+  value: RoleDefinitionListResultValueList;
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
@@ -797,183 +821,267 @@ export const GetRoleDefinition: API.OperationMethod<
 
 export type ListDenyAssignmentForResourceError = AzureOpError;
 /** Gets deny assignments for a resource. */
-export const ListDenyAssignmentForResource: API.OperationMethod<
+export const ListDenyAssignmentForResource: API.PaginatedOperationMethod<
   ListDenyAssignmentForResourceRequest,
   DenyAssignmentListResult,
   ListDenyAssignmentForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DenyAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListDenyAssignmentForResourceRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDenyAssignmentForResourceGroupError = AzureOpError;
 /** Gets deny assignments for a resource group. */
-export const ListDenyAssignmentForResourceGroup: API.OperationMethod<
+export const ListDenyAssignmentForResourceGroup: API.PaginatedOperationMethod<
   ListDenyAssignmentForResourceGroupRequest,
   DenyAssignmentListResult,
   ListDenyAssignmentForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DenyAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListDenyAssignmentForResourceGroupRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDenyAssignmentForScopeError = AzureOpError;
 /** Gets deny assignments for a scope. */
-export const ListDenyAssignmentForScope: API.OperationMethod<
+export const ListDenyAssignmentForScope: API.PaginatedOperationMethod<
   ListDenyAssignmentForScopeRequest,
   DenyAssignmentListResult,
   ListDenyAssignmentForScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DenyAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListDenyAssignmentForScopeRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDenyAssignmentsError = AzureOpError;
 /** Gets all deny assignments for the subscription. */
-export const ListDenyAssignments: API.OperationMethod<
+export const ListDenyAssignments: API.PaginatedOperationMethod<
   ListDenyAssignmentsRequest,
   DenyAssignmentListResult,
   ListDenyAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DenyAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListDenyAssignmentsRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPermissionsForResourceError = AzureOpError;
 /** Gets all permissions the caller has for a resource. */
-export const ListPermissionsForResource: API.OperationMethod<
+export const ListPermissionsForResource: API.PaginatedOperationMethod<
   ListPermissionsForResourceRequest,
   PermissionGetResult,
   ListPermissionsForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Permission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListPermissionsForResourceRequest>,
   output: __S(88, __c11, 0) as any as S.Schema<PermissionGetResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPermissionsForResourceGroupError = AzureOpError;
 /** Gets all permissions the caller has for a resource group. */
-export const ListPermissionsForResourceGroup: API.OperationMethod<
+export const ListPermissionsForResourceGroup: API.PaginatedOperationMethod<
   ListPermissionsForResourceGroupRequest,
   PermissionGetResult,
   ListPermissionsForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Permission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<ListPermissionsForResourceGroupRequest>,
   output: __S(88, __c11, 0) as any as S.Schema<PermissionGetResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProviderOperationsMetadataError = AzureOpError;
 /** Gets provider operations metadata for all resource providers. */
-export const ListProviderOperationsMetadata: API.OperationMethod<
+export const ListProviderOperationsMetadata: API.PaginatedOperationMethod<
   ListProviderOperationsMetadataRequest,
   ProviderOperationsMetadataListResult,
   ListProviderOperationsMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProviderOperationsMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<ListProviderOperationsMetadataRequest>,
   output: __S(106, __c13, 2) as any as S.Schema<ProviderOperationsMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleAssignmentForResourceError = AzureOpError;
 /** List all role assignments that apply to a resource. */
-export const ListRoleAssignmentForResource: API.OperationMethod<
+export const ListRoleAssignmentForResource: API.PaginatedOperationMethod<
   ListRoleAssignmentForResourceRequest,
   RoleAssignmentListResult,
   ListRoleAssignmentForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<ListRoleAssignmentForResourceRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleAssignmentForResourceGroupError = AzureOpError;
 /** List all role assignments that apply to a resource group. */
-export const ListRoleAssignmentForResourceGroup: API.OperationMethod<
+export const ListRoleAssignmentForResourceGroup: API.PaginatedOperationMethod<
   ListRoleAssignmentForResourceGroupRequest,
   RoleAssignmentListResult,
   ListRoleAssignmentForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListRoleAssignmentForResourceGroupRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleAssignmentForScopeError = AzureOpError;
 /** List all role assignments that apply to a scope. */
-export const ListRoleAssignmentForScope: API.OperationMethod<
+export const ListRoleAssignmentForScope: API.PaginatedOperationMethod<
   ListRoleAssignmentForScopeRequest,
   RoleAssignmentListResult,
   ListRoleAssignmentForScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<ListRoleAssignmentForScopeRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleAssignmentForSubscriptionError = AzureOpError;
 /** List all role assignments that apply to a subscription. */
-export const ListRoleAssignmentForSubscription: API.OperationMethod<
+export const ListRoleAssignmentForSubscription: API.PaginatedOperationMethod<
   ListRoleAssignmentForSubscriptionRequest,
   RoleAssignmentListResult,
   ListRoleAssignmentForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<ListRoleAssignmentForSubscriptionRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoleDefinitionsError = AzureOpError;
 /** Get all role definitions that are applicable at scope and above. */
-export const ListRoleDefinitions: API.OperationMethod<
+export const ListRoleDefinitions: API.PaginatedOperationMethod<
   ListRoleDefinitionsRequest,
   RoleDefinitionListResult,
   ListRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<ListRoleDefinitionsRequest>,
   output: __S(162, __c20, 2) as any as S.Schema<RoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RoleDefinitionsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a role definition. */
@@ -1116,12 +1224,14 @@ function __c5(j: number): any {
           resourceType: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/denyAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDenyAssignmentForResourceRequest" });
@@ -1134,7 +1244,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(48, __c6, 0)),
+          value: __S(48, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DenyAssignmentListResult" });
@@ -1148,12 +1258,14 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/denyAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDenyAssignmentForResourceGroupRequest" });
@@ -1166,12 +1278,14 @@ function __c8(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.Authorization/denyAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDenyAssignmentForScopeRequest" });
@@ -1184,12 +1298,14 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/denyAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDenyAssignmentsRequest" });
@@ -1206,12 +1322,14 @@ function __c10(j: number): any {
           parentResourcePath: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/permissions",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPermissionsForResourceRequest" });
@@ -1222,7 +1340,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(193, __c24, 1)),
+          value: __S(193, __c24, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PermissionGetResult" });
@@ -1235,12 +1353,14 @@ function __c12(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/permissions",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPermissionsForResourceGroupRequest" });
@@ -1252,12 +1372,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Authorization/providerOperations",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProviderOperationsMetadataRequest" });
@@ -1284,12 +1406,14 @@ function __c14(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           tenantId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/roleAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleAssignmentForResourceRequest" });
@@ -1317,12 +1441,14 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           tenantId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleAssignmentForResourceGroupRequest" });
@@ -1356,12 +1482,14 @@ function __c18(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           tenantId: S.optional(S.String.pipe(T.Query())),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleAssignmentForScopeRequest" });
@@ -1375,12 +1503,14 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           tenantId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleAssignmentForSubscriptionRequest" });
@@ -1393,12 +1523,14 @@ function __c20(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.Authorization/roleDefinitions",
             code: 200,
             apiVersion: "2022-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRoleDefinitionsRequest" });
@@ -1407,7 +1539,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(161, __c20, 1)),
+          value: __S(161, __c20, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleDefinitionListResult" });

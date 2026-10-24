@@ -19,6 +19,7 @@
       "com.azure.subscription#BillingAccountGetPolicy": "com.azure.subscription#GetBillingAccountPolicy",
       "com.azure.subscription#BillingAccountGetPolicyRequest": "com.azure.subscription#GetBillingAccountPolicyRequest",
       "com.azure.subscription#SubscriptionPolicyListPolicyForTenant": "com.azure.subscription#ListSubscriptionPolicyPolicyForTenant",
+      "com.azure.subscription#SubscriptionPolicyListPolicyForTenantRequest": "com.azure.subscription#ListSubscriptionPolicyPolicyForTenantRequest",
       "com.azure.subscription#SubscriptionPolicyGetPolicyForTenant": "com.azure.subscription#GetSubscriptionPolicyPolicyForTenant",
       "com.azure.subscription#SubscriptionAcceptOwnershipStatus": "com.azure.subscription#AcceptSubscriptionOwnershipStatus",
       "com.azure.subscription#SubscriptionAcceptOwnershipStatusRequest": "com.azure.subscription#AcceptSubscriptionOwnershipStatusRequest",
@@ -33,6 +34,7 @@
       "com.azure.subscription#AliasGet": "com.azure.subscription#GetAlias",
       "com.azure.subscription#AliasGetRequest": "com.azure.subscription#GetAliasRequest",
       "com.azure.subscription#OperationsList": "com.azure.subscription#ListOperations",
+      "com.azure.subscription#OperationsListRequest": "com.azure.subscription#ListOperationsRequest",
       "com.azure.subscription#SubscriptionOperationGet": "com.azure.subscription#GetSubscriptionOperation",
       "com.azure.subscription#SubscriptionOperationGetRequest": "com.azure.subscription#GetSubscriptionOperationRequest",
       "com.azure.subscription#SubscriptionEnable": "com.azure.subscription#EnableSubscription",
@@ -277,7 +279,7 @@
     "com.azure.subscription#SubscriptionPolicyListPolicyForTenant": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.subscription#SubscriptionPolicyListPolicyForTenantRequest"
       },
       "output": {
         "target": "com.azure.subscription#GetTenantPolicyListResponse"
@@ -287,10 +289,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Subscription/policies",
           "code": 200,
-          "apiVersion": "2021-10-01"
+          "apiVersion": "2021-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the subscription tenant policy for the user's tenant.",
-        "com.distilled.openapi#apiVersion": "2021-10-01"
+        "com.distilled.openapi#apiVersion": "2021-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.subscription#GetTenantPolicyListResponse": {
@@ -507,6 +516,20 @@
       },
       "traits": {
         "smithy.api#documentation": "List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant."
+      }
+    },
+    "com.azure.subscription#SubscriptionPolicyListPolicyForTenantRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.subscription#SubscriptionPolicyAddUpdatePolicyForTenant": {
@@ -1346,7 +1369,7 @@
     "com.azure.subscription#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.subscription#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.subscription#OperationListResult"
@@ -1356,10 +1379,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Subscription/operations",
           "code": 200,
-          "apiVersion": "2021-10-01"
+          "apiVersion": "2021-10-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Microsoft.Subscription API operations.",
-        "com.distilled.openapi#apiVersion": "2021-10-01"
+        "com.distilled.openapi#apiVersion": "2021-10-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.subscription#OperationListResult": {
@@ -1447,6 +1477,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.subscription#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.subscription#SubscriptionOperationGet": {

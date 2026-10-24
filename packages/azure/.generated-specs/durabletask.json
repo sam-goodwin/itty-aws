@@ -511,10 +511,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Task Hubs",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#TaskHubListResult": {
@@ -610,6 +617,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Scheduler"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1115,10 +1128,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Retention Policies",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#RetentionPolicyListResult": {
@@ -1214,6 +1234,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Scheduler"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1375,10 +1401,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private link resources for the durable task scheduler",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#SchedulerPrivateLinkResourceListResult": {
@@ -1474,6 +1507,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Scheduler"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2127,10 +2166,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections for the durable task scheduler",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#PrivateEndpointConnectionListResult": {
@@ -2226,6 +2272,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Scheduler"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3025,10 +3077,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Schedulers by resource group",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#SchedulerListResult": {
@@ -3142,6 +3201,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3161,10 +3226,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DurableTask/schedulers",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Schedulers by subscription",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#ListSchedulerBySubscriptionRequest": {
@@ -3177,6 +3249,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3186,7 +3264,7 @@
     "com.azure.durabletask#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.durabletask#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.durabletask#ListOperationsResponse"
@@ -3196,10 +3274,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DurableTask/operations",
           "code": 200,
-          "apiVersion": "2026-02-01"
+          "apiVersion": "2026-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-02-01"
+        "com.distilled.openapi#apiVersion": "2026-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.durabletask#ListOperationsResponse": {
@@ -3339,6 +3424,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.durabletask#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.durabletask#Durabletask": {

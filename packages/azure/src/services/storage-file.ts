@@ -977,7 +977,7 @@ export interface ClearRange {
 export type ShareFileRangeListClearRangesList = Array<ClearRange>;
 /** The list of file ranges */
 export interface FileGetRangeListResponse {
-  Ranges?: ShareFileRangeListRangesList;
+  Ranges: ShareFileRangeListRangesList;
   ClearRanges?: ShareFileRangeListClearRangesList;
   NextMarker?: string;
   /** The ETag contains a value which represents the version of the file, in quotes. */
@@ -1752,7 +1752,7 @@ export interface ListServiceSharesSegmentResponse {
   Prefix?: string;
   Marker?: string;
   MaxResults?: number;
-  ShareItems?: ListSharesResponseShareItemsList;
+  ShareItems: ListSharesResponseShareItemsList;
   NextMarker: string;
   /** This header uniquely identifies the request that was made and can be used for troubleshooting the request. */
   xMsRequestId?: string;
@@ -2777,18 +2777,25 @@ export const DirectoryForceCloseHandles: API.OperationMethod<
 
 export type DirectoryListFilesAndDirectoriesSegmentError = AzureOpError;
 /** Returns a list of files or directories under the specified share or directory. It lists the contents only for a single level of the directory hierarchy. */
-export const DirectoryListFilesAndDirectoriesSegment: API.OperationMethod<
+export const DirectoryListFilesAndDirectoriesSegment: API.PaginatedOperationMethod<
   DirectoryListFilesAndDirectoriesSegmentRequest,
   DirectoryListFilesAndDirectoriesSegmentResponse,
   DirectoryListFilesAndDirectoriesSegmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DirectoryItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<DirectoryListFilesAndDirectoriesSegmentRequest>,
   output: __S(119, __c7, 7) as any as S.Schema<DirectoryListFilesAndDirectoriesSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "Segment.DirectoryItems",
+  } as const,
+})) as any;
 
 export type DownloadFileError = AzureOpError;
 /** Reads or downloads a file from the system, including its metadata and properties. */
@@ -2867,18 +2874,25 @@ export const FileForceCloseHandles: API.OperationMethod<
 
 export type FileGetRangeListError = AzureOpError;
 /** Returns the list of valid ranges for a file. */
-export const FileGetRangeList: API.OperationMethod<
+export const FileGetRangeList: API.PaginatedOperationMethod<
   FileGetRangeListRequest,
   FileGetRangeListResponse,
   FileGetRangeListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FileRange
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<FileGetRangeListRequest>,
   output: __S(259, __c16, 3) as any as S.Schema<FileGetRangeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "Ranges",
+  } as const,
+})) as any;
 
 export type FileReleaseLeaseError = AzureOpError;
 /** [Update] The Lease File operation establishes and manages a lock on a file for write and delete operations */
@@ -3076,18 +3090,25 @@ export const ListFileHandles: API.OperationMethod<
 
 export type ListServiceSharesSegmentError = AzureOpError;
 /** The List Shares Segment operation returns a list of the shares and share snapshots under the specified account. */
-export const ListServiceSharesSegment: API.OperationMethod<
+export const ListServiceSharesSegment: API.PaginatedOperationMethod<
   ListServiceSharesSegmentRequest,
   ListServiceSharesSegmentResponse,
   ListServiceSharesSegmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ShareItemInternal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c36, 0) as any as S.Schema<ListServiceSharesSegmentRequest>,
   output: __S(580, __c36, 4) as any as S.Schema<ListServiceSharesSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "ShareItems",
+  } as const,
+})) as any;
 
 export type RenameDirectoryError = AzureOpError;
 /** Renames a directory */
@@ -3959,7 +3980,7 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Ranges: S.optional(__S(258, __c16, 2).pipe(T.XmlName("Range"), T.XmlFlattened({}))),
+          Ranges: __S(258, __c16, 2).pipe(T.XmlName("Range"), T.XmlFlattened({})),
           ClearRanges: S.optional(
             __S(258, __c16, 2).pipe(T.XmlName("ClearRange"), T.XmlFlattened({})),
           ),
@@ -4942,9 +4963,7 @@ function __c36(j: number): any {
           Prefix: S.optional(S.String),
           Marker: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          ShareItems: S.optional(
-            __S(579, __c36, 3).pipe(T.XmlName("Shares"), T.XmlItemName("Share")),
-          ),
+          ShareItems: __S(579, __c36, 3).pipe(T.XmlName("Shares"), T.XmlItemName("Share")),
           NextMarker: S.String,
           xMsRequestId: S.optional(S.String.pipe(T.Header("x-ms-request-id"))),
           xMsVersion: S.optional(S.String.pipe(T.Header("x-ms-version"))),

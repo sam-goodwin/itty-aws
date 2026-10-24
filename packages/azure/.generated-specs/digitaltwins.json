@@ -820,10 +820,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/timeSeriesDatabaseConnections",
           "code": 200,
-          "apiVersion": "2023-01-31"
+          "apiVersion": "2023-01-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all existing time series database connections for this DigitalTwins instance.",
-        "com.distilled.openapi#apiVersion": "2023-01-31"
+        "com.distilled.openapi#apiVersion": "2023-01-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins#TimeSeriesDatabaseConnectionListResult": {
@@ -919,6 +926,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the DigitalTwinsInstance."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1746,7 +1759,7 @@
     "com.azure.digitaltwins#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.digitaltwins#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins#OperationListResult"
@@ -1756,10 +1769,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DigitalTwins/operations",
           "code": 200,
-          "apiVersion": "2023-01-31"
+          "apiVersion": "2023-01-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available DigitalTwins service REST API operations.",
-        "com.distilled.openapi#apiVersion": "2023-01-31"
+        "com.distilled.openapi#apiVersion": "2023-01-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins#OperationListResult": {
@@ -1876,6 +1896,20 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
+    "com.azure.digitaltwins#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.digitaltwins#ListDigitalTwinByResourceGroup": {
       "type": "operation",
       "input": {
@@ -1889,10 +1923,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
           "code": 200,
-          "apiVersion": "2023-01-31"
+          "apiVersion": "2023-01-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the DigitalTwinsInstances in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-01-31"
+        "com.distilled.openapi#apiVersion": "2023-01-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins#DigitalTwinsDescriptionListResult": {
@@ -2263,6 +2304,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group that contains the DigitalTwinsInstance."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2282,10 +2329,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DigitalTwins/digitalTwinsInstances",
           "code": 200,
-          "apiVersion": "2023-01-31"
+          "apiVersion": "2023-01-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all the DigitalTwinsInstances in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-01-31"
+        "com.distilled.openapi#apiVersion": "2023-01-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins#ListDigitalTwinsRequest": {
@@ -2297,6 +2351,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The subscription identifier."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3014,10 +3074,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{resourceName}/endpoints",
           "code": 200,
-          "apiVersion": "2023-01-31"
+          "apiVersion": "2023-01-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get DigitalTwinsInstance Endpoints.",
-        "com.distilled.openapi#apiVersion": "2023-01-31"
+        "com.distilled.openapi#apiVersion": "2023-01-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins#DigitalTwinsEndpointResourceListResult": {
@@ -3114,6 +3181,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the DigitalTwinsInstance."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -287,6 +287,8 @@ export interface GetDeletedKeysRequest {
   vaultBaseUrl: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Application specific metadata in the form of key-value pairs. */
 export type DeletedKeyItemTagsMap = { [key: string]: string | undefined };
@@ -312,7 +314,7 @@ export type DeletedKeyListResultValueList = Array<DeletedKeyItem>;
 /** A list of keys that have been deleted in this vault. */
 export interface DeletedKeyListResult {
   /** A response message containing a list of deleted keys in the key vault along with a link to the next page of deleted keys. */
-  value?: DeletedKeyListResultValueList;
+  value: DeletedKeyListResultValueList;
   /** The URL to get the next set of deleted keys. */
   nextLink?: string;
 }
@@ -380,6 +382,8 @@ export interface GetKeysRequest {
   vaultBaseUrl: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Application specific metadata in the form of key-value pairs. */
 export type KeyItemTagsMap = { [key: string]: string | undefined };
@@ -399,7 +403,7 @@ export type KeyListResultValueList = Array<KeyItem>;
 /** The key list result. */
 export interface KeyListResult {
   /** A response message containing a list of keys in the key vault along with a link to the next page of keys. */
-  value?: KeyListResultValueList;
+  value: KeyListResultValueList;
   /** The URL to get the next set of keys. */
   nextLink?: string;
 }
@@ -409,6 +413,8 @@ export interface GetKeyVersionsRequest {
   keyName: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface GetRandomBytesRequest {
   vaultBaseUrl: string;
@@ -729,18 +735,25 @@ export const GetDeletedKey: API.OperationMethod<
 
 export type GetDeletedKeysError = AzureOpError;
 /** Lists the deleted keys in the specified vault. Retrieves a list of the keys in the Key Vault as JSON Web Key structures that contain the public part of a deleted key. This operation includes deletion-specific information. The Get Deleted Keys operation is applicable for vaults enabled for soft-delete. While the operation can be invoked on any vault, it will return an error if invoked on a non soft-delete enabled vault. This operation requires the keys/list permission. */
-export const GetDeletedKeys: API.OperationMethod<
+export const GetDeletedKeys: API.PaginatedOperationMethod<
   GetDeletedKeysRequest,
   DeletedKeyListResult,
   GetDeletedKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeletedKeyItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<GetDeletedKeysRequest>,
   output: __S(267, __c33, 3) as any as S.Schema<DeletedKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetKeyError = AzureOpError;
 /** Gets the public part of a stored key. The get key operation is applicable to all key types. If the requested key is symmetric, then no key material is released in the response. This operation requires the keys/get permission. */
@@ -785,33 +798,47 @@ export const GetKeyRotationPolicy: API.OperationMethod<
 
 export type GetKeysError = AzureOpError;
 /** List keys in the specified vault. Retrieves a list of the keys in the Key Vault as JSON Web Key structures that contain the public part of a stored key. The LIST operation is applicable to all key types, however only the base key identifier, attributes, and tags are provided in the response. Individual versions of a key are not listed in the response. This operation requires the keys/list permission. */
-export const GetKeys: API.OperationMethod<
+export const GetKeys: API.PaginatedOperationMethod<
   GetKeysRequest,
   KeyListResult,
   GetKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KeyItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<GetKeysRequest>,
   output: __S(74, __c9, 2) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetKeyVersionsError = AzureOpError;
 /** Retrieves a list of individual key versions with the same key name. The full key identifier, attributes, and tags are provided in the response. This operation requires the keys/list permission. */
-export const GetKeyVersions: API.OperationMethod<
+export const GetKeyVersions: API.PaginatedOperationMethod<
   GetKeyVersionsRequest,
   KeyListResult,
   GetKeyVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KeyItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<GetKeyVersionsRequest>,
   output: __S(74, __c9, 2) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetRandomBytesError = AzureOpError;
 /** Get the requested number of bytes containing random values. Get the requested number of bytes containing random values from a managed HSM. */
@@ -1209,6 +1236,7 @@ function __c8(j: number): any {
         S.Struct({
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1217,6 +1245,7 @@ function __c8(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1239,7 +1268,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(73, __c9, 1)),
+          value: __S(73, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyListResult" });
@@ -1253,6 +1282,7 @@ function __c10(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           keyName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1261,6 +1291,7 @@ function __c10(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1789,6 +1820,7 @@ function __c33(j: number): any {
         S.Struct({
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1797,6 +1829,7 @@ function __c33(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -1818,7 +1851,7 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(266, __c33, 2)),
+          value: __S(266, __c33, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedKeyListResult" });

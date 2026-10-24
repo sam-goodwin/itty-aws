@@ -15,25 +15,16 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_messages#StreamOperationsGetMedia": "com.azure.communication_messages#GetStreamOperationMedia",
-      "com.azure.communication_messages#StreamOperationsGetMediaResponse": "com.azure.communication_messages#GetStreamOperationMediaResponse",
-      "com.azure.communication_messages#StreamOperationsGetMediaRequest": "com.azure.communication_messages#GetStreamOperationMediaRequest",
-      "com.azure.communication_messages#NotificationMessagesOperationsSend": "com.azure.communication_messages#SendNotificationMessagesOperation",
-      "com.azure.communication_messages#NotificationMessagesOperationsSendRequest": "com.azure.communication_messages#SendNotificationMessagesOperationRequest",
-      "com.azure.communication_messages#NotificationMessagesOperationsSendRequestToList": "com.azure.communication_messages#SendNotificationMessagesOperationRequestToList",
-      "com.azure.communication_messages#TemplateOperationsListTemplates": "com.azure.communication_messages#ListTemplateOperationTemplates",
-      "com.azure.communication_messages#TemplateOperationsListTemplatesRequest": "com.azure.communication_messages#ListTemplateOperationTemplatesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_messages#StreamOperationsGetMedia": {
+    "com.azure.communication_messages#GetStreamOperationMedia": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_messages#StreamOperationsGetMediaRequest"
+        "target": "com.azure.communication_messages#GetStreamOperationMediaRequest"
       },
       "output": {
-        "target": "com.azure.communication_messages#StreamOperationsGetMediaResponse"
+        "target": "com.azure.communication_messages#GetStreamOperationMediaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49,7 +40,7 @@
         "smithy.api#documentation": "Download the Media payload from a User to Business message."
       }
     },
-    "com.azure.communication_messages#StreamOperationsGetMediaResponse": {
+    "com.azure.communication_messages#GetStreamOperationMediaResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -64,7 +55,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_messages#StreamOperationsGetMediaRequest": {
+    "com.azure.communication_messages#GetStreamOperationMediaRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -95,10 +86,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_messages#NotificationMessagesOperationsSend": {
+    "com.azure.communication_messages#SendNotificationMessagesOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_messages#NotificationMessagesOperationsSendRequest"
+        "target": "com.azure.communication_messages#SendNotificationMessagesOperationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -117,7 +108,7 @@
         "smithy.api#documentation": "Sends a notification message from Business to User."
       }
     },
-    "com.azure.communication_messages#NotificationMessagesOperationsSendRequest": {
+    "com.azure.communication_messages#SendNotificationMessagesOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -157,7 +148,7 @@
           }
         },
         "to": {
-          "target": "com.azure.communication_messages#NotificationMessagesOperationsSendRequestToList",
+          "target": "com.azure.communication_messages#SendNotificationMessagesOperationRequestToList",
           "traits": {
             "smithy.api#documentation": "The native external platform user identifiers of the recipient.",
             "smithy.api#required": {}
@@ -225,7 +216,7 @@
         "smithy.api#documentation": "The type of message."
       }
     },
-    "com.azure.communication_messages#NotificationMessagesOperationsSendRequestToList": {
+    "com.azure.communication_messages#SendNotificationMessagesOperationRequestToList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -234,10 +225,10 @@
         "smithy.api#documentation": "The native external platform user identifiers of the recipient."
       }
     },
-    "com.azure.communication_messages#TemplateOperationsListTemplates": {
+    "com.azure.communication_messages#ListTemplateOperationTemplates": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_messages#TemplateOperationsListTemplatesRequest"
+        "target": "com.azure.communication_messages#ListTemplateOperationTemplatesRequest"
       },
       "output": {
         "target": "com.azure.communication_messages#PagedMessageTemplateItem"
@@ -251,9 +242,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-08-30"
+          "apiVersion": "2024-08-30",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List all templates for given Azure Communication Services channel"
+        "smithy.api#documentation": "List all templates for given Azure Communication Services channel",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_messages#PagedMessageTemplateItem": {
@@ -368,7 +366,7 @@
         "smithy.api#documentation": "The aggregated template status."
       }
     },
-    "com.azure.communication_messages#TemplateOperationsListTemplatesRequest": {
+    "com.azure.communication_messages#ListTemplateOperationTemplatesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -400,6 +398,12 @@
             "smithy.api#httpHeader": "x-ms-client-request-id",
             "smithy.api#documentation": "An opaque, globally-unique, client-generated string identifier for the request."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -411,13 +415,13 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_messages#StreamOperationsGetMedia"
+          "target": "com.azure.communication_messages#GetStreamOperationMedia"
         },
         {
-          "target": "com.azure.communication_messages#NotificationMessagesOperationsSend"
+          "target": "com.azure.communication_messages#SendNotificationMessagesOperation"
         },
         {
-          "target": "com.azure.communication_messages#TemplateOperationsListTemplates"
+          "target": "com.azure.communication_messages#ListTemplateOperationTemplates"
         }
       ],
       "traits": {

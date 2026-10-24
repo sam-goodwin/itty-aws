@@ -801,9 +801,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-12-01"
+          "apiVersion": "2024-12-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List connections in a group.\n\nList connections in a group."
+        "smithy.api#documentation": "List connections in a group.\n\nList connections in a group.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub_data#GroupMemberPagedValues": {
@@ -903,6 +910,12 @@
           "traits": {
             "smithy.api#httpQuery": "continuationToken",
             "smithy.api#documentation": "A token that allows the client to retrieve the next page of results. This parameter is provided by the service in the response of a previous request when there are additional results to be fetched. Clients should include the continuationToken in the next request to receive the subsequent page of data. If this parameter is omitted, the server will return the first page of results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

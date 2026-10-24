@@ -684,6 +684,8 @@ export interface ListContentAnalyzersRequest {
   endpoint: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ContentAnalyzer items on this page */
 export type PagedContentAnalyzerValueList = Array<ContentAnalyzer>;
@@ -900,18 +902,25 @@ export const GetContentAnalyzerResultFile: API.OperationMethod<
 
 export type ListContentAnalyzersError = AzureOpError;
 /** List analyzers. */
-export const ListContentAnalyzers: API.OperationMethod<
+export const ListContentAnalyzers: API.PaginatedOperationMethod<
   ListContentAnalyzersRequest,
   PagedContentAnalyzer,
   ListContentAnalyzersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContentAnalyzer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListContentAnalyzersRequest>,
   output: __S(98, __c6, 2) as any as S.Schema<PagedContentAnalyzer>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateContentAnalyzerError = AzureOpError;
 /** Update analyzer properties. */
@@ -1133,6 +1142,7 @@ function __c6(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1141,6 +1151,7 @@ function __c6(j: number): any {
             host: "{endpoint}/contentunderstanding",
             hostRaw: ["endpoint"],
             apiVersion: "2025-11-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

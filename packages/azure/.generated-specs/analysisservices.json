@@ -21,7 +21,7 @@
     "com.azure.analysisservices#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.analysisservices#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.analysisservices#OperationListResult"
@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AnalysisServices/operations",
           "code": 200,
-          "apiVersion": "2017-08-01"
+          "apiVersion": "2017-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available consumption REST API operations.",
-        "com.distilled.openapi#apiVersion": "2017-08-01"
+        "com.distilled.openapi#apiVersion": "2017-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.analysisservices#OperationListResult": {
@@ -279,6 +286,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.analysisservices#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.analysisservices#ListServerOperationStatuses": {
@@ -953,7 +974,11 @@
           "apiVersion": "2017-08-01"
         },
         "smithy.api#documentation": "Lists all the Analysis Services servers for the given subscription.",
-        "com.distilled.openapi#apiVersion": "2017-08-01"
+        "com.distilled.openapi#apiVersion": "2017-08-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.analysisservices#AnalysisServicesServers": {
@@ -1474,7 +1499,11 @@
           "apiVersion": "2017-08-01"
         },
         "smithy.api#documentation": "Gets all the Analysis Services servers for the given resource group.",
-        "com.distilled.openapi#apiVersion": "2017-08-01"
+        "com.distilled.openapi#apiVersion": "2017-08-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.analysisservices#ListServerByResourceGroupRequest": {

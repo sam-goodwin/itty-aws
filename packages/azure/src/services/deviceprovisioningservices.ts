@@ -772,6 +772,8 @@ export interface ListIotDpsResourceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ProvisioningServiceDescriptionTagsMap = { [key: string]: string | undefined };
@@ -817,6 +819,8 @@ export interface ProvisioningServiceDescriptionListResult {
 export interface ListIotDpsResourceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIotDpsResourceKeysRequest {
   /** The ID of the target subscription. */
@@ -825,6 +829,8 @@ export interface ListIotDpsResourceKeysRequest {
   resourceGroupName: string;
   /** Name of the provisioning service to retrieve. */
   provisioningServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SharedAccessSignatureAuthorizationRuleAccessRightsDescription items on this page */
 export type SharedAccessSignatureAuthorizationRuleListResultValueList =
@@ -892,6 +898,8 @@ export interface ListIotDpsResourceValidSkusRequest {
   resourceGroupName: string;
   /** Name of the provisioning service to retrieve. */
   provisioningServiceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Available SKUs of tier and units. */
 export interface IotDpsSkuDefinition {
@@ -907,7 +915,10 @@ export interface IotDpsSkuDefinitionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The display information for the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft Devices. */
@@ -1253,48 +1264,69 @@ export const ListDpsCertificate: API.OperationMethod<
 
 export type ListIotDpsResourceByResourceGroupError = AzureOpError;
 /** Get a list of all provisioning services in the given resource group. */
-export const ListIotDpsResourceByResourceGroup: API.OperationMethod<
+export const ListIotDpsResourceByResourceGroup: API.PaginatedOperationMethod<
   ListIotDpsResourceByResourceGroupRequest,
   ProvisioningServiceDescriptionListResult,
   ListIotDpsResourceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProvisioningServiceDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListIotDpsResourceByResourceGroupRequest>,
   output: __S(161, __c10, 1) as any as S.Schema<ProvisioningServiceDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIotDpsResourceBySubscriptionError = AzureOpError;
 /** List all the provisioning services for a given subscription id. */
-export const ListIotDpsResourceBySubscription: API.OperationMethod<
+export const ListIotDpsResourceBySubscription: API.PaginatedOperationMethod<
   ListIotDpsResourceBySubscriptionRequest,
   ProvisioningServiceDescriptionListResult,
   ListIotDpsResourceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProvisioningServiceDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<ListIotDpsResourceBySubscriptionRequest>,
   output: __S(161, __c10, 1) as any as S.Schema<ProvisioningServiceDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIotDpsResourceKeysError = AzureOpError;
 /** List the primary and secondary keys for a provisioning service. */
-export const ListIotDpsResourceKeys: API.OperationMethod<
+export const ListIotDpsResourceKeys: API.PaginatedOperationMethod<
   ListIotDpsResourceKeysRequest,
   SharedAccessSignatureAuthorizationRuleListResult,
   ListIotDpsResourceKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SharedAccessSignatureAuthorizationRuleAccessRightsDescription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListIotDpsResourceKeysRequest>,
   output: __S(193, __c12, 1) as any as S.Schema<SharedAccessSignatureAuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIotDpsResourceKeysForKeyNameError = AzureOpError;
 /** List primary and secondary keys for a specific key name */
@@ -1351,33 +1383,47 @@ export const ListIotDpsResourcePrivateLinkResources: API.OperationMethod<
 
 export type ListIotDpsResourceValidSkusError = AzureOpError;
 /** Gets the list of valid SKUs and tiers for a provisioning service. */
-export const ListIotDpsResourceValidSkus: API.OperationMethod<
+export const ListIotDpsResourceValidSkus: API.PaginatedOperationMethod<
   ListIotDpsResourceValidSkusRequest,
   IotDpsSkuDefinitionListResult,
   ListIotDpsResourceValidSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IotDpsSkuDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<ListIotDpsResourceValidSkusRequest>,
   output: __S(275, __c17, 3) as any as S.Schema<IotDpsSkuDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(292, __c18, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateIotDpsResourceError = AzureOpError;
 /** Update an existing provisioning service's tags. to update other fields use the CreateOrUpdate method */
@@ -1683,12 +1729,14 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices",
             code: 200,
             apiVersion: "2026-08-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIotDpsResourceByResourceGroupRequest" });
@@ -1713,12 +1761,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Devices/provisioningServices",
             code: 200,
             apiVersion: "2026-08-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIotDpsResourceBySubscriptionRequest" });
@@ -1732,12 +1782,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           provisioningServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/listkeys",
             code: 200,
             apiVersion: "2026-08-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIotDpsResourceKeysRequest" });
@@ -1854,12 +1906,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           provisioningServiceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/provisioningServices/{provisioningServiceName}/skus",
             code: 200,
             apiVersion: "2026-08-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIotDpsResourceValidSkusRequest" });
@@ -1884,12 +1938,15 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Devices/operations",
             code: 200,
             apiVersion: "2026-08-31",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });

@@ -759,6 +759,8 @@ export interface ListCustomizationPoliciesRequest {
   pcName: string;
   /** The filter to apply on the list operation. only type is allowed here as a filter e.g. $filter=type eq 'xxxx' */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of the customization policies */
 export type CustomizationPoliciesListResponseValueList = Array<CustomizationPolicy>;
@@ -767,7 +769,7 @@ export interface CustomizationPoliciesListResponse {
   /** Link for next list of the Customization policy */
   nextLink?: string;
   /** List of the customization policies */
-  value?: CustomizationPoliciesListResponseValueList;
+  value: CustomizationPoliciesListResponseValueList;
 }
 export interface ListDedicatedCloudNodeByResourceGroupRequest {
   /** The subscription ID. */
@@ -780,6 +782,8 @@ export interface ListDedicatedCloudNodeByResourceGroupRequest {
   _top?: number;
   /** to be used by nextLink implementation */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Results of the DedicatedCloudNode list */
 export type DedicatedCloudNodeListResponseValueList = Array<DedicatedCloudNode>;
@@ -788,7 +792,7 @@ export interface DedicatedCloudNodeListResponse {
   /** Link for next list of DedicatedCloudNode */
   nextLink?: string;
   /** Results of the DedicatedCloudNode list */
-  value?: DedicatedCloudNodeListResponseValueList;
+  value: DedicatedCloudNodeListResponseValueList;
 }
 export interface ListDedicatedCloudNodeBySubscriptionRequest {
   /** The subscription ID. */
@@ -799,6 +803,8 @@ export interface ListDedicatedCloudNodeBySubscriptionRequest {
   _top?: number;
   /** to be used by nextLink implementation */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDedicatedCloudServiceByResourceGroupRequest {
   /** The subscription ID. */
@@ -811,6 +817,8 @@ export interface ListDedicatedCloudServiceByResourceGroupRequest {
   _top?: number;
   /** to be used by nextLink implementation */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Results of the DedicatedCloudService list */
 export type DedicatedCloudServiceListResponseValueList = Array<DedicatedCloudService>;
@@ -819,7 +827,7 @@ export interface DedicatedCloudServiceListResponse {
   /** Link for next list of DedicatedCloudNode */
   nextLink?: string;
   /** Results of the DedicatedCloudService list */
-  value?: DedicatedCloudServiceListResponseValueList;
+  value: DedicatedCloudServiceListResponseValueList;
 }
 export interface ListDedicatedCloudServiceBySubscriptionRequest {
   /** The subscription ID. */
@@ -830,8 +838,13 @@ export interface ListDedicatedCloudServiceBySubscriptionRequest {
   _top?: number;
   /** to be used by nextLink implementation */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Resource provider available operation display model */
 export interface AvailableOperationDisplay {
   /** Description of the operation for display purposes */
@@ -895,13 +908,15 @@ export interface AvailableOperationsListResponse {
   /** Link for next list of available operations */
   nextLink?: string;
   /** Returns a list of available operations */
-  value?: AvailableOperationsListResponseValueList;
+  value: AvailableOperationsListResponseValueList;
 }
 export interface ListPrivateCloudsRequest {
   /** The subscription ID. */
   subscriptionId: string;
   /** The region Id (westus, eastus) */
   regionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** the list of private clouds */
 export type PrivateCloudListValueList = Array<PrivateCloud>;
@@ -910,7 +925,7 @@ export interface PrivateCloudList {
   /** Link for next list of Private Clouds */
   nextLink?: string;
   /** the list of private clouds */
-  value?: PrivateCloudListValueList;
+  value: PrivateCloudListValueList;
 }
 export interface ListResourcePoolsRequest {
   /** The subscription ID. */
@@ -919,6 +934,8 @@ export interface ListResourcePoolsRequest {
   regionId: string;
   /** The private cloud name */
   pcName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Results of the Resource pools list */
 export type ResourcePoolsListResponseValueList = Array<ResourcePool>;
@@ -927,7 +944,7 @@ export interface ResourcePoolsListResponse {
   /** Link for next list of ResourcePoolsList */
   nextLink?: string;
   /** Results of the Resource pools list */
-  value?: ResourcePoolsListResponseValueList;
+  value: ResourcePoolsListResponseValueList;
 }
 export interface ListSkusAvailabilityRequest {
   /** The subscription ID. */
@@ -936,6 +953,8 @@ export interface ListSkusAvailabilityRequest {
   regionId: string;
   /** sku id, if no sku is passed availability for all skus will be returned */
   skuId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** SKU availability model */
 export interface SkuAvailability {
@@ -963,7 +982,7 @@ export interface SkuAvailabilityListResponse {
   /** Link for next list of DedicatedCloudNode */
   nextLink?: string;
   /** Results of the DedicatedPlacementGroupSkuAvailability list */
-  value?: SkuAvailabilityListResponseValueList;
+  value: SkuAvailabilityListResponseValueList;
 }
 export interface ListUsagesRequest {
   /** The subscription ID. */
@@ -972,6 +991,8 @@ export interface ListUsagesRequest {
   regionId: string;
   /** The filter to apply on the list operation. only name.value is allowed here as a filter e.g. $filter=name.value eq 'xxxx' */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** User name model */
 export interface UsageName {
@@ -1006,7 +1027,7 @@ export interface UsageListResponse {
   /** Link for next list of DedicatedCloudNode */
   nextLink?: string;
   /** The list of usages */
-  value?: UsageListResponseValueList;
+  value: UsageListResponseValueList;
 }
 export interface ListVirtualMachineByResourceGroupRequest {
   /** The subscription ID. */
@@ -1019,6 +1040,8 @@ export interface ListVirtualMachineByResourceGroupRequest {
   _top?: number;
   /** to be used by nextLink implementation */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Results of the VirtualMachine list */
 export type VirtualMachineListResponseValueList = Array<VirtualMachine>;
@@ -1027,7 +1050,7 @@ export interface VirtualMachineListResponse {
   /** Link for next list of VirtualMachines */
   nextLink?: string;
   /** Results of the VirtualMachine list */
-  value?: VirtualMachineListResponseValueList;
+  value: VirtualMachineListResponseValueList;
 }
 export interface ListVirtualMachineBySubscriptionRequest {
   /** The subscription ID. */
@@ -1038,6 +1061,8 @@ export interface ListVirtualMachineBySubscriptionRequest {
   _top?: number;
   /** to be used by nextLink implementation */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualMachineTemplatesRequest {
   /** The subscription ID. */
@@ -1048,6 +1073,8 @@ export interface ListVirtualMachineTemplatesRequest {
   pcName: string;
   /** Resource pool used to derive vSphere cluster which contains VM templates */
   resourcePoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Results of the VM template list */
 export type VirtualMachineTemplateListResponseValueList = Array<VirtualMachineTemplate>;
@@ -1056,7 +1083,7 @@ export interface VirtualMachineTemplateListResponse {
   /** Link for next list of VirtualMachineTemplate */
   nextLink?: string;
   /** Results of the VM template list */
-  value?: VirtualMachineTemplateListResponseValueList;
+  value: VirtualMachineTemplateListResponseValueList;
 }
 export interface ListVirtualNetworksRequest {
   /** The subscription ID. */
@@ -1067,6 +1094,8 @@ export interface ListVirtualNetworksRequest {
   pcName: string;
   /** Resource pool used to derive vSphere cluster which contains virtual networks */
   resourcePoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Results of the VirtualNetwork list */
 export type VirtualNetworkListResponseValueList = Array<VirtualNetwork>;
@@ -1075,7 +1104,7 @@ export interface VirtualNetworkListResponse {
   /** Link for next list of VirtualNetwork */
   nextLink?: string;
   /** Results of the VirtualNetwork list */
-  value?: VirtualNetworkListResponseValueList;
+  value: VirtualNetworkListResponseValueList;
 }
 export interface StartVirtualMachineRequest {
   /** The subscription ID. */
@@ -1472,213 +1501,311 @@ export const GetVirtualNetwork: API.OperationMethod<
 
 export type ListCustomizationPoliciesError = AzureOpError;
 /** Implements get of customization policies list Returns list of customization policies in region for private cloud */
-export const ListCustomizationPolicies: API.OperationMethod<
+export const ListCustomizationPolicies: API.PaginatedOperationMethod<
   ListCustomizationPoliciesRequest,
   CustomizationPoliciesListResponse,
   ListCustomizationPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomizationPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<ListCustomizationPoliciesRequest>,
   output: __S(178, __c11, 2) as any as S.Schema<CustomizationPoliciesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDedicatedCloudNodeByResourceGroupError = AzureOpError;
 /** Implements list of dedicated cloud nodes within RG method Returns list of dedicate cloud nodes within resource group */
-export const ListDedicatedCloudNodeByResourceGroup: API.OperationMethod<
+export const ListDedicatedCloudNodeByResourceGroup: API.PaginatedOperationMethod<
   ListDedicatedCloudNodeByResourceGroupRequest,
   DedicatedCloudNodeListResponse,
   ListDedicatedCloudNodeByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedCloudNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListDedicatedCloudNodeByResourceGroupRequest>,
   output: __S(209, __c13, 1) as any as S.Schema<DedicatedCloudNodeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDedicatedCloudNodeBySubscriptionError = AzureOpError;
 /** Implements list of dedicated cloud nodes within subscription method Returns list of dedicate cloud nodes within subscription */
-export const ListDedicatedCloudNodeBySubscription: API.OperationMethod<
+export const ListDedicatedCloudNodeBySubscription: API.PaginatedOperationMethod<
   ListDedicatedCloudNodeBySubscriptionRequest,
   DedicatedCloudNodeListResponse,
   ListDedicatedCloudNodeBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedCloudNode
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<ListDedicatedCloudNodeBySubscriptionRequest>,
   output: __S(209, __c13, 1) as any as S.Schema<DedicatedCloudNodeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDedicatedCloudServiceByResourceGroupError = AzureOpError;
 /** Implements list of dedicatedCloudService objects within RG method Returns list of dedicated cloud services within a resource group */
-export const ListDedicatedCloudServiceByResourceGroup: API.OperationMethod<
+export const ListDedicatedCloudServiceByResourceGroup: API.PaginatedOperationMethod<
   ListDedicatedCloudServiceByResourceGroupRequest,
   DedicatedCloudServiceListResponse,
   ListDedicatedCloudServiceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedCloudService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<ListDedicatedCloudServiceByResourceGroupRequest>,
   output: __S(257, __c16, 1) as any as S.Schema<DedicatedCloudServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDedicatedCloudServiceBySubscriptionError = AzureOpError;
 /** Implements list of dedicatedCloudService objects within subscription method Returns list of dedicated cloud services within a subscription */
-export const ListDedicatedCloudServiceBySubscription: API.OperationMethod<
+export const ListDedicatedCloudServiceBySubscription: API.PaginatedOperationMethod<
   ListDedicatedCloudServiceBySubscriptionRequest,
   DedicatedCloudServiceListResponse,
   ListDedicatedCloudServiceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedCloudService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<ListDedicatedCloudServiceBySubscriptionRequest>,
   output: __S(257, __c16, 1) as any as S.Schema<DedicatedCloudServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Implements list of available operations Return list of operations */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   AvailableOperationsListResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailableOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(296, __c18, 8) as any as S.Schema<AvailableOperationsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateCloudsError = AzureOpError;
 /** Implements private cloud list GET method Returns list of private clouds in particular region */
-export const ListPrivateClouds: API.OperationMethod<
+export const ListPrivateClouds: API.PaginatedOperationMethod<
   ListPrivateCloudsRequest,
   PrivateCloudList,
   ListPrivateCloudsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateCloud
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListPrivateCloudsRequest>,
   output: __S(338, __c21, 2) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListResourcePoolsError = AzureOpError;
 /** Implements get of resource pools list Returns list of resource pools in region for private cloud */
-export const ListResourcePools: API.OperationMethod<
+export const ListResourcePools: API.PaginatedOperationMethod<
   ListResourcePoolsRequest,
   ResourcePoolsListResponse,
   ListResourcePoolsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourcePool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListResourcePoolsRequest>,
   output: __S(353, __c22, 1) as any as S.Schema<ResourcePoolsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusAvailabilityError = AzureOpError;
 /** Implements SkuAvailability List method Returns list of available resources in region */
-export const ListSkusAvailability: API.OperationMethod<
+export const ListSkusAvailability: API.PaginatedOperationMethod<
   ListSkusAvailabilityRequest,
   SkuAvailabilityListResponse,
   ListSkusAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuAvailability
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListSkusAvailabilityRequest>,
   output: __S(371, __c23, 3) as any as S.Schema<SkuAvailabilityListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsagesError = AzureOpError;
 /** Implements Usages List method Returns list of usage in region */
-export const ListUsages: API.OperationMethod<
+export const ListUsages: API.PaginatedOperationMethod<
   ListUsagesRequest,
   UsageListResponse,
   ListUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ListUsagesRequest>,
   output: __S(388, __c24, 4) as any as S.Schema<UsageListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineByResourceGroupError = AzureOpError;
 /** Implements list virtual machine within RG method Returns list of virtual machine within resource group */
-export const ListVirtualMachineByResourceGroup: API.OperationMethod<
+export const ListVirtualMachineByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualMachineByResourceGroupRequest,
   VirtualMachineListResponse,
   ListVirtualMachineByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListVirtualMachineByResourceGroupRequest>,
   output: __S(417, __c26, 1) as any as S.Schema<VirtualMachineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineBySubscriptionError = AzureOpError;
 /** Implements list virtual machine within subscription method Returns list virtual machine within subscription */
-export const ListVirtualMachineBySubscription: API.OperationMethod<
+export const ListVirtualMachineBySubscription: API.PaginatedOperationMethod<
   ListVirtualMachineBySubscriptionRequest,
   VirtualMachineListResponse,
   ListVirtualMachineBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListVirtualMachineBySubscriptionRequest>,
   output: __S(417, __c26, 1) as any as S.Schema<VirtualMachineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineTemplatesError = AzureOpError;
 /** Implements list of available VM templates Returns list of virtual machine templates in region for private cloud */
-export const ListVirtualMachineTemplates: API.OperationMethod<
+export const ListVirtualMachineTemplates: API.PaginatedOperationMethod<
   ListVirtualMachineTemplatesRequest,
   VirtualMachineTemplateListResponse,
   ListVirtualMachineTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachineTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
   output: __S(449, __c28, 1) as any as S.Schema<VirtualMachineTemplateListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualNetworksError = AzureOpError;
 /** Implements list available virtual networks within a subscription method Return list of virtual networks in location for private cloud */
-export const ListVirtualNetworks: API.OperationMethod<
+export const ListVirtualNetworks: API.PaginatedOperationMethod<
   ListVirtualNetworksRequest,
   VirtualNetworkListResponse,
   ListVirtualNetworksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(464, __c29, 0) as any as S.Schema<ListVirtualNetworksRequest>,
   output: __S(465, __c29, 1) as any as S.Schema<VirtualNetworkListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type StartVirtualMachineError = AzureOpError;
 /** Implements a start method for a virtual machine Power on virtual machine */
@@ -2061,12 +2188,14 @@ function __c11(j: number): any {
           regionId: S.String.pipe(T.Label()),
           pcName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/customizationPolicies",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomizationPoliciesRequest" });
@@ -2076,7 +2205,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(177, __c11, 1)),
+          value: __S(177, __c11, 1),
         }),
       ).annotate({ identifier: "CustomizationPoliciesListResponse" });
   }
@@ -2091,12 +2220,14 @@ function __c12(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDedicatedCloudNodeByResourceGroupRequest" });
@@ -2110,7 +2241,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(208, __c13, 0)),
+          value: __S(208, __c13, 0),
         }),
       ).annotate({ identifier: "DedicatedCloudNodeListResponse" });
   }
@@ -2124,12 +2255,14 @@ function __c14(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDedicatedCloudNodeBySubscriptionRequest" });
@@ -2145,12 +2278,14 @@ function __c15(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDedicatedCloudServiceByResourceGroupRequest" });
@@ -2164,7 +2299,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(256, __c16, 0)),
+          value: __S(256, __c16, 0),
         }),
       ).annotate({ identifier: "DedicatedCloudServiceListResponse" });
   }
@@ -2178,12 +2313,14 @@ function __c17(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDedicatedCloudServiceBySubscriptionRequest" });
@@ -2193,12 +2330,15 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.VMwareCloudSimple/operations",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2255,7 +2395,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(295, __c18, 7)),
+          value: __S(295, __c18, 7),
         }),
       ).annotate({ identifier: "AvailableOperationsListResponse" });
   }
@@ -2294,12 +2434,14 @@ function __c21(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateCloudsRequest" });
@@ -2309,7 +2451,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(337, __c21, 1)),
+          value: __S(337, __c21, 1),
         }),
       ).annotate({ identifier: "PrivateCloudList" });
   }
@@ -2322,12 +2464,14 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           pcName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/resourcePools",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListResourcePoolsRequest" });
@@ -2335,7 +2479,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(832, __c52, 0)),
+          value: __S(832, __c52, 0),
         }),
       ).annotate({ identifier: "ResourcePoolsListResponse" });
   }
@@ -2348,12 +2492,14 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           skuId: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/availabilities",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSkusAvailabilityRequest" });
@@ -2376,7 +2522,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(370, __c23, 2)),
+          value: __S(370, __c23, 2),
         }),
       ).annotate({ identifier: "SkuAvailabilityListResponse" });
   }
@@ -2389,12 +2535,14 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/usages",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
@@ -2420,7 +2568,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(387, __c24, 3)),
+          value: __S(387, __c24, 3),
         }),
       ).annotate({ identifier: "UsageListResponse" });
   }
@@ -2435,12 +2583,14 @@ function __c25(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineByResourceGroupRequest" });
@@ -2454,7 +2604,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(416, __c26, 0)),
+          value: __S(416, __c26, 0),
         }),
       ).annotate({ identifier: "VirtualMachineListResponse" });
   }
@@ -2468,12 +2618,14 @@ function __c27(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineBySubscriptionRequest" });
@@ -2488,12 +2640,14 @@ function __c28(j: number): any {
           regionId: S.String.pipe(T.Label()),
           pcName: S.String.pipe(T.Label()),
           resourcePoolName: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineTemplatesRequest" });
@@ -2501,7 +2655,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(848, __c53, 0)),
+          value: __S(848, __c53, 0),
         }),
       ).annotate({ identifier: "VirtualMachineTemplateListResponse" });
   }
@@ -2515,12 +2669,14 @@ function __c29(j: number): any {
           regionId: S.String.pipe(T.Label()),
           pcName: S.String.pipe(T.Label()),
           resourcePoolName: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualNetworksRequest" });
@@ -2528,7 +2684,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(864, __c54, 0)),
+          value: __S(864, __c54, 0),
         }),
       ).annotate({ identifier: "VirtualNetworkListResponse" });
   }

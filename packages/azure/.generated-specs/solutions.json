@@ -15,13 +15,103 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.solutions#ApplicationsListTokens": "com.azure.solutions#ListApplicationTokens",
+      "com.azure.solutions#ApplicationsListTokensRequest": "com.azure.solutions#ListApplicationTokensRequest",
+      "com.azure.solutions#ApplicationsListTokensRequestUserAssignedIdentitiesList": "com.azure.solutions#ListApplicationTokensRequestUserAssignedIdentitiesList",
+      "com.azure.solutions#ApplicationsUpdateAccess": "com.azure.solutions#UpdateApplicationAccess",
+      "com.azure.solutions#ApplicationsUpdateAccessRequest": "com.azure.solutions#UpdateApplicationAccessRequest",
+      "com.azure.solutions#ApplicationsListAllowedUpgradePlans": "com.azure.solutions#ListApplicationAllowedUpgradePlans",
+      "com.azure.solutions#ApplicationsListAllowedUpgradePlansRequest": "com.azure.solutions#ListApplicationAllowedUpgradePlansRequest",
+      "com.azure.solutions#ApplicationsRefreshPermissions": "com.azure.solutions#RefreshApplicationPermissions",
+      "com.azure.solutions#ApplicationsRefreshPermissionsRequest": "com.azure.solutions#RefreshApplicationPermissionsRequest",
+      "com.azure.solutions#JitRequestsListByResourceGroup": "com.azure.solutions#ListJitRequestByResourceGroup",
+      "com.azure.solutions#JitRequestsListByResourceGroupRequest": "com.azure.solutions#ListJitRequestByResourceGroupRequest",
+      "com.azure.solutions#JitRequestsListBySubscription": "com.azure.solutions#ListJitRequestBySubscription",
+      "com.azure.solutions#JitRequestsListBySubscriptionRequest": "com.azure.solutions#ListJitRequestBySubscriptionRequest",
+      "com.azure.solutions#JitRequestsDelete": "com.azure.solutions#DeleteJitRequest",
+      "com.azure.solutions#JitRequestsDeleteRequest": "com.azure.solutions#DeleteJitRequestRequest",
+      "com.azure.solutions#JitRequestsUpdate": "com.azure.solutions#UpdateJitRequest",
+      "com.azure.solutions#JitRequestsUpdateResponse": "com.azure.solutions#UpdateJitRequestResponse",
+      "com.azure.solutions#JitRequestsUpdateResponseSystemData": "com.azure.solutions#UpdateJitRequestResponseSystemData",
+      "com.azure.solutions#JitRequestsUpdateResponseSystemDataLastModifiedByType": "com.azure.solutions#UpdateJitRequestResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#JitRequestsUpdateResponseSystemDataCreatedByType": "com.azure.solutions#UpdateJitRequestResponseSystemDataCreatedByType",
+      "com.azure.solutions#JitRequestsUpdateResponseTagsMap": "com.azure.solutions#UpdateJitRequestResponseTagsMap",
+      "com.azure.solutions#JitRequestsUpdateRequest": "com.azure.solutions#UpdateJitRequestRequest",
+      "com.azure.solutions#JitRequestsUpdateRequestTagsMap": "com.azure.solutions#UpdateJitRequestRequestTagsMap",
+      "com.azure.solutions#JitRequestsGet": "com.azure.solutions#GetJitRequest",
+      "com.azure.solutions#JitRequestsGetResponse": "com.azure.solutions#GetJitRequestResponse",
+      "com.azure.solutions#JitRequestsGetResponseSystemData": "com.azure.solutions#GetJitRequestResponseSystemData",
+      "com.azure.solutions#JitRequestsGetResponseSystemDataLastModifiedByType": "com.azure.solutions#GetJitRequestResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#JitRequestsGetResponseSystemDataCreatedByType": "com.azure.solutions#GetJitRequestResponseSystemDataCreatedByType",
+      "com.azure.solutions#JitRequestsGetResponseTagsMap": "com.azure.solutions#GetJitRequestResponseTagsMap",
+      "com.azure.solutions#JitRequestsGetRequest": "com.azure.solutions#GetJitRequestRequest",
+      "com.azure.solutions#ApplicationsDeleteById": "com.azure.solutions#DeleteApplicationById",
+      "com.azure.solutions#ApplicationsDeleteByIdRequest": "com.azure.solutions#DeleteApplicationByIdRequest",
+      "com.azure.solutions#ApplicationsUpdateById": "com.azure.solutions#UpdateApplicationById",
+      "com.azure.solutions#ApplicationsUpdateByIdResponse": "com.azure.solutions#UpdateApplicationByIdResponse",
+      "com.azure.solutions#ApplicationsUpdateByIdResponseSystemData": "com.azure.solutions#UpdateApplicationByIdResponseSystemData",
+      "com.azure.solutions#ApplicationsUpdateByIdResponseSystemDataLastModifiedByType": "com.azure.solutions#UpdateApplicationByIdResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#ApplicationsUpdateByIdResponseSystemDataCreatedByType": "com.azure.solutions#UpdateApplicationByIdResponseSystemDataCreatedByType",
+      "com.azure.solutions#ApplicationsUpdateByIdResponseTagsMap": "com.azure.solutions#UpdateApplicationByIdResponseTagsMap",
+      "com.azure.solutions#ApplicationsUpdateByIdRequest": "com.azure.solutions#UpdateApplicationByIdRequest",
+      "com.azure.solutions#ApplicationsUpdateByIdRequestTagsMap": "com.azure.solutions#UpdateApplicationByIdRequestTagsMap",
+      "com.azure.solutions#ApplicationsGetById": "com.azure.solutions#GetApplicationById",
+      "com.azure.solutions#ApplicationsGetByIdResponse": "com.azure.solutions#GetApplicationByIdResponse",
+      "com.azure.solutions#ApplicationsGetByIdResponseSystemData": "com.azure.solutions#GetApplicationByIdResponseSystemData",
+      "com.azure.solutions#ApplicationsGetByIdResponseSystemDataLastModifiedByType": "com.azure.solutions#GetApplicationByIdResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#ApplicationsGetByIdResponseSystemDataCreatedByType": "com.azure.solutions#GetApplicationByIdResponseSystemDataCreatedByType",
+      "com.azure.solutions#ApplicationsGetByIdResponseTagsMap": "com.azure.solutions#GetApplicationByIdResponseTagsMap",
+      "com.azure.solutions#ApplicationsGetByIdRequest": "com.azure.solutions#GetApplicationByIdRequest",
+      "com.azure.solutions#ApplicationsListBySubscription": "com.azure.solutions#ListApplicationBySubscription",
+      "com.azure.solutions#ApplicationsListBySubscriptionRequest": "com.azure.solutions#ListApplicationBySubscriptionRequest",
+      "com.azure.solutions#ApplicationsListByResourceGroup": "com.azure.solutions#ListApplicationByResourceGroup",
+      "com.azure.solutions#ApplicationsListByResourceGroupRequest": "com.azure.solutions#ListApplicationByResourceGroupRequest",
+      "com.azure.solutions#ApplicationDefinitionsListBySubscription": "com.azure.solutions#ListApplicationDefinitionBySubscription",
+      "com.azure.solutions#ApplicationDefinitionsListBySubscriptionRequest": "com.azure.solutions#ListApplicationDefinitionBySubscriptionRequest",
+      "com.azure.solutions#ApplicationDefinitionsListByResourceGroup": "com.azure.solutions#ListApplicationDefinitionByResourceGroup",
+      "com.azure.solutions#ApplicationDefinitionsListByResourceGroupRequest": "com.azure.solutions#ListApplicationDefinitionByResourceGroupRequest",
+      "com.azure.solutions#ApplicationDefinitionsDelete": "com.azure.solutions#DeleteApplicationDefinition",
+      "com.azure.solutions#ApplicationDefinitionsDeleteRequest": "com.azure.solutions#DeleteApplicationDefinitionRequest",
+      "com.azure.solutions#ApplicationDefinitionsUpdate": "com.azure.solutions#UpdateApplicationDefinition",
+      "com.azure.solutions#ApplicationDefinitionsUpdateResponse": "com.azure.solutions#UpdateApplicationDefinitionResponse",
+      "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemData": "com.azure.solutions#UpdateApplicationDefinitionResponseSystemData",
+      "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType": "com.azure.solutions#UpdateApplicationDefinitionResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemDataCreatedByType": "com.azure.solutions#UpdateApplicationDefinitionResponseSystemDataCreatedByType",
+      "com.azure.solutions#ApplicationDefinitionsUpdateResponseTagsMap": "com.azure.solutions#UpdateApplicationDefinitionResponseTagsMap",
+      "com.azure.solutions#ApplicationDefinitionsUpdateRequest": "com.azure.solutions#UpdateApplicationDefinitionRequest",
+      "com.azure.solutions#ApplicationDefinitionsUpdateRequestTagsMap": "com.azure.solutions#UpdateApplicationDefinitionRequestTagsMap",
+      "com.azure.solutions#ApplicationDefinitionsGet": "com.azure.solutions#GetApplicationDefinition",
+      "com.azure.solutions#ApplicationDefinitionsGetResponse": "com.azure.solutions#GetApplicationDefinitionResponse",
+      "com.azure.solutions#ApplicationDefinitionsGetResponseSystemData": "com.azure.solutions#GetApplicationDefinitionResponseSystemData",
+      "com.azure.solutions#ApplicationDefinitionsGetResponseSystemDataLastModifiedByType": "com.azure.solutions#GetApplicationDefinitionResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#ApplicationDefinitionsGetResponseSystemDataCreatedByType": "com.azure.solutions#GetApplicationDefinitionResponseSystemDataCreatedByType",
+      "com.azure.solutions#ApplicationDefinitionsGetResponseTagsMap": "com.azure.solutions#GetApplicationDefinitionResponseTagsMap",
+      "com.azure.solutions#ApplicationDefinitionsGetRequest": "com.azure.solutions#GetApplicationDefinitionRequest",
+      "com.azure.solutions#ApplicationsDelete": "com.azure.solutions#DeleteApplication",
+      "com.azure.solutions#ApplicationsDeleteRequest": "com.azure.solutions#DeleteApplicationRequest",
+      "com.azure.solutions#ApplicationsUpdate": "com.azure.solutions#UpdateApplication",
+      "com.azure.solutions#ApplicationsUpdateResponse": "com.azure.solutions#UpdateApplicationResponse",
+      "com.azure.solutions#ApplicationsUpdateResponseSystemData": "com.azure.solutions#UpdateApplicationResponseSystemData",
+      "com.azure.solutions#ApplicationsUpdateResponseSystemDataLastModifiedByType": "com.azure.solutions#UpdateApplicationResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#ApplicationsUpdateResponseSystemDataCreatedByType": "com.azure.solutions#UpdateApplicationResponseSystemDataCreatedByType",
+      "com.azure.solutions#ApplicationsUpdateResponseTagsMap": "com.azure.solutions#UpdateApplicationResponseTagsMap",
+      "com.azure.solutions#ApplicationsUpdateRequest": "com.azure.solutions#UpdateApplicationRequest",
+      "com.azure.solutions#ApplicationsUpdateRequestTagsMap": "com.azure.solutions#UpdateApplicationRequestTagsMap",
+      "com.azure.solutions#ApplicationsGet": "com.azure.solutions#GetApplication",
+      "com.azure.solutions#ApplicationsGetResponse": "com.azure.solutions#GetApplicationResponse",
+      "com.azure.solutions#ApplicationsGetResponseSystemData": "com.azure.solutions#GetApplicationResponseSystemData",
+      "com.azure.solutions#ApplicationsGetResponseSystemDataLastModifiedByType": "com.azure.solutions#GetApplicationResponseSystemDataLastModifiedByType",
+      "com.azure.solutions#ApplicationsGetResponseSystemDataCreatedByType": "com.azure.solutions#GetApplicationResponseSystemDataCreatedByType",
+      "com.azure.solutions#ApplicationsGetResponseTagsMap": "com.azure.solutions#GetApplicationResponseTagsMap",
+      "com.azure.solutions#ApplicationsGetRequest": "com.azure.solutions#GetApplicationRequest"
+    }
   },
   "shapes": {
-    "com.azure.solutions#ListApplicationTokens": {
+    "com.azure.solutions#ApplicationsListTokens": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListApplicationTokensRequest"
+        "target": "com.azure.solutions#ApplicationsListTokensRequest"
       },
       "output": {
         "target": "com.azure.solutions#ManagedIdentityTokenResult"
@@ -111,7 +201,7 @@
         "smithy.api#documentation": "The managed identity token for the managed app resource."
       }
     },
-    "com.azure.solutions#ListApplicationTokensRequest": {
+    "com.azure.solutions#ApplicationsListTokensRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -145,7 +235,7 @@
           }
         },
         "userAssignedIdentities": {
-          "target": "com.azure.solutions#ListApplicationTokensRequestUserAssignedIdentitiesList",
+          "target": "com.azure.solutions#ApplicationsListTokensRequestUserAssignedIdentitiesList",
           "traits": {
             "smithy.api#documentation": "The user assigned identities."
           }
@@ -155,7 +245,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListApplicationTokensRequestUserAssignedIdentitiesList": {
+    "com.azure.solutions#ApplicationsListTokensRequestUserAssignedIdentitiesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -164,10 +254,10 @@
         "smithy.api#documentation": "The user assigned identities."
       }
     },
-    "com.azure.solutions#UpdateApplicationAccess": {
+    "com.azure.solutions#ApplicationsUpdateAccess": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#UpdateApplicationAccessRequest"
+        "target": "com.azure.solutions#ApplicationsUpdateAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -183,7 +273,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#UpdateApplicationAccessRequest": {
+    "com.azure.solutions#ApplicationsUpdateAccessRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -344,10 +434,10 @@
         "smithy.api#documentation": "The JIT request metadata."
       }
     },
-    "com.azure.solutions#ListApplicationAllowedUpgradePlans": {
+    "com.azure.solutions#ApplicationsListAllowedUpgradePlans": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListApplicationAllowedUpgradePlansRequest"
+        "target": "com.azure.solutions#ApplicationsListAllowedUpgradePlansRequest"
       },
       "output": {
         "target": "com.azure.solutions#AllowedUpgradePlansResult"
@@ -428,7 +518,7 @@
         "smithy.api#documentation": "Plan for the managed application."
       }
     },
-    "com.azure.solutions#ListApplicationAllowedUpgradePlansRequest": {
+    "com.azure.solutions#ApplicationsListAllowedUpgradePlansRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -460,10 +550,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#RefreshApplicationPermissions": {
+    "com.azure.solutions#ApplicationsRefreshPermissions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#RefreshApplicationPermissionsRequest"
+        "target": "com.azure.solutions#ApplicationsRefreshPermissionsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -479,7 +569,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#RefreshApplicationPermissionsRequest": {
+    "com.azure.solutions#ApplicationsRefreshPermissionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -511,10 +601,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListJitRequestByResourceGroup": {
+    "com.azure.solutions#JitRequestsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListJitRequestByResourceGroupRequest"
+        "target": "com.azure.solutions#JitRequestsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.solutions#JitRequestDefinitionListResult"
@@ -1017,7 +1107,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#ListJitRequestByResourceGroupRequest": {
+    "com.azure.solutions#JitRequestsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1041,10 +1131,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListJitRequestBySubscription": {
+    "com.azure.solutions#JitRequestsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListJitRequestBySubscriptionRequest"
+        "target": "com.azure.solutions#JitRequestsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.solutions#JitRequestDefinitionListResult"
@@ -1060,7 +1150,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#ListJitRequestBySubscriptionRequest": {
+    "com.azure.solutions#JitRequestsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1076,10 +1166,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#DeleteJitRequest": {
+    "com.azure.solutions#JitRequestsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#DeleteJitRequestRequest"
+        "target": "com.azure.solutions#JitRequestsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1095,7 +1185,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#DeleteJitRequestRequest": {
+    "com.azure.solutions#JitRequestsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1127,13 +1217,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateJitRequest": {
+    "com.azure.solutions#JitRequestsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#UpdateJitRequestRequest"
+        "target": "com.azure.solutions#JitRequestsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.solutions#UpdateJitRequestResponse"
+        "target": "com.azure.solutions#JitRequestsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1146,7 +1236,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#UpdateJitRequestResponse": {
+    "com.azure.solutions#JitRequestsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1174,13 +1264,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateJitRequestResponseTagsMap",
+          "target": "com.azure.solutions#JitRequestsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#UpdateJitRequestResponseSystemData",
+          "target": "com.azure.solutions#JitRequestsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1196,7 +1286,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#UpdateJitRequestResponseSystemData": {
+    "com.azure.solutions#JitRequestsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1206,7 +1296,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#UpdateJitRequestResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#JitRequestsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1224,7 +1314,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#UpdateJitRequestResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#JitRequestsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1240,7 +1330,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#UpdateJitRequestResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#JitRequestsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1272,7 +1362,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#UpdateJitRequestResponseSystemDataCreatedByType": {
+    "com.azure.solutions#JitRequestsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1304,7 +1394,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#UpdateJitRequestResponseTagsMap": {
+    "com.azure.solutions#JitRequestsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1316,7 +1406,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#UpdateJitRequestRequest": {
+    "com.azure.solutions#JitRequestsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1344,7 +1434,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateJitRequestRequestTagsMap",
+          "target": "com.azure.solutions#JitRequestsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Jit request tags"
           }
@@ -1354,7 +1444,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateJitRequestRequestTagsMap": {
+    "com.azure.solutions#JitRequestsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1655,13 +1745,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetJitRequest": {
+    "com.azure.solutions#JitRequestsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#GetJitRequestRequest"
+        "target": "com.azure.solutions#JitRequestsGetRequest"
       },
       "output": {
-        "target": "com.azure.solutions#GetJitRequestResponse"
+        "target": "com.azure.solutions#JitRequestsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1674,7 +1764,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#GetJitRequestResponse": {
+    "com.azure.solutions#JitRequestsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1702,13 +1792,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#GetJitRequestResponseTagsMap",
+          "target": "com.azure.solutions#JitRequestsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#GetJitRequestResponseSystemData",
+          "target": "com.azure.solutions#JitRequestsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1724,7 +1814,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#GetJitRequestResponseSystemData": {
+    "com.azure.solutions#JitRequestsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1734,7 +1824,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#GetJitRequestResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#JitRequestsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1752,7 +1842,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#GetJitRequestResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#JitRequestsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1768,7 +1858,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#GetJitRequestResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#JitRequestsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1800,7 +1890,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#GetJitRequestResponseSystemDataCreatedByType": {
+    "com.azure.solutions#JitRequestsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1832,7 +1922,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#GetJitRequestResponseTagsMap": {
+    "com.azure.solutions#JitRequestsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1844,7 +1934,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetJitRequestRequest": {
+    "com.azure.solutions#JitRequestsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1876,10 +1966,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#DeleteApplicationById": {
+    "com.azure.solutions#ApplicationsDeleteById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#DeleteApplicationByIdRequest"
+        "target": "com.azure.solutions#ApplicationsDeleteByIdRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1895,7 +1985,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#DeleteApplicationByIdRequest": {
+    "com.azure.solutions#ApplicationsDeleteByIdRequest": {
       "type": "structure",
       "members": {
         "applicationId": {
@@ -1911,13 +2001,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateApplicationById": {
+    "com.azure.solutions#ApplicationsUpdateById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#UpdateApplicationByIdRequest"
+        "target": "com.azure.solutions#ApplicationsUpdateByIdRequest"
       },
       "output": {
-        "target": "com.azure.solutions#UpdateApplicationByIdResponse"
+        "target": "com.azure.solutions#ApplicationsUpdateByIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1930,7 +2020,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdResponse": {
+    "com.azure.solutions#ApplicationsUpdateByIdResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1958,13 +2048,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateApplicationByIdResponseTagsMap",
+          "target": "com.azure.solutions#ApplicationsUpdateByIdResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#UpdateApplicationByIdResponseSystemData",
+          "target": "com.azure.solutions#ApplicationsUpdateByIdResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -2617,7 +2707,7 @@
         "smithy.api#documentation": "SKU for the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdResponseSystemData": {
+    "com.azure.solutions#ApplicationsUpdateByIdResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -2627,7 +2717,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#UpdateApplicationByIdResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#ApplicationsUpdateByIdResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -2645,7 +2735,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#UpdateApplicationByIdResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#ApplicationsUpdateByIdResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -2661,7 +2751,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#ApplicationsUpdateByIdResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2693,7 +2783,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdResponseSystemDataCreatedByType": {
+    "com.azure.solutions#ApplicationsUpdateByIdResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2725,7 +2815,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdResponseTagsMap": {
+    "com.azure.solutions#ApplicationsUpdateByIdResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2737,7 +2827,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdRequest": {
+    "com.azure.solutions#ApplicationsUpdateByIdRequest": {
       "type": "structure",
       "members": {
         "applicationId": {
@@ -2755,7 +2845,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateApplicationByIdRequestTagsMap",
+          "target": "com.azure.solutions#ApplicationsUpdateByIdRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -2904,7 +2994,7 @@
         "smithy.api#documentation": "The managed application properties."
       }
     },
-    "com.azure.solutions#UpdateApplicationByIdRequestTagsMap": {
+    "com.azure.solutions#ApplicationsUpdateByIdRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3215,13 +3305,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetApplicationById": {
+    "com.azure.solutions#ApplicationsGetById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#GetApplicationByIdRequest"
+        "target": "com.azure.solutions#ApplicationsGetByIdRequest"
       },
       "output": {
-        "target": "com.azure.solutions#GetApplicationByIdResponse"
+        "target": "com.azure.solutions#ApplicationsGetByIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3234,7 +3324,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#GetApplicationByIdResponse": {
+    "com.azure.solutions#ApplicationsGetByIdResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3262,13 +3352,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#GetApplicationByIdResponseTagsMap",
+          "target": "com.azure.solutions#ApplicationsGetByIdResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#GetApplicationByIdResponseSystemData",
+          "target": "com.azure.solutions#ApplicationsGetByIdResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -3316,7 +3406,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#GetApplicationByIdResponseSystemData": {
+    "com.azure.solutions#ApplicationsGetByIdResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -3326,7 +3416,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#GetApplicationByIdResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#ApplicationsGetByIdResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -3344,7 +3434,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#GetApplicationByIdResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#ApplicationsGetByIdResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -3360,7 +3450,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#GetApplicationByIdResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#ApplicationsGetByIdResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3392,7 +3482,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#GetApplicationByIdResponseSystemDataCreatedByType": {
+    "com.azure.solutions#ApplicationsGetByIdResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3424,7 +3514,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#GetApplicationByIdResponseTagsMap": {
+    "com.azure.solutions#ApplicationsGetByIdResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3436,7 +3526,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetApplicationByIdRequest": {
+    "com.azure.solutions#ApplicationsGetByIdRequest": {
       "type": "structure",
       "members": {
         "applicationId": {
@@ -3452,10 +3542,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListApplicationBySubscription": {
+    "com.azure.solutions#ApplicationsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListApplicationBySubscriptionRequest"
+        "target": "com.azure.solutions#ApplicationsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.solutions#ApplicationListResult"
@@ -3465,10 +3555,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
           "code": 200,
-          "apiVersion": "2021-07-01"
+          "apiVersion": "2021-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the applications within a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-07-01"
+        "com.distilled.openapi#apiVersion": "2021-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.solutions#ApplicationListResult": {
@@ -3702,7 +3799,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#ListApplicationBySubscriptionRequest": {
+    "com.azure.solutions#ApplicationsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3712,16 +3809,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListApplicationByResourceGroup": {
+    "com.azure.solutions#ApplicationsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListApplicationByResourceGroupRequest"
+        "target": "com.azure.solutions#ApplicationsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.solutions#ApplicationListResult"
@@ -3731,13 +3834,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
           "code": 200,
-          "apiVersion": "2021-07-01"
+          "apiVersion": "2021-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the applications within a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-07-01"
+        "com.distilled.openapi#apiVersion": "2021-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.solutions#ListApplicationByResourceGroupRequest": {
+    "com.azure.solutions#ApplicationsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3755,16 +3865,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListApplicationDefinitionBySubscription": {
+    "com.azure.solutions#ApplicationDefinitionsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListApplicationDefinitionBySubscriptionRequest"
+        "target": "com.azure.solutions#ApplicationDefinitionsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.solutions#ApplicationDefinitionListResult"
@@ -3774,10 +3890,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applicationDefinitions",
           "code": 200,
-          "apiVersion": "2021-07-01"
+          "apiVersion": "2021-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the application definitions within a subscription.",
-        "com.distilled.openapi#apiVersion": "2021-07-01"
+        "com.distilled.openapi#apiVersion": "2021-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.solutions#ApplicationDefinitionListResult": {
@@ -4363,7 +4486,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#ListApplicationDefinitionBySubscriptionRequest": {
+    "com.azure.solutions#ApplicationDefinitionsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4373,16 +4496,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#ListApplicationDefinitionByResourceGroup": {
+    "com.azure.solutions#ApplicationDefinitionsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#ListApplicationDefinitionByResourceGroupRequest"
+        "target": "com.azure.solutions#ApplicationDefinitionsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.solutions#ApplicationDefinitionListResult"
@@ -4392,13 +4521,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
           "code": 200,
-          "apiVersion": "2021-07-01"
+          "apiVersion": "2021-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the managed application definitions in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-07-01"
+        "com.distilled.openapi#apiVersion": "2021-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.solutions#ListApplicationDefinitionByResourceGroupRequest": {
+    "com.azure.solutions#ApplicationDefinitionsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4416,16 +4552,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#DeleteApplicationDefinition": {
+    "com.azure.solutions#ApplicationDefinitionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#DeleteApplicationDefinitionRequest"
+        "target": "com.azure.solutions#ApplicationDefinitionsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4441,7 +4583,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#DeleteApplicationDefinitionRequest": {
+    "com.azure.solutions#ApplicationDefinitionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4473,13 +4615,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinition": {
+    "com.azure.solutions#ApplicationDefinitionsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#UpdateApplicationDefinitionRequest"
+        "target": "com.azure.solutions#ApplicationDefinitionsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.solutions#UpdateApplicationDefinitionResponse"
+        "target": "com.azure.solutions#ApplicationDefinitionsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4492,7 +4634,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionResponse": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4520,13 +4662,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateApplicationDefinitionResponseTagsMap",
+          "target": "com.azure.solutions#ApplicationDefinitionsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#UpdateApplicationDefinitionResponseSystemData",
+          "target": "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -4555,7 +4697,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionResponseSystemData": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -4565,7 +4707,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#UpdateApplicationDefinitionResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -4583,7 +4725,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#UpdateApplicationDefinitionResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -4599,7 +4741,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -4631,7 +4773,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionResponseSystemDataCreatedByType": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -4663,7 +4805,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionResponseTagsMap": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4675,7 +4817,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionRequest": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4703,7 +4845,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateApplicationDefinitionRequestTagsMap",
+          "target": "com.azure.solutions#ApplicationDefinitionsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Application definition tags"
           }
@@ -4713,7 +4855,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateApplicationDefinitionRequestTagsMap": {
+    "com.azure.solutions#ApplicationDefinitionsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5002,13 +5144,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetApplicationDefinition": {
+    "com.azure.solutions#ApplicationDefinitionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#GetApplicationDefinitionRequest"
+        "target": "com.azure.solutions#ApplicationDefinitionsGetRequest"
       },
       "output": {
-        "target": "com.azure.solutions#GetApplicationDefinitionResponse"
+        "target": "com.azure.solutions#ApplicationDefinitionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5021,7 +5163,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#GetApplicationDefinitionResponse": {
+    "com.azure.solutions#ApplicationDefinitionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5049,13 +5191,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#GetApplicationDefinitionResponseTagsMap",
+          "target": "com.azure.solutions#ApplicationDefinitionsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#GetApplicationDefinitionResponseSystemData",
+          "target": "com.azure.solutions#ApplicationDefinitionsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -5084,7 +5226,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#GetApplicationDefinitionResponseSystemData": {
+    "com.azure.solutions#ApplicationDefinitionsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -5094,7 +5236,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#GetApplicationDefinitionResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#ApplicationDefinitionsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -5112,7 +5254,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#GetApplicationDefinitionResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#ApplicationDefinitionsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -5128,7 +5270,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#GetApplicationDefinitionResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#ApplicationDefinitionsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -5160,7 +5302,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#GetApplicationDefinitionResponseSystemDataCreatedByType": {
+    "com.azure.solutions#ApplicationDefinitionsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -5192,7 +5334,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#GetApplicationDefinitionResponseTagsMap": {
+    "com.azure.solutions#ApplicationDefinitionsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5204,7 +5346,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetApplicationDefinitionRequest": {
+    "com.azure.solutions#ApplicationDefinitionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5236,10 +5378,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#DeleteApplication": {
+    "com.azure.solutions#ApplicationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#DeleteApplicationRequest"
+        "target": "com.azure.solutions#ApplicationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5255,7 +5397,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#DeleteApplicationRequest": {
+    "com.azure.solutions#ApplicationsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5287,13 +5429,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateApplication": {
+    "com.azure.solutions#ApplicationsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#UpdateApplicationRequest"
+        "target": "com.azure.solutions#ApplicationsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.solutions#UpdateApplicationResponse"
+        "target": "com.azure.solutions#ApplicationsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5306,7 +5448,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#UpdateApplicationResponse": {
+    "com.azure.solutions#ApplicationsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5334,13 +5476,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateApplicationResponseTagsMap",
+          "target": "com.azure.solutions#ApplicationsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#UpdateApplicationResponseSystemData",
+          "target": "com.azure.solutions#ApplicationsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -5386,7 +5528,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#UpdateApplicationResponseSystemData": {
+    "com.azure.solutions#ApplicationsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -5396,7 +5538,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#UpdateApplicationResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#ApplicationsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -5414,7 +5556,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#UpdateApplicationResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#ApplicationsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -5430,7 +5572,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#ApplicationsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -5462,7 +5604,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationResponseSystemDataCreatedByType": {
+    "com.azure.solutions#ApplicationsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -5494,7 +5636,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#UpdateApplicationResponseTagsMap": {
+    "com.azure.solutions#ApplicationsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5506,7 +5648,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#UpdateApplicationRequest": {
+    "com.azure.solutions#ApplicationsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5540,7 +5682,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#UpdateApplicationRequestTagsMap",
+          "target": "com.azure.solutions#ApplicationsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -5586,7 +5728,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.solutions#UpdateApplicationRequestTagsMap": {
+    "com.azure.solutions#ApplicationsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5913,13 +6055,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetApplication": {
+    "com.azure.solutions#ApplicationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.solutions#GetApplicationRequest"
+        "target": "com.azure.solutions#ApplicationsGetRequest"
       },
       "output": {
-        "target": "com.azure.solutions#GetApplicationResponse"
+        "target": "com.azure.solutions#ApplicationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5932,7 +6074,7 @@
         "com.distilled.openapi#apiVersion": "2021-07-01"
       }
     },
-    "com.azure.solutions#GetApplicationResponse": {
+    "com.azure.solutions#ApplicationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5960,13 +6102,13 @@
           }
         },
         "tags": {
-          "target": "com.azure.solutions#GetApplicationResponseTagsMap",
+          "target": "com.azure.solutions#ApplicationsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
         },
         "systemData": {
-          "target": "com.azure.solutions#GetApplicationResponseSystemData",
+          "target": "com.azure.solutions#ApplicationsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -6014,7 +6156,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.solutions#GetApplicationResponseSystemData": {
+    "com.azure.solutions#ApplicationsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -6024,7 +6166,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.solutions#GetApplicationResponseSystemDataCreatedByType",
+          "target": "com.azure.solutions#ApplicationsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -6042,7 +6184,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.solutions#GetApplicationResponseSystemDataLastModifiedByType",
+          "target": "com.azure.solutions#ApplicationsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -6058,7 +6200,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.solutions#GetApplicationResponseSystemDataLastModifiedByType": {
+    "com.azure.solutions#ApplicationsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -6090,7 +6232,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.solutions#GetApplicationResponseSystemDataCreatedByType": {
+    "com.azure.solutions#ApplicationsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -6122,7 +6264,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.solutions#GetApplicationResponseTagsMap": {
+    "com.azure.solutions#ApplicationsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6134,7 +6276,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.solutions#GetApplicationRequest": {
+    "com.azure.solutions#ApplicationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6169,7 +6311,7 @@
     "com.azure.solutions#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.solutions#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.solutions#ListOperationsResponse"
@@ -6179,10 +6321,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Solutions/operations",
           "code": 200,
-          "apiVersion": "2021-07-01"
+          "apiVersion": "2021-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Microsoft.Solutions REST API operations.",
-        "com.distilled.openapi#apiVersion": "2021-07-01"
+        "com.distilled.openapi#apiVersion": "2021-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.solutions#ListOperationsResponse": {
@@ -6324,87 +6473,101 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
+    "com.azure.solutions#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.solutions#Solutions": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.solutions#ListApplicationTokens"
+          "target": "com.azure.solutions#ApplicationsListTokens"
         },
         {
-          "target": "com.azure.solutions#UpdateApplicationAccess"
+          "target": "com.azure.solutions#ApplicationsUpdateAccess"
         },
         {
-          "target": "com.azure.solutions#ListApplicationAllowedUpgradePlans"
+          "target": "com.azure.solutions#ApplicationsListAllowedUpgradePlans"
         },
         {
-          "target": "com.azure.solutions#RefreshApplicationPermissions"
+          "target": "com.azure.solutions#ApplicationsRefreshPermissions"
         },
         {
-          "target": "com.azure.solutions#ListJitRequestByResourceGroup"
+          "target": "com.azure.solutions#JitRequestsListByResourceGroup"
         },
         {
-          "target": "com.azure.solutions#ListJitRequestBySubscription"
+          "target": "com.azure.solutions#JitRequestsListBySubscription"
         },
         {
-          "target": "com.azure.solutions#DeleteJitRequest"
+          "target": "com.azure.solutions#JitRequestsDelete"
         },
         {
-          "target": "com.azure.solutions#UpdateJitRequest"
+          "target": "com.azure.solutions#JitRequestsUpdate"
         },
         {
           "target": "com.azure.solutions#JitRequestsCreateOrUpdate"
         },
         {
-          "target": "com.azure.solutions#GetJitRequest"
+          "target": "com.azure.solutions#JitRequestsGet"
         },
         {
-          "target": "com.azure.solutions#DeleteApplicationById"
+          "target": "com.azure.solutions#ApplicationsDeleteById"
         },
         {
-          "target": "com.azure.solutions#UpdateApplicationById"
+          "target": "com.azure.solutions#ApplicationsUpdateById"
         },
         {
           "target": "com.azure.solutions#ApplicationsCreateOrUpdateById"
         },
         {
-          "target": "com.azure.solutions#GetApplicationById"
+          "target": "com.azure.solutions#ApplicationsGetById"
         },
         {
-          "target": "com.azure.solutions#ListApplicationBySubscription"
+          "target": "com.azure.solutions#ApplicationsListBySubscription"
         },
         {
-          "target": "com.azure.solutions#ListApplicationByResourceGroup"
+          "target": "com.azure.solutions#ApplicationsListByResourceGroup"
         },
         {
-          "target": "com.azure.solutions#ListApplicationDefinitionBySubscription"
+          "target": "com.azure.solutions#ApplicationDefinitionsListBySubscription"
         },
         {
-          "target": "com.azure.solutions#ListApplicationDefinitionByResourceGroup"
+          "target": "com.azure.solutions#ApplicationDefinitionsListByResourceGroup"
         },
         {
-          "target": "com.azure.solutions#DeleteApplicationDefinition"
+          "target": "com.azure.solutions#ApplicationDefinitionsDelete"
         },
         {
-          "target": "com.azure.solutions#UpdateApplicationDefinition"
+          "target": "com.azure.solutions#ApplicationDefinitionsUpdate"
         },
         {
           "target": "com.azure.solutions#ApplicationDefinitionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.solutions#GetApplicationDefinition"
+          "target": "com.azure.solutions#ApplicationDefinitionsGet"
         },
         {
-          "target": "com.azure.solutions#DeleteApplication"
+          "target": "com.azure.solutions#ApplicationsDelete"
         },
         {
-          "target": "com.azure.solutions#UpdateApplication"
+          "target": "com.azure.solutions#ApplicationsUpdate"
         },
         {
           "target": "com.azure.solutions#ApplicationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.solutions#GetApplication"
+          "target": "com.azure.solutions#ApplicationsGet"
         },
         {
           "target": "com.azure.solutions#ListOperations"

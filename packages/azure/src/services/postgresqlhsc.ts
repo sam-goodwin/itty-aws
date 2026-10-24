@@ -731,6 +731,8 @@ export interface ListClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
@@ -756,13 +758,15 @@ export type ClusterListResultValueList = Array<Cluster>;
 /** A list of clusters. */
 export interface ClusterListResult {
   /** The list of clusters */
-  value?: ClusterListResultValueList;
+  value: ClusterListResultValueList;
   /** The link used to get the next page of cluster list. */
   nextLink?: string;
 }
 export interface ListClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListConfigurationByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -771,6 +775,8 @@ export interface ListConfigurationByClusterRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents configuration details for coordinator and node. */
 export interface Configuration {
@@ -790,7 +796,7 @@ export type ClusterConfigurationListResultValueList = Array<Configuration>;
 /** A list of cluster configurations. */
 export interface ClusterConfigurationListResult {
   /** The list of cluster configurations. */
-  value?: ClusterConfigurationListResultValueList;
+  value: ClusterConfigurationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -803,6 +809,8 @@ export interface ListConfigurationByServerRequest {
   clusterName: string;
   /** The name of the server. */
   serverName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a configuration. */
 export interface ServerConfiguration {
@@ -822,7 +830,7 @@ export type ServerConfigurationListResultValueList = Array<ServerConfiguration>;
 /** A list of server configurations. */
 export interface ServerConfigurationListResult {
   /** The list of server configurations. */
-  value?: ServerConfigurationListResultValueList;
+  value: ServerConfigurationListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -852,7 +860,7 @@ export type FirewallRuleListResultValueList = Array<FirewallRule>;
 /** A list of firewall rules. */
 export interface FirewallRuleListResult {
   /** The list of firewall rules in a cluster. */
-  value?: FirewallRuleListResultValueList;
+  value: FirewallRuleListResultValueList;
 }
 export interface ListOperationsRequest {}
 /** Display metadata associated with the operation. */
@@ -888,7 +896,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** A list of resource provider operations. */
 export interface OperationListResult {
   /** Collection of available operation details. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
@@ -919,7 +927,7 @@ export type PrivateEndpointConnectionListResultValueList =
 /** List of private endpoint connections associated with the specified resource. */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections. */
-  value?: PrivateEndpointConnectionListResultValueList;
+  value: PrivateEndpointConnectionListResultValueList;
 }
 export interface ListPrivateLinkResourceByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -947,7 +955,7 @@ export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceLi
 /** A list of private link resources. */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
-  value?: PrivateLinkResourceListResultValueList;
+  value: PrivateLinkResourceListResultValueList;
 }
 export interface ListRoleByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -975,7 +983,7 @@ export type RoleListResultValueList = Array<Role>;
 /** A list of roles. */
 export interface RoleListResult {
   /** The list of roles in a cluster. */
-  value?: RoleListResultValueList;
+  value: RoleListResultValueList;
 }
 export interface ListServerByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1003,7 +1011,7 @@ export type ClusterServerListResultValueList = Array<ClusterServer>;
 /** A list of servers in a cluster. */
 export interface ClusterServerListResult {
   /** The list of servers in a cluster. */
-  value?: ClusterServerListResultValueList;
+  value: ClusterServerListResultValueList;
 }
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
@@ -1465,153 +1473,193 @@ export const GetServer: API.OperationMethod<
 
 export type ListClusterByResourceGroupError = AzureOpError;
 /** Lists all clusters in a resource group. */
-export const ListClusterByResourceGroup: API.OperationMethod<
+export const ListClusterByResourceGroup: API.PaginatedOperationMethod<
   ListClusterByResourceGroupRequest,
   ClusterListResult,
   ListClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
   output: __S(169, __c21, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClustersError = AzureOpError;
 /** Lists all clusters in a subscription. */
-export const ListClusters: API.OperationMethod<
+export const ListClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ClusterListResult,
   ListClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<ListClustersRequest>,
   output: __S(169, __c21, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConfigurationByClusterError = AzureOpError;
 /** List all the configurations of a cluster. */
-export const ListConfigurationByCluster: API.OperationMethod<
+export const ListConfigurationByCluster: API.PaginatedOperationMethod<
   ListConfigurationByClusterRequest,
   ClusterConfigurationListResult,
   ListConfigurationByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Configuration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(232, __c29, 0) as any as S.Schema<ListConfigurationByClusterRequest>,
   output: __S(234, __c29, 2) as any as S.Schema<ClusterConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConfigurationByServerError = AzureOpError;
 /** List all the configurations of a server in cluster. */
-export const ListConfigurationByServer: API.OperationMethod<
+export const ListConfigurationByServer: API.PaginatedOperationMethod<
   ListConfigurationByServerRequest,
   ServerConfigurationListResult,
   ListConfigurationByServerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServerConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c30, 0) as any as S.Schema<ListConfigurationByServerRequest>,
   output: __S(242, __c30, 2) as any as S.Schema<ServerConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFirewallRuleByClusterError = AzureOpError;
 /** Lists all the firewall rules on cluster. */
-export const ListFirewallRuleByCluster: API.OperationMethod<
+export const ListFirewallRuleByCluster: API.PaginatedOperationMethod<
   ListFirewallRuleByClusterRequest,
   FirewallRuleListResult,
   ListFirewallRuleByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FirewallRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(248, __c31, 0) as any as S.Schema<ListFirewallRuleByClusterRequest>,
   output: __S(250, __c31, 2) as any as S.Schema<FirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c32, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(261, __c32, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByClusterError = AzureOpError;
 /** Gets list of private endpoint connections on a cluster. */
-export const ListPrivateEndpointConnectionByCluster: API.OperationMethod<
+export const ListPrivateEndpointConnectionByCluster: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByClusterRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnectionListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
   output: __S(266, __c33, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByClusterError = AzureOpError;
 /** Gets the private link resources for cluster. */
-export const ListPrivateLinkResourceByCluster: API.OperationMethod<
+export const ListPrivateLinkResourceByCluster: API.PaginatedOperationMethod<
   ListPrivateLinkResourceByClusterRequest,
   PrivateLinkResourceListResult,
   ListPrivateLinkResourceByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResourceListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c34, 0) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
   output: __S(274, __c34, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListRoleByClusterError = AzureOpError;
 /** List all the roles in a given cluster. */
-export const ListRoleByCluster: API.OperationMethod<
+export const ListRoleByCluster: API.PaginatedOperationMethod<
   ListRoleByClusterRequest,
   RoleListResult,
   ListRoleByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Role
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(280, __c35, 0) as any as S.Schema<ListRoleByClusterRequest>,
   output: __S(282, __c35, 2) as any as S.Schema<RoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListServerByClusterError = AzureOpError;
 /** Lists servers of a cluster. */
-export const ListServerByCluster: API.OperationMethod<
+export const ListServerByCluster: API.PaginatedOperationMethod<
   ListServerByClusterRequest,
   ClusterServerListResult,
   ListServerByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c36, 0) as any as S.Schema<ListServerByClusterRequest>,
   output: __S(290, __c36, 2) as any as S.Schema<ClusterServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type PrivateEndpointConnectionsCreateOrUpdateError = AzureOpError;
 /** Approves or Rejects a private endpoint connection with a given name. */
@@ -2120,12 +2168,14 @@ function __c20(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
             code: 200,
             apiVersion: "2022-11-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterByResourceGroupRequest" });
@@ -2138,7 +2188,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(168, __c21, 0)),
+          value: __S(168, __c21, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
@@ -2150,12 +2200,14 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2",
             code: 200,
             apiVersion: "2022-11-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
@@ -2348,12 +2400,14 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations",
             code: 200,
             apiVersion: "2022-11-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConfigurationByClusterRequest" });
@@ -2362,7 +2416,7 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(233, __c29, 1)),
+          value: __S(233, __c29, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterConfigurationListResult" });
@@ -2377,12 +2431,14 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}/configurations",
             code: 200,
             apiVersion: "2022-11-08",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConfigurationByServerRequest" });
@@ -2391,7 +2447,7 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(241, __c30, 1)),
+          value: __S(241, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerConfigurationListResult" });
@@ -2419,7 +2475,7 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(249, __c31, 1)),
+          value: __S(249, __c31, 1),
         }),
       ).annotate({ identifier: "FirewallRuleListResult" });
   }
@@ -2463,7 +2519,7 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(260, __c32, 4)),
+          value: __S(260, __c32, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2491,7 +2547,7 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(265, __c33, 1)),
+          value: __S(265, __c33, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
@@ -2518,7 +2574,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(273, __c34, 1)),
+          value: __S(273, __c34, 1),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
@@ -2545,7 +2601,7 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(281, __c35, 1)),
+          value: __S(281, __c35, 1),
         }),
       ).annotate({ identifier: "RoleListResult" });
   }
@@ -2572,7 +2628,7 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(289, __c36, 1)),
+          value: __S(289, __c36, 1),
         }),
       ).annotate({ identifier: "ClusterServerListResult" });
   }

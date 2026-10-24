@@ -274,10 +274,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/vmFamilies",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all VM families for the subscription at the specified location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#VmFamilyListResult": {
@@ -372,6 +379,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply to the list operation. Filter can be applied to the 'category' property. Example: $filter=category eq 'generalPurposeCategory'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -609,10 +622,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/trustedHostSubscriptions",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all host subscriptions that the guest subscription trusts in a location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#TrustedHostSubscriptionListResult": {
@@ -694,6 +714,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1009,10 +1035,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimits",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all compute limits shared by the host subscription with its guest subscriptions.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#SharedLimitListResult": {
@@ -1100,6 +1133,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1528,10 +1567,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/memberCapOverrides",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all per-member cap overrides configured under a SharedLimitCap.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#MemberCapOverrideListResult": {
@@ -1627,6 +1673,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the SharedLimitCap"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1930,10 +1982,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all shared limit cap configurations visible to the caller's subscription.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#SharedLimitCapListResult": {
@@ -2021,6 +2080,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2297,10 +2362,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all guest subscriptions in a location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#GuestSubscriptionListResult": {
@@ -2388,6 +2460,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2965,10 +3043,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all compute limit features for the subscription at the specified location.",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#FeatureListResult": {
@@ -3057,6 +3142,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3066,7 +3157,7 @@
     "com.azure.computelimit#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.computelimit#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.computelimit#ListOperationsResponse"
@@ -3076,10 +3167,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ComputeLimit/operations",
           "code": 200,
-          "apiVersion": "2026-07-31"
+          "apiVersion": "2026-07-31",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-07-31"
+        "com.distilled.openapi#apiVersion": "2026-07-31",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.computelimit#ListOperationsResponse": {
@@ -3219,6 +3317,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.computelimit#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.computelimit#Computelimit": {

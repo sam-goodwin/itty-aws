@@ -1510,7 +1510,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "The List Queues Segment operation returns a list of the queues under the specified account"
+        "smithy.api#documentation": "The List Queues Segment operation returns a list of the queues under the specified account",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "QueueItems"
+        }
       }
     },
     "com.azure.storage_queue#ListServiceQueuesSegmentResponse": {

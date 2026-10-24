@@ -49,7 +49,8 @@
       "com.azure.storagepool#DiskPoolsListByResourceGroupRequest": "com.azure.storagepool#ListDiskPoolByResourceGroupRequest",
       "com.azure.storagepool#DiskPoolsListBySubscription": "com.azure.storagepool#ListDiskPoolBySubscription",
       "com.azure.storagepool#DiskPoolsListBySubscriptionRequest": "com.azure.storagepool#ListDiskPoolBySubscriptionRequest",
-      "com.azure.storagepool#OperationsList": "com.azure.storagepool#ListOperations"
+      "com.azure.storagepool#OperationsList": "com.azure.storagepool#ListOperations",
+      "com.azure.storagepool#OperationsListRequest": "com.azure.storagepool#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -1014,10 +1015,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get iSCSI Targets in a Disk pool.",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#IscsiTargetList": {
@@ -1126,6 +1134,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Disk Pool."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1299,10 +1313,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/outboundNetworkDependenciesEndpoints",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the network endpoints of all outbound dependencies of a Disk Pool",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#OutboundEnvironmentEndpointList": {
@@ -1451,6 +1472,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Disk Pool."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1470,10 +1497,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/skus",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists available StoragePool resources and skus in an Azure location.",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#ResourceSkuListResult": {
@@ -1812,6 +1846,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The location of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1831,10 +1871,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/diskPoolZones",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists available Disk Pool Skus in an Azure location.",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#DiskPoolZoneListResult": {
@@ -1948,6 +1995,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The location of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2685,10 +2738,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of DiskPools in a resource group.",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#DiskPoolListResult": {
@@ -2821,6 +2881,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2840,10 +2906,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
           "code": 200,
-          "apiVersion": "2021-08-01"
+          "apiVersion": "2021-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Disk Pools in a subscription",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#DiskPoolsListBySubscriptionRequest": {
@@ -2856,6 +2929,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2865,7 +2944,7 @@
     "com.azure.storagepool#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagepool#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storagepool#StoragePoolOperationListResult"
@@ -2878,7 +2957,11 @@
           "apiVersion": "2021-08-01"
         },
         "smithy.api#documentation": "Gets a list of StoragePool operations.",
-        "com.distilled.openapi#apiVersion": "2021-08-01"
+        "com.distilled.openapi#apiVersion": "2021-08-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagepool#StoragePoolOperationListResult": {
@@ -2986,6 +3069,13 @@
       },
       "traits": {
         "smithy.api#documentation": "Metadata about an operation."
+      }
+    },
+    "com.azure.storagepool#OperationsListRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storagepool#Storagepool": {

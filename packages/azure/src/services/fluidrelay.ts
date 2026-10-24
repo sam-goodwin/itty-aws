@@ -337,6 +337,8 @@ export interface ListFluidRelayContainerByFluidRelayServersRequest {
   resourceGroup: string;
   /** The Fluid Relay server resource name. */
   fluidRelayServerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The type of identity that created the resource. */
 export type FluidRelayContainerSystemDataCreatedByType =
@@ -383,11 +385,14 @@ export type FluidRelayContainerListValueList = Array<FluidRelayContainer>;
 /** Paged response */
 export interface FluidRelayContainerList {
   /** A sequence of FluidRelay containers. */
-  value?: FluidRelayContainerListValueList;
+  value: FluidRelayContainerListValueList;
   /** A link to the next page of results, if any. */
   nextLink?: string;
 }
-export interface ListFluidRelayOperationsRequest {}
+export interface ListFluidRelayOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.FluidRelay */
@@ -413,7 +418,7 @@ export type OperationListResultValueList = Array<OperationResult>;
 /** Result of GET request to list FluidRelay operations. */
 export interface OperationListResult {
   /** List of FluidRelay operations supported by the Microsoft.FluidRelay provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -422,6 +427,8 @@ export interface ListFluidRelayServerByResourceGroupRequest {
   subscriptionId: string;
   /** The resource group containing the resource. */
   resourceGroup: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FluidRelayServerTagsMap = { [key: string]: string | undefined };
@@ -483,6 +490,8 @@ export interface FluidRelayServerList {
 export interface ListFluidRelayServerBySubscriptionRequest {
   /** The subscription id (GUID) for this resource. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListFluidRelayServerKeysRequest {
   /** The subscription id (GUID) for this resource. */
@@ -658,63 +667,91 @@ export const GetFluidRelayServer: API.OperationMethod<
 
 export type ListFluidRelayContainerByFluidRelayServersError = AzureOpError;
 /** List all Fluid Relay containers which are children of a given Fluid Relay server. */
-export const ListFluidRelayContainerByFluidRelayServers: API.OperationMethod<
+export const ListFluidRelayContainerByFluidRelayServers: API.PaginatedOperationMethod<
   ListFluidRelayContainerByFluidRelayServersRequest,
   FluidRelayContainerList,
   ListFluidRelayContainerByFluidRelayServersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FluidRelayContainer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListFluidRelayContainerByFluidRelayServersRequest>,
   output: __S(194, __c12, 2) as any as S.Schema<FluidRelayContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFluidRelayOperationsError = AzureOpError;
 /** List all operations provided by Microsoft.FluidRelay. */
-export const ListFluidRelayOperations: API.OperationMethod<
+export const ListFluidRelayOperations: API.PaginatedOperationMethod<
   ListFluidRelayOperationsRequest,
   OperationListResult,
   ListFluidRelayOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<ListFluidRelayOperationsRequest>,
   output: __S(212, __c13, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFluidRelayServerByResourceGroupError = AzureOpError;
 /** List all Fluid Relay servers in a resource group. */
-export const ListFluidRelayServerByResourceGroup: API.OperationMethod<
+export const ListFluidRelayServerByResourceGroup: API.PaginatedOperationMethod<
   ListFluidRelayServerByResourceGroupRequest,
   FluidRelayServerList,
   ListFluidRelayServerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FluidRelayServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<ListFluidRelayServerByResourceGroupRequest>,
   output: __S(241, __c15, 1) as any as S.Schema<FluidRelayServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFluidRelayServerBySubscriptionError = AzureOpError;
 /** List all Fluid Relay servers in a subscription. */
-export const ListFluidRelayServerBySubscription: API.OperationMethod<
+export const ListFluidRelayServerBySubscription: API.PaginatedOperationMethod<
   ListFluidRelayServerBySubscriptionRequest,
   FluidRelayServerList,
   ListFluidRelayServerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FluidRelayServer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<ListFluidRelayServerBySubscriptionRequest>,
   output: __S(241, __c15, 1) as any as S.Schema<FluidRelayServerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFluidRelayServerKeysError = AzureOpError;
 /** Get primary and secondary key for this server. */
@@ -1065,12 +1102,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           fluidRelayServerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers",
             code: 200,
             apiVersion: "2022-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFluidRelayContainerByFluidRelayServersRequest" });
@@ -1079,7 +1118,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(193, __c12, 1)),
+          value: __S(193, __c12, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FluidRelayContainerList" });
@@ -1089,12 +1128,15 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.FluidRelay/operations",
             code: 200,
             apiVersion: "2022-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFluidRelayOperationsRequest" });
@@ -1120,7 +1162,7 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(211, __c13, 3)),
+          value: __S(211, __c13, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1133,12 +1175,14 @@ function __c14(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers",
             code: 200,
             apiVersion: "2022-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFluidRelayServerByResourceGroupRequest" });
@@ -1163,12 +1207,14 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.FluidRelay/fluidRelayServers",
             code: 200,
             apiVersion: "2022-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFluidRelayServerBySubscriptionRequest" });

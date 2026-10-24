@@ -29,6 +29,8 @@ export interface ListTemplateOperationTemplatesRequest {
   maxpagesize?: number;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The aggregated template status. */
 export type MessageTemplateStatus = "approved" | "rejected" | "pending" | "paused";
@@ -99,18 +101,25 @@ export const GetStreamOperationMedia: API.OperationMethod<
 
 export type ListTemplateOperationTemplatesError = AzureOpError;
 /** List all templates for given Azure Communication Services channel */
-export const ListTemplateOperationTemplates: API.OperationMethod<
+export const ListTemplateOperationTemplates: API.PaginatedOperationMethod<
   ListTemplateOperationTemplatesRequest,
   PagedMessageTemplateItem,
   ListTemplateOperationTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MessageTemplateItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4, __c1, 0) as any as S.Schema<ListTemplateOperationTemplatesRequest>,
   output: __S(7, __c1, 3) as any as S.Schema<PagedMessageTemplateItem>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type SendNotificationMessagesOperationError = AzureOpError;
 /** Sends a notification message from Business to User. */
@@ -163,6 +172,7 @@ function __c1(j: number): any {
           channelId: S.String.pipe(T.Label()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -171,6 +181,7 @@ function __c1(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2024-08-30",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),

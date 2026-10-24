@@ -974,9 +974,16 @@
           "hostRaw": [
             "vaultBaseUrl"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the deleted certificates in the specified vault currently available for recovery.\n\nThe GetDeletedCertificates operation retrieves the certificates in the current vault which are in a deleted state and ready for recovery or purging. This operation includes deletion-specific information. This operation requires the certificates/get/list permission. This operation can only be enabled on soft-delete enabled vaults."
+        "smithy.api#documentation": "Lists the deleted certificates in the specified vault currently available for recovery.\n\nThe GetDeletedCertificates operation retrieves the certificates in the current vault which are in a deleted state and ready for recovery or purging. This operation includes deletion-specific information. This operation requires the certificates/get/list permission. This operation can only be enabled on soft-delete enabled vaults.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.keyvault_certificates#DeletedCertificateListResult": {
@@ -1092,6 +1099,12 @@
           "traits": {
             "smithy.api#httpQuery": "includePending",
             "smithy.api#documentation": "Specifies whether to include certificates which are not completely provisioned."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1548,9 +1561,16 @@
           "hostRaw": [
             "vaultBaseUrl"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List certificate issuers for a specified key vault.\n\nThe GetCertificateIssuers operation returns the set of certificate issuer resources in the specified key vault. This operation requires the certificates/manageissuers/getissuers permission."
+        "smithy.api#documentation": "List certificate issuers for a specified key vault.\n\nThe GetCertificateIssuers operation returns the set of certificate issuer resources in the specified key vault. This operation requires the certificates/manageissuers/getissuers permission.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.keyvault_certificates#CertificateIssuerListResult": {
@@ -1617,6 +1637,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxresults",
             "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1822,9 +1848,16 @@
           "hostRaw": [
             "vaultBaseUrl"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List the versions of a certificate.\n\nThe GetCertificateVersions operation returns the versions of a certificate in the specified key vault. This operation requires the certificates/list permission."
+        "smithy.api#documentation": "List the versions of a certificate.\n\nThe GetCertificateVersions operation returns the versions of a certificate in the specified key vault. This operation requires the certificates/list permission.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.keyvault_certificates#CertificateListResult": {
@@ -1923,6 +1956,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxresults",
             "smithy.api#documentation": "Maximum number of results to return in a page. If not specified the service will return up to 25 results."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2908,9 +2947,16 @@
           "hostRaw": [
             "vaultBaseUrl"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List certificates in a specified key vault\n\nThe GetCertificates operation returns the set of certificates resources in the specified key vault. This operation requires the certificates/list permission."
+        "smithy.api#documentation": "List certificates in a specified key vault\n\nThe GetCertificates operation returns the set of certificates resources in the specified key vault. This operation requires the certificates/list permission.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.keyvault_certificates#GetCertificatesRequest": {
@@ -2935,6 +2981,12 @@
           "traits": {
             "smithy.api#httpQuery": "includePending",
             "smithy.api#documentation": "Specifies whether to include certificates which are not completely provisioned."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

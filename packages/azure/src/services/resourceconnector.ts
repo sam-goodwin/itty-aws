@@ -276,6 +276,8 @@ export interface ListApplianceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ApplianceTagsMap = { [key: string]: string | undefined };
@@ -310,6 +312,8 @@ export interface ApplianceListResult {
 export interface ListApplianceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListApplianceClusterUserCredentialRequest {
   /** The ID of the target subscription. */
@@ -393,7 +397,10 @@ export interface ApplianceListKeysResults {
   /** Map of Customer User Public, Private SSH Keys and Certificate when available. */
   sshKeys?: ApplianceListKeysResultsSshKeysMap;
 }
-export interface ListApplianceOperationsRequest {}
+export interface ListApplianceOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Describes the properties of an Appliances Operation Value Display. */
 export interface ApplianceOperationValueDisplay {
   /** The description of the operation. */
@@ -534,33 +541,47 @@ export const GetApplianceUpgradeGraph: API.OperationMethod<
 
 export type ListApplianceByResourceGroupError = AzureOpError;
 /** Gets a list of Appliances in the specified subscription and resource group. Gets a list of Appliances in the specified subscription and resource group. The operation returns properties of each Appliance. */
-export const ListApplianceByResourceGroup: API.OperationMethod<
+export const ListApplianceByResourceGroup: API.PaginatedOperationMethod<
   ListApplianceByResourceGroupRequest,
   ApplianceListResult,
   ListApplianceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Appliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListApplianceByResourceGroupRequest>,
   output: __S(73, __c9, 1) as any as S.Schema<ApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplianceBySubscriptionError = AzureOpError;
 /** Gets a list of Appliances in a subscription. Gets a list of Appliances in the specified subscription. The operation returns properties of each Appliance */
-export const ListApplianceBySubscription: API.OperationMethod<
+export const ListApplianceBySubscription: API.PaginatedOperationMethod<
   ListApplianceBySubscriptionRequest,
   ApplianceListResult,
   ListApplianceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Appliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListApplianceBySubscriptionRequest>,
   output: __S(73, __c9, 1) as any as S.Schema<ApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListApplianceClusterUserCredentialError = AzureOpError;
 /** Returns the cluster user credential. Returns the cluster user credentials for the dedicated appliance. */
@@ -594,18 +615,25 @@ export const ListApplianceKeys: API.OperationMethod<
 
 export type ListApplianceOperationsError = AzureOpError;
 /** Lists all available Appliances operations. */
-export const ListApplianceOperations: API.OperationMethod<
+export const ListApplianceOperations: API.PaginatedOperationMethod<
   ListApplianceOperationsRequest,
   ApplianceOperationsList,
   ListApplianceOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApplianceOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<ListApplianceOperationsRequest>,
   output: __S(116, __c14, 4) as any as S.Schema<ApplianceOperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateApplianceError = AzureOpError;
 /** Updates an Appliance. Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription. */
@@ -897,12 +925,14 @@ function __c8(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances",
             code: 200,
             apiVersion: "2022-10-27",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplianceByResourceGroupRequest" });
@@ -927,12 +957,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceConnector/appliances",
             code: 200,
             apiVersion: "2022-10-27",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplianceBySubscriptionRequest" });
@@ -1038,12 +1070,15 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ResourceConnector/operations",
             code: 200,
             apiVersion: "2022-10-27",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListApplianceOperationsRequest" });

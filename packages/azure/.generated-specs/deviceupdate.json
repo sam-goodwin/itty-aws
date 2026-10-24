@@ -21,7 +21,7 @@
     "com.azure.deviceupdate#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.deviceupdate#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate#ListOperationsResponse"
@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DeviceUpdate/operations",
           "code": 200,
-          "apiVersion": "2023-07-01"
+          "apiVersion": "2023-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of operations for Microsoft.DeviceUpdate resource provider.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#ListOperationsResponse": {
@@ -174,6 +181,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.deviceupdate#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.deviceupdate#DeletePrivateEndpointConnectionProxy": {
@@ -1407,7 +1428,11 @@
           "apiVersion": "2023-07-01"
         },
         "smithy.api#documentation": "(INTERNAL - DO NOT USE) List all private endpoint connection proxies in a device update account.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#PrivateEndpointConnectionProxyListResult": {
@@ -1731,7 +1756,11 @@
           "apiVersion": "2023-07-01"
         },
         "smithy.api#documentation": "List all private link resources in a device update account.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#PrivateLinkResourceListResult": {
@@ -2284,7 +2313,11 @@
           "apiVersion": "2023-07-01"
         },
         "smithy.api#documentation": "List all private endpoint connections in a device update account.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccountResponse": {
@@ -3241,10 +3274,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances",
           "code": 200,
-          "apiVersion": "2023-07-01"
+          "apiVersion": "2023-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns instances for the given account name.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#InstanceList": {
@@ -3453,6 +3493,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Account name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4909,10 +4955,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts",
           "code": 200,
-          "apiVersion": "2023-07-01"
+          "apiVersion": "2023-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of Accounts.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#AccountList": {
@@ -5254,6 +5307,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The resource group name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5273,10 +5332,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceUpdate/accounts",
           "code": 200,
-          "apiVersion": "2023-07-01"
+          "apiVersion": "2023-07-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of Accounts.",
-        "com.distilled.openapi#apiVersion": "2023-07-01"
+        "com.distilled.openapi#apiVersion": "2023-07-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate#ListAccountBySubscriptionRequest": {
@@ -5288,6 +5354,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Azure subscription ID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

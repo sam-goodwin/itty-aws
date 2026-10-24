@@ -15,96 +15,16 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.discovery_workspace#ToolsCancelRunLro": "com.azure.discovery_workspace#CancelToolRunLro",
-      "com.azure.discovery_workspace#ToolsCancelRunLroResponse": "com.azure.discovery_workspace#CancelToolRunLroResponse",
-      "com.azure.discovery_workspace#ToolsCancelRunLroRequest": "com.azure.discovery_workspace#CancelToolRunLroRequest",
-      "com.azure.discovery_workspace#ToolsGetRunStatus": "com.azure.discovery_workspace#GetToolRunStatus",
-      "com.azure.discovery_workspace#ToolsGetRunStatusResponse": "com.azure.discovery_workspace#GetToolRunStatusResponse",
-      "com.azure.discovery_workspace#ToolsGetRunStatusRequest": "com.azure.discovery_workspace#GetToolRunStatusRequest",
-      "com.azure.discovery_workspace#ToolsGetOperations": "com.azure.discovery_workspace#GetToolOperations",
-      "com.azure.discovery_workspace#ToolsGetOperationsRequest": "com.azure.discovery_workspace#GetToolOperationsRequest",
-      "com.azure.discovery_workspace#ToolsGetComputeUsage": "com.azure.discovery_workspace#GetToolComputeUsage",
-      "com.azure.discovery_workspace#ToolsGetComputeUsageRequest": "com.azure.discovery_workspace#GetToolComputeUsageRequest",
-      "com.azure.discovery_workspace#ToolsRun": "com.azure.discovery_workspace#RunTool",
-      "com.azure.discovery_workspace#ToolsRunResponse": "com.azure.discovery_workspace#RunToolResponse",
-      "com.azure.discovery_workspace#ToolsRunRequest": "com.azure.discovery_workspace#RunToolRequest",
-      "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesList": "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesList",
-      "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesItem": "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesItem",
-      "com.azure.discovery_workspace#ToolsRunRequestNodePoolIdsList": "com.azure.discovery_workspace#RunToolRequestNodePoolIdsList",
-      "com.azure.discovery_workspace#ToolsRunRequestOutputDataList": "com.azure.discovery_workspace#RunToolRequestOutputDataList",
-      "com.azure.discovery_workspace#ToolsRunRequestInputDataList": "com.azure.discovery_workspace#RunToolRequestInputDataList",
-      "com.azure.discovery_workspace#ToolsRunRequestInlineFilesList": "com.azure.discovery_workspace#RunToolRequestInlineFilesList",
-      "com.azure.discovery_workspace#TasksAddExecutionHistory": "com.azure.discovery_workspace#AddTaskExecutionHistory",
-      "com.azure.discovery_workspace#TasksAddExecutionHistoryRequest": "com.azure.discovery_workspace#AddTaskExecutionHistoryRequest",
-      "com.azure.discovery_workspace#TasksAddExecutionHistoryRequestAdditionalDetailsMap": "com.azure.discovery_workspace#AddTaskExecutionHistoryRequestAdditionalDetailsMap",
-      "com.azure.discovery_workspace#TasksAddComment": "com.azure.discovery_workspace#AddTaskComment",
-      "com.azure.discovery_workspace#TasksAddCommentRequest": "com.azure.discovery_workspace#AddTaskCommentRequest",
-      "com.azure.discovery_workspace#TasksStart": "com.azure.discovery_workspace#StartTask",
-      "com.azure.discovery_workspace#TasksStartRequest": "com.azure.discovery_workspace#StartTaskRequest",
-      "com.azure.discovery_workspace#TasksDelete": "com.azure.discovery_workspace#DeleteTask",
-      "com.azure.discovery_workspace#TasksDeleteRequest": "com.azure.discovery_workspace#DeleteTaskRequest",
-      "com.azure.discovery_workspace#TasksUpdate": "com.azure.discovery_workspace#UpdateTask",
-      "com.azure.discovery_workspace#TasksUpdateRequest": "com.azure.discovery_workspace#UpdateTaskRequest",
-      "com.azure.discovery_workspace#TasksUpdateRequestStorageAssetIdsList": "com.azure.discovery_workspace#UpdateTaskRequestStorageAssetIdsList",
-      "com.azure.discovery_workspace#TasksUpdateRequestCommentsList": "com.azure.discovery_workspace#UpdateTaskRequestCommentsList",
-      "com.azure.discovery_workspace#TasksUpdateRequestRelatedToList": "com.azure.discovery_workspace#UpdateTaskRequestRelatedToList",
-      "com.azure.discovery_workspace#TasksUpdateRequestDependsOnList": "com.azure.discovery_workspace#UpdateTaskRequestDependsOnList",
-      "com.azure.discovery_workspace#TasksUpdateRequestValidationRequirementsList": "com.azure.discovery_workspace#UpdateTaskRequestValidationRequirementsList",
-      "com.azure.discovery_workspace#TasksGet": "com.azure.discovery_workspace#GetTask",
-      "com.azure.discovery_workspace#TasksGetRequest": "com.azure.discovery_workspace#GetTaskRequest",
-      "com.azure.discovery_workspace#TasksCreate": "com.azure.discovery_workspace#CreateTask",
-      "com.azure.discovery_workspace#TasksCreateRequest": "com.azure.discovery_workspace#CreateTaskRequest",
-      "com.azure.discovery_workspace#TasksCreateRequestStorageAssetIdsList": "com.azure.discovery_workspace#CreateTaskRequestStorageAssetIdsList",
-      "com.azure.discovery_workspace#TasksCreateRequestCommentsList": "com.azure.discovery_workspace#CreateTaskRequestCommentsList",
-      "com.azure.discovery_workspace#TasksCreateRequestRelatedToList": "com.azure.discovery_workspace#CreateTaskRequestRelatedToList",
-      "com.azure.discovery_workspace#TasksCreateRequestDependsOnList": "com.azure.discovery_workspace#CreateTaskRequestDependsOnList",
-      "com.azure.discovery_workspace#TasksCreateRequestValidationRequirementsList": "com.azure.discovery_workspace#CreateTaskRequestValidationRequirementsList",
-      "com.azure.discovery_workspace#TasksList": "com.azure.discovery_workspace#ListTasks",
-      "com.azure.discovery_workspace#TasksListRequest": "com.azure.discovery_workspace#ListTasksRequest",
-      "com.azure.discovery_workspace#InvestigationsGetOperationStatus": "com.azure.discovery_workspace#GetInvestigationOperationStatus",
-      "com.azure.discovery_workspace#InvestigationsGetOperationStatusRequest": "com.azure.discovery_workspace#GetInvestigationOperationStatusRequest",
-      "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngine": "com.azure.discovery_workspace#StopInvestigationDiscoveryEngine",
-      "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngineRequest": "com.azure.discovery_workspace#StopInvestigationDiscoveryEngineRequest",
-      "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngine": "com.azure.discovery_workspace#StartInvestigationDiscoveryEngine",
-      "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngineRequest": "com.azure.discovery_workspace#StartInvestigationDiscoveryEngineRequest",
-      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemory": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemory",
-      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemoryRequest": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemoryRequest",
-      "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngine": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngine",
-      "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequest": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequest",
-      "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequestConfigurationMap": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequestConfigurationMap",
-      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngine": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngine",
-      "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineRequest": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineRequest",
-      "com.azure.discovery_workspace#InvestigationsDelete": "com.azure.discovery_workspace#DeleteInvestigation",
-      "com.azure.discovery_workspace#InvestigationsDeleteResponse": "com.azure.discovery_workspace#DeleteInvestigationResponse",
-      "com.azure.discovery_workspace#InvestigationsDeleteRequest": "com.azure.discovery_workspace#DeleteInvestigationRequest",
-      "com.azure.discovery_workspace#InvestigationsUpdate": "com.azure.discovery_workspace#UpdateInvestigation",
-      "com.azure.discovery_workspace#InvestigationsUpdateRequest": "com.azure.discovery_workspace#UpdateInvestigationRequest",
-      "com.azure.discovery_workspace#InvestigationsUpdateRequestTagsList": "com.azure.discovery_workspace#UpdateInvestigationRequestTagsList",
-      "com.azure.discovery_workspace#InvestigationsGet": "com.azure.discovery_workspace#GetInvestigation",
-      "com.azure.discovery_workspace#InvestigationsGetRequest": "com.azure.discovery_workspace#GetInvestigationRequest",
-      "com.azure.discovery_workspace#InvestigationsList": "com.azure.discovery_workspace#ListInvestigations",
-      "com.azure.discovery_workspace#InvestigationsListRequest": "com.azure.discovery_workspace#ListInvestigationsRequest",
-      "com.azure.discovery_workspace#ConversationsDelete": "com.azure.discovery_workspace#DeleteConversation",
-      "com.azure.discovery_workspace#ConversationsDeleteRequest": "com.azure.discovery_workspace#DeleteConversationRequest",
-      "com.azure.discovery_workspace#ConversationsUpdate": "com.azure.discovery_workspace#UpdateConversation",
-      "com.azure.discovery_workspace#ConversationsUpdateRequest": "com.azure.discovery_workspace#UpdateConversationRequest",
-      "com.azure.discovery_workspace#ConversationsGet": "com.azure.discovery_workspace#GetConversation",
-      "com.azure.discovery_workspace#ConversationsGetRequest": "com.azure.discovery_workspace#GetConversationRequest",
-      "com.azure.discovery_workspace#ConversationsCreate": "com.azure.discovery_workspace#CreateConversation",
-      "com.azure.discovery_workspace#ConversationsCreateRequest": "com.azure.discovery_workspace#CreateConversationRequest",
-      "com.azure.discovery_workspace#ConversationsList": "com.azure.discovery_workspace#ListConversations",
-      "com.azure.discovery_workspace#ConversationsListRequest": "com.azure.discovery_workspace#ListConversationsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.discovery_workspace#ToolsCancelRunLro": {
+    "com.azure.discovery_workspace#CancelToolRunLro": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ToolsCancelRunLroRequest"
+        "target": "com.azure.discovery_workspace#CancelToolRunLroRequest"
       },
       "output": {
-        "target": "com.azure.discovery_workspace#ToolsCancelRunLroResponse"
+        "target": "com.azure.discovery_workspace#CancelToolRunLroResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -120,7 +40,7 @@
         "smithy.api#documentation": "Cancel an ongoing tool run."
       }
     },
-    "com.azure.discovery_workspace#ToolsCancelRunLroResponse": {
+    "com.azure.discovery_workspace#CancelToolRunLroResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -135,7 +55,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsCancelRunLroRequest": {
+    "com.azure.discovery_workspace#CancelToolRunLroRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -167,13 +87,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsGetRunStatus": {
+    "com.azure.discovery_workspace#GetToolRunStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ToolsGetRunStatusRequest"
+        "target": "com.azure.discovery_workspace#GetToolRunStatusRequest"
       },
       "output": {
-        "target": "com.azure.discovery_workspace#ToolsGetRunStatusResponse"
+        "target": "com.azure.discovery_workspace#GetToolRunStatusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -189,7 +109,7 @@
         "smithy.api#documentation": "Used for to poll status of a Tool run."
       }
     },
-    "com.azure.discovery_workspace#ToolsGetRunStatusResponse": {
+    "com.azure.discovery_workspace#GetToolRunStatusResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -444,7 +364,7 @@
         "smithy.api#documentation": "Enum describing allowed operation states."
       }
     },
-    "com.azure.discovery_workspace#ToolsGetRunStatusRequest": {
+    "com.azure.discovery_workspace#GetToolRunStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -483,10 +403,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsGetOperations": {
+    "com.azure.discovery_workspace#GetToolOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ToolsGetOperationsRequest"
+        "target": "com.azure.discovery_workspace#GetToolOperationsRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#PagedOperation"
@@ -628,7 +548,7 @@
         "smithy.api#documentation": "Enum for run status"
       }
     },
-    "com.azure.discovery_workspace#ToolsGetOperationsRequest": {
+    "com.azure.discovery_workspace#GetToolOperationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -673,10 +593,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsGetComputeUsage": {
+    "com.azure.discovery_workspace#GetToolComputeUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ToolsGetComputeUsageRequest"
+        "target": "com.azure.discovery_workspace#GetToolComputeUsageRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#ComputeUsage"
@@ -813,7 +733,7 @@
         "smithy.api#documentation": "Overview of compute usage for a nodepool."
       }
     },
-    "com.azure.discovery_workspace#ToolsGetComputeUsageRequest": {
+    "com.azure.discovery_workspace#GetToolComputeUsageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -837,13 +757,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsRun": {
+    "com.azure.discovery_workspace#RunTool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ToolsRunRequest"
+        "target": "com.azure.discovery_workspace#RunToolRequest"
       },
       "output": {
-        "target": "com.azure.discovery_workspace#ToolsRunResponse"
+        "target": "com.azure.discovery_workspace#RunToolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -859,7 +779,7 @@
         "smithy.api#documentation": "Run the specified tool in the context of the specified project."
       }
     },
-    "com.azure.discovery_workspace#ToolsRunResponse": {
+    "com.azure.discovery_workspace#RunToolResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -874,7 +794,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequest": {
+    "com.azure.discovery_workspace#RunToolRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -907,25 +827,25 @@
           }
         },
         "inlineFiles": {
-          "target": "com.azure.discovery_workspace#ToolsRunRequestInlineFilesList",
+          "target": "com.azure.discovery_workspace#RunToolRequestInlineFilesList",
           "traits": {
             "smithy.api#documentation": "Encoded inline files to be mounted into the container, e.g. for generated code."
           }
         },
         "inputData": {
-          "target": "com.azure.discovery_workspace#ToolsRunRequestInputDataList",
+          "target": "com.azure.discovery_workspace#RunToolRequestInputDataList",
           "traits": {
             "smithy.api#documentation": "Input data references and mount paths."
           }
         },
         "outputData": {
-          "target": "com.azure.discovery_workspace#ToolsRunRequestOutputDataList",
+          "target": "com.azure.discovery_workspace#RunToolRequestOutputDataList",
           "traits": {
             "smithy.api#documentation": "Output data references and mount paths."
           }
         },
         "nodePoolIds": {
-          "target": "com.azure.discovery_workspace#ToolsRunRequestNodePoolIdsList",
+          "target": "com.azure.discovery_workspace#RunToolRequestNodePoolIdsList",
           "traits": {
             "smithy.api#documentation": "IDs of NodePools to use for this run.",
             "smithy.api#required": {}
@@ -938,7 +858,7 @@
           }
         },
         "environmentVariables": {
-          "target": "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesList",
+          "target": "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesList",
           "traits": {
             "smithy.api#documentation": "Optional environment variables to set in the tool container. This must not contain any secrets."
           }
@@ -948,16 +868,16 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesList": {
+    "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesList": {
       "type": "list",
       "member": {
-        "target": "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesItem"
+        "target": "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesItem"
       },
       "traits": {
         "smithy.api#documentation": "Optional environment variables to set in the tool container. This must not contain any secrets."
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequestEnvironmentVariablesItem": {
+    "com.azure.discovery_workspace#RunToolRequestEnvironmentVariablesItem": {
       "type": "structure",
       "members": {
         "name": {
@@ -1032,7 +952,7 @@
         "smithy.api#documentation": "Explicitly set tool run requirements - overrides the tool definition."
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequestNodePoolIdsList": {
+    "com.azure.discovery_workspace#RunToolRequestNodePoolIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -1041,7 +961,7 @@
         "smithy.api#documentation": "IDs of NodePools to use for this run."
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequestOutputDataList": {
+    "com.azure.discovery_workspace#RunToolRequestOutputDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.discovery_workspace#OutputDataMount"
@@ -1098,7 +1018,7 @@
         "smithy.api#documentation": "The protocol to use for mounting an storage container."
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequestInputDataList": {
+    "com.azure.discovery_workspace#RunToolRequestInputDataList": {
       "type": "list",
       "member": {
         "target": "com.azure.discovery_workspace#InputDataMount"
@@ -1135,7 +1055,7 @@
         "smithy.api#documentation": "Data URI and path where it will be mounted in the tool container."
       }
     },
-    "com.azure.discovery_workspace#ToolsRunRequestInlineFilesList": {
+    "com.azure.discovery_workspace#RunToolRequestInlineFilesList": {
       "type": "list",
       "member": {
         "target": "com.azure.discovery_workspace#InlineFile"
@@ -1166,10 +1086,10 @@
         "smithy.api#documentation": "A file to be included in the input data for a tool run and the path where it will be mounted, relative to the working directory."
       }
     },
-    "com.azure.discovery_workspace#TasksAddExecutionHistory": {
+    "com.azure.discovery_workspace#AddTaskExecutionHistory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksAddExecutionHistoryRequest"
+        "target": "com.azure.discovery_workspace#AddTaskExecutionHistoryRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Task"
@@ -1661,7 +1581,7 @@
         "smithy.api#documentation": "Task priority level."
       }
     },
-    "com.azure.discovery_workspace#TasksAddExecutionHistoryRequest": {
+    "com.azure.discovery_workspace#AddTaskExecutionHistoryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1743,7 +1663,7 @@
           }
         },
         "additionalDetails": {
-          "target": "com.azure.discovery_workspace#TasksAddExecutionHistoryRequestAdditionalDetailsMap",
+          "target": "com.azure.discovery_workspace#AddTaskExecutionHistoryRequestAdditionalDetailsMap",
           "traits": {
             "smithy.api#documentation": "Freeform key-value pairs for additional details."
           }
@@ -1753,7 +1673,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksAddExecutionHistoryRequestAdditionalDetailsMap": {
+    "com.azure.discovery_workspace#AddTaskExecutionHistoryRequestAdditionalDetailsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1765,10 +1685,10 @@
         "smithy.api#documentation": "Freeform key-value pairs for additional details."
       }
     },
-    "com.azure.discovery_workspace#TasksAddComment": {
+    "com.azure.discovery_workspace#AddTaskComment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksAddCommentRequest"
+        "target": "com.azure.discovery_workspace#AddTaskCommentRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Task"
@@ -1787,7 +1707,7 @@
         "smithy.api#documentation": "Add a comment to a task."
       }
     },
-    "com.azure.discovery_workspace#TasksAddCommentRequest": {
+    "com.azure.discovery_workspace#AddTaskCommentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1854,10 +1774,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksStart": {
+    "com.azure.discovery_workspace#StartTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksStartRequest"
+        "target": "com.azure.discovery_workspace#StartTaskRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Task"
@@ -1876,7 +1796,7 @@
         "smithy.api#documentation": "Start execution of a task."
       }
     },
-    "com.azure.discovery_workspace#TasksStartRequest": {
+    "com.azure.discovery_workspace#StartTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1922,10 +1842,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksDelete": {
+    "com.azure.discovery_workspace#DeleteTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksDeleteRequest"
+        "target": "com.azure.discovery_workspace#DeleteTaskRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1944,7 +1864,7 @@
         "smithy.api#documentation": "Delete a task by ID."
       }
     },
-    "com.azure.discovery_workspace#TasksDeleteRequest": {
+    "com.azure.discovery_workspace#DeleteTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1984,10 +1904,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksUpdate": {
+    "com.azure.discovery_workspace#UpdateTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksUpdateRequest"
+        "target": "com.azure.discovery_workspace#UpdateTaskRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Task"
@@ -2006,7 +1926,7 @@
         "smithy.api#documentation": "Patch (partial update) a task (e.g. status, description, validation requirements, dependencies, result)."
       }
     },
-    "com.azure.discovery_workspace#TasksUpdateRequest": {
+    "com.azure.discovery_workspace#UpdateTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2060,7 +1980,7 @@
           }
         },
         "validationRequirements": {
-          "target": "com.azure.discovery_workspace#TasksUpdateRequestValidationRequirementsList",
+          "target": "com.azure.discovery_workspace#UpdateTaskRequestValidationRequirementsList",
           "traits": {
             "smithy.api#documentation": "Array of validation requirements for the task."
           }
@@ -2072,13 +1992,13 @@
           }
         },
         "dependsOn": {
-          "target": "com.azure.discovery_workspace#TasksUpdateRequestDependsOnList",
+          "target": "com.azure.discovery_workspace#UpdateTaskRequestDependsOnList",
           "traits": {
             "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
           }
         },
         "relatedTo": {
-          "target": "com.azure.discovery_workspace#TasksUpdateRequestRelatedToList",
+          "target": "com.azure.discovery_workspace#UpdateTaskRequestRelatedToList",
           "traits": {
             "smithy.api#documentation": "IDs of tasks that are related to this task."
           }
@@ -2090,7 +2010,7 @@
           }
         },
         "comments": {
-          "target": "com.azure.discovery_workspace#TasksUpdateRequestCommentsList",
+          "target": "com.azure.discovery_workspace#UpdateTaskRequestCommentsList",
           "traits": {
             "smithy.api#documentation": "Comments or notes about the task."
           }
@@ -2108,7 +2028,7 @@
           }
         },
         "storageAssetIds": {
-          "target": "com.azure.discovery_workspace#TasksUpdateRequestStorageAssetIdsList",
+          "target": "com.azure.discovery_workspace#UpdateTaskRequestStorageAssetIdsList",
           "traits": {
             "smithy.api#documentation": "List of storage assets related to the task."
           }
@@ -2118,7 +2038,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksUpdateRequestStorageAssetIdsList": {
+    "com.azure.discovery_workspace#UpdateTaskRequestStorageAssetIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2127,7 +2047,7 @@
         "smithy.api#documentation": "List of storage assets related to the task."
       }
     },
-    "com.azure.discovery_workspace#TasksUpdateRequestCommentsList": {
+    "com.azure.discovery_workspace#UpdateTaskRequestCommentsList": {
       "type": "list",
       "member": {
         "target": "com.azure.discovery_workspace#TaskComment"
@@ -2156,7 +2076,7 @@
         "smithy.api#documentation": "Task assignee information."
       }
     },
-    "com.azure.discovery_workspace#TasksUpdateRequestRelatedToList": {
+    "com.azure.discovery_workspace#UpdateTaskRequestRelatedToList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2165,7 +2085,7 @@
         "smithy.api#documentation": "IDs of tasks that are related to this task."
       }
     },
-    "com.azure.discovery_workspace#TasksUpdateRequestDependsOnList": {
+    "com.azure.discovery_workspace#UpdateTaskRequestDependsOnList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2174,7 +2094,7 @@
         "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
       }
     },
-    "com.azure.discovery_workspace#TasksUpdateRequestValidationRequirementsList": {
+    "com.azure.discovery_workspace#UpdateTaskRequestValidationRequirementsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2183,10 +2103,10 @@
         "smithy.api#documentation": "Array of validation requirements for the task."
       }
     },
-    "com.azure.discovery_workspace#TasksGet": {
+    "com.azure.discovery_workspace#GetTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksGetRequest"
+        "target": "com.azure.discovery_workspace#GetTaskRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Task"
@@ -2205,7 +2125,7 @@
         "smithy.api#documentation": "Get a task by ID."
       }
     },
-    "com.azure.discovery_workspace#TasksGetRequest": {
+    "com.azure.discovery_workspace#GetTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2245,10 +2165,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksCreate": {
+    "com.azure.discovery_workspace#CreateTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksCreateRequest"
+        "target": "com.azure.discovery_workspace#CreateTaskRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Task"
@@ -2267,7 +2187,7 @@
         "smithy.api#documentation": "Create a new task."
       }
     },
-    "com.azure.discovery_workspace#TasksCreateRequest": {
+    "com.azure.discovery_workspace#CreateTaskRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2313,7 +2233,7 @@
           }
         },
         "validationRequirements": {
-          "target": "com.azure.discovery_workspace#TasksCreateRequestValidationRequirementsList",
+          "target": "com.azure.discovery_workspace#CreateTaskRequestValidationRequirementsList",
           "traits": {
             "smithy.api#documentation": "Array of validation requirements for the task."
           }
@@ -2325,13 +2245,13 @@
           }
         },
         "dependsOn": {
-          "target": "com.azure.discovery_workspace#TasksCreateRequestDependsOnList",
+          "target": "com.azure.discovery_workspace#CreateTaskRequestDependsOnList",
           "traits": {
             "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
           }
         },
         "relatedTo": {
-          "target": "com.azure.discovery_workspace#TasksCreateRequestRelatedToList",
+          "target": "com.azure.discovery_workspace#CreateTaskRequestRelatedToList",
           "traits": {
             "smithy.api#documentation": "IDs of tasks that are related to this task."
           }
@@ -2343,7 +2263,7 @@
           }
         },
         "comments": {
-          "target": "com.azure.discovery_workspace#TasksCreateRequestCommentsList",
+          "target": "com.azure.discovery_workspace#CreateTaskRequestCommentsList",
           "traits": {
             "smithy.api#documentation": "Comments or notes about the task."
           }
@@ -2373,7 +2293,7 @@
           }
         },
         "storageAssetIds": {
-          "target": "com.azure.discovery_workspace#TasksCreateRequestStorageAssetIdsList",
+          "target": "com.azure.discovery_workspace#CreateTaskRequestStorageAssetIdsList",
           "traits": {
             "smithy.api#documentation": "List of storage assets related to the task."
           }
@@ -2383,7 +2303,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#TasksCreateRequestStorageAssetIdsList": {
+    "com.azure.discovery_workspace#CreateTaskRequestStorageAssetIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2392,7 +2312,7 @@
         "smithy.api#documentation": "List of storage assets related to the task."
       }
     },
-    "com.azure.discovery_workspace#TasksCreateRequestCommentsList": {
+    "com.azure.discovery_workspace#CreateTaskRequestCommentsList": {
       "type": "list",
       "member": {
         "target": "com.azure.discovery_workspace#TaskComment"
@@ -2401,7 +2321,7 @@
         "smithy.api#documentation": "Comments or notes about the task."
       }
     },
-    "com.azure.discovery_workspace#TasksCreateRequestRelatedToList": {
+    "com.azure.discovery_workspace#CreateTaskRequestRelatedToList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2410,7 +2330,7 @@
         "smithy.api#documentation": "IDs of tasks that are related to this task."
       }
     },
-    "com.azure.discovery_workspace#TasksCreateRequestDependsOnList": {
+    "com.azure.discovery_workspace#CreateTaskRequestDependsOnList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2419,7 +2339,7 @@
         "smithy.api#documentation": "IDs of tasks that must complete before this task can be executed."
       }
     },
-    "com.azure.discovery_workspace#TasksCreateRequestValidationRequirementsList": {
+    "com.azure.discovery_workspace#CreateTaskRequestValidationRequirementsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2428,10 +2348,10 @@
         "smithy.api#documentation": "Array of validation requirements for the task."
       }
     },
-    "com.azure.discovery_workspace#TasksList": {
+    "com.azure.discovery_workspace#ListTasks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#TasksListRequest"
+        "target": "com.azure.discovery_workspace#ListTasksRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#PagedTask"
@@ -2445,9 +2365,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List tasks with optional OData filters."
+        "smithy.api#documentation": "List tasks with optional OData filters.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.discovery_workspace#PagedTask": {
@@ -2480,7 +2407,7 @@
         "smithy.api#documentation": "The Task items on this page"
       }
     },
-    "com.azure.discovery_workspace#TasksListRequest": {
+    "com.azure.discovery_workspace#ListTasksRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2513,16 +2440,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "OData filter expression. Supported fields: investigationId, status, createdByType, priority, createdAt, lastModifiedAt. Example: status eq 'new' or status eq 'executing'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetOperationStatus": {
+    "com.azure.discovery_workspace#GetInvestigationOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsGetOperationStatusRequest"
+        "target": "com.azure.discovery_workspace#GetInvestigationOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#InvestigationOperationStatus"
@@ -2712,7 +2645,7 @@
         "smithy.api#documentation": "Status"
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetOperationStatusRequest": {
+    "com.azure.discovery_workspace#GetInvestigationOperationStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2752,10 +2685,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngine": {
+    "com.azure.discovery_workspace#StopInvestigationDiscoveryEngine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngineRequest"
+        "target": "com.azure.discovery_workspace#StopInvestigationDiscoveryEngineRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#DiscoveryEngine"
@@ -2869,7 +2802,7 @@
         "smithy.api#documentation": "Discovery Engine Status"
       }
     },
-    "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngineRequest": {
+    "com.azure.discovery_workspace#StopInvestigationDiscoveryEngineRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2901,10 +2834,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngine": {
+    "com.azure.discovery_workspace#StartInvestigationDiscoveryEngine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngineRequest"
+        "target": "com.azure.discovery_workspace#StartInvestigationDiscoveryEngineRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#DiscoveryEngine"
@@ -2923,7 +2856,7 @@
         "smithy.api#documentation": "Start the discovery engine for an investigation."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngineRequest": {
+    "com.azure.discovery_workspace#StartInvestigationDiscoveryEngineRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2955,10 +2888,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemory": {
+    "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemoryRequest"
+        "target": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemoryRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#PagedWorkingMemoryEntry"
@@ -3049,7 +2982,7 @@
         "smithy.api#documentation": "Working memory entry type."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemoryRequest": {
+    "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemoryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3102,10 +3035,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngine": {
+    "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequest"
+        "target": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#DiscoveryEngine"
@@ -3124,7 +3057,7 @@
         "smithy.api#documentation": "Update the discovery engine for an investigation. This will create the discovery engine if it does not already exist."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequest": {
+    "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3158,7 +3091,7 @@
           }
         },
         "configuration": {
-          "target": "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequestConfigurationMap",
+          "target": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequestConfigurationMap",
           "traits": {
             "smithy.api#documentation": "The Discovery Engine configuration."
           }
@@ -3168,7 +3101,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngineRequestConfigurationMap": {
+    "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngineRequestConfigurationMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3180,10 +3113,10 @@
         "smithy.api#documentation": "The Discovery Engine configuration."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngine": {
+    "com.azure.discovery_workspace#GetInvestigationDiscoveryEngine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineRequest"
+        "target": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#DiscoveryEngine"
@@ -3202,7 +3135,7 @@
         "smithy.api#documentation": "Get the discovery engine for an investigation."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineRequest": {
+    "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3234,13 +3167,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsDelete": {
+    "com.azure.discovery_workspace#DeleteInvestigation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsDeleteRequest"
+        "target": "com.azure.discovery_workspace#DeleteInvestigationRequest"
       },
       "output": {
-        "target": "com.azure.discovery_workspace#InvestigationsDeleteResponse"
+        "target": "com.azure.discovery_workspace#DeleteInvestigationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3256,7 +3189,7 @@
         "smithy.api#documentation": "Delete a Investigation."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsDeleteResponse": {
+    "com.azure.discovery_workspace#DeleteInvestigationResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -3271,7 +3204,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsDeleteRequest": {
+    "com.azure.discovery_workspace#DeleteInvestigationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3303,10 +3236,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsUpdate": {
+    "com.azure.discovery_workspace#UpdateInvestigation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsUpdateRequest"
+        "target": "com.azure.discovery_workspace#UpdateInvestigationRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Investigation"
@@ -3325,7 +3258,7 @@
         "smithy.api#documentation": "Updates an Investigation."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsUpdateRequest": {
+    "com.azure.discovery_workspace#UpdateInvestigationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3359,7 +3292,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.discovery_workspace#InvestigationsUpdateRequestTagsList",
+          "target": "com.azure.discovery_workspace#UpdateInvestigationRequestTagsList",
           "traits": {
             "smithy.api#documentation": "The tags"
           }
@@ -3375,7 +3308,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsUpdateRequestTagsList": {
+    "com.azure.discovery_workspace#UpdateInvestigationRequestTagsList": {
       "type": "list",
       "member": {
         "target": "com.azure.discovery_workspace#MicrosoftDiscoveryCommonTag"
@@ -3465,10 +3398,10 @@
         "smithy.api#documentation": "The tags"
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGet": {
+    "com.azure.discovery_workspace#GetInvestigation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsGetRequest"
+        "target": "com.azure.discovery_workspace#GetInvestigationRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Investigation"
@@ -3487,7 +3420,7 @@
         "smithy.api#documentation": "Fetch a Investigation by name."
       }
     },
-    "com.azure.discovery_workspace#InvestigationsGetRequest": {
+    "com.azure.discovery_workspace#GetInvestigationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3519,10 +3452,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#InvestigationsList": {
+    "com.azure.discovery_workspace#ListInvestigations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#InvestigationsListRequest"
+        "target": "com.azure.discovery_workspace#ListInvestigationsRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#PagedInvestigation"
@@ -3571,7 +3504,7 @@
         "smithy.api#documentation": "The Investigation items on this page"
       }
     },
-    "com.azure.discovery_workspace#InvestigationsListRequest": {
+    "com.azure.discovery_workspace#ListInvestigationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3623,10 +3556,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ConversationsDelete": {
+    "com.azure.discovery_workspace#DeleteConversation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ConversationsDeleteRequest"
+        "target": "com.azure.discovery_workspace#DeleteConversationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3645,7 +3578,7 @@
         "smithy.api#documentation": "Deletes a Conversation."
       }
     },
-    "com.azure.discovery_workspace#ConversationsDeleteRequest": {
+    "com.azure.discovery_workspace#DeleteConversationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3669,10 +3602,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ConversationsUpdate": {
+    "com.azure.discovery_workspace#UpdateConversation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ConversationsUpdateRequest"
+        "target": "com.azure.discovery_workspace#UpdateConversationRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Conversation"
@@ -3760,7 +3693,7 @@
         "smithy.api#documentation": "A conversation."
       }
     },
-    "com.azure.discovery_workspace#ConversationsUpdateRequest": {
+    "com.azure.discovery_workspace#UpdateConversationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3826,10 +3759,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ConversationsGet": {
+    "com.azure.discovery_workspace#GetConversation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ConversationsGetRequest"
+        "target": "com.azure.discovery_workspace#GetConversationRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Conversation"
@@ -3848,7 +3781,7 @@
         "smithy.api#documentation": "Fetch a Conversation by name."
       }
     },
-    "com.azure.discovery_workspace#ConversationsGetRequest": {
+    "com.azure.discovery_workspace#GetConversationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3872,10 +3805,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ConversationsCreate": {
+    "com.azure.discovery_workspace#CreateConversation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ConversationsCreateRequest"
+        "target": "com.azure.discovery_workspace#CreateConversationRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#Conversation"
@@ -3894,7 +3827,7 @@
         "smithy.api#documentation": "Creates a Conversation."
       }
     },
-    "com.azure.discovery_workspace#ConversationsCreateRequest": {
+    "com.azure.discovery_workspace#CreateConversationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3929,10 +3862,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery_workspace#ConversationsList": {
+    "com.azure.discovery_workspace#ListConversations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery_workspace#ConversationsListRequest"
+        "target": "com.azure.discovery_workspace#ListConversationsRequest"
       },
       "output": {
         "target": "com.azure.discovery_workspace#PagedConversation"
@@ -3981,7 +3914,7 @@
         "smithy.api#documentation": "The Conversation items on this page"
       }
     },
-    "com.azure.discovery_workspace#ConversationsListRequest": {
+    "com.azure.discovery_workspace#ListConversationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4044,91 +3977,91 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.discovery_workspace#ToolsCancelRunLro"
+          "target": "com.azure.discovery_workspace#CancelToolRunLro"
         },
         {
-          "target": "com.azure.discovery_workspace#ToolsGetRunStatus"
+          "target": "com.azure.discovery_workspace#GetToolRunStatus"
         },
         {
-          "target": "com.azure.discovery_workspace#ToolsGetOperations"
+          "target": "com.azure.discovery_workspace#GetToolOperations"
         },
         {
-          "target": "com.azure.discovery_workspace#ToolsGetComputeUsage"
+          "target": "com.azure.discovery_workspace#GetToolComputeUsage"
         },
         {
-          "target": "com.azure.discovery_workspace#ToolsRun"
+          "target": "com.azure.discovery_workspace#RunTool"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksAddExecutionHistory"
+          "target": "com.azure.discovery_workspace#AddTaskExecutionHistory"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksAddComment"
+          "target": "com.azure.discovery_workspace#AddTaskComment"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksStart"
+          "target": "com.azure.discovery_workspace#StartTask"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksDelete"
+          "target": "com.azure.discovery_workspace#DeleteTask"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksUpdate"
+          "target": "com.azure.discovery_workspace#UpdateTask"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksGet"
+          "target": "com.azure.discovery_workspace#GetTask"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksCreate"
+          "target": "com.azure.discovery_workspace#CreateTask"
         },
         {
-          "target": "com.azure.discovery_workspace#TasksList"
+          "target": "com.azure.discovery_workspace#ListTasks"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsGetOperationStatus"
+          "target": "com.azure.discovery_workspace#GetInvestigationOperationStatus"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsStopDiscoveryEngine"
+          "target": "com.azure.discovery_workspace#StopInvestigationDiscoveryEngine"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsStartDiscoveryEngine"
+          "target": "com.azure.discovery_workspace#StartInvestigationDiscoveryEngine"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngineMemory"
+          "target": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngineMemory"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsUpdateDiscoveryEngine"
+          "target": "com.azure.discovery_workspace#UpdateInvestigationDiscoveryEngine"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsGetDiscoveryEngine"
+          "target": "com.azure.discovery_workspace#GetInvestigationDiscoveryEngine"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsDelete"
+          "target": "com.azure.discovery_workspace#DeleteInvestigation"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsUpdate"
+          "target": "com.azure.discovery_workspace#UpdateInvestigation"
         },
         {
           "target": "com.azure.discovery_workspace#InvestigationsCreateOrReplace"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsGet"
+          "target": "com.azure.discovery_workspace#GetInvestigation"
         },
         {
-          "target": "com.azure.discovery_workspace#InvestigationsList"
+          "target": "com.azure.discovery_workspace#ListInvestigations"
         },
         {
-          "target": "com.azure.discovery_workspace#ConversationsDelete"
+          "target": "com.azure.discovery_workspace#DeleteConversation"
         },
         {
-          "target": "com.azure.discovery_workspace#ConversationsUpdate"
+          "target": "com.azure.discovery_workspace#UpdateConversation"
         },
         {
-          "target": "com.azure.discovery_workspace#ConversationsGet"
+          "target": "com.azure.discovery_workspace#GetConversation"
         },
         {
-          "target": "com.azure.discovery_workspace#ConversationsCreate"
+          "target": "com.azure.discovery_workspace#CreateConversation"
         },
         {
-          "target": "com.azure.discovery_workspace#ConversationsList"
+          "target": "com.azure.discovery_workspace#ListConversations"
         }
       ],
       "traits": {

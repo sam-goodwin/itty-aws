@@ -2705,7 +2705,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "The Get Page Ranges Diff operation returns the list of valid page ranges for a page blob that were changed between target blob and previous snapshot."
+        "smithy.api#documentation": "The Get Page Ranges Diff operation returns the list of valid page ranges for a page blob that were changed between target blob and previous snapshot.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "PageRange"
+        }
       }
     },
     "com.azure.storage_blob#GetPageBlobPageRangesDiffResponse": {
@@ -2986,7 +2992,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "The Get Page Ranges operation returns the list of valid page ranges for a page blob or snapshot of a page blob"
+        "smithy.api#documentation": "The Get Page Ranges operation returns the list of valid page ranges for a page blob or snapshot of a page blob",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "PageRange"
+        }
       }
     },
     "com.azure.storage_blob#GetPageBlobPageRangesResponse": {
@@ -12638,7 +12650,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "[Update] The List Blobs operation returns a list of the blobs under the specified container"
+        "smithy.api#documentation": "[Update] The List Blobs operation returns a list of the blobs under the specified container",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "Segment.BlobItems"
+        }
       }
     },
     "com.azure.storage_blob#ListContainerBlobHierarchySegmentResponse": {
@@ -13814,7 +13832,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "[Update] The List Blobs operation returns a list of the blobs under the specified container"
+        "smithy.api#documentation": "[Update] The List Blobs operation returns a list of the blobs under the specified container",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "Segment.BlobItems"
+        }
       }
     },
     "com.azure.storage_blob#ListContainerBlobFlatSegmentResponse": {
@@ -16896,7 +16920,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "The List Containers Segment operation returns a list of the containers under the specified account"
+        "smithy.api#documentation": "The List Containers Segment operation returns a list of the containers under the specified account",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "ContainerItems"
+        }
       }
     },
     "com.azure.storage_blob#ListServiceContainersSegmentResponse": {

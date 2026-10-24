@@ -1849,6 +1849,8 @@ export interface ListClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
@@ -1887,6 +1889,8 @@ export interface ClusterListResult {
 export interface ListClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDataExportByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1895,6 +1899,8 @@ export interface ListDataExportByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The top level data export resource container. */
 export interface DataExport {
@@ -1914,7 +1920,7 @@ export type DataExportListResultValueList = Array<DataExport>;
 /** Result of the request to list data exports. */
 export interface DataExportListResult {
   /** List of data export instances within a workspace.. */
-  value?: DataExportListResultValueList;
+  value: DataExportListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -1929,6 +1935,8 @@ export interface ListDataSourceByWorkspaceRequest {
   _filter: string;
   /** Starting point of the collection of data source instances. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DataSourceTagsMap = { [key: string]: string | undefined };
@@ -1965,6 +1973,8 @@ export interface ListDeletedWorkspaceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
@@ -1994,13 +2004,15 @@ export type WorkspaceListResultValueList = Array<Workspace>;
 /** The list workspaces operation response. */
 export interface WorkspaceListResult {
   /** A list of workspaces. */
-  value?: WorkspaceListResultValueList;
+  value: WorkspaceListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
 export interface ListDeletedWorkspacesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIntelligencePacksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2028,6 +2040,8 @@ export interface ListLinkedServiceByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LinkedServiceTagsMap = { [key: string]: string | undefined };
@@ -2051,7 +2065,7 @@ export type LinkedServiceListResultValueList = Array<LinkedService>;
 /** The list linked service operation response. */
 export interface LinkedServiceListResult {
   /** The list of linked service instances */
-  value?: LinkedServiceListResultValueList;
+  value: LinkedServiceListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -2062,6 +2076,8 @@ export interface ListLinkedStorageAccountByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Linked storage accounts top level resource container. */
 export interface LinkedStorageAccountsResource {
@@ -2081,7 +2097,7 @@ export type LinkedStorageAccountsListResultValueList = Array<LinkedStorageAccoun
 /** The list linked storage accounts service operation response. */
 export interface LinkedStorageAccountsListResult {
   /** A list of linked storage accounts instances. */
-  value?: LinkedStorageAccountsListResultValueList;
+  value: LinkedStorageAccountsListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -2092,6 +2108,8 @@ export interface ListManagementGroupsRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Management group properties. */
 export interface ManagementGroupProperties {
@@ -2122,11 +2140,14 @@ export type WorkspaceListManagementGroupsResultValueList = Array<ManagementGroup
 /** The list workspace management groups operation response. */
 export interface WorkspaceListManagementGroupsResult {
   /** Gets or sets a list of management groups attached to the workspace. */
-  value?: WorkspaceListManagementGroupsResultValueList;
+  value: WorkspaceListManagementGroupsResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft OperationsManagement. */
@@ -2167,6 +2188,8 @@ export interface ListQueriesRequest {
   includeBody?: boolean;
   /** Base64 encoded token used to fetch the next page of items. Default is null. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Log Analytics QueryPack-Query definition. */
 export interface LogAnalyticsQueryPackQuery {
@@ -2195,6 +2218,8 @@ export interface ListQueryPackByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type LogAnalyticsQueryPackTagsMap = { [key: string]: string | undefined };
@@ -2227,6 +2252,8 @@ export interface LogAnalyticsQueryPackListResult {
 export interface ListQueryPacksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSavedSearchByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2265,6 +2292,8 @@ export interface ListStorageInsightConfigByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type StorageInsightTagsMap = { [key: string]: string | undefined };
@@ -2290,7 +2319,7 @@ export type StorageInsightListResultValueList = Array<StorageInsight>;
 /** The list storage insights operation response. */
 export interface StorageInsightListResult {
   /** A list of storage insight items. */
-  value?: StorageInsightListResultValueList;
+  value: StorageInsightListResultValueList;
   /** The link (url) to the next page of results. */
   _odata_nextLink?: string;
 }
@@ -2301,6 +2330,8 @@ export interface ListSummaryLogByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workspace data summary rules definition. */
 export interface SummaryLogs {
@@ -2333,6 +2364,8 @@ export interface ListTableByWorkspaceRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Workspace data table definition. */
 export interface Table {
@@ -2352,7 +2385,7 @@ export type TablesListResultValueList = Array<Table>;
 /** The list tables operation response. */
 export interface TablesListResult {
   /** A list of data tables. */
-  value?: TablesListResultValueList;
+  value: TablesListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -2363,6 +2396,8 @@ export interface ListUsagesRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The name of a metric. */
 export interface MetricName {
@@ -2391,7 +2426,7 @@ export type WorkspaceListUsagesResultValueList = Array<UsageMetric>;
 /** The list workspace usages operation response. */
 export interface WorkspaceListUsagesResult {
   /** Gets or sets a list of usage metrics for a workspace. */
-  value?: WorkspaceListUsagesResultValueList;
+  value: WorkspaceListUsagesResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -2400,6 +2435,8 @@ export interface ListWorkspaceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWorkspaceNSPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2408,6 +2445,8 @@ export interface ListWorkspaceNSPRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Network security perimeter (NSP) configuration resource */
 export interface NetworkSecurityPerimeterConfiguration {
@@ -2425,13 +2464,15 @@ export interface NetworkSecurityPerimeterConfiguration {
 export type ListWorkspaceNSPResponseValueList = Array<NetworkSecurityPerimeterConfiguration>;
 export interface ListWorkspaceNSPResponse {
   /** Array of network security perimeter results. */
-  value?: ListWorkspaceNSPResponseValueList;
+  value: ListWorkspaceNSPResponseValueList;
   /** The link used to get the next page of results. */
   nextLink?: string;
 }
 export interface ListWorkspacesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface MigrateTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2711,6 +2752,8 @@ export interface SearchQueryRequest {
   related?: LogAnalyticsQueryPackQuerySearchPropertiesRelated;
   /** Tags associated with the query. */
   tags?: SearchQueryRequestTagsMap;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface StartSummaryLogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3875,93 +3918,135 @@ export const ListAvailableServiceTierByWorkspace: API.OperationMethod<
 
 export type ListClusterByResourceGroupError = AzureOpError;
 /** Gets Log Analytics clusters in a resource group. */
-export const ListClusterByResourceGroup: API.OperationMethod<
+export const ListClusterByResourceGroup: API.PaginatedOperationMethod<
   ListClusterByResourceGroupRequest,
   ClusterListResult,
   ListClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c58, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
   output: __S(945, __c59, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClustersError = AzureOpError;
 /** Gets the Log Analytics clusters in a subscription. */
-export const ListClusters: API.OperationMethod<
+export const ListClusters: API.PaginatedOperationMethod<
   ListClustersRequest,
   ClusterListResult,
   ListClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(960, __c60, 0) as any as S.Schema<ListClustersRequest>,
   output: __S(945, __c59, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataExportByWorkspaceError = AzureOpError;
 /** Lists the data export instances within a workspace. */
-export const ListDataExportByWorkspace: API.OperationMethod<
+export const ListDataExportByWorkspace: API.PaginatedOperationMethod<
   ListDataExportByWorkspaceRequest,
   DataExportListResult,
   ListDataExportByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataExport
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(976, __c61, 0) as any as S.Schema<ListDataExportByWorkspaceRequest>,
   output: __S(978, __c61, 2) as any as S.Schema<DataExportListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataSourceByWorkspaceError = AzureOpError;
 /** Gets the first page of data source instances in a workspace with the link to the next page. */
-export const ListDataSourceByWorkspace: API.OperationMethod<
+export const ListDataSourceByWorkspace: API.PaginatedOperationMethod<
   ListDataSourceByWorkspaceRequest,
   DataSourceListResult,
   ListDataSourceByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataSource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1008, __c63, 0) as any as S.Schema<ListDataSourceByWorkspaceRequest>,
   output: __S(1010, __c63, 2) as any as S.Schema<DataSourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeletedWorkspaceByResourceGroupError = AzureOpError;
 /** Gets recently deleted workspaces in a resource group, available for recovery. */
-export const ListDeletedWorkspaceByResourceGroup: API.OperationMethod<
+export const ListDeletedWorkspaceByResourceGroup: API.PaginatedOperationMethod<
   ListDeletedWorkspaceByResourceGroupRequest,
   WorkspaceListResult,
   ListDeletedWorkspaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c64, 0) as any as S.Schema<ListDeletedWorkspaceByResourceGroupRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeletedWorkspacesError = AzureOpError;
 /** Gets recently deleted workspaces in a subscription, available for recovery. */
-export const ListDeletedWorkspaces: API.OperationMethod<
+export const ListDeletedWorkspaces: API.PaginatedOperationMethod<
   ListDeletedWorkspacesRequest,
   WorkspaceListResult,
   ListDeletedWorkspacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<ListDeletedWorkspacesRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntelligencePacksError = AzureOpError;
 /** Lists all the intelligence packs possible and whether they are enabled or disabled for a given workspace. */
@@ -3980,108 +4065,157 @@ export const ListIntelligencePacks: API.OperationMethod<
 
 export type ListLinkedServiceByWorkspaceError = AzureOpError;
 /** Gets the linked services instances in a workspace. */
-export const ListLinkedServiceByWorkspace: API.OperationMethod<
+export const ListLinkedServiceByWorkspace: API.PaginatedOperationMethod<
   ListLinkedServiceByWorkspaceRequest,
   LinkedServiceListResult,
   ListLinkedServiceByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LinkedService
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c68, 0) as any as S.Schema<ListLinkedServiceByWorkspaceRequest>,
   output: __S(1090, __c68, 2) as any as S.Schema<LinkedServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLinkedStorageAccountByWorkspaceError = AzureOpError;
 /** Gets all linked storage accounts associated with the specified workspace, storage accounts will be sorted by their data source type. */
-export const ListLinkedStorageAccountByWorkspace: API.OperationMethod<
+export const ListLinkedStorageAccountByWorkspace: API.PaginatedOperationMethod<
   ListLinkedStorageAccountByWorkspaceRequest,
   LinkedStorageAccountsListResult,
   ListLinkedStorageAccountByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LinkedStorageAccountsResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1104, __c69, 0) as any as S.Schema<ListLinkedStorageAccountByWorkspaceRequest>,
   output: __S(1106, __c69, 2) as any as S.Schema<LinkedStorageAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagementGroupsError = AzureOpError;
 /** Gets a list of management groups connected to a workspace. */
-export const ListManagementGroups: API.OperationMethod<
+export const ListManagementGroups: API.PaginatedOperationMethod<
   ListManagementGroupsRequest,
   WorkspaceListManagementGroupsResult,
   ListManagementGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagementGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1120, __c70, 0) as any as S.Schema<ListManagementGroupsRequest>,
   output: __S(1124, __c70, 4) as any as S.Schema<WorkspaceListManagementGroupsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available OperationalInsights Rest API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1136, __c71, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1140, __c71, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQueriesError = AzureOpError;
 /** Gets a list of Queries defined within a Log Analytics QueryPack. */
-export const ListQueries: API.OperationMethod<
+export const ListQueries: API.PaginatedOperationMethod<
   ListQueriesRequest,
   LogAnalyticsQueryPackQueryListResult,
   ListQueriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LogAnalyticsQueryPackQuery
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1152, __c72, 0) as any as S.Schema<ListQueriesRequest>,
   output: __S(1169, __c73, 1) as any as S.Schema<LogAnalyticsQueryPackQueryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQueryPackByResourceGroupError = AzureOpError;
 /** Gets a list of Log Analytics QueryPacks within a resource group. */
-export const ListQueryPackByResourceGroup: API.OperationMethod<
+export const ListQueryPackByResourceGroup: API.PaginatedOperationMethod<
   ListQueryPackByResourceGroupRequest,
   LogAnalyticsQueryPackListResult,
   ListQueryPackByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LogAnalyticsQueryPack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c74, 0) as any as S.Schema<ListQueryPackByResourceGroupRequest>,
   output: __S(1201, __c75, 1) as any as S.Schema<LogAnalyticsQueryPackListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQueryPacksError = AzureOpError;
 /** Gets a list of all Log Analytics QueryPacks within a subscription. */
-export const ListQueryPacks: API.OperationMethod<
+export const ListQueryPacks: API.PaginatedOperationMethod<
   ListQueryPacksRequest,
   LogAnalyticsQueryPackListResult,
   ListQueryPacksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LogAnalyticsQueryPack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1232, __c77, 0) as any as S.Schema<ListQueryPacksRequest>,
   output: __S(1201, __c75, 1) as any as S.Schema<LogAnalyticsQueryPackListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSavedSearchByWorkspaceError = AzureOpError;
 /** Gets the saved searches for a given Log Analytics Workspace */
@@ -4100,108 +4234,157 @@ export const ListSavedSearchByWorkspace: API.OperationMethod<
 
 export type ListStorageInsightConfigByWorkspaceError = AzureOpError;
 /** Lists the storage insight instances within a workspace */
-export const ListStorageInsightConfigByWorkspace: API.OperationMethod<
+export const ListStorageInsightConfigByWorkspace: API.PaginatedOperationMethod<
   ListStorageInsightConfigByWorkspaceRequest,
   StorageInsightListResult,
   ListStorageInsightConfigByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageInsight
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1264, __c79, 0) as any as S.Schema<ListStorageInsightConfigByWorkspaceRequest>,
   output: __S(1266, __c79, 2) as any as S.Schema<StorageInsightListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSummaryLogByWorkspaceError = AzureOpError;
 /** Gets all summary rules for the specified Log Analytics workspace. */
-export const ListSummaryLogByWorkspace: API.OperationMethod<
+export const ListSummaryLogByWorkspace: API.PaginatedOperationMethod<
   ListSummaryLogByWorkspaceRequest,
   SummaryLogsListResult,
   ListSummaryLogByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SummaryLogs
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c80, 0) as any as S.Schema<ListSummaryLogByWorkspaceRequest>,
   output: __S(1282, __c80, 2) as any as S.Schema<SummaryLogsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTableByWorkspaceError = AzureOpError;
 /** Gets all the tables for the specified Log Analytics workspace. */
-export const ListTableByWorkspace: API.OperationMethod<
+export const ListTableByWorkspace: API.PaginatedOperationMethod<
   ListTableByWorkspaceRequest,
   TablesListResult,
   ListTableByWorkspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Table
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1296, __c81, 0) as any as S.Schema<ListTableByWorkspaceRequest>,
   output: __S(1298, __c81, 2) as any as S.Schema<TablesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsagesError = AzureOpError;
 /** Gets a list of usage metrics for a workspace. */
-export const ListUsages: API.OperationMethod<
+export const ListUsages: API.PaginatedOperationMethod<
   ListUsagesRequest,
   WorkspaceListUsagesResult,
   ListUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  UsageMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c82, 0) as any as S.Schema<ListUsagesRequest>,
   output: __S(1316, __c82, 4) as any as S.Schema<WorkspaceListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceByResourceGroupError = AzureOpError;
 /** Gets workspaces in a resource group. */
-export const ListWorkspaceByResourceGroup: API.OperationMethod<
+export const ListWorkspaceByResourceGroup: API.PaginatedOperationMethod<
   ListWorkspaceByResourceGroupRequest,
   WorkspaceListResult,
   ListWorkspaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1328, __c83, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspaceNSPError = AzureOpError;
 /** Gets a list of NSP configurations for specified workspace. */
-export const ListWorkspaceNSP: API.OperationMethod<
+export const ListWorkspaceNSP: API.PaginatedOperationMethod<
   ListWorkspaceNSPRequest,
   ListWorkspaceNSPResponse,
   ListWorkspaceNSPError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeterConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1344, __c84, 0) as any as S.Schema<ListWorkspaceNSPRequest>,
   output: __S(1346, __c84, 2) as any as S.Schema<ListWorkspaceNSPResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkspacesError = AzureOpError;
 /** Gets the workspaces in a subscription. */
-export const ListWorkspaces: API.OperationMethod<
+export const ListWorkspaces: API.PaginatedOperationMethod<
   ListWorkspacesRequest,
   WorkspaceListResult,
   ListWorkspacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1360, __c85, 0) as any as S.Schema<ListWorkspacesRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MigrateTableError = AzureOpError;
 /** Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs. */
@@ -4340,18 +4523,25 @@ export const SavedSearchesCreateOrUpdate: API.OperationMethod<
 
 export type SearchQueryError = AzureOpError;
 /** Search a list of Queries defined within a Log Analytics QueryPack according to given search properties. */
-export const SearchQuery: API.OperationMethod<
+export const SearchQuery: API.PaginatedOperationMethod<
   SearchQueryRequest,
   LogAnalyticsQueryPackQueryListResult,
   SearchQueryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LogAnalyticsQueryPackQuery
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1552, __c97, 0) as any as S.Schema<SearchQueryRequest>,
   output: __S(1169, __c73, 1) as any as S.Schema<LogAnalyticsQueryPackQueryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type StartSummaryLogError = AzureOpError;
 /** Starts an inactive Summary rule. */
@@ -6154,12 +6344,14 @@ function __c58(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/clusters",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterByResourceGroupRequest" });
@@ -6184,12 +6376,14 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/clusters",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
@@ -6203,12 +6397,14 @@ function __c61(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataExportByWorkspaceRequest" });
@@ -6217,7 +6413,7 @@ function __c61(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(977, __c61, 1)),
+          value: __S(977, __c61, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataExportListResult" });
@@ -6253,12 +6449,14 @@ function __c63(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataSourceByWorkspaceRequest" });
@@ -6280,12 +6478,14 @@ function __c64(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeletedWorkspaceByResourceGroupRequest" });
@@ -6298,7 +6498,7 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1040, __c65, 0)),
+          value: __S(1040, __c65, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
@@ -6310,12 +6510,14 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/deletedWorkspaces",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeletedWorkspacesRequest" });
@@ -6362,12 +6564,14 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLinkedServiceByWorkspaceRequest" });
@@ -6376,7 +6580,7 @@ function __c68(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1089, __c68, 1)),
+          value: __S(1089, __c68, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkedServiceListResult" });
@@ -6390,12 +6594,14 @@ function __c69(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLinkedStorageAccountByWorkspaceRequest" });
@@ -6404,7 +6610,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1105, __c69, 1)),
+          value: __S(1105, __c69, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkedStorageAccountsListResult" });
@@ -6418,12 +6624,14 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/managementGroups",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagementGroupsRequest" });
@@ -6451,7 +6659,7 @@ function __c70(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1123, __c70, 3)),
+          value: __S(1123, __c70, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListManagementGroupsResult" });
@@ -6461,12 +6669,15 @@ function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.OperationalInsights/operations",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -6508,12 +6719,14 @@ function __c72(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           includeBody: S.optional(S.Boolean.pipe(T.Query())),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQueriesRequest" });
@@ -6539,12 +6752,14 @@ function __c74(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQueryPackByResourceGroupRequest" });
@@ -6589,12 +6804,14 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/queryPacks",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQueryPacksRequest" });
@@ -6635,12 +6852,14 @@ function __c79(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageInsightConfigByWorkspaceRequest" });
@@ -6649,7 +6868,7 @@ function __c79(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1265, __c79, 1)),
+          value: __S(1265, __c79, 1),
           _odata_nextLink: S.optional(S.String.pipe(T.Body("@odata.nextLink"))),
         }),
       ).annotate({ identifier: "StorageInsightListResult" });
@@ -6663,12 +6882,14 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSummaryLogByWorkspaceRequest" });
@@ -6691,12 +6912,14 @@ function __c81(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTableByWorkspaceRequest" });
@@ -6705,7 +6928,7 @@ function __c81(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1297, __c81, 1)),
+          value: __S(1297, __c81, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TablesListResult" });
@@ -6719,12 +6942,14 @@ function __c82(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/usages",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
@@ -6751,7 +6976,7 @@ function __c82(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1315, __c82, 3)),
+          value: __S(1315, __c82, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListUsagesResult" });
@@ -6764,12 +6989,14 @@ function __c83(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceByResourceGroupRequest" });
@@ -6783,12 +7010,14 @@ function __c84(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/networkSecurityPerimeterConfigurations",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspaceNSPRequest" });
@@ -6797,7 +7026,7 @@ function __c84(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1345, __c84, 1)),
+          value: __S(1345, __c84, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkspaceNSPResponse" });
@@ -6809,12 +7038,14 @@ function __c85(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.OperationalInsights/workspaces",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkspacesRequest" });
@@ -7080,12 +7311,14 @@ function __c97(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           related: S.optional(__S(496, __c31, 0)),
           tags: S.optional(__S(497, __c31, 1)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/queryPacks/{queryPackName}/queries/search",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "SearchQueryRequest" });

@@ -820,6 +820,8 @@ export interface ListLoadTestAdministrationTestFilesRequest {
   endpoint: string;
   /** Unique test identifier for the load test, must contain only lower-case alphabetic, numeric, underscore or hyphen characters. */
   testId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TestFileInfo items on this page */
 export type PagedTestFileInfoValueList = Array<TestFileInfo>;
@@ -842,6 +844,8 @@ export interface ListLoadTestAdministrationTestsRequest {
   lastModifiedEndTime?: string;
   /** Number of results in response. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Test items on this page */
 export type PagedTestValueList = Array<Test>;
@@ -950,6 +954,8 @@ export interface ListLoadTestRunMetricDimensionValuesRequest {
   metricNamespace: string;
   /** The timespan of the query. It is a string with the following format 'startDateTime_ISO/endDateTime_ISO'. */
   timespan: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The dimension value */
 export type DimensionValueListValueList = Array<string>;
@@ -958,7 +964,7 @@ export interface DimensionValueList {
   /** The dimension name */
   name?: string;
   /** The dimension value */
-  value?: DimensionValueListValueList;
+  value: DimensionValueListValueList;
   /** Link for the next set of values in case of paginated results, if applicable. */
   nextLink?: string;
 }
@@ -1009,6 +1015,8 @@ export interface ListLoadTestRunMetricsRequest {
   timespan: string;
   /** Get metrics for specific dimension values. Example: Metric contains dimension like SamplerName, Error. To retrieve all the time series data where SamplerName is equals to HTTPRequest1 or HTTPRequest2, the DimensionFilter value will be {"SamplerName", ["HTTPRequest1", "HTTPRequest2"} */
   filters?: ListLoadTestRunMetricsRequestFiltersList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a metric value. */
 export interface MetricValue {
@@ -1066,6 +1074,8 @@ export interface ListLoadTestRunTestRunsRequest {
   createdByTypes?: ListLoadTestRunTestRunsRequestCreatedByTypesList;
   /** Comma-separated list of test IDs. If you are using testIds, do not send a value for testId. */
   testIds?: ListLoadTestRunTestRunsRequestTestIdsList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The TestRun items on this page */
 export type PagedTestRunValueList = Array<TestRun>;
@@ -1088,6 +1098,8 @@ export interface ListNotificationRuleAdministrationNotificationRulesRequest {
   lastModifiedEndTime?: string;
   /** Number of results in response. Default page size is 50. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The NotificationRule items on this page */
 export type PagedNotificationRuleValueList = Array<NotificationRule>;
@@ -1115,6 +1127,8 @@ export interface ListTriggerAdministrationTriggersRequest {
   lastModifiedEndTime?: string;
   /** Number of results in response. Default page size is 50. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of a trigger. */
 export type TriggerType = "ScheduleTestsTrigger";
@@ -1762,33 +1776,47 @@ export const GetOperationStatus: API.OperationMethod<
 
 export type ListLoadTestAdministrationTestFilesError = AzureOpError;
 /** Get all test files. Get all test files. */
-export const ListLoadTestAdministrationTestFiles: API.OperationMethod<
+export const ListLoadTestAdministrationTestFiles: API.PaginatedOperationMethod<
   ListLoadTestAdministrationTestFilesRequest,
   PagedTestFileInfo,
   ListLoadTestAdministrationTestFilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TestFileInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<ListLoadTestAdministrationTestFilesRequest>,
   output: __S(273, __c17, 1) as any as S.Schema<PagedTestFileInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadTestAdministrationTestsError = AzureOpError;
 /** Get all load tests by the fully qualified resource Id e.g subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.LoadTestService/loadtests/{resName}. Get all load tests by the fully qualified resource Id e.g subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.LoadTestService/loadtests/{resName}. */
-export const ListLoadTestAdministrationTests: API.OperationMethod<
+export const ListLoadTestAdministrationTests: API.PaginatedOperationMethod<
   ListLoadTestAdministrationTestsRequest,
   PagedTest,
   ListLoadTestAdministrationTestsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Test
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListLoadTestAdministrationTestsRequest>,
   output: __S(290, __c18, 2) as any as S.Schema<PagedTest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadTestRunMetricDefinitionsError = AzureOpError;
 /** List the metric definitions for a load test run. List the metric definitions for a load test run. */
@@ -1807,18 +1835,25 @@ export const ListLoadTestRunMetricDefinitions: API.OperationMethod<
 
 export type ListLoadTestRunMetricDimensionValuesError = AzureOpError;
 /** List the dimension values for the given metric dimension name. List the dimension values for the given metric dimension name. */
-export const ListLoadTestRunMetricDimensionValues: API.OperationMethod<
+export const ListLoadTestRunMetricDimensionValues: API.PaginatedOperationMethod<
   ListLoadTestRunMetricDimensionValuesRequest,
   DimensionValueList,
   ListLoadTestRunMetricDimensionValuesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListLoadTestRunMetricDimensionValuesRequest>,
   output: __S(353, __c22, 1) as any as S.Schema<DimensionValueList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadTestRunMetricNamespacesError = AzureOpError;
 /** List the metric namespaces for a load test run. List the metric namespaces for a load test run. */
@@ -1837,42 +1872,57 @@ export const ListLoadTestRunMetricNamespaces: API.OperationMethod<
 
 export type ListLoadTestRunMetricsError = AzureOpError;
 /** List the metric values for a load test run. List the metric values for a load test run. */
-export const ListLoadTestRunMetrics: API.OperationMethod<
+export const ListLoadTestRunMetrics: API.PaginatedOperationMethod<
   ListLoadTestRunMetricsRequest,
   Metrics,
   ListLoadTestRunMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TimeSeriesElement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(386, __c24, 2) as any as S.Schema<ListLoadTestRunMetricsRequest>,
   output: __S(393, __c24, 9) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLoadTestRunTestRunsError = AzureOpError;
 /** Get all test runs for the given filters. Get all test runs for the given filters. */
-export const ListLoadTestRunTestRuns: API.OperationMethod<
+export const ListLoadTestRunTestRuns: API.PaginatedOperationMethod<
   ListLoadTestRunTestRunsRequest,
   PagedTestRun,
   ListLoadTestRunTestRunsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TestRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListLoadTestRunTestRunsRequest>,
   output: __S(402, __c25, 2) as any as S.Schema<PagedTestRun>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNotificationRuleAdministrationNotificationRulesError = AzureOpError;
 /** Get all notification rules for the given filters. Get all notification rules for the given filters. */
-export const ListNotificationRuleAdministrationNotificationRules: API.OperationMethod<
+export const ListNotificationRuleAdministrationNotificationRules: API.PaginatedOperationMethod<
   ListNotificationRuleAdministrationNotificationRulesRequest,
   PagedNotificationRule,
   ListNotificationRuleAdministrationNotificationRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NotificationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     416,
     __c26,
@@ -1882,22 +1932,35 @@ export const ListNotificationRuleAdministrationNotificationRules: API.OperationM
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTriggerAdministrationTriggersError = AzureOpError;
 /** Get all triggers for the given filters. Get all triggers for the given filters. */
-export const ListTriggerAdministrationTriggers: API.OperationMethod<
+export const ListTriggerAdministrationTriggers: API.PaginatedOperationMethod<
   ListTriggerAdministrationTriggersRequest,
   PagedTrigger,
   ListTriggerAdministrationTriggersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Trigger
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListTriggerAdministrationTriggersRequest>,
   output: __S(434, __c27, 2) as any as S.Schema<PagedTrigger>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type LoadTestAdministrationCreateOrUpdateAppComponentsError = AzureOpError;
 /** Add an app component to a test. Add an app component to a test by providing the resource Id, name and type. */
@@ -2554,6 +2617,7 @@ function __c17(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           testId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2562,6 +2626,7 @@ function __c17(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),
@@ -2586,6 +2651,7 @@ function __c18(j: number): any {
           lastModifiedStartTime: S.optional(S.String.pipe(T.Query())),
           lastModifiedEndTime: S.optional(S.String.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2594,6 +2660,7 @@ function __c18(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),
@@ -2707,6 +2774,7 @@ function __c22(j: number): any {
           interval: S.optional(S.String.pipe(T.Query())),
           metricNamespace: S.String.pipe(T.Query()),
           timespan: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2715,6 +2783,7 @@ function __c22(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),
@@ -2723,7 +2792,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(__S(912, __c57, 0)),
+          value: __S(912, __c57, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionValueList" });
@@ -2778,6 +2847,7 @@ function __c24(j: number): any {
           metricNamespace: S.String.pipe(T.Query()),
           timespan: S.String.pipe(T.Query()),
           filters: S.optional(__S(385, __c24, 1)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2786,6 +2856,7 @@ function __c24(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),
@@ -2841,6 +2912,7 @@ function __c25(j: number): any {
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           createdByTypes: S.optional(__S(912, __c57, 0).pipe(T.Query())),
           testIds: S.optional(__S(912, __c57, 0).pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2849,6 +2921,7 @@ function __c25(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),
@@ -2875,6 +2948,7 @@ function __c26(j: number): any {
           lastModifiedStartTime: S.optional(S.String.pipe(T.Query())),
           lastModifiedEndTime: S.optional(S.String.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2883,6 +2957,7 @@ function __c26(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),
@@ -2909,6 +2984,7 @@ function __c27(j: number): any {
           lastModifiedStartTime: S.optional(S.String.pipe(T.Query())),
           lastModifiedEndTime: S.optional(S.String.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2917,6 +2993,7 @@ function __c27(j: number): any {
             host: "https://{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://cnt-prod.loadtesting.azure.com/.default",
           }),
         ),

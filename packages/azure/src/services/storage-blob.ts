@@ -2043,7 +2043,7 @@ export type ClearRange = PageRange;
 export type PageListClearRangeList = Array<PageRange>;
 /** the list of pages */
 export interface GetPageBlobPageRangesResponse {
-  PageRange?: PageListPageRangeList;
+  PageRange: PageListPageRangeList;
   ClearRange?: PageListClearRangeList;
   NextMarker?: string;
   /** The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes. */
@@ -2099,7 +2099,7 @@ export interface GetPageBlobPageRangesDiffRequest {
 }
 /** the list of pages */
 export interface GetPageBlobPageRangesDiffResponse {
-  PageRange?: PageListPageRangeList;
+  PageRange: PageListPageRangeList;
   ClearRange?: PageListClearRangeList;
   NextMarker?: string;
   /** The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes. */
@@ -4477,33 +4477,47 @@ export const GetContainerProperties: API.OperationMethod<
 
 export type GetPageBlobPageRangesError = AzureOpError;
 /** The Get Page Ranges operation returns the list of valid page ranges for a page blob or snapshot of a page blob */
-export const GetPageBlobPageRanges: API.OperationMethod<
+export const GetPageBlobPageRanges: API.PaginatedOperationMethod<
   GetPageBlobPageRangesRequest,
   GetPageBlobPageRangesResponse,
   GetPageBlobPageRangesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PageRange
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<GetPageBlobPageRangesRequest>,
   output: __S(626, __c39, 2) as any as S.Schema<GetPageBlobPageRangesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "PageRange",
+  } as const,
+})) as any;
 
 export type GetPageBlobPageRangesDiffError = AzureOpError;
 /** The Get Page Ranges Diff operation returns the list of valid page ranges for a page blob that were changed between target blob and previous snapshot. */
-export const GetPageBlobPageRangesDiff: API.OperationMethod<
+export const GetPageBlobPageRangesDiff: API.PaginatedOperationMethod<
   GetPageBlobPageRangesDiffRequest,
   GetPageBlobPageRangesDiffResponse,
   GetPageBlobPageRangesDiffError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PageRange
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<GetPageBlobPageRangesDiffRequest>,
   output: __S(626, __c39, 2) as any as S.Schema<GetPageBlobPageRangesDiffResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "PageRange",
+  } as const,
+})) as any;
 
 export type GetServiceAccountInfoError = AzureOpError;
 /** Returns the sku name and account kind */
@@ -4582,18 +4596,25 @@ export const ListBlockBlobCommitBlock: API.OperationMethod<
 
 export type ListContainerBlobFlatSegmentError = AzureOpError;
 /** [Update] The List Blobs operation returns a list of the blobs under the specified container */
-export const ListContainerBlobFlatSegment: API.OperationMethod<
+export const ListContainerBlobFlatSegment: API.PaginatedOperationMethod<
   ListContainerBlobFlatSegmentRequest,
   ListContainerBlobFlatSegmentResponse,
   ListContainerBlobFlatSegmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BlobItemInternal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(784, __c49, 0) as any as S.Schema<ListContainerBlobFlatSegmentRequest>,
   output: __S(786, __c49, 2) as any as S.Schema<ListContainerBlobFlatSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "Segment.BlobItems",
+  } as const,
+})) as any;
 
 export type ListContainerBlobFlatSegmentApacheArrowError = AzureOpError;
 /** The List Blobs operation returns a list of the blobs under the specified container. This operation is for Apache Arrow use case so response is returned as raw to be deserialized by the client. */
@@ -4612,18 +4633,25 @@ export const ListContainerBlobFlatSegmentApacheArrow: API.OperationMethod<
 
 export type ListContainerBlobHierarchySegmentError = AzureOpError;
 /** [Update] The List Blobs operation returns a list of the blobs under the specified container */
-export const ListContainerBlobHierarchySegment: API.OperationMethod<
+export const ListContainerBlobHierarchySegment: API.PaginatedOperationMethod<
   ListContainerBlobHierarchySegmentRequest,
   ListContainerBlobHierarchySegmentResponse,
   ListContainerBlobHierarchySegmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BlobItemInternal
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(848, __c53, 0) as any as S.Schema<ListContainerBlobHierarchySegmentRequest>,
   output: __S(852, __c53, 4) as any as S.Schema<ListContainerBlobHierarchySegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "Segment.BlobItems",
+  } as const,
+})) as any;
 
 export type ListContainerBlobHierarchySegmentApacheArrowError = AzureOpError;
 /** [Update] The List Blobs operation returns a list of the blobs under the specified container. This operation is for Apache Arrow use case so response is returned as raw to be deserialized by the client. */
@@ -4646,18 +4674,25 @@ export const ListContainerBlobHierarchySegmentApacheArrow: API.OperationMethod<
 
 export type ListServiceContainersSegmentError = AzureOpError;
 /** The List Containers Segment operation returns a list of the containers under the specified account */
-export const ListServiceContainersSegment: API.OperationMethod<
+export const ListServiceContainersSegment: API.PaginatedOperationMethod<
   ListServiceContainersSegmentRequest,
   ListServiceContainersSegmentResponse,
   ListServiceContainersSegmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContainerItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(880, __c55, 0) as any as S.Schema<ListServiceContainersSegmentRequest>,
   output: __S(884, __c55, 4) as any as S.Schema<ListServiceContainersSegmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "marker",
+    outputToken: "NextMarker",
+    items: "ContainerItems",
+  } as const,
+})) as any;
 
 export type PutBlockBlobBlobFromUrlError = AzureOpError;
 /** The Put Blob from URL operation creates a new Block Blob where the contents of the blob are read from a given URL. This API is supported beginning with the 2020-04-08 version. Partial updates are not supported with Put Blob from URL; the content of an existing blob is overwritten with the content of the new blob. To perform partial updates to a block blob's contents using a source URL, use the Put Block from URL API in conjunction with Put Block List. */
@@ -6599,7 +6634,7 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          PageRange: S.optional(__S(625, __c39, 1).pipe(T.XmlFlattened({}))),
+          PageRange: __S(625, __c39, 1).pipe(T.XmlFlattened({})),
           ClearRange: S.optional(__S(625, __c39, 1).pipe(T.XmlFlattened({}))),
           NextMarker: S.optional(S.String),
           eTag: S.optional(S.String.pipe(T.Header("ETag"))),

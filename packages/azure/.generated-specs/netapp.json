@@ -15,16 +15,306 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.netapp#VolumeGroupsDelete": "com.azure.netapp#DeleteVolumeGroup",
+      "com.azure.netapp#VolumeGroupsDeleteResponse": "com.azure.netapp#DeleteVolumeGroupResponse",
+      "com.azure.netapp#VolumeGroupsDeleteRequest": "com.azure.netapp#DeleteVolumeGroupRequest",
+      "com.azure.netapp#VolumeGroupsCreate": "com.azure.netapp#CreateVolumeGroup",
+      "com.azure.netapp#VolumeGroupsCreateResponse": "com.azure.netapp#CreateVolumeGroupResponse",
+      "com.azure.netapp#VolumeGroupsCreateRequest": "com.azure.netapp#CreateVolumeGroupRequest",
+      "com.azure.netapp#VolumeGroupsGet": "com.azure.netapp#GetVolumeGroup",
+      "com.azure.netapp#VolumeGroupsGetResponse": "com.azure.netapp#GetVolumeGroupResponse",
+      "com.azure.netapp#VolumeGroupsGetRequest": "com.azure.netapp#GetVolumeGroupRequest",
+      "com.azure.netapp#VolumeGroupsListByNetAppAccount": "com.azure.netapp#ListVolumeGroupByNetAppAccount",
+      "com.azure.netapp#VolumeGroupsListByNetAppAccountRequest": "com.azure.netapp#ListVolumeGroupByNetAppAccountRequest",
+      "com.azure.netapp#SnapshotPoliciesListVolumes": "com.azure.netapp#ListSnapshotPolicyVolumes",
+      "com.azure.netapp#SnapshotPoliciesListVolumesRequest": "com.azure.netapp#ListSnapshotPolicyVolumesRequest",
+      "com.azure.netapp#SnapshotPoliciesDelete": "com.azure.netapp#DeleteSnapshotPolicy",
+      "com.azure.netapp#SnapshotPoliciesDeleteResponse": "com.azure.netapp#DeleteSnapshotPolicyResponse",
+      "com.azure.netapp#SnapshotPoliciesDeleteRequest": "com.azure.netapp#DeleteSnapshotPolicyRequest",
+      "com.azure.netapp#SnapshotPoliciesUpdate": "com.azure.netapp#UpdateSnapshotPolicy",
+      "com.azure.netapp#SnapshotPoliciesUpdateResponse": "com.azure.netapp#UpdateSnapshotPolicyResponse",
+      "com.azure.netapp#SnapshotPoliciesUpdateResponseTagsMap": "com.azure.netapp#UpdateSnapshotPolicyResponseTagsMap",
+      "com.azure.netapp#SnapshotPoliciesUpdateRequest": "com.azure.netapp#UpdateSnapshotPolicyRequest",
+      "com.azure.netapp#SnapshotPoliciesUpdateRequestTagsMap": "com.azure.netapp#UpdateSnapshotPolicyRequestTagsMap",
+      "com.azure.netapp#SnapshotPoliciesCreate": "com.azure.netapp#CreateSnapshotPolicy",
+      "com.azure.netapp#SnapshotPoliciesCreateResponse": "com.azure.netapp#CreateSnapshotPolicyResponse",
+      "com.azure.netapp#SnapshotPoliciesCreateResponseTagsMap": "com.azure.netapp#CreateSnapshotPolicyResponseTagsMap",
+      "com.azure.netapp#SnapshotPoliciesCreateRequest": "com.azure.netapp#CreateSnapshotPolicyRequest",
+      "com.azure.netapp#SnapshotPoliciesCreateRequestTagsMap": "com.azure.netapp#CreateSnapshotPolicyRequestTagsMap",
+      "com.azure.netapp#SnapshotPoliciesGet": "com.azure.netapp#GetSnapshotPolicy",
+      "com.azure.netapp#SnapshotPoliciesGetResponse": "com.azure.netapp#GetSnapshotPolicyResponse",
+      "com.azure.netapp#SnapshotPoliciesGetResponseTagsMap": "com.azure.netapp#GetSnapshotPolicyResponseTagsMap",
+      "com.azure.netapp#SnapshotPoliciesGetRequest": "com.azure.netapp#GetSnapshotPolicyRequest",
+      "com.azure.netapp#SnapshotPoliciesList2": "com.azure.netapp#ListSnapshotPolicies",
+      "com.azure.netapp#SnapshotPoliciesListRequest": "com.azure.netapp#ListSnapshotPoliciesRequest",
+      "com.azure.netapp#AccountsRenewCredentials": "com.azure.netapp#RenewAccountCredentials",
+      "com.azure.netapp#AccountsRenewCredentialsResponse": "com.azure.netapp#RenewAccountCredentialsResponse",
+      "com.azure.netapp#AccountsRenewCredentialsRequest": "com.azure.netapp#RenewAccountCredentialsRequest",
+      "com.azure.netapp#NetAppResourceQuotaLimitsAccountGet": "com.azure.netapp#GetNetAppResourceQuotaLimitsAccount",
+      "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetResponse": "com.azure.netapp#GetNetAppResourceQuotaLimitsAccountResponse",
+      "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetRequest": "com.azure.netapp#GetNetAppResourceQuotaLimitsAccountRequest",
+      "com.azure.netapp#NetAppResourceQuotaLimitsAccountList": "com.azure.netapp#ListNetAppResourceQuotaLimitsAccount",
+      "com.azure.netapp#NetAppResourceQuotaLimitsAccountListRequest": "com.azure.netapp#ListNetAppResourceQuotaLimitsAccountRequest",
+      "com.azure.netapp#BackupsUnderAccountMigrateBackups": "com.azure.netapp#MigrateBackupsUnderAccountBackups",
+      "com.azure.netapp#BackupsUnderAccountMigrateBackupsResponse": "com.azure.netapp#MigrateBackupsUnderAccountBackupsResponse",
+      "com.azure.netapp#BackupsUnderAccountMigrateBackupsRequest": "com.azure.netapp#MigrateBackupsUnderAccountBackupsRequest",
+      "com.azure.netapp#AccountsGetChangeKeyVaultInformation": "com.azure.netapp#GetAccountChangeKeyVaultInformation",
+      "com.azure.netapp#AccountsGetChangeKeyVaultInformationRequest": "com.azure.netapp#GetAccountChangeKeyVaultInformationRequest",
+      "com.azure.netapp#VolumeQuotaRulesDelete": "com.azure.netapp#DeleteVolumeQuotaRule",
+      "com.azure.netapp#VolumeQuotaRulesDeleteResponse": "com.azure.netapp#DeleteVolumeQuotaRuleResponse",
+      "com.azure.netapp#VolumeQuotaRulesDeleteRequest": "com.azure.netapp#DeleteVolumeQuotaRuleRequest",
+      "com.azure.netapp#VolumeQuotaRulesUpdate": "com.azure.netapp#UpdateVolumeQuotaRule",
+      "com.azure.netapp#VolumeQuotaRulesUpdateResponse": "com.azure.netapp#UpdateVolumeQuotaRuleResponse",
+      "com.azure.netapp#VolumeQuotaRulesUpdateResponseTagsMap": "com.azure.netapp#UpdateVolumeQuotaRuleResponseTagsMap",
+      "com.azure.netapp#VolumeQuotaRulesUpdateRequest": "com.azure.netapp#UpdateVolumeQuotaRuleRequest",
+      "com.azure.netapp#VolumeQuotaRulesUpdateRequestTagsMap": "com.azure.netapp#UpdateVolumeQuotaRuleRequestTagsMap",
+      "com.azure.netapp#VolumeQuotaRulesCreate": "com.azure.netapp#CreateVolumeQuotaRule",
+      "com.azure.netapp#VolumeQuotaRulesCreateResponse": "com.azure.netapp#CreateVolumeQuotaRuleResponse",
+      "com.azure.netapp#VolumeQuotaRulesCreateResponseTagsMap": "com.azure.netapp#CreateVolumeQuotaRuleResponseTagsMap",
+      "com.azure.netapp#VolumeQuotaRulesCreateRequest": "com.azure.netapp#CreateVolumeQuotaRuleRequest",
+      "com.azure.netapp#VolumeQuotaRulesCreateRequestTagsMap": "com.azure.netapp#CreateVolumeQuotaRuleRequestTagsMap",
+      "com.azure.netapp#VolumeQuotaRulesGet": "com.azure.netapp#GetVolumeQuotaRule",
+      "com.azure.netapp#VolumeQuotaRulesGetResponse": "com.azure.netapp#GetVolumeQuotaRuleResponse",
+      "com.azure.netapp#VolumeQuotaRulesGetResponseTagsMap": "com.azure.netapp#GetVolumeQuotaRuleResponseTagsMap",
+      "com.azure.netapp#VolumeQuotaRulesGetRequest": "com.azure.netapp#GetVolumeQuotaRuleRequest",
+      "com.azure.netapp#VolumeQuotaRulesListByVolume": "com.azure.netapp#ListVolumeQuotaRuleByVolume",
+      "com.azure.netapp#VolumeQuotaRulesListByVolumeRequest": "com.azure.netapp#ListVolumeQuotaRuleByVolumeRequest",
+      "com.azure.netapp#SnapshotsRestoreFiles": "com.azure.netapp#RestoreSnapshotFiles",
+      "com.azure.netapp#SnapshotsRestoreFilesResponse": "com.azure.netapp#RestoreSnapshotFilesResponse",
+      "com.azure.netapp#SnapshotsRestoreFilesRequest": "com.azure.netapp#RestoreSnapshotFilesRequest",
+      "com.azure.netapp#SnapshotsRestoreFilesRequestFilePathsList": "com.azure.netapp#RestoreSnapshotFilesRequestFilePathsList",
+      "com.azure.netapp#SnapshotsDelete": "com.azure.netapp#DeleteSnapshot",
+      "com.azure.netapp#SnapshotsDeleteResponse": "com.azure.netapp#DeleteSnapshotResponse",
+      "com.azure.netapp#SnapshotsDeleteRequest": "com.azure.netapp#DeleteSnapshotRequest",
+      "com.azure.netapp#SnapshotsUpdate": "com.azure.netapp#UpdateSnapshot",
+      "com.azure.netapp#SnapshotsUpdateResponse": "com.azure.netapp#UpdateSnapshotResponse",
+      "com.azure.netapp#SnapshotsUpdateRequest": "com.azure.netapp#UpdateSnapshotRequest",
+      "com.azure.netapp#SnapshotsCreate": "com.azure.netapp#CreateSnapshot",
+      "com.azure.netapp#SnapshotsCreateResponse": "com.azure.netapp#CreateSnapshotResponse",
+      "com.azure.netapp#SnapshotsCreateRequest": "com.azure.netapp#CreateSnapshotRequest",
+      "com.azure.netapp#SnapshotsGet": "com.azure.netapp#GetSnapshot",
+      "com.azure.netapp#SnapshotsGetResponse": "com.azure.netapp#GetSnapshotResponse",
+      "com.azure.netapp#SnapshotsGetRequest": "com.azure.netapp#GetSnapshotRequest",
+      "com.azure.netapp#SnapshotsList2": "com.azure.netapp#ListSnapshots",
+      "com.azure.netapp#SnapshotsListRequest": "com.azure.netapp#ListSnapshotsRequest",
+      "com.azure.netapp#VolumesResetCifsPassword": "com.azure.netapp#ResetVolumeCifsPassword",
+      "com.azure.netapp#VolumesResetCifsPasswordResponse": "com.azure.netapp#ResetVolumeCifsPasswordResponse",
+      "com.azure.netapp#VolumesResetCifsPasswordRequest": "com.azure.netapp#ResetVolumeCifsPasswordRequest",
+      "com.azure.netapp#RansomwareReportsClearSuspects": "com.azure.netapp#ClearRansomwareReportSuspects",
+      "com.azure.netapp#RansomwareReportsClearSuspectsResponse": "com.azure.netapp#ClearRansomwareReportSuspectsResponse",
+      "com.azure.netapp#RansomwareReportsClearSuspectsRequest": "com.azure.netapp#ClearRansomwareReportSuspectsRequest",
+      "com.azure.netapp#RansomwareReportsClearSuspectsRequestExtensionsList": "com.azure.netapp#ClearRansomwareReportSuspectsRequestExtensionsList",
+      "com.azure.netapp#RansomwareReportsGet": "com.azure.netapp#GetRansomwareReport",
+      "com.azure.netapp#RansomwareReportsGetResponse": "com.azure.netapp#GetRansomwareReportResponse",
+      "com.azure.netapp#RansomwareReportsGetRequest": "com.azure.netapp#GetRansomwareReportRequest",
+      "com.azure.netapp#RansomwareReportsList2": "com.azure.netapp#ListRansomwareReports",
+      "com.azure.netapp#RansomwareReportsListRequest": "com.azure.netapp#ListRansomwareReportsRequest",
+      "com.azure.netapp#BackupsUnderVolumeMigrateBackups": "com.azure.netapp#MigrateBackupsUnderVolumeBackups",
+      "com.azure.netapp#BackupsUnderVolumeMigrateBackupsResponse": "com.azure.netapp#MigrateBackupsUnderVolumeBackupsResponse",
+      "com.azure.netapp#BackupsUnderVolumeMigrateBackupsRequest": "com.azure.netapp#MigrateBackupsUnderVolumeBackupsRequest",
+      "com.azure.netapp#VolumesListReplications": "com.azure.netapp#ListVolumeReplications",
+      "com.azure.netapp#VolumesListReplicationsRequest": "com.azure.netapp#ListVolumeReplicationsRequest",
+      "com.azure.netapp#VolumesListReplicationsRequestExclude": "com.azure.netapp#ListVolumeReplicationsRequestExclude",
+      "com.azure.netapp#VolumesListQuotaReport": "com.azure.netapp#ListVolumeQuotaReport",
+      "com.azure.netapp#VolumesListQuotaReportRequest": "com.azure.netapp#ListVolumeQuotaReportRequest",
+      "com.azure.netapp#BackupsGetLatestStatus": "com.azure.netapp#GetBackupLatestStatus",
+      "com.azure.netapp#BackupsGetLatestStatusRequest": "com.azure.netapp#GetBackupLatestStatusRequest",
+      "com.azure.netapp#VolumesFinalizeRelocation": "com.azure.netapp#FinalizeVolumeRelocation",
+      "com.azure.netapp#VolumesFinalizeRelocationResponse": "com.azure.netapp#FinalizeVolumeRelocationResponse",
+      "com.azure.netapp#VolumesFinalizeRelocationRequest": "com.azure.netapp#FinalizeVolumeRelocationRequest",
+      "com.azure.netapp#VolumesFinalizeExternalReplication": "com.azure.netapp#FinalizeVolumeExternalReplication",
+      "com.azure.netapp#VolumesFinalizeExternalReplicationResponse": "com.azure.netapp#FinalizeVolumeExternalReplicationResponse",
+      "com.azure.netapp#VolumesFinalizeExternalReplicationRequest": "com.azure.netapp#FinalizeVolumeExternalReplicationRequest",
+      "com.azure.netapp#VolumesDeleteReplication": "com.azure.netapp#DeleteVolumeReplication",
+      "com.azure.netapp#VolumesDeleteReplicationResponse": "com.azure.netapp#DeleteVolumeReplicationResponse",
+      "com.azure.netapp#VolumesDeleteReplicationRequest": "com.azure.netapp#DeleteVolumeReplicationRequest",
+      "com.azure.netapp#BucketsRefreshCertificate": "com.azure.netapp#RefreshBucketCertificate",
+      "com.azure.netapp#BucketsRefreshCertificateResponse": "com.azure.netapp#RefreshBucketCertificateResponse",
+      "com.azure.netapp#BucketsRefreshCertificateRequest": "com.azure.netapp#RefreshBucketCertificateRequest",
+      "com.azure.netapp#BucketsGenerateCredentials": "com.azure.netapp#GenerateBucketCredentials",
+      "com.azure.netapp#BucketsGenerateCredentialsRequest": "com.azure.netapp#GenerateBucketCredentialsRequest",
+      "com.azure.netapp#BucketsGenerateAkvCredentials": "com.azure.netapp#GenerateBucketAkvCredentials",
+      "com.azure.netapp#BucketsGenerateAkvCredentialsResponse": "com.azure.netapp#GenerateBucketAkvCredentialsResponse",
+      "com.azure.netapp#BucketsGenerateAkvCredentialsRequest": "com.azure.netapp#GenerateBucketAkvCredentialsRequest",
+      "com.azure.netapp#BucketsDelete": "com.azure.netapp#DeleteBucket",
+      "com.azure.netapp#BucketsDeleteResponse": "com.azure.netapp#DeleteBucketResponse",
+      "com.azure.netapp#BucketsDeleteRequest": "com.azure.netapp#DeleteBucketRequest",
+      "com.azure.netapp#BucketsUpdate": "com.azure.netapp#UpdateBucket",
+      "com.azure.netapp#BucketsUpdateResponse": "com.azure.netapp#UpdateBucketResponse",
+      "com.azure.netapp#BucketsUpdateRequest": "com.azure.netapp#UpdateBucketRequest",
+      "com.azure.netapp#BucketsGet": "com.azure.netapp#GetBucket",
+      "com.azure.netapp#BucketsGetResponse": "com.azure.netapp#GetBucketResponse",
+      "com.azure.netapp#BucketsGetRequest": "com.azure.netapp#GetBucketRequest",
+      "com.azure.netapp#BucketsList": "com.azure.netapp#ListBuckets",
+      "com.azure.netapp#BucketsListRequest": "com.azure.netapp#ListBucketsRequest",
+      "com.azure.netapp#VolumesAuthorizeReplication": "com.azure.netapp#AuthorizeVolumeReplication",
+      "com.azure.netapp#VolumesAuthorizeReplicationResponse": "com.azure.netapp#AuthorizeVolumeReplicationResponse",
+      "com.azure.netapp#VolumesAuthorizeReplicationRequest": "com.azure.netapp#AuthorizeVolumeReplicationRequest",
+      "com.azure.netapp#VolumesAuthorizeExternalReplication": "com.azure.netapp#AuthorizeVolumeExternalReplication",
+      "com.azure.netapp#VolumesAuthorizeExternalReplicationRequest": "com.azure.netapp#AuthorizeVolumeExternalReplicationRequest",
+      "com.azure.netapp#VolumesDelete": "com.azure.netapp#DeleteVolume",
+      "com.azure.netapp#VolumesDeleteResponse": "com.azure.netapp#DeleteVolumeResponse",
+      "com.azure.netapp#VolumesDeleteRequest": "com.azure.netapp#DeleteVolumeRequest",
+      "com.azure.netapp#VolumesUpdate": "com.azure.netapp#UpdateVolume",
+      "com.azure.netapp#VolumesUpdateResponse": "com.azure.netapp#UpdateVolumeResponse",
+      "com.azure.netapp#VolumesUpdateResponseZonesList": "com.azure.netapp#UpdateVolumeResponseZonesList",
+      "com.azure.netapp#VolumesUpdateResponseTagsMap": "com.azure.netapp#UpdateVolumeResponseTagsMap",
+      "com.azure.netapp#VolumesUpdateRequest": "com.azure.netapp#UpdateVolumeRequest",
+      "com.azure.netapp#VolumesUpdateRequestTagsMap": "com.azure.netapp#UpdateVolumeRequestTagsMap",
+      "com.azure.netapp#VolumesGet": "com.azure.netapp#GetVolume",
+      "com.azure.netapp#VolumesGetResponse": "com.azure.netapp#GetVolumeResponse",
+      "com.azure.netapp#VolumesGetResponseZonesList": "com.azure.netapp#GetVolumeResponseZonesList",
+      "com.azure.netapp#VolumesGetResponseTagsMap": "com.azure.netapp#GetVolumeResponseTagsMap",
+      "com.azure.netapp#VolumesGetRequest": "com.azure.netapp#GetVolumeRequest",
+      "com.azure.netapp#VolumesList": "com.azure.netapp#ListVolumes",
+      "com.azure.netapp#VolumesListRequest": "com.azure.netapp#ListVolumesRequest",
+      "com.azure.netapp#CachesResetSmbPassword": "com.azure.netapp#ResetCachSmbPassword",
+      "com.azure.netapp#CachesResetSmbPasswordResponse": "com.azure.netapp#ResetCachSmbPasswordResponse",
+      "com.azure.netapp#CachesResetSmbPasswordResponseZonesList": "com.azure.netapp#ResetCachSmbPasswordResponseZonesList",
+      "com.azure.netapp#CachesResetSmbPasswordResponseTagsMap": "com.azure.netapp#ResetCachSmbPasswordResponseTagsMap",
+      "com.azure.netapp#CachesResetSmbPasswordRequest": "com.azure.netapp#ResetCachSmbPasswordRequest",
+      "com.azure.netapp#CachesListPeeringPassphrases": "com.azure.netapp#ListCachPeeringPassphrases",
+      "com.azure.netapp#CachesListPeeringPassphrasesRequest": "com.azure.netapp#ListCachPeeringPassphrasesRequest",
+      "com.azure.netapp#CachesDelete": "com.azure.netapp#DeleteCach",
+      "com.azure.netapp#CachesDeleteResponse": "com.azure.netapp#DeleteCachResponse",
+      "com.azure.netapp#CachesDeleteRequest": "com.azure.netapp#DeleteCachRequest",
+      "com.azure.netapp#CachesUpdate": "com.azure.netapp#UpdateCach",
+      "com.azure.netapp#CachesUpdateResponse": "com.azure.netapp#UpdateCachResponse",
+      "com.azure.netapp#CachesUpdateResponseZonesList": "com.azure.netapp#UpdateCachResponseZonesList",
+      "com.azure.netapp#CachesUpdateResponseTagsMap": "com.azure.netapp#UpdateCachResponseTagsMap",
+      "com.azure.netapp#CachesUpdateRequest": "com.azure.netapp#UpdateCachRequest",
+      "com.azure.netapp#CachesUpdateRequestTagsMap": "com.azure.netapp#UpdateCachRequestTagsMap",
+      "com.azure.netapp#CachesGet": "com.azure.netapp#GetCach",
+      "com.azure.netapp#CachesGetResponse": "com.azure.netapp#GetCachResponse",
+      "com.azure.netapp#CachesGetResponseZonesList": "com.azure.netapp#GetCachResponseZonesList",
+      "com.azure.netapp#CachesGetResponseTagsMap": "com.azure.netapp#GetCachResponseTagsMap",
+      "com.azure.netapp#CachesGetRequest": "com.azure.netapp#GetCachRequest",
+      "com.azure.netapp#CachesList": "com.azure.netapp#ListCaches",
+      "com.azure.netapp#CachesListRequest": "com.azure.netapp#ListCachesRequest",
+      "com.azure.netapp#PoolsDelete": "com.azure.netapp#DeletePool",
+      "com.azure.netapp#PoolsDeleteResponse": "com.azure.netapp#DeletePoolResponse",
+      "com.azure.netapp#PoolsDeleteRequest": "com.azure.netapp#DeletePoolRequest",
+      "com.azure.netapp#PoolsUpdate": "com.azure.netapp#UpdatePool",
+      "com.azure.netapp#PoolsUpdateResponse": "com.azure.netapp#UpdatePoolResponse",
+      "com.azure.netapp#PoolsUpdateResponseTagsMap": "com.azure.netapp#UpdatePoolResponseTagsMap",
+      "com.azure.netapp#PoolsUpdateRequest": "com.azure.netapp#UpdatePoolRequest",
+      "com.azure.netapp#PoolsUpdateRequestTagsMap": "com.azure.netapp#UpdatePoolRequestTagsMap",
+      "com.azure.netapp#PoolsGet": "com.azure.netapp#GetPool",
+      "com.azure.netapp#PoolsGetResponse": "com.azure.netapp#GetPoolResponse",
+      "com.azure.netapp#PoolsGetResponseTagsMap": "com.azure.netapp#GetPoolResponseTagsMap",
+      "com.azure.netapp#PoolsGetRequest": "com.azure.netapp#GetPoolRequest",
+      "com.azure.netapp#PoolsList": "com.azure.netapp#ListPools",
+      "com.azure.netapp#PoolsListRequest": "com.azure.netapp#ListPoolsRequest",
+      "com.azure.netapp#BackupsUnderBackupVaultRestoreFiles": "com.azure.netapp#RestoreBackupsUnderBackupVaultFiles",
+      "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesResponse": "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesResponse",
+      "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequest": "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesRequest",
+      "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequestFileListList": "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesRequestFileListList",
+      "com.azure.netapp#BackupsDelete": "com.azure.netapp#DeleteBackup",
+      "com.azure.netapp#BackupsDeleteResponse": "com.azure.netapp#DeleteBackupResponse",
+      "com.azure.netapp#BackupsDeleteRequest": "com.azure.netapp#DeleteBackupRequest",
+      "com.azure.netapp#BackupsUpdate": "com.azure.netapp#UpdateBackup",
+      "com.azure.netapp#BackupsUpdateResponse": "com.azure.netapp#UpdateBackupResponse",
+      "com.azure.netapp#BackupsUpdateRequest": "com.azure.netapp#UpdateBackupRequest",
+      "com.azure.netapp#BackupsCreate": "com.azure.netapp#CreateBackup",
+      "com.azure.netapp#BackupsCreateResponse": "com.azure.netapp#CreateBackupResponse",
+      "com.azure.netapp#BackupsCreateRequest": "com.azure.netapp#CreateBackupRequest",
+      "com.azure.netapp#BackupsGet": "com.azure.netapp#GetBackup",
+      "com.azure.netapp#BackupsGetResponse": "com.azure.netapp#GetBackupResponse",
+      "com.azure.netapp#BackupsGetRequest": "com.azure.netapp#GetBackupRequest",
+      "com.azure.netapp#BackupsListByVault": "com.azure.netapp#ListBackupByVault",
+      "com.azure.netapp#BackupsListByVaultRequest": "com.azure.netapp#ListBackupByVaultRequest",
+      "com.azure.netapp#BackupVaultsDelete": "com.azure.netapp#DeleteBackupVault",
+      "com.azure.netapp#BackupVaultsDeleteResponse": "com.azure.netapp#DeleteBackupVaultResponse",
+      "com.azure.netapp#BackupVaultsDeleteRequest": "com.azure.netapp#DeleteBackupVaultRequest",
+      "com.azure.netapp#BackupVaultsUpdate": "com.azure.netapp#UpdateBackupVault",
+      "com.azure.netapp#BackupVaultsUpdateResponse": "com.azure.netapp#UpdateBackupVaultResponse",
+      "com.azure.netapp#BackupVaultsUpdateResponseTagsMap": "com.azure.netapp#UpdateBackupVaultResponseTagsMap",
+      "com.azure.netapp#BackupVaultsUpdateRequest": "com.azure.netapp#UpdateBackupVaultRequest",
+      "com.azure.netapp#BackupVaultsUpdateRequestTagsMap": "com.azure.netapp#UpdateBackupVaultRequestTagsMap",
+      "com.azure.netapp#BackupVaultsGet": "com.azure.netapp#GetBackupVault",
+      "com.azure.netapp#BackupVaultsGetResponse": "com.azure.netapp#GetBackupVaultResponse",
+      "com.azure.netapp#BackupVaultsGetResponseTagsMap": "com.azure.netapp#GetBackupVaultResponseTagsMap",
+      "com.azure.netapp#BackupVaultsGetRequest": "com.azure.netapp#GetBackupVaultRequest",
+      "com.azure.netapp#BackupVaultsListByNetAppAccount": "com.azure.netapp#ListBackupVaultByNetAppAccount",
+      "com.azure.netapp#BackupVaultsListByNetAppAccountRequest": "com.azure.netapp#ListBackupVaultByNetAppAccountRequest",
+      "com.azure.netapp#BackupPoliciesDelete": "com.azure.netapp#DeleteBackupPolicy",
+      "com.azure.netapp#BackupPoliciesDeleteResponse": "com.azure.netapp#DeleteBackupPolicyResponse",
+      "com.azure.netapp#BackupPoliciesDeleteRequest": "com.azure.netapp#DeleteBackupPolicyRequest",
+      "com.azure.netapp#BackupPoliciesUpdate": "com.azure.netapp#UpdateBackupPolicy",
+      "com.azure.netapp#BackupPoliciesUpdateResponse": "com.azure.netapp#UpdateBackupPolicyResponse",
+      "com.azure.netapp#BackupPoliciesUpdateResponseTagsMap": "com.azure.netapp#UpdateBackupPolicyResponseTagsMap",
+      "com.azure.netapp#BackupPoliciesUpdateRequest": "com.azure.netapp#UpdateBackupPolicyRequest",
+      "com.azure.netapp#BackupPoliciesUpdateRequestTagsMap": "com.azure.netapp#UpdateBackupPolicyRequestTagsMap",
+      "com.azure.netapp#BackupPoliciesCreate": "com.azure.netapp#CreateBackupPolicy",
+      "com.azure.netapp#BackupPoliciesCreateResponse": "com.azure.netapp#CreateBackupPolicyResponse",
+      "com.azure.netapp#BackupPoliciesCreateResponseTagsMap": "com.azure.netapp#CreateBackupPolicyResponseTagsMap",
+      "com.azure.netapp#BackupPoliciesCreateRequest": "com.azure.netapp#CreateBackupPolicyRequest",
+      "com.azure.netapp#BackupPoliciesCreateRequestTagsMap": "com.azure.netapp#CreateBackupPolicyRequestTagsMap",
+      "com.azure.netapp#BackupPoliciesGet": "com.azure.netapp#GetBackupPolicy",
+      "com.azure.netapp#BackupPoliciesGetResponse": "com.azure.netapp#GetBackupPolicyResponse",
+      "com.azure.netapp#BackupPoliciesGetResponseTagsMap": "com.azure.netapp#GetBackupPolicyResponseTagsMap",
+      "com.azure.netapp#BackupPoliciesGetRequest": "com.azure.netapp#GetBackupPolicyRequest",
+      "com.azure.netapp#BackupPoliciesList2": "com.azure.netapp#ListBackupPolicies",
+      "com.azure.netapp#BackupPoliciesListRequest": "com.azure.netapp#ListBackupPoliciesRequest",
+      "com.azure.netapp#AccountsDelete": "com.azure.netapp#DeleteAccount",
+      "com.azure.netapp#AccountsDeleteResponse": "com.azure.netapp#DeleteAccountResponse",
+      "com.azure.netapp#AccountsDeleteRequest": "com.azure.netapp#DeleteAccountRequest",
+      "com.azure.netapp#AccountsUpdate": "com.azure.netapp#UpdateAccount",
+      "com.azure.netapp#AccountsUpdateResponse": "com.azure.netapp#UpdateAccountResponse",
+      "com.azure.netapp#AccountsUpdateResponseIdentity": "com.azure.netapp#UpdateAccountResponseIdentity",
+      "com.azure.netapp#AccountsUpdateResponseIdentityUserAssignedIdentitiesMap": "com.azure.netapp#UpdateAccountResponseIdentityUserAssignedIdentitiesMap",
+      "com.azure.netapp#AccountsUpdateResponseTagsMap": "com.azure.netapp#UpdateAccountResponseTagsMap",
+      "com.azure.netapp#AccountsUpdateRequest": "com.azure.netapp#UpdateAccountRequest",
+      "com.azure.netapp#AccountsUpdateRequestIdentity": "com.azure.netapp#UpdateAccountRequestIdentity",
+      "com.azure.netapp#AccountsUpdateRequestIdentityUserAssignedIdentitiesMap": "com.azure.netapp#UpdateAccountRequestIdentityUserAssignedIdentitiesMap",
+      "com.azure.netapp#AccountsUpdateRequestTagsMap": "com.azure.netapp#UpdateAccountRequestTagsMap",
+      "com.azure.netapp#AccountsGet": "com.azure.netapp#GetAccount",
+      "com.azure.netapp#AccountsGetResponse": "com.azure.netapp#GetAccountResponse",
+      "com.azure.netapp#AccountsGetResponseIdentity": "com.azure.netapp#GetAccountResponseIdentity",
+      "com.azure.netapp#AccountsGetResponseIdentityUserAssignedIdentitiesMap": "com.azure.netapp#GetAccountResponseIdentityUserAssignedIdentitiesMap",
+      "com.azure.netapp#AccountsGetResponseTagsMap": "com.azure.netapp#GetAccountResponseTagsMap",
+      "com.azure.netapp#AccountsGetRequest": "com.azure.netapp#GetAccountRequest",
+      "com.azure.netapp#AccountsList": "com.azure.netapp#ListAccounts",
+      "com.azure.netapp#AccountsListRequest": "com.azure.netapp#ListAccountsRequest",
+      "com.azure.netapp#AccountsListBySubscription": "com.azure.netapp#ListAccountBySubscription",
+      "com.azure.netapp#AccountsListBySubscriptionRequest": "com.azure.netapp#ListAccountBySubscriptionRequest",
+      "com.azure.netapp#NetAppResourceUsagesGet": "com.azure.netapp#GetNetAppResourceUsage",
+      "com.azure.netapp#NetAppResourceUsagesGetRequest": "com.azure.netapp#GetNetAppResourceUsageRequest",
+      "com.azure.netapp#NetAppResourceUsagesList": "com.azure.netapp#ListNetAppResourceUsages",
+      "com.azure.netapp#NetAppResourceUsagesListRequest": "com.azure.netapp#ListNetAppResourceUsagesRequest",
+      "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSet": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSet",
+      "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetResponse": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetResponse",
+      "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetRequest": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetRequest",
+      "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures",
+      "com.azure.netapp#NetAppResourceRegionInfosGet": "com.azure.netapp#GetNetAppResourceRegionInfos",
+      "com.azure.netapp#NetAppResourceRegionInfosGetResponse": "com.azure.netapp#GetNetAppResourceRegionInfosResponse",
+      "com.azure.netapp#NetAppResourceRegionInfosGetRequest": "com.azure.netapp#GetNetAppResourceRegionInfosRequest",
+      "com.azure.netapp#NetAppResourceRegionInfosList": "com.azure.netapp#ListNetAppResourceRegionInfos",
+      "com.azure.netapp#NetAppResourceRegionInfosListRequest": "com.azure.netapp#ListNetAppResourceRegionInfosRequest",
+      "com.azure.netapp#NetAppResourceQuotaLimitsGet": "com.azure.netapp#GetNetAppResourceQuotaLimit",
+      "com.azure.netapp#NetAppResourceQuotaLimitsGetResponse": "com.azure.netapp#GetNetAppResourceQuotaLimitResponse",
+      "com.azure.netapp#NetAppResourceQuotaLimitsGetRequest": "com.azure.netapp#GetNetAppResourceQuotaLimitRequest",
+      "com.azure.netapp#NetAppResourceQuotaLimitsList": "com.azure.netapp#ListNetAppResourceQuotaLimits",
+      "com.azure.netapp#NetAppResourceQuotaLimitsListRequest": "com.azure.netapp#ListNetAppResourceQuotaLimitsRequest",
+      "com.azure.netapp#NetAppResourceCheckQuotaAvailability": "com.azure.netapp#CheckNetAppResourceQuotaAvailability",
+      "com.azure.netapp#NetAppResourceCheckQuotaAvailabilityRequest": "com.azure.netapp#CheckNetAppResourceQuotaAvailabilityRequest",
+      "com.azure.netapp#NetAppResourceCheckNameAvailability": "com.azure.netapp#CheckNetAppResourceNameAvailability",
+      "com.azure.netapp#NetAppResourceCheckNameAvailabilityRequest": "com.azure.netapp#CheckNetAppResourceNameAvailabilityRequest",
+      "com.azure.netapp#NetAppResourceCheckFilePathAvailability": "com.azure.netapp#CheckNetAppResourceFilePathAvailability",
+      "com.azure.netapp#NetAppResourceCheckFilePathAvailabilityRequest": "com.azure.netapp#CheckNetAppResourceFilePathAvailabilityRequest",
+      "com.azure.netapp#OperationsList": "com.azure.netapp#ListOperations",
+      "com.azure.netapp#OperationsListRequest": "com.azure.netapp#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.netapp#DeleteVolumeGroup": {
+    "com.azure.netapp#VolumeGroupsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteVolumeGroupRequest"
+        "target": "com.azure.netapp#VolumeGroupsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteVolumeGroupResponse"
+        "target": "com.azure.netapp#VolumeGroupsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +327,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteVolumeGroupResponse": {
+    "com.azure.netapp#VolumeGroupsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -59,7 +349,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteVolumeGroupRequest": {
+    "com.azure.netapp#VolumeGroupsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -99,13 +389,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#CreateVolumeGroup": {
+    "com.azure.netapp#VolumeGroupsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CreateVolumeGroupRequest"
+        "target": "com.azure.netapp#VolumeGroupsCreateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#CreateVolumeGroupResponse"
+        "target": "com.azure.netapp#VolumeGroupsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -118,7 +408,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CreateVolumeGroupResponse": {
+    "com.azure.netapp#VolumeGroupsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1882,7 +2172,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.netapp#CreateVolumeGroupRequest": {
+    "com.azure.netapp#VolumeGroupsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2566,13 +2856,13 @@
         "smithy.api#documentation": "Application specific placement rules for the volume group"
       }
     },
-    "com.azure.netapp#GetVolumeGroup": {
+    "com.azure.netapp#VolumeGroupsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetVolumeGroupRequest"
+        "target": "com.azure.netapp#VolumeGroupsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetVolumeGroupResponse"
+        "target": "com.azure.netapp#VolumeGroupsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2585,7 +2875,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetVolumeGroupResponse": {
+    "com.azure.netapp#VolumeGroupsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2629,7 +2919,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetVolumeGroupRequest": {
+    "com.azure.netapp#VolumeGroupsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2669,10 +2959,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListVolumeGroupByNetAppAccount": {
+    "com.azure.netapp#VolumeGroupsListByNetAppAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListVolumeGroupByNetAppAccountRequest"
+        "target": "com.azure.netapp#VolumeGroupsListByNetAppAccountRequest"
       },
       "output": {
         "target": "com.azure.netapp#VolumeGroupList"
@@ -2682,10 +2972,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all volume groups for given account",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#VolumeGroupList": {
@@ -2776,7 +3073,7 @@
         "smithy.api#documentation": "Volume group properties"
       }
     },
-    "com.azure.netapp#ListVolumeGroupByNetAppAccountRequest": {
+    "com.azure.netapp#VolumeGroupsListByNetAppAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2801,6 +3098,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the NetApp account"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2895,10 +3198,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListSnapshotPolicyVolumes": {
+    "com.azure.netapp#SnapshotPoliciesListVolumes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListSnapshotPolicyVolumesRequest"
+        "target": "com.azure.netapp#SnapshotPoliciesListVolumesRequest"
       },
       "output": {
         "target": "com.azure.netapp#SnapshotPolicyVolumeList"
@@ -3029,7 +3332,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListSnapshotPolicyVolumesRequest": {
+    "com.azure.netapp#SnapshotPoliciesListVolumesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3069,13 +3372,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteSnapshotPolicy": {
+    "com.azure.netapp#SnapshotPoliciesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteSnapshotPolicyRequest"
+        "target": "com.azure.netapp#SnapshotPoliciesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteSnapshotPolicyResponse"
+        "target": "com.azure.netapp#SnapshotPoliciesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3088,7 +3391,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteSnapshotPolicyResponse": {
+    "com.azure.netapp#SnapshotPoliciesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -3110,7 +3413,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteSnapshotPolicyRequest": {
+    "com.azure.netapp#SnapshotPoliciesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3150,13 +3453,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateSnapshotPolicy": {
+    "com.azure.netapp#SnapshotPoliciesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateSnapshotPolicyRequest"
+        "target": "com.azure.netapp#SnapshotPoliciesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateSnapshotPolicyResponse"
+        "target": "com.azure.netapp#SnapshotPoliciesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3169,7 +3472,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateSnapshotPolicyResponse": {
+    "com.azure.netapp#SnapshotPoliciesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3197,7 +3500,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateSnapshotPolicyResponseTagsMap",
+          "target": "com.azure.netapp#SnapshotPoliciesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3419,7 +3722,7 @@
         "smithy.api#documentation": "Hourly Schedule properties"
       }
     },
-    "com.azure.netapp#UpdateSnapshotPolicyResponseTagsMap": {
+    "com.azure.netapp#SnapshotPoliciesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3431,7 +3734,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateSnapshotPolicyRequest": {
+    "com.azure.netapp#SnapshotPoliciesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3473,7 +3776,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateSnapshotPolicyRequestTagsMap",
+          "target": "com.azure.netapp#SnapshotPoliciesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -3527,7 +3830,7 @@
         "smithy.api#documentation": "Snapshot policy properties"
       }
     },
-    "com.azure.netapp#UpdateSnapshotPolicyRequestTagsMap": {
+    "com.azure.netapp#SnapshotPoliciesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3539,13 +3842,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.netapp#CreateSnapshotPolicy": {
+    "com.azure.netapp#SnapshotPoliciesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CreateSnapshotPolicyRequest"
+        "target": "com.azure.netapp#SnapshotPoliciesCreateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#CreateSnapshotPolicyResponse"
+        "target": "com.azure.netapp#SnapshotPoliciesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3558,7 +3861,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CreateSnapshotPolicyResponse": {
+    "com.azure.netapp#SnapshotPoliciesCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3586,7 +3889,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#CreateSnapshotPolicyResponseTagsMap",
+          "target": "com.azure.netapp#SnapshotPoliciesCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3616,7 +3919,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#CreateSnapshotPolicyResponseTagsMap": {
+    "com.azure.netapp#SnapshotPoliciesCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3628,7 +3931,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#CreateSnapshotPolicyRequest": {
+    "com.azure.netapp#SnapshotPoliciesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3664,7 +3967,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#CreateSnapshotPolicyRequestTagsMap",
+          "target": "com.azure.netapp#SnapshotPoliciesCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3688,7 +3991,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#CreateSnapshotPolicyRequestTagsMap": {
+    "com.azure.netapp#SnapshotPoliciesCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3700,13 +4003,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetSnapshotPolicy": {
+    "com.azure.netapp#SnapshotPoliciesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetSnapshotPolicyRequest"
+        "target": "com.azure.netapp#SnapshotPoliciesGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetSnapshotPolicyResponse"
+        "target": "com.azure.netapp#SnapshotPoliciesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3719,7 +4022,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetSnapshotPolicyResponse": {
+    "com.azure.netapp#SnapshotPoliciesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3747,7 +4050,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetSnapshotPolicyResponseTagsMap",
+          "target": "com.azure.netapp#SnapshotPoliciesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3777,7 +4080,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetSnapshotPolicyResponseTagsMap": {
+    "com.azure.netapp#SnapshotPoliciesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3789,7 +4092,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetSnapshotPolicyRequest": {
+    "com.azure.netapp#SnapshotPoliciesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3829,10 +4132,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListSnapshotPolicies": {
+    "com.azure.netapp#SnapshotPoliciesList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListSnapshotPoliciesRequest"
+        "target": "com.azure.netapp#SnapshotPoliciesListRequest"
       },
       "output": {
         "target": "com.azure.netapp#SnapshotPoliciesList"
@@ -3842,10 +4145,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List snapshot policy",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#SnapshotPoliciesList": {
@@ -3948,7 +4258,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListSnapshotPoliciesRequest": {
+    "com.azure.netapp#SnapshotPoliciesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3974,19 +4284,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the NetApp account"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#RenewAccountCredentials": {
+    "com.azure.netapp#AccountsRenewCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#RenewAccountCredentialsRequest"
+        "target": "com.azure.netapp#AccountsRenewCredentialsRequest"
       },
       "output": {
-        "target": "com.azure.netapp#RenewAccountCredentialsResponse"
+        "target": "com.azure.netapp#AccountsRenewCredentialsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3999,7 +4315,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#RenewAccountCredentialsResponse": {
+    "com.azure.netapp#AccountsRenewCredentialsResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -4021,7 +4337,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#RenewAccountCredentialsRequest": {
+    "com.azure.netapp#AccountsRenewCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4053,13 +4369,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GetNetAppResourceQuotaLimitsAccount": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsAccountGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetNetAppResourceQuotaLimitsAccountRequest"
+        "target": "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetNetAppResourceQuotaLimitsAccountResponse"
+        "target": "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4072,7 +4388,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetNetAppResourceQuotaLimitsAccountResponse": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4137,7 +4453,7 @@
         "smithy.api#documentation": "QuotaItem Properties"
       }
     },
-    "com.azure.netapp#GetNetAppResourceQuotaLimitsAccountRequest": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsAccountGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4177,10 +4493,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListNetAppResourceQuotaLimitsAccount": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsAccountList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListNetAppResourceQuotaLimitsAccountRequest"
+        "target": "com.azure.netapp#NetAppResourceQuotaLimitsAccountListRequest"
       },
       "output": {
         "target": "com.azure.netapp#QuotaItemList"
@@ -4190,10 +4506,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/quotaLimits",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of quota limits for all quotas that are under account. Currently PoolsPerAccount is the only one.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#QuotaItemList": {
@@ -4264,7 +4587,7 @@
         "smithy.api#documentation": "Information regarding Quota Item."
       }
     },
-    "com.azure.netapp#ListNetAppResourceQuotaLimitsAccountRequest": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsAccountListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4290,19 +4613,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the NetApp account"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#MigrateBackupsUnderAccountBackups": {
+    "com.azure.netapp#BackupsUnderAccountMigrateBackups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#MigrateBackupsUnderAccountBackupsRequest"
+        "target": "com.azure.netapp#BackupsUnderAccountMigrateBackupsRequest"
       },
       "output": {
-        "target": "com.azure.netapp#MigrateBackupsUnderAccountBackupsResponse"
+        "target": "com.azure.netapp#BackupsUnderAccountMigrateBackupsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4315,7 +4644,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#MigrateBackupsUnderAccountBackupsResponse": {
+    "com.azure.netapp#BackupsUnderAccountMigrateBackupsResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -4337,7 +4666,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#MigrateBackupsUnderAccountBackupsRequest": {
+    "com.azure.netapp#BackupsUnderAccountMigrateBackupsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4376,10 +4705,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GetAccountChangeKeyVaultInformation": {
+    "com.azure.netapp#AccountsGetChangeKeyVaultInformation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetAccountChangeKeyVaultInformationRequest"
+        "target": "com.azure.netapp#AccountsGetChangeKeyVaultInformationRequest"
       },
       "output": {
         "target": "com.azure.netapp#GetKeyVaultStatusResponse"
@@ -4491,7 +4820,7 @@
         "smithy.api#documentation": "Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint."
       }
     },
-    "com.azure.netapp#GetAccountChangeKeyVaultInformationRequest": {
+    "com.azure.netapp#AccountsGetChangeKeyVaultInformationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4632,13 +4961,13 @@
         "smithy.api#documentation": "Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint."
       }
     },
-    "com.azure.netapp#DeleteVolumeQuotaRule": {
+    "com.azure.netapp#VolumeQuotaRulesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteVolumeQuotaRuleRequest"
+        "target": "com.azure.netapp#VolumeQuotaRulesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteVolumeQuotaRuleResponse"
+        "target": "com.azure.netapp#VolumeQuotaRulesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4651,7 +4980,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteVolumeQuotaRuleResponse": {
+    "com.azure.netapp#VolumeQuotaRulesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -4673,7 +5002,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteVolumeQuotaRuleRequest": {
+    "com.azure.netapp#VolumeQuotaRulesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4729,13 +5058,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateVolumeQuotaRule": {
+    "com.azure.netapp#VolumeQuotaRulesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateVolumeQuotaRuleRequest"
+        "target": "com.azure.netapp#VolumeQuotaRulesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateVolumeQuotaRuleResponse"
+        "target": "com.azure.netapp#VolumeQuotaRulesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4748,7 +5077,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateVolumeQuotaRuleResponse": {
+    "com.azure.netapp#VolumeQuotaRulesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4776,7 +5105,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateVolumeQuotaRuleResponseTagsMap",
+          "target": "com.azure.netapp#VolumeQuotaRulesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4933,7 +5262,7 @@
         "smithy.api#documentation": "Gets the status of the VolumeQuotaRule at the time the operation was called."
       }
     },
-    "com.azure.netapp#UpdateVolumeQuotaRuleResponseTagsMap": {
+    "com.azure.netapp#VolumeQuotaRulesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4945,7 +5274,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateVolumeQuotaRuleRequest": {
+    "com.azure.netapp#VolumeQuotaRulesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4997,7 +5326,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateVolumeQuotaRuleRequestTagsMap",
+          "target": "com.azure.netapp#VolumeQuotaRulesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -5039,7 +5368,7 @@
         "smithy.api#documentation": "Volume Quota Rule properties"
       }
     },
-    "com.azure.netapp#UpdateVolumeQuotaRuleRequestTagsMap": {
+    "com.azure.netapp#VolumeQuotaRulesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5051,13 +5380,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.netapp#CreateVolumeQuotaRule": {
+    "com.azure.netapp#VolumeQuotaRulesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CreateVolumeQuotaRuleRequest"
+        "target": "com.azure.netapp#VolumeQuotaRulesCreateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#CreateVolumeQuotaRuleResponse"
+        "target": "com.azure.netapp#VolumeQuotaRulesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5070,7 +5399,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CreateVolumeQuotaRuleResponse": {
+    "com.azure.netapp#VolumeQuotaRulesCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5098,7 +5427,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#CreateVolumeQuotaRuleResponseTagsMap",
+          "target": "com.azure.netapp#VolumeQuotaRulesCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5135,7 +5464,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#CreateVolumeQuotaRuleResponseTagsMap": {
+    "com.azure.netapp#VolumeQuotaRulesCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5147,7 +5476,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#CreateVolumeQuotaRuleRequest": {
+    "com.azure.netapp#VolumeQuotaRulesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5199,7 +5528,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#CreateVolumeQuotaRuleRequestTagsMap",
+          "target": "com.azure.netapp#VolumeQuotaRulesCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5222,7 +5551,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#CreateVolumeQuotaRuleRequestTagsMap": {
+    "com.azure.netapp#VolumeQuotaRulesCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5234,13 +5563,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetVolumeQuotaRule": {
+    "com.azure.netapp#VolumeQuotaRulesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetVolumeQuotaRuleRequest"
+        "target": "com.azure.netapp#VolumeQuotaRulesGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetVolumeQuotaRuleResponse"
+        "target": "com.azure.netapp#VolumeQuotaRulesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5253,7 +5582,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetVolumeQuotaRuleResponse": {
+    "com.azure.netapp#VolumeQuotaRulesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5281,7 +5610,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetVolumeQuotaRuleResponseTagsMap",
+          "target": "com.azure.netapp#VolumeQuotaRulesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5304,7 +5633,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetVolumeQuotaRuleResponseTagsMap": {
+    "com.azure.netapp#VolumeQuotaRulesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5316,7 +5645,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetVolumeQuotaRuleRequest": {
+    "com.azure.netapp#VolumeQuotaRulesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5372,10 +5701,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListVolumeQuotaRuleByVolume": {
+    "com.azure.netapp#VolumeQuotaRulesListByVolume": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListVolumeQuotaRuleByVolumeRequest"
+        "target": "com.azure.netapp#VolumeQuotaRulesListByVolumeRequest"
       },
       "output": {
         "target": "com.azure.netapp#VolumeQuotaRulesList"
@@ -5385,10 +5714,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all quota rules associated with the volume",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#VolumeQuotaRulesList": {
@@ -5484,7 +5820,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListVolumeQuotaRuleByVolumeRequest": {
+    "com.azure.netapp#VolumeQuotaRulesListByVolumeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5525,6 +5861,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the volume"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5698,13 +6040,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#RestoreSnapshotFiles": {
+    "com.azure.netapp#SnapshotsRestoreFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#RestoreSnapshotFilesRequest"
+        "target": "com.azure.netapp#SnapshotsRestoreFilesRequest"
       },
       "output": {
-        "target": "com.azure.netapp#RestoreSnapshotFilesResponse"
+        "target": "com.azure.netapp#SnapshotsRestoreFilesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5717,7 +6059,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#RestoreSnapshotFilesResponse": {
+    "com.azure.netapp#SnapshotsRestoreFilesResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5739,7 +6081,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#RestoreSnapshotFilesRequest": {
+    "com.azure.netapp#SnapshotsRestoreFilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5791,7 +6133,7 @@
           }
         },
         "filePaths": {
-          "target": "com.azure.netapp#RestoreSnapshotFilesRequestFilePathsList",
+          "target": "com.azure.netapp#SnapshotsRestoreFilesRequestFilePathsList",
           "traits": {
             "smithy.api#documentation": "List of files to be restored",
             "smithy.api#required": {}
@@ -5808,7 +6150,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#RestoreSnapshotFilesRequestFilePathsList": {
+    "com.azure.netapp#SnapshotsRestoreFilesRequestFilePathsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -5817,13 +6159,13 @@
         "smithy.api#documentation": "List of files to be restored"
       }
     },
-    "com.azure.netapp#DeleteSnapshot": {
+    "com.azure.netapp#SnapshotsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteSnapshotRequest"
+        "target": "com.azure.netapp#SnapshotsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteSnapshotResponse"
+        "target": "com.azure.netapp#SnapshotsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5836,7 +6178,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteSnapshotResponse": {
+    "com.azure.netapp#SnapshotsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5858,7 +6200,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteSnapshotRequest": {
+    "com.azure.netapp#SnapshotsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5914,13 +6256,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateSnapshot": {
+    "com.azure.netapp#SnapshotsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateSnapshotRequest"
+        "target": "com.azure.netapp#SnapshotsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateSnapshotResponse"
+        "target": "com.azure.netapp#SnapshotsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5933,7 +6275,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateSnapshotResponse": {
+    "com.azure.netapp#SnapshotsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6018,7 +6360,7 @@
         "smithy.api#documentation": "Snapshot properties"
       }
     },
-    "com.azure.netapp#UpdateSnapshotRequest": {
+    "com.azure.netapp#SnapshotsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6074,13 +6416,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#CreateSnapshot": {
+    "com.azure.netapp#SnapshotsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CreateSnapshotRequest"
+        "target": "com.azure.netapp#SnapshotsCreateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#CreateSnapshotResponse"
+        "target": "com.azure.netapp#SnapshotsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6093,7 +6435,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CreateSnapshotResponse": {
+    "com.azure.netapp#SnapshotsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6152,7 +6494,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#CreateSnapshotRequest": {
+    "com.azure.netapp#SnapshotsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6228,13 +6570,13 @@
         "smithy.api#documentation": "Snapshot properties"
       }
     },
-    "com.azure.netapp#GetSnapshot": {
+    "com.azure.netapp#SnapshotsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetSnapshotRequest"
+        "target": "com.azure.netapp#SnapshotsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetSnapshotResponse"
+        "target": "com.azure.netapp#SnapshotsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6247,7 +6589,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetSnapshotResponse": {
+    "com.azure.netapp#SnapshotsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6292,7 +6634,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetSnapshotRequest": {
+    "com.azure.netapp#SnapshotsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6348,10 +6690,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListSnapshots": {
+    "com.azure.netapp#SnapshotsList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListSnapshotsRequest"
+        "target": "com.azure.netapp#SnapshotsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#SnapshotsList"
@@ -6361,10 +6703,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/snapshots",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all snapshots associated with the volume",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#SnapshotsList": {
@@ -6442,7 +6791,7 @@
         "smithy.api#documentation": "Snapshot of a Volume"
       }
     },
-    "com.azure.netapp#ListSnapshotsRequest": {
+    "com.azure.netapp#SnapshotsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6483,6 +6832,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the volume"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6763,13 +7118,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ResetVolumeCifsPassword": {
+    "com.azure.netapp#VolumesResetCifsPassword": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ResetVolumeCifsPasswordRequest"
+        "target": "com.azure.netapp#VolumesResetCifsPasswordRequest"
       },
       "output": {
-        "target": "com.azure.netapp#ResetVolumeCifsPasswordResponse"
+        "target": "com.azure.netapp#VolumesResetCifsPasswordResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6782,7 +7137,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#ResetVolumeCifsPasswordResponse": {
+    "com.azure.netapp#VolumesResetCifsPasswordResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -6804,7 +7159,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#ResetVolumeCifsPasswordRequest": {
+    "com.azure.netapp#VolumesResetCifsPasswordRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7236,13 +7591,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ClearRansomwareReportSuspects": {
+    "com.azure.netapp#RansomwareReportsClearSuspects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ClearRansomwareReportSuspectsRequest"
+        "target": "com.azure.netapp#RansomwareReportsClearSuspectsRequest"
       },
       "output": {
-        "target": "com.azure.netapp#ClearRansomwareReportSuspectsResponse"
+        "target": "com.azure.netapp#RansomwareReportsClearSuspectsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7255,7 +7610,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#ClearRansomwareReportSuspectsResponse": {
+    "com.azure.netapp#RansomwareReportsClearSuspectsResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -7277,7 +7632,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#ClearRansomwareReportSuspectsRequest": {
+    "com.azure.netapp#RansomwareReportsClearSuspectsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7336,7 +7691,7 @@
           }
         },
         "extensions": {
-          "target": "com.azure.netapp#ClearRansomwareReportSuspectsRequestExtensionsList",
+          "target": "com.azure.netapp#RansomwareReportsClearSuspectsRequestExtensionsList",
           "traits": {
             "smithy.api#documentation": "List of file extensions resolved (PotentialThreat or FalsePositive)",
             "smithy.api#required": {}
@@ -7347,7 +7702,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ClearRansomwareReportSuspectsRequestExtensionsList": {
+    "com.azure.netapp#RansomwareReportsClearSuspectsRequestExtensionsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -7376,13 +7731,13 @@
         "smithy.api#documentation": "ARP report suspect resolution"
       }
     },
-    "com.azure.netapp#GetRansomwareReport": {
+    "com.azure.netapp#RansomwareReportsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetRansomwareReportRequest"
+        "target": "com.azure.netapp#RansomwareReportsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetRansomwareReportResponse"
+        "target": "com.azure.netapp#RansomwareReportsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7395,7 +7750,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetRansomwareReportResponse": {
+    "com.azure.netapp#RansomwareReportsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7605,7 +7960,7 @@
         "smithy.api#documentation": "State of the Advanced Ransomware Protection (ARP) report"
       }
     },
-    "com.azure.netapp#GetRansomwareReportRequest": {
+    "com.azure.netapp#RansomwareReportsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7661,10 +8016,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListRansomwareReports": {
+    "com.azure.netapp#RansomwareReportsList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListRansomwareReportsRequest"
+        "target": "com.azure.netapp#RansomwareReportsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#RansomwareReportsList"
@@ -7674,10 +8029,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/ransomwareReports",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all ransomware reports for the volume\nReturns a list of the Advanced Ransomware Protection (ARP) reports for the volume.\nARP reports are created with a list of suspected files when it detects any combination of high data entropy, abnormal volume activity with data encryption, and unusual file extensions.\nARP creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of these ARP snapshots or another snapshot of your volume to restore data\"",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#RansomwareReportsList": {
@@ -7748,7 +8110,7 @@
         "smithy.api#documentation": "Advanced Ransomware Protection (ARP) report\nGet details of the specified Advanced Ransomware Protection report (ARP).\nARP reports are created with a list of suspected files when it detects any combination of high data entropy, abnormal volume activity with data encryption, and unusual file extensions.\nARP creates snapshots named Anti_ransomware_backup when it detects a potential ransomware threat. You can use one of these ARP snapshots or another snapshot of your volume to restore data."
       }
     },
-    "com.azure.netapp#ListRansomwareReportsRequest": {
+    "com.azure.netapp#RansomwareReportsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7789,6 +8151,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the volume"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8058,13 +8426,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#TransferVolumesPerformReplication": {
+    "com.azure.netapp#VolumesPerformReplicationTransfer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#TransferVolumesPerformReplicationRequest"
+        "target": "com.azure.netapp#VolumesPerformReplicationTransferRequest"
       },
       "output": {
-        "target": "com.azure.netapp#TransferVolumesPerformReplicationResponse"
+        "target": "com.azure.netapp#VolumesPerformReplicationTransferResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8077,7 +8445,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#TransferVolumesPerformReplicationResponse": {
+    "com.azure.netapp#VolumesPerformReplicationTransferResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -8099,7 +8467,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#TransferVolumesPerformReplicationRequest": {
+    "com.azure.netapp#VolumesPerformReplicationTransferRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8285,13 +8653,13 @@
         "smithy.api#documentation": "A list of IC-LIF IPs that can be used to connect to the On-prem cluster"
       }
     },
-    "com.azure.netapp#MigrateBackupsUnderVolumeBackups": {
+    "com.azure.netapp#BackupsUnderVolumeMigrateBackups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#MigrateBackupsUnderVolumeBackupsRequest"
+        "target": "com.azure.netapp#BackupsUnderVolumeMigrateBackupsRequest"
       },
       "output": {
-        "target": "com.azure.netapp#MigrateBackupsUnderVolumeBackupsResponse"
+        "target": "com.azure.netapp#BackupsUnderVolumeMigrateBackupsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8304,7 +8672,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#MigrateBackupsUnderVolumeBackupsResponse": {
+    "com.azure.netapp#BackupsUnderVolumeMigrateBackupsResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -8326,7 +8694,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#MigrateBackupsUnderVolumeBackupsRequest": {
+    "com.azure.netapp#BackupsUnderVolumeMigrateBackupsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8381,10 +8749,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListVolumeReplications": {
+    "com.azure.netapp#VolumesListReplications": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListVolumeReplicationsRequest"
+        "target": "com.azure.netapp#VolumesListReplicationsRequest"
       },
       "output": {
         "target": "com.azure.netapp#ListReplications"
@@ -8394,10 +8762,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/listReplications",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all replications for a specified volume",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#ListReplications": {
@@ -8512,7 +8887,7 @@
         "smithy.api#documentation": "The status of the replication"
       }
     },
-    "com.azure.netapp#ListVolumeReplicationsRequest": {
+    "com.azure.netapp#VolumesListReplicationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8556,9 +8931,15 @@
           }
         },
         "exclude": {
-          "target": "com.azure.netapp#ListVolumeReplicationsRequestExclude",
+          "target": "com.azure.netapp#VolumesListReplicationsRequestExclude",
           "traits": {
             "smithy.api#documentation": "Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is 'None'"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8566,7 +8947,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListVolumeReplicationsRequestExclude": {
+    "com.azure.netapp#VolumesListReplicationsRequestExclude": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -8586,10 +8967,10 @@
         "smithy.api#documentation": "Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is 'None'"
       }
     },
-    "com.azure.netapp#ListVolumeQuotaReport": {
+    "com.azure.netapp#VolumesListQuotaReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListVolumeQuotaReportRequest"
+        "target": "com.azure.netapp#VolumesListQuotaReportRequest"
       },
       "output": {
         "target": "com.azure.netapp#ListQuotaReportResult"
@@ -8707,7 +9088,7 @@
         "smithy.api#documentation": "Quota report record properties"
       }
     },
-    "com.azure.netapp#ListVolumeQuotaReportRequest": {
+    "com.azure.netapp#VolumesListQuotaReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8916,10 +9297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GetBackupLatestStatus": {
+    "com.azure.netapp#BackupsGetLatestStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetBackupLatestStatusRequest"
+        "target": "com.azure.netapp#BackupsGetLatestStatusRequest"
       },
       "output": {
         "target": "com.azure.netapp#BackupStatus"
@@ -9029,7 +9410,7 @@
         "smithy.api#documentation": "Status of the volume backup relationship"
       }
     },
-    "com.azure.netapp#GetBackupLatestStatusRequest": {
+    "com.azure.netapp#BackupsGetLatestStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9195,13 +9576,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#FinalizeVolumeRelocation": {
+    "com.azure.netapp#VolumesFinalizeRelocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#FinalizeVolumeRelocationRequest"
+        "target": "com.azure.netapp#VolumesFinalizeRelocationRequest"
       },
       "output": {
-        "target": "com.azure.netapp#FinalizeVolumeRelocationResponse"
+        "target": "com.azure.netapp#VolumesFinalizeRelocationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9214,7 +9595,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#FinalizeVolumeRelocationResponse": {
+    "com.azure.netapp#VolumesFinalizeRelocationResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -9236,7 +9617,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#FinalizeVolumeRelocationRequest": {
+    "com.azure.netapp#VolumesFinalizeRelocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9284,13 +9665,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#FinalizeVolumeExternalReplication": {
+    "com.azure.netapp#VolumesFinalizeExternalReplication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#FinalizeVolumeExternalReplicationRequest"
+        "target": "com.azure.netapp#VolumesFinalizeExternalReplicationRequest"
       },
       "output": {
-        "target": "com.azure.netapp#FinalizeVolumeExternalReplicationResponse"
+        "target": "com.azure.netapp#VolumesFinalizeExternalReplicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9303,7 +9684,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#FinalizeVolumeExternalReplicationResponse": {
+    "com.azure.netapp#VolumesFinalizeExternalReplicationResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -9325,7 +9706,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#FinalizeVolumeExternalReplicationRequest": {
+    "com.azure.netapp#VolumesFinalizeExternalReplicationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9373,13 +9754,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteVolumeReplication": {
+    "com.azure.netapp#VolumesDeleteReplication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteVolumeReplicationRequest"
+        "target": "com.azure.netapp#VolumesDeleteReplicationRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteVolumeReplicationResponse"
+        "target": "com.azure.netapp#VolumesDeleteReplicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9392,7 +9773,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteVolumeReplicationResponse": {
+    "com.azure.netapp#VolumesDeleteReplicationResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -9414,7 +9795,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteVolumeReplicationRequest": {
+    "com.azure.netapp#VolumesDeleteReplicationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9462,13 +9843,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#RefreshBucketCertificate": {
+    "com.azure.netapp#BucketsRefreshCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#RefreshBucketCertificateRequest"
+        "target": "com.azure.netapp#BucketsRefreshCertificateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#RefreshBucketCertificateResponse"
+        "target": "com.azure.netapp#BucketsRefreshCertificateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9481,7 +9862,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#RefreshBucketCertificateResponse": {
+    "com.azure.netapp#BucketsRefreshCertificateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -9510,7 +9891,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#RefreshBucketCertificateRequest": {
+    "com.azure.netapp#BucketsRefreshCertificateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9566,10 +9947,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GenerateBucketCredentials": {
+    "com.azure.netapp#BucketsGenerateCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GenerateBucketCredentialsRequest"
+        "target": "com.azure.netapp#BucketsGenerateCredentialsRequest"
       },
       "output": {
         "target": "com.azure.netapp#BucketGenerateCredentials"
@@ -9612,7 +9993,7 @@
         "smithy.api#documentation": "Bucket Access Key, Secret Key, and Expiry date and time of the key pair"
       }
     },
-    "com.azure.netapp#GenerateBucketCredentialsRequest": {
+    "com.azure.netapp#BucketsGenerateCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9674,13 +10055,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GenerateBucketAkvCredentials": {
+    "com.azure.netapp#BucketsGenerateAkvCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GenerateBucketAkvCredentialsRequest"
+        "target": "com.azure.netapp#BucketsGenerateAkvCredentialsRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GenerateBucketAkvCredentialsResponse"
+        "target": "com.azure.netapp#BucketsGenerateAkvCredentialsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9693,7 +10074,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GenerateBucketAkvCredentialsResponse": {
+    "com.azure.netapp#BucketsGenerateAkvCredentialsResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -9722,7 +10103,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GenerateBucketAkvCredentialsRequest": {
+    "com.azure.netapp#BucketsGenerateAkvCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9784,13 +10165,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteBucket": {
+    "com.azure.netapp#BucketsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteBucketRequest"
+        "target": "com.azure.netapp#BucketsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteBucketResponse"
+        "target": "com.azure.netapp#BucketsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9803,7 +10184,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteBucketResponse": {
+    "com.azure.netapp#BucketsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -9832,7 +10213,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteBucketRequest": {
+    "com.azure.netapp#BucketsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9888,13 +10269,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateBucket": {
+    "com.azure.netapp#BucketsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateBucketRequest"
+        "target": "com.azure.netapp#BucketsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateBucketResponse"
+        "target": "com.azure.netapp#BucketsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9907,7 +10288,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateBucketResponse": {
+    "com.azure.netapp#BucketsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10240,7 +10621,7 @@
         "smithy.api#documentation": "The effective NFS User ID and Group ID when accessing the volume data."
       }
     },
-    "com.azure.netapp#UpdateBucketRequest": {
+    "com.azure.netapp#BucketsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10597,13 +10978,13 @@
         "smithy.api#documentation": "Properties of the server managing the lifecycle of volume buckets"
       }
     },
-    "com.azure.netapp#GetBucket": {
+    "com.azure.netapp#BucketsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetBucketRequest"
+        "target": "com.azure.netapp#BucketsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetBucketResponse"
+        "target": "com.azure.netapp#BucketsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10616,7 +10997,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetBucketResponse": {
+    "com.azure.netapp#BucketsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10654,7 +11035,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetBucketRequest": {
+    "com.azure.netapp#BucketsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10710,10 +11091,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListBuckets": {
+    "com.azure.netapp#BucketsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListBucketsRequest"
+        "target": "com.azure.netapp#BucketsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#BucketList"
@@ -10723,10 +11104,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Describes all buckets belonging to a volume. Buckets allow additional services, such as AI services, connect to the volume data contained in those buckets.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#BucketList": {
@@ -10797,7 +11185,7 @@
         "smithy.api#documentation": "Bucket resource"
       }
     },
-    "com.azure.netapp#ListBucketsRequest": {
+    "com.azure.netapp#BucketsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10838,6 +11226,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the volume"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11041,13 +11435,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#AuthorizeVolumeReplication": {
+    "com.azure.netapp#VolumesAuthorizeReplication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#AuthorizeVolumeReplicationRequest"
+        "target": "com.azure.netapp#VolumesAuthorizeReplicationRequest"
       },
       "output": {
-        "target": "com.azure.netapp#AuthorizeVolumeReplicationResponse"
+        "target": "com.azure.netapp#VolumesAuthorizeReplicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11060,7 +11454,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#AuthorizeVolumeReplicationResponse": {
+    "com.azure.netapp#VolumesAuthorizeReplicationResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -11082,7 +11476,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#AuthorizeVolumeReplicationRequest": {
+    "com.azure.netapp#VolumesAuthorizeReplicationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11136,10 +11530,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#AuthorizeVolumeExternalReplication": {
+    "com.azure.netapp#VolumesAuthorizeExternalReplication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#AuthorizeVolumeExternalReplicationRequest"
+        "target": "com.azure.netapp#VolumesAuthorizeExternalReplicationRequest"
       },
       "output": {
         "target": "com.azure.netapp#SvmPeerCommandResponse"
@@ -11204,7 +11598,7 @@
         "smithy.api#documentation": "Properties of the SVM peer command response."
       }
     },
-    "com.azure.netapp#AuthorizeVolumeExternalReplicationRequest": {
+    "com.azure.netapp#VolumesAuthorizeExternalReplicationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11252,13 +11646,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteVolume": {
+    "com.azure.netapp#VolumesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteVolumeRequest"
+        "target": "com.azure.netapp#VolumesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteVolumeResponse"
+        "target": "com.azure.netapp#VolumesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11271,7 +11665,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteVolumeResponse": {
+    "com.azure.netapp#VolumesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -11293,7 +11687,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteVolumeRequest": {
+    "com.azure.netapp#VolumesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11348,13 +11742,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateVolume": {
+    "com.azure.netapp#VolumesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateVolumeRequest"
+        "target": "com.azure.netapp#VolumesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateVolumeResponse"
+        "target": "com.azure.netapp#VolumesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11367,7 +11761,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateVolumeResponse": {
+    "com.azure.netapp#VolumesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11395,7 +11789,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateVolumeResponseTagsMap",
+          "target": "com.azure.netapp#VolumesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -11421,7 +11815,7 @@
           }
         },
         "zones": {
-          "target": "com.azure.netapp#UpdateVolumeResponseZonesList",
+          "target": "com.azure.netapp#VolumesUpdateResponseZonesList",
           "traits": {
             "smithy.api#documentation": "The availability zones."
           }
@@ -11445,7 +11839,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#UpdateVolumeResponseZonesList": {
+    "com.azure.netapp#VolumesUpdateResponseZonesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -11454,7 +11848,7 @@
         "smithy.api#documentation": "The availability zones."
       }
     },
-    "com.azure.netapp#UpdateVolumeResponseTagsMap": {
+    "com.azure.netapp#VolumesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11466,7 +11860,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateVolumeRequest": {
+    "com.azure.netapp#VolumesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11516,7 +11910,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateVolumeRequestTagsMap",
+          "target": "com.azure.netapp#VolumesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -11754,7 +12148,7 @@
         "smithy.api#documentation": "The service level of the file system"
       }
     },
-    "com.azure.netapp#UpdateVolumeRequestTagsMap": {
+    "com.azure.netapp#VolumesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11986,13 +12380,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetVolume": {
+    "com.azure.netapp#VolumesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetVolumeRequest"
+        "target": "com.azure.netapp#VolumesGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetVolumeResponse"
+        "target": "com.azure.netapp#VolumesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12005,7 +12399,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetVolumeResponse": {
+    "com.azure.netapp#VolumesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12033,7 +12427,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetVolumeResponseTagsMap",
+          "target": "com.azure.netapp#VolumesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -12059,7 +12453,7 @@
           }
         },
         "zones": {
-          "target": "com.azure.netapp#GetVolumeResponseZonesList",
+          "target": "com.azure.netapp#VolumesGetResponseZonesList",
           "traits": {
             "smithy.api#documentation": "The availability zones."
           }
@@ -12069,7 +12463,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetVolumeResponseZonesList": {
+    "com.azure.netapp#VolumesGetResponseZonesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -12078,7 +12472,7 @@
         "smithy.api#documentation": "The availability zones."
       }
     },
-    "com.azure.netapp#GetVolumeResponseTagsMap": {
+    "com.azure.netapp#VolumesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -12090,7 +12484,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetVolumeRequest": {
+    "com.azure.netapp#VolumesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12138,10 +12532,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListVolumes": {
+    "com.azure.netapp#VolumesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListVolumesRequest"
+        "target": "com.azure.netapp#VolumesListRequest"
       },
       "output": {
         "target": "com.azure.netapp#VolumeList"
@@ -12151,10 +12545,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all volumes within the capacity pool",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#VolumeList": {
@@ -12187,7 +12588,7 @@
         "smithy.api#documentation": "The Volume items on this page"
       }
     },
-    "com.azure.netapp#ListVolumesRequest": {
+    "com.azure.netapp#VolumesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12221,19 +12622,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the capacity pool"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ResetCachSmbPassword": {
+    "com.azure.netapp#CachesResetSmbPassword": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ResetCachSmbPasswordRequest"
+        "target": "com.azure.netapp#CachesResetSmbPasswordRequest"
       },
       "output": {
-        "target": "com.azure.netapp#ResetCachSmbPasswordResponse"
+        "target": "com.azure.netapp#CachesResetSmbPasswordResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12246,7 +12653,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#ResetCachSmbPasswordResponse": {
+    "com.azure.netapp#CachesResetSmbPasswordResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12274,7 +12681,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#ResetCachSmbPasswordResponseTagsMap",
+          "target": "com.azure.netapp#CachesResetSmbPasswordResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -12300,7 +12707,7 @@
           }
         },
         "zones": {
-          "target": "com.azure.netapp#ResetCachSmbPasswordResponseZonesList",
+          "target": "com.azure.netapp#CachesResetSmbPasswordResponseZonesList",
           "traits": {
             "smithy.api#documentation": "The availability zones."
           }
@@ -12324,7 +12731,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#ResetCachSmbPasswordResponseZonesList": {
+    "com.azure.netapp#CachesResetSmbPasswordResponseZonesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -13365,7 +13772,7 @@
         "smithy.api#documentation": "Export policy rule"
       }
     },
-    "com.azure.netapp#ResetCachSmbPasswordResponseTagsMap": {
+    "com.azure.netapp#CachesResetSmbPasswordResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -13377,7 +13784,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ResetCachSmbPasswordRequest": {
+    "com.azure.netapp#CachesResetSmbPasswordRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13598,10 +14005,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListCachPeeringPassphrases": {
+    "com.azure.netapp#CachesListPeeringPassphrases": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListCachPeeringPassphrasesRequest"
+        "target": "com.azure.netapp#CachesListPeeringPassphrasesRequest"
       },
       "output": {
         "target": "com.azure.netapp#PeeringPassphrases"
@@ -13652,7 +14059,7 @@
         "smithy.api#documentation": "The response containing peering passphrases and commands for cluster and vserver peering."
       }
     },
-    "com.azure.netapp#ListCachPeeringPassphrasesRequest": {
+    "com.azure.netapp#CachesListPeeringPassphrasesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13700,13 +14107,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteCach": {
+    "com.azure.netapp#CachesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteCachRequest"
+        "target": "com.azure.netapp#CachesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteCachResponse"
+        "target": "com.azure.netapp#CachesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13719,7 +14126,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteCachResponse": {
+    "com.azure.netapp#CachesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -13741,7 +14148,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteCachRequest": {
+    "com.azure.netapp#CachesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13789,13 +14196,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateCach": {
+    "com.azure.netapp#CachesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateCachRequest"
+        "target": "com.azure.netapp#CachesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateCachResponse"
+        "target": "com.azure.netapp#CachesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13808,7 +14215,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateCachResponse": {
+    "com.azure.netapp#CachesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13836,7 +14243,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateCachResponseTagsMap",
+          "target": "com.azure.netapp#CachesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -13862,7 +14269,7 @@
           }
         },
         "zones": {
-          "target": "com.azure.netapp#UpdateCachResponseZonesList",
+          "target": "com.azure.netapp#CachesUpdateResponseZonesList",
           "traits": {
             "smithy.api#documentation": "The availability zones."
           }
@@ -13893,7 +14300,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#UpdateCachResponseZonesList": {
+    "com.azure.netapp#CachesUpdateResponseZonesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -13902,7 +14309,7 @@
         "smithy.api#documentation": "The availability zones."
       }
     },
-    "com.azure.netapp#UpdateCachResponseTagsMap": {
+    "com.azure.netapp#CachesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -13914,7 +14321,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateCachRequest": {
+    "com.azure.netapp#CachesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13958,7 +14365,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateCachRequestTagsMap",
+          "target": "com.azure.netapp#CachesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -14039,7 +14446,7 @@
         "smithy.api#documentation": "Set of supported protocol types, which include NFSv3, NFSv4 and SMB protocol"
       }
     },
-    "com.azure.netapp#UpdateCachRequestTagsMap": {
+    "com.azure.netapp#CachesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -14389,13 +14796,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetCach": {
+    "com.azure.netapp#CachesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetCachRequest"
+        "target": "com.azure.netapp#CachesGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetCachResponse"
+        "target": "com.azure.netapp#CachesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14408,7 +14815,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetCachResponse": {
+    "com.azure.netapp#CachesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14436,7 +14843,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetCachResponseTagsMap",
+          "target": "com.azure.netapp#CachesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -14462,7 +14869,7 @@
           }
         },
         "zones": {
-          "target": "com.azure.netapp#GetCachResponseZonesList",
+          "target": "com.azure.netapp#CachesGetResponseZonesList",
           "traits": {
             "smithy.api#documentation": "The availability zones."
           }
@@ -14472,7 +14879,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetCachResponseZonesList": {
+    "com.azure.netapp#CachesGetResponseZonesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -14481,7 +14888,7 @@
         "smithy.api#documentation": "The availability zones."
       }
     },
-    "com.azure.netapp#GetCachResponseTagsMap": {
+    "com.azure.netapp#CachesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -14493,7 +14900,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetCachRequest": {
+    "com.azure.netapp#CachesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14541,10 +14948,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListCaches": {
+    "com.azure.netapp#CachesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListCachesRequest"
+        "target": "com.azure.netapp#CachesListRequest"
       },
       "output": {
         "target": "com.azure.netapp#CacheList"
@@ -14554,10 +14961,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Caches within the Capacity Pool",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#CacheList": {
@@ -14675,7 +15089,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListCachesRequest": {
+    "com.azure.netapp#CachesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14709,19 +15123,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the capacity pool"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeletePool": {
+    "com.azure.netapp#PoolsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeletePoolRequest"
+        "target": "com.azure.netapp#PoolsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeletePoolResponse"
+        "target": "com.azure.netapp#PoolsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14734,7 +15154,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeletePoolResponse": {
+    "com.azure.netapp#PoolsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -14756,7 +15176,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeletePoolRequest": {
+    "com.azure.netapp#PoolsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14796,13 +15216,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdatePool": {
+    "com.azure.netapp#PoolsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdatePoolRequest"
+        "target": "com.azure.netapp#PoolsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdatePoolResponse"
+        "target": "com.azure.netapp#PoolsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14815,7 +15235,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdatePoolResponse": {
+    "com.azure.netapp#PoolsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14843,7 +15263,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdatePoolResponseTagsMap",
+          "target": "com.azure.netapp#PoolsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -15037,7 +15457,7 @@
         "smithy.api#documentation": "The service level of the file system"
       }
     },
-    "com.azure.netapp#UpdatePoolResponseTagsMap": {
+    "com.azure.netapp#PoolsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -15049,7 +15469,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdatePoolRequest": {
+    "com.azure.netapp#PoolsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15091,7 +15511,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdatePoolRequestTagsMap",
+          "target": "com.azure.netapp#PoolsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -15160,7 +15580,7 @@
         "smithy.api#documentation": "The qos type of the pool"
       }
     },
-    "com.azure.netapp#UpdatePoolRequestTagsMap": {
+    "com.azure.netapp#PoolsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -15473,13 +15893,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetPool": {
+    "com.azure.netapp#PoolsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetPoolRequest"
+        "target": "com.azure.netapp#PoolsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetPoolResponse"
+        "target": "com.azure.netapp#PoolsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15492,7 +15912,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetPoolResponse": {
+    "com.azure.netapp#PoolsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15520,7 +15940,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetPoolResponseTagsMap",
+          "target": "com.azure.netapp#PoolsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -15550,7 +15970,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetPoolResponseTagsMap": {
+    "com.azure.netapp#PoolsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -15562,7 +15982,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetPoolRequest": {
+    "com.azure.netapp#PoolsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15602,10 +16022,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListPools": {
+    "com.azure.netapp#PoolsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListPoolsRequest"
+        "target": "com.azure.netapp#PoolsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#CapacityPoolList"
@@ -15615,10 +16035,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all capacity pools in the NetApp Account",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#CapacityPoolList": {
@@ -15721,7 +16148,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListPoolsRequest": {
+    "com.azure.netapp#PoolsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15747,19 +16174,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the NetApp account"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#RestoreBackupsUnderBackupVaultFiles": {
+    "com.azure.netapp#BackupsUnderBackupVaultRestoreFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesRequest"
+        "target": "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequest"
       },
       "output": {
-        "target": "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesResponse"
+        "target": "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15772,7 +16205,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesResponse": {
+    "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -15794,7 +16227,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesRequest": {
+    "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15838,7 +16271,7 @@
           }
         },
         "fileList": {
-          "target": "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesRequestFileListList",
+          "target": "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequestFileListList",
           "traits": {
             "smithy.api#documentation": "List of files to be restored",
             "smithy.api#required": {}
@@ -15862,7 +16295,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#RestoreBackupsUnderBackupVaultFilesRequestFileListList": {
+    "com.azure.netapp#BackupsUnderBackupVaultRestoreFilesRequestFileListList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -15871,13 +16304,13 @@
         "smithy.api#documentation": "List of files to be restored"
       }
     },
-    "com.azure.netapp#DeleteBackup": {
+    "com.azure.netapp#BackupsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteBackupRequest"
+        "target": "com.azure.netapp#BackupsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteBackupResponse"
+        "target": "com.azure.netapp#BackupsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15890,7 +16323,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteBackupResponse": {
+    "com.azure.netapp#BackupsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -15912,7 +16345,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteBackupRequest": {
+    "com.azure.netapp#BackupsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15960,13 +16393,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateBackup": {
+    "com.azure.netapp#BackupsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateBackupRequest"
+        "target": "com.azure.netapp#BackupsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateBackupResponse"
+        "target": "com.azure.netapp#BackupsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15979,7 +16412,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateBackupResponse": {
+    "com.azure.netapp#BackupsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16147,7 +16580,7 @@
         "smithy.api#documentation": "Type of backup Manual or Scheduled"
       }
     },
-    "com.azure.netapp#UpdateBackupRequest": {
+    "com.azure.netapp#BackupsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16215,13 +16648,13 @@
         "smithy.api#documentation": "Backup patch properties"
       }
     },
-    "com.azure.netapp#CreateBackup": {
+    "com.azure.netapp#BackupsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CreateBackupRequest"
+        "target": "com.azure.netapp#BackupsCreateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#CreateBackupResponse"
+        "target": "com.azure.netapp#BackupsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16234,7 +16667,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CreateBackupResponse": {
+    "com.azure.netapp#BackupsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16287,7 +16720,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#CreateBackupRequest": {
+    "com.azure.netapp#BackupsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16375,13 +16808,13 @@
         "smithy.api#documentation": "Backup properties"
       }
     },
-    "com.azure.netapp#GetBackup": {
+    "com.azure.netapp#BackupsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetBackupRequest"
+        "target": "com.azure.netapp#BackupsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetBackupResponse"
+        "target": "com.azure.netapp#BackupsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16394,7 +16827,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetBackupResponse": {
+    "com.azure.netapp#BackupsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16433,7 +16866,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetBackupRequest": {
+    "com.azure.netapp#BackupsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16481,10 +16914,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListBackupByVault": {
+    "com.azure.netapp#BackupsListByVault": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListBackupByVaultRequest"
+        "target": "com.azure.netapp#BackupsListByVaultRequest"
       },
       "output": {
         "target": "com.azure.netapp#BackupsList"
@@ -16494,10 +16927,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all backups Under a Backup Vault",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#BackupsList": {
@@ -16569,7 +17009,7 @@
         "smithy.api#documentation": "Backup under a Backup Vault"
       }
     },
-    "com.azure.netapp#ListBackupByVaultRequest": {
+    "com.azure.netapp#BackupsListByVaultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16610,19 +17050,25 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An option to specify the VolumeResourceId. If present, then only returns the backups under the specified volume"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteBackupVault": {
+    "com.azure.netapp#BackupVaultsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteBackupVaultRequest"
+        "target": "com.azure.netapp#BackupVaultsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteBackupVaultResponse"
+        "target": "com.azure.netapp#BackupVaultsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16635,7 +17081,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteBackupVaultResponse": {
+    "com.azure.netapp#BackupVaultsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -16657,7 +17103,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteBackupVaultRequest": {
+    "com.azure.netapp#BackupVaultsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16697,13 +17143,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateBackupVault": {
+    "com.azure.netapp#BackupVaultsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateBackupVaultRequest"
+        "target": "com.azure.netapp#BackupVaultsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateBackupVaultResponse"
+        "target": "com.azure.netapp#BackupVaultsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16716,7 +17162,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateBackupVaultResponse": {
+    "com.azure.netapp#BackupVaultsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16744,7 +17190,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateBackupVaultResponseTagsMap",
+          "target": "com.azure.netapp#BackupVaultsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -16795,7 +17241,7 @@
         "smithy.api#documentation": "Backup Vault properties"
       }
     },
-    "com.azure.netapp#UpdateBackupVaultResponseTagsMap": {
+    "com.azure.netapp#BackupVaultsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -16807,7 +17253,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateBackupVaultRequest": {
+    "com.azure.netapp#BackupVaultsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16843,7 +17289,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateBackupVaultRequestTagsMap",
+          "target": "com.azure.netapp#BackupVaultsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -16853,7 +17299,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateBackupVaultRequestTagsMap": {
+    "com.azure.netapp#BackupVaultsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17039,13 +17485,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetBackupVault": {
+    "com.azure.netapp#BackupVaultsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetBackupVaultRequest"
+        "target": "com.azure.netapp#BackupVaultsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetBackupVaultResponse"
+        "target": "com.azure.netapp#BackupVaultsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17058,7 +17504,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetBackupVaultResponse": {
+    "com.azure.netapp#BackupVaultsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17086,7 +17532,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetBackupVaultResponseTagsMap",
+          "target": "com.azure.netapp#BackupVaultsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -17109,7 +17555,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetBackupVaultResponseTagsMap": {
+    "com.azure.netapp#BackupVaultsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17121,7 +17567,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetBackupVaultRequest": {
+    "com.azure.netapp#BackupVaultsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17161,10 +17607,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListBackupVaultByNetAppAccount": {
+    "com.azure.netapp#BackupVaultsListByNetAppAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListBackupVaultByNetAppAccountRequest"
+        "target": "com.azure.netapp#BackupVaultsListByNetAppAccountRequest"
       },
       "output": {
         "target": "com.azure.netapp#BackupVaultsList"
@@ -17174,10 +17620,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List and describe all Backup Vaults in the NetApp account.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#BackupVaultsList": {
@@ -17273,7 +17726,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListBackupVaultByNetAppAccountRequest": {
+    "com.azure.netapp#BackupVaultsListByNetAppAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17299,19 +17752,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the NetApp account"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteBackupPolicy": {
+    "com.azure.netapp#BackupPoliciesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteBackupPolicyRequest"
+        "target": "com.azure.netapp#BackupPoliciesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteBackupPolicyResponse"
+        "target": "com.azure.netapp#BackupPoliciesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17324,7 +17783,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteBackupPolicyResponse": {
+    "com.azure.netapp#BackupPoliciesDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -17346,7 +17805,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteBackupPolicyRequest": {
+    "com.azure.netapp#BackupPoliciesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17386,13 +17845,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateBackupPolicy": {
+    "com.azure.netapp#BackupPoliciesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateBackupPolicyRequest"
+        "target": "com.azure.netapp#BackupPoliciesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateBackupPolicyResponse"
+        "target": "com.azure.netapp#BackupPoliciesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17405,7 +17864,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateBackupPolicyResponse": {
+    "com.azure.netapp#BackupPoliciesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17433,7 +17892,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateBackupPolicyResponseTagsMap",
+          "target": "com.azure.netapp#BackupPoliciesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -17574,7 +18033,7 @@
         "smithy.api#documentation": "Volume details using the backup policy"
       }
     },
-    "com.azure.netapp#UpdateBackupPolicyResponseTagsMap": {
+    "com.azure.netapp#BackupPoliciesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17586,7 +18045,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateBackupPolicyRequest": {
+    "com.azure.netapp#BackupPoliciesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17628,7 +18087,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateBackupPolicyRequestTagsMap",
+          "target": "com.azure.netapp#BackupPoliciesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -17676,7 +18135,7 @@
         "smithy.api#documentation": "Backup policy properties"
       }
     },
-    "com.azure.netapp#UpdateBackupPolicyRequestTagsMap": {
+    "com.azure.netapp#BackupPoliciesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17688,13 +18147,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.netapp#CreateBackupPolicy": {
+    "com.azure.netapp#BackupPoliciesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CreateBackupPolicyRequest"
+        "target": "com.azure.netapp#BackupPoliciesCreateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#CreateBackupPolicyResponse"
+        "target": "com.azure.netapp#BackupPoliciesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17707,7 +18166,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CreateBackupPolicyResponse": {
+    "com.azure.netapp#BackupPoliciesCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17735,7 +18194,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#CreateBackupPolicyResponseTagsMap",
+          "target": "com.azure.netapp#BackupPoliciesCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -17786,7 +18245,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#CreateBackupPolicyResponseTagsMap": {
+    "com.azure.netapp#BackupPoliciesCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17798,7 +18257,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#CreateBackupPolicyRequest": {
+    "com.azure.netapp#BackupPoliciesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17834,7 +18293,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#CreateBackupPolicyRequestTagsMap",
+          "target": "com.azure.netapp#BackupPoliciesCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -17858,7 +18317,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#CreateBackupPolicyRequestTagsMap": {
+    "com.azure.netapp#BackupPoliciesCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17870,13 +18329,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetBackupPolicy": {
+    "com.azure.netapp#BackupPoliciesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetBackupPolicyRequest"
+        "target": "com.azure.netapp#BackupPoliciesGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetBackupPolicyResponse"
+        "target": "com.azure.netapp#BackupPoliciesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17889,7 +18348,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetBackupPolicyResponse": {
+    "com.azure.netapp#BackupPoliciesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17917,7 +18376,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetBackupPolicyResponseTagsMap",
+          "target": "com.azure.netapp#BackupPoliciesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -17947,7 +18406,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetBackupPolicyResponseTagsMap": {
+    "com.azure.netapp#BackupPoliciesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -17959,7 +18418,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetBackupPolicyRequest": {
+    "com.azure.netapp#BackupPoliciesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17999,10 +18458,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListBackupPolicies": {
+    "com.azure.netapp#BackupPoliciesList2": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListBackupPoliciesRequest"
+        "target": "com.azure.netapp#BackupPoliciesListRequest"
       },
       "output": {
         "target": "com.azure.netapp#BackupPoliciesList"
@@ -18012,10 +18471,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupPolicies",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List backup policies for Netapp Account",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#BackupPoliciesList": {
@@ -18118,7 +18584,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListBackupPoliciesRequest": {
+    "com.azure.netapp#BackupPoliciesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18144,19 +18610,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the NetApp account"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#DeleteAccount": {
+    "com.azure.netapp#AccountsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#DeleteAccountRequest"
+        "target": "com.azure.netapp#AccountsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.netapp#DeleteAccountResponse"
+        "target": "com.azure.netapp#AccountsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18169,7 +18641,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#DeleteAccountResponse": {
+    "com.azure.netapp#AccountsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -18191,7 +18663,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#DeleteAccountRequest": {
+    "com.azure.netapp#AccountsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18223,13 +18695,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateAccount": {
+    "com.azure.netapp#AccountsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateAccountRequest"
+        "target": "com.azure.netapp#AccountsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateAccountResponse"
+        "target": "com.azure.netapp#AccountsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18242,7 +18714,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateAccountResponse": {
+    "com.azure.netapp#AccountsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18270,7 +18742,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateAccountResponseTagsMap",
+          "target": "com.azure.netapp#AccountsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -18295,7 +18767,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.netapp#UpdateAccountResponseIdentity",
+          "target": "com.azure.netapp#AccountsUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -18319,7 +18791,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#UpdateAccountResponseIdentity": {
+    "com.azure.netapp#AccountsUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -18341,7 +18813,7 @@
           }
         },
         "userAssignedIdentities": {
-          "target": "com.azure.netapp#UpdateAccountResponseIdentityUserAssignedIdentitiesMap",
+          "target": "com.azure.netapp#AccountsUpdateResponseIdentityUserAssignedIdentitiesMap",
           "traits": {
             "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
           }
@@ -18351,7 +18823,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.netapp#UpdateAccountResponseIdentityUserAssignedIdentitiesMap": {
+    "com.azure.netapp#AccountsUpdateResponseIdentityUserAssignedIdentitiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -18882,7 +19354,7 @@
         "smithy.api#documentation": "Status of the Active Directory"
       }
     },
-    "com.azure.netapp#UpdateAccountResponseTagsMap": {
+    "com.azure.netapp#AccountsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -18894,7 +19366,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#UpdateAccountRequest": {
+    "com.azure.netapp#AccountsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18928,7 +19400,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#UpdateAccountRequestTagsMap",
+          "target": "com.azure.netapp#AccountsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -18940,7 +19412,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.netapp#UpdateAccountRequestIdentity",
+          "target": "com.azure.netapp#AccountsUpdateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -18950,7 +19422,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateAccountRequestIdentity": {
+    "com.azure.netapp#AccountsUpdateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -18960,7 +19432,7 @@
           }
         },
         "userAssignedIdentities": {
-          "target": "com.azure.netapp#UpdateAccountRequestIdentityUserAssignedIdentitiesMap",
+          "target": "com.azure.netapp#AccountsUpdateRequestIdentityUserAssignedIdentitiesMap",
           "traits": {
             "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
           }
@@ -18970,7 +19442,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.netapp#UpdateAccountRequestIdentityUserAssignedIdentitiesMap": {
+    "com.azure.netapp#AccountsUpdateRequestIdentityUserAssignedIdentitiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -19285,7 +19757,7 @@
         "smithy.api#documentation": "Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier"
       }
     },
-    "com.azure.netapp#UpdateAccountRequestTagsMap": {
+    "com.azure.netapp#AccountsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -19556,13 +20028,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetAccount": {
+    "com.azure.netapp#AccountsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetAccountRequest"
+        "target": "com.azure.netapp#AccountsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetAccountResponse"
+        "target": "com.azure.netapp#AccountsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19575,7 +20047,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetAccountResponse": {
+    "com.azure.netapp#AccountsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19603,7 +20075,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.netapp#GetAccountResponseTagsMap",
+          "target": "com.azure.netapp#AccountsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -19628,7 +20100,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.netapp#GetAccountResponseIdentity",
+          "target": "com.azure.netapp#AccountsGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -19638,7 +20110,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetAccountResponseIdentity": {
+    "com.azure.netapp#AccountsGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -19660,7 +20132,7 @@
           }
         },
         "userAssignedIdentities": {
-          "target": "com.azure.netapp#GetAccountResponseIdentityUserAssignedIdentitiesMap",
+          "target": "com.azure.netapp#AccountsGetResponseIdentityUserAssignedIdentitiesMap",
           "traits": {
             "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
           }
@@ -19670,7 +20142,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.netapp#GetAccountResponseIdentityUserAssignedIdentitiesMap": {
+    "com.azure.netapp#AccountsGetResponseIdentityUserAssignedIdentitiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -19685,7 +20157,7 @@
         "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
       }
     },
-    "com.azure.netapp#GetAccountResponseTagsMap": {
+    "com.azure.netapp#AccountsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -19697,7 +20169,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#GetAccountRequest": {
+    "com.azure.netapp#AccountsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19729,10 +20201,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListAccounts": {
+    "com.azure.netapp#AccountsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListAccountsRequest"
+        "target": "com.azure.netapp#AccountsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#NetAppAccountList"
@@ -19742,10 +20214,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List and describe all NetApp accounts in the resource group.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#NetAppAccountList": {
@@ -19900,7 +20379,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.netapp#ListAccountsRequest": {
+    "com.azure.netapp#AccountsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19918,16 +20397,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListAccountBySubscription": {
+    "com.azure.netapp#AccountsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListAccountBySubscriptionRequest"
+        "target": "com.azure.netapp#AccountsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.netapp#NetAppAccountList"
@@ -19937,13 +20422,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/netAppAccounts",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List and describe all NetApp accounts in the subscription.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.netapp#ListAccountBySubscriptionRequest": {
+    "com.azure.netapp#AccountsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19953,16 +20445,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GetNetAppResourceUsage": {
+    "com.azure.netapp#NetAppResourceUsagesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetNetAppResourceUsageRequest"
+        "target": "com.azure.netapp#NetAppResourceUsagesGetRequest"
       },
       "output": {
         "target": "com.azure.netapp#UsageResult"
@@ -20050,7 +20548,7 @@
         "smithy.api#documentation": "The name of the usage."
       }
     },
-    "com.azure.netapp#GetNetAppResourceUsageRequest": {
+    "com.azure.netapp#NetAppResourceUsagesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20082,10 +20580,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListNetAppResourceUsages": {
+    "com.azure.netapp#NetAppResourceUsagesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListNetAppResourceUsagesRequest"
+        "target": "com.azure.netapp#NetAppResourceUsagesListRequest"
       },
       "output": {
         "target": "com.azure.netapp#UsagesListResult"
@@ -20095,10 +20593,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get usages\n\nGet current subscription usages",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#UsagesListResult": {
@@ -20131,7 +20636,7 @@
         "smithy.api#documentation": "The UsageResult items on this page"
       }
     },
-    "com.azure.netapp#ListNetAppResourceUsagesRequest": {
+    "com.azure.netapp#NetAppResourceUsagesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20149,19 +20654,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSet": {
+    "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetRequest"
+        "target": "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetResponse"
+        "target": "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20174,7 +20685,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetResponse": {
+    "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetResponse": {
       "type": "structure",
       "members": {
         "networkSiblingSetId": {
@@ -20335,7 +20846,7 @@
         "smithy.api#documentation": "Network features available to the volume, or current state of update."
       }
     },
-    "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetRequest": {
+    "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20376,7 +20887,7 @@
           }
         },
         "networkFeatures": {
-          "target": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures",
+          "target": "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures",
           "traits": {
             "smithy.api#documentation": "Network features available to the volume.",
             "smithy.api#required": {}
@@ -20387,7 +20898,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSetRequestNetworkFeatures": {
+    "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSetRequestNetworkFeatures": {
       "type": "enum",
       "members": {
         "BASIC": {
@@ -20419,13 +20930,13 @@
         "smithy.api#documentation": "Network features available to the volume."
       }
     },
-    "com.azure.netapp#GetNetAppResourceRegionInfos": {
+    "com.azure.netapp#NetAppResourceRegionInfosGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetNetAppResourceRegionInfosRequest"
+        "target": "com.azure.netapp#NetAppResourceRegionInfosGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetNetAppResourceRegionInfosResponse"
+        "target": "com.azure.netapp#NetAppResourceRegionInfosGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20438,7 +20949,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetNetAppResourceRegionInfosResponse": {
+    "com.azure.netapp#NetAppResourceRegionInfosGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20579,7 +21090,7 @@
         "smithy.api#documentation": "Provides storage to network proximity information in the region."
       }
     },
-    "com.azure.netapp#GetNetAppResourceRegionInfosRequest": {
+    "com.azure.netapp#NetAppResourceRegionInfosGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20603,10 +21114,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListNetAppResourceRegionInfos": {
+    "com.azure.netapp#NetAppResourceRegionInfosList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListNetAppResourceRegionInfosRequest"
+        "target": "com.azure.netapp#NetAppResourceRegionInfosListRequest"
       },
       "output": {
         "target": "com.azure.netapp#RegionInfosList"
@@ -20616,10 +21127,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/regionInfos",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Provides region specific information.",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#RegionInfosList": {
@@ -20690,7 +21208,7 @@
         "smithy.api#documentation": "Information regarding regionInfo Item."
       }
     },
-    "com.azure.netapp#ListNetAppResourceRegionInfosRequest": {
+    "com.azure.netapp#NetAppResourceRegionInfosListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20707,6 +21225,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20757,13 +21281,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#GetNetAppResourceQuotaLimit": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#GetNetAppResourceQuotaLimitRequest"
+        "target": "com.azure.netapp#NetAppResourceQuotaLimitsGetRequest"
       },
       "output": {
-        "target": "com.azure.netapp#GetNetAppResourceQuotaLimitResponse"
+        "target": "com.azure.netapp#NetAppResourceQuotaLimitsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20776,7 +21300,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#GetNetAppResourceQuotaLimitResponse": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20814,7 +21338,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.netapp#GetNetAppResourceQuotaLimitRequest": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20846,10 +21370,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListNetAppResourceQuotaLimits": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#ListNetAppResourceQuotaLimitsRequest"
+        "target": "com.azure.netapp#NetAppResourceQuotaLimitsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#QuotaItemList"
@@ -20859,13 +21383,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.NetApp/locations/{location}/quotaLimits",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the default and current limits for quotas",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.netapp#ListNetAppResourceQuotaLimitsRequest": {
+    "com.azure.netapp#NetAppResourceQuotaLimitsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20883,16 +21414,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure region."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#SetNetAppResourceQueryNetworkSibling": {
+    "com.azure.netapp#NetAppResourceQueryNetworkSiblingSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#SetNetAppResourceQueryNetworkSiblingRequest"
+        "target": "com.azure.netapp#NetAppResourceQueryNetworkSiblingSetRequest"
       },
       "output": {
         "target": "com.azure.netapp#NetworkSiblingSet"
@@ -20952,7 +21489,7 @@
         "smithy.api#documentation": "Describes the contents of a network sibling set."
       }
     },
-    "com.azure.netapp#SetNetAppResourceQueryNetworkSiblingRequest": {
+    "com.azure.netapp#NetAppResourceQueryNetworkSiblingSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20990,10 +21527,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#CheckNetAppResourceQuotaAvailability": {
+    "com.azure.netapp#NetAppResourceCheckQuotaAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CheckNetAppResourceQuotaAvailabilityRequest"
+        "target": "com.azure.netapp#NetAppResourceCheckQuotaAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.netapp#CheckAvailabilityResponse"
@@ -21055,7 +21592,7 @@
         "smithy.api#documentation": "<code>Invalid</code> indicates the name provided does not match Azure App Service naming requirements. <code>AlreadyExists</code> indicates that the name is already in use and is therefore unavailable."
       }
     },
-    "com.azure.netapp#CheckNetAppResourceQuotaAvailabilityRequest": {
+    "com.azure.netapp#NetAppResourceCheckQuotaAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21144,10 +21681,10 @@
         "smithy.api#documentation": "Resource type used for verification."
       }
     },
-    "com.azure.netapp#CheckNetAppResourceNameAvailability": {
+    "com.azure.netapp#NetAppResourceCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CheckNetAppResourceNameAvailabilityRequest"
+        "target": "com.azure.netapp#NetAppResourceCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.netapp#CheckAvailabilityResponse"
@@ -21163,7 +21700,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CheckNetAppResourceNameAvailabilityRequest": {
+    "com.azure.netapp#NetAppResourceCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21252,10 +21789,10 @@
         "smithy.api#documentation": "Resource type used for verification."
       }
     },
-    "com.azure.netapp#CheckNetAppResourceFilePathAvailability": {
+    "com.azure.netapp#NetAppResourceCheckFilePathAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.netapp#CheckNetAppResourceFilePathAvailabilityRequest"
+        "target": "com.azure.netapp#NetAppResourceCheckFilePathAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.netapp#CheckAvailabilityResponse"
@@ -21271,7 +21808,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.netapp#CheckNetAppResourceFilePathAvailabilityRequest": {
+    "com.azure.netapp#NetAppResourceCheckFilePathAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -21316,10 +21853,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.netapp#ListOperations": {
+    "com.azure.netapp#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.netapp#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.netapp#OperationListResult"
@@ -21329,10 +21866,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.NetApp/operations",
           "code": 200,
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-06-01"
+        "com.distilled.openapi#apiVersion": "2026-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.netapp#OperationListResult": {
@@ -21664,96 +22208,110 @@
         "smithy.api#documentation": "Display metadata associated with the operation."
       }
     },
+    "com.azure.netapp#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.netapp#Netapp": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.netapp#DeleteVolumeGroup"
+          "target": "com.azure.netapp#VolumeGroupsDelete"
         },
         {
-          "target": "com.azure.netapp#CreateVolumeGroup"
+          "target": "com.azure.netapp#VolumeGroupsCreate"
         },
         {
-          "target": "com.azure.netapp#GetVolumeGroup"
+          "target": "com.azure.netapp#VolumeGroupsGet"
         },
         {
-          "target": "com.azure.netapp#ListVolumeGroupByNetAppAccount"
+          "target": "com.azure.netapp#VolumeGroupsListByNetAppAccount"
         },
         {
           "target": "com.azure.netapp#AccountsTransitionToCmk"
         },
         {
-          "target": "com.azure.netapp#ListSnapshotPolicyVolumes"
+          "target": "com.azure.netapp#SnapshotPoliciesListVolumes"
         },
         {
-          "target": "com.azure.netapp#DeleteSnapshotPolicy"
+          "target": "com.azure.netapp#SnapshotPoliciesDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateSnapshotPolicy"
+          "target": "com.azure.netapp#SnapshotPoliciesUpdate"
         },
         {
-          "target": "com.azure.netapp#CreateSnapshotPolicy"
+          "target": "com.azure.netapp#SnapshotPoliciesCreate"
         },
         {
-          "target": "com.azure.netapp#GetSnapshotPolicy"
+          "target": "com.azure.netapp#SnapshotPoliciesGet"
         },
         {
-          "target": "com.azure.netapp#ListSnapshotPolicies"
+          "target": "com.azure.netapp#SnapshotPoliciesList2"
         },
         {
-          "target": "com.azure.netapp#RenewAccountCredentials"
+          "target": "com.azure.netapp#AccountsRenewCredentials"
         },
         {
-          "target": "com.azure.netapp#GetNetAppResourceQuotaLimitsAccount"
+          "target": "com.azure.netapp#NetAppResourceQuotaLimitsAccountGet"
         },
         {
-          "target": "com.azure.netapp#ListNetAppResourceQuotaLimitsAccount"
+          "target": "com.azure.netapp#NetAppResourceQuotaLimitsAccountList"
         },
         {
-          "target": "com.azure.netapp#MigrateBackupsUnderAccountBackups"
+          "target": "com.azure.netapp#BackupsUnderAccountMigrateBackups"
         },
         {
-          "target": "com.azure.netapp#GetAccountChangeKeyVaultInformation"
+          "target": "com.azure.netapp#AccountsGetChangeKeyVaultInformation"
         },
         {
           "target": "com.azure.netapp#AccountsChangeKeyVault"
         },
         {
-          "target": "com.azure.netapp#DeleteVolumeQuotaRule"
+          "target": "com.azure.netapp#VolumeQuotaRulesDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateVolumeQuotaRule"
+          "target": "com.azure.netapp#VolumeQuotaRulesUpdate"
         },
         {
-          "target": "com.azure.netapp#CreateVolumeQuotaRule"
+          "target": "com.azure.netapp#VolumeQuotaRulesCreate"
         },
         {
-          "target": "com.azure.netapp#GetVolumeQuotaRule"
+          "target": "com.azure.netapp#VolumeQuotaRulesGet"
         },
         {
-          "target": "com.azure.netapp#ListVolumeQuotaRuleByVolume"
+          "target": "com.azure.netapp#VolumeQuotaRulesListByVolume"
         },
         {
           "target": "com.azure.netapp#VolumesSplitCloneFromParent"
         },
         {
-          "target": "com.azure.netapp#RestoreSnapshotFiles"
+          "target": "com.azure.netapp#SnapshotsRestoreFiles"
         },
         {
-          "target": "com.azure.netapp#DeleteSnapshot"
+          "target": "com.azure.netapp#SnapshotsDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateSnapshot"
+          "target": "com.azure.netapp#SnapshotsUpdate"
         },
         {
-          "target": "com.azure.netapp#CreateSnapshot"
+          "target": "com.azure.netapp#SnapshotsCreate"
         },
         {
-          "target": "com.azure.netapp#GetSnapshot"
+          "target": "com.azure.netapp#SnapshotsGet"
         },
         {
-          "target": "com.azure.netapp#ListSnapshots"
+          "target": "com.azure.netapp#SnapshotsList2"
         },
         {
           "target": "com.azure.netapp#VolumesRevertRelocation"
@@ -21765,7 +22323,7 @@
           "target": "com.azure.netapp#VolumesResyncReplication"
         },
         {
-          "target": "com.azure.netapp#ResetVolumeCifsPassword"
+          "target": "com.azure.netapp#VolumesResetCifsPassword"
         },
         {
           "target": "com.azure.netapp#VolumesReplicationStatus"
@@ -21780,13 +22338,13 @@
           "target": "com.azure.netapp#VolumesReestablishReplication"
         },
         {
-          "target": "com.azure.netapp#ClearRansomwareReportSuspects"
+          "target": "com.azure.netapp#RansomwareReportsClearSuspects"
         },
         {
-          "target": "com.azure.netapp#GetRansomwareReport"
+          "target": "com.azure.netapp#RansomwareReportsGet"
         },
         {
-          "target": "com.azure.netapp#ListRansomwareReports"
+          "target": "com.azure.netapp#RansomwareReportsList2"
         },
         {
           "target": "com.azure.netapp#VolumesPopulateAvailabilityZone"
@@ -21795,61 +22353,61 @@
           "target": "com.azure.netapp#VolumesPoolChange"
         },
         {
-          "target": "com.azure.netapp#TransferVolumesPerformReplication"
+          "target": "com.azure.netapp#VolumesPerformReplicationTransfer"
         },
         {
           "target": "com.azure.netapp#VolumesPeerExternalCluster"
         },
         {
-          "target": "com.azure.netapp#MigrateBackupsUnderVolumeBackups"
+          "target": "com.azure.netapp#BackupsUnderVolumeMigrateBackups"
         },
         {
-          "target": "com.azure.netapp#ListVolumeReplications"
+          "target": "com.azure.netapp#VolumesListReplications"
         },
         {
-          "target": "com.azure.netapp#ListVolumeQuotaReport"
+          "target": "com.azure.netapp#VolumesListQuotaReport"
         },
         {
           "target": "com.azure.netapp#BackupsGetVolumeLatestRestoreStatus"
         },
         {
-          "target": "com.azure.netapp#GetBackupLatestStatus"
+          "target": "com.azure.netapp#BackupsGetLatestStatus"
         },
         {
           "target": "com.azure.netapp#VolumesListGetGroupIdListForLdapUser"
         },
         {
-          "target": "com.azure.netapp#FinalizeVolumeRelocation"
+          "target": "com.azure.netapp#VolumesFinalizeRelocation"
         },
         {
-          "target": "com.azure.netapp#FinalizeVolumeExternalReplication"
+          "target": "com.azure.netapp#VolumesFinalizeExternalReplication"
         },
         {
-          "target": "com.azure.netapp#DeleteVolumeReplication"
+          "target": "com.azure.netapp#VolumesDeleteReplication"
         },
         {
-          "target": "com.azure.netapp#RefreshBucketCertificate"
+          "target": "com.azure.netapp#BucketsRefreshCertificate"
         },
         {
-          "target": "com.azure.netapp#GenerateBucketCredentials"
+          "target": "com.azure.netapp#BucketsGenerateCredentials"
         },
         {
-          "target": "com.azure.netapp#GenerateBucketAkvCredentials"
+          "target": "com.azure.netapp#BucketsGenerateAkvCredentials"
         },
         {
-          "target": "com.azure.netapp#DeleteBucket"
+          "target": "com.azure.netapp#BucketsDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateBucket"
+          "target": "com.azure.netapp#BucketsUpdate"
         },
         {
           "target": "com.azure.netapp#BucketsCreateOrUpdate"
         },
         {
-          "target": "com.azure.netapp#GetBucket"
+          "target": "com.azure.netapp#BucketsGet"
         },
         {
-          "target": "com.azure.netapp#ListBuckets"
+          "target": "com.azure.netapp#BucketsList"
         },
         {
           "target": "com.azure.netapp#VolumesBreakReplication"
@@ -21858,169 +22416,169 @@
           "target": "com.azure.netapp#VolumesBreakFileLocks"
         },
         {
-          "target": "com.azure.netapp#AuthorizeVolumeReplication"
+          "target": "com.azure.netapp#VolumesAuthorizeReplication"
         },
         {
-          "target": "com.azure.netapp#AuthorizeVolumeExternalReplication"
+          "target": "com.azure.netapp#VolumesAuthorizeExternalReplication"
         },
         {
-          "target": "com.azure.netapp#DeleteVolume"
+          "target": "com.azure.netapp#VolumesDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateVolume"
+          "target": "com.azure.netapp#VolumesUpdate"
         },
         {
           "target": "com.azure.netapp#VolumesCreateOrUpdate"
         },
         {
-          "target": "com.azure.netapp#GetVolume"
+          "target": "com.azure.netapp#VolumesGet"
         },
         {
-          "target": "com.azure.netapp#ListVolumes"
+          "target": "com.azure.netapp#VolumesList"
         },
         {
-          "target": "com.azure.netapp#ResetCachSmbPassword"
+          "target": "com.azure.netapp#CachesResetSmbPassword"
         },
         {
           "target": "com.azure.netapp#CachesPoolChange"
         },
         {
-          "target": "com.azure.netapp#ListCachPeeringPassphrases"
+          "target": "com.azure.netapp#CachesListPeeringPassphrases"
         },
         {
-          "target": "com.azure.netapp#DeleteCach"
+          "target": "com.azure.netapp#CachesDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateCach"
+          "target": "com.azure.netapp#CachesUpdate"
         },
         {
           "target": "com.azure.netapp#CachesCreateOrUpdate"
         },
         {
-          "target": "com.azure.netapp#GetCach"
+          "target": "com.azure.netapp#CachesGet"
         },
         {
-          "target": "com.azure.netapp#ListCaches"
+          "target": "com.azure.netapp#CachesList"
         },
         {
-          "target": "com.azure.netapp#DeletePool"
+          "target": "com.azure.netapp#PoolsDelete"
         },
         {
-          "target": "com.azure.netapp#UpdatePool"
+          "target": "com.azure.netapp#PoolsUpdate"
         },
         {
           "target": "com.azure.netapp#PoolsCreateOrUpdate"
         },
         {
-          "target": "com.azure.netapp#GetPool"
+          "target": "com.azure.netapp#PoolsGet"
         },
         {
-          "target": "com.azure.netapp#ListPools"
+          "target": "com.azure.netapp#PoolsList"
         },
         {
-          "target": "com.azure.netapp#RestoreBackupsUnderBackupVaultFiles"
+          "target": "com.azure.netapp#BackupsUnderBackupVaultRestoreFiles"
         },
         {
-          "target": "com.azure.netapp#DeleteBackup"
+          "target": "com.azure.netapp#BackupsDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateBackup"
+          "target": "com.azure.netapp#BackupsUpdate"
         },
         {
-          "target": "com.azure.netapp#CreateBackup"
+          "target": "com.azure.netapp#BackupsCreate"
         },
         {
-          "target": "com.azure.netapp#GetBackup"
+          "target": "com.azure.netapp#BackupsGet"
         },
         {
-          "target": "com.azure.netapp#ListBackupByVault"
+          "target": "com.azure.netapp#BackupsListByVault"
         },
         {
-          "target": "com.azure.netapp#DeleteBackupVault"
+          "target": "com.azure.netapp#BackupVaultsDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateBackupVault"
+          "target": "com.azure.netapp#BackupVaultsUpdate"
         },
         {
           "target": "com.azure.netapp#BackupVaultsCreateOrUpdate"
         },
         {
-          "target": "com.azure.netapp#GetBackupVault"
+          "target": "com.azure.netapp#BackupVaultsGet"
         },
         {
-          "target": "com.azure.netapp#ListBackupVaultByNetAppAccount"
+          "target": "com.azure.netapp#BackupVaultsListByNetAppAccount"
         },
         {
-          "target": "com.azure.netapp#DeleteBackupPolicy"
+          "target": "com.azure.netapp#BackupPoliciesDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateBackupPolicy"
+          "target": "com.azure.netapp#BackupPoliciesUpdate"
         },
         {
-          "target": "com.azure.netapp#CreateBackupPolicy"
+          "target": "com.azure.netapp#BackupPoliciesCreate"
         },
         {
-          "target": "com.azure.netapp#GetBackupPolicy"
+          "target": "com.azure.netapp#BackupPoliciesGet"
         },
         {
-          "target": "com.azure.netapp#ListBackupPolicies"
+          "target": "com.azure.netapp#BackupPoliciesList2"
         },
         {
-          "target": "com.azure.netapp#DeleteAccount"
+          "target": "com.azure.netapp#AccountsDelete"
         },
         {
-          "target": "com.azure.netapp#UpdateAccount"
+          "target": "com.azure.netapp#AccountsUpdate"
         },
         {
           "target": "com.azure.netapp#AccountsCreateOrUpdate"
         },
         {
-          "target": "com.azure.netapp#GetAccount"
+          "target": "com.azure.netapp#AccountsGet"
         },
         {
-          "target": "com.azure.netapp#ListAccounts"
+          "target": "com.azure.netapp#AccountsList"
         },
         {
-          "target": "com.azure.netapp#ListAccountBySubscription"
+          "target": "com.azure.netapp#AccountsListBySubscription"
         },
         {
-          "target": "com.azure.netapp#GetNetAppResourceUsage"
+          "target": "com.azure.netapp#NetAppResourceUsagesGet"
         },
         {
-          "target": "com.azure.netapp#ListNetAppResourceUsages"
+          "target": "com.azure.netapp#NetAppResourceUsagesList"
         },
         {
-          "target": "com.azure.netapp#UpdateNetAppResourceNetworkSiblingSet"
+          "target": "com.azure.netapp#NetAppResourceUpdateNetworkSiblingSet"
         },
         {
-          "target": "com.azure.netapp#GetNetAppResourceRegionInfos"
+          "target": "com.azure.netapp#NetAppResourceRegionInfosGet"
         },
         {
-          "target": "com.azure.netapp#ListNetAppResourceRegionInfos"
+          "target": "com.azure.netapp#NetAppResourceRegionInfosList"
         },
         {
           "target": "com.azure.netapp#NetAppResourceQueryRegionInfo"
         },
         {
-          "target": "com.azure.netapp#GetNetAppResourceQuotaLimit"
+          "target": "com.azure.netapp#NetAppResourceQuotaLimitsGet"
         },
         {
-          "target": "com.azure.netapp#ListNetAppResourceQuotaLimits"
+          "target": "com.azure.netapp#NetAppResourceQuotaLimitsList"
         },
         {
-          "target": "com.azure.netapp#SetNetAppResourceQueryNetworkSibling"
+          "target": "com.azure.netapp#NetAppResourceQueryNetworkSiblingSet"
         },
         {
-          "target": "com.azure.netapp#CheckNetAppResourceQuotaAvailability"
+          "target": "com.azure.netapp#NetAppResourceCheckQuotaAvailability"
         },
         {
-          "target": "com.azure.netapp#CheckNetAppResourceNameAvailability"
+          "target": "com.azure.netapp#NetAppResourceCheckNameAvailability"
         },
         {
-          "target": "com.azure.netapp#CheckNetAppResourceFilePathAvailability"
+          "target": "com.azure.netapp#NetAppResourceCheckFilePathAvailability"
         },
         {
-          "target": "com.azure.netapp#ListOperations"
+          "target": "com.azure.netapp#OperationsList"
         }
       ],
       "traits": {

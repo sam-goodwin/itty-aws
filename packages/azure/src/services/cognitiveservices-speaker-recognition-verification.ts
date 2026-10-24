@@ -169,6 +169,8 @@ export interface ListTextDependentProfilesRequest {
   endpoint: string;
   /** The number of profiles to return. Default is 100 and the maximum is 500 */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type TdProfileInfoListValueList = Array<TdProfileInfo>;
 /** Text-Dependent Speaker profile info list */
@@ -195,6 +197,8 @@ export interface ListTextIndependentProfilesRequest {
   endpoint: string;
   /** The number of profiles to return. Default is 100 and the maximum is 500 */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type TiProfileInfoListValueList = Array<TiProfileInfo>;
 /** Text-Independent Speaker profile info list */
@@ -405,18 +409,25 @@ export const ListTextDependentPhrases: API.OperationMethod<
 
 export type ListTextDependentProfilesError = AzureOpError;
 /** List Profiles Retrieves a set of profiles. Profiles are sorted alphabetically by ProfileId */
-export const ListTextDependentProfiles: API.OperationMethod<
+export const ListTextDependentProfiles: API.PaginatedOperationMethod<
   ListTextDependentProfilesRequest,
   TdProfileInfoList,
   ListTextDependentProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TdProfileInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(76, __c19, 0) as any as S.Schema<ListTextDependentProfilesRequest>,
   output: __S(78, __c19, 2) as any as S.Schema<TdProfileInfoList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTextIndependentActivationPhrasesError = AzureOpError;
 /** Pass Phrases Retrieves list of supported passphrases for a specific locale. */
@@ -435,18 +446,25 @@ export const ListTextIndependentActivationPhrases: API.OperationMethod<
 
 export type ListTextIndependentProfilesError = AzureOpError;
 /** List Profiles Retrieves a set of profiles. Profiles are sorted alphabetically by ProfileId */
-export const ListTextIndependentProfiles: API.OperationMethod<
+export const ListTextIndependentProfiles: API.PaginatedOperationMethod<
   ListTextIndependentProfilesRequest,
   TiProfileInfoList,
   ListTextIndependentProfilesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TiProfileInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(12, __c3, 0) as any as S.Schema<ListTextIndependentProfilesRequest>,
   output: __S(14, __c3, 2) as any as S.Schema<TiProfileInfoList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ResetTextDependentProfileError = AzureOpError;
 /** Reset Profile Resets existing profile to its original creation state. The reset operation does the following: * Updates enrollmentStatus to Enrolling. * Updates lastUpdatedDateTime. * Updates enrollmentsCount to 0. * Updates enrollmentsLength to 0. * Updates enrollmentsSpeechLength to 0. * Updates remainingEnrollmentsCount to the initial required number. * Removes all associated enrollments from storage. * Removes chosen passphrase association. * Resets value of modelVersion. */
@@ -623,6 +641,7 @@ function __c3(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -631,6 +650,7 @@ function __c3(j: number): any {
             host: "{endpoint}/speaker-recognition/verification",
             hostRaw: ["endpoint"],
             apiVersion: "2021-09-05",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -1021,6 +1041,7 @@ function __c19(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1029,6 +1050,7 @@ function __c19(j: number): any {
             host: "{endpoint}/speaker-recognition/verification",
             hostRaw: ["endpoint"],
             apiVersion: "2021-09-05",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

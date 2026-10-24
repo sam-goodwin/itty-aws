@@ -546,6 +546,8 @@ export interface ListJobRouterAdministrationOperationClassificationPoliciesReque
   endpoint: string;
   /** Number of objects to return per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A container for the rules that govern how jobs are classified. */
 export interface ClassificationPolicy {
@@ -578,6 +580,8 @@ export interface ListJobRouterAdministrationOperationDistributionPoliciesRequest
   endpoint: string;
   /** Number of objects to return per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Policy governing how jobs are distributed to workers */
 export interface DistributionPolicy {
@@ -606,6 +610,8 @@ export interface ListJobRouterAdministrationOperationExceptionPoliciesRequest {
   endpoint: string;
   /** Number of objects to return per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A policy that defines actions to execute when exception are triggered. */
 export interface ExceptionPolicy {
@@ -632,6 +638,8 @@ export interface ListJobRouterAdministrationOperationQueuesRequest {
   endpoint: string;
   /** Number of objects to return per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A queue that can contain jobs to be routed. */
 export interface RouterQueue {
@@ -689,6 +697,8 @@ export interface ListJobRouterOperationJobsRequest {
   scheduledBefore?: string;
   /** If specified, filter on jobs that was scheduled at or after given value. Range: [scheduledAfter, +Inf). */
   scheduledAfter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A unit of work to be routed */
 export interface RouterJob {
@@ -752,6 +762,8 @@ export interface ListJobRouterOperationWorkersRequest {
   queueId?: string;
   /** If set to true, select only workers who have capacity for the channel specified by `channelId` or for any channel if `channelId` not specified. If set to false, then will return all workers including workers without any capacity for jobs. Defaults to false. */
   hasCapacity?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An entity for jobs to be routed to. */
 export interface RouterWorker {
@@ -1480,12 +1492,13 @@ export const JobRouterOperationsReclassifyJob: API.OperationMethod<
 
 export type ListJobRouterAdministrationOperationClassificationPoliciesError = AzureOpError;
 /** Retrieves existing classification policies. Retrieves existing classification policies. */
-export const ListJobRouterAdministrationOperationClassificationPolicies: API.OperationMethod<
+export const ListJobRouterAdministrationOperationClassificationPolicies: API.PaginatedOperationMethod<
   ListJobRouterAdministrationOperationClassificationPoliciesRequest,
   PagedClassificationPolicy,
   ListJobRouterAdministrationOperationClassificationPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClassificationPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     192,
     __c24,
@@ -1495,16 +1508,23 @@ export const ListJobRouterAdministrationOperationClassificationPolicies: API.Ope
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobRouterAdministrationOperationDistributionPoliciesError = AzureOpError;
 /** Retrieves existing distribution policies. Retrieves existing distribution policies. */
-export const ListJobRouterAdministrationOperationDistributionPolicies: API.OperationMethod<
+export const ListJobRouterAdministrationOperationDistributionPolicies: API.PaginatedOperationMethod<
   ListJobRouterAdministrationOperationDistributionPoliciesRequest,
   PagedDistributionPolicy,
   ListJobRouterAdministrationOperationDistributionPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DistributionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     200,
     __c25,
@@ -1514,16 +1534,23 @@ export const ListJobRouterAdministrationOperationDistributionPolicies: API.Opera
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobRouterAdministrationOperationExceptionPoliciesError = AzureOpError;
 /** Retrieves existing exception policies. Retrieves existing exception policies. */
-export const ListJobRouterAdministrationOperationExceptionPolicies: API.OperationMethod<
+export const ListJobRouterAdministrationOperationExceptionPolicies: API.PaginatedOperationMethod<
   ListJobRouterAdministrationOperationExceptionPoliciesRequest,
   PagedExceptionPolicy,
   ListJobRouterAdministrationOperationExceptionPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExceptionPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     208,
     __c26,
@@ -1533,52 +1560,79 @@ export const ListJobRouterAdministrationOperationExceptionPolicies: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobRouterAdministrationOperationQueuesError = AzureOpError;
 /** Retrieves existing queues. Retrieves existing queues. */
-export const ListJobRouterAdministrationOperationQueues: API.OperationMethod<
+export const ListJobRouterAdministrationOperationQueues: API.PaginatedOperationMethod<
   ListJobRouterAdministrationOperationQueuesRequest,
   PagedRouterQueue,
   ListJobRouterAdministrationOperationQueuesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouterQueue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<ListJobRouterAdministrationOperationQueuesRequest>,
   output: __S(219, __c27, 3) as any as S.Schema<PagedRouterQueue>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobRouterOperationJobsError = AzureOpError;
 /** Retrieves list of jobs based on filter parameters. Retrieves list of jobs based on filter parameters. */
-export const ListJobRouterOperationJobs: API.OperationMethod<
+export const ListJobRouterOperationJobs: API.PaginatedOperationMethod<
   ListJobRouterOperationJobsRequest,
   PagedRouterJob,
   ListJobRouterOperationJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouterJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c28, 0) as any as S.Schema<ListJobRouterOperationJobsRequest>,
   output: __S(227, __c28, 3) as any as S.Schema<PagedRouterJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobRouterOperationWorkersError = AzureOpError;
 /** Retrieves existing workers. Retrieves existing workers. */
-export const ListJobRouterOperationWorkers: API.OperationMethod<
+export const ListJobRouterOperationWorkers: API.PaginatedOperationMethod<
   ListJobRouterOperationWorkersRequest,
   PagedRouterWorker,
   ListJobRouterOperationWorkersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RouterWorker
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(232, __c29, 0) as any as S.Schema<ListJobRouterOperationWorkersRequest>,
   output: __S(235, __c29, 3) as any as S.Schema<PagedRouterWorker>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UnassignJobRouterOperationJobError = AzureOpError;
 /** Unassign a job. Unassign a job. */
@@ -2253,6 +2307,7 @@ function __c24(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2261,6 +2316,7 @@ function __c24(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-11-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -2297,6 +2353,7 @@ function __c25(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2305,6 +2362,7 @@ function __c25(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-11-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -2337,6 +2395,7 @@ function __c26(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2345,6 +2404,7 @@ function __c26(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-11-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -2376,6 +2436,7 @@ function __c27(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2384,6 +2445,7 @@ function __c27(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-11-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -2423,6 +2485,7 @@ function __c28(j: number): any {
           classificationPolicyId: S.optional(S.String.pipe(T.Query())),
           scheduledBefore: S.optional(S.String.pipe(T.Query())),
           scheduledAfter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2431,6 +2494,7 @@ function __c28(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-11-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -2480,6 +2544,7 @@ function __c29(j: number): any {
           channelId: S.optional(S.String.pipe(T.Query())),
           queueId: S.optional(S.String.pipe(T.Query())),
           hasCapacity: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2488,6 +2553,7 @@ function __c29(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-11-01",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),

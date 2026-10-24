@@ -15,16 +15,195 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.postgresql#VirtualEndpointsDelete": "com.azure.postgresql#DeleteVirtualEndpoint",
+      "com.azure.postgresql#VirtualEndpointsDeleteResponse": "com.azure.postgresql#DeleteVirtualEndpointResponse",
+      "com.azure.postgresql#VirtualEndpointsDeleteRequest": "com.azure.postgresql#DeleteVirtualEndpointRequest",
+      "com.azure.postgresql#VirtualEndpointsUpdate": "com.azure.postgresql#UpdateVirtualEndpoint",
+      "com.azure.postgresql#VirtualEndpointsUpdateResponse": "com.azure.postgresql#UpdateVirtualEndpointResponse",
+      "com.azure.postgresql#VirtualEndpointsUpdateRequest": "com.azure.postgresql#UpdateVirtualEndpointRequest",
+      "com.azure.postgresql#VirtualEndpointsCreate": "com.azure.postgresql#CreateVirtualEndpoint",
+      "com.azure.postgresql#VirtualEndpointsCreateResponse": "com.azure.postgresql#CreateVirtualEndpointResponse",
+      "com.azure.postgresql#VirtualEndpointsCreateRequest": "com.azure.postgresql#CreateVirtualEndpointRequest",
+      "com.azure.postgresql#VirtualEndpointsGet": "com.azure.postgresql#GetVirtualEndpoint",
+      "com.azure.postgresql#VirtualEndpointsGetResponse": "com.azure.postgresql#GetVirtualEndpointResponse",
+      "com.azure.postgresql#VirtualEndpointsGetRequest": "com.azure.postgresql#GetVirtualEndpointRequest",
+      "com.azure.postgresql#VirtualEndpointsListByServer": "com.azure.postgresql#ListVirtualEndpointByServer",
+      "com.azure.postgresql#VirtualEndpointsListByServerRequest": "com.azure.postgresql#ListVirtualEndpointByServerRequest",
+      "com.azure.postgresql#TuningOptionsListRecommendations": "com.azure.postgresql#ListTuningOptionRecommendations",
+      "com.azure.postgresql#TuningOptionsListRecommendationsRequest": "com.azure.postgresql#ListTuningOptionRecommendationsRequest",
+      "com.azure.postgresql#TuningOptionsListRecommendationsRequestRecommendationType": "com.azure.postgresql#ListTuningOptionRecommendationsRequestRecommendationType",
+      "com.azure.postgresql#TuningOptionsListRecommendationsRequestTuningOption": "com.azure.postgresql#ListTuningOptionRecommendationsRequestTuningOption",
+      "com.azure.postgresql#TuningOptionsGet": "com.azure.postgresql#GetTuningOption",
+      "com.azure.postgresql#TuningOptionsGetResponse": "com.azure.postgresql#GetTuningOptionResponse",
+      "com.azure.postgresql#TuningOptionsGetRequest": "com.azure.postgresql#GetTuningOptionRequest",
+      "com.azure.postgresql#TuningOptionsGetRequestTuningOption": "com.azure.postgresql#GetTuningOptionRequestTuningOption",
+      "com.azure.postgresql#TuningOptionsListByServer": "com.azure.postgresql#ListTuningOptionByServer",
+      "com.azure.postgresql#TuningOptionsListByServerRequest": "com.azure.postgresql#ListTuningOptionByServerRequest",
+      "com.azure.postgresql#ServersStop": "com.azure.postgresql#StopServer",
+      "com.azure.postgresql#ServersStopResponse": "com.azure.postgresql#StopServerResponse",
+      "com.azure.postgresql#ServersStopRequest": "com.azure.postgresql#StopServerRequest",
+      "com.azure.postgresql#BackupsLongTermRetentionStart": "com.azure.postgresql#StartBackupsLongTermRetention",
+      "com.azure.postgresql#BackupsLongTermRetentionStartRequest": "com.azure.postgresql#StartBackupsLongTermRetentionRequest",
+      "com.azure.postgresql#ServersStart": "com.azure.postgresql#StartServer",
+      "com.azure.postgresql#ServersStartResponse": "com.azure.postgresql#StartServerResponse",
+      "com.azure.postgresql#ServersStartRequest": "com.azure.postgresql#StartServerRequest",
+      "com.azure.postgresql#ServersRestart": "com.azure.postgresql#RestartServer",
+      "com.azure.postgresql#ServersRestartResponse": "com.azure.postgresql#RestartServerResponse",
+      "com.azure.postgresql#ServersRestartRequest": "com.azure.postgresql#RestartServerRequest",
+      "com.azure.postgresql#ReplicasListByServer": "com.azure.postgresql#ListReplicasByServer",
+      "com.azure.postgresql#ReplicasListByServerRequest": "com.azure.postgresql#ListReplicasByServerRequest",
+      "com.azure.postgresql#PrivateLinkResourcesGet": "com.azure.postgresql#GetPrivateLinkResource",
+      "com.azure.postgresql#PrivateLinkResourcesGetResponse": "com.azure.postgresql#GetPrivateLinkResourceResponse",
+      "com.azure.postgresql#PrivateLinkResourcesGetResponseProperties": "com.azure.postgresql#GetPrivateLinkResourceResponseProperties",
+      "com.azure.postgresql#PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList": "com.azure.postgresql#GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList",
+      "com.azure.postgresql#PrivateLinkResourcesGetResponsePropertiesRequiredMembersList": "com.azure.postgresql#GetPrivateLinkResourceResponsePropertiesRequiredMembersList",
+      "com.azure.postgresql#PrivateLinkResourcesGetRequest": "com.azure.postgresql#GetPrivateLinkResourceRequest",
+      "com.azure.postgresql#PrivateLinkResourcesListByServer": "com.azure.postgresql#ListPrivateLinkResourceByServer",
+      "com.azure.postgresql#PrivateLinkResourcesListByServerRequest": "com.azure.postgresql#ListPrivateLinkResourceByServerRequest",
+      "com.azure.postgresql#PrivateEndpointConnectionsDelete": "com.azure.postgresql#DeletePrivateEndpointConnection",
+      "com.azure.postgresql#PrivateEndpointConnectionsDeleteResponse": "com.azure.postgresql#DeletePrivateEndpointConnectionResponse",
+      "com.azure.postgresql#PrivateEndpointConnectionsDeleteRequest": "com.azure.postgresql#DeletePrivateEndpointConnectionRequest",
+      "com.azure.postgresql#PrivateEndpointConnectionsUpdate": "com.azure.postgresql#UpdatePrivateEndpointConnection",
+      "com.azure.postgresql#PrivateEndpointConnectionsUpdateResponse": "com.azure.postgresql#UpdatePrivateEndpointConnectionResponse",
+      "com.azure.postgresql#PrivateEndpointConnectionsUpdateRequest": "com.azure.postgresql#UpdatePrivateEndpointConnectionRequest",
+      "com.azure.postgresql#PrivateEndpointConnectionsGet": "com.azure.postgresql#GetPrivateEndpointConnection",
+      "com.azure.postgresql#PrivateEndpointConnectionsGetResponse": "com.azure.postgresql#GetPrivateEndpointConnectionResponse",
+      "com.azure.postgresql#PrivateEndpointConnectionsGetRequest": "com.azure.postgresql#GetPrivateEndpointConnectionRequest",
+      "com.azure.postgresql#PrivateEndpointConnectionsListByServer": "com.azure.postgresql#ListPrivateEndpointConnectionByServer",
+      "com.azure.postgresql#PrivateEndpointConnectionsListByServerRequest": "com.azure.postgresql#ListPrivateEndpointConnectionByServerRequest",
+      "com.azure.postgresql#MigrationsCancel": "com.azure.postgresql#CancelMigration",
+      "com.azure.postgresql#MigrationsCancelResponse": "com.azure.postgresql#CancelMigrationResponse",
+      "com.azure.postgresql#MigrationsCancelResponseTagsMap": "com.azure.postgresql#CancelMigrationResponseTagsMap",
+      "com.azure.postgresql#MigrationsCancelRequest": "com.azure.postgresql#CancelMigrationRequest",
+      "com.azure.postgresql#MigrationsUpdate": "com.azure.postgresql#UpdateMigration",
+      "com.azure.postgresql#MigrationsUpdateResponse": "com.azure.postgresql#UpdateMigrationResponse",
+      "com.azure.postgresql#MigrationsUpdateResponseTagsMap": "com.azure.postgresql#UpdateMigrationResponseTagsMap",
+      "com.azure.postgresql#MigrationsUpdateRequest": "com.azure.postgresql#UpdateMigrationRequest",
+      "com.azure.postgresql#MigrationsUpdateRequestTagsMap": "com.azure.postgresql#UpdateMigrationRequestTagsMap",
+      "com.azure.postgresql#MigrationsCreate": "com.azure.postgresql#CreateMigration",
+      "com.azure.postgresql#MigrationsCreateResponse": "com.azure.postgresql#CreateMigrationResponse",
+      "com.azure.postgresql#MigrationsCreateResponseTagsMap": "com.azure.postgresql#CreateMigrationResponseTagsMap",
+      "com.azure.postgresql#MigrationsCreateRequest": "com.azure.postgresql#CreateMigrationRequest",
+      "com.azure.postgresql#MigrationsCreateRequestTagsMap": "com.azure.postgresql#CreateMigrationRequestTagsMap",
+      "com.azure.postgresql#MigrationsGet": "com.azure.postgresql#GetMigration",
+      "com.azure.postgresql#MigrationsGetResponse": "com.azure.postgresql#GetMigrationResponse",
+      "com.azure.postgresql#MigrationsGetResponseTagsMap": "com.azure.postgresql#GetMigrationResponseTagsMap",
+      "com.azure.postgresql#MigrationsGetRequest": "com.azure.postgresql#GetMigrationRequest",
+      "com.azure.postgresql#MigrationsListByTargetServer": "com.azure.postgresql#ListMigrationByTargetServer",
+      "com.azure.postgresql#MigrationsListByTargetServerRequest": "com.azure.postgresql#ListMigrationByTargetServerRequest",
+      "com.azure.postgresql#MigrationsListByTargetServerRequestMigrationListFilter": "com.azure.postgresql#ListMigrationByTargetServerRequestMigrationListFilter",
+      "com.azure.postgresql#BackupsLongTermRetentionCheckPrerequisites": "com.azure.postgresql#CheckBackupsLongTermRetentionPrerequisites",
+      "com.azure.postgresql#BackupsLongTermRetentionCheckPrerequisitesRequest": "com.azure.postgresql#CheckBackupsLongTermRetentionPrerequisitesRequest",
+      "com.azure.postgresql#BackupsLongTermRetentionGet": "com.azure.postgresql#GetBackupsLongTermRetention",
+      "com.azure.postgresql#BackupsLongTermRetentionGetResponse": "com.azure.postgresql#GetBackupsLongTermRetentionResponse",
+      "com.azure.postgresql#BackupsLongTermRetentionGetRequest": "com.azure.postgresql#GetBackupsLongTermRetentionRequest",
+      "com.azure.postgresql#BackupsLongTermRetentionListByServer": "com.azure.postgresql#ListBackupsLongTermRetentionByServer",
+      "com.azure.postgresql#BackupsLongTermRetentionListByServerRequest": "com.azure.postgresql#ListBackupsLongTermRetentionByServerRequest",
+      "com.azure.postgresql#CapturedLogsListByServer": "com.azure.postgresql#ListCapturedLogByServer",
+      "com.azure.postgresql#CapturedLogsListByServerRequest": "com.azure.postgresql#ListCapturedLogByServerRequest",
+      "com.azure.postgresql#FirewallRulesDelete": "com.azure.postgresql#DeleteFirewallRule",
+      "com.azure.postgresql#FirewallRulesDeleteResponse": "com.azure.postgresql#DeleteFirewallRuleResponse",
+      "com.azure.postgresql#FirewallRulesDeleteRequest": "com.azure.postgresql#DeleteFirewallRuleRequest",
+      "com.azure.postgresql#FirewallRulesGet": "com.azure.postgresql#GetFirewallRule",
+      "com.azure.postgresql#FirewallRulesGetResponse": "com.azure.postgresql#GetFirewallRuleResponse",
+      "com.azure.postgresql#FirewallRulesGetRequest": "com.azure.postgresql#GetFirewallRuleRequest",
+      "com.azure.postgresql#FirewallRulesListByServer": "com.azure.postgresql#ListFirewallRuleByServer",
+      "com.azure.postgresql#FirewallRulesListByServerRequest": "com.azure.postgresql#ListFirewallRuleByServerRequest",
+      "com.azure.postgresql#DatabasesDelete": "com.azure.postgresql#DeleteDatabase",
+      "com.azure.postgresql#DatabasesDeleteResponse": "com.azure.postgresql#DeleteDatabaseResponse",
+      "com.azure.postgresql#DatabasesDeleteRequest": "com.azure.postgresql#DeleteDatabaseRequest",
+      "com.azure.postgresql#DatabasesCreate": "com.azure.postgresql#CreateDatabase",
+      "com.azure.postgresql#DatabasesCreateResponse": "com.azure.postgresql#CreateDatabaseResponse",
+      "com.azure.postgresql#DatabasesCreateRequest": "com.azure.postgresql#CreateDatabaseRequest",
+      "com.azure.postgresql#DatabasesGet": "com.azure.postgresql#GetDatabase",
+      "com.azure.postgresql#DatabasesGetResponse": "com.azure.postgresql#GetDatabaseResponse",
+      "com.azure.postgresql#DatabasesGetRequest": "com.azure.postgresql#GetDatabaseRequest",
+      "com.azure.postgresql#DatabasesListByServer": "com.azure.postgresql#ListDatabaseByServer",
+      "com.azure.postgresql#DatabasesListByServerRequest": "com.azure.postgresql#ListDatabaseByServerRequest",
+      "com.azure.postgresql#ConfigurationsUpdate": "com.azure.postgresql#UpdateConfiguration",
+      "com.azure.postgresql#ConfigurationsUpdateResponse": "com.azure.postgresql#UpdateConfigurationResponse",
+      "com.azure.postgresql#ConfigurationsUpdateRequest": "com.azure.postgresql#UpdateConfigurationRequest",
+      "com.azure.postgresql#ConfigurationsPut": "com.azure.postgresql#PutConfiguration",
+      "com.azure.postgresql#ConfigurationsPutResponse": "com.azure.postgresql#PutConfigurationResponse",
+      "com.azure.postgresql#ConfigurationsPutRequest": "com.azure.postgresql#PutConfigurationRequest",
+      "com.azure.postgresql#ConfigurationsGet": "com.azure.postgresql#GetConfiguration",
+      "com.azure.postgresql#ConfigurationsGetResponse": "com.azure.postgresql#GetConfigurationResponse",
+      "com.azure.postgresql#ConfigurationsGetRequest": "com.azure.postgresql#GetConfigurationRequest",
+      "com.azure.postgresql#ConfigurationsListByServer": "com.azure.postgresql#ListConfigurationByServer",
+      "com.azure.postgresql#ConfigurationsListByServerRequest": "com.azure.postgresql#ListConfigurationByServerRequest",
+      "com.azure.postgresql#MigrationsCheckNameAvailability": "com.azure.postgresql#CheckMigrationNameAvailability",
+      "com.azure.postgresql#MigrationsCheckNameAvailabilityRequest": "com.azure.postgresql#CheckMigrationNameAvailabilityRequest",
+      "com.azure.postgresql#CapabilitiesByServerList": "com.azure.postgresql#ListCapabilitiesByServer",
+      "com.azure.postgresql#CapabilitiesByServerListRequest": "com.azure.postgresql#ListCapabilitiesByServerRequest",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandDelete": "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemand",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandDeleteResponse": "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemandResponse",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandDeleteRequest": "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemandRequest",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandCreate": "com.azure.postgresql#CreateBackupsAutomaticAndOnDemand",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandCreateResponse": "com.azure.postgresql#CreateBackupsAutomaticAndOnDemandResponse",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandCreateRequest": "com.azure.postgresql#CreateBackupsAutomaticAndOnDemandRequest",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandGet": "com.azure.postgresql#GetBackupsAutomaticAndOnDemand",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandGetResponse": "com.azure.postgresql#GetBackupsAutomaticAndOnDemandResponse",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandGetRequest": "com.azure.postgresql#GetBackupsAutomaticAndOnDemandRequest",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandListByServer": "com.azure.postgresql#ListBackupsAutomaticAndOnDemandByServer",
+      "com.azure.postgresql#BackupsAutomaticAndOnDemandListByServerRequest": "com.azure.postgresql#ListBackupsAutomaticAndOnDemandByServerRequest",
+      "com.azure.postgresql#AdvancedThreatProtectionSettingsGet": "com.azure.postgresql#GetAdvancedThreatProtectionSettings",
+      "com.azure.postgresql#AdvancedThreatProtectionSettingsGetResponse": "com.azure.postgresql#GetAdvancedThreatProtectionSettingsResponse",
+      "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequest": "com.azure.postgresql#GetAdvancedThreatProtectionSettingsRequest",
+      "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequestThreatProtectionName": "com.azure.postgresql#GetAdvancedThreatProtectionSettingsRequestThreatProtectionName",
+      "com.azure.postgresql#AdvancedThreatProtectionSettingsListByServer": "com.azure.postgresql#ListAdvancedThreatProtectionSettingsByServer",
+      "com.azure.postgresql#AdvancedThreatProtectionSettingsListByServerRequest": "com.azure.postgresql#ListAdvancedThreatProtectionSettingsByServerRequest",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraDelete": "com.azure.postgresql#DeleteAdministratorsMicrosoftEntra",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraDeleteResponse": "com.azure.postgresql#DeleteAdministratorsMicrosoftEntraResponse",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraDeleteRequest": "com.azure.postgresql#DeleteAdministratorsMicrosoftEntraRequest",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraGet": "com.azure.postgresql#GetAdministratorsMicrosoftEntra",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraGetResponse": "com.azure.postgresql#GetAdministratorsMicrosoftEntraResponse",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraGetRequest": "com.azure.postgresql#GetAdministratorsMicrosoftEntraRequest",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraListByServer": "com.azure.postgresql#ListAdministratorsMicrosoftEntraByServer",
+      "com.azure.postgresql#AdministratorsMicrosoftEntraListByServerRequest": "com.azure.postgresql#ListAdministratorsMicrosoftEntraByServerRequest",
+      "com.azure.postgresql#ServersDelete": "com.azure.postgresql#DeleteServer",
+      "com.azure.postgresql#ServersDeleteResponse": "com.azure.postgresql#DeleteServerResponse",
+      "com.azure.postgresql#ServersDeleteRequest": "com.azure.postgresql#DeleteServerRequest",
+      "com.azure.postgresql#ServersUpdate": "com.azure.postgresql#UpdateServer",
+      "com.azure.postgresql#ServersUpdateResponse": "com.azure.postgresql#UpdateServerResponse",
+      "com.azure.postgresql#ServersUpdateRequest": "com.azure.postgresql#UpdateServerRequest",
+      "com.azure.postgresql#ServersUpdateRequestTagsMap": "com.azure.postgresql#UpdateServerRequestTagsMap",
+      "com.azure.postgresql#ServersGet": "com.azure.postgresql#GetServer",
+      "com.azure.postgresql#ServersGetResponse": "com.azure.postgresql#GetServerResponse",
+      "com.azure.postgresql#ServersGetResponseTagsMap": "com.azure.postgresql#GetServerResponseTagsMap",
+      "com.azure.postgresql#ServersGetRequest": "com.azure.postgresql#GetServerRequest",
+      "com.azure.postgresql#ServersListByResourceGroup": "com.azure.postgresql#ListServerByResourceGroup",
+      "com.azure.postgresql#ServersListByResourceGroupRequest": "com.azure.postgresql#ListServerByResourceGroupRequest",
+      "com.azure.postgresql#QuotaUsagesList": "com.azure.postgresql#ListQuotaUsages",
+      "com.azure.postgresql#QuotaUsagesListRequest": "com.azure.postgresql#ListQuotaUsagesRequest",
+      "com.azure.postgresql#VirtualNetworkSubnetUsageList": "com.azure.postgresql#ListVirtualNetworkSubnetUsage",
+      "com.azure.postgresql#VirtualNetworkSubnetUsageListRequest": "com.azure.postgresql#ListVirtualNetworkSubnetUsageRequest",
+      "com.azure.postgresql#NameAvailabilityCheckWithLocation": "com.azure.postgresql#CheckNameAvailabilityWithLocation",
+      "com.azure.postgresql#NameAvailabilityCheckWithLocationResponse": "com.azure.postgresql#CheckNameAvailabilityWithLocationResponse",
+      "com.azure.postgresql#NameAvailabilityCheckWithLocationResponseReason": "com.azure.postgresql#CheckNameAvailabilityWithLocationResponseReason",
+      "com.azure.postgresql#NameAvailabilityCheckWithLocationRequest": "com.azure.postgresql#CheckNameAvailabilityWithLocationRequest",
+      "com.azure.postgresql#CapabilitiesByLocationList": "com.azure.postgresql#ListCapabilitiesByLocation",
+      "com.azure.postgresql#CapabilitiesByLocationListRequest": "com.azure.postgresql#ListCapabilitiesByLocationRequest",
+      "com.azure.postgresql#ServersListBySubscription": "com.azure.postgresql#ListServerBySubscription",
+      "com.azure.postgresql#ServersListBySubscriptionRequest": "com.azure.postgresql#ListServerBySubscriptionRequest",
+      "com.azure.postgresql#NameAvailabilityCheckGlobally": "com.azure.postgresql#CheckNameAvailabilityGlobally",
+      "com.azure.postgresql#NameAvailabilityCheckGloballyResponse": "com.azure.postgresql#CheckNameAvailabilityGloballyResponse",
+      "com.azure.postgresql#NameAvailabilityCheckGloballyResponseReason": "com.azure.postgresql#CheckNameAvailabilityGloballyResponseReason",
+      "com.azure.postgresql#NameAvailabilityCheckGloballyRequest": "com.azure.postgresql#CheckNameAvailabilityGloballyRequest",
+      "com.azure.postgresql#OperationsList": "com.azure.postgresql#ListOperations",
+      "com.azure.postgresql#OperationsListRequest": "com.azure.postgresql#ListOperationsRequest",
+      "com.azure.postgresql#PrivateDnsZoneSuffixGet": "com.azure.postgresql#GetPrivateDnsZoneSuffix",
+      "com.azure.postgresql#PrivateDnsZoneSuffixGetResponse": "com.azure.postgresql#GetPrivateDnsZoneSuffixResponse"
+    }
   },
   "shapes": {
-    "com.azure.postgresql#DeleteVirtualEndpoint": {
+    "com.azure.postgresql#VirtualEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeleteVirtualEndpointRequest"
+        "target": "com.azure.postgresql#VirtualEndpointsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeleteVirtualEndpointResponse"
+        "target": "com.azure.postgresql#VirtualEndpointsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37,7 +216,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeleteVirtualEndpointResponse": {
+    "com.azure.postgresql#VirtualEndpointsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -66,7 +245,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeleteVirtualEndpointRequest": {
+    "com.azure.postgresql#VirtualEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -106,13 +285,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdateVirtualEndpoint": {
+    "com.azure.postgresql#VirtualEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#UpdateVirtualEndpointRequest"
+        "target": "com.azure.postgresql#VirtualEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#UpdateVirtualEndpointResponse"
+        "target": "com.azure.postgresql#VirtualEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -125,7 +304,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#UpdateVirtualEndpointResponse": {
+    "com.azure.postgresql#VirtualEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -154,7 +333,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#UpdateVirtualEndpointRequest": {
+    "com.azure.postgresql#VirtualEndpointsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -243,13 +422,13 @@
         "smithy.api#documentation": "Type of endpoint for the virtual endpoints."
       }
     },
-    "com.azure.postgresql#CreateVirtualEndpoint": {
+    "com.azure.postgresql#VirtualEndpointsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CreateVirtualEndpointRequest"
+        "target": "com.azure.postgresql#VirtualEndpointsCreateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CreateVirtualEndpointResponse"
+        "target": "com.azure.postgresql#VirtualEndpointsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -262,7 +441,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CreateVirtualEndpointResponse": {
+    "com.azure.postgresql#VirtualEndpointsCreateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -291,7 +470,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#CreateVirtualEndpointRequest": {
+    "com.azure.postgresql#VirtualEndpointsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -337,13 +516,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetVirtualEndpoint": {
+    "com.azure.postgresql#VirtualEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetVirtualEndpointRequest"
+        "target": "com.azure.postgresql#VirtualEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetVirtualEndpointResponse"
+        "target": "com.azure.postgresql#VirtualEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -356,7 +535,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetVirtualEndpointResponse": {
+    "com.azure.postgresql#VirtualEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -546,7 +725,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.postgresql#GetVirtualEndpointRequest": {
+    "com.azure.postgresql#VirtualEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -586,10 +765,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListVirtualEndpointByServer": {
+    "com.azure.postgresql#VirtualEndpointsListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListVirtualEndpointByServerRequest"
+        "target": "com.azure.postgresql#VirtualEndpointsListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#VirtualEndpointsList"
@@ -599,10 +778,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists pair of virtual endpoints associated to a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#VirtualEndpointsList": {
@@ -673,7 +859,7 @@
         "smithy.api#documentation": "Pair of virtual endpoints for a server."
       }
     },
-    "com.azure.postgresql#ListVirtualEndpointByServerRequest": {
+    "com.azure.postgresql#VirtualEndpointsListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -699,16 +885,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListTuningOptionRecommendations": {
+    "com.azure.postgresql#TuningOptionsListRecommendations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListTuningOptionRecommendationsRequest"
+        "target": "com.azure.postgresql#TuningOptionsListRecommendationsRequest"
       },
       "output": {
         "target": "com.azure.postgresql#ObjectRecommendationList"
@@ -718,10 +910,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions/{tuningOption}/recommendations",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists available object recommendations.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#ObjectRecommendationList": {
@@ -1068,7 +1267,7 @@
         "smithy.api#documentation": "List of identifiers for all queries identified as targets for improvement if the recommendation is applied. The list is only populated for CREATE INDEX recommendations."
       }
     },
-    "com.azure.postgresql#ListTuningOptionRecommendationsRequest": {
+    "com.azure.postgresql#TuningOptionsListRecommendationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1096,7 +1295,7 @@
           }
         },
         "tuningOption": {
-          "target": "com.azure.postgresql#ListTuningOptionRecommendationsRequestTuningOption",
+          "target": "com.azure.postgresql#TuningOptionsListRecommendationsRequestTuningOption",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -1104,10 +1303,16 @@
           }
         },
         "recommendationType": {
-          "target": "com.azure.postgresql#ListTuningOptionRecommendationsRequestRecommendationType",
+          "target": "com.azure.postgresql#TuningOptionsListRecommendationsRequestRecommendationType",
           "traits": {
             "smithy.api#httpQuery": "recommendationType",
             "smithy.api#documentation": "Recommendations list filter. Retrieves recommendations based on type."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1115,7 +1320,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListTuningOptionRecommendationsRequestRecommendationType": {
+    "com.azure.postgresql#TuningOptionsListRecommendationsRequestRecommendationType": {
       "type": "enum",
       "members": {
         "CREATEINDEX": {
@@ -1145,7 +1350,7 @@
       },
       "traits": {}
     },
-    "com.azure.postgresql#ListTuningOptionRecommendationsRequestTuningOption": {
+    "com.azure.postgresql#TuningOptionsListRecommendationsRequestTuningOption": {
       "type": "enum",
       "members": {
         "INDEX": {
@@ -1163,13 +1368,13 @@
       },
       "traits": {}
     },
-    "com.azure.postgresql#GetTuningOption": {
+    "com.azure.postgresql#TuningOptionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetTuningOptionRequest"
+        "target": "com.azure.postgresql#TuningOptionsGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetTuningOptionResponse"
+        "target": "com.azure.postgresql#TuningOptionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1182,7 +1387,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetTuningOptionResponse": {
+    "com.azure.postgresql#TuningOptionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1234,7 +1439,7 @@
         "smithy.api#documentation": "Properties of a tuning option."
       }
     },
-    "com.azure.postgresql#GetTuningOptionRequest": {
+    "com.azure.postgresql#TuningOptionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1262,7 +1467,7 @@
           }
         },
         "tuningOption": {
-          "target": "com.azure.postgresql#GetTuningOptionRequestTuningOption",
+          "target": "com.azure.postgresql#TuningOptionsGetRequestTuningOption",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -1274,7 +1479,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetTuningOptionRequestTuningOption": {
+    "com.azure.postgresql#TuningOptionsGetRequestTuningOption": {
       "type": "enum",
       "members": {
         "INDEX": {
@@ -1292,10 +1497,10 @@
       },
       "traits": {}
     },
-    "com.azure.postgresql#ListTuningOptionByServer": {
+    "com.azure.postgresql#TuningOptionsListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListTuningOptionByServerRequest"
+        "target": "com.azure.postgresql#TuningOptionsListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#TuningOptionsList"
@@ -1305,10 +1510,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/tuningOptions",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the tuning options of a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#TuningOptionsList": {
@@ -1379,7 +1591,7 @@
         "smithy.api#documentation": "Impact on some metric if this recommended action is applied."
       }
     },
-    "com.azure.postgresql#ListTuningOptionByServerRequest": {
+    "com.azure.postgresql#TuningOptionsListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1405,19 +1617,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#StopServer": {
+    "com.azure.postgresql#ServersStop": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#StopServerRequest"
+        "target": "com.azure.postgresql#ServersStopRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#StopServerResponse"
+        "target": "com.azure.postgresql#ServersStopResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1430,7 +1648,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#StopServerResponse": {
+    "com.azure.postgresql#ServersStopResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -1459,7 +1677,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#StopServerRequest": {
+    "com.azure.postgresql#ServersStopRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1491,10 +1709,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#StartBackupsLongTermRetention": {
+    "com.azure.postgresql#BackupsLongTermRetentionStart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#StartBackupsLongTermRetentionRequest"
+        "target": "com.azure.postgresql#BackupsLongTermRetentionStartRequest"
       },
       "output": {
         "target": "com.azure.postgresql#BackupsLongTermRetentionResponse"
@@ -1647,7 +1865,7 @@
         "smithy.api#documentation": "Service-set extensible enumeration indicating the status of operation."
       }
     },
-    "com.azure.postgresql#StartBackupsLongTermRetentionRequest": {
+    "com.azure.postgresql#BackupsLongTermRetentionStartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1732,13 +1950,13 @@
         "smithy.api#documentation": "Settings for the long term backup."
       }
     },
-    "com.azure.postgresql#StartServer": {
+    "com.azure.postgresql#ServersStart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#StartServerRequest"
+        "target": "com.azure.postgresql#ServersStartRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#StartServerResponse"
+        "target": "com.azure.postgresql#ServersStartResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1751,7 +1969,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#StartServerResponse": {
+    "com.azure.postgresql#ServersStartResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -1780,7 +1998,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#StartServerRequest": {
+    "com.azure.postgresql#ServersStartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1812,13 +2030,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#RestartServer": {
+    "com.azure.postgresql#ServersRestart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#RestartServerRequest"
+        "target": "com.azure.postgresql#ServersRestartRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#RestartServerResponse"
+        "target": "com.azure.postgresql#ServersRestartResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1831,7 +2049,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#RestartServerResponse": {
+    "com.azure.postgresql#ServersRestartResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -1860,7 +2078,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#RestartServerRequest": {
+    "com.azure.postgresql#ServersRestartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1936,10 +2154,10 @@
         "smithy.api#documentation": "Failover mode."
       }
     },
-    "com.azure.postgresql#ListReplicasByServer": {
+    "com.azure.postgresql#ReplicasListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListReplicasByServerRequest"
+        "target": "com.azure.postgresql#ReplicasListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#ServerList"
@@ -1949,10 +2167,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/replicas",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all read replicas of a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#ServerList": {
@@ -3451,7 +3676,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#ListReplicasByServerRequest": {
+    "com.azure.postgresql#ReplicasListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3477,19 +3702,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetPrivateLinkResource": {
+    "com.azure.postgresql#PrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetPrivateLinkResourceRequest"
+        "target": "com.azure.postgresql#PrivateLinkResourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetPrivateLinkResourceResponse"
+        "target": "com.azure.postgresql#PrivateLinkResourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3502,7 +3733,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetPrivateLinkResourceResponse": {
+    "com.azure.postgresql#PrivateLinkResourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3530,7 +3761,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.postgresql#GetPrivateLinkResourceResponseProperties",
+          "target": "com.azure.postgresql#PrivateLinkResourcesGetResponseProperties",
           "traits": {
             "smithy.api#documentation": "Properties of a private link resource."
           }
@@ -3540,7 +3771,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetPrivateLinkResourceResponseProperties": {
+    "com.azure.postgresql#PrivateLinkResourcesGetResponseProperties": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -3550,13 +3781,13 @@
           }
         },
         "requiredMembers": {
-          "target": "com.azure.postgresql#GetPrivateLinkResourceResponsePropertiesRequiredMembersList",
+          "target": "com.azure.postgresql#PrivateLinkResourcesGetResponsePropertiesRequiredMembersList",
           "traits": {
             "smithy.api#documentation": "The private link resource required member names."
           }
         },
         "requiredZoneNames": {
-          "target": "com.azure.postgresql#GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList",
+          "target": "com.azure.postgresql#PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList",
           "traits": {
             "smithy.api#documentation": "The private link resource private link DNS zone name."
           }
@@ -3566,7 +3797,7 @@
         "smithy.api#documentation": "Properties of a private link resource."
       }
     },
-    "com.azure.postgresql#GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList": {
+    "com.azure.postgresql#PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -3575,7 +3806,7 @@
         "smithy.api#documentation": "The private link resource private link DNS zone name."
       }
     },
-    "com.azure.postgresql#GetPrivateLinkResourceResponsePropertiesRequiredMembersList": {
+    "com.azure.postgresql#PrivateLinkResourcesGetResponsePropertiesRequiredMembersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -3584,7 +3815,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.postgresql#GetPrivateLinkResourceRequest": {
+    "com.azure.postgresql#PrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3624,10 +3855,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListPrivateLinkResourceByServer": {
+    "com.azure.postgresql#PrivateLinkResourcesListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListPrivateLinkResourceByServerRequest"
+        "target": "com.azure.postgresql#PrivateLinkResourcesListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#PrivateLinkResourceList"
@@ -3637,10 +3868,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the private link resources for PostgreSQL server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#PrivateLinkResourceList": {
@@ -3755,7 +3993,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.postgresql#ListPrivateLinkResourceByServerRequest": {
+    "com.azure.postgresql#PrivateLinkResourcesListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3781,19 +4019,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#DeletePrivateEndpointConnection": {
+    "com.azure.postgresql#PrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeletePrivateEndpointConnectionRequest"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeletePrivateEndpointConnectionResponse"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3806,7 +4050,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeletePrivateEndpointConnectionResponse": {
+    "com.azure.postgresql#PrivateEndpointConnectionsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -3835,7 +4079,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeletePrivateEndpointConnectionRequest": {
+    "com.azure.postgresql#PrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3875,13 +4119,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdatePrivateEndpointConnection": {
+    "com.azure.postgresql#PrivateEndpointConnectionsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#UpdatePrivateEndpointConnectionRequest"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#UpdatePrivateEndpointConnectionResponse"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3894,7 +4138,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#UpdatePrivateEndpointConnectionResponse": {
+    "com.azure.postgresql#PrivateEndpointConnectionsUpdateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -3923,7 +4167,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#UpdatePrivateEndpointConnectionRequest": {
+    "com.azure.postgresql#PrivateEndpointConnectionsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3997,13 +4241,13 @@
         "smithy.api#documentation": "The private endpoint resource."
       }
     },
-    "com.azure.postgresql#GetPrivateEndpointConnection": {
+    "com.azure.postgresql#PrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetPrivateEndpointConnectionRequest"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetPrivateEndpointConnectionResponse"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4016,7 +4260,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetPrivateEndpointConnectionResponse": {
+    "com.azure.postgresql#PrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4054,7 +4298,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetPrivateEndpointConnectionRequest": {
+    "com.azure.postgresql#PrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4094,10 +4338,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListPrivateEndpointConnectionByServer": {
+    "com.azure.postgresql#PrivateEndpointConnectionsListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListPrivateEndpointConnectionByServerRequest"
+        "target": "com.azure.postgresql#PrivateEndpointConnectionsListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#PrivateEndpointConnectionList"
@@ -4107,10 +4351,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all private endpoint connections on a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#PrivateEndpointConnectionList": {
@@ -4181,7 +4432,7 @@
         "smithy.api#documentation": "The private endpoint connection resource."
       }
     },
-    "com.azure.postgresql#ListPrivateEndpointConnectionByServerRequest": {
+    "com.azure.postgresql#PrivateEndpointConnectionsListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4207,19 +4458,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#CancelMigration": {
+    "com.azure.postgresql#MigrationsCancel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CancelMigrationRequest"
+        "target": "com.azure.postgresql#MigrationsCancelRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CancelMigrationResponse"
+        "target": "com.azure.postgresql#MigrationsCancelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4232,7 +4489,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CancelMigrationResponse": {
+    "com.azure.postgresql#MigrationsCancelResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4260,7 +4517,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#CancelMigrationResponseTagsMap",
+          "target": "com.azure.postgresql#MigrationsCancelResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5433,7 +5690,7 @@
         "smithy.api#documentation": "State of migration."
       }
     },
-    "com.azure.postgresql#CancelMigrationResponseTagsMap": {
+    "com.azure.postgresql#MigrationsCancelResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5445,7 +5702,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#CancelMigrationRequest": {
+    "com.azure.postgresql#MigrationsCancelRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5485,13 +5742,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdateMigration": {
+    "com.azure.postgresql#MigrationsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#UpdateMigrationRequest"
+        "target": "com.azure.postgresql#MigrationsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#UpdateMigrationResponse"
+        "target": "com.azure.postgresql#MigrationsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5504,7 +5761,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#UpdateMigrationResponse": {
+    "com.azure.postgresql#MigrationsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5532,7 +5789,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#UpdateMigrationResponseTagsMap",
+          "target": "com.azure.postgresql#MigrationsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5555,7 +5812,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#UpdateMigrationResponseTagsMap": {
+    "com.azure.postgresql#MigrationsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5567,7 +5824,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#UpdateMigrationRequest": {
+    "com.azure.postgresql#MigrationsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5609,7 +5866,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#UpdateMigrationRequestTagsMap",
+          "target": "com.azure.postgresql#MigrationsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
@@ -5619,7 +5876,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdateMigrationRequestTagsMap": {
+    "com.azure.postgresql#MigrationsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5804,13 +6061,13 @@
         "smithy.api#documentation": "Credentials of administrator users for source and target servers."
       }
     },
-    "com.azure.postgresql#CreateMigration": {
+    "com.azure.postgresql#MigrationsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CreateMigrationRequest"
+        "target": "com.azure.postgresql#MigrationsCreateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CreateMigrationResponse"
+        "target": "com.azure.postgresql#MigrationsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5823,7 +6080,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CreateMigrationResponse": {
+    "com.azure.postgresql#MigrationsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5851,7 +6108,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#CreateMigrationResponseTagsMap",
+          "target": "com.azure.postgresql#MigrationsCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5874,7 +6131,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#CreateMigrationResponseTagsMap": {
+    "com.azure.postgresql#MigrationsCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5886,7 +6143,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#CreateMigrationRequest": {
+    "com.azure.postgresql#MigrationsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5922,7 +6179,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#CreateMigrationRequestTagsMap",
+          "target": "com.azure.postgresql#MigrationsCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6100,7 +6357,7 @@
         "smithy.api#documentation": "Names of databases to migrate."
       }
     },
-    "com.azure.postgresql#CreateMigrationRequestTagsMap": {
+    "com.azure.postgresql#MigrationsCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6112,13 +6369,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#GetMigration": {
+    "com.azure.postgresql#MigrationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetMigrationRequest"
+        "target": "com.azure.postgresql#MigrationsGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetMigrationResponse"
+        "target": "com.azure.postgresql#MigrationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6131,7 +6388,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetMigrationResponse": {
+    "com.azure.postgresql#MigrationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6159,7 +6416,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#GetMigrationResponseTagsMap",
+          "target": "com.azure.postgresql#MigrationsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -6182,7 +6439,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetMigrationResponseTagsMap": {
+    "com.azure.postgresql#MigrationsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6194,7 +6451,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#GetMigrationRequest": {
+    "com.azure.postgresql#MigrationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6234,10 +6491,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListMigrationByTargetServer": {
+    "com.azure.postgresql#MigrationsListByTargetServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListMigrationByTargetServerRequest"
+        "target": "com.azure.postgresql#MigrationsListByTargetServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#MigrationList"
@@ -6247,10 +6504,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/migrations",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all migrations of a target flexible server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#MigrationList": {
@@ -6346,7 +6610,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#ListMigrationByTargetServerRequest": {
+    "com.azure.postgresql#MigrationsListByTargetServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6374,10 +6638,16 @@
           }
         },
         "migrationListFilter": {
-          "target": "com.azure.postgresql#ListMigrationByTargetServerRequestMigrationListFilter",
+          "target": "com.azure.postgresql#MigrationsListByTargetServerRequestMigrationListFilter",
           "traits": {
             "smithy.api#httpQuery": "migrationListFilter",
             "smithy.api#documentation": "Migration list filter. Indicates if the request should retrieve only active migrations or all migrations. Defaults to Active."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6385,7 +6655,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListMigrationByTargetServerRequestMigrationListFilter": {
+    "com.azure.postgresql#MigrationsListByTargetServerRequestMigrationListFilter": {
       "type": "enum",
       "members": {
         "ACTIVE": {
@@ -6403,10 +6673,10 @@
       },
       "traits": {}
     },
-    "com.azure.postgresql#CheckBackupsLongTermRetentionPrerequisites": {
+    "com.azure.postgresql#BackupsLongTermRetentionCheckPrerequisites": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CheckBackupsLongTermRetentionPrerequisitesRequest"
+        "target": "com.azure.postgresql#BackupsLongTermRetentionCheckPrerequisitesRequest"
       },
       "output": {
         "target": "com.azure.postgresql#LtrPreBackupResponse"
@@ -6452,7 +6722,7 @@
         "smithy.api#documentation": "Response for the pre-backup request."
       }
     },
-    "com.azure.postgresql#CheckBackupsLongTermRetentionPrerequisitesRequest": {
+    "com.azure.postgresql#BackupsLongTermRetentionCheckPrerequisitesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6491,13 +6761,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetBackupsLongTermRetention": {
+    "com.azure.postgresql#BackupsLongTermRetentionGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetBackupsLongTermRetentionRequest"
+        "target": "com.azure.postgresql#BackupsLongTermRetentionGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetBackupsLongTermRetentionResponse"
+        "target": "com.azure.postgresql#BackupsLongTermRetentionGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6510,7 +6780,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetBackupsLongTermRetentionResponse": {
+    "com.azure.postgresql#BackupsLongTermRetentionGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6548,7 +6818,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetBackupsLongTermRetentionRequest": {
+    "com.azure.postgresql#BackupsLongTermRetentionGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6588,10 +6858,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListBackupsLongTermRetentionByServer": {
+    "com.azure.postgresql#BackupsLongTermRetentionListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListBackupsLongTermRetentionByServerRequest"
+        "target": "com.azure.postgresql#BackupsLongTermRetentionListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#LtrServerBackupOperationList"
@@ -6601,10 +6871,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/ltrBackupOperations",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the results of the long term retention backup operations for a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#LtrServerBackupOperationList": {
@@ -6675,7 +6952,7 @@
         "smithy.api#documentation": "Response for the LTR backup Operation API call"
       }
     },
-    "com.azure.postgresql#ListBackupsLongTermRetentionByServerRequest": {
+    "com.azure.postgresql#BackupsLongTermRetentionListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6701,16 +6978,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListCapturedLogByServer": {
+    "com.azure.postgresql#CapturedLogsListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListCapturedLogByServerRequest"
+        "target": "com.azure.postgresql#CapturedLogsListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#CapturedLogList"
@@ -6720,10 +7003,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/logFiles",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all captured logs for download in a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#CapturedLogList": {
@@ -6832,7 +7122,7 @@
         "smithy.api#documentation": "Properties of a log file."
       }
     },
-    "com.azure.postgresql#ListCapturedLogByServerRequest": {
+    "com.azure.postgresql#CapturedLogsListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6858,19 +7148,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#DeleteFirewallRule": {
+    "com.azure.postgresql#FirewallRulesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeleteFirewallRuleRequest"
+        "target": "com.azure.postgresql#FirewallRulesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeleteFirewallRuleResponse"
+        "target": "com.azure.postgresql#FirewallRulesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6883,7 +7179,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeleteFirewallRuleResponse": {
+    "com.azure.postgresql#FirewallRulesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -6912,7 +7208,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeleteFirewallRuleRequest": {
+    "com.azure.postgresql#FirewallRulesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7069,13 +7365,13 @@
         "smithy.api#documentation": "Properties of a firewall rule."
       }
     },
-    "com.azure.postgresql#GetFirewallRule": {
+    "com.azure.postgresql#FirewallRulesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetFirewallRuleRequest"
+        "target": "com.azure.postgresql#FirewallRulesGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetFirewallRuleResponse"
+        "target": "com.azure.postgresql#FirewallRulesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7088,7 +7384,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetFirewallRuleResponse": {
+    "com.azure.postgresql#FirewallRulesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7127,7 +7423,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetFirewallRuleRequest": {
+    "com.azure.postgresql#FirewallRulesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7167,10 +7463,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListFirewallRuleByServer": {
+    "com.azure.postgresql#FirewallRulesListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListFirewallRuleByServerRequest"
+        "target": "com.azure.postgresql#FirewallRulesListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#FirewallRuleList"
@@ -7180,10 +7476,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists information about all firewall rules in a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#FirewallRuleList": {
@@ -7255,7 +7558,7 @@
         "smithy.api#documentation": "Firewall rule."
       }
     },
-    "com.azure.postgresql#ListFirewallRuleByServerRequest": {
+    "com.azure.postgresql#FirewallRulesListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7281,19 +7584,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#DeleteDatabase": {
+    "com.azure.postgresql#DatabasesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeleteDatabaseRequest"
+        "target": "com.azure.postgresql#DatabasesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeleteDatabaseResponse"
+        "target": "com.azure.postgresql#DatabasesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7306,7 +7615,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeleteDatabaseResponse": {
+    "com.azure.postgresql#DatabasesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -7335,7 +7644,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeleteDatabaseRequest": {
+    "com.azure.postgresql#DatabasesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7375,13 +7684,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#CreateDatabase": {
+    "com.azure.postgresql#DatabasesCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CreateDatabaseRequest"
+        "target": "com.azure.postgresql#DatabasesCreateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CreateDatabaseResponse"
+        "target": "com.azure.postgresql#DatabasesCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7394,7 +7703,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CreateDatabaseResponse": {
+    "com.azure.postgresql#DatabasesCreateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -7423,7 +7732,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#CreateDatabaseRequest": {
+    "com.azure.postgresql#DatabasesCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7489,13 +7798,13 @@
         "smithy.api#documentation": "Properties of a database."
       }
     },
-    "com.azure.postgresql#GetDatabase": {
+    "com.azure.postgresql#DatabasesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetDatabaseRequest"
+        "target": "com.azure.postgresql#DatabasesGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetDatabaseResponse"
+        "target": "com.azure.postgresql#DatabasesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7508,7 +7817,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetDatabaseResponse": {
+    "com.azure.postgresql#DatabasesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7546,7 +7855,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetDatabaseRequest": {
+    "com.azure.postgresql#DatabasesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7586,10 +7895,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListDatabaseByServer": {
+    "com.azure.postgresql#DatabasesListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListDatabaseByServerRequest"
+        "target": "com.azure.postgresql#DatabasesListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#DatabaseList"
@@ -7599,10 +7908,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all databases in a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#DatabaseList": {
@@ -7673,7 +7989,7 @@
         "smithy.api#documentation": "Represents a database."
       }
     },
-    "com.azure.postgresql#ListDatabaseByServerRequest": {
+    "com.azure.postgresql#DatabasesListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7699,19 +8015,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdateConfiguration": {
+    "com.azure.postgresql#ConfigurationsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#UpdateConfigurationRequest"
+        "target": "com.azure.postgresql#ConfigurationsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#UpdateConfigurationResponse"
+        "target": "com.azure.postgresql#ConfigurationsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7724,7 +8046,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#UpdateConfigurationResponse": {
+    "com.azure.postgresql#ConfigurationsUpdateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -7753,7 +8075,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#UpdateConfigurationRequest": {
+    "com.azure.postgresql#ConfigurationsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7819,13 +8141,13 @@
         "smithy.api#documentation": "Properties of a configuration (also known as server parameter)."
       }
     },
-    "com.azure.postgresql#PutConfiguration": {
+    "com.azure.postgresql#ConfigurationsPut": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#PutConfigurationRequest"
+        "target": "com.azure.postgresql#ConfigurationsPutRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#PutConfigurationResponse"
+        "target": "com.azure.postgresql#ConfigurationsPutResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7838,7 +8160,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#PutConfigurationResponse": {
+    "com.azure.postgresql#ConfigurationsPutResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -7867,7 +8189,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#PutConfigurationRequest": {
+    "com.azure.postgresql#ConfigurationsPutRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7913,13 +8235,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetConfiguration": {
+    "com.azure.postgresql#ConfigurationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetConfigurationRequest"
+        "target": "com.azure.postgresql#ConfigurationsGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetConfigurationResponse"
+        "target": "com.azure.postgresql#ConfigurationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7932,7 +8254,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetConfigurationResponse": {
+    "com.azure.postgresql#ConfigurationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8088,7 +8410,7 @@
         "smithy.api#documentation": "Data type of the configuration (also known as server parameter)."
       }
     },
-    "com.azure.postgresql#GetConfigurationRequest": {
+    "com.azure.postgresql#ConfigurationsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8128,10 +8450,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListConfigurationByServer": {
+    "com.azure.postgresql#ConfigurationsListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListConfigurationByServerRequest"
+        "target": "com.azure.postgresql#ConfigurationsListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#ConfigurationList"
@@ -8141,10 +8463,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all configurations (also known as server parameters) of a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#ConfigurationList": {
@@ -8215,7 +8544,7 @@
         "smithy.api#documentation": "Configuration (also known as server parameter)."
       }
     },
-    "com.azure.postgresql#ListConfigurationByServerRequest": {
+    "com.azure.postgresql#ConfigurationsListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8241,16 +8570,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#CheckMigrationNameAvailability": {
+    "com.azure.postgresql#MigrationsCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CheckMigrationNameAvailabilityRequest"
+        "target": "com.azure.postgresql#MigrationsCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.postgresql#MigrationNameAvailability"
@@ -8326,7 +8661,7 @@
         "smithy.api#documentation": "Migration name availability reason."
       }
     },
-    "com.azure.postgresql#CheckMigrationNameAvailabilityRequest": {
+    "com.azure.postgresql#MigrationsCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8372,10 +8707,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListCapabilitiesByServer": {
+    "com.azure.postgresql#CapabilitiesByServerList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListCapabilitiesByServerRequest"
+        "target": "com.azure.postgresql#CapabilitiesByServerListRequest"
       },
       "output": {
         "target": "com.azure.postgresql#CapabilityList"
@@ -8385,10 +8720,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/capabilities",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the capabilities available for a given server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#CapabilityList": {
@@ -9200,7 +9542,7 @@
         "smithy.api#documentation": "Capability of a storage tier."
       }
     },
-    "com.azure.postgresql#ListCapabilitiesByServerRequest": {
+    "com.azure.postgresql#CapabilitiesByServerListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9226,19 +9568,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemand": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemandRequest"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemandResponse"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9251,7 +9599,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemandResponse": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -9280,7 +9628,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemandRequest": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9320,13 +9668,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#CreateBackupsAutomaticAndOnDemand": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CreateBackupsAutomaticAndOnDemandRequest"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandCreateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CreateBackupsAutomaticAndOnDemandResponse"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9339,7 +9687,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CreateBackupsAutomaticAndOnDemandResponse": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandCreateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -9368,7 +9716,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#CreateBackupsAutomaticAndOnDemandRequest": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9408,13 +9756,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetBackupsAutomaticAndOnDemand": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetBackupsAutomaticAndOnDemandRequest"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetBackupsAutomaticAndOnDemandResponse"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9427,7 +9775,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetBackupsAutomaticAndOnDemandResponse": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9511,7 +9859,7 @@
         "smithy.api#documentation": "Type of backup."
       }
     },
-    "com.azure.postgresql#GetBackupsAutomaticAndOnDemandRequest": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9551,10 +9899,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListBackupsAutomaticAndOnDemandByServer": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListBackupsAutomaticAndOnDemandByServerRequest"
+        "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#BackupAutomaticAndOnDemandList"
@@ -9564,10 +9912,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all available backups of a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#BackupAutomaticAndOnDemandList": {
@@ -9638,7 +9993,7 @@
         "smithy.api#documentation": "Properties of a backup."
       }
     },
-    "com.azure.postgresql#ListBackupsAutomaticAndOnDemandByServerRequest": {
+    "com.azure.postgresql#BackupsAutomaticAndOnDemandListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9663,6 +10018,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9811,13 +10172,13 @@
       },
       "traits": {}
     },
-    "com.azure.postgresql#GetAdvancedThreatProtectionSettings": {
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetAdvancedThreatProtectionSettingsRequest"
+        "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetAdvancedThreatProtectionSettingsResponse"
+        "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9830,7 +10191,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetAdvancedThreatProtectionSettingsResponse": {
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9889,7 +10250,7 @@
         "smithy.api#documentation": "Properties of advanced threat protection state for a server."
       }
     },
-    "com.azure.postgresql#GetAdvancedThreatProtectionSettingsRequest": {
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9917,7 +10278,7 @@
           }
         },
         "threatProtectionName": {
-          "target": "com.azure.postgresql#GetAdvancedThreatProtectionSettingsRequestThreatProtectionName",
+          "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequestThreatProtectionName",
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
@@ -9929,7 +10290,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#GetAdvancedThreatProtectionSettingsRequestThreatProtectionName": {
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequestThreatProtectionName": {
       "type": "enum",
       "members": {
         "DEFAULT": {
@@ -9941,10 +10302,10 @@
       },
       "traits": {}
     },
-    "com.azure.postgresql#ListAdvancedThreatProtectionSettingsByServer": {
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListAdvancedThreatProtectionSettingsByServerRequest"
+        "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsList"
@@ -9954,10 +10315,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/advancedThreatProtectionSettings",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists state of advanced threat protection settings for a server.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#AdvancedThreatProtectionSettingsList": {
@@ -10028,7 +10396,7 @@
         "smithy.api#documentation": "Advanced threat protection settings of the server."
       }
     },
-    "com.azure.postgresql#ListAdvancedThreatProtectionSettingsByServerRequest": {
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10054,19 +10422,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#DeleteAdministratorsMicrosoftEntra": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeleteAdministratorsMicrosoftEntraRequest"
+        "target": "com.azure.postgresql#AdministratorsMicrosoftEntraDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeleteAdministratorsMicrosoftEntraResponse"
+        "target": "com.azure.postgresql#AdministratorsMicrosoftEntraDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10079,7 +10453,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeleteAdministratorsMicrosoftEntraResponse": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -10108,7 +10482,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeleteAdministratorsMicrosoftEntraRequest": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10300,13 +10674,13 @@
         "smithy.api#documentation": "Type of Microsoft Entra principal to which the server administrator is associated."
       }
     },
-    "com.azure.postgresql#GetAdministratorsMicrosoftEntra": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetAdministratorsMicrosoftEntraRequest"
+        "target": "com.azure.postgresql#AdministratorsMicrosoftEntraGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetAdministratorsMicrosoftEntraResponse"
+        "target": "com.azure.postgresql#AdministratorsMicrosoftEntraGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10319,7 +10693,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetAdministratorsMicrosoftEntraResponse": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10390,7 +10764,7 @@
         "smithy.api#documentation": "Properties of a server administrator associated to a Microsoft Entra principal."
       }
     },
-    "com.azure.postgresql#GetAdministratorsMicrosoftEntraRequest": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10430,10 +10804,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListAdministratorsMicrosoftEntraByServer": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraListByServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListAdministratorsMicrosoftEntraByServerRequest"
+        "target": "com.azure.postgresql#AdministratorsMicrosoftEntraListByServerRequest"
       },
       "output": {
         "target": "com.azure.postgresql#AdministratorMicrosoftEntraList"
@@ -10443,10 +10817,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all server administrators associated to a Microsoft Entra principal.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#AdministratorMicrosoftEntraList": {
@@ -10518,7 +10899,7 @@
         "smithy.api#documentation": "Server administrator associated to a Microsoft Entra principal."
       }
     },
-    "com.azure.postgresql#ListAdministratorsMicrosoftEntraByServerRequest": {
+    "com.azure.postgresql#AdministratorsMicrosoftEntraListByServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10544,19 +10925,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the server."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#DeleteServer": {
+    "com.azure.postgresql#ServersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#DeleteServerRequest"
+        "target": "com.azure.postgresql#ServersDeleteRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#DeleteServerResponse"
+        "target": "com.azure.postgresql#ServersDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10569,7 +10956,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#DeleteServerResponse": {
+    "com.azure.postgresql#ServersDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -10598,7 +10985,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#DeleteServerRequest": {
+    "com.azure.postgresql#ServersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10630,13 +11017,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdateServer": {
+    "com.azure.postgresql#ServersUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#UpdateServerRequest"
+        "target": "com.azure.postgresql#ServersUpdateRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#UpdateServerResponse"
+        "target": "com.azure.postgresql#ServersUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10649,7 +11036,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#UpdateServerResponse": {
+    "com.azure.postgresql#ServersUpdateResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -10678,7 +11065,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#UpdateServerRequest": {
+    "com.azure.postgresql#ServersUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10724,7 +11111,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#UpdateServerRequestTagsMap",
+          "target": "com.azure.postgresql#ServersUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
@@ -10734,7 +11121,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#UpdateServerRequestTagsMap": {
+    "com.azure.postgresql#ServersUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11356,13 +11743,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#GetServer": {
+    "com.azure.postgresql#ServersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#GetServerRequest"
+        "target": "com.azure.postgresql#ServersGetRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#GetServerResponse"
+        "target": "com.azure.postgresql#ServersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11375,7 +11762,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetServerResponse": {
+    "com.azure.postgresql#ServersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11403,7 +11790,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.postgresql#GetServerResponseTagsMap",
+          "target": "com.azure.postgresql#ServersGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -11438,7 +11825,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#GetServerResponseTagsMap": {
+    "com.azure.postgresql#ServersGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11450,7 +11837,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.postgresql#GetServerRequest": {
+    "com.azure.postgresql#ServersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11482,10 +11869,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListServerByResourceGroup": {
+    "com.azure.postgresql#ServersListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListServerByResourceGroupRequest"
+        "target": "com.azure.postgresql#ServersListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.postgresql#ServerList"
@@ -11495,13 +11882,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all servers in a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.postgresql#ListServerByResourceGroupRequest": {
+    "com.azure.postgresql#ServersListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11519,16 +11913,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListQuotaUsages": {
+    "com.azure.postgresql#QuotaUsagesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListQuotaUsagesRequest"
+        "target": "com.azure.postgresql#QuotaUsagesListRequest"
       },
       "output": {
         "target": "com.azure.postgresql#QuotaUsageList"
@@ -11538,10 +11938,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/resourceType/flexibleServers/usages",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get quota usages at specified location in a given subscription.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#QuotaUsageList": {
@@ -11632,7 +12039,7 @@
         "smithy.api#documentation": "Name property for quota usage"
       }
     },
-    "com.azure.postgresql#ListQuotaUsagesRequest": {
+    "com.azure.postgresql#QuotaUsagesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11650,16 +12057,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the location."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListVirtualNetworkSubnetUsage": {
+    "com.azure.postgresql#VirtualNetworkSubnetUsageList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListVirtualNetworkSubnetUsageRequest"
+        "target": "com.azure.postgresql#VirtualNetworkSubnetUsageListRequest"
       },
       "output": {
         "target": "com.azure.postgresql#VirtualNetworkSubnetUsageModel"
@@ -11725,7 +12138,7 @@
         "smithy.api#documentation": "Delegated subnet usage data."
       }
     },
-    "com.azure.postgresql#ListVirtualNetworkSubnetUsageRequest": {
+    "com.azure.postgresql#VirtualNetworkSubnetUsageListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11755,13 +12168,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityWithLocation": {
+    "com.azure.postgresql#NameAvailabilityCheckWithLocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CheckNameAvailabilityWithLocationRequest"
+        "target": "com.azure.postgresql#NameAvailabilityCheckWithLocationRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CheckNameAvailabilityWithLocationResponse"
+        "target": "com.azure.postgresql#NameAvailabilityCheckWithLocationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11774,7 +12187,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityWithLocationResponse": {
+    "com.azure.postgresql#NameAvailabilityCheckWithLocationResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -11784,7 +12197,7 @@
           }
         },
         "reason": {
-          "target": "com.azure.postgresql#CheckNameAvailabilityWithLocationResponseReason",
+          "target": "com.azure.postgresql#NameAvailabilityCheckWithLocationResponseReason",
           "traits": {
             "smithy.api#documentation": "The reason why the given name is not available."
           }
@@ -11812,7 +12225,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityWithLocationResponseReason": {
+    "com.azure.postgresql#NameAvailabilityCheckWithLocationResponseReason": {
       "type": "enum",
       "members": {
         "INVALID": {
@@ -11832,7 +12245,7 @@
         "smithy.api#documentation": "The reason why the given name is not available."
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityWithLocationRequest": {
+    "com.azure.postgresql#NameAvailabilityCheckWithLocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11868,10 +12281,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListCapabilitiesByLocation": {
+    "com.azure.postgresql#CapabilitiesByLocationList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListCapabilitiesByLocationRequest"
+        "target": "com.azure.postgresql#CapabilitiesByLocationListRequest"
       },
       "output": {
         "target": "com.azure.postgresql#CapabilityList"
@@ -11881,13 +12294,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/locations/{locationName}/capabilities",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the capabilities available in a given location for a specific subscription.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.postgresql#ListCapabilitiesByLocationRequest": {
+    "com.azure.postgresql#CapabilitiesByLocationListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11905,16 +12325,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the location."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListServerBySubscription": {
+    "com.azure.postgresql#ServersListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#ListServerBySubscriptionRequest"
+        "target": "com.azure.postgresql#ServersListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.postgresql#ServerList"
@@ -11924,13 +12350,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DBforPostgreSQL/flexibleServers",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all servers in a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.postgresql#ListServerBySubscriptionRequest": {
+    "com.azure.postgresql#ServersListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11940,19 +12373,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityGlobally": {
+    "com.azure.postgresql#NameAvailabilityCheckGlobally": {
       "type": "operation",
       "input": {
-        "target": "com.azure.postgresql#CheckNameAvailabilityGloballyRequest"
+        "target": "com.azure.postgresql#NameAvailabilityCheckGloballyRequest"
       },
       "output": {
-        "target": "com.azure.postgresql#CheckNameAvailabilityGloballyResponse"
+        "target": "com.azure.postgresql#NameAvailabilityCheckGloballyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11965,7 +12404,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityGloballyResponse": {
+    "com.azure.postgresql#NameAvailabilityCheckGloballyResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -11975,7 +12414,7 @@
           }
         },
         "reason": {
-          "target": "com.azure.postgresql#CheckNameAvailabilityGloballyResponseReason",
+          "target": "com.azure.postgresql#NameAvailabilityCheckGloballyResponseReason",
           "traits": {
             "smithy.api#documentation": "The reason why the given name is not available."
           }
@@ -12003,7 +12442,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityGloballyResponseReason": {
+    "com.azure.postgresql#NameAvailabilityCheckGloballyResponseReason": {
       "type": "enum",
       "members": {
         "INVALID": {
@@ -12023,7 +12462,7 @@
         "smithy.api#documentation": "The reason why the given name is not available."
       }
     },
-    "com.azure.postgresql#CheckNameAvailabilityGloballyRequest": {
+    "com.azure.postgresql#NameAvailabilityCheckGloballyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12051,10 +12490,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.postgresql#ListOperations": {
+    "com.azure.postgresql#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.postgresql#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.postgresql#OperationList"
@@ -12064,10 +12503,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DBforPostgreSQL/operations",
           "code": 200,
-          "apiVersion": "2025-08-01"
+          "apiVersion": "2025-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all available REST API operations.",
-        "com.distilled.openapi#apiVersion": "2025-08-01"
+        "com.distilled.openapi#apiVersion": "2025-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.postgresql#OperationList": {
@@ -12348,13 +12794,27 @@
         "smithy.api#documentation": "Display metadata associated with the operation."
       }
     },
-    "com.azure.postgresql#GetPrivateDnsZoneSuffix": {
+    "com.azure.postgresql#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#PrivateDnsZoneSuffixGet": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.postgresql#GetPrivateDnsZoneSuffixResponse"
+        "target": "com.azure.postgresql#PrivateDnsZoneSuffixGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12367,7 +12827,7 @@
         "com.distilled.openapi#apiVersion": "2025-08-01"
       }
     },
-    "com.azure.postgresql#GetPrivateDnsZoneSuffixResponse": {
+    "com.azure.postgresql#PrivateDnsZoneSuffixGetResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -12387,202 +12847,202 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.postgresql#DeleteVirtualEndpoint"
+          "target": "com.azure.postgresql#VirtualEndpointsDelete"
         },
         {
-          "target": "com.azure.postgresql#UpdateVirtualEndpoint"
+          "target": "com.azure.postgresql#VirtualEndpointsUpdate"
         },
         {
-          "target": "com.azure.postgresql#CreateVirtualEndpoint"
+          "target": "com.azure.postgresql#VirtualEndpointsCreate"
         },
         {
-          "target": "com.azure.postgresql#GetVirtualEndpoint"
+          "target": "com.azure.postgresql#VirtualEndpointsGet"
         },
         {
-          "target": "com.azure.postgresql#ListVirtualEndpointByServer"
+          "target": "com.azure.postgresql#VirtualEndpointsListByServer"
         },
         {
-          "target": "com.azure.postgresql#ListTuningOptionRecommendations"
+          "target": "com.azure.postgresql#TuningOptionsListRecommendations"
         },
         {
-          "target": "com.azure.postgresql#GetTuningOption"
+          "target": "com.azure.postgresql#TuningOptionsGet"
         },
         {
-          "target": "com.azure.postgresql#ListTuningOptionByServer"
+          "target": "com.azure.postgresql#TuningOptionsListByServer"
         },
         {
-          "target": "com.azure.postgresql#StopServer"
+          "target": "com.azure.postgresql#ServersStop"
         },
         {
-          "target": "com.azure.postgresql#StartBackupsLongTermRetention"
+          "target": "com.azure.postgresql#BackupsLongTermRetentionStart"
         },
         {
-          "target": "com.azure.postgresql#StartServer"
+          "target": "com.azure.postgresql#ServersStart"
         },
         {
-          "target": "com.azure.postgresql#RestartServer"
+          "target": "com.azure.postgresql#ServersRestart"
         },
         {
-          "target": "com.azure.postgresql#ListReplicasByServer"
+          "target": "com.azure.postgresql#ReplicasListByServer"
         },
         {
-          "target": "com.azure.postgresql#GetPrivateLinkResource"
+          "target": "com.azure.postgresql#PrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.postgresql#ListPrivateLinkResourceByServer"
+          "target": "com.azure.postgresql#PrivateLinkResourcesListByServer"
         },
         {
-          "target": "com.azure.postgresql#DeletePrivateEndpointConnection"
+          "target": "com.azure.postgresql#PrivateEndpointConnectionsDelete"
         },
         {
-          "target": "com.azure.postgresql#UpdatePrivateEndpointConnection"
+          "target": "com.azure.postgresql#PrivateEndpointConnectionsUpdate"
         },
         {
-          "target": "com.azure.postgresql#GetPrivateEndpointConnection"
+          "target": "com.azure.postgresql#PrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.postgresql#ListPrivateEndpointConnectionByServer"
+          "target": "com.azure.postgresql#PrivateEndpointConnectionsListByServer"
         },
         {
-          "target": "com.azure.postgresql#CancelMigration"
+          "target": "com.azure.postgresql#MigrationsCancel"
         },
         {
-          "target": "com.azure.postgresql#UpdateMigration"
+          "target": "com.azure.postgresql#MigrationsUpdate"
         },
         {
-          "target": "com.azure.postgresql#CreateMigration"
+          "target": "com.azure.postgresql#MigrationsCreate"
         },
         {
-          "target": "com.azure.postgresql#GetMigration"
+          "target": "com.azure.postgresql#MigrationsGet"
         },
         {
-          "target": "com.azure.postgresql#ListMigrationByTargetServer"
+          "target": "com.azure.postgresql#MigrationsListByTargetServer"
         },
         {
-          "target": "com.azure.postgresql#CheckBackupsLongTermRetentionPrerequisites"
+          "target": "com.azure.postgresql#BackupsLongTermRetentionCheckPrerequisites"
         },
         {
-          "target": "com.azure.postgresql#GetBackupsLongTermRetention"
+          "target": "com.azure.postgresql#BackupsLongTermRetentionGet"
         },
         {
-          "target": "com.azure.postgresql#ListBackupsLongTermRetentionByServer"
+          "target": "com.azure.postgresql#BackupsLongTermRetentionListByServer"
         },
         {
-          "target": "com.azure.postgresql#ListCapturedLogByServer"
+          "target": "com.azure.postgresql#CapturedLogsListByServer"
         },
         {
-          "target": "com.azure.postgresql#DeleteFirewallRule"
+          "target": "com.azure.postgresql#FirewallRulesDelete"
         },
         {
           "target": "com.azure.postgresql#FirewallRulesCreateOrUpdate"
         },
         {
-          "target": "com.azure.postgresql#GetFirewallRule"
+          "target": "com.azure.postgresql#FirewallRulesGet"
         },
         {
-          "target": "com.azure.postgresql#ListFirewallRuleByServer"
+          "target": "com.azure.postgresql#FirewallRulesListByServer"
         },
         {
-          "target": "com.azure.postgresql#DeleteDatabase"
+          "target": "com.azure.postgresql#DatabasesDelete"
         },
         {
-          "target": "com.azure.postgresql#CreateDatabase"
+          "target": "com.azure.postgresql#DatabasesCreate"
         },
         {
-          "target": "com.azure.postgresql#GetDatabase"
+          "target": "com.azure.postgresql#DatabasesGet"
         },
         {
-          "target": "com.azure.postgresql#ListDatabaseByServer"
+          "target": "com.azure.postgresql#DatabasesListByServer"
         },
         {
-          "target": "com.azure.postgresql#UpdateConfiguration"
+          "target": "com.azure.postgresql#ConfigurationsUpdate"
         },
         {
-          "target": "com.azure.postgresql#PutConfiguration"
+          "target": "com.azure.postgresql#ConfigurationsPut"
         },
         {
-          "target": "com.azure.postgresql#GetConfiguration"
+          "target": "com.azure.postgresql#ConfigurationsGet"
         },
         {
-          "target": "com.azure.postgresql#ListConfigurationByServer"
+          "target": "com.azure.postgresql#ConfigurationsListByServer"
         },
         {
-          "target": "com.azure.postgresql#CheckMigrationNameAvailability"
+          "target": "com.azure.postgresql#MigrationsCheckNameAvailability"
         },
         {
-          "target": "com.azure.postgresql#ListCapabilitiesByServer"
+          "target": "com.azure.postgresql#CapabilitiesByServerList"
         },
         {
-          "target": "com.azure.postgresql#DeleteBackupsAutomaticAndOnDemand"
+          "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandDelete"
         },
         {
-          "target": "com.azure.postgresql#CreateBackupsAutomaticAndOnDemand"
+          "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandCreate"
         },
         {
-          "target": "com.azure.postgresql#GetBackupsAutomaticAndOnDemand"
+          "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandGet"
         },
         {
-          "target": "com.azure.postgresql#ListBackupsAutomaticAndOnDemandByServer"
+          "target": "com.azure.postgresql#BackupsAutomaticAndOnDemandListByServer"
         },
         {
           "target": "com.azure.postgresql#ServerThreatProtectionSettingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.postgresql#GetAdvancedThreatProtectionSettings"
+          "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsGet"
         },
         {
-          "target": "com.azure.postgresql#ListAdvancedThreatProtectionSettingsByServer"
+          "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsListByServer"
         },
         {
-          "target": "com.azure.postgresql#DeleteAdministratorsMicrosoftEntra"
+          "target": "com.azure.postgresql#AdministratorsMicrosoftEntraDelete"
         },
         {
           "target": "com.azure.postgresql#AdministratorsMicrosoftEntraCreateOrUpdate"
         },
         {
-          "target": "com.azure.postgresql#GetAdministratorsMicrosoftEntra"
+          "target": "com.azure.postgresql#AdministratorsMicrosoftEntraGet"
         },
         {
-          "target": "com.azure.postgresql#ListAdministratorsMicrosoftEntraByServer"
+          "target": "com.azure.postgresql#AdministratorsMicrosoftEntraListByServer"
         },
         {
-          "target": "com.azure.postgresql#DeleteServer"
+          "target": "com.azure.postgresql#ServersDelete"
         },
         {
-          "target": "com.azure.postgresql#UpdateServer"
+          "target": "com.azure.postgresql#ServersUpdate"
         },
         {
           "target": "com.azure.postgresql#ServersCreateOrUpdate"
         },
         {
-          "target": "com.azure.postgresql#GetServer"
+          "target": "com.azure.postgresql#ServersGet"
         },
         {
-          "target": "com.azure.postgresql#ListServerByResourceGroup"
+          "target": "com.azure.postgresql#ServersListByResourceGroup"
         },
         {
-          "target": "com.azure.postgresql#ListQuotaUsages"
+          "target": "com.azure.postgresql#QuotaUsagesList"
         },
         {
-          "target": "com.azure.postgresql#ListVirtualNetworkSubnetUsage"
+          "target": "com.azure.postgresql#VirtualNetworkSubnetUsageList"
         },
         {
-          "target": "com.azure.postgresql#CheckNameAvailabilityWithLocation"
+          "target": "com.azure.postgresql#NameAvailabilityCheckWithLocation"
         },
         {
-          "target": "com.azure.postgresql#ListCapabilitiesByLocation"
+          "target": "com.azure.postgresql#CapabilitiesByLocationList"
         },
         {
-          "target": "com.azure.postgresql#ListServerBySubscription"
+          "target": "com.azure.postgresql#ServersListBySubscription"
         },
         {
-          "target": "com.azure.postgresql#CheckNameAvailabilityGlobally"
+          "target": "com.azure.postgresql#NameAvailabilityCheckGlobally"
         },
         {
-          "target": "com.azure.postgresql#ListOperations"
+          "target": "com.azure.postgresql#OperationsList"
         },
         {
-          "target": "com.azure.postgresql#GetPrivateDnsZoneSuffix"
+          "target": "com.azure.postgresql#PrivateDnsZoneSuffixGet"
         }
       ],
       "traits": {

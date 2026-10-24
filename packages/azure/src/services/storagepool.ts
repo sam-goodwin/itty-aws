@@ -352,6 +352,8 @@ export interface ListDiskPoolByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DiskPoolTagsMap = { [key: string]: string | undefined };
@@ -390,6 +392,8 @@ export interface DiskPoolListResult {
 export interface ListDiskPoolBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDiskPoolOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. */
@@ -398,6 +402,8 @@ export interface ListDiskPoolOutboundNetworkDependenciesEndpointsRequest {
   resourceGroupName: string;
   /** The name of the Disk Pool. */
   diskPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Current TCP connectivity information from the App Service Environment to a single endpoint. */
 export interface EndpointDetail {
@@ -442,6 +448,8 @@ export interface ListDiskPoolZonesRequest {
   subscriptionId: string;
   /** The location of the resource. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Logical zone for Disk Pool resource; example: ["1"]. */
 export type DiskPoolZoneInfoAvailabilityZonesList = Array<string>;
@@ -461,7 +469,7 @@ export type DiskPoolZoneListResultValueList = Array<DiskPoolZoneInfo>;
 /** List Disk Pool skus operation response. */
 export interface DiskPoolZoneListResult {
   /** The list of Disk Pool Skus. */
-  value?: DiskPoolZoneListResultValueList;
+  value: DiskPoolZoneListResultValueList;
   /** URI to fetch the next section of the paginated response. */
   nextLink?: string;
 }
@@ -472,6 +480,8 @@ export interface ListIscsiTargetByDiskPoolRequest {
   resourceGroupName: string;
   /** The name of the Disk Pool. */
   diskPoolName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Response for iSCSI Target requests. */
 export interface IscsiTarget {
@@ -538,6 +548,8 @@ export interface ListResourceSkusRequest {
   subscriptionId: string;
   /** The location of the resource. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Capability a resource SKU has. */
 export interface ResourceSkuCapability {
@@ -624,7 +636,7 @@ export type ResourceSkuListResultValueList = Array<ResourceSkuInfo>;
 /** List Disk Pool skus operation response. */
 export interface ResourceSkuListResult {
   /** The list of StoragePool resource skus. */
-  value?: ResourceSkuListResultValueList;
+  value: ResourceSkuListResultValueList;
   /** URI to fetch the next section of the paginated response. */
   nextLink?: string;
 }
@@ -853,42 +865,57 @@ export const IscsiTargetsCreateOrUpdate: API.OperationMethod<
 
 export type ListDiskPoolByResourceGroupError = AzureOpError;
 /** Gets a list of DiskPools in a resource group. */
-export const ListDiskPoolByResourceGroup: API.OperationMethod<
+export const ListDiskPoolByResourceGroup: API.PaginatedOperationMethod<
   ListDiskPoolByResourceGroupRequest,
   DiskPoolListResult,
   ListDiskPoolByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DiskPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListDiskPoolByResourceGroupRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<DiskPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDiskPoolBySubscriptionError = AzureOpError;
 /** Gets a list of Disk Pools in a subscription */
-export const ListDiskPoolBySubscription: API.OperationMethod<
+export const ListDiskPoolBySubscription: API.PaginatedOperationMethod<
   ListDiskPoolBySubscriptionRequest,
   DiskPoolListResult,
   ListDiskPoolBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DiskPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListDiskPoolBySubscriptionRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<DiskPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDiskPoolOutboundNetworkDependenciesEndpointsError = AzureOpError;
 /** Gets the network endpoints of all outbound dependencies of a Disk Pool */
-export const ListDiskPoolOutboundNetworkDependenciesEndpoints: API.OperationMethod<
+export const ListDiskPoolOutboundNetworkDependenciesEndpoints: API.PaginatedOperationMethod<
   ListDiskPoolOutboundNetworkDependenciesEndpointsRequest,
   OutboundEnvironmentEndpointList,
   ListDiskPoolOutboundNetworkDependenciesEndpointsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundEnvironmentEndpoint
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     48,
     __c3,
@@ -898,67 +925,96 @@ export const ListDiskPoolOutboundNetworkDependenciesEndpoints: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDiskPoolZonesError = AzureOpError;
 /** Lists available Disk Pool Skus in an Azure location. */
-export const ListDiskPoolZones: API.OperationMethod<
+export const ListDiskPoolZones: API.PaginatedOperationMethod<
   ListDiskPoolZonesRequest,
   DiskPoolZoneListResult,
   ListDiskPoolZonesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DiskPoolZoneInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c4, 0) as any as S.Schema<ListDiskPoolZonesRequest>,
   output: __S(67, __c4, 3) as any as S.Schema<DiskPoolZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIscsiTargetByDiskPoolError = AzureOpError;
 /** Get iSCSI Targets in a Disk pool. */
-export const ListIscsiTargetByDiskPool: API.OperationMethod<
+export const ListIscsiTargetByDiskPool: API.PaginatedOperationMethod<
   ListIscsiTargetByDiskPoolRequest,
   IscsiTargetList,
   ListIscsiTargetByDiskPoolError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IscsiTarget
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListIscsiTargetByDiskPoolRequest>,
   output: __S(82, __c5, 2) as any as S.Schema<IscsiTargetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Gets a list of StoragePool operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   StoragePoolOperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StoragePoolRPOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(100, __c6, 4) as any as S.Schema<StoragePoolOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListResourceSkusError = AzureOpError;
 /** Lists available StoragePool resources and skus in an Azure location. */
-export const ListResourceSkus: API.OperationMethod<
+export const ListResourceSkus: API.PaginatedOperationMethod<
   ListResourceSkusRequest,
   ResourceSkuListResult,
   ListResourceSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceSkuInfo
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<ListResourceSkusRequest>,
   output: __S(123, __c7, 11) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type StartDiskPoolError = AzureOpError;
 /** The operation to start a Disk Pool. This start operation can take 10 minutes to complete. This is expected service behavior. */
@@ -1059,12 +1115,14 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diskPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/outboundNetworkDependenciesEndpoints",
             code: 200,
             apiVersion: "2021-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDiskPoolOutboundNetworkDependenciesEndpointsRequest" });
@@ -1113,12 +1171,14 @@ function __c4(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/diskPoolZones",
             code: 200,
             apiVersion: "2021-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDiskPoolZonesRequest" });
@@ -1135,7 +1195,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66, __c4, 2)),
+          value: __S(66, __c4, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskPoolZoneListResult" });
@@ -1149,12 +1209,14 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diskPoolName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets",
             code: 200,
             apiVersion: "2021-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIscsiTargetByDiskPoolRequest" });
@@ -1219,12 +1281,14 @@ function __c7(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/locations/{location}/skus",
             code: 200,
             apiVersion: "2021-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListResourceSkusRequest" });
@@ -1289,7 +1353,7 @@ function __c7(j: number): any {
     case 11:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(122, __c7, 10)),
+          value: __S(122, __c7, 10),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuListResult" });
@@ -1658,12 +1722,14 @@ function __c23(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools",
             code: 200,
             apiVersion: "2021-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDiskPoolByResourceGroupRequest" });
@@ -1688,12 +1754,14 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StoragePool/diskPools",
             code: 200,
             apiVersion: "2021-08-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDiskPoolBySubscriptionRequest" });

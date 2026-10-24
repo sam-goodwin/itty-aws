@@ -2928,6 +2928,8 @@ export interface GetSqlServerInstanceAllAvailabilityGroupsRequest {
   sqlServerInstanceName: string;
   availabilityGroupTypeFilter?: AvailabilityGroupTypeFilter | (string & {});
   replicationPartnerTypeFilter?: ReplicationPartnerType | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlServerAvailabilityGroupResourceTagsMap = { [key: string]: string | undefined };
@@ -2954,7 +2956,7 @@ export type ArcSqlServerAvailabilityGroupListResultValueList =
 /** A list of Arc Sql Server Availability Groups. */
 export interface ArcSqlServerAvailabilityGroupListResult {
   /** Array of Arc Sql Server Availability Groups. */
-  value?: ArcSqlServerAvailabilityGroupListResultValueList;
+  value: ArcSqlServerAvailabilityGroupListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3207,6 +3209,8 @@ export interface ListActiveDirectoryConnectorsRequest {
   resourceGroupName: string;
   /** The name of the data controller */
   dataControllerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Active directory connector resource */
 export interface ActiveDirectoryConnectorResource {
@@ -3226,7 +3230,7 @@ export type ListActiveDirectoryConnectorsResponseValueList =
   Array<ActiveDirectoryConnectorResource>;
 export interface ListActiveDirectoryConnectorsResponse {
   /** Array of results. */
-  value?: ListActiveDirectoryConnectorsResponseValueList;
+  value: ListActiveDirectoryConnectorsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3235,6 +3239,8 @@ export interface ListDataControllerInGroupRequest {
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DataControllerResourceTagsMap = { [key: string]: string | undefined };
@@ -3263,19 +3269,21 @@ export interface DataControllerResource {
 export type ListDataControllerInGroupResponseValueList = Array<DataControllerResource>;
 export interface ListDataControllerInGroupResponse {
   /** Array of results. */
-  value?: ListDataControllerInGroupResponseValueList;
+  value: ListDataControllerInGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListDataControllerInSubscriptionRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type ListDataControllerInSubscriptionResponseValueList = Array<DataControllerResource>;
 export interface ListDataControllerInSubscriptionResponse {
   /** Array of results. */
-  value?: ListDataControllerInSubscriptionResponseValueList;
+  value: ListDataControllerInSubscriptionResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3286,6 +3294,8 @@ export interface ListFailoverGroupsRequest {
   resourceGroupName: string;
   /** Name of SQL Managed Instance */
   sqlManagedInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A failover group resource. */
 export interface FailoverGroupResource {
@@ -3304,11 +3314,14 @@ export interface FailoverGroupResource {
 export type ListFailoverGroupsResponseValueList = Array<FailoverGroupResource>;
 export interface ListFailoverGroupsResponse {
   /** Array of failover group results. */
-  value?: ListFailoverGroupsResponseValueList;
+  value: ListFailoverGroupsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name. */
@@ -3341,7 +3354,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** Array of results. */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3350,6 +3363,8 @@ export interface ListPostgresInstanceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type PostgresInstanceTagsMap = { [key: string]: string | undefined };
@@ -3380,19 +3395,21 @@ export interface PostgresInstance {
 export type ListPostgresInstanceByResourceGroupResponseValueList = Array<PostgresInstance>;
 export interface ListPostgresInstanceByResourceGroupResponse {
   /** Array of results. */
-  value?: ListPostgresInstanceByResourceGroupResponseValueList;
+  value: ListPostgresInstanceByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListPostgresInstancesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type ListPostgresInstancesResponseValueList = Array<PostgresInstance>;
 export interface ListPostgresInstancesResponse {
   /** Array of results. */
-  value?: ListPostgresInstancesResponseValueList;
+  value: ListPostgresInstancesResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3401,6 +3418,8 @@ export interface ListSqlManagedInstanceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlManagedInstanceTagsMap = { [key: string]: string | undefined };
@@ -3431,19 +3450,21 @@ export interface SqlManagedInstance {
 export type ListSqlManagedInstanceByResourceGroupResponseValueList = Array<SqlManagedInstance>;
 export interface ListSqlManagedInstanceByResourceGroupResponse {
   /** Array of results. */
-  value?: ListSqlManagedInstanceByResourceGroupResponseValueList;
+  value: ListSqlManagedInstanceByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListSqlManagedInstancesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type ListSqlManagedInstancesResponseValueList = Array<SqlManagedInstance>;
 export interface ListSqlManagedInstancesResponse {
   /** Array of results. */
-  value?: ListSqlManagedInstancesResponseValueList;
+  value: ListSqlManagedInstancesResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3454,6 +3475,8 @@ export interface ListSqlServerAvailabilityGroupsRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSqlServerDatabasesRequest {
   /** The ID of the Azure subscription */
@@ -3462,6 +3485,8 @@ export interface ListSqlServerDatabasesRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlServerDatabaseResourceTagsMap = { [key: string]: string | undefined };
@@ -3487,7 +3512,7 @@ export type ArcSqlServerDatabaseListResultValueList = Array<SqlServerDatabaseRes
 /** A list of Arc Sql Server database. */
 export interface ArcSqlServerDatabaseListResult {
   /** Array of Arc Sql Server database. */
-  value?: ArcSqlServerDatabaseListResultValueList;
+  value: ArcSqlServerDatabaseListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3496,6 +3521,8 @@ export interface ListSqlServerEsuLicenseByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlServerEsuLicenseTagsMap = { [key: string]: string | undefined };
@@ -3521,19 +3548,23 @@ export type SqlServerEsuLicenseListResultValueList = Array<SqlServerEsuLicense>;
 /** A list of SQL Server ESU licenses. */
 export interface SqlServerEsuLicenseListResult {
   /** Array of results. */
-  value?: SqlServerEsuLicenseListResultValueList;
+  value: SqlServerEsuLicenseListResultValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListSqlServerEsuLicensesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSqlServerInstanceByResourceGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlServerInstanceTagsMap = { [key: string]: string | undefined };
@@ -3558,19 +3589,21 @@ export interface SqlServerInstance {
 export type ListSqlServerInstanceByResourceGroupResponseValueList = Array<SqlServerInstance>;
 export interface ListSqlServerInstanceByResourceGroupResponse {
   /** Array of results. */
-  value?: ListSqlServerInstanceByResourceGroupResponseValueList;
+  value: ListSqlServerInstanceByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListSqlServerInstancesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type ListSqlServerInstancesResponseValueList = Array<SqlServerInstance>;
 export interface ListSqlServerInstancesResponse {
   /** Array of results. */
-  value?: ListSqlServerInstancesResponseValueList;
+  value: ListSqlServerInstancesResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -3579,6 +3612,8 @@ export interface ListSqlServerLicenseByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlServerLicenseTagsMap = { [key: string]: string | undefined };
@@ -3603,19 +3638,21 @@ export interface SqlServerLicense {
 export type ListSqlServerLicenseByResourceGroupResponseValueList = Array<SqlServerLicense>;
 export interface ListSqlServerLicenseByResourceGroupResponse {
   /** Array of results. */
-  value?: ListSqlServerLicenseByResourceGroupResponseValueList;
+  value: ListSqlServerLicenseByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
 export interface ListSqlServerLicensesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of results. */
 export type ListSqlServerLicensesResponseValueList = Array<SqlServerLicense>;
 export interface ListSqlServerLicensesResponse {
   /** Array of results. */
-  value?: ListSqlServerLicensesResponseValueList;
+  value: ListSqlServerLicensesResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
@@ -4992,18 +5029,25 @@ export const GetSqlServerInstance: API.OperationMethod<
 
 export type GetSqlServerInstanceAllAvailabilityGroupsError = AzureOpError;
 /** Retrieves full properties of all the Availability Groups in a SQL Server instance. */
-export const GetSqlServerInstanceAllAvailabilityGroups: API.OperationMethod<
+export const GetSqlServerInstanceAllAvailabilityGroups: API.PaginatedOperationMethod<
   GetSqlServerInstanceAllAvailabilityGroupsRequest,
   ArcSqlServerAvailabilityGroupListResult,
   GetSqlServerInstanceAllAvailabilityGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerAvailabilityGroupResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1440, __c45, 0) as any as S.Schema<GetSqlServerInstanceAllAvailabilityGroupsRequest>,
   output: __S(1473, __c46, 1) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetSqlServerInstanceBestPracticesAssessmentError = AzureOpError;
 /** Retrieves SQL best practices assessment results for the SQL Server instance. */
@@ -5071,258 +5115,377 @@ export const GetSqlServerLicense: API.OperationMethod<
 
 export type ListActiveDirectoryConnectorsError = AzureOpError;
 /** List the active directory connectors associated with the given data controller. */
-export const ListActiveDirectoryConnectors: API.OperationMethod<
+export const ListActiveDirectoryConnectors: API.PaginatedOperationMethod<
   ListActiveDirectoryConnectorsRequest,
   ListActiveDirectoryConnectorsResponse,
   ListActiveDirectoryConnectorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ActiveDirectoryConnectorResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1696, __c53, 0) as any as S.Schema<ListActiveDirectoryConnectorsRequest>,
   output: __S(1698, __c53, 2) as any as S.Schema<ListActiveDirectoryConnectorsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataControllerInGroupError = AzureOpError;
 /** List dataController resources in the resource group */
-export const ListDataControllerInGroup: API.OperationMethod<
+export const ListDataControllerInGroup: API.PaginatedOperationMethod<
   ListDataControllerInGroupRequest,
   ListDataControllerInGroupResponse,
   ListDataControllerInGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataControllerResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1728, __c54, 0) as any as S.Schema<ListDataControllerInGroupRequest>,
   output: __S(1761, __c55, 1) as any as S.Schema<ListDataControllerInGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataControllerInSubscriptionError = AzureOpError;
 /** List dataController resources in the subscription */
-export const ListDataControllerInSubscription: API.OperationMethod<
+export const ListDataControllerInSubscription: API.PaginatedOperationMethod<
   ListDataControllerInSubscriptionRequest,
   ListDataControllerInSubscriptionResponse,
   ListDataControllerInSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataControllerResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1856, __c58, 0) as any as S.Schema<ListDataControllerInSubscriptionRequest>,
   output: __S(1761, __c55, 1) as any as S.Schema<ListDataControllerInSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFailoverGroupsError = AzureOpError;
 /** List the failover groups associated with the given sql managed instance. */
-export const ListFailoverGroups: API.OperationMethod<
+export const ListFailoverGroups: API.PaginatedOperationMethod<
   ListFailoverGroupsRequest,
   ListFailoverGroupsResponse,
   ListFailoverGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FailoverGroupResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1888, __c59, 0) as any as S.Schema<ListFailoverGroupsRequest>,
   output: __S(1890, __c59, 2) as any as S.Schema<ListFailoverGroupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Azure Data Services on Azure Arc API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1920, __c60, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1925, __c60, 5) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPostgresInstanceByResourceGroupError = AzureOpError;
 /** List postgres Instance resources in the resource group Get a postgres Instances list by Resource group name. */
-export const ListPostgresInstanceByResourceGroup: API.OperationMethod<
+export const ListPostgresInstanceByResourceGroup: API.PaginatedOperationMethod<
   ListPostgresInstanceByResourceGroupRequest,
   ListPostgresInstanceByResourceGroupResponse,
   ListPostgresInstanceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PostgresInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1952, __c61, 0) as any as S.Schema<ListPostgresInstanceByResourceGroupRequest>,
   output: __S(1985, __c62, 1) as any as S.Schema<ListPostgresInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPostgresInstancesError = AzureOpError;
 /** List postgres Instance resources in the subscription */
-export const ListPostgresInstances: API.OperationMethod<
+export const ListPostgresInstances: API.PaginatedOperationMethod<
   ListPostgresInstancesRequest,
   ListPostgresInstancesResponse,
   ListPostgresInstancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PostgresInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2016, __c63, 0) as any as S.Schema<ListPostgresInstancesRequest>,
   output: __S(1985, __c62, 1) as any as S.Schema<ListPostgresInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlManagedInstanceByResourceGroupError = AzureOpError;
 /** List sqlManagedInstance resources in the resource group Gets all sqlManagedInstances in a resource group. */
-export const ListSqlManagedInstanceByResourceGroup: API.OperationMethod<
+export const ListSqlManagedInstanceByResourceGroup: API.PaginatedOperationMethod<
   ListSqlManagedInstanceByResourceGroupRequest,
   ListSqlManagedInstanceByResourceGroupResponse,
   ListSqlManagedInstanceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlManagedInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2048, __c64, 0) as any as S.Schema<ListSqlManagedInstanceByResourceGroupRequest>,
   output: __S(2081, __c65, 1) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlManagedInstancesError = AzureOpError;
 /** List sqlManagedInstance resources in the subscription */
-export const ListSqlManagedInstances: API.OperationMethod<
+export const ListSqlManagedInstances: API.PaginatedOperationMethod<
   ListSqlManagedInstancesRequest,
   ListSqlManagedInstancesResponse,
   ListSqlManagedInstancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlManagedInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2112, __c66, 0) as any as S.Schema<ListSqlManagedInstancesRequest>,
   output: __S(2081, __c65, 1) as any as S.Schema<ListSqlManagedInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerAvailabilityGroupsError = AzureOpError;
 /** List the availability group associated with the given Arc Sql Server. */
-export const ListSqlServerAvailabilityGroups: API.OperationMethod<
+export const ListSqlServerAvailabilityGroups: API.PaginatedOperationMethod<
   ListSqlServerAvailabilityGroupsRequest,
   ArcSqlServerAvailabilityGroupListResult,
   ListSqlServerAvailabilityGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerAvailabilityGroupResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2144, __c67, 0) as any as S.Schema<ListSqlServerAvailabilityGroupsRequest>,
   output: __S(1473, __c46, 1) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerDatabasesError = AzureOpError;
 /** List the databases associated with the given Arc Sql Server. */
-export const ListSqlServerDatabases: API.OperationMethod<
+export const ListSqlServerDatabases: API.PaginatedOperationMethod<
   ListSqlServerDatabasesRequest,
   ArcSqlServerDatabaseListResult,
   ListSqlServerDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerDatabaseResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2176, __c68, 0) as any as S.Schema<ListSqlServerDatabasesRequest>,
   output: __S(2178, __c68, 2) as any as S.Schema<ArcSqlServerDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerEsuLicenseByResourceGroupError = AzureOpError;
 /** List sqlServerEsuLicense resources in the resource group Gets all sqlServerEsuLicenses in a resource group. */
-export const ListSqlServerEsuLicenseByResourceGroup: API.OperationMethod<
+export const ListSqlServerEsuLicenseByResourceGroup: API.PaginatedOperationMethod<
   ListSqlServerEsuLicenseByResourceGroupRequest,
   SqlServerEsuLicenseListResult,
   ListSqlServerEsuLicenseByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerEsuLicense
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2208, __c69, 0) as any as S.Schema<ListSqlServerEsuLicenseByResourceGroupRequest>,
   output: __S(2241, __c70, 1) as any as S.Schema<SqlServerEsuLicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerEsuLicensesError = AzureOpError;
 /** List sqlServerEsuLicense resources in the subscription */
-export const ListSqlServerEsuLicenses: API.OperationMethod<
+export const ListSqlServerEsuLicenses: API.PaginatedOperationMethod<
   ListSqlServerEsuLicensesRequest,
   SqlServerEsuLicenseListResult,
   ListSqlServerEsuLicensesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerEsuLicense
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2368, __c74, 0) as any as S.Schema<ListSqlServerEsuLicensesRequest>,
   output: __S(2241, __c70, 1) as any as S.Schema<SqlServerEsuLicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerInstanceByResourceGroupError = AzureOpError;
 /** List sqlServerInstance resources in the resource group Gets all sqlServerInstances in a resource group. */
-export const ListSqlServerInstanceByResourceGroup: API.OperationMethod<
+export const ListSqlServerInstanceByResourceGroup: API.PaginatedOperationMethod<
   ListSqlServerInstanceByResourceGroupRequest,
   ListSqlServerInstanceByResourceGroupResponse,
   ListSqlServerInstanceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2400, __c75, 0) as any as S.Schema<ListSqlServerInstanceByResourceGroupRequest>,
   output: __S(2433, __c76, 1) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerInstancesError = AzureOpError;
 /** List sqlServerInstance resources in the subscription */
-export const ListSqlServerInstances: API.OperationMethod<
+export const ListSqlServerInstances: API.PaginatedOperationMethod<
   ListSqlServerInstancesRequest,
   ListSqlServerInstancesResponse,
   ListSqlServerInstancesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2464, __c77, 0) as any as S.Schema<ListSqlServerInstancesRequest>,
   output: __S(2433, __c76, 1) as any as S.Schema<ListSqlServerInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerLicenseByResourceGroupError = AzureOpError;
 /** List sqlServerLicense resources in the resource group Gets all sqlServerLicenses in a resource group. */
-export const ListSqlServerLicenseByResourceGroup: API.OperationMethod<
+export const ListSqlServerLicenseByResourceGroup: API.PaginatedOperationMethod<
   ListSqlServerLicenseByResourceGroupRequest,
   ListSqlServerLicenseByResourceGroupResponse,
   ListSqlServerLicenseByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerLicense
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2496, __c78, 0) as any as S.Schema<ListSqlServerLicenseByResourceGroupRequest>,
   output: __S(2529, __c79, 1) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlServerLicensesError = AzureOpError;
 /** List sqlServerLicense resources in the subscription */
-export const ListSqlServerLicenses: API.OperationMethod<
+export const ListSqlServerLicenses: API.PaginatedOperationMethod<
   ListSqlServerLicensesRequest,
   ListSqlServerLicensesResponse,
   ListSqlServerLicensesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlServerLicense
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2560, __c80, 0) as any as S.Schema<ListSqlServerLicensesRequest>,
   output: __S(2529, __c79, 1) as any as S.Schema<ListSqlServerLicensesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PatchDataControllerDataControllerError = AzureOpError;
 /** Updates a dataController resource */
@@ -7076,12 +7239,14 @@ function __c45(j: number): any {
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupTypeFilter: S.optional(S.String),
           replicationPartnerTypeFilter: S.optional(S.String),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/getAllAvailabilityGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetSqlServerInstanceAllAvailabilityGroupsRequest" });
@@ -7094,7 +7259,7 @@ function __c46(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1472, __c46, 0)),
+          value: __S(1472, __c46, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArcSqlServerAvailabilityGroupListResult" });
@@ -7266,12 +7431,14 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dataControllerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListActiveDirectoryConnectorsRequest" });
@@ -7280,7 +7447,7 @@ function __c53(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1697, __c53, 1)),
+          value: __S(1697, __c53, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListActiveDirectoryConnectorsResponse" });
@@ -7293,12 +7460,14 @@ function __c54(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers",
             code: 200,
             apiVersion: "2023-09-01-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataControllerInGroupRequest" });
@@ -7311,7 +7480,7 @@ function __c55(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1760, __c55, 0)),
+          value: __S(1760, __c55, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataControllerInGroupResponse" });
@@ -7522,12 +7691,14 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/dataControllers",
             code: 200,
             apiVersion: "2023-09-01-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataControllerInSubscriptionRequest" });
@@ -7541,12 +7712,14 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlManagedInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFailoverGroupsRequest" });
@@ -7555,7 +7728,7 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1889, __c59, 1)),
+          value: __S(1889, __c59, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFailoverGroupsResponse" });
@@ -7565,12 +7738,15 @@ function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.AzureArcData/operations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -7600,7 +7776,7 @@ function __c60(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1924, __c60, 4)),
+          value: __S(1924, __c60, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -7613,12 +7789,14 @@ function __c61(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/postgresInstances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPostgresInstanceByResourceGroupRequest" });
@@ -7631,7 +7809,7 @@ function __c62(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1984, __c62, 0)),
+          value: __S(1984, __c62, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPostgresInstanceByResourceGroupResponse" });
@@ -7643,12 +7821,14 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/postgresInstances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPostgresInstancesRequest" });
@@ -7661,12 +7841,14 @@ function __c64(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlManagedInstanceByResourceGroupRequest" });
@@ -7679,7 +7861,7 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2080, __c65, 0)),
+          value: __S(2080, __c65, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlManagedInstanceByResourceGroupResponse" });
@@ -7691,12 +7873,14 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlManagedInstances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlManagedInstancesRequest" });
@@ -7710,12 +7894,14 @@ function __c67(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/availabilityGroups",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerAvailabilityGroupsRequest" });
@@ -7729,12 +7915,14 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/databases",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerDatabasesRequest" });
@@ -7743,7 +7931,7 @@ function __c68(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2177, __c68, 1)),
+          value: __S(2177, __c68, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArcSqlServerDatabaseListResult" });
@@ -7756,12 +7944,14 @@ function __c69(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerEsuLicenseByResourceGroupRequest" });
@@ -7774,7 +7964,7 @@ function __c70(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2240, __c70, 0)),
+          value: __S(2240, __c70, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlServerEsuLicenseListResult" });
@@ -7891,12 +8081,14 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerEsuLicenses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerEsuLicensesRequest" });
@@ -7909,12 +8101,14 @@ function __c75(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerInstanceByResourceGroupRequest" });
@@ -7927,7 +8121,7 @@ function __c76(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2432, __c76, 0)),
+          value: __S(2432, __c76, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlServerInstanceByResourceGroupResponse" });
@@ -7939,12 +8133,14 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerInstances",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerInstancesRequest" });
@@ -7957,12 +8153,14 @@ function __c78(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerLicenses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerLicenseByResourceGroupRequest" });
@@ -7975,7 +8173,7 @@ function __c79(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2528, __c79, 0)),
+          value: __S(2528, __c79, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSqlServerLicenseByResourceGroupResponse" });
@@ -7987,12 +8185,14 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzureArcData/sqlServerLicenses",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlServerLicensesRequest" });

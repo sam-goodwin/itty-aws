@@ -15,21 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItem": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItem",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItemRequest": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItemRequest",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItems": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItems",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItemsRequest": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItemsRequest",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItems": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItems",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequest": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequest",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequestBlocklistItemIdsList": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequestBlocklistItemIdsList",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklist": "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklist",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklistRequest": "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklistRequest",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklist": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklist",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistRequest": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistRequest",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklists": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklists",
-      "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistsRequest": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistsRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.cognitiveservices_content_safety#TextOperationsShieldPrompt": {
@@ -453,10 +439,10 @@
         "smithy.api#documentation": "The categories will be analyzed. If they are not assigned, a default set of analysis results for the categories will be returned."
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItem": {
+    "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItem": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItemRequest"
+        "target": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItemRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_content_safety#TextBlocklistItem"
@@ -509,7 +495,7 @@
         "smithy.api#documentation": "Item in a TextBlocklist."
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItemRequest": {
+    "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItemRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -541,10 +527,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItems": {
+    "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItems": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItemsRequest"
+        "target": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItemsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_content_safety#PagedTextBlocklistItem"
@@ -558,9 +544,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get All BlocklistItems By blocklistName\n\nGet all blocklistItems in a text blocklist."
+        "smithy.api#documentation": "Get All BlocklistItems By blocklistName\n\nGet all blocklistItems in a text blocklist.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_content_safety#PagedTextBlocklistItem": {
@@ -593,7 +586,7 @@
         "smithy.api#documentation": "The TextBlocklistItem items on this page"
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItemsRequest": {
+    "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItemsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -632,16 +625,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of result items per page."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItems": {
+    "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItems": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequest"
+        "target": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -660,7 +659,7 @@
         "smithy.api#documentation": "Remove BlocklistItems From Text Blocklist\n\nRemove blocklistItems from a text blocklist. You can remove at most 100 BlocklistItems in one request."
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequest": {
+    "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -680,7 +679,7 @@
           }
         },
         "blocklistItemIds": {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequestBlocklistItemIdsList",
+          "target": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequestBlocklistItemIdsList",
           "traits": {
             "smithy.api#documentation": "Array of blocklistItemIds to remove.",
             "smithy.api#required": {}
@@ -691,7 +690,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItemsRequestBlocklistItemIdsList": {
+    "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItemsRequestBlocklistItemIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -813,10 +812,10 @@
         "smithy.api#documentation": "Item in a TextBlocklist."
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklist": {
+    "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklist": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklistRequest"
+        "target": "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklistRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -835,7 +834,7 @@
         "smithy.api#documentation": "Delete Text Blocklist By blocklistName\n\nDeletes a text blocklist."
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklistRequest": {
+    "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklistRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -932,10 +931,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklist": {
+    "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklist": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistRequest"
+        "target": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_content_safety#TextBlocklist"
@@ -954,7 +953,7 @@
         "smithy.api#documentation": "Get Text Blocklist By blocklistName\n\nReturns text blocklist details."
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistRequest": {
+    "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -978,10 +977,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklists": {
+    "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklists": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistsRequest"
+        "target": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_content_safety#PagedTextBlocklist"
@@ -995,9 +994,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2024-09-01"
+          "apiVersion": "2024-09-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get All Text Blocklists\n\nGet all text blocklists details."
+        "smithy.api#documentation": "Get All Text Blocklists\n\nGet all text blocklists details.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_content_safety#PagedTextBlocklist": {
@@ -1030,7 +1036,7 @@
         "smithy.api#documentation": "The TextBlocklist items on this page"
       }
     },
-    "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistsRequest": {
+    "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1039,6 +1045,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Supported Cognitive Services endpoints (protocol and hostname, for example:\nhttps://<resource-name>.cognitiveservices.azure.com).",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1237,28 +1249,28 @@
           "target": "com.azure.cognitiveservices_content_safety#TextOperationsAnalyzeText"
         },
         {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklistItem"
+          "target": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklistItem"
         },
         {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklistItems"
+          "target": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklistItems"
         },
         {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsRemoveBlocklistItems"
+          "target": "com.azure.cognitiveservices_content_safety#RemoveTextBlocklistBlocklistItems"
         },
         {
           "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsAddOrUpdateBlocklistItems"
         },
         {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsDeleteTextBlocklist"
+          "target": "com.azure.cognitiveservices_content_safety#DeleteTextBlocklistTextBlocklist"
         },
         {
           "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsCreateOrUpdateTextBlocklist"
         },
         {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsGetTextBlocklist"
+          "target": "com.azure.cognitiveservices_content_safety#GetTextBlocklistTextBlocklist"
         },
         {
-          "target": "com.azure.cognitiveservices_content_safety#TextBlocklistsListTextBlocklists"
+          "target": "com.azure.cognitiveservices_content_safety#ListTextBlocklistTextBlocklists"
         },
         {
           "target": "com.azure.cognitiveservices_content_safety#ImageOperationsAnalyzeImage"

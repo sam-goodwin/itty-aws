@@ -815,10 +815,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get files in a project\n\nThe project resource is a nested resource representing a stored migration project. This method returns a list of files owned by a project resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListFilesResponse": {
@@ -928,6 +935,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the project"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -947,10 +960,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get resource quotas and usage information\n\nThis method returns region-specific quotas and resource usage information for the Azure Database Migration Service (classic).",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListUsagesResponse": {
@@ -1057,6 +1077,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The Azure region of the operation"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2117,10 +2143,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get projects in a service\n\nThe project resource is a nested resource representing a stored migration project. This method returns a list of projects owned by a service resource.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListProjectsResponse": {
@@ -2246,6 +2279,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the service"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4430,10 +4469,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/services",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get services in subscription\n\nThe services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListServicesResponse": {
@@ -4706,6 +4752,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Subscription ID that identifies an Azure subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4725,10 +4777,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get services in resource group\n\nThe Services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListServiceByResourceGroupResponse": {
@@ -4777,6 +4836,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the resource group"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4906,10 +4971,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get service level tasks for a service\n\nThe services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service level tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListServiceTasksResponse": {
@@ -5018,6 +5090,12 @@
             "smithy.api#httpQuery": "taskType",
             "smithy.api#documentation": "Filter tasks by task type"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5037,10 +5115,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get tasks in a service\n\nThe services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListTasksResponse": {
@@ -5113,6 +5198,12 @@
             "smithy.api#httpQuery": "taskType",
             "smithy.api#documentation": "Filter tasks by task type"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5132,10 +5223,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get compatible SKUs\n\nThe services resource is the top-level resource that represents the Database Migration Service (classic). The skus action returns the list of SKUs that a service resource can be updated to.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListServiceSkusResponse": {
@@ -5308,6 +5406,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the service"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6118,10 +6222,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/skus",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get supported SKUs\n\nThe skus action returns the list of SKUs that DMS (classic) supports.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListResourceSkusSkusResponse": {
@@ -6462,6 +6573,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Subscription ID that identifies an Azure subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6481,10 +6598,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/sqlMigrationServices",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve all SQL migration services in the subscriptions.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#SqlMigrationListResult": {
@@ -6597,6 +6721,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Subscription ID that identifies an Azure subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6769,10 +6899,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMigrations",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the List of database migrations attached to the service.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#DatabaseMigrationListResult": {
@@ -7082,6 +7219,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the SQL Migration Service."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7350,10 +7493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve all SQL migration services in the resource group.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListSqlMigrationServiceByResourceGroupRequest": {
@@ -7373,6 +7523,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7825,10 +7981,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}/listMigrations",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve the List of database migrations attached to the service.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#DatabaseMigrationBaseListResult": {
@@ -8049,6 +8212,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Migration Service."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8068,10 +8237,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/migrationServices",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve all migration services in the subscriptions.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#MigrationServiceListResult": {
@@ -8223,6 +8399,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Subscription ID that identifies an Azure subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8242,10 +8424,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieve all migration services in the resource group.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#ListMigrationServiceByResourceGroupRequest": {
@@ -8265,6 +8454,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8727,7 +8922,7 @@
     "com.azure.datamigration#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.datamigration#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.datamigration#OperationListResult"
@@ -8737,10 +8932,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DataMigration/operations",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available SQL Migration REST API operations.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#OperationListResult": {
@@ -8833,6 +9035,20 @@
         }
       },
       "traits": {}
+    },
+    "com.azure.datamigration#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.azure.datamigration#DatabaseMigrationsSqlVmCutover": {
       "type": "operation",
@@ -11760,10 +11976,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get Database Migration resources for the scope.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#DatabaseMigrationCosmosDbMongoListResult": {
@@ -12170,6 +12393,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the target resource/account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12588,10 +12817,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
           "code": 200,
-          "apiVersion": "2025-06-30"
+          "apiVersion": "2025-06-30",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get Database Migration resources for the scope.",
-        "com.distilled.openapi#apiVersion": "2025-06-30"
+        "com.distilled.openapi#apiVersion": "2025-06-30",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.datamigration#GetDatabaseMigrationsMongoToCosmosDbRUMongoForScopeRequest": {
@@ -12619,6 +12855,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the target resource/account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

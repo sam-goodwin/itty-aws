@@ -65,6 +65,8 @@ export interface ListParticipantsRequest {
   endpoint: string;
   /** The id of the room to get participants from. */
   roomId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A participant of the room. */
 export interface RoomParticipant {
@@ -84,6 +86,8 @@ export interface ParticipantsCollection {
 export interface ListRoomsRequest {
   /** The endpoint of the Azure Communication resource. */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A collection of rooms. */
 export type RoomsCollectionValueList = Array<RoomModel>;
@@ -162,33 +166,47 @@ export const GetRoom: API.OperationMethod<GetRoomRequest, RoomModel, GetRoomErro
 
 export type ListParticipantsError = AzureOpError;
 /** Get participants in a room. */
-export const ListParticipants: API.OperationMethod<
+export const ListParticipants: API.PaginatedOperationMethod<
   ListParticipantsRequest,
   ParticipantsCollection,
   ListParticipantsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoomParticipant
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(20, __c5, 0) as any as S.Schema<ListParticipantsRequest>,
   output: __S(23, __c5, 3) as any as S.Schema<ParticipantsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRoomsError = AzureOpError;
 /** Retrieves all created rooms. */
-export const ListRooms: API.OperationMethod<
+export const ListRooms: API.PaginatedOperationMethod<
   ListRoomsRequest,
   RoomsCollection,
   ListRoomsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RoomModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c6, 0) as any as S.Schema<ListRoomsRequest>,
   output: __S(26, __c6, 2) as any as S.Schema<RoomsCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateParticipantError = AzureOpError;
 /** Update participants in a room. */
@@ -324,6 +342,7 @@ function __c5(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           roomId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -332,6 +351,7 @@ function __c5(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-03-13",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),
@@ -360,6 +380,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -368,6 +389,7 @@ function __c6(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-03-13",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),

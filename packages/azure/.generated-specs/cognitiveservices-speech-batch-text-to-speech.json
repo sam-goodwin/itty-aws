@@ -15,27 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#OperationsGet": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetOperation",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#OperationsGetRequest": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetOperationRequest",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesDelete": "com.azure.cognitiveservices_speech_batch_text_to_speech#DeleteBatchSynthese",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesDeleteRequest": "com.azure.cognitiveservices_speech_batch_text_to_speech#DeleteBatchSyntheseRequest",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreate": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSynthese",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateResponse": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseResponse",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequest": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequest",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequestCustomVoicesMap": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequestCustomVoicesMap",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequestInputsList": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequestInputsList",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesGet": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetBatchSynthese",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesGetRequest": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetBatchSyntheseRequest",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesList": "com.azure.cognitiveservices_speech_batch_text_to_speech#ListBatchSyntheses",
-      "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesListRequest": "com.azure.cognitiveservices_speech_batch_text_to_speech#ListBatchSynthesesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#OperationsGet": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#GetOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#OperationsGetRequest"
+        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetOperationRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#Operation"
@@ -97,7 +83,7 @@
         "smithy.api#documentation": "Status of an operation."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#OperationsGetRequest": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#GetOperationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -121,10 +107,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesDelete": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#DeleteBatchSynthese": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesDeleteRequest"
+        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#DeleteBatchSyntheseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -140,7 +126,7 @@
         "smithy.api#documentation": "Deletes the batch synthesis identified by the given ID."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesDeleteRequest": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#DeleteBatchSyntheseRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -164,13 +150,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreate": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSynthese": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequest"
+        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateResponse"
+        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -183,7 +169,7 @@
         "smithy.api#documentation": "Creates a batch synthesis job, the max allowed payload content length is 2 megabytes."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateResponse": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseResponse": {
       "type": "structure",
       "members": {
         "inputKind": {
@@ -577,7 +563,7 @@
         "smithy.api#documentation": "Input text kind."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequest": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -610,7 +596,7 @@
           }
         },
         "inputs": {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequestInputsList",
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequestInputsList",
           "traits": {
             "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 10000 items."
           }
@@ -619,7 +605,7 @@
           "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesisConfig"
         },
         "customVoices": {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequestCustomVoicesMap",
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequestCustomVoicesMap",
           "traits": {
             "smithy.api#documentation": "The custom voice map of voice name and deployment ID."
           }
@@ -694,7 +680,7 @@
         "smithy.api#documentation": "Detailed properties of batch synthesis task."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequestCustomVoicesMap": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequestCustomVoicesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -706,7 +692,7 @@
         "smithy.api#documentation": "The custom voice map of voice name and deployment ID."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreateRequestInputsList": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSyntheseRequestInputsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesisInput"
@@ -715,10 +701,10 @@
         "smithy.api#documentation": "Text or SSML inputs, it's allowed up to 10000 items."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesGet": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#GetBatchSynthese": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesGetRequest"
+        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetBatchSyntheseRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesis"
@@ -793,7 +779,7 @@
         "smithy.api#documentation": "Bath synthesis task."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesGetRequest": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#GetBatchSyntheseRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -817,10 +803,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesList": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#ListBatchSyntheses": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesListRequest"
+        "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#ListBatchSynthesesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#PaginatedBatchSynthesis"
@@ -831,9 +817,16 @@
           "uri": "/batchsyntheses",
           "code": 200,
           "host": "{endpoint}/texttospeech",
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of batch syntheses."
+        "smithy.api#documentation": "Gets the list of batch syntheses.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_speech_batch_text_to_speech#PaginatedBatchSynthesis": {
@@ -866,7 +859,7 @@
         "smithy.api#documentation": "Bath synthesis tasks."
       }
     },
-    "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesListRequest": {
+    "com.azure.cognitiveservices_speech_batch_text_to_speech#ListBatchSynthesesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -890,6 +883,12 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The maximum number of result items to include in a single response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -901,19 +900,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#OperationsGet"
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetOperation"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesDelete"
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#DeleteBatchSynthese"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesCreate"
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#CreateBatchSynthese"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesGet"
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#GetBatchSynthese"
         },
         {
-          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#BatchSynthesesList"
+          "target": "com.azure.cognitiveservices_speech_batch_text_to_speech#ListBatchSyntheses"
         }
       ],
       "traits": {

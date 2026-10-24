@@ -750,6 +750,8 @@ export interface ListAttestationForResourceRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An attestation resource. */
 export interface Attestation {
@@ -782,6 +784,8 @@ export interface ListAttestationForResourceGroupRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAttestationForSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -790,6 +794,8 @@ export interface ListAttestationForSubscriptionRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListComponentPolicyStateQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1118,6 +1124,8 @@ export interface ListPolicyEventQueryResultsForManagementGroupRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Component event details. */
 export interface ComponentEventDetails {
@@ -1216,7 +1224,7 @@ export interface PolicyEventsQueryResults {
   /** Odata next link; URL to get the next set of results. */
   _odata_nextLink?: string;
   /** Query results. */
-  value?: PolicyEventsQueryResultsValueList;
+  value: PolicyEventsQueryResultsValueList;
 }
 export type ListPolicyEventQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1250,6 +1258,8 @@ export interface ListPolicyEventQueryResultsForPolicyDefinitionRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyEventQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1284,6 +1294,8 @@ export interface ListPolicyEventQueryResultsForPolicySetDefinitionRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyEventQueryResultsForResourceRequestPolicyEventsResource = "default";
 export interface ListPolicyEventQueryResultsForResourceRequest {
@@ -1311,6 +1323,8 @@ export interface ListPolicyEventQueryResultsForResourceRequest {
   _expand?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyEventQueryResultsForResourceGroupRequestPolicyEventsResource = "default";
 export interface ListPolicyEventQueryResultsForResourceGroupRequest {
@@ -1338,6 +1352,8 @@ export interface ListPolicyEventQueryResultsForResourceGroupRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1374,6 +1390,8 @@ export interface ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmen
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyEventQueryResultsForSubscriptionRequestPolicyEventsResource = "default";
 export interface ListPolicyEventQueryResultsForSubscriptionRequest {
@@ -1399,6 +1417,8 @@ export interface ListPolicyEventQueryResultsForSubscriptionRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1433,10 +1453,14 @@ export interface ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignment
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPolicyMetadataRequest {
   /** Maximum number of records to return. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of the policy metadata, excluding properties containing large strings */
 export interface PolicyMetadataSlimProperties {
@@ -1505,6 +1529,8 @@ export interface ListPolicyStateQueryResultsForManagementGroupRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Details of the evaluated expressions. */
 export type PolicyEvaluationDetailsEvaluatedExpressionsList = Array<ExpressionEvaluationDetails>;
@@ -1616,7 +1642,7 @@ export interface PolicyStatesQueryResults {
   /** Odata next link; URL to get the next set of results. */
   _odata_nextLink?: string;
   /** Query results. */
-  value?: PolicyStatesQueryResultsValueList;
+  value: PolicyStatesQueryResultsValueList;
 }
 export type ListPolicyStateQueryResultsForPolicyDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1652,6 +1678,8 @@ export interface ListPolicyStateQueryResultsForPolicyDefinitionRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyStateQueryResultsForPolicySetDefinitionRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1687,6 +1715,8 @@ export interface ListPolicyStateQueryResultsForPolicySetDefinitionRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyStateQueryResultsForResourceRequestPolicyStatesResource =
   | "default"
@@ -1716,6 +1746,8 @@ export interface ListPolicyStateQueryResultsForResourceRequest {
   _expand?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyStateQueryResultsForResourceGroupRequestPolicyStatesResource =
   | "default"
@@ -1745,6 +1777,8 @@ export interface ListPolicyStateQueryResultsForResourceGroupRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1782,6 +1816,8 @@ export interface ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmen
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyStateQueryResultsForSubscriptionRequestPolicyStatesResource =
   | "default"
@@ -1809,6 +1845,8 @@ export interface ListPolicyStateQueryResultsForSubscriptionRequest {
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignmentRequestAuthorizationNamespace =
   "Microsoft.Authorization";
@@ -1844,6 +1882,8 @@ export interface ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignment
   _apply?: string;
   /** Skiptoken is only provided if a previous response returned a partial result as a part of nextLink element. */
   _skiptoken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListRemediationDeploymentsAtManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -1858,6 +1898,8 @@ export interface ListRemediationDeploymentsAtManagementGroupRequest {
   remediationName: string;
   /** Maximum number of records to return. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Internal error details. */
 export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
@@ -1916,6 +1958,8 @@ export interface ListRemediationDeploymentsAtResourceRequest {
   remediationName: string;
   /** Maximum number of records to return. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRemediationDeploymentsAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1926,6 +1970,8 @@ export interface ListRemediationDeploymentsAtResourceGroupRequest {
   remediationName: string;
   /** Maximum number of records to return. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRemediationDeploymentsAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1934,6 +1980,8 @@ export interface ListRemediationDeploymentsAtSubscriptionRequest {
   remediationName: string;
   /** Maximum number of records to return. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListRemediationForManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -1948,6 +1996,8 @@ export interface ListRemediationForManagementGroupRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The remediation definition. */
 export interface Remediation {
@@ -1978,6 +2028,8 @@ export interface ListRemediationForResourceRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRemediationForResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -1988,6 +2040,8 @@ export interface ListRemediationForResourceGroupRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRemediationForSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -1996,6 +2050,8 @@ export interface ListRemediationForSubscriptionRequest {
   _top?: number;
   /** OData filter expression. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type PolicyStatesSummarizeForManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -2777,48 +2833,69 @@ export const GetRemediationAtSubscription: API.OperationMethod<
 
 export type ListAttestationForResourceError = AzureOpError;
 /** Gets all attestations for a resource. */
-export const ListAttestationForResource: API.OperationMethod<
+export const ListAttestationForResource: API.PaginatedOperationMethod<
   ListAttestationForResourceRequest,
   AttestationListResult,
   ListAttestationForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Attestation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListAttestationForResourceRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<AttestationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAttestationForResourceGroupError = AzureOpError;
 /** Gets all attestations for the resource group. */
-export const ListAttestationForResourceGroup: API.OperationMethod<
+export const ListAttestationForResourceGroup: API.PaginatedOperationMethod<
   ListAttestationForResourceGroupRequest,
   AttestationListResult,
   ListAttestationForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Attestation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListAttestationForResourceGroupRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<AttestationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAttestationForSubscriptionError = AzureOpError;
 /** Gets all attestations for the subscription. */
-export const ListAttestationForSubscription: API.OperationMethod<
+export const ListAttestationForSubscription: API.PaginatedOperationMethod<
   ListAttestationForSubscriptionRequest,
   AttestationListResult,
   ListAttestationForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Attestation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<ListAttestationForSubscriptionRequest>,
   output: __S(385, __c24, 1) as any as S.Schema<AttestationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListComponentPolicyStateQueryResultsForPolicyDefinitionError = AzureOpError;
 /** Queries component policy states for the subscription level policy definition. */
@@ -2953,12 +3030,13 @@ export const ListOperations: API.OperationMethod<
 
 export type ListPolicyEventQueryResultsForManagementGroupError = AzureOpError;
 /** Queries policy events for the resources under the management group. */
-export const ListPolicyEventQueryResultsForManagementGroup: API.OperationMethod<
+export const ListPolicyEventQueryResultsForManagementGroup: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForManagementGroupRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     608,
     __c38,
@@ -2968,16 +3046,23 @@ export const ListPolicyEventQueryResultsForManagementGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForPolicyDefinitionError = AzureOpError;
 /** Queries policy events for the subscription level policy definition. */
-export const ListPolicyEventQueryResultsForPolicyDefinition: API.OperationMethod<
+export const ListPolicyEventQueryResultsForPolicyDefinition: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForPolicyDefinitionRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForPolicyDefinitionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     640,
     __c40,
@@ -2987,16 +3072,23 @@ export const ListPolicyEventQueryResultsForPolicyDefinition: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForPolicySetDefinitionError = AzureOpError;
 /** Queries policy events for the subscription level policy set definition. */
-export const ListPolicyEventQueryResultsForPolicySetDefinition: API.OperationMethod<
+export const ListPolicyEventQueryResultsForPolicySetDefinition: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForPolicySetDefinitionRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForPolicySetDefinitionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     656,
     __c41,
@@ -3006,46 +3098,67 @@ export const ListPolicyEventQueryResultsForPolicySetDefinition: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForResourceError = AzureOpError;
 /** Queries policy events for the resource. */
-export const ListPolicyEventQueryResultsForResource: API.OperationMethod<
+export const ListPolicyEventQueryResultsForResource: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForResourceRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c42, 0) as any as S.Schema<ListPolicyEventQueryResultsForResourceRequest>,
   output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForResourceGroupError = AzureOpError;
 /** Queries policy events for the resources under the resource group. */
-export const ListPolicyEventQueryResultsForResourceGroup: API.OperationMethod<
+export const ListPolicyEventQueryResultsForResourceGroup: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForResourceGroupRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(688, __c43, 0) as any as S.Schema<ListPolicyEventQueryResultsForResourceGroupRequest>,
   output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmentError = AzureOpError;
 /** Queries policy events for the resource group level policy assignment. */
-export const ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignment: API.OperationMethod<
+export const ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignment: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     720,
     __c45,
@@ -3055,31 +3168,45 @@ export const ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignment: A
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForSubscriptionError = AzureOpError;
 /** Queries policy events for the resources under the subscription. */
-export const ListPolicyEventQueryResultsForSubscription: API.OperationMethod<
+export const ListPolicyEventQueryResultsForSubscription: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForSubscriptionRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(736, __c46, 0) as any as S.Schema<ListPolicyEventQueryResultsForSubscriptionRequest>,
   output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignmentError = AzureOpError;
 /** Queries policy events for the subscription level policy assignment. */
-export const ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignment: API.OperationMethod<
+export const ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignment: API.PaginatedOperationMethod<
   ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
   PolicyEventsQueryResults,
   ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyEvent
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     752,
     __c47,
@@ -3089,31 +3216,45 @@ export const ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignment: AP
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyMetadataError = AzureOpError;
 /** Get a list of the policy metadata resources. */
-export const ListPolicyMetadata: API.OperationMethod<
+export const ListPolicyMetadata: API.PaginatedOperationMethod<
   ListPolicyMetadataRequest,
   PolicyMetadataCollection,
   ListPolicyMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SlimPolicyMetadata
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<ListPolicyMetadataRequest>,
   output: __S(772, __c48, 4) as any as S.Schema<PolicyMetadataCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForManagementGroupError = AzureOpError;
 /** Queries policy states for the resources under the management group. */
-export const ListPolicyStateQueryResultsForManagementGroup: API.OperationMethod<
+export const ListPolicyStateQueryResultsForManagementGroup: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForManagementGroupRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     784,
     __c49,
@@ -3123,16 +3264,23 @@ export const ListPolicyStateQueryResultsForManagementGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForPolicyDefinitionError = AzureOpError;
 /** Queries policy states for the subscription level policy definition. */
-export const ListPolicyStateQueryResultsForPolicyDefinition: API.OperationMethod<
+export const ListPolicyStateQueryResultsForPolicyDefinition: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForPolicyDefinitionRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForPolicyDefinitionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     816,
     __c51,
@@ -3142,16 +3290,23 @@ export const ListPolicyStateQueryResultsForPolicyDefinition: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForPolicySetDefinitionError = AzureOpError;
 /** Queries policy states for the subscription level policy set definition. */
-export const ListPolicyStateQueryResultsForPolicySetDefinition: API.OperationMethod<
+export const ListPolicyStateQueryResultsForPolicySetDefinition: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForPolicySetDefinitionRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForPolicySetDefinitionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     832,
     __c52,
@@ -3161,46 +3316,67 @@ export const ListPolicyStateQueryResultsForPolicySetDefinition: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForResourceError = AzureOpError;
 /** Queries policy states for the resource. */
-export const ListPolicyStateQueryResultsForResource: API.OperationMethod<
+export const ListPolicyStateQueryResultsForResource: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForResourceRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(848, __c53, 0) as any as S.Schema<ListPolicyStateQueryResultsForResourceRequest>,
   output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForResourceGroupError = AzureOpError;
 /** Queries policy states for the resources under the resource group. */
-export const ListPolicyStateQueryResultsForResourceGroup: API.OperationMethod<
+export const ListPolicyStateQueryResultsForResourceGroup: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForResourceGroupRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(864, __c54, 0) as any as S.Schema<ListPolicyStateQueryResultsForResourceGroupRequest>,
   output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmentError = AzureOpError;
 /** Queries policy states for the resource group level policy assignment. */
-export const ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignment: API.OperationMethod<
+export const ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignment: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmentRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     880,
     __c55,
@@ -3210,31 +3386,45 @@ export const ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignment: A
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForSubscriptionError = AzureOpError;
 /** Queries policy states for the resources under the subscription. */
-export const ListPolicyStateQueryResultsForSubscription: API.OperationMethod<
+export const ListPolicyStateQueryResultsForSubscription: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForSubscriptionRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(912, __c57, 0) as any as S.Schema<ListPolicyStateQueryResultsForSubscriptionRequest>,
   output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignmentError = AzureOpError;
 /** Queries policy states for the subscription level policy assignment. */
-export const ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignment: API.OperationMethod<
+export const ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignment: API.PaginatedOperationMethod<
   ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignmentRequest,
   PolicyStatesQueryResults,
   ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PolicyState
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     928,
     __c58,
@@ -3244,127 +3434,189 @@ export const ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignment: AP
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "_odata_nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationDeploymentsAtManagementGroupError = AzureOpError;
 /** Gets all deployments for a remediation at management group scope. */
-export const ListRemediationDeploymentsAtManagementGroup: API.OperationMethod<
+export const ListRemediationDeploymentsAtManagementGroup: API.PaginatedOperationMethod<
   ListRemediationDeploymentsAtManagementGroupRequest,
   RemediationDeploymentsListResult,
   ListRemediationDeploymentsAtManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RemediationDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(944, __c59, 0) as any as S.Schema<ListRemediationDeploymentsAtManagementGroupRequest>,
   output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationDeploymentsAtResourceError = AzureOpError;
 /** Gets all deployments for a remediation at resource scope. */
-export const ListRemediationDeploymentsAtResource: API.OperationMethod<
+export const ListRemediationDeploymentsAtResource: API.PaginatedOperationMethod<
   ListRemediationDeploymentsAtResourceRequest,
   RemediationDeploymentsListResult,
   ListRemediationDeploymentsAtResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RemediationDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(976, __c61, 0) as any as S.Schema<ListRemediationDeploymentsAtResourceRequest>,
   output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationDeploymentsAtResourceGroupError = AzureOpError;
 /** Gets all deployments for a remediation at resource group scope. */
-export const ListRemediationDeploymentsAtResourceGroup: API.OperationMethod<
+export const ListRemediationDeploymentsAtResourceGroup: API.PaginatedOperationMethod<
   ListRemediationDeploymentsAtResourceGroupRequest,
   RemediationDeploymentsListResult,
   ListRemediationDeploymentsAtResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RemediationDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(992, __c62, 0) as any as S.Schema<ListRemediationDeploymentsAtResourceGroupRequest>,
   output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationDeploymentsAtSubscriptionError = AzureOpError;
 /** Gets all deployments for a remediation at subscription scope. */
-export const ListRemediationDeploymentsAtSubscription: API.OperationMethod<
+export const ListRemediationDeploymentsAtSubscription: API.PaginatedOperationMethod<
   ListRemediationDeploymentsAtSubscriptionRequest,
   RemediationDeploymentsListResult,
   ListRemediationDeploymentsAtSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RemediationDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1008, __c63, 0) as any as S.Schema<ListRemediationDeploymentsAtSubscriptionRequest>,
   output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationForManagementGroupError = AzureOpError;
 /** Gets all remediations for the management group. */
-export const ListRemediationForManagementGroup: API.OperationMethod<
+export const ListRemediationForManagementGroup: API.PaginatedOperationMethod<
   ListRemediationForManagementGroupRequest,
   RemediationListResult,
   ListRemediationForManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Remediation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c64, 0) as any as S.Schema<ListRemediationForManagementGroupRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationForResourceError = AzureOpError;
 /** Gets all remediations for a resource. */
-export const ListRemediationForResource: API.OperationMethod<
+export const ListRemediationForResource: API.PaginatedOperationMethod<
   ListRemediationForResourceRequest,
   RemediationListResult,
   ListRemediationForResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Remediation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<ListRemediationForResourceRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationForResourceGroupError = AzureOpError;
 /** Gets all remediations for the subscription. */
-export const ListRemediationForResourceGroup: API.OperationMethod<
+export const ListRemediationForResourceGroup: API.PaginatedOperationMethod<
   ListRemediationForResourceGroupRequest,
   RemediationListResult,
   ListRemediationForResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Remediation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1072, __c67, 0) as any as S.Schema<ListRemediationForResourceGroupRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRemediationForSubscriptionError = AzureOpError;
 /** Gets all remediations for the subscription. */
-export const ListRemediationForSubscription: API.OperationMethod<
+export const ListRemediationForSubscription: API.PaginatedOperationMethod<
   ListRemediationForSubscriptionRequest,
   RemediationListResult,
   ListRemediationForSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Remediation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c68, 0) as any as S.Schema<ListRemediationForSubscriptionRequest>,
   output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PolicyStatesSummarizeForManagementGroupError = AzureOpError;
 /** Summarizes policy states for the resources under the management group. */
@@ -4049,12 +4301,14 @@ function __c23(j: number): any {
           resourceId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceId+}/providers/Microsoft.PolicyInsights/attestations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAttestationForResourceRequest" });
@@ -4082,12 +4336,14 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/attestations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAttestationForResourceGroupRequest" });
@@ -4101,12 +4357,14 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/attestations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAttestationForSubscriptionRequest" });
@@ -4473,12 +4731,14 @@ function __c38(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyEventQueryResultsForManagementGroupRequest" });
@@ -4550,7 +4810,7 @@ function __c39(j: number): any {
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
           _odata_nextLink: S.optional(S.String.pipe(T.Body("@odata.nextLink"))),
-          value: S.optional(__S(627, __c39, 3)),
+          value: __S(627, __c39, 3),
         }),
       ).annotate({ identifier: "PolicyEventsQueryResults" });
   }
@@ -4572,12 +4832,14 @@ function __c40(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyEventQueryResultsForPolicyDefinitionRequest" });
@@ -4600,12 +4862,14 @@ function __c41(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyEventQueryResultsForPolicySetDefinitionRequest" });
@@ -4627,12 +4891,14 @@ function __c42(j: number): any {
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/{resourceId+}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyEventQueryResultsForResourceRequest" });
@@ -4654,12 +4920,14 @@ function __c43(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyEventQueryResultsForResourceGroupRequest" });
@@ -4701,12 +4969,14 @@ function __c45(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -4729,12 +4999,14 @@ function __c46(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyEventQueryResultsForSubscriptionRequest" });
@@ -4757,12 +5029,14 @@ function __c47(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyEvents/{policyEventsResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -4776,12 +5050,14 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.PolicyInsights/policyMetadata",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyMetadataRequest" });
@@ -4832,12 +5108,14 @@ function __c49(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyStateQueryResultsForManagementGroupRequest" });
@@ -4917,7 +5195,7 @@ function __c50(j: number): any {
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
           _odata_nextLink: S.optional(S.String.pipe(T.Body("@odata.nextLink"))),
-          value: S.optional(__S(804, __c50, 4)),
+          value: __S(804, __c50, 4),
         }),
       ).annotate({ identifier: "PolicyStatesQueryResults" });
   }
@@ -4939,12 +5217,14 @@ function __c51(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyDefinitions/{policyDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyStateQueryResultsForPolicyDefinitionRequest" });
@@ -4967,12 +5247,14 @@ function __c52(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policySetDefinitions/{policySetDefinitionName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyStateQueryResultsForPolicySetDefinitionRequest" });
@@ -4994,12 +5276,14 @@ function __c53(j: number): any {
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/{resourceId+}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyStateQueryResultsForResourceRequest" });
@@ -5021,12 +5305,14 @@ function __c54(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyStateQueryResultsForResourceGroupRequest" });
@@ -5050,12 +5336,14 @@ function __c55(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -5097,12 +5385,14 @@ function __c57(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPolicyStateQueryResultsForSubscriptionRequest" });
@@ -5125,12 +5415,14 @@ function __c58(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _apply: S.optional(S.String.pipe(T.Query("$apply"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -5147,12 +5439,14 @@ function __c59(j: number): any {
           managementGroupId: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationDeploymentsAtManagementGroupRequest" });
@@ -5212,12 +5506,14 @@ function __c61(j: number): any {
           resourceId: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/{resourceId+}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationDeploymentsAtResourceRequest" });
@@ -5232,12 +5528,14 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationDeploymentsAtResourceGroupRequest" });
@@ -5251,12 +5549,14 @@ function __c63(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationDeploymentsAtSubscriptionRequest" });
@@ -5271,12 +5571,14 @@ function __c64(j: number): any {
           managementGroupId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/{managementGroupsNamespace}/managementGroups/{managementGroupId}/providers/Microsoft.PolicyInsights/remediations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationForManagementGroupRequest" });
@@ -5303,12 +5605,14 @@ function __c66(j: number): any {
           resourceId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceId+}/providers/Microsoft.PolicyInsights/remediations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationForResourceRequest" });
@@ -5323,12 +5627,14 @@ function __c67(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PolicyInsights/remediations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationForResourceGroupRequest" });
@@ -5342,12 +5648,14 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/remediations",
             code: 200,
             apiVersion: "2024-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRemediationForSubscriptionRequest" });

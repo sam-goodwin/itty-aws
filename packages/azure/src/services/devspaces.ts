@@ -138,6 +138,8 @@ export interface ListControllerByResourceGroupRequest {
   subscriptionId: string;
   /** Resource group to which the resource belongs. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags for the Azure resource. */
 export type ControllerTagsMap = { [key: string]: string | undefined };
@@ -159,7 +161,7 @@ export interface Controller {
 export type ControllerListValueList = Array<Controller>;
 export interface ControllerList {
   /** List of Azure Dev Spaces Controllers. */
-  value?: ControllerListValueList;
+  value: ControllerListValueList;
   /** The URI that can be used to request the next page for list of Azure Dev Spaces Controllers. */
   nextLink?: string;
 }
@@ -191,8 +193,13 @@ export interface ControllerConnectionDetailsList {
 export interface ListControllersRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 export interface ResourceProviderOperationDisplay {
   /** Name of the resource provider. */
   provider?: string;
@@ -212,7 +219,7 @@ export interface ResourceProviderOperationDefinition {
 export type ResourceProviderOperationListValueList = Array<ResourceProviderOperationDefinition>;
 export interface ResourceProviderOperationList {
   /** Resource provider operations list. */
-  value?: ResourceProviderOperationListValueList;
+  value: ResourceProviderOperationListValueList;
   /** The URI that can be used to request the next page for list of Azure operations. */
   nextLink?: string;
 }
@@ -311,18 +318,25 @@ export const GetController: API.OperationMethod<
 
 export type ListControllerByResourceGroupError = AzureOpError;
 /** Lists the Azure Dev Spaces Controllers in a resource group. Lists all the Azure Dev Spaces Controllers with their properties in the specified resource group and subscription. */
-export const ListControllerByResourceGroup: API.OperationMethod<
+export const ListControllerByResourceGroup: API.PaginatedOperationMethod<
   ListControllerByResourceGroupRequest,
   ControllerList,
   ListControllerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Controller
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListControllerByResourceGroupRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<ControllerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListControllerConnectionDetailsError = AzureOpError;
 /** Lists connection details for an Azure Dev Spaces Controller. Lists connection details for the underlying container resources of an Azure Dev Spaces Controller. */
@@ -341,33 +355,47 @@ export const ListControllerConnectionDetails: API.OperationMethod<
 
 export type ListControllersError = AzureOpError;
 /** Lists the Azure Dev Spaces Controllers in a subscription. Lists all the Azure Dev Spaces Controllers with their properties in the subscription. */
-export const ListControllers: API.OperationMethod<
+export const ListControllers: API.PaginatedOperationMethod<
   ListControllersRequest,
   ControllerList,
   ListControllersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Controller
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListControllersRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<ControllerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists operations for the resource provider. Lists all the supported operations by the Microsoft.DevSpaces resource provider along with their description. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ResourceProviderOperationList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceProviderOperationDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(76, __c9, 4) as any as S.Schema<ResourceProviderOperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateControllerError = AzureOpError;
 /** Updates an Azure Dev Spaces Controller. Updates the properties of an existing Azure Dev Spaces Controller with the specified update parameters. */
@@ -525,12 +553,14 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListControllerByResourceGroupRequest" });
@@ -543,7 +573,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(48, __c6, 0)),
+          value: __S(48, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ControllerList" });
@@ -595,12 +625,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DevSpaces/controllers",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListControllersRequest" });
@@ -610,12 +642,15 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DevSpaces/operations",
             code: 200,
             apiVersion: "2019-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -640,7 +675,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(75, __c9, 3)),
+          value: __S(75, __c9, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceProviderOperationList" });

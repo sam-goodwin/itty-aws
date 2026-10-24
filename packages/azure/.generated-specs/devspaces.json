@@ -133,10 +133,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DevSpaces/controllers",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Azure Dev Spaces Controllers in a subscription.\n\nLists all the Azure Dev Spaces Controllers with their properties in the subscription.",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devspaces#ControllerList": {
@@ -380,6 +387,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Azure subscription ID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -399,10 +412,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the Azure Dev Spaces Controllers in a resource group.\n\nLists all the Azure Dev Spaces Controllers with their properties in the specified resource group and subscription.",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devspaces#ListControllerByResourceGroupRequest": {
@@ -422,6 +442,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Resource group to which the resource belongs."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -915,7 +941,7 @@
     "com.azure.devspaces#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.devspaces#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.devspaces#ResourceProviderOperationList"
@@ -925,10 +951,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DevSpaces/operations",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists operations for the resource provider.\n\nLists all the supported operations by the Microsoft.DevSpaces resource provider along with their description.",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.devspaces#ResourceProviderOperationList": {
@@ -1002,6 +1035,20 @@
         }
       },
       "traits": {}
+    },
+    "com.azure.devspaces#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
     },
     "com.azure.devspaces#GetContainerHostMappingContainerHostMapping": {
       "type": "operation",

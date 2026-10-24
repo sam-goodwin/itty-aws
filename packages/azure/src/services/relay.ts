@@ -599,6 +599,8 @@ export interface ListHybridConnectionAuthorizationRulesRequest {
   namespaceName: string;
   /** The hybrid connection name. */
   hybridConnectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Single item in a List or Get AuthorizationRule operation */
 export interface AuthorizationRule {
@@ -631,6 +633,8 @@ export interface ListHybridConnectionByNamespaceRequest {
   resourceGroupName: string;
   /** The namespace name */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Description of hybrid connection resource. */
 export interface HybridConnection {
@@ -688,12 +692,16 @@ export interface ListNamespaceAuthorizationRulesRequest {
   resourceGroupName: string;
   /** The namespace name */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNamespaceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RelayNamespaceTagsMap = { [key: string]: string | undefined };
@@ -738,8 +746,13 @@ export interface ListNamespaceKeysRequest {
 export interface ListNamespacesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -772,7 +785,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -783,6 +796,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The namespace name */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
@@ -832,6 +847,8 @@ export interface ListWCFRelayAuthorizationRulesRequest {
   namespaceName: string;
   /** The relay name. */
   relayName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWCFRelayByNamespaceRequest {
   /** The ID of the target subscription. */
@@ -840,6 +857,8 @@ export interface ListWCFRelayByNamespaceRequest {
   resourceGroupName: string;
   /** The namespace name */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Description of the WCF relay resource. */
 export interface WcfRelay {
@@ -1459,33 +1478,47 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRule: API.OperationMeth
 
 export type ListHybridConnectionAuthorizationRulesError = AzureOpError;
 /** Authorization rules for a hybrid connection. */
-export const ListHybridConnectionAuthorizationRules: API.OperationMethod<
+export const ListHybridConnectionAuthorizationRules: API.PaginatedOperationMethod<
   ListHybridConnectionAuthorizationRulesRequest,
   AuthorizationRuleListResult,
   ListHybridConnectionAuthorizationRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthorizationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<ListHybridConnectionAuthorizationRulesRequest>,
   output: __S(161, __c20, 1) as any as S.Schema<AuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHybridConnectionByNamespaceError = AzureOpError;
 /** Lists the hybrid connection within the namespace. */
-export const ListHybridConnectionByNamespace: API.OperationMethod<
+export const ListHybridConnectionByNamespace: API.PaginatedOperationMethod<
   ListHybridConnectionByNamespaceRequest,
   HybridConnectionListResult,
   ListHybridConnectionByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HybridConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c22, 0) as any as S.Schema<ListHybridConnectionByNamespaceRequest>,
   output: __S(178, __c22, 2) as any as S.Schema<HybridConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHybridConnectionKeysError = AzureOpError;
 /** Primary and secondary connection strings to the hybrid connection. */
@@ -1504,33 +1537,47 @@ export const ListHybridConnectionKeys: API.OperationMethod<
 
 export type ListNamespaceAuthorizationRulesError = AzureOpError;
 /** Authorization rules for a namespace. */
-export const ListNamespaceAuthorizationRules: API.OperationMethod<
+export const ListNamespaceAuthorizationRules: API.PaginatedOperationMethod<
   ListNamespaceAuthorizationRulesRequest,
   AuthorizationRuleListResult,
   ListNamespaceAuthorizationRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthorizationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
   output: __S(161, __c20, 1) as any as S.Schema<AuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceByResourceGroupError = AzureOpError;
 /** Lists all the available namespaces within the ResourceGroup. */
-export const ListNamespaceByResourceGroup: API.OperationMethod<
+export const ListNamespaceByResourceGroup: API.PaginatedOperationMethod<
   ListNamespaceByResourceGroupRequest,
   RelayNamespaceListResult,
   ListNamespaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RelayNamespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(208, __c26, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
   output: __S(217, __c27, 1) as any as S.Schema<RelayNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceKeysError = AzureOpError;
 /** Primary and secondary connection strings to the namespace. */
@@ -1549,48 +1596,69 @@ export const ListNamespaceKeys: API.OperationMethod<
 
 export type ListNamespacesError = AzureOpError;
 /** Lists all the available namespaces within the subscription regardless of the resourceGroups. */
-export const ListNamespaces: API.OperationMethod<
+export const ListNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   RelayNamespaceListResult,
   ListNamespacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RelayNamespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(232, __c29, 0) as any as S.Schema<ListNamespacesRequest>,
   output: __S(217, __c27, 1) as any as S.Schema<RelayNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(240, __c30, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(244, __c30, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** Gets the available PrivateEndpointConnections within a namespace. */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(248, __c31, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(249, __c31, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourcesError = AzureOpError;
 /** Lists the private link resources for a container registry. */
@@ -1609,33 +1677,47 @@ export const ListPrivateLinkResources: API.OperationMethod<
 
 export type ListWCFRelayAuthorizationRulesError = AzureOpError;
 /** Authorization rules for a WCF relay. */
-export const ListWCFRelayAuthorizationRules: API.OperationMethod<
+export const ListWCFRelayAuthorizationRules: API.PaginatedOperationMethod<
   ListWCFRelayAuthorizationRulesRequest,
   AuthorizationRuleListResult,
   ListWCFRelayAuthorizationRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthorizationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(264, __c33, 0) as any as S.Schema<ListWCFRelayAuthorizationRulesRequest>,
   output: __S(161, __c20, 1) as any as S.Schema<AuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWCFRelayByNamespaceError = AzureOpError;
 /** Lists the WCF relays within the namespace. */
-export const ListWCFRelayByNamespace: API.OperationMethod<
+export const ListWCFRelayByNamespace: API.PaginatedOperationMethod<
   ListWCFRelayByNamespaceRequest,
   WcfRelaysListResult,
   ListWCFRelayByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WcfRelay
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c36, 0) as any as S.Schema<ListWCFRelayByNamespaceRequest>,
   output: __S(290, __c36, 2) as any as S.Schema<WcfRelaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWCFRelayKeysError = AzureOpError;
 /** Primary and secondary connection strings to the WCF relay. */
@@ -2225,12 +2307,14 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           hybridConnectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHybridConnectionAuthorizationRulesRequest" });
@@ -2278,12 +2362,14 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHybridConnectionByNamespaceRequest" });
@@ -2341,12 +2427,14 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/authorizationRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceAuthorizationRulesRequest" });
@@ -2359,12 +2447,14 @@ function __c26(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceByResourceGroupRequest" });
@@ -2409,12 +2499,14 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Relay/namespaces",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespacesRequest" });
@@ -2424,12 +2516,15 @@ function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Relay/operations",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2457,7 +2552,7 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(243, __c30, 3)),
+          value: __S(243, __c30, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2471,12 +2566,14 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
@@ -2526,12 +2623,14 @@ function __c33(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           relayName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays/{relayName}/authorizationRules",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWCFRelayAuthorizationRulesRequest" });
@@ -2575,12 +2674,14 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/wcfRelays",
             code: 200,
             apiVersion: "2026-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWCFRelayByNamespaceRequest" });

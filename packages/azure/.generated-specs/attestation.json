@@ -727,10 +727,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Attestation/attestationProviders/{providerName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the private endpoint connections associated with the attestation provider.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.attestation#PrivateEndpointConnectionListResult": {
@@ -826,6 +833,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the attestation provider."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

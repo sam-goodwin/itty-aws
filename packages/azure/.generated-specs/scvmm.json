@@ -15,13 +15,160 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.scvmm#InventoryItemsDelete": "com.azure.scvmm#DeleteInventoryItem",
+      "com.azure.scvmm#InventoryItemsDeleteRequest": "com.azure.scvmm#DeleteInventoryItemRequest",
+      "com.azure.scvmm#InventoryItemsCreate": "com.azure.scvmm#CreateInventoryItem",
+      "com.azure.scvmm#InventoryItemsCreateResponse": "com.azure.scvmm#CreateInventoryItemResponse",
+      "com.azure.scvmm#InventoryItemsCreateRequest": "com.azure.scvmm#CreateInventoryItemRequest",
+      "com.azure.scvmm#InventoryItemsGet": "com.azure.scvmm#GetInventoryItem",
+      "com.azure.scvmm#InventoryItemsGetResponse": "com.azure.scvmm#GetInventoryItemResponse",
+      "com.azure.scvmm#InventoryItemsGetRequest": "com.azure.scvmm#GetInventoryItemRequest",
+      "com.azure.scvmm#InventoryItemsListByVmmServer": "com.azure.scvmm#ListInventoryItemByVmmServer",
+      "com.azure.scvmm#InventoryItemsListByVmmServerRequest": "com.azure.scvmm#ListInventoryItemByVmmServerRequest",
+      "com.azure.scvmm#VmmServersDelete": "com.azure.scvmm#DeleteVmmServer",
+      "com.azure.scvmm#VmmServersDeleteResponse": "com.azure.scvmm#DeleteVmmServerResponse",
+      "com.azure.scvmm#VmmServersDeleteRequest": "com.azure.scvmm#DeleteVmmServerRequest",
+      "com.azure.scvmm#VmmServersDeleteRequestForce": "com.azure.scvmm#DeleteVmmServerRequestForce",
+      "com.azure.scvmm#VmmServersUpdate": "com.azure.scvmm#UpdateVmmServer",
+      "com.azure.scvmm#VmmServersUpdateResponse": "com.azure.scvmm#UpdateVmmServerResponse",
+      "com.azure.scvmm#VmmServersUpdateResponseTagsMap": "com.azure.scvmm#UpdateVmmServerResponseTagsMap",
+      "com.azure.scvmm#VmmServersUpdateRequest": "com.azure.scvmm#UpdateVmmServerRequest",
+      "com.azure.scvmm#VmmServersUpdateRequestTagsMap": "com.azure.scvmm#UpdateVmmServerRequestTagsMap",
+      "com.azure.scvmm#VmmServersGet": "com.azure.scvmm#GetVmmServer",
+      "com.azure.scvmm#VmmServersGetResponse": "com.azure.scvmm#GetVmmServerResponse",
+      "com.azure.scvmm#VmmServersGetResponseTagsMap": "com.azure.scvmm#GetVmmServerResponseTagsMap",
+      "com.azure.scvmm#VmmServersGetRequest": "com.azure.scvmm#GetVmmServerRequest",
+      "com.azure.scvmm#VmmServersListByResourceGroup": "com.azure.scvmm#ListVmmServerByResourceGroup",
+      "com.azure.scvmm#VmmServersListByResourceGroupRequest": "com.azure.scvmm#ListVmmServerByResourceGroupRequest",
+      "com.azure.scvmm#VirtualNetworksDelete": "com.azure.scvmm#DeleteVirtualNetwork",
+      "com.azure.scvmm#VirtualNetworksDeleteResponse": "com.azure.scvmm#DeleteVirtualNetworkResponse",
+      "com.azure.scvmm#VirtualNetworksDeleteRequest": "com.azure.scvmm#DeleteVirtualNetworkRequest",
+      "com.azure.scvmm#VirtualNetworksDeleteRequestForce": "com.azure.scvmm#DeleteVirtualNetworkRequestForce",
+      "com.azure.scvmm#VirtualNetworksUpdate": "com.azure.scvmm#UpdateVirtualNetwork",
+      "com.azure.scvmm#VirtualNetworksUpdateResponse": "com.azure.scvmm#UpdateVirtualNetworkResponse",
+      "com.azure.scvmm#VirtualNetworksUpdateResponseTagsMap": "com.azure.scvmm#UpdateVirtualNetworkResponseTagsMap",
+      "com.azure.scvmm#VirtualNetworksUpdateRequest": "com.azure.scvmm#UpdateVirtualNetworkRequest",
+      "com.azure.scvmm#VirtualNetworksUpdateRequestTagsMap": "com.azure.scvmm#UpdateVirtualNetworkRequestTagsMap",
+      "com.azure.scvmm#VirtualNetworksGet": "com.azure.scvmm#GetVirtualNetwork",
+      "com.azure.scvmm#VirtualNetworksGetResponse": "com.azure.scvmm#GetVirtualNetworkResponse",
+      "com.azure.scvmm#VirtualNetworksGetResponseTagsMap": "com.azure.scvmm#GetVirtualNetworkResponseTagsMap",
+      "com.azure.scvmm#VirtualNetworksGetRequest": "com.azure.scvmm#GetVirtualNetworkRequest",
+      "com.azure.scvmm#VirtualNetworksListByResourceGroup": "com.azure.scvmm#ListVirtualNetworkByResourceGroup",
+      "com.azure.scvmm#VirtualNetworksListByResourceGroupRequest": "com.azure.scvmm#ListVirtualNetworkByResourceGroupRequest",
+      "com.azure.scvmm#VirtualMachineTemplatesDelete": "com.azure.scvmm#DeleteVirtualMachineTemplate",
+      "com.azure.scvmm#VirtualMachineTemplatesDeleteResponse": "com.azure.scvmm#DeleteVirtualMachineTemplateResponse",
+      "com.azure.scvmm#VirtualMachineTemplatesDeleteRequest": "com.azure.scvmm#DeleteVirtualMachineTemplateRequest",
+      "com.azure.scvmm#VirtualMachineTemplatesDeleteRequestForce": "com.azure.scvmm#DeleteVirtualMachineTemplateRequestForce",
+      "com.azure.scvmm#VirtualMachineTemplatesUpdate": "com.azure.scvmm#UpdateVirtualMachineTemplate",
+      "com.azure.scvmm#VirtualMachineTemplatesUpdateResponse": "com.azure.scvmm#UpdateVirtualMachineTemplateResponse",
+      "com.azure.scvmm#VirtualMachineTemplatesUpdateResponseTagsMap": "com.azure.scvmm#UpdateVirtualMachineTemplateResponseTagsMap",
+      "com.azure.scvmm#VirtualMachineTemplatesUpdateRequest": "com.azure.scvmm#UpdateVirtualMachineTemplateRequest",
+      "com.azure.scvmm#VirtualMachineTemplatesUpdateRequestTagsMap": "com.azure.scvmm#UpdateVirtualMachineTemplateRequestTagsMap",
+      "com.azure.scvmm#VirtualMachineTemplatesGet": "com.azure.scvmm#GetVirtualMachineTemplate",
+      "com.azure.scvmm#VirtualMachineTemplatesGetResponse": "com.azure.scvmm#GetVirtualMachineTemplateResponse",
+      "com.azure.scvmm#VirtualMachineTemplatesGetResponseTagsMap": "com.azure.scvmm#GetVirtualMachineTemplateResponseTagsMap",
+      "com.azure.scvmm#VirtualMachineTemplatesGetRequest": "com.azure.scvmm#GetVirtualMachineTemplateRequest",
+      "com.azure.scvmm#VirtualMachineTemplatesListByResourceGroup": "com.azure.scvmm#ListVirtualMachineTemplateByResourceGroup",
+      "com.azure.scvmm#VirtualMachineTemplatesListByResourceGroupRequest": "com.azure.scvmm#ListVirtualMachineTemplateByResourceGroupRequest",
+      "com.azure.scvmm#CloudsDelete": "com.azure.scvmm#DeleteCloud",
+      "com.azure.scvmm#CloudsDeleteResponse": "com.azure.scvmm#DeleteCloudResponse",
+      "com.azure.scvmm#CloudsDeleteRequest": "com.azure.scvmm#DeleteCloudRequest",
+      "com.azure.scvmm#CloudsDeleteRequestForce": "com.azure.scvmm#DeleteCloudRequestForce",
+      "com.azure.scvmm#CloudsUpdate": "com.azure.scvmm#UpdateCloud",
+      "com.azure.scvmm#CloudsUpdateResponse": "com.azure.scvmm#UpdateCloudResponse",
+      "com.azure.scvmm#CloudsUpdateResponseTagsMap": "com.azure.scvmm#UpdateCloudResponseTagsMap",
+      "com.azure.scvmm#CloudsUpdateRequest": "com.azure.scvmm#UpdateCloudRequest",
+      "com.azure.scvmm#CloudsUpdateRequestTagsMap": "com.azure.scvmm#UpdateCloudRequestTagsMap",
+      "com.azure.scvmm#CloudsGet": "com.azure.scvmm#GetCloud",
+      "com.azure.scvmm#CloudsGetResponse": "com.azure.scvmm#GetCloudResponse",
+      "com.azure.scvmm#CloudsGetResponseTagsMap": "com.azure.scvmm#GetCloudResponseTagsMap",
+      "com.azure.scvmm#CloudsGetRequest": "com.azure.scvmm#GetCloudRequest",
+      "com.azure.scvmm#CloudsListByResourceGroup": "com.azure.scvmm#ListCloudByResourceGroup",
+      "com.azure.scvmm#CloudsListByResourceGroupRequest": "com.azure.scvmm#ListCloudByResourceGroupRequest",
+      "com.azure.scvmm#AvailabilitySetsDelete": "com.azure.scvmm#DeleteAvailabilitySet",
+      "com.azure.scvmm#AvailabilitySetsDeleteResponse": "com.azure.scvmm#DeleteAvailabilitySetResponse",
+      "com.azure.scvmm#AvailabilitySetsDeleteRequest": "com.azure.scvmm#DeleteAvailabilitySetRequest",
+      "com.azure.scvmm#AvailabilitySetsDeleteRequestForce": "com.azure.scvmm#DeleteAvailabilitySetRequestForce",
+      "com.azure.scvmm#AvailabilitySetsUpdate": "com.azure.scvmm#UpdateAvailabilitySet",
+      "com.azure.scvmm#AvailabilitySetsUpdateResponse": "com.azure.scvmm#UpdateAvailabilitySetResponse",
+      "com.azure.scvmm#AvailabilitySetsUpdateResponseTagsMap": "com.azure.scvmm#UpdateAvailabilitySetResponseTagsMap",
+      "com.azure.scvmm#AvailabilitySetsUpdateRequest": "com.azure.scvmm#UpdateAvailabilitySetRequest",
+      "com.azure.scvmm#AvailabilitySetsUpdateRequestTagsMap": "com.azure.scvmm#UpdateAvailabilitySetRequestTagsMap",
+      "com.azure.scvmm#AvailabilitySetsGet": "com.azure.scvmm#GetAvailabilitySet",
+      "com.azure.scvmm#AvailabilitySetsGetResponse": "com.azure.scvmm#GetAvailabilitySetResponse",
+      "com.azure.scvmm#AvailabilitySetsGetResponseTagsMap": "com.azure.scvmm#GetAvailabilitySetResponseTagsMap",
+      "com.azure.scvmm#AvailabilitySetsGetRequest": "com.azure.scvmm#GetAvailabilitySetRequest",
+      "com.azure.scvmm#AvailabilitySetsListByResourceGroup": "com.azure.scvmm#ListAvailabilitySetByResourceGroup",
+      "com.azure.scvmm#AvailabilitySetsListByResourceGroupRequest": "com.azure.scvmm#ListAvailabilitySetByResourceGroupRequest",
+      "com.azure.scvmm#VmmServersListBySubscription": "com.azure.scvmm#ListVmmServerBySubscription",
+      "com.azure.scvmm#VmmServersListBySubscriptionRequest": "com.azure.scvmm#ListVmmServerBySubscriptionRequest",
+      "com.azure.scvmm#VirtualNetworksListBySubscription": "com.azure.scvmm#ListVirtualNetworkBySubscription",
+      "com.azure.scvmm#VirtualNetworksListBySubscriptionRequest": "com.azure.scvmm#ListVirtualNetworkBySubscriptionRequest",
+      "com.azure.scvmm#VirtualMachineTemplatesListBySubscription": "com.azure.scvmm#ListVirtualMachineTemplateBySubscription",
+      "com.azure.scvmm#VirtualMachineTemplatesListBySubscriptionRequest": "com.azure.scvmm#ListVirtualMachineTemplateBySubscriptionRequest",
+      "com.azure.scvmm#CloudsListBySubscription": "com.azure.scvmm#ListCloudBySubscription",
+      "com.azure.scvmm#CloudsListBySubscriptionRequest": "com.azure.scvmm#ListCloudBySubscriptionRequest",
+      "com.azure.scvmm#AvailabilitySetsListBySubscription": "com.azure.scvmm#ListAvailabilitySetBySubscription",
+      "com.azure.scvmm#AvailabilitySetsListBySubscriptionRequest": "com.azure.scvmm#ListAvailabilitySetBySubscriptionRequest",
+      "com.azure.scvmm#OperationsList": "com.azure.scvmm#ListOperations",
+      "com.azure.scvmm#OperationsListResponse": "com.azure.scvmm#ListOperationsResponse",
+      "com.azure.scvmm#OperationsListResponseValueList": "com.azure.scvmm#ListOperationsResponseValueList",
+      "com.azure.scvmm#OperationsListRequest": "com.azure.scvmm#ListOperationsRequest",
+      "com.azure.scvmm#VirtualMachineInstancesStop": "com.azure.scvmm#StopVirtualMachineInstance",
+      "com.azure.scvmm#VirtualMachineInstancesStopResponse": "com.azure.scvmm#StopVirtualMachineInstanceResponse",
+      "com.azure.scvmm#VirtualMachineInstancesStopRequest": "com.azure.scvmm#StopVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VirtualMachineInstancesStopRequestSkipShutdown": "com.azure.scvmm#StopVirtualMachineInstanceRequestSkipShutdown",
+      "com.azure.scvmm#VirtualMachineInstancesStart": "com.azure.scvmm#StartVirtualMachineInstance",
+      "com.azure.scvmm#VirtualMachineInstancesStartResponse": "com.azure.scvmm#StartVirtualMachineInstanceResponse",
+      "com.azure.scvmm#VirtualMachineInstancesStartRequest": "com.azure.scvmm#StartVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpoint": "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpoint",
+      "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpointResponse": "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpointResponse",
+      "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpointRequest": "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpointRequest",
+      "com.azure.scvmm#VirtualMachineInstancesRestart": "com.azure.scvmm#RestartVirtualMachineInstance",
+      "com.azure.scvmm#VirtualMachineInstancesRestartResponse": "com.azure.scvmm#RestartVirtualMachineInstanceResponse",
+      "com.azure.scvmm#VirtualMachineInstancesRestartRequest": "com.azure.scvmm#RestartVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGet": "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatas",
+      "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGetResponse": "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatasResponse",
+      "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGetRequest": "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatasRequest",
+      "com.azure.scvmm#VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance": "com.azure.scvmm#ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstance",
+      "com.azure.scvmm#VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceRequest": "com.azure.scvmm#ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest",
+      "com.azure.scvmm#GuestAgentsDelete": "com.azure.scvmm#DeleteGuestAgent",
+      "com.azure.scvmm#GuestAgentsDeleteRequest": "com.azure.scvmm#DeleteGuestAgentRequest",
+      "com.azure.scvmm#GuestAgentsCreate": "com.azure.scvmm#CreateGuestAgent",
+      "com.azure.scvmm#GuestAgentsCreateResponse": "com.azure.scvmm#CreateGuestAgentResponse",
+      "com.azure.scvmm#GuestAgentsCreateRequest": "com.azure.scvmm#CreateGuestAgentRequest",
+      "com.azure.scvmm#GuestAgentsGet": "com.azure.scvmm#GetGuestAgent",
+      "com.azure.scvmm#GuestAgentsGetResponse": "com.azure.scvmm#GetGuestAgentResponse",
+      "com.azure.scvmm#GuestAgentsGetRequest": "com.azure.scvmm#GetGuestAgentRequest",
+      "com.azure.scvmm#GuestAgentsListByVirtualMachineInstance": "com.azure.scvmm#ListGuestAgentByVirtualMachineInstance",
+      "com.azure.scvmm#GuestAgentsListByVirtualMachineInstanceRequest": "com.azure.scvmm#ListGuestAgentByVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpoint": "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpoint",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpointResponse": "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpointResponse",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpointRequest": "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpointRequest",
+      "com.azure.scvmm#VirtualMachineInstancesCreateCheckpoint": "com.azure.scvmm#CreateVirtualMachineInstanceCheckpoint",
+      "com.azure.scvmm#VirtualMachineInstancesCreateCheckpointResponse": "com.azure.scvmm#CreateVirtualMachineInstanceCheckpointResponse",
+      "com.azure.scvmm#VirtualMachineInstancesCreateCheckpointRequest": "com.azure.scvmm#CreateVirtualMachineInstanceCheckpointRequest",
+      "com.azure.scvmm#VirtualMachineInstancesDelete": "com.azure.scvmm#DeleteVirtualMachineInstance",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteResponse": "com.azure.scvmm#DeleteVirtualMachineInstanceResponse",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteRequest": "com.azure.scvmm#DeleteVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteRequestDeleteFromHost": "com.azure.scvmm#DeleteVirtualMachineInstanceRequestDeleteFromHost",
+      "com.azure.scvmm#VirtualMachineInstancesDeleteRequestForce": "com.azure.scvmm#DeleteVirtualMachineInstanceRequestForce",
+      "com.azure.scvmm#VirtualMachineInstancesUpdate": "com.azure.scvmm#UpdateVirtualMachineInstance",
+      "com.azure.scvmm#VirtualMachineInstancesUpdateResponse": "com.azure.scvmm#UpdateVirtualMachineInstanceResponse",
+      "com.azure.scvmm#VirtualMachineInstancesUpdateRequest": "com.azure.scvmm#UpdateVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VirtualMachineInstancesGet": "com.azure.scvmm#GetVirtualMachineInstance",
+      "com.azure.scvmm#VirtualMachineInstancesGetResponse": "com.azure.scvmm#GetVirtualMachineInstanceResponse",
+      "com.azure.scvmm#VirtualMachineInstancesGetRequest": "com.azure.scvmm#GetVirtualMachineInstanceRequest",
+      "com.azure.scvmm#VirtualMachineInstancesList": "com.azure.scvmm#ListVirtualMachineInstances",
+      "com.azure.scvmm#VirtualMachineInstancesListRequest": "com.azure.scvmm#ListVirtualMachineInstancesRequest"
+    }
   },
   "shapes": {
-    "com.azure.scvmm#DeleteInventoryItem": {
+    "com.azure.scvmm#InventoryItemsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteInventoryItemRequest"
+        "target": "com.azure.scvmm#InventoryItemsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -31,13 +178,13 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements inventoryItem DELETE method.\n\nDeletes an inventoryItem.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteInventoryItemRequest": {
+    "com.azure.scvmm#InventoryItemsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -77,26 +224,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#CreateInventoryItem": {
+    "com.azure.scvmm#InventoryItemsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#CreateInventoryItemRequest"
+        "target": "com.azure.scvmm#InventoryItemsCreateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#CreateInventoryItemResponse"
+        "target": "com.azure.scvmm#InventoryItemsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements InventoryItem PUT method.\n\nCreate Or Update InventoryItem.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#CreateInventoryItemResponse": {
+    "com.azure.scvmm#InventoryItemsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -375,7 +522,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.scvmm#CreateInventoryItemRequest": {
+    "com.azure.scvmm#InventoryItemsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -442,26 +589,26 @@
         "smithy.api#documentation": "Defines the resource properties."
       }
     },
-    "com.azure.scvmm#GetInventoryItem": {
+    "com.azure.scvmm#InventoryItemsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetInventoryItemRequest"
+        "target": "com.azure.scvmm#InventoryItemsGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetInventoryItemResponse"
+        "target": "com.azure.scvmm#InventoryItemsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems/{inventoryItemResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements GET InventoryItem method.\n\nShows an inventory item.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetInventoryItemResponse": {
+    "com.azure.scvmm#InventoryItemsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -505,7 +652,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetInventoryItemRequest": {
+    "com.azure.scvmm#InventoryItemsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -545,10 +692,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListInventoryItemByVmmServer": {
+    "com.azure.scvmm#InventoryItemsListByVmmServer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListInventoryItemByVmmServerRequest"
+        "target": "com.azure.scvmm#InventoryItemsListByVmmServerRequest"
       },
       "output": {
         "target": "com.azure.scvmm#InventoryItemListResult"
@@ -558,10 +705,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}/inventoryItems",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET for the list of Inventory Items in the VMMServer.\n\nReturns the list of inventoryItems in the given VmmServer.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#InventoryItemListResult": {
@@ -638,7 +792,7 @@
         "smithy.api#documentation": "Defines the inventory item."
       }
     },
-    "com.azure.scvmm#ListInventoryItemByVmmServerRequest": {
+    "com.azure.scvmm#InventoryItemsListByVmmServerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -664,32 +818,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the VmmServer."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVmmServer": {
+    "com.azure.scvmm#VmmServersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteVmmServerRequest"
+        "target": "com.azure.scvmm#VmmServersDeleteRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteVmmServerResponse"
+        "target": "com.azure.scvmm#VmmServersDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VmmServers DELETE method.\n\nRemoves the SCVmm fabric from Azure.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteVmmServerResponse": {
+    "com.azure.scvmm#VmmServersDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -718,7 +878,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteVmmServerRequest": {
+    "com.azure.scvmm#VmmServersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -746,7 +906,7 @@
           }
         },
         "force": {
-          "target": "com.azure.scvmm#DeleteVmmServerRequestForce",
+          "target": "com.azure.scvmm#VmmServersDeleteRequestForce",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "Forces the resource to be deleted."
@@ -757,7 +917,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVmmServerRequestForce": {
+    "com.azure.scvmm#VmmServersDeleteRequestForce": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -775,26 +935,26 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#UpdateVmmServer": {
+    "com.azure.scvmm#VmmServersUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#UpdateVmmServerRequest"
+        "target": "com.azure.scvmm#VmmServersUpdateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#UpdateVmmServerResponse"
+        "target": "com.azure.scvmm#VmmServersUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VmmServers PATCH method.\n\nUpdates the VmmServers resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#UpdateVmmServerResponse": {
+    "com.azure.scvmm#VmmServersUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -822,7 +982,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateVmmServerResponseTagsMap",
+          "target": "com.azure.scvmm#VmmServersUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -971,7 +1131,7 @@
         "smithy.api#documentation": "Credentials to connect to VmmServer."
       }
     },
-    "com.azure.scvmm#UpdateVmmServerResponseTagsMap": {
+    "com.azure.scvmm#VmmServersUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -983,7 +1143,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#UpdateVmmServerRequest": {
+    "com.azure.scvmm#VmmServersUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1011,7 +1171,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateVmmServerRequestTagsMap",
+          "target": "com.azure.scvmm#VmmServersUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1021,7 +1181,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#UpdateVmmServerRequestTagsMap": {
+    "com.azure.scvmm#VmmServersUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1046,10 +1206,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VmmServers PUT method.\n\nOnboards the SCVmm fabric as an Azure VmmServer resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
     "com.azure.scvmm#VmmServersCreateOrUpdateResponse": {
@@ -1226,26 +1386,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetVmmServer": {
+    "com.azure.scvmm#VmmServersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetVmmServerRequest"
+        "target": "com.azure.scvmm#VmmServersGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetVmmServerResponse"
+        "target": "com.azure.scvmm#VmmServersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets a VMMServer.\n\nImplements VmmServer GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetVmmServerResponse": {
+    "com.azure.scvmm#VmmServersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1273,7 +1433,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#GetVmmServerResponseTagsMap",
+          "target": "com.azure.scvmm#VmmServersGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1303,7 +1463,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetVmmServerResponseTagsMap": {
+    "com.azure.scvmm#VmmServersGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1315,7 +1475,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetVmmServerRequest": {
+    "com.azure.scvmm#VmmServersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1347,10 +1507,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVmmServerByResourceGroup": {
+    "com.azure.scvmm#VmmServersListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVmmServerByResourceGroupRequest"
+        "target": "com.azure.scvmm#VmmServersListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VmmServerListResult"
@@ -1360,10 +1520,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET VmmServers in a resource group.\n\nList of VmmServers in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#VmmServerListResult": {
@@ -1466,7 +1633,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#ListVmmServerByResourceGroupRequest": {
+    "com.azure.scvmm#VmmServersListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1484,32 +1651,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualNetwork": {
+    "com.azure.scvmm#VirtualNetworksDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteVirtualNetworkRequest"
+        "target": "com.azure.scvmm#VirtualNetworksDeleteRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteVirtualNetworkResponse"
+        "target": "com.azure.scvmm#VirtualNetworksDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VirtualNetwork DELETE method.\n\nDeregisters the ScVmm virtual network from Azure.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteVirtualNetworkResponse": {
+    "com.azure.scvmm#VirtualNetworksDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -1538,7 +1711,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualNetworkRequest": {
+    "com.azure.scvmm#VirtualNetworksDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1566,7 +1739,7 @@
           }
         },
         "force": {
-          "target": "com.azure.scvmm#DeleteVirtualNetworkRequestForce",
+          "target": "com.azure.scvmm#VirtualNetworksDeleteRequestForce",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "Forces the resource to be deleted."
@@ -1577,7 +1750,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualNetworkRequestForce": {
+    "com.azure.scvmm#VirtualNetworksDeleteRequestForce": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -1595,26 +1768,26 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#UpdateVirtualNetwork": {
+    "com.azure.scvmm#VirtualNetworksUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#UpdateVirtualNetworkRequest"
+        "target": "com.azure.scvmm#VirtualNetworksUpdateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#UpdateVirtualNetworkResponse"
+        "target": "com.azure.scvmm#VirtualNetworksUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the VirtualNetworks PATCH method.\n\nUpdates the VirtualNetworks resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#UpdateVirtualNetworkResponse": {
+    "com.azure.scvmm#VirtualNetworksUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1642,7 +1815,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateVirtualNetworkResponseTagsMap",
+          "target": "com.azure.scvmm#VirtualNetworksUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1731,7 +1904,7 @@
         "smithy.api#documentation": "Defines the resource properties."
       }
     },
-    "com.azure.scvmm#UpdateVirtualNetworkResponseTagsMap": {
+    "com.azure.scvmm#VirtualNetworksUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1743,7 +1916,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#UpdateVirtualNetworkRequest": {
+    "com.azure.scvmm#VirtualNetworksUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1771,7 +1944,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateVirtualNetworkRequestTagsMap",
+          "target": "com.azure.scvmm#VirtualNetworksUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1781,7 +1954,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#UpdateVirtualNetworkRequestTagsMap": {
+    "com.azure.scvmm#VirtualNetworksUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1806,10 +1979,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VirtualNetworks PUT method.\n\nOnboards the ScVmm virtual network as an Azure virtual network resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
     "com.azure.scvmm#VirtualNetworksCreateOrUpdateResponse": {
@@ -1985,26 +2158,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetVirtualNetwork": {
+    "com.azure.scvmm#VirtualNetworksGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetVirtualNetworkRequest"
+        "target": "com.azure.scvmm#VirtualNetworksGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetVirtualNetworkResponse"
+        "target": "com.azure.scvmm#VirtualNetworksGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets a VirtualNetwork.\n\nImplements VirtualNetwork GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetVirtualNetworkResponse": {
+    "com.azure.scvmm#VirtualNetworksGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2032,7 +2205,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#GetVirtualNetworkResponseTagsMap",
+          "target": "com.azure.scvmm#VirtualNetworksGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2062,7 +2235,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetVirtualNetworkResponseTagsMap": {
+    "com.azure.scvmm#VirtualNetworksGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2074,7 +2247,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetVirtualNetworkRequest": {
+    "com.azure.scvmm#VirtualNetworksGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2106,10 +2279,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVirtualNetworkByResourceGroup": {
+    "com.azure.scvmm#VirtualNetworksListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVirtualNetworkByResourceGroupRequest"
+        "target": "com.azure.scvmm#VirtualNetworksListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VirtualNetworkListResult"
@@ -2119,10 +2292,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET VirtualNetworks in a resource group.\n\nList of VirtualNetworks in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#VirtualNetworkListResult": {
@@ -2225,7 +2405,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#ListVirtualNetworkByResourceGroupRequest": {
+    "com.azure.scvmm#VirtualNetworksListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2243,32 +2423,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineTemplate": {
+    "com.azure.scvmm#VirtualMachineTemplatesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteVirtualMachineTemplateRequest"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteVirtualMachineTemplateResponse"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VirtualMachineTemplate DELETE method.\n\nDeregisters the ScVmm VM Template from Azure.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineTemplateResponse": {
+    "com.azure.scvmm#VirtualMachineTemplatesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -2297,7 +2483,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineTemplateRequest": {
+    "com.azure.scvmm#VirtualMachineTemplatesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2325,7 +2511,7 @@
           }
         },
         "force": {
-          "target": "com.azure.scvmm#DeleteVirtualMachineTemplateRequestForce",
+          "target": "com.azure.scvmm#VirtualMachineTemplatesDeleteRequestForce",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "Forces the resource to be deleted."
@@ -2336,7 +2522,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineTemplateRequestForce": {
+    "com.azure.scvmm#VirtualMachineTemplatesDeleteRequestForce": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -2354,26 +2540,26 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#UpdateVirtualMachineTemplate": {
+    "com.azure.scvmm#VirtualMachineTemplatesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#UpdateVirtualMachineTemplateRequest"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#UpdateVirtualMachineTemplateResponse"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the VirtualMachineTemplate PATCH method.\n\nUpdates the VirtualMachineTemplate resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#UpdateVirtualMachineTemplateResponse": {
+    "com.azure.scvmm#VirtualMachineTemplatesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2401,7 +2587,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateVirtualMachineTemplateResponseTagsMap",
+          "target": "com.azure.scvmm#VirtualMachineTemplatesUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2936,7 +3122,7 @@
         "smithy.api#documentation": "Virtual machine operating system type."
       }
     },
-    "com.azure.scvmm#UpdateVirtualMachineTemplateResponseTagsMap": {
+    "com.azure.scvmm#VirtualMachineTemplatesUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2948,7 +3134,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#UpdateVirtualMachineTemplateRequest": {
+    "com.azure.scvmm#VirtualMachineTemplatesUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2976,7 +3162,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateVirtualMachineTemplateRequestTagsMap",
+          "target": "com.azure.scvmm#VirtualMachineTemplatesUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2986,7 +3172,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#UpdateVirtualMachineTemplateRequestTagsMap": {
+    "com.azure.scvmm#VirtualMachineTemplatesUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3011,10 +3197,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements VirtualMachineTemplates PUT method.\n\nOnboards the ScVmm VM Template as an Azure VM Template resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
     "com.azure.scvmm#VirtualMachineTemplatesCreateOrUpdateResponse": {
@@ -3190,26 +3376,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetVirtualMachineTemplate": {
+    "com.azure.scvmm#VirtualMachineTemplatesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetVirtualMachineTemplateRequest"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetVirtualMachineTemplateResponse"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets a VirtualMachineTemplate.\n\nImplements VirtualMachineTemplate GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetVirtualMachineTemplateResponse": {
+    "com.azure.scvmm#VirtualMachineTemplatesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3237,7 +3423,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#GetVirtualMachineTemplateResponseTagsMap",
+          "target": "com.azure.scvmm#VirtualMachineTemplatesGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3267,7 +3453,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetVirtualMachineTemplateResponseTagsMap": {
+    "com.azure.scvmm#VirtualMachineTemplatesGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3279,7 +3465,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetVirtualMachineTemplateRequest": {
+    "com.azure.scvmm#VirtualMachineTemplatesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3311,10 +3497,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVirtualMachineTemplateByResourceGroup": {
+    "com.azure.scvmm#VirtualMachineTemplatesListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVirtualMachineTemplateByResourceGroupRequest"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VirtualMachineTemplateListResult"
@@ -3324,10 +3510,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET VirtualMachineTemplates in a resource group.\n\nList of VirtualMachineTemplates in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#VirtualMachineTemplateListResult": {
@@ -3430,7 +3623,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#ListVirtualMachineTemplateByResourceGroupRequest": {
+    "com.azure.scvmm#VirtualMachineTemplatesListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3448,32 +3641,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteCloud": {
+    "com.azure.scvmm#CloudsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteCloudRequest"
+        "target": "com.azure.scvmm#CloudsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteCloudResponse"
+        "target": "com.azure.scvmm#CloudsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements Cloud resource DELETE method.\n\nDeregisters the ScVmm fabric cloud from Azure.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteCloudResponse": {
+    "com.azure.scvmm#CloudsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -3502,7 +3701,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteCloudRequest": {
+    "com.azure.scvmm#CloudsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3530,7 +3729,7 @@
           }
         },
         "force": {
-          "target": "com.azure.scvmm#DeleteCloudRequestForce",
+          "target": "com.azure.scvmm#CloudsDeleteRequestForce",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "Forces the resource to be deleted."
@@ -3541,7 +3740,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteCloudRequestForce": {
+    "com.azure.scvmm#CloudsDeleteRequestForce": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -3559,26 +3758,26 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#UpdateCloud": {
+    "com.azure.scvmm#CloudsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#UpdateCloudRequest"
+        "target": "com.azure.scvmm#CloudsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#UpdateCloudResponse"
+        "target": "com.azure.scvmm#CloudsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the Clouds PATCH method.\n\nUpdates the Clouds resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#UpdateCloudResponse": {
+    "com.azure.scvmm#CloudsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3606,7 +3805,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateCloudResponseTagsMap",
+          "target": "com.azure.scvmm#CloudsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3792,7 +3991,7 @@
         "smithy.api#documentation": "Cloud Capacity model"
       }
     },
-    "com.azure.scvmm#UpdateCloudResponseTagsMap": {
+    "com.azure.scvmm#CloudsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3804,7 +4003,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#UpdateCloudRequest": {
+    "com.azure.scvmm#CloudsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3832,7 +4031,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateCloudRequestTagsMap",
+          "target": "com.azure.scvmm#CloudsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3842,7 +4041,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#UpdateCloudRequestTagsMap": {
+    "com.azure.scvmm#CloudsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3867,10 +4066,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements Clouds PUT method.\n\nOnboards the ScVmm fabric cloud as an Azure cloud resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
     "com.azure.scvmm#CloudsCreateOrUpdateResponse": {
@@ -4046,26 +4245,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetCloud": {
+    "com.azure.scvmm#CloudsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetCloudRequest"
+        "target": "com.azure.scvmm#CloudsGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetCloudResponse"
+        "target": "com.azure.scvmm#CloudsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets a Cloud.\n\nImplements Cloud GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetCloudResponse": {
+    "com.azure.scvmm#CloudsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4093,7 +4292,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#GetCloudResponseTagsMap",
+          "target": "com.azure.scvmm#CloudsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4123,7 +4322,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetCloudResponseTagsMap": {
+    "com.azure.scvmm#CloudsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4135,7 +4334,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetCloudRequest": {
+    "com.azure.scvmm#CloudsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4167,10 +4366,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListCloudByResourceGroup": {
+    "com.azure.scvmm#CloudsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListCloudByResourceGroupRequest"
+        "target": "com.azure.scvmm#CloudsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.scvmm#CloudListResult"
@@ -4180,10 +4379,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET Clouds in a resource group.\n\nList of Clouds in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#CloudListResult": {
@@ -4286,7 +4492,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#ListCloudByResourceGroupRequest": {
+    "com.azure.scvmm#CloudsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4304,32 +4510,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteAvailabilitySet": {
+    "com.azure.scvmm#AvailabilitySetsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteAvailabilitySetRequest"
+        "target": "com.azure.scvmm#AvailabilitySetsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteAvailabilitySetResponse"
+        "target": "com.azure.scvmm#AvailabilitySetsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements AvailabilitySet DELETE method.\n\nDeregisters the ScVmm availability set from Azure.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteAvailabilitySetResponse": {
+    "com.azure.scvmm#AvailabilitySetsDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -4358,7 +4570,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteAvailabilitySetRequest": {
+    "com.azure.scvmm#AvailabilitySetsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4386,7 +4598,7 @@
           }
         },
         "force": {
-          "target": "com.azure.scvmm#DeleteAvailabilitySetRequestForce",
+          "target": "com.azure.scvmm#AvailabilitySetsDeleteRequestForce",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "Forces the resource to be deleted."
@@ -4397,7 +4609,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteAvailabilitySetRequestForce": {
+    "com.azure.scvmm#AvailabilitySetsDeleteRequestForce": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -4415,26 +4627,26 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#UpdateAvailabilitySet": {
+    "com.azure.scvmm#AvailabilitySetsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#UpdateAvailabilitySetRequest"
+        "target": "com.azure.scvmm#AvailabilitySetsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#UpdateAvailabilitySetResponse"
+        "target": "com.azure.scvmm#AvailabilitySetsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the AvailabilitySets PATCH method.\n\nUpdates the AvailabilitySets resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#UpdateAvailabilitySetResponse": {
+    "com.azure.scvmm#AvailabilitySetsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4462,7 +4674,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateAvailabilitySetResponseTagsMap",
+          "target": "com.azure.scvmm#AvailabilitySetsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4539,7 +4751,7 @@
         "smithy.api#documentation": "Defines the resource properties."
       }
     },
-    "com.azure.scvmm#UpdateAvailabilitySetResponseTagsMap": {
+    "com.azure.scvmm#AvailabilitySetsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4551,7 +4763,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#UpdateAvailabilitySetRequest": {
+    "com.azure.scvmm#AvailabilitySetsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4579,7 +4791,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#UpdateAvailabilitySetRequestTagsMap",
+          "target": "com.azure.scvmm#AvailabilitySetsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4589,7 +4801,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#UpdateAvailabilitySetRequestTagsMap": {
+    "com.azure.scvmm#AvailabilitySetsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4614,10 +4826,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements AvailabilitySets PUT method.\n\nOnboards the ScVmm availability set as an Azure resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
     "com.azure.scvmm#AvailabilitySetsCreateOrUpdateResponse": {
@@ -4794,26 +5006,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetAvailabilitySet": {
+    "com.azure.scvmm#AvailabilitySetsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetAvailabilitySetRequest"
+        "target": "com.azure.scvmm#AvailabilitySetsGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetAvailabilitySetResponse"
+        "target": "com.azure.scvmm#AvailabilitySetsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets an AvailabilitySet.\n\nImplements AvailabilitySet GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetAvailabilitySetResponse": {
+    "com.azure.scvmm#AvailabilitySetsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4841,7 +5053,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.scvmm#GetAvailabilitySetResponseTagsMap",
+          "target": "com.azure.scvmm#AvailabilitySetsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4871,7 +5083,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetAvailabilitySetResponseTagsMap": {
+    "com.azure.scvmm#AvailabilitySetsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4883,7 +5095,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#GetAvailabilitySetRequest": {
+    "com.azure.scvmm#AvailabilitySetsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4915,10 +5127,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListAvailabilitySetByResourceGroup": {
+    "com.azure.scvmm#AvailabilitySetsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListAvailabilitySetByResourceGroupRequest"
+        "target": "com.azure.scvmm#AvailabilitySetsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.scvmm#AvailabilitySetListResult"
@@ -4928,10 +5140,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET AvailabilitySets in a resource group.\n\nList of AvailabilitySets in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#AvailabilitySetListResult": {
@@ -5034,7 +5253,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.scvmm#ListAvailabilitySetByResourceGroupRequest": {
+    "com.azure.scvmm#AvailabilitySetsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5052,16 +5271,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVmmServerBySubscription": {
+    "com.azure.scvmm#VmmServersListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVmmServerBySubscriptionRequest"
+        "target": "com.azure.scvmm#VmmServersListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VmmServerListResult"
@@ -5071,13 +5296,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/vmmServers",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET VmmServers in a subscription.\n\nList of VmmServers in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scvmm#ListVmmServerBySubscriptionRequest": {
+    "com.azure.scvmm#VmmServersListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5087,16 +5319,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVirtualNetworkBySubscription": {
+    "com.azure.scvmm#VirtualNetworksListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVirtualNetworkBySubscriptionRequest"
+        "target": "com.azure.scvmm#VirtualNetworksListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VirtualNetworkListResult"
@@ -5106,13 +5344,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/virtualNetworks",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET VirtualNetworks in a subscription.\n\nList of VirtualNetworks in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scvmm#ListVirtualNetworkBySubscriptionRequest": {
+    "com.azure.scvmm#VirtualNetworksListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5122,16 +5367,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVirtualMachineTemplateBySubscription": {
+    "com.azure.scvmm#VirtualMachineTemplatesListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVirtualMachineTemplateBySubscriptionRequest"
+        "target": "com.azure.scvmm#VirtualMachineTemplatesListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VirtualMachineTemplateListResult"
@@ -5141,13 +5392,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/virtualMachineTemplates",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET VirtualMachineTemplates in a subscription.\n\nList of VirtualMachineTemplates in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scvmm#ListVirtualMachineTemplateBySubscriptionRequest": {
+    "com.azure.scvmm#VirtualMachineTemplatesListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5157,16 +5415,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListCloudBySubscription": {
+    "com.azure.scvmm#CloudsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListCloudBySubscriptionRequest"
+        "target": "com.azure.scvmm#CloudsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.scvmm#CloudListResult"
@@ -5176,13 +5440,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/clouds",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET Clouds in a subscription.\n\nList of Clouds in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scvmm#ListCloudBySubscriptionRequest": {
+    "com.azure.scvmm#CloudsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5192,16 +5463,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListAvailabilitySetBySubscription": {
+    "com.azure.scvmm#AvailabilitySetsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListAvailabilitySetBySubscriptionRequest"
+        "target": "com.azure.scvmm#AvailabilitySetsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.scvmm#AvailabilitySetListResult"
@@ -5211,13 +5488,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ScVmm/availabilitySets",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET AvailabilitySets in a subscription.\n\nList of AvailabilitySets in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scvmm#ListAvailabilitySetBySubscriptionRequest": {
+    "com.azure.scvmm#AvailabilitySetsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5227,36 +5511,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListOperations": {
+    "com.azure.scvmm#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.scvmm#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#ListOperationsResponse"
+        "target": "com.azure.scvmm#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.ScVmm/operations",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.scvmm#ListOperationsResponse": {
+    "com.azure.scvmm#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.scvmm#ListOperationsResponseValueList",
+          "target": "com.azure.scvmm#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -5272,7 +5569,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#ListOperationsResponseValueList": {
+    "com.azure.scvmm#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.scvmm#Operation"
@@ -5391,26 +5688,40 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.scvmm#StopVirtualMachineInstance": {
+    "com.azure.scvmm#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualMachineInstancesStop": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#StopVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesStopRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#StopVirtualMachineInstanceResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesStopResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/stop",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the operation to stop a virtual machine.\n\nThe operation to power off (stop) a virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#StopVirtualMachineInstanceResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesStopResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5432,7 +5743,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#StopVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesStopRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5444,7 +5755,7 @@
           }
         },
         "skipShutdown": {
-          "target": "com.azure.scvmm#StopVirtualMachineInstanceRequestSkipShutdown",
+          "target": "com.azure.scvmm#VirtualMachineInstancesStopRequestSkipShutdown",
           "traits": {
             "smithy.api#documentation": "Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false."
           }
@@ -5454,7 +5765,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#StopVirtualMachineInstanceRequestSkipShutdown": {
+    "com.azure.scvmm#VirtualMachineInstancesStopRequestSkipShutdown": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -5474,26 +5785,26 @@
         "smithy.api#documentation": "Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false."
       }
     },
-    "com.azure.scvmm#StartVirtualMachineInstance": {
+    "com.azure.scvmm#VirtualMachineInstancesStart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#StartVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesStartRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#StartVirtualMachineInstanceResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesStartResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/start",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the operation to start a virtual machine.\n\nThe operation to start a virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#StartVirtualMachineInstanceResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesStartResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5515,7 +5826,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#StartVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesStartRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5531,26 +5842,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpoint": {
+    "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpointRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpointRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpointResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpointResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restoreCheckpoint",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the operation to restores to a checkpoint in a virtual machine instance.\n\nRestores to a checkpoint in virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpointResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpointResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5572,7 +5883,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpointRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpointRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5594,26 +5905,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#RestartVirtualMachineInstance": {
+    "com.azure.scvmm#VirtualMachineInstancesRestart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#RestartVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesRestartRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#RestartVirtualMachineInstanceResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesRestartResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restart",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the operation to restart a virtual machine.\n\nThe operation to restart a virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#RestartVirtualMachineInstanceResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesRestartResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -5635,7 +5946,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#RestartVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesRestartRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5651,26 +5962,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatas": {
+    "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatasRequest"
+        "target": "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatasResponse"
+        "target": "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/hybridIdentityMetadata/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets HybridIdentityMetadata.\n\nImplements HybridIdentityMetadata GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatasResponse": {
+    "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5734,7 +6045,7 @@
         "smithy.api#documentation": "Describes the properties of Hybrid Identity Metadata for a Virtual Machine."
       }
     },
-    "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatasRequest": {
+    "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5750,10 +6061,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstance": {
+    "com.azure.scvmm#VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VmInstanceHybridIdentityMetadataListResult"
@@ -5763,10 +6074,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/hybridIdentityMetadata",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET HybridIdentityMetadata in a vm.\n\nReturns the list of HybridIdentityMetadata of the given VM.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#VmInstanceHybridIdentityMetadataListResult": {
@@ -5837,7 +6155,7 @@
         "smithy.api#documentation": "Defines the HybridIdentityMetadata."
       }
     },
-    "com.azure.scvmm#ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VmInstanceHybridIdentityMetadatasListByVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5847,16 +6165,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteGuestAgent": {
+    "com.azure.scvmm#GuestAgentsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteGuestAgentRequest"
+        "target": "com.azure.scvmm#GuestAgentsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5866,13 +6190,13 @@
           "method": "DELETE",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Deletes a GuestAgent resource.\n\nImplements GuestAgent DELETE method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteGuestAgentRequest": {
+    "com.azure.scvmm#GuestAgentsDeleteRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -5888,26 +6212,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#CreateGuestAgent": {
+    "com.azure.scvmm#GuestAgentsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#CreateGuestAgentRequest"
+        "target": "com.azure.scvmm#GuestAgentsCreateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#CreateGuestAgentResponse"
+        "target": "com.azure.scvmm#GuestAgentsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements GuestAgent PUT method.\n\nCreate Or Update GuestAgent.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#CreateGuestAgentResponse": {
+    "com.azure.scvmm#GuestAgentsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6071,7 +6395,7 @@
         "smithy.api#documentation": "Username / Password Credentials to connect to guest."
       }
     },
-    "com.azure.scvmm#CreateGuestAgentRequest": {
+    "com.azure.scvmm#GuestAgentsCreateRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -6125,26 +6449,26 @@
         "smithy.api#documentation": "Defines the resource properties."
       }
     },
-    "com.azure.scvmm#GetGuestAgent": {
+    "com.azure.scvmm#GuestAgentsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetGuestAgentRequest"
+        "target": "com.azure.scvmm#GuestAgentsGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetGuestAgentResponse"
+        "target": "com.azure.scvmm#GuestAgentsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets GuestAgent.\n\nImplements GuestAgent GET method.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetGuestAgentResponse": {
+    "com.azure.scvmm#GuestAgentsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6182,7 +6506,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetGuestAgentRequest": {
+    "com.azure.scvmm#GuestAgentsGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -6198,10 +6522,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListGuestAgentByVirtualMachineInstance": {
+    "com.azure.scvmm#GuestAgentsListByVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListGuestAgentByVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#GuestAgentsListByVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "com.azure.scvmm#GuestAgentListResult"
@@ -6211,10 +6535,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements GET GuestAgent in a vm.\n\nReturns the list of GuestAgent of the given vm.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#GuestAgentListResult": {
@@ -6285,7 +6616,7 @@
         "smithy.api#documentation": "Defines the GuestAgent."
       }
     },
-    "com.azure.scvmm#ListGuestAgentByVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#GuestAgentsListByVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -6295,32 +6626,38 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpoint": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpointRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpointRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpointResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpointResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/deleteCheckpoint",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the operation to delete a checkpoint in a virtual machine instance.\n\nDeletes a checkpoint in virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpointResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpointResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -6342,7 +6679,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpointRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpointRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -6364,26 +6701,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#CreateVirtualMachineInstanceCheckpoint": {
+    "com.azure.scvmm#VirtualMachineInstancesCreateCheckpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#CreateVirtualMachineInstanceCheckpointRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesCreateCheckpointRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#CreateVirtualMachineInstanceCheckpointResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesCreateCheckpointResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/createCheckpoint",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements the operation to creates a checkpoint in a virtual machine instance.\n\nCreates a checkpoint in virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#CreateVirtualMachineInstanceCheckpointResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesCreateCheckpointResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -6405,7 +6742,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#CreateVirtualMachineInstanceCheckpointRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesCreateCheckpointRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -6433,26 +6770,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstance": {
+    "com.azure.scvmm#VirtualMachineInstancesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#DeleteVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesDeleteRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#DeleteVirtualMachineInstanceResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Deletes an virtual machine.\n\nThe operation to delete a virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteResponse": {
       "type": "structure",
       "members": {
         "azureAsyncOperation": {
@@ -6481,7 +6818,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -6493,14 +6830,14 @@
           }
         },
         "force": {
-          "target": "com.azure.scvmm#DeleteVirtualMachineInstanceRequestForce",
+          "target": "com.azure.scvmm#VirtualMachineInstancesDeleteRequestForce",
           "traits": {
             "smithy.api#httpQuery": "force",
             "smithy.api#documentation": "Forces the resource to be deleted."
           }
         },
         "deleteFromHost": {
-          "target": "com.azure.scvmm#DeleteVirtualMachineInstanceRequestDeleteFromHost",
+          "target": "com.azure.scvmm#VirtualMachineInstancesDeleteRequestDeleteFromHost",
           "traits": {
             "smithy.api#httpQuery": "deleteFromHost",
             "smithy.api#documentation": "Whether to disable the VM from azure and also delete it from Vmm."
@@ -6511,7 +6848,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceRequestDeleteFromHost": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteRequestDeleteFromHost": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -6529,7 +6866,7 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#DeleteVirtualMachineInstanceRequestForce": {
+    "com.azure.scvmm#VirtualMachineInstancesDeleteRequestForce": {
       "type": "enum",
       "members": {
         "TRUE": {
@@ -6547,26 +6884,26 @@
       },
       "traits": {}
     },
-    "com.azure.scvmm#UpdateVirtualMachineInstance": {
+    "com.azure.scvmm#VirtualMachineInstancesUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#UpdateVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesUpdateRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#UpdateVirtualMachineInstanceResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Updates a virtual machine.\n\nThe operation to update a virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#UpdateVirtualMachineInstanceResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7016,7 +7353,7 @@
         "smithy.api#documentation": "Availability Set model"
       }
     },
-    "com.azure.scvmm#UpdateVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesUpdateRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -7308,10 +7645,10 @@
           "method": "PUT",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Implements virtual machine PUT method.\n\nThe operation to create or update a virtual machine instance. Please note some properties can be set only during virtual machine instance creation.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
     "com.azure.scvmm#VirtualMachineInstancesCreateOrUpdateResponse": {
@@ -7744,26 +8081,26 @@
         "smithy.api#documentation": "Availability Sets in vm."
       }
     },
-    "com.azure.scvmm#GetVirtualMachineInstance": {
+    "com.azure.scvmm#VirtualMachineInstancesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#GetVirtualMachineInstanceRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesGetRequest"
       },
       "output": {
-        "target": "com.azure.scvmm#GetVirtualMachineInstanceResponse"
+        "target": "com.azure.scvmm#VirtualMachineInstancesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13"
         },
         "smithy.api#documentation": "Gets a virtual machine.\n\nRetrieves information about a virtual machine instance.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13"
       }
     },
-    "com.azure.scvmm#GetVirtualMachineInstanceResponse": {
+    "com.azure.scvmm#VirtualMachineInstancesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7808,7 +8145,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.scvmm#GetVirtualMachineInstanceRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesGetRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -7824,10 +8161,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.scvmm#ListVirtualMachineInstances": {
+    "com.azure.scvmm#VirtualMachineInstancesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.scvmm#ListVirtualMachineInstancesRequest"
+        "target": "com.azure.scvmm#VirtualMachineInstancesListRequest"
       },
       "output": {
         "target": "com.azure.scvmm#VirtualMachineInstanceListResult"
@@ -7837,10 +8174,17 @@
           "method": "GET",
           "uri": "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances",
           "code": 200,
-          "apiVersion": "2024-06-01"
+          "apiVersion": "2025-03-13",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements List virtual machine instances.\n\nLists all of the virtual machine instances within the specified parent resource.",
-        "com.distilled.openapi#apiVersion": "2024-06-01"
+        "com.distilled.openapi#apiVersion": "2025-03-13",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.scvmm#VirtualMachineInstanceListResult": {
@@ -7918,7 +8262,7 @@
         "smithy.api#documentation": "Define the virtualMachineInstance."
       }
     },
-    "com.azure.scvmm#ListVirtualMachineInstancesRequest": {
+    "com.azure.scvmm#VirtualMachineInstancesListRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -7927,6 +8271,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7939,160 +8289,160 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.scvmm#DeleteInventoryItem"
+          "target": "com.azure.scvmm#InventoryItemsDelete"
         },
         {
-          "target": "com.azure.scvmm#CreateInventoryItem"
+          "target": "com.azure.scvmm#InventoryItemsCreate"
         },
         {
-          "target": "com.azure.scvmm#GetInventoryItem"
+          "target": "com.azure.scvmm#InventoryItemsGet"
         },
         {
-          "target": "com.azure.scvmm#ListInventoryItemByVmmServer"
+          "target": "com.azure.scvmm#InventoryItemsListByVmmServer"
         },
         {
-          "target": "com.azure.scvmm#DeleteVmmServer"
+          "target": "com.azure.scvmm#VmmServersDelete"
         },
         {
-          "target": "com.azure.scvmm#UpdateVmmServer"
+          "target": "com.azure.scvmm#VmmServersUpdate"
         },
         {
           "target": "com.azure.scvmm#VmmServersCreateOrUpdate"
         },
         {
-          "target": "com.azure.scvmm#GetVmmServer"
+          "target": "com.azure.scvmm#VmmServersGet"
         },
         {
-          "target": "com.azure.scvmm#ListVmmServerByResourceGroup"
+          "target": "com.azure.scvmm#VmmServersListByResourceGroup"
         },
         {
-          "target": "com.azure.scvmm#DeleteVirtualNetwork"
+          "target": "com.azure.scvmm#VirtualNetworksDelete"
         },
         {
-          "target": "com.azure.scvmm#UpdateVirtualNetwork"
+          "target": "com.azure.scvmm#VirtualNetworksUpdate"
         },
         {
           "target": "com.azure.scvmm#VirtualNetworksCreateOrUpdate"
         },
         {
-          "target": "com.azure.scvmm#GetVirtualNetwork"
+          "target": "com.azure.scvmm#VirtualNetworksGet"
         },
         {
-          "target": "com.azure.scvmm#ListVirtualNetworkByResourceGroup"
+          "target": "com.azure.scvmm#VirtualNetworksListByResourceGroup"
         },
         {
-          "target": "com.azure.scvmm#DeleteVirtualMachineTemplate"
+          "target": "com.azure.scvmm#VirtualMachineTemplatesDelete"
         },
         {
-          "target": "com.azure.scvmm#UpdateVirtualMachineTemplate"
+          "target": "com.azure.scvmm#VirtualMachineTemplatesUpdate"
         },
         {
           "target": "com.azure.scvmm#VirtualMachineTemplatesCreateOrUpdate"
         },
         {
-          "target": "com.azure.scvmm#GetVirtualMachineTemplate"
+          "target": "com.azure.scvmm#VirtualMachineTemplatesGet"
         },
         {
-          "target": "com.azure.scvmm#ListVirtualMachineTemplateByResourceGroup"
+          "target": "com.azure.scvmm#VirtualMachineTemplatesListByResourceGroup"
         },
         {
-          "target": "com.azure.scvmm#DeleteCloud"
+          "target": "com.azure.scvmm#CloudsDelete"
         },
         {
-          "target": "com.azure.scvmm#UpdateCloud"
+          "target": "com.azure.scvmm#CloudsUpdate"
         },
         {
           "target": "com.azure.scvmm#CloudsCreateOrUpdate"
         },
         {
-          "target": "com.azure.scvmm#GetCloud"
+          "target": "com.azure.scvmm#CloudsGet"
         },
         {
-          "target": "com.azure.scvmm#ListCloudByResourceGroup"
+          "target": "com.azure.scvmm#CloudsListByResourceGroup"
         },
         {
-          "target": "com.azure.scvmm#DeleteAvailabilitySet"
+          "target": "com.azure.scvmm#AvailabilitySetsDelete"
         },
         {
-          "target": "com.azure.scvmm#UpdateAvailabilitySet"
+          "target": "com.azure.scvmm#AvailabilitySetsUpdate"
         },
         {
           "target": "com.azure.scvmm#AvailabilitySetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.scvmm#GetAvailabilitySet"
+          "target": "com.azure.scvmm#AvailabilitySetsGet"
         },
         {
-          "target": "com.azure.scvmm#ListAvailabilitySetByResourceGroup"
+          "target": "com.azure.scvmm#AvailabilitySetsListByResourceGroup"
         },
         {
-          "target": "com.azure.scvmm#ListVmmServerBySubscription"
+          "target": "com.azure.scvmm#VmmServersListBySubscription"
         },
         {
-          "target": "com.azure.scvmm#ListVirtualNetworkBySubscription"
+          "target": "com.azure.scvmm#VirtualNetworksListBySubscription"
         },
         {
-          "target": "com.azure.scvmm#ListVirtualMachineTemplateBySubscription"
+          "target": "com.azure.scvmm#VirtualMachineTemplatesListBySubscription"
         },
         {
-          "target": "com.azure.scvmm#ListCloudBySubscription"
+          "target": "com.azure.scvmm#CloudsListBySubscription"
         },
         {
-          "target": "com.azure.scvmm#ListAvailabilitySetBySubscription"
+          "target": "com.azure.scvmm#AvailabilitySetsListBySubscription"
         },
         {
-          "target": "com.azure.scvmm#ListOperations"
+          "target": "com.azure.scvmm#OperationsList"
         },
         {
-          "target": "com.azure.scvmm#StopVirtualMachineInstance"
+          "target": "com.azure.scvmm#VirtualMachineInstancesStop"
         },
         {
-          "target": "com.azure.scvmm#StartVirtualMachineInstance"
+          "target": "com.azure.scvmm#VirtualMachineInstancesStart"
         },
         {
-          "target": "com.azure.scvmm#RestoreVirtualMachineInstanceCheckpoint"
+          "target": "com.azure.scvmm#VirtualMachineInstancesRestoreCheckpoint"
         },
         {
-          "target": "com.azure.scvmm#RestartVirtualMachineInstance"
+          "target": "com.azure.scvmm#VirtualMachineInstancesRestart"
         },
         {
-          "target": "com.azure.scvmm#GetVmInstanceHybridIdentityMetadatas"
+          "target": "com.azure.scvmm#VmInstanceHybridIdentityMetadatasGet"
         },
         {
-          "target": "com.azure.scvmm#ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstance"
+          "target": "com.azure.scvmm#VmInstanceHybridIdentityMetadatasListByVirtualMachineInstance"
         },
         {
-          "target": "com.azure.scvmm#DeleteGuestAgent"
+          "target": "com.azure.scvmm#GuestAgentsDelete"
         },
         {
-          "target": "com.azure.scvmm#CreateGuestAgent"
+          "target": "com.azure.scvmm#GuestAgentsCreate"
         },
         {
-          "target": "com.azure.scvmm#GetGuestAgent"
+          "target": "com.azure.scvmm#GuestAgentsGet"
         },
         {
-          "target": "com.azure.scvmm#ListGuestAgentByVirtualMachineInstance"
+          "target": "com.azure.scvmm#GuestAgentsListByVirtualMachineInstance"
         },
         {
-          "target": "com.azure.scvmm#DeleteVirtualMachineInstanceCheckpoint"
+          "target": "com.azure.scvmm#VirtualMachineInstancesDeleteCheckpoint"
         },
         {
-          "target": "com.azure.scvmm#CreateVirtualMachineInstanceCheckpoint"
+          "target": "com.azure.scvmm#VirtualMachineInstancesCreateCheckpoint"
         },
         {
-          "target": "com.azure.scvmm#DeleteVirtualMachineInstance"
+          "target": "com.azure.scvmm#VirtualMachineInstancesDelete"
         },
         {
-          "target": "com.azure.scvmm#UpdateVirtualMachineInstance"
+          "target": "com.azure.scvmm#VirtualMachineInstancesUpdate"
         },
         {
           "target": "com.azure.scvmm#VirtualMachineInstancesCreateOrUpdate"
         },
         {
-          "target": "com.azure.scvmm#GetVirtualMachineInstance"
+          "target": "com.azure.scvmm#VirtualMachineInstancesGet"
         },
         {
-          "target": "com.azure.scvmm#ListVirtualMachineInstances"
+          "target": "com.azure.scvmm#VirtualMachineInstancesList"
         }
       ],
       "traits": {

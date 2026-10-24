@@ -15,49 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cosmos_tables#TableSetAccessPolicy": "com.azure.cosmos_tables#SetTableAccessPolicy",
-      "com.azure.cosmos_tables#TableSetAccessPolicyRequest": "com.azure.cosmos_tables#SetTableAccessPolicyRequest",
-      "com.azure.cosmos_tables#TableSetAccessPolicyRequestIdentifiersList": "com.azure.cosmos_tables#SetTableAccessPolicyRequestIdentifiersList",
-      "com.azure.cosmos_tables#TableGetAccessPolicy": "com.azure.cosmos_tables#GetTableAccessPolicy",
-      "com.azure.cosmos_tables#TableGetAccessPolicyRequest": "com.azure.cosmos_tables#GetTableAccessPolicyRequest",
-      "com.azure.cosmos_tables#ServiceGetStatistics": "com.azure.cosmos_tables#GetServiceStatistics",
-      "com.azure.cosmos_tables#ServiceGetStatisticsRequest": "com.azure.cosmos_tables#GetServiceStatisticsRequest",
-      "com.azure.cosmos_tables#ServiceGetProperties": "com.azure.cosmos_tables#GetServiceProperties",
-      "com.azure.cosmos_tables#ServiceGetPropertiesRequest": "com.azure.cosmos_tables#GetServicePropertiesRequest",
-      "com.azure.cosmos_tables#ServiceSetProperties": "com.azure.cosmos_tables#SetServiceProperties",
-      "com.azure.cosmos_tables#ServiceSetPropertiesRequest": "com.azure.cosmos_tables#SetServicePropertiesRequest",
-      "com.azure.cosmos_tables#ServiceSetPropertiesRequestCorsList": "com.azure.cosmos_tables#SetServicePropertiesRequestCorsList",
-      "com.azure.cosmos_tables#TableDelete": "com.azure.cosmos_tables#DeleteTable",
-      "com.azure.cosmos_tables#TableDeleteRequest": "com.azure.cosmos_tables#DeleteTableRequest",
-      "com.azure.cosmos_tables#TableCreate": "com.azure.cosmos_tables#CreateTable",
-      "com.azure.cosmos_tables#TableCreateRequest": "com.azure.cosmos_tables#CreateTableRequest",
-      "com.azure.cosmos_tables#TableCreateRequestPrefer": "com.azure.cosmos_tables#CreateTableRequestPrefer",
-      "com.azure.cosmos_tables#TableCreateRequestFormat": "com.azure.cosmos_tables#CreateTableRequestFormat",
-      "com.azure.cosmos_tables#TableInsertEntity": "com.azure.cosmos_tables#InsertTableEntity",
-      "com.azure.cosmos_tables#TableInsertEntityResponse": "com.azure.cosmos_tables#InsertTableEntityResponse",
-      "com.azure.cosmos_tables#TableInsertEntityResponseBodyMap": "com.azure.cosmos_tables#InsertTableEntityResponseBodyMap",
-      "com.azure.cosmos_tables#TableInsertEntityRequest": "com.azure.cosmos_tables#InsertTableEntityRequest",
-      "com.azure.cosmos_tables#TableInsertEntityRequestBodyMap": "com.azure.cosmos_tables#InsertTableEntityRequestBodyMap",
-      "com.azure.cosmos_tables#TableInsertEntityRequestPrefer": "com.azure.cosmos_tables#InsertTableEntityRequestPrefer",
-      "com.azure.cosmos_tables#TableInsertEntityRequestFormat": "com.azure.cosmos_tables#InsertTableEntityRequestFormat",
-      "com.azure.cosmos_tables#TableDeleteEntity": "com.azure.cosmos_tables#DeleteTableEntity",
-      "com.azure.cosmos_tables#TableDeleteEntityRequest": "com.azure.cosmos_tables#DeleteTableEntityRequest",
-      "com.azure.cosmos_tables#TableMergeEntity": "com.azure.cosmos_tables#MergeTableEntity",
-      "com.azure.cosmos_tables#TableMergeEntityResponse": "com.azure.cosmos_tables#MergeTableEntityResponse",
-      "com.azure.cosmos_tables#TableMergeEntityRequest": "com.azure.cosmos_tables#MergeTableEntityRequest",
-      "com.azure.cosmos_tables#TableMergeEntityRequestBodyMap": "com.azure.cosmos_tables#MergeTableEntityRequestBodyMap",
-      "com.azure.cosmos_tables#TableUpdateEntity": "com.azure.cosmos_tables#UpdateTableEntity",
-      "com.azure.cosmos_tables#TableUpdateEntityResponse": "com.azure.cosmos_tables#UpdateTableEntityResponse",
-      "com.azure.cosmos_tables#TableUpdateEntityRequest": "com.azure.cosmos_tables#UpdateTableEntityRequest",
-      "com.azure.cosmos_tables#TableUpdateEntityRequestBodyMap": "com.azure.cosmos_tables#UpdateTableEntityRequestBodyMap"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cosmos_tables#TableSetAccessPolicy": {
+    "com.azure.cosmos_tables#SetTableAccessPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableSetAccessPolicyRequest"
+        "target": "com.azure.cosmos_tables#SetTableAccessPolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -83,7 +47,7 @@
         "smithy.api#documentation": "Sets stored access policies for the table that may be used with Shared Access\nSignatures."
       }
     },
-    "com.azure.cosmos_tables#TableSetAccessPolicyRequest": {
+    "com.azure.cosmos_tables#SetTableAccessPolicyRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -117,7 +81,7 @@
           }
         },
         "identifiers": {
-          "target": "com.azure.cosmos_tables#TableSetAccessPolicyRequestIdentifiersList",
+          "target": "com.azure.cosmos_tables#SetTableAccessPolicyRequestIdentifiersList",
           "traits": {
             "smithy.api#documentation": "An array of signed identifiers",
             "smithy.api#required": {}
@@ -128,7 +92,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableSetAccessPolicyRequestIdentifiersList": {
+    "com.azure.cosmos_tables#SetTableAccessPolicyRequestIdentifiersList": {
       "type": "list",
       "member": {
         "target": "com.azure.cosmos_tables#SignedIdentifier"
@@ -188,10 +152,10 @@
         "smithy.api#documentation": "An access policy."
       }
     },
-    "com.azure.cosmos_tables#TableGetAccessPolicy": {
+    "com.azure.cosmos_tables#GetTableAccessPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableGetAccessPolicyRequest"
+        "target": "com.azure.cosmos_tables#GetTableAccessPolicyRequest"
       },
       "output": {
         "target": "com.azure.cosmos_tables#SignedIdentifiers"
@@ -241,7 +205,7 @@
         "smithy.api#documentation": "An array of signed identifiers"
       }
     },
-    "com.azure.cosmos_tables#TableGetAccessPolicyRequest": {
+    "com.azure.cosmos_tables#GetTableAccessPolicyRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -279,10 +243,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#ServiceGetStatistics": {
+    "com.azure.cosmos_tables#GetServiceStatistics": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#ServiceGetStatisticsRequest"
+        "target": "com.azure.cosmos_tables#GetServiceStatisticsRequest"
       },
       "output": {
         "target": "com.azure.cosmos_tables#TableServiceStats"
@@ -370,7 +334,7 @@
         "smithy.api#documentation": "The status of the secondary location."
       }
     },
-    "com.azure.cosmos_tables#ServiceGetStatisticsRequest": {
+    "com.azure.cosmos_tables#GetServiceStatisticsRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -400,10 +364,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#ServiceGetProperties": {
+    "com.azure.cosmos_tables#GetServiceProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#ServiceGetPropertiesRequest"
+        "target": "com.azure.cosmos_tables#GetServicePropertiesRequest"
       },
       "output": {
         "target": "com.azure.cosmos_tables#TableServiceProperties"
@@ -610,7 +574,7 @@
         "smithy.api#documentation": "Azure Analytics Logging settings."
       }
     },
-    "com.azure.cosmos_tables#ServiceGetPropertiesRequest": {
+    "com.azure.cosmos_tables#GetServicePropertiesRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -640,10 +604,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#ServiceSetProperties": {
+    "com.azure.cosmos_tables#SetServiceProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#ServiceSetPropertiesRequest"
+        "target": "com.azure.cosmos_tables#SetServicePropertiesRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -669,7 +633,7 @@
         "smithy.api#documentation": "Sets properties for an account's Table service endpoint, including properties\nfor Analytics and CORS (Cross-Origin Resource Sharing) rules."
       }
     },
-    "com.azure.cosmos_tables#ServiceSetPropertiesRequest": {
+    "com.azure.cosmos_tables#SetServicePropertiesRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -713,7 +677,7 @@
           }
         },
         "cors": {
-          "target": "com.azure.cosmos_tables#ServiceSetPropertiesRequestCorsList",
+          "target": "com.azure.cosmos_tables#SetServicePropertiesRequestCorsList",
           "traits": {
             "smithy.api#documentation": "The CORS properties."
           }
@@ -723,7 +687,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#ServiceSetPropertiesRequestCorsList": {
+    "com.azure.cosmos_tables#SetServicePropertiesRequestCorsList": {
       "type": "list",
       "member": {
         "target": "com.azure.cosmos_tables#CorsRule"
@@ -732,10 +696,10 @@
         "smithy.api#documentation": "The CORS properties."
       }
     },
-    "com.azure.cosmos_tables#TableDelete": {
+    "com.azure.cosmos_tables#DeleteTable": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableDeleteRequest"
+        "target": "com.azure.cosmos_tables#DeleteTableRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -761,7 +725,7 @@
         "smithy.api#documentation": "Deletes an existing table."
       }
     },
-    "com.azure.cosmos_tables#TableDeleteRequest": {
+    "com.azure.cosmos_tables#DeleteTableRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -792,10 +756,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableCreate": {
+    "com.azure.cosmos_tables#CreateTable": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableCreateRequest"
+        "target": "com.azure.cosmos_tables#CreateTableRequest"
       },
       "output": {
         "target": "com.azure.cosmos_tables#TableResponse"
@@ -864,7 +828,7 @@
         "smithy.api#documentation": "The table properties as returned in an echo response."
       }
     },
-    "com.azure.cosmos_tables#TableCreateRequest": {
+    "com.azure.cosmos_tables#CreateTableRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -876,7 +840,7 @@
           }
         },
         "_format": {
-          "target": "com.azure.cosmos_tables#TableCreateRequestFormat",
+          "target": "com.azure.cosmos_tables#CreateTableRequestFormat",
           "traits": {
             "smithy.api#httpQuery": "$format",
             "smithy.api#documentation": "Specifies the metadata format for the response."
@@ -890,7 +854,7 @@
           }
         },
         "prefer": {
-          "target": "com.azure.cosmos_tables#TableCreateRequestPrefer",
+          "target": "com.azure.cosmos_tables#CreateTableRequestPrefer",
           "traits": {
             "smithy.api#httpHeader": "Prefer",
             "smithy.api#documentation": "Specifies whether the response should include the created table in the\npayload. Possible values are return-no-content and return-content."
@@ -907,7 +871,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableCreateRequestPrefer": {
+    "com.azure.cosmos_tables#CreateTableRequestPrefer": {
       "type": "enum",
       "members": {
         "RETURN_NO_CONTENT": {
@@ -925,7 +889,7 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableCreateRequestFormat": {
+    "com.azure.cosmos_tables#CreateTableRequestFormat": {
       "type": "enum",
       "members": {
         "APPLICATION_JSON_ODATA_NOMETADATA": {
@@ -1126,13 +1090,13 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableInsertEntity": {
+    "com.azure.cosmos_tables#InsertTableEntity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableInsertEntityRequest"
+        "target": "com.azure.cosmos_tables#InsertTableEntityRequest"
       },
       "output": {
-        "target": "com.azure.cosmos_tables#TableInsertEntityResponse"
+        "target": "com.azure.cosmos_tables#InsertTableEntityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1156,11 +1120,11 @@
         "smithy.api#documentation": "Insert entity in a table."
       }
     },
-    "com.azure.cosmos_tables#TableInsertEntityResponse": {
+    "com.azure.cosmos_tables#InsertTableEntityResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.azure.cosmos_tables#TableInsertEntityResponseBodyMap",
+          "target": "com.azure.cosmos_tables#InsertTableEntityResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -1171,7 +1135,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cosmos_tables#TableInsertEntityResponseBodyMap": {
+    "com.azure.cosmos_tables#InsertTableEntityResponseBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1181,7 +1145,7 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableInsertEntityRequest": {
+    "com.azure.cosmos_tables#InsertTableEntityRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -1208,7 +1172,7 @@
           }
         },
         "_format": {
-          "target": "com.azure.cosmos_tables#TableInsertEntityRequestFormat",
+          "target": "com.azure.cosmos_tables#InsertTableEntityRequestFormat",
           "traits": {
             "smithy.api#httpQuery": "$format",
             "smithy.api#documentation": "Specifies the metadata format for the response."
@@ -1222,14 +1186,14 @@
           }
         },
         "prefer": {
-          "target": "com.azure.cosmos_tables#TableInsertEntityRequestPrefer",
+          "target": "com.azure.cosmos_tables#InsertTableEntityRequestPrefer",
           "traits": {
             "smithy.api#httpHeader": "Prefer",
             "smithy.api#documentation": "Specifies whether the response should include the inserted entity in the\npayload. Possible values are return-no-content and return-content."
           }
         },
         "body": {
-          "target": "com.azure.cosmos_tables#TableInsertEntityRequestBodyMap",
+          "target": "com.azure.cosmos_tables#InsertTableEntityRequestBodyMap",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -1239,7 +1203,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableInsertEntityRequestBodyMap": {
+    "com.azure.cosmos_tables#InsertTableEntityRequestBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1249,7 +1213,7 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableInsertEntityRequestPrefer": {
+    "com.azure.cosmos_tables#InsertTableEntityRequestPrefer": {
       "type": "enum",
       "members": {
         "RETURN_NO_CONTENT": {
@@ -1267,7 +1231,7 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableInsertEntityRequestFormat": {
+    "com.azure.cosmos_tables#InsertTableEntityRequestFormat": {
       "type": "enum",
       "members": {
         "APPLICATION_JSON_ODATA_NOMETADATA": {
@@ -1291,10 +1255,10 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableDeleteEntity": {
+    "com.azure.cosmos_tables#DeleteTableEntity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableDeleteEntityRequest"
+        "target": "com.azure.cosmos_tables#DeleteTableEntityRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1321,7 +1285,7 @@
         "smithy.api#documentation": "Deletes the specified entity in a table."
       }
     },
-    "com.azure.cosmos_tables#TableDeleteEntityRequest": {
+    "com.azure.cosmos_tables#DeleteTableEntityRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -1383,13 +1347,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableMergeEntity": {
+    "com.azure.cosmos_tables#MergeTableEntity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableMergeEntityRequest"
+        "target": "com.azure.cosmos_tables#MergeTableEntityRequest"
       },
       "output": {
-        "target": "com.azure.cosmos_tables#TableMergeEntityResponse"
+        "target": "com.azure.cosmos_tables#MergeTableEntityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1413,7 +1377,7 @@
         "smithy.api#documentation": "Merge entity in a table."
       }
     },
-    "com.azure.cosmos_tables#TableMergeEntityResponse": {
+    "com.azure.cosmos_tables#MergeTableEntityResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1428,7 +1392,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cosmos_tables#TableMergeEntityRequest": {
+    "com.azure.cosmos_tables#MergeTableEntityRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -1485,7 +1449,7 @@
           }
         },
         "body": {
-          "target": "com.azure.cosmos_tables#TableMergeEntityRequestBodyMap",
+          "target": "com.azure.cosmos_tables#MergeTableEntityRequestBodyMap",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -1495,7 +1459,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableMergeEntityRequestBodyMap": {
+    "com.azure.cosmos_tables#MergeTableEntityRequestBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1505,13 +1469,13 @@
       },
       "traits": {}
     },
-    "com.azure.cosmos_tables#TableUpdateEntity": {
+    "com.azure.cosmos_tables#UpdateTableEntity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cosmos_tables#TableUpdateEntityRequest"
+        "target": "com.azure.cosmos_tables#UpdateTableEntityRequest"
       },
       "output": {
-        "target": "com.azure.cosmos_tables#TableUpdateEntityResponse"
+        "target": "com.azure.cosmos_tables#UpdateTableEntityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1535,7 +1499,7 @@
         "smithy.api#documentation": "Update entity in a table."
       }
     },
-    "com.azure.cosmos_tables#TableUpdateEntityResponse": {
+    "com.azure.cosmos_tables#UpdateTableEntityResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1550,7 +1514,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cosmos_tables#TableUpdateEntityRequest": {
+    "com.azure.cosmos_tables#UpdateTableEntityRequest": {
       "type": "structure",
       "members": {
         "url": {
@@ -1607,7 +1571,7 @@
           }
         },
         "body": {
-          "target": "com.azure.cosmos_tables#TableUpdateEntityRequestBodyMap",
+          "target": "com.azure.cosmos_tables#UpdateTableEntityRequestBodyMap",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -1617,7 +1581,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cosmos_tables#TableUpdateEntityRequestBodyMap": {
+    "com.azure.cosmos_tables#UpdateTableEntityRequestBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1960,40 +1924,40 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cosmos_tables#TableSetAccessPolicy"
+          "target": "com.azure.cosmos_tables#SetTableAccessPolicy"
         },
         {
-          "target": "com.azure.cosmos_tables#TableGetAccessPolicy"
+          "target": "com.azure.cosmos_tables#GetTableAccessPolicy"
         },
         {
-          "target": "com.azure.cosmos_tables#ServiceGetStatistics"
+          "target": "com.azure.cosmos_tables#GetServiceStatistics"
         },
         {
-          "target": "com.azure.cosmos_tables#ServiceGetProperties"
+          "target": "com.azure.cosmos_tables#GetServiceProperties"
         },
         {
-          "target": "com.azure.cosmos_tables#ServiceSetProperties"
+          "target": "com.azure.cosmos_tables#SetServiceProperties"
         },
         {
-          "target": "com.azure.cosmos_tables#TableDelete"
+          "target": "com.azure.cosmos_tables#DeleteTable"
         },
         {
-          "target": "com.azure.cosmos_tables#TableCreate"
+          "target": "com.azure.cosmos_tables#CreateTable"
         },
         {
           "target": "com.azure.cosmos_tables#TableQuery"
         },
         {
-          "target": "com.azure.cosmos_tables#TableInsertEntity"
+          "target": "com.azure.cosmos_tables#InsertTableEntity"
         },
         {
-          "target": "com.azure.cosmos_tables#TableDeleteEntity"
+          "target": "com.azure.cosmos_tables#DeleteTableEntity"
         },
         {
-          "target": "com.azure.cosmos_tables#TableMergeEntity"
+          "target": "com.azure.cosmos_tables#MergeTableEntity"
         },
         {
-          "target": "com.azure.cosmos_tables#TableUpdateEntity"
+          "target": "com.azure.cosmos_tables#UpdateTableEntity"
         },
         {
           "target": "com.azure.cosmos_tables#TableQueryEntityWithPartitionAndRowKey"

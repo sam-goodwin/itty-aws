@@ -3971,6 +3971,8 @@ export interface ListAdvancedPlatformMetricsRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The advanced platform metrics rule for the storage account. */
 export interface AdvancedPlatformMetricsRule {
@@ -4001,6 +4003,8 @@ export interface ListBlobAccessPointConfigurationByStorageAccountRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BlobAccessPointConfigurationTagsMap = { [key: string]: string | undefined };
@@ -4044,6 +4048,8 @@ export interface ListBlobContainersRequest {
   _filter?: string;
   /** Optional, used to include the properties for soft deleted blob containers. */
   _include?: ListBlobContainersRequestInclude | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The blob container properties be listed out. */
 export interface ListContainerItem {
@@ -4076,6 +4082,8 @@ export interface ListBlobInventoryPoliciesRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The storage account blob inventory policy. */
 export interface BlobInventoryPolicy {
@@ -4095,7 +4103,7 @@ export type ListBlobInventoryPolicyValueList = Array<BlobInventoryPolicy>;
 /** List of blob inventory policies returned. */
 export interface ListBlobInventoryPolicy {
   /** List of blob inventory policies. */
-  value?: ListBlobInventoryPolicyValueList;
+  value: ListBlobInventoryPolicyValueList;
   nextLink?: string;
 }
 export interface ListBlobServicesRequest {
@@ -4105,6 +4113,8 @@ export interface ListBlobServicesRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The properties of a storage account's Blob service. */
 export interface BlobServiceProperties {
@@ -4125,7 +4135,7 @@ export interface BlobServiceProperties {
 export type BlobServiceItemsValueList = Array<BlobServiceProperties>;
 export interface BlobServiceItems {
   /** List of blob services returned. */
-  value?: BlobServiceItemsValueList;
+  value: BlobServiceItemsValueList;
   nextLink?: string;
 }
 export interface ListConnectorByStorageAccountRequest {
@@ -4135,6 +4145,8 @@ export interface ListConnectorByStorageAccountRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ConnectorTagsMap = { [key: string]: string | undefined };
@@ -4169,6 +4181,8 @@ export interface ListContextCachByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ContextCacheTagsMap = { [key: string]: string | undefined };
@@ -4205,6 +4219,8 @@ export interface ContextCacheListResult {
 export interface ListContextCachBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListContextCacheContainerByContextCacheRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4213,6 +4229,8 @@ export interface ListContextCacheContainerByContextCacheRequest {
   resourceGroupName: string;
   /** The name of the context cache */
   contextCacheName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A container resource within a Context Cache */
 export interface ContextCacheContainer {
@@ -4243,6 +4261,8 @@ export interface ListDataShareByStorageAccountRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DataShareTagsMap = { [key: string]: string | undefined };
@@ -4275,6 +4295,8 @@ export interface DataShareListResult {
 export interface ListDeletedAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Deleted storage account */
 export interface DeletedAccount {
@@ -4312,6 +4334,8 @@ export interface ListEncryptionScopesRequest {
   _filter?: string;
   /** Optional, when specified, will list encryption scopes with the specific state. Defaults to All */
   _include?: ListEncryptionScopesRequestInclude | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Encryption Scope resource. */
 export interface EncryptionScope {
@@ -4373,6 +4397,8 @@ export interface ListFileServiceServiceUsagesRequest {
   accountName: string;
   /** Optional, specifies the maximum number of file service usages to be included in the list response. */
   _maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The usage of file service in storage account. */
 export interface FileServiceUsage {
@@ -4409,6 +4435,8 @@ export interface ListFileSharesRequest {
   _filter?: string;
   /** Optional, used to expand the properties within share's properties. Valid values are: deleted, snapshots. Should be passed as a string with delimiter ',' */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The file share properties be listed out. */
 export interface FileShareItem {
@@ -4467,6 +4495,8 @@ export interface ListLocalUsersRequest {
   _filter?: string;
   /** Optional, when specified, will list local users enabled for the specific protocol. Lists all users by default. */
   _include?: ListLocalUsersRequestInclude | (string & {});
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The local user associated with the storage accounts. */
 export interface LocalUser {
@@ -4497,6 +4527,8 @@ export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Network Security Perimeter configuration resource. */
 export interface NetworkSecurityPerimeterConfiguration {
@@ -4528,6 +4560,8 @@ export interface ListObjectReplicationPoliciesRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The replication policy between two storage accounts. Multiple rules can be defined in one policy. */
 export interface ObjectReplicationPolicy {
@@ -4547,10 +4581,13 @@ export type ObjectReplicationPoliciesValueList = Array<ObjectReplicationPolicy>;
 /** List storage account object replication policies. */
 export interface ObjectReplicationPolicies {
   /** The replication policy between two storage accounts. */
-  value?: ObjectReplicationPoliciesValueList;
+  value: ObjectReplicationPoliciesValueList;
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft Storage. */
@@ -4620,7 +4657,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** The list of available operations. */
 export interface OperationListResult {
   /** List of operations supported by the resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   nextLink?: string;
 }
 export interface ListPrivateEndpointConnectionsRequest {
@@ -4630,13 +4667,15 @@ export interface ListPrivateEndpointConnectionsRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
 /** List of private endpoint connection associated with the specified storage account */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections */
-  value?: PrivateEndpointConnectionListResultValueList;
+  value: PrivateEndpointConnectionListResultValueList;
   nextLink?: string;
 }
 export interface ListPrivateLinkResourceByStorageAccountRequest {
@@ -4691,6 +4730,8 @@ export interface ListQueueRequest {
   _maxpagesize?: string;
   /** Optional, When specified, only the queues with a name starting with the given filter will be listed. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A name-value pair that represents queue metadata. */
 export type ListQueuePropertiesMetadataMap = { [key: string]: string | undefined };
@@ -4749,6 +4790,8 @@ export interface ListQueueServices {
 export interface ListSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
 export type SkuInformationLocationsList = Array<string>;
@@ -4808,7 +4851,7 @@ export type StorageSkuListResultValueList = Array<SkuInformation>;
 /** The response from the List Storage SKUs operation. */
 export interface StorageSkuListResult {
   /** Get the list result of storage SKUs and their properties. */
-  value?: StorageSkuListResultValueList;
+  value: StorageSkuListResultValueList;
   nextLink?: string;
 }
 /** The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f). */
@@ -4853,6 +4896,8 @@ export interface ListStorageAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type StorageAccountTagsMap = { [key: string]: string | undefined };
@@ -4930,6 +4975,8 @@ export interface StorageAccountListKeysResult {
 export interface ListStorageAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s). */
 export type SignedResource = "b" | "c" | "f" | "s";
@@ -4995,6 +5042,8 @@ export interface ListStorageTaskAssignmentInstancesReportRequest {
   _maxpagesize?: number;
   /** Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Storage Tasks run report instance */
 export interface StorageTaskReportInstance {
@@ -5027,6 +5076,8 @@ export interface ListStorageTaskAssignmentsRequest {
   accountName: string;
   /** Optional, specifies the maximum number of storage task assignment Ids to be included in the list response. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The storage task assignment. */
 export interface StorageTaskAssignment {
@@ -5061,6 +5112,8 @@ export interface ListStorageTaskAssignmentsInstancesReportRequest {
   _maxpagesize?: number;
   /** Optional. When specified, it can be used to query using reporting properties. See [Constructing Filter Strings](https://learn.microsoft.com/rest/api/storageservices/querying-tables-and-entities#constructing-filter-strings) for details. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5069,6 +5122,8 @@ export interface ListTableRequest {
   resourceGroupName: string;
   /** The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of the table, including Id, resource name, resource type. */
 export interface Table {
@@ -5124,6 +5179,8 @@ export interface ListUsageByLocationRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Gets the unit of measurement. */
 export type UsageUnit =
@@ -5156,7 +5213,7 @@ export type UsageListResultValueList = Array<Usage>;
 /** The response from the List Usages operation. */
 export interface UsageListResult {
   /** Gets or sets the list of Storage Resource Usages. */
-  value?: UsageListResultValueList;
+  value: UsageListResultValueList;
   nextLink?: string;
 }
 /** The permission scopes of the local user. */
@@ -7355,27 +7412,35 @@ export const GetTableServiceServiceProperties: API.OperationMethod<
 
 export type ListAdvancedPlatformMetricsError = AzureOpError;
 /** List the advanced platform metrics rules associated with the storage account. */
-export const ListAdvancedPlatformMetrics: API.OperationMethod<
+export const ListAdvancedPlatformMetrics: API.PaginatedOperationMethod<
   ListAdvancedPlatformMetricsRequest,
   AdvancedPlatformMetricsRuleListResult,
   ListAdvancedPlatformMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AdvancedPlatformMetricsRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5280, __c165, 0) as any as S.Schema<ListAdvancedPlatformMetricsRequest>,
   output: __S(5282, __c165, 2) as any as S.Schema<AdvancedPlatformMetricsRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBlobAccessPointConfigurationByStorageAccountError = AzureOpError;
 /** List all Blob Access Point configurations in a Storage Account. */
-export const ListBlobAccessPointConfigurationByStorageAccount: API.OperationMethod<
+export const ListBlobAccessPointConfigurationByStorageAccount: API.PaginatedOperationMethod<
   ListBlobAccessPointConfigurationByStorageAccountRequest,
   BlobAccessPointConfigurationListResult,
   ListBlobAccessPointConfigurationByStorageAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BlobAccessPointConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     5312,
     __c166,
@@ -7385,157 +7450,233 @@ export const ListBlobAccessPointConfigurationByStorageAccount: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBlobContainersError = AzureOpError;
 /** Lists all containers and does not support a prefix like data plane. Also SRP today does not return continuation token. */
-export const ListBlobContainers: API.OperationMethod<
+export const ListBlobContainers: API.PaginatedOperationMethod<
   ListBlobContainersRequest,
   ListContainerItems,
   ListBlobContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ListContainerItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5344, __c167, 0) as any as S.Schema<ListBlobContainersRequest>,
   output: __S(5347, __c167, 3) as any as S.Schema<ListContainerItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBlobInventoryPoliciesError = AzureOpError;
 /** Gets the blob inventory policy associated with the specified storage account. */
-export const ListBlobInventoryPolicies: API.OperationMethod<
+export const ListBlobInventoryPolicies: API.PaginatedOperationMethod<
   ListBlobInventoryPoliciesRequest,
   ListBlobInventoryPolicy,
   ListBlobInventoryPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BlobInventoryPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5408, __c169, 0) as any as S.Schema<ListBlobInventoryPoliciesRequest>,
   output: __S(5410, __c169, 2) as any as S.Schema<ListBlobInventoryPolicy>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBlobServicesError = AzureOpError;
 /** List blob services of storage account. It returns a collection of one object named default. */
-export const ListBlobServices: API.OperationMethod<
+export const ListBlobServices: API.PaginatedOperationMethod<
   ListBlobServicesRequest,
   BlobServiceItems,
   ListBlobServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BlobServiceProperties
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5440, __c170, 0) as any as S.Schema<ListBlobServicesRequest>,
   output: __S(5442, __c170, 2) as any as S.Schema<BlobServiceItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectorByStorageAccountError = AzureOpError;
 /** List all Storage Connectors in a Storage Account. */
-export const ListConnectorByStorageAccount: API.OperationMethod<
+export const ListConnectorByStorageAccount: API.PaginatedOperationMethod<
   ListConnectorByStorageAccountRequest,
   ConnectorListResult,
   ListConnectorByStorageAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Connector
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5472, __c171, 0) as any as S.Schema<ListConnectorByStorageAccountRequest>,
   output: __S(5474, __c171, 2) as any as S.Schema<ConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContextCachByResourceGroupError = AzureOpError;
 /** List Context Caches by resource group. */
-export const ListContextCachByResourceGroup: API.OperationMethod<
+export const ListContextCachByResourceGroup: API.PaginatedOperationMethod<
   ListContextCachByResourceGroupRequest,
   ContextCacheListResult,
   ListContextCachByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContextCache
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5504, __c172, 0) as any as S.Schema<ListContextCachByResourceGroupRequest>,
   output: __S(5537, __c173, 1) as any as S.Schema<ContextCacheListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContextCachBySubscriptionError = AzureOpError;
 /** List Context Caches by subscription. */
-export const ListContextCachBySubscription: API.OperationMethod<
+export const ListContextCachBySubscription: API.PaginatedOperationMethod<
   ListContextCachBySubscriptionRequest,
   ContextCacheListResult,
   ListContextCachBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContextCache
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5568, __c174, 0) as any as S.Schema<ListContextCachBySubscriptionRequest>,
   output: __S(5537, __c173, 1) as any as S.Schema<ContextCacheListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContextCacheContainerByContextCacheError = AzureOpError;
 /** List all containers in a Context Cache. */
-export const ListContextCacheContainerByContextCache: API.OperationMethod<
+export const ListContextCacheContainerByContextCache: API.PaginatedOperationMethod<
   ListContextCacheContainerByContextCacheRequest,
   ContextCacheContainerListResult,
   ListContextCacheContainerByContextCacheError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ContextCacheContainer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5600, __c175, 0) as any as S.Schema<ListContextCacheContainerByContextCacheRequest>,
   output: __S(5602, __c175, 2) as any as S.Schema<ContextCacheContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataShareByStorageAccountError = AzureOpError;
 /** List all Storage DataShares in a Storage Account. */
-export const ListDataShareByStorageAccount: API.OperationMethod<
+export const ListDataShareByStorageAccount: API.PaginatedOperationMethod<
   ListDataShareByStorageAccountRequest,
   DataShareListResult,
   ListDataShareByStorageAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataShare
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5632, __c176, 0) as any as S.Schema<ListDataShareByStorageAccountRequest>,
   output: __S(5634, __c176, 2) as any as S.Schema<DataShareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeletedAccountsError = AzureOpError;
 /** Lists deleted accounts under the subscription. */
-export const ListDeletedAccounts: API.OperationMethod<
+export const ListDeletedAccounts: API.PaginatedOperationMethod<
   ListDeletedAccountsRequest,
   DeletedAccountListResult,
   ListDeletedAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeletedAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5664, __c177, 0) as any as S.Schema<ListDeletedAccountsRequest>,
   output: __S(5666, __c177, 2) as any as S.Schema<DeletedAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEncryptionScopesError = AzureOpError;
 /** Lists all the encryption scopes available under the specified storage account. */
-export const ListEncryptionScopes: API.OperationMethod<
+export const ListEncryptionScopes: API.PaginatedOperationMethod<
   ListEncryptionScopesRequest,
   EncryptionScopeListResult,
   ListEncryptionScopesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EncryptionScope
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5696, __c178, 0) as any as S.Schema<ListEncryptionScopesRequest>,
   output: __S(5698, __c178, 2) as any as S.Schema<EncryptionScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFileServicesError = AzureOpError;
 /** List all file services in storage accounts */
@@ -7554,33 +7695,47 @@ export const ListFileServices: API.OperationMethod<
 
 export type ListFileServiceServiceUsagesError = AzureOpError;
 /** Gets the usages of file service in storage account. */
-export const ListFileServiceServiceUsages: API.OperationMethod<
+export const ListFileServiceServiceUsages: API.PaginatedOperationMethod<
   ListFileServiceServiceUsagesRequest,
   FileServiceUsages,
   ListFileServiceServiceUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FileServiceUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5824, __c182, 0) as any as S.Schema<ListFileServiceServiceUsagesRequest>,
   output: __S(5826, __c182, 2) as any as S.Schema<FileServiceUsages>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFileSharesError = AzureOpError;
 /** Lists all shares. */
-export const ListFileShares: API.OperationMethod<
+export const ListFileShares: API.PaginatedOperationMethod<
   ListFileSharesRequest,
   FileShareItems,
   ListFileSharesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FileShareItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5856, __c183, 0) as any as S.Schema<ListFileSharesRequest>,
   output: __S(5859, __c183, 3) as any as S.Schema<FileShareItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocalUserKeysError = AzureOpError;
 /** List SSH authorized keys and shared key of the local user. */
@@ -7599,78 +7754,113 @@ export const ListLocalUserKeys: API.OperationMethod<
 
 export type ListLocalUsersError = AzureOpError;
 /** List the local users associated with the storage account. */
-export const ListLocalUsers: API.OperationMethod<
+export const ListLocalUsers: API.PaginatedOperationMethod<
   ListLocalUsersRequest,
   LocalUsers,
   ListLocalUsersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LocalUser
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5920, __c185, 0) as any as S.Schema<ListLocalUsersRequest>,
   output: __S(5922, __c185, 2) as any as S.Schema<LocalUsers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterConfigurationsError = AzureOpError;
 /** Gets list of effective NetworkSecurityPerimeterConfiguration for storage account */
-export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
+export const ListNetworkSecurityPerimeterConfigurations: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterConfigurationsRequest,
   NetworkSecurityPerimeterConfigurationList,
   ListNetworkSecurityPerimeterConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeterConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5952, __c186, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
   output: __S(5954, __c186, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListObjectReplicationPoliciesError = AzureOpError;
 /** List the object replication policies associated with the storage account. */
-export const ListObjectReplicationPolicies: API.OperationMethod<
+export const ListObjectReplicationPolicies: API.PaginatedOperationMethod<
   ListObjectReplicationPoliciesRequest,
   ObjectReplicationPolicies,
   ListObjectReplicationPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ObjectReplicationPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5984, __c187, 0) as any as S.Schema<ListObjectReplicationPoliciesRequest>,
   output: __S(5986, __c187, 2) as any as S.Schema<ObjectReplicationPolicies>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Storage Rest API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6016, __c188, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(6026, __c188, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List all the private endpoint connections associated with the storage account. */
-export const ListPrivateEndpointConnections: API.OperationMethod<
+export const ListPrivateEndpointConnections: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionsRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6048, __c189, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
   output: __S(6049, __c189, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByStorageAccountError = AzureOpError;
 /** Gets the private link resources that need to be created for a storage account. */
@@ -7689,18 +7879,25 @@ export const ListPrivateLinkResourceByStorageAccount: API.OperationMethod<
 
 export type ListQueue2Error = AzureOpError;
 /** Gets a list of all the queues under the specified storage account */
-export const ListQueue2: API.OperationMethod<
+export const ListQueue2: API.PaginatedOperationMethod<
   ListQueueRequest,
   ListQueueResource,
   ListQueue2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ListQueue
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6112, __c191, 0) as any as S.Schema<ListQueueRequest>,
   output: __S(6115, __c191, 3) as any as S.Schema<ListQueueResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQueueServices2Error = AzureOpError;
 /** List all queue services for the storage account */
@@ -7719,18 +7916,25 @@ export const ListQueueServices2: API.OperationMethod<
 
 export type ListSkusError = AzureOpError;
 /** Lists the available SKUs supported by Microsoft.Storage for given subscription. */
-export const ListSkus: API.OperationMethod<
+export const ListSkus: API.PaginatedOperationMethod<
   ListSkusRequest,
   StorageSkuListResult,
   ListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6272, __c196, 0) as any as S.Schema<ListSkusRequest>,
   output: __S(6281, __c196, 9) as any as S.Schema<StorageSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageAccountAccountSASError = AzureOpError;
 /** List SAS credentials of a storage account. */
@@ -7749,18 +7953,25 @@ export const ListStorageAccountAccountSAS: API.OperationMethod<
 
 export type ListStorageAccountByResourceGroupError = AzureOpError;
 /** Lists all the storage accounts available under the given resource group. Note that storage keys are not returned; use the ListKeys operation for this. */
-export const ListStorageAccountByResourceGroup: API.OperationMethod<
+export const ListStorageAccountByResourceGroup: API.PaginatedOperationMethod<
   ListStorageAccountByResourceGroupRequest,
   StorageAccountListResult,
   ListStorageAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6336, __c198, 0) as any as S.Schema<ListStorageAccountByResourceGroupRequest>,
   output: __S(6369, __c199, 1) as any as S.Schema<StorageAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageAccountKeysError = AzureOpError;
 /** Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account. */
@@ -7779,18 +7990,25 @@ export const ListStorageAccountKeys: API.OperationMethod<
 
 export type ListStorageAccountsError = AzureOpError;
 /** Lists all the storage accounts available under the subscription. Note that storage keys are not returned; use the ListKeys operation for this. */
-export const ListStorageAccounts: API.OperationMethod<
+export const ListStorageAccounts: API.PaginatedOperationMethod<
   ListStorageAccountsRequest,
   StorageAccountListResult,
   ListStorageAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6464, __c202, 0) as any as S.Schema<ListStorageAccountsRequest>,
   output: __S(6369, __c199, 1) as any as S.Schema<StorageAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageAccountServiceSASError = AzureOpError;
 /** List service SAS credentials of a specific resource. */
@@ -7809,63 +8027,91 @@ export const ListStorageAccountServiceSAS: API.OperationMethod<
 
 export type ListStorageTaskAssignmentInstancesReportError = AzureOpError;
 /** Fetch the report summary of a single storage task assignment's instances */
-export const ListStorageTaskAssignmentInstancesReport: API.OperationMethod<
+export const ListStorageTaskAssignmentInstancesReport: API.PaginatedOperationMethod<
   ListStorageTaskAssignmentInstancesReportRequest,
   StorageTaskReportSummary,
   ListStorageTaskAssignmentInstancesReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTaskReportInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6528, __c204, 0) as any as S.Schema<ListStorageTaskAssignmentInstancesReportRequest>,
   output: __S(6562, __c205, 2) as any as S.Schema<StorageTaskReportSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageTaskAssignmentsError = AzureOpError;
 /** List all the storage task assignments in an account */
-export const ListStorageTaskAssignments: API.OperationMethod<
+export const ListStorageTaskAssignments: API.PaginatedOperationMethod<
   ListStorageTaskAssignmentsRequest,
   StorageTaskAssignmentsList,
   ListStorageTaskAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTaskAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6592, __c206, 0) as any as S.Schema<ListStorageTaskAssignmentsRequest>,
   output: __S(6594, __c206, 2) as any as S.Schema<StorageTaskAssignmentsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageTaskAssignmentsInstancesReportError = AzureOpError;
 /** Fetch the report summary of all the storage task assignments and instances in an account */
-export const ListStorageTaskAssignmentsInstancesReport: API.OperationMethod<
+export const ListStorageTaskAssignmentsInstancesReport: API.PaginatedOperationMethod<
   ListStorageTaskAssignmentsInstancesReportRequest,
   StorageTaskReportSummary,
   ListStorageTaskAssignmentsInstancesReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageTaskReportInstance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6624, __c207, 0) as any as S.Schema<ListStorageTaskAssignmentsInstancesReportRequest>,
   output: __S(6562, __c205, 2) as any as S.Schema<StorageTaskReportSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTableError = AzureOpError;
 /** Gets a list of all the tables under the specified storage account */
-export const ListTable: API.OperationMethod<
+export const ListTable: API.PaginatedOperationMethod<
   ListTableRequest,
   ListTableResource,
   ListTableError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Table
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListTableRequest>,
   output: __S(418, __c13, 2) as any as S.Schema<ListTableResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTableServices2Error = AzureOpError;
 /** List all table services for the storage account. */
@@ -7884,18 +8130,25 @@ export const ListTableServices2: API.OperationMethod<
 
 export type ListUsageByLocationError = AzureOpError;
 /** Gets the current usage count and the limit for the resources of the location under the subscription. */
-export const ListUsageByLocation: API.OperationMethod<
+export const ListUsageByLocation: API.PaginatedOperationMethod<
   ListUsageByLocationRequest,
   UsageListResult,
   ListUsageByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<ListUsageByLocationRequest>,
   output: __S(484, __c15, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type LocalUsersCreateOrUpdateError = AzureOpError;
 /** Create or update the properties of a local user associated with the storage account. Properties for NFSv3 enablement and extended groups cannot be set with other properties. */
@@ -8717,12 +8970,14 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTableRequest" });
@@ -8763,12 +9018,14 @@ function __c15(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsageByLocationRequest" });
@@ -8793,7 +9050,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(483, __c15, 3)),
+          value: __S(483, __c15, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
@@ -13174,12 +13431,14 @@ function __c165(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAdvancedPlatformMetricsRequest" });
@@ -13202,12 +13461,14 @@ function __c166(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBlobAccessPointConfigurationByStorageAccountRequest" });
@@ -13233,12 +13494,14 @@ function __c167(j: number): any {
           _maxpagesize: S.optional(S.String.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _include: S.optional(S.String.pipe(T.Query("$include"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBlobContainersRequest" });
@@ -13299,12 +13562,14 @@ function __c169(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBlobInventoryPoliciesRequest" });
@@ -13313,7 +13578,7 @@ function __c169(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(5409, __c169, 1)),
+          value: __S(5409, __c169, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBlobInventoryPolicy" });
@@ -13327,12 +13592,14 @@ function __c170(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBlobServicesRequest" });
@@ -13341,7 +13608,7 @@ function __c170(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(5441, __c170, 1)),
+          value: __S(5441, __c170, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobServiceItems" });
@@ -13355,12 +13622,14 @@ function __c171(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectorByStorageAccountRequest" });
@@ -13382,12 +13651,14 @@ function __c172(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContextCachByResourceGroupRequest" });
@@ -13412,12 +13683,14 @@ function __c174(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/contextCaches",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContextCachBySubscriptionRequest" });
@@ -13431,12 +13704,14 @@ function __c175(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextCacheName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContextCacheContainerByContextCacheRequest" });
@@ -13459,12 +13734,14 @@ function __c176(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataShareByStorageAccountRequest" });
@@ -13485,12 +13762,14 @@ function __c177(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/deletedAccounts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeletedAccountsRequest" });
@@ -13516,12 +13795,14 @@ function __c178(j: number): any {
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _include: S.optional(S.String.pipe(T.Query("$include"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEncryptionScopesRequest" });
@@ -13606,12 +13887,14 @@ function __c182(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/usages",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFileServiceServiceUsagesRequest" });
@@ -13637,12 +13920,14 @@ function __c183(j: number): any {
           _maxpagesize: S.optional(S.String.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFileSharesRequest" });
@@ -13706,12 +13991,14 @@ function __c185(j: number): any {
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _include: S.optional(S.String.pipe(T.Query("$include"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocalUsersRequest" });
@@ -13734,12 +14021,14 @@ function __c186(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterConfigurationsRequest" });
@@ -13762,12 +14051,14 @@ function __c187(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListObjectReplicationPoliciesRequest" });
@@ -13776,7 +14067,7 @@ function __c187(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(5985, __c187, 1)),
+          value: __S(5985, __c187, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectReplicationPolicies" });
@@ -13786,12 +14077,15 @@ function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Storage/operations",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -13855,7 +14149,7 @@ function __c188(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(6025, __c188, 9)),
+          value: __S(6025, __c188, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -13869,19 +14163,21 @@ function __c189(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2496, __c78, 0)),
+          value: __S(2496, __c78, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -13942,12 +14238,14 @@ function __c191(j: number): any {
           accountName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.String.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQueueRequest" });
@@ -14065,12 +14363,14 @@ function __c196(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
@@ -14120,7 +14420,7 @@ function __c196(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(6280, __c196, 8)),
+          value: __S(6280, __c196, 8),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageSkuListResult" });
@@ -14166,12 +14466,14 @@ function __c198(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageAccountByResourceGroupRequest" });
@@ -14237,12 +14539,14 @@ function __c202(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageAccountsRequest" });
@@ -14302,12 +14606,14 @@ function __c204(j: number): any {
           storageTaskAssignmentName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTaskAssignmentInstancesReportRequest" });
@@ -14345,12 +14651,14 @@ function __c206(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTaskAssignmentsRequest" });
@@ -14375,12 +14683,14 @@ function __c207(j: number): any {
           accountName: S.String.pipe(T.Label()),
           _maxpagesize: S.optional(S.Number.pipe(T.Query("$maxpagesize"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageTaskAssignmentsInstancesReportRequest" });

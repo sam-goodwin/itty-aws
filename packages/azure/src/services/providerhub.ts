@@ -2708,6 +2708,8 @@ export interface ListAuthorizedApplicationsRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface AuthorizedApplication {
@@ -2736,6 +2738,8 @@ export interface ListCustomRolloutByProviderRegistrationRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface CustomRollout {
@@ -2764,6 +2768,8 @@ export interface ListDefaultRolloutByProviderRegistrationRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface DefaultRollout {
@@ -2792,6 +2798,8 @@ export interface ListNotificationRegistrationByProviderRegistrationRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface NotificationRegistration {
@@ -2892,13 +2900,16 @@ export interface ListOperationByProviderRegistrationResponse {
   systemData?: SystemData;
   properties?: OperationsContentProperties;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The value. */
 export type OperationsDefinitionArrayResponseWithContinuationValueList =
   Array<OperationsDefinition>;
 export interface OperationsDefinitionArrayResponseWithContinuation {
   /** The value. */
-  value?: OperationsDefinitionArrayResponseWithContinuationValueList;
+  value: OperationsDefinitionArrayResponseWithContinuationValueList;
   /** The URL to get to the next set of results, if there are any. */
   nextLink?: string;
 }
@@ -2907,6 +2918,8 @@ export interface ListProviderMonitorSettingsByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ProviderMonitorSettingTagsMap = { [key: string]: string | undefined };
@@ -2939,10 +2952,14 @@ export interface ProviderMonitorSettingArrayResponseWithContinuation {
 export interface ListProviderMonitorSettingsBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProviderRegistrationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ProviderRegistration items on this page */
 export type ProviderRegistrationArrayResponseWithContinuationValueList =
@@ -2959,6 +2976,8 @@ export interface ListResourceTypeRegistrationByProviderRegistrationRequest {
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The ResourceTypeRegistration items on this page */
 export type ResourceTypeRegistrationArrayResponseWithContinuationValueList =
@@ -2977,6 +2996,8 @@ export interface ListSkusByResourceTypeRegistrationsRequest {
   providerNamespace: string;
   /** The resource type. */
   resourceType: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface SkuResource {
@@ -3008,6 +3029,8 @@ export interface ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstReque
   resourceType: string;
   /** The first child resource type. */
   nestedResourceTypeFirst: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3020,6 +3043,8 @@ export interface ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequ
   nestedResourceTypeFirst: string;
   /** The second child resource type. */
   nestedResourceTypeSecond: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3034,6 +3059,8 @@ export interface ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdReque
   nestedResourceTypeSecond: string;
   /** The third child resource type. */
   nestedResourceTypeThird: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The manifest properties. */
 export interface ManifestInfoPropertiesInput {
@@ -3789,12 +3816,13 @@ export const GetSkusNestedResourceTypeThird: API.OperationMethod<
 
 export type ListAuthorizedApplicationsError = AzureOpError;
 /** Gets the list of the authorized applications in the provider namespace. */
-export const ListAuthorizedApplications: API.OperationMethod<
+export const ListAuthorizedApplications: API.PaginatedOperationMethod<
   ListAuthorizedApplicationsRequest,
   AuthorizedApplicationArrayResponseWithContinuation,
   ListAuthorizedApplicationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AuthorizedApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1728, __c54, 0) as any as S.Schema<ListAuthorizedApplicationsRequest>,
   output: __S(
     1730,
@@ -3804,46 +3832,67 @@ export const ListAuthorizedApplications: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomRolloutByProviderRegistrationError = AzureOpError;
 /** Gets the list of the custom rollouts for the given provider. */
-export const ListCustomRolloutByProviderRegistration: API.OperationMethod<
+export const ListCustomRolloutByProviderRegistration: API.PaginatedOperationMethod<
   ListCustomRolloutByProviderRegistrationRequest,
   CustomRolloutArrayResponseWithContinuation,
   ListCustomRolloutByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CustomRollout
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1760, __c55, 0) as any as S.Schema<ListCustomRolloutByProviderRegistrationRequest>,
   output: __S(1762, __c55, 2) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDefaultRolloutByProviderRegistrationError = AzureOpError;
 /** Gets the list of the rollouts for the given provider. */
-export const ListDefaultRolloutByProviderRegistration: API.OperationMethod<
+export const ListDefaultRolloutByProviderRegistration: API.PaginatedOperationMethod<
   ListDefaultRolloutByProviderRegistrationRequest,
   DefaultRolloutArrayResponseWithContinuation,
   ListDefaultRolloutByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DefaultRollout
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1792, __c56, 0) as any as S.Schema<ListDefaultRolloutByProviderRegistrationRequest>,
   output: __S(1794, __c56, 2) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNotificationRegistrationByProviderRegistrationError = AzureOpError;
 /** Gets the list of the notification registrations for the given provider. */
-export const ListNotificationRegistrationByProviderRegistration: API.OperationMethod<
+export const ListNotificationRegistrationByProviderRegistration: API.PaginatedOperationMethod<
   ListNotificationRegistrationByProviderRegistrationRequest,
   NotificationRegistrationArrayResponseWithContinuation,
   ListNotificationRegistrationByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NotificationRegistration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     1824,
     __c57,
@@ -3857,7 +3906,13 @@ export const ListNotificationRegistrationByProviderRegistration: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationByProviderRegistrationError = AzureOpError;
 /** Gets the operations supported by the given provider. */
@@ -3876,27 +3931,35 @@ export const ListOperationByProviderRegistration: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsDefinitionArrayResponseWithContinuation,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationsDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1920, __c60, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1921, __c60, 1) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProviderMonitorSettingsByResourceGroupError = AzureOpError;
 /** Gets the list of the provider monitor settings in the resource group. */
-export const ListProviderMonitorSettingsByResourceGroup: API.OperationMethod<
+export const ListProviderMonitorSettingsByResourceGroup: API.PaginatedOperationMethod<
   ListProviderMonitorSettingsByResourceGroupRequest,
   ProviderMonitorSettingArrayResponseWithContinuation,
   ListProviderMonitorSettingsByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProviderMonitorSetting
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1952, __c61, 0) as any as S.Schema<ListProviderMonitorSettingsByResourceGroupRequest>,
   output: __S(
     1985,
@@ -3906,16 +3969,23 @@ export const ListProviderMonitorSettingsByResourceGroup: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProviderMonitorSettingsBySubscriptionError = AzureOpError;
 /** Gets the list of the provider monitor settings in the subscription. */
-export const ListProviderMonitorSettingsBySubscription: API.OperationMethod<
+export const ListProviderMonitorSettingsBySubscription: API.PaginatedOperationMethod<
   ListProviderMonitorSettingsBySubscriptionRequest,
   ProviderMonitorSettingArrayResponseWithContinuation,
   ListProviderMonitorSettingsBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProviderMonitorSetting
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2016, __c63, 0) as any as S.Schema<ListProviderMonitorSettingsBySubscriptionRequest>,
   output: __S(
     1985,
@@ -3925,31 +3995,45 @@ export const ListProviderMonitorSettingsBySubscription: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProviderRegistrationsError = AzureOpError;
 /** Gets the list of the provider registrations in the subscription. */
-export const ListProviderRegistrations: API.OperationMethod<
+export const ListProviderRegistrations: API.PaginatedOperationMethod<
   ListProviderRegistrationsRequest,
   ProviderRegistrationArrayResponseWithContinuation,
   ListProviderRegistrationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProviderRegistration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2112, __c66, 0) as any as S.Schema<ListProviderRegistrationsRequest>,
   output: __S(2114, __c66, 2) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListResourceTypeRegistrationByProviderRegistrationError = AzureOpError;
 /** Gets the list of the resource types for the given provider. */
-export const ListResourceTypeRegistrationByProviderRegistration: API.OperationMethod<
+export const ListResourceTypeRegistrationByProviderRegistration: API.PaginatedOperationMethod<
   ListResourceTypeRegistrationByProviderRegistrationRequest,
   ResourceTypeRegistrationArrayResponseWithContinuation,
   ListResourceTypeRegistrationByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceTypeRegistration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2144,
     __c67,
@@ -3963,31 +4047,45 @@ export const ListResourceTypeRegistrationByProviderRegistration: API.OperationMe
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusByResourceTypeRegistrationsError = AzureOpError;
 /** Gets the list of skus for the given resource type. */
-export const ListSkusByResourceTypeRegistrations: API.OperationMethod<
+export const ListSkusByResourceTypeRegistrations: API.PaginatedOperationMethod<
   ListSkusByResourceTypeRegistrationsRequest,
   SkuResourceArrayResponseWithContinuation,
   ListSkusByResourceTypeRegistrationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2176, __c68, 0) as any as S.Schema<ListSkusByResourceTypeRegistrationsRequest>,
   output: __S(2209, __c69, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstError = AzureOpError;
 /** Gets the list of skus for the given resource type. */
-export const ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst: API.OperationMethod<
+export const ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst: API.PaginatedOperationMethod<
   ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest,
   SkuResourceArrayResponseWithContinuation,
   ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2240,
     __c70,
@@ -3997,16 +4095,23 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst: API.Ope
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondError = AzureOpError;
 /** Gets the list of skus for the given resource type. */
-export const ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond: API.OperationMethod<
+export const ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond: API.PaginatedOperationMethod<
   ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest,
   SkuResourceArrayResponseWithContinuation,
   ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2272,
     __c71,
@@ -4016,16 +4121,23 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond: API.Op
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdError = AzureOpError;
 /** Gets the list of skus for the given resource type. */
-export const ListSkusByResourceTypeRegistrationsNestedResourceTypeThird: API.OperationMethod<
+export const ListSkusByResourceTypeRegistrationsNestedResourceTypeThird: API.PaginatedOperationMethod<
   ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest,
   SkuResourceArrayResponseWithContinuation,
   ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2304,
     __c72,
@@ -4035,7 +4147,13 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeThird: API.Ope
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ManifestsCreateOrUpdateError = AzureOpError;
 /** Creates or Updates a manifest in manifest repository. */
@@ -6299,12 +6417,14 @@ function __c54(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAuthorizedApplicationsRequest" });
@@ -6326,12 +6446,14 @@ function __c55(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomRolloutByProviderRegistrationRequest" });
@@ -6353,12 +6475,14 @@ function __c56(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDefaultRolloutByProviderRegistrationRequest" });
@@ -6380,12 +6504,14 @@ function __c57(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNotificationRegistrationByProviderRegistrationRequest" });
@@ -6479,19 +6605,22 @@ function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ProviderHub/operations",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(577, __c18, 1)),
+          value: __S(577, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsDefinitionArrayResponseWithContinuation" });
@@ -6504,12 +6633,14 @@ function __c61(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProviderMonitorSettingsByResourceGroupRequest" });
@@ -6534,12 +6665,14 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProviderMonitorSettingsBySubscriptionRequest" });
@@ -6676,12 +6809,14 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProviderRegistrationsRequest" });
@@ -6703,12 +6838,14 @@ function __c67(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListResourceTypeRegistrationByProviderRegistrationRequest" });
@@ -6729,12 +6866,14 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSkusByResourceTypeRegistrationsRequest" });
@@ -6762,12 +6901,14 @@ function __c70(j: number): any {
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -6785,12 +6926,14 @@ function __c71(j: number): any {
           resourceType: S.String.pipe(T.Label()),
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
           nestedResourceTypeSecond: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -6809,12 +6952,14 @@ function __c72(j: number): any {
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
           nestedResourceTypeSecond: S.String.pipe(T.Label()),
           nestedResourceTypeThird: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
             code: 200,
             apiVersion: "2025-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({

@@ -15,8 +15,7 @@
         "id": "UnreferencedShape",
         "namespace": "*"
       }
-    ],
-    "distilled.finalized": true
+    ]
   },
   "shapes": {
     "com.azure.kudu#DeployArtifact": {

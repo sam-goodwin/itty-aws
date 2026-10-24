@@ -357,6 +357,8 @@ export interface ListOpenShiftClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type OpenShiftClusterTagsMap = { [key: string]: string | undefined };
@@ -420,12 +422,16 @@ export interface OpenShiftClusterCredentials {
 export interface ListOpenShiftClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListOpenShiftVersionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** OpenShiftVersion represents an OpenShift version that can be installed. */
 export interface OpenShiftVersion {
@@ -449,7 +455,10 @@ export interface OpenShiftVersionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display represents the display details of an operation. */
 export interface Display {
   /** Friendly name of the resource provider. */
@@ -484,6 +493,8 @@ export interface ListPlatformWorkloadIdentityRoleSetsRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** PlatformWorkloadIdentityRoleSet represents a mapping from the names of OCP operators to the built-in roles that should be assigned to those operator's corresponding managed identities for a particular OCP version. */
 export interface PlatformWorkloadIdentityRoleSet {
@@ -804,18 +815,25 @@ export const ListOpenShiftClusterAdminCredentials: API.OperationMethod<
 
 export type ListOpenShiftClusterByResourceGroupError = AzureOpError;
 /** Lists OpenShift clusters in the specified subscription and resource group. The operation returns properties of each OpenShift cluster. */
-export const ListOpenShiftClusterByResourceGroup: API.OperationMethod<
+export const ListOpenShiftClusterByResourceGroup: API.PaginatedOperationMethod<
   ListOpenShiftClusterByResourceGroupRequest,
   OpenShiftClusterList,
   ListOpenShiftClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OpenShiftCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ListOpenShiftClusterByResourceGroupRequest>,
   output: __S(481, __c15, 1) as any as S.Schema<OpenShiftClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOpenShiftClusterCredentialsError = AzureOpError;
 /** Lists credentials of an OpenShift cluster with the specified subscription, resource group and resource name. The operation returns the credentials. */
@@ -834,63 +852,91 @@ export const ListOpenShiftClusterCredentials: API.OperationMethod<
 
 export type ListOpenShiftClustersError = AzureOpError;
 /** Lists OpenShift clusters in the specified subscription. The operation returns properties of each OpenShift cluster. */
-export const ListOpenShiftClusters: API.OperationMethod<
+export const ListOpenShiftClusters: API.PaginatedOperationMethod<
   ListOpenShiftClustersRequest,
   OpenShiftClusterList,
   ListOpenShiftClustersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OpenShiftCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ListOpenShiftClustersRequest>,
   output: __S(481, __c15, 1) as any as S.Schema<OpenShiftClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOpenShiftVersionsError = AzureOpError;
 /** Lists all OpenShift versions available to install in the specified location. The operation returns the installable OpenShift versions as a string. */
-export const ListOpenShiftVersions: API.OperationMethod<
+export const ListOpenShiftVersions: API.PaginatedOperationMethod<
   ListOpenShiftVersionsRequest,
   OpenShiftVersionList,
   ListOpenShiftVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OpenShiftVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListOpenShiftVersionsRequest>,
   output: __S(578, __c18, 2) as any as S.Schema<OpenShiftVersionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(612, __c19, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPlatformWorkloadIdentityRoleSetsError = AzureOpError;
 /** Lists a mapping of OpenShift versions to identity requirements, which include operatorName, roleDefinitionName, roleDefinitionId, and serviceAccounts. This operation returns a list of Platform Workload Identity Role Sets as a string */
-export const ListPlatformWorkloadIdentityRoleSets: API.OperationMethod<
+export const ListPlatformWorkloadIdentityRoleSets: API.PaginatedOperationMethod<
   ListPlatformWorkloadIdentityRoleSetsRequest,
   PlatformWorkloadIdentityRoleSetList,
   ListPlatformWorkloadIdentityRoleSetsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PlatformWorkloadIdentityRoleSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<ListPlatformWorkloadIdentityRoleSetsRequest>,
   output: __S(162, __c5, 2) as any as S.Schema<PlatformWorkloadIdentityRoleSetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type OpenShiftClustersCreateOrUpdateError = AzureOpError;
 /** Creates or updates a OpenShift cluster with the specified subscription, resource group and resource name. The operation returns properties of a OpenShift cluster. */
@@ -1160,12 +1206,14 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/platformWorkloadIdentityRoleSets",
             code: 200,
             apiVersion: "2025-07-25",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPlatformWorkloadIdentityRoleSetsRequest" });
@@ -1447,12 +1495,14 @@ function __c14(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
             code: 200,
             apiVersion: "2025-07-25",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOpenShiftClusterByResourceGroupRequest" });
@@ -1503,12 +1553,14 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/openShiftClusters",
             code: 200,
             apiVersion: "2025-07-25",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOpenShiftClustersRequest" });
@@ -1521,12 +1573,14 @@ function __c18(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RedHatOpenShift/locations/{location}/openShiftVersions",
             code: 200,
             apiVersion: "2025-07-25",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOpenShiftVersionsRequest" });
@@ -1545,12 +1599,15 @@ function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.RedHatOpenShift/operations",
             code: 200,
             apiVersion: "2025-07-25",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });

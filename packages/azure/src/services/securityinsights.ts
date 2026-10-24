@@ -2625,6 +2625,8 @@ export interface ListActionByAlertRuleRequest {
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Action for alert rule. */
 export interface ActionResponse {
@@ -2657,6 +2659,8 @@ export interface ListAlertRulesRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Alert rule. */
 export interface AlertRule {
@@ -2689,6 +2693,8 @@ export interface ListAlertRuleTemplatesRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Alert rule template. */
 export interface AlertRuleTemplate {
@@ -2719,6 +2725,8 @@ export interface ListAutomationRulesRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface AutomationRule {
@@ -2739,7 +2747,7 @@ export interface AutomationRule {
 export type AutomationRulesListValueList = Array<AutomationRule>;
 export interface AutomationRulesList {
   /** List of automation rules. */
-  value?: AutomationRulesListValueList;
+  value: AutomationRulesListValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
@@ -2750,6 +2758,8 @@ export interface ListBookmarksRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a bookmark in Azure Security Insights. */
 export interface Bookmark {
@@ -2796,6 +2806,8 @@ export interface ListContentPackagesRequest {
   _skip?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Package in Azure Security Insights. */
 export interface PackageModel {
@@ -2844,6 +2856,8 @@ export interface ListContentTemplatesRequest {
   _skip?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Template resource definition. */
 export interface TemplateModel {
@@ -2876,6 +2890,8 @@ export interface ListDataConnectorDefinitionsRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure resource, which encapsulate the entire info requires to display a data connector page in Azure portal, and the info required to define data connections. */
 export interface DataConnectorDefinition {
@@ -2897,7 +2913,7 @@ export type DataConnectorDefinitionArmCollectionWrapperValueList = Array<DataCon
 /** Encapsulate the data connector definition object */
 export interface DataConnectorDefinitionArmCollectionWrapper {
   /** List of data connector definitions. */
-  value?: DataConnectorDefinitionArmCollectionWrapperValueList;
+  value: DataConnectorDefinitionArmCollectionWrapperValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
@@ -2908,6 +2924,8 @@ export interface ListDataConnectorsRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Data connector */
 export interface DataConnector {
@@ -3169,6 +3187,8 @@ export interface ListIncidentCommentsRequest {
   _top?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents an incident comment */
 export interface IncidentComment {
@@ -3252,6 +3272,8 @@ export interface ListIncidentRelationsRequest {
   _top?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a relation between two resources */
 export interface Relation {
@@ -3292,6 +3314,8 @@ export interface ListIncidentsRequest {
   _top?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents an incident in Azure Security Insights. */
 export interface Incident {
@@ -3326,6 +3350,8 @@ export interface ListIncidentTasksRequest {
   workspaceName: string;
   /** Incident ID */
   incidentId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Describes incident task properties */
 export interface IncidentTask {
@@ -3347,7 +3373,7 @@ export type IncidentTaskListValueList = Array<IncidentTask>;
 /** List of incident tasks */
 export interface IncidentTaskList {
   /** List of incident tasks. */
-  value?: IncidentTaskListValueList;
+  value: IncidentTaskListValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
@@ -3366,6 +3392,8 @@ export interface ListMetadataRequest {
   _top?: number;
   /** Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left. */
   _skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Metadata resource definition. */
 export interface MetadataModel {
@@ -3391,7 +3419,10 @@ export interface MetadataList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Properties of the operation */
 export interface OperationDisplay {
   /** Description of the operation */
@@ -3440,6 +3471,8 @@ export interface ListProductPackagesRequest {
   _skipToken?: string;
   /** Searches for a substring in the response. Optional. */
   _search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Package in Azure Security Insights. */
 export interface ProductPackageModel {
@@ -3486,6 +3519,8 @@ export interface ListProductTemplatesRequest {
   _skip?: number;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Template resource definition. */
 export interface ProductTemplateModel {
@@ -3518,6 +3553,8 @@ export interface ListSecurityMLAnalyticsSettingsRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Security ML Analytics Setting */
 export interface SecurityMLAnalyticsSetting {
@@ -3584,6 +3621,8 @@ export interface ListSourceControlRepositoriesRequest {
   workspaceName: string;
   /** RepositoryAccess properties */
   properties: RepositoryAccessObject;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of branches. */
 export type RepoBranchesList = Array<string>;
@@ -3614,6 +3653,8 @@ export interface ListSourceControlsRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a SourceControl in Azure Security Insights. */
 export interface SourceControl {
@@ -3698,6 +3739,8 @@ export interface ListThreatIntelligenceIndicatorsRequest {
   _skipToken?: string;
   /** Sorts the results. Optional. */
   _orderby?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Threat intelligence information object. */
 export interface ThreatIntelligenceInformation {
@@ -3734,6 +3777,8 @@ export interface ListWatchlistItemsRequest {
   watchlistAlias: string;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Watchlist Item in Azure Security Insights. */
 export interface WatchlistItem {
@@ -3768,6 +3813,8 @@ export interface ListWatchlistsRequest {
   workspaceName: string;
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents a Watchlist in Azure Security Insights. */
 export interface Watchlist {
@@ -3956,6 +4003,8 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   keywords?: ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList;
   /** Skip token. */
   skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface UninstallContentPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4275,8 +4324,8 @@ export const CreateSourceControl: API.OperationMethod<
   CreateSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1381, __c86, 5) as any as S.Schema<CreateSourceControlRequest>,
-  output: __S(1435, __c89, 11) as any as S.Schema<CreateSourceControlResponse>,
+  input: __S(1365, __c85, 5) as any as S.Schema<CreateSourceControlRequest>,
+  output: __S(1419, __c88, 11) as any as S.Schema<CreateSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4290,8 +4339,8 @@ export const CreateThreatIntelligenceIndicator: API.OperationMethod<
   CreateThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorRequest>,
-  output: __S(1616, __c101, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4305,10 +4354,10 @@ export const CreateThreatIntelligenceIndicatorIndicator: API.OperationMethod<
   CreateThreatIntelligenceIndicatorIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c114, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorRequest>,
+  input: __S(1808, __c113, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorRequest>,
   output: __S(
-    1616,
-    __c101,
+    1600,
+    __c100,
     0,
   ) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorResponse>,
   errors: [UnknownAzureError],
@@ -4324,7 +4373,7 @@ export const DataConnectorDefinitionsCreateOrUpdate: API.OperationMethod<
   DataConnectorDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2000, __c125, 0) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>,
+  input: __S(1984, __c124, 0) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4895,7 +4944,7 @@ export const GetSourceControl: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1040, __c65, 0) as any as S.Schema<GetSourceControlRequest>,
-  output: __S(1435, __c89, 11) as any as S.Schema<GetSourceControlResponse>,
+  output: __S(1419, __c88, 11) as any as S.Schema<GetSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4910,7 +4959,7 @@ export const GetThreatIntelligenceIndicator: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1056, __c66, 0) as any as S.Schema<GetThreatIntelligenceIndicatorRequest>,
-  output: __S(1616, __c101, 0) as any as S.Schema<GetThreatIntelligenceIndicatorResponse>,
+  output: __S(1600, __c100, 0) as any as S.Schema<GetThreatIntelligenceIndicatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5038,138 +5087,201 @@ export const InstallContentTemplate: API.OperationMethod<
 
 export type ListActionByAlertRuleError = AzureOpError;
 /** Gets all actions of alert rule. */
-export const ListActionByAlertRule: API.OperationMethod<
+export const ListActionByAlertRule: API.PaginatedOperationMethod<
   ListActionByAlertRuleRequest,
   ActionsList,
   ListActionByAlertRuleError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ActionResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c80, 0) as any as S.Schema<ListActionByAlertRuleRequest>,
   output: __S(1282, __c80, 2) as any as S.Schema<ActionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAlertRulesError = AzureOpError;
 /** Gets all alert rules. */
-export const ListAlertRules: API.OperationMethod<
+export const ListAlertRules: API.PaginatedOperationMethod<
   ListAlertRulesRequest,
   AlertRulesList,
   ListAlertRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AlertRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1296, __c81, 0) as any as S.Schema<ListAlertRulesRequest>,
-  output: __S(1328, __c83, 0) as any as S.Schema<AlertRulesList>,
+  output: __S(1313, __c82, 1) as any as S.Schema<AlertRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAlertRuleTemplatesError = AzureOpError;
 /** Gets all alert rule templates. */
-export const ListAlertRuleTemplates: API.OperationMethod<
+export const ListAlertRuleTemplates: API.PaginatedOperationMethod<
   ListAlertRuleTemplatesRequest,
   AlertRuleTemplatesList,
   ListAlertRuleTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<ListAlertRuleTemplatesRequest>,
-  output: __S(1345, __c84, 1) as any as S.Schema<AlertRuleTemplatesList>,
+  AzureOpContext,
+  AlertRuleTemplate
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1328, __c83, 0) as any as S.Schema<ListAlertRuleTemplatesRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<AlertRuleTemplatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAutomationRulesError = AzureOpError;
 /** Gets all automation rules. */
-export const ListAutomationRules: API.OperationMethod<
+export const ListAutomationRules: API.PaginatedOperationMethod<
   ListAutomationRulesRequest,
   AutomationRulesList,
   ListAutomationRulesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<ListAutomationRulesRequest>,
-  output: __S(1442, __c90, 2) as any as S.Schema<AutomationRulesList>,
+  AzureOpContext,
+  AutomationRule
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1424, __c89, 0) as any as S.Schema<ListAutomationRulesRequest>,
+  output: __S(1426, __c89, 2) as any as S.Schema<AutomationRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBookmarksError = AzureOpError;
 /** Gets all bookmarks. */
-export const ListBookmarks: API.OperationMethod<
+export const ListBookmarks: API.PaginatedOperationMethod<
   ListBookmarksRequest,
   BookmarkList,
   ListBookmarksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<ListBookmarksRequest>,
-  output: __S(1458, __c91, 2) as any as S.Schema<BookmarkList>,
+  AzureOpContext,
+  Bookmark
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1440, __c90, 0) as any as S.Schema<ListBookmarksRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<BookmarkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContentPackagesError = AzureOpError;
 /** Gets all installed packages. */
-export const ListContentPackages: API.OperationMethod<
+export const ListContentPackages: API.PaginatedOperationMethod<
   ListContentPackagesRequest,
   PackageList,
   ListContentPackagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<ListContentPackagesRequest>,
-  output: __S(1474, __c92, 2) as any as S.Schema<PackageList>,
+  AzureOpContext,
+  PackageModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1456, __c91, 0) as any as S.Schema<ListContentPackagesRequest>,
+  output: __S(1458, __c91, 2) as any as S.Schema<PackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListContentTemplatesError = AzureOpError;
 /** Gets all installed templates. Expandable properties: - properties/mainTemplate - properties/dependantTemplates */
-export const ListContentTemplates: API.OperationMethod<
+export const ListContentTemplates: API.PaginatedOperationMethod<
   ListContentTemplatesRequest,
   TemplateList,
   ListContentTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1488, __c93, 0) as any as S.Schema<ListContentTemplatesRequest>,
-  output: __S(1490, __c93, 2) as any as S.Schema<TemplateList>,
+  AzureOpContext,
+  TemplateModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1472, __c92, 0) as any as S.Schema<ListContentTemplatesRequest>,
+  output: __S(1474, __c92, 2) as any as S.Schema<TemplateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataConnectorDefinitionsError = AzureOpError;
 /** Gets all data connector definitions. */
-export const ListDataConnectorDefinitions: API.OperationMethod<
+export const ListDataConnectorDefinitions: API.PaginatedOperationMethod<
   ListDataConnectorDefinitionsRequest,
   DataConnectorDefinitionArmCollectionWrapper,
   ListDataConnectorDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<ListDataConnectorDefinitionsRequest>,
-  output: __S(1505, __c94, 1) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>,
+  AzureOpContext,
+  DataConnectorDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1488, __c93, 0) as any as S.Schema<ListDataConnectorDefinitionsRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDataConnectorsError = AzureOpError;
 /** Gets all data connectors. */
-export const ListDataConnectors: API.OperationMethod<
+export const ListDataConnectors: API.PaginatedOperationMethod<
   ListDataConnectorsRequest,
   DataConnectorList,
   ListDataConnectorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<ListDataConnectorsRequest>,
-  output: __S(1328, __c83, 0) as any as S.Schema<DataConnectorList>,
+  AzureOpContext,
+  DataConnector
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1504, __c94, 0) as any as S.Schema<ListDataConnectorsRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<DataConnectorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIncidentAlertsError = AzureOpError;
 /** Gets all alerts for an incident. */
@@ -5179,8 +5291,8 @@ export const ListIncidentAlerts: API.OperationMethod<
   ListIncidentAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<ListIncidentAlertsRequest>,
-  output: __S(1543, __c96, 7) as any as S.Schema<IncidentAlertList>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListIncidentAlertsRequest>,
+  output: __S(1527, __c95, 7) as any as S.Schema<IncidentAlertList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5194,8 +5306,8 @@ export const ListIncidentBookmarks: API.OperationMethod<
   ListIncidentBookmarksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1552, __c97, 0) as any as S.Schema<ListIncidentBookmarksRequest>,
-  output: __S(1556, __c97, 4) as any as S.Schema<IncidentBookmarkList>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListIncidentBookmarksRequest>,
+  output: __S(1540, __c96, 4) as any as S.Schema<IncidentBookmarkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5203,18 +5315,25 @@ export const ListIncidentBookmarks: API.OperationMethod<
 
 export type ListIncidentCommentsError = AzureOpError;
 /** Gets all comments for a given incident. */
-export const ListIncidentComments: API.OperationMethod<
+export const ListIncidentComments: API.PaginatedOperationMethod<
   ListIncidentCommentsRequest,
   IncidentCommentList,
   ListIncidentCommentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<ListIncidentCommentsRequest>,
-  output: __S(1570, __c98, 2) as any as S.Schema<IncidentCommentList>,
+  AzureOpContext,
+  IncidentComment
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1552, __c97, 0) as any as S.Schema<ListIncidentCommentsRequest>,
+  output: __S(1554, __c97, 2) as any as S.Schema<IncidentCommentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIncidentEntitiesError = AzureOpError;
 /** Gets all entities for an incident. */
@@ -5224,8 +5343,8 @@ export const ListIncidentEntities: API.OperationMethod<
   ListIncidentEntitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<ListIncidentEntitiesRequest>,
-  output: __S(1587, __c99, 3) as any as S.Schema<IncidentEntitiesResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListIncidentEntitiesRequest>,
+  output: __S(1571, __c98, 3) as any as S.Schema<IncidentEntitiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5233,123 +5352,179 @@ export const ListIncidentEntities: API.OperationMethod<
 
 export type ListIncidentRelationsError = AzureOpError;
 /** Gets all relations for a given incident. */
-export const ListIncidentRelations: API.OperationMethod<
+export const ListIncidentRelations: API.PaginatedOperationMethod<
   ListIncidentRelationsRequest,
   RelationList,
   ListIncidentRelationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c104, 0) as any as S.Schema<ListIncidentRelationsRequest>,
-  output: __S(1666, __c104, 2) as any as S.Schema<RelationList>,
+  AzureOpContext,
+  Relation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1648, __c103, 0) as any as S.Schema<ListIncidentRelationsRequest>,
+  output: __S(1650, __c103, 2) as any as S.Schema<RelationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIncidentsError = AzureOpError;
 /** Gets all incidents. */
-export const ListIncidents: API.OperationMethod<
+export const ListIncidents: API.PaginatedOperationMethod<
   ListIncidentsRequest,
   IncidentList,
   ListIncidentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c105, 0) as any as S.Schema<ListIncidentsRequest>,
-  output: __S(1682, __c105, 2) as any as S.Schema<IncidentList>,
+  AzureOpContext,
+  Incident
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1664, __c104, 0) as any as S.Schema<ListIncidentsRequest>,
+  output: __S(1666, __c104, 2) as any as S.Schema<IncidentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIncidentTasksError = AzureOpError;
 /** Gets all incident tasks. */
-export const ListIncidentTasks: API.OperationMethod<
+export const ListIncidentTasks: API.PaginatedOperationMethod<
   ListIncidentTasksRequest,
   IncidentTaskList,
   ListIncidentTasksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<ListIncidentTasksRequest>,
-  output: __S(1698, __c106, 2) as any as S.Schema<IncidentTaskList>,
+  AzureOpContext,
+  IncidentTask
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1680, __c105, 0) as any as S.Schema<ListIncidentTasksRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<IncidentTaskList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMetadataError = AzureOpError;
 /** List of all metadata */
-export const ListMetadata: API.OperationMethod<
+export const ListMetadata: API.PaginatedOperationMethod<
   ListMetadataRequest,
   MetadataList,
   ListMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1712, __c107, 0) as any as S.Schema<ListMetadataRequest>,
-  output: __S(1714, __c107, 2) as any as S.Schema<MetadataList>,
+  AzureOpContext,
+  MetadataModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1696, __c106, 0) as any as S.Schema<ListMetadataRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<MetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all operations available Azure Security Insights Resource Provider. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationsList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1732, __c108, 4) as any as S.Schema<OperationsList>,
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1712, __c107, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1716, __c107, 4) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductPackagesError = AzureOpError;
 /** Gets all packages from the catalog. Expandable properties: - properties/installed - properties/packagedContent */
-export const ListProductPackages: API.OperationMethod<
+export const ListProductPackages: API.PaginatedOperationMethod<
   ListProductPackagesRequest,
   ProductPackageList,
   ListProductPackagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c109, 0) as any as S.Schema<ListProductPackagesRequest>,
-  output: __S(1746, __c109, 2) as any as S.Schema<ProductPackageList>,
+  AzureOpContext,
+  ProductPackageModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1728, __c108, 0) as any as S.Schema<ListProductPackagesRequest>,
+  output: __S(1730, __c108, 2) as any as S.Schema<ProductPackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductTemplatesError = AzureOpError;
 /** Gets all templates in the catalog. */
-export const ListProductTemplates: API.OperationMethod<
+export const ListProductTemplates: API.PaginatedOperationMethod<
   ListProductTemplatesRequest,
   ProductTemplateList,
   ListProductTemplatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c110, 0) as any as S.Schema<ListProductTemplatesRequest>,
-  output: __S(1762, __c110, 2) as any as S.Schema<ProductTemplateList>,
+  AzureOpContext,
+  ProductTemplateModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1744, __c109, 0) as any as S.Schema<ListProductTemplatesRequest>,
+  output: __S(1746, __c109, 2) as any as S.Schema<ProductTemplateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSecurityMLAnalyticsSettingsError = AzureOpError;
 /** Gets all Security ML Analytics Settings. */
-export const ListSecurityMLAnalyticsSettings: API.OperationMethod<
+export const ListSecurityMLAnalyticsSettings: API.PaginatedOperationMethod<
   ListSecurityMLAnalyticsSettingsRequest,
   SecurityMLAnalyticsSettingsList,
   ListSecurityMLAnalyticsSettingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1776, __c111, 0) as any as S.Schema<ListSecurityMLAnalyticsSettingsRequest>,
-  output: __S(1778, __c111, 2) as any as S.Schema<SecurityMLAnalyticsSettingsList>,
+  AzureOpContext,
+  SecurityMLAnalyticsSetting
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1760, __c110, 0) as any as S.Schema<ListSecurityMLAnalyticsSettingsRequest>,
+  output: __S(1762, __c110, 2) as any as S.Schema<SecurityMLAnalyticsSettingsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSentinelOnboardingStatesError = AzureOpError;
 /** Gets all Sentinel onboarding states */
@@ -5359,8 +5534,8 @@ export const ListSentinelOnboardingStates: API.OperationMethod<
   ListSentinelOnboardingStatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c112, 0) as any as S.Schema<ListSentinelOnboardingStatesRequest>,
-  output: __S(1794, __c112, 2) as any as S.Schema<SentinelOnboardingStatesList>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ListSentinelOnboardingStatesRequest>,
+  output: __S(1778, __c111, 2) as any as S.Schema<SentinelOnboardingStatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5368,33 +5543,47 @@ export const ListSentinelOnboardingStates: API.OperationMethod<
 
 export type ListSourceControlRepositoriesError = AzureOpError;
 /** Gets a list of repositories metadata. */
-export const ListSourceControlRepositories: API.OperationMethod<
+export const ListSourceControlRepositories: API.PaginatedOperationMethod<
   ListSourceControlRepositoriesRequest,
   RepoList,
   ListSourceControlRepositoriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1808, __c113, 0) as any as S.Schema<ListSourceControlRepositoriesRequest>,
-  output: __S(1811, __c113, 3) as any as S.Schema<RepoList>,
+  AzureOpContext,
+  Repo
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1792, __c112, 0) as any as S.Schema<ListSourceControlRepositoriesRequest>,
+  output: __S(1795, __c112, 3) as any as S.Schema<RepoList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSourceControlsError = AzureOpError;
 /** Gets all source controls, without source control items. */
-export const ListSourceControls: API.OperationMethod<
+export const ListSourceControls: API.PaginatedOperationMethod<
   ListSourceControlsRequest,
   SourceControlList,
   ListSourceControlsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1840, __c115, 0) as any as S.Schema<ListSourceControlsRequest>,
-  output: __S(1842, __c115, 2) as any as S.Schema<SourceControlList>,
+  AzureOpContext,
+  SourceControl
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1824, __c114, 0) as any as S.Schema<ListSourceControlsRequest>,
+  output: __S(1826, __c114, 2) as any as S.Schema<SourceControlList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListThreatIntelligenceIndicatorMetricsError = AzureOpError;
 /** Get threat intelligence indicators metrics (Indicators counts by Type, Threat Type, Source). */
@@ -5404,8 +5593,8 @@ export const ListThreatIntelligenceIndicatorMetrics: API.OperationMethod<
   ListThreatIntelligenceIndicatorMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c116, 0) as any as S.Schema<ListThreatIntelligenceIndicatorMetricsRequest>,
-  output: __S(1862, __c116, 6) as any as S.Schema<ThreatIntelligenceMetricsList>,
+  input: __S(1840, __c115, 0) as any as S.Schema<ListThreatIntelligenceIndicatorMetricsRequest>,
+  output: __S(1846, __c115, 6) as any as S.Schema<ThreatIntelligenceMetricsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5413,48 +5602,69 @@ export const ListThreatIntelligenceIndicatorMetrics: API.OperationMethod<
 
 export type ListThreatIntelligenceIndicatorsError = AzureOpError;
 /** Get all threat intelligence indicators. */
-export const ListThreatIntelligenceIndicators: API.OperationMethod<
+export const ListThreatIntelligenceIndicators: API.PaginatedOperationMethod<
   ListThreatIntelligenceIndicatorsRequest,
   ThreatIntelligenceInformationList,
   ListThreatIntelligenceIndicatorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1872, __c117, 0) as any as S.Schema<ListThreatIntelligenceIndicatorsRequest>,
-  output: __S(1328, __c83, 0) as any as S.Schema<ThreatIntelligenceInformationList>,
+  AzureOpContext,
+  ThreatIntelligenceInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1856, __c116, 0) as any as S.Schema<ListThreatIntelligenceIndicatorsRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<ThreatIntelligenceInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWatchlistItemsError = AzureOpError;
 /** Get all watchlist Items. */
-export const ListWatchlistItems: API.OperationMethod<
+export const ListWatchlistItems: API.PaginatedOperationMethod<
   ListWatchlistItemsRequest,
   WatchlistItemList,
   ListWatchlistItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c118, 0) as any as S.Schema<ListWatchlistItemsRequest>,
-  output: __S(1890, __c118, 2) as any as S.Schema<WatchlistItemList>,
+  AzureOpContext,
+  WatchlistItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1872, __c117, 0) as any as S.Schema<ListWatchlistItemsRequest>,
+  output: __S(1874, __c117, 2) as any as S.Schema<WatchlistItemList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWatchlistsError = AzureOpError;
 /** Get all watchlists, without watchlist items. */
-export const ListWatchlists: API.OperationMethod<
+export const ListWatchlists: API.PaginatedOperationMethod<
   ListWatchlistsRequest,
   WatchlistList,
   ListWatchlistsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(1904, __c119, 0) as any as S.Schema<ListWatchlistsRequest>,
-  output: __S(1906, __c119, 2) as any as S.Schema<WatchlistList>,
+  AzureOpContext,
+  Watchlist
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(1888, __c118, 0) as any as S.Schema<ListWatchlistsRequest>,
+  output: __S(1890, __c118, 2) as any as S.Schema<WatchlistList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ReplaceThreatIntelligenceIndicatorTagsError = AzureOpError;
 /** Replace tags added to a threat intelligence indicator. */
@@ -5464,8 +5674,8 @@ export const ReplaceThreatIntelligenceIndicatorTags: API.OperationMethod<
   ReplaceThreatIntelligenceIndicatorTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c120, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsRequest>,
-  output: __S(1616, __c101, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5479,7 +5689,7 @@ export const RunEntityPlaybook: API.OperationMethod<
   RunEntityPlaybookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1936, __c121, 0) as any as S.Schema<RunEntityPlaybookRequest>,
+  input: __S(1920, __c120, 0) as any as S.Schema<RunEntityPlaybookRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<RunEntityPlaybookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5494,7 +5704,7 @@ export const RunIncidentPlaybook: API.OperationMethod<
   RunIncidentPlaybookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c122, 0) as any as S.Schema<RunIncidentPlaybookRequest>,
+  input: __S(1936, __c121, 0) as any as S.Schema<RunIncidentPlaybookRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<RunIncidentPlaybookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5509,7 +5719,7 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdate: API.OperationMethod<
   SecurityMLAnalyticsSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1968, __c123, 0) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>,
+  input: __S(1952, __c122, 0) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>,
   output: __S(64, __c4, 0) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5524,7 +5734,7 @@ export const ThreatIntelligenceIndicatorAppendTags: API.OperationMethod<
   ThreatIntelligenceIndicatorAppendTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c124, 0) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5533,18 +5743,25 @@ export const ThreatIntelligenceIndicatorAppendTags: API.OperationMethod<
 
 export type ThreatIntelligenceIndicatorQueryIndicatorsError = AzureOpError;
 /** Query threat intelligence indicators as per filtering criteria. */
-export const ThreatIntelligenceIndicatorQueryIndicators: API.OperationMethod<
+export const ThreatIntelligenceIndicatorQueryIndicators: API.PaginatedOperationMethod<
   ThreatIntelligenceIndicatorQueryIndicatorsRequest,
   ThreatIntelligenceInformationList,
   ThreatIntelligenceIndicatorQueryIndicatorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: __S(2018, __c126, 2) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequest>,
-  output: __S(1328, __c83, 0) as any as S.Schema<ThreatIntelligenceInformationList>,
+  AzureOpContext,
+  ThreatIntelligenceInformation
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: __S(2002, __c125, 2) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<ThreatIntelligenceInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UninstallContentPackageError = AzureOpError;
 /** Uninstall a package from the workspace. */
@@ -5554,7 +5771,7 @@ export const UninstallContentPackage: API.OperationMethod<
   UninstallContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2032, __c127, 0) as any as S.Schema<UninstallContentPackageRequest>,
+  input: __S(2016, __c126, 0) as any as S.Schema<UninstallContentPackageRequest>,
   output: __S(112, __c7, 0) as any as S.Schema<UninstallContentPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5569,7 +5786,7 @@ export const UpdateMetadata: API.OperationMethod<
   UpdateMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2049, __c128, 1) as any as S.Schema<UpdateMetadataRequest>,
+  input: __S(2033, __c127, 1) as any as S.Schema<UpdateMetadataRequest>,
   output: __S(849, __c53, 1) as any as S.Schema<UpdateMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5584,7 +5801,7 @@ export const WatchlistItemsCreateOrUpdate: API.OperationMethod<
   WatchlistItemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2065, __c129, 1) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>,
+  input: __S(2049, __c128, 1) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>,
   output: __S(1169, __c73, 1) as any as S.Schema<WatchlistItemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -5599,8 +5816,8 @@ export const WatchlistsCreateOrUpdate: API.OperationMethod<
   WatchlistsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2081, __c130, 1) as any as S.Schema<WatchlistsCreateOrUpdateRequest>,
-  output: __S(2082, __c130, 2) as any as S.Schema<WatchlistsCreateOrUpdateResponse>,
+  input: __S(2065, __c129, 1) as any as S.Schema<WatchlistsCreateOrUpdateRequest>,
+  output: __S(2066, __c129, 2) as any as S.Schema<WatchlistsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6173,7 +6390,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          repositoryAccess: __S(1392, __c87, 0),
+          repositoryAccess: __S(1376, __c86, 0),
         }),
       ).annotate({ identifier: "RepositoryAccessObject" });
   }
@@ -6695,7 +6912,7 @@ function __c48(j: number): any {
           bookmarksCount: S.optional(S.Number),
           commentsCount: S.optional(S.Number),
           alertProductNames: S.optional(__S(544, __c34, 0)),
-          tactics: S.optional(__S(1408, __c88, 0)),
+          tactics: S.optional(__S(1392, __c87, 0)),
           providerIncidentUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentAdditionalData" });
@@ -7588,12 +7805,14 @@ function __c80(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules/{ruleId}/actions",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListActionByAlertRuleRequest" });
@@ -7616,12 +7835,14 @@ function __c81(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRules",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAlertRulesRequest" });
@@ -7630,12 +7851,8 @@ function __c81(j: number): any {
 function __c82(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1616, __c101, 0));
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(1600, __c100, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: __S(1312, __c82, 0),
@@ -7644,7 +7861,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "AlertRulesList" });
   }
 }
-function __c84(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7652,31 +7869,33 @@ function __c84(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/alertRuleTemplates",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAlertRuleTemplatesRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1360, __c85, 0),
+          value: __S(1344, __c84, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRuleTemplatesList" });
   }
 }
-function __c85(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(608, __c38, 0));
   }
 }
-function __c86(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7701,7 +7920,7 @@ function __c86(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          webhook: S.optional(__S(1378, __c86, 2)),
+          webhook: S.optional(__S(1362, __c85, 2)),
         }),
       ).annotate({ identifier: "RepositoryResourceInfoInput" });
     case 4:
@@ -7710,11 +7929,11 @@ function __c86(j: number): any {
           displayName: S.String,
           description: S.optional(S.String),
           repoType: S.String,
-          contentTypes: __S(1408, __c88, 0),
-          repository: __S(1376, __c86, 0),
-          servicePrincipal: S.optional(__S(1377, __c86, 1)),
-          repositoryAccess: S.optional(__S(1392, __c87, 0)),
-          repositoryResourceInfo: S.optional(__S(1379, __c86, 3)),
+          contentTypes: __S(1392, __c87, 0),
+          repository: __S(1360, __c85, 0),
+          servicePrincipal: S.optional(__S(1361, __c85, 1)),
+          repositoryAccess: S.optional(__S(1376, __c86, 0)),
+          repositoryResourceInfo: S.optional(__S(1363, __c85, 3)),
         }),
       ).annotate({ identifier: "SourceControlPropertiesInput" });
     case 5:
@@ -7724,7 +7943,7 @@ function __c86(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sourceControlId: S.String.pipe(T.Label()),
-          properties: __S(1380, __c86, 4),
+          properties: __S(1364, __c85, 4),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7737,7 +7956,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "CreateSourceControlRequest" });
   }
 }
-function __c87(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7752,13 +7971,13 @@ function __c87(j: number): any {
       ).annotate({ identifier: "RepositoryAccess" });
   }
 }
-function __c88(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c89(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7813,9 +8032,9 @@ function __c89(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          webhook: S.optional(__S(1427, __c89, 3)),
-          gitHubResourceInfo: S.optional(__S(1428, __c89, 4)),
-          azureDevOpsResourceInfo: S.optional(__S(1429, __c89, 5)),
+          webhook: S.optional(__S(1411, __c88, 3)),
+          gitHubResourceInfo: S.optional(__S(1412, __c88, 4)),
+          azureDevOpsResourceInfo: S.optional(__S(1413, __c88, 5)),
         }),
       ).annotate({ identifier: "RepositoryResourceInfo" });
     case 7:
@@ -7832,7 +8051,7 @@ function __c89(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deploymentFetchStatus: S.optional(S.String),
-          deployment: S.optional(__S(1431, __c89, 7)),
+          deployment: S.optional(__S(1415, __c88, 7)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentInfo" });
@@ -7851,14 +8070,14 @@ function __c89(j: number): any {
           displayName: S.String,
           description: S.optional(S.String),
           repoType: S.String,
-          contentTypes: __S(1408, __c88, 0),
-          repository: __S(1424, __c89, 0),
-          servicePrincipal: S.optional(__S(1425, __c89, 1)),
-          workloadIdentityFederation: S.optional(__S(1426, __c89, 2)),
-          repositoryAccess: S.optional(__S(1392, __c87, 0)),
-          repositoryResourceInfo: S.optional(__S(1430, __c89, 6)),
-          lastDeploymentInfo: S.optional(__S(1432, __c89, 8)),
-          pullRequest: S.optional(__S(1433, __c89, 9)),
+          contentTypes: __S(1392, __c87, 0),
+          repository: __S(1408, __c88, 0),
+          servicePrincipal: S.optional(__S(1409, __c88, 1)),
+          workloadIdentityFederation: S.optional(__S(1410, __c88, 2)),
+          repositoryAccess: S.optional(__S(1376, __c86, 0)),
+          repositoryResourceInfo: S.optional(__S(1414, __c88, 6)),
+          lastDeploymentInfo: S.optional(__S(1416, __c88, 8)),
+          pullRequest: S.optional(__S(1417, __c88, 9)),
         }),
       ).annotate({ identifier: "SourceControlProperties" });
     case 11:
@@ -7868,10 +8087,40 @@ function __c89(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(1434, __c89, 10),
+          properties: __S(1418, __c88, 10),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateSourceControlResponse" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules",
+            code: 200,
+            apiVersion: "2025-09-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListAutomationRulesRequest" });
+    case 1:
+      return S.Array(__S(294, __c18, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1425, __c89, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutomationRulesList" });
   }
 }
 function __c90(j: number): any {
@@ -7882,40 +8131,14 @@ function __c90(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAutomationRulesRequest" });
-    case 1:
-      return S.Array(__S(294, __c18, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(1441, __c90, 1)),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutomationRulesList" });
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBookmarksRequest" });
@@ -7924,13 +8147,13 @@ function __c91(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1457, __c91, 1),
+          value: __S(1441, __c90, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookmarkList" });
   }
 }
-function __c92(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7945,12 +8168,14 @@ function __c92(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContentPackagesRequest" });
@@ -7959,13 +8184,13 @@ function __c92(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1473, __c92, 1),
+          value: __S(1457, __c91, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageList" });
   }
 }
-function __c93(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7981,12 +8206,14 @@ function __c93(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentTemplates",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListContentTemplatesRequest" });
@@ -7995,10 +8222,31 @@ function __c93(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1489, __c93, 1),
+          value: __S(1473, __c92, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateList" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions",
+            code: 200,
+            apiVersion: "2025-09-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListDataConnectorDefinitionsRequest" });
   }
 }
 function __c94(j: number): any {
@@ -8009,44 +8257,20 @@ function __c94(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListDataConnectorDefinitionsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(1312, __c82, 0)),
           nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataConnectorDefinitionArmCollectionWrapper" });
-  }
-}
-function __c95(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDataConnectorsRequest" });
   }
 }
-function __c96(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8072,19 +8296,19 @@ function __c96(j: number): any {
         }),
       ).annotate({ identifier: "SecurityAlertPropertiesConfidenceReasonsItem" });
     case 2:
-      return S.Array(__S(1537, __c96, 1));
+      return S.Array(__S(1521, __c95, 1));
     case 3:
       return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(1632, __c102, 0)),
+          additionalData: S.optional(__S(1616, __c101, 0)),
           friendlyName: S.optional(S.String),
           alertDisplayName: S.optional(S.String),
           alertType: S.optional(S.String),
           compromisedEntity: S.optional(S.String),
           confidenceLevel: S.optional(S.String),
-          confidenceReasons: S.optional(__S(1538, __c96, 2)),
+          confidenceReasons: S.optional(__S(1522, __c95, 2)),
           confidenceScore: S.optional(S.Number),
           confidenceScoreStatus: S.optional(S.String),
           description: S.optional(S.String),
@@ -8100,11 +8324,11 @@ function __c96(j: number): any {
           startTimeUtc: S.optional(S.String),
           status: S.optional(S.String),
           systemAlertId: S.optional(S.String),
-          tactics: S.optional(__S(1408, __c88, 0)),
+          tactics: S.optional(__S(1392, __c87, 0)),
           timeGenerated: S.optional(S.String),
           vendorName: S.optional(S.String),
           alertLink: S.optional(S.String),
-          resourceIdentifiers: S.optional(__S(1539, __c96, 3)),
+          resourceIdentifiers: S.optional(__S(1523, __c95, 3)),
         }),
       ).annotate({ identifier: "SecurityAlertProperties" });
     case 5:
@@ -8115,20 +8339,20 @@ function __c96(j: number): any {
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
-          properties: S.optional(__S(1540, __c96, 4)),
+          properties: S.optional(__S(1524, __c95, 4)),
         }),
       ).annotate({ identifier: "SecurityAlert" });
     case 6:
-      return S.Array(__S(1541, __c96, 5));
+      return S.Array(__S(1525, __c95, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1542, __c96, 6),
+          value: __S(1526, __c95, 6),
         }),
       ).annotate({ identifier: "IncidentAlertList" });
   }
 }
-function __c97(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8149,7 +8373,7 @@ function __c97(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(1632, __c102, 0)),
+          additionalData: S.optional(__S(1616, __c101, 0)),
           friendlyName: S.optional(S.String),
           created: S.optional(S.String),
           createdBy: S.optional(__S(496, __c31, 0)),
@@ -8172,20 +8396,20 @@ function __c97(j: number): any {
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
-          properties: S.optional(__S(1553, __c97, 1)),
+          properties: S.optional(__S(1537, __c96, 1)),
         }),
       ).annotate({ identifier: "HuntingBookmark" });
     case 3:
-      return S.Array(__S(1554, __c97, 2));
+      return S.Array(__S(1538, __c96, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1555, __c97, 3),
+          value: __S(1539, __c96, 3),
         }),
       ).annotate({ identifier: "IncidentBookmarkList" });
   }
 }
-function __c98(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8198,12 +8422,14 @@ function __c98(j: number): any {
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIncidentCommentsRequest" });
@@ -8212,13 +8438,13 @@ function __c98(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1569, __c98, 1),
+          value: __S(1553, __c97, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentCommentList" });
   }
 }
-function __c99(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8244,17 +8470,17 @@ function __c99(j: number): any {
         }),
       ).annotate({ identifier: "IncidentEntitiesResultsMetadata" });
     case 2:
-      return S.Array(__S(1585, __c99, 1));
+      return S.Array(__S(1569, __c98, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(1360, __c85, 0)),
-          metaData: S.optional(__S(1586, __c99, 2)),
+          entities: S.optional(__S(1344, __c84, 0)),
+          metaData: S.optional(__S(1570, __c98, 2)),
         }),
       ).annotate({ identifier: "IncidentEntitiesResponse" });
   }
 }
-function __c100(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8265,7 +8491,7 @@ function __c100(j: number): any {
           name: S.String.pipe(T.Label()),
           kind: S.String,
           etag: S.optional(S.String),
-          properties: S.optional(__S(1659, __c103, 11)),
+          properties: S.optional(__S(1643, __c102, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8277,7 +8503,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "CreateThreatIntelligenceIndicatorRequest" });
   }
 }
-function __c101(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8292,13 +8518,13 @@ function __c101(j: number): any {
       ).annotate({ identifier: "CreateThreatIntelligenceIndicatorResponse" });
   }
 }
-function __c102(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.Unknown);
   }
 }
-function __c103(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8308,7 +8534,7 @@ function __c103(j: number): any {
         }),
       ).annotate({ identifier: "ThreatIntelligenceKillChainPhase" });
     case 1:
-      return S.Array(__S(1648, __c103, 0));
+      return S.Array(__S(1632, __c102, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8317,16 +8543,16 @@ function __c103(j: number): any {
         }),
       ).annotate({ identifier: "ThreatIntelligenceParsedPatternTypeValue" });
     case 3:
-      return S.Array(__S(1650, __c103, 2));
+      return S.Array(__S(1634, __c102, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           patternTypeKey: S.optional(S.String),
-          patternTypeValues: S.optional(__S(1651, __c103, 3)),
+          patternTypeValues: S.optional(__S(1635, __c102, 3)),
         }),
       ).annotate({ identifier: "ThreatIntelligenceParsedPattern" });
     case 5:
-      return S.Array(__S(1652, __c103, 4));
+      return S.Array(__S(1636, __c102, 4));
     case 6:
       return S.Record(S.String, S.String);
     case 7:
@@ -8336,11 +8562,11 @@ function __c103(j: number): any {
           externalId: S.optional(S.String),
           sourceName: S.optional(S.String),
           url: S.optional(S.String),
-          hashes: S.optional(__S(1654, __c103, 6)),
+          hashes: S.optional(__S(1638, __c102, 6)),
         }),
       ).annotate({ identifier: "ThreatIntelligenceExternalReference" });
     case 8:
-      return S.Array(__S(1655, __c103, 7));
+      return S.Array(__S(1639, __c102, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -8350,7 +8576,7 @@ function __c103(j: number): any {
         }),
       ).annotate({ identifier: "ThreatIntelligenceGranularMarkingModel" });
     case 10:
-      return S.Array(__S(1657, __c103, 9));
+      return S.Array(__S(1641, __c102, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -8363,14 +8589,14 @@ function __c103(j: number): any {
           pattern: S.optional(S.String),
           patternType: S.optional(S.String),
           patternVersion: S.optional(S.String),
-          killChainPhases: S.optional(__S(1649, __c103, 1)),
-          parsedPattern: S.optional(__S(1653, __c103, 5)),
+          killChainPhases: S.optional(__S(1633, __c102, 1)),
+          parsedPattern: S.optional(__S(1637, __c102, 5)),
           externalId: S.optional(S.String),
           createdByRef: S.optional(S.String),
           defanged: S.optional(S.Boolean),
           externalLastUpdatedTimeUtc: S.optional(S.String),
-          externalReferences: S.optional(__S(1656, __c103, 8)),
-          granularMarkings: S.optional(__S(1658, __c103, 10)),
+          externalReferences: S.optional(__S(1640, __c102, 8)),
+          granularMarkings: S.optional(__S(1642, __c102, 10)),
           labels: S.optional(__S(544, __c34, 0)),
           revoked: S.optional(S.Boolean),
           confidence: S.optional(S.Number),
@@ -8381,9 +8607,44 @@ function __c103(j: number): any {
           validUntil: S.optional(S.String),
           created: S.optional(S.String),
           modified: S.optional(S.String),
-          extensions: S.optional(__S(1632, __c102, 0)),
+          extensions: S.optional(__S(1616, __c101, 0)),
         }),
       ).annotate({ identifier: "ThreatIntelligenceIndicatorPropertiesInput" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          incidentId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations",
+            code: 200,
+            apiVersion: "2025-09-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListIncidentRelationsRequest" });
+    case 1:
+      return S.Array(__S(881, __c55, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1649, __c103, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelationList" });
   }
 }
 function __c104(j: number): any {
@@ -8394,29 +8655,30 @@ function __c104(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          incidentId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListIncidentRelationsRequest" });
+      ).annotate({ identifier: "ListIncidentsRequest" });
     case 1:
-      return S.Array(__S(881, __c55, 1));
+      return S.Array(__S(773, __c48, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(1665, __c104, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "RelationList" });
+      ).annotate({ identifier: "IncidentList" });
   }
 }
 function __c105(j: number): any {
@@ -8427,45 +8689,15 @@ function __c105(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListIncidentsRequest" });
-    case 1:
-      return S.Array(__S(773, __c48, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(1681, __c105, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IncidentList" });
-  }
-}
-function __c106(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/tasks",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIncidentTasksRequest" });
@@ -8474,13 +8706,13 @@ function __c106(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1697, __c106, 1)),
+          value: __S(1681, __c105, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentTaskList" });
   }
 }
-function __c107(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8492,12 +8724,14 @@ function __c107(j: number): any {
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMetadataRequest" });
@@ -8506,22 +8740,25 @@ function __c107(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1713, __c107, 1),
+          value: __S(1697, __c106, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataList" });
   }
 }
-function __c108(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.SecurityInsights/operations",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -8537,24 +8774,24 @@ function __c108(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(1729, __c108, 1)),
+          display: S.optional(__S(1713, __c107, 1)),
           name: S.optional(S.String),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1730, __c108, 2));
+      return S.Array(__S(1714, __c107, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(1731, __c108, 3),
+          value: __S(1715, __c107, 3),
         }),
       ).annotate({ identifier: "OperationsList" });
   }
 }
-function __c109(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8567,12 +8804,14 @@ function __c109(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _search: S.optional(S.String.pipe(T.Query("$search"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductPackages",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductPackagesRequest" });
@@ -8581,13 +8820,13 @@ function __c109(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1745, __c109, 1),
+          value: __S(1729, __c108, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPackageList" });
   }
 }
-function __c110(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8602,12 +8841,14 @@ function __c110(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentProductTemplates",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductTemplatesRequest" });
@@ -8616,13 +8857,13 @@ function __c110(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1761, __c110, 1),
+          value: __S(1745, __c109, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductTemplateList" });
   }
 }
-function __c111(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8630,12 +8871,14 @@ function __c111(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/securityMLAnalyticsSettings",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSecurityMLAnalyticsSettingsRequest" });
@@ -8644,13 +8887,13 @@ function __c111(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1777, __c111, 1),
+          value: __S(1761, __c110, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityMLAnalyticsSettingsList" });
   }
 }
-function __c112(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8672,12 +8915,12 @@ function __c112(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1793, __c112, 1),
+          value: __S(1777, __c111, 1),
         }),
       ).annotate({ identifier: "SentinelOnboardingStatesList" });
   }
 }
-function __c113(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8686,12 +8929,14 @@ function __c113(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           properties: __S(400, __c25, 0),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/listRepositories",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSourceControlRepositoriesRequest" });
@@ -8705,17 +8950,17 @@ function __c113(j: number): any {
         }),
       ).annotate({ identifier: "Repo" });
     case 2:
-      return S.Array(__S(1809, __c113, 1));
+      return S.Array(__S(1793, __c112, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1810, __c113, 2),
+          value: __S(1794, __c112, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepoList" });
   }
 }
-function __c114(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8725,7 +8970,7 @@ function __c114(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           kind: S.String,
           etag: S.optional(S.String),
-          properties: S.optional(__S(1659, __c103, 11)),
+          properties: S.optional(__S(1643, __c102, 11)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8737,7 +8982,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "CreateThreatIntelligenceIndicatorIndicatorRequest" });
   }
 }
-function __c115(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8745,27 +8990,29 @@ function __c115(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSourceControlsRequest" });
     case 1:
-      return S.Array(__S(1435, __c89, 11));
+      return S.Array(__S(1419, __c88, 11));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1841, __c115, 1),
+          value: __S(1825, __c114, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceControlList" });
   }
 }
-function __c116(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8790,33 +9037,33 @@ function __c116(j: number): any {
         }),
       ).annotate({ identifier: "ThreatIntelligenceMetricEntity" });
     case 2:
-      return S.Array(__S(1857, __c116, 1));
+      return S.Array(__S(1841, __c115, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimeUtc: S.optional(S.String),
-          threatTypeMetrics: S.optional(__S(1858, __c116, 2)),
-          patternTypeMetrics: S.optional(__S(1858, __c116, 2)),
-          sourceMetrics: S.optional(__S(1858, __c116, 2)),
+          threatTypeMetrics: S.optional(__S(1842, __c115, 2)),
+          patternTypeMetrics: S.optional(__S(1842, __c115, 2)),
+          sourceMetrics: S.optional(__S(1842, __c115, 2)),
         }),
       ).annotate({ identifier: "ThreatIntelligenceMetric" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1859, __c116, 3)),
+          properties: S.optional(__S(1843, __c115, 3)),
         }),
       ).annotate({ identifier: "ThreatIntelligenceMetrics" });
     case 5:
-      return S.Array(__S(1860, __c116, 4));
+      return S.Array(__S(1844, __c115, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1861, __c116, 5),
+          value: __S(1845, __c115, 5),
         }),
       ).annotate({ identifier: "ThreatIntelligenceMetricsList" });
   }
 }
-function __c117(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8828,15 +9075,49 @@ function __c117(j: number): any {
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
           _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListThreatIntelligenceIndicatorsRequest" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          watchlistAlias: S.String.pipe(T.Label()),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems",
+            code: 200,
+            apiVersion: "2025-09-01",
+            nextLink: "nextLink",
+          }),
+        ),
+      ).annotate({ identifier: "ListWatchlistItemsRequest" });
+    case 1:
+      return S.Array(__S(1169, __c73, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1873, __c117, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WatchlistItemList" });
   }
 }
 function __c118(j: number): any {
@@ -8847,26 +9128,27 @@ function __c118(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          watchlistAlias: S.String.pipe(T.Label()),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
-      ).annotate({ identifier: "ListWatchlistItemsRequest" });
+      ).annotate({ identifier: "ListWatchlistsRequest" });
     case 1:
-      return S.Array(__S(1169, __c73, 1));
+      return S.Array(__S(1088, __c68, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: __S(1889, __c118, 1),
           nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "WatchlistItemList" });
+      ).annotate({ identifier: "WatchlistList" });
   }
 }
 function __c119(j: number): any {
@@ -8877,39 +9159,10 @@ function __c119(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListWatchlistsRequest" });
-    case 1:
-      return S.Array(__S(1088, __c68, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(1905, __c119, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WatchlistList" });
-  }
-}
-function __c120(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           kind: S.String,
           etag: S.optional(S.String),
-          properties: S.optional(__S(1659, __c103, 11)),
+          properties: S.optional(__S(1643, __c102, 11)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8921,7 +9174,7 @@ function __c120(j: number): any {
       ).annotate({ identifier: "ReplaceThreatIntelligenceIndicatorTagsRequest" });
   }
 }
-function __c121(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8944,7 +9197,7 @@ function __c121(j: number): any {
       ).annotate({ identifier: "RunEntityPlaybookRequest" });
   }
 }
-function __c122(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8966,7 +9219,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "RunIncidentPlaybookRequest" });
   }
 }
-function __c123(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8989,7 +9242,7 @@ function __c123(j: number): any {
       ).annotate({ identifier: "SecurityMLAnalyticsSettingsCreateOrUpdateRequest" });
   }
 }
-function __c124(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9010,7 +9263,7 @@ function __c124(j: number): any {
       ).annotate({ identifier: "ThreatIntelligenceIndicatorAppendTagsRequest" });
   }
 }
-function __c125(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9033,7 +9286,7 @@ function __c125(j: number): any {
       ).annotate({ identifier: "DataConnectorDefinitionsCreateOrUpdateRequest" });
   }
 }
-function __c126(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9043,7 +9296,7 @@ function __c126(j: number): any {
         }),
       ).annotate({ identifier: "ThreatIntelligenceSortingCriteria" });
     case 1:
-      return S.Array(__S(2016, __c126, 0));
+      return S.Array(__S(2000, __c125, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9056,25 +9309,27 @@ function __c126(j: number): any {
           minValidUntil: S.optional(S.String),
           maxValidUntil: S.optional(S.String),
           includeDisabled: S.optional(S.Boolean),
-          sortBy: S.optional(__S(2017, __c126, 1)),
+          sortBy: S.optional(__S(2001, __c125, 1)),
           sources: S.optional(__S(544, __c34, 0)),
           patternTypes: S.optional(__S(544, __c34, 0)),
           threatTypes: S.optional(__S(544, __c34, 0)),
           ids: S.optional(__S(544, __c34, 0)),
           keywords: S.optional(__S(544, __c34, 0)),
           skipToken: S.optional(S.String),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/queryIndicators",
             code: 200,
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ThreatIntelligenceIndicatorQueryIndicatorsRequest" });
   }
 }
-function __c127(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9094,7 +9349,7 @@ function __c127(j: number): any {
       ).annotate({ identifier: "UninstallContentPackageRequest" });
   }
 }
-function __c128(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9128,7 +9383,7 @@ function __c128(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           metadataName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(2048, __c128, 0)),
+          properties: S.optional(__S(2032, __c127, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9140,7 +9395,7 @@ function __c128(j: number): any {
       ).annotate({ identifier: "UpdateMetadataRequest" });
   }
 }
-function __c129(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9165,7 +9420,7 @@ function __c129(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           watchlistAlias: S.String.pipe(T.Label()),
           watchlistItemId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2064, __c129, 0)),
+          properties: S.optional(__S(2048, __c128, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9178,7 +9433,7 @@ function __c129(j: number): any {
       ).annotate({ identifier: "WatchlistItemsCreateOrUpdateRequest" });
   }
 }
-function __c130(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9213,7 +9468,7 @@ function __c130(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           watchlistAlias: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2080, __c130, 0)),
+          properties: S.optional(__S(2064, __c129, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({

@@ -94,6 +94,8 @@ export interface ListAccessTokensRequest {
   xMsClientRequestId?: string;
   /** Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format. */
   xMsUseragent?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The AccessToken items on this page */
 export type PagedAccessTokenValueList = Array<AccessToken>;
@@ -113,6 +115,8 @@ export interface ListTestRunsRequest {
   xMsClientRequestId?: string;
   /** Optional header to specify additional client information when the standard 'User-Agent' header cannot be explicitly set, such as when using Playwright Client. The value should follow the standard 'User-Agent' header format. */
   xMsUseragent?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The test run framework information. */
 export interface RunFramework {
@@ -276,33 +280,47 @@ export const GetWorkspaceBrowsers: API.OperationMethod<
 
 export type ListAccessTokensError = AzureOpError;
 /** Lists access tokens for the specified workspace ID. Supports OData query parameters: $select, $filter, $orderby, $top, and $skip. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID. */
-export const ListAccessTokens: API.OperationMethod<
+export const ListAccessTokens: API.PaginatedOperationMethod<
   ListAccessTokensRequest,
   PagedAccessToken,
   ListAccessTokensError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccessToken
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<ListAccessTokensRequest>,
   output: __S(50, __c6, 2) as any as S.Schema<PagedAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTestRunsError = AzureOpError;
 /** Lists test runs for the specified workspace ID. Supports OData query parameters such as $filter and $top. Default page size is 10. Use nextLink in response to fetch additional results. Requires Bearer JWT access token provided by Entra ID or Playwright Service. */
-export const ListTestRuns: API.OperationMethod<
+export const ListTestRuns: API.PaginatedOperationMethod<
   ListTestRunsRequest,
   PagedTestRun,
   ListTestRunsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TestRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListTestRunsRequest>,
   output: __S(58, __c7, 2) as any as S.Schema<PagedTestRun>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type TestRunsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a test run for the workspace with the specified test run ID. Requires Bearer JWT access token provided by Entra ID or Playwright Service. */
@@ -449,6 +467,7 @@ function __c6(j: number): any {
           workspaceId: S.String.pipe(T.Label()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
           xMsUseragent: S.optional(S.String.pipe(T.Header("x-ms-useragent"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -457,6 +476,7 @@ function __c6(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
             audience: "https://playwright.microsoft.com/.default",
           }),
         ),
@@ -481,6 +501,7 @@ function __c7(j: number): any {
           workspaceId: S.String.pipe(T.Label()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
           xMsUseragent: S.optional(S.String.pipe(T.Header("x-ms-useragent"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -489,6 +510,7 @@ function __c7(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-09-01",
+            nextLink: "nextLink",
             audience: "https://playwright.microsoft.com/.default",
           }),
         ),

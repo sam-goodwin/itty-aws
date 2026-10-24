@@ -15,33 +15,51 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.portalservices#OperationsList": "com.azure.portalservices#ListOperations",
+      "com.azure.portalservices#OperationsListResponse": "com.azure.portalservices#ListOperationsResponse",
+      "com.azure.portalservices#OperationsListResponseValueList": "com.azure.portalservices#ListOperationsResponseValueList",
+      "com.azure.portalservices#OperationsListRequest": "com.azure.portalservices#ListOperationsRequest",
+      "com.azure.portalservices#CopilotSettingsDelete": "com.azure.portalservices#DeleteCopilotSettings",
+      "com.azure.portalservices#CopilotSettingsUpdate": "com.azure.portalservices#UpdateCopilotSettings",
+      "com.azure.portalservices#CopilotSettingsUpdateResponse": "com.azure.portalservices#UpdateCopilotSettingsResponse",
+      "com.azure.portalservices#CopilotSettingsUpdateRequest": "com.azure.portalservices#UpdateCopilotSettingsRequest",
+      "com.azure.portalservices#CopilotSettingsGet": "com.azure.portalservices#GetCopilotSettings",
+      "com.azure.portalservices#CopilotSettingsGetResponse": "com.azure.portalservices#GetCopilotSettingsResponse"
+    }
   },
   "shapes": {
-    "com.azure.portalservices#ListOperations": {
+    "com.azure.portalservices#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.portalservices#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.portalservices#ListOperationsResponse"
+        "target": "com.azure.portalservices#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.PortalServices/operations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.portalservices#ListOperationsResponse": {
+    "com.azure.portalservices#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.portalservices#ListOperationsResponseValueList",
+          "target": "com.azure.portalservices#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -57,7 +75,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portalservices#ListOperationsResponseValueList": {
+    "com.azure.portalservices#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.portalservices#Operation"
@@ -176,7 +194,21 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.portalservices#DeleteCopilotSettings": {
+    "com.azure.portalservices#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.portalservices#CopilotSettingsDelete": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -195,13 +227,13 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.portalservices#UpdateCopilotSettings": {
+    "com.azure.portalservices#CopilotSettingsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portalservices#UpdateCopilotSettingsRequest"
+        "target": "com.azure.portalservices#CopilotSettingsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.portalservices#UpdateCopilotSettingsResponse"
+        "target": "com.azure.portalservices#CopilotSettingsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -214,7 +246,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.portalservices#UpdateCopilotSettingsResponse": {
+    "com.azure.portalservices#CopilotSettingsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -407,7 +439,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.portalservices#UpdateCopilotSettingsRequest": {
+    "com.azure.portalservices#CopilotSettingsUpdateRequest": {
       "type": "structure",
       "members": {
         "properties": {
@@ -521,13 +553,13 @@
         "smithy.api#documentation": "The Copilot Settings properties."
       }
     },
-    "com.azure.portalservices#GetCopilotSettings": {
+    "com.azure.portalservices#CopilotSettingsGet": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.portalservices#GetCopilotSettingsResponse"
+        "target": "com.azure.portalservices#CopilotSettingsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -540,7 +572,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.portalservices#GetCopilotSettingsResponse": {
+    "com.azure.portalservices#CopilotSettingsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -692,19 +724,19 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.portalservices#ListOperations"
+          "target": "com.azure.portalservices#OperationsList"
         },
         {
-          "target": "com.azure.portalservices#DeleteCopilotSettings"
+          "target": "com.azure.portalservices#CopilotSettingsDelete"
         },
         {
-          "target": "com.azure.portalservices#UpdateCopilotSettings"
+          "target": "com.azure.portalservices#CopilotSettingsUpdate"
         },
         {
           "target": "com.azure.portalservices#CopilotSettingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.portalservices#GetCopilotSettings"
+          "target": "com.azure.portalservices#CopilotSettingsGet"
         },
         {
           "target": "com.azure.portalservices#PortalTenantCompilefile"

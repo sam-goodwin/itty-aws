@@ -31,10 +31,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/skus",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets available SKUs for API Management gateway\n\nGets all available SKU for a given API Management gateway",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#GatewayResourceSkuResults": {
@@ -217,6 +224,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management gateway."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -236,10 +249,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/gateways",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all API Management gateways within a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ApiManagementGatewayListResult": {
@@ -646,6 +666,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -665,10 +691,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all API Management gateways within a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiGatewayByResourceGroupRequest": {
@@ -688,6 +721,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1734,10 +1773,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/allPolicies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Status of all policies of API Management services.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListAllPolicyByServiceResponse": {
@@ -1873,6 +1919,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1892,10 +1944,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/wikis",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the wikis for an API specified by its identifier.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiWikisResponse": {
@@ -2050,6 +2109,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2414,10 +2479,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operationsByTags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of operations associated with tags.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListOperationByTagsResponse": {
@@ -3099,6 +3171,12 @@
             "smithy.api#httpQuery": "includeNotTaggedOperations",
             "smithy.api#documentation": "Include not tagged Operations."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3398,10 +3476,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Tags associated with the API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagByApiResponse": {
@@ -3525,6 +3610,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3880,10 +3971,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/tagDescriptions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Tags descriptions in scope of API. Model similar to swagger - tagDescription is defined on API level but tag may be assigned to the Operations",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiTagDescriptionByServiceResponse": {
@@ -4007,6 +4105,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4351,10 +4455,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/attachments",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all attachments for the Issue associated with the specified API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiIssueAttachmentByServiceResponse": {
@@ -4486,6 +4597,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4829,10 +4946,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues/{issueId}/comments",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all comments for the Issue associated with the specified API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiIssueCommentByServiceResponse": {
@@ -4964,6 +5088,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5534,10 +5664,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/issues",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all issues associated with the specified API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiIssueByServiceResponse": {
@@ -5668,6 +5805,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6396,10 +6539,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/diagnostics",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all diagnostics of an API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiDiagnosticByServiceResponse": {
@@ -6523,6 +6673,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6911,10 +7067,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/schemas",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the schema configuration at the API level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiSchemaByApiResponse": {
@@ -7038,6 +7201,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7569,10 +7738,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/products",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Products, which the API is part of.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiProductByApisResponse": {
@@ -7767,6 +7943,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8143,10 +8325,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers/{resolverId}/policies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of policy configuration at the GraphQL API Resolver level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGraphQLApiResolverPolicyByResolverResponse": {
@@ -8225,6 +8414,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8673,10 +8868,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/resolvers",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the resolvers for the specified GraphQL API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGraphQLApiResolverByApiResponse": {
@@ -8800,6 +9002,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9109,10 +9317,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/tags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Tags associated with the Operation.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagByOperationResponse": {
@@ -9212,6 +9427,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10492,10 +10713,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the operations for the specified API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiOperationByApiResponse": {
@@ -10626,6 +10854,12 @@
           "traits": {
             "smithy.api#httpQuery": "tags",
             "smithy.api#documentation": "Include tags in the response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11074,10 +11308,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/releases",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all releases of an API. An API release is created when making an API Revision current. Releases are also used to rollback to previous revisions. Results will be paged and can be constrained by the $top and $skip parameters.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiReleaseByServiceResponse": {
@@ -11202,6 +11443,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11221,10 +11468,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/revisions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all revisions of an API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiRevisionByServiceResponse": {
@@ -11372,6 +11626,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12696,10 +12956,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all APIs of the API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiByServiceResponse": {
@@ -12830,6 +13097,12 @@
             "smithy.api#httpQuery": "expandApiVersionSet",
             "smithy.api#documentation": "Include full ApiVersionSet resource in response"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12849,10 +13122,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apisByTags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of apis associated with tags.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiByTagsResponse": {
@@ -12943,6 +13223,12 @@
           "traits": {
             "smithy.api#httpQuery": "includeNotTaggedApis",
             "smithy.api#documentation": "Include not tagged APIs."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13437,10 +13723,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apiVersionSets",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of API Version Sets in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiVersionSetByServiceResponse": {
@@ -13556,6 +13849,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13906,10 +14205,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of authorization access policy defined within a authorization.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListAuthorizationAccessPolicyByAuthorizationResponse": {
@@ -14041,6 +14347,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14593,10 +14905,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of authorization providers defined within a authorization provider.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListAuthorizationByAuthorizationProviderResponse": {
@@ -14720,6 +15039,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15077,10 +15402,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of authorization providers defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListAuthorizationProviderByServiceResponse": {
@@ -15190,6 +15522,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16234,10 +16572,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of authorization servers defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListAuthorizationServerByServiceResponse": {
@@ -16353,6 +16698,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17500,10 +17851,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of backends in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListBackendByServiceResponse": {
@@ -17619,6 +17977,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18051,10 +18415,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/caches",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of all external Caches in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListCacheByServiceResponse": {
@@ -18163,6 +18534,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18655,10 +19032,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of all certificates in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListCertificateByServiceResponse": {
@@ -18781,6 +19165,12 @@
           "traits": {
             "smithy.api#httpQuery": "isKeyVaultRefreshFailed",
             "smithy.api#documentation": "When set to true, the response contains only certificates entities which failed refresh."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19668,10 +20058,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes/{contentTypeId}/contentItems",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists developer portal's content items specified by the provided content type.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListContentItemByServiceResponse": {
@@ -19768,6 +20165,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Content type identifier."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20071,10 +20474,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/contentTypes",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the developer portal's content types. Content types describe content items' properties, validation rules, and constraints.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListContentTypeByServiceResponse": {
@@ -20163,6 +20573,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20361,10 +20777,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all soft-deleted services available for undelete for the given subscription.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListDeletedServiceBySubscriptionResponse": {
@@ -20443,6 +20866,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22189,10 +22618,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/service",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all API Management services within an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ApiManagementServiceListResult": {
@@ -22441,6 +22877,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -22460,10 +22902,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all API Management services within a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiManagementServiceByResourceGroupRequest": {
@@ -22483,6 +22932,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25247,10 +25702,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/skus",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets available SKUs for API Management service\n\nGets all available SKU for a given API Management service",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ResourceSkuResults": {
@@ -25463,6 +25925,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -25472,7 +25940,7 @@
     "com.azure.apimanagement#ListApiManagementOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.apimanagement#ListApiManagementOperationsRequest"
       },
       "output": {
         "target": "com.azure.apimanagement#OperationListResult"
@@ -25482,10 +25950,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ApiManagement/operations",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available REST API operations of the Microsoft.ApiManagement provider.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#OperationListResult": {
@@ -25579,6 +26054,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that describes the operation."
+      }
+    },
+    "com.azure.apimanagement#ListApiManagementOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.apimanagement#DeleteDiagnostic": {
@@ -25938,10 +26427,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/diagnostics",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all diagnostics of the API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListDiagnosticByServiceResponse": {
@@ -26025,6 +26521,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -26409,10 +26911,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/documentations",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Documentations of the API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListDocumentationByServiceResponse": {
@@ -26522,6 +27031,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -27374,10 +27889,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/templates",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all email templates",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListEmailTemplateByServiceResponse": {
@@ -27493,6 +28015,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -27856,10 +28384,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/gateways/{gatewayName}/configConnections",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all API Management gateway config connections within a gateway.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ApiManagementGatewayConfigConnectionListResult": {
@@ -27956,6 +28491,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management gateway."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28528,10 +29069,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/certificateAuthorities",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the collection of Certificate Authorities for the specified Gateway entity.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGatewayCertificateAuthorityByServiceResponse": {
@@ -28649,6 +29197,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -28869,10 +29423,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/apis",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the APIs associated with a gateway.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGatewayApiByServiceResponse": {
@@ -28964,6 +29525,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -29299,10 +29866,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways/{gatewayId}/hostnameConfigurations",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the collection of hostname configurations for the specified gateway.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGatewayHostnameConfigurationByServiceResponse": {
@@ -29420,6 +29994,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -30109,10 +30689,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/gateways",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of gateways registered with service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGatewayByServiceResponse": {
@@ -30228,6 +30815,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -30605,10 +31198,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of user entities associated with the group.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGroupUserResponse": {
@@ -30732,6 +31332,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -31278,10 +31884,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of groups defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGroupByServiceResponse": {
@@ -31397,6 +32010,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -32435,10 +33054,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of Identity Provider configured in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListIdentityProviderByServiceResponse": {
@@ -32533,6 +33159,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -32644,10 +33276,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/issues",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of issues in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListIssueByServiceResponse": {
@@ -32731,6 +33370,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -33242,10 +33887,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of loggers in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListLoggerByServiceResponse": {
@@ -33361,6 +34013,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -34080,10 +34738,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/namedValues",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of named values defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListNamedValueByServiceResponse": {
@@ -34206,6 +34871,12 @@
           "traits": {
             "smithy.api#httpQuery": "isKeyVaultRefreshFailed",
             "smithy.api#documentation": "When set to true, the response contains only named value entities which failed refresh."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -35745,10 +36416,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/notifications",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of properties defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListNotificationByServiceResponse": {
@@ -35857,6 +36535,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -36400,10 +37084,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists of all the OpenId Connect Providers.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListOpenIdConnectProviderByServiceResponse": {
@@ -36519,6 +37210,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -37006,10 +37703,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the Global Policy definitions of the Api Management service.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListPolicyByServiceResponse": {
@@ -37072,6 +37776,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -37787,10 +38497,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyFragments",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all policy fragments.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListPolicyFragmentByServiceResponse": {
@@ -37913,6 +38630,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -38317,10 +39040,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policyRestrictions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all policy restrictions of API Management services.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListPolicyRestrictionByServiceResponse": {
@@ -38404,6 +39134,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -39182,10 +39918,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalconfigs",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the developer portal configurations.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListPortalConfigByServiceResponse": {
@@ -39274,6 +40017,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -39705,10 +40454,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/portalRevisions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists developer portal's revisions.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListPortalRevisionByServiceResponse": {
@@ -39818,6 +40574,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -40496,7 +41258,11 @@
           "apiVersion": "2024-05-01"
         },
         "smithy.api#documentation": "Lists all private endpoint connections of the API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListPrivateEndpointConnectionByServiceResponse": {
@@ -40885,10 +41651,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groupLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the group links associated with a product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductGroupLinkByProductResponse": {
@@ -41012,6 +41785,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -41318,10 +42097,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apiLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the API links associated with a product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductApiLinkByProductResponse": {
@@ -41446,6 +42232,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -41465,10 +42257,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/wikis",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the details of the Wiki for a Product specified by its identifier.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductWikisResponse": {
@@ -41554,6 +42353,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -42183,10 +42988,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/tags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all Tags associated with the Product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagByProductResponse": {
@@ -42278,6 +43090,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -42630,10 +43448,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/policies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the policy configuration at the Product level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductPolicyByProductResponse": {
@@ -42705,6 +43530,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Product identifier. Must be unique in the current API Management service instance."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -42724,10 +43555,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/subscriptions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the collection of subscriptions to the specified product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductSubscriptionsResponse": {
@@ -42984,6 +43822,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -43169,10 +44013,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the collection of developer groups associated with the specified product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductGroupByProductResponse": {
@@ -43264,6 +44115,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -43450,10 +44307,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the APIs associated with a product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductApiByProductResponse": {
@@ -43545,6 +44409,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -43986,10 +44856,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of products in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductByServiceResponse": {
@@ -44088,6 +44965,12 @@
             "smithy.api#httpQuery": "tags",
             "smithy.api#documentation": "Products which are part of a specific tag."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -44107,10 +44990,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/productsByTags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of products associated with tags.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListProductByTagsResponse": {
@@ -44201,6 +45091,12 @@
           "traits": {
             "smithy.api#httpQuery": "includeNotTaggedProducts",
             "smithy.api#documentation": "Include not tagged Products."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -44701,10 +45597,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/regions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all azure regions in which the service exists.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListRegionByServiceResponse": {
@@ -44794,6 +45697,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -44816,7 +45725,11 @@
           "apiVersion": "2024-05-01"
         },
         "smithy.api#documentation": "Lists report records by Request.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByRequestResponse": {
@@ -45031,10 +45944,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byTime",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by Time.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByTimeResponse": {
@@ -45299,6 +46219,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "By time interval. Interval must be multiple of 15 minutes and may not be zero. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -45318,10 +46244,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/bySubscription",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by subscription.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportBySubscriptionResponse": {
@@ -45414,6 +46347,12 @@
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "OData order by query option."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -45433,10 +46372,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byGeo",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by geography.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByGeoResponse": {
@@ -45522,6 +46468,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -45541,10 +46493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byProduct",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by Product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByProductResponse": {
@@ -45637,6 +46596,12 @@
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "OData order by query option."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -45656,10 +46621,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byOperation",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by API Operations.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByOperationResponse": {
@@ -45752,6 +46724,12 @@
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "OData order by query option."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -45771,10 +46749,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byUser",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by User.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByUserResponse": {
@@ -45867,6 +46852,12 @@
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "OData order by query option."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -45886,10 +46877,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/byApi",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists report records by API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListReportByApiResponse": {
@@ -45981,6 +46979,12 @@
           "traits": {
             "smithy.api#httpQuery": "$orderby",
             "smithy.api#documentation": "OData order by query option."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -46374,10 +47378,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/schemas",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of schemas registered with service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListGlobalSchemaByServiceResponse": {
@@ -46494,6 +47505,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -46513,10 +47530,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/skus",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the list of Microsoft.ApiManagement SKUs available for your Subscription.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ApiManagementSkusResult": {
@@ -46999,6 +48023,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -47826,10 +48856,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all subscriptions of the API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListSubscriptionResponse": {
@@ -47914,6 +48951,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -47933,10 +48976,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tagResources",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of resources associated with tags.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagResourceByServiceResponse": {
@@ -48020,6 +49070,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -48326,10 +49382,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/productLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the product links associated with a tag.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagProductLinkByProductResponse": {
@@ -48453,6 +49516,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -48759,10 +49828,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/operationLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the operation links associated with a tag.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagOperationLinkByProductResponse": {
@@ -48886,6 +49962,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -49192,10 +50274,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags/{tagId}/apiLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the API links associated with a tag.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagApiLinkByProductResponse": {
@@ -49319,6 +50408,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -49683,10 +50778,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of tags defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTagByServiceResponse": {
@@ -49777,6 +50879,12 @@
           "traits": {
             "smithy.api#httpQuery": "scope",
             "smithy.api#documentation": "Scope like 'apis', 'products' or 'apis/{apiId}"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -51177,10 +52285,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of access infos - for Git and Management endpoints.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListTenantAccessByServiceResponse": {
@@ -51282,6 +52397,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Not used"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -51507,10 +52628,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/identities",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List of all user identities.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListUserIdentitiesResponse": {
@@ -51581,6 +52709,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "User identifier. Must be unique in the current API Management service instance."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -51700,10 +52834,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/subscriptions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the collection of subscriptions of the specified user.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListUserSubscriptionResponse": {
@@ -51796,6 +52937,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -51815,10 +52962,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{userId}/groups",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all user groups.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListUserGroupResponse": {
@@ -51910,6 +53064,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -52654,10 +53814,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of registered users in the specified service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListUserByServiceResponse": {
@@ -52748,6 +53915,12 @@
           "traits": {
             "smithy.api#httpQuery": "expandGroups",
             "smithy.api#documentation": "Detailed Group in response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -53144,10 +54317,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of backends in the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceBackendByWorkspaceResponse": {
@@ -53239,6 +54419,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -53629,10 +54815,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of all certificates in the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceCertificateByWorkspaceResponse": {
@@ -53731,6 +54924,12 @@
           "traits": {
             "smithy.api#httpQuery": "isKeyVaultRefreshFailed",
             "smithy.api#documentation": "When set to true, the response contains only certificates entities which failed refresh."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -54313,10 +55512,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all diagnostics of an API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiDiagnosticByWorkspaceResponse": {
@@ -54416,6 +55622,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -54812,10 +56024,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all diagnostics in the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceDiagnosticByWorkspaceResponse": {
@@ -54907,6 +56126,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -55066,10 +56291,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaceLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all API Management workspaceLinks for a service.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListApiManagementWorkspaceLinkByServiceResponse": {
@@ -55166,6 +56398,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the API Management service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -55562,10 +56800,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of loggers in the specified workspace.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceLoggerByWorkspaceResponse": {
@@ -55657,6 +56902,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -55972,10 +57223,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/productLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the product links associated with a tag.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceTagProductLinkByProductResponse": {
@@ -56075,6 +57333,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -56390,10 +57654,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/operationLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the operation links associated with a tag.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceTagOperationLinkByProductResponse": {
@@ -56493,6 +57764,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -56808,10 +58085,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags/{tagId}/apiLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the API links associated with a tag.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceTagApiLinkByProductResponse": {
@@ -56911,6 +58195,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -57307,10 +58597,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/tags",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of tags defined within a workspace in a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceTagByServiceResponse": {
@@ -57409,6 +58706,12 @@
           "traits": {
             "smithy.api#httpQuery": "scope",
             "smithy.api#documentation": "Scope like 'apis', 'products' or 'apis/{apiId}"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -58182,10 +59485,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/groupLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the group links associated with a product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceProductGroupLinkByProductResponse": {
@@ -58285,6 +59595,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -58600,10 +59916,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products/{productId}/apiLinks",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the API links associated with a product.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceProductApiLinkByProductResponse": {
@@ -58703,6 +60026,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -59106,10 +60435,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/products",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of products in the specified workspace in a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceProductByServiceResponse": {
@@ -59215,6 +60551,12 @@
           "traits": {
             "smithy.api#httpQuery": "tags",
             "smithy.api#documentation": "Products which are part of a specific tag."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -59551,10 +60893,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/schemas",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the schema configuration at the API level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiSchemaByApiResponse": {
@@ -59654,6 +61003,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -60030,10 +61385,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/policies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the policy configuration at the API level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiPolicyByApiResponse": {
@@ -60112,6 +61474,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -60512,10 +61880,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations/{operationId}/policies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of policy configuration at the API Operation level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiOperationPolicyByOperationResponse": {
@@ -60602,6 +61977,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Operation identifier within an API. Must be unique in the current API Management service instance."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -61030,10 +62411,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/operations",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of the operations for the specified API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiOperationByApiResponse": {
@@ -61140,6 +62528,12 @@
           "traits": {
             "smithy.api#httpQuery": "tags",
             "smithy.api#documentation": "Include tags in the response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -61568,10 +62962,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/releases",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all releases of an API. An API release is created when making an API Revision current. Releases are also used to rollback to previous revisions. Results will be paged and can be constrained by the $top and $skip parameters.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiReleaseByServiceResponse": {
@@ -61672,6 +63073,12 @@
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -61691,10 +63098,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/revisions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all revisions of an API.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiRevisionByServiceResponse": {
@@ -61794,6 +63208,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -62211,10 +63631,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all APIs of the workspace in an API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiByServiceResponse": {
@@ -62320,6 +63747,12 @@
           "traits": {
             "smithy.api#httpQuery": "expandApiVersionSet",
             "smithy.api#documentation": "Include full ApiVersionSet resource in response"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -62716,10 +64149,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apiVersionSets",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of API Version Sets in the specified workspace with a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceApiVersionSetByServiceResponse": {
@@ -62811,6 +64251,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -63492,10 +64938,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/subscriptions",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all subscriptions of the workspace in an API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceSubscriptionResponse": {
@@ -63587,6 +65040,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -63789,10 +65248,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups/{groupId}/users",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of user entities associated with the group.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceGroupUserResponse": {
@@ -63892,6 +65358,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -64288,10 +65760,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/groups",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of groups defined within a workspace in a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceGroupByServiceResponse": {
@@ -64383,6 +65862,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -64829,10 +66314,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policyFragments",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all policy fragments defined within a workspace.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspacePolicyFragmentByServiceResponse": {
@@ -64931,6 +66423,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -66101,10 +67599,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/notifications",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of properties defined within a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceNotificationByServiceResponse": {
@@ -66189,6 +67694,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -66494,10 +68005,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/schemas",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of schemas registered with workspace in a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceGlobalSchemaByServiceResponse": {
@@ -66589,6 +68107,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -67207,10 +68731,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/namedValues",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists a collection of named values defined within a workspace in a service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceNamedValueByServiceResponse": {
@@ -67309,6 +68840,12 @@
           "traits": {
             "smithy.api#httpQuery": "isKeyVaultRefreshFailed",
             "smithy.api#documentation": "Query parameter to fetch named value entities based on refresh status."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -67679,10 +69216,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/policies",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the policy configuration at the workspace level.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspacePolicyByApiResponse": {
@@ -67753,6 +69297,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Workspace identifier. Must be unique in the current API Management service instance."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -68138,10 +69688,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces",
           "code": 200,
-          "apiVersion": "2024-05-01"
+          "apiVersion": "2024-05-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all workspaces of the API Management service instance.",
-        "com.distilled.openapi#apiVersion": "2024-05-01"
+        "com.distilled.openapi#apiVersion": "2024-05-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.apimanagement#ListWorkspaceByServiceResponse": {
@@ -68257,6 +69814,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skip",
             "smithy.api#documentation": "Number of records to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

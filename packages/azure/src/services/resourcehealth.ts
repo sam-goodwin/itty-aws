@@ -681,6 +681,8 @@ export interface ImpactedResourcesListBySubscriptionIdAndEventIdRequest {
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Impacted resource for an event. */
 export interface EventImpactedResource {
@@ -709,6 +711,8 @@ export interface ImpactedResourcesListByTenantIdAndEventIdRequest {
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAvailabilityStatusByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -719,6 +723,8 @@ export interface ListAvailabilityStatusByResourceGroupRequest {
   _filter?: string;
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** availabilityStatus of a resource. */
 export interface AvailabilityStatus {
@@ -748,6 +754,8 @@ export interface ListAvailabilityStatusBySubscriptionIdRequest {
   _filter?: string;
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAvailabilityStatusesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -756,6 +764,8 @@ export interface ListAvailabilityStatusesRequest {
   _filter?: string;
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListChildAvailabilityStatusesRequest {
   /** undefined */
@@ -764,6 +774,8 @@ export interface ListChildAvailabilityStatusesRequest {
   _filter?: string;
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListChildResourcesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -772,8 +784,13 @@ export interface ListChildResourcesRequest {
   _filter?: string;
   /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
   _expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListEmergingIssuesRequest {}
+export interface ListEmergingIssuesRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The Get EmergingIssues operation response. */
 export interface EmergingIssuesGetResult {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -792,7 +809,7 @@ export type EmergingIssueListResultValueList = Array<EmergingIssuesGetResult>;
 /** The list of emerging issues. */
 export interface EmergingIssueListResult {
   /** The list of emerging issues. */
-  value?: EmergingIssueListResultValueList;
+  value: EmergingIssueListResultValueList;
   /** The link used to get the next page of emerging issues. */
   nextLink?: string;
 }
@@ -801,6 +818,8 @@ export interface ListEventBySingleResourceRequest {
   resourceUri: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Service health event */
 export interface Event {
@@ -831,14 +850,21 @@ export interface ListEventBySubscriptionIdRequest {
   _filter?: string;
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListEventByTenantIdRequest {
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListMetadataRequest {}
+export interface ListMetadataRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The metadata entity contract. */
 export interface MetadataEntity {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -857,7 +883,7 @@ export type MetadataEntityListResultValueList = Array<MetadataEntity>;
 /** The list of metadata entities */
 export interface MetadataEntityListResult {
   /** The list of metadata entities. */
-  value?: MetadataEntityListResultValueList;
+  value: MetadataEntityListResultValueList;
   /** The link used to get the next page of metadata. */
   nextLink?: string;
 }
@@ -894,12 +920,16 @@ export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdError = AzureOpError;
 /** Service health event details specific in the subscription by event tracking id. This can be used to fetch sensitive properties for Billing event type. */
@@ -1084,12 +1114,13 @@ export const GetMetadataEntity: API.OperationMethod<
 
 export type ImpactedResourcesListBySubscriptionIdAndEventIdError = AzureOpError;
 /** Lists impacted resources in the subscription by an event. */
-export const ImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMethod<
+export const ImpactedResourcesListBySubscriptionIdAndEventId: API.PaginatedOperationMethod<
   ImpactedResourcesListBySubscriptionIdAndEventIdRequest,
   EventImpactedResourceListResult,
   ImpactedResourcesListBySubscriptionIdAndEventIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventImpactedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     224,
     __c7,
@@ -1099,172 +1130,255 @@ export const ImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ImpactedResourcesListByTenantIdAndEventIdError = AzureOpError;
 /** Lists impacted resources in the tenant by an event. */
-export const ImpactedResourcesListByTenantIdAndEventId: API.OperationMethod<
+export const ImpactedResourcesListByTenantIdAndEventId: API.PaginatedOperationMethod<
   ImpactedResourcesListByTenantIdAndEventIdRequest,
   EventImpactedResourceListResult,
   ImpactedResourcesListByTenantIdAndEventIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventImpactedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<ImpactedResourcesListByTenantIdAndEventIdRequest>,
   output: __S(257, __c8, 1) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailabilityStatusByResourceGroupError = AzureOpError;
 /** Lists the current availability status for all the resources in the resource group. */
-export const ListAvailabilityStatusByResourceGroup: API.OperationMethod<
+export const ListAvailabilityStatusByResourceGroup: API.PaginatedOperationMethod<
   ListAvailabilityStatusByResourceGroupRequest,
   AvailabilityStatusListResult,
   ListAvailabilityStatusByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailabilityStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<ListAvailabilityStatusByResourceGroupRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailabilityStatusBySubscriptionIdError = AzureOpError;
 /** Lists the current availability status for all the resources in the subscription. */
-export const ListAvailabilityStatusBySubscriptionId: API.OperationMethod<
+export const ListAvailabilityStatusBySubscriptionId: API.PaginatedOperationMethod<
   ListAvailabilityStatusBySubscriptionIdRequest,
   AvailabilityStatusListResult,
   ListAvailabilityStatusBySubscriptionIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailabilityStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<ListAvailabilityStatusBySubscriptionIdRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAvailabilityStatusesError = AzureOpError;
 /** Lists all historical availability transitions and impacting events for a single resource. */
-export const ListAvailabilityStatuses: API.OperationMethod<
+export const ListAvailabilityStatuses: API.PaginatedOperationMethod<
   ListAvailabilityStatusesRequest,
   AvailabilityStatusListResult,
   ListAvailabilityStatusesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailabilityStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<ListAvailabilityStatusesRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListChildAvailabilityStatusesError = AzureOpError;
 /** Lists the historical availability statuses for a single child resource. Use the nextLink property in the response to get the next page of availability status */
-export const ListChildAvailabilityStatuses: API.OperationMethod<
+export const ListChildAvailabilityStatuses: API.PaginatedOperationMethod<
   ListChildAvailabilityStatusesRequest,
   AvailabilityStatusListResult,
   ListChildAvailabilityStatusesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailabilityStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<ListChildAvailabilityStatusesRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListChildResourcesError = AzureOpError;
 /** Lists the all the children and its current health status for a parent resource. Use the nextLink property in the response to get the next page of children current health */
-export const ListChildResources: API.OperationMethod<
+export const ListChildResources: API.PaginatedOperationMethod<
   ListChildResourcesRequest,
   AvailabilityStatusListResult,
   ListChildResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailabilityStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<ListChildResourcesRequest>,
   output: __S(353, __c11, 1) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEmergingIssuesError = AzureOpError;
 /** Lists Azure services' emerging issues. */
-export const ListEmergingIssues: API.OperationMethod<
+export const ListEmergingIssues: API.PaginatedOperationMethod<
   ListEmergingIssuesRequest,
   EmergingIssueListResult,
   ListEmergingIssuesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EmergingIssuesGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<ListEmergingIssuesRequest>,
   output: __S(514, __c16, 2) as any as S.Schema<EmergingIssueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEventBySingleResourceError = AzureOpError;
 /** Lists current service health events for given resource. */
-export const ListEventBySingleResource: API.OperationMethod<
+export const ListEventBySingleResource: API.PaginatedOperationMethod<
   ListEventBySingleResourceRequest,
   Events,
   ListEventBySingleResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ListEventBySingleResourceRequest>,
   output: __S(577, __c18, 1) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEventBySubscriptionIdError = AzureOpError;
 /** Lists service health events in the subscription. */
-export const ListEventBySubscriptionId: API.OperationMethod<
+export const ListEventBySubscriptionId: API.PaginatedOperationMethod<
   ListEventBySubscriptionIdRequest,
   Events,
   ListEventBySubscriptionIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListEventBySubscriptionIdRequest>,
   output: __S(577, __c18, 1) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEventByTenantIdError = AzureOpError;
 /** Lists current service health events in the tenant. */
-export const ListEventByTenantId: API.OperationMethod<
+export const ListEventByTenantId: API.PaginatedOperationMethod<
   ListEventByTenantIdRequest,
   Events,
   ListEventByTenantIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Event
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<ListEventByTenantIdRequest>,
   output: __S(577, __c18, 1) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMetadataError = AzureOpError;
 /** Gets the list of metadata entities. */
-export const ListMetadata: API.OperationMethod<
+export const ListMetadata: API.PaginatedOperationMethod<
   ListMetadataRequest,
   MetadataEntityListResult,
   ListMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetadataEntity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<ListMetadataRequest>,
   output: __S(706, __c22, 2) as any as S.Schema<MetadataEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists available operations for the resourcehealth resource provider */
@@ -1283,12 +1397,13 @@ export const ListOperations: API.OperationMethod<
 
 export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdError = AzureOpError;
 /** Lists impacted resources in the subscription by an event (Security Advisory). */
-export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMethod<
+export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId: API.PaginatedOperationMethod<
   SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest,
   EventImpactedResourceListResult,
   SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventImpactedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     768,
     __c24,
@@ -1298,16 +1413,23 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId: AP
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdError = AzureOpError;
 /** Lists impacted resources in the tenant by an event (Security Advisory). */
-export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId: API.OperationMethod<
+export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId: API.PaginatedOperationMethod<
   SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest,
   EventImpactedResourceListResult,
   SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventImpactedResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     800,
     __c25,
@@ -1317,7 +1439,13 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId: API.Oper
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -1591,12 +1719,14 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           eventTrackingId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ImpactedResourcesListBySubscriptionIdAndEventIdRequest" });
@@ -1622,12 +1752,14 @@ function __c9(j: number): any {
         S.Struct({
           eventTrackingId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ImpactedResourcesListByTenantIdAndEventIdRequest" });
@@ -1642,12 +1774,14 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailabilityStatusByResourceGroupRequest" });
@@ -1674,12 +1808,14 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailabilityStatusBySubscriptionIdRequest" });
@@ -1693,12 +1829,14 @@ function __c13(j: number): any {
           resourceUri: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/availabilityStatuses",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailabilityStatusesRequest" });
@@ -1712,12 +1850,14 @@ function __c14(j: number): any {
           resourceUri: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListChildAvailabilityStatusesRequest" });
@@ -1731,12 +1871,14 @@ function __c15(j: number): any {
           resourceUri: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/childResources",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListChildResourcesRequest" });
@@ -1746,12 +1888,15 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ResourceHealth/emergingIssues",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEmergingIssuesRequest" });
@@ -1760,7 +1905,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(513, __c16, 1)),
+          value: __S(513, __c16, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmergingIssueListResult" });
@@ -1773,12 +1918,14 @@ function __c17(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/events",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEventBySingleResourceRequest" });
@@ -1822,12 +1969,14 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           queryStartTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEventBySubscriptionIdRequest" });
@@ -1840,12 +1989,14 @@ function __c21(j: number): any {
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           queryStartTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ResourceHealth/events",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEventByTenantIdRequest" });
@@ -1855,12 +2006,15 @@ function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.ResourceHealth/metadata",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMetadataRequest" });
@@ -1869,7 +2023,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(705, __c22, 1)),
+          value: __S(705, __c22, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataEntityListResult" });
@@ -1922,12 +2076,14 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           eventTrackingId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({
@@ -1942,12 +2098,14 @@ function __c25(j: number): any {
         S.Struct({
           eventTrackingId: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
             code: 200,
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({

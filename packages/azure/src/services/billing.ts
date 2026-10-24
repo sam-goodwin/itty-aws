@@ -492,6 +492,8 @@ export interface BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissio
   billingAccountName: string;
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The status of the billing profile. */
 export type BillingProfileStatus =
@@ -4820,6 +4822,8 @@ export interface ListAgreementByBillingAccountRequest {
   billingAccountName: string;
   /** May be used to expand the participants. */
   expand?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AgreementTagsMap = { [key: string]: string | undefined };
@@ -4864,6 +4868,8 @@ export interface ListAssociatedTenantByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type AssociatedTenantTagsMap = { [key: string]: string | undefined };
@@ -4916,6 +4922,8 @@ export interface ListBillingAccountsRequest {
   skip?: number;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingAccountTagsMap = { [key: string]: string | undefined };
@@ -4946,6 +4954,8 @@ export interface BillingAccountListResult {
 export interface ListBillingPermissionsByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The BillingPermission items on this page */
 export type BillingPermissionListResultValueList = Array<BillingPermission>;
@@ -4961,6 +4971,8 @@ export interface ListBillingPermissionsByBillingProfileRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingPermissionsByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4969,24 +4981,32 @@ export interface ListBillingPermissionsByCustomerRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingPermissionsByCustomerAtBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingPermissionsByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the department. */
   departmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingPermissionsByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the enrollment account. */
   enrollmentAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingPermissionsByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -4995,6 +5015,8 @@ export interface ListBillingPermissionsByInvoiceSectionRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingProfileByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5013,6 +5035,8 @@ export interface ListBillingProfileByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingProfileTagsMap = { [key: string]: string | undefined };
@@ -5055,6 +5079,8 @@ export interface ListBillingRequestByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRequestTagsMap = { [key: string]: string | undefined };
@@ -5099,6 +5125,8 @@ export interface ListBillingRequestByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRequestByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5119,6 +5147,8 @@ export interface ListBillingRequestByCustomerRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRequestByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5139,6 +5169,8 @@ export interface ListBillingRequestByInvoiceSectionRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRequestByUserRequest {
   /** The filter query option allows clients to filter a collection of resources that are addressed by a request URL. */
@@ -5153,6 +5185,8 @@ export interface ListBillingRequestByUserRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleAssignmentByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5163,6 +5197,8 @@ export interface ListBillingRoleAssignmentByBillingAccountRequest {
   top?: number;
   /** The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result. */
   skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Paged collection of BillingRoleAssignment items */
 export interface BillingRoleAssignmentListResult {
@@ -5182,6 +5218,8 @@ export interface ListBillingRoleAssignmentByBillingProfileRequest {
   top?: number;
   /** The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result. */
   skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleAssignmentByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5196,18 +5234,24 @@ export interface ListBillingRoleAssignmentByCustomerRequest {
   top?: number;
   /** The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result. */
   skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleAssignmentByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the department. */
   departmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleAssignmentByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the enrollment account. */
   enrollmentAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleAssignmentByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5222,10 +5266,14 @@ export interface ListBillingRoleAssignmentByInvoiceSectionRequest {
   top?: number;
   /** The skip query option requests the number of items in the queried collection that are to be skipped and not included in the result. */
   skip?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleDefinitionByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingRoleDefinitionTagsMap = { [key: string]: string | undefined };
@@ -5258,6 +5306,8 @@ export interface ListBillingRoleDefinitionByBillingProfileRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleDefinitionByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5266,18 +5316,24 @@ export interface ListBillingRoleDefinitionByCustomerRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleDefinitionByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the department. */
   departmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleDefinitionByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the enrollment account. */
   enrollmentAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingRoleDefinitionByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5286,6 +5342,8 @@ export interface ListBillingRoleDefinitionByInvoiceSectionRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingSubscriptionByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5310,6 +5368,8 @@ export interface ListBillingSubscriptionByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingSubscriptionTagsMap = { [key: string]: string | undefined };
@@ -5337,7 +5397,7 @@ export interface BillingSubscriptionListResult {
   /** Total number of records. */
   totalCount?: number;
   /** The list of resources. */
-  value?: BillingSubscriptionListResultValueList;
+  value: BillingSubscriptionListResultValueList;
 }
 export interface ListBillingSubscriptionByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5360,6 +5420,8 @@ export interface ListBillingSubscriptionByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingSubscriptionByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5384,6 +5446,8 @@ export interface ListBillingSubscriptionByCustomerRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingSubscriptionByCustomerAtBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5406,6 +5470,8 @@ export interface ListBillingSubscriptionByCustomerAtBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingSubscriptionByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5424,6 +5490,8 @@ export interface ListBillingSubscriptionByEnrollmentAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingSubscriptionByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5448,6 +5516,8 @@ export interface ListBillingSubscriptionByInvoiceSectionRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingSubscriptionsAliasByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5466,6 +5536,8 @@ export interface ListBillingSubscriptionsAliasByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type BillingSubscriptionAliasTagsMap = { [key: string]: string | undefined };
@@ -5510,6 +5582,8 @@ export interface ListCustomerByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type CustomerTagsMap = { [key: string]: string | undefined };
@@ -5556,6 +5630,8 @@ export interface ListCustomerByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDepartmentByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5570,6 +5646,8 @@ export interface ListDepartmentByBillingAccountRequest {
   skip?: number;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type DepartmentTagsMap = { [key: string]: string | undefined };
@@ -5612,6 +5690,8 @@ export interface ListEnrollmentAccountByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type EnrollmentAccountTagsMap = { [key: string]: string | undefined };
@@ -5656,6 +5736,8 @@ export interface ListEnrollmentAccountByDepartmentRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListInvoiceByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5676,6 +5758,8 @@ export interface ListInvoiceByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceTagsMap = { [key: string]: string | undefined };
@@ -5724,6 +5808,8 @@ export interface ListInvoiceByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListInvoiceByBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing subscription. */
@@ -5744,6 +5830,8 @@ export interface ListInvoiceByBillingSubscriptionRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListInvoiceSectionByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5764,6 +5852,8 @@ export interface ListInvoiceSectionByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type InvoiceSectionTagsMap = { [key: string]: string | undefined };
@@ -5791,7 +5881,10 @@ export interface InvoiceSectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
@@ -5817,7 +5910,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list billing operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of billing operations supported by the Microsoft.Billing resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -5828,6 +5921,8 @@ export interface ListPartnerTransfersRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PartnerTransferDetailsTagsMap = { [key: string]: string | undefined };
@@ -5858,6 +5953,8 @@ export interface PartnerTransferDetailsListResult {
 export interface ListPaymentMethodByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PaymentMethodTagsMap = { [key: string]: string | undefined };
@@ -5890,6 +5987,8 @@ export interface ListPaymentMethodByBillingProfileRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PaymentMethodLinkTagsMap = { [key: string]: string | undefined };
@@ -5917,7 +6016,10 @@ export interface PaymentMethodLinksListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListPaymentMethodByUserRequest {}
+export interface ListPaymentMethodByUserRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 export interface ListProductByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -5933,6 +6035,8 @@ export interface ListProductByBillingAccountRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type ProductTagsMap = { [key: string]: string | undefined };
@@ -5977,6 +6081,8 @@ export interface ListProductByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProductByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -5995,6 +6101,8 @@ export interface ListProductByCustomerRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProductByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6015,8 +6123,13 @@ export interface ListProductByInvoiceSectionRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListRecipientTransfersRequest {}
+export interface ListRecipientTransfersRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type RecipientTransferDetailsTagsMap = { [key: string]: string | undefined };
 /** Details of the transfer. */
@@ -6058,6 +6171,8 @@ export interface ListReservationByBillingAccountRequest {
   selectedState?: string;
   /** The number of reservations to return in API response. */
   take?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The roll up count summary of reservations in each state */
 export interface ReservationSummary {
@@ -6089,7 +6204,7 @@ export interface ReservationsListResult {
   /** The roll out count summary of the reservations */
   summary?: ReservationSummary;
   /** The list of reservations. */
-  value?: ReservationsListResultValueList;
+  value: ReservationsListResultValueList;
 }
 export interface ListReservationByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6108,12 +6223,16 @@ export interface ListReservationByBillingProfileRequest {
   selectedState?: string;
   /** The number of reservations to return in API response. */
   take?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListReservationByReservationOrderRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** Order Id of the reservation */
   reservationOrderId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Reservation items on this page */
 export type ReservationListValueList = Array<Reservation>;
@@ -6133,6 +6252,8 @@ export interface ListReservationOrderByBillingAccountRequest {
   orderBy?: string;
   /** The number of reservations to skip from the list before returning results */
   skiptoken?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags for this reservation */
 export type ReservationOrderTagsMap = { [key: string]: string | undefined };
@@ -6176,6 +6297,8 @@ export interface ListSavingsPlanByBillingAccountRequest {
   selectedState?: string;
   /** To indicate whether to refresh the roll up counts of the savings plans group by provisioning states */
   refreshSummary?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type SavingsPlanModelTagsMap = { [key: string]: string | undefined };
@@ -6232,6 +6355,8 @@ export interface ListSavingsPlanBySavingsPlanOrderRequest {
   billingAccountName: string;
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The SavingsPlanModel items on this page */
 export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
@@ -6251,6 +6376,8 @@ export interface ListSavingsPlanOrderByBillingAccountRequest {
   orderBy?: string;
   /** The number of savings plans to skip from the list before returning results */
   skiptoken?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type SavingsPlanOrderModelTagsMap = { [key: string]: string | undefined };
@@ -6304,6 +6431,8 @@ export interface ListTransactionByBillingProfileRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type TransactionTagsMap = { [key: string]: string | undefined };
@@ -6456,6 +6585,8 @@ export interface ListTransactionByCustomerRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTransactionByInvoiceRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6474,6 +6605,8 @@ export interface ListTransactionByInvoiceRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListTransactionByInvoiceSectionRequestType = "Other" | "Billed" | "Unbilled";
 export interface ListTransactionByInvoiceSectionRequest {
@@ -6501,6 +6634,8 @@ export interface ListTransactionByInvoiceSectionRequest {
   count?: boolean;
   /** The search query option allows clients to request items within a collection matching a free-text search expression. search is only supported for string fields. */
   search?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTransfersRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -6509,6 +6644,8 @@ export interface ListTransfersRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type TransferDetailsTagsMap = { [key: string]: string | undefined };
@@ -7432,12 +7569,13 @@ export const AssociatedTenantsCreateOrUpdate: API.OperationMethod<
 
 export type BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionError = AzureOpError;
 /** Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission: API.OperationMethod<
+export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission: API.PaginatedOperationMethod<
   BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionRequest,
   InvoiceSectionWithCreateSubPermissionListResult,
   BillingAccountsListInvoiceSectionsByCreateSubscriptionPermissionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  InvoiceSectionWithCreateSubPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2496,
     __c156,
@@ -7447,7 +7585,13 @@ export const BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission: A
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type BillingProfilesCreateOrUpdateError = AzureOpError;
 /** Creates or updates a billing profile. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement and Microsoft Partner Agreement. If you are a MCA Individual (Pay-as-you-go) customer, then please use the Azure portal experience to create the billing profile. */
@@ -9055,102 +9199,145 @@ export const InvoiceSectionsValidateDeleteEligibility: API.OperationMethod<
 
 export type ListAgreementByBillingAccountError = AzureOpError;
 /** Lists the agreements for a billing account. */
-export const ListAgreementByBillingAccount: API.OperationMethod<
+export const ListAgreementByBillingAccount: API.PaginatedOperationMethod<
   ListAgreementByBillingAccountRequest,
   AgreementListResult,
   ListAgreementByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Agreement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<ListAgreementByBillingAccountRequest>,
   output: __S(290, __c18, 2) as any as S.Schema<AgreementListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssociatedTenantByBillingAccountError = AzureOpError;
 /** Lists the associated tenants that can collaborate with the billing account on commerce activities like viewing and downloading invoices, managing payments, making purchases, and managing or provisioning licenses. */
-export const ListAssociatedTenantByBillingAccount: API.OperationMethod<
+export const ListAssociatedTenantByBillingAccount: API.PaginatedOperationMethod<
   ListAssociatedTenantByBillingAccountRequest,
   AssociatedTenantListResult,
   ListAssociatedTenantByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssociatedTenant
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(304, __c19, 0) as any as S.Schema<ListAssociatedTenantByBillingAccountRequest>,
   output: __S(306, __c19, 2) as any as S.Schema<AssociatedTenantListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingAccountsError = AzureOpError;
 /** Lists the billing accounts that a user has access to. */
-export const ListBillingAccounts: API.OperationMethod<
+export const ListBillingAccounts: API.PaginatedOperationMethod<
   ListBillingAccountsRequest,
   BillingAccountListResult,
   ListBillingAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListBillingAccountsRequest>,
   output: __S(322, __c20, 2) as any as S.Schema<BillingAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByBillingAccountError = AzureOpError;
 /** Lists the billing permissions the caller has on a billing account. */
-export const ListBillingPermissionsByBillingAccount: API.OperationMethod<
+export const ListBillingPermissionsByBillingAccount: API.PaginatedOperationMethod<
   ListBillingPermissionsByBillingAccountRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<ListBillingPermissionsByBillingAccountRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByBillingProfileError = AzureOpError;
 /** Lists the billing permissions the caller has on a billing profile. */
-export const ListBillingPermissionsByBillingProfile: API.OperationMethod<
+export const ListBillingPermissionsByBillingProfile: API.PaginatedOperationMethod<
   ListBillingPermissionsByBillingProfileRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<ListBillingPermissionsByBillingProfileRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByCustomerError = AzureOpError;
 /** Lists the billing permissions the caller has for a customer. */
-export const ListBillingPermissionsByCustomer: API.OperationMethod<
+export const ListBillingPermissionsByCustomer: API.PaginatedOperationMethod<
   ListBillingPermissionsByCustomerRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ListBillingPermissionsByCustomerRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByCustomerAtBillingAccountError = AzureOpError;
 /** Lists the billing permissions the caller has for a customer at billing account level. */
-export const ListBillingPermissionsByCustomerAtBillingAccount: API.OperationMethod<
+export const ListBillingPermissionsByCustomerAtBillingAccount: API.PaginatedOperationMethod<
   ListBillingPermissionsByCustomerAtBillingAccountRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByCustomerAtBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     400,
     __c25,
@@ -9160,376 +9347,551 @@ export const ListBillingPermissionsByCustomerAtBillingAccount: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByDepartmentError = AzureOpError;
 /** Lists the billing permissions the caller has for a department. */
-export const ListBillingPermissionsByDepartment: API.OperationMethod<
+export const ListBillingPermissionsByDepartment: API.PaginatedOperationMethod<
   ListBillingPermissionsByDepartmentRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByDepartmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<ListBillingPermissionsByDepartmentRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByEnrollmentAccountError = AzureOpError;
 /** Lists the billing permissions the caller has for an enrollment account. */
-export const ListBillingPermissionsByEnrollmentAccount: API.OperationMethod<
+export const ListBillingPermissionsByEnrollmentAccount: API.PaginatedOperationMethod<
   ListBillingPermissionsByEnrollmentAccountRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByEnrollmentAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<ListBillingPermissionsByEnrollmentAccountRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingPermissionsByInvoiceSectionError = AzureOpError;
 /** Lists the billing permissions the caller has for an invoice section. */
-export const ListBillingPermissionsByInvoiceSection: API.OperationMethod<
+export const ListBillingPermissionsByInvoiceSection: API.PaginatedOperationMethod<
   ListBillingPermissionsByInvoiceSectionRequest,
   BillingPermissionListResult,
   ListBillingPermissionsByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingPermission
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(448, __c28, 0) as any as S.Schema<ListBillingPermissionsByInvoiceSectionRequest>,
   output: __S(352, __c22, 0) as any as S.Schema<BillingPermissionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingProfileByBillingAccountError = AzureOpError;
 /** Lists the billing profiles that a user has access to. The operation is supported for billing accounts with agreement of type Microsoft Customer Agreement and Microsoft Partner Agreement. */
-export const ListBillingProfileByBillingAccount: API.OperationMethod<
+export const ListBillingProfileByBillingAccount: API.PaginatedOperationMethod<
   ListBillingProfileByBillingAccountRequest,
   BillingProfileListResult,
   ListBillingProfileByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(480, __c30, 0) as any as S.Schema<ListBillingProfileByBillingAccountRequest>,
   output: __S(482, __c30, 2) as any as S.Schema<BillingProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRequestByBillingAccountError = AzureOpError;
 /** The list of billing requests submitted for the billing account. */
-export const ListBillingRequestByBillingAccount: API.OperationMethod<
+export const ListBillingRequestByBillingAccount: API.PaginatedOperationMethod<
   ListBillingRequestByBillingAccountRequest,
   BillingRequestListResult,
   ListBillingRequestByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(496, __c31, 0) as any as S.Schema<ListBillingRequestByBillingAccountRequest>,
   output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRequestByBillingProfileError = AzureOpError;
 /** The list of billing requests submitted for the billing profile. */
-export const ListBillingRequestByBillingProfile: API.OperationMethod<
+export const ListBillingRequestByBillingProfile: API.PaginatedOperationMethod<
   ListBillingRequestByBillingProfileRequest,
   BillingRequestListResult,
   ListBillingRequestByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(528, __c33, 0) as any as S.Schema<ListBillingRequestByBillingProfileRequest>,
   output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRequestByCustomerError = AzureOpError;
 /** The list of billing requests submitted for the customer. */
-export const ListBillingRequestByCustomer: API.OperationMethod<
+export const ListBillingRequestByCustomer: API.PaginatedOperationMethod<
   ListBillingRequestByCustomerRequest,
   BillingRequestListResult,
   ListBillingRequestByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c34, 0) as any as S.Schema<ListBillingRequestByCustomerRequest>,
   output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRequestByInvoiceSectionError = AzureOpError;
 /** The list of billing requests submitted for the invoice section. */
-export const ListBillingRequestByInvoiceSection: API.OperationMethod<
+export const ListBillingRequestByInvoiceSection: API.PaginatedOperationMethod<
   ListBillingRequestByInvoiceSectionRequest,
   BillingRequestListResult,
   ListBillingRequestByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<ListBillingRequestByInvoiceSectionRequest>,
   output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRequestByUserError = AzureOpError;
 /** The list of billing requests submitted by a user. */
-export const ListBillingRequestByUser: API.OperationMethod<
+export const ListBillingRequestByUser: API.PaginatedOperationMethod<
   ListBillingRequestByUserRequest,
   BillingRequestListResult,
   ListBillingRequestByUserError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRequest
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c36, 0) as any as S.Schema<ListBillingRequestByUserRequest>,
   output: __S(513, __c32, 1) as any as S.Schema<BillingRequestListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleAssignmentByBillingAccountError = AzureOpError;
 /** Lists the role assignments for the caller on a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement. */
-export const ListBillingRoleAssignmentByBillingAccount: API.OperationMethod<
+export const ListBillingRoleAssignmentByBillingAccount: API.PaginatedOperationMethod<
   ListBillingRoleAssignmentByBillingAccountRequest,
   BillingRoleAssignmentListResult,
   ListBillingRoleAssignmentByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(592, __c37, 0) as any as S.Schema<ListBillingRoleAssignmentByBillingAccountRequest>,
   output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleAssignmentByBillingProfileError = AzureOpError;
 /** Lists the role assignments for the caller on a billing profile. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement. */
-export const ListBillingRoleAssignmentByBillingProfile: API.OperationMethod<
+export const ListBillingRoleAssignmentByBillingProfile: API.PaginatedOperationMethod<
   ListBillingRoleAssignmentByBillingProfileRequest,
   BillingRoleAssignmentListResult,
   ListBillingRoleAssignmentByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(624, __c39, 0) as any as S.Schema<ListBillingRoleAssignmentByBillingProfileRequest>,
   output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleAssignmentByCustomerError = AzureOpError;
 /** Lists the role assignments for the caller on customer. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListBillingRoleAssignmentByCustomer: API.OperationMethod<
+export const ListBillingRoleAssignmentByCustomer: API.PaginatedOperationMethod<
   ListBillingRoleAssignmentByCustomerRequest,
   BillingRoleAssignmentListResult,
   ListBillingRoleAssignmentByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<ListBillingRoleAssignmentByCustomerRequest>,
   output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleAssignmentByDepartmentError = AzureOpError;
 /** Lists the role assignments for the caller on a department. The operation is supported for billing accounts of type Enterprise Agreement. */
-export const ListBillingRoleAssignmentByDepartment: API.OperationMethod<
+export const ListBillingRoleAssignmentByDepartment: API.PaginatedOperationMethod<
   ListBillingRoleAssignmentByDepartmentRequest,
   BillingRoleAssignmentListResult,
   ListBillingRoleAssignmentByDepartmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(656, __c41, 0) as any as S.Schema<ListBillingRoleAssignmentByDepartmentRequest>,
   output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleAssignmentByEnrollmentAccountError = AzureOpError;
 /** Lists the role assignments for the caller on a enrollment account. The operation is supported for billing accounts of type Enterprise Agreement. */
-export const ListBillingRoleAssignmentByEnrollmentAccount: API.OperationMethod<
+export const ListBillingRoleAssignmentByEnrollmentAccount: API.PaginatedOperationMethod<
   ListBillingRoleAssignmentByEnrollmentAccountRequest,
   BillingRoleAssignmentListResult,
   ListBillingRoleAssignmentByEnrollmentAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(688, __c43, 0) as any as S.Schema<ListBillingRoleAssignmentByEnrollmentAccountRequest>,
   output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleAssignmentByInvoiceSectionError = AzureOpError;
 /** Lists the role assignments for the caller on an invoice section. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListBillingRoleAssignmentByInvoiceSection: API.OperationMethod<
+export const ListBillingRoleAssignmentByInvoiceSection: API.PaginatedOperationMethod<
   ListBillingRoleAssignmentByInvoiceSectionRequest,
   BillingRoleAssignmentListResult,
   ListBillingRoleAssignmentByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleAssignment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c44, 0) as any as S.Schema<ListBillingRoleAssignmentByInvoiceSectionRequest>,
   output: __S(608, __c38, 0) as any as S.Schema<BillingRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleDefinitionByBillingAccountError = AzureOpError;
 /** Lists the role definitions for a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement. */
-export const ListBillingRoleDefinitionByBillingAccount: API.OperationMethod<
+export const ListBillingRoleDefinitionByBillingAccount: API.PaginatedOperationMethod<
   ListBillingRoleDefinitionByBillingAccountRequest,
   BillingRoleDefinitionListResult,
   ListBillingRoleDefinitionByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(720, __c45, 0) as any as S.Schema<ListBillingRoleDefinitionByBillingAccountRequest>,
   output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleDefinitionByBillingProfileError = AzureOpError;
 /** Lists the role definitions for a billing profile. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement. */
-export const ListBillingRoleDefinitionByBillingProfile: API.OperationMethod<
+export const ListBillingRoleDefinitionByBillingProfile: API.PaginatedOperationMethod<
   ListBillingRoleDefinitionByBillingProfileRequest,
   BillingRoleDefinitionListResult,
   ListBillingRoleDefinitionByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(752, __c47, 0) as any as S.Schema<ListBillingRoleDefinitionByBillingProfileRequest>,
   output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleDefinitionByCustomerError = AzureOpError;
 /** Lists the role definitions for a customer. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListBillingRoleDefinitionByCustomer: API.OperationMethod<
+export const ListBillingRoleDefinitionByCustomer: API.PaginatedOperationMethod<
   ListBillingRoleDefinitionByCustomerRequest,
   BillingRoleDefinitionListResult,
   ListBillingRoleDefinitionByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c48, 0) as any as S.Schema<ListBillingRoleDefinitionByCustomerRequest>,
   output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleDefinitionByDepartmentError = AzureOpError;
 /** List the definition for a department. The operation is supported for billing accounts with agreement type Enterprise Agreement. */
-export const ListBillingRoleDefinitionByDepartment: API.OperationMethod<
+export const ListBillingRoleDefinitionByDepartment: API.PaginatedOperationMethod<
   ListBillingRoleDefinitionByDepartmentRequest,
   BillingRoleDefinitionListResult,
   ListBillingRoleDefinitionByDepartmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(784, __c49, 0) as any as S.Schema<ListBillingRoleDefinitionByDepartmentRequest>,
   output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleDefinitionByEnrollmentAccountError = AzureOpError;
 /** List the definition for an enrollment account. The operation is supported for billing accounts with agreement type Enterprise Agreement. */
-export const ListBillingRoleDefinitionByEnrollmentAccount: API.OperationMethod<
+export const ListBillingRoleDefinitionByEnrollmentAccount: API.PaginatedOperationMethod<
   ListBillingRoleDefinitionByEnrollmentAccountRequest,
   BillingRoleDefinitionListResult,
   ListBillingRoleDefinitionByEnrollmentAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(800, __c50, 0) as any as S.Schema<ListBillingRoleDefinitionByEnrollmentAccountRequest>,
   output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingRoleDefinitionByInvoiceSectionError = AzureOpError;
 /** Lists the role definitions for an invoice section. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement. */
-export const ListBillingRoleDefinitionByInvoiceSection: API.OperationMethod<
+export const ListBillingRoleDefinitionByInvoiceSection: API.PaginatedOperationMethod<
   ListBillingRoleDefinitionByInvoiceSectionRequest,
   BillingRoleDefinitionListResult,
   ListBillingRoleDefinitionByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingRoleDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(816, __c51, 0) as any as S.Schema<ListBillingRoleDefinitionByInvoiceSectionRequest>,
   output: __S(737, __c46, 1) as any as S.Schema<BillingRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionByBillingAccountError = AzureOpError;
 /** Lists the subscriptions for a billing account. */
-export const ListBillingSubscriptionByBillingAccount: API.OperationMethod<
+export const ListBillingSubscriptionByBillingAccount: API.PaginatedOperationMethod<
   ListBillingSubscriptionByBillingAccountRequest,
   BillingSubscriptionListResult,
   ListBillingSubscriptionByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(832, __c52, 0) as any as S.Schema<ListBillingSubscriptionByBillingAccountRequest>,
   output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionByBillingProfileError = AzureOpError;
 /** Lists the subscriptions that are billed to a billing profile. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement or Microsoft Partner Agreement. */
-export const ListBillingSubscriptionByBillingProfile: API.OperationMethod<
+export const ListBillingSubscriptionByBillingProfile: API.PaginatedOperationMethod<
   ListBillingSubscriptionByBillingProfileRequest,
   BillingSubscriptionListResult,
   ListBillingSubscriptionByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(864, __c54, 0) as any as S.Schema<ListBillingSubscriptionByBillingProfileRequest>,
   output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionByCustomerError = AzureOpError;
 /** Lists the subscriptions for a customer. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListBillingSubscriptionByCustomer: API.OperationMethod<
+export const ListBillingSubscriptionByCustomer: API.PaginatedOperationMethod<
   ListBillingSubscriptionByCustomerRequest,
   BillingSubscriptionListResult,
   ListBillingSubscriptionByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(896, __c56, 0) as any as S.Schema<ListBillingSubscriptionByCustomerRequest>,
   output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionByCustomerAtBillingAccountError = AzureOpError;
 /** Lists the subscriptions for a customer at billing account level. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListBillingSubscriptionByCustomerAtBillingAccount: API.OperationMethod<
+export const ListBillingSubscriptionByCustomerAtBillingAccount: API.PaginatedOperationMethod<
   ListBillingSubscriptionByCustomerAtBillingAccountRequest,
   BillingSubscriptionListResult,
   ListBillingSubscriptionByCustomerAtBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     912,
     __c57,
@@ -9539,46 +9901,67 @@ export const ListBillingSubscriptionByCustomerAtBillingAccount: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionByEnrollmentAccountError = AzureOpError;
 /** Lists the subscriptions for an enrollment account. The operation is supported for billing accounts with agreement type Enterprise Agreement. */
-export const ListBillingSubscriptionByEnrollmentAccount: API.OperationMethod<
+export const ListBillingSubscriptionByEnrollmentAccount: API.PaginatedOperationMethod<
   ListBillingSubscriptionByEnrollmentAccountRequest,
   BillingSubscriptionListResult,
   ListBillingSubscriptionByEnrollmentAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c58, 0) as any as S.Schema<ListBillingSubscriptionByEnrollmentAccountRequest>,
   output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionByInvoiceSectionError = AzureOpError;
 /** Lists the subscriptions that are billed to an invoice section. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListBillingSubscriptionByInvoiceSection: API.OperationMethod<
+export const ListBillingSubscriptionByInvoiceSection: API.PaginatedOperationMethod<
   ListBillingSubscriptionByInvoiceSectionRequest,
   BillingSubscriptionListResult,
   ListBillingSubscriptionByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscription
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(944, __c59, 0) as any as S.Schema<ListBillingSubscriptionByInvoiceSectionRequest>,
   output: __S(849, __c53, 1) as any as S.Schema<BillingSubscriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingSubscriptionsAliasByBillingAccountError = AzureOpError;
 /** Lists the subscription aliases for a billing account. The operation is supported for seat based billing subscriptions. */
-export const ListBillingSubscriptionsAliasByBillingAccount: API.OperationMethod<
+export const ListBillingSubscriptionsAliasByBillingAccount: API.PaginatedOperationMethod<
   ListBillingSubscriptionsAliasByBillingAccountRequest,
   BillingSubscriptionAliasListResult,
   ListBillingSubscriptionsAliasByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingSubscriptionAlias
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     960,
     __c60,
@@ -9588,472 +9971,695 @@ export const ListBillingSubscriptionsAliasByBillingAccount: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomerByBillingAccountError = AzureOpError;
 /** Lists the customers that are billed to a billing account. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListCustomerByBillingAccount: API.OperationMethod<
+export const ListCustomerByBillingAccount: API.PaginatedOperationMethod<
   ListCustomerByBillingAccountRequest,
   CustomerListResult,
   ListCustomerByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Customer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(976, __c61, 0) as any as S.Schema<ListCustomerByBillingAccountRequest>,
   output: __S(993, __c62, 1) as any as S.Schema<CustomerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCustomerByBillingProfileError = AzureOpError;
 /** Lists the customers that are billed to a billing profile. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListCustomerByBillingProfile: API.OperationMethod<
+export const ListCustomerByBillingProfile: API.PaginatedOperationMethod<
   ListCustomerByBillingProfileRequest,
   CustomerListResult,
   ListCustomerByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Customer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1008, __c63, 0) as any as S.Schema<ListCustomerByBillingProfileRequest>,
   output: __S(993, __c62, 1) as any as S.Schema<CustomerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDepartmentByBillingAccountError = AzureOpError;
 /** Lists the departments that a user has access to. The operation is supported only for billing accounts with agreement type Enterprise Agreement. */
-export const ListDepartmentByBillingAccount: API.OperationMethod<
+export const ListDepartmentByBillingAccount: API.PaginatedOperationMethod<
   ListDepartmentByBillingAccountRequest,
   DepartmentListResult,
   ListDepartmentByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Department
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c64, 0) as any as S.Schema<ListDepartmentByBillingAccountRequest>,
   output: __S(1026, __c64, 2) as any as S.Schema<DepartmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnrollmentAccountByBillingAccountError = AzureOpError;
 /** Lists the enrollment accounts for a billing account. The operation is supported only for billing accounts with agreement type Enterprise Agreement. */
-export const ListEnrollmentAccountByBillingAccount: API.OperationMethod<
+export const ListEnrollmentAccountByBillingAccount: API.PaginatedOperationMethod<
   ListEnrollmentAccountByBillingAccountRequest,
   EnrollmentAccountListResult,
   ListEnrollmentAccountByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnrollmentAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1040, __c65, 0) as any as S.Schema<ListEnrollmentAccountByBillingAccountRequest>,
   output: __S(1057, __c66, 1) as any as S.Schema<EnrollmentAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEnrollmentAccountByDepartmentError = AzureOpError;
 /** Lists the enrollment accounts for a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement. */
-export const ListEnrollmentAccountByDepartment: API.OperationMethod<
+export const ListEnrollmentAccountByDepartment: API.PaginatedOperationMethod<
   ListEnrollmentAccountByDepartmentRequest,
   EnrollmentAccountListResult,
   ListEnrollmentAccountByDepartmentError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EnrollmentAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1072, __c67, 0) as any as S.Schema<ListEnrollmentAccountByDepartmentRequest>,
   output: __S(1057, __c66, 1) as any as S.Schema<EnrollmentAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInvoiceByBillingAccountError = AzureOpError;
 /** Lists the invoices for a billing account for a given start date and end date. The operation is supported for all billing account types. */
-export const ListInvoiceByBillingAccount: API.OperationMethod<
+export const ListInvoiceByBillingAccount: API.PaginatedOperationMethod<
   ListInvoiceByBillingAccountRequest,
   InvoiceListResult,
   ListInvoiceByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Invoice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c76, 0) as any as S.Schema<ListInvoiceByBillingAccountRequest>,
   output: __S(1233, __c77, 1) as any as S.Schema<InvoiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInvoiceByBillingProfileError = AzureOpError;
 /** Lists the invoices for a billing profile for a given start date and end date. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement. */
-export const ListInvoiceByBillingProfile: API.OperationMethod<
+export const ListInvoiceByBillingProfile: API.PaginatedOperationMethod<
   ListInvoiceByBillingProfileRequest,
   InvoiceListResult,
   ListInvoiceByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Invoice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1248, __c78, 0) as any as S.Schema<ListInvoiceByBillingProfileRequest>,
   output: __S(1233, __c77, 1) as any as S.Schema<InvoiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInvoiceByBillingSubscriptionError = AzureOpError;
 /** Lists the invoices for a subscription. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement. */
-export const ListInvoiceByBillingSubscription: API.OperationMethod<
+export const ListInvoiceByBillingSubscription: API.PaginatedOperationMethod<
   ListInvoiceByBillingSubscriptionRequest,
   InvoiceListResult,
   ListInvoiceByBillingSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Invoice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1264, __c79, 0) as any as S.Schema<ListInvoiceByBillingSubscriptionRequest>,
   output: __S(1233, __c77, 1) as any as S.Schema<InvoiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListInvoiceSectionByBillingProfileError = AzureOpError;
 /** Lists the invoice sections that a user has access to. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListInvoiceSectionByBillingProfile: API.OperationMethod<
+export const ListInvoiceSectionByBillingProfile: API.PaginatedOperationMethod<
   ListInvoiceSectionByBillingProfileRequest,
   InvoiceSectionListResult,
   ListInvoiceSectionByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  InvoiceSection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c80, 0) as any as S.Schema<ListInvoiceSectionByBillingProfileRequest>,
   output: __S(1282, __c80, 2) as any as S.Schema<InvoiceSectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List of operations supported by provider. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1296, __c81, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1300, __c81, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPartnerTransfersError = AzureOpError;
 /** Lists the transfer requests sent to a customer. The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListPartnerTransfers: API.OperationMethod<
+export const ListPartnerTransfers: API.PaginatedOperationMethod<
   ListPartnerTransfersRequest,
   PartnerTransferDetailsListResult,
   ListPartnerTransfersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PartnerTransferDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1312, __c82, 0) as any as S.Schema<ListPartnerTransfersRequest>,
   output: __S(1314, __c82, 2) as any as S.Schema<PartnerTransferDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPaymentMethodByBillingAccountError = AzureOpError;
 /** Lists the payment methods available for a billing account. Along with the payment methods owned by the caller, these payment methods can be attached to a billing profile to make payments. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListPaymentMethodByBillingAccount: API.OperationMethod<
+export const ListPaymentMethodByBillingAccount: API.PaginatedOperationMethod<
   ListPaymentMethodByBillingAccountRequest,
   PaymentMethodsListResult,
   ListPaymentMethodByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PaymentMethod
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1328, __c83, 0) as any as S.Schema<ListPaymentMethodByBillingAccountRequest>,
   output: __S(1345, __c84, 1) as any as S.Schema<PaymentMethodsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPaymentMethodByBillingProfileError = AzureOpError;
 /** Lists payment methods attached to a billing profile. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListPaymentMethodByBillingProfile: API.OperationMethod<
+export const ListPaymentMethodByBillingProfile: API.PaginatedOperationMethod<
   ListPaymentMethodByBillingProfileRequest,
   PaymentMethodLinksListResult,
   ListPaymentMethodByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PaymentMethodLink
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1360, __c85, 0) as any as S.Schema<ListPaymentMethodByBillingProfileRequest>,
   output: __S(1362, __c85, 2) as any as S.Schema<PaymentMethodLinksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPaymentMethodByUserError = AzureOpError;
 /** Lists the payment methods owned by the caller. */
-export const ListPaymentMethodByUser: API.OperationMethod<
+export const ListPaymentMethodByUser: API.PaginatedOperationMethod<
   ListPaymentMethodByUserRequest,
   PaymentMethodsListResult,
   ListPaymentMethodByUserError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PaymentMethod
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1376, __c86, 0) as any as S.Schema<ListPaymentMethodByUserRequest>,
   output: __S(1345, __c84, 1) as any as S.Schema<PaymentMethodsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductByBillingAccountError = AzureOpError;
 /** Lists the products for a billing account. These don't include products billed based on usage. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement or Microsoft Partner Agreement. */
-export const ListProductByBillingAccount: API.OperationMethod<
+export const ListProductByBillingAccount: API.PaginatedOperationMethod<
   ListProductByBillingAccountRequest,
   ProductListResult,
   ListProductByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Product
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1392, __c87, 0) as any as S.Schema<ListProductByBillingAccountRequest>,
   output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductByBillingProfileError = AzureOpError;
 /** Lists the products for a billing profile. These don't include products billed based on usage. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement or Microsoft Partner Agreement. */
-export const ListProductByBillingProfile: API.OperationMethod<
+export const ListProductByBillingProfile: API.PaginatedOperationMethod<
   ListProductByBillingProfileRequest,
   ProductListResult,
   ListProductByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Product
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1472, __c92, 0) as any as S.Schema<ListProductByBillingProfileRequest>,
   output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductByCustomerError = AzureOpError;
 /** Lists the products for a customer. These don't include products billed based on usage.The operation is supported only for billing accounts with agreement type Microsoft Partner Agreement. */
-export const ListProductByCustomer: API.OperationMethod<
+export const ListProductByCustomer: API.PaginatedOperationMethod<
   ListProductByCustomerRequest,
   ProductListResult,
   ListProductByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Product
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1488, __c93, 0) as any as S.Schema<ListProductByCustomerRequest>,
   output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProductByInvoiceSectionError = AzureOpError;
 /** Lists the products for an invoice section. These don't include products billed based on usage. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListProductByInvoiceSection: API.OperationMethod<
+export const ListProductByInvoiceSection: API.PaginatedOperationMethod<
   ListProductByInvoiceSectionRequest,
   ProductListResult,
   ListProductByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Product
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1504, __c94, 0) as any as S.Schema<ListProductByInvoiceSectionRequest>,
   output: __S(1409, __c88, 1) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecipientTransfersError = AzureOpError;
 /** Lists the transfer requests received by the caller. Lists the transfer requests received by the caller. */
-export const ListRecipientTransfers: API.OperationMethod<
+export const ListRecipientTransfers: API.PaginatedOperationMethod<
   ListRecipientTransfersRequest,
   RecipientTransferDetailsListResult,
   ListRecipientTransfersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecipientTransferDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1520, __c95, 0) as any as S.Schema<ListRecipientTransfersRequest>,
   output: __S(1522, __c95, 2) as any as S.Schema<RecipientTransferDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationByBillingAccountError = AzureOpError;
 /** Lists the reservations in the billing account and the roll up counts of reservations group by provisioning states. */
-export const ListReservationByBillingAccount: API.OperationMethod<
+export const ListReservationByBillingAccount: API.PaginatedOperationMethod<
   ListReservationByBillingAccountRequest,
   ReservationsListResult,
   ListReservationByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Reservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1536, __c96, 0) as any as S.Schema<ListReservationByBillingAccountRequest>,
   output: __S(1553, __c97, 1) as any as S.Schema<ReservationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationByBillingProfileError = AzureOpError;
 /** Lists the reservations for a billing profile and the roll up counts of reservations group by provisioning state. */
-export const ListReservationByBillingProfile: API.OperationMethod<
+export const ListReservationByBillingProfile: API.PaginatedOperationMethod<
   ListReservationByBillingProfileRequest,
   ReservationsListResult,
   ListReservationByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Reservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1568, __c98, 0) as any as S.Schema<ListReservationByBillingProfileRequest>,
   output: __S(1553, __c97, 1) as any as S.Schema<ReservationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationByReservationOrderError = AzureOpError;
 /** Get Reservations in a given reservation Order in the billing account List Reservations within a single ReservationOrder in the billing account. */
-export const ListReservationByReservationOrder: API.OperationMethod<
+export const ListReservationByReservationOrder: API.PaginatedOperationMethod<
   ListReservationByReservationOrderRequest,
   ReservationList,
   ListReservationByReservationOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Reservation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1584, __c99, 0) as any as S.Schema<ListReservationByReservationOrderRequest>,
   output: __S(1585, __c99, 1) as any as S.Schema<ReservationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReservationOrderByBillingAccountError = AzureOpError;
 /** Get all `ReservationOrders in the billing account. List all the ReservationOrders in the billing account. */
-export const ListReservationOrderByBillingAccount: API.OperationMethod<
+export const ListReservationOrderByBillingAccount: API.PaginatedOperationMethod<
   ListReservationOrderByBillingAccountRequest,
   ReservationOrderList,
   ListReservationOrderByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ReservationOrder
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1600, __c100, 0) as any as S.Schema<ListReservationOrderByBillingAccountRequest>,
   output: __S(1602, __c100, 2) as any as S.Schema<ReservationOrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSavingsPlanByBillingAccountError = AzureOpError;
 /** List savings plans by billing account. */
-export const ListSavingsPlanByBillingAccount: API.OperationMethod<
+export const ListSavingsPlanByBillingAccount: API.PaginatedOperationMethod<
   ListSavingsPlanByBillingAccountRequest,
   ListSavingsPlanByBillingAccountResponse,
   ListSavingsPlanByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SavingsPlanModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1616, __c101, 0) as any as S.Schema<ListSavingsPlanByBillingAccountRequest>,
   output: __S(1618, __c101, 2) as any as S.Schema<ListSavingsPlanByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSavingsPlanBySavingsPlanOrderError = AzureOpError;
 /** List savings plans in an order by billing account. */
-export const ListSavingsPlanBySavingsPlanOrder: API.OperationMethod<
+export const ListSavingsPlanBySavingsPlanOrder: API.PaginatedOperationMethod<
   ListSavingsPlanBySavingsPlanOrderRequest,
   SavingsPlanModelList,
   ListSavingsPlanBySavingsPlanOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SavingsPlanModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1648, __c103, 0) as any as S.Schema<ListSavingsPlanBySavingsPlanOrderRequest>,
   output: __S(1649, __c103, 1) as any as S.Schema<SavingsPlanModelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSavingsPlanOrderByBillingAccountError = AzureOpError;
 /** List all Savings plan orders by billing account. */
-export const ListSavingsPlanOrderByBillingAccount: API.OperationMethod<
+export const ListSavingsPlanOrderByBillingAccount: API.PaginatedOperationMethod<
   ListSavingsPlanOrderByBillingAccountRequest,
   SavingsPlanOrderModelList,
   ListSavingsPlanOrderByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SavingsPlanOrderModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1696, __c106, 0) as any as S.Schema<ListSavingsPlanOrderByBillingAccountRequest>,
   output: __S(1698, __c106, 2) as any as S.Schema<SavingsPlanOrderModelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTransactionByBillingProfileError = AzureOpError;
 /** Lists the billed or unbilled transactions by billing profile name for given start and end date. Transactions include purchases, refunds and Azure usage charges. Unbilled transactions are listed under pending invoice Id and do not include tax. Tax is added to the amount once an invoice is generated. */
-export const ListTransactionByBillingProfile: API.OperationMethod<
+export const ListTransactionByBillingProfile: API.PaginatedOperationMethod<
   ListTransactionByBillingProfileRequest,
   TransactionListResult,
   ListTransactionByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Transaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1712, __c107, 0) as any as S.Schema<ListTransactionByBillingProfileRequest>,
   output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTransactionByCustomerError = AzureOpError;
 /** Lists the billed or unbilled transactions by customer id for given start date and end date. Transactions include purchases, refunds and Azure usage charges. Unbilled transactions are listed under pending invoice Id and do not include tax. Tax is added to the amount once an invoice is generated. */
-export const ListTransactionByCustomer: API.OperationMethod<
+export const ListTransactionByCustomer: API.PaginatedOperationMethod<
   ListTransactionByCustomerRequest,
   TransactionListResult,
   ListTransactionByCustomerError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Transaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1744, __c109, 0) as any as S.Schema<ListTransactionByCustomerRequest>,
   output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTransactionByInvoiceError = AzureOpError;
 /** Lists the transactions for an invoice. Transactions include purchases, refunds and Azure usage charges. */
-export const ListTransactionByInvoice: API.OperationMethod<
+export const ListTransactionByInvoice: API.PaginatedOperationMethod<
   ListTransactionByInvoiceRequest,
   TransactionListResult,
   ListTransactionByInvoiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Transaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1760, __c110, 0) as any as S.Schema<ListTransactionByInvoiceRequest>,
   output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTransactionByInvoiceSectionError = AzureOpError;
 /** Lists the billed or unbilled transactions by invoice section name for given start date and end date. Transactions include purchases, refunds and Azure usage charges. Unbilled transactions are listed under pending invoice Id and do not include tax. Tax is added to the amount once an invoice is generated. */
-export const ListTransactionByInvoiceSection: API.OperationMethod<
+export const ListTransactionByInvoiceSection: API.PaginatedOperationMethod<
   ListTransactionByInvoiceSectionRequest,
   TransactionListResult,
   ListTransactionByInvoiceSectionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Transaction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1776, __c111, 0) as any as S.Schema<ListTransactionByInvoiceSectionRequest>,
   output: __S(1732, __c108, 4) as any as S.Schema<TransactionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTransfersError = AzureOpError;
 /** Lists the transfer requests for an invoice section. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement. */
-export const ListTransfers: API.OperationMethod<
+export const ListTransfers: API.PaginatedOperationMethod<
   ListTransfersRequest,
   TransferDetailsListResult,
   ListTransfersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TransferDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1792, __c112, 0) as any as S.Schema<ListTransfersRequest>,
   output: __S(1794, __c112, 2) as any as S.Schema<TransferDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MergeBillingSubscriptionError = AzureOpError;
 /** Merges the billing subscription provided in the request with a target billing subscription. */
@@ -10731,12 +11337,14 @@ function __c18(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           expand: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/agreements",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAgreementByBillingAccountRequest" });
@@ -10764,12 +11372,14 @@ function __c19(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssociatedTenantByBillingAccountRequest" });
@@ -10801,12 +11411,14 @@ function __c20(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingAccountsRequest" });
@@ -10827,12 +11439,14 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByBillingAccountRequest" });
@@ -10856,12 +11470,14 @@ function __c23(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByBillingProfileRequest" });
@@ -10875,12 +11491,14 @@ function __c24(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByCustomerRequest" });
@@ -10893,12 +11511,14 @@ function __c25(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByCustomerAtBillingAccountRequest" });
@@ -10911,12 +11531,14 @@ function __c26(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           departmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByDepartmentRequest" });
@@ -10929,12 +11551,14 @@ function __c27(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           enrollmentAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByEnrollmentAccountRequest" });
@@ -10948,12 +11572,14 @@ function __c28(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           invoiceSectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingPermissions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingPermissionsByInvoiceSectionRequest" });
@@ -10992,12 +11618,14 @@ function __c30(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingProfileByBillingAccountRequest" });
@@ -11024,12 +11652,14 @@ function __c31(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRequests",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRequestByBillingAccountRequest" });
@@ -11061,12 +11691,14 @@ function __c33(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRequests",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRequestByBillingProfileRequest" });
@@ -11086,12 +11718,14 @@ function __c34(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRequests",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRequestByCustomerRequest" });
@@ -11111,12 +11745,14 @@ function __c35(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRequests",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRequestByInvoiceSectionRequest" });
@@ -11133,12 +11769,14 @@ function __c36(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingRequests",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRequestByUserRequest" });
@@ -11153,12 +11791,14 @@ function __c37(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleAssignmentByBillingAccountRequest" });
@@ -11185,12 +11825,14 @@ function __c39(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleAssignments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleAssignmentByBillingProfileRequest" });
@@ -11207,12 +11849,14 @@ function __c40(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleAssignments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleAssignmentByCustomerRequest" });
@@ -11225,12 +11869,14 @@ function __c41(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           departmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleAssignmentByDepartmentRequest" });
@@ -11264,12 +11910,14 @@ function __c43(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           enrollmentAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleAssignmentByEnrollmentAccountRequest" });
@@ -11286,12 +11934,14 @@ function __c44(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleAssignments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleAssignmentByInvoiceSectionRequest" });
@@ -11303,12 +11953,14 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleDefinitions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleDefinitionByBillingAccountRequest" });
@@ -11334,12 +11986,14 @@ function __c47(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingRoleDefinitions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleDefinitionByBillingProfileRequest" });
@@ -11353,12 +12007,14 @@ function __c48(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingRoleDefinitions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleDefinitionByCustomerRequest" });
@@ -11371,12 +12027,14 @@ function __c49(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           departmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleDefinitions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleDefinitionByDepartmentRequest" });
@@ -11389,12 +12047,14 @@ function __c50(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           enrollmentAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleDefinitions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleDefinitionByEnrollmentAccountRequest" });
@@ -11408,12 +12068,14 @@ function __c51(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           invoiceSectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingRoleDefinitions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingRoleDefinitionByInvoiceSectionRequest" });
@@ -11435,12 +12097,14 @@ function __c52(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionByBillingAccountRequest" });
@@ -11455,7 +12119,7 @@ function __c53(j: number): any {
         S.Struct({
           nextLink: S.optional(S.String),
           totalCount: S.optional(S.Number),
-          value: S.optional(__S(848, __c53, 0)),
+          value: __S(848, __c53, 0),
         }),
       ).annotate({ identifier: "BillingSubscriptionListResult" });
   }
@@ -11475,12 +12139,14 @@ function __c54(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/billingSubscriptions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionByBillingProfileRequest" });
@@ -11523,12 +12189,14 @@ function __c56(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/billingSubscriptions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionByCustomerRequest" });
@@ -11549,12 +12217,14 @@ function __c57(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/billingSubscriptions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionByCustomerAtBillingAccountRequest" });
@@ -11573,12 +12243,14 @@ function __c58(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingSubscriptions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionByEnrollmentAccountRequest" });
@@ -11600,12 +12272,14 @@ function __c59(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/billingSubscriptions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionByInvoiceSectionRequest" });
@@ -11624,12 +12298,14 @@ function __c60(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingSubscriptionsAliasByBillingAccountRequest" });
@@ -11657,12 +12333,14 @@ function __c61(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomerByBillingAccountRequest" });
@@ -11695,12 +12373,14 @@ function __c63(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCustomerByBillingProfileRequest" });
@@ -11717,12 +12397,14 @@ function __c64(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDepartmentByBillingAccountRequest" });
@@ -11749,12 +12431,14 @@ function __c65(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEnrollmentAccountByBillingAccountRequest" });
@@ -11786,12 +12470,14 @@ function __c67(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/enrollmentAccounts",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEnrollmentAccountByDepartmentRequest" });
@@ -12006,12 +12692,14 @@ function __c76(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInvoiceByBillingAccountRequest" });
@@ -12045,12 +12733,14 @@ function __c78(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInvoiceByBillingProfileRequest" });
@@ -12070,12 +12760,14 @@ function __c79(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/invoices",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInvoiceByBillingSubscriptionRequest" });
@@ -12095,12 +12787,14 @@ function __c80(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListInvoiceSectionByBillingProfileRequest" });
@@ -12119,12 +12813,15 @@ function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/operations",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -12150,7 +12847,7 @@ function __c81(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1299, __c81, 3)),
+          value: __S(1299, __c81, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -12164,12 +12861,14 @@ function __c82(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           customerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transfers",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPartnerTransfersRequest" });
@@ -12190,12 +12889,14 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/paymentMethods",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPaymentMethodByBillingAccountRequest" });
@@ -12221,12 +12922,14 @@ function __c85(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/paymentMethodLinks",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPaymentMethodByBillingProfileRequest" });
@@ -12245,12 +12948,15 @@ function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/paymentMethods",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPaymentMethodByUserRequest" });
@@ -12268,12 +12974,14 @@ function __c87(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductByBillingAccountRequest" });
@@ -12398,12 +13106,14 @@ function __c92(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/products",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductByBillingProfileRequest" });
@@ -12422,12 +13132,14 @@ function __c93(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/products",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductByCustomerRequest" });
@@ -12447,12 +13159,14 @@ function __c94(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/products",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProductByInvoiceSectionRequest" });
@@ -12462,12 +13176,15 @@ function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/transfers",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecipientTransfersRequest" });
@@ -12494,12 +13211,14 @@ function __c96(j: number): any {
           refreshSummary: S.optional(S.String.pipe(T.Query())),
           selectedState: S.optional(S.String.pipe(T.Query())),
           take: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservations",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationByBillingAccountRequest" });
@@ -12526,7 +13245,7 @@ function __c97(j: number): any {
         S.Struct({
           nextLink: S.optional(S.String),
           summary: S.optional(__S(1552, __c97, 0)),
-          value: S.optional(__S(4336, __c271, 0)),
+          value: __S(4336, __c271, 0),
         }),
       ).annotate({ identifier: "ReservationsListResult" });
   }
@@ -12544,12 +13263,14 @@ function __c98(j: number): any {
           refreshSummary: S.optional(S.String.pipe(T.Query())),
           selectedState: S.optional(S.String.pipe(T.Query())),
           take: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/reservations",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationByBillingProfileRequest" });
@@ -12562,12 +13283,14 @@ function __c99(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           reservationOrderId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationByReservationOrderRequest" });
@@ -12589,12 +13312,14 @@ function __c100(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           skiptoken: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListReservationOrderByBillingAccountRequest" });
@@ -12621,12 +13346,14 @@ function __c101(j: number): any {
           take: S.optional(S.Number.pipe(T.Query())),
           selectedState: S.optional(S.String.pipe(T.Query())),
           refreshSummary: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlans",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSavingsPlanByBillingAccountRequest" });
@@ -12667,12 +13394,14 @@ function __c103(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           savingsPlanOrderId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSavingsPlanBySavingsPlanOrderRequest" });
@@ -12733,12 +13462,14 @@ function __c106(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           skiptoken: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSavingsPlanOrderByBillingAccountRequest" });
@@ -12769,12 +13500,14 @@ function __c107(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/transactions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTransactionByBillingProfileRequest" });
@@ -12873,12 +13606,14 @@ function __c109(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/transactions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTransactionByCustomerRequest" });
@@ -12897,12 +13632,14 @@ function __c110(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTransactionByInvoiceRequest" });
@@ -12925,12 +13662,14 @@ function __c111(j: number): any {
           skip: S.optional(S.Number.pipe(T.Query())),
           count: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transactions",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTransactionByInvoiceSectionRequest" });
@@ -12944,12 +13683,14 @@ function __c112(j: number): any {
           billingAccountName: S.String.pipe(T.Label()),
           billingProfileName: S.String.pipe(T.Label()),
           invoiceSectionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/transfers",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTransfersRequest" });
@@ -14083,12 +14824,14 @@ function __c156(j: number): any {
         S.Struct({
           billingAccountName: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/listInvoiceSectionsWithCreateSubscriptionPermission",
             code: 200,
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({

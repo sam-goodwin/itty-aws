@@ -15,13 +15,33 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.softwareplan#OperationsList": "com.azure.softwareplan#ListOperations",
+      "com.azure.softwareplan#OperationsListRequest": "com.azure.softwareplan#ListOperationsRequest",
+      "com.azure.softwareplan#HybridUseBenefitRevisionList": "com.azure.softwareplan#ListHybridUseBenefitRevision",
+      "com.azure.softwareplan#HybridUseBenefitRevisionListRequest": "com.azure.softwareplan#ListHybridUseBenefitRevisionRequest",
+      "com.azure.softwareplan#HybridUseBenefitDelete": "com.azure.softwareplan#DeleteHybridUseBenefit",
+      "com.azure.softwareplan#HybridUseBenefitDeleteRequest": "com.azure.softwareplan#DeleteHybridUseBenefitRequest",
+      "com.azure.softwareplan#HybridUseBenefitUpdate": "com.azure.softwareplan#UpdateHybridUseBenefit",
+      "com.azure.softwareplan#HybridUseBenefitUpdateResponse": "com.azure.softwareplan#UpdateHybridUseBenefitResponse",
+      "com.azure.softwareplan#HybridUseBenefitUpdateRequest": "com.azure.softwareplan#UpdateHybridUseBenefitRequest",
+      "com.azure.softwareplan#HybridUseBenefitCreate": "com.azure.softwareplan#CreateHybridUseBenefit",
+      "com.azure.softwareplan#HybridUseBenefitCreateResponse": "com.azure.softwareplan#CreateHybridUseBenefitResponse",
+      "com.azure.softwareplan#HybridUseBenefitCreateRequest": "com.azure.softwareplan#CreateHybridUseBenefitRequest",
+      "com.azure.softwareplan#HybridUseBenefitGet": "com.azure.softwareplan#GetHybridUseBenefit",
+      "com.azure.softwareplan#HybridUseBenefitGetResponse": "com.azure.softwareplan#GetHybridUseBenefitResponse",
+      "com.azure.softwareplan#HybridUseBenefitGetRequest": "com.azure.softwareplan#GetHybridUseBenefitRequest",
+      "com.azure.softwareplan#HybridUseBenefitList": "com.azure.softwareplan#ListHybridUseBenefit",
+      "com.azure.softwareplan#HybridUseBenefitListRequest": "com.azure.softwareplan#ListHybridUseBenefitRequest",
+      "com.azure.softwareplan#SoftwarePlanRegister": "com.azure.softwareplan#RegisterSoftwarePlan",
+      "com.azure.softwareplan#SoftwarePlanRegisterRequest": "com.azure.softwareplan#RegisterSoftwarePlanRequest"
+    }
   },
   "shapes": {
-    "com.azure.softwareplan#ListOperations": {
+    "com.azure.softwareplan#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#ListOperationsRequest"
+        "target": "com.azure.softwareplan#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.softwareplan#OperationList"
@@ -31,10 +51,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.SoftwarePlan/operations",
           "code": 200,
-          "apiVersion": "2019-12-01"
+          "apiVersion": "2019-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get operations.\n\nList all the operations.",
-        "com.distilled.openapi#apiVersion": "2019-12-01"
+        "com.distilled.openapi#apiVersion": "2019-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.softwareplan#OperationList": {
@@ -124,7 +151,7 @@
         "smithy.api#documentation": "Display fields for an operation."
       }
     },
-    "com.azure.softwareplan#ListOperationsRequest": {
+    "com.azure.softwareplan#OperationsListRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -134,16 +161,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.softwareplan#ListHybridUseBenefitRevision": {
+    "com.azure.softwareplan#HybridUseBenefitRevisionList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#ListHybridUseBenefitRevisionRequest"
+        "target": "com.azure.softwareplan#HybridUseBenefitRevisionListRequest"
       },
       "output": {
         "target": "com.azure.softwareplan#HybridUseBenefitListResult"
@@ -153,10 +186,17 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}/revisions",
           "code": 200,
-          "apiVersion": "2019-12-01"
+          "apiVersion": "2019-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the version history of a hybrid use benefit",
-        "com.distilled.openapi#apiVersion": "2019-12-01"
+        "com.distilled.openapi#apiVersion": "2019-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.softwareplan#HybridUseBenefitListResult": {
@@ -299,7 +339,7 @@
         "smithy.api#documentation": "The SKU to be applied for this resource"
       }
     },
-    "com.azure.softwareplan#ListHybridUseBenefitRevisionRequest": {
+    "com.azure.softwareplan#HybridUseBenefitRevisionListRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -317,16 +357,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "This is a unique identifier for a plan. Should be a guid."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.softwareplan#DeleteHybridUseBenefit": {
+    "com.azure.softwareplan#HybridUseBenefitDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#DeleteHybridUseBenefitRequest"
+        "target": "com.azure.softwareplan#HybridUseBenefitDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -342,7 +388,7 @@
         "com.distilled.openapi#apiVersion": "2019-12-01"
       }
     },
-    "com.azure.softwareplan#DeleteHybridUseBenefitRequest": {
+    "com.azure.softwareplan#HybridUseBenefitDeleteRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -366,13 +412,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.softwareplan#UpdateHybridUseBenefit": {
+    "com.azure.softwareplan#HybridUseBenefitUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#UpdateHybridUseBenefitRequest"
+        "target": "com.azure.softwareplan#HybridUseBenefitUpdateRequest"
       },
       "output": {
-        "target": "com.azure.softwareplan#UpdateHybridUseBenefitResponse"
+        "target": "com.azure.softwareplan#HybridUseBenefitUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -385,7 +431,7 @@
         "com.distilled.openapi#apiVersion": "2019-12-01"
       }
     },
-    "com.azure.softwareplan#UpdateHybridUseBenefitResponse": {
+    "com.azure.softwareplan#HybridUseBenefitUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -430,7 +476,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.softwareplan#UpdateHybridUseBenefitRequest": {
+    "com.azure.softwareplan#HybridUseBenefitUpdateRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -474,13 +520,13 @@
         "smithy.api#documentation": "Hybrid use benefit properties"
       }
     },
-    "com.azure.softwareplan#CreateHybridUseBenefit": {
+    "com.azure.softwareplan#HybridUseBenefitCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#CreateHybridUseBenefitRequest"
+        "target": "com.azure.softwareplan#HybridUseBenefitCreateRequest"
       },
       "output": {
-        "target": "com.azure.softwareplan#CreateHybridUseBenefitResponse"
+        "target": "com.azure.softwareplan#HybridUseBenefitCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -493,7 +539,7 @@
         "com.distilled.openapi#apiVersion": "2019-12-01"
       }
     },
-    "com.azure.softwareplan#CreateHybridUseBenefitResponse": {
+    "com.azure.softwareplan#HybridUseBenefitCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -538,7 +584,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.softwareplan#CreateHybridUseBenefitRequest": {
+    "com.azure.softwareplan#HybridUseBenefitCreateRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -575,13 +621,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.softwareplan#GetHybridUseBenefit": {
+    "com.azure.softwareplan#HybridUseBenefitGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#GetHybridUseBenefitRequest"
+        "target": "com.azure.softwareplan#HybridUseBenefitGetRequest"
       },
       "output": {
-        "target": "com.azure.softwareplan#GetHybridUseBenefitResponse"
+        "target": "com.azure.softwareplan#HybridUseBenefitGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -594,7 +640,7 @@
         "com.distilled.openapi#apiVersion": "2019-12-01"
       }
     },
-    "com.azure.softwareplan#GetHybridUseBenefitResponse": {
+    "com.azure.softwareplan#HybridUseBenefitGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -639,7 +685,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.softwareplan#GetHybridUseBenefitRequest": {
+    "com.azure.softwareplan#HybridUseBenefitGetRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -663,10 +709,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.softwareplan#ListHybridUseBenefit": {
+    "com.azure.softwareplan#HybridUseBenefitList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#ListHybridUseBenefitRequest"
+        "target": "com.azure.softwareplan#HybridUseBenefitListRequest"
       },
       "output": {
         "target": "com.azure.softwareplan#HybridUseBenefitListResult"
@@ -676,13 +722,20 @@
           "method": "GET",
           "uri": "/{scope}/providers/Microsoft.SoftwarePlan/hybridUseBenefits",
           "code": 200,
-          "apiVersion": "2019-12-01"
+          "apiVersion": "2019-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all hybrid use benefits associated with an ARM resource.",
-        "com.distilled.openapi#apiVersion": "2019-12-01"
+        "com.distilled.openapi#apiVersion": "2019-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.softwareplan#ListHybridUseBenefitRequest": {
+    "com.azure.softwareplan#HybridUseBenefitListRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -699,16 +752,22 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "Supports applying filter on the type of SKU"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.softwareplan#RegisterSoftwarePlan": {
+    "com.azure.softwareplan#SoftwarePlanRegister": {
       "type": "operation",
       "input": {
-        "target": "com.azure.softwareplan#RegisterSoftwarePlanRequest"
+        "target": "com.azure.softwareplan#SoftwarePlanRegisterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -724,7 +783,7 @@
         "com.distilled.openapi#apiVersion": "2019-12-01"
       }
     },
-    "com.azure.softwareplan#RegisterSoftwarePlanRequest": {
+    "com.azure.softwareplan#SoftwarePlanRegisterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -745,28 +804,28 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.softwareplan#ListOperations"
+          "target": "com.azure.softwareplan#OperationsList"
         },
         {
-          "target": "com.azure.softwareplan#ListHybridUseBenefitRevision"
+          "target": "com.azure.softwareplan#HybridUseBenefitRevisionList"
         },
         {
-          "target": "com.azure.softwareplan#DeleteHybridUseBenefit"
+          "target": "com.azure.softwareplan#HybridUseBenefitDelete"
         },
         {
-          "target": "com.azure.softwareplan#UpdateHybridUseBenefit"
+          "target": "com.azure.softwareplan#HybridUseBenefitUpdate"
         },
         {
-          "target": "com.azure.softwareplan#CreateHybridUseBenefit"
+          "target": "com.azure.softwareplan#HybridUseBenefitCreate"
         },
         {
-          "target": "com.azure.softwareplan#GetHybridUseBenefit"
+          "target": "com.azure.softwareplan#HybridUseBenefitGet"
         },
         {
-          "target": "com.azure.softwareplan#ListHybridUseBenefit"
+          "target": "com.azure.softwareplan#HybridUseBenefitList"
         },
         {
-          "target": "com.azure.softwareplan#RegisterSoftwarePlan"
+          "target": "com.azure.softwareplan#SoftwarePlanRegister"
         }
       ],
       "traits": {

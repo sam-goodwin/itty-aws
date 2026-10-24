@@ -267,6 +267,8 @@ export interface ListAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
@@ -299,6 +301,8 @@ export interface AccountListResult {
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAccountQuotasByAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -307,6 +311,8 @@ export interface ListAccountQuotasByAccountRequest {
   resourceGroupName: string;
   /** Name of account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A quota resource for a Playwright service account. */
 export interface AccountQuota {
@@ -330,7 +336,10 @@ export interface AccountQuotaListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -363,7 +372,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -372,6 +381,8 @@ export interface ListQuotasBySubscriptionRequest {
   subscriptionId: string;
   /** The location of quota in ARM Normalized format like eastus, southeastasia etc. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A subscription quota resource. */
 export interface Quota {
@@ -532,78 +543,113 @@ export const GetQuotas: API.OperationMethod<
 
 export type ListAccountByResourceGroupError = AzureOpError;
 /** List Account resources by resource group */
-export const ListAccountByResourceGroup: API.OperationMethod<
+export const ListAccountByResourceGroup: API.PaginatedOperationMethod<
   ListAccountByResourceGroupRequest,
   AccountListResult,
   ListAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountBySubscriptionError = AzureOpError;
 /** List Account resources by subscription ID */
-export const ListAccountBySubscription: API.OperationMethod<
+export const ListAccountBySubscription: API.PaginatedOperationMethod<
   ListAccountBySubscriptionRequest,
   AccountListResult,
   ListAccountBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
   output: __S(121, __c15, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountQuotasByAccountError = AzureOpError;
 /** List quotas for a given account. */
-export const ListAccountQuotasByAccount: API.OperationMethod<
+export const ListAccountQuotasByAccount: API.PaginatedOperationMethod<
   ListAccountQuotasByAccountRequest,
   AccountQuotaListResult,
   ListAccountQuotasByAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccountQuota
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<ListAccountQuotasByAccountRequest>,
   output: __S(138, __c17, 2) as any as S.Schema<AccountQuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(148, __c18, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQuotasBySubscriptionError = AzureOpError;
 /** List quotas for a given subscription Id. */
-export const ListQuotasBySubscription: API.OperationMethod<
+export const ListQuotasBySubscription: API.PaginatedOperationMethod<
   ListQuotasBySubscriptionRequest,
   QuotaListResult,
   ListQuotasBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Quota
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListQuotasBySubscriptionRequest>,
   output: __S(42, __c5, 2) as any as S.Schema<QuotaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type UpdateAccountError = AzureOpError;
 /** Update a Account */
@@ -735,12 +781,14 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/locations/{location}/quotas",
             code: 200,
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQuotasBySubscriptionRequest" });
@@ -943,12 +991,14 @@ function __c14(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts",
             code: 200,
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountByResourceGroupRequest" });
@@ -973,12 +1023,14 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.AzurePlaywrightService/accounts",
             code: 200,
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountBySubscriptionRequest" });
@@ -992,12 +1044,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}/quotas",
             code: 200,
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountQuotasByAccountRequest" });
@@ -1016,12 +1070,15 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.AzurePlaywrightService/operations",
             code: 200,
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1049,7 +1106,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(147, __c18, 3)),
+          value: __S(147, __c18, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });

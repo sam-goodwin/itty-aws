@@ -15,13 +15,101 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.signalr#SignalRListSkus": "com.azure.signalr#ListSignalRSkus",
+      "com.azure.signalr#SignalRListSkusRequest": "com.azure.signalr#ListSignalRSkusRequest",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesDelete": "com.azure.signalr#DeleteSignalRSharedPrivateLinkResource",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesDeleteRequest": "com.azure.signalr#DeleteSignalRSharedPrivateLinkResourceRequest",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesGet": "com.azure.signalr#GetSignalRSharedPrivateLinkResource",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesGetResponse": "com.azure.signalr#GetSignalRSharedPrivateLinkResourceResponse",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesGetRequest": "com.azure.signalr#GetSignalRSharedPrivateLinkResourceRequest",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesList": "com.azure.signalr#ListSignalRSharedPrivateLinkResources",
+      "com.azure.signalr#SignalRSharedPrivateLinkResourcesListRequest": "com.azure.signalr#ListSignalRSharedPrivateLinkResourcesRequest",
+      "com.azure.signalr#SignalRRestart": "com.azure.signalr#RestartSignalR",
+      "com.azure.signalr#SignalRRestartResponse": "com.azure.signalr#RestartSignalRResponse",
+      "com.azure.signalr#SignalRRestartRequest": "com.azure.signalr#RestartSignalRRequest",
+      "com.azure.signalr#SignalRListReplicaSkus": "com.azure.signalr#ListSignalRReplicaSkus",
+      "com.azure.signalr#SignalRListReplicaSkusRequest": "com.azure.signalr#ListSignalRReplicaSkusRequest",
+      "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGet": "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResource",
+      "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGetResponse": "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResourceResponse",
+      "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGetRequest": "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResourceRequest",
+      "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesList": "com.azure.signalr#ListSignalRReplicaSharedPrivateLinkResources",
+      "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesListRequest": "com.azure.signalr#ListSignalRReplicaSharedPrivateLinkResourcesRequest",
+      "com.azure.signalr#SignalRReplicasRestart": "com.azure.signalr#RestartSignalRReplicas",
+      "com.azure.signalr#SignalRReplicasRestartResponse": "com.azure.signalr#RestartSignalRReplicasResponse",
+      "com.azure.signalr#SignalRReplicasRestartRequest": "com.azure.signalr#RestartSignalRReplicasRequest",
+      "com.azure.signalr#SignalRReplicasDelete": "com.azure.signalr#DeleteSignalRReplicas",
+      "com.azure.signalr#SignalRReplicasDeleteRequest": "com.azure.signalr#DeleteSignalRReplicasRequest",
+      "com.azure.signalr#SignalRReplicasUpdate": "com.azure.signalr#UpdateSignalRReplicas",
+      "com.azure.signalr#SignalRReplicasUpdateResponse": "com.azure.signalr#UpdateSignalRReplicasResponse",
+      "com.azure.signalr#SignalRReplicasUpdateResponseTagsMap": "com.azure.signalr#UpdateSignalRReplicasResponseTagsMap",
+      "com.azure.signalr#SignalRReplicasUpdateRequest": "com.azure.signalr#UpdateSignalRReplicasRequest",
+      "com.azure.signalr#SignalRReplicasUpdateRequestTagsMap": "com.azure.signalr#UpdateSignalRReplicasRequestTagsMap",
+      "com.azure.signalr#SignalRReplicasGet": "com.azure.signalr#GetSignalRReplicas",
+      "com.azure.signalr#SignalRReplicasGetResponse": "com.azure.signalr#GetSignalRReplicasResponse",
+      "com.azure.signalr#SignalRReplicasGetResponseTagsMap": "com.azure.signalr#GetSignalRReplicasResponseTagsMap",
+      "com.azure.signalr#SignalRReplicasGetRequest": "com.azure.signalr#GetSignalRReplicasRequest",
+      "com.azure.signalr#SignalRReplicasList": "com.azure.signalr#ListSignalRReplicas",
+      "com.azure.signalr#SignalRReplicasListRequest": "com.azure.signalr#ListSignalRReplicasRequest",
+      "com.azure.signalr#SignalRRegenerateKey": "com.azure.signalr#RegenerateSignalRKey",
+      "com.azure.signalr#SignalRRegenerateKeyResponse": "com.azure.signalr#RegenerateSignalRKeyResponse",
+      "com.azure.signalr#SignalRRegenerateKeyRequest": "com.azure.signalr#RegenerateSignalRKeyRequest",
+      "com.azure.signalr#SignalRPrivateLinkResourcesList": "com.azure.signalr#ListSignalRPrivateLinkResources",
+      "com.azure.signalr#SignalRPrivateLinkResourcesListRequest": "com.azure.signalr#ListSignalRPrivateLinkResourcesRequest",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsDelete": "com.azure.signalr#DeleteSignalRPrivateEndpointConnection",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsDeleteRequest": "com.azure.signalr#DeleteSignalRPrivateEndpointConnectionRequest",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdate": "com.azure.signalr#UpdateSignalRPrivateEndpointConnection",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdateResponse": "com.azure.signalr#UpdateSignalRPrivateEndpointConnectionResponse",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdateRequest": "com.azure.signalr#UpdateSignalRPrivateEndpointConnectionRequest",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsGet": "com.azure.signalr#GetSignalRPrivateEndpointConnection",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsGetResponse": "com.azure.signalr#GetSignalRPrivateEndpointConnectionResponse",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsGetRequest": "com.azure.signalr#GetSignalRPrivateEndpointConnectionRequest",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsList": "com.azure.signalr#ListSignalRPrivateEndpointConnections",
+      "com.azure.signalr#SignalRPrivateEndpointConnectionsListRequest": "com.azure.signalr#ListSignalRPrivateEndpointConnectionsRequest",
+      "com.azure.signalr#SignalRListKeys": "com.azure.signalr#ListSignalRKeys",
+      "com.azure.signalr#SignalRListKeysRequest": "com.azure.signalr#ListSignalRKeysRequest",
+      "com.azure.signalr#SignalRCustomDomainsDelete": "com.azure.signalr#DeleteSignalRCustomDomain",
+      "com.azure.signalr#SignalRCustomDomainsDeleteRequest": "com.azure.signalr#DeleteSignalRCustomDomainRequest",
+      "com.azure.signalr#SignalRCustomDomainsGet": "com.azure.signalr#GetSignalRCustomDomain",
+      "com.azure.signalr#SignalRCustomDomainsGetResponse": "com.azure.signalr#GetSignalRCustomDomainResponse",
+      "com.azure.signalr#SignalRCustomDomainsGetRequest": "com.azure.signalr#GetSignalRCustomDomainRequest",
+      "com.azure.signalr#SignalRCustomDomainsList": "com.azure.signalr#ListSignalRCustomDomains",
+      "com.azure.signalr#SignalRCustomDomainsListRequest": "com.azure.signalr#ListSignalRCustomDomainsRequest",
+      "com.azure.signalr#SignalRCustomCertificatesDelete": "com.azure.signalr#DeleteSignalRCustomCertificate",
+      "com.azure.signalr#SignalRCustomCertificatesDeleteRequest": "com.azure.signalr#DeleteSignalRCustomCertificateRequest",
+      "com.azure.signalr#SignalRCustomCertificatesGet": "com.azure.signalr#GetSignalRCustomCertificate",
+      "com.azure.signalr#SignalRCustomCertificatesGetResponse": "com.azure.signalr#GetSignalRCustomCertificateResponse",
+      "com.azure.signalr#SignalRCustomCertificatesGetRequest": "com.azure.signalr#GetSignalRCustomCertificateRequest",
+      "com.azure.signalr#SignalRCustomCertificatesList": "com.azure.signalr#ListSignalRCustomCertificates",
+      "com.azure.signalr#SignalRCustomCertificatesListRequest": "com.azure.signalr#ListSignalRCustomCertificatesRequest",
+      "com.azure.signalr#SignalRDelete": "com.azure.signalr#DeleteSignalR",
+      "com.azure.signalr#SignalRDeleteRequest": "com.azure.signalr#DeleteSignalRRequest",
+      "com.azure.signalr#SignalRUpdate": "com.azure.signalr#UpdateSignalR",
+      "com.azure.signalr#SignalRUpdateResponse": "com.azure.signalr#UpdateSignalRResponse",
+      "com.azure.signalr#SignalRUpdateResponseTagsMap": "com.azure.signalr#UpdateSignalRResponseTagsMap",
+      "com.azure.signalr#SignalRUpdateRequest": "com.azure.signalr#UpdateSignalRRequest",
+      "com.azure.signalr#SignalRUpdateRequestTagsMap": "com.azure.signalr#UpdateSignalRRequestTagsMap",
+      "com.azure.signalr#SignalRGet": "com.azure.signalr#GetSignalR",
+      "com.azure.signalr#SignalRGetResponse": "com.azure.signalr#GetSignalRResponse",
+      "com.azure.signalr#SignalRGetResponseTagsMap": "com.azure.signalr#GetSignalRResponseTagsMap",
+      "com.azure.signalr#SignalRGetRequest": "com.azure.signalr#GetSignalRRequest",
+      "com.azure.signalr#SignalRListByResourceGroup": "com.azure.signalr#ListSignalRByResourceGroup",
+      "com.azure.signalr#SignalRListByResourceGroupRequest": "com.azure.signalr#ListSignalRByResourceGroupRequest",
+      "com.azure.signalr#SignalRListBySubscription": "com.azure.signalr#ListSignalRBySubscription",
+      "com.azure.signalr#SignalRListBySubscriptionRequest": "com.azure.signalr#ListSignalRBySubscriptionRequest",
+      "com.azure.signalr#UsagesList": "com.azure.signalr#ListUsages",
+      "com.azure.signalr#UsagesListRequest": "com.azure.signalr#ListUsagesRequest",
+      "com.azure.signalr#SignalRCheckNameAvailability": "com.azure.signalr#CheckSignalRNameAvailability",
+      "com.azure.signalr#SignalRCheckNameAvailabilityRequest": "com.azure.signalr#CheckSignalRNameAvailabilityRequest",
+      "com.azure.signalr#OperationsList": "com.azure.signalr#ListOperations",
+      "com.azure.signalr#OperationsListRequest": "com.azure.signalr#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.signalr#ListSignalRSkus": {
+    "com.azure.signalr#SignalRListSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRSkusRequest"
+        "target": "com.azure.signalr#SignalRListSkusRequest"
       },
       "output": {
         "target": "com.azure.signalr#SkuList"
@@ -224,7 +312,7 @@
         "smithy.api#documentation": "Optional tier of this particular SKU. 'Standard' or 'Free'. \r\n\r\n`Basic` is deprecated, use `Standard` instead."
       }
     },
-    "com.azure.signalr#ListSignalRSkusRequest": {
+    "com.azure.signalr#SignalRListSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -256,10 +344,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#DeleteSignalRSharedPrivateLinkResource": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#DeleteSignalRSharedPrivateLinkResourceRequest"
+        "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -275,7 +363,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#DeleteSignalRSharedPrivateLinkResourceRequest": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -682,13 +770,13 @@
         "smithy.api#documentation": "Describes the properties of an existing Shared Private Link Resource"
       }
     },
-    "com.azure.signalr#GetSignalRSharedPrivateLinkResource": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRSharedPrivateLinkResourceRequest"
+        "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRSharedPrivateLinkResourceResponse"
+        "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -701,7 +789,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRSharedPrivateLinkResourceResponse": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -736,7 +824,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRSharedPrivateLinkResourceRequest": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -776,10 +864,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRSharedPrivateLinkResources": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRSharedPrivateLinkResourcesRequest"
+        "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesListRequest"
       },
       "output": {
         "target": "com.azure.signalr#SharedPrivateLinkResourceList"
@@ -789,10 +877,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List shared private link resources",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#SharedPrivateLinkResourceList": {
@@ -859,7 +954,7 @@
         "smithy.api#documentation": "Describes a Shared Private Link Resource"
       }
     },
-    "com.azure.signalr#ListSignalRSharedPrivateLinkResourcesRequest": {
+    "com.azure.signalr#SignalRSharedPrivateLinkResourcesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -885,19 +980,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#RestartSignalR": {
+    "com.azure.signalr#SignalRRestart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#RestartSignalRRequest"
+        "target": "com.azure.signalr#SignalRRestartRequest"
       },
       "output": {
-        "target": "com.azure.signalr#RestartSignalRResponse"
+        "target": "com.azure.signalr#SignalRRestartResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -910,7 +1011,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#RestartSignalRResponse": {
+    "com.azure.signalr#SignalRRestartResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -924,7 +1025,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#RestartSignalRRequest": {
+    "com.azure.signalr#SignalRRestartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -956,10 +1057,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRReplicaSkus": {
+    "com.azure.signalr#SignalRListReplicaSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRReplicaSkusRequest"
+        "target": "com.azure.signalr#SignalRListReplicaSkusRequest"
       },
       "output": {
         "target": "com.azure.signalr#SkuList"
@@ -975,7 +1076,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#ListSignalRReplicaSkusRequest": {
+    "com.azure.signalr#SignalRListReplicaSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1120,13 +1221,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResource": {
+    "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResourceRequest"
+        "target": "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResourceResponse"
+        "target": "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1139,7 +1240,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResourceResponse": {
+    "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1174,7 +1275,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResourceRequest": {
+    "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1222,10 +1323,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRReplicaSharedPrivateLinkResources": {
+    "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRReplicaSharedPrivateLinkResourcesRequest"
+        "target": "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesListRequest"
       },
       "output": {
         "target": "com.azure.signalr#SharedPrivateLinkResourceList"
@@ -1235,13 +1336,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List shared private link resources",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.signalr#ListSignalRReplicaSharedPrivateLinkResourcesRequest": {
+    "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1275,19 +1383,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the replica."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#RestartSignalRReplicas": {
+    "com.azure.signalr#SignalRReplicasRestart": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#RestartSignalRReplicasRequest"
+        "target": "com.azure.signalr#SignalRReplicasRestartRequest"
       },
       "output": {
-        "target": "com.azure.signalr#RestartSignalRReplicasResponse"
+        "target": "com.azure.signalr#SignalRReplicasRestartResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1300,7 +1414,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#RestartSignalRReplicasResponse": {
+    "com.azure.signalr#SignalRReplicasRestartResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -1314,7 +1428,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#RestartSignalRReplicasRequest": {
+    "com.azure.signalr#SignalRReplicasRestartRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1354,10 +1468,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#DeleteSignalRReplicas": {
+    "com.azure.signalr#SignalRReplicasDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#DeleteSignalRReplicasRequest"
+        "target": "com.azure.signalr#SignalRReplicasDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1373,7 +1487,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#DeleteSignalRReplicasRequest": {
+    "com.azure.signalr#SignalRReplicasDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1413,13 +1527,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#UpdateSignalRReplicas": {
+    "com.azure.signalr#SignalRReplicasUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#UpdateSignalRReplicasRequest"
+        "target": "com.azure.signalr#SignalRReplicasUpdateRequest"
       },
       "output": {
-        "target": "com.azure.signalr#UpdateSignalRReplicasResponse"
+        "target": "com.azure.signalr#SignalRReplicasUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1432,7 +1546,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#UpdateSignalRReplicasResponse": {
+    "com.azure.signalr#SignalRReplicasUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1460,7 +1574,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.signalr#UpdateSignalRReplicasResponseTagsMap",
+          "target": "com.azure.signalr#SignalRReplicasUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1510,7 +1624,7 @@
       },
       "traits": {}
     },
-    "com.azure.signalr#UpdateSignalRReplicasResponseTagsMap": {
+    "com.azure.signalr#SignalRReplicasUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1522,7 +1636,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#UpdateSignalRReplicasRequest": {
+    "com.azure.signalr#SignalRReplicasUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1558,7 +1672,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.signalr#UpdateSignalRReplicasRequestTagsMap",
+          "target": "com.azure.signalr#SignalRReplicasUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1623,7 +1737,7 @@
         "smithy.api#documentation": "The billing information of the resource."
       }
     },
-    "com.azure.signalr#UpdateSignalRReplicasRequestTagsMap": {
+    "com.azure.signalr#SignalRReplicasUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1788,13 +1902,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#GetSignalRReplicas": {
+    "com.azure.signalr#SignalRReplicasGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRReplicasRequest"
+        "target": "com.azure.signalr#SignalRReplicasGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRReplicasResponse"
+        "target": "com.azure.signalr#SignalRReplicasGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1807,7 +1921,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRReplicasResponse": {
+    "com.azure.signalr#SignalRReplicasGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1835,7 +1949,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.signalr#GetSignalRReplicasResponseTagsMap",
+          "target": "com.azure.signalr#SignalRReplicasGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1858,7 +1972,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRReplicasResponseTagsMap": {
+    "com.azure.signalr#SignalRReplicasGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1870,7 +1984,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#GetSignalRReplicasRequest": {
+    "com.azure.signalr#SignalRReplicasGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1910,10 +2024,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRReplicas": {
+    "com.azure.signalr#SignalRReplicasList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRReplicasRequest"
+        "target": "com.azure.signalr#SignalRReplicasListRequest"
       },
       "output": {
         "target": "com.azure.signalr#ReplicaList"
@@ -1923,10 +2037,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all replicas belong to this resource",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#ReplicaList": {
@@ -2019,7 +2140,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#ListSignalRReplicasRequest": {
+    "com.azure.signalr#SignalRReplicasListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2045,19 +2166,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#RegenerateSignalRKey": {
+    "com.azure.signalr#SignalRRegenerateKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#RegenerateSignalRKeyRequest"
+        "target": "com.azure.signalr#SignalRRegenerateKeyRequest"
       },
       "output": {
-        "target": "com.azure.signalr#RegenerateSignalRKeyResponse"
+        "target": "com.azure.signalr#SignalRRegenerateKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2070,7 +2197,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#RegenerateSignalRKeyResponse": {
+    "com.azure.signalr#SignalRRegenerateKeyResponse": {
       "type": "structure",
       "members": {
         "primaryKey": {
@@ -2109,7 +2236,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#RegenerateSignalRKeyRequest": {
+    "com.azure.signalr#SignalRRegenerateKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2170,10 +2297,10 @@
         "smithy.api#documentation": "The type of access key."
       }
     },
-    "com.azure.signalr#ListSignalRPrivateLinkResources": {
+    "com.azure.signalr#SignalRPrivateLinkResourcesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRPrivateLinkResourcesRequest"
+        "target": "com.azure.signalr#SignalRPrivateLinkResourcesListRequest"
       },
       "output": {
         "target": "com.azure.signalr#PrivateLinkResourceList"
@@ -2183,10 +2310,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the private link resources that need to be created for a resource.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#PrivateLinkResourceList": {
@@ -2355,7 +2489,7 @@
         "smithy.api#documentation": "Required members of the private link resource"
       }
     },
-    "com.azure.signalr#ListSignalRPrivateLinkResourcesRequest": {
+    "com.azure.signalr#SignalRPrivateLinkResourcesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2381,16 +2515,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#DeleteSignalRPrivateEndpointConnection": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#DeleteSignalRPrivateEndpointConnectionRequest"
+        "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2406,7 +2546,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#DeleteSignalRPrivateEndpointConnectionRequest": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2446,13 +2586,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#UpdateSignalRPrivateEndpointConnection": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#UpdateSignalRPrivateEndpointConnectionRequest"
+        "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.signalr#UpdateSignalRPrivateEndpointConnectionResponse"
+        "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2465,7 +2605,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#UpdateSignalRPrivateEndpointConnectionResponse": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2601,7 +2741,7 @@
         "smithy.api#documentation": "Private endpoint"
       }
     },
-    "com.azure.signalr#UpdateSignalRPrivateEndpointConnectionRequest": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2658,13 +2798,13 @@
         "smithy.api#documentation": "Private endpoint connection properties"
       }
     },
-    "com.azure.signalr#GetSignalRPrivateEndpointConnection": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRPrivateEndpointConnectionRequest"
+        "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRPrivateEndpointConnectionResponse"
+        "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2677,7 +2817,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRPrivateEndpointConnectionResponse": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2712,7 +2852,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRPrivateEndpointConnectionRequest": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2752,10 +2892,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRPrivateEndpointConnections": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRPrivateEndpointConnectionsRequest"
+        "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsListRequest"
       },
       "output": {
         "target": "com.azure.signalr#PrivateEndpointConnectionList"
@@ -2765,10 +2905,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#PrivateEndpointConnectionList": {
@@ -2835,7 +2982,7 @@
         "smithy.api#documentation": "A private endpoint connection to an azure resource"
       }
     },
-    "com.azure.signalr#ListSignalRPrivateEndpointConnectionsRequest": {
+    "com.azure.signalr#SignalRPrivateEndpointConnectionsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2861,16 +3008,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRKeys": {
+    "com.azure.signalr#SignalRListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRKeysRequest"
+        "target": "com.azure.signalr#SignalRListKeysRequest"
       },
       "output": {
         "target": "com.azure.signalr#SignalRKeys"
@@ -2918,7 +3071,7 @@
         "smithy.api#documentation": "A class represents the access keys of the resource."
       }
     },
-    "com.azure.signalr#ListSignalRKeysRequest": {
+    "com.azure.signalr#SignalRListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2950,10 +3103,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#DeleteSignalRCustomDomain": {
+    "com.azure.signalr#SignalRCustomDomainsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#DeleteSignalRCustomDomainRequest"
+        "target": "com.azure.signalr#SignalRCustomDomainsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2969,7 +3122,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#DeleteSignalRCustomDomainRequest": {
+    "com.azure.signalr#SignalRCustomDomainsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3171,13 +3324,13 @@
         "smithy.api#documentation": "Properties of a custom domain."
       }
     },
-    "com.azure.signalr#GetSignalRCustomDomain": {
+    "com.azure.signalr#SignalRCustomDomainsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRCustomDomainRequest"
+        "target": "com.azure.signalr#SignalRCustomDomainsGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRCustomDomainResponse"
+        "target": "com.azure.signalr#SignalRCustomDomainsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3190,7 +3343,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRCustomDomainResponse": {
+    "com.azure.signalr#SignalRCustomDomainsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3228,7 +3381,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRCustomDomainRequest": {
+    "com.azure.signalr#SignalRCustomDomainsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3268,10 +3421,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRCustomDomains": {
+    "com.azure.signalr#SignalRCustomDomainsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRCustomDomainsRequest"
+        "target": "com.azure.signalr#SignalRCustomDomainsListRequest"
       },
       "output": {
         "target": "com.azure.signalr#CustomDomainList"
@@ -3281,10 +3434,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all custom domains.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#CustomDomainList": {
@@ -3354,7 +3514,7 @@
         "smithy.api#documentation": "A custom domain"
       }
     },
-    "com.azure.signalr#ListSignalRCustomDomainsRequest": {
+    "com.azure.signalr#SignalRCustomDomainsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3380,16 +3540,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#DeleteSignalRCustomCertificate": {
+    "com.azure.signalr#SignalRCustomCertificatesDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#DeleteSignalRCustomCertificateRequest"
+        "target": "com.azure.signalr#SignalRCustomCertificatesDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3405,7 +3571,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#DeleteSignalRCustomCertificateRequest": {
+    "com.azure.signalr#SignalRCustomCertificatesDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3607,13 +3773,13 @@
         "smithy.api#documentation": "Custom certificate properties."
       }
     },
-    "com.azure.signalr#GetSignalRCustomCertificate": {
+    "com.azure.signalr#SignalRCustomCertificatesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRCustomCertificateRequest"
+        "target": "com.azure.signalr#SignalRCustomCertificatesGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRCustomCertificateResponse"
+        "target": "com.azure.signalr#SignalRCustomCertificatesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3626,7 +3792,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRCustomCertificateResponse": {
+    "com.azure.signalr#SignalRCustomCertificatesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3664,7 +3830,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRCustomCertificateRequest": {
+    "com.azure.signalr#SignalRCustomCertificatesGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3704,10 +3870,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRCustomCertificates": {
+    "com.azure.signalr#SignalRCustomCertificatesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRCustomCertificatesRequest"
+        "target": "com.azure.signalr#SignalRCustomCertificatesListRequest"
       },
       "output": {
         "target": "com.azure.signalr#CustomCertificateList"
@@ -3717,10 +3883,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all custom certificates.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#CustomCertificateList": {
@@ -3790,7 +3963,7 @@
         "smithy.api#documentation": "A custom certificate."
       }
     },
-    "com.azure.signalr#ListSignalRCustomCertificatesRequest": {
+    "com.azure.signalr#SignalRCustomCertificatesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3816,16 +3989,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#DeleteSignalR": {
+    "com.azure.signalr#SignalRDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#DeleteSignalRRequest"
+        "target": "com.azure.signalr#SignalRDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3841,7 +4020,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#DeleteSignalRRequest": {
+    "com.azure.signalr#SignalRDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3873,13 +4052,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#UpdateSignalR": {
+    "com.azure.signalr#SignalRUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#UpdateSignalRRequest"
+        "target": "com.azure.signalr#SignalRUpdateRequest"
       },
       "output": {
-        "target": "com.azure.signalr#UpdateSignalRResponse"
+        "target": "com.azure.signalr#SignalRUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3892,7 +4071,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#UpdateSignalRResponse": {
+    "com.azure.signalr#SignalRUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3920,7 +4099,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.signalr#UpdateSignalRResponseTagsMap",
+          "target": "com.azure.signalr#SignalRUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4722,7 +4901,7 @@
         "smithy.api#documentation": "Private endpoint connections to the resource."
       }
     },
-    "com.azure.signalr#UpdateSignalRResponseTagsMap": {
+    "com.azure.signalr#SignalRUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4734,7 +4913,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#UpdateSignalRRequest": {
+    "com.azure.signalr#SignalRUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4762,7 +4941,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.signalr#UpdateSignalRRequestTagsMap",
+          "target": "com.azure.signalr#SignalRUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4901,7 +5080,7 @@
         "smithy.api#documentation": "List of the featureFlags.\r\n\r\nFeatureFlags that are not included in the parameters for the update operation will not be modified.\r\nAnd the response will only include featureFlags that are explicitly set. \r\nWhen a featureFlag is not explicitly set, its globally default value will be used\r\nBut keep in mind, the default value doesn't mean \"false\". It varies in terms of different FeatureFlags."
       }
     },
-    "com.azure.signalr#UpdateSignalRRequestTagsMap": {
+    "com.azure.signalr#SignalRUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5070,13 +5249,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#GetSignalR": {
+    "com.azure.signalr#SignalRGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#GetSignalRRequest"
+        "target": "com.azure.signalr#SignalRGetRequest"
       },
       "output": {
-        "target": "com.azure.signalr#GetSignalRResponse"
+        "target": "com.azure.signalr#SignalRGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5089,7 +5268,7 @@
         "com.distilled.openapi#apiVersion": "2024-03-01"
       }
     },
-    "com.azure.signalr#GetSignalRResponse": {
+    "com.azure.signalr#SignalRGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5117,7 +5296,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.signalr#GetSignalRResponseTagsMap",
+          "target": "com.azure.signalr#SignalRGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -5146,7 +5325,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.signalr#GetSignalRResponseTagsMap": {
+    "com.azure.signalr#SignalRGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -5158,7 +5337,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#GetSignalRRequest": {
+    "com.azure.signalr#SignalRGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5190,10 +5369,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRByResourceGroup": {
+    "com.azure.signalr#SignalRListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRByResourceGroupRequest"
+        "target": "com.azure.signalr#SignalRListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.signalr#SignalRResourceList"
@@ -5203,10 +5382,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#SignalRResourceList": {
@@ -5307,7 +5493,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.signalr#ListSignalRByResourceGroupRequest": {
+    "com.azure.signalr#SignalRListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5325,16 +5511,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListSignalRBySubscription": {
+    "com.azure.signalr#SignalRListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListSignalRBySubscriptionRequest"
+        "target": "com.azure.signalr#SignalRListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.signalr#SignalRResourceList"
@@ -5344,13 +5536,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/signalR",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.signalr#ListSignalRBySubscriptionRequest": {
+    "com.azure.signalr#SignalRListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5360,16 +5559,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListUsages": {
+    "com.azure.signalr#UsagesList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#ListUsagesRequest"
+        "target": "com.azure.signalr#UsagesListRequest"
       },
       "output": {
         "target": "com.azure.signalr#SignalRUsageList"
@@ -5379,10 +5584,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List resource usage quotas by location.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#SignalRUsageList": {
@@ -5469,7 +5681,7 @@
         "smithy.api#documentation": "Localizable String object containing the name and a localized value."
       }
     },
-    "com.azure.signalr#ListUsagesRequest": {
+    "com.azure.signalr#UsagesListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5487,16 +5699,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "the location like \"eastus\""
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#CheckSignalRNameAvailability": {
+    "com.azure.signalr#SignalRCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.signalr#CheckSignalRNameAvailabilityRequest"
+        "target": "com.azure.signalr#SignalRCheckNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.signalr#NameAvailability"
@@ -5538,7 +5756,7 @@
         "smithy.api#documentation": "Result of the request to check name availability. It contains a flag and possible reason of failure."
       }
     },
-    "com.azure.signalr#CheckSignalRNameAvailabilityRequest": {
+    "com.azure.signalr#SignalRCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5576,10 +5794,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.signalr#ListOperations": {
+    "com.azure.signalr#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.signalr#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.signalr#OperationList"
@@ -5589,10 +5807,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.SignalRService/operations",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available REST API operations of the Microsoft.SignalRService provider.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.signalr#OperationList": {
@@ -5854,129 +6079,143 @@
         "smithy.api#documentation": "The object that describes a operation."
       }
     },
+    "com.azure.signalr#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.signalr#Signalr": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.signalr#ListSignalRSkus"
+          "target": "com.azure.signalr#SignalRListSkus"
         },
         {
-          "target": "com.azure.signalr#DeleteSignalRSharedPrivateLinkResource"
+          "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesDelete"
         },
         {
           "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesCreateOrUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalRSharedPrivateLinkResource"
+          "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRSharedPrivateLinkResources"
+          "target": "com.azure.signalr#SignalRSharedPrivateLinkResourcesList"
         },
         {
-          "target": "com.azure.signalr#RestartSignalR"
+          "target": "com.azure.signalr#SignalRRestart"
         },
         {
-          "target": "com.azure.signalr#ListSignalRReplicaSkus"
+          "target": "com.azure.signalr#SignalRListReplicaSkus"
         },
         {
           "target": "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalRReplicaSharedPrivateLinkResource"
+          "target": "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRReplicaSharedPrivateLinkResources"
+          "target": "com.azure.signalr#SignalRReplicaSharedPrivateLinkResourcesList"
         },
         {
-          "target": "com.azure.signalr#RestartSignalRReplicas"
+          "target": "com.azure.signalr#SignalRReplicasRestart"
         },
         {
-          "target": "com.azure.signalr#DeleteSignalRReplicas"
+          "target": "com.azure.signalr#SignalRReplicasDelete"
         },
         {
-          "target": "com.azure.signalr#UpdateSignalRReplicas"
+          "target": "com.azure.signalr#SignalRReplicasUpdate"
         },
         {
           "target": "com.azure.signalr#SignalRReplicasCreateOrUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalRReplicas"
+          "target": "com.azure.signalr#SignalRReplicasGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRReplicas"
+          "target": "com.azure.signalr#SignalRReplicasList"
         },
         {
-          "target": "com.azure.signalr#RegenerateSignalRKey"
+          "target": "com.azure.signalr#SignalRRegenerateKey"
         },
         {
-          "target": "com.azure.signalr#ListSignalRPrivateLinkResources"
+          "target": "com.azure.signalr#SignalRPrivateLinkResourcesList"
         },
         {
-          "target": "com.azure.signalr#DeleteSignalRPrivateEndpointConnection"
+          "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsDelete"
         },
         {
-          "target": "com.azure.signalr#UpdateSignalRPrivateEndpointConnection"
+          "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalRPrivateEndpointConnection"
+          "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRPrivateEndpointConnections"
+          "target": "com.azure.signalr#SignalRPrivateEndpointConnectionsList"
         },
         {
-          "target": "com.azure.signalr#ListSignalRKeys"
+          "target": "com.azure.signalr#SignalRListKeys"
         },
         {
-          "target": "com.azure.signalr#DeleteSignalRCustomDomain"
+          "target": "com.azure.signalr#SignalRCustomDomainsDelete"
         },
         {
           "target": "com.azure.signalr#SignalRCustomDomainsCreateOrUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalRCustomDomain"
+          "target": "com.azure.signalr#SignalRCustomDomainsGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRCustomDomains"
+          "target": "com.azure.signalr#SignalRCustomDomainsList"
         },
         {
-          "target": "com.azure.signalr#DeleteSignalRCustomCertificate"
+          "target": "com.azure.signalr#SignalRCustomCertificatesDelete"
         },
         {
           "target": "com.azure.signalr#SignalRCustomCertificatesCreateOrUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalRCustomCertificate"
+          "target": "com.azure.signalr#SignalRCustomCertificatesGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRCustomCertificates"
+          "target": "com.azure.signalr#SignalRCustomCertificatesList"
         },
         {
-          "target": "com.azure.signalr#DeleteSignalR"
+          "target": "com.azure.signalr#SignalRDelete"
         },
         {
-          "target": "com.azure.signalr#UpdateSignalR"
+          "target": "com.azure.signalr#SignalRUpdate"
         },
         {
           "target": "com.azure.signalr#SignalRCreateOrUpdate"
         },
         {
-          "target": "com.azure.signalr#GetSignalR"
+          "target": "com.azure.signalr#SignalRGet"
         },
         {
-          "target": "com.azure.signalr#ListSignalRByResourceGroup"
+          "target": "com.azure.signalr#SignalRListByResourceGroup"
         },
         {
-          "target": "com.azure.signalr#ListSignalRBySubscription"
+          "target": "com.azure.signalr#SignalRListBySubscription"
         },
         {
-          "target": "com.azure.signalr#ListUsages"
+          "target": "com.azure.signalr#UsagesList"
         },
         {
-          "target": "com.azure.signalr#CheckSignalRNameAvailability"
+          "target": "com.azure.signalr#SignalRCheckNameAvailability"
         },
         {
-          "target": "com.azure.signalr#ListOperations"
+          "target": "com.azure.signalr#OperationsList"
         }
       ],
       "traits": {

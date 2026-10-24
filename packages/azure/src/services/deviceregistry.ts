@@ -2311,6 +2311,8 @@ export interface ListAssetByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AssetTagsMap = { [key: string]: string | undefined };
@@ -2345,12 +2347,16 @@ export interface AssetListResult {
 export interface ListAssetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAssetEndpointProfileByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AssetEndpointProfileTagsMap = { [key: string]: string | undefined };
@@ -2385,10 +2391,14 @@ export interface AssetEndpointProfileListResult {
 export interface ListAssetEndpointProfileBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBillingContainerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** billingContainer Model as Azure resource whose sole purpose is to keep track of billables resources under a subscription. */
 export interface BillingContainer {
@@ -2421,6 +2431,8 @@ export interface ListCertificateAuthorityByNamespaceRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CertificateAuthorityTagsMap = { [key: string]: string | undefined };
@@ -2459,6 +2471,8 @@ export interface ListCertificatePolicyByCertificateAuthorityRequest {
   namespaceName: string;
   /** The name of the Certificate Authority resource. */
   certificateAuthorityName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Certificate Policy resource. */
 export interface CertificatePolicy {
@@ -2489,6 +2503,8 @@ export interface ListNamespaceAssetByNamespaceRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NamespaceAssetTagsMap = { [key: string]: string | undefined };
@@ -2525,6 +2541,8 @@ export interface ListNamespaceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NamespaceTagsMap = { [key: string]: string | undefined };
@@ -2561,6 +2579,8 @@ export interface NamespaceListResult {
 export interface ListNamespaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListNamespaceDeviceByNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2569,6 +2589,8 @@ export interface ListNamespaceDeviceByNamespaceRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NamespaceDeviceTagsMap = { [key: string]: string | undefined };
@@ -2609,6 +2631,8 @@ export interface ListNamespaceDiscoveredAssetByNamespaceRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NamespaceDiscoveredAssetTagsMap = { [key: string]: string | undefined };
@@ -2647,6 +2671,8 @@ export interface ListNamespaceDiscoveredDeviceByNamespaceRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type NamespaceDiscoveredDeviceTagsMap = { [key: string]: string | undefined };
@@ -2678,7 +2704,10 @@ export interface NamespaceDiscoveredDeviceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2711,7 +2740,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -2722,6 +2751,8 @@ export interface ListRegistryDeviceByNamespaceRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RegistryDeviceTagsMap = { [key: string]: string | undefined };
@@ -2760,6 +2791,8 @@ export interface ListSchemaBySchemaRegistryRequest {
   resourceGroupName: string;
   /** Schema registry name parameter. */
   schemaRegistryName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Schema definition. */
 export interface Schema {
@@ -2788,6 +2821,8 @@ export interface ListSchemaRegistryByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SchemaRegistryTagsMap = { [key: string]: string | undefined };
@@ -2824,6 +2859,8 @@ export interface SchemaRegistryListResult {
 export interface ListSchemaRegistryBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSchemaVersionBySchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2834,6 +2871,8 @@ export interface ListSchemaVersionBySchemaRequest {
   schemaRegistryName: string;
   /** Schema name parameter. */
   schemaName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Schema version's definition. */
 export interface SchemaVersion {
@@ -4975,288 +5014,421 @@ export const GetSchemaVersion: API.OperationMethod<
 
 export type ListAssetByResourceGroupError = AzureOpError;
 /** List Asset resources by resource group */
-export const ListAssetByResourceGroup: API.OperationMethod<
+export const ListAssetByResourceGroup: API.PaginatedOperationMethod<
   ListAssetByResourceGroupRequest,
   AssetListResult,
   ListAssetByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Asset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2240, __c70, 0) as any as S.Schema<ListAssetByResourceGroupRequest>,
   output: __S(2273, __c71, 1) as any as S.Schema<AssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssetBySubscriptionError = AzureOpError;
 /** List Asset resources by subscription ID */
-export const ListAssetBySubscription: API.OperationMethod<
+export const ListAssetBySubscription: API.PaginatedOperationMethod<
   ListAssetBySubscriptionRequest,
   AssetListResult,
   ListAssetBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Asset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2304, __c72, 0) as any as S.Schema<ListAssetBySubscriptionRequest>,
   output: __S(2273, __c71, 1) as any as S.Schema<AssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssetEndpointProfileByResourceGroupError = AzureOpError;
 /** List AssetEndpointProfile resources by resource group */
-export const ListAssetEndpointProfileByResourceGroup: API.OperationMethod<
+export const ListAssetEndpointProfileByResourceGroup: API.PaginatedOperationMethod<
   ListAssetEndpointProfileByResourceGroupRequest,
   AssetEndpointProfileListResult,
   ListAssetEndpointProfileByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssetEndpointProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2336, __c73, 0) as any as S.Schema<ListAssetEndpointProfileByResourceGroupRequest>,
   output: __S(2369, __c74, 1) as any as S.Schema<AssetEndpointProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAssetEndpointProfileBySubscriptionError = AzureOpError;
 /** List AssetEndpointProfile resources by subscription ID */
-export const ListAssetEndpointProfileBySubscription: API.OperationMethod<
+export const ListAssetEndpointProfileBySubscription: API.PaginatedOperationMethod<
   ListAssetEndpointProfileBySubscriptionRequest,
   AssetEndpointProfileListResult,
   ListAssetEndpointProfileBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssetEndpointProfile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2400, __c75, 0) as any as S.Schema<ListAssetEndpointProfileBySubscriptionRequest>,
   output: __S(2369, __c74, 1) as any as S.Schema<AssetEndpointProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBillingContainerBySubscriptionError = AzureOpError;
 /** List BillingContainer resources by subscription ID */
-export const ListBillingContainerBySubscription: API.OperationMethod<
+export const ListBillingContainerBySubscription: API.PaginatedOperationMethod<
   ListBillingContainerBySubscriptionRequest,
   BillingContainerListResult,
   ListBillingContainerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BillingContainer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2464, __c77, 0) as any as S.Schema<ListBillingContainerBySubscriptionRequest>,
   output: __S(2466, __c77, 2) as any as S.Schema<BillingContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCertificateAuthorityByNamespaceError = AzureOpError;
 /** List CertificateAuthority resources by Namespace */
-export const ListCertificateAuthorityByNamespace: API.OperationMethod<
+export const ListCertificateAuthorityByNamespace: API.PaginatedOperationMethod<
   ListCertificateAuthorityByNamespaceRequest,
   CertificateAuthorityListResult,
   ListCertificateAuthorityByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CertificateAuthority
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2496, __c78, 0) as any as S.Schema<ListCertificateAuthorityByNamespaceRequest>,
   output: __S(2498, __c78, 2) as any as S.Schema<CertificateAuthorityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCertificatePolicyByCertificateAuthorityError = AzureOpError;
 /** List CertificatePolicy resources by CertificateAuthority */
-export const ListCertificatePolicyByCertificateAuthority: API.OperationMethod<
+export const ListCertificatePolicyByCertificateAuthority: API.PaginatedOperationMethod<
   ListCertificatePolicyByCertificateAuthorityRequest,
   CertificatePolicyListResult,
   ListCertificatePolicyByCertificateAuthorityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CertificatePolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2528, __c79, 0) as any as S.Schema<ListCertificatePolicyByCertificateAuthorityRequest>,
   output: __S(2530, __c79, 2) as any as S.Schema<CertificatePolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceAssetByNamespaceError = AzureOpError;
 /** List NamespaceAsset resources by Namespace */
-export const ListNamespaceAssetByNamespace: API.OperationMethod<
+export const ListNamespaceAssetByNamespace: API.PaginatedOperationMethod<
   ListNamespaceAssetByNamespaceRequest,
   NamespaceAssetListResult,
   ListNamespaceAssetByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NamespaceAsset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2560, __c80, 0) as any as S.Schema<ListNamespaceAssetByNamespaceRequest>,
   output: __S(2562, __c80, 2) as any as S.Schema<NamespaceAssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceByResourceGroupError = AzureOpError;
 /** List Namespace resources by resource group */
-export const ListNamespaceByResourceGroup: API.OperationMethod<
+export const ListNamespaceByResourceGroup: API.PaginatedOperationMethod<
   ListNamespaceByResourceGroupRequest,
   NamespaceListResult,
   ListNamespaceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Namespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2592, __c81, 0) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
   output: __S(2625, __c82, 1) as any as S.Schema<NamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceBySubscriptionError = AzureOpError;
 /** List Namespace resources by subscription ID */
-export const ListNamespaceBySubscription: API.OperationMethod<
+export const ListNamespaceBySubscription: API.PaginatedOperationMethod<
   ListNamespaceBySubscriptionRequest,
   NamespaceListResult,
   ListNamespaceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Namespace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2656, __c83, 0) as any as S.Schema<ListNamespaceBySubscriptionRequest>,
   output: __S(2625, __c82, 1) as any as S.Schema<NamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceDeviceByNamespaceError = AzureOpError;
 /** List NamespaceDevice resources by Namespace */
-export const ListNamespaceDeviceByNamespace: API.OperationMethod<
+export const ListNamespaceDeviceByNamespace: API.PaginatedOperationMethod<
   ListNamespaceDeviceByNamespaceRequest,
   NamespaceDeviceListResult,
   ListNamespaceDeviceByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NamespaceDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2688, __c84, 0) as any as S.Schema<ListNamespaceDeviceByNamespaceRequest>,
   output: __S(2690, __c84, 2) as any as S.Schema<NamespaceDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceDiscoveredAssetByNamespaceError = AzureOpError;
 /** List NamespaceDiscoveredAsset resources by Namespace */
-export const ListNamespaceDiscoveredAssetByNamespace: API.OperationMethod<
+export const ListNamespaceDiscoveredAssetByNamespace: API.PaginatedOperationMethod<
   ListNamespaceDiscoveredAssetByNamespaceRequest,
   NamespaceDiscoveredAssetListResult,
   ListNamespaceDiscoveredAssetByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NamespaceDiscoveredAsset
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2720, __c85, 0) as any as S.Schema<ListNamespaceDiscoveredAssetByNamespaceRequest>,
   output: __S(2722, __c85, 2) as any as S.Schema<NamespaceDiscoveredAssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNamespaceDiscoveredDeviceByNamespaceError = AzureOpError;
 /** List NamespaceDiscoveredDevice resources by Namespace */
-export const ListNamespaceDiscoveredDeviceByNamespace: API.OperationMethod<
+export const ListNamespaceDiscoveredDeviceByNamespace: API.PaginatedOperationMethod<
   ListNamespaceDiscoveredDeviceByNamespaceRequest,
   NamespaceDiscoveredDeviceListResult,
   ListNamespaceDiscoveredDeviceByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NamespaceDiscoveredDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2752, __c86, 0) as any as S.Schema<ListNamespaceDiscoveredDeviceByNamespaceRequest>,
   output: __S(2754, __c86, 2) as any as S.Schema<NamespaceDiscoveredDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2784, __c87, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(2788, __c87, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRegistryDeviceByNamespaceError = AzureOpError;
 /** List RegistryDevice resources by Namespace */
-export const ListRegistryDeviceByNamespace: API.OperationMethod<
+export const ListRegistryDeviceByNamespace: API.PaginatedOperationMethod<
   ListRegistryDeviceByNamespaceRequest,
   RegistryDeviceListResult,
   ListRegistryDeviceByNamespaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RegistryDevice
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2880, __c90, 0) as any as S.Schema<ListRegistryDeviceByNamespaceRequest>,
   output: __S(2882, __c90, 2) as any as S.Schema<RegistryDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSchemaBySchemaRegistryError = AzureOpError;
 /** List Schema resources by SchemaRegistry */
-export const ListSchemaBySchemaRegistry: API.OperationMethod<
+export const ListSchemaBySchemaRegistry: API.PaginatedOperationMethod<
   ListSchemaBySchemaRegistryRequest,
   SchemaListResult,
   ListSchemaBySchemaRegistryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Schema
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2912, __c91, 0) as any as S.Schema<ListSchemaBySchemaRegistryRequest>,
   output: __S(2915, __c91, 3) as any as S.Schema<SchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSchemaRegistryByResourceGroupError = AzureOpError;
 /** List SchemaRegistry resources by resource group */
-export const ListSchemaRegistryByResourceGroup: API.OperationMethod<
+export const ListSchemaRegistryByResourceGroup: API.PaginatedOperationMethod<
   ListSchemaRegistryByResourceGroupRequest,
   SchemaRegistryListResult,
   ListSchemaRegistryByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SchemaRegistry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2944, __c92, 0) as any as S.Schema<ListSchemaRegistryByResourceGroupRequest>,
   output: __S(2977, __c93, 1) as any as S.Schema<SchemaRegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSchemaRegistryBySubscriptionError = AzureOpError;
 /** List SchemaRegistry resources by subscription ID */
-export const ListSchemaRegistryBySubscription: API.OperationMethod<
+export const ListSchemaRegistryBySubscription: API.PaginatedOperationMethod<
   ListSchemaRegistryBySubscriptionRequest,
   SchemaRegistryListResult,
   ListSchemaRegistryBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SchemaRegistry
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3008, __c94, 0) as any as S.Schema<ListSchemaRegistryBySubscriptionRequest>,
   output: __S(2977, __c93, 1) as any as S.Schema<SchemaRegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSchemaVersionBySchemaError = AzureOpError;
 /** List SchemaVersion resources by Schema */
-export const ListSchemaVersionBySchema: API.OperationMethod<
+export const ListSchemaVersionBySchema: API.PaginatedOperationMethod<
   ListSchemaVersionBySchemaRequest,
   SchemaVersionListResult,
   ListSchemaVersionBySchemaError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SchemaVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3040, __c95, 0) as any as S.Schema<ListSchemaVersionBySchemaRequest>,
   output: __S(3042, __c95, 2) as any as S.Schema<SchemaVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MigrateNamespaceError = AzureOpError;
 /** Migrate the resources into Namespace */
@@ -7530,12 +7702,14 @@ function __c70(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssetByResourceGroupRequest" });
@@ -7560,12 +7734,14 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assets",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssetBySubscriptionRequest" });
@@ -7578,12 +7754,14 @@ function __c73(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssetEndpointProfileByResourceGroupRequest" });
@@ -7608,12 +7786,14 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAssetEndpointProfileBySubscriptionRequest" });
@@ -7645,12 +7825,14 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/billingContainers",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBillingContainerBySubscriptionRequest" });
@@ -7673,12 +7855,14 @@ function __c78(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities",
             code: 200,
             apiVersion: "2026-11-02-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCertificateAuthorityByNamespaceRequest" });
@@ -7702,12 +7886,14 @@ function __c79(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           certificateAuthorityName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/certificateAuthorities/{certificateAuthorityName}/certificatePolicies",
             code: 200,
             apiVersion: "2026-11-02-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCertificatePolicyByCertificateAuthorityRequest" });
@@ -7730,12 +7916,14 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceAssetByNamespaceRequest" });
@@ -7757,12 +7945,14 @@ function __c81(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceByResourceGroupRequest" });
@@ -7787,12 +7977,14 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/namespaces",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceBySubscriptionRequest" });
@@ -7806,12 +7998,14 @@ function __c84(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceDeviceByNamespaceRequest" });
@@ -7834,12 +8028,14 @@ function __c85(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceDiscoveredAssetByNamespaceRequest" });
@@ -7862,12 +8058,14 @@ function __c86(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNamespaceDiscoveredDeviceByNamespaceRequest" });
@@ -7886,12 +8084,15 @@ function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DeviceRegistry/operations",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -7919,7 +8120,7 @@ function __c87(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2787, __c87, 3)),
+          value: __S(2787, __c87, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -7991,12 +8192,14 @@ function __c90(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/registryDevices",
             code: 200,
             apiVersion: "2026-11-02-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRegistryDeviceByNamespaceRequest" });
@@ -8019,12 +8222,14 @@ function __c91(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaRegistryName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSchemaBySchemaRegistryRequest" });
@@ -8056,12 +8261,14 @@ function __c92(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSchemaRegistryByResourceGroupRequest" });
@@ -8086,12 +8293,14 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DeviceRegistry/schemaRegistries",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSchemaRegistryBySubscriptionRequest" });
@@ -8106,12 +8315,14 @@ function __c95(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaRegistryName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions",
             code: 200,
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSchemaVersionBySchemaRequest" });

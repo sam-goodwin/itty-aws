@@ -309,13 +309,15 @@ export interface ListRecordSetAllByDnsZoneRequest {
   _top?: number;
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Information about the record sets in the response. */
 export type RecordSetListResultValueList = Array<RecordSet>;
 /** The response to a record set List operation. */
 export interface RecordSetListResult {
   /** Information about the record sets in the response. */
-  value?: RecordSetListResultValueList;
+  value: RecordSetListResultValueList;
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
@@ -330,6 +332,8 @@ export interface ListRecordSetByDnsZoneRequest {
   _top?: number;
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListRecordSetByTypeRequestRecordType =
   | "A"
@@ -355,6 +359,8 @@ export interface ListRecordSetByTypeRequest {
   _top?: number;
   /** The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix> */
   _recordsetnamesuffix?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListZoneByResourceGroupRequest {
   /** Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription. */
@@ -363,6 +369,8 @@ export interface ListZoneByResourceGroupRequest {
   resourceGroupName: string;
   /** The maximum number of record sets to return. If not specified, returns up to 100 record sets. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ZoneTagsMap = { [key: string]: string | undefined };
@@ -388,7 +396,7 @@ export type ZoneListResultValueList = Array<Zone>;
 /** The response to a Zone List or ListAll operation. */
 export interface ZoneListResult {
   /** Information about the DNS zones. */
-  value?: ZoneListResultValueList;
+  value: ZoneListResultValueList;
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
@@ -397,6 +405,8 @@ export interface ListZonesRequest {
   subscriptionId: string;
   /** The maximum number of DNS zones to return. If not specified, returns up to 100 zones. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type RecordSetsCreateOrUpdateRequestRecordType =
   | "A"
@@ -657,78 +667,113 @@ export const GetZone: API.OperationMethod<
 
 export type ListRecordSetAllByDnsZoneError = AzureOpError;
 /** Lists all record sets in a DNS zone. */
-export const ListRecordSetAllByDnsZone: API.OperationMethod<
+export const ListRecordSetAllByDnsZone: API.PaginatedOperationMethod<
   ListRecordSetAllByDnsZoneRequest,
   RecordSetListResult,
   ListRecordSetAllByDnsZoneError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecordSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<ListRecordSetAllByDnsZoneRequest>,
   output: __S(545, __c17, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecordSetByDnsZoneError = AzureOpError;
 /** Lists all record sets in a DNS zone. */
-export const ListRecordSetByDnsZone: API.OperationMethod<
+export const ListRecordSetByDnsZone: API.PaginatedOperationMethod<
   ListRecordSetByDnsZoneRequest,
   RecordSetListResult,
   ListRecordSetByDnsZoneError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecordSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListRecordSetByDnsZoneRequest>,
   output: __S(545, __c17, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRecordSetByTypeError = AzureOpError;
 /** Lists the record sets of a specified type in a DNS zone. */
-export const ListRecordSetByType: API.OperationMethod<
+export const ListRecordSetByType: API.PaginatedOperationMethod<
   ListRecordSetByTypeRequest,
   RecordSetListResult,
   ListRecordSetByTypeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RecordSet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListRecordSetByTypeRequest>,
   output: __S(545, __c17, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListZoneByResourceGroupError = AzureOpError;
 /** Lists the DNS zones within a resource group. */
-export const ListZoneByResourceGroup: API.OperationMethod<
+export const ListZoneByResourceGroup: API.PaginatedOperationMethod<
   ListZoneByResourceGroupRequest,
   ZoneListResult,
   ListZoneByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Zone
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListZoneByResourceGroupRequest>,
   output: __S(673, __c21, 1) as any as S.Schema<ZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListZonesError = AzureOpError;
 /** Lists the DNS zones in all resource groups in a subscription. */
-export const ListZones: API.OperationMethod<
+export const ListZones: API.PaginatedOperationMethod<
   ListZonesRequest,
   ZoneListResult,
   ListZonesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Zone
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<ListZonesRequest>,
   output: __S(673, __c21, 1) as any as S.Schema<ZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RecordSetsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a record set within a DNS zone. */
@@ -1225,12 +1270,14 @@ function __c16(j: number): any {
           zoneName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/all",
             code: 200,
             apiVersion: "2018-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecordSetAllByDnsZoneRequest" });
@@ -1243,7 +1290,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(544, __c17, 0)),
+          value: __S(544, __c17, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordSetListResult" });
@@ -1259,12 +1306,14 @@ function __c18(j: number): any {
           zoneName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/recordsets",
             code: 200,
             apiVersion: "2018-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecordSetByDnsZoneRequest" });
@@ -1281,12 +1330,14 @@ function __c19(j: number): any {
           recordType: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}/{recordType}",
             code: 200,
             apiVersion: "2018-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRecordSetByTypeRequest" });
@@ -1300,12 +1351,14 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones",
             code: 200,
             apiVersion: "2018-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListZoneByResourceGroupRequest" });
@@ -1318,7 +1371,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(672, __c21, 0)),
+          value: __S(672, __c21, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ZoneListResult" });
@@ -1331,12 +1384,14 @@ function __c22(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnszones",
             code: 200,
             apiVersion: "2018-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListZonesRequest" });

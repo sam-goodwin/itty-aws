@@ -2006,9 +2006,16 @@
           "hostRaw": [
             "vaultBaseUrl"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all role definitions that are applicable at scope and above."
+        "smithy.api#documentation": "Get all role definitions that are applicable at scope and above.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.keyvault_administration#RoleDefinitionListResult": {
@@ -2064,6 +2071,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2337,9 +2350,16 @@
           "hostRaw": [
             "vaultBaseUrl"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets role assignments for a scope."
+        "smithy.api#documentation": "Gets role assignments for a scope.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.keyvault_administration#RoleAssignmentListResult": {
@@ -2395,6 +2415,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. Use $filter=atScope() to return all role assignments at or above the scope. Use $filter=principalId eq {id} to return all role assignments at, above or below the scope for the specified principal."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

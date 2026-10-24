@@ -97,9 +97,11 @@
       "com.azure.support#ServicesGetResponse": "com.azure.support#GetServiceResponse",
       "com.azure.support#ServicesGetRequest": "com.azure.support#GetServiceRequest",
       "com.azure.support#ServicesList": "com.azure.support#ListServices",
+      "com.azure.support#ServicesListRequest": "com.azure.support#ListServicesRequest",
       "com.azure.support#OperationsList": "com.azure.support#ListOperations",
       "com.azure.support#OperationsListResponse": "com.azure.support#ListOperationsResponse",
       "com.azure.support#OperationsListResponseValueList": "com.azure.support#ListOperationsResponseValueList",
+      "com.azure.support#OperationsListRequest": "com.azure.support#ListOperationsRequest",
       "com.azure.support#FilesNoSubscriptionUpload": "com.azure.support#UploadFilesNoSubscription",
       "com.azure.support#FilesNoSubscriptionUploadRequest": "com.azure.support#UploadFilesNoSubscriptionRequest",
       "com.azure.support#FilesNoSubscriptionCreate": "com.azure.support#CreateFilesNoSubscription",
@@ -557,10 +559,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#CommunicationsListResult": {
@@ -662,6 +671,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -941,10 +956,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all chat transcripts for a support ticket under subscription",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#ChatTranscriptsListResult": {
@@ -1031,6 +1053,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the SupportTicketDetails"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2105,10 +2133,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the support tickets for an Azure subscription. You can also filter the support tickets by _Status_, _CreatedDate_, _ServiceId_, and _ProblemClassificationId_ using the $filter parameter. Output will be a paged result with _nextLink_, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#SupportTicketsListResult": {
@@ -2202,6 +2237,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2527,10 +2568,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the Files information under a workspace for an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#FilesListResult": {
@@ -2617,6 +2665,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the FileWorkspaceDetails"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3053,10 +3107,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#CommunicationsNoSubscriptionListRequest": {
@@ -3082,6 +3143,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3232,10 +3299,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all chat transcripts for a support ticket",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#ChatTranscriptsNoSubscriptionListRequest": {
@@ -3247,6 +3321,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the SupportTicketDetails"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3549,10 +3629,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/supportTickets",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the support tickets. <br/><br/>You can also filter the support tickets by <i>Status</i>, <i>CreatedDate</i>, , <i>ServiceId</i>, and <i>ProblemClassificationId</i> using the $filter parameter. Output will be a paged result with <i>nextLink</i>, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#SupportTicketsNoSubscriptionListRequest": {
@@ -3570,6 +3657,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3720,10 +3813,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#ProblemClassificationsListResult": {
@@ -3802,6 +3902,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Azure service."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3914,7 +4020,7 @@
     "com.azure.support#ServicesList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.support#ServicesListRequest"
       },
       "output": {
         "target": "com.azure.support#ServicesListResult"
@@ -3924,10 +4030,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/services",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the Azure services available for support ticket creation. For **Technical** issues, select the Service Id that maps to the Azure service/product as displayed in the **Services** drop-down list on the Azure portal's [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) page. Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation. This practice ensures that you always have the most recent set of service and problem classification Ids.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#ServicesListResult": {
@@ -3997,10 +4110,24 @@
         "smithy.api#documentation": "Object that represents a Service resource."
       }
     },
+    "com.azure.support#ServicesListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.support#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.support#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.support#OperationsListResponse"
@@ -4010,10 +4137,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/operations",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#OperationsListResponse": {
@@ -4153,6 +4287,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.support#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.support#FilesNoSubscriptionUpload": {
@@ -4391,10 +4539,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
           "code": 200,
-          "apiVersion": "2024-04-01"
+          "apiVersion": "2024-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the Files information under a workspace for an Azure subscription.",
-        "com.distilled.openapi#apiVersion": "2024-04-01"
+        "com.distilled.openapi#apiVersion": "2024-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.support#FilesNoSubscriptionListRequest": {
@@ -4406,6 +4561,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the FileWorkspaceDetails"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

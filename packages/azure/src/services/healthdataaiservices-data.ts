@@ -271,6 +271,8 @@ export interface ListJobDocumentsRequest {
   continuationToken?: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Location of a document. */
 export interface DeidentificationDocumentLocation {
@@ -310,6 +312,8 @@ export interface ListJobsRequest {
   continuationToken?: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DeidentificationJob items on this page */
 export type PagedDeidentificationJobValueList = Array<DeidentificationJob>;
@@ -397,33 +401,47 @@ export const GetJob: API.OperationMethod<
 
 export type ListJobDocumentsError = AzureOpError;
 /** List processed documents within a job. Resource list operation template. */
-export const ListJobDocuments: API.OperationMethod<
+export const ListJobDocuments: API.PaginatedOperationMethod<
   ListJobDocumentsRequest,
   PagedDeidentificationDocumentDetails,
   ListJobDocumentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeidentificationDocumentDetails
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListJobDocumentsRequest>,
   output: __S(76, __c9, 4) as any as S.Schema<PagedDeidentificationDocumentDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListJobsError = AzureOpError;
 /** List de-identification jobs. Resource list operation template. */
-export const ListJobs: API.OperationMethod<
+export const ListJobs: API.PaginatedOperationMethod<
   ListJobsRequest,
   PagedDeidentificationJob,
   ListJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeidentificationJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<ListJobsRequest>,
   output: __S(82, __c10, 2) as any as S.Schema<PagedDeidentificationJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -690,6 +708,7 @@ function __c9(j: number): any {
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -698,6 +717,7 @@ function __c9(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2024-11-15",
+            nextLink: "nextLink",
             audience: "https://deid.azure.com/.default",
           }),
         ),
@@ -739,6 +759,7 @@ function __c10(j: number): any {
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
           continuationToken: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -747,6 +768,7 @@ function __c10(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2024-11-15",
+            nextLink: "nextLink",
             audience: "https://deid.azure.com/.default",
           }),
         ),

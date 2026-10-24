@@ -88,6 +88,8 @@ export interface GetDeletedSecretsRequest {
   vaultBaseUrl: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Application specific metadata in the form of key-value pairs. */
 export type DeletedSecretItemTagsMap = { [key: string]: string | undefined };
@@ -115,7 +117,7 @@ export type DeletedSecretListResultValueList = Array<DeletedSecretItem>;
 /** The deleted secret list result */
 export interface DeletedSecretListResult {
   /** A response message containing a list of deleted secrets in the key vault along with a link to the next page of deleted secrets. */
-  value?: DeletedSecretListResultValueList;
+  value: DeletedSecretListResultValueList;
   /** The URL to get the next set of deleted secrets. */
   nextLink?: string;
 }
@@ -154,6 +156,8 @@ export interface GetSecretsRequest {
   vaultBaseUrl: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Application specific metadata in the form of key-value pairs. */
 export type SecretItemTagsMap = { [key: string]: string | undefined };
@@ -175,7 +179,7 @@ export type SecretListResultValueList = Array<SecretItem>;
 /** The secret list result. */
 export interface SecretListResult {
   /** A response message containing a list of secrets in the key vault along with a link to the next page of secrets. */
-  value?: SecretListResultValueList;
+  value: SecretListResultValueList;
   /** The URL to get the next set of secrets. */
   nextLink?: string;
 }
@@ -185,6 +189,8 @@ export interface GetSecretVersionsRequest {
   secretName: string;
   /** Maximum number of results to return in a page. If not specified the service will return up to 25 results. */
   maxresults?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface PurgeDeletedSecretRequest {
   vaultBaseUrl: string;
@@ -288,18 +294,25 @@ export const GetDeletedSecret: API.OperationMethod<
 
 export type GetDeletedSecretsError = AzureOpError;
 /** Lists deleted secrets for the specified vault. The Get Deleted Secrets operation returns the secrets that have been deleted for a vault enabled for soft-delete. This operation requires the secrets/list permission. */
-export const GetDeletedSecrets: API.OperationMethod<
+export const GetDeletedSecrets: API.PaginatedOperationMethod<
   GetDeletedSecretsRequest,
   DeletedSecretListResult,
   GetDeletedSecretsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeletedSecretItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(32, __c8, 0) as any as S.Schema<GetDeletedSecretsRequest>,
   output: __S(35, __c8, 3) as any as S.Schema<DeletedSecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetSecretError = AzureOpError;
 /** Get a specified secret from a given key vault. The GET operation is applicable to any secret stored in Azure Key Vault. This operation requires the secrets/get permission. */
@@ -318,33 +331,47 @@ export const GetSecret: API.OperationMethod<
 
 export type GetSecretsError = AzureOpError;
 /** List secrets in a specified key vault. The Get Secrets operation is applicable to the entire vault. However, only the base secret identifier and its attributes are provided in the response. Individual secret versions are not listed in the response. This operation requires the secrets/list permission. */
-export const GetSecrets: API.OperationMethod<
+export const GetSecrets: API.PaginatedOperationMethod<
   GetSecretsRequest,
   SecretListResult,
   GetSecretsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecretItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<GetSecretsRequest>,
   output: __S(50, __c12, 2) as any as S.Schema<SecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetSecretVersionsError = AzureOpError;
 /** List all versions of the specified secret. The full secret identifier and attributes are provided in the response. No values are returned for the secrets. This operations requires the secrets/list permission. */
-export const GetSecretVersions: API.OperationMethod<
+export const GetSecretVersions: API.PaginatedOperationMethod<
   GetSecretVersionsRequest,
   SecretListResult,
   GetSecretVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SecretItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(52, __c13, 0) as any as S.Schema<GetSecretVersionsRequest>,
   output: __S(50, __c12, 2) as any as S.Schema<SecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PurgeDeletedSecretError = AzureOpError;
 /** Permanently deletes the specified secret. The purge deleted secret operation removes the secret permanently, without the possibility of recovery. This operation can only be enabled on a soft-delete enabled vault. This operation requires the secrets/purge permission. */
@@ -598,6 +625,7 @@ function __c8(j: number): any {
         S.Struct({
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -606,6 +634,7 @@ function __c8(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -628,7 +657,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(34, __c8, 2)),
+          value: __S(34, __c8, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedSecretListResult" });
@@ -681,6 +710,7 @@ function __c11(j: number): any {
         S.Struct({
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -689,6 +719,7 @@ function __c11(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),
@@ -712,7 +743,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(49, __c12, 1)),
+          value: __S(49, __c12, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretListResult" });
@@ -726,6 +757,7 @@ function __c13(j: number): any {
           vaultBaseUrl: S.String.pipe(T.HostLabel()),
           secretName: S.String.pipe(T.Label()),
           maxresults: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -734,6 +766,7 @@ function __c13(j: number): any {
             host: "{vaultBaseUrl}",
             hostRaw: ["vaultBaseUrl"],
             apiVersion: "2026-04-01",
+            nextLink: "nextLink",
             audience: "https://vault.azure.net/.default",
           }),
         ),

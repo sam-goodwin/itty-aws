@@ -513,7 +513,10 @@ export interface GetPrivateStoreRequestApprovalResponse {
   /** The privateStore approval request data structure. */
   properties?: RequestApprovalProperties;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface SingleOperationDisplay {
   /** Service provider: Microsoft.Marketplace */
@@ -545,13 +548,15 @@ export type OperationListResultValueList = Array<SingleOperation>;
 /** Result of the request to list Marketplace operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Microsoft.Marketplace operations supported by the Microsoft.Marketplace resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
 export interface ListPrivateStoreRequest {
   /** Determines if to use cache or DB for serving this request */
   use_cache?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The PrivateStore data structure. */
 export interface PrivateStore {
@@ -627,6 +632,8 @@ export interface ListPrivateStoreCollectionOfferRequest {
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The privateStore offer data structure. */
 export interface Offer {
@@ -664,6 +671,8 @@ export interface ListPrivateStoreCollectionOfferByContextsRequest {
   collectionId: string;
   /** Subscriptions ids list */
   properties?: CollectionOffersByAllContextsProperties;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type CollectionOffersByContextOffersValueList = Array<OfferProperties>;
 /** List of offers */
@@ -680,7 +689,7 @@ export interface CollectionOffersByContext {
 export type CollectionOffersByContextListValueList = Array<CollectionOffersByContext>;
 /** List of objects which describes offers per context. An empty GUID is a public context. */
 export interface CollectionOffersByContextList {
-  value?: CollectionOffersByContextListValueList;
+  value: CollectionOffersByContextListValueList;
   /** URL to get the next set of offer list per context results if there are any. */
   nextLink?: string;
 }
@@ -1527,33 +1536,47 @@ export const GetPrivateStoreRequestApproval: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Microsoft.Marketplace REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SingleOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(100, __c12, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateStoreError = AzureOpError;
 /** Gets the list of available private stores. */
-export const ListPrivateStore: API.OperationMethod<
+export const ListPrivateStore: API.PaginatedOperationMethod<
   ListPrivateStoreRequest,
   PrivateStoreList,
   ListPrivateStoreError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateStore
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<ListPrivateStoreRequest>,
   output: __S(106, __c13, 2) as any as S.Schema<PrivateStoreList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateStoreAdminRequestApprovalsError = AzureOpError;
 /** Get list of admin request approvals */
@@ -1587,33 +1610,47 @@ export const ListPrivateStoreCollection: API.OperationMethod<
 
 export type ListPrivateStoreCollectionOfferError = AzureOpError;
 /** Get a list of all private offers in the given private store and collection */
-export const ListPrivateStoreCollectionOffer: API.OperationMethod<
+export const ListPrivateStoreCollectionOffer: API.PaginatedOperationMethod<
   ListPrivateStoreCollectionOfferRequest,
   OfferListResponse,
   ListPrivateStoreCollectionOfferError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Offer
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c16, 0) as any as S.Schema<ListPrivateStoreCollectionOfferRequest>,
   output: __S(130, __c16, 2) as any as S.Schema<OfferListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateStoreCollectionOfferByContextsError = AzureOpError;
 /** Get a list of all offers in the given collection according to the required contexts. */
-export const ListPrivateStoreCollectionOfferByContexts: API.OperationMethod<
+export const ListPrivateStoreCollectionOfferByContexts: API.PaginatedOperationMethod<
   ListPrivateStoreCollectionOfferByContextsRequest,
   CollectionOffersByContextList,
   ListPrivateStoreCollectionOfferByContextsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CollectionOffersByContext
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(136, __c17, 0) as any as S.Schema<ListPrivateStoreCollectionOfferByContextsRequest>,
   output: __S(140, __c17, 4) as any as S.Schema<CollectionOffersByContextList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateStoreNewPlansNotificationsError = AzureOpError;
 /** List new plans notifications */
@@ -2252,12 +2289,15 @@ function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Marketplace/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -2286,7 +2326,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(99, __c12, 3)),
+          value: __S(99, __c12, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2298,12 +2338,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           use_cache: S.optional(S.String.pipe(T.Query("use-cache"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Marketplace/privateStores",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateStoreRequest" });
@@ -2377,12 +2419,14 @@ function __c16(j: number): any {
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateStoreCollectionOfferRequest" });
@@ -2405,12 +2449,14 @@ function __c17(j: number): any {
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
           properties: S.optional(__S(144, __c18, 0)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/mapOffersToContexts",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateStoreCollectionOfferByContextsRequest" });
@@ -2432,7 +2478,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c17, 3)),
+          value: __S(139, __c17, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectionOffersByContextList" });

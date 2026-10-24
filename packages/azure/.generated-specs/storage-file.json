@@ -2177,7 +2177,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "Returns the list of valid ranges for a file."
+        "smithy.api#documentation": "Returns the list of valid ranges for a file.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "Ranges"
+        }
       }
     },
     "com.azure.storage_file#FileGetRangeListResponse": {
@@ -6261,7 +6267,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "Returns a list of files or directories under the specified share or directory. It lists the contents only for a single level of the directory hierarchy."
+        "smithy.api#documentation": "Returns a list of files or directories under the specified share or directory. It lists the contents only for a single level of the directory hierarchy.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "Segment.DirectoryItems"
+        }
       }
     },
     "com.azure.storage_file#DirectoryListFilesAndDirectoriesSegmentResponse": {
@@ -11056,7 +11068,13 @@
           },
           "storage": true
         },
-        "smithy.api#documentation": "The List Shares Segment operation returns a list of the shares and share snapshots under the specified account."
+        "smithy.api#documentation": "The List Shares Segment operation returns a list of the shares and share snapshots under the specified account.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "marker",
+          "outputToken": "NextMarker",
+          "items": "ShareItems"
+        }
       }
     },
     "com.azure.storage_file#ListServiceSharesSegmentResponse": {

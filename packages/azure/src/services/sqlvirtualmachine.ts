@@ -716,6 +716,8 @@ export interface ListAvailabilityGroupListenerByGroupRequest {
   resourceGroupName: string;
   /** Name of the SQL virtual machine group. */
   sqlVirtualMachineGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A SQL Server availability group listener. */
 export interface AvailabilityGroupListener {
@@ -739,7 +741,10 @@ export interface AvailabilityGroupListenerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -780,6 +785,8 @@ export interface ListSqlVirtualMachineByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlVirtualMachineTagsMap = { [key: string]: string | undefined };
@@ -818,12 +825,16 @@ export interface ListSqlVirtualMachineBySqlVmGroupRequest {
   resourceGroupName: string;
   /** Name of the SQL virtual machine group. */
   sqlVirtualMachineGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSqlVirtualMachineGroupByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type SqlVirtualMachineGroupTagsMap = { [key: string]: string | undefined };
@@ -856,10 +867,14 @@ export interface SqlVirtualMachineGroupListResult {
 export interface ListSqlVirtualMachineGroupsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListSqlVirtualMachinesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface RedeploySqlVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -1254,108 +1269,157 @@ export const GetSqlVirtualMachineGroup: API.OperationMethod<
 
 export type ListAvailabilityGroupListenerByGroupError = AzureOpError;
 /** Lists all availability group listeners in a SQL virtual machine group. */
-export const ListAvailabilityGroupListenerByGroup: API.OperationMethod<
+export const ListAvailabilityGroupListenerByGroup: API.PaginatedOperationMethod<
   ListAvailabilityGroupListenerByGroupRequest,
   AvailabilityGroupListenerListResult,
   ListAvailabilityGroupListenerByGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AvailabilityGroupListener
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c32, 0) as any as S.Schema<ListAvailabilityGroupListenerByGroupRequest>,
   output: __S(1026, __c32, 2) as any as S.Schema<AvailabilityGroupListenerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available SQL Virtual Machine Rest API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(1061, __c33, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVirtualMachineByResourceGroupError = AzureOpError;
 /** Gets all SQL virtual machines in a resource group. */
-export const ListSqlVirtualMachineByResourceGroup: API.OperationMethod<
+export const ListSqlVirtualMachineByResourceGroup: API.PaginatedOperationMethod<
   ListSqlVirtualMachineByResourceGroupRequest,
   SqlVirtualMachineListResult,
   ListSqlVirtualMachineByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c5, 0) as any as S.Schema<ListSqlVirtualMachineByResourceGroupRequest>,
   output: __S(193, __c6, 1) as any as S.Schema<SqlVirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVirtualMachineBySqlVmGroupError = AzureOpError;
 /** Gets the list of sql virtual machines in a SQL virtual machine group. */
-export const ListSqlVirtualMachineBySqlVmGroup: API.OperationMethod<
+export const ListSqlVirtualMachineBySqlVmGroup: API.PaginatedOperationMethod<
   ListSqlVirtualMachineBySqlVmGroupRequest,
   SqlVirtualMachineListResult,
   ListSqlVirtualMachineBySqlVmGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<ListSqlVirtualMachineBySqlVmGroupRequest>,
   output: __S(193, __c6, 1) as any as S.Schema<SqlVirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVirtualMachineGroupByResourceGroupError = AzureOpError;
 /** Gets all SQL virtual machine groups in a resource group. */
-export const ListSqlVirtualMachineGroupByResourceGroup: API.OperationMethod<
+export const ListSqlVirtualMachineGroupByResourceGroup: API.PaginatedOperationMethod<
   ListSqlVirtualMachineGroupByResourceGroupRequest,
   SqlVirtualMachineGroupListResult,
   ListSqlVirtualMachineGroupByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVirtualMachineGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<ListSqlVirtualMachineGroupByResourceGroupRequest>,
   output: __S(289, __c9, 1) as any as S.Schema<SqlVirtualMachineGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVirtualMachineGroupsError = AzureOpError;
 /** Gets all SQL virtual machine groups in a subscription. */
-export const ListSqlVirtualMachineGroups: API.OperationMethod<
+export const ListSqlVirtualMachineGroups: API.PaginatedOperationMethod<
   ListSqlVirtualMachineGroupsRequest,
   SqlVirtualMachineGroupListResult,
   ListSqlVirtualMachineGroupsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVirtualMachineGroup
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<ListSqlVirtualMachineGroupsRequest>,
   output: __S(289, __c9, 1) as any as S.Schema<SqlVirtualMachineGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlVirtualMachinesError = AzureOpError;
 /** Gets all SQL virtual machines in a subscription. */
-export const ListSqlVirtualMachines: API.OperationMethod<
+export const ListSqlVirtualMachines: API.PaginatedOperationMethod<
   ListSqlVirtualMachinesRequest,
   SqlVirtualMachineListResult,
   ListSqlVirtualMachinesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlVirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<ListSqlVirtualMachinesRequest>,
   output: __S(193, __c6, 1) as any as S.Schema<SqlVirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RedeploySqlVirtualMachineError = AzureOpError;
 /** Uninstalls and reinstalls the SQL IaaS Extension. */
@@ -1624,12 +1688,14 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVirtualMachineByResourceGroupRequest" });
@@ -1656,12 +1722,14 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/sqlVirtualMachines",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVirtualMachineBySqlVmGroupRequest" });
@@ -1674,12 +1742,14 @@ function __c8(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVirtualMachineGroupByResourceGroupRequest" });
@@ -1704,12 +1774,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVirtualMachineGroupsRequest" });
@@ -1721,12 +1793,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlVirtualMachinesRequest" });
@@ -2426,12 +2500,14 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}/availabilityGroupListeners",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAvailabilityGroupListenerByGroupRequest" });
@@ -2450,12 +2526,15 @@ function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.SqlVirtualMachine/operations",
             code: 200,
             apiVersion: "2023-10-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });

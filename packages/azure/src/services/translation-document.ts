@@ -138,6 +138,8 @@ export interface GetDocumentTranslationOperationDocumentsStatusRequest {
   createdDateTimeUtcEnd?: string;
   /** the sorting query for the collection (ex: 'CreatedDateTimeUtc asc','CreatedDateTimeUtc desc') */
   orderby?: GetDocumentTranslationOperationDocumentsStatusRequestOrderbyList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Document Status Response */
 export interface DocumentStatus {
@@ -248,6 +250,8 @@ export interface GetDocumentTranslationOperationTranslationsStatusRequest {
   createdDateTimeUtcEnd?: string;
   /** the sorting query for the collection (ex: 'CreatedDateTimeUtc asc','CreatedDateTimeUtc desc') */
   orderby?: GetDocumentTranslationOperationTranslationsStatusRequestOrderbyList;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The summary status of individual operation */
 export type TranslationsStatusValueList = Array<TranslationStatus>;
@@ -380,18 +384,25 @@ export const DocumentTranslationOperationsDocumentTranslate: API.OperationMethod
 
 export type GetDocumentTranslationOperationDocumentsStatusError = AzureOpError;
 /** Returns the status for all documents in a batch document translation request Returns the status for all documents in a batch document translation request. If the number of documents in the response exceeds our paging limit, server-side paging is used. Paginated responses indicate a partial result and include a continuation token in the response. The absence of a continuation token means that no additional pages are available. top, skip and maxpagesize query parameters can be used to specify a number of results to return and an offset for the collection. top indicates the total number of records the user wants to be returned across all pages. skip indicates the number of records to skip from the list of document status held by the server based on the sorting method specified. By default, we sort by descending start time. maxpagesize is the maximum items returned in a page. If more items are requested via top (or top is not specified and there are more items to be returned), @nextLink will contain the link to the next page. orderby query parameter can be used to sort the returned list (ex "orderby=createdDateTimeUtc asc" or "orderby=createdDateTimeUtc desc"). The default sorting is descending by createdDateTimeUtc. Some query parameters can be used to filter the returned list (ex: "status=Succeeded,Cancelled") will only return succeeded and cancelled documents. createdDateTimeUtcStart and createdDateTimeUtcEnd can be used combined or separately to specify a range of datetime to filter the returned list by. The supported filtering query parameters are (status, ids, createdDateTimeUtcStart, createdDateTimeUtcEnd). When both top and skip are included, the server should first apply skip and then top on the collection. Note: If the server can't honor top and/or skip, the server must return an error to the client informing about it instead of just ignoring the query options. This reduces the risk of the client making assumptions about the data returned. */
-export const GetDocumentTranslationOperationDocumentsStatus: API.OperationMethod<
+export const GetDocumentTranslationOperationDocumentsStatus: API.PaginatedOperationMethod<
   GetDocumentTranslationOperationDocumentsStatusRequest,
   DocumentsStatus,
   GetDocumentTranslationOperationDocumentsStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DocumentStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c4, 0) as any as S.Schema<GetDocumentTranslationOperationDocumentsStatusRequest>,
   output: __S(66, __c4, 2) as any as S.Schema<DocumentsStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDocumentTranslationOperationDocumentStatusError = AzureOpError;
 /** Returns the status for a specific document Returns the translation status for a specific document based on the request Id and document Id. */
@@ -429,12 +440,13 @@ export const GetDocumentTranslationOperationSupportedFormats: API.OperationMetho
 
 export type GetDocumentTranslationOperationTranslationsStatusError = AzureOpError;
 /** Returns a list of batch requests submitted and the status for each request Returns a list of batch requests submitted and the status for each request. This list only contains batch requests submitted by the user (based on the resource). If the number of requests exceeds our paging limit, server-side paging is used. Paginated responses indicate a partial result and include a continuation token in the response. The absence of a continuation token means that no additional pages are available. top, skip and maxpagesize query parameters can be used to specify a number of results to return and an offset for the collection. top indicates the total number of records the user wants to be returned across all pages. skip indicates the number of records to skip from the list of batches based on the sorting method specified. By default, we sort by descending start time. maxpagesize is the maximum items returned in a page. If more items are requested via top (or top is not specified and there are more items to be returned), @nextLink will contain the link to the next page. orderby query parameter can be used to sort the returned list (ex "orderby=createdDateTimeUtc asc" or "orderby=createdDateTimeUtc desc"). The default sorting is descending by createdDateTimeUtc. Some query parameters can be used to filter the returned list (ex: "status=Succeeded,Cancelled") will only return succeeded and cancelled operations. createdDateTimeUtcStart and createdDateTimeUtcEnd can be used combined or separately to specify a range of datetime to filter the returned list by. The supported filtering query parameters are (status, ids, createdDateTimeUtcStart, createdDateTimeUtcEnd). The server honors the values specified by the client. However, clients must be prepared to handle responses that contain a different page size or contain a continuation token. When both top and skip are included, the server should first apply skip and then top on the collection. Note: If the server can't honor top and/or skip, the server must return an error to the client informing about it instead of just ignoring the query options. This reduces the risk of the client making assumptions about the data returned. */
-export const GetDocumentTranslationOperationTranslationsStatus: API.OperationMethod<
+export const GetDocumentTranslationOperationTranslationsStatus: API.PaginatedOperationMethod<
   GetDocumentTranslationOperationTranslationsStatusRequest,
   TranslationsStatus,
   GetDocumentTranslationOperationTranslationsStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TranslationStatus
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     144,
     __c9,
@@ -444,7 +456,13 @@ export const GetDocumentTranslationOperationTranslationsStatus: API.OperationMet
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetDocumentTranslationOperationTranslationStatusError = AzureOpError;
 /** Returns the status for a document translation request Returns the status for a document translation request. The status includes the overall request status, as well as the status for documents that are being translated as part of that request. */
@@ -604,6 +622,7 @@ function __c4(j: number): any {
           createdDateTimeUtcStart: S.optional(S.String.pipe(T.Query())),
           createdDateTimeUtcEnd: S.optional(S.String.pipe(T.Query())),
           orderby: S.optional(__S(96, __c6, 0).pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -612,6 +631,7 @@ function __c4(j: number): any {
             host: "{endpoint}/translator",
             hostRaw: ["endpoint"],
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -733,6 +753,7 @@ function __c9(j: number): any {
           createdDateTimeUtcStart: S.optional(S.String.pipe(T.Query())),
           createdDateTimeUtcEnd: S.optional(S.String.pipe(T.Query())),
           orderby: S.optional(__S(96, __c6, 0).pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -741,6 +762,7 @@ function __c9(j: number): any {
             host: "{endpoint}/translator",
             hostRaw: ["endpoint"],
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

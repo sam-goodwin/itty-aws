@@ -218,6 +218,8 @@ export interface ListBatchSynthesesRequest {
   skip?: number;
   /** The maximum number of result items to include in a single response. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Bath synthesis tasks. */
 export type PaginatedBatchSynthesisValueList = Array<BatchSynthesis>;
@@ -290,18 +292,25 @@ export const GetOperation: API.OperationMethod<
 
 export type ListBatchSynthesesError = AzureOpError;
 /** Gets the list of batch syntheses. */
-export const ListBatchSyntheses: API.OperationMethod<
+export const ListBatchSyntheses: API.PaginatedOperationMethod<
   ListBatchSynthesesRequest,
   PaginatedBatchSynthesis,
   ListBatchSynthesesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchSynthesis
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListBatchSynthesesRequest>,
   output: __S(98, __c6, 2) as any as S.Schema<PaginatedBatchSynthesis>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -535,6 +544,7 @@ function __c6(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -542,6 +552,7 @@ function __c6(j: number): any {
             code: 200,
             host: "{endpoint}/texttospeech",
             apiVersion: "2024-04-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

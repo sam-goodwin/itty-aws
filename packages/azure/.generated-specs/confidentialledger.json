@@ -1225,10 +1225,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers",
           "code": 200,
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the properties of all Confidential Ledgers.",
-        "com.distilled.openapi#apiVersion": "2026-02-23"
+        "com.distilled.openapi#apiVersion": "2026-02-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confidentialledger#ConfidentialLedgerList": {
@@ -1349,6 +1356,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1368,10 +1381,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.ConfidentialLedger/ledgers",
           "code": 200,
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Retrieves the properties of all Confidential Ledgers.",
-        "com.distilled.openapi#apiVersion": "2026-02-23"
+        "com.distilled.openapi#apiVersion": "2026-02-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confidentialledger#ListLedgerBySubscriptionRequest": {
@@ -1390,6 +1410,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public'"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1493,7 +1519,7 @@
     "com.azure.confidentialledger#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.confidentialledger#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.confidentialledger#ResourceProviderOperationList"
@@ -1503,10 +1529,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.ConfidentialLedger/operations",
           "code": 200,
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-02-23"
+        "com.distilled.openapi#apiVersion": "2026-02-23",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.confidentialledger#ResourceProviderOperationList": {
@@ -1594,6 +1627,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Describes the properties of the Operation."
+      }
+    },
+    "com.azure.confidentialledger#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.confidentialledger#Confidentialledger": {

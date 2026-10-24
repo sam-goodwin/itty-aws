@@ -15,94 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.digitaltwins_data#DeleteJobsGetById": "com.azure.digitaltwins_data#GetDeleteJobById",
-      "com.azure.digitaltwins_data#DeleteJobsGetByIdRequest": "com.azure.digitaltwins_data#GetDeleteJobByIdRequest",
-      "com.azure.digitaltwins_data#DeleteJobsAdd": "com.azure.digitaltwins_data#AddDeleteJob",
-      "com.azure.digitaltwins_data#DeleteJobsAddResponse": "com.azure.digitaltwins_data#AddDeleteJobResponse",
-      "com.azure.digitaltwins_data#DeleteJobsAddRequest": "com.azure.digitaltwins_data#AddDeleteJobRequest",
-      "com.azure.digitaltwins_data#DeleteJobsList": "com.azure.digitaltwins_data#ListDeleteJobs",
-      "com.azure.digitaltwins_data#DeleteJobsListRequest": "com.azure.digitaltwins_data#ListDeleteJobsRequest",
-      "com.azure.digitaltwins_data#ImportJobsCancel": "com.azure.digitaltwins_data#CancelImportJob",
-      "com.azure.digitaltwins_data#ImportJobsCancelRequest": "com.azure.digitaltwins_data#CancelImportJobRequest",
-      "com.azure.digitaltwins_data#ImportJobsDelete": "com.azure.digitaltwins_data#DeleteImportJob",
-      "com.azure.digitaltwins_data#ImportJobsDeleteRequest": "com.azure.digitaltwins_data#DeleteImportJobRequest",
-      "com.azure.digitaltwins_data#ImportJobsAdd": "com.azure.digitaltwins_data#AddImportJob",
-      "com.azure.digitaltwins_data#ImportJobsAddRequest": "com.azure.digitaltwins_data#AddImportJobRequest",
-      "com.azure.digitaltwins_data#ImportJobsGetById": "com.azure.digitaltwins_data#GetImportJobById",
-      "com.azure.digitaltwins_data#ImportJobsGetByIdRequest": "com.azure.digitaltwins_data#GetImportJobByIdRequest",
-      "com.azure.digitaltwins_data#ImportJobsList": "com.azure.digitaltwins_data#ListImportJobs",
-      "com.azure.digitaltwins_data#ImportJobsListRequest": "com.azure.digitaltwins_data#ListImportJobsRequest",
-      "com.azure.digitaltwins_data#EventRoutesDelete": "com.azure.digitaltwins_data#DeleteEventRoute",
-      "com.azure.digitaltwins_data#EventRoutesDeleteRequest": "com.azure.digitaltwins_data#DeleteEventRouteRequest",
-      "com.azure.digitaltwins_data#EventRoutesAdd": "com.azure.digitaltwins_data#AddEventRoute",
-      "com.azure.digitaltwins_data#EventRoutesAddRequest": "com.azure.digitaltwins_data#AddEventRouteRequest",
-      "com.azure.digitaltwins_data#EventRoutesGetById": "com.azure.digitaltwins_data#GetEventRouteById",
-      "com.azure.digitaltwins_data#EventRoutesGetByIdRequest": "com.azure.digitaltwins_data#GetEventRouteByIdRequest",
-      "com.azure.digitaltwins_data#EventRoutesList": "com.azure.digitaltwins_data#ListEventRoutes",
-      "com.azure.digitaltwins_data#EventRoutesListRequest": "com.azure.digitaltwins_data#ListEventRoutesRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponent": "com.azure.digitaltwins_data#UpdateDigitalTwinComponent",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentResponse": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequestBodyList",
-      "com.azure.digitaltwins_data#DigitalTwinsGetComponent": "com.azure.digitaltwins_data#GetDigitalTwinComponent",
-      "com.azure.digitaltwins_data#DigitalTwinsGetComponentResponse": "com.azure.digitaltwins_data#GetDigitalTwinComponentResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsGetComponentRequest": "com.azure.digitaltwins_data#GetDigitalTwinComponentRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetry": "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetry",
-      "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetryRequest": "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetryRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsSendTelemetry": "com.azure.digitaltwins_data#SendDigitalTwinTelemetry",
-      "com.azure.digitaltwins_data#DigitalTwinsSendTelemetryRequest": "com.azure.digitaltwins_data#SendDigitalTwinTelemetryRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationships": "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationships",
-      "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationshipsRequest": "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationshipsRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsListRelationships": "com.azure.digitaltwins_data#ListDigitalTwinRelationships",
-      "com.azure.digitaltwins_data#DigitalTwinsListRelationshipsRequest": "com.azure.digitaltwins_data#ListDigitalTwinRelationshipsRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationship": "com.azure.digitaltwins_data#DeleteDigitalTwinRelationship",
-      "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationshipRequest": "com.azure.digitaltwins_data#DeleteDigitalTwinRelationshipRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationship": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationship",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipResponse": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequestBodyList",
-      "com.azure.digitaltwins_data#DigitalTwinsAddRelationship": "com.azure.digitaltwins_data#AddDigitalTwinRelationship",
-      "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipResponse": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequest": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequestIfNoneMatch": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequestIfNoneMatch",
-      "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipById": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipById",
-      "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdResponse": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdRequest": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsDelete": "com.azure.digitaltwins_data#DeleteDigitalTwin",
-      "com.azure.digitaltwins_data#DigitalTwinsDeleteRequest": "com.azure.digitaltwins_data#DeleteDigitalTwinRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdate": "com.azure.digitaltwins_data#UpdateDigitalTwin",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateResponse": "com.azure.digitaltwins_data#UpdateDigitalTwinResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsUpdateRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinRequestBodyList",
-      "com.azure.digitaltwins_data#DigitalTwinsAdd": "com.azure.digitaltwins_data#AddDigitalTwin",
-      "com.azure.digitaltwins_data#DigitalTwinsAddResponse": "com.azure.digitaltwins_data#AddDigitalTwinResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsAddRequest": "com.azure.digitaltwins_data#AddDigitalTwinRequest",
-      "com.azure.digitaltwins_data#DigitalTwinsAddRequestIfNoneMatch": "com.azure.digitaltwins_data#AddDigitalTwinRequestIfNoneMatch",
-      "com.azure.digitaltwins_data#DigitalTwinsGetById": "com.azure.digitaltwins_data#GetDigitalTwinById",
-      "com.azure.digitaltwins_data#DigitalTwinsGetByIdResponse": "com.azure.digitaltwins_data#GetDigitalTwinByIdResponse",
-      "com.azure.digitaltwins_data#DigitalTwinsGetByIdRequest": "com.azure.digitaltwins_data#GetDigitalTwinByIdRequest",
-      "com.azure.digitaltwins_data#DigitalTwinModelsDelete": "com.azure.digitaltwins_data#DeleteDigitalTwinModel",
-      "com.azure.digitaltwins_data#DigitalTwinModelsDeleteRequest": "com.azure.digitaltwins_data#DeleteDigitalTwinModelRequest",
-      "com.azure.digitaltwins_data#DigitalTwinModelsUpdate": "com.azure.digitaltwins_data#UpdateDigitalTwinModel",
-      "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequest": "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequest",
-      "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequestBodyList": "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequestBodyList",
-      "com.azure.digitaltwins_data#DigitalTwinModelsGetById": "com.azure.digitaltwins_data#GetDigitalTwinModelById",
-      "com.azure.digitaltwins_data#DigitalTwinModelsGetByIdRequest": "com.azure.digitaltwins_data#GetDigitalTwinModelByIdRequest",
-      "com.azure.digitaltwins_data#DigitalTwinModelsAdd": "com.azure.digitaltwins_data#AddDigitalTwinModel",
-      "com.azure.digitaltwins_data#DigitalTwinModelsAddResponse": "com.azure.digitaltwins_data#AddDigitalTwinModelResponse",
-      "com.azure.digitaltwins_data#DigitalTwinModelsAddRequest": "com.azure.digitaltwins_data#AddDigitalTwinModelRequest",
-      "com.azure.digitaltwins_data#DigitalTwinModelsAddRequestBodyList": "com.azure.digitaltwins_data#AddDigitalTwinModelRequestBodyList",
-      "com.azure.digitaltwins_data#DigitalTwinModelsList": "com.azure.digitaltwins_data#ListDigitalTwinModels",
-      "com.azure.digitaltwins_data#DigitalTwinModelsListRequest": "com.azure.digitaltwins_data#ListDigitalTwinModelsRequest",
-      "com.azure.digitaltwins_data#DigitalTwinModelsListRequestDependenciesForList": "com.azure.digitaltwins_data#ListDigitalTwinModelsRequestDependenciesForList"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.digitaltwins_data#DeleteJobsGetById": {
+    "com.azure.digitaltwins_data#GetDeleteJobById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DeleteJobsGetByIdRequest"
+        "target": "com.azure.digitaltwins_data#GetDeleteJobByIdRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#DeleteJob"
@@ -258,7 +177,7 @@
         "smithy.api#documentation": "Status of the job."
       }
     },
-    "com.azure.digitaltwins_data#DeleteJobsGetByIdRequest": {
+    "com.azure.digitaltwins_data#GetDeleteJobByIdRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -296,13 +215,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DeleteJobsAdd": {
+    "com.azure.digitaltwins_data#AddDeleteJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DeleteJobsAddRequest"
+        "target": "com.azure.digitaltwins_data#AddDeleteJobRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DeleteJobsAddResponse"
+        "target": "com.azure.digitaltwins_data#AddDeleteJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -318,7 +237,7 @@
         "smithy.api#documentation": "Initiates a job which deletes all models, twins, and relationships on the instance. Does not delete any other types of entities.\nStatus codes:\n* 202 Created\n* 400 Bad Request\n  * JobLimitReached - The maximum number of delete jobs allowed has been reached. \n  * ValidationFailed - Operation-Id already exists."
       }
     },
-    "com.azure.digitaltwins_data#DeleteJobsAddResponse": {
+    "com.azure.digitaltwins_data#AddDeleteJobResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -333,7 +252,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.digitaltwins_data#DeleteJobsAddRequest": {
+    "com.azure.digitaltwins_data#AddDeleteJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -377,10 +296,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DeleteJobsList": {
+    "com.azure.digitaltwins_data#ListDeleteJobs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DeleteJobsListRequest"
+        "target": "com.azure.digitaltwins_data#ListDeleteJobsRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#DeleteJobCollection"
@@ -394,9 +313,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-10-31"
+          "apiVersion": "2023-10-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves all deletion jobs. This may be useful to find a delete job that was previously requested, or to view a history of delete jobs that have run or are currently running on the instance.\nStatus codes:\n* 200 OK"
+        "smithy.api#documentation": "Retrieves all deletion jobs. This may be useful to find a delete job that was previously requested, or to view a history of delete jobs that have run or are currently running on the instance.\nStatus codes:\n* 200 OK",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins_data#DeleteJobCollection": {
@@ -429,7 +355,7 @@
         "smithy.api#documentation": "The list of delete job objects."
       }
     },
-    "com.azure.digitaltwins_data#DeleteJobsListRequest": {
+    "com.azure.digitaltwins_data#ListDeleteJobsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -460,16 +386,22 @@
             "smithy.api#httpHeader": "max-items-per-page",
             "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsCancel": {
+    "com.azure.digitaltwins_data#CancelImportJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#ImportJobsCancelRequest"
+        "target": "com.azure.digitaltwins_data#CancelImportJobRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#ImportJob"
@@ -596,7 +528,7 @@
         "smithy.api#documentation": "Status of the job."
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsCancelRequest": {
+    "com.azure.digitaltwins_data#CancelImportJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -634,10 +566,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsDelete": {
+    "com.azure.digitaltwins_data#DeleteImportJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#ImportJobsDeleteRequest"
+        "target": "com.azure.digitaltwins_data#DeleteImportJobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -656,7 +588,7 @@
         "smithy.api#documentation": "Deletes an import job. This is simply used to remove a job id, so it may be reused later. It can not be used to stop entities from being imported.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * ValidationFailed - The import job request is not valid."
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsDeleteRequest": {
+    "com.azure.digitaltwins_data#DeleteImportJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -694,10 +626,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsAdd": {
+    "com.azure.digitaltwins_data#AddImportJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#ImportJobsAddRequest"
+        "target": "com.azure.digitaltwins_data#AddImportJobRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#ImportJob"
@@ -716,7 +648,7 @@
         "smithy.api#documentation": "Creates an import job.\nStatus codes:\n* 201 Created\n* 400 Bad Request\n  * JobLimitReached - The maximum number of import jobs allowed has been reached.\n  * ValidationFailed - The import job request is not valid."
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsAddRequest": {
+    "com.azure.digitaltwins_data#AddImportJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -788,10 +720,10 @@
         "smithy.api#documentation": "Error definition."
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsGetById": {
+    "com.azure.digitaltwins_data#GetImportJobById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#ImportJobsGetByIdRequest"
+        "target": "com.azure.digitaltwins_data#GetImportJobByIdRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#ImportJob"
@@ -810,7 +742,7 @@
         "smithy.api#documentation": "Retrieves an import job.\nStatus codes:\n* 200 OK\n* 404 Not Found\n  * ImportJobNotFound - The import job was not found."
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsGetByIdRequest": {
+    "com.azure.digitaltwins_data#GetImportJobByIdRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -848,10 +780,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsList": {
+    "com.azure.digitaltwins_data#ListImportJobs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#ImportJobsListRequest"
+        "target": "com.azure.digitaltwins_data#ListImportJobsRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#ImportJobCollection"
@@ -865,9 +797,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-10-31"
+          "apiVersion": "2023-10-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves all import jobs.\nStatus codes:\n* 200 OK"
+        "smithy.api#documentation": "Retrieves all import jobs.\nStatus codes:\n* 200 OK",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins_data#ImportJobCollection": {
@@ -900,7 +839,7 @@
         "smithy.api#documentation": "The list of import job objects."
       }
     },
-    "com.azure.digitaltwins_data#ImportJobsListRequest": {
+    "com.azure.digitaltwins_data#ListImportJobsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -931,16 +870,22 @@
             "smithy.api#httpHeader": "max-items-per-page",
             "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesDelete": {
+    "com.azure.digitaltwins_data#DeleteEventRoute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#EventRoutesDeleteRequest"
+        "target": "com.azure.digitaltwins_data#DeleteEventRouteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -959,7 +904,7 @@
         "smithy.api#documentation": "Deletes an event route.\nStatus codes:\n* 204 No Content\n* 404 Not Found\n  * EventRouteNotFound - The event route was not found."
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesDeleteRequest": {
+    "com.azure.digitaltwins_data#DeleteEventRouteRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -997,10 +942,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesAdd": {
+    "com.azure.digitaltwins_data#AddEventRoute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#EventRoutesAddRequest"
+        "target": "com.azure.digitaltwins_data#AddEventRouteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1019,7 +964,7 @@
         "smithy.api#documentation": "Adds or replaces an event route.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * EventRouteEndpointInvalid - The endpoint provided does not exist or is not active.\n  * EventRouteFilterInvalid - The event route filter is invalid.\n  * EventRouteIdInvalid - The event route id is invalid.\n  * LimitExceeded - The maximum number of event routes allowed has been reached."
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesAddRequest": {
+    "com.azure.digitaltwins_data#AddEventRouteRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1071,10 +1016,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesGetById": {
+    "com.azure.digitaltwins_data#GetEventRouteById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#EventRoutesGetByIdRequest"
+        "target": "com.azure.digitaltwins_data#GetEventRouteByIdRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#EventRoute"
@@ -1121,7 +1066,7 @@
         "smithy.api#documentation": "A route which directs notification and telemetry events to an endpoint. Endpoints are a destination outside of Azure Digital Twins such as an EventHub."
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesGetByIdRequest": {
+    "com.azure.digitaltwins_data#GetEventRouteByIdRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1159,10 +1104,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesList": {
+    "com.azure.digitaltwins_data#ListEventRoutes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#EventRoutesListRequest"
+        "target": "com.azure.digitaltwins_data#ListEventRoutesRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#EventRouteCollection"
@@ -1176,9 +1121,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-10-31"
+          "apiVersion": "2023-10-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves all event routes.\nStatus codes:\n* 200 OK"
+        "smithy.api#documentation": "Retrieves all event routes.\nStatus codes:\n* 200 OK",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins_data#EventRouteCollection": {
@@ -1211,7 +1163,7 @@
         "smithy.api#documentation": "The EventRoute objects."
       }
     },
-    "com.azure.digitaltwins_data#EventRoutesListRequest": {
+    "com.azure.digitaltwins_data#ListEventRoutesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1242,19 +1194,25 @@
             "smithy.api#httpHeader": "max-items-per-page",
             "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponent": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinComponent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequest"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentResponse"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1270,7 +1228,7 @@
         "smithy.api#documentation": "Updates a component on a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id, component path, or payload is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * ValidationFailed - Applying the patch results in an invalid digital twin.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentResponse": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinComponentResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1285,7 +1243,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequest": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1334,7 +1292,7 @@
           }
         },
         "body": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequestBodyList",
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -1345,20 +1303,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateComponentRequestBodyList": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinComponentRequestBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetComponent": {
+    "com.azure.digitaltwins_data#GetDigitalTwinComponent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsGetComponentRequest"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinComponentRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsGetComponentResponse"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinComponentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1374,7 +1332,7 @@
         "smithy.api#documentation": "Retrieves a component from a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or component path is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * ComponentNotFound - The component path was not found."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetComponentResponse": {
+    "com.azure.digitaltwins_data#GetDigitalTwinComponentResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1401,7 +1359,7 @@
         "smithy.api#documentation": "Digital twin component"
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetComponentRequest": {
+    "com.azure.digitaltwins_data#GetDigitalTwinComponentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1447,10 +1405,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetry": {
+    "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetry": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetryRequest"
+        "target": "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1469,7 +1427,7 @@
         "smithy.api#documentation": "Sends telemetry on behalf of a component in a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id, message id, or component path is invalid.\n  * ValidationFailed - The telemetry content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * ComponentNotFound - The component path was not found."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetryRequest": {
+    "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1530,10 +1488,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsSendTelemetry": {
+    "com.azure.digitaltwins_data#SendDigitalTwinTelemetry": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsSendTelemetryRequest"
+        "target": "com.azure.digitaltwins_data#SendDigitalTwinTelemetryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1552,7 +1510,7 @@
         "smithy.api#documentation": "Sends telemetry on behalf of a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or message id is invalid.\n  * ValidationFailed - The telemetry content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsSendTelemetryRequest": {
+    "com.azure.digitaltwins_data#SendDigitalTwinTelemetryRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1605,10 +1563,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationships": {
+    "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationships": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationshipsRequest"
+        "target": "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationshipsRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#IncomingRelationshipCollection"
@@ -1622,9 +1580,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-10-31"
+          "apiVersion": "2023-10-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves all incoming relationship for a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
+        "smithy.api#documentation": "Retrieves all incoming relationship for a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins_data#IncomingRelationshipCollection": {
@@ -1690,7 +1655,7 @@
         "smithy.api#documentation": "An incoming relationship."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationshipsRequest": {
+    "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationshipsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1722,16 +1687,22 @@
             "smithy.api#httpHeader": "tracestate",
             "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsListRelationships": {
+    "com.azure.digitaltwins_data#ListDigitalTwinRelationships": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsListRelationshipsRequest"
+        "target": "com.azure.digitaltwins_data#ListDigitalTwinRelationshipsRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#RelationshipCollection"
@@ -1745,9 +1716,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-10-31"
+          "apiVersion": "2023-10-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves the relationships from a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
+        "smithy.api#documentation": "Retrieves the relationships from a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins_data#RelationshipCollection": {
@@ -1780,7 +1758,7 @@
         "smithy.api#documentation": "The relationship objects."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsListRelationshipsRequest": {
+    "com.azure.digitaltwins_data#ListDigitalTwinRelationshipsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1819,16 +1797,22 @@
             "smithy.api#httpHeader": "tracestate",
             "smithy.api#documentation": "Provides vendor-specific trace identification information and is a companion to traceparent."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationship": {
+    "com.azure.digitaltwins_data#DeleteDigitalTwinRelationship": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationshipRequest"
+        "target": "com.azure.digitaltwins_data#DeleteDigitalTwinRelationshipRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1847,7 +1831,7 @@
         "smithy.api#documentation": "Deletes a relationship between two digital twins.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or relationship id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * RelationshipNotFound - The relationship was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationshipRequest": {
+    "com.azure.digitaltwins_data#DeleteDigitalTwinRelationshipRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1900,13 +1884,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationship": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinRelationship": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequest"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipResponse"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1922,7 +1906,7 @@
         "smithy.api#documentation": "Updates the properties on a relationship between two digital twins.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or relationship id is invalid.\n  * InvalidRelationship - The relationship is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * ValidationFailed - The relationship content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * RelationshipNotFound - The relationship was not found.\n* 409 Conflict\n  * RelationshipAlreadyExists - The relationship already exists.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipResponse": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -1937,7 +1921,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequest": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1986,7 +1970,7 @@
           }
         },
         "body": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequestBodyList",
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -1997,20 +1981,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationshipRequestBodyList": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinRelationshipRequestBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddRelationship": {
+    "com.azure.digitaltwins_data#AddDigitalTwinRelationship": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequest"
+        "target": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipResponse"
+        "target": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2026,7 +2010,7 @@
         "smithy.api#documentation": "Adds a relationship between two digital twins.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id, relationship id, or payload is invalid.\n  * InvalidRelationship - The relationship is invalid.\n  * OperationNotAllowed - The relationship cannot connect to the same digital twin.\n  * ValidationFailed - The relationship content is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * TargetTwinNotFound - The digital twin target of the relationship was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipResponse": {
+    "com.azure.digitaltwins_data#AddDigitalTwinRelationshipResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2053,7 +2037,7 @@
         "smithy.api#documentation": "Digital twin relationship"
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequest": {
+    "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2095,7 +2079,7 @@
           }
         },
         "ifNoneMatch": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequestIfNoneMatch",
+          "target": "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequestIfNoneMatch",
           "traits": {
             "smithy.api#httpHeader": "If-None-Match",
             "smithy.api#documentation": "Only perform the operation if the entity does not already exist."
@@ -2106,7 +2090,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddRelationshipRequestIfNoneMatch": {
+    "com.azure.digitaltwins_data#AddDigitalTwinRelationshipRequestIfNoneMatch": {
       "type": "enum",
       "members": {
         "VALUE": {
@@ -2118,13 +2102,13 @@
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipById": {
+    "com.azure.digitaltwins_data#GetDigitalTwinRelationshipById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdRequest"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdResponse"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2140,7 +2124,7 @@
         "smithy.api#documentation": "Retrieves a relationship between two digital twins.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or relationship id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n  * RelationshipNotFound - The relationship was not found."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdResponse": {
+    "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2155,7 +2139,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipByIdRequest": {
+    "com.azure.digitaltwins_data#GetDigitalTwinRelationshipByIdRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2201,10 +2185,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsDelete": {
+    "com.azure.digitaltwins_data#DeleteDigitalTwin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsDeleteRequest"
+        "target": "com.azure.digitaltwins_data#DeleteDigitalTwinRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2223,7 +2207,7 @@
         "smithy.api#documentation": "Deletes a digital twin. All relationships referencing the digital twin must already be deleted.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n  * RelationshipsNotDeleted - The digital twin contains relationships.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsDeleteRequest": {
+    "com.azure.digitaltwins_data#DeleteDigitalTwinRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2268,13 +2252,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdate": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRequest"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateResponse"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2290,7 +2274,7 @@
         "smithy.api#documentation": "Updates a digital twin.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or payload is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * ValidationFailed - Applying the patch results in an invalid digital twin.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateResponse": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinResponse": {
       "type": "structure",
       "members": {
         "eTag": {
@@ -2305,7 +2289,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateRequest": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2346,7 +2330,7 @@
           }
         },
         "body": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRequestBodyList",
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -2357,20 +2341,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsUpdateRequestBodyList": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinRequestBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAdd": {
+    "com.azure.digitaltwins_data#AddDigitalTwin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsAddRequest"
+        "target": "com.azure.digitaltwins_data#AddDigitalTwinRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsAddResponse"
+        "target": "com.azure.digitaltwins_data#AddDigitalTwinResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2386,7 +2370,7 @@
         "smithy.api#documentation": "Adds or replaces a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id or payload is invalid.\n  * ModelDecommissioned - The model for the digital twin is decommissioned.\n  * TwinLimitReached - The maximum number of digital twins allowed has been reached.\n  * ValidationFailed - The digital twin payload is not valid.\n* 412 Precondition Failed\n  * PreconditionFailed - The precondition check (If-Match or If-None-Match) failed."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddResponse": {
+    "com.azure.digitaltwins_data#AddDigitalTwinResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2413,7 +2397,7 @@
         "smithy.api#documentation": "Digital twin"
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddRequest": {
+    "com.azure.digitaltwins_data#AddDigitalTwinRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2447,7 +2431,7 @@
           }
         },
         "ifNoneMatch": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsAddRequestIfNoneMatch",
+          "target": "com.azure.digitaltwins_data#AddDigitalTwinRequestIfNoneMatch",
           "traits": {
             "smithy.api#httpHeader": "If-None-Match",
             "smithy.api#documentation": "Only perform the operation if the entity does not already exist."
@@ -2458,7 +2442,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsAddRequestIfNoneMatch": {
+    "com.azure.digitaltwins_data#AddDigitalTwinRequestIfNoneMatch": {
       "type": "enum",
       "members": {
         "VALUE": {
@@ -2470,13 +2454,13 @@
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetById": {
+    "com.azure.digitaltwins_data#GetDigitalTwinById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsGetByIdRequest"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinByIdRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinsGetByIdResponse"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinByIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2492,7 +2476,7 @@
         "smithy.api#documentation": "Retrieves a digital twin.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The digital twin id is invalid.\n* 404 Not Found\n  * DigitalTwinNotFound - The digital twin was not found."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetByIdResponse": {
+    "com.azure.digitaltwins_data#GetDigitalTwinByIdResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2507,7 +2491,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinsGetByIdRequest": {
+    "com.azure.digitaltwins_data#GetDigitalTwinByIdRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2646,10 +2630,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsDelete": {
+    "com.azure.digitaltwins_data#DeleteDigitalTwinModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinModelsDeleteRequest"
+        "target": "com.azure.digitaltwins_data#DeleteDigitalTwinModelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2668,7 +2652,7 @@
         "smithy.api#documentation": "Deletes a model. A model can only be deleted if no other models reference it.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * MissingArgument - The model id was not provided.\n* 404 Not Found\n  * ModelNotFound - The model was not found.\n* 409 Conflict\n  * ModelReferencesNotDeleted - The model refers to models that are not deleted."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsDeleteRequest": {
+    "com.azure.digitaltwins_data#DeleteDigitalTwinModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2706,10 +2690,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsUpdate": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequest"
+        "target": "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2728,7 +2712,7 @@
         "smithy.api#documentation": "Updates the metadata for a model.\nStatus codes:\n* 204 No Content\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * JsonPatchInvalid - The JSON Patch provided is invalid.\n  * MissingArgument - The model id was not provided.\n* 404 Not Found\n  * ModelNotFound - The model was not found.\n* 409 Conflict\n  * ModelReferencesNotDecommissioned - The model refers to models that are not decommissioned."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequest": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2762,7 +2746,7 @@
           }
         },
         "body": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequestBodyList",
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -2773,17 +2757,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsUpdateRequestBodyList": {
+    "com.azure.digitaltwins_data#UpdateDigitalTwinModelRequestBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsGetById": {
+    "com.azure.digitaltwins_data#GetDigitalTwinModelById": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinModelsGetByIdRequest"
+        "target": "com.azure.digitaltwins_data#GetDigitalTwinModelByIdRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#DigitalTwinsModelData"
@@ -2871,7 +2855,7 @@
         "smithy.api#documentation": "A language map that contains the localized display names as specified in the model definition."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsGetByIdRequest": {
+    "com.azure.digitaltwins_data#GetDigitalTwinModelByIdRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2916,13 +2900,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsAdd": {
+    "com.azure.digitaltwins_data#AddDigitalTwinModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinModelsAddRequest"
+        "target": "com.azure.digitaltwins_data#AddDigitalTwinModelRequest"
       },
       "output": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinModelsAddResponse"
+        "target": "com.azure.digitaltwins_data#AddDigitalTwinModelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2938,7 +2922,7 @@
         "smithy.api#documentation": "Uploads one or more models. When any error occurs, no models are uploaded.\nStatus codes:\n* 201 Created\n* 400 Bad Request\n  * DTDLParserError - The models provided are not valid DTDL.\n  * InvalidArgument - The model id is invalid.\n  * LimitExceeded - The maximum number of model ids allowed in 'dependenciesFor' has been reached.\n  * ModelVersionNotSupported - The version of DTDL used is not supported.\n* 409 Conflict\n  * ModelAlreadyExists - The model provided already exists."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsAddResponse": {
+    "com.azure.digitaltwins_data#AddDigitalTwinModelResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2962,7 +2946,7 @@
         "smithy.api#documentation": "A collection of DigitalTwinsModelData objects."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsAddRequest": {
+    "com.azure.digitaltwins_data#AddDigitalTwinModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2988,7 +2972,7 @@
           }
         },
         "body": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsAddRequestBodyList",
+          "target": "com.azure.digitaltwins_data#AddDigitalTwinModelRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -2999,17 +2983,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsAddRequestBodyList": {
+    "com.azure.digitaltwins_data#AddDigitalTwinModelRequestBodyList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsList": {
+    "com.azure.digitaltwins_data#ListDigitalTwinModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.digitaltwins_data#DigitalTwinModelsListRequest"
+        "target": "com.azure.digitaltwins_data#ListDigitalTwinModelsRequest"
       },
       "output": {
         "target": "com.azure.digitaltwins_data#PagedDigitalTwinsModelDataCollection"
@@ -3023,9 +3007,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2023-10-31"
+          "apiVersion": "2023-10-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves model metadata and, optionally, model definitions.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * LimitExceeded - The maximum number of model ids allowed in 'dependenciesFor' has been reached.\n* 404 Not Found\n  * ModelNotFound - The model was not found."
+        "smithy.api#documentation": "Retrieves model metadata and, optionally, model definitions.\nStatus codes:\n* 200 OK\n* 400 Bad Request\n  * InvalidArgument - The model id is invalid.\n  * LimitExceeded - The maximum number of model ids allowed in 'dependenciesFor' has been reached.\n* 404 Not Found\n  * ModelNotFound - The model was not found.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.digitaltwins_data#PagedDigitalTwinsModelDataCollection": {
@@ -3058,7 +3049,7 @@
         "smithy.api#documentation": "The DigitalTwinsModelData objects."
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsListRequest": {
+    "com.azure.digitaltwins_data#ListDigitalTwinModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3070,7 +3061,7 @@
           }
         },
         "dependenciesFor": {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsListRequestDependenciesForList",
+          "target": "com.azure.digitaltwins_data#ListDigitalTwinModelsRequestDependenciesForList",
           "traits": {
             "smithy.api#httpQuery": "dependenciesFor",
             "smithy.api#documentation": "If specified, only return the set of the specified models along with their dependencies. If omitted, all models are retrieved."
@@ -3103,13 +3094,19 @@
             "smithy.api#httpHeader": "max-items-per-page",
             "smithy.api#documentation": "The maximum number of items to retrieve per request. The server may choose to return less than the requested number."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.digitaltwins_data#DigitalTwinModelsListRequestDependenciesForList": {
+    "com.azure.digitaltwins_data#ListDigitalTwinModelsRequestDependenciesForList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -3121,100 +3118,100 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.digitaltwins_data#DeleteJobsGetById"
+          "target": "com.azure.digitaltwins_data#GetDeleteJobById"
         },
         {
-          "target": "com.azure.digitaltwins_data#DeleteJobsAdd"
+          "target": "com.azure.digitaltwins_data#AddDeleteJob"
         },
         {
-          "target": "com.azure.digitaltwins_data#DeleteJobsList"
+          "target": "com.azure.digitaltwins_data#ListDeleteJobs"
         },
         {
-          "target": "com.azure.digitaltwins_data#ImportJobsCancel"
+          "target": "com.azure.digitaltwins_data#CancelImportJob"
         },
         {
-          "target": "com.azure.digitaltwins_data#ImportJobsDelete"
+          "target": "com.azure.digitaltwins_data#DeleteImportJob"
         },
         {
-          "target": "com.azure.digitaltwins_data#ImportJobsAdd"
+          "target": "com.azure.digitaltwins_data#AddImportJob"
         },
         {
-          "target": "com.azure.digitaltwins_data#ImportJobsGetById"
+          "target": "com.azure.digitaltwins_data#GetImportJobById"
         },
         {
-          "target": "com.azure.digitaltwins_data#ImportJobsList"
+          "target": "com.azure.digitaltwins_data#ListImportJobs"
         },
         {
-          "target": "com.azure.digitaltwins_data#EventRoutesDelete"
+          "target": "com.azure.digitaltwins_data#DeleteEventRoute"
         },
         {
-          "target": "com.azure.digitaltwins_data#EventRoutesAdd"
+          "target": "com.azure.digitaltwins_data#AddEventRoute"
         },
         {
-          "target": "com.azure.digitaltwins_data#EventRoutesGetById"
+          "target": "com.azure.digitaltwins_data#GetEventRouteById"
         },
         {
-          "target": "com.azure.digitaltwins_data#EventRoutesList"
+          "target": "com.azure.digitaltwins_data#ListEventRoutes"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateComponent"
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinComponent"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsGetComponent"
+          "target": "com.azure.digitaltwins_data#GetDigitalTwinComponent"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsSendComponentTelemetry"
+          "target": "com.azure.digitaltwins_data#SendDigitalTwinComponentTelemetry"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsSendTelemetry"
+          "target": "com.azure.digitaltwins_data#SendDigitalTwinTelemetry"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsListIncomingRelationships"
+          "target": "com.azure.digitaltwins_data#ListDigitalTwinIncomingRelationships"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsListRelationships"
+          "target": "com.azure.digitaltwins_data#ListDigitalTwinRelationships"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsDeleteRelationship"
+          "target": "com.azure.digitaltwins_data#DeleteDigitalTwinRelationship"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdateRelationship"
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinRelationship"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsAddRelationship"
+          "target": "com.azure.digitaltwins_data#AddDigitalTwinRelationship"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsGetRelationshipById"
+          "target": "com.azure.digitaltwins_data#GetDigitalTwinRelationshipById"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsDelete"
+          "target": "com.azure.digitaltwins_data#DeleteDigitalTwin"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsUpdate"
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwin"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsAdd"
+          "target": "com.azure.digitaltwins_data#AddDigitalTwin"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinsGetById"
+          "target": "com.azure.digitaltwins_data#GetDigitalTwinById"
         },
         {
           "target": "com.azure.digitaltwins_data#QueryQueryTwins"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsDelete"
+          "target": "com.azure.digitaltwins_data#DeleteDigitalTwinModel"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsUpdate"
+          "target": "com.azure.digitaltwins_data#UpdateDigitalTwinModel"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsGetById"
+          "target": "com.azure.digitaltwins_data#GetDigitalTwinModelById"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsAdd"
+          "target": "com.azure.digitaltwins_data#AddDigitalTwinModel"
         },
         {
-          "target": "com.azure.digitaltwins_data#DigitalTwinModelsList"
+          "target": "com.azure.digitaltwins_data#ListDigitalTwinModels"
         }
       ],
       "traits": {

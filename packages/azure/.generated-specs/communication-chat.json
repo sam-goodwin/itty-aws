@@ -15,48 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_chat#ChatThreadSendTypingNotification": "com.azure.communication_chat#SendChatThreadTypingNotification",
-      "com.azure.communication_chat#ChatThreadSendTypingNotificationRequest": "com.azure.communication_chat#SendChatThreadTypingNotificationRequest",
-      "com.azure.communication_chat#ChatDeleteChatThread": "com.azure.communication_chat#DeleteChatChatThread",
-      "com.azure.communication_chat#ChatDeleteChatThreadRequest": "com.azure.communication_chat#DeleteChatChatThreadRequest",
-      "com.azure.communication_chat#ChatThreadUpdateChatThreadProperties": "com.azure.communication_chat#UpdateChatThreadChatThreadProperties",
-      "com.azure.communication_chat#ChatThreadUpdateChatThreadPropertiesRequest": "com.azure.communication_chat#UpdateChatThreadChatThreadPropertiesRequest",
-      "com.azure.communication_chat#ChatThreadUpdateChatThreadPropertiesRequestMetadataMap": "com.azure.communication_chat#UpdateChatThreadChatThreadPropertiesRequestMetadataMap",
-      "com.azure.communication_chat#ChatThreadGetChatThreadProperties": "com.azure.communication_chat#GetChatThreadChatThreadProperties",
-      "com.azure.communication_chat#ChatThreadGetChatThreadPropertiesRequest": "com.azure.communication_chat#GetChatThreadChatThreadPropertiesRequest",
-      "com.azure.communication_chat#ChatCreateChatThread": "com.azure.communication_chat#CreateChatChatThread",
-      "com.azure.communication_chat#ChatCreateChatThreadRequest": "com.azure.communication_chat#CreateChatChatThreadRequest",
-      "com.azure.communication_chat#ChatCreateChatThreadRequestMetadataMap": "com.azure.communication_chat#CreateChatChatThreadRequestMetadataMap",
-      "com.azure.communication_chat#ChatCreateChatThreadRequestParticipantsList": "com.azure.communication_chat#CreateChatChatThreadRequestParticipantsList",
-      "com.azure.communication_chat#ChatListChatThreads": "com.azure.communication_chat#ListChatChatThreads",
-      "com.azure.communication_chat#ChatListChatThreadsRequest": "com.azure.communication_chat#ListChatChatThreadsRequest",
-      "com.azure.communication_chat#ChatThreadAddChatParticipants": "com.azure.communication_chat#AddChatThreadChatParticipants",
-      "com.azure.communication_chat#ChatThreadAddChatParticipantsRequest": "com.azure.communication_chat#AddChatThreadChatParticipantsRequest",
-      "com.azure.communication_chat#ChatThreadAddChatParticipantsRequestParticipantsList": "com.azure.communication_chat#AddChatThreadChatParticipantsRequestParticipantsList",
-      "com.azure.communication_chat#ChatThreadRemoveChatParticipant": "com.azure.communication_chat#RemoveChatThreadChatParticipant",
-      "com.azure.communication_chat#ChatThreadRemoveChatParticipantRequest": "com.azure.communication_chat#RemoveChatThreadChatParticipantRequest",
-      "com.azure.communication_chat#ChatThreadListChatParticipants": "com.azure.communication_chat#ListChatThreadChatParticipants",
-      "com.azure.communication_chat#ChatThreadListChatParticipantsRequest": "com.azure.communication_chat#ListChatThreadChatParticipantsRequest",
-      "com.azure.communication_chat#ChatThreadDeleteChatMessage": "com.azure.communication_chat#DeleteChatThreadChatMessage",
-      "com.azure.communication_chat#ChatThreadDeleteChatMessageRequest": "com.azure.communication_chat#DeleteChatThreadChatMessageRequest",
-      "com.azure.communication_chat#ChatThreadUpdateChatMessage": "com.azure.communication_chat#UpdateChatThreadChatMessage",
-      "com.azure.communication_chat#ChatThreadUpdateChatMessageRequest": "com.azure.communication_chat#UpdateChatThreadChatMessageRequest",
-      "com.azure.communication_chat#ChatThreadUpdateChatMessageRequestMetadataMap": "com.azure.communication_chat#UpdateChatThreadChatMessageRequestMetadataMap",
-      "com.azure.communication_chat#ChatThreadGetChatMessage": "com.azure.communication_chat#GetChatThreadChatMessage",
-      "com.azure.communication_chat#ChatThreadGetChatMessageRequest": "com.azure.communication_chat#GetChatThreadChatMessageRequest",
-      "com.azure.communication_chat#ChatThreadSendChatMessage": "com.azure.communication_chat#SendChatThreadChatMessage",
-      "com.azure.communication_chat#ChatThreadSendChatMessageRequest": "com.azure.communication_chat#SendChatThreadChatMessageRequest",
-      "com.azure.communication_chat#ChatThreadSendChatMessageRequestMetadataMap": "com.azure.communication_chat#SendChatThreadChatMessageRequestMetadataMap",
-      "com.azure.communication_chat#ChatThreadListChatMessages": "com.azure.communication_chat#ListChatThreadChatMessages",
-      "com.azure.communication_chat#ChatThreadListChatMessagesRequest": "com.azure.communication_chat#ListChatThreadChatMessagesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_chat#ChatThreadSendTypingNotification": {
+    "com.azure.communication_chat#SendChatThreadTypingNotification": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadSendTypingNotificationRequest"
+        "target": "com.azure.communication_chat#SendChatThreadTypingNotificationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -75,7 +40,7 @@
         "smithy.api#documentation": "Posts a typing event to a thread, on behalf of a user."
       }
     },
-    "com.azure.communication_chat#ChatThreadSendTypingNotificationRequest": {
+    "com.azure.communication_chat#SendChatThreadTypingNotificationRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -105,10 +70,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatDeleteChatThread": {
+    "com.azure.communication_chat#DeleteChatChatThread": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatDeleteChatThreadRequest"
+        "target": "com.azure.communication_chat#DeleteChatChatThreadRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -127,7 +92,7 @@
         "smithy.api#documentation": "Deletes a thread."
       }
     },
-    "com.azure.communication_chat#ChatDeleteChatThreadRequest": {
+    "com.azure.communication_chat#DeleteChatChatThreadRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -151,10 +116,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadUpdateChatThreadProperties": {
+    "com.azure.communication_chat#UpdateChatThreadChatThreadProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadUpdateChatThreadPropertiesRequest"
+        "target": "com.azure.communication_chat#UpdateChatThreadChatThreadPropertiesRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -173,7 +138,7 @@
         "smithy.api#documentation": "Updates a thread's properties."
       }
     },
-    "com.azure.communication_chat#ChatThreadUpdateChatThreadPropertiesRequest": {
+    "com.azure.communication_chat#UpdateChatThreadChatThreadPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -199,7 +164,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.communication_chat#ChatThreadUpdateChatThreadPropertiesRequestMetadataMap",
+          "target": "com.azure.communication_chat#UpdateChatThreadChatThreadPropertiesRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "Contextual metadata for the thread. The metadata consists of name/value pairs. The total size of all metadata pairs can be up to 1KB in size."
           }
@@ -247,7 +212,7 @@
         "smithy.api#documentation": "Retention Policy Type"
       }
     },
-    "com.azure.communication_chat#ChatThreadUpdateChatThreadPropertiesRequestMetadataMap": {
+    "com.azure.communication_chat#UpdateChatThreadChatThreadPropertiesRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -259,10 +224,10 @@
         "smithy.api#documentation": "Contextual metadata for the thread. The metadata consists of name/value pairs. The total size of all metadata pairs can be up to 1KB in size."
       }
     },
-    "com.azure.communication_chat#ChatThreadGetChatThreadProperties": {
+    "com.azure.communication_chat#GetChatThreadChatThreadProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadGetChatThreadPropertiesRequest"
+        "target": "com.azure.communication_chat#GetChatThreadChatThreadPropertiesRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#ChatThreadProperties"
@@ -588,7 +553,7 @@
         "smithy.api#documentation": "The identifier kind, for example 'communicationUser' or 'phoneNumber'."
       }
     },
-    "com.azure.communication_chat#ChatThreadGetChatThreadPropertiesRequest": {
+    "com.azure.communication_chat#GetChatThreadChatThreadPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -612,10 +577,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatCreateChatThread": {
+    "com.azure.communication_chat#CreateChatChatThread": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatCreateChatThreadRequest"
+        "target": "com.azure.communication_chat#CreateChatChatThreadRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#CreateChatThreadResult"
@@ -709,7 +674,7 @@
         "smithy.api#documentation": "Further details about specific errors that led to this error."
       }
     },
-    "com.azure.communication_chat#ChatCreateChatThreadRequest": {
+    "com.azure.communication_chat#CreateChatChatThreadRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -735,13 +700,13 @@
           }
         },
         "participants": {
-          "target": "com.azure.communication_chat#ChatCreateChatThreadRequestParticipantsList",
+          "target": "com.azure.communication_chat#CreateChatChatThreadRequestParticipantsList",
           "traits": {
             "smithy.api#documentation": "Participants to be added to the chat thread."
           }
         },
         "metadata": {
-          "target": "com.azure.communication_chat#ChatCreateChatThreadRequestMetadataMap",
+          "target": "com.azure.communication_chat#CreateChatChatThreadRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "Contextual metadata for the thread. The metadata consists of name/value pairs. The total size of all metadata pairs can be up to 1KB in size."
           }
@@ -754,7 +719,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatCreateChatThreadRequestMetadataMap": {
+    "com.azure.communication_chat#CreateChatChatThreadRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -766,7 +731,7 @@
         "smithy.api#documentation": "Contextual metadata for the thread. The metadata consists of name/value pairs. The total size of all metadata pairs can be up to 1KB in size."
       }
     },
-    "com.azure.communication_chat#ChatCreateChatThreadRequestParticipantsList": {
+    "com.azure.communication_chat#CreateChatChatThreadRequestParticipantsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_chat#ChatParticipant"
@@ -819,10 +784,10 @@
         "smithy.api#documentation": "Contextual metadata for the chat participant. The metadata consists of name/value pairs. The total size of all metadata pairs can be up to 1KB in size."
       }
     },
-    "com.azure.communication_chat#ChatListChatThreads": {
+    "com.azure.communication_chat#ListChatChatThreads": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatListChatThreadsRequest"
+        "target": "com.azure.communication_chat#ListChatChatThreadsRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#ChatThreadsItemCollection"
@@ -836,9 +801,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-03-15"
+          "apiVersion": "2025-03-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the list of chat threads of a user."
+        "smithy.api#documentation": "Gets the list of chat threads of a user.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_chat#ChatThreadsItemCollection": {
@@ -905,7 +877,7 @@
         "smithy.api#documentation": "Summary information of a chat thread."
       }
     },
-    "com.azure.communication_chat#ChatListChatThreadsRequest": {
+    "com.azure.communication_chat#ListChatChatThreadsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -929,16 +901,22 @@
             "smithy.api#httpQuery": "startTime",
             "smithy.api#documentation": "The earliest point in time to get chat threads up to. The timestamp should be in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadAddChatParticipants": {
+    "com.azure.communication_chat#AddChatThreadChatParticipants": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadAddChatParticipantsRequest"
+        "target": "com.azure.communication_chat#AddChatThreadChatParticipantsRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#AddChatParticipantsResult"
@@ -980,7 +958,7 @@
         "smithy.api#documentation": "The participants that failed to be added to the chat thread."
       }
     },
-    "com.azure.communication_chat#ChatThreadAddChatParticipantsRequest": {
+    "com.azure.communication_chat#AddChatThreadChatParticipantsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1000,7 +978,7 @@
           }
         },
         "participants": {
-          "target": "com.azure.communication_chat#ChatThreadAddChatParticipantsRequestParticipantsList",
+          "target": "com.azure.communication_chat#AddChatThreadChatParticipantsRequestParticipantsList",
           "traits": {
             "smithy.api#documentation": "Participants to add to a chat thread.",
             "smithy.api#required": {}
@@ -1011,7 +989,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadAddChatParticipantsRequestParticipantsList": {
+    "com.azure.communication_chat#AddChatThreadChatParticipantsRequestParticipantsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_chat#ChatParticipant"
@@ -1020,10 +998,10 @@
         "smithy.api#documentation": "Participants to add to a chat thread."
       }
     },
-    "com.azure.communication_chat#ChatThreadRemoveChatParticipant": {
+    "com.azure.communication_chat#RemoveChatThreadChatParticipant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadRemoveChatParticipantRequest"
+        "target": "com.azure.communication_chat#RemoveChatThreadChatParticipantRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1042,7 +1020,7 @@
         "smithy.api#documentation": "Remove a participant from a thread."
       }
     },
-    "com.azure.communication_chat#ChatThreadRemoveChatParticipantRequest": {
+    "com.azure.communication_chat#RemoveChatThreadChatParticipantRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1108,10 +1086,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadListChatParticipants": {
+    "com.azure.communication_chat#ListChatThreadChatParticipants": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadListChatParticipantsRequest"
+        "target": "com.azure.communication_chat#ListChatThreadChatParticipantsRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#ChatParticipantsCollection"
@@ -1125,9 +1103,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-03-15"
+          "apiVersion": "2025-03-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets the participants of a thread."
+        "smithy.api#documentation": "Gets the participants of a thread.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_chat#ChatParticipantsCollection": {
@@ -1160,7 +1145,7 @@
         "smithy.api#documentation": "Chat participants."
       }
     },
-    "com.azure.communication_chat#ChatThreadListChatParticipantsRequest": {
+    "com.azure.communication_chat#ListChatThreadChatParticipantsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1192,16 +1177,22 @@
             "smithy.api#httpQuery": "skip",
             "smithy.api#documentation": "Skips participants up to a specified position in response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadDeleteChatMessage": {
+    "com.azure.communication_chat#DeleteChatThreadChatMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadDeleteChatMessageRequest"
+        "target": "com.azure.communication_chat#DeleteChatThreadChatMessageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1220,7 +1211,7 @@
         "smithy.api#documentation": "Deletes a message."
       }
     },
-    "com.azure.communication_chat#ChatThreadDeleteChatMessageRequest": {
+    "com.azure.communication_chat#DeleteChatThreadChatMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1252,10 +1243,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadUpdateChatMessage": {
+    "com.azure.communication_chat#UpdateChatThreadChatMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadUpdateChatMessageRequest"
+        "target": "com.azure.communication_chat#UpdateChatThreadChatMessageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1274,7 +1265,7 @@
         "smithy.api#documentation": "Updates a message."
       }
     },
-    "com.azure.communication_chat#ChatThreadUpdateChatMessageRequest": {
+    "com.azure.communication_chat#UpdateChatThreadChatMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1308,7 +1299,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.communication_chat#ChatThreadUpdateChatMessageRequestMetadataMap",
+          "target": "com.azure.communication_chat#UpdateChatThreadChatMessageRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "Message metadata."
           }
@@ -1318,7 +1309,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadUpdateChatMessageRequestMetadataMap": {
+    "com.azure.communication_chat#UpdateChatThreadChatMessageRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1330,10 +1321,10 @@
         "smithy.api#documentation": "Message metadata."
       }
     },
-    "com.azure.communication_chat#ChatThreadGetChatMessage": {
+    "com.azure.communication_chat#GetChatThreadChatMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadGetChatMessageRequest"
+        "target": "com.azure.communication_chat#GetChatThreadChatMessageRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#ChatMessage"
@@ -1586,7 +1577,7 @@
         "smithy.api#documentation": "The chat message type."
       }
     },
-    "com.azure.communication_chat#ChatThreadGetChatMessageRequest": {
+    "com.azure.communication_chat#GetChatThreadChatMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1618,10 +1609,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadSendChatMessage": {
+    "com.azure.communication_chat#SendChatThreadChatMessage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadSendChatMessageRequest"
+        "target": "com.azure.communication_chat#SendChatThreadChatMessageRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#SendChatMessageResult"
@@ -1655,7 +1646,7 @@
         "smithy.api#documentation": "Result of the send message operation."
       }
     },
-    "com.azure.communication_chat#ChatThreadSendChatMessageRequest": {
+    "com.azure.communication_chat#SendChatThreadChatMessageRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1691,7 +1682,7 @@
           "target": "com.azure.communication_chat#ChatMessageType"
         },
         "metadata": {
-          "target": "com.azure.communication_chat#ChatThreadSendChatMessageRequestMetadataMap",
+          "target": "com.azure.communication_chat#SendChatThreadChatMessageRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "Message metadata."
           }
@@ -1701,7 +1692,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_chat#ChatThreadSendChatMessageRequestMetadataMap": {
+    "com.azure.communication_chat#SendChatThreadChatMessageRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1713,10 +1704,10 @@
         "smithy.api#documentation": "Message metadata."
       }
     },
-    "com.azure.communication_chat#ChatThreadListChatMessages": {
+    "com.azure.communication_chat#ListChatThreadChatMessages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_chat#ChatThreadListChatMessagesRequest"
+        "target": "com.azure.communication_chat#ListChatThreadChatMessagesRequest"
       },
       "output": {
         "target": "com.azure.communication_chat#ChatMessagesCollection"
@@ -1730,9 +1721,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-03-15"
+          "apiVersion": "2025-03-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of messages from a thread."
+        "smithy.api#documentation": "Gets a list of messages from a thread.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_chat#ChatMessagesCollection": {
@@ -1765,7 +1763,7 @@
         "smithy.api#documentation": "Collection of chat messages."
       }
     },
-    "com.azure.communication_chat#ChatThreadListChatMessagesRequest": {
+    "com.azure.communication_chat#ListChatThreadChatMessagesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1796,6 +1794,12 @@
           "traits": {
             "smithy.api#httpQuery": "startTime",
             "smithy.api#documentation": "The earliest point in time to get messages after. The timestamp should be in RFC3339 format: `yyyy-MM-ddTHH:mm:ssZ`."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1873,9 +1877,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2025-03-15"
+          "apiVersion": "2025-03-15",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets chat message read receipts for a thread."
+        "smithy.api#documentation": "Gets chat message read receipts for a thread.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_chat#ChatMessageReadReceiptsCollection": {
@@ -1968,6 +1979,12 @@
             "smithy.api#httpQuery": "skip",
             "smithy.api#documentation": "Skips chat message read receipts up to a specified position in response."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1979,46 +1996,46 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_chat#ChatThreadSendTypingNotification"
+          "target": "com.azure.communication_chat#SendChatThreadTypingNotification"
         },
         {
-          "target": "com.azure.communication_chat#ChatDeleteChatThread"
+          "target": "com.azure.communication_chat#DeleteChatChatThread"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadUpdateChatThreadProperties"
+          "target": "com.azure.communication_chat#UpdateChatThreadChatThreadProperties"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadGetChatThreadProperties"
+          "target": "com.azure.communication_chat#GetChatThreadChatThreadProperties"
         },
         {
-          "target": "com.azure.communication_chat#ChatCreateChatThread"
+          "target": "com.azure.communication_chat#CreateChatChatThread"
         },
         {
-          "target": "com.azure.communication_chat#ChatListChatThreads"
+          "target": "com.azure.communication_chat#ListChatChatThreads"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadAddChatParticipants"
+          "target": "com.azure.communication_chat#AddChatThreadChatParticipants"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadRemoveChatParticipant"
+          "target": "com.azure.communication_chat#RemoveChatThreadChatParticipant"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadListChatParticipants"
+          "target": "com.azure.communication_chat#ListChatThreadChatParticipants"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadDeleteChatMessage"
+          "target": "com.azure.communication_chat#DeleteChatThreadChatMessage"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadUpdateChatMessage"
+          "target": "com.azure.communication_chat#UpdateChatThreadChatMessage"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadGetChatMessage"
+          "target": "com.azure.communication_chat#GetChatThreadChatMessage"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadSendChatMessage"
+          "target": "com.azure.communication_chat#SendChatThreadChatMessage"
         },
         {
-          "target": "com.azure.communication_chat#ChatThreadListChatMessages"
+          "target": "com.azure.communication_chat#ListChatThreadChatMessages"
         },
         {
           "target": "com.azure.communication_chat#ChatThreadSendChatReadReceipt"

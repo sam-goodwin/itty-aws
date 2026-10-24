@@ -85,6 +85,8 @@ export interface ListHybridUseBenefitRequest {
   scope: string;
   /** Supports applying filter on the type of SKU */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Response on GET of a hybrid use benefit */
 export interface HybridUseBenefitModel {
@@ -106,7 +108,7 @@ export type HybridUseBenefitListResultValueList = Array<HybridUseBenefitModel>;
 /** List of hybrid use benefits */
 export interface HybridUseBenefitListResult {
   /** List of hybrid use benefits */
-  value?: HybridUseBenefitListResultValueList;
+  value: HybridUseBenefitListResultValueList;
   /** Url to get the next page of items. */
   nextLink?: string;
 }
@@ -115,10 +117,14 @@ export interface ListHybridUseBenefitRevisionRequest {
   scope: string;
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListOperationsRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Display fields for an operation. */
 export interface OperationDisplay {
@@ -145,7 +151,7 @@ export type OperationListValueList = Array<OperationResponse>;
 /** List all the operations. */
 export interface OperationList {
   /** List of all operations */
-  value?: OperationListValueList;
+  value: OperationListValueList;
   /** Url to get the next page of items. */
   nextLink?: string;
 }
@@ -225,48 +231,69 @@ export const GetHybridUseBenefit: API.OperationMethod<
 
 export type ListHybridUseBenefitError = AzureOpError;
 /** Get all hybrid use benefits associated with an ARM resource. */
-export const ListHybridUseBenefit: API.OperationMethod<
+export const ListHybridUseBenefit: API.PaginatedOperationMethod<
   ListHybridUseBenefitRequest,
   HybridUseBenefitListResult,
   ListHybridUseBenefitError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HybridUseBenefitModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<ListHybridUseBenefitRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<HybridUseBenefitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListHybridUseBenefitRevisionError = AzureOpError;
 /** Gets the version history of a hybrid use benefit */
-export const ListHybridUseBenefitRevision: API.OperationMethod<
+export const ListHybridUseBenefitRevision: API.PaginatedOperationMethod<
   ListHybridUseBenefitRevisionRequest,
   HybridUseBenefitListResult,
   ListHybridUseBenefitRevisionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  HybridUseBenefitModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListHybridUseBenefitRevisionRequest>,
   output: __S(49, __c6, 1) as any as S.Schema<HybridUseBenefitListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Get operations. List all the operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationList,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(68, __c8, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RegisterSoftwarePlanError = AzureOpError;
 /** Register to Microsoft.SoftwarePlan resource provider. */
@@ -399,12 +426,14 @@ function __c5(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.SoftwarePlan/hybridUseBenefits",
             code: 200,
             apiVersion: "2019-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHybridUseBenefitRequest" });
@@ -417,7 +446,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(48, __c6, 0)),
+          value: __S(48, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HybridUseBenefitListResult" });
@@ -430,12 +459,14 @@ function __c7(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           planId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.SoftwarePlan/hybridUseBenefits/{planId}/revisions",
             code: 200,
             apiVersion: "2019-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListHybridUseBenefitRevisionRequest" });
@@ -447,12 +478,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/{scope+}/providers/Microsoft.SoftwarePlan/operations",
             code: 200,
             apiVersion: "2019-12-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -478,7 +511,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(67, __c8, 3)),
+          value: __S(67, __c8, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });

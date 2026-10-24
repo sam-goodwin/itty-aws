@@ -731,10 +731,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Contoso/employees",
           "code": 200,
-          "apiVersion": "2021-11-01"
+          "apiVersion": "2021-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Employee resources by resource group",
-        "com.distilled.openapi#apiVersion": "2021-11-01"
+        "com.distilled.openapi#apiVersion": "2021-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.contosowidgetmanager#EmployeeListResult": {
@@ -848,6 +855,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -867,10 +880,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Contoso/employees",
           "code": 200,
-          "apiVersion": "2021-11-01"
+          "apiVersion": "2021-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Employee resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2021-11-01"
+        "com.distilled.openapi#apiVersion": "2021-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.contosowidgetmanager#ListEmployeeBySubscriptionRequest": {
@@ -883,6 +903,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -892,7 +918,7 @@
     "com.azure.contosowidgetmanager#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.contosowidgetmanager#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.contosowidgetmanager#ListOperationsResponse"
@@ -902,10 +928,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Contoso/operations",
           "code": 200,
-          "apiVersion": "2021-11-01"
+          "apiVersion": "2021-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2021-11-01"
+        "com.distilled.openapi#apiVersion": "2021-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.contosowidgetmanager#ListOperationsResponse": {
@@ -1045,6 +1078,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.contosowidgetmanager#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.contosowidgetmanager#Contosowidgetmanager": {

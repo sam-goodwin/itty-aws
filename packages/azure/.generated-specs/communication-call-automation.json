@@ -15,65 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_call_automation#CallRecordingResumeRecording": "com.azure.communication_call_automation#ResumeCallRecordingRecording",
-      "com.azure.communication_call_automation#CallRecordingResumeRecordingRequest": "com.azure.communication_call_automation#ResumeCallRecordingRecordingRequest",
-      "com.azure.communication_call_automation#CallRecordingPauseRecording": "com.azure.communication_call_automation#PauseCallRecordingRecording",
-      "com.azure.communication_call_automation#CallRecordingPauseRecordingRequest": "com.azure.communication_call_automation#PauseCallRecordingRecordingRequest",
-      "com.azure.communication_call_automation#CallRecordingStopRecording": "com.azure.communication_call_automation#StopCallRecordingRecording",
-      "com.azure.communication_call_automation#CallRecordingStopRecordingRequest": "com.azure.communication_call_automation#StopCallRecordingRecordingRequest",
-      "com.azure.communication_call_automation#CallRecordingGetRecordingProperties": "com.azure.communication_call_automation#GetCallRecordingRecordingProperties",
-      "com.azure.communication_call_automation#CallRecordingGetRecordingPropertiesRequest": "com.azure.communication_call_automation#GetCallRecordingRecordingPropertiesRequest",
-      "com.azure.communication_call_automation#CallRecordingStartRecording": "com.azure.communication_call_automation#StartCallRecordingRecording",
-      "com.azure.communication_call_automation#CallRecordingStartRecordingRequest": "com.azure.communication_call_automation#StartCallRecordingRecordingRequest",
-      "com.azure.communication_call_automation#CallRecordingStartRecordingRequestChannelAffinityList": "com.azure.communication_call_automation#StartCallRecordingRecordingRequestChannelAffinityList",
-      "com.azure.communication_call_automation#CallRecordingStartRecordingRequestAudioChannelParticipantOrderingList": "com.azure.communication_call_automation#StartCallRecordingRecordingRequestAudioChannelParticipantOrderingList",
-      "com.azure.communication_call_automation#CallConnectionGetParticipant": "com.azure.communication_call_automation#GetCallConnectionParticipant",
-      "com.azure.communication_call_automation#CallConnectionGetParticipantRequest": "com.azure.communication_call_automation#GetCallConnectionParticipantRequest",
-      "com.azure.communication_call_automation#CallConnectionMoveParticipants": "com.azure.communication_call_automation#MoveCallConnectionParticipants",
-      "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequest": "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequest",
-      "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequestTargetParticipantsList": "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequestTargetParticipantsList",
-      "com.azure.communication_call_automation#CallConnectionMute": "com.azure.communication_call_automation#MuteCallConnection",
-      "com.azure.communication_call_automation#CallConnectionMuteRequest": "com.azure.communication_call_automation#MuteCallConnectionRequest",
-      "com.azure.communication_call_automation#CallConnectionMuteRequestTargetParticipantsList": "com.azure.communication_call_automation#MuteCallConnectionRequestTargetParticipantsList",
-      "com.azure.communication_call_automation#CallConnectionRemoveParticipant": "com.azure.communication_call_automation#RemoveCallConnectionParticipant",
-      "com.azure.communication_call_automation#CallConnectionRemoveParticipantRequest": "com.azure.communication_call_automation#RemoveCallConnectionParticipantRequest",
-      "com.azure.communication_call_automation#CallConnectionAddParticipant": "com.azure.communication_call_automation#AddCallConnectionParticipant",
-      "com.azure.communication_call_automation#CallConnectionAddParticipantRequest": "com.azure.communication_call_automation#AddCallConnectionParticipantRequest",
-      "com.azure.communication_call_automation#CallConnectionGetParticipants": "com.azure.communication_call_automation#GetCallConnectionParticipants",
-      "com.azure.communication_call_automation#CallConnectionGetParticipantsRequest": "com.azure.communication_call_automation#GetCallConnectionParticipantsRequest",
-      "com.azure.communication_call_automation#CallMediaStopMediaStreaming": "com.azure.communication_call_automation#StopCallMediaMediaStreaming",
-      "com.azure.communication_call_automation#CallMediaStopMediaStreamingRequest": "com.azure.communication_call_automation#StopCallMediaMediaStreamingRequest",
-      "com.azure.communication_call_automation#CallMediaStartMediaStreaming": "com.azure.communication_call_automation#StartCallMediaMediaStreaming",
-      "com.azure.communication_call_automation#CallMediaStartMediaStreamingRequest": "com.azure.communication_call_automation#StartCallMediaMediaStreamingRequest",
-      "com.azure.communication_call_automation#CallMediaSendDtmfTones": "com.azure.communication_call_automation#SendCallMediaDtmfTones",
-      "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequest": "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequest",
-      "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequestTonesList": "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequestTonesList",
-      "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognition": "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognition",
-      "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognitionRequest": "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognitionRequest",
-      "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognition": "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognition",
-      "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognitionRequest": "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognitionRequest",
-      "com.azure.communication_call_automation#CallMediaCancelAllMediaOperations": "com.azure.communication_call_automation#CancelCallMediaAllMediaOperations",
-      "com.azure.communication_call_automation#CallMediaCancelAllMediaOperationsRequest": "com.azure.communication_call_automation#CancelCallMediaAllMediaOperationsRequest",
-      "com.azure.communication_call_automation#CallMediaUpdateTranscription": "com.azure.communication_call_automation#UpdateCallMediaTranscription",
-      "com.azure.communication_call_automation#CallMediaUpdateTranscriptionRequest": "com.azure.communication_call_automation#UpdateCallMediaTranscriptionRequest",
-      "com.azure.communication_call_automation#CallMediaStopTranscription": "com.azure.communication_call_automation#StopCallMediaTranscription",
-      "com.azure.communication_call_automation#CallMediaStopTranscriptionRequest": "com.azure.communication_call_automation#StopCallMediaTranscriptionRequest",
-      "com.azure.communication_call_automation#CallMediaStartTranscription": "com.azure.communication_call_automation#StartCallMediaTranscription",
-      "com.azure.communication_call_automation#CallMediaStartTranscriptionRequest": "com.azure.communication_call_automation#StartCallMediaTranscriptionRequest",
-      "com.azure.communication_call_automation#CallConnectionTransferToParticipant": "com.azure.communication_call_automation#TransferCallConnectionToParticipant",
-      "com.azure.communication_call_automation#CallConnectionTransferToParticipantRequest": "com.azure.communication_call_automation#TransferCallConnectionToParticipantRequest",
-      "com.azure.communication_call_automation#CallConnectionTerminateCall": "com.azure.communication_call_automation#TerminateCallConnectionCall",
-      "com.azure.communication_call_automation#CallConnectionTerminateCallRequest": "com.azure.communication_call_automation#TerminateCallConnectionCallRequest",
-      "com.azure.communication_call_automation#CallConnectionGetCall": "com.azure.communication_call_automation#GetCallConnectionCall",
-      "com.azure.communication_call_automation#CallConnectionGetCallRequest": "com.azure.communication_call_automation#GetCallConnectionCallRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_call_automation#CallRecordingResumeRecording": {
+    "com.azure.communication_call_automation#ResumeCallRecordingRecording": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallRecordingResumeRecordingRequest"
+        "target": "com.azure.communication_call_automation#ResumeCallRecordingRecordingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -92,7 +40,7 @@
         "smithy.api#documentation": "Resume recording the call."
       }
     },
-    "com.azure.communication_call_automation#CallRecordingResumeRecordingRequest": {
+    "com.azure.communication_call_automation#ResumeCallRecordingRecordingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -116,10 +64,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallRecordingPauseRecording": {
+    "com.azure.communication_call_automation#PauseCallRecordingRecording": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallRecordingPauseRecordingRequest"
+        "target": "com.azure.communication_call_automation#PauseCallRecordingRecordingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -138,7 +86,7 @@
         "smithy.api#documentation": "Pause recording the call."
       }
     },
-    "com.azure.communication_call_automation#CallRecordingPauseRecordingRequest": {
+    "com.azure.communication_call_automation#PauseCallRecordingRecordingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -162,10 +110,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallRecordingStopRecording": {
+    "com.azure.communication_call_automation#StopCallRecordingRecording": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallRecordingStopRecordingRequest"
+        "target": "com.azure.communication_call_automation#StopCallRecordingRecordingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -184,7 +132,7 @@
         "smithy.api#documentation": "Stop recording the call."
       }
     },
-    "com.azure.communication_call_automation#CallRecordingStopRecordingRequest": {
+    "com.azure.communication_call_automation#StopCallRecordingRecordingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -208,10 +156,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallRecordingGetRecordingProperties": {
+    "com.azure.communication_call_automation#GetCallRecordingRecordingProperties": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallRecordingGetRecordingPropertiesRequest"
+        "target": "com.azure.communication_call_automation#GetCallRecordingRecordingPropertiesRequest"
       },
       "output": {
         "target": "com.azure.communication_call_automation#RecordingStateResponse"
@@ -287,7 +235,7 @@
       },
       "traits": {}
     },
-    "com.azure.communication_call_automation#CallRecordingGetRecordingPropertiesRequest": {
+    "com.azure.communication_call_automation#GetCallRecordingRecordingPropertiesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -311,10 +259,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallRecordingStartRecording": {
+    "com.azure.communication_call_automation#StartCallRecordingRecording": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallRecordingStartRecordingRequest"
+        "target": "com.azure.communication_call_automation#StartCallRecordingRecordingRequest"
       },
       "output": {
         "target": "com.azure.communication_call_automation#RecordingStateResponse"
@@ -333,7 +281,7 @@
         "smithy.api#documentation": "Start recording the call."
       }
     },
-    "com.azure.communication_call_automation#CallRecordingStartRecordingRequest": {
+    "com.azure.communication_call_automation#StartCallRecordingRecordingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -383,13 +331,13 @@
           "target": "com.azure.communication_call_automation#RecordingFormatType"
         },
         "audioChannelParticipantOrdering": {
-          "target": "com.azure.communication_call_automation#CallRecordingStartRecordingRequestAudioChannelParticipantOrderingList",
+          "target": "com.azure.communication_call_automation#StartCallRecordingRecordingRequestAudioChannelParticipantOrderingList",
           "traits": {
             "smithy.api#documentation": "The sequential order in which audio channels are assigned to participants in the unmixed recording.\r\nWhen 'recordingChannelType' is set to 'unmixed' and `audioChannelParticipantOrdering is not specified,\r\nthe audio channel to participant mapping will be automatically assigned based on the order in which participant\r\nfirst audio was detected.  Channel to participant mapping details can be found in the metadata of the recording."
           }
         },
         "channelAffinity": {
-          "target": "com.azure.communication_call_automation#CallRecordingStartRecordingRequestChannelAffinityList",
+          "target": "com.azure.communication_call_automation#StartCallRecordingRecordingRequestChannelAffinityList",
           "traits": {
             "smithy.api#documentation": "The channel affinity of call recording\r\nWhen 'recordingChannelType' is set to 'unmixed', if channelAffinity is not specified, 'channel' will be automatically assigned.\r\nChannel-Participant mapping details can be found in the metadata of the recording.\r\n///"
           }
@@ -446,7 +394,7 @@
         "smithy.api#documentation": "Defines the kind of external storage"
       }
     },
-    "com.azure.communication_call_automation#CallRecordingStartRecordingRequestChannelAffinityList": {
+    "com.azure.communication_call_automation#StartCallRecordingRecordingRequestChannelAffinityList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_call_automation#ChannelAffinity"
@@ -720,7 +668,7 @@
         "smithy.api#documentation": "The identifier kind, for example 'communicationUser' or 'phoneNumber'."
       }
     },
-    "com.azure.communication_call_automation#CallRecordingStartRecordingRequestAudioChannelParticipantOrderingList": {
+    "com.azure.communication_call_automation#StartCallRecordingRecordingRequestAudioChannelParticipantOrderingList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
@@ -850,10 +798,10 @@
         "smithy.api#documentation": "The call locator kind"
       }
     },
-    "com.azure.communication_call_automation#CallConnectionGetParticipant": {
+    "com.azure.communication_call_automation#GetCallConnectionParticipant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionGetParticipantRequest"
+        "target": "com.azure.communication_call_automation#GetCallConnectionParticipantRequest"
       },
       "output": {
         "target": "com.azure.communication_call_automation#CallParticipant"
@@ -895,7 +843,7 @@
         "smithy.api#documentation": "A call participant."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionGetParticipantRequest": {
+    "com.azure.communication_call_automation#GetCallConnectionParticipantRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -927,10 +875,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionMoveParticipants": {
+    "com.azure.communication_call_automation#MoveCallConnectionParticipants": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequest"
+        "target": "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -949,7 +897,7 @@
         "smithy.api#documentation": "Move a participant to the call.\n\nMove a participant to the call."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequest": {
+    "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -983,7 +931,7 @@
           }
         },
         "targetParticipants": {
-          "target": "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequestTargetParticipantsList",
+          "target": "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequestTargetParticipantsList",
           "traits": {
             "smithy.api#documentation": "The participant to Move.",
             "smithy.api#required": {}
@@ -1013,7 +961,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionMoveParticipantsRequestTargetParticipantsList": {
+    "com.azure.communication_call_automation#MoveCallConnectionParticipantsRequestTargetParticipantsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
@@ -1101,10 +1049,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionMute": {
+    "com.azure.communication_call_automation#MuteCallConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionMuteRequest"
+        "target": "com.azure.communication_call_automation#MuteCallConnectionRequest"
       },
       "output": {
         "target": "com.azure.communication_call_automation#MuteParticipantsResult"
@@ -1137,7 +1085,7 @@
         "smithy.api#documentation": "The result payload for muting participants from the call."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionMuteRequest": {
+    "com.azure.communication_call_automation#MuteCallConnectionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1171,7 +1119,7 @@
           }
         },
         "targetParticipants": {
-          "target": "com.azure.communication_call_automation#CallConnectionMuteRequestTargetParticipantsList",
+          "target": "com.azure.communication_call_automation#MuteCallConnectionRequestTargetParticipantsList",
           "traits": {
             "smithy.api#documentation": "Participants to be muted from the call.\r\nOnly ACS Users are supported.",
             "smithy.api#required": {}
@@ -1188,7 +1136,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionMuteRequestTargetParticipantsList": {
+    "com.azure.communication_call_automation#MuteCallConnectionRequestTargetParticipantsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_call_automation#CommunicationIdentifierModel"
@@ -1197,10 +1145,10 @@
         "smithy.api#documentation": "Participants to be muted from the call.\r\nOnly ACS Users are supported."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionRemoveParticipant": {
+    "com.azure.communication_call_automation#RemoveCallConnectionParticipant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionRemoveParticipantRequest"
+        "target": "com.azure.communication_call_automation#RemoveCallConnectionParticipantRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1219,7 +1167,7 @@
         "smithy.api#documentation": "Remove a participant from the call using identifier.\n\nRemove a participant from the call using identifier."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionRemoveParticipantRequest": {
+    "com.azure.communication_call_automation#RemoveCallConnectionParticipantRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1275,10 +1223,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionAddParticipant": {
+    "com.azure.communication_call_automation#AddCallConnectionParticipant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionAddParticipantRequest"
+        "target": "com.azure.communication_call_automation#AddCallConnectionParticipantRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1297,7 +1245,7 @@
         "smithy.api#documentation": "Add a participant to the call.\n\nAdd a participant to the call."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionAddParticipantRequest": {
+    "com.azure.communication_call_automation#AddCallConnectionParticipantRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1584,10 +1532,10 @@
         "smithy.api#documentation": "Custom calling context VoiP headers"
       }
     },
-    "com.azure.communication_call_automation#CallConnectionGetParticipants": {
+    "com.azure.communication_call_automation#GetCallConnectionParticipants": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionGetParticipantsRequest"
+        "target": "com.azure.communication_call_automation#GetCallConnectionParticipantsRequest"
       },
       "output": {
         "target": "com.azure.communication_call_automation#GetParticipantsResponse"
@@ -1601,9 +1549,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-03-12"
+          "apiVersion": "2026-03-12",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get participants from a call. Recording and transcription bots are omitted from this list.\n\nGet participants from a call. Recording and transcription bots are omitted from this list."
+        "smithy.api#documentation": "Get participants from a call. Recording and transcription bots are omitted from this list.\n\nGet participants from a call. Recording and transcription bots are omitted from this list.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.communication_call_automation#GetParticipantsResponse": {
@@ -1636,7 +1591,7 @@
         "smithy.api#documentation": "List of the current participants in the call."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionGetParticipantsRequest": {
+    "com.azure.communication_call_automation#GetCallConnectionParticipantsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1654,16 +1609,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The call connection Id"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaStopMediaStreaming": {
+    "com.azure.communication_call_automation#StopCallMediaMediaStreaming": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaStopMediaStreamingRequest"
+        "target": "com.azure.communication_call_automation#StopCallMediaMediaStreamingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1682,7 +1643,7 @@
         "smithy.api#documentation": "Stops media streaming in the call\n\nStops media streaming in the call."
       }
     },
-    "com.azure.communication_call_automation#CallMediaStopMediaStreamingRequest": {
+    "com.azure.communication_call_automation#StopCallMediaMediaStreamingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1718,10 +1679,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaStartMediaStreaming": {
+    "com.azure.communication_call_automation#StartCallMediaMediaStreaming": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaStartMediaStreamingRequest"
+        "target": "com.azure.communication_call_automation#StartCallMediaMediaStreamingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1740,7 +1701,7 @@
         "smithy.api#documentation": "Starts media streaming in the call\n\nStarts media streaming in the call."
       }
     },
-    "com.azure.communication_call_automation#CallMediaStartMediaStreamingRequest": {
+    "com.azure.communication_call_automation#StartCallMediaMediaStreamingRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2046,10 +2007,10 @@
         "smithy.api#documentation": "Defines the types of play source"
       }
     },
-    "com.azure.communication_call_automation#CallMediaSendDtmfTones": {
+    "com.azure.communication_call_automation#SendCallMediaDtmfTones": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequest"
+        "target": "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2068,7 +2029,7 @@
         "smithy.api#documentation": "Send dtmf tones.\n\nSend dtmf tones."
       }
     },
-    "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequest": {
+    "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2102,7 +2063,7 @@
           }
         },
         "tones": {
-          "target": "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequestTonesList",
+          "target": "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequestTonesList",
           "traits": {
             "smithy.api#documentation": "List of tones to be sent to target participant.",
             "smithy.api#required": {}
@@ -2131,7 +2092,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaSendDtmfTonesRequestTonesList": {
+    "com.azure.communication_call_automation#SendCallMediaDtmfTonesRequestTonesList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_call_automation#Tone"
@@ -2244,10 +2205,10 @@
         "smithy.api#documentation": "List of valid stop tones"
       }
     },
-    "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognition": {
+    "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognitionRequest"
+        "target": "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognitionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2266,7 +2227,7 @@
         "smithy.api#documentation": "Stop continuous Dtmf recognition by unsubscribing to tones."
       }
     },
-    "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognitionRequest": {
+    "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognitionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2308,10 +2269,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognition": {
+    "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognitionRequest"
+        "target": "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognitionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2330,7 +2291,7 @@
         "smithy.api#documentation": "Start continuous Dtmf recognition by subscribing to tones."
       }
     },
-    "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognitionRequest": {
+    "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognitionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2636,10 +2597,10 @@
         "smithy.api#documentation": "Defines the type of the recognize input"
       }
     },
-    "com.azure.communication_call_automation#CallMediaCancelAllMediaOperations": {
+    "com.azure.communication_call_automation#CancelCallMediaAllMediaOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaCancelAllMediaOperationsRequest"
+        "target": "com.azure.communication_call_automation#CancelCallMediaAllMediaOperationsRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2658,7 +2619,7 @@
         "smithy.api#documentation": "Cancel all media operations in a call.\n\nCancel all media operations in a call."
       }
     },
-    "com.azure.communication_call_automation#CallMediaCancelAllMediaOperationsRequest": {
+    "com.azure.communication_call_automation#CancelCallMediaAllMediaOperationsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2682,10 +2643,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaUpdateTranscription": {
+    "com.azure.communication_call_automation#UpdateCallMediaTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaUpdateTranscriptionRequest"
+        "target": "com.azure.communication_call_automation#UpdateCallMediaTranscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2704,7 +2665,7 @@
         "smithy.api#documentation": "UpdateTranscription Api.\n\nAPI to change transcription language."
       }
     },
-    "com.azure.communication_call_automation#CallMediaUpdateTranscriptionRequest": {
+    "com.azure.communication_call_automation#UpdateCallMediaTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2752,10 +2713,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaStopTranscription": {
+    "com.azure.communication_call_automation#StopCallMediaTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaStopTranscriptionRequest"
+        "target": "com.azure.communication_call_automation#StopCallMediaTranscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2774,7 +2735,7 @@
         "smithy.api#documentation": "Stops transcription in the call.\n\nStops transcription in the call."
       }
     },
-    "com.azure.communication_call_automation#CallMediaStopTranscriptionRequest": {
+    "com.azure.communication_call_automation#StopCallMediaTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2810,10 +2771,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallMediaStartTranscription": {
+    "com.azure.communication_call_automation#StartCallMediaTranscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallMediaStartTranscriptionRequest"
+        "target": "com.azure.communication_call_automation#StartCallMediaTranscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2832,7 +2793,7 @@
         "smithy.api#documentation": "Starts transcription in the call\n\nStarts transcription in the call"
       }
     },
-    "com.azure.communication_call_automation#CallMediaStartTranscriptionRequest": {
+    "com.azure.communication_call_automation#StartCallMediaTranscriptionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2991,10 +2952,10 @@
         "smithy.api#documentation": "The source of the audio to be played."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionTransferToParticipant": {
+    "com.azure.communication_call_automation#TransferCallConnectionToParticipant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionTransferToParticipantRequest"
+        "target": "com.azure.communication_call_automation#TransferCallConnectionToParticipantRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3013,7 +2974,7 @@
         "smithy.api#documentation": "Transfer the call to a participant.\n\nTransfer the call to a participant."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionTransferToParticipantRequest": {
+    "com.azure.communication_call_automation#TransferCallConnectionToParticipantRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3078,10 +3039,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionTerminateCall": {
+    "com.azure.communication_call_automation#TerminateCallConnectionCall": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionTerminateCallRequest"
+        "target": "com.azure.communication_call_automation#TerminateCallConnectionCallRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3100,7 +3061,7 @@
         "smithy.api#documentation": "Terminate a call using CallConnectionId.\n\nTerminate a call using CallConnectionId."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionTerminateCallRequest": {
+    "com.azure.communication_call_automation#TerminateCallConnectionCallRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3184,10 +3145,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_call_automation#CallConnectionGetCall": {
+    "com.azure.communication_call_automation#GetCallConnectionCall": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_call_automation#CallConnectionGetCallRequest"
+        "target": "com.azure.communication_call_automation#GetCallConnectionCallRequest"
       },
       "output": {
         "target": "com.azure.communication_call_automation#CallConnectionProperties"
@@ -3486,7 +3447,7 @@
         "smithy.api#documentation": "The targets of the call."
       }
     },
-    "com.azure.communication_call_automation#CallConnectionGetCallRequest": {
+    "com.azure.communication_call_automation#GetCallConnectionCallRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4026,46 +3987,46 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_call_automation#CallRecordingResumeRecording"
+          "target": "com.azure.communication_call_automation#ResumeCallRecordingRecording"
         },
         {
-          "target": "com.azure.communication_call_automation#CallRecordingPauseRecording"
+          "target": "com.azure.communication_call_automation#PauseCallRecordingRecording"
         },
         {
-          "target": "com.azure.communication_call_automation#CallRecordingStopRecording"
+          "target": "com.azure.communication_call_automation#StopCallRecordingRecording"
         },
         {
-          "target": "com.azure.communication_call_automation#CallRecordingGetRecordingProperties"
+          "target": "com.azure.communication_call_automation#GetCallRecordingRecordingProperties"
         },
         {
-          "target": "com.azure.communication_call_automation#CallRecordingStartRecording"
+          "target": "com.azure.communication_call_automation#StartCallRecordingRecording"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionGetParticipant"
+          "target": "com.azure.communication_call_automation#GetCallConnectionParticipant"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionMoveParticipants"
+          "target": "com.azure.communication_call_automation#MoveCallConnectionParticipants"
         },
         {
           "target": "com.azure.communication_call_automation#CallConnectionCancelAddParticipant"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionMute"
+          "target": "com.azure.communication_call_automation#MuteCallConnection"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionRemoveParticipant"
+          "target": "com.azure.communication_call_automation#RemoveCallConnectionParticipant"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionAddParticipant"
+          "target": "com.azure.communication_call_automation#AddCallConnectionParticipant"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionGetParticipants"
+          "target": "com.azure.communication_call_automation#GetCallConnectionParticipants"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaStopMediaStreaming"
+          "target": "com.azure.communication_call_automation#StopCallMediaMediaStreaming"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaStartMediaStreaming"
+          "target": "com.azure.communication_call_automation#StartCallMediaMediaStreaming"
         },
         {
           "target": "com.azure.communication_call_automation#CallMediaUnhold"
@@ -4074,43 +4035,43 @@
           "target": "com.azure.communication_call_automation#CallMediaHold"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaSendDtmfTones"
+          "target": "com.azure.communication_call_automation#SendCallMediaDtmfTones"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaStopContinuousDtmfRecognition"
+          "target": "com.azure.communication_call_automation#StopCallMediaContinuousDtmfRecognition"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaStartContinuousDtmfRecognition"
+          "target": "com.azure.communication_call_automation#StartCallMediaContinuousDtmfRecognition"
         },
         {
           "target": "com.azure.communication_call_automation#CallMediaRecognize"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaCancelAllMediaOperations"
+          "target": "com.azure.communication_call_automation#CancelCallMediaAllMediaOperations"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaUpdateTranscription"
+          "target": "com.azure.communication_call_automation#UpdateCallMediaTranscription"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaStopTranscription"
+          "target": "com.azure.communication_call_automation#StopCallMediaTranscription"
         },
         {
-          "target": "com.azure.communication_call_automation#CallMediaStartTranscription"
+          "target": "com.azure.communication_call_automation#StartCallMediaTranscription"
         },
         {
           "target": "com.azure.communication_call_automation#CallMediaPlay"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionTransferToParticipant"
+          "target": "com.azure.communication_call_automation#TransferCallConnectionToParticipant"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionTerminateCall"
+          "target": "com.azure.communication_call_automation#TerminateCallConnectionCall"
         },
         {
           "target": "com.azure.communication_call_automation#CallConnectionHangupCall"
         },
         {
-          "target": "com.azure.communication_call_automation#CallConnectionGetCall"
+          "target": "com.azure.communication_call_automation#GetCallConnectionCall"
         },
         {
           "target": "com.azure.communication_call_automation#Connect"

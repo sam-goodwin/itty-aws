@@ -1357,10 +1357,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}/domainOwnershipIdentifiers",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists domain ownership identifiers.\n\nDescription for Lists domain ownership identifiers.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#DomainOwnershipIdentifierCollection": {
@@ -1462,6 +1469,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the domain."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2114,10 +2127,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all domains in a resource group.\n\nDescription for Get all domains in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#DomainCollection": {
@@ -2237,6 +2257,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2256,10 +2282,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains/{name}/listAgreements",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all legal agreements that user needs to accept before purchasing a domain.\n\nDescription for Gets all legal agreements that user needs to accept before purchasing a domain.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#TldLegalAgreementCollection": {
@@ -2356,6 +2389,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2477,10 +2516,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/topLevelDomains",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all top-level domains supported for registration.\n\nDescription for Get all top-level domains supported for registration.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#TopLevelDomainCollection": {
@@ -2567,6 +2613,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2586,10 +2638,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/listDomainRecommendations",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get domain name recommendations based on keywords.\n\nDescription for Get domain name recommendations based on keywords.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#NameIdentifierCollection": {
@@ -2657,6 +2716,12 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Maximum number of recommendations."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2738,10 +2803,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DomainRegistration/domains",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all domains in a subscription.\n\nDescription for Get all domains in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#ListDomainsRequest": {
@@ -2753,6 +2825,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2850,7 +2928,7 @@
     "com.azure.domainregistration#ListDomainRegistrationProviderOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.domainregistration#ListDomainRegistrationProviderOperationsRequest"
       },
       "output": {
         "target": "com.azure.domainregistration#CsmOperationCollection"
@@ -2860,10 +2938,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DomainRegistration/operations",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements Csm operations Api to exposes the list of available Csm Apis under the resource provider\n\nDescription for Implements Csm operations Api to exposes the list of available Csm Apis under the resource provider",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.domainregistration#CsmOperationCollection": {
@@ -3246,6 +3331,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Meta data about operation used for display in portal."
+      }
+    },
+    "com.azure.domainregistration#ListDomainRegistrationProviderOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.domainregistration#Domainregistration": {

@@ -455,13 +455,15 @@ export interface GetContainerRegistryRepositoriesRequest {
   last?: string;
   /** Query parameter for max number of items */
   n?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Repository names */
 export type RepositoriesRepositoriesList = Array<string>;
 /** List of repositories */
 export interface Repositories {
   /** Repository names */
-  repositories?: RepositoriesRepositoriesList;
+  repositories: RepositoriesRepositoriesList;
   /** Link to the next page of results */
   link?: string;
 }
@@ -915,18 +917,25 @@ export const GetContainerRegistryProperties: API.OperationMethod<
 
 export type GetContainerRegistryRepositoriesError = AzureOpError;
 /** List repositories */
-export const GetContainerRegistryRepositories: API.OperationMethod<
+export const GetContainerRegistryRepositories: API.PaginatedOperationMethod<
   GetContainerRegistryRepositoriesRequest,
   Repositories,
   GetContainerRegistryRepositoriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  string
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<GetContainerRegistryRepositoriesRequest>,
   output: __S(337, __c21, 1) as any as S.Schema<Repositories>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "link",
+    items: "repositories",
+  } as const,
+})) as any;
 
 export type GetContainerRegistryTagPropertiesError = AzureOpError;
 /** Get tag attributes by tag */
@@ -1612,6 +1621,7 @@ function __c21(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           last: S.optional(S.String.pipe(T.Query())),
           n: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1620,6 +1630,7 @@ function __c21(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2021-07-01",
+            nextLink: "nextLink",
             audience: "https://containerregistry.azure.net/.default",
             tokenExchange: "acr",
           }),
@@ -1628,7 +1639,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(176, __c11, 0)),
+          repositories: __S(176, __c11, 0),
           link: S.optional(S.String),
         }),
       ).annotate({ identifier: "Repositories" });

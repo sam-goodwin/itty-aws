@@ -479,10 +479,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the revisions for the workbook defined by its resourceName.",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.applicationinsights#WorkbooksListResult": {
@@ -620,6 +627,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workbook resource. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1366,10 +1379,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all Workbooks defined within a specified resource group and category.",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.applicationinsights#ListWorkbookByResourceGroupRequest": {
@@ -1418,6 +1438,12 @@
           "traits": {
             "smithy.api#httpQuery": "canFetchContent",
             "smithy.api#documentation": "Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1475,10 +1501,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/workbooks",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all Workbooks defined within a specified subscription and category.",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.applicationinsights#ListWorkbookBySubscriptionRequest": {
@@ -1512,6 +1545,12 @@
           "traits": {
             "smithy.api#httpQuery": "canFetchContent",
             "smithy.api#documentation": "Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

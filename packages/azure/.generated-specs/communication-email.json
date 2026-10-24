@@ -15,23 +15,16 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.communication_email#EmailSend": "com.azure.communication_email#SendEmail",
-      "com.azure.communication_email#EmailSendResponse": "com.azure.communication_email#SendEmailResponse",
-      "com.azure.communication_email#EmailSendRequest": "com.azure.communication_email#SendEmailRequest",
-      "com.azure.communication_email#EmailSendRequestReplyToList": "com.azure.communication_email#SendEmailRequestReplyToList",
-      "com.azure.communication_email#EmailSendRequestAttachmentsList": "com.azure.communication_email#SendEmailRequestAttachmentsList",
-      "com.azure.communication_email#EmailSendRequestHeadersMap": "com.azure.communication_email#SendEmailRequestHeadersMap"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.communication_email#EmailSend": {
+    "com.azure.communication_email#SendEmail": {
       "type": "operation",
       "input": {
-        "target": "com.azure.communication_email#EmailSendRequest"
+        "target": "com.azure.communication_email#SendEmailRequest"
       },
       "output": {
-        "target": "com.azure.communication_email#EmailSendResponse"
+        "target": "com.azure.communication_email#SendEmailResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -47,7 +40,7 @@
         "smithy.api#documentation": "Queues an email message to be sent to one or more recipients"
       }
     },
-    "com.azure.communication_email#EmailSendResponse": {
+    "com.azure.communication_email#SendEmailResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -69,7 +62,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.communication_email#EmailSendRequest": {
+    "com.azure.communication_email#SendEmailRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -95,7 +88,7 @@
           }
         },
         "headers": {
-          "target": "com.azure.communication_email#EmailSendRequestHeadersMap",
+          "target": "com.azure.communication_email#SendEmailRequestHeadersMap",
           "traits": {
             "smithy.api#documentation": "Custom email headers to be passed."
           }
@@ -122,13 +115,13 @@
           }
         },
         "attachments": {
-          "target": "com.azure.communication_email#EmailSendRequestAttachmentsList",
+          "target": "com.azure.communication_email#SendEmailRequestAttachmentsList",
           "traits": {
             "smithy.api#documentation": "List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB."
           }
         },
         "replyTo": {
-          "target": "com.azure.communication_email#EmailSendRequestReplyToList",
+          "target": "com.azure.communication_email#SendEmailRequestReplyToList",
           "traits": {
             "smithy.api#documentation": "Email addresses where recipients' replies will be sent to."
           }
@@ -144,7 +137,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.communication_email#EmailSendRequestReplyToList": {
+    "com.azure.communication_email#SendEmailRequestReplyToList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_email#EmailAddress"
@@ -174,7 +167,7 @@
         "smithy.api#documentation": "An object representing the email address and its display name"
       }
     },
-    "com.azure.communication_email#EmailSendRequestAttachmentsList": {
+    "com.azure.communication_email#SendEmailRequestAttachmentsList": {
       "type": "list",
       "member": {
         "target": "com.azure.communication_email#EmailAttachment"
@@ -300,7 +293,7 @@
         "smithy.api#documentation": "Content of the email."
       }
     },
-    "com.azure.communication_email#EmailSendRequestHeadersMap": {
+    "com.azure.communication_email#SendEmailRequestHeadersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -568,7 +561,7 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.communication_email#EmailSend"
+          "target": "com.azure.communication_email#SendEmail"
         },
         {
           "target": "com.azure.communication_email#EmailGetSendResult"

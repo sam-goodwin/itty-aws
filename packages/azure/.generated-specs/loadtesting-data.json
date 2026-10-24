@@ -399,9 +399,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all triggers for the given filters.\n\nGet all triggers for the given filters."
+        "smithy.api#documentation": "Get all triggers for the given filters.\n\nGet all triggers for the given filters.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#PagedTrigger": {
@@ -477,6 +484,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of results in response. Default page size is 50."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1173,9 +1186,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all test files.\n\nGet all test files."
+        "smithy.api#documentation": "Get all test files.\n\nGet all test files.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#PagedTestFileInfo": {
@@ -1224,6 +1244,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Unique test identifier for the load test, must contain only lower-case alphabetic, numeric, underscore or hyphen characters."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3049,9 +3075,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all load tests by the fully qualified resource Id e.g\nsubscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.LoadTestService/loadtests/{resName}.\n\nGet all load tests by the fully qualified resource Id e.g\nsubscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.LoadTestService/loadtests/{resName}."
+        "smithy.api#documentation": "Get all load tests by the fully qualified resource Id e.g\nsubscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.LoadTestService/loadtests/{resName}.\n\nGet all load tests by the fully qualified resource Id e.g\nsubscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.LoadTestService/loadtests/{resName}.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#PagedTest": {
@@ -3127,6 +3160,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of results in response."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3370,9 +3409,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List the metric values for a load test run.\n\nList the metric values for a load test run."
+        "smithy.api#documentation": "List the metric values for a load test run.\n\nList the metric values for a load test run.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#Metrics": {
@@ -3543,6 +3589,12 @@
           "target": "com.azure.loadtesting_data#LoadTestRunListMetricsRequestFiltersList",
           "traits": {
             "smithy.api#documentation": "Get metrics for specific dimension values. Example: Metric contains dimension\nlike SamplerName, Error. To retrieve all the time series data where SamplerName\nis equals to HTTPRequest1 or HTTPRequest2, the DimensionFilter value will be\n{\"SamplerName\", [\"HTTPRequest1\", \"HTTPRequest2\"}"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3730,9 +3782,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List the dimension values for the given metric dimension name.\n\nList the dimension values for the given metric dimension name."
+        "smithy.api#documentation": "List the dimension values for the given metric dimension name.\n\nList the dimension values for the given metric dimension name.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#DimensionValueList": {
@@ -3825,6 +3884,12 @@
             "smithy.api#httpQuery": "timespan",
             "smithy.api#required": {},
             "smithy.api#documentation": "The timespan of the query. It is a string with the following format 'startDateTime_ISO/endDateTime_ISO'."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5867,9 +5932,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all test runs for the given filters.\n\nGet all test runs for the given filters."
+        "smithy.api#documentation": "Get all test runs for the given filters.\n\nGet all test runs for the given filters.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#PagedTestRun": {
@@ -5973,6 +6045,12 @@
           "traits": {
             "smithy.api#httpQuery": "testIds",
             "smithy.api#documentation": "Comma-separated list of test IDs. If you are using testIds, do not send a value for testId."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6432,9 +6510,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all notification rules for the given filters.\n\nGet all notification rules for the given filters."
+        "smithy.api#documentation": "Get all notification rules for the given filters.\n\nGet all notification rules for the given filters.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.loadtesting_data#PagedNotificationRule": {
@@ -6510,6 +6595,12 @@
           "traits": {
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "Number of results in response. Default page size is 50."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

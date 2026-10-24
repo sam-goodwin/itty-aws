@@ -439,6 +439,8 @@ export interface ListAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type MapsAccountTagsMap = { [key: string]: string | undefined };
@@ -495,13 +497,15 @@ export type MapsAccountsValueList = Array<MapsAccount>;
 /** A list of Maps Accounts. */
 export interface MapsAccounts {
   /** a Maps Account. */
-  value?: MapsAccountsValueList;
+  value: MapsAccountsValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAccountKeysRequest {
   /** The ID of the target subscription. */
@@ -558,6 +562,8 @@ export interface ListCreatorByAccountRequest {
   resourceGroupName: string;
   /** The name of the Maps Account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CreatorTagsMap = { [key: string]: string | undefined };
@@ -606,11 +612,14 @@ export type CreatorListValueList = Array<Creator>;
 /** A list of Creator resources. */
 export interface CreatorList {
   /** a Creator account. */
-  value?: CreatorListValueList;
+  value: CreatorListValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export interface ListMapOperationsRequest {}
+export interface ListMapOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource provider of the operation */
@@ -700,13 +709,15 @@ export type MapsOperationsValueList = Array<OperationDetail>;
 /** The set of operations available for Maps. */
 export interface MapsOperations {
   /** An operation available for Maps. */
-  value?: MapsOperationsValueList;
+  value: MapsOperationsValueList;
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
 export interface ListMapSubscriptionOperationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Whether the operation refers to the primary or secondary key. */
 export type RegenerateAccountKeysRequestKeyType = "primary" | "secondary";
@@ -948,33 +959,47 @@ export const GetCreator: API.OperationMethod<
 
 export type ListAccountByResourceGroupError = AzureOpError;
 /** Get all Maps Accounts in a Resource Group */
-export const ListAccountByResourceGroup: API.OperationMethod<
+export const ListAccountByResourceGroup: API.PaginatedOperationMethod<
   ListAccountByResourceGroupRequest,
   MapsAccounts,
   ListAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MapsAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(320, __c20, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
   output: __S(337, __c21, 1) as any as S.Schema<MapsAccounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountBySubscriptionError = AzureOpError;
 /** Get all Maps Accounts in a Subscription */
-export const ListAccountBySubscription: API.OperationMethod<
+export const ListAccountBySubscription: API.PaginatedOperationMethod<
   ListAccountBySubscriptionRequest,
   MapsAccounts,
   ListAccountBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MapsAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
   output: __S(337, __c21, 1) as any as S.Schema<MapsAccounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountKeysError = AzureOpError;
 /** Get the keys to use with the Maps APIs. A key is used to authenticate and authorize access to the Maps REST APIs. Only one key is needed at a time; two are given to provide seamless key regeneration. */
@@ -1008,48 +1033,69 @@ export const ListAccountSas: API.OperationMethod<
 
 export type ListCreatorByAccountError = AzureOpError;
 /** Get all Creator instances for an Azure Maps Account */
-export const ListCreatorByAccount: API.OperationMethod<
+export const ListCreatorByAccount: API.PaginatedOperationMethod<
   ListCreatorByAccountRequest,
   CreatorList,
   ListCreatorByAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Creator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListCreatorByAccountRequest>,
   output: __S(146, __c9, 2) as any as S.Schema<CreatorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMapOperationsError = AzureOpError;
 /** List operations available for the Maps Resource Provider */
-export const ListMapOperations: API.OperationMethod<
+export const ListMapOperations: API.PaginatedOperationMethod<
   ListMapOperationsRequest,
   MapsOperations,
   ListMapOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<ListMapOperationsRequest>,
   output: __S(185, __c11, 9) as any as S.Schema<MapsOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMapSubscriptionOperationsError = AzureOpError;
 /** List operations available for the Maps Resource Provider */
-export const ListMapSubscriptionOperations: API.OperationMethod<
+export const ListMapSubscriptionOperations: API.PaginatedOperationMethod<
   ListMapSubscriptionOperationsRequest,
   MapsOperations,
   ListMapSubscriptionOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationDetail
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<ListMapSubscriptionOperationsRequest>,
   output: __S(185, __c11, 9) as any as S.Schema<MapsOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RegenerateAccountKeysError = AzureOpError;
 /** Regenerate either the primary or secondary key for use with the Maps APIs. The old key will stop working immediately. */
@@ -1343,12 +1389,14 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCreatorByAccountRequest" });
@@ -1357,7 +1405,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(145, __c9, 1)),
+          value: __S(145, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreatorList" });
@@ -1367,12 +1415,15 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Maps/operations",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMapOperationsRequest" });
@@ -1450,7 +1501,7 @@ function __c11(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(184, __c11, 8)),
+          value: __S(184, __c11, 8),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsOperations" });
@@ -1462,12 +1513,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/operations",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMapSubscriptionOperationsRequest" });
@@ -1624,12 +1677,14 @@ function __c20(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountByResourceGroupRequest" });
@@ -1642,7 +1697,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(336, __c21, 0)),
+          value: __S(336, __c21, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsAccounts" });
@@ -1654,12 +1709,14 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/accounts",
             code: 200,
             apiVersion: "2023-06-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountBySubscriptionRequest" });

@@ -324,6 +324,8 @@ export interface ListIterationOperationIterationRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Iteration items on this page */
 export type PagedIterationValueList = Array<Iteration>;
@@ -343,6 +345,8 @@ export interface ListTranslationOperationTranslationRequest {
   skip?: number;
   /** The maximum number of result items per page. */
   maxpagesize?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Translation items on this page */
 export type PagedTranslationValueList = Array<Translation>;
@@ -511,33 +515,47 @@ export const GetTranslationOperationTranslation: API.OperationMethod<
 
 export type ListIterationOperationIterationError = AzureOpError;
 /** List Iteration resources. */
-export const ListIterationOperationIteration: API.OperationMethod<
+export const ListIterationOperationIteration: API.PaginatedOperationMethod<
   ListIterationOperationIterationRequest,
   PagedIteration,
   ListIterationOperationIterationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Iteration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(68, __c17, 0) as any as S.Schema<ListIterationOperationIterationRequest>,
   output: __S(70, __c17, 2) as any as S.Schema<PagedIteration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTranslationOperationTranslationError = AzureOpError;
 /** List translation resources. */
-export const ListTranslationOperationTranslation: API.OperationMethod<
+export const ListTranslationOperationTranslation: API.PaginatedOperationMethod<
   ListTranslationOperationTranslationRequest,
   PagedTranslation,
   ListTranslationOperationTranslationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Translation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(20, __c5, 0) as any as S.Schema<ListTranslationOperationTranslationRequest>,
   output: __S(22, __c5, 2) as any as S.Schema<PagedTranslation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PingEventHubConfigurationOperationEventHubError = AzureOpError;
 /** Send ping to EventHub to verify configuration. */
@@ -729,6 +747,7 @@ function __c5(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -736,6 +755,7 @@ function __c5(j: number): any {
             code: 200,
             host: "{endpoint}/videotranslation",
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),
@@ -977,6 +997,7 @@ function __c17(j: number): any {
           top: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
           maxpagesize: S.optional(S.Number.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -984,6 +1005,7 @@ function __c17(j: number): any {
             code: 200,
             host: "{endpoint}/videotranslation",
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
             audience: "https://cognitiveservices.azure.com/.default",
           }),
         ),

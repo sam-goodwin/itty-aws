@@ -171,7 +171,8 @@
       "com.azure.storagecache#CachesListRequest": "com.azure.storagecache#ListCachesRequest",
       "com.azure.storagecache#AmlFilesystemsList": "com.azure.storagecache#ListAmlFilesystems",
       "com.azure.storagecache#AmlFilesystemsListRequest": "com.azure.storagecache#ListAmlFilesystemsRequest",
-      "com.azure.storagecache#OperationsList": "com.azure.storagecache#ListOperations"
+      "com.azure.storagecache#OperationsList": "com.azure.storagecache#ListOperations",
+      "com.azure.storagecache#OperationsListRequest": "com.azure.storagecache#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -1601,10 +1602,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of Storage Targets for the specified cache.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#StorageTargetsResult": {
@@ -1705,6 +1713,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4361,10 +4375,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all caches the user has access to under a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#CachesListResult": {
@@ -4487,6 +4508,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5074,10 +5101,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/rebalanceJobs",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the rebalance jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#RebalanceJobsListResult": {
@@ -5172,6 +5206,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6157,10 +6197,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all import jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#ImportJobsListResult": {
@@ -6280,6 +6327,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7029,10 +7082,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/expansionJobs",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the expansion jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#ExpansionJobsListResult": {
@@ -7152,6 +7212,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8298,10 +8364,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoImportJobs",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the auto import jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#AutoImportJobsListResult": {
@@ -8421,6 +8494,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9306,10 +9385,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the auto export jobs the user has access to under an AML File System.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#AutoExportJobsListResult": {
@@ -9429,6 +9515,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10970,10 +11062,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all AML file systems the user has access to under a resource group.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#AmlFilesystemsListResult": {
@@ -11113,6 +11212,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11132,10 +11237,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/usageModels",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of cache usage models available to this subscription.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#UsageModelsResult": {
@@ -11217,6 +11329,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11236,10 +11354,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/skus",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the list of StorageCache.Cache SKUs available to this subscription.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#ResourceSkusResult": {
@@ -11465,6 +11590,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11484,10 +11615,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets the quantity used and quota limit for resources",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#ResourceUsagesListResult": {
@@ -11588,6 +11726,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Azure region."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11875,10 +12019,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/caches",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all caches the user has access to under a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#CachesListRequest": {
@@ -11890,6 +12041,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11910,10 +12067,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/amlFilesystems",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all AML file systems the user has access to under a subscription.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#AmlFilesystemsListRequest": {
@@ -11926,6 +12090,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11935,7 +12105,7 @@
     "com.azure.storagecache#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.storagecache#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.storagecache#ApiOperationListResult"
@@ -11945,10 +12115,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.StorageCache/operations",
           "code": 200,
-          "apiVersion": "2026-08-01"
+          "apiVersion": "2026-08-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Resource Provider operations.",
-        "com.distilled.openapi#apiVersion": "2026-08-01"
+        "com.distilled.openapi#apiVersion": "2026-08-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.storagecache#ApiOperationListResult": {
@@ -12276,6 +12453,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that represents the operation."
+      }
+    },
+    "com.azure.storagecache#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.storagecache#Storagecache": {

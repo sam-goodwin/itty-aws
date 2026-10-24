@@ -4258,6 +4258,8 @@ export interface ListAccessBridgeByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AccessBridgeTagsMap = { [key: string]: string | undefined };
@@ -4298,6 +4300,8 @@ export interface ListAccessBridgeBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAgentPoolByKubernetesClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4310,6 +4314,8 @@ export interface ListAgentPoolByKubernetesClusterRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AgentPoolTagsMap = { [key: string]: string | undefined };
@@ -4352,6 +4358,8 @@ export interface ListBareMetalMachineByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BareMetalMachineTagsMap = { [key: string]: string | undefined };
@@ -4392,6 +4400,8 @@ export interface ListBareMetalMachineBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListBareMetalMachineKeySetByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4404,6 +4414,8 @@ export interface ListBareMetalMachineKeySetByClusterRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BareMetalMachineKeySetTagsMap = { [key: string]: string | undefined };
@@ -4448,6 +4460,8 @@ export interface ListBmcKeySetByClusterRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type BmcKeySetTagsMap = { [key: string]: string | undefined };
@@ -4490,6 +4504,8 @@ export interface ListCloudServicesNetworkByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CloudServicesNetworkTagsMap = { [key: string]: string | undefined };
@@ -4530,6 +4546,8 @@ export interface ListCloudServicesNetworkBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListClusterByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4540,6 +4558,8 @@ export interface ListClusterByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
@@ -4598,6 +4618,8 @@ export interface ListClusterBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListClusterManagerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4608,6 +4630,8 @@ export interface ListClusterManagerByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ClusterManagerTagsMap = { [key: string]: string | undefined };
@@ -4664,6 +4688,8 @@ export interface ListClusterManagerBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListConsoleByVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4676,6 +4702,8 @@ export interface ListConsoleByVirtualMachineRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ConsoleTagsMap = { [key: string]: string | undefined };
@@ -4718,6 +4746,8 @@ export interface ListKubernetesClusterByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type KubernetesClusterTagsMap = { [key: string]: string | undefined };
@@ -4758,6 +4788,8 @@ export interface ListKubernetesClusterBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListKubernetesClusterFeatureByKubernetesClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4770,6 +4802,8 @@ export interface ListKubernetesClusterFeatureByKubernetesClusterRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type KubernetesClusterFeatureTagsMap = { [key: string]: string | undefined };
@@ -4810,6 +4844,8 @@ export interface ListKubernetesVersionByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type KubernetesVersionTagsMap = { [key: string]: string | undefined };
@@ -4850,6 +4886,8 @@ export interface ListKubernetesVersionBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListL2NetworkByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4860,6 +4898,8 @@ export interface ListL2NetworkByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type L2NetworkTagsMap = { [key: string]: string | undefined };
@@ -4900,6 +4940,8 @@ export interface ListL2NetworkBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListL3NetworkByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4910,6 +4952,8 @@ export interface ListL3NetworkByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type L3NetworkTagsMap = { [key: string]: string | undefined };
@@ -4950,6 +4994,8 @@ export interface ListL3NetworkBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListMetricsConfigurationByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4962,6 +5008,8 @@ export interface ListMetricsConfigurationByClusterRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ClusterMetricsConfigurationTagsMap = { [key: string]: string | undefined };
@@ -4995,7 +5043,10 @@ export interface ClusterMetricsConfigurationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -5028,7 +5079,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -5041,6 +5092,8 @@ export interface ListRackByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RackTagsMap = { [key: string]: string | undefined };
@@ -5081,10 +5134,14 @@ export interface ListRackBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRackSkusBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** RackSku represents the SKU information of the rack. */
 export interface RackSku {
@@ -5117,6 +5174,8 @@ export interface ListStorageApplianceByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type StorageApplianceTagsMap = { [key: string]: string | undefined };
@@ -5157,6 +5216,8 @@ export interface ListStorageApplianceBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListTrunkedNetworkByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5167,6 +5228,8 @@ export interface ListTrunkedNetworkByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type TrunkedNetworkTagsMap = { [key: string]: string | undefined };
@@ -5207,6 +5270,8 @@ export interface ListTrunkedNetworkBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVirtualMachineByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5217,6 +5282,8 @@ export interface ListVirtualMachineByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VirtualMachineTagsMap = { [key: string]: string | undefined };
@@ -5273,6 +5340,8 @@ export interface ListVirtualMachineBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListVolumeByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5283,6 +5352,8 @@ export interface ListVolumeByResourceGroupRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type VolumeTagsMap = { [key: string]: string | undefined };
@@ -5323,6 +5394,8 @@ export interface ListVolumeBySubscriptionRequest {
   _top?: number;
   /** The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets. */
   _skipToken?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type MetricsConfigurationsCreateOrUpdateRequestTagsMap = {
@@ -8212,252 +8285,365 @@ export const L3NetworksCreateOrUpdate: API.OperationMethod<
 
 export type ListAccessBridgeByResourceGroupError = AzureOpError;
 /** Get a list of access bridges in the provided resource group. */
-export const ListAccessBridgeByResourceGroup: API.OperationMethod<
+export const ListAccessBridgeByResourceGroup: API.PaginatedOperationMethod<
   ListAccessBridgeByResourceGroupRequest,
   AccessBridgeList,
   ListAccessBridgeByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccessBridge
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5376, __c168, 0) as any as S.Schema<ListAccessBridgeByResourceGroupRequest>,
   output: __S(5409, __c169, 1) as any as S.Schema<AccessBridgeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccessBridgeBySubscriptionError = AzureOpError;
 /** Get a list of access bridges in the provided subscription. */
-export const ListAccessBridgeBySubscription: API.OperationMethod<
+export const ListAccessBridgeBySubscription: API.PaginatedOperationMethod<
   ListAccessBridgeBySubscriptionRequest,
   AccessBridgeList,
   ListAccessBridgeBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccessBridge
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5440, __c170, 0) as any as S.Schema<ListAccessBridgeBySubscriptionRequest>,
   output: __S(5409, __c169, 1) as any as S.Schema<AccessBridgeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAgentPoolByKubernetesClusterError = AzureOpError;
 /** Get a list of agent pools for the provided Kubernetes cluster. */
-export const ListAgentPoolByKubernetesCluster: API.OperationMethod<
+export const ListAgentPoolByKubernetesCluster: API.PaginatedOperationMethod<
   ListAgentPoolByKubernetesClusterRequest,
   AgentPoolList,
   ListAgentPoolByKubernetesClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AgentPool
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5472, __c171, 0) as any as S.Schema<ListAgentPoolByKubernetesClusterRequest>,
   output: __S(5474, __c171, 2) as any as S.Schema<AgentPoolList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBareMetalMachineByResourceGroupError = AzureOpError;
 /** Get a list of bare metal machines in the provided resource group. */
-export const ListBareMetalMachineByResourceGroup: API.OperationMethod<
+export const ListBareMetalMachineByResourceGroup: API.PaginatedOperationMethod<
   ListBareMetalMachineByResourceGroupRequest,
   BareMetalMachineList,
   ListBareMetalMachineByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BareMetalMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5504, __c172, 0) as any as S.Schema<ListBareMetalMachineByResourceGroupRequest>,
   output: __S(5537, __c173, 1) as any as S.Schema<BareMetalMachineList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBareMetalMachineBySubscriptionError = AzureOpError;
 /** Get a list of bare metal machines in the provided subscription. */
-export const ListBareMetalMachineBySubscription: API.OperationMethod<
+export const ListBareMetalMachineBySubscription: API.PaginatedOperationMethod<
   ListBareMetalMachineBySubscriptionRequest,
   BareMetalMachineList,
   ListBareMetalMachineBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BareMetalMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5632, __c176, 0) as any as S.Schema<ListBareMetalMachineBySubscriptionRequest>,
   output: __S(5537, __c173, 1) as any as S.Schema<BareMetalMachineList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBareMetalMachineKeySetByClusterError = AzureOpError;
 /** Get a list of bare metal machine key sets for the provided cluster. */
-export const ListBareMetalMachineKeySetByCluster: API.OperationMethod<
+export const ListBareMetalMachineKeySetByCluster: API.PaginatedOperationMethod<
   ListBareMetalMachineKeySetByClusterRequest,
   BareMetalMachineKeySetList,
   ListBareMetalMachineKeySetByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BareMetalMachineKeySet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5664, __c177, 0) as any as S.Schema<ListBareMetalMachineKeySetByClusterRequest>,
   output: __S(5666, __c177, 2) as any as S.Schema<BareMetalMachineKeySetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListBmcKeySetByClusterError = AzureOpError;
 /** Get a list of baseboard management controller key sets for the provided cluster. */
-export const ListBmcKeySetByCluster: API.OperationMethod<
+export const ListBmcKeySetByCluster: API.PaginatedOperationMethod<
   ListBmcKeySetByClusterRequest,
   BmcKeySetList,
   ListBmcKeySetByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BmcKeySet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5696, __c178, 0) as any as S.Schema<ListBmcKeySetByClusterRequest>,
   output: __S(5698, __c178, 2) as any as S.Schema<BmcKeySetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCloudServicesNetworkByResourceGroupError = AzureOpError;
 /** Get a list of cloud services networks in the provided resource group. */
-export const ListCloudServicesNetworkByResourceGroup: API.OperationMethod<
+export const ListCloudServicesNetworkByResourceGroup: API.PaginatedOperationMethod<
   ListCloudServicesNetworkByResourceGroupRequest,
   CloudServicesNetworkList,
   ListCloudServicesNetworkByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CloudServicesNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5728, __c179, 0) as any as S.Schema<ListCloudServicesNetworkByResourceGroupRequest>,
   output: __S(5761, __c180, 1) as any as S.Schema<CloudServicesNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCloudServicesNetworkBySubscriptionError = AzureOpError;
 /** Get a list of cloud services networks in the provided subscription. */
-export const ListCloudServicesNetworkBySubscription: API.OperationMethod<
+export const ListCloudServicesNetworkBySubscription: API.PaginatedOperationMethod<
   ListCloudServicesNetworkBySubscriptionRequest,
   CloudServicesNetworkList,
   ListCloudServicesNetworkBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CloudServicesNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5792, __c181, 0) as any as S.Schema<ListCloudServicesNetworkBySubscriptionRequest>,
   output: __S(5761, __c180, 1) as any as S.Schema<CloudServicesNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClusterByResourceGroupError = AzureOpError;
 /** Get a list of clusters in the provided resource group. */
-export const ListClusterByResourceGroup: API.OperationMethod<
+export const ListClusterByResourceGroup: API.PaginatedOperationMethod<
   ListClusterByResourceGroupRequest,
   ClusterList,
   ListClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5824, __c182, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
   output: __S(5857, __c183, 1) as any as S.Schema<ClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClusterBySubscriptionError = AzureOpError;
 /** Get a list of clusters in the provided subscription. */
-export const ListClusterBySubscription: API.OperationMethod<
+export const ListClusterBySubscription: API.PaginatedOperationMethod<
   ListClusterBySubscriptionRequest,
   ClusterList,
   ListClusterBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Cluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5888, __c184, 0) as any as S.Schema<ListClusterBySubscriptionRequest>,
   output: __S(5857, __c183, 1) as any as S.Schema<ClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClusterManagerByResourceGroupError = AzureOpError;
 /** Get a list of cluster managers in the provided resource group. */
-export const ListClusterManagerByResourceGroup: API.OperationMethod<
+export const ListClusterManagerByResourceGroup: API.PaginatedOperationMethod<
   ListClusterManagerByResourceGroupRequest,
   ClusterManagerList,
   ListClusterManagerByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterManager
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5920, __c185, 0) as any as S.Schema<ListClusterManagerByResourceGroupRequest>,
   output: __S(5953, __c186, 1) as any as S.Schema<ClusterManagerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListClusterManagerBySubscriptionError = AzureOpError;
 /** Get a list of cluster managers in the provided subscription. */
-export const ListClusterManagerBySubscription: API.OperationMethod<
+export const ListClusterManagerBySubscription: API.PaginatedOperationMethod<
   ListClusterManagerBySubscriptionRequest,
   ClusterManagerList,
   ListClusterManagerBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterManager
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5984, __c187, 0) as any as S.Schema<ListClusterManagerBySubscriptionRequest>,
   output: __S(5953, __c186, 1) as any as S.Schema<ClusterManagerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConsoleByVirtualMachineError = AzureOpError;
 /** Get a list of consoles for the provided virtual machine. */
-export const ListConsoleByVirtualMachine: API.OperationMethod<
+export const ListConsoleByVirtualMachine: API.PaginatedOperationMethod<
   ListConsoleByVirtualMachineRequest,
   ConsoleList,
   ListConsoleByVirtualMachineError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Console
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6016, __c188, 0) as any as S.Schema<ListConsoleByVirtualMachineRequest>,
   output: __S(6018, __c188, 2) as any as S.Schema<ConsoleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKubernetesClusterByResourceGroupError = AzureOpError;
 /** Get a list of Kubernetes clusters in the provided resource group. */
-export const ListKubernetesClusterByResourceGroup: API.OperationMethod<
+export const ListKubernetesClusterByResourceGroup: API.PaginatedOperationMethod<
   ListKubernetesClusterByResourceGroupRequest,
   KubernetesClusterList,
   ListKubernetesClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KubernetesCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6112, __c191, 0) as any as S.Schema<ListKubernetesClusterByResourceGroupRequest>,
   output: __S(6145, __c192, 1) as any as S.Schema<KubernetesClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKubernetesClusterBySubscriptionError = AzureOpError;
 /** Get a list of Kubernetes clusters in the provided subscription. */
-export const ListKubernetesClusterBySubscription: API.OperationMethod<
+export const ListKubernetesClusterBySubscription: API.PaginatedOperationMethod<
   ListKubernetesClusterBySubscriptionRequest,
   KubernetesClusterList,
   ListKubernetesClusterBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KubernetesCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6176, __c193, 0) as any as S.Schema<ListKubernetesClusterBySubscriptionRequest>,
   output: __S(6145, __c192, 1) as any as S.Schema<KubernetesClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKubernetesClusterFeatureByKubernetesClusterError = AzureOpError;
 /** Get a list of features for the provided Kubernetes cluster. */
-export const ListKubernetesClusterFeatureByKubernetesCluster: API.OperationMethod<
+export const ListKubernetesClusterFeatureByKubernetesCluster: API.PaginatedOperationMethod<
   ListKubernetesClusterFeatureByKubernetesClusterRequest,
   KubernetesClusterFeatureList,
   ListKubernetesClusterFeatureByKubernetesClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KubernetesClusterFeature
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     6208,
     __c194,
@@ -8467,292 +8653,431 @@ export const ListKubernetesClusterFeatureByKubernetesCluster: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKubernetesVersionByResourceGroupError = AzureOpError;
 /** Get a list of Kubernetes version resources in the provided resource group. */
-export const ListKubernetesVersionByResourceGroup: API.OperationMethod<
+export const ListKubernetesVersionByResourceGroup: API.PaginatedOperationMethod<
   ListKubernetesVersionByResourceGroupRequest,
   KubernetesVersionList,
   ListKubernetesVersionByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KubernetesVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6240, __c195, 0) as any as S.Schema<ListKubernetesVersionByResourceGroupRequest>,
   output: __S(6273, __c196, 1) as any as S.Schema<KubernetesVersionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListKubernetesVersionBySubscriptionError = AzureOpError;
 /** Get a list of Kubernetes version resources in the provided subscription. */
-export const ListKubernetesVersionBySubscription: API.OperationMethod<
+export const ListKubernetesVersionBySubscription: API.PaginatedOperationMethod<
   ListKubernetesVersionBySubscriptionRequest,
   KubernetesVersionList,
   ListKubernetesVersionBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KubernetesVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6304, __c197, 0) as any as S.Schema<ListKubernetesVersionBySubscriptionRequest>,
   output: __S(6273, __c196, 1) as any as S.Schema<KubernetesVersionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListL2NetworkByResourceGroupError = AzureOpError;
 /** Get a list of layer 2 (L2) networks in the provided resource group. */
-export const ListL2NetworkByResourceGroup: API.OperationMethod<
+export const ListL2NetworkByResourceGroup: API.PaginatedOperationMethod<
   ListL2NetworkByResourceGroupRequest,
   L2NetworkList,
   ListL2NetworkByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  L2Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6336, __c198, 0) as any as S.Schema<ListL2NetworkByResourceGroupRequest>,
   output: __S(6369, __c199, 1) as any as S.Schema<L2NetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListL2NetworkBySubscriptionError = AzureOpError;
 /** Get a list of layer 2 (L2) networks in the provided subscription. */
-export const ListL2NetworkBySubscription: API.OperationMethod<
+export const ListL2NetworkBySubscription: API.PaginatedOperationMethod<
   ListL2NetworkBySubscriptionRequest,
   L2NetworkList,
   ListL2NetworkBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  L2Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6400, __c200, 0) as any as S.Schema<ListL2NetworkBySubscriptionRequest>,
   output: __S(6369, __c199, 1) as any as S.Schema<L2NetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListL3NetworkByResourceGroupError = AzureOpError;
 /** Get a list of layer 3 (L3) networks in the provided resource group. */
-export const ListL3NetworkByResourceGroup: API.OperationMethod<
+export const ListL3NetworkByResourceGroup: API.PaginatedOperationMethod<
   ListL3NetworkByResourceGroupRequest,
   L3NetworkList,
   ListL3NetworkByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  L3Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6432, __c201, 0) as any as S.Schema<ListL3NetworkByResourceGroupRequest>,
   output: __S(6465, __c202, 1) as any as S.Schema<L3NetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListL3NetworkBySubscriptionError = AzureOpError;
 /** Get a list of layer 3 (L3) networks in the provided subscription. */
-export const ListL3NetworkBySubscription: API.OperationMethod<
+export const ListL3NetworkBySubscription: API.PaginatedOperationMethod<
   ListL3NetworkBySubscriptionRequest,
   L3NetworkList,
   ListL3NetworkBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  L3Network
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6496, __c203, 0) as any as S.Schema<ListL3NetworkBySubscriptionRequest>,
   output: __S(6465, __c202, 1) as any as S.Schema<L3NetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMetricsConfigurationByClusterError = AzureOpError;
 /** Get a list of metrics configurations for the provided cluster. */
-export const ListMetricsConfigurationByCluster: API.OperationMethod<
+export const ListMetricsConfigurationByCluster: API.PaginatedOperationMethod<
   ListMetricsConfigurationByClusterRequest,
   ClusterMetricsConfigurationList,
   ListMetricsConfigurationByClusterError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterMetricsConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6528, __c204, 0) as any as S.Schema<ListMetricsConfigurationByClusterRequest>,
   output: __S(6530, __c204, 2) as any as S.Schema<ClusterMetricsConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6656, __c208, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(6660, __c208, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRackByResourceGroupError = AzureOpError;
 /** Get a list of racks in the provided resource group. */
-export const ListRackByResourceGroup: API.OperationMethod<
+export const ListRackByResourceGroup: API.PaginatedOperationMethod<
   ListRackByResourceGroupRequest,
   RackList,
   ListRackByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Rack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6688, __c209, 0) as any as S.Schema<ListRackByResourceGroupRequest>,
   output: __S(6721, __c210, 1) as any as S.Schema<RackList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRackBySubscriptionError = AzureOpError;
 /** Get a list of racks in the provided subscription. */
-export const ListRackBySubscription: API.OperationMethod<
+export const ListRackBySubscription: API.PaginatedOperationMethod<
   ListRackBySubscriptionRequest,
   RackList,
   ListRackBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Rack
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6752, __c211, 0) as any as S.Schema<ListRackBySubscriptionRequest>,
   output: __S(6721, __c210, 1) as any as S.Schema<RackList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRackSkusBySubscriptionError = AzureOpError;
 /** Get a list of rack SKUs in the provided subscription. */
-export const ListRackSkusBySubscription: API.OperationMethod<
+export const ListRackSkusBySubscription: API.PaginatedOperationMethod<
   ListRackSkusBySubscriptionRequest,
   RackSkuList,
   ListRackSkusBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RackSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6784, __c212, 0) as any as S.Schema<ListRackSkusBySubscriptionRequest>,
   output: __S(6786, __c212, 2) as any as S.Schema<RackSkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageApplianceByResourceGroupError = AzureOpError;
 /** Get a list of storage appliances in the provided resource group. */
-export const ListStorageApplianceByResourceGroup: API.OperationMethod<
+export const ListStorageApplianceByResourceGroup: API.PaginatedOperationMethod<
   ListStorageApplianceByResourceGroupRequest,
   StorageApplianceList,
   ListStorageApplianceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6816, __c213, 0) as any as S.Schema<ListStorageApplianceByResourceGroupRequest>,
   output: __S(6849, __c214, 1) as any as S.Schema<StorageApplianceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListStorageApplianceBySubscriptionError = AzureOpError;
 /** Get a list of storage appliances in the provided subscription. */
-export const ListStorageApplianceBySubscription: API.OperationMethod<
+export const ListStorageApplianceBySubscription: API.PaginatedOperationMethod<
   ListStorageApplianceBySubscriptionRequest,
   StorageApplianceList,
   ListStorageApplianceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  StorageAppliance
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6880, __c215, 0) as any as S.Schema<ListStorageApplianceBySubscriptionRequest>,
   output: __S(6849, __c214, 1) as any as S.Schema<StorageApplianceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTrunkedNetworkByResourceGroupError = AzureOpError;
 /** Get a list of trunked networks in the provided resource group. */
-export const ListTrunkedNetworkByResourceGroup: API.OperationMethod<
+export const ListTrunkedNetworkByResourceGroup: API.PaginatedOperationMethod<
   ListTrunkedNetworkByResourceGroupRequest,
   TrunkedNetworkList,
   ListTrunkedNetworkByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TrunkedNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6912, __c216, 0) as any as S.Schema<ListTrunkedNetworkByResourceGroupRequest>,
   output: __S(6945, __c217, 1) as any as S.Schema<TrunkedNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTrunkedNetworkBySubscriptionError = AzureOpError;
 /** Get a list of trunked networks in the provided subscription. */
-export const ListTrunkedNetworkBySubscription: API.OperationMethod<
+export const ListTrunkedNetworkBySubscription: API.PaginatedOperationMethod<
   ListTrunkedNetworkBySubscriptionRequest,
   TrunkedNetworkList,
   ListTrunkedNetworkBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TrunkedNetwork
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6976, __c218, 0) as any as S.Schema<ListTrunkedNetworkBySubscriptionRequest>,
   output: __S(6945, __c217, 1) as any as S.Schema<TrunkedNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineByResourceGroupError = AzureOpError;
 /** Get a list of virtual machines in the provided resource group. */
-export const ListVirtualMachineByResourceGroup: API.OperationMethod<
+export const ListVirtualMachineByResourceGroup: API.PaginatedOperationMethod<
   ListVirtualMachineByResourceGroupRequest,
   VirtualMachineList,
   ListVirtualMachineByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7008, __c219, 0) as any as S.Schema<ListVirtualMachineByResourceGroupRequest>,
   output: __S(7041, __c220, 1) as any as S.Schema<VirtualMachineList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVirtualMachineBySubscriptionError = AzureOpError;
 /** Get a list of virtual machines in the provided subscription. */
-export const ListVirtualMachineBySubscription: API.OperationMethod<
+export const ListVirtualMachineBySubscription: API.PaginatedOperationMethod<
   ListVirtualMachineBySubscriptionRequest,
   VirtualMachineList,
   ListVirtualMachineBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  VirtualMachine
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(7072, __c221, 0) as any as S.Schema<ListVirtualMachineBySubscriptionRequest>,
   output: __S(7041, __c220, 1) as any as S.Schema<VirtualMachineList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVolumeByResourceGroupError = AzureOpError;
 /** Get a list of volumes in the provided resource group. */
-export const ListVolumeByResourceGroup: API.OperationMethod<
+export const ListVolumeByResourceGroup: API.PaginatedOperationMethod<
   ListVolumeByResourceGroupRequest,
   VolumeList,
   ListVolumeByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Volume
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<ListVolumeByResourceGroupRequest>,
   output: __S(609, __c19, 1) as any as S.Schema<VolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListVolumeBySubscriptionError = AzureOpError;
 /** Get a list of volumes in the provided subscription. */
-export const ListVolumeBySubscription: API.OperationMethod<
+export const ListVolumeBySubscription: API.PaginatedOperationMethod<
   ListVolumeBySubscriptionRequest,
   VolumeList,
   ListVolumeBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Volume
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListVolumeBySubscriptionRequest>,
   output: __S(609, __c19, 1) as any as S.Schema<VolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MetricsConfigurationsCreateOrUpdateError = AzureOpError;
 /** Create new or update the existing metrics configuration of the provided cluster. */
@@ -9824,12 +10149,14 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/volumes",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVolumeByResourceGroupRequest" });
@@ -9856,12 +10183,14 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/volumes",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVolumeBySubscriptionRequest" });
@@ -14230,12 +14559,14 @@ function __c168(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/accessBridges",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccessBridgeByResourceGroupRequest" });
@@ -14262,12 +14593,14 @@ function __c170(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/accessBridges",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccessBridgeBySubscriptionRequest" });
@@ -14283,12 +14616,14 @@ function __c171(j: number): any {
           kubernetesClusterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAgentPoolByKubernetesClusterRequest" });
@@ -14312,12 +14647,14 @@ function __c172(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/bareMetalMachines",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBareMetalMachineByResourceGroupRequest" });
@@ -14378,12 +14715,14 @@ function __c176(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/bareMetalMachines",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBareMetalMachineBySubscriptionRequest" });
@@ -14399,12 +14738,14 @@ function __c177(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bareMetalMachineKeySets",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBareMetalMachineKeySetByClusterRequest" });
@@ -14429,12 +14770,14 @@ function __c178(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListBmcKeySetByClusterRequest" });
@@ -14458,12 +14801,14 @@ function __c179(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCloudServicesNetworkByResourceGroupRequest" });
@@ -14490,12 +14835,14 @@ function __c181(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/cloudServicesNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCloudServicesNetworkBySubscriptionRequest" });
@@ -14510,12 +14857,14 @@ function __c182(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterByResourceGroupRequest" });
@@ -14542,12 +14891,14 @@ function __c184(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterBySubscriptionRequest" });
@@ -14562,12 +14913,14 @@ function __c185(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusterManagers",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterManagerByResourceGroupRequest" });
@@ -14594,12 +14947,14 @@ function __c187(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/clusterManagers",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListClusterManagerBySubscriptionRequest" });
@@ -14615,12 +14970,14 @@ function __c188(j: number): any {
           virtualMachineName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}/consoles",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConsoleByVirtualMachineRequest" });
@@ -14710,12 +15067,14 @@ function __c191(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKubernetesClusterByResourceGroupRequest" });
@@ -14742,12 +15101,14 @@ function __c193(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesClusters",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKubernetesClusterBySubscriptionRequest" });
@@ -14763,12 +15124,14 @@ function __c194(j: number): any {
           kubernetesClusterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/features",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKubernetesClusterFeatureByKubernetesClusterRequest" });
@@ -14792,12 +15155,14 @@ function __c195(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesVersions",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKubernetesVersionByResourceGroupRequest" });
@@ -14824,12 +15189,14 @@ function __c197(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/kubernetesVersions",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListKubernetesVersionBySubscriptionRequest" });
@@ -14844,12 +15211,14 @@ function __c198(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l2Networks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListL2NetworkByResourceGroupRequest" });
@@ -14876,12 +15245,14 @@ function __c200(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l2Networks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListL2NetworkBySubscriptionRequest" });
@@ -14896,12 +15267,14 @@ function __c201(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/l3Networks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListL3NetworkByResourceGroupRequest" });
@@ -14928,12 +15301,14 @@ function __c203(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l3Networks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListL3NetworkBySubscriptionRequest" });
@@ -14949,12 +15324,14 @@ function __c204(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/metricsConfigurations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMetricsConfigurationByClusterRequest" });
@@ -15081,12 +15458,15 @@ function __c208(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.NetworkCloud/operations",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -15114,7 +15494,7 @@ function __c208(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(6659, __c208, 3)),
+          value: __S(6659, __c208, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -15129,12 +15509,14 @@ function __c209(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/racks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRackByResourceGroupRequest" });
@@ -15161,12 +15543,14 @@ function __c211(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/racks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRackBySubscriptionRequest" });
@@ -15178,12 +15562,14 @@ function __c212(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRackSkusBySubscriptionRequest" });
@@ -15207,12 +15593,14 @@ function __c213(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageApplianceByResourceGroupRequest" });
@@ -15239,12 +15627,14 @@ function __c215(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/storageAppliances",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListStorageApplianceBySubscriptionRequest" });
@@ -15259,12 +15649,14 @@ function __c216(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/trunkedNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTrunkedNetworkByResourceGroupRequest" });
@@ -15291,12 +15683,14 @@ function __c218(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/trunkedNetworks",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTrunkedNetworkBySubscriptionRequest" });
@@ -15311,12 +15705,14 @@ function __c219(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineByResourceGroupRequest" });
@@ -15343,12 +15739,14 @@ function __c221(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/virtualMachines",
             code: 200,
             apiVersion: "2026-07-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListVirtualMachineBySubscriptionRequest" });

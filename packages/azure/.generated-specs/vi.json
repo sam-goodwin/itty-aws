@@ -54,7 +54,8 @@
       "com.azure.vi#AccountsCheckNameAvailability": "com.azure.vi#CheckAccountNameAvailability",
       "com.azure.vi#AccountsCheckNameAvailabilityRequest": "com.azure.vi#CheckAccountNameAvailabilityRequest",
       "com.azure.vi#AccountsCheckNameAvailabilityRequestType": "com.azure.vi#CheckAccountNameAvailabilityRequestType",
-      "com.azure.vi#OperationsList": "com.azure.vi#ListOperations"
+      "com.azure.vi#OperationsList": "com.azure.vi#ListOperations",
+      "com.azure.vi#OperationsListRequest": "com.azure.vi#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -320,10 +321,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-04-01"
+          "apiVersion": "2025-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private link resources in a Video Indexer account.",
-        "com.distilled.openapi#apiVersion": "2025-04-01"
+        "com.distilled.openapi#apiVersion": "2025-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vi#PrivateLinkResourcesListByAccountResponse": {
@@ -418,6 +426,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -887,10 +901,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-04-01"
+          "apiVersion": "2025-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all private endpoint connections in a Video Indexer account.",
-        "com.distilled.openapi#apiVersion": "2025-04-01"
+        "com.distilled.openapi#apiVersion": "2025-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vi#PrivateEndpointConnectionsListByAccountResponse": {
@@ -985,6 +1006,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Azure Video Indexer account."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2578,10 +2605,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts",
           "code": 200,
-          "apiVersion": "2025-04-01"
+          "apiVersion": "2025-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Azure Video Indexer accounts available under the resource group",
-        "com.distilled.openapi#apiVersion": "2025-04-01"
+        "com.distilled.openapi#apiVersion": "2025-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vi#AccountList": {
@@ -2732,6 +2766,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2751,10 +2791,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VideoIndexer/accounts",
           "code": 200,
-          "apiVersion": "2025-04-01"
+          "apiVersion": "2025-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Azure Video Indexer accounts available under the subscription",
-        "com.distilled.openapi#apiVersion": "2025-04-01"
+        "com.distilled.openapi#apiVersion": "2025-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vi#AccountsListRequest": {
@@ -2766,6 +2813,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2879,7 +2932,7 @@
     "com.azure.vi#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.vi#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.vi#OperationListResult"
@@ -2889,10 +2942,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.VideoIndexer/operations",
           "code": 200,
-          "apiVersion": "2025-04-01"
+          "apiVersion": "2025-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Azure Video Indexer provider operations.",
-        "com.distilled.openapi#apiVersion": "2025-04-01"
+        "com.distilled.openapi#apiVersion": "2025-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vi#OperationListResult": {
@@ -2992,6 +3052,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Operation display payload"
+      }
+    },
+    "com.azure.vi#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.vi#Vi": {

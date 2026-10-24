@@ -15,13 +15,52 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.fluidrelay#FluidRelayContainersListByFluidRelayServers": "com.azure.fluidrelay#ListFluidRelayContainerByFluidRelayServers",
+      "com.azure.fluidrelay#FluidRelayContainersListByFluidRelayServersRequest": "com.azure.fluidrelay#ListFluidRelayContainerByFluidRelayServersRequest",
+      "com.azure.fluidrelay#FluidRelayContainersDelete": "com.azure.fluidrelay#DeleteFluidRelayContainer",
+      "com.azure.fluidrelay#FluidRelayContainersDeleteRequest": "com.azure.fluidrelay#DeleteFluidRelayContainerRequest",
+      "com.azure.fluidrelay#FluidRelayContainersGet": "com.azure.fluidrelay#GetFluidRelayContainer",
+      "com.azure.fluidrelay#FluidRelayContainersGetResponse": "com.azure.fluidrelay#GetFluidRelayContainerResponse",
+      "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemData": "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemData",
+      "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemDataLastModifiedByType": "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemDataLastModifiedByType",
+      "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemDataCreatedByType": "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemDataCreatedByType",
+      "com.azure.fluidrelay#FluidRelayContainersGetRequest": "com.azure.fluidrelay#GetFluidRelayContainerRequest",
+      "com.azure.fluidrelay#FluidRelayServersListByResourceGroup": "com.azure.fluidrelay#ListFluidRelayServerByResourceGroup",
+      "com.azure.fluidrelay#FluidRelayServersListByResourceGroupRequest": "com.azure.fluidrelay#ListFluidRelayServerByResourceGroupRequest",
+      "com.azure.fluidrelay#FluidRelayServersListBySubscription": "com.azure.fluidrelay#ListFluidRelayServerBySubscription",
+      "com.azure.fluidrelay#FluidRelayServersListBySubscriptionRequest": "com.azure.fluidrelay#ListFluidRelayServerBySubscriptionRequest",
+      "com.azure.fluidrelay#FluidRelayServersListKeys": "com.azure.fluidrelay#ListFluidRelayServerKeys",
+      "com.azure.fluidrelay#FluidRelayServersListKeysRequest": "com.azure.fluidrelay#ListFluidRelayServerKeysRequest",
+      "com.azure.fluidrelay#FluidRelayServersRegenerateKey": "com.azure.fluidrelay#RegenerateFluidRelayServerKey",
+      "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequest": "com.azure.fluidrelay#RegenerateFluidRelayServerKeyRequest",
+      "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequestKeyName": "com.azure.fluidrelay#RegenerateFluidRelayServerKeyRequestKeyName",
+      "com.azure.fluidrelay#FluidRelayServersDelete": "com.azure.fluidrelay#DeleteFluidRelayServer",
+      "com.azure.fluidrelay#FluidRelayServersDeleteRequest": "com.azure.fluidrelay#DeleteFluidRelayServerRequest",
+      "com.azure.fluidrelay#FluidRelayServersUpdate": "com.azure.fluidrelay#UpdateFluidRelayServer",
+      "com.azure.fluidrelay#FluidRelayServersUpdateResponse": "com.azure.fluidrelay#UpdateFluidRelayServerResponse",
+      "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemData": "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemData",
+      "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemDataLastModifiedByType": "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemDataLastModifiedByType",
+      "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemDataCreatedByType": "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemDataCreatedByType",
+      "com.azure.fluidrelay#FluidRelayServersUpdateResponseTagsMap": "com.azure.fluidrelay#UpdateFluidRelayServerResponseTagsMap",
+      "com.azure.fluidrelay#FluidRelayServersUpdateRequest": "com.azure.fluidrelay#UpdateFluidRelayServerRequest",
+      "com.azure.fluidrelay#FluidRelayServersUpdateRequestTagsMap": "com.azure.fluidrelay#UpdateFluidRelayServerRequestTagsMap",
+      "com.azure.fluidrelay#FluidRelayServersGet": "com.azure.fluidrelay#GetFluidRelayServer",
+      "com.azure.fluidrelay#FluidRelayServersGetResponse": "com.azure.fluidrelay#GetFluidRelayServerResponse",
+      "com.azure.fluidrelay#FluidRelayServersGetResponseSystemData": "com.azure.fluidrelay#GetFluidRelayServerResponseSystemData",
+      "com.azure.fluidrelay#FluidRelayServersGetResponseSystemDataLastModifiedByType": "com.azure.fluidrelay#GetFluidRelayServerResponseSystemDataLastModifiedByType",
+      "com.azure.fluidrelay#FluidRelayServersGetResponseSystemDataCreatedByType": "com.azure.fluidrelay#GetFluidRelayServerResponseSystemDataCreatedByType",
+      "com.azure.fluidrelay#FluidRelayServersGetResponseTagsMap": "com.azure.fluidrelay#GetFluidRelayServerResponseTagsMap",
+      "com.azure.fluidrelay#FluidRelayServersGetRequest": "com.azure.fluidrelay#GetFluidRelayServerRequest",
+      "com.azure.fluidrelay#FluidRelayOperationsList": "com.azure.fluidrelay#ListFluidRelayOperations",
+      "com.azure.fluidrelay#FluidRelayOperationsListRequest": "com.azure.fluidrelay#ListFluidRelayOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.fluidrelay#ListFluidRelayContainerByFluidRelayServers": {
+    "com.azure.fluidrelay#FluidRelayContainersListByFluidRelayServers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#ListFluidRelayContainerByFluidRelayServersRequest"
+        "target": "com.azure.fluidrelay#FluidRelayContainersListByFluidRelayServersRequest"
       },
       "output": {
         "target": "com.azure.fluidrelay#FluidRelayContainerList"
@@ -31,10 +70,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Fluid Relay containers which are children of a given Fluid Relay server.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fluidrelay#FluidRelayContainerList": {
@@ -276,7 +322,7 @@
         "smithy.api#documentation": "Provision states for FluidRelay RP"
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayContainerByFluidRelayServersRequest": {
+    "com.azure.fluidrelay#FluidRelayContainersListByFluidRelayServersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -302,16 +348,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Fluid Relay server resource name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#DeleteFluidRelayContainer": {
+    "com.azure.fluidrelay#FluidRelayContainersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#DeleteFluidRelayContainerRequest"
+        "target": "com.azure.fluidrelay#FluidRelayContainersDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -327,7 +379,7 @@
         "com.distilled.openapi#apiVersion": "2022-06-01"
       }
     },
-    "com.azure.fluidrelay#DeleteFluidRelayContainerRequest": {
+    "com.azure.fluidrelay#FluidRelayContainersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -367,13 +419,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayContainer": {
+    "com.azure.fluidrelay#FluidRelayContainersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#GetFluidRelayContainerRequest"
+        "target": "com.azure.fluidrelay#FluidRelayContainersGetRequest"
       },
       "output": {
-        "target": "com.azure.fluidrelay#GetFluidRelayContainerResponse"
+        "target": "com.azure.fluidrelay#FluidRelayContainersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -386,7 +438,7 @@
         "com.distilled.openapi#apiVersion": "2022-06-01"
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayContainerResponse": {
+    "com.azure.fluidrelay#FluidRelayContainersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -414,7 +466,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemData",
+          "target": "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -424,7 +476,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemData": {
+    "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -434,7 +486,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemDataCreatedByType",
+          "target": "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -452,7 +504,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemDataLastModifiedByType",
+          "target": "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -468,7 +520,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemDataLastModifiedByType": {
+    "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -500,7 +552,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayContainerResponseSystemDataCreatedByType": {
+    "com.azure.fluidrelay#FluidRelayContainersGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -532,7 +584,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayContainerRequest": {
+    "com.azure.fluidrelay#FluidRelayContainersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -572,10 +624,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayServerByResourceGroup": {
+    "com.azure.fluidrelay#FluidRelayServersListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#ListFluidRelayServerByResourceGroupRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.fluidrelay#FluidRelayServerList"
@@ -585,10 +637,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Fluid Relay servers in a resource group.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fluidrelay#FluidRelayServerList": {
@@ -1103,7 +1162,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayServerByResourceGroupRequest": {
+    "com.azure.fluidrelay#FluidRelayServersListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1121,16 +1180,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The resource group containing the resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayServerBySubscription": {
+    "com.azure.fluidrelay#FluidRelayServersListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#ListFluidRelayServerBySubscriptionRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.fluidrelay#FluidRelayServerList"
@@ -1140,13 +1205,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.FluidRelay/fluidRelayServers",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all Fluid Relay servers in a subscription.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayServerBySubscriptionRequest": {
+    "com.azure.fluidrelay#FluidRelayServersListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1156,16 +1228,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The subscription id (GUID) for this resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayServerKeys": {
+    "com.azure.fluidrelay#FluidRelayServersListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#ListFluidRelayServerKeysRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersListKeysRequest"
       },
       "output": {
         "target": "com.azure.fluidrelay#FluidRelayServerKeys"
@@ -1201,7 +1279,7 @@
         "smithy.api#documentation": "The set of available keys for this server."
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayServerKeysRequest": {
+    "com.azure.fluidrelay#FluidRelayServersListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1233,10 +1311,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#RegenerateFluidRelayServerKey": {
+    "com.azure.fluidrelay#FluidRelayServersRegenerateKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#RegenerateFluidRelayServerKeyRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequest"
       },
       "output": {
         "target": "com.azure.fluidrelay#FluidRelayServerKeys"
@@ -1252,7 +1330,7 @@
         "com.distilled.openapi#apiVersion": "2022-06-01"
       }
     },
-    "com.azure.fluidrelay#RegenerateFluidRelayServerKeyRequest": {
+    "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1280,7 +1358,7 @@
           }
         },
         "keyName": {
-          "target": "com.azure.fluidrelay#RegenerateFluidRelayServerKeyRequestKeyName",
+          "target": "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequestKeyName",
           "traits": {
             "smithy.api#documentation": "The key to regenerate.",
             "smithy.api#required": {}
@@ -1291,7 +1369,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#RegenerateFluidRelayServerKeyRequestKeyName": {
+    "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequestKeyName": {
       "type": "enum",
       "members": {
         "KEY1": {
@@ -1311,10 +1389,10 @@
         "smithy.api#documentation": "The key to regenerate."
       }
     },
-    "com.azure.fluidrelay#DeleteFluidRelayServer": {
+    "com.azure.fluidrelay#FluidRelayServersDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#DeleteFluidRelayServerRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1330,7 +1408,7 @@
         "com.distilled.openapi#apiVersion": "2022-06-01"
       }
     },
-    "com.azure.fluidrelay#DeleteFluidRelayServerRequest": {
+    "com.azure.fluidrelay#FluidRelayServersDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1362,13 +1440,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServer": {
+    "com.azure.fluidrelay#FluidRelayServersUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#UpdateFluidRelayServerRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersUpdateRequest"
       },
       "output": {
-        "target": "com.azure.fluidrelay#UpdateFluidRelayServerResponse"
+        "target": "com.azure.fluidrelay#FluidRelayServersUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1381,7 +1459,7 @@
         "com.distilled.openapi#apiVersion": "2022-06-01"
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerResponse": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1403,7 +1481,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fluidrelay#UpdateFluidRelayServerResponseTagsMap",
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1422,7 +1500,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemData",
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1438,7 +1516,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemData": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1448,7 +1526,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemDataCreatedByType",
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1466,7 +1544,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemDataLastModifiedByType",
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1482,7 +1560,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemDataLastModifiedByType": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1514,7 +1592,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerResponseSystemDataCreatedByType": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1546,7 +1624,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerResponseTagsMap": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1558,7 +1636,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerRequest": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1592,7 +1670,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fluidrelay#UpdateFluidRelayServerRequestTagsMap",
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1683,7 +1761,7 @@
         "smithy.api#documentation": "The identity type."
       }
     },
-    "com.azure.fluidrelay#UpdateFluidRelayServerRequestTagsMap": {
+    "com.azure.fluidrelay#FluidRelayServersUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2046,13 +2124,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServer": {
+    "com.azure.fluidrelay#FluidRelayServersGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.fluidrelay#GetFluidRelayServerRequest"
+        "target": "com.azure.fluidrelay#FluidRelayServersGetRequest"
       },
       "output": {
-        "target": "com.azure.fluidrelay#GetFluidRelayServerResponse"
+        "target": "com.azure.fluidrelay#FluidRelayServersGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2065,7 +2143,7 @@
         "com.distilled.openapi#apiVersion": "2022-06-01"
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServerResponse": {
+    "com.azure.fluidrelay#FluidRelayServersGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2087,7 +2165,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.fluidrelay#GetFluidRelayServerResponseTagsMap",
+          "target": "com.azure.fluidrelay#FluidRelayServersGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2106,7 +2184,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.fluidrelay#GetFluidRelayServerResponseSystemData",
+          "target": "com.azure.fluidrelay#FluidRelayServersGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -2122,7 +2200,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServerResponseSystemData": {
+    "com.azure.fluidrelay#FluidRelayServersGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -2132,7 +2210,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.fluidrelay#GetFluidRelayServerResponseSystemDataCreatedByType",
+          "target": "com.azure.fluidrelay#FluidRelayServersGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -2150,7 +2228,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.fluidrelay#GetFluidRelayServerResponseSystemDataLastModifiedByType",
+          "target": "com.azure.fluidrelay#FluidRelayServersGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -2166,7 +2244,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServerResponseSystemDataLastModifiedByType": {
+    "com.azure.fluidrelay#FluidRelayServersGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2198,7 +2276,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServerResponseSystemDataCreatedByType": {
+    "com.azure.fluidrelay#FluidRelayServersGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2230,7 +2308,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServerResponseTagsMap": {
+    "com.azure.fluidrelay#FluidRelayServersGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2242,7 +2320,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.fluidrelay#GetFluidRelayServerRequest": {
+    "com.azure.fluidrelay#FluidRelayServersGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2274,10 +2352,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.fluidrelay#ListFluidRelayOperations": {
+    "com.azure.fluidrelay#FluidRelayOperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.fluidrelay#FluidRelayOperationsListRequest"
       },
       "output": {
         "target": "com.azure.fluidrelay#OperationListResult"
@@ -2287,10 +2365,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.FluidRelay/operations",
           "code": 200,
-          "apiVersion": "2022-06-01"
+          "apiVersion": "2022-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all operations provided by Microsoft.FluidRelay.",
-        "com.distilled.openapi#apiVersion": "2022-06-01"
+        "com.distilled.openapi#apiVersion": "2022-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.fluidrelay#OperationListResult": {
@@ -2380,45 +2465,59 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
+    "com.azure.fluidrelay#FluidRelayOperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.fluidrelay#Fluidrelay": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.fluidrelay#ListFluidRelayContainerByFluidRelayServers"
+          "target": "com.azure.fluidrelay#FluidRelayContainersListByFluidRelayServers"
         },
         {
-          "target": "com.azure.fluidrelay#DeleteFluidRelayContainer"
+          "target": "com.azure.fluidrelay#FluidRelayContainersDelete"
         },
         {
-          "target": "com.azure.fluidrelay#GetFluidRelayContainer"
+          "target": "com.azure.fluidrelay#FluidRelayContainersGet"
         },
         {
-          "target": "com.azure.fluidrelay#ListFluidRelayServerByResourceGroup"
+          "target": "com.azure.fluidrelay#FluidRelayServersListByResourceGroup"
         },
         {
-          "target": "com.azure.fluidrelay#ListFluidRelayServerBySubscription"
+          "target": "com.azure.fluidrelay#FluidRelayServersListBySubscription"
         },
         {
-          "target": "com.azure.fluidrelay#ListFluidRelayServerKeys"
+          "target": "com.azure.fluidrelay#FluidRelayServersListKeys"
         },
         {
-          "target": "com.azure.fluidrelay#RegenerateFluidRelayServerKey"
+          "target": "com.azure.fluidrelay#FluidRelayServersRegenerateKey"
         },
         {
-          "target": "com.azure.fluidrelay#DeleteFluidRelayServer"
+          "target": "com.azure.fluidrelay#FluidRelayServersDelete"
         },
         {
-          "target": "com.azure.fluidrelay#UpdateFluidRelayServer"
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdate"
         },
         {
           "target": "com.azure.fluidrelay#FluidRelayServersCreateOrUpdate"
         },
         {
-          "target": "com.azure.fluidrelay#GetFluidRelayServer"
+          "target": "com.azure.fluidrelay#FluidRelayServersGet"
         },
         {
-          "target": "com.azure.fluidrelay#ListFluidRelayOperations"
+          "target": "com.azure.fluidrelay#FluidRelayOperationsList"
         }
       ],
       "traits": {

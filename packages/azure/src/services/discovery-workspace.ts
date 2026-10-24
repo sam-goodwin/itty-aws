@@ -689,6 +689,8 @@ export interface ListTasksRequest {
   investigationName: string;
   /** OData filter expression. Supported fields: investigationId, status, createdByType, priority, createdAt, lastModifiedAt. Example: status eq 'new' or status eq 'executing' */
   filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Task items on this page */
 export type PagedTaskValueList = Array<Task>;
@@ -1216,18 +1218,25 @@ export const ListInvestigations: API.OperationMethod<
 
 export type ListTasksError = AzureOpError;
 /** List tasks with optional OData filters. */
-export const ListTasks: API.OperationMethod<
+export const ListTasks: API.PaginatedOperationMethod<
   ListTasksRequest,
   PagedTask,
   ListTasksError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Task
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<ListTasksRequest>,
   output: __S(154, __c19, 2) as any as S.Schema<PagedTask>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type RunToolError = AzureOpError;
 /** Run the specified tool in the context of the specified project. */
@@ -1942,6 +1951,7 @@ function __c19(j: number): any {
           projectName: S.String.pipe(T.Label()),
           investigationName: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1950,6 +1960,7 @@ function __c19(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-06-01",
+            nextLink: "nextLink",
             audience: "https://discovery.azure.com/.default",
           }),
         ),

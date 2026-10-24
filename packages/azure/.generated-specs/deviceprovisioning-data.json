@@ -15,24 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.deviceprovisioning_data#DeviceRegistrationStateDelete": "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationState",
-      "com.azure.deviceprovisioning_data#DeviceRegistrationStateDeleteRequest": "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationStateRequest",
-      "com.azure.deviceprovisioning_data#DeviceRegistrationStateGet": "com.azure.deviceprovisioning_data#GetDeviceRegistrationState",
-      "com.azure.deviceprovisioning_data#DeviceRegistrationStateGetRequest": "com.azure.deviceprovisioning_data#GetDeviceRegistrationStateRequest",
-      "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanism": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanism",
-      "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanismRequest": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanismRequest",
-      "com.azure.deviceprovisioning_data#IndividualEnrollmentDelete": "com.azure.deviceprovisioning_data#DeleteIndividualEnrollment",
-      "com.azure.deviceprovisioning_data#IndividualEnrollmentDeleteRequest": "com.azure.deviceprovisioning_data#DeleteIndividualEnrollmentRequest",
-      "com.azure.deviceprovisioning_data#IndividualEnrollmentGet": "com.azure.deviceprovisioning_data#GetIndividualEnrollment",
-      "com.azure.deviceprovisioning_data#IndividualEnrollmentGetRequest": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentRequest",
-      "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanism": "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanism",
-      "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanismRequest": "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanismRequest",
-      "com.azure.deviceprovisioning_data#EnrollmentGroupDelete": "com.azure.deviceprovisioning_data#DeleteEnrollmentGroup",
-      "com.azure.deviceprovisioning_data#EnrollmentGroupDeleteRequest": "com.azure.deviceprovisioning_data#DeleteEnrollmentGroupRequest",
-      "com.azure.deviceprovisioning_data#EnrollmentGroupGet": "com.azure.deviceprovisioning_data#GetEnrollmentGroup",
-      "com.azure.deviceprovisioning_data#EnrollmentGroupGetRequest": "com.azure.deviceprovisioning_data#GetEnrollmentGroupRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificate": {
@@ -475,10 +458,10 @@
         "smithy.api#documentation": "Attestation via TPM."
       }
     },
-    "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookup": {
+    "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookupRequest"
+        "target": "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#RegistrationOperationStatus"
@@ -494,7 +477,7 @@
         "smithy.api#documentation": "Gets the registration operation status.\n\nGets the registration operation status."
       }
     },
-    "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookupRequest": {
+    "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationOperationStatusRequest": {
       "type": "structure",
       "members": {
         "idScope": {
@@ -526,10 +509,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookup": {
+    "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationDeviceRegistrationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequest"
+        "target": "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationDeviceRegistrationStatusRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#DeviceRegistrationResult"
@@ -545,7 +528,7 @@
         "smithy.api#documentation": "Gets the device registration status.\n\nGets the device registration status."
       }
     },
-    "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequest": {
+    "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationDeviceRegistrationStatusRequest": {
       "type": "structure",
       "members": {
         "idScope": {
@@ -577,7 +560,7 @@
           }
         },
         "payload": {
-          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequestPayloadMap",
+          "target": "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationDeviceRegistrationStatusRequestPayloadMap",
           "traits": {
             "smithy.api#documentation": "Any object"
           }
@@ -587,7 +570,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookupRequestPayloadMap": {
+    "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationDeviceRegistrationStatusRequestPayloadMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -764,10 +747,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#DeviceRegistrationStateDelete": {
+    "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationState": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateDeleteRequest"
+        "target": "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationStateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -783,7 +766,7 @@
         "smithy.api#documentation": "Deletes the device registration\n\nDeletes the device registration"
       }
     },
-    "com.azure.deviceprovisioning_data#DeviceRegistrationStateDeleteRequest": {
+    "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationStateRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -814,10 +797,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#DeviceRegistrationStateGet": {
+    "com.azure.deviceprovisioning_data#GetDeviceRegistrationState": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateGetRequest"
+        "target": "com.azure.deviceprovisioning_data#GetDeviceRegistrationStateRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#DeviceRegistrationState"
@@ -833,7 +816,7 @@
         "smithy.api#documentation": "Gets the device registration state.\n\nGets the device registration state."
       }
     },
-    "com.azure.deviceprovisioning_data#DeviceRegistrationStateGetRequest": {
+    "com.azure.deviceprovisioning_data#GetDeviceRegistrationStateRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -1495,10 +1478,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanism": {
+    "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanism": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanismRequest"
+        "target": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanismRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#AttestationMechanism"
@@ -1514,7 +1497,7 @@
         "smithy.api#documentation": "Get the attestation mechanism in the device enrollment record.\n\nGet the attestation mechanism in the device enrollment record."
       }
     },
-    "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanismRequest": {
+    "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanismRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -1538,10 +1521,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#IndividualEnrollmentDelete": {
+    "com.azure.deviceprovisioning_data#DeleteIndividualEnrollment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentDeleteRequest"
+        "target": "com.azure.deviceprovisioning_data#DeleteIndividualEnrollmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1557,7 +1540,7 @@
         "smithy.api#documentation": "Delete a device enrollment record.\n\nDelete a device enrollment record."
       }
     },
-    "com.azure.deviceprovisioning_data#IndividualEnrollmentDeleteRequest": {
+    "com.azure.deviceprovisioning_data#DeleteIndividualEnrollmentRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -1765,10 +1748,10 @@
         "smithy.api#documentation": "The provisioning status."
       }
     },
-    "com.azure.deviceprovisioning_data#IndividualEnrollmentGet": {
+    "com.azure.deviceprovisioning_data#GetIndividualEnrollment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGetRequest"
+        "target": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#IndividualEnrollment"
@@ -1784,7 +1767,7 @@
         "smithy.api#documentation": "Get a device enrollment record.\n\nGet a device enrollment record."
       }
     },
-    "com.azure.deviceprovisioning_data#IndividualEnrollmentGetRequest": {
+    "com.azure.deviceprovisioning_data#GetIndividualEnrollmentRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -2305,10 +2288,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanism": {
+    "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanism": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanismRequest"
+        "target": "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanismRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#AttestationMechanism"
@@ -2324,7 +2307,7 @@
         "smithy.api#documentation": "Get the attestation mechanism in the device enrollment group record.\n\nGet the attestation mechanism in the device enrollment group record."
       }
     },
-    "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanismRequest": {
+    "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanismRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -2348,10 +2331,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceprovisioning_data#EnrollmentGroupDelete": {
+    "com.azure.deviceprovisioning_data#DeleteEnrollmentGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupDeleteRequest"
+        "target": "com.azure.deviceprovisioning_data#DeleteEnrollmentGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2367,7 +2350,7 @@
         "smithy.api#documentation": "Delete a device enrollment group.\n\nDelete a device enrollment group."
       }
     },
-    "com.azure.deviceprovisioning_data#EnrollmentGroupDeleteRequest": {
+    "com.azure.deviceprovisioning_data#DeleteEnrollmentGroupRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -2563,10 +2546,10 @@
         "smithy.api#documentation": "The provisioning status."
       }
     },
-    "com.azure.deviceprovisioning_data#EnrollmentGroupGet": {
+    "com.azure.deviceprovisioning_data#GetEnrollmentGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGetRequest"
+        "target": "com.azure.deviceprovisioning_data#GetEnrollmentGroupRequest"
       },
       "output": {
         "target": "com.azure.deviceprovisioning_data#EnrollmentGroup"
@@ -2582,7 +2565,7 @@
         "smithy.api#documentation": "Get a device enrollment group.\n\nGet a device enrollment group."
       }
     },
-    "com.azure.deviceprovisioning_data#EnrollmentGroupGetRequest": {
+    "com.azure.deviceprovisioning_data#GetEnrollmentGroupRequest": {
       "type": "structure",
       "members": {
         "dpsName": {
@@ -2854,34 +2837,34 @@
           "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationRegisterDeviceAndIssueCertificate"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationOperationStatusLookup"
+          "target": "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationOperationStatus"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#RuntimeRegistrationDeviceRegistrationStatusLookup"
+          "target": "com.azure.deviceprovisioning_data#LookupRuntimeRegistrationDeviceRegistrationStatus"
         },
         {
           "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateQuery"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateDelete"
+          "target": "com.azure.deviceprovisioning_data#DeleteDeviceRegistrationState"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#DeviceRegistrationStateGet"
+          "target": "com.azure.deviceprovisioning_data#GetDeviceRegistrationState"
         },
         {
           "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentQuery"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGetAttestationMechanism"
+          "target": "com.azure.deviceprovisioning_data#GetIndividualEnrollmentAttestationMechanism"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentDelete"
+          "target": "com.azure.deviceprovisioning_data#DeleteIndividualEnrollment"
         },
         {
           "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentCreateOrUpdate"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentGet"
+          "target": "com.azure.deviceprovisioning_data#GetIndividualEnrollment"
         },
         {
           "target": "com.azure.deviceprovisioning_data#IndividualEnrollmentRunBulkOperation"
@@ -2890,16 +2873,16 @@
           "target": "com.azure.deviceprovisioning_data#EnrollmentGroupQuery"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGetAttestationMechanism"
+          "target": "com.azure.deviceprovisioning_data#GetEnrollmentGroupAttestationMechanism"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupDelete"
+          "target": "com.azure.deviceprovisioning_data#DeleteEnrollmentGroup"
         },
         {
           "target": "com.azure.deviceprovisioning_data#EnrollmentGroupCreateOrUpdate"
         },
         {
-          "target": "com.azure.deviceprovisioning_data#EnrollmentGroupGet"
+          "target": "com.azure.deviceprovisioning_data#GetEnrollmentGroup"
         },
         {
           "target": "com.azure.deviceprovisioning_data#EnrollmentGroupRunBulkOperation"

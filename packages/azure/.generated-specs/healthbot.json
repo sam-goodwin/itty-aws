@@ -15,13 +15,41 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.healthbot#BotsRegenerateApiJwtSecret": "com.azure.healthbot#RegenerateBotApiJwtSecret",
+      "com.azure.healthbot#BotsRegenerateApiJwtSecretRequest": "com.azure.healthbot#RegenerateBotApiJwtSecretRequest",
+      "com.azure.healthbot#BotsListSecrets": "com.azure.healthbot#ListBotSecrets",
+      "com.azure.healthbot#BotsListSecretsRequest": "com.azure.healthbot#ListBotSecretsRequest",
+      "com.azure.healthbot#BotsDelete": "com.azure.healthbot#DeleteBot",
+      "com.azure.healthbot#BotsDeleteResponse": "com.azure.healthbot#DeleteBotResponse",
+      "com.azure.healthbot#BotsDeleteRequest": "com.azure.healthbot#DeleteBotRequest",
+      "com.azure.healthbot#BotsUpdate": "com.azure.healthbot#UpdateBot",
+      "com.azure.healthbot#BotsUpdateResponse": "com.azure.healthbot#UpdateBotResponse",
+      "com.azure.healthbot#BotsUpdateResponseTagsMap": "com.azure.healthbot#UpdateBotResponseTagsMap",
+      "com.azure.healthbot#BotsUpdateRequest": "com.azure.healthbot#UpdateBotRequest",
+      "com.azure.healthbot#BotsUpdateRequestTagsMap": "com.azure.healthbot#UpdateBotRequestTagsMap",
+      "com.azure.healthbot#BotsCreate": "com.azure.healthbot#CreateBot",
+      "com.azure.healthbot#BotsCreateResponse": "com.azure.healthbot#CreateBotResponse",
+      "com.azure.healthbot#BotsCreateResponseTagsMap": "com.azure.healthbot#CreateBotResponseTagsMap",
+      "com.azure.healthbot#BotsCreateRequest": "com.azure.healthbot#CreateBotRequest",
+      "com.azure.healthbot#BotsCreateRequestTagsMap": "com.azure.healthbot#CreateBotRequestTagsMap",
+      "com.azure.healthbot#BotsGet": "com.azure.healthbot#GetBot",
+      "com.azure.healthbot#BotsGetResponse": "com.azure.healthbot#GetBotResponse",
+      "com.azure.healthbot#BotsGetResponseTagsMap": "com.azure.healthbot#GetBotResponseTagsMap",
+      "com.azure.healthbot#BotsGetRequest": "com.azure.healthbot#GetBotRequest",
+      "com.azure.healthbot#BotsListByResourceGroup": "com.azure.healthbot#ListBotByResourceGroup",
+      "com.azure.healthbot#BotsListByResourceGroupRequest": "com.azure.healthbot#ListBotByResourceGroupRequest",
+      "com.azure.healthbot#BotsList": "com.azure.healthbot#ListBots",
+      "com.azure.healthbot#BotsListRequest": "com.azure.healthbot#ListBotsRequest",
+      "com.azure.healthbot#OperationsList": "com.azure.healthbot#ListOperations",
+      "com.azure.healthbot#OperationsListRequest": "com.azure.healthbot#ListOperationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.healthbot#RegenerateBotApiJwtSecret": {
+    "com.azure.healthbot#BotsRegenerateApiJwtSecret": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#RegenerateBotApiJwtSecretRequest"
+        "target": "com.azure.healthbot#BotsRegenerateApiJwtSecretRequest"
       },
       "output": {
         "target": "com.azure.healthbot#HealthBotKey"
@@ -57,7 +85,7 @@
         "smithy.api#documentation": "An entry of HealthBotKeysResponse"
       }
     },
-    "com.azure.healthbot#RegenerateBotApiJwtSecretRequest": {
+    "com.azure.healthbot#BotsRegenerateApiJwtSecretRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -89,10 +117,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#ListBotSecrets": {
+    "com.azure.healthbot#BotsListSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#ListBotSecretsRequest"
+        "target": "com.azure.healthbot#BotsListSecretsRequest"
       },
       "output": {
         "target": "com.azure.healthbot#HealthBotKeysResponse"
@@ -131,7 +159,7 @@
         "smithy.api#documentation": "Array of Azure Health Bot Secrets."
       }
     },
-    "com.azure.healthbot#ListBotSecretsRequest": {
+    "com.azure.healthbot#BotsListSecretsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -163,13 +191,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#DeleteBot": {
+    "com.azure.healthbot#BotsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#DeleteBotRequest"
+        "target": "com.azure.healthbot#BotsDeleteRequest"
       },
       "output": {
-        "target": "com.azure.healthbot#DeleteBotResponse"
+        "target": "com.azure.healthbot#BotsDeleteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -182,7 +210,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.healthbot#DeleteBotResponse": {
+    "com.azure.healthbot#BotsDeleteResponse": {
       "type": "structure",
       "members": {
         "location": {
@@ -197,7 +225,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthbot#DeleteBotRequest": {
+    "com.azure.healthbot#BotsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -229,13 +257,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#UpdateBot": {
+    "com.azure.healthbot#BotsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#UpdateBotRequest"
+        "target": "com.azure.healthbot#BotsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.healthbot#UpdateBotResponse"
+        "target": "com.azure.healthbot#BotsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -248,7 +276,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.healthbot#UpdateBotResponse": {
+    "com.azure.healthbot#BotsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -276,7 +304,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthbot#UpdateBotResponseTagsMap",
+          "target": "com.azure.healthbot#BotsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -535,7 +563,7 @@
         "smithy.api#documentation": "Properties of the key vault."
       }
     },
-    "com.azure.healthbot#UpdateBotResponseTagsMap": {
+    "com.azure.healthbot#BotsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -655,7 +683,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.healthbot#UpdateBotRequest": {
+    "com.azure.healthbot#BotsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -689,7 +717,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthbot#UpdateBotRequestTagsMap",
+          "target": "com.azure.healthbot#BotsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Tags for a Azure Health Bot."
           }
@@ -753,7 +781,7 @@
         "smithy.api#documentation": "The details of the user assigned managed identity used by the Video Analyzer resource."
       }
     },
-    "com.azure.healthbot#UpdateBotRequestTagsMap": {
+    "com.azure.healthbot#BotsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -779,13 +807,13 @@
         "smithy.api#documentation": "The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs."
       }
     },
-    "com.azure.healthbot#CreateBot": {
+    "com.azure.healthbot#BotsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#CreateBotRequest"
+        "target": "com.azure.healthbot#BotsCreateRequest"
       },
       "output": {
-        "target": "com.azure.healthbot#CreateBotResponse"
+        "target": "com.azure.healthbot#BotsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -798,7 +826,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.healthbot#CreateBotResponse": {
+    "com.azure.healthbot#BotsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -826,7 +854,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthbot#CreateBotResponseTagsMap",
+          "target": "com.azure.healthbot#BotsCreateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -876,7 +904,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthbot#CreateBotResponseTagsMap": {
+    "com.azure.healthbot#BotsCreateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -888,7 +916,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthbot#CreateBotRequest": {
+    "com.azure.healthbot#BotsCreateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -916,7 +944,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthbot#CreateBotRequestTagsMap",
+          "target": "com.azure.healthbot#BotsCreateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -952,7 +980,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#CreateBotRequestTagsMap": {
+    "com.azure.healthbot#BotsCreateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -964,13 +992,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthbot#GetBot": {
+    "com.azure.healthbot#BotsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#GetBotRequest"
+        "target": "com.azure.healthbot#BotsGetRequest"
       },
       "output": {
-        "target": "com.azure.healthbot#GetBotResponse"
+        "target": "com.azure.healthbot#BotsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -983,7 +1011,7 @@
         "com.distilled.openapi#apiVersion": "2025-11-01"
       }
     },
-    "com.azure.healthbot#GetBotResponse": {
+    "com.azure.healthbot#BotsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1011,7 +1039,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.healthbot#GetBotResponseTagsMap",
+          "target": "com.azure.healthbot#BotsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1047,7 +1075,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.healthbot#GetBotResponseTagsMap": {
+    "com.azure.healthbot#BotsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1059,7 +1087,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthbot#GetBotRequest": {
+    "com.azure.healthbot#BotsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1091,10 +1119,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#ListBotByResourceGroup": {
+    "com.azure.healthbot#BotsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#ListBotByResourceGroupRequest"
+        "target": "com.azure.healthbot#BotsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.healthbot#BotResponseList"
@@ -1104,10 +1132,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a resource group",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.healthbot#BotResponseList": {
@@ -1216,7 +1251,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.healthbot#ListBotByResourceGroupRequest": {
+    "com.azure.healthbot#BotsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1234,16 +1269,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#ListBots": {
+    "com.azure.healthbot#BotsList": {
       "type": "operation",
       "input": {
-        "target": "com.azure.healthbot#ListBotsRequest"
+        "target": "com.azure.healthbot#BotsListRequest"
       },
       "output": {
         "target": "com.azure.healthbot#BotResponseList"
@@ -1253,13 +1294,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.HealthBot/healthBots",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns all the resources of a particular type belonging to a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.healthbot#ListBotsRequest": {
+    "com.azure.healthbot#BotsListRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1269,16 +1317,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.healthbot#ListOperations": {
+    "com.azure.healthbot#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.healthbot#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.healthbot#AvailableOperations"
@@ -1288,10 +1342,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.HealthBot/operations",
           "code": 200,
-          "apiVersion": "2025-11-01"
+          "apiVersion": "2025-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all the available Azure Health Bot operations.",
-        "com.distilled.openapi#apiVersion": "2025-11-01"
+        "com.distilled.openapi#apiVersion": "2025-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.healthbot#AvailableOperations": {
@@ -1394,36 +1455,50 @@
         "smithy.api#documentation": "Operation display payload"
       }
     },
+    "com.azure.healthbot#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.healthbot#Healthbot": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.healthbot#RegenerateBotApiJwtSecret"
+          "target": "com.azure.healthbot#BotsRegenerateApiJwtSecret"
         },
         {
-          "target": "com.azure.healthbot#ListBotSecrets"
+          "target": "com.azure.healthbot#BotsListSecrets"
         },
         {
-          "target": "com.azure.healthbot#DeleteBot"
+          "target": "com.azure.healthbot#BotsDelete"
         },
         {
-          "target": "com.azure.healthbot#UpdateBot"
+          "target": "com.azure.healthbot#BotsUpdate"
         },
         {
-          "target": "com.azure.healthbot#CreateBot"
+          "target": "com.azure.healthbot#BotsCreate"
         },
         {
-          "target": "com.azure.healthbot#GetBot"
+          "target": "com.azure.healthbot#BotsGet"
         },
         {
-          "target": "com.azure.healthbot#ListBotByResourceGroup"
+          "target": "com.azure.healthbot#BotsListByResourceGroup"
         },
         {
-          "target": "com.azure.healthbot#ListBots"
+          "target": "com.azure.healthbot#BotsList"
         },
         {
-          "target": "com.azure.healthbot#ListOperations"
+          "target": "com.azure.healthbot#OperationsList"
         }
       ],
       "traits": {

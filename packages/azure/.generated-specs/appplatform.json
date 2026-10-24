@@ -529,10 +529,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/predefinedAccelerators",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handle requests to list all predefined accelerators.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#PredefinedAcceleratorResourceCollection": {
@@ -625,6 +632,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the application accelerator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1357,10 +1370,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators/{applicationAcceleratorName}/customizedAccelerators",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handle requests to list all customized accelerators.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#CustomizedAcceleratorResourceCollection": {
@@ -1453,6 +1473,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the application accelerator."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1893,10 +1919,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationAccelerators",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handle requests to list all application accelerator.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ApplicationAcceleratorResourceCollection": {
@@ -1991,6 +2024,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2097,10 +2136,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handle requests to list all API portal custom domains.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ApiPortalCustomDomainResourceCollection": {
@@ -2211,6 +2257,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of API portal."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2499,10 +2551,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ApiPortalResourceCollection": {
@@ -2829,6 +2888,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3256,10 +3321,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handle requests to list all Spring Cloud Gateway custom domains.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#GatewayCustomDomainResourceCollection": {
@@ -3370,6 +3442,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Spring Cloud Gateway."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3658,10 +3736,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handle requests to list all Spring Cloud Gateway route configs.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#GatewayRouteConfigResourceCollection": {
@@ -3999,6 +4084,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of Spring Cloud Gateway."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4381,10 +4472,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#GatewayResourceCollection": {
@@ -4945,6 +5043,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5532,10 +5636,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedServerVersions",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available server versions supported by Microsoft.AppPlatform provider.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#SupportedServerVersions": {
@@ -5619,6 +5730,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5638,10 +5755,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/skus",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available skus of the Microsoft.AppPlatform provider.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ResourceSkuCollection": {
@@ -6038,6 +6162,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6165,7 +6295,7 @@
     "com.azure.appplatform#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.appplatform#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.appplatform#AvailableOperations"
@@ -6175,10 +6305,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.AppPlatform/operations",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available REST API operations of the Microsoft.AppPlatform provider.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#AvailableOperations": {
@@ -6505,6 +6642,20 @@
         "smithy.api#documentation": "Operation display payload"
       }
     },
+    "com.azure.appplatform#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.appplatform#ListServices": {
       "type": "operation",
       "input": {
@@ -6518,10 +6669,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ServiceResourceList": {
@@ -7019,6 +7177,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7038,10 +7202,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.AppPlatform/Spring",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ListServiceBySubscriptionRequest": {
@@ -7053,6 +7224,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7928,10 +8105,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/deployments",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List deployments for a certain service",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#DeploymentResourceCollection": {
@@ -8423,6 +8607,12 @@
             "smithy.api#httpQuery": "$expand",
             "smithy.api#documentation": "The expand expression to apply on the operation."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8449,10 +8639,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/deployments",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in an App.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ListDeploymentsRequest": {
@@ -8495,6 +8692,12 @@
           "traits": {
             "smithy.api#httpQuery": "version",
             "smithy.api#documentation": "Version of the deployments to be listed"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9029,10 +9232,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/domains",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the custom domains of one lifecycle application.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#CustomDomainResourceCollection": {
@@ -9202,6 +9412,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the App resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9710,10 +9926,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/certificates",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the certificates of one user.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#CertificateResourceCollection": {
@@ -9915,6 +10138,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10203,10 +10432,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/storages",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all the storages of one Azure Spring Apps resource.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#StorageResourceCollection": {
@@ -10327,6 +10563,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10600,10 +10842,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/bindings",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in an App.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BindingResourceCollection": {
@@ -10771,6 +11020,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the App resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11942,10 +12197,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#AppResourceCollection": {
@@ -12049,6 +12311,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13395,10 +13663,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/agentPools",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List build service agent pool.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BuildServiceAgentPoolResourceCollection": {
@@ -13498,6 +13773,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the build service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14049,10 +14330,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List KPack builders result.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BuilderResourceCollection": {
@@ -14288,6 +14576,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the build service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14968,10 +15262,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds/{buildName}/results",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List KPack build results.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BuildResultCollection": {
@@ -15080,6 +15381,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the build resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15099,10 +15406,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builders/{builderName}/buildpackBindings",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all buildpack bindings in a builder.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BuildpackBindingResourceCollection": {
@@ -15362,6 +15676,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the builder resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15747,10 +16067,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildpackBindings",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get collection of buildpack bindings under all builders.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ListBuildpackBindingForClusterRequest": {
@@ -15778,6 +16105,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16395,10 +16728,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices/{buildServiceName}/builds",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List KPack builds.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BuildCollection": {
@@ -16498,6 +16838,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the build service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16829,10 +17175,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/buildServices",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List build services resource.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#BuildServiceCollection": {
@@ -16924,6 +17277,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17398,10 +17757,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/containerRegistries",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List container registries resource.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ContainerRegistryResourceCollection": {
@@ -17493,6 +17859,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18126,10 +18498,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/devToolPortals",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#DevToolPortalResourceCollection": {
@@ -18218,6 +18597,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18657,10 +19042,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/applicationLiveViews",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ApplicationLiveViewResourceCollection": {
@@ -18750,6 +19142,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -18769,10 +19167,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/serviceRegistries",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ServiceRegistryResourceCollection": {
@@ -18980,6 +19385,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19650,10 +20061,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ConfigurationServiceResourceCollection": {
@@ -19890,6 +20308,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21329,10 +21753,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apms",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get collection of APMs.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#ApmResourceCollection": {
@@ -21424,6 +21855,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21662,10 +22099,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/supportedApmTypes",
           "code": 200,
-          "apiVersion": "2023-12-01"
+          "apiVersion": "2023-12-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List supported APM types for a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
+        "com.distilled.openapi#apiVersion": "2023-12-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.appplatform#SupportedApmTypes": {
@@ -21736,6 +22180,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

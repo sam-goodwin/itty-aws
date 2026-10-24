@@ -80,7 +80,8 @@
       "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscriptionRequest": "com.azure.vmwarecloudsimple#ListDedicatedCloudServiceBySubscriptionRequest",
       "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscription": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscription",
       "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscriptionRequest": "com.azure.vmwarecloudsimple#ListDedicatedCloudNodeBySubscriptionRequest",
-      "com.azure.vmwarecloudsimple#OperationsList": "com.azure.vmwarecloudsimple#ListOperations"
+      "com.azure.vmwarecloudsimple#OperationsList": "com.azure.vmwarecloudsimple#ListOperations",
+      "com.azure.vmwarecloudsimple#OperationsListRequest": "com.azure.vmwarecloudsimple#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -1699,10 +1700,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list virtual machine within RG method\n\nReturns list of virtual machine within resource group",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#VirtualMachineListResponse": {
@@ -1772,6 +1780,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "to be used by nextLink implementation"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2146,10 +2160,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list of dedicatedCloudService objects within RG method\n\nReturns list of dedicated cloud services within a resource group",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#DedicatedCloudServiceListResponse": {
@@ -2219,6 +2240,12 @@
           "traits": {
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "to be used by nextLink implementation"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2814,10 +2841,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list of dedicated cloud nodes within RG method\n\nReturns list of dedicate cloud nodes within resource group",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#DedicatedCloudNodeListResponse": {
@@ -2888,6 +2922,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "to be used by nextLink implementation"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2907,10 +2947,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/virtualMachines",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list virtual machine within subscription method\n\nReturns list virtual machine within subscription",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#VirtualMachinesListBySubscriptionRequest": {
@@ -2944,6 +2991,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "to be used by nextLink implementation"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2963,10 +3016,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/usages",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements Usages List method\n\nReturns list of usage in region",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#UsageListResponse": {
@@ -3121,6 +3181,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the list operation. only name.value is allowed here as a filter e.g. $filter=name.value eq 'xxxx'"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3199,10 +3265,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualNetworks",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list available virtual networks within a subscription method\n\nReturn list of virtual networks in location for private cloud",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#VirtualNetworkListResponse": {
@@ -3267,6 +3340,12 @@
             "smithy.api#httpQuery": "resourcePoolName",
             "smithy.api#required": {},
             "smithy.api#documentation": "Resource pool used to derive vSphere cluster which contains virtual networks"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3522,10 +3601,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/virtualMachineTemplates",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list of available VM templates\n\nReturns list of virtual machine templates in region for private cloud",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#VirtualMachineTemplateListResponse": {
@@ -3590,6 +3676,12 @@
             "smithy.api#httpQuery": "resourcePoolName",
             "smithy.api#required": {},
             "smithy.api#documentation": "Resource pool used to derive vSphere cluster which contains VM templates"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3669,10 +3761,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/resourcePools",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements get of resource pools list\n\nReturns list of resource pools in region for private cloud",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#ResourcePoolsListResponse": {
@@ -3729,6 +3828,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The private cloud name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4165,10 +4270,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds/{pcName}/customizationPolicies",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements get of customization policies list\n\nReturns list of customization policies in region for private cloud",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#CustomizationPoliciesListResponse": {
@@ -4232,6 +4344,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "The filter to apply on the list operation. only type is allowed here as a filter e.g. $filter=type eq 'xxxx'"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4543,10 +4661,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/privateClouds",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements private cloud list GET method\n\nReturns list of private clouds in particular region",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#PrivateCloudList": {
@@ -4595,6 +4720,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The region Id (westus, eastus)"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4742,10 +4873,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/locations/{regionId}/availabilities",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements SkuAvailability List method\n\nReturns list of available resources in region",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#SkuAvailabilityListResponse": {
@@ -4859,6 +4997,12 @@
             "smithy.api#httpQuery": "skuId",
             "smithy.api#documentation": "sku id, if no sku is passed availability for all skus will be returned"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4878,10 +5022,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list of dedicatedCloudService objects within subscription method\n\nReturns list of dedicated cloud services within a subscription",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#DedicatedCloudServicesListBySubscriptionRequest": {
@@ -4915,6 +5066,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "to be used by nextLink implementation"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4934,10 +5091,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list of dedicated cloud nodes within subscription method\n\nReturns list of dedicate cloud nodes within subscription",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#DedicatedCloudNodesListBySubscriptionRequest": {
@@ -4971,6 +5135,12 @@
             "smithy.api#httpQuery": "$skipToken",
             "smithy.api#documentation": "to be used by nextLink implementation"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4980,7 +5150,7 @@
     "com.azure.vmwarecloudsimple#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.vmwarecloudsimple#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.vmwarecloudsimple#AvailableOperationsListResponse"
@@ -4990,10 +5160,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.VMwareCloudSimple/operations",
           "code": 200,
-          "apiVersion": "2019-04-01"
+          "apiVersion": "2019-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements list of available operations\n\nReturn list of operations",
-        "com.distilled.openapi#apiVersion": "2019-04-01"
+        "com.distilled.openapi#apiVersion": "2019-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.vmwarecloudsimple#AvailableOperationsListResponse": {
@@ -5219,6 +5396,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Resource provider available operation display model"
+      }
+    },
+    "com.azure.vmwarecloudsimple#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.vmwarecloudsimple#Vmwarecloudsimple": {

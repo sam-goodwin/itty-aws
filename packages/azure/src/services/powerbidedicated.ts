@@ -305,6 +305,8 @@ export interface ListAutoScaleVCoreByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AutoScaleVCoreTagsMap = { [key: string]: string | undefined };
@@ -338,10 +340,14 @@ export interface AutoScaleVCoreListResult {
 export interface ListAutoScaleVCoreBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCapacitiesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DedicatedCapacityTagsMap = { [key: string]: string | undefined };
@@ -378,6 +384,8 @@ export interface ListCapacityByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCapacitySkusRequest {
   /** The ID of the target subscription. */
@@ -412,7 +420,10 @@ export interface SkuEnumerationForExistingResourceResult {
   /** The collection of available SKUs for existing resources */
   value?: SkuEnumerationForExistingResourceResultValueList;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.PowerBIDedicated. */
@@ -490,7 +501,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result listing capacities. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of capacities supported by the Microsoft.PowerBIDedicated resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -712,63 +723,91 @@ export const GetCapacityDetails: API.OperationMethod<
 
 export type ListAutoScaleVCoreByResourceGroupError = AzureOpError;
 /** Gets all the auto scale v-cores for the given resource group. */
-export const ListAutoScaleVCoreByResourceGroup: API.OperationMethod<
+export const ListAutoScaleVCoreByResourceGroup: API.PaginatedOperationMethod<
   ListAutoScaleVCoreByResourceGroupRequest,
   AutoScaleVCoreListResult,
   ListAutoScaleVCoreByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AutoScaleVCore
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<ListAutoScaleVCoreByResourceGroupRequest>,
   output: __S(369, __c23, 1) as any as S.Schema<AutoScaleVCoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAutoScaleVCoreBySubscriptionError = AzureOpError;
 /** Lists all the auto scale v-cores for the given subscription. */
-export const ListAutoScaleVCoreBySubscription: API.OperationMethod<
+export const ListAutoScaleVCoreBySubscription: API.PaginatedOperationMethod<
   ListAutoScaleVCoreBySubscriptionRequest,
   AutoScaleVCoreListResult,
   ListAutoScaleVCoreBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AutoScaleVCore
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ListAutoScaleVCoreBySubscriptionRequest>,
   output: __S(369, __c23, 1) as any as S.Schema<AutoScaleVCoreListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCapacitiesError = AzureOpError;
 /** Lists all the Dedicated capacities for the given subscription. */
-export const ListCapacities: API.OperationMethod<
+export const ListCapacities: API.PaginatedOperationMethod<
   ListCapacitiesRequest,
   DedicatedCapacities,
   ListCapacitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedCapacity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<ListCapacitiesRequest>,
   output: __S(417, __c26, 1) as any as S.Schema<DedicatedCapacities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCapacityByResourceGroupError = AzureOpError;
 /** Gets all the Dedicated capacities for the given resource group. */
-export const ListCapacityByResourceGroup: API.OperationMethod<
+export const ListCapacityByResourceGroup: API.PaginatedOperationMethod<
   ListCapacityByResourceGroupRequest,
   DedicatedCapacities,
   ListCapacityByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DedicatedCapacity
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListCapacityByResourceGroupRequest>,
   output: __S(417, __c26, 1) as any as S.Schema<DedicatedCapacities>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCapacitySkusError = AzureOpError;
 /** Lists eligible SKUs for PowerBI Dedicated resource provider. */
@@ -802,18 +841,25 @@ export const ListCapacitySkusForCapacity: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(140, __c8, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ResumeCapacityError = AzureOpError;
 /** Resumes operation of the specified Dedicated capacity instance. */
@@ -988,12 +1034,14 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities",
             code: 200,
             apiVersion: "2021-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCapacityByResourceGroupRequest" });
@@ -1062,12 +1110,15 @@ function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.PowerBIDedicated/operations",
             code: 200,
             apiVersion: "2021-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1140,7 +1191,7 @@ function __c8(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c8, 11)),
+          value: __S(139, __c8, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1419,12 +1470,14 @@ function __c22(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
             code: 200,
             apiVersion: "2021-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAutoScaleVCoreByResourceGroupRequest" });
@@ -1449,12 +1502,14 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
             code: 200,
             apiVersion: "2021-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAutoScaleVCoreBySubscriptionRequest" });
@@ -1466,12 +1521,14 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/capacities",
             code: 200,
             apiVersion: "2021-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCapacitiesRequest" });

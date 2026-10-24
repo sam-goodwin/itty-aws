@@ -108,7 +108,8 @@
       "com.azure.webpubsub#UsagesListRequest": "com.azure.webpubsub#ListUsagesRequest",
       "com.azure.webpubsub#WebPubSubCheckNameAvailability": "com.azure.webpubsub#CheckWebPubSubNameAvailability",
       "com.azure.webpubsub#WebPubSubCheckNameAvailabilityRequest": "com.azure.webpubsub#CheckWebPubSubNameAvailabilityRequest",
-      "com.azure.webpubsub#OperationsList": "com.azure.webpubsub#ListOperations"
+      "com.azure.webpubsub#OperationsList": "com.azure.webpubsub#ListOperations",
+      "com.azure.webpubsub#OperationsListRequest": "com.azure.webpubsub#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -883,10 +884,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/sharedPrivateLinkResources",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List shared private link resources",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#SharedPrivateLinkResourceList": {
@@ -978,6 +986,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1329,10 +1343,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List shared private link resources",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#WebPubSubReplicaSharedPrivateLinkResourcesListRequest": {
@@ -1368,6 +1389,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the replica."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2017,10 +2044,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/replicas",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all replicas belong to this resource",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#ReplicaList": {
@@ -2138,6 +2172,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2277,10 +2317,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get the private link resources that need to be created for a resource.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#PrivateLinkResourceList": {
@@ -2474,6 +2521,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2859,10 +2912,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#PrivateEndpointConnectionList": {
@@ -2954,6 +3014,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3525,10 +3591,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/hubs",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List hub settings.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#WebPubSubHubList": {
@@ -3623,6 +3696,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3961,10 +4040,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customDomains",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all custom domains.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#CustomDomainList": {
@@ -4059,6 +4145,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4397,10 +4489,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub/{resourceName}/customCertificates",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all custom certificates.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#CustomCertificateList": {
@@ -4495,6 +4594,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5640,10 +5745,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/webPubSub",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#WebPubSubResourceList": {
@@ -5762,6 +5874,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5781,10 +5899,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/webPubSub",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Handles requests to list all resources in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#WebPubSubListBySubscriptionRequest": {
@@ -5796,6 +5921,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5816,10 +5947,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List resource usage quotas by location.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#SignalRServiceUsageList": {
@@ -5924,6 +6062,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "the location like \"eastus\""
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6016,7 +6160,7 @@
     "com.azure.webpubsub#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.webpubsub#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.webpubsub#OperationList"
@@ -6026,10 +6170,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.SignalRService/operations",
           "code": 200,
-          "apiVersion": "2024-03-01"
+          "apiVersion": "2024-03-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available REST API operations of the Microsoft.SignalRService provider.",
-        "com.distilled.openapi#apiVersion": "2024-03-01"
+        "com.distilled.openapi#apiVersion": "2024-03-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.webpubsub#OperationList": {
@@ -6289,6 +6440,20 @@
       },
       "traits": {
         "smithy.api#documentation": "The object that describes a operation."
+      }
+    },
+    "com.azure.webpubsub#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.webpubsub#Webpubsub": {

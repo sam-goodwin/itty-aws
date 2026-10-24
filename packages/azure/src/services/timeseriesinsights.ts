@@ -424,7 +424,10 @@ export interface EventSourceListResponse {
   /** Result of the List EventSources operation. */
   value?: EventSourceListResponseValueList;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Contains the localized display information for this particular operation / action. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name. */
@@ -510,7 +513,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list Time Series Insights operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Time Series Insights operations supported by the Microsoft.TimeSeriesInsights resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -954,18 +957,25 @@ export const ListEventSourceByEnvironment: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Time Series Insights related operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(188, __c11, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListReferenceDataSetByEnvironmentError = AzureOpError;
 /** Lists all the available reference data sets associated with the subscription and within the specified resource group and environment. */
@@ -1286,12 +1296,15 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.TimeSeriesInsights/operations",
             code: 200,
             apiVersion: "2020-05-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1365,7 +1378,7 @@ function __c11(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(187, __c11, 11)),
+          value: __S(187, __c11, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });

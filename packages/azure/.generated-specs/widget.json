@@ -34,7 +34,8 @@
       "com.azure.widget#EmployeesListBySubscriptionRequest": "com.azure.widget#ListEmployeeBySubscriptionRequest",
       "com.azure.widget#OperationsList": "com.azure.widget#ListOperations",
       "com.azure.widget#OperationsListResponse": "com.azure.widget#ListOperationsResponse",
-      "com.azure.widget#OperationsListResponseValueList": "com.azure.widget#ListOperationsResponseValueList"
+      "com.azure.widget#OperationsListResponseValueList": "com.azure.widget#ListOperationsResponseValueList",
+      "com.azure.widget#OperationsListRequest": "com.azure.widget#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -751,10 +752,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Widget/employees",
           "code": 200,
-          "apiVersion": "2021-11-01"
+          "apiVersion": "2021-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Employee resources by resource group",
-        "com.distilled.openapi#apiVersion": "2021-11-01"
+        "com.distilled.openapi#apiVersion": "2021-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.widget#EmployeeListResult": {
@@ -868,6 +876,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -887,10 +901,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Widget/employees",
           "code": 200,
-          "apiVersion": "2021-11-01"
+          "apiVersion": "2021-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Employee resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2021-11-01"
+        "com.distilled.openapi#apiVersion": "2021-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.widget#EmployeesListBySubscriptionRequest": {
@@ -903,6 +924,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -912,7 +939,7 @@
     "com.azure.widget#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.widget#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.widget#OperationsListResponse"
@@ -922,10 +949,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Widget/operations",
           "code": 200,
-          "apiVersion": "2021-11-01"
+          "apiVersion": "2021-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2021-11-01"
+        "com.distilled.openapi#apiVersion": "2021-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.widget#OperationsListResponse": {
@@ -1065,6 +1099,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.widget#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.widget#Widget": {

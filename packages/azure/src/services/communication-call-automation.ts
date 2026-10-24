@@ -543,6 +543,8 @@ export interface GetCallConnectionParticipantsRequest {
   endpoint: string;
   /** The call connection Id */
   callConnectionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of the current participants in the call. */
 export type GetParticipantsResponseValueList = Array<CallParticipant>;
@@ -1053,18 +1055,25 @@ export const GetCallConnectionParticipant: API.OperationMethod<
 
 export type GetCallConnectionParticipantsError = AzureOpError;
 /** Get participants from a call. Recording and transcription bots are omitted from this list. Get participants from a call. Recording and transcription bots are omitted from this list. */
-export const GetCallConnectionParticipants: API.OperationMethod<
+export const GetCallConnectionParticipants: API.PaginatedOperationMethod<
   GetCallConnectionParticipantsRequest,
   GetParticipantsResponse,
   GetCallConnectionParticipantsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CallParticipant
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(104, __c13, 0) as any as S.Schema<GetCallConnectionParticipantsRequest>,
   output: __S(106, __c13, 2) as any as S.Schema<GetParticipantsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type GetCallRecordingRecordingPropertiesError = AzureOpError;
 /** Get call recording properties. */
@@ -1708,6 +1717,7 @@ function __c13(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           callConnectionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1716,6 +1726,7 @@ function __c13(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2026-03-12",
+            nextLink: "nextLink",
             audience: "https://communication.azure.com/.default",
           }),
         ),

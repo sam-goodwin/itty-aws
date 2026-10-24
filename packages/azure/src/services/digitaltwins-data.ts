@@ -365,6 +365,8 @@ export interface ListDeleteJobsRequest {
   tracestate?: string;
   /** The maximum number of items to retrieve per request. The server may choose to return less than the requested number. */
   maxItemsPerPage?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of delete job objects. */
 export type DeleteJobCollectionValueList = Array<DeleteJob>;
@@ -384,6 +386,8 @@ export interface ListDigitalTwinIncomingRelationshipsRequest {
   traceparent?: string;
   /** Provides vendor-specific trace identification information and is a companion to traceparent. */
   tracestate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An incoming relationship. */
 export interface IncomingRelationship {
@@ -417,6 +421,8 @@ export interface ListDigitalTwinModelsRequest {
   tracestate?: string;
   /** The maximum number of items to retrieve per request. The server may choose to return less than the requested number. */
   maxItemsPerPage?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DigitalTwinsModelData objects. */
 export type PagedDigitalTwinsModelDataCollectionValueList = Array<DigitalTwinsModelData>;
@@ -438,6 +444,8 @@ export interface ListDigitalTwinRelationshipsRequest {
   traceparent?: string;
   /** Provides vendor-specific trace identification information and is a companion to traceparent. */
   tracestate?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The relationship objects. */
 export type RelationshipCollectionValueList = Array<unknown>;
@@ -457,6 +465,8 @@ export interface ListEventRoutesRequest {
   tracestate?: string;
   /** The maximum number of items to retrieve per request. The server may choose to return less than the requested number. */
   maxItemsPerPage?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The EventRoute objects. */
 export type EventRouteCollectionValueList = Array<EventRoute>;
@@ -476,6 +486,8 @@ export interface ListImportJobsRequest {
   tracestate?: string;
   /** The maximum number of items to retrieve per request. The server may choose to return less than the requested number. */
   maxItemsPerPage?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The list of import job objects. */
 export type ImportJobCollectionValueList = Array<ImportJob>;
@@ -899,93 +911,135 @@ export const GetImportJobById: API.OperationMethod<
 
 export type ListDeleteJobsError = AzureOpError;
 /** Retrieves all deletion jobs. This may be useful to find a delete job that was previously requested, or to view a history of delete jobs that have run or are currently running on the instance. Status codes: * 200 OK */
-export const ListDeleteJobs: API.OperationMethod<
+export const ListDeleteJobs: API.PaginatedOperationMethod<
   ListDeleteJobsRequest,
   DeleteJobCollection,
   ListDeleteJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DeleteJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(56, __c14, 0) as any as S.Schema<ListDeleteJobsRequest>,
   output: __S(58, __c14, 2) as any as S.Schema<DeleteJobCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDigitalTwinIncomingRelationshipsError = AzureOpError;
 /** Retrieves all incoming relationship for a digital twin. Status codes: * 200 OK * 400 Bad Request * InvalidArgument - The digital twin id is invalid. * 404 Not Found * DigitalTwinNotFound - The digital twin was not found. */
-export const ListDigitalTwinIncomingRelationships: API.OperationMethod<
+export const ListDigitalTwinIncomingRelationships: API.PaginatedOperationMethod<
   ListDigitalTwinIncomingRelationshipsRequest,
   IncomingRelationshipCollection,
   ListDigitalTwinIncomingRelationshipsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IncomingRelationship
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(76, __c19, 0) as any as S.Schema<ListDigitalTwinIncomingRelationshipsRequest>,
   output: __S(79, __c19, 3) as any as S.Schema<IncomingRelationshipCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDigitalTwinModelsError = AzureOpError;
 /** Retrieves model metadata and, optionally, model definitions. Status codes: * 200 OK * 400 Bad Request * InvalidArgument - The model id is invalid. * LimitExceeded - The maximum number of model ids allowed in 'dependenciesFor' has been reached. * 404 Not Found * ModelNotFound - The model was not found. */
-export const ListDigitalTwinModels: API.OperationMethod<
+export const ListDigitalTwinModels: API.PaginatedOperationMethod<
   ListDigitalTwinModelsRequest,
   PagedDigitalTwinsModelDataCollection,
   ListDigitalTwinModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DigitalTwinsModelData
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(81, __c20, 1) as any as S.Schema<ListDigitalTwinModelsRequest>,
   output: __S(82, __c20, 2) as any as S.Schema<PagedDigitalTwinsModelDataCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDigitalTwinRelationshipsError = AzureOpError;
 /** Retrieves the relationships from a digital twin. Status codes: * 200 OK * 400 Bad Request * InvalidArgument - The digital twin id is invalid. * 404 Not Found * DigitalTwinNotFound - The digital twin was not found. */
-export const ListDigitalTwinRelationships: API.OperationMethod<
+export const ListDigitalTwinRelationships: API.PaginatedOperationMethod<
   ListDigitalTwinRelationshipsRequest,
   RelationshipCollection,
   ListDigitalTwinRelationshipsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  unknown
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(84, __c21, 0) as any as S.Schema<ListDigitalTwinRelationshipsRequest>,
   output: __S(85, __c21, 1) as any as S.Schema<RelationshipCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEventRoutesError = AzureOpError;
 /** Retrieves all event routes. Status codes: * 200 OK */
-export const ListEventRoutes: API.OperationMethod<
+export const ListEventRoutes: API.PaginatedOperationMethod<
   ListEventRoutesRequest,
   EventRouteCollection,
   ListEventRoutesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EventRoute
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(88, __c22, 0) as any as S.Schema<ListEventRoutesRequest>,
   output: __S(90, __c22, 2) as any as S.Schema<EventRouteCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListImportJobsError = AzureOpError;
 /** Retrieves all import jobs. Status codes: * 200 OK */
-export const ListImportJobs: API.OperationMethod<
+export const ListImportJobs: API.PaginatedOperationMethod<
   ListImportJobsRequest,
   ImportJobCollection,
   ListImportJobsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ImportJob
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(92, __c23, 0) as any as S.Schema<ListImportJobsRequest>,
   output: __S(94, __c23, 2) as any as S.Schema<ImportJobCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type QueryQueryTwinsError = AzureOpError;
 /** Executes a query that allows traversing relationships and filtering by property values. Status codes: * 200 OK * 400 Bad Request * BadRequest - The continuation token is invalid. * SqlQueryError - The query contains some errors. * TimeoutError - The query execution timed out after 60 seconds. Try simplifying the query or adding conditions to reduce the result size. * 429 Too Many Requests * QuotaReachedError - The maximum query rate limit has been reached. */
@@ -1403,6 +1457,7 @@ function __c14(j: number): any {
           traceparent: S.optional(S.String.pipe(T.Header())),
           tracestate: S.optional(S.String.pipe(T.Header())),
           maxItemsPerPage: S.optional(S.Number.pipe(T.Header("max-items-per-page"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1411,6 +1466,7 @@ function __c14(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-10-31",
+            nextLink: "nextLink",
             audience: "https://digitaltwins.azure.net/.default",
           }),
         ),
@@ -1491,6 +1547,7 @@ function __c19(j: number): any {
           id: S.String.pipe(T.Label()),
           traceparent: S.optional(S.String.pipe(T.Header())),
           tracestate: S.optional(S.String.pipe(T.Header())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1499,6 +1556,7 @@ function __c19(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-10-31",
+            nextLink: "nextLink",
             audience: "https://digitaltwins.azure.net/.default",
           }),
         ),
@@ -1536,6 +1594,7 @@ function __c20(j: number): any {
           traceparent: S.optional(S.String.pipe(T.Header())),
           tracestate: S.optional(S.String.pipe(T.Header())),
           maxItemsPerPage: S.optional(S.Number.pipe(T.Header("max-items-per-page"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1544,6 +1603,7 @@ function __c20(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-10-31",
+            nextLink: "nextLink",
             audience: "https://digitaltwins.azure.net/.default",
           }),
         ),
@@ -1567,6 +1627,7 @@ function __c21(j: number): any {
           relationshipName: S.optional(S.String.pipe(T.Query())),
           traceparent: S.optional(S.String.pipe(T.Header())),
           tracestate: S.optional(S.String.pipe(T.Header())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1575,6 +1636,7 @@ function __c21(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-10-31",
+            nextLink: "nextLink",
             audience: "https://digitaltwins.azure.net/.default",
           }),
         ),
@@ -1597,6 +1659,7 @@ function __c22(j: number): any {
           traceparent: S.optional(S.String.pipe(T.Header())),
           tracestate: S.optional(S.String.pipe(T.Header())),
           maxItemsPerPage: S.optional(S.Number.pipe(T.Header("max-items-per-page"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1605,6 +1668,7 @@ function __c22(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-10-31",
+            nextLink: "nextLink",
             audience: "https://digitaltwins.azure.net/.default",
           }),
         ),
@@ -1629,6 +1693,7 @@ function __c23(j: number): any {
           traceparent: S.optional(S.String.pipe(T.Header())),
           tracestate: S.optional(S.String.pipe(T.Header())),
           maxItemsPerPage: S.optional(S.Number.pipe(T.Header("max-items-per-page"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1637,6 +1702,7 @@ function __c23(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2023-10-31",
+            nextLink: "nextLink",
             audience: "https://digitaltwins.azure.net/.default",
           }),
         ),

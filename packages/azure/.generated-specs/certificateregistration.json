@@ -1620,10 +1620,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/detectors",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Microsoft.CertificateRegistration to get the list of detectors for this RP.\n\nDescription for Microsoft.CertificateRegistration to get the list of detectors for this RP.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.certificateregistration#DetectorResponseCollection": {
@@ -1725,6 +1732,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the certificate order.."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2344,10 +2357,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all certificates associated with a certificate order.\n\nDescription for List all certificates associated with a certificate order.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateCollection": {
@@ -2474,6 +2494,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the certificate order.."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3467,10 +3493,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get certificate orders in a resource group.\n\nDescription for Get certificate orders in a resource group.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateOrderCollection": {
@@ -3590,6 +3623,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3681,10 +3720,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.CertificateRegistration/certificateOrders",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List all certificate orders in a subscription.\n\nDescription for List all certificate orders in a subscription.",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.certificateregistration#ListAppServiceCertificateOrdersRequest": {
@@ -3697,6 +3743,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3706,7 +3758,7 @@
     "com.azure.certificateregistration#ListCertificateRegistrationProviderOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.certificateregistration#ListCertificateRegistrationProviderOperationsRequest"
       },
       "output": {
         "target": "com.azure.certificateregistration#CsmOperationCollection"
@@ -3716,10 +3768,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.CertificateRegistration/operations",
           "code": 200,
-          "apiVersion": "2024-11-01"
+          "apiVersion": "2024-11-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Implements Csm operations Api to exposes the list of available Csm Apis under the resource provider\n\nDescription for Implements Csm operations Api to exposes the list of available Csm Apis under the resource provider",
-        "com.distilled.openapi#apiVersion": "2024-11-01"
+        "com.distilled.openapi#apiVersion": "2024-11-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.certificateregistration#CsmOperationCollection": {
@@ -3982,6 +4041,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Meta data about operation used for display in portal."
+      }
+    },
+    "com.azure.certificateregistration#ListCertificateRegistrationProviderOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.certificateregistration#Certificateregistration": {

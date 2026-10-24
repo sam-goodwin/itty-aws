@@ -136,6 +136,8 @@ export interface ListAccessTokensRequest {
   accountId: string;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The AccessToken items on this page */
 export type PagedAccessTokenValueList = Array<AccessToken>;
@@ -223,18 +225,25 @@ export const GetAccountBrowsers: API.OperationMethod<
 
 export type ListAccessTokensError = AzureOpError;
 /** Lists access-tokens for the given account id. It can use OData query params like $select, $filter, $orderby, $top and $skip. The default page size is 10. Use nextLink in response to fetch more objects in the list. Authorization required is Bearer JWT Access token provided by EntraID. */
-export const ListAccessTokens: API.OperationMethod<
+export const ListAccessTokens: API.PaginatedOperationMethod<
   ListAccessTokensRequest,
   PagedAccessToken,
   ListAccessTokensError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccessToken
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28, __c7, 0) as any as S.Schema<ListAccessTokensRequest>,
   output: __S(30, __c7, 2) as any as S.Schema<PagedAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -395,6 +404,7 @@ function __c7(j: number): any {
           endpoint: S.String.pipe(T.HostLabel()),
           accountId: S.String.pipe(T.Label()),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -402,6 +412,7 @@ function __c7(j: number): any {
             code: 200,
             host: "{endpoint}",
             apiVersion: "2024-12-01",
+            nextLink: "nextLink",
             audience: "https://playwright.microsoft.com/.default",
           }),
         ),

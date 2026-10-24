@@ -637,9 +637,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of users in an application"
+        "smithy.api#documentation": "Get the list of users in an application",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#UserCollection": {
@@ -726,6 +733,12 @@
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -752,9 +765,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of jobs for a scheduled job definition"
+        "smithy.api#documentation": "Get the list of jobs for a scheduled job definition",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#JobCollection": {
@@ -1054,6 +1074,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Unique ID of the scheduled job."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1555,9 +1581,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of scheduled job definitions in an application"
+        "smithy.api#documentation": "Get the list of scheduled job definitions in an application",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#ScheduledJobCollection": {
@@ -1606,6 +1639,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1709,9 +1748,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of roles in an application."
+        "smithy.api#documentation": "Get the list of roles in an application.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#RoleCollection": {
@@ -1760,6 +1806,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2049,9 +2101,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of organizations the user has access to in an application"
+        "smithy.api#documentation": "Get the list of organizations the user has access to in an application",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#OrganizationCollection": {
@@ -2100,6 +2159,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2303,9 +2368,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get device statuses\n\nGet the list of individual device statuses by job ID."
+        "smithy.api#documentation": "Get device statuses\n\nGet the list of individual device statuses by job ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#JobDeviceStatusCollection": {
@@ -2382,6 +2454,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Unique ID of the job."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2589,9 +2667,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of jobs in an application"
+        "smithy.api#documentation": "Get the list of jobs in an application",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#JobsListRequest": {
@@ -2610,6 +2695,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3802,9 +3893,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of enrollment groups in an application"
+        "smithy.api#documentation": "Get the list of enrollment groups in an application",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#EnrollmentGroupCollection": {
@@ -3853,6 +3951,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4258,9 +4362,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Given the ID for an upstream device, will return the upstream and the downstream relationships associated with that gateway. These downstream relationships are only those associated with the direct downstream level (they don’t work recursively).\n\nList all relationships based on device ID"
+        "smithy.api#documentation": "Given the ID for an upstream device, will return the upstream and the downstream relationships associated with that gateway. These downstream relationships are only those associated with the direct downstream level (they don’t work recursively).\n\nList all relationships based on device ID",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DeviceRelationshipCollection": {
@@ -4317,6 +4428,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Unique ID of the device."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5292,9 +5409,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get module component command history"
+        "smithy.api#documentation": "Get module component command history",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DeviceCommandCollection": {
@@ -5375,6 +5499,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of this device command."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5586,9 +5716,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get module command history"
+        "smithy.api#documentation": "Get module command history",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DevicesGetModuleCommandHistoryRequest": {
@@ -5631,6 +5768,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of this device command."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6271,9 +6414,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get component command history"
+        "smithy.api#documentation": "Get component command history",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DevicesGetComponentCommandHistoryRequest": {
@@ -6316,6 +6466,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of this device command."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6481,9 +6637,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get device command history"
+        "smithy.api#documentation": "Get device command history",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DevicesGetCommandHistoryRequest": {
@@ -6518,6 +6681,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of this device command."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7125,9 +7294,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of devices in an application."
+        "smithy.api#documentation": "Get the list of devices in an application.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DeviceCollection": {
@@ -7176,6 +7352,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7526,9 +7708,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of device templates in an application."
+        "smithy.api#documentation": "Get the list of device templates in an application.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DeviceTemplateCollection": {
@@ -7578,6 +7767,12 @@
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7604,9 +7799,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the devices of a device group\n\nGet the list of devices by device group ID."
+        "smithy.api#documentation": "Get the devices of a device group\n\nGet the list of devices by device group ID.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DeviceGroupDeviceCollection": {
@@ -7663,6 +7865,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Unique ID for the device group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8010,9 +8218,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of device groups in an application."
+        "smithy.api#documentation": "Get the list of device groups in an application.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#DeviceGroupCollection": {
@@ -8061,6 +8276,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8362,9 +8583,16 @@
           "hostDefaults": {
             "baseDomain": "azureiotcentral.com"
           },
-          "apiVersion": "2022-07-31"
+          "apiVersion": "2022-07-31",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the list of API tokens in an application. The token value will never be returned for security reasons."
+        "smithy.api#documentation": "Get the list of API tokens in an application. The token value will never be returned for security reasons.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.iotcentral_data#ApiTokenCollection": {
@@ -8455,6 +8683,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The application subdomain.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

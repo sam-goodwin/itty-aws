@@ -4523,6 +4523,8 @@ export interface ListCassandraClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type ClusterResourceTagsMap = { [key: string]: string | undefined };
@@ -4550,12 +4552,14 @@ export type ListClustersValueList = Array<ClusterResource>;
 /** List of managed Cassandra clusters. */
 export interface ListClusters {
   /** Container for the array of clusters. */
-  value?: ListClustersValueList;
+  value: ListClustersValueList;
   nextLink?: string;
 }
 export interface ListCassandraClusterBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCassandraDataCentersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4564,6 +4568,8 @@ export interface ListCassandraDataCentersRequest {
   resourceGroupName: string;
   /** Managed Cassandra cluster name. */
   clusterName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A managed Cassandra data center. */
 export interface DataCenterResource {
@@ -4583,7 +4589,7 @@ export type ListDataCentersValueList = Array<DataCenterResource>;
 /** List of managed Cassandra data centers and their properties. */
 export interface ListDataCenters {
   /** Container for array of data centers. */
-  value?: ListDataCentersValueList;
+  value: ListDataCentersValueList;
   nextLink?: string;
 }
 export interface ListCassandraResourceCassandraKeyspacesRequest {
@@ -4593,6 +4599,8 @@ export interface ListCassandraResourceCassandraKeyspacesRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type CassandraKeyspaceGetResultsTagsMap = { [key: string]: string | undefined };
@@ -4620,7 +4628,7 @@ export type CassandraKeyspaceListResultValueList = Array<CassandraKeyspaceGetRes
 /** The List operation response, that contains the Cassandra keyspaces and their properties. */
 export interface CassandraKeyspaceListResult {
   /** List of Cassandra keyspaces and their properties. */
-  value?: CassandraKeyspaceListResultValueList;
+  value: CassandraKeyspaceListResultValueList;
   nextLink?: string;
 }
 export interface ListCassandraResourceCassandraRoleAssignmentsRequest {
@@ -4630,6 +4638,8 @@ export interface ListCassandraResourceCassandraRoleAssignmentsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB Cassandra Role Assignment. */
 export interface CassandraRoleAssignmentResource {
@@ -4660,6 +4670,8 @@ export interface ListCassandraResourceCassandraRoleDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB Cassandra Role Definition. */
 export interface CassandraRoleDefinitionResource {
@@ -4692,6 +4704,8 @@ export interface ListCassandraResourceCassandraTablesRequest {
   accountName: string;
   /** Cosmos DB keyspace name. */
   keyspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type CassandraTableGetResultsTagsMap = { [key: string]: string | undefined };
@@ -4719,7 +4733,7 @@ export type CassandraTableListResultValueList = Array<CassandraTableGetResults>;
 /** The List operation response, that contains the Cassandra tables and their properties. */
 export interface CassandraTableListResult {
   /** List of Cassandra tables and their properties. */
-  value?: CassandraTableListResultValueList;
+  value: CassandraTableListResultValueList;
   nextLink?: string;
 }
 export interface ListCollectionMetricDefinitionsRequest {
@@ -4733,6 +4747,8 @@ export interface ListCollectionMetricDefinitionsRequest {
   databaseRid: string;
   /** Cosmos DB collection rid. */
   collectionRid: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The availability of the metric. */
 export interface MetricAvailability {
@@ -4779,7 +4795,7 @@ export type MetricDefinitionsListResultValueList = Array<MetricDefinition>;
 /** The response to a list metric definitions request. */
 export interface MetricDefinitionsListResult {
   /** The list of metric definitions for the account. */
-  value?: MetricDefinitionsListResultValueList;
+  value: MetricDefinitionsListResultValueList;
   nextLink?: string;
 }
 export interface ListCollectionMetricsRequest {
@@ -4795,6 +4811,8 @@ export interface ListCollectionMetricsRequest {
   collectionRid: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents metrics values. */
 export interface MetricValue {
@@ -4833,7 +4851,7 @@ export type MetricListResultValueList = Array<Metric>;
 /** The response to a list metrics request. */
 export interface MetricListResult {
   /** The list of metrics for the account. */
-  value?: MetricListResultValueList;
+  value: MetricListResultValueList;
   nextLink?: string;
 }
 export interface ListCollectionPartitionMetricsRequest {
@@ -4849,6 +4867,8 @@ export interface ListCollectionPartitionMetricsRequest {
   collectionRid: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The metric values for the specified time window and timestep. */
 export type PartitionMetricMetricValuesList = Array<MetricValue>;
@@ -4876,7 +4896,7 @@ export type PartitionMetricListResultValueList = Array<PartitionMetric>;
 /** The response to a list partition metrics request. */
 export interface PartitionMetricListResult {
   /** The list of partition-level metrics for the account. */
-  value?: PartitionMetricListResultValueList;
+  value: PartitionMetricListResultValueList;
   nextLink?: string;
 }
 export interface ListCollectionPartitionRegionMetricsRequest {
@@ -4894,6 +4914,8 @@ export interface ListCollectionPartitionRegionMetricsRequest {
   collectionRid: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCollectionPartitionUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4908,6 +4930,8 @@ export interface ListCollectionPartitionUsagesRequest {
   collectionRid: string;
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The partition level usage data for a usage request. */
 export interface PartitionUsage {
@@ -4931,7 +4955,7 @@ export type PartitionUsagesResultValueList = Array<PartitionUsage>;
 /** The response to a list partition level usage request. */
 export interface PartitionUsagesResult {
   /** The list of partition-level usages for the database. A usage is a point in time metric */
-  value?: PartitionUsagesResultValueList;
+  value: PartitionUsagesResultValueList;
   nextLink?: string;
 }
 export interface ListCollectionRegionMetricsRequest {
@@ -4949,6 +4973,8 @@ export interface ListCollectionRegionMetricsRequest {
   collectionRid: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCollectionUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4963,6 +4989,8 @@ export interface ListCollectionUsagesRequest {
   collectionRid: string;
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The usage data for a usage request. */
 export interface Usage {
@@ -4982,7 +5010,7 @@ export type UsagesResultValueList = Array<Usage>;
 /** The response to a list usage request. */
 export interface UsagesResult {
   /** The list of usages for the database. A usage is a point in time metric */
-  value?: UsagesResultValueList;
+  value: UsagesResultValueList;
   nextLink?: string;
 }
 export interface ListDatabaseAccountByResourceGroupRequest {
@@ -4990,6 +5018,8 @@ export interface ListDatabaseAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type DatabaseAccountGetResultsTagsMap = { [key: string]: string | undefined };
@@ -5021,7 +5051,7 @@ export type DatabaseAccountsListResultValueList = Array<DatabaseAccountGetResult
 /** The List operation response, that contains the database accounts and their properties. */
 export interface DatabaseAccountsListResult {
   /** List of database account and their properties. */
-  value?: DatabaseAccountsListResultValueList;
+  value: DatabaseAccountsListResultValueList;
   nextLink?: string;
 }
 export interface ListDatabaseAccountConnectionStringsRequest {
@@ -5089,6 +5119,8 @@ export interface ListDatabaseAccountMetricDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseAccountMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5099,6 +5131,8 @@ export interface ListDatabaseAccountMetricsRequest {
   accountName: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseAccountRegionMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5111,10 +5145,14 @@ export interface ListDatabaseAccountRegionMetricsRequest {
   region: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseAccountUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5125,6 +5163,8 @@ export interface ListDatabaseAccountUsagesRequest {
   accountName: string;
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseMetricDefinitionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5135,6 +5175,8 @@ export interface ListDatabaseMetricDefinitionsRequest {
   accountName: string;
   /** Cosmos DB database rid. */
   databaseRid: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5147,6 +5189,8 @@ export interface ListDatabaseMetricsRequest {
   databaseRid: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDatabaseUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5159,10 +5203,14 @@ export interface ListDatabaseUsagesRequest {
   databaseRid: string;
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type FleetResourceTagsMap = { [key: string]: string | undefined };
@@ -5197,6 +5245,8 @@ export interface ListFleetByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListFleetspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5205,6 +5255,8 @@ export interface ListFleetspaceRequest {
   resourceGroupName: string;
   /** Cosmos DB fleet name. Needs to be unique under a subscription. */
   fleetName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Cosmos DB Fleetspace. */
 export interface FleetspaceResource {
@@ -5237,6 +5289,8 @@ export interface ListFleetspaceAccountRequest {
   fleetName: string;
   /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
   fleetspaceName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Cosmos DB Fleetspace Account */
 export interface FleetspaceAccountResource {
@@ -5267,6 +5321,8 @@ export interface ListGremlinResourceGremlinDatabasesRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type GremlinDatabaseGetResultsTagsMap = { [key: string]: string | undefined };
@@ -5294,7 +5350,7 @@ export type GremlinDatabaseListResultValueList = Array<GremlinDatabaseGetResults
 /** The List operation response, that contains the Gremlin databases and their properties. */
 export interface GremlinDatabaseListResult {
   /** List of Gremlin databases and their properties. */
-  value?: GremlinDatabaseListResultValueList;
+  value: GremlinDatabaseListResultValueList;
   nextLink?: string;
 }
 export interface ListGremlinResourceGremlinGraphsRequest {
@@ -5306,6 +5362,8 @@ export interface ListGremlinResourceGremlinGraphsRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type GremlinGraphGetResultsTagsMap = { [key: string]: string | undefined };
@@ -5333,7 +5391,7 @@ export type GremlinGraphListResultValueList = Array<GremlinGraphGetResults>;
 /** The List operation response, that contains the graphs and their properties. */
 export interface GremlinGraphListResult {
   /** List of graphs and their properties. */
-  value?: GremlinGraphListResultValueList;
+  value: GremlinGraphListResultValueList;
   nextLink?: string;
 }
 export interface ListGremlinResourceGremlinRoleAssignmentsRequest {
@@ -5343,6 +5401,8 @@ export interface ListGremlinResourceGremlinRoleAssignmentsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB Gremlin Role Assignment. */
 export interface GremlinRoleAssignmentResource {
@@ -5373,6 +5433,8 @@ export interface ListGremlinResourceGremlinRoleDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB Gremlin Role Definition. */
 export interface GremlinRoleDefinitionResource {
@@ -5399,6 +5461,8 @@ export interface GremlinRoleDefinitionListResult {
 export interface ListLocationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Cosmos DB location get result */
 export interface LocationGetResult {
@@ -5418,7 +5482,7 @@ export type LocationListResultValueList = Array<LocationGetResult>;
 /** The List operation response, that contains Cosmos DB locations and their properties. */
 export interface LocationListResult {
   /** List of Cosmos DB locations and their properties. */
-  value?: LocationListResultValueList;
+  value: LocationListResultValueList;
   nextLink?: string;
 }
 export interface ListMongoDBResourceMongoDBCollectionsRequest {
@@ -5430,6 +5494,8 @@ export interface ListMongoDBResourceMongoDBCollectionsRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type MongoDBCollectionGetResultsTagsMap = { [key: string]: string | undefined };
@@ -5457,7 +5523,7 @@ export type MongoDBCollectionListResultValueList = Array<MongoDBCollectionGetRes
 /** The List operation response, that contains the MongoDB collections and their properties. */
 export interface MongoDBCollectionListResult {
   /** List of MongoDB collections and their properties. */
-  value?: MongoDBCollectionListResultValueList;
+  value: MongoDBCollectionListResultValueList;
   nextLink?: string;
 }
 export interface ListMongoDBResourceMongoDBDatabasesRequest {
@@ -5467,6 +5533,8 @@ export interface ListMongoDBResourceMongoDBDatabasesRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type MongoDBDatabaseGetResultsTagsMap = { [key: string]: string | undefined };
@@ -5494,7 +5562,7 @@ export type MongoDBDatabaseListResultValueList = Array<MongoDBDatabaseGetResults
 /** The List operation response, that contains the MongoDB databases and their properties. */
 export interface MongoDBDatabaseListResult {
   /** List of MongoDB databases and their properties. */
-  value?: MongoDBDatabaseListResultValueList;
+  value: MongoDBDatabaseListResultValueList;
   nextLink?: string;
 }
 export interface ListMongoDBResourceMongoRoleDefinitionsRequest {
@@ -5504,6 +5572,8 @@ export interface ListMongoDBResourceMongoRoleDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Cosmos DB Mongo Role Definition. */
 export interface MongoRoleDefinitionGetResults {
@@ -5523,7 +5593,7 @@ export type MongoRoleDefinitionListResultValueList = Array<MongoRoleDefinitionGe
 /** The relevant Mongo Role Definitions. */
 export interface MongoRoleDefinitionListResult {
   /** List of Mongo Role Definitions and their properties. */
-  value?: MongoRoleDefinitionListResultValueList;
+  value: MongoRoleDefinitionListResultValueList;
   nextLink?: string;
 }
 export interface ListMongoDBResourceMongoUserDefinitionsRequest {
@@ -5533,6 +5603,8 @@ export interface ListMongoDBResourceMongoUserDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Cosmos DB User Definition */
 export interface MongoUserDefinitionGetResults {
@@ -5552,7 +5624,7 @@ export type MongoUserDefinitionListResultValueList = Array<MongoUserDefinitionGe
 /** The relevant User Definition. */
 export interface MongoUserDefinitionListResult {
   /** List of User Definition and their properties */
-  value?: MongoUserDefinitionListResultValueList;
+  value: MongoUserDefinitionListResultValueList;
   nextLink?: string;
 }
 export interface ListMongoMIResourceMongoMIRoleAssignmentsRequest {
@@ -5562,6 +5634,8 @@ export interface ListMongoMIResourceMongoMIRoleAssignmentsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB MongoMI Role Assignment. */
 export interface MongoMIRoleAssignmentResource {
@@ -5592,6 +5666,8 @@ export interface ListMongoMIResourceMongoMIRoleDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB MongoMI Role Definition. */
 export interface MongoMIRoleDefinitionResource {
@@ -5622,6 +5698,8 @@ export interface ListNotebookWorkspaceByDatabaseAccountRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A notebook workspace resource */
 export interface NotebookWorkspace {
@@ -5641,7 +5719,7 @@ export type NotebookWorkspaceListResultValueList = Array<NotebookWorkspace>;
 /** A list of notebook workspace resources */
 export interface NotebookWorkspaceListResult {
   /** Array of notebook workspace resources */
-  value?: NotebookWorkspaceListResultValueList;
+  value: NotebookWorkspaceListResultValueList;
   nextLink?: string;
 }
 export type ListNotebookWorkspaceConnectionInfoRequestNotebookWorkspaceName = "default";
@@ -5664,7 +5742,10 @@ export interface NotebookWorkspaceConnectionInfoResult {
   /** Specifies the endpoint of Notebook server. */
   notebookServerEndpoint?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.ResourceProvider */
@@ -5707,6 +5788,8 @@ export interface ListPartitionKeyRangeIdMetricsRequest {
   partitionKeyRangeId: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPartitionKeyRangeIdRegionMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5725,6 +5808,8 @@ export interface ListPartitionKeyRangeIdRegionMetricsRequest {
   partitionKeyRangeId: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPercentileMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5735,6 +5820,8 @@ export interface ListPercentileMetricsRequest {
   accountName: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Represents percentile metrics values. */
 export interface PercentileMetricValue {
@@ -5787,7 +5874,7 @@ export type PercentileMetricListResultValueList = Array<PercentileMetric>;
 /** The response to a list percentile metrics request. */
 export interface PercentileMetricListResult {
   /** The list of percentile metrics for the account. */
-  value?: PercentileMetricListResultValueList;
+  value: PercentileMetricListResultValueList;
   nextLink?: string;
 }
 export interface ListPercentileSourceTargetMetricsRequest {
@@ -5803,6 +5890,8 @@ export interface ListPercentileSourceTargetMetricsRequest {
   targetRegion: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPercentileTargetMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5815,6 +5904,8 @@ export interface ListPercentileTargetMetricsRequest {
   targetRegion: string;
   /** An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq. */
   _filter: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListPrivateEndpointConnectionByDatabaseAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5823,13 +5914,15 @@ export interface ListPrivateEndpointConnectionByDatabaseAccountRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections */
-  value?: PrivateEndpointConnectionListResultValueList;
+  value: PrivateEndpointConnectionListResultValueList;
   nextLink?: string;
 }
 export interface ListPrivateLinkResourceByDatabaseAccountRequest {
@@ -5839,6 +5932,8 @@ export interface ListPrivateLinkResourceByDatabaseAccountRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A private link resource */
 export interface PrivateLinkResource {
@@ -5858,7 +5953,7 @@ export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
-  value?: PrivateLinkResourceListResultValueList;
+  value: PrivateLinkResourceListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableDatabaseAccountByLocationRequest {
@@ -5866,6 +5961,8 @@ export interface ListRestorableDatabaseAccountByLocationRequest {
   subscriptionId: string;
   /** Cosmos DB region, with spaces between words and each word capitalized. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** A Azure Cosmos DB restorable database account. */
 export interface RestorableDatabaseAccountGetResult {
@@ -5888,12 +5985,14 @@ export type RestorableDatabaseAccountsListResultValueList =
 /** The List operation response, that contains the restorable database accounts and their properties. */
 export interface RestorableDatabaseAccountsListResult {
   /** List of restorable database accounts and their properties. */
-  value?: RestorableDatabaseAccountsListResultValueList;
+  value: RestorableDatabaseAccountsListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableDatabaseAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListRestorableGremlinDatabasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5902,6 +6001,8 @@ export interface ListRestorableGremlinDatabasesRequest {
   location: string;
   /** The instanceId GUID of a restorable database account. */
   instanceId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Enum to indicate the operation type of the event. */
 export type OperationType = "Create" | "Replace" | "Delete" | "Recreate" | "SystemOperation";
@@ -5944,7 +6045,7 @@ export type RestorableGremlinDatabasesListResultValueList =
 /** The List operation response, that contains the Gremlin database events and their properties. */
 export interface RestorableGremlinDatabasesListResult {
   /** List of Gremlin database events and their properties. */
-  value?: RestorableGremlinDatabasesListResultValueList;
+  value: RestorableGremlinDatabasesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableGremlinGraphsRequest {
@@ -5960,6 +6061,8 @@ export interface ListRestorableGremlinGraphsRequest {
   startTime?: string;
   /** Restorable Gremlin graphs event feed end time. */
   endTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource of an Azure Cosmos DB Gremlin graph event */
 export interface RestorableGremlinGraphPropertiesResource {
@@ -5999,7 +6102,7 @@ export type RestorableGremlinGraphsListResultValueList = Array<RestorableGremlin
 /** The List operation response, that contains the Gremlin graph events and their properties. */
 export interface RestorableGremlinGraphsListResult {
   /** List of Gremlin graph events and their properties. */
-  value?: RestorableGremlinGraphsListResultValueList;
+  value: RestorableGremlinGraphsListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableGremlinResourcesRequest {
@@ -6013,6 +6116,8 @@ export interface ListRestorableGremlinResourcesRequest {
   restoreLocation?: string;
   /** The timestamp when the restorable resources existed. */
   restoreTimestampInUtc?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The names of the graphs available for restore. */
 export type RestorableGremlinResourcesGetResultGraphNamesList = Array<string>;
@@ -6035,7 +6140,7 @@ export type RestorableGremlinResourcesListResultValueList =
 /** The List operation response, that contains the restorable Gremlin resources. */
 export interface RestorableGremlinResourcesListResult {
   /** List of restorable Gremlin resources, including the gremlin database and graph names. */
-  value?: RestorableGremlinResourcesListResultValueList;
+  value: RestorableGremlinResourcesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableMongodbCollectionsRequest {
@@ -6051,6 +6156,8 @@ export interface ListRestorableMongodbCollectionsRequest {
   startTime?: string;
   /** Restorable MongoDB collections event feed end time. */
   endTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource of an Azure Cosmos DB MongoDB collection event */
 export interface RestorableMongodbCollectionPropertiesResource {
@@ -6091,7 +6198,7 @@ export type RestorableMongodbCollectionsListResultValueList =
 /** The List operation response, that contains the MongoDB collection events and their properties. */
 export interface RestorableMongodbCollectionsListResult {
   /** List of MongoDB collection events and their properties. */
-  value?: RestorableMongodbCollectionsListResultValueList;
+  value: RestorableMongodbCollectionsListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableMongodbDatabasesRequest {
@@ -6101,6 +6208,8 @@ export interface ListRestorableMongodbDatabasesRequest {
   location: string;
   /** The instanceId GUID of a restorable database account. */
   instanceId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource of an Azure Cosmos DB MongoDB database event */
 export interface RestorableMongodbDatabasePropertiesResource {
@@ -6141,7 +6250,7 @@ export type RestorableMongodbDatabasesListResultValueList =
 /** The List operation response, that contains the MongoDB database events and their properties. */
 export interface RestorableMongodbDatabasesListResult {
   /** List of MongoDB database events and their properties. */
-  value?: RestorableMongodbDatabasesListResultValueList;
+  value: RestorableMongodbDatabasesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableMongodbResourcesRequest {
@@ -6155,6 +6264,8 @@ export interface ListRestorableMongodbResourcesRequest {
   restoreLocation?: string;
   /** The timestamp when the restorable resources existed. */
   restoreTimestampInUtc?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The names of the collections available for restore. */
 export type RestorableMongodbResourcesGetResultCollectionNamesList = Array<string>;
@@ -6177,7 +6288,7 @@ export type RestorableMongodbResourcesListResultValueList =
 /** The List operation response, that contains the restorable MongoDB resources. */
 export interface RestorableMongodbResourcesListResult {
   /** List of restorable MongoDB resources, including the database and collection names. */
-  value?: RestorableMongodbResourcesListResultValueList;
+  value: RestorableMongodbResourcesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableSqlContainersRequest {
@@ -6193,6 +6304,8 @@ export interface ListRestorableSqlContainersRequest {
   startTime?: string;
   /** Restorable Sql containers event feed end time. */
   endTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Enum to indicate the mode of account creation. */
 export type RestorableSqlContainerPropertiesResourceContainerCreateMode = "Default" | "Restore";
@@ -6276,7 +6389,7 @@ export type RestorableSqlContainersListResultValueList = Array<RestorableSqlCont
 /** The List operation response, that contains the SQL container events and their properties. */
 export interface RestorableSqlContainersListResult {
   /** List of SQL container events and their properties. */
-  value?: RestorableSqlContainersListResultValueList;
+  value: RestorableSqlContainersListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableSqlDatabasesRequest {
@@ -6286,6 +6399,8 @@ export interface ListRestorableSqlDatabasesRequest {
   location: string;
   /** The instanceId GUID of a restorable database account. */
   instanceId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Enum to indicate the mode of account creation. */
 export type RestorableSqlDatabasePropertiesResourceDatabaseCreateMode = "Default" | "Restore";
@@ -6350,7 +6465,7 @@ export type RestorableSqlDatabasesListResultValueList = Array<RestorableSqlDatab
 /** The List operation response, that contains the SQL database events and their properties. */
 export interface RestorableSqlDatabasesListResult {
   /** List of SQL database events and their properties. */
-  value?: RestorableSqlDatabasesListResultValueList;
+  value: RestorableSqlDatabasesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableSqlResourcesRequest {
@@ -6364,6 +6479,8 @@ export interface ListRestorableSqlResourcesRequest {
   restoreLocation?: string;
   /** The timestamp when the restorable resources existed. */
   restoreTimestampInUtc?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The names of the collections available for restore. */
 export type RestorableSqlResourcesGetResultCollectionNamesList = Array<string>;
@@ -6385,7 +6502,7 @@ export type RestorableSqlResourcesListResultValueList = Array<RestorableSqlResou
 /** The List operation response, that contains the restorable SQL resources. */
 export interface RestorableSqlResourcesListResult {
   /** List of restorable SQL resources, including the database and collection names. */
-  value?: RestorableSqlResourcesListResultValueList;
+  value: RestorableSqlResourcesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableTableResourcesRequest {
@@ -6399,6 +6516,8 @@ export interface ListRestorableTableResourcesRequest {
   restoreLocation?: string;
   /** The timestamp when the restorable resources existed. */
   restoreTimestampInUtc?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Specific Databases to restore. */
 export interface RestorableTableResourcesGetResult {
@@ -6414,7 +6533,7 @@ export type RestorableTableResourcesListResultValueList = Array<RestorableTableR
 /** List of restorable table names. */
 export interface RestorableTableResourcesListResult {
   /** List of restorable table names. */
-  value?: RestorableTableResourcesListResultValueList;
+  value: RestorableTableResourcesListResultValueList;
   nextLink?: string;
 }
 export interface ListRestorableTablesRequest {
@@ -6428,6 +6547,8 @@ export interface ListRestorableTablesRequest {
   startTime?: string;
   /** Restorable Tables event feed end time. */
   endTime?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource of an Azure Cosmos DB Table event */
 export interface RestorableTablePropertiesResource {
@@ -6467,7 +6588,7 @@ export type RestorableTablesListResultValueList = Array<RestorableTableGetResult
 /** The List operation response, that contains the Table events and their properties. */
 export interface RestorableTablesListResult {
   /** List of Table events and their properties. */
-  value?: RestorableTablesListResultValueList;
+  value: RestorableTablesListResultValueList;
   nextLink?: string;
 }
 export interface ListServiceRequest {
@@ -6477,6 +6598,8 @@ export interface ListServiceRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties for the database account. */
 export interface ServiceResource {
@@ -6496,7 +6619,7 @@ export type ServiceResourceListResultValueList = Array<ServiceResource>;
 /** The List operation response, that contains the Service Resource and their properties. */
 export interface ServiceResourceListResult {
   /** List of Service Resource and their properties. */
-  value?: ServiceResourceListResultValueList;
+  value: ServiceResourceListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceClientEncryptionKeysRequest {
@@ -6508,6 +6631,8 @@ export interface ListSqlResourceClientEncryptionKeysRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Client Encryption Key. */
 export interface ClientEncryptionKeyGetResults {
@@ -6527,7 +6652,7 @@ export type ClientEncryptionKeysListResultValueList = Array<ClientEncryptionKeyG
 /** The List operation response, that contains the client encryption keys and their properties. */
 export interface ClientEncryptionKeysListResult {
   /** List of client encryption keys and their properties. */
-  value?: ClientEncryptionKeysListResultValueList;
+  value: ClientEncryptionKeysListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlContainersRequest {
@@ -6539,6 +6664,8 @@ export interface ListSqlResourceSqlContainersRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type SqlContainerGetResultsTagsMap = { [key: string]: string | undefined };
@@ -6566,7 +6693,7 @@ export type SqlContainerListResultValueList = Array<SqlContainerGetResults>;
 /** The List operation response, that contains the containers and their properties. */
 export interface SqlContainerListResult {
   /** List of containers and their properties. */
-  value?: SqlContainerListResultValueList;
+  value: SqlContainerListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlDatabasesRequest {
@@ -6576,6 +6703,8 @@ export interface ListSqlResourceSqlDatabasesRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type SqlDatabaseGetResultsTagsMap = { [key: string]: string | undefined };
@@ -6603,7 +6732,7 @@ export type SqlDatabaseListResultValueList = Array<SqlDatabaseGetResults>;
 /** The List operation response, that contains the SQL databases and their properties. */
 export interface SqlDatabaseListResult {
   /** List of SQL databases and their properties. */
-  value?: SqlDatabaseListResultValueList;
+  value: SqlDatabaseListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlRoleAssignmentsRequest {
@@ -6613,6 +6742,8 @@ export interface ListSqlResourceSqlRoleAssignmentsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Cosmos DB Role Assignment */
 export interface SqlRoleAssignmentGetResults {
@@ -6632,7 +6763,7 @@ export type SqlRoleAssignmentListResultValueList = Array<SqlRoleAssignmentGetRes
 /** The relevant Role Assignments. */
 export interface SqlRoleAssignmentListResult {
   /** List of Role Assignments and their properties */
-  value?: SqlRoleAssignmentListResultValueList;
+  value: SqlRoleAssignmentListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlRoleDefinitionsRequest {
@@ -6642,6 +6773,8 @@ export interface ListSqlResourceSqlRoleDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** An Azure Cosmos DB SQL Role Definition. */
 export interface SqlRoleDefinitionGetResults {
@@ -6661,7 +6794,7 @@ export type SqlRoleDefinitionListResultValueList = Array<SqlRoleDefinitionGetRes
 /** The relevant Role Definitions. */
 export interface SqlRoleDefinitionListResult {
   /** List of Role Definitions and their properties. */
-  value?: SqlRoleDefinitionListResultValueList;
+  value: SqlRoleDefinitionListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlStoredProceduresRequest {
@@ -6675,6 +6808,8 @@ export interface ListSqlResourceSqlStoredProceduresRequest {
   databaseName: string;
   /** Cosmos DB container name. */
   containerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type SqlStoredProcedureGetResultsTagsMap = { [key: string]: string | undefined };
@@ -6702,7 +6837,7 @@ export type SqlStoredProcedureListResultValueList = Array<SqlStoredProcedureGetR
 /** The List operation response, that contains the storedProcedures and their properties. */
 export interface SqlStoredProcedureListResult {
   /** List of storedProcedures and their properties. */
-  value?: SqlStoredProcedureListResultValueList;
+  value: SqlStoredProcedureListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlTriggersRequest {
@@ -6716,6 +6851,8 @@ export interface ListSqlResourceSqlTriggersRequest {
   databaseName: string;
   /** Cosmos DB container name. */
   containerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of the Trigger */
 export type TriggerType = "Pre" | "Post";
@@ -6767,7 +6904,7 @@ export type SqlTriggerListResultValueList = Array<SqlTriggerGetResults>;
 /** The List operation response, that contains the triggers and their properties. */
 export interface SqlTriggerListResult {
   /** List of triggers and their properties. */
-  value?: SqlTriggerListResultValueList;
+  value: SqlTriggerListResultValueList;
   nextLink?: string;
 }
 export interface ListSqlResourceSqlUserDefinedFunctionsRequest {
@@ -6781,6 +6918,8 @@ export interface ListSqlResourceSqlUserDefinedFunctionsRequest {
   databaseName: string;
   /** Cosmos DB container name. */
   containerName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type SqlUserDefinedFunctionGetResultsTagsMap = { [key: string]: string | undefined };
@@ -6808,7 +6947,7 @@ export type SqlUserDefinedFunctionListResultValueList = Array<SqlUserDefinedFunc
 /** The List operation response, that contains the userDefinedFunctions and their properties. */
 export interface SqlUserDefinedFunctionListResult {
   /** List of userDefinedFunctions and their properties. */
-  value?: SqlUserDefinedFunctionListResultValueList;
+  value: SqlUserDefinedFunctionListResultValueList;
   nextLink?: string;
 }
 export interface ListTableResourceTableRoleAssignmentsRequest {
@@ -6818,6 +6957,8 @@ export interface ListTableResourceTableRoleAssignmentsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB Table Role Assignment. */
 export interface TableRoleAssignmentResource {
@@ -6848,6 +6989,8 @@ export interface ListTableResourceTableRoleDefinitionsRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Parameters to create and update an Azure Cosmos DB Table Role Definition. */
 export interface TableRoleDefinitionResource {
@@ -6878,6 +7021,8 @@ export interface ListTableResourceTablesRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
 export type TableGetResultsTagsMap = { [key: string]: string | undefined };
@@ -6905,7 +7050,7 @@ export type TableListResultValueList = Array<TableGetResults>;
 /** The List operation response, that contains the Table and their properties. */
 export interface TableListResult {
   /** List of Table and their properties. */
-  value?: TableListResultValueList;
+  value: TableListResultValueList;
   nextLink?: string;
 }
 export interface MigrateCassandraResourceCassandraKeyspaceToAutoscaleRequest {
@@ -11127,72 +11272,101 @@ export const InvokeCassandraClusterCommand: API.OperationMethod<
 
 export type ListCassandraClusterByResourceGroupError = AzureOpError;
 /** List all managed Cassandra clusters in this resource group. */
-export const ListCassandraClusterByResourceGroup: API.OperationMethod<
+export const ListCassandraClusterByResourceGroup: API.PaginatedOperationMethod<
   ListCassandraClusterByResourceGroupRequest,
   ListClusters,
   ListCassandraClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<ListCassandraClusterByResourceGroupRequest>,
   output: __S(577, __c18, 1) as any as S.Schema<ListClusters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCassandraClusterBySubscriptionError = AzureOpError;
 /** List all managed Cassandra clusters in this subscription. */
-export const ListCassandraClusterBySubscription: API.OperationMethod<
+export const ListCassandraClusterBySubscription: API.PaginatedOperationMethod<
   ListCassandraClusterBySubscriptionRequest,
   ListClusters,
   ListCassandraClusterBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClusterResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<ListCassandraClusterBySubscriptionRequest>,
   output: __S(577, __c18, 1) as any as S.Schema<ListClusters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCassandraDataCentersError = AzureOpError;
 /** List all data centers in a particular managed Cassandra cluster. */
-export const ListCassandraDataCenters: API.OperationMethod<
+export const ListCassandraDataCenters: API.PaginatedOperationMethod<
   ListCassandraDataCentersRequest,
   ListDataCenters,
   ListCassandraDataCentersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DataCenterResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<ListCassandraDataCentersRequest>,
   output: __S(642, __c20, 2) as any as S.Schema<ListDataCenters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCassandraResourceCassandraKeyspacesError = AzureOpError;
 /** Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account. */
-export const ListCassandraResourceCassandraKeyspaces: API.OperationMethod<
+export const ListCassandraResourceCassandraKeyspaces: API.PaginatedOperationMethod<
   ListCassandraResourceCassandraKeyspacesRequest,
   CassandraKeyspaceListResult,
   ListCassandraResourceCassandraKeyspacesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CassandraKeyspaceGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<ListCassandraResourceCassandraKeyspacesRequest>,
   output: __S(674, __c21, 2) as any as S.Schema<CassandraKeyspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCassandraResourceCassandraRoleAssignmentsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Cassandra Role Assignments. */
-export const ListCassandraResourceCassandraRoleAssignments: API.OperationMethod<
+export const ListCassandraResourceCassandraRoleAssignments: API.PaginatedOperationMethod<
   ListCassandraResourceCassandraRoleAssignmentsRequest,
   CassandraRoleAssignmentListResult,
   ListCassandraResourceCassandraRoleAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CassandraRoleAssignmentResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     704,
     __c22,
@@ -11202,16 +11376,23 @@ export const ListCassandraResourceCassandraRoleAssignments: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCassandraResourceCassandraRoleDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Cassandra Role Definitions. */
-export const ListCassandraResourceCassandraRoleDefinitions: API.OperationMethod<
+export const ListCassandraResourceCassandraRoleDefinitions: API.PaginatedOperationMethod<
   ListCassandraResourceCassandraRoleDefinitionsRequest,
   CassandraRoleDefinitionListResult,
   ListCassandraResourceCassandraRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CassandraRoleDefinitionResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     768,
     __c24,
@@ -11221,142 +11402,211 @@ export const ListCassandraResourceCassandraRoleDefinitions: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCassandraResourceCassandraTablesError = AzureOpError;
 /** Lists the Cassandra table under an existing Azure Cosmos DB database account. */
-export const ListCassandraResourceCassandraTables: API.OperationMethod<
+export const ListCassandraResourceCassandraTables: API.PaginatedOperationMethod<
   ListCassandraResourceCassandraTablesRequest,
   CassandraTableListResult,
   ListCassandraResourceCassandraTablesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CassandraTableGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(896, __c28, 0) as any as S.Schema<ListCassandraResourceCassandraTablesRequest>,
   output: __S(898, __c28, 2) as any as S.Schema<CassandraTableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionMetricDefinitionsError = AzureOpError;
 /** Retrieves metric definitions for the given collection. */
-export const ListCollectionMetricDefinitions: API.OperationMethod<
+export const ListCollectionMetricDefinitions: API.PaginatedOperationMethod<
   ListCollectionMetricDefinitionsRequest,
   MetricDefinitionsListResult,
   ListCollectionMetricDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetricDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c29, 0) as any as S.Schema<ListCollectionMetricDefinitionsRequest>,
   output: __S(996, __c31, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given database account and collection. */
-export const ListCollectionMetrics: API.OperationMethod<
+export const ListCollectionMetrics: API.PaginatedOperationMethod<
   ListCollectionMetricsRequest,
   MetricListResult,
   ListCollectionMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Metric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1024, __c32, 0) as any as S.Schema<ListCollectionMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionPartitionMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given collection, split by partition. */
-export const ListCollectionPartitionMetrics: API.OperationMethod<
+export const ListCollectionPartitionMetrics: API.PaginatedOperationMethod<
   ListCollectionPartitionMetricsRequest,
   PartitionMetricListResult,
   ListCollectionPartitionMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PartitionMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1120, __c35, 0) as any as S.Schema<ListCollectionPartitionMetricsRequest>,
   output: __S(1154, __c36, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionPartitionRegionMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given collection and region, split by partition. */
-export const ListCollectionPartitionRegionMetrics: API.OperationMethod<
+export const ListCollectionPartitionRegionMetrics: API.PaginatedOperationMethod<
   ListCollectionPartitionRegionMetricsRequest,
   PartitionMetricListResult,
   ListCollectionPartitionRegionMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PartitionMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<ListCollectionPartitionRegionMetricsRequest>,
   output: __S(1154, __c36, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionPartitionUsagesError = AzureOpError;
 /** Retrieves the usages (most recent storage data) for the given collection, split by partition. */
-export const ListCollectionPartitionUsages: API.OperationMethod<
+export const ListCollectionPartitionUsages: API.PaginatedOperationMethod<
   ListCollectionPartitionUsagesRequest,
   PartitionUsagesResult,
   ListCollectionPartitionUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PartitionUsage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1216, __c38, 0) as any as S.Schema<ListCollectionPartitionUsagesRequest>,
   output: __S(1219, __c38, 3) as any as S.Schema<PartitionUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionRegionMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given database account, collection and region. */
-export const ListCollectionRegionMetrics: API.OperationMethod<
+export const ListCollectionRegionMetrics: API.PaginatedOperationMethod<
   ListCollectionRegionMetricsRequest,
   MetricListResult,
   ListCollectionRegionMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Metric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1248, __c39, 0) as any as S.Schema<ListCollectionRegionMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCollectionUsagesError = AzureOpError;
 /** Retrieves the usages (most recent storage data) for the given collection. */
-export const ListCollectionUsages: API.OperationMethod<
+export const ListCollectionUsages: API.PaginatedOperationMethod<
   ListCollectionUsagesRequest,
   UsagesResult,
   ListCollectionUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<ListCollectionUsagesRequest>,
   output: __S(1314, __c41, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAccountByResourceGroupError = AzureOpError;
 /** Lists all the Azure Cosmos DB database accounts available under the given resource group. */
-export const ListDatabaseAccountByResourceGroup: API.OperationMethod<
+export const ListDatabaseAccountByResourceGroup: API.PaginatedOperationMethod<
   ListDatabaseAccountByResourceGroupRequest,
   DatabaseAccountsListResult,
   ListDatabaseAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseAccountGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1344, __c42, 0) as any as S.Schema<ListDatabaseAccountByResourceGroupRequest>,
   output: __S(1377, __c43, 1) as any as S.Schema<DatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAccountConnectionStringsError = AzureOpError;
 /** Lists the connection strings for the specified Azure Cosmos DB database account. */
@@ -11390,363 +11640,531 @@ export const ListDatabaseAccountKeys: API.OperationMethod<
 
 export type ListDatabaseAccountMetricDefinitionsError = AzureOpError;
 /** Retrieves metric definitions for the given database account. */
-export const ListDatabaseAccountMetricDefinitions: API.OperationMethod<
+export const ListDatabaseAccountMetricDefinitions: API.PaginatedOperationMethod<
   ListDatabaseAccountMetricDefinitionsRequest,
   MetricDefinitionsListResult,
   ListDatabaseAccountMetricDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetricDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1664, __c52, 0) as any as S.Schema<ListDatabaseAccountMetricDefinitionsRequest>,
   output: __S(996, __c31, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAccountMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given database account. */
-export const ListDatabaseAccountMetrics: API.OperationMethod<
+export const ListDatabaseAccountMetrics: API.PaginatedOperationMethod<
   ListDatabaseAccountMetricsRequest,
   MetricListResult,
   ListDatabaseAccountMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Metric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1696, __c53, 0) as any as S.Schema<ListDatabaseAccountMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAccountRegionMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given database account and region. */
-export const ListDatabaseAccountRegionMetrics: API.OperationMethod<
+export const ListDatabaseAccountRegionMetrics: API.PaginatedOperationMethod<
   ListDatabaseAccountRegionMetricsRequest,
   MetricListResult,
   ListDatabaseAccountRegionMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Metric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1728, __c54, 0) as any as S.Schema<ListDatabaseAccountRegionMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAccountsError = AzureOpError;
 /** Lists all the Azure Cosmos DB database accounts available under the subscription. */
-export const ListDatabaseAccounts: API.OperationMethod<
+export const ListDatabaseAccounts: API.PaginatedOperationMethod<
   ListDatabaseAccountsRequest,
   DatabaseAccountsListResult,
   ListDatabaseAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatabaseAccountGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1760, __c55, 0) as any as S.Schema<ListDatabaseAccountsRequest>,
   output: __S(1377, __c43, 1) as any as S.Schema<DatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseAccountUsagesError = AzureOpError;
 /** Retrieves the usages (most recent data) for the given database account. */
-export const ListDatabaseAccountUsages: API.OperationMethod<
+export const ListDatabaseAccountUsages: API.PaginatedOperationMethod<
   ListDatabaseAccountUsagesRequest,
   UsagesResult,
   ListDatabaseAccountUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1792, __c56, 0) as any as S.Schema<ListDatabaseAccountUsagesRequest>,
   output: __S(1314, __c41, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseMetricDefinitionsError = AzureOpError;
 /** Retrieves metric definitions for the given database. */
-export const ListDatabaseMetricDefinitions: API.OperationMethod<
+export const ListDatabaseMetricDefinitions: API.PaginatedOperationMethod<
   ListDatabaseMetricDefinitionsRequest,
   MetricDefinitionsListResult,
   ListDatabaseMetricDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MetricDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1824, __c57, 0) as any as S.Schema<ListDatabaseMetricDefinitionsRequest>,
   output: __S(996, __c31, 4) as any as S.Schema<MetricDefinitionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given database account and database. */
-export const ListDatabaseMetrics: API.OperationMethod<
+export const ListDatabaseMetrics: API.PaginatedOperationMethod<
   ListDatabaseMetricsRequest,
   MetricListResult,
   ListDatabaseMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Metric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1856, __c58, 0) as any as S.Schema<ListDatabaseMetricsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<MetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatabaseUsagesError = AzureOpError;
 /** Retrieves the usages (most recent data) for the given database. */
-export const ListDatabaseUsages: API.OperationMethod<
+export const ListDatabaseUsages: API.PaginatedOperationMethod<
   ListDatabaseUsagesRequest,
   UsagesResult,
   ListDatabaseUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1888, __c59, 0) as any as S.Schema<ListDatabaseUsagesRequest>,
   output: __S(1314, __c41, 2) as any as S.Schema<UsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetError = AzureOpError;
 /** Lists all the fleets under the subscription. */
-export const ListFleet: API.OperationMethod<
+export const ListFleet: API.PaginatedOperationMethod<
   ListFleetRequest,
   FleetListResult,
   ListFleetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1920, __c60, 0) as any as S.Schema<ListFleetRequest>,
   output: __S(1953, __c61, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetByResourceGroupError = AzureOpError;
 /** Lists all the fleets under the specified subscription and resource group. */
-export const ListFleetByResourceGroup: API.OperationMethod<
+export const ListFleetByResourceGroup: API.PaginatedOperationMethod<
   ListFleetByResourceGroupRequest,
   FleetListResult,
   ListFleetByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2048, __c64, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
   output: __S(1953, __c61, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetspaceError = AzureOpError;
 /** Lists all the fleetspaces under a fleet. */
-export const ListFleetspace: API.OperationMethod<
+export const ListFleetspace: API.PaginatedOperationMethod<
   ListFleetspaceRequest,
   FleetspaceListResult,
   ListFleetspaceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetspaceResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2080, __c65, 0) as any as S.Schema<ListFleetspaceRequest>,
   output: __S(2082, __c65, 2) as any as S.Schema<FleetspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListFleetspaceAccountError = AzureOpError;
 /** Lists all the fleetspaces accounts under a fleetspace. */
-export const ListFleetspaceAccount: API.OperationMethod<
+export const ListFleetspaceAccount: API.PaginatedOperationMethod<
   ListFleetspaceAccountRequest,
   FleetspaceAccountListResult,
   ListFleetspaceAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  FleetspaceAccountResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2112, __c66, 0) as any as S.Schema<ListFleetspaceAccountRequest>,
   output: __S(2114, __c66, 2) as any as S.Schema<FleetspaceAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGremlinResourceGremlinDatabasesError = AzureOpError;
 /** Lists the Gremlin databases under an existing Azure Cosmos DB database account. */
-export const ListGremlinResourceGremlinDatabases: API.OperationMethod<
+export const ListGremlinResourceGremlinDatabases: API.PaginatedOperationMethod<
   ListGremlinResourceGremlinDatabasesRequest,
   GremlinDatabaseListResult,
   ListGremlinResourceGremlinDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GremlinDatabaseGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2144, __c67, 0) as any as S.Schema<ListGremlinResourceGremlinDatabasesRequest>,
   output: __S(2177, __c68, 1) as any as S.Schema<GremlinDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGremlinResourceGremlinGraphsError = AzureOpError;
 /** Lists the Gremlin graph under an existing Azure Cosmos DB database account. */
-export const ListGremlinResourceGremlinGraphs: API.OperationMethod<
+export const ListGremlinResourceGremlinGraphs: API.PaginatedOperationMethod<
   ListGremlinResourceGremlinGraphsRequest,
   GremlinGraphListResult,
   ListGremlinResourceGremlinGraphsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GremlinGraphGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2208, __c69, 0) as any as S.Schema<ListGremlinResourceGremlinGraphsRequest>,
   output: __S(2210, __c69, 2) as any as S.Schema<GremlinGraphListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGremlinResourceGremlinRoleAssignmentsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Gremlin Role Assignments. */
-export const ListGremlinResourceGremlinRoleAssignments: API.OperationMethod<
+export const ListGremlinResourceGremlinRoleAssignments: API.PaginatedOperationMethod<
   ListGremlinResourceGremlinRoleAssignmentsRequest,
   GremlinRoleAssignmentListResult,
   ListGremlinResourceGremlinRoleAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GremlinRoleAssignmentResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2240, __c70, 0) as any as S.Schema<ListGremlinResourceGremlinRoleAssignmentsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<GremlinRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListGremlinResourceGremlinRoleDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Gremlin Role Definitions. */
-export const ListGremlinResourceGremlinRoleDefinitions: API.OperationMethod<
+export const ListGremlinResourceGremlinRoleDefinitions: API.PaginatedOperationMethod<
   ListGremlinResourceGremlinRoleDefinitionsRequest,
   GremlinRoleDefinitionListResult,
   ListGremlinResourceGremlinRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  GremlinRoleDefinitionResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2272, __c71, 0) as any as S.Schema<ListGremlinResourceGremlinRoleDefinitionsRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<GremlinRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocationsError = AzureOpError;
 /** List Cosmos DB locations and their properties */
-export const ListLocations: API.OperationMethod<
+export const ListLocations: API.PaginatedOperationMethod<
   ListLocationsRequest,
   LocationListResult,
   ListLocationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  LocationGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2304, __c72, 0) as any as S.Schema<ListLocationsRequest>,
   output: __S(2306, __c72, 2) as any as S.Schema<LocationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMongoDBResourceMongoDBCollectionsError = AzureOpError;
 /** Lists the MongoDB collection under an existing Azure Cosmos DB database account. */
-export const ListMongoDBResourceMongoDBCollections: API.OperationMethod<
+export const ListMongoDBResourceMongoDBCollections: API.PaginatedOperationMethod<
   ListMongoDBResourceMongoDBCollectionsRequest,
   MongoDBCollectionListResult,
   ListMongoDBResourceMongoDBCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MongoDBCollectionGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2336, __c73, 0) as any as S.Schema<ListMongoDBResourceMongoDBCollectionsRequest>,
   output: __S(2338, __c73, 2) as any as S.Schema<MongoDBCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMongoDBResourceMongoDBDatabasesError = AzureOpError;
 /** Lists the MongoDB databases under an existing Azure Cosmos DB database account. */
-export const ListMongoDBResourceMongoDBDatabases: API.OperationMethod<
+export const ListMongoDBResourceMongoDBDatabases: API.PaginatedOperationMethod<
   ListMongoDBResourceMongoDBDatabasesRequest,
   MongoDBDatabaseListResult,
   ListMongoDBResourceMongoDBDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MongoDBDatabaseGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2368, __c74, 0) as any as S.Schema<ListMongoDBResourceMongoDBDatabasesRequest>,
   output: __S(2177, __c68, 1) as any as S.Schema<MongoDBDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMongoDBResourceMongoRoleDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Mongo Role Definitions. */
-export const ListMongoDBResourceMongoRoleDefinitions: API.OperationMethod<
+export const ListMongoDBResourceMongoRoleDefinitions: API.PaginatedOperationMethod<
   ListMongoDBResourceMongoRoleDefinitionsRequest,
   MongoRoleDefinitionListResult,
   ListMongoDBResourceMongoRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MongoRoleDefinitionGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2464, __c77, 0) as any as S.Schema<ListMongoDBResourceMongoRoleDefinitionsRequest>,
   output: __S(2466, __c77, 2) as any as S.Schema<MongoRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMongoDBResourceMongoUserDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Mongo User Definition. */
-export const ListMongoDBResourceMongoUserDefinitions: API.OperationMethod<
+export const ListMongoDBResourceMongoUserDefinitions: API.PaginatedOperationMethod<
   ListMongoDBResourceMongoUserDefinitionsRequest,
   MongoUserDefinitionListResult,
   ListMongoDBResourceMongoUserDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MongoUserDefinitionGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2496, __c78, 0) as any as S.Schema<ListMongoDBResourceMongoUserDefinitionsRequest>,
   output: __S(2498, __c78, 2) as any as S.Schema<MongoUserDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMongoMIResourceMongoMIRoleAssignmentsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB MongoMI Role Assignments. */
-export const ListMongoMIResourceMongoMIRoleAssignments: API.OperationMethod<
+export const ListMongoMIResourceMongoMIRoleAssignments: API.PaginatedOperationMethod<
   ListMongoMIResourceMongoMIRoleAssignmentsRequest,
   MongoMIRoleAssignmentListResult,
   ListMongoMIResourceMongoMIRoleAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MongoMIRoleAssignmentResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2528, __c79, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleAssignmentsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<MongoMIRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListMongoMIResourceMongoMIRoleDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB MongoMI Role Definitions. */
-export const ListMongoMIResourceMongoMIRoleDefinitions: API.OperationMethod<
+export const ListMongoMIResourceMongoMIRoleDefinitions: API.PaginatedOperationMethod<
   ListMongoMIResourceMongoMIRoleDefinitionsRequest,
   MongoMIRoleDefinitionListResult,
   ListMongoMIResourceMongoMIRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  MongoMIRoleDefinitionResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2560, __c80, 0) as any as S.Schema<ListMongoMIResourceMongoMIRoleDefinitionsRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<MongoMIRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNotebookWorkspaceByDatabaseAccountError = AzureOpError;
 /** Gets the notebook workspace resources of an existing Cosmos DB account. */
-export const ListNotebookWorkspaceByDatabaseAccount: API.OperationMethod<
+export const ListNotebookWorkspaceByDatabaseAccount: API.PaginatedOperationMethod<
   ListNotebookWorkspaceByDatabaseAccountRequest,
   NotebookWorkspaceListResult,
   ListNotebookWorkspaceByDatabaseAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NotebookWorkspace
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2592, __c81, 0) as any as S.Schema<ListNotebookWorkspaceByDatabaseAccountRequest>,
   output: __S(2594, __c81, 2) as any as S.Schema<NotebookWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNotebookWorkspaceConnectionInfoError = AzureOpError;
 /** Retrieves the connection info for the notebook workspace */
@@ -11765,102 +12183,145 @@ export const ListNotebookWorkspaceConnectionInfo: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Cosmos DB Resource Provider operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2656, __c83, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(2660, __c83, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPartitionKeyRangeIdMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given partition key range id. */
-export const ListPartitionKeyRangeIdMetrics: API.OperationMethod<
+export const ListPartitionKeyRangeIdMetrics: API.PaginatedOperationMethod<
   ListPartitionKeyRangeIdMetricsRequest,
   PartitionMetricListResult,
   ListPartitionKeyRangeIdMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PartitionMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2688, __c84, 0) as any as S.Schema<ListPartitionKeyRangeIdMetricsRequest>,
   output: __S(1154, __c36, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPartitionKeyRangeIdRegionMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given partition key range id and region. */
-export const ListPartitionKeyRangeIdRegionMetrics: API.OperationMethod<
+export const ListPartitionKeyRangeIdRegionMetrics: API.PaginatedOperationMethod<
   ListPartitionKeyRangeIdRegionMetricsRequest,
   PartitionMetricListResult,
   ListPartitionKeyRangeIdRegionMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PartitionMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2720, __c85, 0) as any as S.Schema<ListPartitionKeyRangeIdRegionMetricsRequest>,
   output: __S(1154, __c36, 2) as any as S.Schema<PartitionMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPercentileMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given database account. This url is only for PBS and Replication Latency data */
-export const ListPercentileMetrics: API.OperationMethod<
+export const ListPercentileMetrics: API.PaginatedOperationMethod<
   ListPercentileMetricsRequest,
   PercentileMetricListResult,
   ListPercentileMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PercentileMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2752, __c86, 0) as any as S.Schema<ListPercentileMetricsRequest>,
   output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPercentileSourceTargetMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given account, source and target region. This url is only for PBS and Replication Latency data */
-export const ListPercentileSourceTargetMetrics: API.OperationMethod<
+export const ListPercentileSourceTargetMetrics: API.PaginatedOperationMethod<
   ListPercentileSourceTargetMetricsRequest,
   PercentileMetricListResult,
   ListPercentileSourceTargetMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PercentileMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2848, __c89, 0) as any as S.Schema<ListPercentileSourceTargetMetricsRequest>,
   output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPercentileTargetMetricsError = AzureOpError;
 /** Retrieves the metrics determined by the given filter for the given account target region. This url is only for PBS and Replication Latency data */
-export const ListPercentileTargetMetrics: API.OperationMethod<
+export const ListPercentileTargetMetrics: API.PaginatedOperationMethod<
   ListPercentileTargetMetricsRequest,
   PercentileMetricListResult,
   ListPercentileTargetMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PercentileMetric
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2880, __c90, 0) as any as S.Schema<ListPercentileTargetMetricsRequest>,
   output: __S(2788, __c87, 4) as any as S.Schema<PercentileMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionByDatabaseAccountError = AzureOpError;
 /** List all private endpoint connections on a Cosmos DB account. */
-export const ListPrivateEndpointConnectionByDatabaseAccount: API.OperationMethod<
+export const ListPrivateEndpointConnectionByDatabaseAccount: API.PaginatedOperationMethod<
   ListPrivateEndpointConnectionByDatabaseAccountRequest,
   PrivateEndpointConnectionListResult,
   ListPrivateEndpointConnectionByDatabaseAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateEndpointConnection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     2912,
     __c91,
@@ -11870,397 +12331,585 @@ export const ListPrivateEndpointConnectionByDatabaseAccount: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateLinkResourceByDatabaseAccountError = AzureOpError;
 /** Gets the private link resources that need to be created for a Cosmos DB account. */
-export const ListPrivateLinkResourceByDatabaseAccount: API.OperationMethod<
+export const ListPrivateLinkResourceByDatabaseAccount: API.PaginatedOperationMethod<
   ListPrivateLinkResourceByDatabaseAccountRequest,
   PrivateLinkResourceListResult,
   ListPrivateLinkResourceByDatabaseAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  PrivateLinkResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2944, __c92, 0) as any as S.Schema<ListPrivateLinkResourceByDatabaseAccountRequest>,
   output: __S(2946, __c92, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableDatabaseAccountByLocationError = AzureOpError;
 /** Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region. This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read' permission. */
-export const ListRestorableDatabaseAccountByLocation: API.OperationMethod<
+export const ListRestorableDatabaseAccountByLocation: API.PaginatedOperationMethod<
   ListRestorableDatabaseAccountByLocationRequest,
   RestorableDatabaseAccountsListResult,
   ListRestorableDatabaseAccountByLocationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableDatabaseAccountGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(2976, __c93, 0) as any as S.Schema<ListRestorableDatabaseAccountByLocationRequest>,
   output: __S(3009, __c94, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableDatabaseAccountsError = AzureOpError;
 /** Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read' permission. */
-export const ListRestorableDatabaseAccounts: API.OperationMethod<
+export const ListRestorableDatabaseAccounts: API.PaginatedOperationMethod<
   ListRestorableDatabaseAccountsRequest,
   RestorableDatabaseAccountsListResult,
   ListRestorableDatabaseAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableDatabaseAccountGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3040, __c95, 0) as any as S.Schema<ListRestorableDatabaseAccountsRequest>,
   output: __S(3009, __c94, 1) as any as S.Schema<RestorableDatabaseAccountsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableGremlinDatabasesError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableGremlinDatabases: API.OperationMethod<
+export const ListRestorableGremlinDatabases: API.PaginatedOperationMethod<
   ListRestorableGremlinDatabasesRequest,
   RestorableGremlinDatabasesListResult,
   ListRestorableGremlinDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableGremlinDatabaseGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3072, __c96, 0) as any as S.Schema<ListRestorableGremlinDatabasesRequest>,
   output: __S(3108, __c97, 4) as any as S.Schema<RestorableGremlinDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableGremlinGraphsError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin graphs under a specific database. This helps in scenario where container was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableGremlinGraphs: API.OperationMethod<
+export const ListRestorableGremlinGraphs: API.PaginatedOperationMethod<
   ListRestorableGremlinGraphsRequest,
   RestorableGremlinGraphsListResult,
   ListRestorableGremlinGraphsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableGremlinGraphGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3136, __c98, 0) as any as S.Schema<ListRestorableGremlinGraphsRequest>,
   output: __S(3108, __c97, 4) as any as S.Schema<RestorableGremlinGraphsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableGremlinResourcesError = AzureOpError;
 /** Return a list of gremlin database and graphs combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission. */
-export const ListRestorableGremlinResources: API.OperationMethod<
+export const ListRestorableGremlinResources: API.PaginatedOperationMethod<
   ListRestorableGremlinResourcesRequest,
   RestorableGremlinResourcesListResult,
   ListRestorableGremlinResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableGremlinResourcesGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3168, __c99, 0) as any as S.Schema<ListRestorableGremlinResourcesRequest>,
   output: __S(3171, __c99, 3) as any as S.Schema<RestorableGremlinResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableMongodbCollectionsError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB MongoDB collections under a specific database. This helps in scenario where container was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableMongodbCollections: API.OperationMethod<
+export const ListRestorableMongodbCollections: API.PaginatedOperationMethod<
   ListRestorableMongodbCollectionsRequest,
   RestorableMongodbCollectionsListResult,
   ListRestorableMongodbCollectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableMongodbCollectionGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3200, __c100, 0) as any as S.Schema<ListRestorableMongodbCollectionsRequest>,
   output: __S(3108, __c97, 4) as any as S.Schema<RestorableMongodbCollectionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableMongodbDatabasesError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB MongoDB databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableMongodbDatabases: API.OperationMethod<
+export const ListRestorableMongodbDatabases: API.PaginatedOperationMethod<
   ListRestorableMongodbDatabasesRequest,
   RestorableMongodbDatabasesListResult,
   ListRestorableMongodbDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableMongodbDatabaseGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3264, __c102, 0) as any as S.Schema<ListRestorableMongodbDatabasesRequest>,
   output: __S(3108, __c97, 4) as any as S.Schema<RestorableMongodbDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableMongodbResourcesError = AzureOpError;
 /** Return a list of database and collection combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission. */
-export const ListRestorableMongodbResources: API.OperationMethod<
+export const ListRestorableMongodbResources: API.PaginatedOperationMethod<
   ListRestorableMongodbResourcesRequest,
   RestorableMongodbResourcesListResult,
   ListRestorableMongodbResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableMongodbResourcesGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3296, __c103, 0) as any as S.Schema<ListRestorableMongodbResourcesRequest>,
   output: __S(3330, __c104, 2) as any as S.Schema<RestorableMongodbResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableSqlContainersError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB SQL containers under a specific database. This helps in scenario where container was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableSqlContainers: API.OperationMethod<
+export const ListRestorableSqlContainers: API.PaginatedOperationMethod<
   ListRestorableSqlContainersRequest,
   RestorableSqlContainersListResult,
   ListRestorableSqlContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableSqlContainerGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3360, __c105, 0) as any as S.Schema<ListRestorableSqlContainersRequest>,
   output: __S(3366, __c105, 6) as any as S.Schema<RestorableSqlContainersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableSqlDatabasesError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB SQL databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableSqlDatabases: API.OperationMethod<
+export const ListRestorableSqlDatabases: API.PaginatedOperationMethod<
   ListRestorableSqlDatabasesRequest,
   RestorableSqlDatabasesListResult,
   ListRestorableSqlDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableSqlDatabaseGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3392, __c106, 0) as any as S.Schema<ListRestorableSqlDatabasesRequest>,
   output: __S(3398, __c106, 6) as any as S.Schema<RestorableSqlDatabasesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableSqlResourcesError = AzureOpError;
 /** Return a list of database and container combo that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission. */
-export const ListRestorableSqlResources: API.OperationMethod<
+export const ListRestorableSqlResources: API.PaginatedOperationMethod<
   ListRestorableSqlResourcesRequest,
   RestorableSqlResourcesListResult,
   ListRestorableSqlResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableSqlResourcesGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3424, __c107, 0) as any as S.Schema<ListRestorableSqlResourcesRequest>,
   output: __S(3330, __c104, 2) as any as S.Schema<RestorableSqlResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableTableResourcesError = AzureOpError;
 /** Return a list of tables that exist on the account at the given timestamp and location. This helps in scenarios to validate what resources exist at given timestamp and location. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission. */
-export const ListRestorableTableResources: API.OperationMethod<
+export const ListRestorableTableResources: API.PaginatedOperationMethod<
   ListRestorableTableResourcesRequest,
   RestorableTableResourcesListResult,
   ListRestorableTableResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableTableResourcesGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3456, __c108, 0) as any as S.Schema<ListRestorableTableResourcesRequest>,
   output: __S(3459, __c108, 3) as any as S.Schema<RestorableTableResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRestorableTablesError = AzureOpError;
 /** Show the event feed of all mutations done on all the Azure Cosmos DB Tables. This helps in scenario where table was accidentally deleted. This API requires 'Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read' permission */
-export const ListRestorableTables: API.OperationMethod<
+export const ListRestorableTables: API.PaginatedOperationMethod<
   ListRestorableTablesRequest,
   RestorableTablesListResult,
   ListRestorableTablesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RestorableTableGetResult
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3488, __c109, 0) as any as S.Schema<ListRestorableTablesRequest>,
   output: __S(3108, __c97, 4) as any as S.Schema<RestorableTablesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListServiceError = AzureOpError;
 /** Gets the status of service. */
-export const ListService: API.OperationMethod<
+export const ListService: API.PaginatedOperationMethod<
   ListServiceRequest,
   ServiceResourceListResult,
   ListServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ServiceResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3520, __c110, 0) as any as S.Schema<ListServiceRequest>,
   output: __S(3522, __c110, 2) as any as S.Schema<ServiceResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceClientEncryptionKeysError = AzureOpError;
 /** Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL database. */
-export const ListSqlResourceClientEncryptionKeys: API.OperationMethod<
+export const ListSqlResourceClientEncryptionKeys: API.PaginatedOperationMethod<
   ListSqlResourceClientEncryptionKeysRequest,
   ClientEncryptionKeysListResult,
   ListSqlResourceClientEncryptionKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ClientEncryptionKeyGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3552, __c111, 0) as any as S.Schema<ListSqlResourceClientEncryptionKeysRequest>,
   output: __S(3554, __c111, 2) as any as S.Schema<ClientEncryptionKeysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlContainersError = AzureOpError;
 /** Lists the SQL container under an existing Azure Cosmos DB database account. */
-export const ListSqlResourceSqlContainers: API.OperationMethod<
+export const ListSqlResourceSqlContainers: API.PaginatedOperationMethod<
   ListSqlResourceSqlContainersRequest,
   SqlContainerListResult,
   ListSqlResourceSqlContainersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlContainerGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3584, __c112, 0) as any as S.Schema<ListSqlResourceSqlContainersRequest>,
   output: __S(3586, __c112, 2) as any as S.Schema<SqlContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlDatabasesError = AzureOpError;
 /** Lists the SQL databases under an existing Azure Cosmos DB database account. */
-export const ListSqlResourceSqlDatabases: API.OperationMethod<
+export const ListSqlResourceSqlDatabases: API.PaginatedOperationMethod<
   ListSqlResourceSqlDatabasesRequest,
   SqlDatabaseListResult,
   ListSqlResourceSqlDatabasesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlDatabaseGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3648, __c114, 0) as any as S.Schema<ListSqlResourceSqlDatabasesRequest>,
   output: __S(3650, __c114, 2) as any as S.Schema<SqlDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlRoleAssignmentsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB SQL Role Assignments. */
-export const ListSqlResourceSqlRoleAssignments: API.OperationMethod<
+export const ListSqlResourceSqlRoleAssignments: API.PaginatedOperationMethod<
   ListSqlResourceSqlRoleAssignmentsRequest,
   SqlRoleAssignmentListResult,
   ListSqlResourceSqlRoleAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlRoleAssignmentGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3680, __c115, 0) as any as S.Schema<ListSqlResourceSqlRoleAssignmentsRequest>,
   output: __S(3682, __c115, 2) as any as S.Schema<SqlRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlRoleDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB SQL Role Definitions. */
-export const ListSqlResourceSqlRoleDefinitions: API.OperationMethod<
+export const ListSqlResourceSqlRoleDefinitions: API.PaginatedOperationMethod<
   ListSqlResourceSqlRoleDefinitionsRequest,
   SqlRoleDefinitionListResult,
   ListSqlResourceSqlRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlRoleDefinitionGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3712, __c116, 0) as any as S.Schema<ListSqlResourceSqlRoleDefinitionsRequest>,
   output: __S(3714, __c116, 2) as any as S.Schema<SqlRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlStoredProceduresError = AzureOpError;
 /** Lists the SQL storedProcedure under an existing Azure Cosmos DB database account. */
-export const ListSqlResourceSqlStoredProcedures: API.OperationMethod<
+export const ListSqlResourceSqlStoredProcedures: API.PaginatedOperationMethod<
   ListSqlResourceSqlStoredProceduresRequest,
   SqlStoredProcedureListResult,
   ListSqlResourceSqlStoredProceduresError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlStoredProcedureGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3744, __c117, 0) as any as S.Schema<ListSqlResourceSqlStoredProceduresRequest>,
   output: __S(3777, __c118, 1) as any as S.Schema<SqlStoredProcedureListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlTriggersError = AzureOpError;
 /** Lists the SQL trigger under an existing Azure Cosmos DB database account. */
-export const ListSqlResourceSqlTriggers: API.OperationMethod<
+export const ListSqlResourceSqlTriggers: API.PaginatedOperationMethod<
   ListSqlResourceSqlTriggersRequest,
   SqlTriggerListResult,
   ListSqlResourceSqlTriggersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlTriggerGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3808, __c119, 0) as any as S.Schema<ListSqlResourceSqlTriggersRequest>,
   output: __S(3810, __c119, 2) as any as S.Schema<SqlTriggerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListSqlResourceSqlUserDefinedFunctionsError = AzureOpError;
 /** Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account. */
-export const ListSqlResourceSqlUserDefinedFunctions: API.OperationMethod<
+export const ListSqlResourceSqlUserDefinedFunctions: API.PaginatedOperationMethod<
   ListSqlResourceSqlUserDefinedFunctionsRequest,
   SqlUserDefinedFunctionListResult,
   ListSqlResourceSqlUserDefinedFunctionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SqlUserDefinedFunctionGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3904, __c122, 0) as any as S.Schema<ListSqlResourceSqlUserDefinedFunctionsRequest>,
   output: __S(3777, __c118, 1) as any as S.Schema<SqlUserDefinedFunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTableResourceTableRoleAssignmentsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Table Role Assignments. */
-export const ListTableResourceTableRoleAssignments: API.OperationMethod<
+export const ListTableResourceTableRoleAssignments: API.PaginatedOperationMethod<
   ListTableResourceTableRoleAssignmentsRequest,
   TableRoleAssignmentListResult,
   ListTableResourceTableRoleAssignmentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TableRoleAssignmentResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3936, __c123, 0) as any as S.Schema<ListTableResourceTableRoleAssignmentsRequest>,
   output: __S(737, __c23, 1) as any as S.Schema<TableRoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTableResourceTableRoleDefinitionsError = AzureOpError;
 /** Retrieves the list of all Azure Cosmos DB Table Role Definitions. */
-export const ListTableResourceTableRoleDefinitions: API.OperationMethod<
+export const ListTableResourceTableRoleDefinitions: API.PaginatedOperationMethod<
   ListTableResourceTableRoleDefinitionsRequest,
   TableRoleDefinitionListResult,
   ListTableResourceTableRoleDefinitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TableRoleDefinitionResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3968, __c124, 0) as any as S.Schema<ListTableResourceTableRoleDefinitionsRequest>,
   output: __S(801, __c25, 1) as any as S.Schema<TableRoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListTableResourceTablesError = AzureOpError;
 /** Lists the Tables under an existing Azure Cosmos DB database account. */
-export const ListTableResourceTables: API.OperationMethod<
+export const ListTableResourceTables: API.PaginatedOperationMethod<
   ListTableResourceTablesRequest,
   TableListResult,
   ListTableResourceTablesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  TableGetResults
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4000, __c125, 0) as any as S.Schema<ListTableResourceTablesRequest>,
   output: __S(2177, __c68, 1) as any as S.Schema<TableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type MigrateCassandraResourceCassandraKeyspaceToAutoscaleError = AzureOpError;
 /** Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale */
@@ -13798,12 +14447,14 @@ function __c17(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraClusterByResourceGroupRequest" });
@@ -13816,7 +14467,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(576, __c18, 0)),
+          value: __S(576, __c18, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListClusters" });
@@ -13828,12 +14479,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/cassandraClusters",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraClusterBySubscriptionRequest" });
@@ -13847,12 +14500,14 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraDataCentersRequest" });
@@ -13861,7 +14516,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(641, __c20, 1)),
+          value: __S(641, __c20, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataCenters" });
@@ -13875,12 +14530,14 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraResourceCassandraKeyspacesRequest" });
@@ -13889,7 +14546,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(673, __c21, 1)),
+          value: __S(673, __c21, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CassandraKeyspaceListResult" });
@@ -13903,12 +14560,14 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleAssignments",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraResourceCassandraRoleAssignmentsRequest" });
@@ -13935,12 +14594,14 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraResourceCassandraRoleDefinitionsRequest" });
@@ -14026,12 +14687,14 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           keyspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCassandraResourceCassandraTablesRequest" });
@@ -14040,7 +14703,7 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(897, __c28, 1)),
+          value: __S(897, __c28, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CassandraTableListResult" });
@@ -14056,12 +14719,14 @@ function __c29(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionMetricDefinitionsRequest" });
@@ -14104,7 +14769,7 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(995, __c31, 3)),
+          value: __S(995, __c31, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDefinitionsListResult" });
@@ -14121,12 +14786,14 @@ function __c32(j: number): any {
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionMetricsRequest" });
@@ -14167,7 +14834,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1089, __c34, 1)),
+          value: __S(1089, __c34, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricListResult" });
@@ -14184,12 +14851,14 @@ function __c35(j: number): any {
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionPartitionMetricsRequest" });
@@ -14215,7 +14884,7 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1153, __c36, 1)),
+          value: __S(1153, __c36, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartitionMetricListResult" });
@@ -14233,12 +14902,14 @@ function __c37(j: number): any {
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitions/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionPartitionRegionMetricsRequest" });
@@ -14255,12 +14926,14 @@ function __c38(j: number): any {
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitions/usages",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionPartitionUsagesRequest" });
@@ -14281,7 +14954,7 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1218, __c38, 2)),
+          value: __S(1218, __c38, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartitionUsagesResult" });
@@ -14299,12 +14972,14 @@ function __c39(j: number): any {
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionRegionMetricsRequest" });
@@ -14321,12 +14996,14 @@ function __c40(j: number): any {
           databaseRid: S.String.pipe(T.Label()),
           collectionRid: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/usages",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCollectionUsagesRequest" });
@@ -14349,7 +15026,7 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1313, __c41, 1)),
+          value: __S(1313, __c41, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagesResult" });
@@ -14362,12 +15039,14 @@ function __c42(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAccountByResourceGroupRequest" });
@@ -14380,7 +15059,7 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1376, __c43, 0)),
+          value: __S(1376, __c43, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseAccountsListResult" });
@@ -14790,12 +15469,14 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAccountMetricDefinitionsRequest" });
@@ -14810,12 +15491,14 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAccountMetricsRequest" });
@@ -14831,12 +15514,14 @@ function __c54(j: number): any {
           accountName: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAccountRegionMetricsRequest" });
@@ -14848,12 +15533,14 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAccountsRequest" });
@@ -14868,12 +15555,14 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/usages",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseAccountUsagesRequest" });
@@ -14888,12 +15577,14 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           databaseRid: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseMetricDefinitionsRequest" });
@@ -14909,12 +15600,14 @@ function __c58(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseRid: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseMetricsRequest" });
@@ -14930,12 +15623,14 @@ function __c59(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseRid: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/usages",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDatabaseUsagesRequest" });
@@ -14947,12 +15642,14 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/fleets",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetRequest" });
@@ -15019,12 +15716,14 @@ function __c64(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetByResourceGroupRequest" });
@@ -15038,12 +15737,14 @@ function __c65(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetspaceRequest" });
@@ -15067,12 +15768,14 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetspaceName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListFleetspaceAccountRequest" });
@@ -15095,12 +15798,14 @@ function __c67(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGremlinResourceGremlinDatabasesRequest" });
@@ -15113,7 +15818,7 @@ function __c68(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2176, __c68, 0)),
+          value: __S(2176, __c68, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinDatabaseListResult" });
@@ -15128,12 +15833,14 @@ function __c69(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGremlinResourceGremlinGraphsRequest" });
@@ -15142,7 +15849,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2209, __c69, 1)),
+          value: __S(2209, __c69, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GremlinGraphListResult" });
@@ -15156,12 +15863,14 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleAssignments",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGremlinResourceGremlinRoleAssignmentsRequest" });
@@ -15175,12 +15884,14 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListGremlinResourceGremlinRoleDefinitionsRequest" });
@@ -15192,12 +15903,14 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocationsRequest" });
@@ -15206,7 +15919,7 @@ function __c72(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2305, __c72, 1)),
+          value: __S(2305, __c72, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocationListResult" });
@@ -15221,12 +15934,14 @@ function __c73(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoDBCollectionsRequest" });
@@ -15235,7 +15950,7 @@ function __c73(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2337, __c73, 1)),
+          value: __S(2337, __c73, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoDBCollectionListResult" });
@@ -15249,12 +15964,14 @@ function __c74(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoDBDatabasesRequest" });
@@ -15298,12 +16015,14 @@ function __c77(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoRoleDefinitionsRequest" });
@@ -15312,7 +16031,7 @@ function __c77(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2465, __c77, 1)),
+          value: __S(2465, __c77, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoRoleDefinitionListResult" });
@@ -15326,12 +16045,14 @@ function __c78(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMongoDBResourceMongoUserDefinitionsRequest" });
@@ -15340,7 +16061,7 @@ function __c78(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2497, __c78, 1)),
+          value: __S(2497, __c78, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoUserDefinitionListResult" });
@@ -15354,12 +16075,14 @@ function __c79(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleAssignments",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMongoMIResourceMongoMIRoleAssignmentsRequest" });
@@ -15373,12 +16096,14 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListMongoMIResourceMongoMIRoleDefinitionsRequest" });
@@ -15392,12 +16117,14 @@ function __c81(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNotebookWorkspaceByDatabaseAccountRequest" });
@@ -15406,7 +16133,7 @@ function __c81(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2593, __c81, 1)),
+          value: __S(2593, __c81, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotebookWorkspaceListResult" });
@@ -15443,12 +16170,15 @@ function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DocumentDB/operations",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -15491,12 +16221,14 @@ function __c84(j: number): any {
           collectionRid: S.String.pipe(T.Label()),
           partitionKeyRangeId: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPartitionKeyRangeIdMetricsRequest" });
@@ -15515,12 +16247,14 @@ function __c85(j: number): any {
           collectionRid: S.String.pipe(T.Label()),
           partitionKeyRangeId: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/region/{region}/databases/{databaseRid}/collections/{collectionRid}/partitionKeyRangeId/{partitionKeyRangeId}/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPartitionKeyRangeIdRegionMetricsRequest" });
@@ -15535,12 +16269,14 @@ function __c86(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/percentile/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPercentileMetricsRequest" });
@@ -15584,7 +16320,7 @@ function __c87(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2787, __c87, 3)),
+          value: __S(2787, __c87, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PercentileMetricListResult" });
@@ -15620,12 +16356,14 @@ function __c89(j: number): any {
           sourceRegion: S.String.pipe(T.Label()),
           targetRegion: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sourceRegion/{sourceRegion}/targetRegion/{targetRegion}/percentile/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPercentileSourceTargetMetricsRequest" });
@@ -15641,12 +16379,14 @@ function __c90(j: number): any {
           accountName: S.String.pipe(T.Label()),
           targetRegion: S.String.pipe(T.Label()),
           _filter: S.String.pipe(T.Query("$filter")),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/targetRegion/{targetRegion}/percentile/metrics",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPercentileTargetMetricsRequest" });
@@ -15660,19 +16400,21 @@ function __c91(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByDatabaseAccountRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1504, __c47, 0)),
+          value: __S(1504, __c47, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -15686,12 +16428,14 @@ function __c92(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateLinkResources",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByDatabaseAccountRequest" });
@@ -15700,7 +16444,7 @@ function __c92(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2945, __c92, 1)),
+          value: __S(2945, __c92, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
@@ -15713,12 +16457,14 @@ function __c93(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableDatabaseAccountByLocationRequest" });
@@ -15731,7 +16477,7 @@ function __c94(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3008, __c94, 0)),
+          value: __S(3008, __c94, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableDatabaseAccountsListResult" });
@@ -15743,12 +16489,14 @@ function __c95(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableDatabaseAccountsRequest" });
@@ -15762,12 +16510,14 @@ function __c96(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinDatabases",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableGremlinDatabasesRequest" });
@@ -15807,7 +16557,7 @@ function __c97(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3107, __c97, 3)),
+          value: __S(3107, __c97, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableGremlinDatabasesListResult" });
@@ -15824,12 +16574,14 @@ function __c98(j: number): any {
           restorableGremlinDatabaseRid: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGraphs",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableGremlinGraphsRequest" });
@@ -15845,12 +16597,14 @@ function __c99(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           restoreLocation: S.optional(S.String.pipe(T.Query())),
           restoreTimestampInUtc: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableGremlinResources",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableGremlinResourcesRequest" });
@@ -15869,7 +16623,7 @@ function __c99(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3170, __c99, 2)),
+          value: __S(3170, __c99, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableGremlinResourcesListResult" });
@@ -15886,12 +16640,14 @@ function __c100(j: number): any {
           restorableMongodbDatabaseRid: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbCollections",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableMongodbCollectionsRequest" });
@@ -15925,12 +16681,14 @@ function __c102(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbDatabases",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableMongodbDatabasesRequest" });
@@ -15946,12 +16704,14 @@ function __c103(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           restoreLocation: S.optional(S.String.pipe(T.Query())),
           restoreTimestampInUtc: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableMongodbResources",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableMongodbResourcesRequest" });
@@ -15974,7 +16734,7 @@ function __c104(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3329, __c104, 1)),
+          value: __S(3329, __c104, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableMongodbResourcesListResult" });
@@ -15991,12 +16751,14 @@ function __c105(j: number): any {
           restorableSqlDatabaseRid: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlContainers",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableSqlContainersRequest" });
@@ -16055,7 +16817,7 @@ function __c105(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3365, __c105, 5)),
+          value: __S(3365, __c105, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableSqlContainersListResult" });
@@ -16069,12 +16831,14 @@ function __c106(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlDatabases",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableSqlDatabasesRequest" });
@@ -16125,7 +16889,7 @@ function __c106(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3397, __c106, 5)),
+          value: __S(3397, __c106, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableSqlDatabasesListResult" });
@@ -16141,12 +16905,14 @@ function __c107(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           restoreLocation: S.optional(S.String.pipe(T.Query())),
           restoreTimestampInUtc: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableSqlResources",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableSqlResourcesRequest" });
@@ -16162,12 +16928,14 @@ function __c108(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           restoreLocation: S.optional(S.String.pipe(T.Query())),
           restoreTimestampInUtc: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTableResources",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableTableResourcesRequest" });
@@ -16184,7 +16952,7 @@ function __c108(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3458, __c108, 2)),
+          value: __S(3458, __c108, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorableTableResourcesListResult" });
@@ -16200,12 +16968,14 @@ function __c109(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           startTime: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{instanceId}/restorableTables",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRestorableTablesRequest" });
@@ -16219,12 +16989,14 @@ function __c110(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListServiceRequest" });
@@ -16233,7 +17005,7 @@ function __c110(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3521, __c110, 1)),
+          value: __S(3521, __c110, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceResourceListResult" });
@@ -16248,12 +17020,14 @@ function __c111(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceClientEncryptionKeysRequest" });
@@ -16262,7 +17036,7 @@ function __c111(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3553, __c111, 1)),
+          value: __S(3553, __c111, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientEncryptionKeysListResult" });
@@ -16277,12 +17051,14 @@ function __c112(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlContainersRequest" });
@@ -16291,7 +17067,7 @@ function __c112(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3585, __c112, 1)),
+          value: __S(3585, __c112, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlContainerListResult" });
@@ -16325,12 +17101,14 @@ function __c114(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlDatabasesRequest" });
@@ -16339,7 +17117,7 @@ function __c114(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3649, __c114, 1)),
+          value: __S(3649, __c114, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlDatabaseListResult" });
@@ -16353,12 +17131,14 @@ function __c115(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlRoleAssignmentsRequest" });
@@ -16367,7 +17147,7 @@ function __c115(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3681, __c115, 1)),
+          value: __S(3681, __c115, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlRoleAssignmentListResult" });
@@ -16381,12 +17161,14 @@ function __c116(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlRoleDefinitionsRequest" });
@@ -16395,7 +17177,7 @@ function __c116(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3713, __c116, 1)),
+          value: __S(3713, __c116, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlRoleDefinitionListResult" });
@@ -16411,12 +17193,14 @@ function __c117(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlStoredProceduresRequest" });
@@ -16429,7 +17213,7 @@ function __c118(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3776, __c118, 0)),
+          value: __S(3776, __c118, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlStoredProcedureListResult" });
@@ -16445,12 +17229,14 @@ function __c119(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlTriggersRequest" });
@@ -16459,7 +17245,7 @@ function __c119(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3809, __c119, 1)),
+          value: __S(3809, __c119, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlTriggerListResult" });
@@ -16514,12 +17300,14 @@ function __c122(j: number): any {
           accountName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListSqlResourceSqlUserDefinedFunctionsRequest" });
@@ -16533,12 +17321,14 @@ function __c123(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleAssignments",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTableResourceTableRoleAssignmentsRequest" });
@@ -16552,12 +17342,14 @@ function __c124(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTableResourceTableRoleDefinitionsRequest" });
@@ -16571,12 +17363,14 @@ function __c125(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables",
             code: 200,
             apiVersion: "2026-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListTableResourceTablesRequest" });

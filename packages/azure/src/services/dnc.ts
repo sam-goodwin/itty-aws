@@ -311,6 +311,8 @@ export interface ListDelegatedNetworkByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type DelegatedControllerTagsMap = { [key: string]: string | undefined };
@@ -341,12 +343,16 @@ export interface DelegatedControllers {
 export interface ListDelegatedNetworkBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDelegatedSubnetServiceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type DelegatedSubnetTagsMap = { [key: string]: string | undefined };
@@ -377,8 +383,13 @@ export interface DelegatedSubnets {
 export interface ListDelegatedSubnetServiceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -411,7 +422,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -420,6 +431,8 @@ export interface ListOrchestratorInstanceServiceByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The kind of workbook. Choices are user and shared. */
 export type OrchestratorKind = "Kubernetes";
@@ -456,6 +469,8 @@ export interface Orchestrators {
 export interface ListOrchestratorInstanceServiceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type PatchControllerRequestTagsMap = { [key: string]: string | undefined };
@@ -715,87 +730,123 @@ export const GetOrchestratorInstanceServiceDetails: API.OperationMethod<
 
 export type ListDelegatedNetworkByResourceGroupError = AzureOpError;
 /** Get all the delegatedController resources in a resource group. */
-export const ListDelegatedNetworkByResourceGroup: API.OperationMethod<
+export const ListDelegatedNetworkByResourceGroup: API.PaginatedOperationMethod<
   ListDelegatedNetworkByResourceGroupRequest,
   DelegatedControllers,
   ListDelegatedNetworkByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DelegatedController
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(200, __c25, 0) as any as S.Schema<ListDelegatedNetworkByResourceGroupRequest>,
   output: __S(209, __c26, 1) as any as S.Schema<DelegatedControllers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDelegatedNetworkBySubscriptionError = AzureOpError;
 /** Get all the delegatedController resources in a subscription. */
-export const ListDelegatedNetworkBySubscription: API.OperationMethod<
+export const ListDelegatedNetworkBySubscription: API.PaginatedOperationMethod<
   ListDelegatedNetworkBySubscriptionRequest,
   DelegatedControllers,
   ListDelegatedNetworkBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DelegatedController
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(216, __c27, 0) as any as S.Schema<ListDelegatedNetworkBySubscriptionRequest>,
   output: __S(209, __c26, 1) as any as S.Schema<DelegatedControllers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDelegatedSubnetServiceByResourceGroupError = AzureOpError;
 /** Get all the DelegatedSubnets resources in a resource group. */
-export const ListDelegatedSubnetServiceByResourceGroup: API.OperationMethod<
+export const ListDelegatedSubnetServiceByResourceGroup: API.PaginatedOperationMethod<
   ListDelegatedSubnetServiceByResourceGroupRequest,
   DelegatedSubnets,
   ListDelegatedSubnetServiceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DelegatedSubnet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<ListDelegatedSubnetServiceByResourceGroupRequest>,
   output: __S(57, __c7, 1) as any as S.Schema<DelegatedSubnets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDelegatedSubnetServiceBySubscriptionError = AzureOpError;
 /** Get all the DelegatedSubnets resources in a subscription. */
-export const ListDelegatedSubnetServiceBySubscription: API.OperationMethod<
+export const ListDelegatedSubnetServiceBySubscription: API.PaginatedOperationMethod<
   ListDelegatedSubnetServiceBySubscriptionRequest,
   DelegatedSubnets,
   ListDelegatedSubnetServiceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DelegatedSubnet
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<ListDelegatedSubnetServiceBySubscriptionRequest>,
   output: __S(57, __c7, 1) as any as S.Schema<DelegatedSubnets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available DelegatedNetwork service REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(76, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrchestratorInstanceServiceByResourceGroupError = AzureOpError;
 /** Get all the OrchestratorInstances resources in a resource group. */
-export const ListOrchestratorInstanceServiceByResourceGroup: API.OperationMethod<
+export const ListOrchestratorInstanceServiceByResourceGroup: API.PaginatedOperationMethod<
   ListOrchestratorInstanceServiceByResourceGroupRequest,
   Orchestrators,
   ListOrchestratorInstanceServiceByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Orchestrator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     80,
     __c10,
@@ -805,22 +856,35 @@ export const ListOrchestratorInstanceServiceByResourceGroup: API.OperationMethod
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOrchestratorInstanceServiceBySubscriptionError = AzureOpError;
 /** Get all the orchestratorInstance resources in a subscription. */
-export const ListOrchestratorInstanceServiceBySubscription: API.OperationMethod<
+export const ListOrchestratorInstanceServiceBySubscription: API.PaginatedOperationMethod<
   ListOrchestratorInstanceServiceBySubscriptionRequest,
   Orchestrators,
   ListOrchestratorInstanceServiceBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Orchestrator
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<ListOrchestratorInstanceServiceBySubscriptionRequest>,
   output: __S(89, __c11, 1) as any as S.Schema<Orchestrators>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PatchControllerError = AzureOpError;
 /** Update dnc controller */
@@ -1031,12 +1095,14 @@ function __c6(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDelegatedSubnetServiceByResourceGroupRequest" });
@@ -1061,12 +1127,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/delegatedSubnets",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDelegatedSubnetServiceBySubscriptionRequest" });
@@ -1076,12 +1144,15 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.DelegatedNetwork/operations",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -1109,7 +1180,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(75, __c9, 3)),
+          value: __S(75, __c9, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1122,12 +1193,14 @@ function __c10(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/orchestrators",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrchestratorInstanceServiceByResourceGroupRequest" });
@@ -1152,12 +1225,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/orchestrators",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOrchestratorInstanceServiceBySubscriptionRequest" });
@@ -1405,12 +1480,14 @@ function __c25(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DelegatedNetwork/controllers",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDelegatedNetworkByResourceGroupRequest" });
@@ -1435,12 +1512,14 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DelegatedNetwork/controllers",
             code: 200,
             apiVersion: "2021-03-15",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDelegatedNetworkBySubscriptionRequest" });

@@ -608,10 +608,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections associated with hostpool.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#PrivateEndpointConnectionListResultWithSystemData": {
@@ -770,6 +777,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -789,10 +802,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/scalingPlans",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List scaling plan associated with hostpool.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ScalingPlanList": {
@@ -1530,6 +1550,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1695,10 +1721,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/userSessions",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List userSessions.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#UserSessionList": {
@@ -1931,6 +1964,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2129,10 +2168,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/appAttachPackages",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List App Attach packages in subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#AppAttachPackageList": {
@@ -2573,6 +2619,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "OData filter expression. Valid properties for filtering are package name, host pool, and resource group."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2592,10 +2644,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List App Attach packages in resource group.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListAppAttachPackageByResourceGroupRequest": {
@@ -2622,6 +2681,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "OData filter expression. Valid properties for filtering are package name and host pool."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3158,10 +3223,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/expandMsixImage",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Expands and Lists MSIX packages in an Image, given the Image Path.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ExpandMsixImageList": {
@@ -3383,6 +3455,12 @@
           "traits": {
             "smithy.api#documentation": "URI to Image"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3402,10 +3480,17 @@
           "method": "POST",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/importAppAttachPackageInfo",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets information from a package given the path to the package.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ImportAppAttachPackageInfoRequest": {
@@ -3446,6 +3531,12 @@
           "traits": {
             "smithy.api#documentation": "Possible device architectures that an app attach package can be configured for",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3516,10 +3607,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List MSIX packages in hostpool.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#MSIXPackageList": {
@@ -3729,6 +3827,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -4141,10 +4245,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List sessionHosts.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#SessionHostList": {
@@ -4656,6 +4767,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -4974,10 +5091,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/userSessions",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List userSessions.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListUserSessionByHostPoolRequest": {
@@ -5033,6 +5157,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5258,10 +5388,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the private link resources available for this hostpool.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#PrivateLinkResourceListResult": {
@@ -5422,6 +5559,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5441,10 +5584,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/hostPools",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List hostPools in subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#HostPoolList": {
@@ -6285,6 +6435,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -6304,10 +6460,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List hostPools.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListHostPoolByResourceGroupRequest": {
@@ -6348,6 +6511,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8136,10 +8305,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List desktops.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#DesktopList": {
@@ -8293,6 +8469,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8533,10 +8715,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List applications.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ApplicationList": {
@@ -8794,6 +8983,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -9425,10 +9620,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/startMenuItems",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List start menu items in the given application group.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#StartMenuItemList": {
@@ -9583,6 +9785,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9602,10 +9810,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/applicationGroups",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List applicationGroups in subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ApplicationGroupList": {
@@ -9936,6 +10151,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "OData filter expression. Valid properties for filtering are applicationGroupType."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -9955,10 +10176,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List applicationGroups.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListApplicationGroupByResourceGroupRequest": {
@@ -10006,6 +10234,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -11103,10 +11337,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/scalingPlans",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List scaling plans in subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListScalingPlanBySubscriptionRequest": {
@@ -11140,6 +11381,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -11159,10 +11406,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ScalingPlanPersonalSchedules.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ScalingPlanPersonalScheduleList": {
@@ -11785,6 +12039,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -12170,10 +12430,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List ScalingPlanPooledSchedules.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ScalingPlanPooledScheduleList": {
@@ -12557,6 +12824,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -12943,10 +13216,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List scaling plans.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListScalingPlanByResourceGroupRequest": {
@@ -12987,6 +13267,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -14143,10 +14429,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DesktopVirtualization/workspaces",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List workspaces in subscription.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#WorkspaceList": {
@@ -14520,6 +14813,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14539,10 +14838,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List workspaces.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListWorkspaceByResourceGroupRequest": {
@@ -14584,6 +14890,12 @@
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14603,10 +14915,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the private link resources available for this workspace.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListPrivateLinkResourceByWorkspaceRequest": {
@@ -14655,6 +14974,12 @@
           "traits": {
             "smithy.api#httpQuery": "initialSkip",
             "smithy.api#documentation": "Initial number of items to skip."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15039,10 +15364,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/workspaces/{workspaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List private endpoint connections.",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ListPrivateEndpointConnectionByWorkspaceRequest": {
@@ -15070,6 +15402,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16193,7 +16531,7 @@
     "com.azure.desktopvirtualization#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.desktopvirtualization#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.desktopvirtualization#ResourceProviderOperationListResult"
@@ -16203,10 +16541,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DesktopVirtualization/operations",
           "code": 200,
-          "apiVersion": "2025-10-10"
+          "apiVersion": "2025-10-10",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-10-10"
+        "com.distilled.openapi#apiVersion": "2025-10-10",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.desktopvirtualization#ResourceProviderOperationListResult": {
@@ -16358,6 +16703,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Display metadata associated with the operation."
+      }
+    },
+    "com.azure.desktopvirtualization#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.desktopvirtualization#Desktopvirtualization": {

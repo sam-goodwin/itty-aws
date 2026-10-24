@@ -15,20 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.ai_health_insights#RadiologyInsightsCreateJob": "com.azure.ai_health_insights#CreateRadiologyInsightJob",
-      "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequest": "com.azure.ai_health_insights#CreateRadiologyInsightJobRequest",
-      "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequestExpandList": "com.azure.ai_health_insights#CreateRadiologyInsightJobRequestExpandList",
-      "com.azure.ai_health_insights#RadiologyInsightsGetJob": "com.azure.ai_health_insights#GetRadiologyInsightJob",
-      "com.azure.ai_health_insights#RadiologyInsightsGetJobRequest": "com.azure.ai_health_insights#GetRadiologyInsightJobRequest",
-      "com.azure.ai_health_insights#RadiologyInsightsGetJobRequestExpandList": "com.azure.ai_health_insights#GetRadiologyInsightJobRequestExpandList"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.ai_health_insights#RadiologyInsightsCreateJob": {
+    "com.azure.ai_health_insights#CreateRadiologyInsightJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequest"
+        "target": "com.azure.ai_health_insights#CreateRadiologyInsightJobRequest"
       },
       "output": {
         "target": "com.azure.ai_health_insights#RadiologyInsightsJob"
@@ -1945,7 +1938,7 @@
         "smithy.api#documentation": "The patient's sex."
       }
     },
-    "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequest": {
+    "com.azure.ai_health_insights#CreateRadiologyInsightJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1965,7 +1958,7 @@
           }
         },
         "expand": {
-          "target": "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequestExpandList",
+          "target": "com.azure.ai_health_insights#CreateRadiologyInsightJobRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "expand",
             "smithy.api#documentation": "Expand the indicated resources into the response."
@@ -1982,17 +1975,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_health_insights#RadiologyInsightsCreateJobRequestExpandList": {
+    "com.azure.ai_health_insights#CreateRadiologyInsightJobRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.azure.ai_health_insights#RadiologyInsightsGetJob": {
+    "com.azure.ai_health_insights#GetRadiologyInsightJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.ai_health_insights#RadiologyInsightsGetJobRequest"
+        "target": "com.azure.ai_health_insights#GetRadiologyInsightJobRequest"
       },
       "output": {
         "target": "com.azure.ai_health_insights#RadiologyInsightsJob"
@@ -2011,7 +2004,7 @@
         "smithy.api#documentation": "Get Radiology Insights job details\n\nGets the status and details of the Radiology Insights job."
       }
     },
-    "com.azure.ai_health_insights#RadiologyInsightsGetJobRequest": {
+    "com.azure.ai_health_insights#GetRadiologyInsightJobRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2031,7 +2024,7 @@
           }
         },
         "expand": {
-          "target": "com.azure.ai_health_insights#RadiologyInsightsGetJobRequestExpandList",
+          "target": "com.azure.ai_health_insights#GetRadiologyInsightJobRequestExpandList",
           "traits": {
             "smithy.api#httpQuery": "expand",
             "smithy.api#documentation": "Expand the indicated resources into the response."
@@ -2042,7 +2035,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.ai_health_insights#RadiologyInsightsGetJobRequestExpandList": {
+    "com.azure.ai_health_insights#GetRadiologyInsightJobRequestExpandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -2054,10 +2047,10 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.ai_health_insights#RadiologyInsightsCreateJob"
+          "target": "com.azure.ai_health_insights#CreateRadiologyInsightJob"
         },
         {
-          "target": "com.azure.ai_health_insights#RadiologyInsightsGetJob"
+          "target": "com.azure.ai_health_insights#GetRadiologyInsightJob"
         }
       ],
       "traits": {

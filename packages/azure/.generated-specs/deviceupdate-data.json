@@ -15,102 +15,7 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.deviceupdate_data#DeviceUpdateGetFile": "com.azure.deviceupdate_data#GetDeviceUpdateFile",
-      "com.azure.deviceupdate_data#DeviceUpdateGetFileResponse": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponse",
-      "com.azure.deviceupdate_data#DeviceUpdateGetFileResponseRelatedFilesList": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponseRelatedFilesList",
-      "com.azure.deviceupdate_data#DeviceUpdateGetFileResponsePropertiesMap": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponsePropertiesMap",
-      "com.azure.deviceupdate_data#DeviceUpdateGetFileResponseHashesMap": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponseHashesMap",
-      "com.azure.deviceupdate_data#DeviceUpdateGetFileRequest": "com.azure.deviceupdate_data#GetDeviceUpdateFileRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateListFiles": "com.azure.deviceupdate_data#ListDeviceUpdateFiles",
-      "com.azure.deviceupdate_data#DeviceUpdateListFilesRequest": "com.azure.deviceupdate_data#ListDeviceUpdateFilesRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateListVersions": "com.azure.deviceupdate_data#ListDeviceUpdateVersions",
-      "com.azure.deviceupdate_data#DeviceUpdateListVersionsRequest": "com.azure.deviceupdate_data#ListDeviceUpdateVersionsRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateListNames": "com.azure.deviceupdate_data#ListDeviceUpdateNames",
-      "com.azure.deviceupdate_data#DeviceUpdateListNamesRequest": "com.azure.deviceupdate_data#ListDeviceUpdateNamesRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateListProviders": "com.azure.deviceupdate_data#ListDeviceUpdateProviders",
-      "com.azure.deviceupdate_data#DeviceUpdateListProvidersRequest": "com.azure.deviceupdate_data#ListDeviceUpdateProvidersRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatus": "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatus",
-      "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatusResponse": "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatusResponse",
-      "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatusRequest": "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatusRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateListOperationStatuses": "com.azure.deviceupdate_data#ListDeviceUpdateOperationStatuses",
-      "com.azure.deviceupdate_data#DeviceUpdateListOperationStatusesRequest": "com.azure.deviceupdate_data#ListDeviceUpdateOperationStatusesRequest",
-      "com.azure.deviceupdate_data#DeviceUpdateListUpdates": "com.azure.deviceupdate_data#ListDeviceUpdateUpdates",
-      "com.azure.deviceupdate_data#DeviceUpdateListUpdatesRequest": "com.azure.deviceupdate_data#ListDeviceUpdateUpdatesRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetOperationStatus": "com.azure.deviceupdate_data#GetDeviceManagementOperationStatus",
-      "com.azure.deviceupdate_data#DeviceManagementGetOperationStatusResponse": "com.azure.deviceupdate_data#GetDeviceManagementOperationStatusResponse",
-      "com.azure.deviceupdate_data#DeviceManagementGetOperationStatusRequest": "com.azure.deviceupdate_data#GetDeviceManagementOperationStatusRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListOperationStatuses": "com.azure.deviceupdate_data#ListDeviceManagementOperationStatuses",
-      "com.azure.deviceupdate_data#DeviceManagementListOperationStatusesRequest": "com.azure.deviceupdate_data#ListDeviceManagementOperationStatusesRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupDeploymentStatus": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupDeploymentStatus",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupDeploymentStatusRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupDeploymentStatusRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListDeviceStatesForDeviceClassSubgroupDeployment": "com.azure.deviceupdate_data#ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeployment",
-      "com.azure.deviceupdate_data#DeviceManagementListDeviceStatesForDeviceClassSubgroupDeploymentRequest": "com.azure.deviceupdate_data#ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymentRequest",
-      "com.azure.deviceupdate_data#DeviceManagementRetryDeployment": "com.azure.deviceupdate_data#RetryDeviceManagementDeployment",
-      "com.azure.deviceupdate_data#DeviceManagementRetryDeploymentRequest": "com.azure.deviceupdate_data#RetryDeviceManagementDeploymentRequest",
-      "com.azure.deviceupdate_data#DeviceManagementStopDeployment": "com.azure.deviceupdate_data#StopDeviceManagementDeployment",
-      "com.azure.deviceupdate_data#DeviceManagementStopDeploymentRequest": "com.azure.deviceupdate_data#StopDeviceManagementDeploymentRequest",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentForDeviceClassSubgroup": "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentForDeviceClassSubgroup",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentForDeviceClassSubgroupRequest": "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentForDeviceClassSubgroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeploymentForDeviceClassSubgroup": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentForDeviceClassSubgroup",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeploymentForDeviceClassSubgroupRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentForDeviceClassSubgroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForDeviceClassSubgroup": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForDeviceClassSubgroup",
-      "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForDeviceClassSubgroupRequest": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForDeviceClassSubgroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetBestUpdatesForDeviceClassSubgroup": "com.azure.deviceupdate_data#GetDeviceManagementBestUpdatesForDeviceClassSubgroup",
-      "com.azure.deviceupdate_data#DeviceManagementGetBestUpdatesForDeviceClassSubgroupRequest": "com.azure.deviceupdate_data#GetDeviceManagementBestUpdatesForDeviceClassSubgroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassSubgroup": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassSubgroup",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassSubgroupRequest": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassSubgroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroup": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroup",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListDeviceClassSubgroupsForGroup": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassSubgroupsForGroup",
-      "com.azure.deviceupdate_data#DeviceManagementListDeviceClassSubgroupsForGroupRequest": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassSubgroupsForGroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeploymentStatus": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentStatus",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeploymentStatusRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentStatusRequest",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeployment": "com.azure.deviceupdate_data#DeleteDeviceManagementDeployment",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentRequest": "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeployment": "com.azure.deviceupdate_data#GetDeviceManagementDeployment",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeploymentRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForGroup": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForGroup",
-      "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForGroupRequest": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForGroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListBestUpdatesForGroup": "com.azure.deviceupdate_data#ListDeviceManagementBestUpdatesForGroup",
-      "com.azure.deviceupdate_data#DeviceManagementListBestUpdatesForGroupRequest": "com.azure.deviceupdate_data#ListDeviceManagementBestUpdatesForGroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteGroup": "com.azure.deviceupdate_data#DeleteDeviceManagementGroup",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteGroupRequest": "com.azure.deviceupdate_data#DeleteDeviceManagementGroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetGroup": "com.azure.deviceupdate_data#GetDeviceManagementGroup",
-      "com.azure.deviceupdate_data#DeviceManagementGetGroupRequest": "com.azure.deviceupdate_data#GetDeviceManagementGroupRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListGroups": "com.azure.deviceupdate_data#ListDeviceManagementGroups",
-      "com.azure.deviceupdate_data#DeviceManagementListGroupsRequest": "com.azure.deviceupdate_data#ListDeviceManagementGroupsRequest",
-      "com.azure.deviceupdate_data#DeviceManagementImportDevices": "com.azure.deviceupdate_data#ImportDeviceManagementDevices",
-      "com.azure.deviceupdate_data#DeviceManagementImportDevicesResponse": "com.azure.deviceupdate_data#ImportDeviceManagementDevicesResponse",
-      "com.azure.deviceupdate_data#DeviceManagementImportDevicesRequest": "com.azure.deviceupdate_data#ImportDeviceManagementDevicesRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceModule": "com.azure.deviceupdate_data#GetDeviceManagementDeviceModule",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceModuleRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeviceModuleRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDevice": "com.azure.deviceupdate_data#GetDeviceManagementDevice",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeviceRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListDevices": "com.azure.deviceupdate_data#ListDeviceManagementDevices",
-      "com.azure.deviceupdate_data#DeviceManagementListDevicesRequest": "com.azure.deviceupdate_data#ListDeviceManagementDevicesRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionDetailedStatus": "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionDetailedStatus",
-      "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionDetailedStatusRequest": "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionDetailedStatusRequest",
-      "com.azure.deviceupdate_data#DeviceManagementStartLogCollection": "com.azure.deviceupdate_data#StartDeviceManagementLogCollection",
-      "com.azure.deviceupdate_data#DeviceManagementStartLogCollectionRequest": "com.azure.deviceupdate_data#StartDeviceManagementLogCollectionRequest",
-      "com.azure.deviceupdate_data#DeviceManagementStartLogCollectionRequestDeviceListList": "com.azure.deviceupdate_data#StartDeviceManagementLogCollectionRequestDeviceListList",
-      "com.azure.deviceupdate_data#DeviceManagementGetLogCollection": "com.azure.deviceupdate_data#GetDeviceManagementLogCollection",
-      "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionRequest": "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListLogCollections": "com.azure.deviceupdate_data#ListDeviceManagementLogCollections",
-      "com.azure.deviceupdate_data#DeviceManagementListLogCollectionsRequest": "com.azure.deviceupdate_data#ListDeviceManagementLogCollectionsRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListHealthOfDevices": "com.azure.deviceupdate_data#ListDeviceManagementHealthOfDevices",
-      "com.azure.deviceupdate_data#DeviceManagementListHealthOfDevicesRequest": "com.azure.deviceupdate_data#ListDeviceManagementHealthOfDevicesRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListInstallableUpdatesForDeviceClass": "com.azure.deviceupdate_data#ListDeviceManagementInstallableUpdatesForDeviceClass",
-      "com.azure.deviceupdate_data#DeviceManagementListInstallableUpdatesForDeviceClassRequest": "com.azure.deviceupdate_data#ListDeviceManagementInstallableUpdatesForDeviceClassRequest",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClass": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClass",
-      "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassRequest": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassRequest",
-      "com.azure.deviceupdate_data#DeviceManagementUpdateDeviceClass": "com.azure.deviceupdate_data#UpdateDeviceManagementDeviceClass",
-      "com.azure.deviceupdate_data#DeviceManagementUpdateDeviceClassRequest": "com.azure.deviceupdate_data#UpdateDeviceManagementDeviceClassRequest",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceClass": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClass",
-      "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassRequest": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassRequest",
-      "com.azure.deviceupdate_data#DeviceManagementListDeviceClasses": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClasses",
-      "com.azure.deviceupdate_data#DeviceManagementListDeviceClassesRequest": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.deviceupdate_data#DeviceUpdateImportUpdate": {
@@ -544,13 +449,13 @@
         "smithy.api#documentation": "A JSON object containing the hash(es) of the file. At least SHA256 hash is\nrequired. This object can be thought of as a set of key-value pairs where the\nkey is the hash algorithm, and the value is the hash of the file calculated\nusing that algorithm."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetFile": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateGetFileRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceUpdateFileRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateGetFileResponse"
+        "target": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -563,7 +468,7 @@
         "smithy.api#documentation": "Get a specific update file from the version."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetFileResponse": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateFileResponse": {
       "type": "structure",
       "members": {
         "fileName": {
@@ -581,7 +486,7 @@
           }
         },
         "hashes": {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateGetFileResponseHashesMap",
+          "target": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponseHashesMap",
           "traits": {
             "smithy.api#documentation": "Mapping of hashing algorithm to base64 encoded hash values.",
             "smithy.api#required": {}
@@ -606,7 +511,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateGetFileResponsePropertiesMap",
+          "target": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponsePropertiesMap",
           "traits": {
             "smithy.api#documentation": "Optional file properties (not consumed by service but pass-through to device)."
           }
@@ -619,7 +524,7 @@
           }
         },
         "relatedFiles": {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateGetFileResponseRelatedFilesList",
+          "target": "com.azure.deviceupdate_data#GetDeviceUpdateFileResponseRelatedFilesList",
           "traits": {
             "smithy.api#documentation": "Optional related files metadata used together DownloadHandler metadata to\ndownload payload file."
           }
@@ -656,7 +561,7 @@
         "smithy.api#documentation": "Download handler for utilizing related files to download payload file."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetFileResponseRelatedFilesList": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateFileResponseRelatedFilesList": {
       "type": "list",
       "member": {
         "target": "com.azure.deviceupdate_data#UpdateFileBase"
@@ -742,7 +647,7 @@
         "smithy.api#documentation": "Mapping of hashing algorithm to base64 encoded hash values."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetFileResponsePropertiesMap": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateFileResponsePropertiesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -754,7 +659,7 @@
         "smithy.api#documentation": "Optional file properties (not consumed by service but pass-through to device)."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetFileResponseHashesMap": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateFileResponseHashesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -766,7 +671,7 @@
         "smithy.api#documentation": "Mapping of hashing algorithm to base64 encoded hash values."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetFileRequest": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -829,10 +734,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListFiles": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateListFilesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceUpdateFilesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#StringsList"
@@ -843,9 +748,16 @@
           "uri": "/deviceUpdate/{instanceId+}/updates/providers/{provider}/names/{name}/versions/{version}/files",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all update file identifiers for the specified version."
+        "smithy.api#documentation": "Get a list of all update file identifiers for the specified version.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#StringsList": {
@@ -878,7 +790,7 @@
         "smithy.api#documentation": "The collection of pageable items."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListFilesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -919,6 +831,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Update version."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1179,10 +1097,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListVersions": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateListVersionsRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceUpdateVersionsRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#StringsList"
@@ -1193,12 +1111,19 @@
           "uri": "/deviceUpdate/{instanceId+}/updates/providers/{provider}/names/{name}/versions",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all update versions that match the specified provider and name."
+        "smithy.api#documentation": "Get a list of all update versions that match the specified provider and name.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListVersionsRequest": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateVersionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1239,16 +1164,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Optional to filter updates by isDeployable property."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListNames": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateNames": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateListNamesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceUpdateNamesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#StringsList"
@@ -1259,12 +1190,19 @@
           "uri": "/deviceUpdate/{instanceId+}/updates/providers/{provider}/names",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all update names that match the specified provider."
+        "smithy.api#documentation": "Get a list of all update names that match the specified provider.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListNamesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateNamesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1290,16 +1228,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Update provider."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListProviders": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateProviders": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateListProvidersRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceUpdateProvidersRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#StringsList"
@@ -1310,12 +1254,19 @@
           "uri": "/deviceUpdate/{instanceId+}/updates/providers",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all update providers that have been imported to Device Update for\nIoT Hub."
+        "smithy.api#documentation": "Get a list of all update providers that have been imported to Device Update for\nIoT Hub.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListProvidersRequest": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateProvidersRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1333,19 +1284,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Device Update for IoT Hub account instance identifier."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatus": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatusRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatusRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatusResponse"
+        "target": "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1358,7 +1315,7 @@
         "smithy.api#documentation": "Retrieve operation status."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatusResponse": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatusResponse": {
       "type": "structure",
       "members": {
         "operationId": {
@@ -1579,7 +1536,7 @@
         "smithy.api#documentation": "Operation status."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatusRequest": {
+    "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1618,10 +1575,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListOperationStatuses": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateOperationStatuses": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateListOperationStatusesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceUpdateOperationStatusesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#UpdateOperationsList"
@@ -1632,9 +1589,16 @@
           "uri": "/deviceUpdate/{instanceId+}/updates/operations",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all import update operations. Completed operations are kept for 7\ndays before auto-deleted. Delete operations are not returned by this API\nversion."
+        "smithy.api#documentation": "Get a list of all import update operations. Completed operations are kept for 7\ndays before auto-deleted. Delete operations are not returned by this API\nversion.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#UpdateOperationsList": {
@@ -1733,7 +1697,7 @@
         "smithy.api#documentation": "Operation metadata."
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListOperationStatusesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateOperationStatusesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1765,16 +1729,22 @@
             "smithy.api#httpQuery": "top",
             "smithy.api#documentation": "Specifies a non-negative integer n that limits the number of items returned\nfrom a collection. The service returns the number of available items up to but\nnot greater than the specified value n."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListUpdates": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateUpdates": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceUpdateListUpdatesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceUpdateUpdatesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#UpdateList"
@@ -1785,9 +1755,16 @@
           "uri": "/deviceUpdate/{instanceId+}/updates",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all updates that have been imported to Device Update for IoT Hub."
+        "smithy.api#documentation": "Get a list of all updates that have been imported to Device Update for IoT Hub.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#UpdateList": {
@@ -1820,7 +1797,7 @@
         "smithy.api#documentation": "The Update items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceUpdateListUpdatesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceUpdateUpdatesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1851,6 +1828,12 @@
           "traits": {
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Optional to filter updates by isDeployable property."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1937,13 +1920,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetOperationStatus": {
+    "com.azure.deviceupdate_data#GetDeviceManagementOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetOperationStatusRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementOperationStatusRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetOperationStatusResponse"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementOperationStatusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1956,7 +1939,7 @@
         "smithy.api#documentation": "Retrieve operation status."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetOperationStatusResponse": {
+    "com.azure.deviceupdate_data#GetDeviceManagementOperationStatusResponse": {
       "type": "structure",
       "members": {
         "operationId": {
@@ -2018,7 +2001,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetOperationStatusRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementOperationStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2057,10 +2040,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListOperationStatuses": {
+    "com.azure.deviceupdate_data#ListDeviceManagementOperationStatuses": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListOperationStatusesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementOperationStatusesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceOperationsList"
@@ -2071,9 +2054,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/operations",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get a list of all device import operations. Completed operations are kept for 7\ndays before auto-deleted."
+        "smithy.api#documentation": "Get a list of all device import operations. Completed operations are kept for 7\ndays before auto-deleted.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeviceOperationsList": {
@@ -2160,7 +2150,7 @@
         "smithy.api#documentation": "Operation metadata."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListOperationStatusesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementOperationStatusesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2191,6 +2181,12 @@
           "traits": {
             "smithy.api#httpQuery": "top",
             "smithy.api#documentation": "Specifies a non-negative integer n that limits the number of items returned\nfrom a collection. The service returns the number of available items up to but\nnot greater than the specified value n."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2308,10 +2304,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupDeploymentStatus": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupDeploymentStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupDeploymentStatusRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupDeploymentStatusRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClassSubgroupDeploymentStatus"
@@ -2424,7 +2420,7 @@
         "smithy.api#documentation": "Device class subgroup deployment state."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupDeploymentStatusRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupDeploymentStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2472,10 +2468,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeviceStatesForDeviceClassSubgroupDeployment": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListDeviceStatesForDeviceClassSubgroupDeploymentRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymentRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeploymentDeviceStatesList"
@@ -2486,9 +2482,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/groups/{groupId}/deviceClassSubgroups/{deviceClassId}/deployments/{deploymentId}/devicestates",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of devices in a deployment along with their state. Useful for\ngetting a list of failed devices."
+        "smithy.api#documentation": "Gets a list of devices in a deployment along with their state. Useful for\ngetting a list of failed devices.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeploymentDeviceStatesList": {
@@ -2595,7 +2598,7 @@
         "smithy.api#documentation": "Deployment state."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeviceStatesForDeviceClassSubgroupDeploymentRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeploymentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2644,16 +2647,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Restricts the set of deployment device states returned. You can filter on\ndeviceId and moduleId and/or deviceState."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementRetryDeployment": {
+    "com.azure.deviceupdate_data#RetryDeviceManagementDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementRetryDeploymentRequest"
+        "target": "com.azure.deviceupdate_data#RetryDeviceManagementDeploymentRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Deployment"
@@ -2814,7 +2823,7 @@
         "smithy.api#documentation": "The device class subgroups the deployment is compatible with and subgroup\ndeployments have been created for. This is not provided by the caller during\nCreateOrUpdateDeployment but is automatically determined by Device Update"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementRetryDeploymentRequest": {
+    "com.azure.deviceupdate_data#RetryDeviceManagementDeploymentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2862,10 +2871,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementStopDeployment": {
+    "com.azure.deviceupdate_data#StopDeviceManagementDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementStopDeploymentRequest"
+        "target": "com.azure.deviceupdate_data#StopDeviceManagementDeploymentRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Deployment"
@@ -2881,7 +2890,7 @@
         "smithy.api#documentation": "Stops a deployment."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementStopDeploymentRequest": {
+    "com.azure.deviceupdate_data#StopDeviceManagementDeploymentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2929,10 +2938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentForDeviceClassSubgroup": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentForDeviceClassSubgroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentForDeviceClassSubgroupRequest"
+        "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentForDeviceClassSubgroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2948,7 +2957,7 @@
         "smithy.api#documentation": "Deletes a device class subgroup deployment."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentForDeviceClassSubgroupRequest": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentForDeviceClassSubgroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2996,10 +3005,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeploymentForDeviceClassSubgroup": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeploymentForDeviceClassSubgroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeploymentForDeviceClassSubgroupRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentForDeviceClassSubgroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Deployment"
@@ -3015,7 +3024,7 @@
         "smithy.api#documentation": "Gets the deployment properties."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeploymentForDeviceClassSubgroupRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeploymentForDeviceClassSubgroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3063,10 +3072,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForDeviceClassSubgroup": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForDeviceClassSubgroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForDeviceClassSubgroupRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForDeviceClassSubgroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeploymentsList"
@@ -3077,9 +3086,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/groups/{groupId}/deviceClassSubgroups/{deviceClassId}/deployments",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of deployments for a device class subgroup."
+        "smithy.api#documentation": "Gets a list of deployments for a device class subgroup.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeploymentsList": {
@@ -3112,7 +3128,7 @@
         "smithy.api#documentation": "The Deployment items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForDeviceClassSubgroupRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForDeviceClassSubgroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3153,16 +3169,22 @@
             "smithy.api#httpQuery": "orderby",
             "smithy.api#documentation": "Orders the set of deployments returned. You can order by start date."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetBestUpdatesForDeviceClassSubgroup": {
+    "com.azure.deviceupdate_data#GetDeviceManagementBestUpdatesForDeviceClassSubgroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetBestUpdatesForDeviceClassSubgroupRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementBestUpdatesForDeviceClassSubgroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClassSubgroupUpdatableDevices"
@@ -3214,7 +3236,7 @@
         "smithy.api#documentation": "Device class subgroup, update information, and the number of devices for which\nthe update is applicable."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetBestUpdatesForDeviceClassSubgroupRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementBestUpdatesForDeviceClassSubgroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3254,10 +3276,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassSubgroup": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassSubgroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassSubgroupRequest"
+        "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassSubgroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3273,7 +3295,7 @@
         "smithy.api#documentation": "Deletes a device class subgroup. This subgroup is automatically created when a\nDevice Update-enabled device is connected to the hub and reports its\nproperties. Groups, subgroups, and deployments are not automatically cleaned up\nbut are retained for history purposes. Users can call this method to delete a\nsubgroup if they do not need to retain any of the history of the subgroup and\nno longer need it. If a device is ever connected again for this subgroup after\nthe subgroup was deleted it will be automatically re-created but there will be\nno history."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassSubgroupRequest": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassSubgroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3313,10 +3335,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroup": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClassSubgroup"
@@ -3373,7 +3395,7 @@
         "smithy.api#documentation": "Device class subgroup details. A device class subgroup is a subset of devices\nin a group that share the same device class id."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3413,10 +3435,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeviceClassSubgroupsForGroup": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassSubgroupsForGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListDeviceClassSubgroupsForGroupRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassSubgroupsForGroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClassSubgroupsList"
@@ -3427,9 +3449,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/groups/{groupId}/deviceClassSubgroups",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the device class subgroups for the group. A device class subgroup is the\nset of devices within the group that share the same device class. All devices\nwithin the same device class are compatible with the same updates."
+        "smithy.api#documentation": "Get the device class subgroups for the group. A device class subgroup is the\nset of devices within the group that share the same device class. All devices\nwithin the same device class are compatible with the same updates.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeviceClassSubgroupsList": {
@@ -3462,7 +3491,7 @@
         "smithy.api#documentation": "The DeviceClassSubgroup items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeviceClassSubgroupsForGroupRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassSubgroupsForGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3495,16 +3524,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Restricts the set of device class subgroups returned. You can filter on compat\nproperties by name and value. (i.e. filter=compatProperties/propertyName1 eq\n'value1' and compatProperties/propertyName2 eq 'value2')"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeploymentStatus": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeploymentStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeploymentStatusRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentStatusRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeploymentStatus"
@@ -3602,7 +3637,7 @@
         "smithy.api#documentation": "Deployment state."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeploymentStatusRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeploymentStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3642,10 +3677,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeployment": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentRequest"
+        "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3661,7 +3696,7 @@
         "smithy.api#documentation": "Deletes a deployment."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentRequest": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3876,10 +3911,10 @@
         "smithy.api#documentation": "The device class subgroups the deployment is compatible with and subgroup\ndeployments have been created for. This is not provided by the caller during\nCreateOrUpdateDeployment but is automatically determined by Device Update"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeployment": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeploymentRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Deployment"
@@ -3895,7 +3930,7 @@
         "smithy.api#documentation": "Gets the deployment properties."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeploymentRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeploymentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3935,10 +3970,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForGroup": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForGroupRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForGroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeploymentsList"
@@ -3949,12 +3984,19 @@
           "uri": "/deviceUpdate/{instanceId+}/management/groups/{groupId}/deployments",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of deployments for a device group."
+        "smithy.api#documentation": "Gets a list of deployments for a device group.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForGroupRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -3987,16 +4029,22 @@
             "smithy.api#httpQuery": "orderby",
             "smithy.api#documentation": "Orders the set of deployments returned. You can order by start date."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListBestUpdatesForGroup": {
+    "com.azure.deviceupdate_data#ListDeviceManagementBestUpdatesForGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListBestUpdatesForGroupRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementBestUpdatesForGroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClassSubgroupUpdatableDevicesList"
@@ -4007,9 +4055,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/groups/{groupId}/bestUpdates",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get the best available updates for a device group and a count of how many\ndevices need each update."
+        "smithy.api#documentation": "Get the best available updates for a device group and a count of how many\ndevices need each update.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeviceClassSubgroupUpdatableDevicesList": {
@@ -4042,7 +4097,7 @@
         "smithy.api#documentation": "The DeviceClassSubgroupUpdatableDevices items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListBestUpdatesForGroupRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementBestUpdatesForGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4068,16 +4123,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Group identifier."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteGroup": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementDeleteGroupRequest"
+        "target": "com.azure.deviceupdate_data#DeleteDeviceManagementGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4093,7 +4154,7 @@
         "smithy.api#documentation": "Deletes a device group. This group is automatically created when a Device\nUpdate-enabled device is connected to the hub and reports its properties.\nGroups, subgroups, and deployments are not automatically cleaned up but are\nretained for history purposes. Users can call this method to delete a group if\nthey do not need to retain any of the history of the group and no longer need\nit. If a device is ever connected again for this group after the group was\ndeleted it will be automatically re-created but there will be no history."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteGroupRequest": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4125,10 +4186,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetGroup": {
+    "com.azure.deviceupdate_data#GetDeviceManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetGroupRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementGroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Group"
@@ -4232,7 +4293,7 @@
         "smithy.api#documentation": "Supported group types."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetGroupRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementGroupRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4264,10 +4325,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListGroups": {
+    "com.azure.deviceupdate_data#ListDeviceManagementGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListGroupsRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementGroupsRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#GroupsList"
@@ -4278,9 +4339,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/groups",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of all device groups.  The $default group will always be returned\nfirst."
+        "smithy.api#documentation": "Gets a list of all device groups.  The $default group will always be returned\nfirst.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#GroupsList": {
@@ -4313,7 +4381,7 @@
         "smithy.api#documentation": "The Group items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListGroupsRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementGroupsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4338,19 +4406,25 @@
             "smithy.api#httpQuery": "orderby",
             "smithy.api#documentation": "Orders the set of groups returned. You can order by groupId, deviceCount,\ncreatedDate, subgroupsWithNewUpdatesAvailableCount,\nsubgroupsWithUpdatesInProgressCount, or subgroupsOnLatestUpdateCount."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementImportDevices": {
+    "com.azure.deviceupdate_data#ImportDeviceManagementDevices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementImportDevicesRequest"
+        "target": "com.azure.deviceupdate_data#ImportDeviceManagementDevicesRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementImportDevicesResponse"
+        "target": "com.azure.deviceupdate_data#ImportDeviceManagementDevicesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4363,7 +4437,7 @@
         "smithy.api#documentation": "Import existing devices from IoT Hub. This is a long-running-operation; use\nOperation-Location response header value to check for operation status."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementImportDevicesResponse": {
+    "com.azure.deviceupdate_data#ImportDeviceManagementDevicesResponse": {
       "type": "structure",
       "members": {
         "operationLocation": {
@@ -4378,7 +4452,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementImportDevicesRequest": {
+    "com.azure.deviceupdate_data#ImportDeviceManagementDevicesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4435,10 +4509,10 @@
         "smithy.api#documentation": "The device import type."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceModule": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceModule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceModuleRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceModuleRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Device"
@@ -4608,7 +4682,7 @@
         "smithy.api#documentation": "The step result under an update."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceModuleRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceModuleRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4648,10 +4722,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDevice": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDevice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#Device"
@@ -4667,7 +4741,7 @@
         "smithy.api#documentation": "Gets the device properties and latest deployment status for a device connected\nto Device Update for IoT Hub."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4699,10 +4773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDevices": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDevices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListDevicesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementDevicesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DevicesList"
@@ -4713,9 +4787,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/devices",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of devices connected to Device Update for IoT Hub."
+        "smithy.api#documentation": "Gets a list of devices connected to Device Update for IoT Hub.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DevicesList": {
@@ -4748,7 +4829,7 @@
         "smithy.api#documentation": "The Device items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDevicesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDevicesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4773,16 +4854,22 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Restricts the set of devices returned. You can filter on GroupId,\nDeviceClassId, or GroupId and DeploymentStatus. Use DeploymentStatus eq null to\nquery for devices with no deployment status (that have never been deployed to)."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionDetailedStatus": {
+    "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionDetailedStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionDetailedStatusRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionDetailedStatusRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#LogCollectionOperationDetailedStatus"
@@ -4897,7 +4984,7 @@
         "smithy.api#documentation": "Diagnostics operation device status"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionDetailedStatusRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionDetailedStatusRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -4929,10 +5016,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementStartLogCollection": {
+    "com.azure.deviceupdate_data#StartDeviceManagementLogCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementStartLogCollectionRequest"
+        "target": "com.azure.deviceupdate_data#StartDeviceManagementLogCollectionRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#LogCollection"
@@ -5023,7 +5110,7 @@
         "smithy.api#documentation": "Device Update agent id"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementStartLogCollectionRequest": {
+    "com.azure.deviceupdate_data#StartDeviceManagementLogCollectionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5051,7 +5138,7 @@
           }
         },
         "deviceList": {
-          "target": "com.azure.deviceupdate_data#DeviceManagementStartLogCollectionRequestDeviceListList",
+          "target": "com.azure.deviceupdate_data#StartDeviceManagementLogCollectionRequestDeviceListList",
           "traits": {
             "smithy.api#documentation": "Array of Device Update agent ids",
             "smithy.api#required": {}
@@ -5068,7 +5155,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementStartLogCollectionRequestDeviceListList": {
+    "com.azure.deviceupdate_data#StartDeviceManagementLogCollectionRequestDeviceListList": {
       "type": "list",
       "member": {
         "target": "com.azure.deviceupdate_data#DeviceUpdateAgentId"
@@ -5077,10 +5164,10 @@
         "smithy.api#documentation": "Array of Device Update agent ids"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetLogCollection": {
+    "com.azure.deviceupdate_data#GetDeviceManagementLogCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#LogCollection"
@@ -5096,7 +5183,7 @@
         "smithy.api#documentation": "Get the device diagnostics log collection"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5128,10 +5215,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListLogCollections": {
+    "com.azure.deviceupdate_data#ListDeviceManagementLogCollections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListLogCollectionsRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementLogCollectionsRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#LogCollectionList"
@@ -5142,9 +5229,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/deviceDiagnostics/logCollections",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get all device diagnostics log collections"
+        "smithy.api#documentation": "Get all device diagnostics log collections",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#LogCollectionList": {
@@ -5177,7 +5271,7 @@
         "smithy.api#documentation": "The LogCollection items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListLogCollectionsRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementLogCollectionsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5195,16 +5289,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Device Update for IoT Hub account instance identifier."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListHealthOfDevices": {
+    "com.azure.deviceupdate_data#ListDeviceManagementHealthOfDevices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListHealthOfDevicesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementHealthOfDevicesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceHealthList"
@@ -5215,9 +5315,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/deviceDiagnostics/deviceHealth",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Get list of device health"
+        "smithy.api#documentation": "Get list of device health",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeviceHealthList": {
@@ -5360,7 +5467,7 @@
         "smithy.api#documentation": "Device health states"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListHealthOfDevicesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementHealthOfDevicesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5386,16 +5493,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Restricts the set of devices for which device health is returned. You can\nfilter on status, device id and module id."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListInstallableUpdatesForDeviceClass": {
+    "com.azure.deviceupdate_data#ListDeviceManagementInstallableUpdatesForDeviceClass": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListInstallableUpdatesForDeviceClassRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementInstallableUpdatesForDeviceClassRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#UpdateInfoList"
@@ -5406,9 +5519,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/deviceClasses/{deviceClassId}/installableUpdates",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of installable updates for a device class."
+        "smithy.api#documentation": "Gets a list of installable updates for a device class.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#UpdateInfoList": {
@@ -5441,7 +5561,7 @@
         "smithy.api#documentation": "The UpdateInfo items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListInstallableUpdatesForDeviceClassRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementInstallableUpdatesForDeviceClassRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5467,16 +5587,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Device class identifier."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClass": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClass": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassRequest"
+        "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5492,7 +5618,7 @@
         "smithy.api#documentation": "Deletes a device class. Device classes are created automatically when Device\nUpdate-enabled devices are connected to the hub but are not automatically\ncleaned up since they are referenced by DeviceClassSubgroups. If the user has\ndeleted all DeviceClassSubgroups for a device class they can also delete the\ndevice class to remove the records from the system and to stop checking the\ncompatibility of this device class with new updates. If a device is ever\nreconnected for this device class it will be re-created."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassRequest": {
+    "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5524,10 +5650,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementUpdateDeviceClass": {
+    "com.azure.deviceupdate_data#UpdateDeviceManagementDeviceClass": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementUpdateDeviceClassRequest"
+        "target": "com.azure.deviceupdate_data#UpdateDeviceManagementDeviceClassRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClass"
@@ -5632,7 +5758,7 @@
         "smithy.api#documentation": "The Device Update agent contract model."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementUpdateDeviceClassRequest": {
+    "com.azure.deviceupdate_data#UpdateDeviceManagementDeviceClassRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5671,10 +5797,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceClass": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceClass": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassRequest"
+        "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClass"
@@ -5690,7 +5816,7 @@
         "smithy.api#documentation": "Gets the properties of a device class."
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassRequest": {
+    "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5722,10 +5848,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeviceClasses": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeviceClasses": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate_data#DeviceManagementListDeviceClassesRequest"
+        "target": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassesRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate_data#DeviceClassesList"
@@ -5736,9 +5862,16 @@
           "uri": "/deviceUpdate/{instanceId+}/management/deviceClasses",
           "code": 200,
           "host": "https://{endpoint}",
-          "apiVersion": "2026-06-01"
+          "apiVersion": "2026-06-01",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of all device classes (sets of devices compatible with the same\nupdates based on the model Id and compat properties reported in the Device\nUpdate PnP interface in IoT Hub) for all devices connected to Device Update for\nIoT Hub."
+        "smithy.api#documentation": "Gets a list of all device classes (sets of devices compatible with the same\nupdates based on the model Id and compat properties reported in the Device\nUpdate PnP interface in IoT Hub) for all devices connected to Device Update for\nIoT Hub.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.deviceupdate_data#DeviceClassesList": {
@@ -5771,7 +5904,7 @@
         "smithy.api#documentation": "The DeviceClass items on this page"
       }
     },
-    "com.azure.deviceupdate_data#DeviceManagementListDeviceClassesRequest": {
+    "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -5796,6 +5929,12 @@
             "smithy.api#httpQuery": "filter",
             "smithy.api#documentation": "Restricts the set of device classes returned. You can filter on friendly name."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5810,10 +5949,10 @@
           "target": "com.azure.deviceupdate_data#DeviceUpdateImportUpdate"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateGetFile"
+          "target": "com.azure.deviceupdate_data#GetDeviceUpdateFile"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateListFiles"
+          "target": "com.azure.deviceupdate_data#ListDeviceUpdateFiles"
         },
         {
           "target": "com.azure.deviceupdate_data#DeviceUpdateDeleteUpdate"
@@ -5822,31 +5961,31 @@
           "target": "com.azure.deviceupdate_data#DeviceUpdateGetUpdate"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateListVersions"
+          "target": "com.azure.deviceupdate_data#ListDeviceUpdateVersions"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateListNames"
+          "target": "com.azure.deviceupdate_data#ListDeviceUpdateNames"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateListProviders"
+          "target": "com.azure.deviceupdate_data#ListDeviceUpdateProviders"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateGetOperationStatus"
+          "target": "com.azure.deviceupdate_data#GetDeviceUpdateOperationStatus"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateListOperationStatuses"
+          "target": "com.azure.deviceupdate_data#ListDeviceUpdateOperationStatuses"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceUpdateListUpdates"
+          "target": "com.azure.deviceupdate_data#ListDeviceUpdateUpdates"
         },
         {
           "target": "com.azure.deviceupdate_data#DeviceManagementGetUpdateCompliance"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetOperationStatus"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementOperationStatus"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListOperationStatuses"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementOperationStatuses"
         },
         {
           "target": "com.azure.deviceupdate_data#DeviceManagementGetUpdateComplianceForGroup"
@@ -5855,106 +5994,106 @@
           "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupUpdateCompliance"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroupDeploymentStatus"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroupDeploymentStatus"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListDeviceStatesForDeviceClassSubgroupDeployment"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementDeviceStatesForDeviceClassSubgroupDeployment"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementRetryDeployment"
+          "target": "com.azure.deviceupdate_data#RetryDeviceManagementDeployment"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementStopDeployment"
+          "target": "com.azure.deviceupdate_data#StopDeviceManagementDeployment"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeploymentForDeviceClassSubgroup"
+          "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeploymentForDeviceClassSubgroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeploymentForDeviceClassSubgroup"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentForDeviceClassSubgroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForDeviceClassSubgroup"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForDeviceClassSubgroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetBestUpdatesForDeviceClassSubgroup"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementBestUpdatesForDeviceClassSubgroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClassSubgroup"
+          "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClassSubgroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClassSubgroup"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClassSubgroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListDeviceClassSubgroupsForGroup"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClassSubgroupsForGroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeploymentStatus"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeploymentStatus"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeployment"
+          "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeployment"
         },
         {
           "target": "com.azure.deviceupdate_data#DeviceManagementCreateOrUpdateDeployment"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeployment"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeployment"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListDeploymentsForGroup"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementDeploymentsForGroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListBestUpdatesForGroup"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementBestUpdatesForGroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementDeleteGroup"
+          "target": "com.azure.deviceupdate_data#DeleteDeviceManagementGroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetGroup"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementGroup"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListGroups"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementGroups"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementImportDevices"
+          "target": "com.azure.deviceupdate_data#ImportDeviceManagementDevices"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceModule"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceModule"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDevice"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDevice"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListDevices"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementDevices"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetLogCollectionDetailedStatus"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementLogCollectionDetailedStatus"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementStartLogCollection"
+          "target": "com.azure.deviceupdate_data#StartDeviceManagementLogCollection"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetLogCollection"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementLogCollection"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListLogCollections"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementLogCollections"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListHealthOfDevices"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementHealthOfDevices"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListInstallableUpdatesForDeviceClass"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementInstallableUpdatesForDeviceClass"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementDeleteDeviceClass"
+          "target": "com.azure.deviceupdate_data#DeleteDeviceManagementDeviceClass"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementUpdateDeviceClass"
+          "target": "com.azure.deviceupdate_data#UpdateDeviceManagementDeviceClass"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementGetDeviceClass"
+          "target": "com.azure.deviceupdate_data#GetDeviceManagementDeviceClass"
         },
         {
-          "target": "com.azure.deviceupdate_data#DeviceManagementListDeviceClasses"
+          "target": "com.azure.deviceupdate_data#ListDeviceManagementDeviceClasses"
         }
       ],
       "traits": {

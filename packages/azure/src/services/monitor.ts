@@ -331,7 +331,10 @@ export interface ScheduledQueryRuleResource {
   /** The rule properties of the resource. */
   properties: ScheduledQueryRuleProperties;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -364,7 +367,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -373,19 +376,23 @@ export interface ListScheduledQueryRuleByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The values for the scheduled query rule resources. */
 export type ScheduledQueryRuleResourceCollectionValueList = Array<ScheduledQueryRuleResource>;
 /** Represents a collection of scheduled query rule resources. */
 export interface ScheduledQueryRuleResourceCollection {
   /** The values for the scheduled query rule resources. */
-  value?: ScheduledQueryRuleResourceCollectionValueList;
+  value: ScheduledQueryRuleResourceCollectionValueList;
   /** Provides the link to retrieve the next set of elements. */
   nextLink?: string;
 }
 export interface ListScheduledQueryRuleBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Type of managed service identity. */
 export type IdentityInputType = "SystemAssigned" | "UserAssigned" | "None";
@@ -531,48 +538,69 @@ export const GetScheduledQueryRule: API.OperationMethod<
 
 export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(100, __c6, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduledQueryRuleByResourceGroupError = AzureOpError;
 /** Retrieve scheduled query rule definitions in a resource group. */
-export const ListScheduledQueryRuleByResourceGroup: API.OperationMethod<
+export const ListScheduledQueryRuleByResourceGroup: API.PaginatedOperationMethod<
   ListScheduledQueryRuleByResourceGroupRequest,
   ScheduledQueryRuleResourceCollection,
   ListScheduledQueryRuleByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScheduledQueryRuleResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<ListScheduledQueryRuleByResourceGroupRequest>,
   output: __S(129, __c8, 1) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListScheduledQueryRuleBySubscriptionError = AzureOpError;
 /** Retrieve a scheduled query rule definitions in a subscription. */
-export const ListScheduledQueryRuleBySubscription: API.OperationMethod<
+export const ListScheduledQueryRuleBySubscription: API.PaginatedOperationMethod<
   ListScheduledQueryRuleBySubscriptionRequest,
   ScheduledQueryRuleResourceCollection,
   ListScheduledQueryRuleBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ScheduledQueryRuleResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<ListScheduledQueryRuleBySubscriptionRequest>,
   output: __S(129, __c8, 1) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ScheduledQueryRulesCreateOrUpdateError = AzureOpError;
 /** Creates or updates a scheduled query rule. */
@@ -876,12 +904,15 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Insights/operations",
             code: 200,
             apiVersion: "2025-01-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -909,7 +940,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(99, __c6, 3)),
+          value: __S(99, __c6, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -922,12 +953,14 @@ function __c7(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/scheduledQueryRules",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScheduledQueryRuleByResourceGroupRequest" });
@@ -940,7 +973,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(128, __c8, 0)),
+          value: __S(128, __c8, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledQueryRuleResourceCollection" });
@@ -952,12 +985,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Insights/scheduledQueryRules",
             code: 200,
             apiVersion: "2026-03-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListScheduledQueryRuleBySubscriptionRequest" });

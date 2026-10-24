@@ -460,10 +460,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of Azure Active Directory only authentication property\n\nGets a list of Azure Active Directory only authentication property for a workspace",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#AzureADOnlyAuthenticationListResult": {
@@ -605,6 +612,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -852,10 +865,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the Big Data pools in a workspace.\n\nList Big Data pools in a workspace.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#BigDataPoolResourceInfoListResult": {
@@ -1382,6 +1402,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2746,10 +2772,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of firewall rules",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#IpFirewallRuleInfoListResult": {
@@ -2838,6 +2871,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3948,10 +3987,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List integration runtimes\n\nList all integration runtimes",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#IntegrationRuntimeListResponse": {
@@ -4070,6 +4116,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -5551,10 +5603,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of keys in a workspace",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#KeyInfoListResult": {
@@ -5644,6 +5703,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -5663,10 +5728,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the libraries in a workspace.\n\nList libraries in a workspace.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#LibraryListResponse": {
@@ -5813,6 +5885,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -6617,10 +6695,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists private endpoint connection in workspace.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#PrivateEndpointConnectionsListResponse": {
@@ -6775,6 +6860,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7224,10 +7315,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Private Link Resources\n\nGet all private link resources for a private link hub",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#PrivateLinkResourceListResult": {
@@ -7316,6 +7414,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the private link hub"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7427,10 +7531,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Private Link Resources\n\nGet all private link resources for a workspaces",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#PrivateLinkResourcesListRequest": {
@@ -7458,6 +7569,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -7589,10 +7706,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all PrivateEndpointConnections in the PrivateLinkHub",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#PrivateEndpointConnectionsPrivateLinkHubListResponse": {
@@ -7692,6 +7816,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the privateLinkHub"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -7711,10 +7841,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/privateLinkHubs",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of privateLinkHubs in a subscription",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#PrivateLinkHubInfoListResult": {
@@ -7887,6 +8024,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8345,10 +8488,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of privateLinkHubs in a resource group",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#PrivateLinkHubsListByResourceGroupRequest": {
@@ -8369,6 +8519,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -8388,10 +8544,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Sql pool's workload classifier\n\nGet list of  Sql pool's workload classifier for workload groups.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#WorkloadClassifierListResult": {
@@ -8541,6 +8704,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workload group."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -8856,10 +9025,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Sql pool's workload groups\n\nGet list of  Sql pool's workload groups.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#WorkloadGroupListResult": {
@@ -9003,6 +9179,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -10315,10 +10497,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists auditing settings of a Sql pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolBlobAuditingPolicyListResult": {
@@ -10508,6 +10697,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -10530,7 +10725,11 @@
           "apiVersion": "2021-06-01"
         },
         "smithy.api#documentation": "Gets a list of Sql pool data masking rules.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#DataMaskingRuleListResult": {
@@ -11589,10 +11788,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists extended auditing settings of a Sql pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ExtendedSqlPoolBlobAuditingPolicyListResult": {
@@ -11787,6 +11993,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13290,10 +13502,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Sql pool's security alert policies\n\nGet a list of Sql pool's security alert policies.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ListSqlPoolSecurityAlertPolicies": {
@@ -13390,6 +13609,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -13630,10 +13855,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the vulnerability assessment scans of a SQL pool\n\nLists the vulnerability assessment scans of a SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#VulnerabilityAssessmentScanRecordListResult": {
@@ -13739,6 +13971,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the vulnerability assessment."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13770,10 +14008,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the vulnerability assessment policies associated with a SQL pool\n\nLists the vulnerability assessment policies associated with a SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolVulnerabilityAssessmentListResult": {
@@ -13871,6 +14116,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -13890,10 +14141,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets columns in a given table in a SQL pool\n\nGets columns in a given table in a SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolColumnListResult": {
@@ -14014,6 +14272,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that filters elements in the collection."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14033,10 +14297,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets tables of a given schema in a SQL pool\n\nGets tables of a given schema in a SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolTableListResult": {
@@ -14143,6 +14414,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that filters elements in the collection."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -14162,10 +14439,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets schemas of a given SQL pool\n\nGets schemas of a given SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolSchemaListResult": {
@@ -14237,6 +14521,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that filters elements in the collection."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15162,10 +15452,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/recommendedSensitivityLabels",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets sensitivity labels of a given SQL pool\n\nGets sensitivity labels of a given SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SensitivityLabelListResult": {
@@ -15289,6 +15586,12 @@
           "traits": {
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that filters elements in the collection."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -15465,10 +15768,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/currentSensitivityLabels",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets SQL pool sensitivity labels\n\nGets SQL pool sensitivity labels.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolSensitivityLabelsListCurrentRequest": {
@@ -15512,6 +15822,12 @@
             "smithy.api#httpQuery": "$filter",
             "smithy.api#documentation": "An OData filter expression that filters elements in the collection."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15531,10 +15847,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/usages",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets SQL pool usages\n\nGets SQL pool usages.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolUsageListResult": {
@@ -15651,6 +15974,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -15670,10 +15999,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operations",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets a list of operations performed on the SQL pool\n\nGets a list of operations performed on the SQL pool.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolBlobAuditingPolicySqlPoolOperationListResult": {
@@ -15906,6 +16242,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -16166,10 +16508,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "SQL pool's transparent data encryption configurations\n\nGet list of SQL pool's transparent data encryption configurations.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#TransparentDataEncryptionListResult": {
@@ -16306,6 +16655,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17271,10 +17626,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get SQL pool replication links\n\nLists a Sql pool's replication links.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ReplicationLinkListResult": {
@@ -17377,6 +17739,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -17501,10 +17869,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get SQL pool backup\n\nGet SQL pool backup information",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#RestorePointListResult": {
@@ -17607,6 +17982,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL pool name"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -18086,7 +18467,11 @@
           "apiVersion": "2021-06-01"
         },
         "smithy.api#documentation": "List SQL pool geo backup policies\n\nGet list of SQL pool geo backup policies",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#GeoBackupPolicyListResult": {
@@ -18736,10 +19121,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List SQL pools\n\nList all SQL pools",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#SqlPoolInfoListResult": {
@@ -18859,6 +19251,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -19554,10 +19952,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List workspace server's minimal tls settings.\n\nList workspace managed sql server's minimal tls settings.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#DedicatedSQLminimalTlsSettingsListResult": {
@@ -19666,6 +20071,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20021,10 +20432,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get list of recoverable sql pools for the server.\n\nGet list of recoverable sql pools for workspace managed sql server.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#RecoverableSqlPoolListResult": {
@@ -20114,6 +20532,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20133,10 +20557,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlUsages",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get list of usages metric for the server.\n\nGet list of server usages metric for workspace managed sql server.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ServerUsageListResult": {
@@ -20245,6 +20676,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -20335,10 +20772,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get list of encryption protectors for the server.\n\nGet list of encryption protectors for workspace managed sql server.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#EncryptionProtectorListResult": {
@@ -20498,6 +20942,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -20795,10 +21245,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists the vulnerability assessment policies associated with a server.\n\nLists the vulnerability assessment policies associated with a workspace managed sql server.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ServerVulnerabilityAssessmentListResult": {
@@ -20920,6 +21377,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21223,10 +21686,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get server's threat detection policies.\n\nGet workspace managed sql server's threat detection policies.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ServerSecurityAlertPolicyListResult": {
@@ -21416,6 +21886,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -21743,10 +22219,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List server's extended blob auditing policies.\n\nList workspace managed sql server's extended blob auditing policies.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ExtendedServerBlobAuditingPolicyListResult": {
@@ -21939,6 +22422,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22171,10 +22660,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List workspace server's blob auditing policies.\n\nList workspace managed sql server's blob auditing policies.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#ServerBlobAuditingPolicyListResult": {
@@ -22361,6 +22857,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the workspace."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -22596,7 +23098,11 @@
           "apiVersion": "2021-06-01"
         },
         "smithy.api#documentation": "Gets a list of deleted Sql pools that can be restored",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "single",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#RestorableDroppedSqlPoolListResult": {
@@ -23741,10 +24247,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/workspaces",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of workspaces in a subscription",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#WorkspaceInfoListResult": {
@@ -24417,6 +24930,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -25266,10 +25785,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces",
           "code": 200,
-          "apiVersion": "2021-06-01"
+          "apiVersion": "2021-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns a list of workspaces in a resource group",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
+        "com.distilled.openapi#apiVersion": "2021-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.synapse#WorkspacesListByResourceGroupRequest": {
@@ -25289,6 +25815,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

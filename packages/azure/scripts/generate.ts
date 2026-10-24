@@ -18,9 +18,10 @@ import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
  *   • generated ops carry NO per-op error unions
  *     (`includeOperationErrors=false` in v0); every failure is matched by
  *     the protocol against `AZURE_ERROR_CODE_MAP` / the HTTP status map
- *   • no pagination profiles — v0 emitted zero paginated ops (ARM's
- *     `nextLink` isn't a recognized pagination pattern); list ops return
- *     `{ value, nextLink? }` and consumers page manually
+ *   • pagination: convert.ts stamps `smithy.api#paginated` from each
+ *     `x-ms-pageable` (cursor over the absolute `nextLink`, Storage's
+ *     `marker`, or a single page); one profile, core's default strategy
+ *     dispatching on `mode` — the protocol follows the `nextLink` URL
  *   • the operation's `T.Http` trait carries the baked `apiVersion`
  *     (folded in by convert.ts); the protocol appends `?api-version=`
  */
@@ -100,6 +101,12 @@ const azureSpec: SdkSpec = {
     `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
     `export const ${name} = S.Unknown as any as S.Schema<${name}>;\n`,
   ],
+
+  // `x-ms-pageable` ops (stamped by convert.ts). No strategy: core's
+  // paginateWithDefaults runs `cursor` (nextLink / marker) and `single`.
+  paginationProfiles: {
+    pageable: { itemsFallback: "value" },
+  },
 
   operationDecl: {
     contextType: "AzureOpContext",

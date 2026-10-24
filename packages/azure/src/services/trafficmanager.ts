@@ -448,6 +448,8 @@ export interface ListProfileByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
@@ -478,6 +480,8 @@ export interface ProfileListResult {
 export interface ListProfileBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ProfilesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -808,33 +812,47 @@ export const GetTrafficManagerUserMetricsKey: API.OperationMethod<
 
 export type ListProfileByResourceGroupError = AzureOpError;
 /** Lists all Traffic Manager profiles within a resource group. */
-export const ListProfileByResourceGroup: API.OperationMethod<
+export const ListProfileByResourceGroup: API.PaginatedOperationMethod<
   ListProfileByResourceGroupRequest,
   ProfileListResult,
   ListProfileByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Profile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListProfileByResourceGroupRequest>,
   output: __S(97, __c6, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProfileBySubscriptionError = AzureOpError;
 /** Lists all Traffic Manager profiles within a subscription. */
-export const ListProfileBySubscription: API.OperationMethod<
+export const ListProfileBySubscription: API.PaginatedOperationMethod<
   ListProfileBySubscriptionRequest,
   ProfileListResult,
   ListProfileBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Profile
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<ListProfileBySubscriptionRequest>,
   output: __S(97, __c6, 1) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ProfilesCreateOrUpdateError = AzureOpError;
 /** Create or update a Traffic Manager profile. */
@@ -991,12 +1009,14 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProfileByResourceGroupRequest" });
@@ -1021,12 +1041,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/trafficmanagerprofiles",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProfileBySubscriptionRequest" });

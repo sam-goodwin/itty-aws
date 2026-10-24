@@ -15,66 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_openai_authoring#UploadFileCancel": "com.azure.cognitiveservices_openai_authoring#CancelUploadFile",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileCancelRequest": "com.azure.cognitiveservices_openai_authoring#CancelUploadFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileComplete": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFile",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequest": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequestPartIdsList": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequestPartIdsList",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileStart": "com.azure.cognitiveservices_openai_authoring#StartUploadFile",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileStartResponse": "com.azure.cognitiveservices_openai_authoring#StartUploadFileResponse",
-      "com.azure.cognitiveservices_openai_authoring#UploadFileStartRequest": "com.azure.cognitiveservices_openai_authoring#StartUploadFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#ModelsGet": "com.azure.cognitiveservices_openai_authoring#GetModel",
-      "com.azure.cognitiveservices_openai_authoring#ModelsGetRequest": "com.azure.cognitiveservices_openai_authoring#GetModelRequest",
-      "com.azure.cognitiveservices_openai_authoring#ModelsList": "com.azure.cognitiveservices_openai_authoring#ListModels",
-      "com.azure.cognitiveservices_openai_authoring#ModelsListRequest": "com.azure.cognitiveservices_openai_authoring#ListModelsRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningCancel": "com.azure.cognitiveservices_openai_authoring#CancelFineTuning",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningCancelRequest": "com.azure.cognitiveservices_openai_authoring#CancelFineTuningRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpoints": "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpoints",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpointsRequest": "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpointsRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningGetEvents": "com.azure.cognitiveservices_openai_authoring#GetFineTuningEvents",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningGetEventsRequest": "com.azure.cognitiveservices_openai_authoring#GetFineTuningEventsRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningDelete": "com.azure.cognitiveservices_openai_authoring#DeleteFineTuning",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningDeleteRequest": "com.azure.cognitiveservices_openai_authoring#DeleteFineTuningRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningGet": "com.azure.cognitiveservices_openai_authoring#GetFineTuning",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningGetRequest": "com.azure.cognitiveservices_openai_authoring#GetFineTuningRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningCreate": "com.azure.cognitiveservices_openai_authoring#CreateFineTuning",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningCreateResponse": "com.azure.cognitiveservices_openai_authoring#CreateFineTuningResponse",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningCreateRequest": "com.azure.cognitiveservices_openai_authoring#CreateFineTuningRequest",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningList": "com.azure.cognitiveservices_openai_authoring#ListFineTuning",
-      "com.azure.cognitiveservices_openai_authoring#FineTuningListRequest": "com.azure.cognitiveservices_openai_authoring#ListFineTuningRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesImport": "com.azure.cognitiveservices_openai_authoring#ImportFile",
-      "com.azure.cognitiveservices_openai_authoring#FilesImportResponse": "com.azure.cognitiveservices_openai_authoring#ImportFileResponse",
-      "com.azure.cognitiveservices_openai_authoring#FilesImportRequest": "com.azure.cognitiveservices_openai_authoring#ImportFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesGetContent": "com.azure.cognitiveservices_openai_authoring#GetFileContent",
-      "com.azure.cognitiveservices_openai_authoring#FilesGetContentResponse": "com.azure.cognitiveservices_openai_authoring#GetFileContentResponse",
-      "com.azure.cognitiveservices_openai_authoring#FilesGetContentRequest": "com.azure.cognitiveservices_openai_authoring#GetFileContentRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesDelete": "com.azure.cognitiveservices_openai_authoring#DeleteFile",
-      "com.azure.cognitiveservices_openai_authoring#FilesDeleteRequest": "com.azure.cognitiveservices_openai_authoring#DeleteFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesGet": "com.azure.cognitiveservices_openai_authoring#GetFile",
-      "com.azure.cognitiveservices_openai_authoring#FilesGetRequest": "com.azure.cognitiveservices_openai_authoring#GetFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesUpload": "com.azure.cognitiveservices_openai_authoring#UploadFile",
-      "com.azure.cognitiveservices_openai_authoring#FilesUploadResponse": "com.azure.cognitiveservices_openai_authoring#UploadFileResponse",
-      "com.azure.cognitiveservices_openai_authoring#FilesUploadRequest": "com.azure.cognitiveservices_openai_authoring#UploadFileRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesList": "com.azure.cognitiveservices_openai_authoring#ListFiles",
-      "com.azure.cognitiveservices_openai_authoring#FilesListRequest": "com.azure.cognitiveservices_openai_authoring#ListFilesRequest",
-      "com.azure.cognitiveservices_openai_authoring#FilesListRequestPurpose": "com.azure.cognitiveservices_openai_authoring#ListFilesRequestPurpose",
-      "com.azure.cognitiveservices_openai_authoring#BatchCancel": "com.azure.cognitiveservices_openai_authoring#CancelBatch",
-      "com.azure.cognitiveservices_openai_authoring#BatchCancelRequest": "com.azure.cognitiveservices_openai_authoring#CancelBatchRequest",
-      "com.azure.cognitiveservices_openai_authoring#BatchGet": "com.azure.cognitiveservices_openai_authoring#GetBatch",
-      "com.azure.cognitiveservices_openai_authoring#BatchGetRequest": "com.azure.cognitiveservices_openai_authoring#GetBatchRequest",
-      "com.azure.cognitiveservices_openai_authoring#BatchCreate": "com.azure.cognitiveservices_openai_authoring#CreateBatch",
-      "com.azure.cognitiveservices_openai_authoring#BatchCreateRequest": "com.azure.cognitiveservices_openai_authoring#CreateBatchRequest",
-      "com.azure.cognitiveservices_openai_authoring#BatchCreateRequestMetadataMap": "com.azure.cognitiveservices_openai_authoring#CreateBatchRequestMetadataMap",
-      "com.azure.cognitiveservices_openai_authoring#BatchList": "com.azure.cognitiveservices_openai_authoring#ListBatch",
-      "com.azure.cognitiveservices_openai_authoring#BatchListRequest": "com.azure.cognitiveservices_openai_authoring#ListBatchRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_openai_authoring#UploadFileCancel": {
+    "com.azure.cognitiveservices_openai_authoring#CancelUploadFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCancelRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#CancelUploadFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#UploadResource"
@@ -369,7 +316,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileCancelRequest": {
+    "com.azure.cognitiveservices_openai_authoring#CancelUploadFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -393,10 +340,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileComplete": {
+    "com.azure.cognitiveservices_openai_authoring#CompleteUploadFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#UploadResource"
@@ -415,7 +362,7 @@
         "smithy.api#documentation": "This completes the Upload, and the returned Upload object contains a nested File object that is ready for use across the platform.\r\nYou can define the order of the Parts by providing an ordered list of Part IDs.\r\nThe total number of bytes uploaded must match the size originally specified when creating the Upload object.\r\nAfter this operation no additional Parts can be added once the Upload is completed."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequest": {
+    "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -435,7 +382,7 @@
           }
         },
         "part_ids": {
-          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequestPartIdsList",
+          "target": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequestPartIdsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -448,7 +395,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileCompleteRequestPartIdsList": {
+    "com.azure.cognitiveservices_openai_authoring#CompleteUploadFileRequestPartIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -528,13 +475,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileStart": {
+    "com.azure.cognitiveservices_openai_authoring#StartUploadFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileStartRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#StartUploadFileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileStartResponse"
+        "target": "com.azure.cognitiveservices_openai_authoring#StartUploadFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -550,7 +497,7 @@
         "smithy.api#documentation": "An intermediate Upload object is created, allowing you to add Parts to it. Currently, an Upload size can be a maximum of 9 GB in total and will expire two hours after being created.\r\nAfter the Upload is completed a File object will be generated, containing all the uploaded parts. This File object can then be used across our platform just like any other file."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileStartResponse": {
+    "com.azure.cognitiveservices_openai_authoring#StartUploadFileResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -598,7 +545,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#UploadFileStartRequest": {
+    "com.azure.cognitiveservices_openai_authoring#StartUploadFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -632,10 +579,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#ModelsGet": {
+    "com.azure.cognitiveservices_openai_authoring#GetModel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#ModelsGetRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetModelRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#Model"
@@ -838,7 +785,7 @@
         "smithy.api#documentation": "The state of a finetunes object or fine tuning job."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#ModelsGetRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetModelRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -862,10 +809,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#ModelsList": {
+    "com.azure.cognitiveservices_openai_authoring#ListModels": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#ModelsListRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#ListModelsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#ModelList"
@@ -910,7 +857,7 @@
         "smithy.api#documentation": "The list of items."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#ModelsListRequest": {
+    "com.azure.cognitiveservices_openai_authoring#ListModelsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -926,10 +873,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningCancel": {
+    "com.azure.cognitiveservices_openai_authoring#CancelFineTuning": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCancelRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#CancelFineTuningRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJob"
@@ -1109,7 +1056,7 @@
         "smithy.api#documentation": "The result file identities (file-id) containing training and evaluation metrics in csv format.\r\nThe file is only available for successfully completed fine-tune runs."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningCancelRequest": {
+    "com.azure.cognitiveservices_openai_authoring#CancelFineTuningRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1133,10 +1080,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpoints": {
+    "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpoints": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpointsRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpointsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobCheckpointList"
@@ -1249,7 +1196,7 @@
         "smithy.api#documentation": "The metrics at the step number during the fine-tuning job."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpointsRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpointsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1287,10 +1234,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningGetEvents": {
+    "com.azure.cognitiveservices_openai_authoring#GetFineTuningEvents": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetEventsRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetFineTuningEventsRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobEventList"
@@ -1434,7 +1381,7 @@
         "smithy.api#documentation": "The verbosity level of an event."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningGetEventsRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetFineTuningEventsRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1472,10 +1419,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningDelete": {
+    "com.azure.cognitiveservices_openai_authoring#DeleteFineTuning": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningDeleteRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#DeleteFineTuningRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1494,7 +1441,7 @@
         "smithy.api#documentation": "Deletes the fine-tune job specified by the given fine-tune-id."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningDeleteRequest": {
+    "com.azure.cognitiveservices_openai_authoring#DeleteFineTuningRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1518,10 +1465,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningGet": {
+    "com.azure.cognitiveservices_openai_authoring#GetFineTuning": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetFineTuningRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJob"
@@ -1540,7 +1487,7 @@
         "smithy.api#documentation": "Gets details for a single fine-tune job specified by the given fine-tune-id.\r\nThe details contain the base model, training and validation files, hyper parameters, time stamps, status and events.\r\nEvents are created when the job status changes, e.g. running or complete, and when results are uploaded."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningGetRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetFineTuningRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1564,13 +1511,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningCreate": {
+    "com.azure.cognitiveservices_openai_authoring#CreateFineTuning": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#CreateFineTuningRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCreateResponse"
+        "target": "com.azure.cognitiveservices_openai_authoring#CreateFineTuningResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1586,7 +1533,7 @@
         "smithy.api#documentation": "Creates a job that fine-tunes a specified model from a given training file.\r\nResponse includes details of the enqueued job including job status and hyper parameters.\r\nThe name of the fine-tuned model is added to the response once complete."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningCreateResponse": {
+    "com.azure.cognitiveservices_openai_authoring#CreateFineTuningResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -1694,7 +1641,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningCreateRequest": {
+    "com.azure.cognitiveservices_openai_authoring#CreateFineTuningRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1745,10 +1692,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningList": {
+    "com.azure.cognitiveservices_openai_authoring#ListFineTuning": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FineTuningListRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#ListFineTuningRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FineTuningJobList"
@@ -1799,7 +1746,7 @@
         "smithy.api#documentation": "The list of items."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FineTuningListRequest": {
+    "com.azure.cognitiveservices_openai_authoring#ListFineTuningRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1829,13 +1776,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesImport": {
+    "com.azure.cognitiveservices_openai_authoring#ImportFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesImportRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#ImportFileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesImportResponse"
+        "target": "com.azure.cognitiveservices_openai_authoring#ImportFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1851,7 +1798,7 @@
         "smithy.api#documentation": "Creates a new file entity by importing data from a provided url. Uploaded files can, for example, be used for training or evaluating fine-tuned models."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesImportResponse": {
+    "com.azure.cognitiveservices_openai_authoring#ImportFileResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -1910,7 +1857,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesImportRequest": {
+    "com.azure.cognitiveservices_openai_authoring#ImportFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1940,13 +1887,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesGetContent": {
+    "com.azure.cognitiveservices_openai_authoring#GetFileContent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesGetContentRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetFileContentRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesGetContentResponse"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetFileContentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1962,7 +1909,7 @@
         "smithy.api#documentation": "Gets the content of the file specified by the given file-id.\r\nFiles can be user uploaded content or generated by the service like result metrics of a fine-tune job."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesGetContentResponse": {
+    "com.azure.cognitiveservices_openai_authoring#GetFileContentResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1977,7 +1924,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesGetContentRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetFileContentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2001,10 +1948,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesDelete": {
+    "com.azure.cognitiveservices_openai_authoring#DeleteFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesDeleteRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#DeleteFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FileDelete"
@@ -2048,7 +1995,7 @@
         "smithy.api#documentation": "Defines the response for File Delete."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesDeleteRequest": {
+    "com.azure.cognitiveservices_openai_authoring#DeleteFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2072,10 +2019,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesGet": {
+    "com.azure.cognitiveservices_openai_authoring#GetFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesGetRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetFileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#File"
@@ -2094,7 +2041,7 @@
         "smithy.api#documentation": "Gets details for a single file specified by the given file-id including status, size, purpose, etc."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesGetRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2118,13 +2065,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesUpload": {
+    "com.azure.cognitiveservices_openai_authoring#UploadFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesUploadRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesUploadResponse"
+        "target": "com.azure.cognitiveservices_openai_authoring#UploadFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2140,7 +2087,7 @@
         "smithy.api#documentation": "Creates a new file entity by uploading data from a local machine. Uploaded files can, for example, be used for training or evaluating fine-tuned models."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesUploadResponse": {
+    "com.azure.cognitiveservices_openai_authoring#UploadFileResponse": {
       "type": "structure",
       "members": {
         "object": {
@@ -2199,7 +2146,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesUploadRequest": {
+    "com.azure.cognitiveservices_openai_authoring#UploadFileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2215,10 +2162,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesList": {
+    "com.azure.cognitiveservices_openai_authoring#ListFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#FilesListRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#ListFilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#FileList"
@@ -2263,7 +2210,7 @@
         "smithy.api#documentation": "The list of items."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesListRequest": {
+    "com.azure.cognitiveservices_openai_authoring#ListFilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2275,7 +2222,7 @@
           }
         },
         "purpose": {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesListRequestPurpose",
+          "target": "com.azure.cognitiveservices_openai_authoring#ListFilesRequestPurpose",
           "traits": {
             "smithy.api#httpQuery": "purpose",
             "smithy.api#documentation": "Only return files with the given purpose."
@@ -2286,7 +2233,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#FilesListRequestPurpose": {
+    "com.azure.cognitiveservices_openai_authoring#ListFilesRequestPurpose": {
       "type": "enum",
       "members": {
         "FINE_TUNE": {
@@ -2328,10 +2275,10 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchCancel": {
+    "com.azure.cognitiveservices_openai_authoring#CancelBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#BatchCancelRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#CancelBatchRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#Batch"
@@ -2611,7 +2558,7 @@
         "smithy.api#documentation": "Error information for a failure in batch."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchCancelRequest": {
+    "com.azure.cognitiveservices_openai_authoring#CancelBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2635,10 +2582,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchGet": {
+    "com.azure.cognitiveservices_openai_authoring#GetBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#BatchGetRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#GetBatchRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#Batch"
@@ -2657,7 +2604,7 @@
         "smithy.api#documentation": "Gets details for a single batch specified by the given batch-id."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchGetRequest": {
+    "com.azure.cognitiveservices_openai_authoring#GetBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2681,10 +2628,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchCreate": {
+    "com.azure.cognitiveservices_openai_authoring#CreateBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#BatchCreateRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#CreateBatchRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#Batch"
@@ -2703,7 +2650,7 @@
         "smithy.api#documentation": "Creates and executes a batch from an uploaded file of requests.\r\nResponse includes details of the enqueued job including job status.\r\nThe ID of the result file is added to the response once complete."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchCreateRequest": {
+    "com.azure.cognitiveservices_openai_authoring#CreateBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2729,7 +2676,7 @@
           }
         },
         "metadata": {
-          "target": "com.azure.cognitiveservices_openai_authoring#BatchCreateRequestMetadataMap",
+          "target": "com.azure.cognitiveservices_openai_authoring#CreateBatchRequestMetadataMap",
           "traits": {
             "smithy.api#documentation": "A set of key-value pairs that can be attached to the batch. This can be useful for storing additional information about the batch in a structured format."
           }
@@ -2739,7 +2686,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchCreateRequestMetadataMap": {
+    "com.azure.cognitiveservices_openai_authoring#CreateBatchRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2751,10 +2698,10 @@
         "smithy.api#documentation": "A set of key-value pairs that can be attached to the batch. This can be useful for storing additional information about the batch in a structured format."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchList": {
+    "com.azure.cognitiveservices_openai_authoring#ListBatch": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_openai_authoring#BatchListRequest"
+        "target": "com.azure.cognitiveservices_openai_authoring#ListBatchRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_openai_authoring#BatchesList"
@@ -2817,7 +2764,7 @@
         "smithy.api#documentation": "The list of items."
       }
     },
-    "com.azure.cognitiveservices_openai_authoring#BatchListRequest": {
+    "com.azure.cognitiveservices_openai_authoring#ListBatchRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -2852,73 +2799,73 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileCancel"
+          "target": "com.azure.cognitiveservices_openai_authoring#CancelUploadFile"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileComplete"
+          "target": "com.azure.cognitiveservices_openai_authoring#CompleteUploadFile"
         },
         {
           "target": "com.azure.cognitiveservices_openai_authoring#UploadFilePart"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#UploadFileStart"
+          "target": "com.azure.cognitiveservices_openai_authoring#StartUploadFile"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#ModelsGet"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetModel"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#ModelsList"
+          "target": "com.azure.cognitiveservices_openai_authoring#ListModels"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCancel"
+          "target": "com.azure.cognitiveservices_openai_authoring#CancelFineTuning"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetCheckpoints"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetFineTuningCheckpoints"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGetEvents"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetFineTuningEvents"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningDelete"
+          "target": "com.azure.cognitiveservices_openai_authoring#DeleteFineTuning"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningGet"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetFineTuning"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningCreate"
+          "target": "com.azure.cognitiveservices_openai_authoring#CreateFineTuning"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FineTuningList"
+          "target": "com.azure.cognitiveservices_openai_authoring#ListFineTuning"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesImport"
+          "target": "com.azure.cognitiveservices_openai_authoring#ImportFile"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesGetContent"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetFileContent"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesDelete"
+          "target": "com.azure.cognitiveservices_openai_authoring#DeleteFile"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesGet"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetFile"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesUpload"
+          "target": "com.azure.cognitiveservices_openai_authoring#UploadFile"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#FilesList"
+          "target": "com.azure.cognitiveservices_openai_authoring#ListFiles"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#BatchCancel"
+          "target": "com.azure.cognitiveservices_openai_authoring#CancelBatch"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#BatchGet"
+          "target": "com.azure.cognitiveservices_openai_authoring#GetBatch"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#BatchCreate"
+          "target": "com.azure.cognitiveservices_openai_authoring#CreateBatch"
         },
         {
-          "target": "com.azure.cognitiveservices_openai_authoring#BatchList"
+          "target": "com.azure.cognitiveservices_openai_authoring#ListBatch"
         }
       ],
       "traits": {

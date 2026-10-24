@@ -376,7 +376,10 @@ export interface GetConnectedClusterResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export interface GetOperationRequest {}
+export interface GetOperationRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationListValueItemDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -419,6 +422,8 @@ export interface ListConnectedClusterByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ConnectedClusterTagsMap = { [key: string]: string | undefined };
@@ -455,6 +460,8 @@ export interface ConnectedClusterList {
 export interface ListConnectedClusterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The mode of client authentication. */
 export type AuthenticationMethod = "Token" | "AAD";
@@ -601,48 +608,69 @@ export const GetConnectedCluster: API.OperationMethod<
 
 export type GetOperationError = AzureOpError;
 /** List the operations for the provider */
-export const GetOperation: API.OperationMethod<
+export const GetOperation: API.PaginatedOperationMethod<
   GetOperationRequest,
   OperationList,
   GetOperationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OperationListValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<GetOperationRequest>,
   output: __S(84, __c5, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectedClusterByResourceGroupError = AzureOpError;
 /** Lists all connected clusters in the given Resource Group API to enumerate registered connected K8s clusters under a Resource Group */
-export const ListConnectedClusterByResourceGroup: API.OperationMethod<
+export const ListConnectedClusterByResourceGroup: API.PaginatedOperationMethod<
   ListConnectedClusterByResourceGroupRequest,
   ConnectedClusterList,
   ListConnectedClusterByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectedCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListConnectedClusterByResourceGroupRequest>,
   output: __S(113, __c7, 1) as any as S.Schema<ConnectedClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectedClusterBySubscriptionError = AzureOpError;
 /** Lists all connected clusters in the given Subscription API to enumerate registered connected K8s clusters under a Subscription */
-export const ListConnectedClusterBySubscription: API.OperationMethod<
+export const ListConnectedClusterBySubscription: API.PaginatedOperationMethod<
   ListConnectedClusterBySubscriptionRequest,
   ConnectedClusterList,
   ListConnectedClusterBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectedCluster
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<ListConnectedClusterBySubscriptionRequest>,
   output: __S(113, __c7, 1) as any as S.Schema<ConnectedClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListConnectedClusterClusterUserCredentialError = AzureOpError;
 /** Gets cluster user credentials of a connected cluster Gets cluster user credentials of the connected cluster with a specified resource group and name. */
@@ -962,12 +990,15 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Kubernetes/operations",
             code: 200,
             apiVersion: "2026-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "GetOperationRequest" });
@@ -1008,12 +1039,14 @@ function __c6(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters",
             code: 200,
             apiVersion: "2026-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectedClusterByResourceGroupRequest" });
@@ -1038,12 +1071,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Kubernetes/connectedClusters",
             code: 200,
             apiVersion: "2026-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListConnectedClusterBySubscriptionRequest" });

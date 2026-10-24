@@ -15,33 +15,80 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.portal#OperationsList": "com.azure.portal#ListOperations",
+      "com.azure.portal#OperationsListResponse": "com.azure.portal#ListOperationsResponse",
+      "com.azure.portal#OperationsListResponseValueList": "com.azure.portal#ListOperationsResponseValueList",
+      "com.azure.portal#OperationsListRequest": "com.azure.portal#ListOperationsRequest",
+      "com.azure.portal#DashboardsDelete": "com.azure.portal#DeleteDashboard",
+      "com.azure.portal#DashboardsDeleteRequest": "com.azure.portal#DeleteDashboardRequest",
+      "com.azure.portal#DashboardsUpdate": "com.azure.portal#UpdateDashboard",
+      "com.azure.portal#DashboardsUpdateResponse": "com.azure.portal#UpdateDashboardResponse",
+      "com.azure.portal#DashboardsUpdateResponseTagsMap": "com.azure.portal#UpdateDashboardResponseTagsMap",
+      "com.azure.portal#DashboardsUpdateRequest": "com.azure.portal#UpdateDashboardRequest",
+      "com.azure.portal#DashboardsUpdateRequestTagsMap": "com.azure.portal#UpdateDashboardRequestTagsMap",
+      "com.azure.portal#DashboardsGet": "com.azure.portal#GetDashboard",
+      "com.azure.portal#DashboardsGetResponse": "com.azure.portal#GetDashboardResponse",
+      "com.azure.portal#DashboardsGetResponseTagsMap": "com.azure.portal#GetDashboardResponseTagsMap",
+      "com.azure.portal#DashboardsGetRequest": "com.azure.portal#GetDashboardRequest",
+      "com.azure.portal#DashboardsListByResourceGroup": "com.azure.portal#ListDashboardByResourceGroup",
+      "com.azure.portal#DashboardsListByResourceGroupResponse": "com.azure.portal#ListDashboardByResourceGroupResponse",
+      "com.azure.portal#DashboardsListByResourceGroupResponseValueList": "com.azure.portal#ListDashboardByResourceGroupResponseValueList",
+      "com.azure.portal#DashboardsListByResourceGroupRequest": "com.azure.portal#ListDashboardByResourceGroupRequest",
+      "com.azure.portal#DashboardsListBySubscription": "com.azure.portal#ListDashboardBySubscription",
+      "com.azure.portal#DashboardsListBySubscriptionResponse": "com.azure.portal#ListDashboardBySubscriptionResponse",
+      "com.azure.portal#DashboardsListBySubscriptionResponseValueList": "com.azure.portal#ListDashboardBySubscriptionResponseValueList",
+      "com.azure.portal#DashboardsListBySubscriptionRequest": "com.azure.portal#ListDashboardBySubscriptionRequest",
+      "com.azure.portal#TenantConfigurationsDelete": "com.azure.portal#DeleteTenantConfiguration",
+      "com.azure.portal#TenantConfigurationsDeleteRequest": "com.azure.portal#DeleteTenantConfigurationRequest",
+      "com.azure.portal#TenantConfigurationsCreate": "com.azure.portal#CreateTenantConfiguration",
+      "com.azure.portal#TenantConfigurationsCreateResponse": "com.azure.portal#CreateTenantConfigurationResponse",
+      "com.azure.portal#TenantConfigurationsCreateRequest": "com.azure.portal#CreateTenantConfigurationRequest",
+      "com.azure.portal#TenantConfigurationsGet": "com.azure.portal#GetTenantConfiguration",
+      "com.azure.portal#TenantConfigurationsGetResponse": "com.azure.portal#GetTenantConfigurationResponse",
+      "com.azure.portal#TenantConfigurationsGetRequest": "com.azure.portal#GetTenantConfigurationRequest",
+      "com.azure.portal#TenantConfigurationsList": "com.azure.portal#ListTenantConfigurations",
+      "com.azure.portal#TenantConfigurationsListResponse": "com.azure.portal#ListTenantConfigurationsResponse",
+      "com.azure.portal#TenantConfigurationsListResponseValueList": "com.azure.portal#ListTenantConfigurationsResponseValueList",
+      "com.azure.portal#TenantConfigurationsListRequest": "com.azure.portal#ListTenantConfigurationsRequest",
+      "com.azure.portal#ListTenantConfigurationViolationsList": "com.azure.portal#ListListTenantConfigurationViolations",
+      "com.azure.portal#ListTenantConfigurationViolationsListResponse": "com.azure.portal#ListListTenantConfigurationViolationsResponse",
+      "com.azure.portal#ListTenantConfigurationViolationsListResponseValueList": "com.azure.portal#ListListTenantConfigurationViolationsResponseValueList",
+      "com.azure.portal#ListTenantConfigurationViolationsListRequest": "com.azure.portal#ListListTenantConfigurationViolationsRequest"
+    }
   },
   "shapes": {
-    "com.azure.portal#ListOperations": {
+    "com.azure.portal#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.portal#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.portal#ListOperationsResponse"
+        "target": "com.azure.portal#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.Portal/operations",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.portal#ListOperationsResponse": {
+    "com.azure.portal#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.portal#ListOperationsResponseValueList",
+          "target": "com.azure.portal#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -57,7 +104,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#ListOperationsResponseValueList": {
+    "com.azure.portal#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.portal#Operation"
@@ -176,10 +223,24 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.portal#DeleteDashboard": {
+    "com.azure.portal#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.portal#DashboardsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#DeleteDashboardRequest"
+        "target": "com.azure.portal#DashboardsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -189,13 +250,13 @@
           "method": "DELETE",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
           "code": 200,
-          "apiVersion": "2025-04-01-preview"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Deletes the Dashboard.",
-        "com.distilled.openapi#apiVersion": "2025-04-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.portal#DeleteDashboardRequest": {
+    "com.azure.portal#DashboardsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -227,26 +288,26 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#UpdateDashboard": {
+    "com.azure.portal#DashboardsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#UpdateDashboardRequest"
+        "target": "com.azure.portal#DashboardsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.portal#UpdateDashboardResponse"
+        "target": "com.azure.portal#DashboardsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
           "code": 200,
-          "apiVersion": "2025-04-01-preview"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Updates an existing Dashboard.",
-        "com.distilled.openapi#apiVersion": "2025-04-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.portal#UpdateDashboardResponse": {
+    "com.azure.portal#DashboardsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -274,7 +335,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.portal#UpdateDashboardResponseTagsMap",
+          "target": "com.azure.portal#DashboardsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -406,7 +467,7 @@
           }
         },
         "metadata": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.portal#DashboardPartMetadata",
           "traits": {
             "smithy.api#documentation": "The dashboard part's metadata."
           }
@@ -486,7 +547,7 @@
         "smithy.api#documentation": "The dashboard's part position."
       }
     },
-    "com.azure.portal#UpdateDashboardResponseTagsMap": {
+    "com.azure.portal#DashboardsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -606,7 +667,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.portal#UpdateDashboardRequest": {
+    "com.azure.portal#DashboardsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -640,7 +701,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.portal#UpdateDashboardRequestTagsMap",
+          "target": "com.azure.portal#DashboardsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags"
           }
@@ -650,7 +711,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#UpdateDashboardRequestTagsMap": {
+    "com.azure.portal#DashboardsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -704,10 +765,10 @@
           "method": "PUT",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
           "code": 200,
-          "apiVersion": "2025-04-01-preview"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Creates or updates a Dashboard.",
-        "com.distilled.openapi#apiVersion": "2025-04-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
     "com.azure.portal#DashboardsCreateOrUpdateResponse": {
@@ -865,26 +926,26 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.portal#GetDashboard": {
+    "com.azure.portal#DashboardsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#GetDashboardRequest"
+        "target": "com.azure.portal#DashboardsGetRequest"
       },
       "output": {
-        "target": "com.azure.portal#GetDashboardResponse"
+        "target": "com.azure.portal#DashboardsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards/{dashboardName}",
           "code": 200,
-          "apiVersion": "2025-04-01-preview"
+          "apiVersion": "2026-04-01"
         },
         "smithy.api#documentation": "Gets the Dashboard.",
-        "com.distilled.openapi#apiVersion": "2025-04-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.portal#GetDashboardResponse": {
+    "com.azure.portal#DashboardsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -912,7 +973,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.portal#GetDashboardResponseTagsMap",
+          "target": "com.azure.portal#DashboardsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -935,7 +996,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#GetDashboardResponseTagsMap": {
+    "com.azure.portal#DashboardsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -947,7 +1008,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.portal#GetDashboardRequest": {
+    "com.azure.portal#DashboardsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -979,30 +1040,37 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#ListDashboardByResourceGroup": {
+    "com.azure.portal#DashboardsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#ListDashboardByResourceGroupRequest"
+        "target": "com.azure.portal#DashboardsListByResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.portal#ListDashboardByResourceGroupResponse"
+        "target": "com.azure.portal#DashboardsListByResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Portal/dashboards",
           "code": 200,
-          "apiVersion": "2025-04-01-preview"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the Dashboards within a resource group.",
-        "com.distilled.openapi#apiVersion": "2025-04-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.portal#ListDashboardByResourceGroupResponse": {
+    "com.azure.portal#DashboardsListByResourceGroupResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.portal#ListDashboardByResourceGroupResponseValueList",
+          "target": "com.azure.portal#DashboardsListByResourceGroupResponseValueList",
           "traits": {
             "smithy.api#documentation": "The Dashboard items on this page",
             "smithy.api#required": {}
@@ -1019,7 +1087,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#ListDashboardByResourceGroupResponseValueList": {
+    "com.azure.portal#DashboardsListByResourceGroupResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.portal#Dashboard"
@@ -1091,7 +1159,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.portal#ListDashboardByResourceGroupRequest": {
+    "com.azure.portal#DashboardsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1109,36 +1177,49 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#ListDashboardBySubscription": {
+    "com.azure.portal#DashboardsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#ListDashboardBySubscriptionRequest"
+        "target": "com.azure.portal#DashboardsListBySubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.portal#ListDashboardBySubscriptionResponse"
+        "target": "com.azure.portal#DashboardsListBySubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Portal/dashboards",
           "code": 200,
-          "apiVersion": "2025-04-01-preview"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets all the dashboards within a subscription.",
-        "com.distilled.openapi#apiVersion": "2025-04-01-preview"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.portal#ListDashboardBySubscriptionResponse": {
+    "com.azure.portal#DashboardsListBySubscriptionResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.portal#ListDashboardBySubscriptionResponseValueList",
+          "target": "com.azure.portal#DashboardsListBySubscriptionResponseValueList",
           "traits": {
             "smithy.api#documentation": "The Dashboard items on this page",
             "smithy.api#required": {}
@@ -1155,7 +1236,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#ListDashboardBySubscriptionResponseValueList": {
+    "com.azure.portal#DashboardsListBySubscriptionResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.portal#Dashboard"
@@ -1164,7 +1245,7 @@
         "smithy.api#documentation": "The Dashboard items on this page"
       }
     },
-    "com.azure.portal#ListDashboardBySubscriptionRequest": {
+    "com.azure.portal#DashboardsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1174,16 +1255,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#DeleteTenantConfiguration": {
+    "com.azure.portal#TenantConfigurationsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#DeleteTenantConfigurationRequest"
+        "target": "com.azure.portal#TenantConfigurationsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1199,7 +1286,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.portal#DeleteTenantConfigurationRequest": {
+    "com.azure.portal#TenantConfigurationsDeleteRequest": {
       "type": "structure",
       "members": {
         "configurationName": {
@@ -1215,13 +1302,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#CreateTenantConfiguration": {
+    "com.azure.portal#TenantConfigurationsCreate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#CreateTenantConfigurationRequest"
+        "target": "com.azure.portal#TenantConfigurationsCreateRequest"
       },
       "output": {
-        "target": "com.azure.portal#CreateTenantConfigurationResponse"
+        "target": "com.azure.portal#TenantConfigurationsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1234,7 +1321,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.portal#CreateTenantConfigurationResponse": {
+    "com.azure.portal#TenantConfigurationsCreateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1292,7 +1379,7 @@
         "smithy.api#documentation": "Tenant Configuration Properties with Provisioning state"
       }
     },
-    "com.azure.portal#CreateTenantConfigurationRequest": {
+    "com.azure.portal#TenantConfigurationsCreateRequest": {
       "type": "structure",
       "members": {
         "configurationName": {
@@ -1328,13 +1415,13 @@
         "smithy.api#documentation": "Tenant Configuration Properties with Provisioning state"
       }
     },
-    "com.azure.portal#GetTenantConfiguration": {
+    "com.azure.portal#TenantConfigurationsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.portal#GetTenantConfigurationRequest"
+        "target": "com.azure.portal#TenantConfigurationsGetRequest"
       },
       "output": {
-        "target": "com.azure.portal#GetTenantConfigurationResponse"
+        "target": "com.azure.portal#TenantConfigurationsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1347,7 +1434,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-01"
       }
     },
-    "com.azure.portal#GetTenantConfigurationResponse": {
+    "com.azure.portal#TenantConfigurationsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1385,7 +1472,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#GetTenantConfigurationRequest": {
+    "com.azure.portal#TenantConfigurationsGetRequest": {
       "type": "structure",
       "members": {
         "configurationName": {
@@ -1401,30 +1488,37 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.portal#ListTenantConfigurations": {
+    "com.azure.portal#TenantConfigurationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.portal#TenantConfigurationsListRequest"
       },
       "output": {
-        "target": "com.azure.portal#ListTenantConfigurationsResponse"
+        "target": "com.azure.portal#TenantConfigurationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.Portal/tenantConfigurations",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets list of the tenant configurations.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.portal#ListTenantConfigurationsResponse": {
+    "com.azure.portal#TenantConfigurationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.portal#ListTenantConfigurationsResponseValueList",
+          "target": "com.azure.portal#TenantConfigurationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "The Configuration items on this page",
             "smithy.api#required": {}
@@ -1441,7 +1535,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#ListTenantConfigurationsResponseValueList": {
+    "com.azure.portal#TenantConfigurationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.portal#Configuration"
@@ -1488,30 +1582,51 @@
         "smithy.api#documentation": "The tenant configuration resource definition."
       }
     },
-    "com.azure.portal#ListListTenantConfigurationViolations": {
+    "com.azure.portal#TenantConfigurationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.portal#ListTenantConfigurationViolationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.portal#ListTenantConfigurationViolationsListRequest"
       },
       "output": {
-        "target": "com.azure.portal#ListListTenantConfigurationViolationsResponse"
+        "target": "com.azure.portal#ListTenantConfigurationViolationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "POST",
           "uri": "/providers/Microsoft.Portal/listTenantConfigurationViolations",
           "code": 200,
-          "apiVersion": "2026-04-01"
+          "apiVersion": "2026-04-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Gets list of items that violate tenant's configuration.",
-        "com.distilled.openapi#apiVersion": "2026-04-01"
+        "com.distilled.openapi#apiVersion": "2026-04-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.portal#ListListTenantConfigurationViolationsResponse": {
+    "com.azure.portal#ListTenantConfigurationViolationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.portal#ListListTenantConfigurationViolationsResponseValueList",
+          "target": "com.azure.portal#ListTenantConfigurationViolationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "The Violation items on this page",
             "smithy.api#required": {}
@@ -1528,7 +1643,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.portal#ListListTenantConfigurationViolationsResponseValueList": {
+    "com.azure.portal#ListTenantConfigurationViolationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.portal#Violation"
@@ -1563,45 +1678,59 @@
         "smithy.api#documentation": "Violation information."
       }
     },
+    "com.azure.portal#ListTenantConfigurationViolationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
     "com.azure.portal#Portal": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.portal#ListOperations"
+          "target": "com.azure.portal#OperationsList"
         },
         {
-          "target": "com.azure.portal#DeleteDashboard"
+          "target": "com.azure.portal#DashboardsDelete"
         },
         {
-          "target": "com.azure.portal#UpdateDashboard"
+          "target": "com.azure.portal#DashboardsUpdate"
         },
         {
           "target": "com.azure.portal#DashboardsCreateOrUpdate"
         },
         {
-          "target": "com.azure.portal#GetDashboard"
+          "target": "com.azure.portal#DashboardsGet"
         },
         {
-          "target": "com.azure.portal#ListDashboardByResourceGroup"
+          "target": "com.azure.portal#DashboardsListByResourceGroup"
         },
         {
-          "target": "com.azure.portal#ListDashboardBySubscription"
+          "target": "com.azure.portal#DashboardsListBySubscription"
         },
         {
-          "target": "com.azure.portal#DeleteTenantConfiguration"
+          "target": "com.azure.portal#TenantConfigurationsDelete"
         },
         {
-          "target": "com.azure.portal#CreateTenantConfiguration"
+          "target": "com.azure.portal#TenantConfigurationsCreate"
         },
         {
-          "target": "com.azure.portal#GetTenantConfiguration"
+          "target": "com.azure.portal#TenantConfigurationsGet"
         },
         {
-          "target": "com.azure.portal#ListTenantConfigurations"
+          "target": "com.azure.portal#TenantConfigurationsList"
         },
         {
-          "target": "com.azure.portal#ListListTenantConfigurationViolations"
+          "target": "com.azure.portal#ListTenantConfigurationViolationsList"
         }
       ],
       "traits": {

@@ -15,13 +15,70 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.maps#CreatorsDelete": "com.azure.maps#DeleteCreator",
+      "com.azure.maps#CreatorsDeleteRequest": "com.azure.maps#DeleteCreatorRequest",
+      "com.azure.maps#CreatorsUpdate": "com.azure.maps#UpdateCreator",
+      "com.azure.maps#CreatorsUpdateResponse": "com.azure.maps#UpdateCreatorResponse",
+      "com.azure.maps#CreatorsUpdateResponseSystemData": "com.azure.maps#UpdateCreatorResponseSystemData",
+      "com.azure.maps#CreatorsUpdateResponseSystemDataLastModifiedByType": "com.azure.maps#UpdateCreatorResponseSystemDataLastModifiedByType",
+      "com.azure.maps#CreatorsUpdateResponseSystemDataCreatedByType": "com.azure.maps#UpdateCreatorResponseSystemDataCreatedByType",
+      "com.azure.maps#CreatorsUpdateResponseTagsMap": "com.azure.maps#UpdateCreatorResponseTagsMap",
+      "com.azure.maps#CreatorsUpdateRequest": "com.azure.maps#UpdateCreatorRequest",
+      "com.azure.maps#CreatorsUpdateRequestTagsMap": "com.azure.maps#UpdateCreatorRequestTagsMap",
+      "com.azure.maps#CreatorsGet": "com.azure.maps#GetCreator",
+      "com.azure.maps#CreatorsGetResponse": "com.azure.maps#GetCreatorResponse",
+      "com.azure.maps#CreatorsGetResponseSystemData": "com.azure.maps#GetCreatorResponseSystemData",
+      "com.azure.maps#CreatorsGetResponseSystemDataLastModifiedByType": "com.azure.maps#GetCreatorResponseSystemDataLastModifiedByType",
+      "com.azure.maps#CreatorsGetResponseSystemDataCreatedByType": "com.azure.maps#GetCreatorResponseSystemDataCreatedByType",
+      "com.azure.maps#CreatorsGetResponseTagsMap": "com.azure.maps#GetCreatorResponseTagsMap",
+      "com.azure.maps#CreatorsGetRequest": "com.azure.maps#GetCreatorRequest",
+      "com.azure.maps#CreatorsListByAccount": "com.azure.maps#ListCreatorByAccount",
+      "com.azure.maps#CreatorsListByAccountRequest": "com.azure.maps#ListCreatorByAccountRequest",
+      "com.azure.maps#MapsListSubscriptionOperations": "com.azure.maps#ListMapSubscriptionOperations",
+      "com.azure.maps#MapsListSubscriptionOperationsRequest": "com.azure.maps#ListMapSubscriptionOperationsRequest",
+      "com.azure.maps#MapsListOperations": "com.azure.maps#ListMapOperations",
+      "com.azure.maps#MapsListOperationsRequest": "com.azure.maps#ListMapOperationsRequest",
+      "com.azure.maps#AccountsRegenerateKeys": "com.azure.maps#RegenerateAccountKeys",
+      "com.azure.maps#AccountsRegenerateKeysRequest": "com.azure.maps#RegenerateAccountKeysRequest",
+      "com.azure.maps#AccountsRegenerateKeysRequestKeyType": "com.azure.maps#RegenerateAccountKeysRequestKeyType",
+      "com.azure.maps#AccountsListKeys": "com.azure.maps#ListAccountKeys",
+      "com.azure.maps#AccountsListKeysRequest": "com.azure.maps#ListAccountKeysRequest",
+      "com.azure.maps#AccountsListSas": "com.azure.maps#ListAccountSas",
+      "com.azure.maps#AccountsListSasRequest": "com.azure.maps#ListAccountSasRequest",
+      "com.azure.maps#AccountsListSasRequestRegionsList": "com.azure.maps#ListAccountSasRequestRegionsList",
+      "com.azure.maps#AccountsListSasRequestSigningKey": "com.azure.maps#ListAccountSasRequestSigningKey",
+      "com.azure.maps#AccountsListBySubscription": "com.azure.maps#ListAccountBySubscription",
+      "com.azure.maps#AccountsListBySubscriptionRequest": "com.azure.maps#ListAccountBySubscriptionRequest",
+      "com.azure.maps#AccountsListByResourceGroup": "com.azure.maps#ListAccountByResourceGroup",
+      "com.azure.maps#AccountsListByResourceGroupRequest": "com.azure.maps#ListAccountByResourceGroupRequest",
+      "com.azure.maps#AccountsDelete": "com.azure.maps#DeleteAccount",
+      "com.azure.maps#AccountsDeleteRequest": "com.azure.maps#DeleteAccountRequest",
+      "com.azure.maps#AccountsUpdate": "com.azure.maps#UpdateAccount",
+      "com.azure.maps#AccountsUpdateResponse": "com.azure.maps#UpdateAccountResponse",
+      "com.azure.maps#AccountsUpdateResponseIdentity": "com.azure.maps#UpdateAccountResponseIdentity",
+      "com.azure.maps#AccountsUpdateResponseSystemData": "com.azure.maps#UpdateAccountResponseSystemData",
+      "com.azure.maps#AccountsUpdateResponseSystemDataLastModifiedByType": "com.azure.maps#UpdateAccountResponseSystemDataLastModifiedByType",
+      "com.azure.maps#AccountsUpdateResponseSystemDataCreatedByType": "com.azure.maps#UpdateAccountResponseSystemDataCreatedByType",
+      "com.azure.maps#AccountsUpdateResponseTagsMap": "com.azure.maps#UpdateAccountResponseTagsMap",
+      "com.azure.maps#AccountsUpdateRequest": "com.azure.maps#UpdateAccountRequest",
+      "com.azure.maps#AccountsUpdateRequestIdentity": "com.azure.maps#UpdateAccountRequestIdentity",
+      "com.azure.maps#AccountsUpdateRequestTagsMap": "com.azure.maps#UpdateAccountRequestTagsMap",
+      "com.azure.maps#AccountsGet": "com.azure.maps#GetAccount",
+      "com.azure.maps#AccountsGetResponse": "com.azure.maps#GetAccountResponse",
+      "com.azure.maps#AccountsGetResponseIdentity": "com.azure.maps#GetAccountResponseIdentity",
+      "com.azure.maps#AccountsGetResponseSystemData": "com.azure.maps#GetAccountResponseSystemData",
+      "com.azure.maps#AccountsGetResponseSystemDataLastModifiedByType": "com.azure.maps#GetAccountResponseSystemDataLastModifiedByType",
+      "com.azure.maps#AccountsGetResponseSystemDataCreatedByType": "com.azure.maps#GetAccountResponseSystemDataCreatedByType",
+      "com.azure.maps#AccountsGetResponseTagsMap": "com.azure.maps#GetAccountResponseTagsMap",
+      "com.azure.maps#AccountsGetRequest": "com.azure.maps#GetAccountRequest"
+    }
   },
   "shapes": {
-    "com.azure.maps#DeleteCreator": {
+    "com.azure.maps#CreatorsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#DeleteCreatorRequest"
+        "target": "com.azure.maps#CreatorsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -37,7 +94,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#DeleteCreatorRequest": {
+    "com.azure.maps#CreatorsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -77,13 +134,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#UpdateCreator": {
+    "com.azure.maps#CreatorsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#UpdateCreatorRequest"
+        "target": "com.azure.maps#CreatorsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.maps#UpdateCreatorResponse"
+        "target": "com.azure.maps#CreatorsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -96,7 +153,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#UpdateCreatorResponse": {
+    "com.azure.maps#CreatorsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -118,7 +175,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.maps#UpdateCreatorResponseTagsMap",
+          "target": "com.azure.maps#CreatorsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -138,7 +195,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.maps#UpdateCreatorResponseSystemData",
+          "target": "com.azure.maps#CreatorsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -148,7 +205,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.maps#UpdateCreatorResponseSystemData": {
+    "com.azure.maps#CreatorsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -158,7 +215,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.maps#UpdateCreatorResponseSystemDataCreatedByType",
+          "target": "com.azure.maps#CreatorsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -176,7 +233,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.maps#UpdateCreatorResponseSystemDataLastModifiedByType",
+          "target": "com.azure.maps#CreatorsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -192,7 +249,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.maps#UpdateCreatorResponseSystemDataLastModifiedByType": {
+    "com.azure.maps#CreatorsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -224,7 +281,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.maps#UpdateCreatorResponseSystemDataCreatedByType": {
+    "com.azure.maps#CreatorsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -277,7 +334,7 @@
         "smithy.api#documentation": "Creator resource properties"
       }
     },
-    "com.azure.maps#UpdateCreatorResponseTagsMap": {
+    "com.azure.maps#CreatorsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -289,7 +346,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#UpdateCreatorRequest": {
+    "com.azure.maps#CreatorsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -325,7 +382,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.maps#UpdateCreatorRequestTagsMap",
+          "target": "com.azure.maps#CreatorsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters."
           }
@@ -356,7 +413,7 @@
         "smithy.api#documentation": "Creator resource properties"
       }
     },
-    "com.azure.maps#UpdateCreatorRequestTagsMap": {
+    "com.azure.maps#CreatorsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -631,13 +688,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#GetCreator": {
+    "com.azure.maps#CreatorsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#GetCreatorRequest"
+        "target": "com.azure.maps#CreatorsGetRequest"
       },
       "output": {
-        "target": "com.azure.maps#GetCreatorResponse"
+        "target": "com.azure.maps#CreatorsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -650,7 +707,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#GetCreatorResponse": {
+    "com.azure.maps#CreatorsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -672,7 +729,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.maps#GetCreatorResponseTagsMap",
+          "target": "com.azure.maps#CreatorsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -692,7 +749,7 @@
           }
         },
         "systemData": {
-          "target": "com.azure.maps#GetCreatorResponseSystemData",
+          "target": "com.azure.maps#CreatorsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -702,7 +759,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.maps#GetCreatorResponseSystemData": {
+    "com.azure.maps#CreatorsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -712,7 +769,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.maps#GetCreatorResponseSystemDataCreatedByType",
+          "target": "com.azure.maps#CreatorsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -730,7 +787,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.maps#GetCreatorResponseSystemDataLastModifiedByType",
+          "target": "com.azure.maps#CreatorsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -746,7 +803,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.maps#GetCreatorResponseSystemDataLastModifiedByType": {
+    "com.azure.maps#CreatorsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -778,7 +835,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.maps#GetCreatorResponseSystemDataCreatedByType": {
+    "com.azure.maps#CreatorsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -810,7 +867,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maps#GetCreatorResponseTagsMap": {
+    "com.azure.maps#CreatorsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -822,7 +879,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#GetCreatorRequest": {
+    "com.azure.maps#CreatorsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -862,10 +919,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#ListCreatorByAccount": {
+    "com.azure.maps#CreatorsListByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#ListCreatorByAccountRequest"
+        "target": "com.azure.maps#CreatorsListByAccountRequest"
       },
       "output": {
         "target": "com.azure.maps#CreatorList"
@@ -875,10 +932,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all Creator instances for an Azure Maps Account",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.maps#CreatorList": {
@@ -1082,7 +1146,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#ListCreatorByAccountRequest": {
+    "com.azure.maps#CreatorsListByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1108,16 +1172,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the Maps Account."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#ListMapSubscriptionOperations": {
+    "com.azure.maps#MapsListSubscriptionOperations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#ListMapSubscriptionOperationsRequest"
+        "target": "com.azure.maps#MapsListSubscriptionOperationsRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsOperations"
@@ -1127,10 +1197,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/operations",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List operations available for the Maps Resource Provider",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.maps#MapsOperations": {
@@ -1414,7 +1491,7 @@
         "smithy.api#documentation": "Operation display payload"
       }
     },
-    "com.azure.maps#ListMapSubscriptionOperationsRequest": {
+    "com.azure.maps#MapsListSubscriptionOperationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1424,16 +1501,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#ListMapOperations": {
+    "com.azure.maps#MapsListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.maps#MapsListOperationsRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsOperations"
@@ -1443,16 +1526,37 @@
           "method": "GET",
           "uri": "/providers/Microsoft.Maps/operations",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List operations available for the Maps Resource Provider",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.maps#RegenerateAccountKeys": {
+    "com.azure.maps#MapsListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#AccountsRegenerateKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#RegenerateAccountKeysRequest"
+        "target": "com.azure.maps#AccountsRegenerateKeysRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsAccountKeys"
@@ -1500,7 +1604,7 @@
         "smithy.api#documentation": "The set of keys which can be used to access the Maps REST APIs. Two keys are provided for key rotation without interruption."
       }
     },
-    "com.azure.maps#RegenerateAccountKeysRequest": {
+    "com.azure.maps#AccountsRegenerateKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1528,7 +1632,7 @@
           }
         },
         "keyType": {
-          "target": "com.azure.maps#RegenerateAccountKeysRequestKeyType",
+          "target": "com.azure.maps#AccountsRegenerateKeysRequestKeyType",
           "traits": {
             "smithy.api#documentation": "Whether the operation refers to the primary or secondary key.",
             "smithy.api#required": {}
@@ -1539,7 +1643,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#RegenerateAccountKeysRequestKeyType": {
+    "com.azure.maps#AccountsRegenerateKeysRequestKeyType": {
       "type": "enum",
       "members": {
         "PRIMARY": {
@@ -1559,10 +1663,10 @@
         "smithy.api#documentation": "Whether the operation refers to the primary or secondary key."
       }
     },
-    "com.azure.maps#ListAccountKeys": {
+    "com.azure.maps#AccountsListKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#ListAccountKeysRequest"
+        "target": "com.azure.maps#AccountsListKeysRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsAccountKeys"
@@ -1578,7 +1682,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#ListAccountKeysRequest": {
+    "com.azure.maps#AccountsListKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1610,10 +1714,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#ListAccountSas": {
+    "com.azure.maps#AccountsListSas": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#ListAccountSasRequest"
+        "target": "com.azure.maps#AccountsListSasRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsAccountSasToken"
@@ -1643,7 +1747,7 @@
         "smithy.api#documentation": "A new Sas token which can be used to access the Maps REST APIs and is controlled by the specified Managed identity permissions on Azure (IAM) Role Based Access Control."
       }
     },
-    "com.azure.maps#ListAccountSasRequest": {
+    "com.azure.maps#AccountsListSasRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1671,7 +1775,7 @@
           }
         },
         "signingKey": {
-          "target": "com.azure.maps#ListAccountSasRequestSigningKey",
+          "target": "com.azure.maps#AccountsListSasRequestSigningKey",
           "traits": {
             "smithy.api#documentation": "The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.",
             "smithy.api#required": {}
@@ -1685,7 +1789,7 @@
           }
         },
         "regions": {
-          "target": "com.azure.maps#ListAccountSasRequestRegionsList",
+          "target": "com.azure.maps#AccountsListSasRequestRegionsList",
           "traits": {
             "smithy.api#documentation": "Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: \"eastus\", \"westus2\". Omitting this parameter will allow all region locations to be accessible."
           }
@@ -1716,7 +1820,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#ListAccountSasRequestRegionsList": {
+    "com.azure.maps#AccountsListSasRequestRegionsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -1725,7 +1829,7 @@
         "smithy.api#documentation": "Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: \"eastus\", \"westus2\". Omitting this parameter will allow all region locations to be accessible."
       }
     },
-    "com.azure.maps#ListAccountSasRequestSigningKey": {
+    "com.azure.maps#AccountsListSasRequestSigningKey": {
       "type": "enum",
       "members": {
         "PRIMARYKEY": {
@@ -1751,10 +1855,10 @@
         "smithy.api#documentation": "The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS."
       }
     },
-    "com.azure.maps#ListAccountBySubscription": {
+    "com.azure.maps#AccountsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#ListAccountBySubscriptionRequest"
+        "target": "com.azure.maps#AccountsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsAccounts"
@@ -1764,10 +1868,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/accounts",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all Maps Accounts in a Subscription",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.maps#MapsAccounts": {
@@ -2380,7 +2491,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#ListAccountBySubscriptionRequest": {
+    "com.azure.maps#AccountsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2390,16 +2501,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#ListAccountByResourceGroup": {
+    "com.azure.maps#AccountsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#ListAccountByResourceGroupRequest"
+        "target": "com.azure.maps#AccountsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.maps#MapsAccounts"
@@ -2409,13 +2526,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts",
           "code": 200,
-          "apiVersion": "2023-06-01"
+          "apiVersion": "2023-06-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Get all Maps Accounts in a Resource Group",
-        "com.distilled.openapi#apiVersion": "2023-06-01"
+        "com.distilled.openapi#apiVersion": "2023-06-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.maps#ListAccountByResourceGroupRequest": {
+    "com.azure.maps#AccountsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2433,16 +2557,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#DeleteAccount": {
+    "com.azure.maps#AccountsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#DeleteAccountRequest"
+        "target": "com.azure.maps#AccountsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2458,7 +2588,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#DeleteAccountRequest": {
+    "com.azure.maps#AccountsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2490,13 +2620,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maps#UpdateAccount": {
+    "com.azure.maps#AccountsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#UpdateAccountRequest"
+        "target": "com.azure.maps#AccountsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.maps#UpdateAccountResponse"
+        "target": "com.azure.maps#AccountsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2509,7 +2639,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#UpdateAccountResponse": {
+    "com.azure.maps#AccountsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2531,7 +2661,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.maps#UpdateAccountResponseTagsMap",
+          "target": "com.azure.maps#AccountsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2557,13 +2687,13 @@
           }
         },
         "systemData": {
-          "target": "com.azure.maps#UpdateAccountResponseSystemData",
+          "target": "com.azure.maps#AccountsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
         },
         "identity": {
-          "target": "com.azure.maps#UpdateAccountResponseIdentity",
+          "target": "com.azure.maps#AccountsUpdateResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -2579,7 +2709,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.maps#UpdateAccountResponseIdentity": {
+    "com.azure.maps#AccountsUpdateResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -2608,7 +2738,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.maps#UpdateAccountResponseSystemData": {
+    "com.azure.maps#AccountsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -2618,7 +2748,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.maps#UpdateAccountResponseSystemDataCreatedByType",
+          "target": "com.azure.maps#AccountsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -2636,7 +2766,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.maps#UpdateAccountResponseSystemDataLastModifiedByType",
+          "target": "com.azure.maps#AccountsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -2652,7 +2782,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.maps#UpdateAccountResponseSystemDataLastModifiedByType": {
+    "com.azure.maps#AccountsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2684,7 +2814,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.maps#UpdateAccountResponseSystemDataCreatedByType": {
+    "com.azure.maps#AccountsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2716,7 +2846,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maps#UpdateAccountResponseTagsMap": {
+    "com.azure.maps#AccountsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2728,7 +2858,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#UpdateAccountRequest": {
+    "com.azure.maps#AccountsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2756,7 +2886,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.maps#UpdateAccountRequestTagsMap",
+          "target": "com.azure.maps#AccountsUpdateRequestTagsMap",
           "traits": {
             "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters."
           }
@@ -2774,7 +2904,7 @@
           }
         },
         "identity": {
-          "target": "com.azure.maps#UpdateAccountRequestIdentity",
+          "target": "com.azure.maps#AccountsUpdateRequestIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -2859,7 +2989,7 @@
         "smithy.api#documentation": "Values are enabled and disabled."
       }
     },
-    "com.azure.maps#UpdateAccountRequestIdentity": {
+    "com.azure.maps#AccountsUpdateRequestIdentity": {
       "type": "structure",
       "members": {
         "type": {
@@ -2936,7 +3066,7 @@
         "smithy.api#documentation": "The name of the SKU, in standard format (such as S0)."
       }
     },
-    "com.azure.maps#UpdateAccountRequestTagsMap": {
+    "com.azure.maps#AccountsUpdateRequestTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3285,13 +3415,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#GetAccount": {
+    "com.azure.maps#AccountsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maps#GetAccountRequest"
+        "target": "com.azure.maps#AccountsGetRequest"
       },
       "output": {
-        "target": "com.azure.maps#GetAccountResponse"
+        "target": "com.azure.maps#AccountsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3304,7 +3434,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-01"
       }
     },
-    "com.azure.maps#GetAccountResponse": {
+    "com.azure.maps#AccountsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3326,7 +3456,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.maps#GetAccountResponseTagsMap",
+          "target": "com.azure.maps#AccountsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3352,13 +3482,13 @@
           }
         },
         "systemData": {
-          "target": "com.azure.maps#GetAccountResponseSystemData",
+          "target": "com.azure.maps#AccountsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
         },
         "identity": {
-          "target": "com.azure.maps#GetAccountResponseIdentity",
+          "target": "com.azure.maps#AccountsGetResponseIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
@@ -3374,7 +3504,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.maps#GetAccountResponseIdentity": {
+    "com.azure.maps#AccountsGetResponseIdentity": {
       "type": "structure",
       "members": {
         "principalId": {
@@ -3403,7 +3533,7 @@
         "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
-    "com.azure.maps#GetAccountResponseSystemData": {
+    "com.azure.maps#AccountsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -3413,7 +3543,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.maps#GetAccountResponseSystemDataCreatedByType",
+          "target": "com.azure.maps#AccountsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -3431,7 +3561,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.maps#GetAccountResponseSystemDataLastModifiedByType",
+          "target": "com.azure.maps#AccountsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -3447,7 +3577,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.maps#GetAccountResponseSystemDataLastModifiedByType": {
+    "com.azure.maps#AccountsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3479,7 +3609,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.maps#GetAccountResponseSystemDataCreatedByType": {
+    "com.azure.maps#AccountsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3511,7 +3641,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maps#GetAccountResponseTagsMap": {
+    "com.azure.maps#AccountsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3523,7 +3653,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.maps#GetAccountRequest": {
+    "com.azure.maps#AccountsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3560,52 +3690,52 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.maps#DeleteCreator"
+          "target": "com.azure.maps#CreatorsDelete"
         },
         {
-          "target": "com.azure.maps#UpdateCreator"
+          "target": "com.azure.maps#CreatorsUpdate"
         },
         {
           "target": "com.azure.maps#CreatorsCreateOrUpdate"
         },
         {
-          "target": "com.azure.maps#GetCreator"
+          "target": "com.azure.maps#CreatorsGet"
         },
         {
-          "target": "com.azure.maps#ListCreatorByAccount"
+          "target": "com.azure.maps#CreatorsListByAccount"
         },
         {
-          "target": "com.azure.maps#ListMapSubscriptionOperations"
+          "target": "com.azure.maps#MapsListSubscriptionOperations"
         },
         {
-          "target": "com.azure.maps#ListMapOperations"
+          "target": "com.azure.maps#MapsListOperations"
         },
         {
-          "target": "com.azure.maps#RegenerateAccountKeys"
+          "target": "com.azure.maps#AccountsRegenerateKeys"
         },
         {
-          "target": "com.azure.maps#ListAccountKeys"
+          "target": "com.azure.maps#AccountsListKeys"
         },
         {
-          "target": "com.azure.maps#ListAccountSas"
+          "target": "com.azure.maps#AccountsListSas"
         },
         {
-          "target": "com.azure.maps#ListAccountBySubscription"
+          "target": "com.azure.maps#AccountsListBySubscription"
         },
         {
-          "target": "com.azure.maps#ListAccountByResourceGroup"
+          "target": "com.azure.maps#AccountsListByResourceGroup"
         },
         {
-          "target": "com.azure.maps#DeleteAccount"
+          "target": "com.azure.maps#AccountsDelete"
         },
         {
-          "target": "com.azure.maps#UpdateAccount"
+          "target": "com.azure.maps#AccountsUpdate"
         },
         {
           "target": "com.azure.maps#AccountsCreateOrUpdate"
         },
         {
-          "target": "com.azure.maps#GetAccount"
+          "target": "com.azure.maps#AccountsGet"
         }
       ],
       "traits": {

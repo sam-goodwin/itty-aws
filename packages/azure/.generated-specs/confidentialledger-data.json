@@ -14,7 +14,8 @@
         "id": "UnreferencedShape",
         "namespace": "*"
       }
-    ]
+    ],
+    "distilled.finalized": true
   },
   "shapes": {
     "com.azure.confidentialledger_data#DeleteUser": {
@@ -226,9 +227,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets details on a list of users.\n\nAll users' object IDs and single role per user will be returned."
+        "smithy.api#documentation": "Gets details on a list of users.\n\nAll users' object IDs and single role per user will be returned.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "ledgerUsers"
+        }
       }
     },
     "com.azure.confidentialledger_data#PagedUsers": {
@@ -269,6 +277,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -651,9 +665,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves a list of user defined functions present in the Confidential Ledger\n\nUser defined functions stored in the Confidential Ledger"
+        "smithy.api#documentation": "Retrieves a list of user defined functions present in the Confidential Ledger\n\nUser defined functions stored in the Confidential Ledger",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "functions"
+        }
       }
     },
     "com.azure.confidentialledger_data#PagedUserDefinedFunctions": {
@@ -695,6 +716,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2048,9 +2075,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets ledger entries from a collection corresponding to a range.\n\nA collection id may optionally be specified. Only entries in the specified (or\ndefault) collection will be returned."
+        "smithy.api#documentation": "Gets ledger entries from a collection corresponding to a range.\n\nA collection id may optionally be specified. Only entries in the specified (or\ndefault) collection will be returned.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "entries"
+        }
       }
     },
     "com.azure.confidentialledger_data#PagedLedgerEntries": {
@@ -2127,6 +2161,12 @@
           "traits": {
             "smithy.api#httpQuery": "tag",
             "smithy.api#documentation": "Single tag."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2612,9 +2652,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets details on a list of users.\n\nAll users' object IDs and multiple roles will be returned."
+        "smithy.api#documentation": "Gets details on a list of users.\n\nAll users' object IDs and multiple roles will be returned.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "ledgerUsers"
+        }
       }
     },
     "com.azure.confidentialledger_data#PagedLedgerUsers": {
@@ -2656,6 +2703,12 @@
             "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
             "com.azure.protocols#hostLabel": {}
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -2679,9 +2732,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Lists the consortium members.\n\nConsortium members can manage the Confidential Ledger."
+        "smithy.api#documentation": "Lists the consortium members.\n\nConsortium members can manage the Confidential Ledger.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "members"
+        }
       }
     },
     "com.azure.confidentialledger_data#Consortium": {
@@ -2745,6 +2805,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2936,9 +3002,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Gets a list of tags for a collection.\n\nRetrieves the tags associated with a collection."
+        "smithy.api#documentation": "Gets a list of tags for a collection.\n\nRetrieves the tags associated with a collection.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "tags"
+        }
       }
     },
     "com.azure.confidentialledger_data#PagedTags": {
@@ -2988,6 +3061,12 @@
             "smithy.api#httpQuery": "collectionId",
             "smithy.api#documentation": "The collection id."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3011,9 +3090,16 @@
           "hostRaw": [
             "ledgerEndpoint"
           ],
-          "apiVersion": "2026-02-23"
+          "apiVersion": "2026-02-23",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "Retrieves a list of collection ids present in the Confidential Ledger\n\nCollection ids are user-created collections of ledger entries"
+        "smithy.api#documentation": "Retrieves a list of collection ids present in the Confidential Ledger\n\nCollection ids are user-created collections of ledger entries",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "collections"
+        }
       }
     },
     "com.azure.confidentialledger_data#PagedCollections": {
@@ -3070,6 +3156,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Confidential Ledger URL, for example https://contoso.confidentialledger.azure.com.",
             "com.azure.protocols#hostLabel": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },

@@ -15,33 +15,127 @@
         "namespace": "*"
       }
     ],
-    "distilled.finalized": true
+    "distilled.rename": {
+      "com.azure.recommendationsservice#OperationsList": "com.azure.recommendationsservice#ListOperations",
+      "com.azure.recommendationsservice#OperationsListResponse": "com.azure.recommendationsservice#ListOperationsResponse",
+      "com.azure.recommendationsservice#OperationsListResponseValueList": "com.azure.recommendationsservice#ListOperationsResponseValueList",
+      "com.azure.recommendationsservice#OperationsListRequest": "com.azure.recommendationsservice#ListOperationsRequest",
+      "com.azure.recommendationsservice#OperationStatusesGet": "com.azure.recommendationsservice#GetOperationStatus",
+      "com.azure.recommendationsservice#OperationStatusesGetResponse": "com.azure.recommendationsservice#GetOperationStatusResponse",
+      "com.azure.recommendationsservice#OperationStatusesGetResponseOperationsList": "com.azure.recommendationsservice#GetOperationStatusResponseOperationsList",
+      "com.azure.recommendationsservice#OperationStatusesGetRequest": "com.azure.recommendationsservice#GetOperationStatusRequest",
+      "com.azure.recommendationsservice#ServiceEndpointsDelete": "com.azure.recommendationsservice#DeleteServiceEndpoint",
+      "com.azure.recommendationsservice#ServiceEndpointsDeleteRequest": "com.azure.recommendationsservice#DeleteServiceEndpointRequest",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdate": "com.azure.recommendationsservice#UpdateServiceEndpoint",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateResponse": "com.azure.recommendationsservice#UpdateServiceEndpointResponse",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemData": "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemData",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemDataLastModifiedByType": "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemDataLastModifiedByType",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemDataCreatedByType": "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemDataCreatedByType",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseProperties": "com.azure.recommendationsservice#UpdateServiceEndpointResponseProperties",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseTagsMap": "com.azure.recommendationsservice#UpdateServiceEndpointResponseTagsMap",
+      "com.azure.recommendationsservice#ServiceEndpointsUpdateRequest": "com.azure.recommendationsservice#UpdateServiceEndpointRequest",
+      "com.azure.recommendationsservice#ServiceEndpointsGet": "com.azure.recommendationsservice#GetServiceEndpoint",
+      "com.azure.recommendationsservice#ServiceEndpointsGetResponse": "com.azure.recommendationsservice#GetServiceEndpointResponse",
+      "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemData": "com.azure.recommendationsservice#GetServiceEndpointResponseSystemData",
+      "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemDataLastModifiedByType": "com.azure.recommendationsservice#GetServiceEndpointResponseSystemDataLastModifiedByType",
+      "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemDataCreatedByType": "com.azure.recommendationsservice#GetServiceEndpointResponseSystemDataCreatedByType",
+      "com.azure.recommendationsservice#ServiceEndpointsGetResponseProperties": "com.azure.recommendationsservice#GetServiceEndpointResponseProperties",
+      "com.azure.recommendationsservice#ServiceEndpointsGetResponseTagsMap": "com.azure.recommendationsservice#GetServiceEndpointResponseTagsMap",
+      "com.azure.recommendationsservice#ServiceEndpointsGetRequest": "com.azure.recommendationsservice#GetServiceEndpointRequest",
+      "com.azure.recommendationsservice#ServiceEndpointsListByAccountResource": "com.azure.recommendationsservice#ListServiceEndpointByAccountResource",
+      "com.azure.recommendationsservice#ServiceEndpointsListByAccountResourceRequest": "com.azure.recommendationsservice#ListServiceEndpointByAccountResourceRequest",
+      "com.azure.recommendationsservice#ModelingDelete": "com.azure.recommendationsservice#DeleteModeling",
+      "com.azure.recommendationsservice#ModelingDeleteRequest": "com.azure.recommendationsservice#DeleteModelingRequest",
+      "com.azure.recommendationsservice#ModelingUpdate": "com.azure.recommendationsservice#UpdateModeling",
+      "com.azure.recommendationsservice#ModelingUpdateResponse": "com.azure.recommendationsservice#UpdateModelingResponse",
+      "com.azure.recommendationsservice#ModelingUpdateResponseSystemData": "com.azure.recommendationsservice#UpdateModelingResponseSystemData",
+      "com.azure.recommendationsservice#ModelingUpdateResponseSystemDataLastModifiedByType": "com.azure.recommendationsservice#UpdateModelingResponseSystemDataLastModifiedByType",
+      "com.azure.recommendationsservice#ModelingUpdateResponseSystemDataCreatedByType": "com.azure.recommendationsservice#UpdateModelingResponseSystemDataCreatedByType",
+      "com.azure.recommendationsservice#ModelingUpdateResponseProperties": "com.azure.recommendationsservice#UpdateModelingResponseProperties",
+      "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesSize": "com.azure.recommendationsservice#UpdateModelingResponsePropertiesSize",
+      "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesFrequency": "com.azure.recommendationsservice#UpdateModelingResponsePropertiesFrequency",
+      "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesFeatures": "com.azure.recommendationsservice#UpdateModelingResponsePropertiesFeatures",
+      "com.azure.recommendationsservice#ModelingUpdateResponseTagsMap": "com.azure.recommendationsservice#UpdateModelingResponseTagsMap",
+      "com.azure.recommendationsservice#ModelingUpdateRequest": "com.azure.recommendationsservice#UpdateModelingRequest",
+      "com.azure.recommendationsservice#ModelingUpdateRequestProperties": "com.azure.recommendationsservice#UpdateModelingRequestProperties",
+      "com.azure.recommendationsservice#ModelingGet": "com.azure.recommendationsservice#GetModeling",
+      "com.azure.recommendationsservice#ModelingGetResponse": "com.azure.recommendationsservice#GetModelingResponse",
+      "com.azure.recommendationsservice#ModelingGetResponseSystemData": "com.azure.recommendationsservice#GetModelingResponseSystemData",
+      "com.azure.recommendationsservice#ModelingGetResponseSystemDataLastModifiedByType": "com.azure.recommendationsservice#GetModelingResponseSystemDataLastModifiedByType",
+      "com.azure.recommendationsservice#ModelingGetResponseSystemDataCreatedByType": "com.azure.recommendationsservice#GetModelingResponseSystemDataCreatedByType",
+      "com.azure.recommendationsservice#ModelingGetResponseProperties": "com.azure.recommendationsservice#GetModelingResponseProperties",
+      "com.azure.recommendationsservice#ModelingGetResponsePropertiesSize": "com.azure.recommendationsservice#GetModelingResponsePropertiesSize",
+      "com.azure.recommendationsservice#ModelingGetResponsePropertiesFrequency": "com.azure.recommendationsservice#GetModelingResponsePropertiesFrequency",
+      "com.azure.recommendationsservice#ModelingGetResponsePropertiesFeatures": "com.azure.recommendationsservice#GetModelingResponsePropertiesFeatures",
+      "com.azure.recommendationsservice#ModelingGetResponseTagsMap": "com.azure.recommendationsservice#GetModelingResponseTagsMap",
+      "com.azure.recommendationsservice#ModelingGetRequest": "com.azure.recommendationsservice#GetModelingRequest",
+      "com.azure.recommendationsservice#ModelingListByAccountResource": "com.azure.recommendationsservice#ListModelingByAccountResource",
+      "com.azure.recommendationsservice#ModelingListByAccountResourceRequest": "com.azure.recommendationsservice#ListModelingByAccountResourceRequest",
+      "com.azure.recommendationsservice#AccountsGetStatus": "com.azure.recommendationsservice#GetAccountStatus",
+      "com.azure.recommendationsservice#AccountsGetStatusRequest": "com.azure.recommendationsservice#GetAccountStatusRequest",
+      "com.azure.recommendationsservice#AccountsDelete": "com.azure.recommendationsservice#DeleteAccount",
+      "com.azure.recommendationsservice#AccountsDeleteRequest": "com.azure.recommendationsservice#DeleteAccountRequest",
+      "com.azure.recommendationsservice#AccountsUpdate": "com.azure.recommendationsservice#UpdateAccount",
+      "com.azure.recommendationsservice#AccountsUpdateResponse": "com.azure.recommendationsservice#UpdateAccountResponse",
+      "com.azure.recommendationsservice#AccountsUpdateResponseSystemData": "com.azure.recommendationsservice#UpdateAccountResponseSystemData",
+      "com.azure.recommendationsservice#AccountsUpdateResponseSystemDataLastModifiedByType": "com.azure.recommendationsservice#UpdateAccountResponseSystemDataLastModifiedByType",
+      "com.azure.recommendationsservice#AccountsUpdateResponseSystemDataCreatedByType": "com.azure.recommendationsservice#UpdateAccountResponseSystemDataCreatedByType",
+      "com.azure.recommendationsservice#AccountsUpdateResponseProperties": "com.azure.recommendationsservice#UpdateAccountResponseProperties",
+      "com.azure.recommendationsservice#AccountsUpdateResponsePropertiesConfiguration": "com.azure.recommendationsservice#UpdateAccountResponsePropertiesConfiguration",
+      "com.azure.recommendationsservice#AccountsUpdateResponseTagsMap": "com.azure.recommendationsservice#UpdateAccountResponseTagsMap",
+      "com.azure.recommendationsservice#AccountsUpdateRequest": "com.azure.recommendationsservice#UpdateAccountRequest",
+      "com.azure.recommendationsservice#AccountsUpdateRequestProperties": "com.azure.recommendationsservice#UpdateAccountRequestProperties",
+      "com.azure.recommendationsservice#AccountsGet": "com.azure.recommendationsservice#GetAccount",
+      "com.azure.recommendationsservice#AccountsGetResponse": "com.azure.recommendationsservice#GetAccountResponse",
+      "com.azure.recommendationsservice#AccountsGetResponseSystemData": "com.azure.recommendationsservice#GetAccountResponseSystemData",
+      "com.azure.recommendationsservice#AccountsGetResponseSystemDataLastModifiedByType": "com.azure.recommendationsservice#GetAccountResponseSystemDataLastModifiedByType",
+      "com.azure.recommendationsservice#AccountsGetResponseSystemDataCreatedByType": "com.azure.recommendationsservice#GetAccountResponseSystemDataCreatedByType",
+      "com.azure.recommendationsservice#AccountsGetResponseProperties": "com.azure.recommendationsservice#GetAccountResponseProperties",
+      "com.azure.recommendationsservice#AccountsGetResponsePropertiesConfiguration": "com.azure.recommendationsservice#GetAccountResponsePropertiesConfiguration",
+      "com.azure.recommendationsservice#AccountsGetResponseTagsMap": "com.azure.recommendationsservice#GetAccountResponseTagsMap",
+      "com.azure.recommendationsservice#AccountsGetRequest": "com.azure.recommendationsservice#GetAccountRequest",
+      "com.azure.recommendationsservice#AccountsListByResourceGroup": "com.azure.recommendationsservice#ListAccountByResourceGroup",
+      "com.azure.recommendationsservice#AccountsListByResourceGroupRequest": "com.azure.recommendationsservice#ListAccountByResourceGroupRequest",
+      "com.azure.recommendationsservice#AccountsListBySubscription": "com.azure.recommendationsservice#ListAccountBySubscription",
+      "com.azure.recommendationsservice#AccountsListBySubscriptionRequest": "com.azure.recommendationsservice#ListAccountBySubscriptionRequest",
+      "com.azure.recommendationsservice#AccountsCheckNameAvailability": "com.azure.recommendationsservice#CheckAccountNameAvailability",
+      "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponse": "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponse",
+      "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponseReason": "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponseReason",
+      "com.azure.recommendationsservice#AccountsCheckNameAvailabilityRequest": "com.azure.recommendationsservice#CheckAccountNameAvailabilityRequest"
+    }
   },
   "shapes": {
-    "com.azure.recommendationsservice#ListOperations": {
+    "com.azure.recommendationsservice#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.recommendationsservice#OperationsListRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#ListOperationsResponse"
+        "target": "com.azure.recommendationsservice#OperationsListResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
           "uri": "/providers/Microsoft.RecommendationsService/operations",
           "code": 200,
-          "apiVersion": "2022-02-01"
+          "apiVersion": "2022-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of operations.",
-        "com.distilled.openapi#apiVersion": "2022-02-01"
+        "com.distilled.openapi#apiVersion": "2022-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.recommendationsservice#ListOperationsResponse": {
+    "com.azure.recommendationsservice#OperationsListResponse": {
       "type": "structure",
       "members": {
         "value": {
-          "target": "com.azure.recommendationsservice#ListOperationsResponseValueList",
+          "target": "com.azure.recommendationsservice#OperationsListResponseValueList",
           "traits": {
             "smithy.api#documentation": "List of operations supported by the resource provider"
           }
@@ -57,7 +151,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#ListOperationsResponseValueList": {
+    "com.azure.recommendationsservice#OperationsListResponseValueList": {
       "type": "list",
       "member": {
         "target": "com.azure.recommendationsservice#Operation"
@@ -176,13 +270,27 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.recommendationsservice#GetOperationStatus": {
+    "com.azure.recommendationsservice#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.recommendationsservice#OperationStatusesGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#GetOperationStatusRequest"
+        "target": "com.azure.recommendationsservice#OperationStatusesGetRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#GetOperationStatusResponse"
+        "target": "com.azure.recommendationsservice#OperationStatusesGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -195,7 +303,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#GetOperationStatusResponse": {
+    "com.azure.recommendationsservice#OperationStatusesGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -242,7 +350,7 @@
           }
         },
         "operations": {
-          "target": "com.azure.recommendationsservice#GetOperationStatusResponseOperationsList",
+          "target": "com.azure.recommendationsservice#OperationStatusesGetResponseOperationsList",
           "traits": {
             "smithy.api#documentation": "The operations list."
           }
@@ -340,7 +448,7 @@
         "smithy.api#documentation": "The error details."
       }
     },
-    "com.azure.recommendationsservice#GetOperationStatusResponseOperationsList": {
+    "com.azure.recommendationsservice#OperationStatusesGetResponseOperationsList": {
       "type": "list",
       "member": {
         "target": "com.azure.recommendationsservice#OperationStatusResult"
@@ -421,7 +529,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.recommendationsservice#GetOperationStatusRequest": {
+    "com.azure.recommendationsservice#OperationStatusesGetRequest": {
       "type": "structure",
       "members": {
         "location": {
@@ -445,10 +553,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#DeleteServiceEndpoint": {
+    "com.azure.recommendationsservice#ServiceEndpointsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#DeleteServiceEndpointRequest"
+        "target": "com.azure.recommendationsservice#ServiceEndpointsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -464,7 +572,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#DeleteServiceEndpointRequest": {
+    "com.azure.recommendationsservice#ServiceEndpointsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -504,13 +612,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpoint": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#UpdateServiceEndpointRequest"
+        "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponse"
+        "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -523,7 +631,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointResponse": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -545,7 +653,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponseTagsMap",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -558,13 +666,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponseProperties",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseProperties",
           "traits": {
             "smithy.api#documentation": "ServiceEndpoint resource properties."
           }
         },
         "systemData": {
-          "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemData",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -574,7 +682,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemData": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -584,7 +692,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemDataCreatedByType",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -602,7 +710,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemDataLastModifiedByType",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -618,7 +726,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemDataLastModifiedByType": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -650,7 +758,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointResponseSystemDataCreatedByType": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -682,7 +790,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointResponseProperties": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseProperties": {
       "type": "structure",
       "members": {
         "preAllocatedCapacity": {
@@ -714,7 +822,7 @@
         "smithy.api#documentation": "ServiceEndpoint resource properties."
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointResponseTagsMap": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -726,7 +834,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#UpdateServiceEndpointRequest": {
+    "com.azure.recommendationsservice#ServiceEndpointsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1091,13 +1199,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpoint": {
+    "com.azure.recommendationsservice#ServiceEndpointsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#GetServiceEndpointRequest"
+        "target": "com.azure.recommendationsservice#ServiceEndpointsGetRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#GetServiceEndpointResponse"
+        "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1110,7 +1218,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointResponse": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1132,7 +1240,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.recommendationsservice#GetServiceEndpointResponseTagsMap",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1145,13 +1253,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#GetServiceEndpointResponseProperties",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponseProperties",
           "traits": {
             "smithy.api#documentation": "ServiceEndpoint resource properties."
           }
         },
         "systemData": {
-          "target": "com.azure.recommendationsservice#GetServiceEndpointResponseSystemData",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1161,7 +1269,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointResponseSystemData": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1171,7 +1279,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.recommendationsservice#GetServiceEndpointResponseSystemDataCreatedByType",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1189,7 +1297,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.recommendationsservice#GetServiceEndpointResponseSystemDataLastModifiedByType",
+          "target": "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1205,7 +1313,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointResponseSystemDataLastModifiedByType": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1237,7 +1345,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointResponseSystemDataCreatedByType": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1269,7 +1377,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointResponseProperties": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetResponseProperties": {
       "type": "structure",
       "members": {
         "preAllocatedCapacity": {
@@ -1301,7 +1409,7 @@
         "smithy.api#documentation": "ServiceEndpoint resource properties."
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointResponseTagsMap": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1313,7 +1421,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#GetServiceEndpointRequest": {
+    "com.azure.recommendationsservice#ServiceEndpointsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1353,10 +1461,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ListServiceEndpointByAccountResource": {
+    "com.azure.recommendationsservice#ServiceEndpointsListByAccountResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ListServiceEndpointByAccountResourceRequest"
+        "target": "com.azure.recommendationsservice#ServiceEndpointsListByAccountResourceRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#ServiceEndpointResourceList"
@@ -1366,10 +1474,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/serviceEndpoints",
           "code": 200,
-          "apiVersion": "2022-02-01"
+          "apiVersion": "2022-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of ServiceEndpoint resources for a given Account name.",
-        "com.distilled.openapi#apiVersion": "2022-02-01"
+        "com.distilled.openapi#apiVersion": "2022-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.recommendationsservice#ServiceEndpointResourceList": {
@@ -1604,7 +1719,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ListServiceEndpointByAccountResourceRequest": {
+    "com.azure.recommendationsservice#ServiceEndpointsListByAccountResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1630,16 +1745,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the RecommendationsService Account resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#DeleteModeling": {
+    "com.azure.recommendationsservice#ModelingDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#DeleteModelingRequest"
+        "target": "com.azure.recommendationsservice#ModelingDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1655,7 +1776,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#DeleteModelingRequest": {
+    "com.azure.recommendationsservice#ModelingDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1695,13 +1816,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateModeling": {
+    "com.azure.recommendationsservice#ModelingUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#UpdateModelingRequest"
+        "target": "com.azure.recommendationsservice#ModelingUpdateRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#UpdateModelingResponse"
+        "target": "com.azure.recommendationsservice#ModelingUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1714,7 +1835,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponse": {
+    "com.azure.recommendationsservice#ModelingUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1736,7 +1857,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponseTagsMap",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -1749,13 +1870,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponseProperties",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponseProperties",
           "traits": {
             "smithy.api#documentation": "Modeling resource properties."
           }
         },
         "systemData": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponseSystemData",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -1765,7 +1886,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponseSystemData": {
+    "com.azure.recommendationsservice#ModelingUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -1775,7 +1896,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponseSystemDataCreatedByType",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -1793,7 +1914,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponseSystemDataLastModifiedByType",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -1809,7 +1930,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponseSystemDataLastModifiedByType": {
+    "com.azure.recommendationsservice#ModelingUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1841,7 +1962,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponseSystemDataCreatedByType": {
+    "com.azure.recommendationsservice#ModelingUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -1873,23 +1994,23 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponseProperties": {
+    "com.azure.recommendationsservice#ModelingUpdateResponseProperties": {
       "type": "structure",
       "members": {
         "features": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponsePropertiesFeatures",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesFeatures",
           "traits": {
             "smithy.api#documentation": "Modeling features controls the set of supported scenarios\\models being computed. This can only be set at Modeling creation."
           }
         },
         "frequency": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponsePropertiesFrequency",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesFrequency",
           "traits": {
             "smithy.api#documentation": "Modeling frequency controls the modeling compute frequency."
           }
         },
         "size": {
-          "target": "com.azure.recommendationsservice#UpdateModelingResponsePropertiesSize",
+          "target": "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesSize",
           "traits": {
             "smithy.api#documentation": "Modeling size controls the maximum supported input data size."
           }
@@ -1926,7 +2047,7 @@
         "smithy.api#documentation": "The configuration to raw CDM data to be used as Modeling resource input."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponsePropertiesSize": {
+    "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesSize": {
       "type": "enum",
       "members": {
         "SMALL": {
@@ -1952,7 +2073,7 @@
         "smithy.api#documentation": "Modeling size controls the maximum supported input data size."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponsePropertiesFrequency": {
+    "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesFrequency": {
       "type": "enum",
       "members": {
         "LOW": {
@@ -1978,7 +2099,7 @@
         "smithy.api#documentation": "Modeling frequency controls the modeling compute frequency."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponsePropertiesFeatures": {
+    "com.azure.recommendationsservice#ModelingUpdateResponsePropertiesFeatures": {
       "type": "enum",
       "members": {
         "BASIC": {
@@ -2004,7 +2125,7 @@
         "smithy.api#documentation": "Modeling features controls the set of supported scenarios\\models being computed. This can only be set at Modeling creation."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingResponseTagsMap": {
+    "com.azure.recommendationsservice#ModelingUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2016,7 +2137,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingRequest": {
+    "com.azure.recommendationsservice#ModelingUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2058,7 +2179,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#UpdateModelingRequestProperties",
+          "target": "com.azure.recommendationsservice#ModelingUpdateRequestProperties",
           "traits": {
             "smithy.api#documentation": "Modeling resource properties to update."
           }
@@ -2068,7 +2189,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateModelingRequestProperties": {
+    "com.azure.recommendationsservice#ModelingUpdateRequestProperties": {
       "type": "structure",
       "members": {
         "inputData": {
@@ -2569,13 +2690,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#GetModeling": {
+    "com.azure.recommendationsservice#ModelingGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#GetModelingRequest"
+        "target": "com.azure.recommendationsservice#ModelingGetRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#GetModelingResponse"
+        "target": "com.azure.recommendationsservice#ModelingGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2588,7 +2709,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponse": {
+    "com.azure.recommendationsservice#ModelingGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2610,7 +2731,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.recommendationsservice#GetModelingResponseTagsMap",
+          "target": "com.azure.recommendationsservice#ModelingGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -2623,13 +2744,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#GetModelingResponseProperties",
+          "target": "com.azure.recommendationsservice#ModelingGetResponseProperties",
           "traits": {
             "smithy.api#documentation": "Modeling resource properties."
           }
         },
         "systemData": {
-          "target": "com.azure.recommendationsservice#GetModelingResponseSystemData",
+          "target": "com.azure.recommendationsservice#ModelingGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -2639,7 +2760,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponseSystemData": {
+    "com.azure.recommendationsservice#ModelingGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -2649,7 +2770,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.recommendationsservice#GetModelingResponseSystemDataCreatedByType",
+          "target": "com.azure.recommendationsservice#ModelingGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -2667,7 +2788,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.recommendationsservice#GetModelingResponseSystemDataLastModifiedByType",
+          "target": "com.azure.recommendationsservice#ModelingGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -2683,7 +2804,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponseSystemDataLastModifiedByType": {
+    "com.azure.recommendationsservice#ModelingGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2715,7 +2836,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponseSystemDataCreatedByType": {
+    "com.azure.recommendationsservice#ModelingGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -2747,23 +2868,23 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponseProperties": {
+    "com.azure.recommendationsservice#ModelingGetResponseProperties": {
       "type": "structure",
       "members": {
         "features": {
-          "target": "com.azure.recommendationsservice#GetModelingResponsePropertiesFeatures",
+          "target": "com.azure.recommendationsservice#ModelingGetResponsePropertiesFeatures",
           "traits": {
             "smithy.api#documentation": "Modeling features controls the set of supported scenarios\\models being computed. This can only be set at Modeling creation."
           }
         },
         "frequency": {
-          "target": "com.azure.recommendationsservice#GetModelingResponsePropertiesFrequency",
+          "target": "com.azure.recommendationsservice#ModelingGetResponsePropertiesFrequency",
           "traits": {
             "smithy.api#documentation": "Modeling frequency controls the modeling compute frequency."
           }
         },
         "size": {
-          "target": "com.azure.recommendationsservice#GetModelingResponsePropertiesSize",
+          "target": "com.azure.recommendationsservice#ModelingGetResponsePropertiesSize",
           "traits": {
             "smithy.api#documentation": "Modeling size controls the maximum supported input data size."
           }
@@ -2785,7 +2906,7 @@
         "smithy.api#documentation": "Modeling resource properties."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponsePropertiesSize": {
+    "com.azure.recommendationsservice#ModelingGetResponsePropertiesSize": {
       "type": "enum",
       "members": {
         "SMALL": {
@@ -2811,7 +2932,7 @@
         "smithy.api#documentation": "Modeling size controls the maximum supported input data size."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponsePropertiesFrequency": {
+    "com.azure.recommendationsservice#ModelingGetResponsePropertiesFrequency": {
       "type": "enum",
       "members": {
         "LOW": {
@@ -2837,7 +2958,7 @@
         "smithy.api#documentation": "Modeling frequency controls the modeling compute frequency."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponsePropertiesFeatures": {
+    "com.azure.recommendationsservice#ModelingGetResponsePropertiesFeatures": {
       "type": "enum",
       "members": {
         "BASIC": {
@@ -2863,7 +2984,7 @@
         "smithy.api#documentation": "Modeling features controls the set of supported scenarios\\models being computed. This can only be set at Modeling creation."
       }
     },
-    "com.azure.recommendationsservice#GetModelingResponseTagsMap": {
+    "com.azure.recommendationsservice#ModelingGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2875,7 +2996,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#GetModelingRequest": {
+    "com.azure.recommendationsservice#ModelingGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2915,10 +3036,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ListModelingByAccountResource": {
+    "com.azure.recommendationsservice#ModelingListByAccountResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ListModelingByAccountResourceRequest"
+        "target": "com.azure.recommendationsservice#ModelingListByAccountResourceRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#ModelingResourceList"
@@ -2928,10 +3049,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}/modeling",
           "code": 200,
-          "apiVersion": "2022-02-01"
+          "apiVersion": "2022-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of Modeling resources for a given Account name.",
-        "com.distilled.openapi#apiVersion": "2022-02-01"
+        "com.distilled.openapi#apiVersion": "2022-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.recommendationsservice#ModelingResourceList": {
@@ -3250,7 +3378,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ListModelingByAccountResourceRequest": {
+    "com.azure.recommendationsservice#ModelingListByAccountResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3276,16 +3404,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the RecommendationsService Account resource."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#GetAccountStatus": {
+    "com.azure.recommendationsservice#AccountsGetStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#GetAccountStatusRequest"
+        "target": "com.azure.recommendationsservice#AccountsGetStatusRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#AccountStatus"
@@ -3379,7 +3513,7 @@
         "smithy.api#documentation": "Stage status."
       }
     },
-    "com.azure.recommendationsservice#GetAccountStatusRequest": {
+    "com.azure.recommendationsservice#AccountsGetStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3411,10 +3545,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#DeleteAccount": {
+    "com.azure.recommendationsservice#AccountsDelete": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#DeleteAccountRequest"
+        "target": "com.azure.recommendationsservice#AccountsDeleteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3430,7 +3564,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#DeleteAccountRequest": {
+    "com.azure.recommendationsservice#AccountsDeleteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3462,13 +3596,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateAccount": {
+    "com.azure.recommendationsservice#AccountsUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#UpdateAccountRequest"
+        "target": "com.azure.recommendationsservice#AccountsUpdateRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#UpdateAccountResponse"
+        "target": "com.azure.recommendationsservice#AccountsUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3481,7 +3615,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponse": {
+    "com.azure.recommendationsservice#AccountsUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3503,7 +3637,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.recommendationsservice#UpdateAccountResponseTagsMap",
+          "target": "com.azure.recommendationsservice#AccountsUpdateResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -3516,13 +3650,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#UpdateAccountResponseProperties",
+          "target": "com.azure.recommendationsservice#AccountsUpdateResponseProperties",
           "traits": {
             "smithy.api#documentation": "Account resource properties."
           }
         },
         "systemData": {
-          "target": "com.azure.recommendationsservice#UpdateAccountResponseSystemData",
+          "target": "com.azure.recommendationsservice#AccountsUpdateResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -3532,7 +3666,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponseSystemData": {
+    "com.azure.recommendationsservice#AccountsUpdateResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -3542,7 +3676,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.recommendationsservice#UpdateAccountResponseSystemDataCreatedByType",
+          "target": "com.azure.recommendationsservice#AccountsUpdateResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -3560,7 +3694,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.recommendationsservice#UpdateAccountResponseSystemDataLastModifiedByType",
+          "target": "com.azure.recommendationsservice#AccountsUpdateResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -3576,7 +3710,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponseSystemDataLastModifiedByType": {
+    "com.azure.recommendationsservice#AccountsUpdateResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3608,7 +3742,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponseSystemDataCreatedByType": {
+    "com.azure.recommendationsservice#AccountsUpdateResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -3640,11 +3774,11 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponseProperties": {
+    "com.azure.recommendationsservice#AccountsUpdateResponseProperties": {
       "type": "structure",
       "members": {
         "configuration": {
-          "target": "com.azure.recommendationsservice#UpdateAccountResponsePropertiesConfiguration",
+          "target": "com.azure.recommendationsservice#AccountsUpdateResponsePropertiesConfiguration",
           "traits": {
             "smithy.api#documentation": "Account configuration. This can only be set at RecommendationsService Account creation."
           }
@@ -3817,7 +3951,7 @@
         "smithy.api#documentation": "AAD principal type."
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponsePropertiesConfiguration": {
+    "com.azure.recommendationsservice#AccountsUpdateResponsePropertiesConfiguration": {
       "type": "enum",
       "members": {
         "FREE": {
@@ -3837,7 +3971,7 @@
         "smithy.api#documentation": "Account configuration. This can only be set at RecommendationsService Account creation."
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountResponseTagsMap": {
+    "com.azure.recommendationsservice#AccountsUpdateResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -3849,7 +3983,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountRequest": {
+    "com.azure.recommendationsservice#AccountsUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3883,7 +4017,7 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#UpdateAccountRequestProperties",
+          "target": "com.azure.recommendationsservice#AccountsUpdateRequestProperties",
           "traits": {
             "smithy.api#documentation": "Account resource patch properties."
           }
@@ -3893,7 +4027,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#UpdateAccountRequestProperties": {
+    "com.azure.recommendationsservice#AccountsUpdateRequestProperties": {
       "type": "structure",
       "members": {
         "endpointAuthentications": {
@@ -4282,13 +4416,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#GetAccount": {
+    "com.azure.recommendationsservice#AccountsGet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#GetAccountRequest"
+        "target": "com.azure.recommendationsservice#AccountsGetRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#GetAccountResponse"
+        "target": "com.azure.recommendationsservice#AccountsGetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4301,7 +4435,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponse": {
+    "com.azure.recommendationsservice#AccountsGetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4323,7 +4457,7 @@
           }
         },
         "tags": {
-          "target": "com.azure.recommendationsservice#GetAccountResponseTagsMap",
+          "target": "com.azure.recommendationsservice#AccountsGetResponseTagsMap",
           "traits": {
             "smithy.api#documentation": "Resource tags."
           }
@@ -4336,13 +4470,13 @@
           }
         },
         "properties": {
-          "target": "com.azure.recommendationsservice#GetAccountResponseProperties",
+          "target": "com.azure.recommendationsservice#AccountsGetResponseProperties",
           "traits": {
             "smithy.api#documentation": "Account resource properties."
           }
         },
         "systemData": {
-          "target": "com.azure.recommendationsservice#GetAccountResponseSystemData",
+          "target": "com.azure.recommendationsservice#AccountsGetResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
           }
@@ -4352,7 +4486,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponseSystemData": {
+    "com.azure.recommendationsservice#AccountsGetResponseSystemData": {
       "type": "structure",
       "members": {
         "createdBy": {
@@ -4362,7 +4496,7 @@
           }
         },
         "createdByType": {
-          "target": "com.azure.recommendationsservice#GetAccountResponseSystemDataCreatedByType",
+          "target": "com.azure.recommendationsservice#AccountsGetResponseSystemDataCreatedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that created the resource."
           }
@@ -4380,7 +4514,7 @@
           }
         },
         "lastModifiedByType": {
-          "target": "com.azure.recommendationsservice#GetAccountResponseSystemDataLastModifiedByType",
+          "target": "com.azure.recommendationsservice#AccountsGetResponseSystemDataLastModifiedByType",
           "traits": {
             "smithy.api#documentation": "The type of identity that last modified the resource."
           }
@@ -4396,7 +4530,7 @@
         "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponseSystemDataLastModifiedByType": {
+    "com.azure.recommendationsservice#AccountsGetResponseSystemDataLastModifiedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -4428,7 +4562,7 @@
         "smithy.api#documentation": "The type of identity that last modified the resource."
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponseSystemDataCreatedByType": {
+    "com.azure.recommendationsservice#AccountsGetResponseSystemDataCreatedByType": {
       "type": "enum",
       "members": {
         "USER": {
@@ -4460,11 +4594,11 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponseProperties": {
+    "com.azure.recommendationsservice#AccountsGetResponseProperties": {
       "type": "structure",
       "members": {
         "configuration": {
-          "target": "com.azure.recommendationsservice#GetAccountResponsePropertiesConfiguration",
+          "target": "com.azure.recommendationsservice#AccountsGetResponsePropertiesConfiguration",
           "traits": {
             "smithy.api#documentation": "Account configuration. This can only be set at RecommendationsService Account creation."
           }
@@ -4498,7 +4632,7 @@
         "smithy.api#documentation": "Account resource properties."
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponsePropertiesConfiguration": {
+    "com.azure.recommendationsservice#AccountsGetResponsePropertiesConfiguration": {
       "type": "enum",
       "members": {
         "FREE": {
@@ -4518,7 +4652,7 @@
         "smithy.api#documentation": "Account configuration. This can only be set at RecommendationsService Account creation."
       }
     },
-    "com.azure.recommendationsservice#GetAccountResponseTagsMap": {
+    "com.azure.recommendationsservice#AccountsGetResponseTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4530,7 +4664,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#GetAccountRequest": {
+    "com.azure.recommendationsservice#AccountsGetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4562,10 +4696,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ListAccountByResourceGroup": {
+    "com.azure.recommendationsservice#AccountsListByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ListAccountByResourceGroupRequest"
+        "target": "com.azure.recommendationsservice#AccountsListByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#AccountResourceList"
@@ -4575,10 +4709,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts",
           "code": 200,
-          "apiVersion": "2022-02-01"
+          "apiVersion": "2022-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of RecommendationsService Account resources.",
-        "com.distilled.openapi#apiVersion": "2022-02-01"
+        "com.distilled.openapi#apiVersion": "2022-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.recommendationsservice#AccountResourceList": {
@@ -4839,7 +4980,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.recommendationsservice#ListAccountByResourceGroupRequest": {
+    "com.azure.recommendationsservice#AccountsListByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4857,16 +4998,22 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#ListAccountBySubscription": {
+    "com.azure.recommendationsservice#AccountsListBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#ListAccountBySubscriptionRequest"
+        "target": "com.azure.recommendationsservice#AccountsListBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.recommendationsservice#AccountResourceList"
@@ -4876,13 +5023,20 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.RecommendationsService/accounts",
           "code": 200,
-          "apiVersion": "2022-02-01"
+          "apiVersion": "2022-02-01",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Returns list of RecommendationsService Account resources.",
-        "com.distilled.openapi#apiVersion": "2022-02-01"
+        "com.distilled.openapi#apiVersion": "2022-02-01",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
-    "com.azure.recommendationsservice#ListAccountBySubscriptionRequest": {
+    "com.azure.recommendationsservice#AccountsListBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4892,19 +5046,25 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.recommendationsservice#CheckAccountNameAvailability": {
+    "com.azure.recommendationsservice#AccountsCheckNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.recommendationsservice#CheckAccountNameAvailabilityRequest"
+        "target": "com.azure.recommendationsservice#AccountsCheckNameAvailabilityRequest"
       },
       "output": {
-        "target": "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponse"
+        "target": "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4917,7 +5077,7 @@
         "com.distilled.openapi#apiVersion": "2022-02-01"
       }
     },
-    "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponse": {
+    "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -4927,7 +5087,7 @@
           }
         },
         "reason": {
-          "target": "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponseReason",
+          "target": "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponseReason",
           "traits": {
             "smithy.api#documentation": "The reason why the given name is not available."
           }
@@ -4943,7 +5103,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.recommendationsservice#CheckAccountNameAvailabilityResponseReason": {
+    "com.azure.recommendationsservice#AccountsCheckNameAvailabilityResponseReason": {
       "type": "enum",
       "members": {
         "INVALID": {
@@ -4963,7 +5123,7 @@
         "smithy.api#documentation": "The reason why the given name is not available."
       }
     },
-    "com.azure.recommendationsservice#CheckAccountNameAvailabilityRequest": {
+    "com.azure.recommendationsservice#AccountsCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4996,64 +5156,64 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.recommendationsservice#ListOperations"
+          "target": "com.azure.recommendationsservice#OperationsList"
         },
         {
-          "target": "com.azure.recommendationsservice#GetOperationStatus"
+          "target": "com.azure.recommendationsservice#OperationStatusesGet"
         },
         {
-          "target": "com.azure.recommendationsservice#DeleteServiceEndpoint"
+          "target": "com.azure.recommendationsservice#ServiceEndpointsDelete"
         },
         {
-          "target": "com.azure.recommendationsservice#UpdateServiceEndpoint"
+          "target": "com.azure.recommendationsservice#ServiceEndpointsUpdate"
         },
         {
           "target": "com.azure.recommendationsservice#ServiceEndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.recommendationsservice#GetServiceEndpoint"
+          "target": "com.azure.recommendationsservice#ServiceEndpointsGet"
         },
         {
-          "target": "com.azure.recommendationsservice#ListServiceEndpointByAccountResource"
+          "target": "com.azure.recommendationsservice#ServiceEndpointsListByAccountResource"
         },
         {
-          "target": "com.azure.recommendationsservice#DeleteModeling"
+          "target": "com.azure.recommendationsservice#ModelingDelete"
         },
         {
-          "target": "com.azure.recommendationsservice#UpdateModeling"
+          "target": "com.azure.recommendationsservice#ModelingUpdate"
         },
         {
           "target": "com.azure.recommendationsservice#ModelingCreateOrUpdate"
         },
         {
-          "target": "com.azure.recommendationsservice#GetModeling"
+          "target": "com.azure.recommendationsservice#ModelingGet"
         },
         {
-          "target": "com.azure.recommendationsservice#ListModelingByAccountResource"
+          "target": "com.azure.recommendationsservice#ModelingListByAccountResource"
         },
         {
-          "target": "com.azure.recommendationsservice#GetAccountStatus"
+          "target": "com.azure.recommendationsservice#AccountsGetStatus"
         },
         {
-          "target": "com.azure.recommendationsservice#DeleteAccount"
+          "target": "com.azure.recommendationsservice#AccountsDelete"
         },
         {
-          "target": "com.azure.recommendationsservice#UpdateAccount"
+          "target": "com.azure.recommendationsservice#AccountsUpdate"
         },
         {
           "target": "com.azure.recommendationsservice#AccountsCreateOrUpdate"
         },
         {
-          "target": "com.azure.recommendationsservice#GetAccount"
+          "target": "com.azure.recommendationsservice#AccountsGet"
         },
         {
-          "target": "com.azure.recommendationsservice#ListAccountByResourceGroup"
+          "target": "com.azure.recommendationsservice#AccountsListByResourceGroup"
         },
         {
-          "target": "com.azure.recommendationsservice#ListAccountBySubscription"
+          "target": "com.azure.recommendationsservice#AccountsListBySubscription"
         },
         {
-          "target": "com.azure.recommendationsservice#CheckAccountNameAvailability"
+          "target": "com.azure.recommendationsservice#AccountsCheckNameAvailability"
         }
       ],
       "traits": {

@@ -15,50 +15,13 @@
         "namespace": "*"
       }
     ],
-    "distilled.rename": {
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListActivationPhrases": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentActivationPhrases",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListActivationPhrasesRequest": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentActivationPhrasesRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentVerifyProfile": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextIndependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentVerifyProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextIndependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateEnrollment": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentEnrollment",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateEnrollmentRequest": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentEnrollmentRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfile": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfileResponse": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfileResponse",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentDeleteProfile": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextIndependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentDeleteProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextIndependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentGetProfile": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextIndependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentGetProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextIndependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfile": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfileResponse": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfileResponse",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListProfiles": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentProfiles",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListProfilesRequest": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentProfilesRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListPhrases": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentPhrases",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListPhrasesRequest": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentPhrasesRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentVerifyProfile": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextDependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentVerifyProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextDependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateEnrollment": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentEnrollment",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateEnrollmentRequest": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentEnrollmentRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfile": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfileResponse": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfileResponse",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentDeleteProfile": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextDependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentDeleteProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextDependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentGetProfile": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextDependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentGetProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextDependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfile": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfile",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfileResponse": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfileResponse",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfileRequest": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfileRequest",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListProfiles": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentProfiles",
-      "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListProfilesRequest": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentProfilesRequest"
-    }
+    "distilled.finalized": true
   },
   "shapes": {
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListActivationPhrases": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentActivationPhrases": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListActivationPhrasesRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentActivationPhrasesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#ActivationPhraseInfo"
@@ -107,7 +70,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListActivationPhrasesRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentActivationPhrasesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -131,10 +94,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentVerifyProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextIndependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentVerifyProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextIndependentProfileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#RecognitionInfo"
@@ -193,7 +156,7 @@
         "smithy.api#documentation": "Does audio belong to targeted profile?"
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentVerifyProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextIndependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -224,10 +187,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateEnrollment": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentEnrollment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateEnrollmentRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentEnrollmentRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#TiEnrollmentInfo"
@@ -310,7 +273,7 @@
         "smithy.api#documentation": "Status representing the current state of the profile. Available values are:\n* Enrolling: profile has no voice print and not ready for recognition requests.\n* Training: voice print of profile is being created and can’t be used for recognition at the moment.\n* Enrolled: profile has a voice print and ready for recognition requests."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateEnrollmentRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentEnrollmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -341,13 +304,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfileResponse"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -363,7 +326,7 @@
         "smithy.api#documentation": "Reset Profile\n\nResets existing profile to its original creation state. The reset operation does the following:\n* Updates enrollmentStatus to Enrolling.\n* Updates lastUpdatedDateTime.\n* Updates enrollmentsCount to 0.\n* Updates enrollmentsLength to 0.\n* Updates enrollmentsSpeechLength to 0.\n* Updates remainingEnrollmentsSpeechLength to the required number.\n* Removes all associated enrollments from storage.\n* Removes chosen passphrase association.\n* Resets value of modelVersion."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfileResponse": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfileResponse": {
       "type": "structure",
       "members": {
         "profileId": {
@@ -432,7 +395,7 @@
         "smithy.api#documentation": "Status representing the current state of the profile. Available values are:\n* Active: profile is active and can be used if the enrollment status is 'Enrolled'.\n* Inactive: profile has not been activated and an activation phrase must be submitted."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -456,10 +419,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentDeleteProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextIndependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentDeleteProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextIndependentProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -478,7 +441,7 @@
         "smithy.api#documentation": "Delete Profile\n\nDeletes an existing profile."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentDeleteProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextIndependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -502,10 +465,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentGetProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#GetTextIndependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentGetProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextIndependentProfileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#TiProfileInfo"
@@ -565,7 +528,7 @@
         "smithy.api#documentation": "Text-Independent Speaker profile info"
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentGetProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#GetTextIndependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -589,13 +552,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfileResponse"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -611,7 +574,7 @@
         "smithy.api#documentation": "Create Profile\n\nCreates a new speaker profile with specified locale."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfileResponse": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfileResponse": {
       "type": "structure",
       "members": {
         "profileId": {
@@ -660,7 +623,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -682,10 +645,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListProfiles": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentProfiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListProfilesRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentProfilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#TiProfileInfoList"
@@ -699,9 +662,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2021-09-05"
+          "apiVersion": "2021-09-05",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List Profiles\n\nRetrieves a set of profiles.\nProfiles are sorted alphabetically by ProfileId"
+        "smithy.api#documentation": "List Profiles\n\nRetrieves a set of profiles.\nProfiles are sorted alphabetically by ProfileId",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_speaker_recognition_verification#TiProfileInfoList": {
@@ -728,7 +698,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListProfilesRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentProfilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -745,16 +715,22 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The number of profiles to return. Default is 100 and the maximum is 500"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListPhrases": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentPhrases": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListPhrasesRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentPhrasesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#PassPhraseInfo"
@@ -803,7 +779,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListPhrasesRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentPhrasesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -827,10 +803,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentVerifyProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextDependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentVerifyProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextDependentProfileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#RecognitionInfo"
@@ -849,7 +825,7 @@
         "smithy.api#documentation": "Verify Profile\n\nVerifies existing profiles against input audio.\n\nLimitations:\n* Minimum audio input length per request is **1 second**\n* Maximum audio input length per request is **10 seconds**\n* Minimum audio Signal-to-noise ratio (SNR) is **10 dB**"
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentVerifyProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextDependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -873,10 +849,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateEnrollment": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentEnrollment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateEnrollmentRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentEnrollmentRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#TdEnrollmentInfo"
@@ -936,7 +912,7 @@
         "smithy.api#documentation": "Text-Dependent Speaker profile enrollment info"
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateEnrollmentRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentEnrollmentRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -960,13 +936,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfileResponse"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -982,7 +958,7 @@
         "smithy.api#documentation": "Reset Profile\n\nResets existing profile to its original creation state. The reset operation does the following:\n* Updates enrollmentStatus to Enrolling.\n* Updates lastUpdatedDateTime.\n* Updates enrollmentsCount to 0.\n* Updates enrollmentsLength to 0.\n* Updates enrollmentsSpeechLength to 0.\n* Updates remainingEnrollmentsCount to the initial required number.\n* Removes all associated enrollments from storage.\n* Removes chosen passphrase association.\n* Resets value of modelVersion."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfileResponse": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfileResponse": {
       "type": "structure",
       "members": {
         "profileId": {
@@ -1028,7 +1004,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1052,10 +1028,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentDeleteProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextDependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentDeleteProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextDependentProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1074,7 +1050,7 @@
         "smithy.api#documentation": "Delete Profile\n\nDeletes an existing profile."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentDeleteProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextDependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1098,10 +1074,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentGetProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#GetTextDependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentGetProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextDependentProfileRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#TdProfileInfo"
@@ -1158,7 +1134,7 @@
         "smithy.api#documentation": "Text-Dependent Speaker profile info"
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentGetProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#GetTextDependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1182,13 +1158,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfile": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfileRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfileRequest"
       },
       "output": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfileResponse"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1204,7 +1180,7 @@
         "smithy.api#documentation": "Create Profile\n\nCreate a new speaker profile with specified locale."
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfileResponse": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfileResponse": {
       "type": "structure",
       "members": {
         "profileId": {
@@ -1250,7 +1226,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfileRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfileRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1272,10 +1248,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListProfiles": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentProfiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListProfilesRequest"
+        "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentProfilesRequest"
       },
       "output": {
         "target": "com.azure.cognitiveservices_speaker_recognition_verification#TdProfileInfoList"
@@ -1289,9 +1265,16 @@
           "hostRaw": [
             "endpoint"
           ],
-          "apiVersion": "2021-09-05"
+          "apiVersion": "2021-09-05",
+          "nextLink": "nextLink"
         },
-        "smithy.api#documentation": "List Profiles\n\nRetrieves a set of profiles.\nProfiles are sorted alphabetically by ProfileId"
+        "smithy.api#documentation": "List Profiles\n\nRetrieves a set of profiles.\nProfiles are sorted alphabetically by ProfileId",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.cognitiveservices_speaker_recognition_verification#TdProfileInfoList": {
@@ -1318,7 +1301,7 @@
       },
       "traits": {}
     },
-    "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListProfilesRequest": {
+    "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentProfilesRequest": {
       "type": "structure",
       "members": {
         "endpoint": {
@@ -1335,6 +1318,12 @@
             "smithy.api#httpQuery": "maxpagesize",
             "smithy.api#documentation": "The number of profiles to return. Default is 100 and the maximum is 500"
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -1346,52 +1335,52 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListActivationPhrases"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentActivationPhrases"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentVerifyProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextIndependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateEnrollment"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentEnrollment"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentResetProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextIndependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentDeleteProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextIndependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentGetProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextIndependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentCreateProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextIndependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextIndependentListProfiles"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextIndependentProfiles"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListPhrases"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentPhrases"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentVerifyProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#VerifyTextDependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateEnrollment"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentEnrollment"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentResetProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#ResetTextDependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentDeleteProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#DeleteTextDependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentGetProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#GetTextDependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentCreateProfile"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#CreateTextDependentProfile"
         },
         {
-          "target": "com.azure.cognitiveservices_speaker_recognition_verification#TextDependentListProfiles"
+          "target": "com.azure.cognitiveservices_speaker_recognition_verification#ListTextDependentProfiles"
         }
       ],
       "traits": {

@@ -272,6 +272,8 @@ export interface ListConnectionsRequest {
   defaultConnection?: boolean;
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Connection items on this page */
 export type PagedConnectionValueList = Array<Connection>;
@@ -285,6 +287,8 @@ export interface PagedConnection {
 export interface ListDatasetLatestRequest {
   /** Foundry Project endpoint in the form "https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}". If you only have one Project in your Foundry Hub, or to target the default Project in your Hub, use the form "https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project" */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The DatasetVersion items on this page */
 export type PagedDatasetVersionValueList = Array<DatasetVersion>;
@@ -300,6 +304,8 @@ export interface ListDatasetVersionsRequest {
   endpoint: string;
   /** The name of the resource */
   name: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type ListDeploymentsRequestDeploymentType = "ModelDeployment";
 export interface ListDeploymentsRequest {
@@ -313,6 +319,8 @@ export interface ListDeploymentsRequest {
   deploymentType?: ListDeploymentsRequestDeploymentType | (string & {});
   /** An opaque, globally-unique, client-generated string identifier for the request. */
   xMsClientRequestId?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Deployment items on this page */
 export type PagedDeploymentValueList = Array<Deployment>;
@@ -326,6 +334,8 @@ export interface PagedDeployment {
 export interface ListIndexLatestRequest {
   /** Foundry Project endpoint in the form "https://{ai-services-account-name}.services.ai.azure.com/api/projects/{project-name}". If you only have one Project in your Foundry Hub, or to target the default Project in your Hub, use the form "https://{ai-services-account-name}.services.ai.azure.com/api/projects/_project" */
   endpoint: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The Index items on this page */
 export type PagedIndexValueList = Array<Index>;
@@ -341,6 +351,8 @@ export interface ListIndexVersionsRequest {
   endpoint: string;
   /** The name of the resource */
   name: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export type DatasetsCreateOrUpdateVersionError = AzureOpError;
 /** Create a new or update an existing DatasetVersion with the given version id */
@@ -509,93 +521,135 @@ export const IndexesCreateOrUpdateVersion: API.OperationMethod<
 
 export type ListConnectionsError = AzureOpError;
 /** List all connections in the project, without populating connection credentials */
-export const ListConnections: API.OperationMethod<
+export const ListConnections: API.PaginatedOperationMethod<
   ListConnectionsRequest,
   PagedConnection,
   ListConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Connection
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(24, __c6, 0) as any as S.Schema<ListConnectionsRequest>,
   output: __S(26, __c6, 2) as any as S.Schema<PagedConnection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatasetLatestError = AzureOpError;
 /** List the latest version of each DatasetVersion */
-export const ListDatasetLatest: API.OperationMethod<
+export const ListDatasetLatest: API.PaginatedOperationMethod<
   ListDatasetLatestRequest,
   PagedDatasetVersion,
   ListDatasetLatestError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatasetVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(28, __c7, 0) as any as S.Schema<ListDatasetLatestRequest>,
   output: __S(33, __c8, 1) as any as S.Schema<PagedDatasetVersion>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDatasetVersionsError = AzureOpError;
 /** List all versions of the given DatasetVersion */
-export const ListDatasetVersions: API.OperationMethod<
+export const ListDatasetVersions: API.PaginatedOperationMethod<
   ListDatasetVersionsRequest,
   PagedDatasetVersion,
   ListDatasetVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DatasetVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(36, __c9, 0) as any as S.Schema<ListDatasetVersionsRequest>,
   output: __S(33, __c8, 1) as any as S.Schema<PagedDatasetVersion>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeploymentsError = AzureOpError;
 /** List all deployed models in the project */
-export const ListDeployments: API.OperationMethod<
+export const ListDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   PagedDeployment,
   ListDeploymentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(40, __c10, 0) as any as S.Schema<ListDeploymentsRequest>,
   output: __S(42, __c10, 2) as any as S.Schema<PagedDeployment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIndexLatestError = AzureOpError;
 /** List the latest version of each Index */
-export const ListIndexLatest: API.OperationMethod<
+export const ListIndexLatest: API.PaginatedOperationMethod<
   ListIndexLatestRequest,
   PagedIndex,
   ListIndexLatestError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Index
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<ListIndexLatestRequest>,
   output: __S(49, __c12, 1) as any as S.Schema<PagedIndex>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIndexVersionsError = AzureOpError;
 /** List all versions of the given Index */
-export const ListIndexVersions: API.OperationMethod<
+export const ListIndexVersions: API.PaginatedOperationMethod<
   ListIndexVersionsRequest,
   PagedIndex,
   ListIndexVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Index
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(52, __c13, 0) as any as S.Schema<ListIndexVersionsRequest>,
   output: __S(49, __c12, 1) as any as S.Schema<PagedIndex>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
@@ -736,6 +790,7 @@ function __c6(j: number): any {
           connectionType: S.optional(S.String.pipe(T.Query())),
           defaultConnection: S.optional(S.Boolean.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -744,6 +799,7 @@ function __c6(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
             audience: "https://ai.azure.com/.default",
           }),
         ),
@@ -765,6 +821,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -773,6 +830,7 @@ function __c7(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
             audience: "https://ai.azure.com/.default",
           }),
         ),
@@ -799,6 +857,7 @@ function __c9(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           name: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -807,6 +866,7 @@ function __c9(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
             audience: "https://ai.azure.com/.default",
           }),
         ),
@@ -823,6 +883,7 @@ function __c10(j: number): any {
           modelName: S.optional(S.String.pipe(T.Query())),
           deploymentType: S.optional(S.String.pipe(T.Query())),
           xMsClientRequestId: S.optional(S.String.pipe(T.Header("x-ms-client-request-id"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -831,6 +892,7 @@ function __c10(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
             audience: "https://ai.azure.com/.default",
           }),
         ),
@@ -852,6 +914,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -860,6 +923,7 @@ function __c11(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
             audience: "https://ai.azure.com/.default",
           }),
         ),
@@ -886,6 +950,7 @@ function __c13(j: number): any {
         S.Struct({
           endpoint: S.String.pipe(T.HostLabel()),
           name: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
@@ -894,6 +959,7 @@ function __c13(j: number): any {
             host: "{endpoint}",
             hostRaw: ["endpoint"],
             apiVersion: "2025-05-01",
+            nextLink: "nextLink",
             audience: "https://ai.azure.com/.default",
           }),
         ),

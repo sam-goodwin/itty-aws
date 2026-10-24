@@ -619,10 +619,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets",
           "code": 200,
-          "apiVersion": "2024-10-01-preview"
+          "apiVersion": "2024-10-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Target resources by Watcher",
-        "com.distilled.openapi#apiVersion": "2024-10-01-preview"
+        "com.distilled.openapi#apiVersion": "2024-10-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#TargetListResult": {
@@ -718,6 +725,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The database watcher name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -1721,10 +1734,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/sharedPrivateLinkResources",
           "code": 200,
-          "apiVersion": "2024-10-01-preview"
+          "apiVersion": "2024-10-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List SharedPrivateLinkResource resources by Watcher",
-        "com.distilled.openapi#apiVersion": "2024-10-01-preview"
+        "com.distilled.openapi#apiVersion": "2024-10-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#SharedPrivateLinkResourceListResult": {
@@ -1820,6 +1840,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The database watcher name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2196,10 +2222,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/healthValidations",
           "code": 200,
-          "apiVersion": "2024-10-01-preview"
+          "apiVersion": "2024-10-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List HealthValidation resources by Watcher",
-        "com.distilled.openapi#apiVersion": "2024-10-01-preview"
+        "com.distilled.openapi#apiVersion": "2024-10-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#HealthValidationListResult": {
@@ -2295,6 +2328,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The database watcher name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -2686,10 +2725,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/alertRuleResources",
           "code": 200,
-          "apiVersion": "2024-10-01-preview"
+          "apiVersion": "2024-10-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List AlertRuleResource resources by Watcher",
-        "com.distilled.openapi#apiVersion": "2024-10-01-preview"
+        "com.distilled.openapi#apiVersion": "2024-10-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#AlertRuleResourceListResult": {
@@ -2785,6 +2831,12 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The database watcher name."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
           }
         }
       },
@@ -3556,10 +3608,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers",
           "code": 200,
-          "apiVersion": "2024-10-01-preview"
+          "apiVersion": "2024-10-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Watcher resources by resource group",
-        "com.distilled.openapi#apiVersion": "2024-10-01-preview"
+        "com.distilled.openapi#apiVersion": "2024-10-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#WatcherListResult": {
@@ -3708,6 +3767,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3727,10 +3792,17 @@
           "method": "GET",
           "uri": "/subscriptions/{subscriptionId}/providers/Microsoft.DatabaseWatcher/watchers",
           "code": 200,
-          "apiVersion": "2024-10-01-preview"
+          "apiVersion": "2024-10-01-preview",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List Watcher resources by subscription ID",
-        "com.distilled.openapi#apiVersion": "2024-10-01-preview"
+        "com.distilled.openapi#apiVersion": "2024-10-01-preview",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#ListWatcherBySubscriptionRequest": {
@@ -3743,6 +3815,12 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
         }
       },
       "traits": {
@@ -3752,7 +3830,7 @@
     "com.azure.databasewatcher#ListOperations": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.databasewatcher#ListOperationsRequest"
       },
       "output": {
         "target": "com.azure.databasewatcher#ListOperationsResponse"
@@ -3762,10 +3840,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.DatabaseWatcher/operations",
           "code": 200,
-          "apiVersion": "2025-01-02"
+          "apiVersion": "2025-01-02",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "List the operations for the provider",
-        "com.distilled.openapi#apiVersion": "2025-01-02"
+        "com.distilled.openapi#apiVersion": "2025-01-02",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.databasewatcher#ListOperationsResponse": {
@@ -3905,6 +3990,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Localized display information for this particular operation."
+      }
+    },
+    "com.azure.databasewatcher#ListOperationsRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.databasewatcher#Databasewatcher": {

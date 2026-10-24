@@ -3379,6 +3379,8 @@ export interface ListIntegrationAccountAgreementsRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: AgreementType. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountAgreementTagsMap = { [key: string]: string | undefined };
@@ -3402,7 +3404,7 @@ export type IntegrationAccountAgreementListResultValueList = Array<IntegrationAc
 /** The list of integration account agreements. */
 export interface IntegrationAccountAgreementListResult {
   /** The list of integration account agreements. */
-  value?: IntegrationAccountAgreementListResultValueList;
+  value: IntegrationAccountAgreementListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3434,7 +3436,7 @@ export interface AssemblyDefinition {
 export type AssemblyCollectionValueList = Array<AssemblyDefinition>;
 /** A collection of assembly definitions. */
 export interface AssemblyCollection {
-  value?: AssemblyCollectionValueList;
+  value: AssemblyCollectionValueList;
 }
 export interface ListIntegrationAccountAssemblyContentCallbackUrlRequest {
   /** The subscription id. */
@@ -3474,7 +3476,7 @@ export interface BatchConfiguration {
 export type BatchConfigurationCollectionValueList = Array<BatchConfiguration>;
 /** A collection of batch configurations. */
 export interface BatchConfigurationCollection {
-  value?: BatchConfigurationCollectionValueList;
+  value: BatchConfigurationCollectionValueList;
 }
 export interface ListIntegrationAccountByResourceGroupRequest {
   /** The subscription id. */
@@ -3483,6 +3485,8 @@ export interface ListIntegrationAccountByResourceGroupRequest {
   resourceGroupName: string;
   /** The number of items to be included in the result. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountTagsMap = { [key: string]: string | undefined };
@@ -3508,7 +3512,7 @@ export type IntegrationAccountListResultValueList = Array<IntegrationAccount>;
 /** The list of integration accounts. */
 export interface IntegrationAccountListResult {
   /** The list of integration accounts. */
-  value?: IntegrationAccountListResultValueList;
+  value: IntegrationAccountListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3517,6 +3521,8 @@ export interface ListIntegrationAccountBySubscriptionRequest {
   subscriptionId: string;
   /** The number of items to be included in the result. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIntegrationAccountCallbackUrlRequest {
   /** The subscription id. */
@@ -3544,6 +3550,8 @@ export interface ListIntegrationAccountCertificatesRequest {
   integrationAccountName: string;
   /** The number of items to be included in the result. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountCertificateTagsMap = { [key: string]: string | undefined };
@@ -3567,7 +3575,7 @@ export type IntegrationAccountCertificateListResultValueList = Array<Integration
 /** The list of integration account certificates. */
 export interface IntegrationAccountCertificateListResult {
   /** The list of integration account certificates. */
-  value?: IntegrationAccountCertificateListResultValueList;
+  value: IntegrationAccountCertificateListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3606,7 +3614,7 @@ export type KeyVaultKeyCollectionValueList = Array<KeyVaultKey>;
 /** Collection of key vault keys. */
 export interface KeyVaultKeyCollection {
   /** The key vault keys. */
-  value?: KeyVaultKeyCollectionValueList;
+  value: KeyVaultKeyCollectionValueList;
   /** The skip token. */
   skipToken?: string;
 }
@@ -3635,6 +3643,8 @@ export interface ListIntegrationAccountMapsRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: MapType. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountMapTagsMap = { [key: string]: string | undefined };
@@ -3658,7 +3668,7 @@ export type IntegrationAccountMapListResultValueList = Array<IntegrationAccountM
 /** The list of integration account maps. */
 export interface IntegrationAccountMapListResult {
   /** The list of integration account maps. */
-  value?: IntegrationAccountMapListResultValueList;
+  value: IntegrationAccountMapListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3687,6 +3697,8 @@ export interface ListIntegrationAccountPartnersRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: PartnerType. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountPartnerTagsMap = { [key: string]: string | undefined };
@@ -3710,7 +3722,7 @@ export type IntegrationAccountPartnerListResultValueList = Array<IntegrationAcco
 /** The list of integration account partners. */
 export interface IntegrationAccountPartnerListResult {
   /** The list of integration account partners. */
-  value?: IntegrationAccountPartnerListResultValueList;
+  value: IntegrationAccountPartnerListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3739,6 +3751,8 @@ export interface ListIntegrationAccountSchemasRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: SchemaType. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountSchemaTagsMap = { [key: string]: string | undefined };
@@ -3762,7 +3776,7 @@ export type IntegrationAccountSchemaListResultValueList = Array<IntegrationAccou
 /** The list of integration account schemas. */
 export interface IntegrationAccountSchemaListResult {
   /** The list of integration account schemas. */
-  value?: IntegrationAccountSchemaListResultValueList;
+  value: IntegrationAccountSchemaListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3777,6 +3791,8 @@ export interface ListIntegrationAccountSessionsRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: ChangedTime. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationAccountSessionTagsMap = { [key: string]: string | undefined };
@@ -3800,7 +3816,7 @@ export type IntegrationAccountSessionListResultValueList = Array<IntegrationAcco
 /** The list of integration account sessions. */
 export interface IntegrationAccountSessionListResult {
   /** The list of integration account sessions. */
-  value?: IntegrationAccountSessionListResultValueList;
+  value: IntegrationAccountSessionListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3811,6 +3827,8 @@ export interface ListIntegrationServiceEnvironmentByResourceGroupRequest {
   resourceGroup: string;
   /** The number of items to be included in the result. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationServiceEnvironmentTagsMap = { [key: string]: string | undefined };
@@ -3835,7 +3853,7 @@ export interface IntegrationServiceEnvironment {
 export type IntegrationServiceEnvironmentListResultValueList = Array<IntegrationServiceEnvironment>;
 /** The list of integration service environments. */
 export interface IntegrationServiceEnvironmentListResult {
-  value?: IntegrationServiceEnvironmentListResultValueList;
+  value: IntegrationServiceEnvironmentListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -3844,6 +3862,8 @@ export interface ListIntegrationServiceEnvironmentBySubscriptionRequest {
   subscriptionId: string;
   /** The number of items to be included in the result. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListIntegrationServiceEnvironmentManagedApiOperationsRequest {
   /** The subscription id. */
@@ -3854,6 +3874,8 @@ export interface ListIntegrationServiceEnvironmentManagedApiOperationsRequest {
   integrationServiceEnvironmentName: string;
   /** The api name. */
   apiName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type ApiOperationTagsMap = { [key: string]: string | undefined };
@@ -4118,7 +4140,7 @@ export type ApiOperationListResultValueList = Array<ApiOperation>;
 /** The list of managed API operations. */
 export interface ApiOperationListResult {
   /** The api operation definitions for an API. */
-  value?: ApiOperationListResultValueList;
+  value: ApiOperationListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4129,6 +4151,8 @@ export interface ListIntegrationServiceEnvironmentManagedApisRequest {
   resourceGroup: string;
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type IntegrationServiceEnvironmentManagedApiTagsMap = { [key: string]: string | undefined };
@@ -4153,7 +4177,7 @@ export type IntegrationServiceEnvironmentManagedApiListResultValueList =
 /** The list of integration service environment managed APIs. */
 export interface IntegrationServiceEnvironmentManagedApiListResult {
   /** The integration service environment managed APIs. */
-  value?: IntegrationServiceEnvironmentManagedApiListResultValueList;
+  value: IntegrationServiceEnvironmentManagedApiListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4164,6 +4188,8 @@ export interface ListIntegrationServiceEnvironmentSkusRequest {
   resourceGroup: string;
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The sku. */
 export interface IntegrationServiceEnvironmentSkuDefinitionSku {
@@ -4200,11 +4226,14 @@ export type IntegrationServiceEnvironmentSkuListValueList =
 /** The list of integration service environment skus. */
 export interface IntegrationServiceEnvironmentSkuList {
   /** The list of integration service environment skus. */
-  value?: IntegrationServiceEnvironmentSkuListValueList;
+  value: IntegrationServiceEnvironmentSkuListValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Logic */
@@ -4232,7 +4261,7 @@ export type OperationListResultValueList = Array<Operation>;
 /** Result of the request to list Logic operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Logic operations supported by the Logic resource provider. */
-  value?: OperationListResultValueList;
+  value: OperationListResultValueList;
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
@@ -4245,6 +4274,8 @@ export interface ListWorkflowByResourceGroupRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type WorkflowTagsMap = { [key: string]: string | undefined };
@@ -4269,7 +4300,7 @@ export type WorkflowListResultValueList = Array<Workflow>;
 /** The list of workflows. */
 export interface WorkflowListResult {
   /** The list of workflows. */
-  value?: WorkflowListResultValueList;
+  value: WorkflowListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4280,6 +4311,8 @@ export interface ListWorkflowBySubscriptionRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWorkflowCallbackUrlRequest {
   /** The subscription id. */
@@ -4343,7 +4376,7 @@ export interface ExpressionRoot {
 export type ExpressionTracesInputsList = Array<ExpressionRoot>;
 /** The expression traces. */
 export interface ExpressionTraces {
-  inputs?: ExpressionTracesInputsList;
+  inputs: ExpressionTracesInputsList;
 }
 export interface ListWorkflowRunActionRepetitionExpressionTracesRequest {
   /** The subscription id. */
@@ -4394,7 +4427,7 @@ export type WorkflowRunActionRepetitionDefinitionCollectionValueList =
 export interface WorkflowRunActionRepetitionDefinitionCollection {
   /** The link used to get the next page of recommendations. */
   nextLink?: string;
-  value?: WorkflowRunActionRepetitionDefinitionCollectionValueList;
+  value: WorkflowRunActionRepetitionDefinitionCollectionValueList;
 }
 export interface ListWorkflowRunActionRepetitionsRequestHistoriesRequest {
   /** The subscription id. */
@@ -4409,6 +4442,8 @@ export interface ListWorkflowRunActionRepetitionsRequestHistoriesRequest {
   actionName: string;
   /** The workflow repetition. */
   repetitionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type RequestHistoryTagsMap = { [key: string]: string | undefined };
@@ -4432,7 +4467,7 @@ export type RequestHistoryListResultValueList = Array<RequestHistory>;
 /** The list of workflow request histories. */
 export interface RequestHistoryListResult {
   /** A list of workflow request histories. */
-  value?: RequestHistoryListResultValueList;
+  value: RequestHistoryListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4447,6 +4482,8 @@ export interface ListWorkflowRunActionRequestHistoriesRequest {
   runName: string;
   /** The workflow action name. */
   actionName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListWorkflowRunActionsRequest {
   /** The subscription id. */
@@ -4461,6 +4498,8 @@ export interface ListWorkflowRunActionsRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: Status. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The workflow run action. */
 export interface WorkflowRunAction {
@@ -4478,7 +4517,7 @@ export type WorkflowRunActionListResultValueList = Array<WorkflowRunAction>;
 /** The list of workflow run actions. */
 export interface WorkflowRunActionListResult {
   /** A list of workflow run actions. */
-  value?: WorkflowRunActionListResultValueList;
+  value: WorkflowRunActionListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4505,6 +4544,8 @@ export interface ListWorkflowRunsRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The workflow run. */
 export interface WorkflowRun {
@@ -4522,7 +4563,7 @@ export type WorkflowRunListResultValueList = Array<WorkflowRun>;
 /** The list of workflow runs. */
 export interface WorkflowRunListResult {
   /** A list of workflow runs. */
-  value?: WorkflowRunListResultValueList;
+  value: WorkflowRunListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4558,6 +4599,8 @@ export interface ListWorkflowTriggerHistoriesRequest {
   _top?: number;
   /** The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The workflow trigger history. */
 export interface WorkflowTriggerHistory {
@@ -4575,7 +4618,7 @@ export type WorkflowTriggerHistoryListResultValueList = Array<WorkflowTriggerHis
 /** The list of workflow trigger histories. */
 export interface WorkflowTriggerHistoryListResult {
   /** A list of workflow trigger histories. */
-  value?: WorkflowTriggerHistoryListResultValueList;
+  value: WorkflowTriggerHistoryListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4590,6 +4633,8 @@ export interface ListWorkflowTriggersRequest {
   _top?: number;
   /** The filter to apply on the operation. */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The workflow trigger. */
 export interface WorkflowTrigger {
@@ -4607,7 +4652,7 @@ export type WorkflowTriggerListResultValueList = Array<WorkflowTrigger>;
 /** The list of workflow triggers. */
 export interface WorkflowTriggerListResult {
   /** A list of workflow triggers. */
-  value?: WorkflowTriggerListResultValueList;
+  value: WorkflowTriggerListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -4620,6 +4665,8 @@ export interface ListWorkflowVersionsRequest {
   workflowName: string;
   /** The number of items to be included in the result. */
   _top?: number;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The resource tags. */
 export type WorkflowVersionTagsMap = { [key: string]: string | undefined };
@@ -4643,7 +4690,7 @@ export type WorkflowVersionListResultValueList = Array<WorkflowVersion>;
 /** The list of workflow versions. */
 export interface WorkflowVersionListResult {
   /** A list of workflow versions. */
-  value?: WorkflowVersionListResultValueList;
+  value: WorkflowVersionListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
@@ -5865,33 +5912,42 @@ export const ListIntegrationAccountAgreementContentCallbackUrl: API.OperationMet
 
 export type ListIntegrationAccountAgreementsError = AzureOpError;
 /** Gets a list of integration account agreements. */
-export const ListIntegrationAccountAgreements: API.OperationMethod<
+export const ListIntegrationAccountAgreements: API.PaginatedOperationMethod<
   ListIntegrationAccountAgreementsRequest,
   IntegrationAccountAgreementListResult,
   ListIntegrationAccountAgreementsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccountAgreement
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3072, __c96, 0) as any as S.Schema<ListIntegrationAccountAgreementsRequest>,
   output: __S(3074, __c96, 2) as any as S.Schema<IntegrationAccountAgreementListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountAssembliesError = AzureOpError;
 /** List the assemblies for an integration account. */
-export const ListIntegrationAccountAssemblies: API.OperationMethod<
+export const ListIntegrationAccountAssemblies: API.PaginatedOperationMethod<
   ListIntegrationAccountAssembliesRequest,
   AssemblyCollection,
   ListIntegrationAccountAssembliesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AssemblyDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3104, __c97, 0) as any as S.Schema<ListIntegrationAccountAssembliesRequest>,
   output: __S(3106, __c97, 2) as any as S.Schema<AssemblyCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListIntegrationAccountAssemblyContentCallbackUrlError = AzureOpError;
 /** Get the content callback url for an integration account assembly. */
@@ -5914,48 +5970,64 @@ export const ListIntegrationAccountAssemblyContentCallbackUrl: API.OperationMeth
 
 export type ListIntegrationAccountBatchConfigurationsError = AzureOpError;
 /** List the batch configurations for an integration account. */
-export const ListIntegrationAccountBatchConfigurations: API.OperationMethod<
+export const ListIntegrationAccountBatchConfigurations: API.PaginatedOperationMethod<
   ListIntegrationAccountBatchConfigurationsRequest,
   BatchConfigurationCollection,
   ListIntegrationAccountBatchConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  BatchConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3168, __c99, 0) as any as S.Schema<ListIntegrationAccountBatchConfigurationsRequest>,
   output: __S(3170, __c99, 2) as any as S.Schema<BatchConfigurationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListIntegrationAccountByResourceGroupError = AzureOpError;
 /** Gets a list of integration accounts by resource group. */
-export const ListIntegrationAccountByResourceGroup: API.OperationMethod<
+export const ListIntegrationAccountByResourceGroup: API.PaginatedOperationMethod<
   ListIntegrationAccountByResourceGroupRequest,
   IntegrationAccountListResult,
   ListIntegrationAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3200, __c100, 0) as any as S.Schema<ListIntegrationAccountByResourceGroupRequest>,
   output: __S(3233, __c101, 1) as any as S.Schema<IntegrationAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountBySubscriptionError = AzureOpError;
 /** Gets a list of integration accounts by subscription. */
-export const ListIntegrationAccountBySubscription: API.OperationMethod<
+export const ListIntegrationAccountBySubscription: API.PaginatedOperationMethod<
   ListIntegrationAccountBySubscriptionRequest,
   IntegrationAccountListResult,
   ListIntegrationAccountBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccount
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3264, __c102, 0) as any as S.Schema<ListIntegrationAccountBySubscriptionRequest>,
   output: __S(3233, __c101, 1) as any as S.Schema<IntegrationAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountCallbackUrlError = AzureOpError;
 /** Gets the integration account callback URL. */
@@ -5974,33 +6046,42 @@ export const ListIntegrationAccountCallbackUrl: API.OperationMethod<
 
 export type ListIntegrationAccountCertificatesError = AzureOpError;
 /** Gets a list of integration account certificates. */
-export const ListIntegrationAccountCertificates: API.OperationMethod<
+export const ListIntegrationAccountCertificates: API.PaginatedOperationMethod<
   ListIntegrationAccountCertificatesRequest,
   IntegrationAccountCertificateListResult,
   ListIntegrationAccountCertificatesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccountCertificate
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3328, __c104, 0) as any as S.Schema<ListIntegrationAccountCertificatesRequest>,
   output: __S(3330, __c104, 2) as any as S.Schema<IntegrationAccountCertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountKeyVaultKeysError = AzureOpError;
 /** Gets the integration account's Key Vault keys. */
-export const ListIntegrationAccountKeyVaultKeys: API.OperationMethod<
+export const ListIntegrationAccountKeyVaultKeys: API.PaginatedOperationMethod<
   ListIntegrationAccountKeyVaultKeysRequest,
   KeyVaultKeyCollection,
   ListIntegrationAccountKeyVaultKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  KeyVaultKey
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3392, __c106, 0) as any as S.Schema<ListIntegrationAccountKeyVaultKeysRequest>,
   output: __S(3396, __c106, 4) as any as S.Schema<KeyVaultKeyCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListIntegrationAccountMapContentCallbackUrlError = AzureOpError;
 /** Get the content callback url. */
@@ -6023,18 +6104,25 @@ export const ListIntegrationAccountMapContentCallbackUrl: API.OperationMethod<
 
 export type ListIntegrationAccountMapsError = AzureOpError;
 /** Gets a list of integration account maps. */
-export const ListIntegrationAccountMaps: API.OperationMethod<
+export const ListIntegrationAccountMaps: API.PaginatedOperationMethod<
   ListIntegrationAccountMapsRequest,
   IntegrationAccountMapListResult,
   ListIntegrationAccountMapsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccountMap
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3456, __c108, 0) as any as S.Schema<ListIntegrationAccountMapsRequest>,
   output: __S(3458, __c108, 2) as any as S.Schema<IntegrationAccountMapListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountPartnerContentCallbackUrlError = AzureOpError;
 /** Get the content callback url. */
@@ -6057,18 +6145,25 @@ export const ListIntegrationAccountPartnerContentCallbackUrl: API.OperationMetho
 
 export type ListIntegrationAccountPartnersError = AzureOpError;
 /** Gets a list of integration account partners. */
-export const ListIntegrationAccountPartners: API.OperationMethod<
+export const ListIntegrationAccountPartners: API.PaginatedOperationMethod<
   ListIntegrationAccountPartnersRequest,
   IntegrationAccountPartnerListResult,
   ListIntegrationAccountPartnersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccountPartner
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3520, __c110, 0) as any as S.Schema<ListIntegrationAccountPartnersRequest>,
   output: __S(3522, __c110, 2) as any as S.Schema<IntegrationAccountPartnerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountSchemaContentCallbackUrlError = AzureOpError;
 /** Get the content callback url. */
@@ -6091,42 +6186,57 @@ export const ListIntegrationAccountSchemaContentCallbackUrl: API.OperationMethod
 
 export type ListIntegrationAccountSchemasError = AzureOpError;
 /** Gets a list of integration account schemas. */
-export const ListIntegrationAccountSchemas: API.OperationMethod<
+export const ListIntegrationAccountSchemas: API.PaginatedOperationMethod<
   ListIntegrationAccountSchemasRequest,
   IntegrationAccountSchemaListResult,
   ListIntegrationAccountSchemasError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccountSchema
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3584, __c112, 0) as any as S.Schema<ListIntegrationAccountSchemasRequest>,
   output: __S(3586, __c112, 2) as any as S.Schema<IntegrationAccountSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationAccountSessionsError = AzureOpError;
 /** Gets a list of integration account sessions. */
-export const ListIntegrationAccountSessions: API.OperationMethod<
+export const ListIntegrationAccountSessions: API.PaginatedOperationMethod<
   ListIntegrationAccountSessionsRequest,
   IntegrationAccountSessionListResult,
   ListIntegrationAccountSessionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationAccountSession
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3616, __c113, 0) as any as S.Schema<ListIntegrationAccountSessionsRequest>,
   output: __S(3618, __c113, 2) as any as S.Schema<IntegrationAccountSessionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationServiceEnvironmentByResourceGroupError = AzureOpError;
 /** Gets a list of integration service environments by resource group. */
-export const ListIntegrationServiceEnvironmentByResourceGroup: API.OperationMethod<
+export const ListIntegrationServiceEnvironmentByResourceGroup: API.PaginatedOperationMethod<
   ListIntegrationServiceEnvironmentByResourceGroupRequest,
   IntegrationServiceEnvironmentListResult,
   ListIntegrationServiceEnvironmentByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationServiceEnvironment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3648,
     __c114,
@@ -6136,16 +6246,23 @@ export const ListIntegrationServiceEnvironmentByResourceGroup: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationServiceEnvironmentBySubscriptionError = AzureOpError;
 /** Gets a list of integration service environments by subscription. */
-export const ListIntegrationServiceEnvironmentBySubscription: API.OperationMethod<
+export const ListIntegrationServiceEnvironmentBySubscription: API.PaginatedOperationMethod<
   ListIntegrationServiceEnvironmentBySubscriptionRequest,
   IntegrationServiceEnvironmentListResult,
   ListIntegrationServiceEnvironmentBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationServiceEnvironment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3712,
     __c116,
@@ -6155,16 +6272,23 @@ export const ListIntegrationServiceEnvironmentBySubscription: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationServiceEnvironmentManagedApiOperationsError = AzureOpError;
 /** Gets the managed Api operations. */
-export const ListIntegrationServiceEnvironmentManagedApiOperations: API.OperationMethod<
+export const ListIntegrationServiceEnvironmentManagedApiOperations: API.PaginatedOperationMethod<
   ListIntegrationServiceEnvironmentManagedApiOperationsRequest,
   ApiOperationListResult,
   ListIntegrationServiceEnvironmentManagedApiOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ApiOperation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3776,
     __c118,
@@ -6174,16 +6298,23 @@ export const ListIntegrationServiceEnvironmentManagedApiOperations: API.Operatio
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationServiceEnvironmentManagedApisError = AzureOpError;
 /** Gets the integration service environment managed Apis. */
-export const ListIntegrationServiceEnvironmentManagedApis: API.OperationMethod<
+export const ListIntegrationServiceEnvironmentManagedApis: API.PaginatedOperationMethod<
   ListIntegrationServiceEnvironmentManagedApisRequest,
   IntegrationServiceEnvironmentManagedApiListResult,
   ListIntegrationServiceEnvironmentManagedApisError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationServiceEnvironmentManagedApi
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     3808,
     __c119,
@@ -6197,67 +6328,101 @@ export const ListIntegrationServiceEnvironmentManagedApis: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListIntegrationServiceEnvironmentSkusError = AzureOpError;
 /** Gets a list of integration service environment Skus. */
-export const ListIntegrationServiceEnvironmentSkus: API.OperationMethod<
+export const ListIntegrationServiceEnvironmentSkus: API.PaginatedOperationMethod<
   ListIntegrationServiceEnvironmentSkusRequest,
   IntegrationServiceEnvironmentSkuList,
   ListIntegrationServiceEnvironmentSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  IntegrationServiceEnvironmentSkuDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3840, __c120, 0) as any as S.Schema<ListIntegrationServiceEnvironmentSkusRequest>,
   output: __S(3845, __c120, 5) as any as S.Schema<IntegrationServiceEnvironmentSkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all of the available Logic REST API operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   OperationListResult,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3872, __c121, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(3876, __c121, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowByResourceGroupError = AzureOpError;
 /** Gets a list of workflows by resource group. */
-export const ListWorkflowByResourceGroup: API.OperationMethod<
+export const ListWorkflowByResourceGroup: API.PaginatedOperationMethod<
   ListWorkflowByResourceGroupRequest,
   WorkflowListResult,
   ListWorkflowByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workflow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3904, __c122, 0) as any as S.Schema<ListWorkflowByResourceGroupRequest>,
   output: __S(3937, __c123, 1) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowBySubscriptionError = AzureOpError;
 /** Gets a list of workflows by subscription. */
-export const ListWorkflowBySubscription: API.OperationMethod<
+export const ListWorkflowBySubscription: API.PaginatedOperationMethod<
   ListWorkflowBySubscriptionRequest,
   WorkflowListResult,
   ListWorkflowBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Workflow
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(3968, __c124, 0) as any as S.Schema<ListWorkflowBySubscriptionRequest>,
   output: __S(3937, __c123, 1) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowCallbackUrlError = AzureOpError;
 /** Get the workflow callback Url. */
@@ -6276,27 +6441,30 @@ export const ListWorkflowCallbackUrl: API.OperationMethod<
 
 export type ListWorkflowRunActionExpressionTracesError = AzureOpError;
 /** Lists a workflow run expression trace. */
-export const ListWorkflowRunActionExpressionTraces: API.OperationMethod<
+export const ListWorkflowRunActionExpressionTraces: API.PaginatedOperationMethod<
   ListWorkflowRunActionExpressionTracesRequest,
   ExpressionTraces,
   ListWorkflowRunActionExpressionTracesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressionRoot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4032, __c126, 0) as any as S.Schema<ListWorkflowRunActionExpressionTracesRequest>,
   output: __S(4071, __c127, 7) as any as S.Schema<ExpressionTraces>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "inputs" } as const,
+})) as any;
 
 export type ListWorkflowRunActionRepetitionExpressionTracesError = AzureOpError;
 /** Lists a workflow run expression trace. */
-export const ListWorkflowRunActionRepetitionExpressionTraces: API.OperationMethod<
+export const ListWorkflowRunActionRepetitionExpressionTraces: API.PaginatedOperationMethod<
   ListWorkflowRunActionRepetitionExpressionTracesRequest,
   ExpressionTraces,
   ListWorkflowRunActionRepetitionExpressionTracesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ExpressionRoot
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     4096,
     __c128,
@@ -6306,31 +6474,35 @@ export const ListWorkflowRunActionRepetitionExpressionTraces: API.OperationMetho
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "inputs" } as const,
+})) as any;
 
 export type ListWorkflowRunActionRepetitionsError = AzureOpError;
 /** Get all of a workflow run action repetitions. */
-export const ListWorkflowRunActionRepetitions: API.OperationMethod<
+export const ListWorkflowRunActionRepetitions: API.PaginatedOperationMethod<
   ListWorkflowRunActionRepetitionsRequest,
   WorkflowRunActionRepetitionDefinitionCollection,
   ListWorkflowRunActionRepetitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowRunActionRepetitionDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4128, __c129, 0) as any as S.Schema<ListWorkflowRunActionRepetitionsRequest>,
   output: __S(4161, __c130, 1) as any as S.Schema<WorkflowRunActionRepetitionDefinitionCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListWorkflowRunActionRepetitionsRequestHistoriesError = AzureOpError;
 /** List a workflow run repetition request history. */
-export const ListWorkflowRunActionRepetitionsRequestHistories: API.OperationMethod<
+export const ListWorkflowRunActionRepetitionsRequestHistories: API.PaginatedOperationMethod<
   ListWorkflowRunActionRepetitionsRequestHistoriesRequest,
   RequestHistoryListResult,
   ListWorkflowRunActionRepetitionsRequestHistoriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RequestHistory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
     4224,
     __c132,
@@ -6340,67 +6512,96 @@ export const ListWorkflowRunActionRepetitionsRequestHistories: API.OperationMeth
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowRunActionRequestHistoriesError = AzureOpError;
 /** List a workflow run request history. */
-export const ListWorkflowRunActionRequestHistories: API.OperationMethod<
+export const ListWorkflowRunActionRequestHistories: API.PaginatedOperationMethod<
   ListWorkflowRunActionRequestHistoriesRequest,
   RequestHistoryListResult,
   ListWorkflowRunActionRequestHistoriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RequestHistory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4288, __c134, 0) as any as S.Schema<ListWorkflowRunActionRequestHistoriesRequest>,
   output: __S(4257, __c133, 1) as any as S.Schema<RequestHistoryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowRunActionsError = AzureOpError;
 /** Gets a list of workflow run actions. */
-export const ListWorkflowRunActions: API.OperationMethod<
+export const ListWorkflowRunActions: API.PaginatedOperationMethod<
   ListWorkflowRunActionsRequest,
   WorkflowRunActionListResult,
   ListWorkflowRunActionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowRunAction
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4320, __c135, 0) as any as S.Schema<ListWorkflowRunActionsRequest>,
   output: __S(4322, __c135, 2) as any as S.Schema<WorkflowRunActionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowRunActionScopeRepetitionsError = AzureOpError;
 /** List the workflow run action scoped repetitions. */
-export const ListWorkflowRunActionScopeRepetitions: API.OperationMethod<
+export const ListWorkflowRunActionScopeRepetitions: API.PaginatedOperationMethod<
   ListWorkflowRunActionScopeRepetitionsRequest,
   WorkflowRunActionRepetitionDefinitionCollection,
   ListWorkflowRunActionScopeRepetitionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowRunActionRepetitionDefinition
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4352, __c136, 0) as any as S.Schema<ListWorkflowRunActionScopeRepetitionsRequest>,
   output: __S(4161, __c130, 1) as any as S.Schema<WorkflowRunActionRepetitionDefinitionCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: { mode: "single", items: "value" } as const,
+})) as any;
 
 export type ListWorkflowRunsError = AzureOpError;
 /** Gets a list of workflow runs. */
-export const ListWorkflowRuns: API.OperationMethod<
+export const ListWorkflowRuns: API.PaginatedOperationMethod<
   ListWorkflowRunsRequest,
   WorkflowRunListResult,
   ListWorkflowRunsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowRun
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4384, __c137, 0) as any as S.Schema<ListWorkflowRunsRequest>,
   output: __S(4386, __c137, 2) as any as S.Schema<WorkflowRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowSwaggerError = AzureOpError;
 /** Gets an OpenAPI definition for the workflow. */
@@ -6434,48 +6635,69 @@ export const ListWorkflowTriggerCallbackUrl: API.OperationMethod<
 
 export type ListWorkflowTriggerHistoriesError = AzureOpError;
 /** Gets a list of workflow trigger histories. */
-export const ListWorkflowTriggerHistories: API.OperationMethod<
+export const ListWorkflowTriggerHistories: API.PaginatedOperationMethod<
   ListWorkflowTriggerHistoriesRequest,
   WorkflowTriggerHistoryListResult,
   ListWorkflowTriggerHistoriesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowTriggerHistory
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4480, __c140, 0) as any as S.Schema<ListWorkflowTriggerHistoriesRequest>,
   output: __S(4482, __c140, 2) as any as S.Schema<WorkflowTriggerHistoryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowTriggersError = AzureOpError;
 /** Gets a list of workflow triggers. */
-export const ListWorkflowTriggers: API.OperationMethod<
+export const ListWorkflowTriggers: API.PaginatedOperationMethod<
   ListWorkflowTriggersRequest,
   WorkflowTriggerListResult,
   ListWorkflowTriggersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowTrigger
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4512, __c141, 0) as any as S.Schema<ListWorkflowTriggersRequest>,
   output: __S(4514, __c141, 2) as any as S.Schema<WorkflowTriggerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowVersionsError = AzureOpError;
 /** Gets a list of workflow versions. */
-export const ListWorkflowVersions: API.OperationMethod<
+export const ListWorkflowVersions: API.PaginatedOperationMethod<
   ListWorkflowVersionsRequest,
   WorkflowVersionListResult,
   ListWorkflowVersionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  WorkflowVersion
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(4544, __c142, 0) as any as S.Schema<ListWorkflowVersionsRequest>,
   output: __S(4546, __c142, 2) as any as S.Schema<WorkflowVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListWorkflowVersionTriggerCallbackUrlError = AzureOpError;
 /** Get the callback url for a trigger of a workflow version. */
@@ -9681,12 +9903,14 @@ function __c96(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/agreements",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountAgreementsRequest" });
@@ -9695,7 +9919,7 @@ function __c96(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3073, __c96, 1)),
+          value: __S(3073, __c96, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountAgreementListResult" });
@@ -9723,7 +9947,7 @@ function __c97(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3105, __c97, 1)),
+          value: __S(3105, __c97, 1),
         }),
       ).annotate({ identifier: "AssemblyCollection" });
   }
@@ -9770,7 +9994,7 @@ function __c99(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3169, __c99, 1)),
+          value: __S(3169, __c99, 1),
         }),
       ).annotate({ identifier: "BatchConfigurationCollection" });
   }
@@ -9783,12 +10007,14 @@ function __c100(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountByResourceGroupRequest" });
@@ -9801,7 +10027,7 @@ function __c101(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3232, __c101, 0)),
+          value: __S(3232, __c101, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountListResult" });
@@ -9814,12 +10040,14 @@ function __c102(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/integrationAccounts",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountBySubscriptionRequest" });
@@ -9861,12 +10089,14 @@ function __c104(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/certificates",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountCertificatesRequest" });
@@ -9875,7 +10105,7 @@ function __c104(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3329, __c104, 1)),
+          value: __S(3329, __c104, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountCertificateListResult" });
@@ -9940,7 +10170,7 @@ function __c106(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3395, __c106, 3)),
+          value: __S(3395, __c106, 3),
           skipToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyVaultKeyCollection" });
@@ -9978,12 +10208,14 @@ function __c108(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountMapsRequest" });
@@ -9992,7 +10224,7 @@ function __c108(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3457, __c108, 1)),
+          value: __S(3457, __c108, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountMapListResult" });
@@ -10030,12 +10262,14 @@ function __c110(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/partners",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountPartnersRequest" });
@@ -10044,7 +10278,7 @@ function __c110(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3521, __c110, 1)),
+          value: __S(3521, __c110, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountPartnerListResult" });
@@ -10082,12 +10316,14 @@ function __c112(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/schemas",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountSchemasRequest" });
@@ -10096,7 +10332,7 @@ function __c112(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3585, __c112, 1)),
+          value: __S(3585, __c112, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountSchemaListResult" });
@@ -10112,12 +10348,14 @@ function __c113(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationAccountSessionsRequest" });
@@ -10126,7 +10364,7 @@ function __c113(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3617, __c113, 1)),
+          value: __S(3617, __c113, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccountSessionListResult" });
@@ -10140,12 +10378,14 @@ function __c114(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationServiceEnvironmentByResourceGroupRequest" });
@@ -10158,7 +10398,7 @@ function __c115(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3680, __c115, 0)),
+          value: __S(3680, __c115, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationServiceEnvironmentListResult" });
@@ -10171,12 +10411,14 @@ function __c116(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/integrationServiceEnvironments",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationServiceEnvironmentBySubscriptionRequest" });
@@ -10211,12 +10453,14 @@ function __c118(j: number): any {
           resourceGroup: S.String.pipe(T.Label()),
           integrationServiceEnvironmentName: S.String.pipe(T.Label()),
           apiName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis/{apiName}/apiOperations",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationServiceEnvironmentManagedApiOperationsRequest" });
@@ -10402,7 +10646,7 @@ function __c118(j: number): any {
     case 22:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3797, __c118, 21)),
+          value: __S(3797, __c118, 21),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiOperationListResult" });
@@ -10416,12 +10660,14 @@ function __c119(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           integrationServiceEnvironmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/managedApis",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationServiceEnvironmentManagedApisRequest" });
@@ -10430,7 +10676,7 @@ function __c119(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3809, __c119, 1)),
+          value: __S(3809, __c119, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationServiceEnvironmentManagedApiListResult" });
@@ -10444,12 +10690,14 @@ function __c120(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           integrationServiceEnvironmentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}/skus",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListIntegrationServiceEnvironmentSkusRequest" });
@@ -10482,7 +10730,7 @@ function __c120(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3844, __c120, 4)),
+          value: __S(3844, __c120, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationServiceEnvironmentSkuList" });
@@ -10492,12 +10740,15 @@ function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.Logic/operations",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -10524,7 +10775,7 @@ function __c121(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3875, __c121, 3)),
+          value: __S(3875, __c121, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -10539,12 +10790,14 @@ function __c122(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowByResourceGroupRequest" });
@@ -10557,7 +10810,7 @@ function __c123(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3936, __c123, 0)),
+          value: __S(3936, __c123, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowListResult" });
@@ -10571,12 +10824,14 @@ function __c124(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Logic/workflows",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowBySubscriptionRequest" });
@@ -10664,7 +10919,7 @@ function __c127(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(4070, __c127, 6)),
+          inputs: __S(4070, __c127, 6),
         }),
       ).annotate({ identifier: "ExpressionTraces" });
   }
@@ -10720,7 +10975,7 @@ function __c130(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(4160, __c130, 0)),
+          value: __S(4160, __c130, 0),
         }),
       ).annotate({ identifier: "WorkflowRunActionRepetitionDefinitionCollection" });
   }
@@ -10756,12 +11011,14 @@ function __c132(j: number): any {
           runName: S.String.pipe(T.Label()),
           actionName: S.String.pipe(T.Label()),
           repetitionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/repetitions/{repetitionName}/requestHistories",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowRunActionRepetitionsRequestHistoriesRequest" });
@@ -10774,7 +11031,7 @@ function __c133(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4256, __c133, 0)),
+          value: __S(4256, __c133, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestHistoryListResult" });
@@ -10790,12 +11047,14 @@ function __c134(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           runName: S.String.pipe(T.Label()),
           actionName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions/{actionName}/requestHistories",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowRunActionRequestHistoriesRequest" });
@@ -10812,12 +11071,14 @@ function __c135(j: number): any {
           runName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs/{runName}/actions",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowRunActionsRequest" });
@@ -10826,7 +11087,7 @@ function __c135(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4321, __c135, 1)),
+          value: __S(4321, __c135, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowRunActionListResult" });
@@ -10863,12 +11124,14 @@ function __c137(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/runs",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowRunsRequest" });
@@ -10877,7 +11140,7 @@ function __c137(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4385, __c137, 1)),
+          value: __S(4385, __c137, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowRunListResult" });
@@ -10933,12 +11196,14 @@ function __c140(j: number): any {
           triggerName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/histories",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowTriggerHistoriesRequest" });
@@ -10947,7 +11212,7 @@ function __c140(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4481, __c140, 1)),
+          value: __S(4481, __c140, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowTriggerHistoryListResult" });
@@ -10963,12 +11228,14 @@ function __c141(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowTriggersRequest" });
@@ -10977,7 +11244,7 @@ function __c141(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4513, __c141, 1)),
+          value: __S(4513, __c141, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowTriggerListResult" });
@@ -10992,12 +11259,14 @@ function __c142(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/versions",
             code: 200,
             apiVersion: "2019-05-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListWorkflowVersionsRequest" });
@@ -11006,7 +11275,7 @@ function __c142(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4545, __c142, 1)),
+          value: __S(4545, __c142, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowVersionListResult" });

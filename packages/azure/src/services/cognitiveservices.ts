@@ -3523,6 +3523,8 @@ export interface ListAccountByResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
@@ -3558,7 +3560,7 @@ export interface AccountListResult {
   /** The link used to get the next page of accounts. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts and their properties. */
-  value?: AccountListResultValueList;
+  value: AccountListResultValueList;
 }
 export interface ListAccountCapabilityHostsRequest {
   /** The ID of the target subscription. */
@@ -3567,6 +3569,8 @@ export interface ListAccountCapabilityHostsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Resource Manager resource envelope. */
 export interface CapabilityHost {
@@ -3588,7 +3592,7 @@ export interface CapabilityHostResourceArmPaginatedResult {
   /** The link to the next page of Capability Host objects. If null, there are no additional pages. */
   nextLink?: string | null;
   /** An array of objects of type Capability Host. */
-  value?: CapabilityHostResourceArmPaginatedResultValueList;
+  value: CapabilityHostResourceArmPaginatedResultValueList;
 }
 export interface ListAccountConnectionsRequest {
   /** The ID of the target subscription. */
@@ -3603,6 +3607,8 @@ export interface ListAccountConnectionsRequest {
   category?: string;
   /** query parameter that indicates if get connection call should return both connections and datastores */
   includeAll?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Connection base resource schema. */
 export interface ConnectionPropertiesV2BasicResource {
@@ -3621,7 +3627,7 @@ export type ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
   Array<ConnectionPropertiesV2BasicResource>;
 export interface ConnectionPropertiesV2BasicResourceArmPaginatedResult {
   nextLink?: string;
-  value?: ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList;
+  value: ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList;
 }
 export interface ListAccountKeysRequest {
   /** The ID of the target subscription. */
@@ -3645,6 +3651,8 @@ export interface ListAccountModelsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The array of allowed values for capacity. */
 export type CapacityConfigAllowedValuesList = Array<number>;
@@ -3794,11 +3802,13 @@ export interface AccountModelListResult {
   /** The link used to get the next page of Model. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts Model and their properties. */
-  value?: AccountModelListResultValueList;
+  value: AccountModelListResultValueList;
 }
 export interface ListAccountsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListAccountSkusRequest {
   /** The ID of the target subscription. */
@@ -3880,7 +3890,7 @@ export interface UsageListResult {
   /** The link used to get the next page of Usages. */
   nextLink?: string;
   /** The list of usages for Cognitive Service account. */
-  value?: UsageListResultValueList;
+  value: UsageListResultValueList;
 }
 export interface ListAgentApplicationAgentsRequest {
   /** The ID of the target subscription. */
@@ -3940,6 +3950,8 @@ export interface ListAgentApplicationsRequest {
   orderBy?: string;
   /** Whether to order in ascending order. */
   orderByAsc?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Agent Application resource */
 export interface AgentApplication {
@@ -3961,7 +3973,7 @@ export interface AgentApplicationResourceArmPaginatedResult {
   /** The link to the next page of Agent Application objects. If null, there are no additional pages. */
   nextLink?: string | null;
   /** An array of objects of type Agent Application. */
-  value?: AgentApplicationResourceArmPaginatedResultValueList;
+  value: AgentApplicationResourceArmPaginatedResultValueList;
 }
 export type ListAgentDeploymentsRequestNamesList = Array<string>;
 export interface ListAgentDeploymentsRequest {
@@ -3985,6 +3997,8 @@ export interface ListAgentDeploymentsRequest {
   orderBy?: string;
   /** Whether to order in ascending order. */
   orderByAsc?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Agent Deployment resource */
 export interface AgentDeployment {
@@ -4006,7 +4020,7 @@ export interface AgentDeploymentResourceArmPaginatedResult {
   /** The link to the next page of Agent Deployment objects. If null, there are no additional pages. */
   nextLink?: string | null;
   /** An array of objects of type Agent Deployment. */
-  value?: AgentDeploymentResourceArmPaginatedResultValueList;
+  value: AgentDeploymentResourceArmPaginatedResultValueList;
 }
 export interface ListCommitmentPlanAssociationsRequest {
   /** The ID of the target subscription. */
@@ -4015,6 +4029,8 @@ export interface ListCommitmentPlanAssociationsRequest {
   resourceGroupName: string;
   /** The name of the commitmentPlan associated with the Cognitive Services Account */
   commitmentPlanName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CommitmentPlanAccountAssociationTagsMap = { [key: string]: string | undefined };
@@ -4043,13 +4059,15 @@ export interface CommitmentPlanAccountAssociationListResult {
   /** The link used to get the next page of Commitment Plan Account Association. */
   nextLink?: string;
   /** Gets the list of Cognitive Services Commitment Plan Account Association and their properties. */
-  value?: CommitmentPlanAccountAssociationListResultValueList;
+  value: CommitmentPlanAccountAssociationListResultValueList;
 }
 export interface ListCommitmentPlanPlansByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type CommitmentPlanTagsMap = { [key: string]: string | undefined };
@@ -4083,11 +4101,13 @@ export interface CommitmentPlanListResult {
   /** The link used to get the next page of CommitmentPlan. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts CommitmentPlan and their properties. */
-  value?: CommitmentPlanListResultValueList;
+  value: CommitmentPlanListResultValueList;
 }
 export interface ListCommitmentPlanPlansBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCommitmentPlansRequest {
   /** The ID of the target subscription. */
@@ -4096,12 +4116,16 @@ export interface ListCommitmentPlansRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListCommitmentTiersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Cognitive Services account commitment cost. */
 export interface CommitmentCost {
@@ -4136,7 +4160,7 @@ export interface CommitmentTierListResult {
   /** The link used to get the next page of CommitmentTier. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts CommitmentTier and their properties. */
-  value?: CommitmentTierListResultValueList;
+  value: CommitmentTierListResultValueList;
 }
 export interface ListDefenderForAISettingsRequest {
   /** The ID of the target subscription. */
@@ -4145,6 +4169,8 @@ export interface ListDefenderForAISettingsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DefenderForAISettingTagsMap = { [key: string]: string | undefined };
@@ -4172,11 +4198,13 @@ export interface DefenderForAISettingResult {
   /** The link used to get the next page of Defender for AI Settings. */
   nextLink?: string;
   /** The list of Defender for AI Settings. */
-  value?: DefenderForAISettingResultValueList;
+  value: DefenderForAISettingResultValueList;
 }
 export interface ListDeletedAccountsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListDeploymentsRequest {
   /** The ID of the target subscription. */
@@ -4185,6 +4213,8 @@ export interface ListDeploymentsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type DeploymentTagsMap = { [key: string]: string | undefined };
@@ -4214,7 +4244,7 @@ export interface DeploymentListResult {
   /** The link used to get the next page of Deployment. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts Deployment and their properties. */
-  value?: DeploymentListResultValueList;
+  value: DeploymentListResultValueList;
 }
 export interface ListDeploymentSkusRequest {
   /** The ID of the target subscription. */
@@ -4225,6 +4255,8 @@ export interface ListDeploymentSkusRequest {
   accountName: string;
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Properties of Cognitive Services account resource sku resource properties. */
 export interface SkuResource {
@@ -4242,7 +4274,7 @@ export interface DeploymentSkuListResult {
   /** The link used to get the next page of deployment skus. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts deployment skus. */
-  value?: DeploymentSkuListResultValueList;
+  value: DeploymentSkuListResultValueList;
 }
 export interface ListEncryptionScopesRequest {
   /** The ID of the target subscription. */
@@ -4251,6 +4283,8 @@ export interface ListEncryptionScopesRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type EncryptionScopeTagsMap = { [key: string]: string | undefined };
@@ -4278,7 +4312,7 @@ export interface EncryptionScopeListResult {
   /** The link used to get the next page of EncryptionScope. */
   nextLink?: string;
   /** The list of EncryptionScope. */
-  value?: EncryptionScopeListResultValueList;
+  value: EncryptionScopeListResultValueList;
 }
 export interface ListLocationBasedModelCapacitiesRequest {
   /** The ID of the target subscription. */
@@ -4291,6 +4325,8 @@ export interface ListLocationBasedModelCapacitiesRequest {
   modelName: string;
   /** The version of the Model */
   modelVersion: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Cognitive Services account ModelSkuCapacity. */
 export interface ModelSkuCapacityProperties {
@@ -4327,7 +4363,7 @@ export interface ModelCapacityListResult {
   /** The link used to get the next page of ModelSkuCapacity. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts ModelSkuCapacity. */
-  value?: ModelCapacityListResultValueList;
+  value: ModelCapacityListResultValueList;
 }
 export interface ListManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
@@ -4336,6 +4372,8 @@ export interface ListManagedNetworkSettingsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface ManagedNetworkSettingsPropertiesBasicResource {
@@ -4358,7 +4396,7 @@ export interface ManagedNetworkListResult {
   /** The link to the next page constructed using the continuationToken. If null, there are no additional pages. */
   nextLink?: string;
   /** The list of managed network settings of an account. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
-  value?: ManagedNetworkListResultValueList;
+  value: ManagedNetworkListResultValueList;
 }
 export interface ListModelCapacitiesRequest {
   /** The ID of the target subscription. */
@@ -4369,12 +4407,16 @@ export interface ListModelCapacitiesRequest {
   modelName: string;
   /** The version of the Model */
   modelVersion: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListModelsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Cognitive Services Model. */
 export interface Model {
@@ -4394,7 +4436,7 @@ export interface ModelListResult {
   /** The link used to get the next page of Model. */
   nextLink?: string;
   /** Gets the list of Cognitive Services accounts Model and their properties. */
-  value?: ModelListResultValueList;
+  value: ModelListResultValueList;
 }
 export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   /** The ID of the target subscription. */
@@ -4403,6 +4445,8 @@ export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** NSP Configuration for an Cognitive Services account. */
 export interface NetworkSecurityPerimeterConfiguration {
@@ -4423,11 +4467,14 @@ export type NetworkSecurityPerimeterConfigurationListValueList =
 /** A list of NSP configurations for an Cognitive Services account. */
 export interface NetworkSecurityPerimeterConfigurationList {
   /** Array of NSP configurations List Result for an Cognitive Services account. */
-  value?: NetworkSecurityPerimeterConfigurationListValueList;
+  value: NetworkSecurityPerimeterConfigurationListValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-export interface ListOperationsRequest {}
+export interface ListOperationsRequest {
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
+}
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -4460,7 +4507,7 @@ export interface Operation {
 export type ListOperationsResponseValueList = Array<Operation>;
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
-  value?: ListOperationsResponseValueList;
+  value: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
@@ -4473,6 +4520,8 @@ export interface ListOutboundRuleRequest {
   accountName: string;
   /** Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported. */
   managedNetworkName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface OutboundRuleBasicResource {
@@ -4494,7 +4543,7 @@ export interface OutboundRuleListResult {
   /** The link to the next page constructed using the continuationToken. If null, there are no additional pages. */
   nextLink?: string;
   /** The list of cognitive services accounts. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
-  value?: OutboundRuleListResultValueList;
+  value: OutboundRuleListResultValueList;
 }
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
@@ -4563,6 +4612,8 @@ export interface ListProjectCapabilityHostsRequest {
   accountName: string;
   /** The name of Cognitive Services account's project. */
   projectName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure Resource Manager resource envelope for Project CapabilityHost. */
 export interface ProjectCapabilityHost {
@@ -4584,7 +4635,7 @@ export interface ProjectCapabilityHostResourceArmPaginatedResult {
   /** The link to the next page of Project Capability Host objects. If null, there are no additional pages. */
   nextLink?: string | null;
   /** An array of objects of type Project Capability Host. */
-  value?: ProjectCapabilityHostResourceArmPaginatedResultValueList;
+  value: ProjectCapabilityHostResourceArmPaginatedResultValueList;
 }
 export interface ListProjectConnectionsRequest {
   /** The ID of the target subscription. */
@@ -4601,6 +4652,8 @@ export interface ListProjectConnectionsRequest {
   category?: string;
   /** query parameter that indicates if get connection call should return both connections and datastores */
   includeAll?: boolean;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface ListProjectsRequest {
   /** The ID of the target subscription. */
@@ -4609,6 +4662,8 @@ export interface ListProjectsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
@@ -4640,11 +4695,13 @@ export interface ProjectListResult {
   /** The link used to get the next page of projects. */
   nextLink?: string;
   /** Gets the list of Cognitive Services projects and their properties. */
-  value?: ProjectListResultValueList;
+  value: ProjectListResultValueList;
 }
 export interface ListQuotaTierBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The quota tier information for the subscription */
 export interface QuotaTier {
@@ -4666,7 +4723,7 @@ export interface QuotaTierListResult {
   /** The link used to get the next page of quota tiers. */
   nextLink?: string;
   /** Gets the list of Quota Tiers and their properties. */
-  value?: QuotaTierListResultValueList;
+  value: QuotaTierListResultValueList;
 }
 export interface ListRaiBlocklistItemsRequest {
   /** The ID of the target subscription. */
@@ -4677,6 +4734,8 @@ export interface ListRaiBlocklistItemsRequest {
   accountName: string;
   /** The name of the RaiBlocklist associated with the Cognitive Services Account */
   raiBlocklistName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RaiBlocklistItemTagsMap = { [key: string]: string | undefined };
@@ -4704,7 +4763,7 @@ export interface RaiBlockListItemsResult {
   /** The link used to get the next page of RaiBlocklistItems. */
   nextLink?: string;
   /** The list of RaiBlocklistItems. */
-  value?: RaiBlockListItemsResultValueList;
+  value: RaiBlockListItemsResultValueList;
 }
 export interface ListRaiBlocklistsRequest {
   /** The ID of the target subscription. */
@@ -4713,6 +4772,8 @@ export interface ListRaiBlocklistsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RaiBlocklistTagsMap = { [key: string]: string | undefined };
@@ -4740,13 +4801,15 @@ export interface RaiBlockListResult {
   /** The link used to get the next page of RaiBlocklists. */
   nextLink?: string;
   /** The list of RaiBlocklist. */
-  value?: RaiBlockListResultValueList;
+  value: RaiBlockListResultValueList;
 }
 export interface ListRaiContentFiltersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Azure OpenAI Content Filter. */
 export interface RaiContentFilter {
@@ -4768,11 +4831,13 @@ export interface RaiContentFilterListResult {
   /** The link used to get the next page of Content Filters. */
   nextLink?: string;
   /** The list of RaiContentFilter. */
-  value?: RaiContentFilterListResultValueList;
+  value: RaiContentFilterListResultValueList;
 }
 export interface ListRaiExternalSafetyProvidersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RaiExternalSafetyProviderSchemaTagsMap = { [key: string]: string | undefined };
@@ -4800,7 +4865,7 @@ export interface RaiExternalSafetyProviderResult {
   /** The link used to get the next page of Rai External Safety Provider. */
   nextLink?: string;
   /** The list of RaiExternalSafetyProvider. */
-  value?: RaiExternalSafetyProviderResultValueList;
+  value: RaiExternalSafetyProviderResultValueList;
 }
 export interface ListRaiPoliciesRequest {
   /** The ID of the target subscription. */
@@ -4809,6 +4874,8 @@ export interface ListRaiPoliciesRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RaiPolicyTagsMap = { [key: string]: string | undefined };
@@ -4836,7 +4903,7 @@ export interface RaiPolicyListResult {
   /** The link used to get the next page of RaiPolicy. */
   nextLink?: string;
   /** The list of RaiPolicy. */
-  value?: RaiPolicyListResultValueList;
+  value: RaiPolicyListResultValueList;
 }
 export interface ListRaiToolLabelsRequest {
   /** The ID of the target subscription. */
@@ -4845,6 +4912,8 @@ export interface ListRaiToolLabelsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RaiToolLabelTagsMap = { [key: string]: string | undefined };
@@ -4872,7 +4941,7 @@ export interface RaiToolLabelResult {
   /** The link used to get the next page of RaiToolLabels. */
   nextLink?: string;
   /** The list of RAI Tool Labels. */
-  value?: RaiToolLabelResultValueList;
+  value: RaiToolLabelResultValueList;
 }
 export interface ListRaiTopicsRequest {
   /** The ID of the target subscription. */
@@ -4881,6 +4950,8 @@ export interface ListRaiTopicsRequest {
   resourceGroupName: string;
   /** The name of Cognitive Services account. */
   accountName: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** Resource tags. */
 export type RaiTopicTagsMap = { [key: string]: string | undefined };
@@ -4908,11 +4979,13 @@ export interface RaiTopicResult {
   /** The link used to get the next page of RaiTopics. */
   nextLink?: string;
   /** The list of RaiTopic. */
-  value?: RaiTopicResultValueList;
+  value: RaiTopicResultValueList;
 }
 export interface ListResourceSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
@@ -4976,6 +5049,8 @@ export interface ListUsagesRequest {
   location: string;
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The ID of the target subscription. */
@@ -5151,13 +5226,15 @@ export interface PostOutboundRuleRequest {
   managedNetworkName: string;
   /** Managed Network settings for a cognitive services account. */
   properties?: ManagedNetworkSettingsInput;
+  /** The absolute URL of a page returned by a previous call; when set, every other member is ignored. */
+  nextLink?: string;
 }
 /** List of outbound rules for the managed network of a cognitive services account. */
 export interface PostOutboundRuleResponse {
   /** The link to the next page constructed using the continuationToken. If null, there are no additional pages. */
   nextLink?: string;
   /** The list of cognitive services accounts. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
-  value?: OutboundRuleListResultValueList;
+  value: OutboundRuleListResultValueList;
   /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
   retryAfter?: number;
   /** The Location header contains the URL where the status of the long running operation can be checked. */
@@ -7057,42 +7134,57 @@ export const GetSubscriptionRaiPolicy: API.OperationMethod<
 
 export type ListAccountByResourceGroupError = AzureOpError;
 /** Returns all the resources of a particular type belonging to a resource group */
-export const ListAccountByResourceGroup: API.OperationMethod<
+export const ListAccountByResourceGroup: API.PaginatedOperationMethod<
   ListAccountByResourceGroupRequest,
   AccountListResult,
   ListAccountByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5664, __c177, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
   output: __S(5697, __c178, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountCapabilityHostsError = AzureOpError;
 /** List capabilityHost. List capabilityHost. */
-export const ListAccountCapabilityHosts: API.OperationMethod<
+export const ListAccountCapabilityHosts: API.PaginatedOperationMethod<
   ListAccountCapabilityHostsRequest,
   CapabilityHostResourceArmPaginatedResult,
   ListAccountCapabilityHostsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CapabilityHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5728, __c179, 0) as any as S.Schema<ListAccountCapabilityHostsRequest>,
   output: __S(5730, __c179, 2) as any as S.Schema<CapabilityHostResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountConnectionsError = AzureOpError;
 /** Lists all the available Cognitive Services account connections under the specified account. Lists all the available Cognitive Services account connections under the specified account. */
-export const ListAccountConnections: API.OperationMethod<
+export const ListAccountConnections: API.PaginatedOperationMethod<
   ListAccountConnectionsRequest,
   ConnectionPropertiesV2BasicResourceArmPaginatedResult,
   ListAccountConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectionPropertiesV2BasicResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5760, __c180, 0) as any as S.Schema<ListAccountConnectionsRequest>,
   output: __S(
     5793,
@@ -7102,7 +7194,13 @@ export const ListAccountConnections: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountKeysError = AzureOpError;
 /** Lists the account keys for the specified Cognitive Services account. */
@@ -7121,33 +7219,47 @@ export const ListAccountKeys: API.OperationMethod<
 
 export type ListAccountModelsError = AzureOpError;
 /** List available Models for the requested Cognitive Services account */
-export const ListAccountModels: API.OperationMethod<
+export const ListAccountModels: API.PaginatedOperationMethod<
   ListAccountModelsRequest,
   AccountModelListResult,
   ListAccountModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AccountModel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5888, __c184, 0) as any as S.Schema<ListAccountModelsRequest>,
   output: __S(5890, __c184, 2) as any as S.Schema<AccountModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountsError = AzureOpError;
 /** Returns all the resources of a particular type belonging to a subscription. */
-export const ListAccounts: API.OperationMethod<
+export const ListAccounts: API.PaginatedOperationMethod<
   ListAccountsRequest,
   AccountListResult,
   ListAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(5984, __c187, 0) as any as S.Schema<ListAccountsRequest>,
   output: __S(5697, __c178, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAccountSkusError = AzureOpError;
 /** List available SKUs for the requested Cognitive Services account */
@@ -7196,288 +7308,421 @@ export const ListAgentApplicationAgents: API.OperationMethod<
 
 export type ListAgentApplicationsError = AzureOpError;
 /** Lists Agent Applications in the project. Lists Agent Applications in the project. */
-export const ListAgentApplications: API.OperationMethod<
+export const ListAgentApplications: API.PaginatedOperationMethod<
   ListAgentApplicationsRequest,
   AgentApplicationResourceArmPaginatedResult,
   ListAgentApplicationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AgentApplication
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6208, __c194, 0) as any as S.Schema<ListAgentApplicationsRequest>,
   output: __S(6210, __c194, 2) as any as S.Schema<AgentApplicationResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListAgentDeploymentsError = AzureOpError;
 /** Lists Agent Deployments in the application. Lists Agent Deployments in the application. */
-export const ListAgentDeployments: API.OperationMethod<
+export const ListAgentDeployments: API.PaginatedOperationMethod<
   ListAgentDeploymentsRequest,
   AgentDeploymentResourceArmPaginatedResult,
   ListAgentDeploymentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  AgentDeployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6240, __c195, 0) as any as S.Schema<ListAgentDeploymentsRequest>,
   output: __S(6242, __c195, 2) as any as S.Schema<AgentDeploymentResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommitmentPlanAssociationsError = AzureOpError;
 /** Gets the associations of the Cognitive Services commitment plan. */
-export const ListCommitmentPlanAssociations: API.OperationMethod<
+export const ListCommitmentPlanAssociations: API.PaginatedOperationMethod<
   ListCommitmentPlanAssociationsRequest,
   CommitmentPlanAccountAssociationListResult,
   ListCommitmentPlanAssociationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommitmentPlanAccountAssociation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6272, __c196, 0) as any as S.Schema<ListCommitmentPlanAssociationsRequest>,
   output: __S(6274, __c196, 2) as any as S.Schema<CommitmentPlanAccountAssociationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommitmentPlanPlansByResourceGroupError = AzureOpError;
 /** Returns all the resources of a particular type belonging to a resource group */
-export const ListCommitmentPlanPlansByResourceGroup: API.OperationMethod<
+export const ListCommitmentPlanPlansByResourceGroup: API.PaginatedOperationMethod<
   ListCommitmentPlanPlansByResourceGroupRequest,
   CommitmentPlanListResult,
   ListCommitmentPlanPlansByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommitmentPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6304, __c197, 0) as any as S.Schema<ListCommitmentPlanPlansByResourceGroupRequest>,
   output: __S(6337, __c198, 1) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommitmentPlanPlansBySubscriptionError = AzureOpError;
 /** Returns all the resources of a particular type belonging to a subscription. */
-export const ListCommitmentPlanPlansBySubscription: API.OperationMethod<
+export const ListCommitmentPlanPlansBySubscription: API.PaginatedOperationMethod<
   ListCommitmentPlanPlansBySubscriptionRequest,
   CommitmentPlanListResult,
   ListCommitmentPlanPlansBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommitmentPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6368, __c199, 0) as any as S.Schema<ListCommitmentPlanPlansBySubscriptionRequest>,
   output: __S(6337, __c198, 1) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommitmentPlansError = AzureOpError;
 /** Gets the commitmentPlans associated with the Cognitive Services account. */
-export const ListCommitmentPlans: API.OperationMethod<
+export const ListCommitmentPlans: API.PaginatedOperationMethod<
   ListCommitmentPlansRequest,
   CommitmentPlanListResult,
   ListCommitmentPlansError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommitmentPlan
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6400, __c200, 0) as any as S.Schema<ListCommitmentPlansRequest>,
   output: __S(6337, __c198, 1) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListCommitmentTiersError = AzureOpError;
 /** List Commitment Tiers. */
-export const ListCommitmentTiers: API.OperationMethod<
+export const ListCommitmentTiers: API.PaginatedOperationMethod<
   ListCommitmentTiersRequest,
   CommitmentTierListResult,
   ListCommitmentTiersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  CommitmentTier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6432, __c201, 0) as any as S.Schema<ListCommitmentTiersRequest>,
   output: __S(6436, __c201, 4) as any as S.Schema<CommitmentTierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDefenderForAISettingsError = AzureOpError;
 /** Lists the Defender for AI settings. */
-export const ListDefenderForAISettings: API.OperationMethod<
+export const ListDefenderForAISettings: API.PaginatedOperationMethod<
   ListDefenderForAISettingsRequest,
   DefenderForAISettingResult,
   ListDefenderForAISettingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  DefenderForAISetting
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6464, __c202, 0) as any as S.Schema<ListDefenderForAISettingsRequest>,
   output: __S(6466, __c202, 2) as any as S.Schema<DefenderForAISettingResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeletedAccountsError = AzureOpError;
 /** Returns all the resources of a particular type belonging to a subscription. */
-export const ListDeletedAccounts: API.OperationMethod<
+export const ListDeletedAccounts: API.PaginatedOperationMethod<
   ListDeletedAccountsRequest,
   AccountListResult,
   ListDeletedAccountsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Account
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6496, __c203, 0) as any as S.Schema<ListDeletedAccountsRequest>,
   output: __S(5697, __c178, 1) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeploymentsError = AzureOpError;
 /** Gets the deployments associated with the Cognitive Services account. */
-export const ListDeployments: API.OperationMethod<
+export const ListDeployments: API.PaginatedOperationMethod<
   ListDeploymentsRequest,
   DeploymentListResult,
   ListDeploymentsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Deployment
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6528, __c204, 0) as any as S.Schema<ListDeploymentsRequest>,
   output: __S(6530, __c204, 2) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListDeploymentSkusError = AzureOpError;
 /** Lists the specified deployments skus associated with the Cognitive Services account. */
-export const ListDeploymentSkus: API.OperationMethod<
+export const ListDeploymentSkus: API.PaginatedOperationMethod<
   ListDeploymentSkusRequest,
   DeploymentSkuListResult,
   ListDeploymentSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  SkuResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6592, __c206, 0) as any as S.Schema<ListDeploymentSkusRequest>,
   output: __S(6595, __c206, 3) as any as S.Schema<DeploymentSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListEncryptionScopesError = AzureOpError;
 /** Gets the content filters associated with the Azure OpenAI account. */
-export const ListEncryptionScopes: API.OperationMethod<
+export const ListEncryptionScopes: API.PaginatedOperationMethod<
   ListEncryptionScopesRequest,
   EncryptionScopeListResult,
   ListEncryptionScopesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  EncryptionScope
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6624, __c207, 0) as any as S.Schema<ListEncryptionScopesRequest>,
   output: __S(6626, __c207, 2) as any as S.Schema<EncryptionScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListLocationBasedModelCapacitiesError = AzureOpError;
 /** List Location Based ModelCapacities. */
-export const ListLocationBasedModelCapacities: API.OperationMethod<
+export const ListLocationBasedModelCapacities: API.PaginatedOperationMethod<
   ListLocationBasedModelCapacitiesRequest,
   ModelCapacityListResult,
   ListLocationBasedModelCapacitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ModelCapacityListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6656, __c208, 0) as any as S.Schema<ListLocationBasedModelCapacitiesRequest>,
   output: __S(6691, __c209, 3) as any as S.Schema<ModelCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListManagedNetworkSettingsError = AzureOpError;
 /** List API for managed network settings of a cognitive services account. List API for managed network settings of a cognitive services account. */
-export const ListManagedNetworkSettings: API.OperationMethod<
+export const ListManagedNetworkSettings: API.PaginatedOperationMethod<
   ListManagedNetworkSettingsRequest,
   ManagedNetworkListResult,
   ListManagedNetworkSettingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ManagedNetworkSettingsPropertiesBasicResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6720, __c210, 0) as any as S.Schema<ListManagedNetworkSettingsRequest>,
   output: __S(6722, __c210, 2) as any as S.Schema<ManagedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListModelCapacitiesError = AzureOpError;
 /** List ModelCapacities. */
-export const ListModelCapacities: API.OperationMethod<
+export const ListModelCapacities: API.PaginatedOperationMethod<
   ListModelCapacitiesRequest,
   ModelCapacityListResult,
   ListModelCapacitiesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ModelCapacityListResultValueItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6752, __c211, 0) as any as S.Schema<ListModelCapacitiesRequest>,
   output: __S(6691, __c209, 3) as any as S.Schema<ModelCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListModelsError = AzureOpError;
 /** List Models. */
-export const ListModels: API.OperationMethod<
+export const ListModels: API.PaginatedOperationMethod<
   ListModelsRequest,
   ModelListResult,
   ListModelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Model
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6784, __c212, 0) as any as S.Schema<ListModelsRequest>,
   output: __S(6787, __c212, 3) as any as S.Schema<ModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListNetworkSecurityPerimeterConfigurationsError = AzureOpError;
 /** Gets a list of NSP configurations for an account. */
-export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
+export const ListNetworkSecurityPerimeterConfigurations: API.PaginatedOperationMethod<
   ListNetworkSecurityPerimeterConfigurationsRequest,
   NetworkSecurityPerimeterConfigurationList,
   ListNetworkSecurityPerimeterConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  NetworkSecurityPerimeterConfiguration
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6816, __c213, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
   output: __S(6818, __c213, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOperationsError = AzureOpError;
 /** Lists all the available Cognitive Services account operations. */
-export const ListOperations: API.OperationMethod<
+export const ListOperations: API.PaginatedOperationMethod<
   ListOperationsRequest,
   ListOperationsResponse,
   ListOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Operation
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6848, __c214, 0) as any as S.Schema<ListOperationsRequest>,
   output: __S(6852, __c214, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListOutboundRuleError = AzureOpError;
 /** The GET API for retrieving the list of outbound rules of the managed network associated with the cognitive services account. The GET API for retrieving the list of outbound rules of the managed network associated with the cognitive services account. */
-export const ListOutboundRule: API.OperationMethod<
+export const ListOutboundRule: API.PaginatedOperationMethod<
   ListOutboundRuleRequest,
   OutboundRuleListResult,
   ListOutboundRuleError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundRuleBasicResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(6880, __c215, 0) as any as S.Schema<ListOutboundRuleRequest>,
   output: __S(6881, __c215, 1) as any as S.Schema<OutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** Gets the private endpoint connections associated with the Cognitive Services account. */
@@ -7511,27 +7756,35 @@ export const ListPrivateLinkResources: API.OperationMethod<
 
 export type ListProjectCapabilityHostsError = AzureOpError;
 /** List capabilityHost. List capabilityHost. */
-export const ListProjectCapabilityHosts: API.OperationMethod<
+export const ListProjectCapabilityHosts: API.PaginatedOperationMethod<
   ListProjectCapabilityHostsRequest,
   ProjectCapabilityHostResourceArmPaginatedResult,
   ListProjectCapabilityHostsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ProjectCapabilityHost
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(672, __c21, 0) as any as S.Schema<ListProjectCapabilityHostsRequest>,
   output: __S(674, __c21, 2) as any as S.Schema<ProjectCapabilityHostResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProjectConnectionsError = AzureOpError;
 /** Lists all the available Cognitive Services project connections under the specified project. Lists all the available Cognitive Services project connections under the specified project. */
-export const ListProjectConnections: API.OperationMethod<
+export const ListProjectConnections: API.PaginatedOperationMethod<
   ListProjectConnectionsRequest,
   ConnectionPropertiesV2BasicResourceArmPaginatedResult,
   ListProjectConnectionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ConnectionPropertiesV2BasicResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<ListProjectConnectionsRequest>,
   output: __S(
     5793,
@@ -7541,172 +7794,255 @@ export const ListProjectConnections: API.OperationMethod<
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListProjectsError = AzureOpError;
 /** Returns all the projects in a Cognitive Services account. */
-export const ListProjects: API.OperationMethod<
+export const ListProjects: API.PaginatedOperationMethod<
   ListProjectsRequest,
   ProjectListResult,
   ListProjectsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Project
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(736, __c23, 0) as any as S.Schema<ListProjectsRequest>,
   output: __S(738, __c23, 2) as any as S.Schema<ProjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListQuotaTierBySubscriptionError = AzureOpError;
 /** Returns all the resources of a particular type belonging to a subscription. */
-export const ListQuotaTierBySubscription: API.OperationMethod<
+export const ListQuotaTierBySubscription: API.PaginatedOperationMethod<
   ListQuotaTierBySubscriptionRequest,
   QuotaTierListResult,
   ListQuotaTierBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  QuotaTier
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(768, __c24, 0) as any as S.Schema<ListQuotaTierBySubscriptionRequest>,
   output: __S(770, __c24, 2) as any as S.Schema<QuotaTierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiBlocklistItemsError = AzureOpError;
 /** Gets the blocklist items associated with the custom blocklist. */
-export const ListRaiBlocklistItems: API.OperationMethod<
+export const ListRaiBlocklistItems: API.PaginatedOperationMethod<
   ListRaiBlocklistItemsRequest,
   RaiBlockListItemsResult,
   ListRaiBlocklistItemsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiBlocklistItem
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(800, __c25, 0) as any as S.Schema<ListRaiBlocklistItemsRequest>,
   output: __S(802, __c25, 2) as any as S.Schema<RaiBlockListItemsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiBlocklistsError = AzureOpError;
 /** Gets the custom blocklists associated with the Azure OpenAI account. */
-export const ListRaiBlocklists: API.OperationMethod<
+export const ListRaiBlocklists: API.PaginatedOperationMethod<
   ListRaiBlocklistsRequest,
   RaiBlockListResult,
   ListRaiBlocklistsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiBlocklist
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(832, __c26, 0) as any as S.Schema<ListRaiBlocklistsRequest>,
   output: __S(834, __c26, 2) as any as S.Schema<RaiBlockListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiContentFiltersError = AzureOpError;
 /** List Content Filters types. */
-export const ListRaiContentFilters: API.OperationMethod<
+export const ListRaiContentFilters: API.PaginatedOperationMethod<
   ListRaiContentFiltersRequest,
   RaiContentFilterListResult,
   ListRaiContentFiltersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiContentFilter
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(864, __c27, 0) as any as S.Schema<ListRaiContentFiltersRequest>,
   output: __S(866, __c27, 2) as any as S.Schema<RaiContentFilterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiExternalSafetyProvidersError = AzureOpError;
 /** Gets the safety providers associated with the subscription */
-export const ListRaiExternalSafetyProviders: API.OperationMethod<
+export const ListRaiExternalSafetyProviders: API.PaginatedOperationMethod<
   ListRaiExternalSafetyProvidersRequest,
   RaiExternalSafetyProviderResult,
   ListRaiExternalSafetyProvidersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiExternalSafetyProviderSchema
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(896, __c28, 0) as any as S.Schema<ListRaiExternalSafetyProvidersRequest>,
   output: __S(898, __c28, 2) as any as S.Schema<RaiExternalSafetyProviderResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiPoliciesError = AzureOpError;
 /** Gets the content filters associated with the Azure OpenAI account. */
-export const ListRaiPolicies: API.OperationMethod<
+export const ListRaiPolicies: API.PaginatedOperationMethod<
   ListRaiPoliciesRequest,
   RaiPolicyListResult,
   ListRaiPoliciesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiPolicy
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(928, __c29, 0) as any as S.Schema<ListRaiPoliciesRequest>,
   output: __S(930, __c29, 2) as any as S.Schema<RaiPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiToolLabelsError = AzureOpError;
 /** Lists all RAI Tool Labels associated with the Azure OpenAI account. */
-export const ListRaiToolLabels: API.OperationMethod<
+export const ListRaiToolLabels: API.PaginatedOperationMethod<
   ListRaiToolLabelsRequest,
   RaiToolLabelResult,
   ListRaiToolLabelsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiToolLabel
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<ListRaiToolLabelsRequest>,
   output: __S(1058, __c33, 2) as any as S.Schema<RaiToolLabelResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListRaiTopicsError = AzureOpError;
 /** Gets the custom topics associated with the Azure OpenAI account. */
-export const ListRaiTopics: API.OperationMethod<
+export const ListRaiTopics: API.PaginatedOperationMethod<
   ListRaiTopicsRequest,
   RaiTopicResult,
   ListRaiTopicsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  RaiTopic
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1088, __c34, 0) as any as S.Schema<ListRaiTopicsRequest>,
   output: __S(1090, __c34, 2) as any as S.Schema<RaiTopicResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListResourceSkusError = AzureOpError;
 /** Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription. */
-export const ListResourceSkus: API.OperationMethod<
+export const ListResourceSkus: API.PaginatedOperationMethod<
   ListResourceSkusRequest,
   ResourceSkuListResult,
   ListResourceSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  ResourceSku
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1120, __c35, 0) as any as S.Schema<ListResourceSkusRequest>,
   output: __S(1126, __c35, 6) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type ListUsagesError = AzureOpError;
 /** Get usages for the requested subscription */
-export const ListUsages: API.OperationMethod<
+export const ListUsages: API.PaginatedOperationMethod<
   ListUsagesRequest,
   UsageListResult,
   ListUsagesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  Usage
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1152, __c36, 0) as any as S.Schema<ListUsagesRequest>,
   output: __S(6083, __c190, 3) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type NetworkSecurityPerimeterConfigurationsReconcileError = AzureOpError;
 /** Reconcile the NSP configuration for an account. */
@@ -7778,18 +8114,25 @@ export const PauseDeployment: API.OperationMethod<
 
 export type PostOutboundRuleError = AzureOpError;
 /** The POST API for updating the outbound rules of the managed network associated with the cognitive services account. The POST API for updating the outbound rules of the managed network associated with the cognitive services account. */
-export const PostOutboundRule: API.OperationMethod<
+export const PostOutboundRule: API.PaginatedOperationMethod<
   PostOutboundRuleRequest,
   PostOutboundRuleResponse,
   PostOutboundRuleError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
+  AzureOpContext,
+  OutboundRuleBasicResource
+> = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1408, __c44, 0) as any as S.Schema<PostOutboundRuleRequest>,
   output: __S(1409, __c44, 1) as any as S.Schema<PostOutboundRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
-}));
+  pagination: {
+    mode: "cursor",
+    inputToken: "nextLink",
+    outputToken: "nextLink",
+    items: "value",
+  } as const,
+})) as any;
 
 export type PrivateEndpointConnectionsCreateOrUpdateError = AzureOpError;
 /** Update the state of specified private endpoint connection associated with the Cognitive Services account. */
@@ -8794,12 +9137,14 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/capabilityHosts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProjectCapabilityHostsRequest" });
@@ -8809,7 +9154,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(673, __c21, 1)),
+          value: __S(673, __c21, 1),
         }),
       ).annotate({ identifier: "ProjectCapabilityHostResourceArmPaginatedResult" });
   }
@@ -8826,12 +9171,14 @@ function __c22(j: number): any {
           target: S.optional(S.String.pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
           includeAll: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/connections",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProjectConnectionsRequest" });
@@ -8845,12 +9192,14 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
@@ -8860,7 +9209,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(737, __c23, 1)),
+          value: __S(737, __c23, 1),
         }),
       ).annotate({ identifier: "ProjectListResult" });
   }
@@ -8871,12 +9220,14 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/quotaTiers",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListQuotaTierBySubscriptionRequest" });
@@ -8886,7 +9237,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(769, __c24, 1)),
+          value: __S(769, __c24, 1),
         }),
       ).annotate({ identifier: "QuotaTierListResult" });
   }
@@ -8900,12 +9251,14 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists/{raiBlocklistName}/raiBlocklistItems",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiBlocklistItemsRequest" });
@@ -8915,7 +9268,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(801, __c25, 1)),
+          value: __S(801, __c25, 1),
         }),
       ).annotate({ identifier: "RaiBlockListItemsResult" });
   }
@@ -8928,12 +9281,14 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiBlocklists",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiBlocklistsRequest" });
@@ -8943,7 +9298,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(833, __c26, 1)),
+          value: __S(833, __c26, 1),
         }),
       ).annotate({ identifier: "RaiBlockListResult" });
   }
@@ -8955,12 +9310,14 @@ function __c27(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/raiContentFilters",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiContentFiltersRequest" });
@@ -8970,7 +9327,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(865, __c27, 1)),
+          value: __S(865, __c27, 1),
         }),
       ).annotate({ identifier: "RaiContentFilterListResult" });
   }
@@ -8981,12 +9338,14 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/raiExternalSafetyProviders",
             code: 200,
             apiVersion: "2026-07-15-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiExternalSafetyProvidersRequest" });
@@ -8996,7 +9355,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(897, __c28, 1)),
+          value: __S(897, __c28, 1),
         }),
       ).annotate({ identifier: "RaiExternalSafetyProviderResult" });
   }
@@ -9009,12 +9368,14 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiPolicies",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiPoliciesRequest" });
@@ -9024,7 +9385,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(929, __c29, 1)),
+          value: __S(929, __c29, 1),
         }),
       ).annotate({ identifier: "RaiPolicyListResult" });
   }
@@ -9111,12 +9472,14 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raiToolLabels",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiToolLabelsRequest" });
@@ -9126,7 +9489,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1057, __c33, 1)),
+          value: __S(1057, __c33, 1),
         }),
       ).annotate({ identifier: "RaiToolLabelResult" });
   }
@@ -9139,12 +9502,14 @@ function __c34(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/raitopics",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListRaiTopicsRequest" });
@@ -9154,7 +9519,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(1089, __c34, 1)),
+          value: __S(1089, __c34, 1),
         }),
       ).annotate({ identifier: "RaiTopicResult" });
   }
@@ -9165,12 +9530,14 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/skus",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListResourceSkusRequest" });
@@ -9222,12 +9589,14 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/usages",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
@@ -9401,12 +9770,14 @@ function __c44(j: number): any {
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
           properties: S.optional(__S(1313, __c41, 1)),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/batchOutboundRules",
             code: 200,
             apiVersion: "2026-07-15-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "PostOutboundRuleRequest" });
@@ -9414,7 +9785,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6912, __c216, 0)),
+          value: __S(6912, __c216, 0),
           retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
           location: S.optional(S.String.pipe(T.Header())),
         }),
@@ -12599,12 +12970,14 @@ function __c177(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountByResourceGroupRequest" });
@@ -12618,7 +12991,7 @@ function __c178(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(5696, __c178, 0)),
+          value: __S(5696, __c178, 0),
         }),
       ).annotate({ identifier: "AccountListResult" });
   }
@@ -12631,12 +13004,14 @@ function __c179(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/capabilityHosts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountCapabilityHostsRequest" });
@@ -12646,7 +13021,7 @@ function __c179(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(5729, __c179, 1)),
+          value: __S(5729, __c179, 1),
         }),
       ).annotate({ identifier: "CapabilityHostResourceArmPaginatedResult" });
   }
@@ -12662,12 +13037,14 @@ function __c180(j: number): any {
           target: S.optional(S.String.pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
           includeAll: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/connections",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountConnectionsRequest" });
@@ -12681,7 +13058,7 @@ function __c181(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(5792, __c181, 0)),
+          value: __S(5792, __c181, 0),
         }),
       ).annotate({ identifier: "ConnectionPropertiesV2BasicResourceArmPaginatedResult" });
   }
@@ -12724,12 +13101,14 @@ function __c184(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/models",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountModelsRequest" });
@@ -12739,7 +13118,7 @@ function __c184(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(5889, __c184, 1)),
+          value: __S(5889, __c184, 1),
         }),
       ).annotate({ identifier: "AccountModelListResult" });
   }
@@ -12835,12 +13214,14 @@ function __c187(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
@@ -12929,7 +13310,7 @@ function __c190(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6082, __c190, 2)),
+          value: __S(6082, __c190, 2),
         }),
       ).annotate({ identifier: "UsageListResult" });
   }
@@ -13036,12 +13417,14 @@ function __c194(j: number): any {
           searchText: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications",
             code: 200,
             apiVersion: "2026-07-15-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAgentApplicationsRequest" });
@@ -13051,7 +13434,7 @@ function __c194(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(6209, __c194, 1)),
+          value: __S(6209, __c194, 1),
         }),
       ).annotate({ identifier: "AgentApplicationResourceArmPaginatedResult" });
   }
@@ -13071,12 +13454,14 @@ function __c195(j: number): any {
           names: S.optional(__S(128, __c4, 0).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/projects/{projectName}/applications/{appName}/agentDeployments",
             code: 200,
             apiVersion: "2026-07-15-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListAgentDeploymentsRequest" });
@@ -13086,7 +13471,7 @@ function __c195(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(6241, __c195, 1)),
+          value: __S(6241, __c195, 1),
         }),
       ).annotate({ identifier: "AgentDeploymentResourceArmPaginatedResult" });
   }
@@ -13099,12 +13484,14 @@ function __c196(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           commitmentPlanName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans/{commitmentPlanName}/accountAssociations",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommitmentPlanAssociationsRequest" });
@@ -13114,7 +13501,7 @@ function __c196(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6273, __c196, 1)),
+          value: __S(6273, __c196, 1),
         }),
       ).annotate({ identifier: "CommitmentPlanAccountAssociationListResult" });
   }
@@ -13126,12 +13513,14 @@ function __c197(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/commitmentPlans",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommitmentPlanPlansByResourceGroupRequest" });
@@ -13145,7 +13534,7 @@ function __c198(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6336, __c198, 0)),
+          value: __S(6336, __c198, 0),
         }),
       ).annotate({ identifier: "CommitmentPlanListResult" });
   }
@@ -13156,12 +13545,14 @@ function __c199(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/commitmentPlans",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommitmentPlanPlansBySubscriptionRequest" });
@@ -13175,12 +13566,14 @@ function __c200(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/commitmentPlans",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommitmentPlansRequest" });
@@ -13193,12 +13586,14 @@ function __c201(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/commitmentTiers",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListCommitmentTiersRequest" });
@@ -13228,7 +13623,7 @@ function __c201(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6435, __c201, 3)),
+          value: __S(6435, __c201, 3),
         }),
       ).annotate({ identifier: "CommitmentTierListResult" });
   }
@@ -13241,12 +13636,14 @@ function __c202(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/defenderForAISettings",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDefenderForAISettingsRequest" });
@@ -13256,7 +13653,7 @@ function __c202(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6465, __c202, 1)),
+          value: __S(6465, __c202, 1),
         }),
       ).annotate({ identifier: "DefenderForAISettingResult" });
   }
@@ -13267,12 +13664,14 @@ function __c203(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/deletedAccounts",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeletedAccountsRequest" });
@@ -13286,12 +13685,14 @@ function __c204(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeploymentsRequest" });
@@ -13301,7 +13702,7 @@ function __c204(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6529, __c204, 1)),
+          value: __S(6529, __c204, 1),
         }),
       ).annotate({ identifier: "DeploymentListResult" });
   }
@@ -13356,12 +13757,14 @@ function __c206(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/deployments/{deploymentName}/skus",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListDeploymentSkusRequest" });
@@ -13379,7 +13782,7 @@ function __c206(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6594, __c206, 2)),
+          value: __S(6594, __c206, 2),
         }),
       ).annotate({ identifier: "DeploymentSkuListResult" });
   }
@@ -13392,12 +13795,14 @@ function __c207(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/encryptionScopes",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListEncryptionScopesRequest" });
@@ -13407,7 +13812,7 @@ function __c207(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6625, __c207, 1)),
+          value: __S(6625, __c207, 1),
         }),
       ).annotate({ identifier: "EncryptionScopeListResult" });
   }
@@ -13422,12 +13827,14 @@ function __c208(j: number): any {
           modelFormat: S.String.pipe(T.Query()),
           modelName: S.String.pipe(T.Query()),
           modelVersion: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/modelCapacities",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListLocationBasedModelCapacitiesRequest" });
@@ -13463,7 +13870,7 @@ function __c209(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6690, __c209, 2)),
+          value: __S(6690, __c209, 2),
         }),
       ).annotate({ identifier: "ModelCapacityListResult" });
   }
@@ -13476,12 +13883,14 @@ function __c210(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks",
             code: 200,
             apiVersion: "2026-07-15-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListManagedNetworkSettingsRequest" });
@@ -13491,7 +13900,7 @@ function __c210(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6721, __c210, 1)),
+          value: __S(6721, __c210, 1),
         }),
       ).annotate({ identifier: "ManagedNetworkListResult" });
   }
@@ -13505,12 +13914,14 @@ function __c211(j: number): any {
           modelFormat: S.String.pipe(T.Query()),
           modelName: S.String.pipe(T.Query()),
           modelVersion: S.String.pipe(T.Query()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/modelCapacities",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListModelCapacitiesRequest" });
@@ -13523,12 +13934,14 @@ function __c212(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/models",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListModelsRequest" });
@@ -13547,7 +13960,7 @@ function __c212(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6786, __c212, 2)),
+          value: __S(6786, __c212, 2),
         }),
       ).annotate({ identifier: "ModelListResult" });
   }
@@ -13560,12 +13973,14 @@ function __c213(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/networkSecurityPerimeterConfigurations",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListNetworkSecurityPerimeterConfigurationsRequest" });
@@ -13574,7 +13989,7 @@ function __c213(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(6817, __c213, 1)),
+          value: __S(6817, __c213, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeterConfigurationList" });
@@ -13584,12 +13999,15 @@ function __c214(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(
+        S.Struct({
+          nextLink: S.optional(S.String),
+        }).pipe(
           T.Http({
             method: "GET",
             uri: "/providers/Microsoft.CognitiveServices/operations",
             code: 200,
             apiVersion: "2026-09-01",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
@@ -13617,7 +14035,7 @@ function __c214(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(6851, __c214, 3)),
+          value: __S(6851, __c214, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -13632,12 +14050,14 @@ function __c215(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
+          nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "GET",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/managedNetworks/{managedNetworkName}/outboundRules",
             code: 200,
             apiVersion: "2026-07-15-preview",
+            nextLink: "nextLink",
           }),
         ),
       ).annotate({ identifier: "ListOutboundRuleRequest" });
@@ -13645,7 +14065,7 @@ function __c215(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(6912, __c216, 0)),
+          value: __S(6912, __c216, 0),
         }),
       ).annotate({ identifier: "OutboundRuleListResult" });
   }

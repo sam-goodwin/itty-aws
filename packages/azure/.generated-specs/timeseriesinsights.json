@@ -73,7 +73,8 @@
       "com.azure.timeseriesinsights#EnvironmentsGetResponseKind": "com.azure.timeseriesinsights#GetEnvironmentResponseKind",
       "com.azure.timeseriesinsights#EnvironmentsGetResponseTagsMap": "com.azure.timeseriesinsights#GetEnvironmentResponseTagsMap",
       "com.azure.timeseriesinsights#EnvironmentsGetRequest": "com.azure.timeseriesinsights#GetEnvironmentRequest",
-      "com.azure.timeseriesinsights#OperationsList": "com.azure.timeseriesinsights#ListOperations"
+      "com.azure.timeseriesinsights#OperationsList": "com.azure.timeseriesinsights#ListOperations",
+      "com.azure.timeseriesinsights#OperationsListRequest": "com.azure.timeseriesinsights#ListOperationsRequest"
     }
   },
   "shapes": {
@@ -2983,7 +2984,7 @@
     "com.azure.timeseriesinsights#OperationsList": {
       "type": "operation",
       "input": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.timeseriesinsights#OperationsListRequest"
       },
       "output": {
         "target": "com.azure.timeseriesinsights#OperationListResult"
@@ -2993,10 +2994,17 @@
           "method": "GET",
           "uri": "/providers/Microsoft.TimeSeriesInsights/operations",
           "code": 200,
-          "apiVersion": "2020-05-15"
+          "apiVersion": "2020-05-15",
+          "nextLink": "nextLink"
         },
         "smithy.api#documentation": "Lists all of the available Time Series Insights related operations.",
-        "com.distilled.openapi#apiVersion": "2020-05-15"
+        "com.distilled.openapi#apiVersion": "2020-05-15",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "nextLink",
+          "outputToken": "nextLink",
+          "items": "value"
+        }
       }
     },
     "com.azure.timeseriesinsights#OperationListResult": {
@@ -3270,6 +3278,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Contains the localized display information for this particular operation / action."
+      }
+    },
+    "com.azure.timeseriesinsights#OperationsListRequest": {
+      "type": "structure",
+      "members": {
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The absolute URL of a page returned by a previous call; when set, every other member is ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
       }
     },
     "com.azure.timeseriesinsights#Timeseriesinsights": {
